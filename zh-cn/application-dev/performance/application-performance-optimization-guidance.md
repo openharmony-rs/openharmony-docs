@@ -33,7 +33,7 @@
 
 在日常开发过程中经常会碰到这样的问题：主页的开发场景中有多个Tab页展示不同内容，在首次加载完主页后，切换到第二个Tab页时需要加载和处理网络数据，导致第二个Tab页的页面显示较慢，有较大的完成时延。
 
-碰到此类问题，可以在生命周期aboutToAppear中，使用[多线程并发](../arkts-utils/multi-thread-concurrency-overview.md)、[高效并发编程](efficient-concurrent-programming.md)、[多线程能力场景化示例实践](multi_thread_capability.md)的方法执行第二个Tab页的网络数据访问解析、数据加载等耗时操作，既可以提前完成数据加载，也不会影响主线程UI绘制和渲染。
+碰到此类问题，可以在生命周期aboutToAppear中，使用[多线程并发](../arkts-utils/multi-thread-concurrency-overview.md)、[高效并发编程](efficient-concurrent-programming.md)、[多线程能力场景化示例实践](multi-thread-capability.md)的方法执行第二个Tab页的网络数据访问解析、数据加载等耗时操作，既可以提前完成数据加载，也不会影响主线程UI绘制和渲染。
 
 使用TaskPool进行耗时操作的示例代码如下：
 
@@ -187,7 +187,7 @@ preload() {
 
 **使用cachedCount属性实现预加载**
 
-推荐在使用List、Swiper、Grid、WaterFlow等组件时，配合使用cachedCount属性实现预加载，详情指导在[WaterFlow高性能开发指导](waterflow_optimization.md)、[Swiper高性能开发指导](swiper_optimization.md)、[Grid高性能开发指导](grid_optimization.md)、[列表场景性能提升实践](list-perf-improvement.md)，示例代码如下所示：
+推荐在使用List、Swiper、Grid、WaterFlow等组件时，配合使用cachedCount属性实现预加载，详情指导在[WaterFlow高性能开发指导](waterflow-optimization.md)、[Swiper高性能开发指导](swiper-optimization.md)、[Grid高性能开发指导](grid-optimization.md)、[列表场景性能提升实践](list-perf-improvement.md)，示例代码如下所示：
 
 ```typescript
   private source: MyDataSource = new MyDataSource();

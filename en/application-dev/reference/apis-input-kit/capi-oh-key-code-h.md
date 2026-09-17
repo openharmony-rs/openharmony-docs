@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:19:54.492Z pushedAt=2026-09-03T06:19:51.660Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:44:05.719Z pushedAt=2026-09-11T07:32:13.115Z -->
 
 ## Overview
 
@@ -128,7 +128,7 @@ Enumerates the key codes.
 | KEYCODE_RIGHT_BRACKET = 2060 | Key ]|
 | KEYCODE_BACKSLASH = 2061 | Key \\|
 | KEYCODE_SEMICOLON = 2062 | Key ;|
-| KEYCODE_APOSTROPHE = 2063 | Key '|
+| KEYCODE_APOSTROPHE = 2063 | Key ''' (single quote) |
 | KEYCODE_SLASH = 2064 | Key /|
 | KEYCODE_AT = 2065 | Key @|
 | KEYCODE_PLUS = 2066 | Key +|
@@ -215,8 +215,8 @@ Enumerates the key codes.
 | KEYCODE_MACRO = 2610 | Macro key<br>**Since**: 22|
 | KEYCODE_NUMPAD_PLUSMINUS = 2611 | Plus/Minus key on the numeric keypad<br>**Since**: 22|
 | KEYCODE_SCALE = 2612 | Scale key<br>**Since**: 22|
-| KEYCODE_HANGUEL = 2613 | Hanguel key<br>**Since**: 22|
-| KEYCODE_HANJA = 2614 | Hanja key<br>**Since**: 22|
+| KEYCODE_HANGUEL = 2613 | Hangul key<br/>**Since:** 22 |
+| KEYCODE_HANJA = 2614 | Hanja key<br/>**Since:** 22 |
 | KEYCODE_YEN = 2615 | Yen key<br>**Since**: 22|
 | KEYCODE_STOP = 2616 | Stop key<br>**Since**: 22|
 | KEYCODE_AGAIN = 2617 | Again key<br>**Since**: 22|
@@ -287,10 +287,10 @@ Enumerates the key codes.
 | KEYCODE_VIDEO = 2683 | Video key<br>**Since**: 22|
 | KEYCODE_MEMO = 2684 | Memo key<br>**Since**: 22|
 | KEYCODE_CALENDAR = 2685 | Calendar key<br>**Since**: 22|
-| KEYCODE_RED = 2686 | Red indicator<br>**Since**: 22|
-| KEYCODE_GREEN = 2687 | Green indicator<br>**Since**: 22|
-| KEYCODE_YELLOW = 2688 | Yellow indicator<br>**Since**: 22|
-| KEYCODE_BLUE = 2689 | Blue indicator<br>**Since**: 22|
+| KEYCODE_RED = 2686 | Red indicator key<br/>**Since:** 22 |
+| KEYCODE_GREEN = 2687 | Green indicator key<br/>**Since:** 22 |
+| KEYCODE_YELLOW = 2688 | Yellow indicator key<br/>**Since:** 22 |
+| KEYCODE_BLUE = 2689 | Blue indicator key<br/>**Since:** 22 |
 | KEYCODE_CHANNELUP = 2690 | Channel Up key<br>**Since**: 22|
 | KEYCODE_CHANNELDOWN = 2691 | Channel Down key<br>**Since**: 22|
 | KEYCODE_LAST = 2692 | Last key<br>**Since**: 22|
@@ -309,16 +309,16 @@ Enumerates the key codes.
 | KEYCODE_PRESENTATION = 2705 | Presentation key<br>**Since**: 22|
 | KEYCODE_DATABASE = 2706 | Database key<br>**Since**: 22|
 | KEYCODE_NEWS = 2707 | News key<br>**Since**: 22|
-| KEYCODE_VOICEMAIL = 2708 | Voice mailbox<br>**Since**: 22|
-| KEYCODE_ADDRESSBOOK = 2709 | Address book key<br>**Since**: 22|
+| KEYCODE_VOICEMAIL = 2708 | Voicemail key<br/>**Since:** 22 |
+| KEYCODE_ADDRESSBOOK = 2709 | Address book key<br/>**Since:** 22 |
 | KEYCODE_MESSENGER = 2710 | Messenger key<br>**Since**: 22|
 | KEYCODE_BRIGHTNESS_TOGGLE = 2711 | Brightness Toggle key<br>**Since**: 22|
 | KEYCODE_SPELLCHECK = 2712 | Spell Check key<br>**Since**: 22|
-| KEYCODE_COFFEE = 2713 | Coffee key, which is used to launch screen lock or screen saver<br>**Since**: 22|
+| KEYCODE_COFFEE = 2713 | Terminal lock/screen saver key<br/>**Since:** 22 |
 | KEYCODE_MEDIA_REPEAT = 2714 | Media Repeat key<br>**Since**: 22|
 | KEYCODE_IMAGES = 2715 | Images key<br>**Since**: 22|
 | KEYCODE_BUTTONCONFIG = 2716 | Button Configuration key<br>**Since**: 22|
-| KEYCODE_TASKMANAGER = 2717 | Task Manager<br>**Since**: 22|
+| KEYCODE_TASKMANAGER = 2717 | Task manager key<br/>**Since:** 22 |
 | KEYCODE_JOURNAL = 2718 | Log key<br>**Since**: 22|
 | KEYCODE_CONTROLPANEL = 2719 | Control Panel key<br>**Since**: 22|
 | KEYCODE_APPSELECT = 2720 | App Select key<br>**Since**: 22|
@@ -336,7 +336,7 @@ Enumerates the key codes.
 | KEYCODE_MOUSE_ASSISTANT = 2732 | Mouse AI Assistant key<br>**Since**: 24|
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | Mouse Smart Selection key<br>**Since**: 24|
 | KEYCODE_AOD_SINGLE_CLICK = 2740 | Phone touchscreen single-click event, used in Always-On Display state.<br/>**Since:** 26.0.0 |
-| KEYCODE_FRONT = 2800 | Front key, which is used to launch the windshield defogger<br>**Since**: 22|
+| KEYCODE_FRONT = 2800 | Windshield defogger switch key<br/>**Since:** 22 |
 | KEYCODE_SETUP = 2801 | Setup key<br>**Since**: 22|
 | KEYCODE_WAKEUP = 2802 | Wakeup key<br>**Since**: 22|
 | KEYCODE_SENDFILE = 2803 | Send File key<br>**Since**: 22|
@@ -366,7 +366,7 @@ Enumerates the key codes.
 | KEYCODE_F24 = 2827 | F24 key<br>**Since**: 22|
 | KEYCODE_PROG3 = 2828 | Program key 3<br>**Since**: 22|
 | KEYCODE_PROG4 = 2829 | Program key 4<br>**Since**: 22|
-| KEYCODE_DASHBOARD = 2830 | Dashboard<br>**Since**: 22|
+| KEYCODE_DASHBOARD = 2830 | Dashboard key<br/>**Since:** 22 |
 | KEYCODE_SUSPEND = 2831 | Suspend key<br>**Since**: 22|
 | KEYCODE_HP = 2832 | HP key<br>**Since**: 22|
 | KEYCODE_SOUND = 2833 | Sound key<br>**Since**: 22|
@@ -378,21 +378,21 @@ Enumerates the key codes.
 | KEYCODE_SWITCHVIDEOMODE = 2841 | Cycle output between available videos (monitor/LCD/TV output/more)<br/>**Since:** 22 |
 | KEYCODE_BATTERY = 2842 | Battery key<br>**Since**: 22|
 | KEYCODE_BLUETOOTH = 2843 | Bluetooth key<br>**Since**: 22|
-| KEYCODE_WLAN = 2844 | WLAN key<br>**Since**: 22|
+| KEYCODE_WLAN = 2844 | WLAN key<br/>**Since:** 22 |
 | KEYCODE_UWB = 2845 | Ultra-wideband key<br>**Since**: 22|
 | KEYCODE_WWAN_WIMAX = 2846 | Mobile Network Control key<br>**Since**: 22|
-| KEYCODE_RFKILL = 2847 | RF Kill key<br>**Since**: 22|
+| KEYCODE_RFKILL = 2847 | Key for controlling all wireless devices<br/>**Since:** 22 |
 | KEYCODE_CHANNEL = 3001 | Channel key<br>**Since**: 22|
-| KEYCODE_BTN_0 = 3100 | Button 0<br>**Since**: 22|
-| KEYCODE_BTN_1 = 3101 | Button 1<br>**Since**: 22|
-| KEYCODE_BTN_2 = 3102 | Button 2<br>**Since**: 22|
-| KEYCODE_BTN_3 = 3103 | Button 3<br>**Since**: 22|
-| KEYCODE_BTN_4 = 3104 | Button 4<br>**Since**: 22|
-| KEYCODE_BTN_5 = 3105 | Button 5<br>**Since**: 22|
-| KEYCODE_BTN_6 = 3106 | Button 6<br>**Since**: 22|
-| KEYCODE_BTN_7 = 3107 | Button 7<br>**Since**: 22|
-| KEYCODE_BTN_8 = 3108 | Button 8<br>**Since**: 22|
-| KEYCODE_BTN_9 = 3109 | Button 9<br>**Since**: 22|
+| KEYCODE_BTN_0 = 3100 | Button '0'<br/>**Since:** 22 |
+| KEYCODE_BTN_1 = 3101 | Button '1'<br/>**Since:** 22 |
+| KEYCODE_BTN_2 = 3102 | Button '2'<br/>**Since:** 22 |
+| KEYCODE_BTN_3 = 3103 | Button '3'<br/>**Since:** 22 |
+| KEYCODE_BTN_4 = 3104 | Button '4'<br/>**Since:** 22 |
+| KEYCODE_BTN_5 = 3105 | Button '5'<br/>**Since:** 22 |
+| KEYCODE_BTN_6 = 3106 | Button '6'<br/>**Since:** 22 |
+| KEYCODE_BTN_7 = 3107 | Button '7'<br/>**Since:** 22 |
+| KEYCODE_BTN_8 = 3108 | Button '8'<br/>**Since:** 22 |
+| KEYCODE_BTN_9 = 3109 | Button '9'<br/>**Since:** 22 |
 | KEYCODE_DAGGER_CLICK = 3211 | Single tapping the smart watch's X-TAP sensor<br>**Since**: 22|
 | KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | Double tapping the smart watch's X-TAP sensor<br>**Since**: 22|
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | Long-pressing the smart watch's X-TAP sensor<br>**Since**: 22|

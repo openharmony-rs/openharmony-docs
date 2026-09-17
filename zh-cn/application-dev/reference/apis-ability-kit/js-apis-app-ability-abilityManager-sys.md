@@ -1508,7 +1508,7 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
@@ -1524,7 +1524,7 @@ type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |

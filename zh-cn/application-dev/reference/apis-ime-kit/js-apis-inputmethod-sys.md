@@ -48,8 +48,8 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -123,7 +123,7 @@ on(type: 'imeShow', callback: (info: Array\<InputWindowInfo>) => void): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -161,7 +161,7 @@ on(type: 'imeHide', callback: (info: Array\<InputWindowInfo>) => void): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 
 **示例：**
@@ -246,7 +246,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -299,7 +299,7 @@ isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -353,8 +353,8 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails. |
-| 202      | not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -420,7 +420,7 @@ getCursorInfo(userId?: number): CursorInfo
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
 | 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -467,7 +467,7 @@ getDefaultInputMethodAbility(): InputMethodProperty
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -521,8 +521,8 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -574,7 +574,7 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -628,7 +628,7 @@ getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMetho
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -689,7 +689,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -741,7 +741,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -780,7 +780,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -833,8 +833,8 @@ showSoftKeyboard(displayId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -887,8 +887,8 @@ hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -937,7 +937,7 @@ getDefaultInputMethod(userId?: number): InputMethodProperty
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -989,7 +989,7 @@ getSystemInputMethodConfigAbility(userId?: number): ElementName
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1046,8 +1046,8 @@ switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: num
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -1098,7 +1098,7 @@ getCurrentInputMethod(userId?: number): InputMethodProperty
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1150,7 +1150,7 @@ getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |

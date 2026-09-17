@@ -69,10 +69,10 @@ Enumerates device width types, used to distinguish device types of different wid
 
 | Name| Description|
 | -------- | -------- |
-| XS | Device with minimum width. Width ≤320 vp. |
-| SM | Device with small width. Width 320 vp–600 vp. |
-| MD | Device with medium width. Width 600 vp–840 vp. |
-| LG | Device with large width. Width ≥840 vp. |
+| XS | Device with minimum width. Width ≤ 320 vp. |
+| SM | Device with small width. Width 320 vp-600 vp. |
+| MD | Device with medium width. Width 600 vp-840 vp. |
+| LG | Device with large width. Width ≥ 840 vp. |
 | Auto | Automatically matches the appropriate size type based on the device width. |
 
 ## Attributes

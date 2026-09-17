@@ -23,7 +23,7 @@
 
 - [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份恢复支持多实例，备份数据保存7天，以文件的形式存储在应用的沙箱路径中。
 
-- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)中的parameter字段中，由于序列化大小限制，支持的最大数据量为200KB。
+- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)中的parameters字段中，由于序列化大小限制，支持的最大数据量为200KB。
 
 - 重启设备不支持还原备份。
 

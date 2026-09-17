@@ -5,21 +5,20 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=091fe0769a701446e857c7326993467d178f59cc translatedAt=2026-09-03T12:11:22.498Z -->
 
-As a child component of [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md), it is used to display inline text and supports fine-grained settings of the font, color, size, and other styles of the text. It is suitable for scenarios where different styles are mixed in the same line of text, such as text in different font colors, and adding decorative lines or shadow effects.
+As a child of the [Text](ts-basic-components-text.md) and [ContainerSpan](ts-basic-components-containerspan.md) components, the **Span** component is used to display inline text, which supports fine-grained settings of the font, color, and size of the text. It is applicable to scenarios where different styles are displayed in the same line of text, such as text with different font colors, text with decorative lines, or text with shadow effects.
 
 >  **NOTE**
 >
-> - This component is supported since API version 7. New APIs added in later versions are marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Since API version 10, this component supports inheriting the attributes of the parent **Text** component. That is, if a child component does not set an attribute but the parent component does, the child component inherits the attribute set by the parent component. The attributes that can be inherited include only: fontColor, fontSize, fontStyle, fontWeight, decoration, letterSpacing, textCase, fontFamily, and textShadow.
+> - This component is supported since API version 10. It can inherit attribute settings from its parent component **Text**. This means that, if an attribute is not set in this component, it takes the value (if any) of the attribute from its parent component. Only the following attributes can be inherited: **fontColor**, **fontSize**, **fontStyle**, **fontWeight**, **decoration**, **letterSpacing**, **textCase**, **fontFamily**, and **textShadow**.
 >
-> - It supports the [accessibility attribute](ts-universal-attributes-accessibility.md) ([accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)), [component identifier](ts-universal-attributes-component-id.md) ([id](ts-universal-attributes-component-id.md#id) and [key](ts-universal-attributes-component-id.md#key12)), and [color inversion disabling](ts-allow-force-dark.md) ([allowForceDark](ts-allow-force-dark.md#allowforcedark)) among the [universal attributes](ts-component-general-attributes.md), but does not support other universal attributes. To set other universal attributes, use [Text](ts-basic-components-text.md), or use [CustomSpan](ts-universal-styled-string.md#customspan) in [styled strings](ts-universal-styled-string.md) to draw them by yourself.
+> - This component supports only the [accessibility attribute](ts-universal-attributes-accessibility.md) ([accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)), [component ID](ts-universal-attributes-component-id.md) ([id](ts-universal-attributes-component-id.md#id), [key](ts-universal-attributes-component-id.md#key12)), and [color inversion disabling attribute](ts-allow-force-dark.md) ([allowForceDark](ts-allow-force-dark.md#allowforcedark)) in [universal attributes](ts-component-general-attributes.md). To set other universal attributes, use [Text](ts-basic-components-text.md) for configuration or use [CustomSpan](ts-universal-styled-string.md#customspan) in the [styled string](ts-universal-styled-string.md) for custom drawing.
 >
-> - [accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext) takes effect only when the [onClick](ts-universal-events-click.md#onclick) event is set for **Span**. The configured text is reflected only in the inline link pop-up recognized by the accessibility service. During direct announcement, the content of **Span** is still announced, and it is not replaced by the text configured in accessibilityText.
+> - [accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext) takes effect only when the [onClick](ts-universal-events-click.md#onclick) event is set for the span. The configured text is displayed only in the embedded link pop-up window detected by the accessibility service. During direct reading, the span content is still read and is not replaced with the text configured by **accessibilityText**.
 >
-> - Among the [universal events](ts-component-general-events.md), only the click event [onClick](ts-universal-events-click.md#onclick) and the hover event [onHover](ts-universal-events-hover.md#onhover) are supported.
+> - Among [universal events](ts-component-general-events.md), only [onClick](ts-universal-events-click.md#onclick) click events and [onHover](ts-universal-events-hover.md#onhover) hover events are supported.
 
 
 ## Child Components
@@ -52,7 +51,7 @@ Inherited from [BaseSpan](#basespan).
 
 decoration(value: DecorationStyleInterface)
 
-Sets the text decoration line style and its color. If this API is not used, the default decoration line type is TextDecorationType.None (no decoration line), the color is Color.Black, and the style is TextDecorationStyle.SOLID (solid line).
+Style and color of the text decorative line. If this API is not used, the default decorative line type is **TextDecorationType.None** (no decorative line), the color is **Color.Black** (black), and the style is **TextDecorationStyle.SOLID** (solid line).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -64,7 +63,7 @@ Sets the text decoration line style and its color. If this API is not used, the 
 
 | Name| Type     | Mandatory| Description    |
 | ------ | -------- | ---- | -------------- |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes   | Text decoration line style object.<br>**Note:** <br>The style parameter does not support the card capability. |
+| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decorative line.<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
 
 >  **NOTE**
 >
@@ -76,7 +75,7 @@ Sets the text decoration line style and its color. If this API is not used, the 
 
 letterSpacing(value: number | ResourceStr)
 
-Sets the text character spacing. If the value is less than 0, the characters gather and overlap. If the value is greater than 0, the character spacing increases as the value increases, resulting in a sparse distribution. It is suitable for scenarios such as title layout and label text where the compactness or sparseness of characters needs to be adjusted. The string type supports the string form of a number value and can carry a unit, for example, "10" and "10fp".
+Sets the letter spacing. A negative value tightens the spacing; a positive value loosens the spacing, and the letters are spread farther apart with the value. This API is applicable to scenarios where the character compactness or sparseness needs to be adjusted, such as title typesetting and label text. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -88,13 +87,13 @@ Sets the text character spacing. If the value is less than 0, the characters gat
 
 | Name| Type    | Mandatory|  Description  |
 | ------ | ------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes   | Text character spacing.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units) <br>Since API version 20, the [Resource](ts-types.md#resource) type is supported.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### textCase
 
 textCase(value: TextCase)
 
-Sets the text case. If this API is not used, the default text case is TextCase.Normal.
+Sets the text case. If this API is not used, the default text case is **TextCase.Normal** (normal case).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -106,13 +105,13 @@ Sets the text case. If this API is not used, the default text case is TextCase.N
 
 | Name| Type  | Mandatory| Description  |
 | ------ | ------- | ---- | ------- |
-| value  | [TextCase](ts-appendix-enums.md#textcase) | Yes   | Text case. |
+| value  | [TextCase](ts-appendix-enums.md#textcase) | Yes  | Text case.|
 
 ### fontColor
 
 fontColor(value: ResourceColor)
 
-Sets the font color. If this API is not used, the default font color is '#FF182431' (dark gray), and on Wearable devices, the default is '#C5FFFFFF' (white with an opacity of about 77%).
+Sets the font color. If this API is not used, the default text color is **'#FF182431'** (dark gray). On wearables, the default text color is **'#C5FFFFFF'** (white, with opacity of about 77%).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -124,13 +123,13 @@ Sets the font color. If this API is not used, the default font color is '#FF1824
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Font color. |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.|
 
 ### fontSize
 
 fontSize(value: number | string | Resource)
 
-Sets the font size. If this API is not used, the default font size is 16fp, and on Wearable devices, the default is 15fp.
+Sets the font size. If this API is not used, the default font size is 16 fp. On wearables, the default font size is 15 fp.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -142,13 +141,13 @@ Sets the font size. If this API is not used, the default font size is 16fp, and 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Font size. When fontSize is of the number type, the unit fp is used. The string type supports the string form of a number type value, which can carry a unit, for example, "10" or "10fp". Percentage strings are not supported.<br>Since API version 20, the [Resource](ts-types.md#resource) type is supported.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported. Percentage values are not supported.<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### fontStyle
 
 fontStyle(value: FontStyle)
 
-Sets the font style. If this API is not used, the default font style is FontStyle.Normal.
+Sets the font style. If this API is not used, the default font style is **FontStyle.Normal** (normal style).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -160,17 +159,17 @@ Sets the font style. If this API is not used, the default font style is FontStyl
 
 | Name| Type                                       | Mandatory| Description                                   |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes   | Font style. |
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.|
 
 ### fontWeight
 
 fontWeight(value: number | FontWeight | ResourceStr)
 
-Sets the font weight of the text. If the value is too large, the text may be clipped depending on the font. If this API is not used, the default font weight is FontWeight.Normal (normal weight, corresponding to the value 400).
+Sets the font weight. If the value is too large, the text may be clipped depending on the font. If this API is not used, the default font weight is **FontWeight.Normal** (normal weight, corresponding to the value **400**).
 
 > **NOTE**
 >
-> When the [fontVariations attribute](#fontvariations) is set at the same time, the fontVariations attribute takes precedence.
+> If both this attribute and [fontVariations](#fontvariations) are set, **fontVariations** takes precedence.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -182,17 +181,17 @@ Sets the font weight of the text. If the value is too large, the text may be cli
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes   | Font weight of the text.<br>For the number type, the value ranges from [100,&nbsp;900], at an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated under different fonts. If a value outside the value range or not meeting the interval requirement is passed in, the default value is used.<br>Since API version 20, the [Resource](ts-types.md#resource) type is supported.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. For the string type, only strings of the number type are supported, for example, **"400"**, and **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts. If the input value exceeds the value range or does not meet the interval requirements, the default value is used.<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### fontWeight<sup>24+</sup>
 
 fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
 
-Sets the font weight of the text. If this API is not used, the default font weight is FontWeight.Normal (normal weight, corresponding to the value 400).
+Font weight of the text. If this API is not used, the default font weight is **FontWeight.Normal** (normal weight, corresponding to the value **400**).
 
 > **NOTE**
 >
-> When the fontVariations attribute is set at the same time, the fontVariations attribute takes precedence.
+> If both this attribute and **fontVariations** are set, **fontVariations** takes precedence.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
 
@@ -204,16 +203,16 @@ Sets the font weight of the text. If this API is not used, the default font weig
 
 **Parameters**
 
-| Name | Type                                                         | Mandatory | Description                                                         |
+| Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes   | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, with an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the text may be truncated under different fonts.<br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used.|
-| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24) | No   | Font weight configuration object, used to configure options such as the variable font weight. The default value inherits [FontWeightConfigs](ts-text-common.md#fontweightconfigs24). |
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. For the string type, only strings of the number type are supported, for example, **"400"**, and **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts.<br>If the input value exceeds the value range, the default value is used. If the input value does not meet the interval requirements, and **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**, the input value is used. If **enableVariableFontWeight** is set to **false**, the default value is used.|
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24) | No  | Font weight configuration object, which is used to configure options such as variable font weight. The default value is inherited from [FontWeightConfigs](ts-text-common.md#fontweightconfigs24).|
 
 ### fontFamily
 
 fontFamily(value: string | Resource)
 
-Sets the font list. If this API is not used, the default font is 'HarmonyOS Sans'.
+Sets the font family. If this API is not called, the default font is **'HarmonyOS Sans'**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -225,7 +224,7 @@ Sets the font list. If this API is not used, the default font is 'HarmonyOS Sans
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Font list.<br>When multiple fonts are used, separate them with commas ','. The priority of the fonts takes effect in order. For example: 'Arial,HarmonyOS Sans'. |
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font family.<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
 
 > **NOTE**
 >
@@ -235,7 +234,7 @@ Sets the font list. If this API is not used, the default font is 'HarmonyOS Sans
 
 lineHeight(value: Length)
 
-Sets the line height for the text. If this API is not used, the line height is automatically calculated by the system based on the font size.
+Sets the line height for the text. If this API is not used, the system automatically calculates the line height based on the font size by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -247,17 +246,17 @@ Sets the line height for the text. If this API is not used, the line height is a
 
 | Name| Type   | Mandatory| Description |
 | ------ | ------ | ---- | ---- |
-| value  | [Length](ts-types.md#length) | Yes   | Text line height. <br> The unit is fp when the value is of the number type. When the value is of the string type, the string form of a number type value is supported, and a unit can be attached, for example, "10" and "10fp". Percentage strings are not supported. |
+| value  | [Length](ts-types.md#length) | Yes  | Line height of the text.<br> If the value is of the number type, the unit is fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported. Percentage values are not supported.|
 
 ### font<sup>10+</sup>
 
 font(value: Font)
 
-Sets the text style, covering the font size, font width, Font family, and font style.
+Sets the text style, covering the font size, font weight, font family, and font style.
 
 > **NOTE**
 >
-> If fontWeight is set too large, the text may be truncated under different fonts.
+> If the value of **fontWeight** is too large, truncation may occur in different fonts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -267,9 +266,9 @@ Sets the text style, covering the font size, font width, Font family, and font s
 
 **Parameters**
 
-| Name | Type                     | Mandatory | Description       |
+| Name| Type                    | Mandatory| Description      |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | [Font](ts-types.md#font) | Yes   | Text style, including the font size, font weight, font family, and font style. |
+| value  | [Font](ts-types.md#font) | Yes  | Text style, including the font size, font weight, font family, and font style.|
 
 ### font<sup>24+</sup>
 
@@ -277,7 +276,7 @@ font(value: Font, fontConfigs?: FontConfigs)
 
 Sets the text style.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -285,16 +284,16 @@ Sets the text style.
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Name| Type                    | Mandatory| Description      |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | [Font](ts-types.md#font) | Yes | Text style, including the font size, font weight, font family, and font style. |
-| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24) | No | Font configuration, used to customize the font rendering behavior (for example, configuring variable font attributes). Pass this parameter when advanced font configuration is required. If it is not passed, the default configuration of [FontConfigs](ts-text-common.md#fontconfigs24) is inherited. |
+| value  | [Font](ts-types.md#font) | Yes  | Text style, including the font size, font weight, font family, and font style.|
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24)| No  | Font configurations, which are used to customize font rendering behavior (for example, configuring variable font attributes). This parameter is passed when advanced font configurations are required. If this parameter is not passed, the default configurations of [FontConfigs](ts-text-common.md#fontconfigs24) are inherited.|
 
 ### textShadow<sup>11+</sup>
 
 textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
-Sets the text shadow effect. This API supports an array as the input parameter to implement multiple text shadows. The **fill** field and the smart color picking mode are not supported.
+Text shadow. It supports input parameters in an array to implement multiple text shadows. This API does not work with the **fill** attribute or coloring strategy.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -306,29 +305,29 @@ Sets the text shadow effect. This API supports an array as the input parameter t
 
 | Name| Type| Mandatory| Description|
 | ------ | ----- | ---- | --- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes   | Text shadow effect. You can set parameters such as the blur radius, color, and offset (offsetX/offsetY) of the shadow, and multiple shadows are supported in array form. |
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow. You can set parameters such as the blur radius (**radius**), color (**color**), and offset distance (**offsetX**/**offsetY**) for the shadow. Multiple shadows can be implemented using arrays.|
 
 ### fontVariations
 
 fontVariations(fontVariations: Array&lt;FontVariation&gt;)
 
-Sets the attributes of a variable font. This is applicable to scenarios where variable dimension parameters such as font weight and width need to be dynamically adjusted.
+Sets the attributes of font variations. This API is applicable to scenarios where variable dimension parameters such as the font weight and width need to be dynamically adjusted.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.1.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters** 
+**Parameters**
 
-| Name | Type                                          | Mandatory | Description                                          |
+| Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | Yes | Array of variable font attributes. Each array element contains two fields: axis (attribute axis name) and value (attribute value). The fontVariations attribute has a higher priority than [fontWeight](#fontweight24). |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | Yes| Array of font variations, where each element in the array contains two fields: **axis** (attribute axis name) and **value** (attribute value). The **fontVariations** attribute takes precedence over [fontWeight](#fontweight24).|
 
 ## Events
 
@@ -350,7 +349,7 @@ Defines the base class **BaseSpan**, including the universal attributes of the *
 
 textBackgroundStyle(style: TextBackgroundStyle): T
 
-Sets the text background style. When used as a child component of [ContainerSpan](ts-basic-components-containerspan.md), this attribute value can be inherited, and the component's own setting takes precedence. If this API is not used, the default background color is Color.Transparent and the corner radius is 0.
+Sets the text background style. As a child of the [ContainerSpan](ts-basic-components-containerspan.md) component, the **Span** component can inherit the value of this attribute and preferentially use its own settings. If this API is not used, the default background color is **Color.Transparent** (transparent) and the radius of rounded corners is 0.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -362,19 +361,19 @@ Sets the text background style. When used as a child component of [ContainerSpan
 
 | Name| Type | Mandatory| Description|
 | ----- | ---- | ---- | ---- |
-| style  | [TextBackgroundStyle](#textbackgroundstyle11) | Yes   | Text background style. |
+| style  | [TextBackgroundStyle](#textbackgroundstyle11) | Yes  | Text background style.|
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| T | Attribute object of the current Span. |
+| T | Attribute object of the current span.|
 
 ### baselineOffset<sup>12+</sup>
 
 baselineOffset(value: LengthMetrics): T
 
-Sets the baseline offset of the Span. This is applicable to scenarios such as superscript and subscript layout and fine-tuning alignment of mixed-font-size text. This attribute coexists with the baselineOffset of the parent component. If this API is not used, the default offset is 0.
+Sets the offset of the span baseline. This API applies to scenarios such as subscript typesetting and fine-tuning of text alignment with mixed font sizes. This attribute coexists with the **baselineOffset** attribute of the parent component. If this API is not used, the default offset is 0.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -386,15 +385,17 @@ Sets the baseline offset of the Span. This is applicable to scenarios such as su
 
 | Name| Type| Mandatory| Description |
 | ----- | ---- | ---- | ---- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Sets the baseline offset of the Span. If this value is set to a percentage, the default value is used.<br>A positive value shifts the content upward, and a negative value shifts it downward.<br>In ImageSpan, when this value is set to a non-zero value, [verticalAlign](ts-basic-components-imagespan.md#verticalalign) is fixed to ImageSpanAlignment.BASELINE. When this value is set to 0, to make the baseline alignment policy take effect, you must also set [verticalAlign](ts-basic-components-imagespan.md#verticalalign) to ImageSpanAlignment.BASELINE. |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Offset of the baseline. If the value specified is a percentage, the default value is used.<br>A positive value moves the content upwards, while a negative value moves it downwards.<br>In the **ImageSpan**, when this parameter is set to a non-zero value, the [verticalAlign](ts-basic-components-imagespan.md#verticalalign) is fixed to **ImageSpanAlignment.BASELINE**; when this parameter is set to **0**, [verticalAlign](ts-basic-components-imagespan.md#verticalalign) must be set to **ImageSpanAlignment.BASELINE** for the baseline alignment strategy to take effect.|
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| T | Attribute object of the current Span, used for chained calls. |
+| T | Attribute object of the current span, which is used for chain calling.|
 
 ## TextBackgroundStyle<sup>11+</sup>
+
+Defines the background style of a span.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -404,13 +405,13 @@ Sets the baseline offset of the Span. This is applicable to scenarios such as su
 
 | Name  | Type    | Read-Only| Optional| Description        |
 | ------ | ------- | ---- | ---- | ------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor)                                  | No   | Yes | Text background color. Transparent by default, meaning no background color. |
-| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](./ts-types.md#borderradiuses9) | No   | Yes | Corner radius of the text background. No rounded corners by default. |
+| color  | [ResourceColor](ts-types.md#resourcecolor)                                  | No  | Yes| Text background color. By default, the background color is transparent.|
+| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](./ts-types.md#borderradiuses9) | No  | Yes| Rounded corner radius of the text background. By default, there is no rounded corner.|
 
 ## Example
 ### Example 1: Setting the Text Style
 
-This example demonstrates how to apply different text styles and configure click events for the Span.
+This example demonstrates how to apply different text styles and configure click events for the **Span** component.
 
 ```ts
 // xxx.ets
@@ -532,7 +533,7 @@ struct SpanExample {
           })
       }
 
-      // Text font configuration settings. Starting from API version 24, the fontConfigs attribute is supported.
+      // Sets text font configurations. The fontConfigs attribute is supported since API version 24.
       Text('Font with FontConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
         Span('span font with configs')
@@ -548,7 +549,7 @@ struct SpanExample {
           })
       }
 
-      // Text font weight configuration settings. Starting from API version 24, the fontWeightConfigs attribute is supported.
+      // Sets text font weight configurations. The fontWeightConfigs attribute is supported since API version 24.
       Text('FontWeight with FontWeightConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
         Span('span fontWeight 850 with configs')
@@ -694,11 +695,11 @@ struct SpanExample {
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
 
-### Example 5 (Set the Variable Font Attribute)
+### Example 5: Setting Text Font Variations
 
-This example sets the variable font attribute through the [fontVariations](#fontvariations) attribute.
+This example demonstrates how to set text font variations using [fontVariations](#fontvariations).
 
-Since API version 26.0.0, the [fontVariations](#fontvariations) API is added.
+The [fontVariations](#fontvariations) API is added since API version 26.0.0.
 
 ```ts
 // xxx.ets
@@ -711,11 +712,11 @@ struct SpanExample {
     Column() {
       Text() {
         Span('Hello World !')
-          // wght represents the font weight attribute of a variable font.
+          // wght indicates the weight of the variable font.
           .fontVariations([{ axis: 'wght', value: this.weightValue }])
       }
 
-      Button('Font weight: ' + this.weightValue)
+      Button('Weight: ' + this.weightValue)
         .margin(10)
         .onClick(() => {
           this.weightValue += 100;

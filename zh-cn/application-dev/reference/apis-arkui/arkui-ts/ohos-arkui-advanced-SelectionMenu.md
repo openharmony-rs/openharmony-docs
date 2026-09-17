@@ -805,10 +805,8 @@ struct Index {
 
 ```ts
 import {
-  SelectionMenu, EditorEventInfo, SelectionMenuOptions
+  SelectionMenu, EditorEventInfo, SelectionMenuOptions, uiMaterial
 } from '@kit.ArkUI';
-
-import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component

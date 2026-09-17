@@ -5,13 +5,104 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=f602515d1344141b9b7ce1553b994bd8033ca55b translatedAt=2026-09-14T01:58:57.561Z pushedAt=2026-09-14T06:39:30.818Z -->
 
-The **inputMethod** module is oriented to common foreground applications (third-party applications and system applications such as Notes, Messaging, and Settings). It provides input method control and management capabilities, including displaying or hiding the soft keyboard, switching between input methods, and obtaining the list of all input methods.
+The **@ohos.inputMethod** module is the input method client module for common foreground applications (such as Notes, Messaging, and Settings). It provides input method control and management capabilities.
+
+This module is the client interface of the input method framework. It provides edit box applications with the ability to interact with the input method service, including input method attachment/detachment, soft keyboard showing/hiding, input method switching, input method list query, edit box attribute and cursor update, text selection and operation event listening, and custom message communication.
+
+This module provides two core capability sets: (1) Through `InputMethodController`, it enables attachment, interaction, and event listening between edit box applications and the input method. After an edit box application attaches to the input method, it can control the showing and hiding of the keyboard, update the cursor and edit attributes, listen to text operation events sent by the input method (insert/delete/select text, move cursor, send function keys and extended actions, etc.), and communicate bidirectionally with the input method application through a custom message channel. (2) Through `InputMethodSetting`, it implements input method management, including obtaining the input method list, querying the current input method and subtype, subscribing to input method switching events, switching input methods and subtypes, and querying the panel display status.
+
+Use this module when developing applications with text edit boxes (which need to interact with the input method) or system applications (which need to manage input methods). Typical scenarios include: attaching to the input method and showing the keyboard when an edit box in the application gains focus, detaching from the input method and hiding the keyboard when the edit box loses focus, and switching and configuring input methods in the system Settings application.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+This module is the client control module in IME Kit. It works together with other modules in IME Kit:
+- **@ohos.inputMethodEngine**: A server-side module for input method applications. It provides capabilities such as soft keyboard window creation, text insertion/deletion, and physical key listening. Requests sent by the **@ohos.inputMethod** module, such as showing the keyboard and switching input methods, are ultimately responded to and processed by the input method application on the **@ohos.inputMethodEngine** side.
+- **@ohos.inputMethodList**: Provides the display and management capabilities of the input method list dialog.
+- **@ohos.inputMethod.Panel**: Defines the input method panel type and status information, used to query panel visibility and more information.
+
+The typical call sequence for a client application (such as Notes or Settings) to interact with the input method is as follows:
+1. Obtain the client controller instance `InputMethodController` through `inputMethod.getController()`.
+2. Attach to the input method through `InputMethodController.attach()` (for self-drawn control scenarios), or rely on the system native edit box to attach automatically.
+3. Bring up the soft keyboard through `InputMethodController.showTextInput()` to enter the text editing state.
+4. During editing, synchronize the edit box state to the input method through APIs such as `updateCursor`, `changeSelection`, and `updateAttribute`.
+5. Hide the soft keyboard through `InputMethodController.hideTextInput()` to exit the editing state.
+6. Detach from the input method through `InputMethodController.detach()`.
+
+Pairing constraints:
+- `attach` and `detach` must be used in pairs. Exiting directly without calling `detach` may cause resource leaks.
+- `showTextInput` and `hideTextInput` must be used in pairs to avoid inconsistent input method states.
+
+The core open capabilities of this module are implemented by the following key interfaces:
+
+| Interface | Description |
+|---|---|
+| InputMethodController | The input method controller, which is the core object for interaction between the edit box application and the input method. It provides capabilities such as attaching to or detaching from the input method (**attach**/**detach**), showing/hiding the keyboard (**showTextInput**/**hideTextInput**), updating the cursor and edit attributes (**updateCursor**/**updateAttribute**/**changeSelection**), listening for input method operation events (**insertText**/**deleteLeft**/**deleteRight**/**selectByRange**/**selectByMovement**/**moveCursor**/**sendFunctionKey**/**sendKeyboardStatus**/**handleExtendAction**/**setPreviewText**/**finishTextPreview**), custom message communication (**sendMessage**/**recvMessage**), and stopping the input session. Obtain an instance through `getController()`. |
+| InputMethodSetting | The input method setting management object, which provides input method query and management capabilities. It includes obtaining the list of enabled/disabled/all input methods (**getInputMethods**/**getAllInputMethods**), querying the subtype list of a specified input method (**listInputMethodSubtype**), obtaining the current input method and subtype, subscribing to input method switching events (**on('imeChange')**), subscribing to panel showing/hiding events (**on('imeShow')**/**on('imeHide')**), querying the panel display state (**isPanelShown**), enabling/disabling an input method (**enableInputMethod**), and obtaining the enabled state of the input method itself (**getInputMethodState**). Obtain an instance through `getSetting()`. |
+
+In addition, this module defines multiple key data types:
+
+| Type | Description |
+|---|---|
+| InputMethodProperty | Input method property information, describing the name, ID, label, icon, enabled status, and other properties of an input method. |
+| InputMethodSubtype | Input method subtype, describing the language, mode, and other subtype properties of an input method. |
+| TextConfig | Text configuration of the edit box, including the input attribute (**InputAttribute**), cursor information (**CursorInfo**), selection information, window ID, and more. |
+| InputAttribute | Input attribute, defining the text input type (**TextInputType**) and the Enter key type (**EnterKeyType**). |
+| CursorInfo | Cursor information, defining the position and size of the cursor. |
+| MessageHandler | Custom message handler, used to receive messages sent by the input method application and provide termination notifications. |
+
+The typical process of interaction between an edit box application and the input method involves the combined invocation of multiple APIs of **InputMethodController**: obtain the controller -> attach to the input method -> subscribe to input method operation events -> process text operations in the callback -> detach from the input method.
+
+```javascript
+// The following is pseudocode for illustrating the calling logic.
+
+// 1. Obtain the input method controller and settings object.
+let controller = inputMethod.getController();
+let setting = inputMethod.getSetting();
+
+// 2. Subscribe to input method operation events (subscribe before attach to ensure no events are missed).
+controller.on('insertText', (text) => { /* Handle text insertion. */ });
+controller.on('deleteLeft', (length) => { /* Handle left deletion. */ });
+controller.on('deleteRight', (length) => { /* Handle right deletion. */ });
+controller.on('selectByRange', (range) => { /* Handle text selection by range. */ });
+controller.on('selectByMovement', (movement) => { /* Handle text selection by direction. */ });
+controller.on('moveCursor', (direction) => { /* Handle cursor movement. */ });
+controller.on('sendFunctionKey', (functionKey) => { /* Handle function keys. */ });
+controller.on('handleExtendAction', (action) => { /* Handle extended actions. */ });
+
+// 3. Bind the input method (called when the text box gains focus).
+let textConfig = {
+  inputAttribute: { textInputType: TextInputType.TEXT, enterKeyType: EnterKeyType.NONE },
+  cursorInfo: { left: 100, top: 200, width: 2, height: 20 },
+  selection: { start: 0, end: 0 },
+  windowId: 1
+};
+controller.attach(true, textConfig);
+
+// 4. Show the keyboard.
+controller.showTextInput();
+
+// 5. Update the cursor and text box attributes (called when the text box state changes).
+controller.updateCursor(cursorInfo);
+controller.updateAttribute(inputAttribute);
+controller.changeSelection(text, start, end);
+
+// 6. When the keyboard needs to be hidden.
+controller.hideTextInput();
+
+// 7. Unbind the input method when the text box loses focus.
+controller.detach();
+
+// 8. Switch the input method for a system application.
+setting.getInputMethods(true); // Get the enabled input method list.
+inputMethod.switchInputMethod(targetProperty); // Switch to the target input method.
+```
+> **NOTE:**
+>
+> Subscription to input method operation events (such as **insertText** and **deleteLeft**) should be completed before `attach` is called to avoid missing events. `attach` is the prerequisite for an edit box application to use input method capabilities. The input method must be attached before subsequent operations can be performed.
 
 ## Modules to Import
 
@@ -25,29 +116,29 @@ Provides the constants.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Value| Description|
+| Name | Type | Value | Description |
 | -------- | -------- | -------- | -------- |
-| MAX_TYPE_NUM<sup>8+</sup> | number | 128 | Maximum number of supported input methods.|
+| MAX_TYPE_NUM<sup>8+</sup> | number | 128 | Maximum number of supported input methods. |
 
 ## InputMethodProperty<sup>8+</sup>
 
-Describes the input method application attributes.
+Describes the input method application properties.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| name<sup>9+</sup>  | string | Yes| No| Mandatory. Name of the input method package.|
-| id<sup>9+</sup>    | string | Yes| No| Mandatory. Unique identifier of an input method extension in an app. **id** and **name** form a globally unique identifier of the input method extension.|
-| label<sup>9+</sup>    | string | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the name of the input method extension displayed externally. Use the label configured for the InputMethodExtensionAbility. If no label is configured, the label of the application entry ability is automatically used. If no label is configured for the application entry ability, the label configured in **AppScope** is automatically used.|
-| labelId<sup>10+</sup>    | number | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the resource ID of the **label** field.|
-| icon<sup>9+</sup>    | string | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the input method icon data, which can be obtained through icon ID.|
-| iconId<sup>9+</sup>    | number | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the resource ID of the **icon** field.|
-| enabledState<sup>20+</sup>    | [EnabledState](js-apis-inputmethod.md#enabledstate15) | Yes| Yes| Optional.<br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension.<br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates whether the input method is enabled.|
-| extra<sup>9+</sup>    | object | No| Yes| Extra information about the input method. This parameter is reserved and currently has no specific meaning.<br>- API version 10 and later: optional<br>- API version 9: mandatory|
-| packageName<sup>(deprecated)</sup> | string | Yes| No| Name of the input method package. Mandatory.<br>**Note**: This API is supported since API version 8 and deprecated since API version 9. You are advised to use **name** instead.|
-| methodId<sup>(deprecated)</sup> | string | Yes| No| Unique ID of the input method. Mandatory.<br>**Note**: This API is supported since API version 8 and deprecated since API version 9. You are advised to use **id** instead.|
+| name<sup>9+</sup>  | string | Yes | No | Mandatory. Input method package name.|
+| id<sup>9+</sup>    | string | Yes | No | Mandatory. Unique identifier of the input method extension within the application. Together with name, it forms the globally unique identifier of the input method extension.|
+| label<sup>9+</sup>    | string | Yes | Yes | Optional.<br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**.<br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the display name of the input method extension. The label configured in **InputMethodExtensionAbility** is used first; if it is not configured, the label of the application entry ability is automatically used; if the application entry ability does not configure a label, the label configured in the application **AppScope** is automatically used.|
+| labelId<sup>10+</sup>    | number | Yes | Yes | Optional.<br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**.<br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the resource ID of the **label** field.|
+| icon<sup>9+</sup>    | string | Yes | Yes | Optional.<br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**.<br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the input method icon data, which can be obtained by querying **iconId**.|
+| iconId<sup>9+</sup>    | number | Yes | Yes | Optional.<br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**.<br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the resource ID of the **icon** field.|
+| enabledState<sup>20+</sup>    | [EnabledState](#enabledstate15) | Yes | Yes | Optional.<br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**.<br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](#inputmethodgetcurrentinputmethod9)), this field indicates the enabled state of the input method.|
+| extra<sup>9+</sup>    | object | No | Yes | Input method extension information.<br/>- Since API version 10: optional<br/>- API version 9: mandatory|
+| packageName<sup>(deprecated)</sup> | string | Yes | No | Input method package name. Mandatory.<br/>Note: This API is supported since API version 8 and deprecated since API version 9. Use **name** instead. |
+| methodId<sup>(deprecated)</sup> | string | Yes | No | Unique identifier of the input method. Mandatory.<br/>Note: This API is supported since API version 8 and deprecated since API version 9. Use **id** instead. |
 
 ## CapitalizeMode<sup>20+</sup>
 
@@ -55,12 +146,12 @@ Enumerates the modes of capitalizing the first letter of a text.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value| Description|
+| Name | Value | Description |
 | -------- | -- | -------- |
-| NONE | 0 | The first letter is not capitalized.|
-| SENTENCES | 1 | The first letter of each sentence is capitalized.|
-| WORDS | 2 | The first letter of each word is capitalized.|
-| CHARACTERS | 3 | All letters are capitalized.|
+| NONE | 0 | No initial capitalization is performed.<br/>Usage scenarios: Applicable to input boxes that do not require automatic capitalization, such as password input and verification code input.|
+| SENTENCES | 1 | The first letter of each sentence is capitalized.<br/>Usage scenarios: Applicable to ordinary text input boxes, such as chat and memo, where the first letter is automatically capitalized following punctuation marks such as a period.|
+| WORDS | 2 | The first letter of each word is capitalized.<br/>Usage scenarios: Applicable to scenarios where the first letter of each word needs to be capitalized, such as titles and personal names.|
+| CHARACTERS | 3 | Every letter is capitalized.<br/>Usage scenarios: Applicable to all uppercase input scenarios, such as abbreviation input (for example, the domain name part in a URL).|
 
 ## inputMethod.getController<sup>9+</sup>
 
@@ -68,19 +159,25 @@ getController(): InputMethodController
 
 Obtains an [InputMethodController](#inputmethodcontroller) instance.
 
+Meaning/Function: Obtains the input method client controller instance of the current application, which is used for subsequent interaction with the input method (such as attaching to the input method, showing/hiding the keyboard, and synchronizing the edit box status).
+
+Usage scenarios: When a foreground application (such as a memo or chat application) needs to control the showing/hiding of the input method, attach to or detach from the input method, or synchronize edit box information, it must first obtain the **InputMethodController** instance through this API.
+
+Use effect: Returns an **InputMethodController** instance. Subsequently, the instance can be used to call a series of APIs such as **attach**, **showTextInput**, **hideTextInput**, and **detach** to interact with the input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Return value**
 
-| Type                                           | Description                  |
+| Type                                            | Description                   |
 | ----------------------------------------------- | ---------------------- |
-| [InputMethodController](#inputmethodcontroller) | **InputMethodController** instance.|
+| [InputMethodController](#inputmethodcontroller) | **InputMethodController** instance. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | -------- | ------------------------------ |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -100,15 +197,15 @@ Obtains the default input method.
 
 **Return value**
 
-| Type                                        | Description                    |
+| Type                                         | Description                     |
 | -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](#inputmethodproperty8) | Default input method.|
+| [InputMethodProperty](#inputmethodproperty8) | Default input method property object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -122,21 +219,21 @@ let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMet
 
 getSystemInputMethodConfigAbility(): ElementName
 
-Obtains the information about the input method configuration page ability.
+Obtains the information about the system input method configuration ability.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Return value**
 
-| Type                                        | Description                    |
+| Type                                         | Description                     |
 | -------------------------------------------- | ------------------------ |
-| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Element name of the input method configuration page ability.|
+| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Element name of the input method configuration page ability. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -154,19 +251,25 @@ getSetting(): InputMethodSetting
 
 Obtains an [InputMethodSetting](#inputmethodsetting8) instance.
 
+Meaning/Function: Obtains the input method setting instance, which is used for configuration management operations such as querying the input method list, subscribing to input method change events, and querying panel visibility.
+
+Usage scenarios: When an application needs to query the installed/activated input method list, subscribe to input method switching events, or display the input method selection dialog, it must first obtain the **InputMethodSetting** instance through this API.
+
+Use effect: Returns an **InputMethodSetting** instance. Subsequently, the instance can be used to call APIs such as **getInputMethods**, **listInputMethodSubtype**, and **on('imeChange')**.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Return value**
 
-| Type                                     | Description                      |
+| Type                                      | Description                       |
 | ----------------------------------------- | -------------------------- |
-| [InputMethodSetting](#inputmethodsetting8) | **InputMethodSetting** instance.|
+| [InputMethodSetting](#inputmethodsetting8) | **InputMethodSetting** instance. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800007 |  input method setter error. Possible cause: create InputMethodSetting object failed. |
 
@@ -180,28 +283,35 @@ let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting(
 
 switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolean&gt;): void
 
-Switches to another input method. This API uses an asynchronous callback to return the result.
-> **NOTE**
->
->  - In API versions 9 and 10, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission.
->  - Since API version 11, this API can only be called by the current input method application.
+Switches the input method. This API uses an asynchronous callback to return the result.
+
+Meaning/Function: Switches the current input method to the specified target input method.
+
+Usage scenarios: Used when the current input method application needs to switch to another input method (for example, when the user selects a new input method in the input method settings).
+
+Use effect: On success, the system switches the current input method to the target input method, and the target input method becomes the new current input method; on failure, the current input method remains unchanged.
+
+**Required permissions:**
+- API versions 9–10: **ohos.permission.CONNECT_IME_ABILITY**
+- API version 11+: N/A
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| target | [InputMethodProperty](#inputmethodproperty8) | Yes| Target input method.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+| target | [InputMethodProperty](#inputmethodproperty8) | Yes | Target input method.<br/>Usage scenario: specifies the target input method to switch to, uniquely determined by **name** and **id**.<br/>Note: only the **name** and **id** fields need to be filled in to uniquely specify an input method; optional fields such as **label** and **icon** do not need to be filled in. |
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback function. When the input method switch succeeds, **err** is **undefined** and data is **true**; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 201 | permissions check fails. <br>Applicable versions: 9-10        |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -226,38 +336,45 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` is removed.
+> In API version 11, the error code `201 permissions check fails.` has been removed.
 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
-Switches to another input method. This API uses a promise to return the result.
-> **NOTE**
->
->  - In API versions 9 and 10, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission.
->  - Since API version 11, this API can only be called by the current input method application.
+Switches the input method. This API uses a promise to return the result.
+
+Meaning/Function: Switches the current input method to the specified target input method.
+
+Usage scenarios: Used when the current input method application needs to switch to another input method.
+
+Use effect: On success, the system switches the current input method to the target input method; on failure, the current input method remains unchanged.
+
+**Required permissions:**
+- API versions 9–10: **ohos.permission.CONNECT_IME_ABILITY**
+- API version 11+: N/A
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description|
+  | Name | Type | Mandatory | Description |
   | -------- | -------- | -------- | -------- |
-  |target |  [InputMethodProperty](#inputmethodproperty8)| Yes| Target input method.|
+  | target | [InputMethodProperty](#inputmethodproperty8) | Yes | Target input method.<br/>Usage scenario: specifies the target input method to switch to, uniquely determined by **name** and **id**.<br/>Note: only the **name** and **id** fields need to be filled in to uniquely specify an input method. |
 
 **Return value**
 
-  | Type                                     | Description                        |
+  | Type                                      | Description                         |
   | ----------------------------------------- | ---------------------------- |
-  | Promise\<boolean> | Promise used to return the result. The value **true** means that the switching is successful, and **false** means the opposite.|
+  | Promise&lt;boolean&gt; | Promise object. When resolved, returns **true** if the input method is switched successfully, and returns **false** if the input method fails to be switched; when rejected, returns an error object, indicating that an error occurs during input method switching. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 201 | permissions check fails. <br>Applicable versions: 9-10       |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -280,7 +397,7 @@ inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` is removed.
+> In API version 11, the error code `201 permissions check fails.` has been removed.
 
 ## inputMethod.getCurrentInputMethod<sup>9+</sup>
 
@@ -288,13 +405,19 @@ getCurrentInputMethod(): InputMethodProperty
 
 Obtains the current input method. This API returns the result synchronously.
 
+Meaning/Function: Obtains the property information of the input method currently in use.
+
+Usage scenarios: Used when an application needs to know which input method is currently active (for example, to determine the input method name or obtain the input method ID for subsequent switching operations).
+
+Use effect: Returns the **InputMethodProperty** object of the current input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Return value**
 
-| Type                                        | Description                    |
+| Type                                         | Description                     |
 | -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](#inputmethodproperty8) | **InputmethodProperty** instance of the current input method.|
+| [InputMethodProperty](#inputmethodproperty8) | Input method property object. |
 
 **Example**
 
@@ -308,28 +431,27 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 Switches to another subtype of this input method. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
->
->  - In API version 9, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission.
->  - In API version 10, this API can only be called by system applications and the current input method application, and the **ohos.permission.CONNECT_IME_ABILITY** permission is required.
->  - Since API version 11, this API can only be called by the current input method application.
+**Required permissions:**
+- API versions 9–10: **ohos.permission.CONNECT_IME_ABILITY**
+- API version 11+: N/A
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| target |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes| Target input method subtype.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+| target |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes | Target input method subtype. |
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback function. When the input method subtype is switched successfully, **err** is **undefined** and data is **true**; otherwise, it is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 201 | permissions check fails. <br>Supported since: 9-10       |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -339,7 +461,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
-// For details, see the parameter description of **InputMethodSubtype**.
+// Refer to the InputMethodSubtype parameter description.
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -365,7 +487,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` is removed.
+> In API version 11, the error code `201 permissions check fails.` has been removed.
 
 ## inputMethod.switchCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -373,33 +495,32 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 Switches to another subtype of this input method. This API uses a promise to return the result.
 
-> **NOTE**
->
->  - In API version 9, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission.
->  - In API version 10, this API can only be called by system applications and the current input method application, and the **ohos.permission.CONNECT_IME_ABILITY** permission is required.
->  - Since API version 11, this API can only be called by the current input method application.
+**Required permissions:**
+- API versions 9–10: **ohos.permission.CONNECT_IME_ABILITY**
+- API version 11+: N/A
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-|target |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes| Target input method subtype.|
+|target |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes | Target input method subtype. |
 
 **Return value**
 
-| Type                                     | Description                        |
+| Type                                      | Description                         |
 | ----------------------------------------- | ---------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** means that the switching is successful, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. When resolved, **true** indicates that the current input method subtype is switched successfully, and **false** indicates that the current input method subtype fails to be switched; when rejected, an error object is returned, indicating that an error occurs during input method subtype switching. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 201 | permissions check fails. <br>Applicable versions: 9-10      |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -409,7 +530,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
-// For details, see the parameter description of **InputMethodSubtype**.
+// Refer to the InputMethodSubtype parameter description.
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -433,7 +554,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` is removed.
+> In API version 11, the error code `201 permissions check fails.` has been removed.
 
 ## inputMethod.getCurrentInputMethodSubtype<sup>9+</sup>
 
@@ -445,9 +566,9 @@ Obtains the current input method subtype.
 
 **Return value**
 
-| Type                                        | Description                    |
+| Type                                         | Description                     |
 | -------------------------------------------- | ------------------------ |
-| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | Current input method subtype.|
+| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | Current input method subtype. |
 
 **Example**
 
@@ -463,28 +584,28 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 Switches to a specified subtype of a specified input method. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
->
->  - In API versions 9 and 10, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission.
->  - Since API version 11, this API can only be called by the current input method application.
+**Required permissions:**
+- API versions 9–10: **ohos.permission.CONNECT_IME_ABILITY**
+- API version 11+: N/A
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-|inputMethodProperty |  [InputMethodProperty](#inputmethodproperty8)| Yes| Target input method.|
-|inputMethodSubtype |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes| Target input method subtype.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+|inputMethodProperty |  [InputMethodProperty](#inputmethodproperty8)| Yes | Target input method. |
+|inputMethodSubtype |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes | Target input method subtype. |
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback function. When the input method subtype is switched successfully, **err** is **undefined** and data is **true**; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| Error code ID | Error message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 201 | permissions check fails. <br>Applicable versions: 9-10         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -511,7 +632,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` is removed.
+> In API version 11, the error code `201 permissions check fails.` has been removed.
 
 ## inputMethod.switchCurrentInputMethodAndSubtype<sup>9+</sup>
 
@@ -519,33 +640,33 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 Switches to a specified subtype of a specified input method. This API uses a promise to return the result.
 
-> **NOTE**
->
->  - In API versions 9 and 10, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission.
->  - Since API version 11, this API can only be called by the current input method application.
+**Required permissions:**
+- API versions 9–10: **ohos.permission.CONNECT_IME_ABILITY**
+- API version 11+: N/A
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-|inputMethodProperty |  [InputMethodProperty](#inputmethodproperty8)| Yes| Target input method.|
-|inputMethodSubtype |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes| Target input method subtype.|
+|inputMethodProperty |  [InputMethodProperty](#inputmethodproperty8)| Yes | Target input method. |
+|inputMethodSubtype |  [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)| Yes | Target input method subtype. |
 
 **Return value**
 
-| Type                                     | Description                        |
+| Type                                      | Description                         |
 | ----------------------------------------- | ---------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** means that the switching is successful, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. When resolved, **true** is returned if switching to the specified subtype of the specified input method succeeds, and **false** is returned if switching to the specified subtype of the specified input method fails; when rejected, an error object is returned, indicating that an error occurred while switching to the specified subtype of the specified input method. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 201 | permissions check fails. <br>Applicable versions: 9-10        |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -570,7 +691,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType).then((resu
 
 > **NOTE**
 >
-> In API version 11, the error code `201 permissions check fails.` is removed.
+> In API version 11, the error code `201 permissions check fails.` has been removed.
 
 ## inputMethod.getInputMethodController<sup>(deprecated)</sup>
 
@@ -586,9 +707,9 @@ Obtains an [InputMethodController](#inputmethodcontroller) instance.
 
 **Return value**
 
-| Type                                           | Description                    |
+| Type                                            | Description                     |
 | ----------------------------------------------- | ------------------------ |
-| [InputMethodController](#inputmethodcontroller) | Current **InputMethodController** instance.|
+| [InputMethodController](#inputmethodcontroller) | Current **InputMethodController** instance. |
 
 **Example**
 
@@ -610,9 +731,9 @@ Obtains an [InputMethodSetting](#inputmethodsetting8) instance.
 
 **Return value**
 
-| Type                                     | Description                      |
+| Type                                      | Description                       |
 | ----------------------------------------- | -------------------------- |
-| [InputMethodSetting](#inputmethodsetting8) | **InputMethodSetting** instance.|
+| [InputMethodSetting](#inputmethodsetting8) | **InputMethodSetting** instance. |
 
 **Example**
 
@@ -630,9 +751,9 @@ Enables or disables the simple keyboard.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| enable | boolean | Yes| Whether to enable the simple keyboard. The value **true** means that the simple keyboard is enabled; the value **false** means the opposite.<br> The native edit box takes effect when it is focused next time, while the self-drawing component takes effect when the input method is attached by calling [attach](#attach10) next time.|
+| enable | boolean | Yes | Flag indicating whether the simple keyboard is enabled. The value **true** indicates that the simple keyboard is enabled, and **false** indicates that it is disabled.<br/> For a native text box component, this takes effect the next time the component is clicked to gain focus. For a custom-drawn control, this takes effect the next time [attach](#attach10) is called to bind the input method. |
 
 **Example**
 
@@ -651,9 +772,9 @@ Subscribes to attachment failure events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | Yes| Callback used to return the reason for attachment failure. This callback is only invoked when the attachment failure is triggered by the registrant's process.|
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | Yes | Callback used to return the reason for the attachment failure. It is invoked only when the attachment failure is triggered by the process that registers the callback.|
 
 **Example**
 
@@ -662,9 +783,9 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
-    console.info(`Attachment failed with reason: ${reason}.`);
+    console.error(`Attachment failed with reason: ${reason}.`);
   if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+    console.error(`Failure reason is CALLER_NOT_FOCUSED.`);
   }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
@@ -672,7 +793,7 @@ inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 
 ## inputMethod.offAttachmentDidFail<sup>22+</sup>
 
-offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
+offAttachmentDidFail(callback?: Callback&lt;AttachFailureReason&gt;): void
 
 Unsubscribes from attachment failure events. This API uses an asynchronous callback to return the result.
 
@@ -680,9 +801,9 @@ Unsubscribes from attachment failure events. This API uses an asynchronous callb
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | No| Callback used for unsubscription, which must be the same as that passed by the subscription API. If no parameter is specified, all callback functions for this event will be unsubscribed from.|
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | No | Callback used for unsubscription, which must be the same as that passed by the subscription API. If no parameter is specified, all callback functions for this event will be unsubscribed.|
 
 **Example**
 
@@ -691,9 +812,9 @@ import { Callback } from '@kit.BasicServicesKit';
 
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
-    console.info(`Attachment failed with reason: ${reason}.`);
+    console.error(`Attachment failed with reason: ${reason}.`);
   if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+    console.error(`Failure reason is CALLER_NOT_FOCUSED.`);
   }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
@@ -706,23 +827,23 @@ Enumerates the text input types.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| NONE  | -1 |None.|
-| TEXT  | 0 |Text.|
-| MULTILINE  | 1 |Multi-line.|
-| NUMBER  | 2 |Number.|
-| PHONE  | 3 |Phone number.|
-| DATETIME  | 4 |Date.|
-| EMAIL_ADDRESS  | 5 |Email address.|
-| URL  | 6 |URL.|
-| VISIBLE_PASSWORD  | 7 |Password.|
-| NUMBER_PASSWORD<sup>11+</sup> | 8 |Numeric password.|
-| SCREEN_LOCK_PASSWORD<sup>20+</sup> | 9 |Lock screen password.|
-| USER_NAME<sup>20+</sup> | 10 |Username.|
-| NEW_PASSWORD<sup>20+</sup> | 11 |New password.|
-| NUMBER_DECIMAL<sup>20+</sup> | 12 |Number with a decimal point.|
-| ONE_TIME_CODE<sup>20+</sup> | 13 |Verification code.|
+| NONE  | -1 |NONE.<br/>Usage scenarios: used when the edit box does not want to specify a particular input type, and the input method uses the default keyboard layout. |
+| TEXT  | 0 |Text type.<br/>Usage scenarios: applicable to ordinary text input boxes, such as chat and memo, and the input method displays a full-featured keyboard. |
+| MULTILINE  | 1 |Multiline type.<br/>Usage scenarios: applicable to scenarios that require multiline text input, such as long text editing and comment boxes. |
+| NUMBER  | 2 |Number type.<br/>Usage scenarios: applicable to scenarios that require only numeric input, such as quantity input and age input, and the input method displays a numeric keyboard. |
+| PHONE  | 3 |Phone number type.<br/>Usage scenarios: applicable to phone number input boxes, and the input method displays a phone number keyboard (including digits and common phone symbols). |
+| DATETIME  | 4 |Date type.<br/>Usage scenarios: applicable to date and time input boxes, and the input method displays a date-related keyboard layout. |
+| EMAIL_ADDRESS  | 5 |Email address type.<br/>Usage scenarios: applicable to email input boxes, and the input method keyboard highlights common email symbols such as "@" and ".". |
+| URL  | 6 |Link type.<br/>Usage scenarios: applicable to URL input boxes, and the input method keyboard highlights common URL symbols such as "/" and ".". |
+| VISIBLE_PASSWORD  | 7 |Password type.<br/>Usage scenarios: applicable to password input boxes, and the input method displays a visible password keyboard without automatic suggestions. |
+| NUMBER_PASSWORD<sup>11+</sup> | 8 |Numeric password type.<br/>Usage scenarios: applicable to scenarios that require only numeric password input, such as PIN code input. |
+| SCREEN_LOCK_PASSWORD<sup>20+</sup> | 9 |Screen lock password type.<br/>Usage scenarios: applicable to the password input box on the lock screen. |
+| USER_NAME<sup>20+</sup> | 10 |Username type.<br/>Usage scenarios: applicable to username input boxes, and the input method can provide optimized suggestions based on username characteristics. |
+| NEW_PASSWORD<sup>20+</sup> | 11 |New password type.<br/>Usage scenarios: applicable to input boxes for setting a new password, and the input method can provide password strength hints. |
+| NUMBER_DECIMAL<sup>20+</sup> | 12 |Number type with a decimal point.<br/>Usage scenarios: applicable to scenarios that require input of numbers with a decimal point, such as amount input. |
+| ONE_TIME_CODE<sup>20+</sup> | 13 |Verification code type.<br/>Usage scenarios: applicable to verification code input boxes, and the input method can optimize the verification code input experience. |
 
 ## EnterKeyType<sup>10+</sup>
 
@@ -730,17 +851,17 @@ Enumerates the function types represented by the Enter key of the input method.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| UNSPECIFIED  | 0 |Not specified.|
-| NONE  | 1 |None.|
-| GO  | 2 |Go.|
-| SEARCH  | 3 |Search.|
-| SEND  | 4 |Send.|
-| NEXT  | 5 |Next.|
-| DONE  | 6 |Done.|
-| PREVIOUS  | 7 |Previous.|
-| NEWLINE<sup>12+</sup>  | 8 | Line break.|
+| UNSPECIFIED  | 0 |Unspecified.<br/>Usage scenarios: used when the edit box does not specify a specific function for the Enter key. |
+| NONE  | 1 |NONE.<br/>Usage scenarios: the Enter key has no specific behavior and is used only as a line break or a normal key. |
+| GO  | 2 |Go.<br/>Usage scenarios: applicable to URL input boxes, where the Enter key triggers the "Go" action, such as opening a link. |
+| SEARCH  | 3 |Search.<br/>Usage scenarios: applicable to search boxes, where the Enter key triggers the search action. |
+| SEND  | 4 |Send.<br/>Usage scenarios: applicable to message sending boxes, where the Enter key triggers the send action. |
+| NEXT  | 5 |Next.<br/>Usage scenarios: applicable to multi-step forms, where the Enter key jumps to the next input box. |
+| DONE  | 6 |Done.<br/>Usage scenarios: applicable to the last input box of a single-step form, where the Enter key indicates that input is complete. |
+| PREVIOUS  | 7 |Previous.<br/>Usage scenarios: applicable to multi-step forms, where the Enter key jumps to the previous input box. |
+| NEWLINE<sup>12+</sup>  | 8 | Line break.<br/>Usage scenarios: applicable to multi-line text edit boxes, where the Enter key inserts a line break.|
 
 ## KeyboardStatus<sup>10+</sup>
 
@@ -748,11 +869,11 @@ Enumerates the soft keyboard states of the input method.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| NONE  | 0 |None.|
-| HIDE  | 1 |Hidden.|
-| SHOW  | 2 |Shown.|
+| NONE  | 0 |NONE.<br/>Usage scenarios: used when the keyboard status is not determined or cannot be determined. |
+| HIDE  | 1 |Hidden state.<br/>Usage scenarios: indicates that the soft keyboard is currently hidden. |
+| SHOW  | 2 |Shown state.<br/>Usage scenarios: indicates that the soft keyboard is currently shown. |
 
 ## Direction<sup>10+</sup>
 
@@ -760,25 +881,25 @@ Enumerates the directions of cursor movement of the input method.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| CURSOR_UP  | 1 |Upward.|
-| CURSOR_DOWN  | 2 |Downward.|
-| CURSOR_LEFT  | 3 |Leftward.|
-| CURSOR_RIGHT  | 4 |Rightward.|
+| CURSOR_UP  | 1 |Upward.<br/>Usage scenarios: Used when the input method requests to move the cursor upward, such as moving the cursor up in multi-line text. |
+| CURSOR_DOWN  | 2 |Downward.<br/>Usage scenarios: Used when the input method requests to move the cursor downward. |
+| CURSOR_LEFT  | 3 |Leftward.<br/>Usage scenarios: Used when the input method requests to move the cursor leftward, such as moving the cursor before deleting the character to the left of the cursor. |
+| CURSOR_RIGHT  | 4 |Rightward.<br/>Usage scenarios: Used when the input method requests to move the cursor rightward. |
 
 ## ExtendAction<sup>10+</sup>
 
-Describes the type of the extended edit action on the text box.
+Enumerates the types of extended edit actions on the edit box.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| SELECT_ALL  | 0 |Select all.|
-| CUT  | 3 |Cut.|
-| COPY  | 4 |Copy.|
-| PASTE  | 5 |Paste.|
+| SELECT_ALL  | 0 |Select all.<br/>Usage scenarios: used when the input method requests to select all text in the edit box. |
+| CUT  | 3 |Cut.<br/>Usage scenarios: used when the input method requests to cut the selected text, copying the selected text to the clipboard and deleting the original text. |
+| COPY  | 4 |Copy.<br/>Usage scenarios: used when the input method requests to copy the selected text, copying the selected text to the clipboard. |
+| PASTE  | 5 |Paste.<br/>Usage scenarios: used when the input method requests to paste the clipboard content. |
 
 ## FunctionKey<sup>10+</sup>
 
@@ -786,9 +907,9 @@ Describes the type of the input method function key.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| enterKeyType  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key of the input method.|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | No | No | Function type represented by the Enter key of the input method.|
 
 ## InputAttribute<sup>10+</sup>
 
@@ -797,12 +918,13 @@ Describes the attributes of the edit box, including the text input type and Ente
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-| Name| Type| Read-only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| textInputType  | [TextInputType](#textinputtype10) | No| No| Enumerates the text input types.|
-| enterKeyType  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key.|
-| placeholder<sup>20+</sup> | string | No| Yes| Placeholder information set for the edit box.<br>- When placeholder information is set for the edit box, the length cannot exceed 255 characters (a placeholder longer than 255 characters will be automatically truncated to 255 characters). It is used to prompt or guide users to enter temporary text or symbols. (For example, the placeholder prompts whether the input item is mandatory.)<br>- If no placeholder is set for the edit box, the value is an empty string by default.<br>- This field is provided for the input method application when [attach](#attach10) is called.|
-| abilityName<sup>20+</sup> | string | No| Yes| Ability name set for the edit box.<br>- If the ability name is set for the edit box, the length cannot exceed 127 characters. (A name longer than 127 characters will be automatically truncated to 127 characters.)<br>- If the ability name is not set for the edit box, the value is an empty string by default.<br>- This field is provided for the input method application when [attach](#attach10) is called.|
+| Name | Type | Read-only | Optional | Description                                                                                                                                                                                                                        |
+| -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| textInputType  | [TextInputType](#textinputtype10) | No | No | Text input type.                                                                                                                                                                                                                   |
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | No | No | Enter key function type.                                                                                                                                                                                                               |
+| placeholder<sup>20+</sup> | string | No | Yes | Placeholder information set for the text box. <br/>- When the text box sets placeholder information, the length does not exceed 255 characters (if it exceeds, it is automatically truncated to 255 characters), used to prompt or guide the user to enter temporary text or symbols. (For example, prompting the input result feedback of an input item being "mandatory" or "optional".)<br/>- When the text box does not set placeholder information, it defaults to an empty string.<br/>- This field is provided to the input method application when [attach](#attach10) is called.                                   |
+| abilityName<sup>20+</sup> | string | No | Yes | Ability name set for the text box.<br/>- When the text box sets an ability name, the length does not exceed 127 characters (if it exceeds, it is automatically truncated to 127 characters).<br/>- When the text box does not set an ability name, it defaults to an empty string.<br/>- This field is provided to the input method application when [attach](#attach10) is called.                                                                        |
+| consumeKeyEvents | boolean | No | Yes | Whether the text box has full capability to handle keys such as letters, characters, and function keys. The default value is **false**.<br/>- The value **true** indicates that this capability is available.<br/>- The value **false** indicates that this capability is not available.<br/>- This field is provided to the input method application when [attach](#attach10)/[updateAttribute](#updateattribute10) is called.  <br/>**Since:** 26.0.0<br/>**Model restriction:** This parameter can be used only in the stage model. |
 
 ## TextConfig<sup>10+</sup>
 
@@ -811,28 +933,28 @@ Describes the configuration of the edit box.
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| inputAttribute  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
-| cursorInfo  | [CursorInfo](#cursorinfo10) | No| Yes| Cursor information.|
-| selection  | [Range](#range10) | No| Yes| Text selection range.|
-| windowId  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
-| newEditBox<sup>20+</sup> | boolean | No| Yes| Whether the edit box is new. The value **true** means the edit box is new; the value **false** means the opposite.|
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | No| Yes| Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
+| inputAttribute  | [InputAttribute](#inputattribute10) | No | No | Text box attribute. |
+| cursorInfo  | [CursorInfo](#cursorinfo10) | No | Yes | Cursor information. |
+| selection  | [Range](#range10) | No | Yes | Selected text range. |
+| windowId  | number | No | Yes | ID of the window where the text box is located. This parameter must be an integer.<br>It is recommended that you use [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID attribute. |
+| newEditBox<sup>20+</sup> | boolean | No | Yes | Whether it is a new text box. The value **true** indicates a new text box, and **false** indicates a non-new text box. The default value is **false**. |
+| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | No | Yes | Capitalization mode set for the text box. If no value is set or an invalid value is set, no initial capitalization is performed by default. |
 
 ## CursorInfo<sup>10+</sup>
 
-Represents the cursor information.
+Cursor information.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Read-only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| left  | number | No| No| Horizontal coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
-| top  | number | No| No| Vertical coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
-| width  | number | No| No| Width of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
-| height  | number | No| No| Height of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
-| displayId  | number | No| Yes| ID of the monitor where the cursor is located.<br>**Since**: 26.0.0|
+| Name | Type | Read-only | Optional | Description                                                               |
+| -------- | -------- | -------- | -------- |------------------------------------------------------------------|
+| left  | number | No | No | Horizontal coordinate of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width.                          |
+| top  | number | No | No | Vertical coordinate of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height.                          |
+| width  | number | No | No | Width of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width.                           |
+| height  | number | No | No | Height of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height.                           |
+| displayId  | number | No | Yes | ID of the display where the cursor is located. This parameter must be an integer, with a minimum value of 0 and a default value of 0.<br/>**Initial version:** 26.0.0<br/>**Model restriction:** This parameter can be used only in the Stage model. |
 
 ## Range<sup>10+</sup>
 
@@ -840,10 +962,10 @@ Describes the range of the selected text.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| start  | number | No| No| Index of the first selected character in the text box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length.|
-| end  | number | No| No| Index of the last selected character in the text box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length. The **end** value must be greater than the **start** value.|
+| start  | number | No | No | Index of the first selected character in the edit box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length.|
+| end  | number | No | No | Index of the last selected character in the edit box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length. The **end** value must be greater than the **start** value.|
 
 ## Movement<sup>10+</sup>
 
@@ -851,9 +973,9 @@ Describes the direction in which the cursor moves when the text is selected.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| direction  | [Direction](#direction10) | No| No| Direction in which the cursor moves when the text is selected.|
+| direction  | [Direction](#direction10) | No | No | Direction in which the cursor moves when the text is selected.|
 
 ## InputWindowInfo<sup>10+</sup>
 
@@ -861,14 +983,14 @@ Describes the window information of the input method keyboard.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| name  | string | No| No| Name of the input method keyboard window.|
-| left  | number | No| No| Horizontal coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
-| top  | number | No| No| Vertical coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
-| width  | number | No| No| Width of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
-| height  | number | No| No| Height of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
-| displayId<sup>23+</sup> | number | No| Yes| ID of the display where the soft keyboard window is located.<br>**Model restriction**: This parameter can be used only in the stage model.|
+| name  | string | No | No | Name of the input method window. |
+| left  | number | No | No | Horizontal coordinate of the upper left vertex of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width. |
+| top  | number | No | No | Vertical coordinate of the upper left vertex of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height. |
+| width  | number | No | No | Width of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width. |
+| height  | number | No | No | Height of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height. |
+| displayId<sup>23+</sup> | number | No | Yes | ID of the screen where the input method soft keyboard window is located.<br>**Model restriction:** This parameter can be used only in the stage model. |
 
 ## EnabledState<sup>15+</sup>
 
@@ -876,11 +998,11 @@ Indicates whether the input method is enabled.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| DISABLED   | 0 |Disabled.|
-| BASIC_MODE  | 1 |Basic mode.|
-| FULL_EXPERIENCE_MODE  | 2 |Full experience mode.|
+| DISABLED   | 0 |Not enabled.<br/>Usage scenarios: The input method is disabled and cannot be used as the current input method. |
+| BASIC_MODE  | 1 |Basic mode.<br/>Usage scenarios: The input method is enabled but in basic mode, providing only basic input capabilities and not supporting advanced features (such as custom communication). |
+| FULL_EXPERIENCE_MODE  | 2 |Full experience mode.<br/>Usage scenarios: The input method is enabled and in full experience mode, supporting all features (including custom communication and text preview). |
 
 ## RequestKeyboardReason<sup>15+</sup>
 
@@ -888,12 +1010,12 @@ Enumerates the reasons for requesting the keyboard.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| NONE   | 0 |The keyboard request is triggered for no reason.|
-| MOUSE  | 1 |The keyboard request is triggered by a mouse operation.|
-| TOUCH  | 2 |The keyboard request is triggered by a touch operation.|
-| OTHER  | 20 |The keyboard request is triggered by other reasons.|
+| NONE   | 0 |Indicates that no specific reason triggers the keyboard request.<br/>Usage scenarios: default value, used when no specific trigger reason is specified. |
+| MOUSE  | 1 |Indicates that the keyboard request is triggered by a mouse operation.<br/>Usage scenarios: used when the user clicks the edit box with a mouse to trigger the keyboard to pop up. |
+| TOUCH  | 2 |Indicates that the keyboard request is triggered by a touch operation.<br/>Usage scenarios: used when the user taps the edit box to trigger the keyboard to pop up. |
+| OTHER  | 20 |Indicates that the keyboard request is triggered by other reasons.<br/>Usage scenarios: used when the trigger reason for the keyboard to pop up is neither mouse nor touch. |
 
 ## MessageHandler<sup>15+</sup>
 
@@ -907,6 +1029,8 @@ Represents a custom communication object.
 >
 > If this object is unregistered, its [onTerminated](#onterminated15) callback will be triggered.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 ### onMessage<sup>15+</sup>
 
 onMessage(msgId: string, msgParam?: ArrayBuffer): void
@@ -915,7 +1039,7 @@ Receives custom data sent by the input method application.
 
 > **NOTE**
 >
-> This callback is triggered when the registered MeesageHandler receives custom communication data sent by the input method application.
+> This callback is triggered when the registered **MessageHandler** receives custom communication data sent by the input method application.
 >
 > The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
@@ -923,10 +1047,10 @@ Receives custom data sent by the input method application.
 
 **Parameters**
 
-| Name  | Type       | Mandatory| Description                            |
-| -------- | ----------- | ---- | -------------------------------- |
-| msgId    | string      | Yes  | Identifier of the received custom communication data.|
-| msgParam | ArrayBuffer | No  | Message body of the received custom communication data.|
+| Name      | Type        | Mandatory | Description                                        |
+| --------- | ----------- | --------- | -------------------------------------------------- |
+| msgId     | string      | Yes       | Identifier of the received custom communication data. |
+| msgParam  | ArrayBuffer | No        | Message body of the received custom communication data. |
 
 **Example**
 
@@ -984,10 +1108,10 @@ Callback triggered when the input method framework needs to display the text pre
 
 **Parameters**
 
-| Name      | Type         | Mandatory| Description                         |
+| Name       | Type          | Mandatory | Description                          |
 | ------- | ----------------- | ---- | ----------------------------- |
-| text    | string            | Yes  | Text preview.                |
-| range   | [Range](#range10) | Yes  | Describes the range of the selected text.|
+| text    | string            | Yes   | Preview text content.                 |
+| range   | [Range](#range10) | Yes   | Selected range of the text. |
 
 ## AttachFailureReason<sup>22+</sup>
 
@@ -995,11 +1119,11 @@ Enumerates the reasons for attachment failure.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Value|Description|
+| Name | Value |Description |
 | -------- | -------- |-------- |
-| CALLER_NOT_FOCUSED    | 0 |The caller does not belong to the application of the focused window.|
-| IME_ABNORMAL  | 1 |The input method application is abnormal.|
-| SERVICE_ABNORMAL  | 2 |The input method framework service is abnormal.|
+| CALLER_NOT_FOCUSED    | 0 |Indicates a failure caused because the caller is not the application that owns the focused window.<br/>Usage scenarios: When **attach** is called while the application window is not focused, this failure reason is returned.<br/>Note: Ensure that the application window is focused before calling attach. |
+| IME_ABNORMAL  | 1 |Indicates a failure caused by an input method application exception.<br/>Usage scenarios: When the input method application process crashes or is not running normally, **attach** returns this failure reason. |
+| SERVICE_ABNORMAL  | 2 |Indicates a failure caused by an input method framework service exception.<br/>Usage scenarios: When the input method framework service process is abnormal, **attach** returns this failure reason. |
 
 ## AttachOptions<sup>23+</sup>
 
@@ -1009,44 +1133,74 @@ Defines additional options for binding an input method.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
-| Name| Type| Read-only| Optional| Description|
+| Name | Type | Read-only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | No| Yes|Reason for requesting the keyboard.|
-| showKeyboard | boolean | No| Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | No | Yes | Reason for requesting keyboard input. |
+| showKeyboard | boolean | No | Yes | Whether to show the input method keyboard after the input method is bound successfully.<br>- true: Show the keyboard.<br>- false: Do not show the keyboard. |
 
 ## InputMethodController
 
 In the following API examples, you must first use [getController](#inputmethodgetcontroller9) to obtain an **InputMethodController** instance, and then call the APIs using the obtained instance.
 
+**InputMethodController** is the input method client controller, which provides foreground applications with core capabilities for interacting with the input method. After obtaining an instance through `inputMethod.getController()`, you can perform the following operations:
+
+- Attachment management: Use [attach](#attach10) to establish attachment to the input method, and use [detach](#detach10) to perform detachment. **attach** and **detach** must be used in pairs.
+- Keyboard control: Use [showTextInput](#showtextinput10) to start the soft keyboard and enter the editing state, and use [hideTextInput](#hidetextinput10) to hide the soft keyboard and exit the editing state. **showTextInput** and **hideTextInput** must be used in pairs.
+- Edit box state synchronization: Use APIs such as [updateCursor](#updatecursor10), [changeSelection](#changeselection10), and [updateAttribute](#updateattribute10) to synchronize edit box state information such as the cursor, selection, and attributes with the input method.
+- Event subscription: Use APIs such as **on('insertText')** and **on('deleteLeft')** to subscribe to text operation events sent by the input method application.
+
+Typical call sequence: `getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()`
+
+> **NOTE**
+>
+> **attach** and **detach** must be used in pairs, and **showTextInput** and **hideTextInput** must be used in pairs. Otherwise, resource leaks or inconsistent states may occur.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 ### attach<sup>10+</sup>
 
 attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback&lt;void&gt;): void
 
-Attaches a self-drawing component to the input method. This API uses an asynchronous callback to return the result.
+Attaches a self-drawn component to the input method. This API uses an asynchronous callback to return the result.
+
+Meaning/Function: Establishes attachment between a self-drawn control and the input method application. This is the prerequisite for a self-drawn control to use input method features.
+
+Usage scenarios: When a self-drawn control (not a system native edit box) needs to interact with the input method, this API must be called first to establish attachment. When a native edit box gains focus, the system performs attachment automatically, and there is no need to call this API.
+
+Use effect: After the attachment succeeds, the self-drawn control can call **showTextInput**/**hideTextInput** to control the keyboard visibility, and call **updateCursor**/**changeSelection** to synchronize the edit box state, subscribe to input method events, and implement more features.
+
+Preconditions: The window where the self-drawn control resides must be in the focused state; otherwise, the attachment fails.
+
+Usage with related APIs: **attach** must be used in pairs with **detach**. Only after **attach** is called can APIs such as **showTextInput**, **hideTextInput**, and **updateCursor** be called.
+
+Differences between similar APIs and selection principles:
+- **attach**: does not require passing in a UIContext, and is applicable to self-drawn control attachment scenarios of API version 10+.
+- **attachWithUIContext**: requires passing in a UIContext, and is applicable to stage model scenarios of API version 23+, supporting more attachment options.
+- Selection principle: For stage model applications of API version 23+, use **attachWithUIContext** first to obtain more complete attachment option support.
 
 > **NOTE**
 >
-> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawn component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing information or commands sent by the input method.
 >
-> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawn component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| showKeyboard | boolean | Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
-| textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| showKeyboard | boolean | Yes | Whether to show the input method keyboard after the input method is bound.<br>- true: show the keyboard.<br>- false: do not show the keyboard. |
+| textConfig | [TextConfig](#textconfig10) | Yes | Configuration information of the text box. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the input method is bound successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -1073,36 +1227,36 @@ inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
-Attaches a self-drawing component to the input method. This API uses a promise to return the result.
+Attaches a self-drawn component to the input method. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawn component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing information or commands sent by the input method.
 >
-> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawn component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| showKeyboard | boolean | Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
-| textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
+| showKeyboard | boolean | Yes | Whether to show the input method keyboard after the input method is bound successfully.<br>- **true**: Show the keyboard.<br>- **false**: Do not show the keyboard.|
+| textConfig | [TextConfig](#textconfig10) | Yes | Configuration information of the text box. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -1127,37 +1281,37 @@ inputMethod.getController().attach(true, textConfig).then(() => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-Attaches a self-drawing component to the input method. This API uses a promise to return the result.
+Attaches a self-drawn component to the input method. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawn component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing information or commands sent by the input method.
 >
-> If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
+> If the window where the self-drawn component is located is set to be non-focusable via [setWindowFocusable](../apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| showKeyboard | boolean | Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
-| textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes| Reason for requesting the keyboard.|
+| showKeyboard | boolean | Yes | Whether to show the input method keyboard after the input method is bound successfully.<br>- **true**: Show the keyboard.<br>- **false**: Do not show the keyboard.|
+| textConfig | [TextConfig](#textconfig10) | Yes | Configuration information of the text box. |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes | Reason for requesting keyboard input. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -1184,11 +1338,11 @@ inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then
 
 attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
 
-Attaches a self-drawing component to the input method. This API uses a promise to return the result.
+Attaches a self-drawn component to the input method. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+> An input method can use the following features only when it has a self-drawn component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1196,15 +1350,15 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 
 **Parameters**
 
-|  Name |    Type |   Mandatory  |   Description  |
+|  Name  |    Type  |   Mandatory   |   Description   |
 | -------- | -------- | -------- | -------- |
-| uiContext | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | Yes| **UIContext** instance.|
-| textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
-| attachOptions | [AttachOptions](#attachoptions23) | No| Additional options for binding.|
+| uiContext | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | Yes | UIContext instance.|
+| textConfig | [TextConfig](#textconfig10) | Yes | Configuration information of the text box.|
+| attachOptions | [AttachOptions](#attachoptions23) | No | Additional options for attaching.|
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -1212,7 +1366,7 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                              |
+| ID | Error Message                               |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1251,15 +1405,15 @@ Discards the text that is being typed. This API uses a promise to return the res
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result. Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached. |
@@ -1283,6 +1437,21 @@ showTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 Enters the text editing mode. This API uses an asynchronous callback to return the result.
 
+Meaning/Function: Pulls up the soft keyboard and puts the edit box into the text editing state.
+
+Usage scenarios: Called when a self-drawn control needs to display the soft keyboard to start text input after being attached to the input method.
+
+Use effect: The soft keyboard is displayed, and the edit box enters the editable text input state.
+
+Preconditions: Call [attach](#attach10) to complete the attachment first. Otherwise, error code 12800009 is reported.
+
+Usage with related APIs: **showTextInput** and **hideTextInput** must be used in pairs. After **hideTextInput** is called to exit the editing state, **showTextInput** must be called again to re-enter the editing state.
+
+Differences between similar APIs and selection principles:
+- **showTextInput**: For self-drawn controls. It must be called after **attach** completes the binding. It applies to self-drawn control scenarios and is the standard way to display the keyboard.
+- **showSoftKeyboard**: For system applications. It requires the **ohos.permission.CONNECT_IME_ABILITY** permission. It applies to scenarios where a system application needs to forcibly display the keyboard.
+- Selection principle: For self-drawn controls, use **showTextInput** preferentially. Use **showSoftKeyboard** only for system applications with special requirements.
+
 > **NOTE**
 >
 > After the edit box is attached to an input method, this API can be called to start the soft keyboard and enter the text editing state.
@@ -1291,15 +1460,15 @@ Enters the text editing mode. This API uses an asynchronous callback to return t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the editing state is entered successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1333,15 +1502,15 @@ Enters the text editing mode. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1373,21 +1542,21 @@ Enters the text editing mode. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes| Reason for requesting the keyboard.|
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | Yes | Reason for requesting keyboard input. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1413,6 +1582,21 @@ hideTextInput(callback: AsyncCallback&lt;void&gt;): void
 
 Exits the text editing mode. This API uses an asynchronous callback to return the result.
 
+Meaning/Function: Hides the soft keyboard and makes the edit box exit the text editing state.
+
+Usage scenarios: Called when a self-drawn control no longer needs input, for example, when the user taps an area outside the edit box or switches to another page.
+
+Use effect: The soft keyboard is hidden, and the edit box exits the editing state. Calling this API does not unbind the input method. Calling **showTextInput** again can re-enter the editing state.
+
+Preconditions: Call [attach](#attach10) to complete the attachment first, and call **showTextInput** to enter the editing state.
+
+Usage with related APIs: **hideTextInput** and **showTextInput** must be used in pairs. If input is needed again after **hideTextInput** is called, you must call **showTextInput** first to re-enter the editing state; other editing operations cannot be called directly.
+
+Differences between similar APIs and selection principles:
+- **hideTextInput**: For self-drawn controls, exits the editing state without detachment, and can re-enter via **showTextInput**. It is suitable for scenarios where a self-drawn control needs to temporarily hide the keyboard.
+- **hideSoftKeyboard**: For system applications, requires the **ohos.permission.CONNECT_IME_ABILITY** permission. It only hides the keyboard without changing the editing state.
+- Selection principle: Self-drawn controls should preferentially use **hideTextInput**; system applications with special requirements should use **hideSoftKeyboard**.
+
 > **NOTE**
 >
 > If the soft keyboard is displayed when this API is called, it will be hidden.
@@ -1423,15 +1607,15 @@ Exits the text editing mode. This API uses an asynchronous callback to return th
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1467,15 +1651,15 @@ Exits the text editing mode. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1497,21 +1681,29 @@ inputMethod.getController().hideTextInput().then(() => {
 
 detach(callback: AsyncCallback&lt;void&gt;): void
 
-Detaches the self-drawing component from the input method. This API uses an asynchronous callback to return the result.
+Detaches the self-drawn component from the input method. This API uses an asynchronous callback to return the result.
+
+Meaning/Function: Detaches the self-drawn control from the input method application and releases related resources.
+
+Usage scenarios: Called when the self-drawn control no longer needs to interact with the input method (for example, page switching, edit box destruction, etc.).
+
+Use effect: After detachment, APIs that require the attached state, such as **showTextInput**, **hideTextInput**, and **updateCursor**, can no longer be called. The input method soft keyboard will be hidden.
+
+Usage with related APIs: **detach** must be used in pairs with **attach**. It is recommended that you call **detach** after **hideTextInput**. The complete flow is: **attach** → **showTextInput** → **hideTextInput** → **detach**.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. When the input method is unbound successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1534,21 +1726,29 @@ inputMethod.getController().detach((err: BusinessError) => {
 
 detach(): Promise&lt;void&gt;
 
-Detaches the self-drawing component from the input method. This API uses a promise to return the result.
+Detaches the self-drawn component from the input method. This API uses a promise to return the result.
+
+Meaning/Function: Detaches the self-drawn control from the input method application and releases related resources.
+
+Usage scenarios: Called when the self-drawn control no longer needs to interact with the input method.
+
+Use effect: After detachment, APIs that require the attached state can no longer be called. The input method soft keyboard will be hidden.
+
+Usage with related APIs: **detach** must be used in pairs with **attach**.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1573,24 +1773,26 @@ Sets the window to be avoided by the input method. This API uses an asynchronous
 
 > **NOTE**
 >
-> After the window ID of the application bound to the input method is passed in the API, the input method window will not cover the window holding the application.
+> This API can be called to set the window that avoids the soft keyboard only after the edit box is attached to the input method.
+>
+> Pass in the window ID of the application attached to the input method. This window can avoid the input method window.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| windowId | number | Yes| Window ID of the application bound to the input method. The value must be an integer.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| windowId | number | Yes | Window ID of the application attached to the input method. This parameter must be an integer. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the setting is successful, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
@@ -1614,7 +1816,7 @@ inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
 
 setCallingWindow(windowId: number): Promise&lt;void&gt;
 
-Sets the window to be avoided by the input method. This API uses a promise to return the result.
+Sets the window to avoid the soft keyboard. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1624,23 +1826,23 @@ Sets the window to be avoided by the input method. This API uses a promise to re
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| windowId | number | Yes| Window ID of the application bound to the input method. The value must be an integer.|
+| windowId | number | Yes | ID of the window holding the application bound to the input method application. The value must be an integer. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
@@ -1655,7 +1857,7 @@ inputMethod.getController().setCallingWindow(windowId).then(() => {
   console.info('Succeeded in setting callingWindow.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to setCallingWindow, code: ${err.code}, message: ${err.message}`);
-})
+});
 ```
 
 ### updateCursor<sup>10+</sup>
@@ -1664,22 +1866,26 @@ updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback&lt;void&gt;): void
 
 Updates the cursor information in this edit box. This API can be called to notify the input method of the cursor changes. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API can be called to update the cursor information only after the edit box is attached to the input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| cursorInfo | [CursorInfo](#cursorinfo10) | Yes| Cursor information.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| cursorInfo | [CursorInfo](#cursorinfo10) | Yes | Cursor information. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the cursor information is updated successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
@@ -1711,27 +1917,31 @@ updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
 Updates the cursor information in this edit box. This API can be called to notify the input method of the cursor changes. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called to update the cursor information only after the edit box is attached to the input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| cursorInfo | [CursorInfo](#cursorinfo10) | Yes| Cursor information.|
+| cursorInfo | [CursorInfo](#cursorinfo10) | Yes | Cursor information. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
@@ -1760,24 +1970,28 @@ changeSelection(text: string, start: number, end: number, callback: AsyncCallbac
 
 Updates the information about the selected text in this edit box, to notify the input method when the selected text content or text range changes. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API can be called to update the text selection information only after the edit box is attached to the input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| text | string | Yes| All input text.|
-| start | number | Yes| Start position of the selected text. The value is an integer greater than or equal to 0.|
-| end | number | Yes| End position of the selected text. The value is an integer greater than or equal to 0.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| text | string | Yes | Entire input text. |
+| start | number | Yes | Start position of the selected text. This parameter must be an integer greater than or equal to 0. |
+| end | number | Yes | End position of the selected text. This parameter must be an integer greater than or equal to 0. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the text information is updated successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
@@ -1802,29 +2016,33 @@ changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
 Updates the information about the selected text in this edit box, to notify the input method when the selected text content or text range changes. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called to update the text selection information only after the edit box is attached to the input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| text | string | Yes| All input text.|
-| start | number | Yes| Start position of the selected text. The value is an integer greater than or equal to 0.|
-| end | number | Yes| End position of the selected text. The value is an integer greater than or equal to 0.|
+| text | string | Yes | Entire input text. |
+| start | number | Yes | Start position of the selected text. This parameter must be an integer greater than or equal to 0. |
+| end | number | Yes | End position of the selected text. This parameter must be an integer greater than or equal to 0. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
@@ -1851,18 +2069,18 @@ Updates the attribute information of this edit box. This API uses an asynchronou
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| attribute | [InputAttribute](#inputattribute10) | Yes| Attribute information.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| attribute | [InputAttribute](#inputattribute10) | Yes | Text box attribute object. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. When the text box attribute information is updated successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached.             |
@@ -1888,27 +2106,31 @@ updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
 Updates the attribute information of this edit box. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called to update the text box attribute information only after the text box is attached to the input method.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| attribute | [InputAttribute](#inputattribute10) | Yes|  Attribute information.|
+| attribute | [InputAttribute](#inputattribute10) | Yes | Text box attribute object. |
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800009 | input method client detached. |
@@ -1932,23 +2154,33 @@ stopInputSession(callback: AsyncCallback&lt;boolean&gt;): void
 
 Ends this input session. This API uses an asynchronous callback to return the result.
 
+Meaning/Function: Ends the current input session and hides the soft keyboard.
+
+Usage scenarios: Called when an application needs to proactively end the input session (for example, when the user has completed the input operation).
+
+Use effect: The soft keyboard is hidden and the input session ends.
+
+Preconditions: This API can be called only when the edit box is attached to the input method, that is, after the edit control is tapped.
+
+Usage with related APIs: **stopInputSession** hides the soft keyboard and ends the input session. If the **attach**/**showTextInput**/**hideTextInput**/**detach** flow of a self-drawn control is used, it is recommended that you use **hideTextInput** instead of **stopInputSession**.
+
 > **NOTE**
 >
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
+> This API can be called only when the text box is bound to the input method. That is, it can be called to end the input session only when the text box is focused.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the input session is ended successfully, err is undefined and data is true. Otherwise, err is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -1985,15 +2217,15 @@ Ends this input session. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the input session is ended successfully, and **false** indicates the opposite. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -2020,9 +2252,22 @@ showSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 Shows the soft keyboard. This API uses an asynchronous callback to return the result.
 
+Meaning/Function: Forcibly displays the soft keyboard of the current input method.
+
+Usage scenarios: Used when a system application needs to forcibly display the input method soft keyboard (for example, a Settings application testing an input method).
+
+Use effect: The input method soft keyboard is displayed.
+
+Preconditions: This API can be called only when the edit box is attached to the input method.
+
+Differences between similar APIs and selection principles:
+- **showSoftKeyboard**: for system applications, requires the **ohos.permission.CONNECT_IME_ABILITY** permission, and only displays the keyboard without changing the editing state.
+- **showTextInput**: for self-drawn controls, requires attachment first, and pulls up the keyboard and enters the editing state.
+- Selection principle: use **showTextInput** for self-drawn controls; use **showSoftKeyboard** for system applications with the required permission.
+
 > **NOTE**
 >
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to show the soft keyboard only when the edit box is focused.
+> This API can be called only when the text box is bound to the input method. That is, it can be called to show the soft keyboard of the current input method only when the text box is focused.
 
 **Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
 
@@ -2030,15 +2275,15 @@ Shows the soft keyboard. This API uses an asynchronous callback to return the re
 
 **Parameters**
 
-| Name  | Type                 | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| Name     | Type                    | Mandatory | Description                                                        |
+| -------- | ----------------------- | --------- | ------------------------------------------------------------------ |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result. If the soft keyboard is displayed successfully, err is undefined. Otherwise, err is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
@@ -2074,15 +2319,15 @@ Shows the soft keyboard. This API uses a promise to return the result.
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
@@ -2106,9 +2351,22 @@ hideSoftKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 Hides the soft keyboard. This API uses an asynchronous callback to return the result.
 
+Meaning/Function: Forcibly hides the soft keyboard of the current input method.
+
+Usage scenarios: Used when a system application needs to forcibly hide the input method soft keyboard.
+
+Use effect: The input method soft keyboard is hidden.
+
+Preconditions: This API can be called only when the edit box is attached to the input method.
+
+Differences between similar APIs and selection principles:
+- **hideSoftKeyboard**: for system applications, requires the **ohos.permission.CONNECT_IME_ABILITY** permission, and only hides the keyboard without exiting the editing state.
+- **hideTextInput**: for self-drawn controls, hides the keyboard and exits the editing state, and can re-enter the editing state by calling **showTextInput** again.
+- Selection principle: self-drawn controls use **hideTextInput**; system applications with the required permission use **hideSoftKeyboard**.
+
 > **NOTE**
 >
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to hide the soft keyboard only when the edit box is focused.
+> This API can be called only when the text box is attached to the input method. That is, it can be called to hide the soft keyboard only when the text box is focused.
 
 **Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
 
@@ -2116,15 +2374,15 @@ Hides the soft keyboard. This API uses an asynchronous callback to return the re
 
 **Parameters**
 
-| Name  | Type                 | Mandatory| Description      |
+| Name   | Type                  | Mandatory | Description       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the soft keyboard is hidden successfully, err is undefined. Otherwise, err is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
@@ -2160,15 +2418,15 @@ Hides the soft keyboard. This API uses a promise to return the result.
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
@@ -2188,13 +2446,13 @@ inputMethod.getController().hideSoftKeyboard().then(() => {
 
 ### sendMessage<sup>15+</sup>
 
-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
+sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise&lt;void&gt;
 
 Sends the custom communication to the input method application. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode.
+> This API can be called only when the edit box is attached to the input method and enters the edit mode, and the input method application is in full experience mode.
 >
 > The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
@@ -2202,24 +2460,24 @@ Sends the custom communication to the input method application. This API uses a 
 
 **Parameters**
 
-| Name  | Type       | Mandatory| Description                                      |
-| -------- | ----------- | ---- | ------------------------------------------ |
-| msgId    | string      | Yes  | Identifier of the custom data to be sent to the input method application.|
-| msgParam | ArrayBuffer | No  | Message body of the custom data to be sent to the input method application.|
+| Name      | Type        | Mandatory | Description                                                        |
+| --------- | ----------- | --------- | ------------------------------------------------------------------ |
+| msgId     | string      | Yes       | Identifier of the custom data to be sent to the input method application. |
+| msgParam  | ArrayBuffer | No        | Message body of the custom data to be sent to the input method application. |
 
 **Return value**
 
-| Type               | Description                     |
+| Type                | Description                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| ID | Error Message                                    |
 | -------- | ------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
@@ -2256,17 +2514,17 @@ Registers or unregisters MessageHandler.
 
 **Parameters**
 
-| Name    | Type                               | Mandatory| Description                                                        |
+| Name     | Type                                | Mandatory | Description                                                         |
 | ---------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| msgHandler | [MessageHandler](#messagehandler15) | No  | This object receives custom communication data from the input method application through [onMessage](#onmessage15) and receives a message for terminating the subscription to this object through [onTerminated](#onterminated15).<br>If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.|
+| msgHandler | [MessageHandler](#messagehandler15) | No   | This object receives custom communication data from the input method application through [onMessage](#onmessage15) and receives a message for terminating the subscription to this object through [onTerminated](#onterminated15).<br>If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message        |
+| ID | Error Message         |
 | -------- | ---------------- |
-| 401      | parameter error. Possible causes: 1. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **Example**
 
@@ -2283,7 +2541,7 @@ let messageHandler: inputMethod.MessageHandler = {
 };
 let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
 inputMethodController.recvMessage(messageHandler);
-// Unregister the MessageHandler.
+// Unregister the registered MessageHandler.
 inputMethodController.recvMessage();
 ```
 
@@ -2303,9 +2561,9 @@ Ends this input session. This API uses an asynchronous callback to return the re
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback function. When the session ends successfully, err is undefined and data is true; otherwise, it is an error object. |
 
 **Example**
 
@@ -2341,9 +2599,9 @@ Ends this input session. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the operation is successful, and **false** means the opposite. |
 
 **Example**
 
@@ -2358,7 +2616,7 @@ inputMethod.getController().stopInput().then((result: boolean) => {
   }
 }).catch((err: BusinessError) => {
   console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
-})
+});
 ```
 
 ### on('insertText')<sup>10+</sup>
@@ -2371,38 +2629,38 @@ Enables listening for the text insertion event of the input method. This API use
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
+| Name   | Type                                                         | Mandatory | Description                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Listening type. The value is fixed at **'insertText'**.|
-| callback | (text: string) => void | Yes  | Callback used to return the text to be inserted.<br>The application needs to operate the content in the edit box based on the text content returned in the callback.|
+| type     | string                                                       | Yes   | Sets the listening type. The value is fixed to 'insertText'. |
+| callback | (text: string) => void | Yes   | Callback function that returns the text content to be inserted.<br/>Operate on the content in the text box based on the passed-in text. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
 
 ```ts
-function callback1(text: string): void {
+const callback1 = (text: string): void => {
   console.info(`Succeeded in getting callback1, data: ${text}`);
 }
 
-function callback2(text: string): void {
+const callback2 = (text: string): void => {
   console.info(`Succeeded in getting callback2, data: ${text}`);
 }
 
 let inputMethodController: inputMethod.InputMethodController = inputMethod.getController();
-// Register a callback.
+// Register the callback.
 inputMethodController.on('insertText', callback1);
 inputMethodController.on('insertText', callback2);
-// Cancel only callback1 of insertText.
+// Cancel only the callback of callback1 for insertText.
 inputMethodController.off('insertText', callback1);
-// Cancel all callbacks of insertText.
+// Cancel all callbacks for insertText.
 inputMethodController.off('insertText');
 ```
 
@@ -2416,10 +2674,10 @@ Disables listening for the text insertion event of the input method.
 
 **Parameters**
 
-| Name  | Type                  | Mandatory| Description                                                        |
+| Name     | Type                   | Mandatory | Description                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | Yes  | Listening type. The value is fixed at **'insertText'**.|
-| callback | (text: string) => void | No  | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type     | string                 | Yes   | Sets the listening type. The value is fixed to 'insertText'. |
+| callback | (text: string) => void | No   | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br/>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 
@@ -2445,18 +2703,18 @@ Enables listening for the leftward delete event. This API uses an asynchronous c
 
 **Parameters**
 
-| Name  | Type| Mandatory| Description|
+| Name   | Type | Mandatory | Description |
 | -------- | ----- | ---- | ----- |
-| type     | string  | Yes  | Listening type. The value is fixed at **'deleteLeft'**.|
-| callback | (length: number) => void | Yes  | Callback used to return the length of the text to be deleted leftward.<br>The application needs to operate the content in the edit box based on the length returned in the callback.|
+| type     | string  | Yes   | Sets the listening type. The value is fixed to 'deleteLeft'.|
+| callback | (length: number) => void | Yes   | Callback function, which returns the length of text to be deleted to the left.<br/>Based on the passed deletion length, operates on the text in the text box in the callback function. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2477,10 +2735,10 @@ Disables listening for the leftward delete event.
 
 **Parameters**
 
-| Name  | Type                    | Mandatory| Description                                                        |
-| -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                   | Yes  | Listening type. The value is fixed at **'deleteLeft'**.|
-| callback | (length: number) => void | No  | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| Name     | Type                     | Mandatory | Description                                                         |
+| -------- | ------------------------ | --------- | ------------------------------------------------------------ |
+| type     | string                   | Yes       | Sets the listener. The value is fixed to 'deleteLeft'. |
+| callback | (length: number) => void | No        | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to type are unsubscribed from. |
 
 **Example**
 
@@ -2506,18 +2764,18 @@ Enables listening for the rightward delete event. This API uses an asynchronous 
 
 **Parameters**
 
-| Name  | Type| Mandatory| Description|
+| Name   | Type | Mandatory | Description |
 | -------- | ----- | ---- | ----- |
-| type     | string  | Yes  | Listening type. The value is fixed at **'deleteRight'**.|
-| callback | (length: number) => void | Yes  | Callback used to return the length of the text to be deleted rightward.<br>The application needs to operate the content in the edit box based on the length returned in the callback.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'deleteRight'. |
+| callback | (length: number) => void | Yes   | Callback used to return the length of text to be deleted to the right.<br/>Based on the returned deletion length, operate the text in the text box in the callback. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2538,10 +2796,10 @@ Disables listening for the rightward delete event.
 
 **Parameters**
 
-| Name  | Type                    | Mandatory| Description                                                        |
-| -------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                   | Yes  | Listening type. The value is fixed at `deleteRight`.|
-| callback | (length: number) => void | No  | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| Name     | Type                     | Mandatory | Description                                                         |
+| -------- | ------------------------ | --------- | ------------------------------------------------------------ |
+| type     | string                   | Yes       | Listening type. The value is fixed to `deleteRight`. |
+| callback | (length: number) => void | No        | Callback function to unsubscribe. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed. |
 
 **Example**
 
@@ -2566,18 +2824,18 @@ Enables listening for the soft keyboard status event of the input method. This A
 
 **Parameters**
 
-| Name  | Type | Mandatory| Description   |
+| Name   | Type  | Mandatory | Description    |
 | -------- | ------ | ---- | ---- |
-| type     | string  | Yes  | Listening type. The value is fixed at **'sendKeyboardStatus'**.|
-| callback | (keyboardStatus: [KeyboardStatus](#keyboardstatus10)) => void | Yes  | Callback used to return the soft keyboard status.<br>The application needs to perform operations based on the soft keyboard state returned in the callback.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'sendKeyboardStatus'. |
+| callback | (keyboardStatus: [KeyboardStatus](#keyboardstatus10)) => void | Yes   | Callback used to return the soft keyboard status.<br/>Perform the corresponding operation in the callback based on the returned soft keyboard status. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2598,10 +2856,10 @@ Disables listening for the input method soft keyboard status event of the input 
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
+| Name     | Type                                                         | Mandatory | Description                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Listening type. The value is fixed at **'sendKeyboardStatus'**.|
-| callback | (keyboardStatus: [KeyboardStatus](#keyboardstatus10)) => void | No  | Callback used for disable listening. If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type     | string                                                       | Yes   | Sets the listening type. The value is fixed to 'sendKeyboardStatus'. |
+| callback | (keyboardStatus: [KeyboardStatus](#keyboardstatus10)) => void | No   | Callback function to unsubscribe from. If this parameter is not specified, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 
@@ -2627,18 +2885,18 @@ Enables listening for the function key sending event of the input method. This A
 
 **Parameters**
 
-| Name  | Type | Mandatory| Description    |
+| Name     | Type  | Mandatory | Description     |
 | -------- | -------- | ---- | ----- |
-| type     | string  | Yes  | Listening type. The value is fixed at **'sendFunctionKey'**.|
-| callback | (functionKey: [FunctionKey](#functionkey10)) => void | Yes  | Callback used to return the function key information sent by the input method.<br>The application needs to perform operations based on the function key information returned in the callback.|
+| type     | string  | Yes   | Sets the listening type. The value is fixed to 'sendFunctionKey'.|
+| callback | (functionKey: [FunctionKey](#functionkey10)) => void | Yes   | Callback used to return the function key information sent by the input method application.<br/>Performs the corresponding operation based on the returned function key information. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2659,10 +2917,10 @@ Disables listening for the function key sending event of the input method.
 
 **Parameters**
 
-| Name  | Type                                                | Mandatory| Description                                                        |
+| Name     | Type                                                 | Mandatory | Description                                                         |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                               | Yes  | Listening type. The value is fixed at **'sendFunctionKey'**.|
-| callback | (functionKey: [FunctionKey](#functionkey10)) => void | No  | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type     | string                                               | Yes   | Sets the listening type, which is fixed to 'sendFunctionKey'. |
+| callback | (functionKey: [FunctionKey](#functionkey10)) => void | No   | Callback function to unsubscribe from. It must be the same as the one passed in the on interface.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 
@@ -2688,18 +2946,18 @@ Enables listening for the cursor movement event of the input method. This API us
 
 **Parameters**
 
-| Name  | Type| Mandatory| Description  |
+| Name   | Type | Mandatory | Description   |
 | -------- | ------ | ---- | ------ |
-| type     | string | Yes  | Listening type. The value is fixed at **'moveCursor'**.|
-| callback | (direction: [Direction](#direction10)) => void | Yes  | Callback used to return the cursor movement direction.<br>The application needs to change the cursor position based on the cursor movement direction returned in the callback. |
+| type     | string | Yes   | Type of the listener to set. The value is fixed at 'moveCursor'. |
+| callback | (direction: [Direction](#direction10)) => void | Yes   | Callback used to return the cursor information.<br/>Changes the cursor position based on the returned cursor movement direction, for example, moving the cursor up or down.  |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                          |
+| ID | Error Message                           |
 | -------- | -------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2720,10 +2978,10 @@ Disables listening for the cursor movement event of the input method.
 
 **Parameters**
 
-| Name | Type   | Mandatory| Description |
+| Name  | Type    | Mandatory | Description  |
 | ------ | ------ | ---- | ---- |
-| type   | string | Yes  | Listening type. The value is fixed at **'moveCursor'**.|
-| callback | (direction: [Direction](#direction10)) => void | No| Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Type of the listener to set. The value is fixed at 'moveCursor'. |
+| callback | (direction: [Direction](#direction10)) => void | No | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 
@@ -2749,18 +3007,18 @@ Enables listening for the extended action handling event of the input method. Th
 
 **Parameters**
 
-| Name  | Type | Mandatory| Description  |
+| Name   | Type  | Mandatory | Description   |
 | -------- | ------ | ---- | -------- |
-| type     | string    | Yes  | Listening type. The value is fixed at **'handleExtendAction'**.|
-| callback | (action: [ExtendAction](#extendaction10)) => void | Yes  | Callback used to return the extended action type.<br>The application needs to perform operations based on the extended action type returned in the callback.|
+| type     | string    | Yes   | Type of the listener to set. The value is fixed at 'handleExtendAction'. |
+| callback | (action: [ExtendAction](#extendaction10)) => void | Yes   | Callback used to return the extended editing operation type.<br/>Performs the corresponding operation, such as cut or copy, based on the passed extended editing operation type.|
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2781,10 +3039,10 @@ Disables listening for the extended action handling event of the input method. T
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description |
+| Name | Type   | Mandatory | Description  |
 | ------ | ------ | ---- | ------- |
-| type   | string | Yes  | Listening type. The value is fixed at **'handleExtendAction'**.|
-| callback | (action: [ExtendAction](#extendaction10)) => void | No| Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Sets the listening type. The value is fixed at 'handleExtendAction'. |
+| callback | (action: [ExtendAction](#extendaction10)) => void | No | Callback function to unsubscribe. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed. |
 
 **Example**
 
@@ -2810,18 +3068,18 @@ Enables listening for the select-by-range event. This API uses an asynchronous c
 
 **Parameters**
 
-| Name  | Type    | Mandatory| Description    |
+| Name     | Type     | Mandatory | Description     |
 | -------- | ---- | ---- | ------- |
-| type     | string  | Yes  | Listening type. The value is fixed at **'selectByRange'**.|
-| callback | Callback&lt;[Range](#range10)&gt; | Yes  | Callback used to return the range of the text to be selected.<br>The application needs to select the text based on the range returned in the callback.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'selectByRange'. |
+| callback | Callback&lt;[Range](#range10)&gt; | Yes   | Callback used to return the text range to be selected.<br/>Based on the returned text range, the developer selects the corresponding text in the text box in the callback function.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                               |
+| ID | Error Message                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **Example**
 
@@ -2841,10 +3099,10 @@ Disables listening for the select-by-range event. This API uses an asynchronous 
 
 **Parameters**
 
-| Name  | Type                             | Mandatory| Description                                                        |
+| Name     | Type                              | Mandatory | Description                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                            | Yes  | Listening type. The value is fixed at **'selectByRange'**.|
-| callback | Callback&lt;[Range](#range10)&gt; | No  | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type     | string                            | Yes   | Sets the listening type. The value is fixed at 'selectByRange'. |
+| callback | Callback&lt;[Range](#range10)&gt; | No   | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from. |
 
 **Example**
 
@@ -2870,18 +3128,18 @@ Enables listening for the select-by-cursor-movement event. This API uses an asyn
 
 **Parameters**
 
-| Name  | Type  | Mandatory| Description    |
+| Name     | Type   | Mandatory | Description     |
 | -------- | ----- | ---- | ------ |
-| type     | string  | Yes  | Listening type. The value is fixed at **'selectByMovement'**.|
-| callback | Callback&lt;[Movement](#movement10)&gt; | Yes  | Callback used to return the direction in which the cursor moves.<br>The application needs to select the text based on the direction returned in the callback.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'selectByMovement'. |
+| callback | Callback&lt;[Movement](#movement10)&gt; | Yes   | Callback used to return the direction of cursor movement.<br/>Selects the corresponding text in the text box based on the passed cursor movement direction. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                               |
+| ID | Error Message                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **Example**
 
@@ -2901,10 +3159,10 @@ Disables listening for the select-by-cursor-movement event. This API uses an asy
 
 **Parameters**
 
-| Name  | Type                                | Mandatory| Description                                                        |
-| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                               | Yes  | Listening type. The value is fixed at **'selectByMovement'**.|
-| callback | Callback&lt;[Movement](#movement10)> | No  | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| Name     | Type                                | Mandatory | Description                                                        |
+| -------- | ----------------------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                              | Yes       | Sets the listening type. The value is fixed to 'selectByMovement'. |
+| callback | Callback&lt;[Movement](#movement10)> | No        | Callback to unsubscribe. It must be the same as the one passed in the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed. |
 
 **Example**
 
@@ -2930,18 +3188,18 @@ Enables listening for the event of obtaining the length of text deleted leftward
 
 **Parameters**
 
-| Name  | Type  | Mandatory| Description    |
+| Name     | Type   | Mandatory | Description     |
 | -------- | ----- | ---- | ------ |
-| type     | string  | Yes  | Listening type. The value is fixed at **'getLeftTextOfCursor'**.|
-| callback | (length: number) => string | Yes  | Callback used to obtain the text of the specified length deleted leftward.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'getLeftTextOfCursor'. |
+| callback | (length: number) => string | Yes   | Callback used to obtain and return the text content of the specified length to the left of the cursor in the latest state of the text box. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -2964,10 +3222,10 @@ Disables listening for the event of obtaining the length of text deleted leftwar
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
+| Name | Type   | Mandatory | Description                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | Yes  | Listening type. The value is fixed at **'getLeftTextOfCursor'**.|
-| callback | (length: number) => string | No | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Sets the listening type. The value is fixed to 'getLeftTextOfCursor'. |
+| callback | (length: number) => string | No  | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from.|
 
 **Example**
 
@@ -2993,18 +3251,18 @@ Enables listening for the event of obtaining the length of text deleted rightwar
 
 **Parameters**
 
-| Name  | Type  | Mandatory| Description    |
+| Name     | Type   | Mandatory | Description     |
 | -------- | ----- | ---- | ------ |
-| type     | string  | Yes  | Listening type. The value is fixed at **'getRightTextOfCursor'**.|
-| callback | (length: number) => string | Yes  | Callback used to obtain the text of the specified length deleted rightward.|
+| type     | string  | Yes   | Sets the listening type. The value is fixed to 'getRightTextOfCursor'. |
+| callback | (length: number) => string | Yes   | Callback function that obtains and returns the text content of the specified length to the right of the cursor in the latest state of the text box. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -3027,10 +3285,10 @@ Disables listening for the event of obtaining the length of text deleted rightwa
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
+| Name | Type   | Mandatory | Description                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | Yes  | Listening type. The value is fixed at **'getRightTextOfCursor'**.|
-| callback | (length: number) => string | No |Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Sets the listening type. The value is fixed to 'getRightTextOfCursor'. |
+| callback | (length: number) => string | No  | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from.|
 
 **Example**
 
@@ -3056,18 +3314,18 @@ Enables listening for the event of obtaining the index of text at the cursor. Th
 
 **Parameters**
 
-| Name  | Type  | Mandatory| Description    |
+| Name     | Type   | Mandatory | Description     |
 | -------- | ----- | ---- | ------ |
-| type     | string  | Yes  | Listening type. The value is fixed at **'getTextIndexAtCursor'**.|
-| callback | () => number | Yes  | Callback used to obtain the index of text at the cursor.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'getTextIndexAtCursor'. |
+| callback | () => number | Yes   | Callback used to obtain and return the text index at the cursor in the latest state of the text box. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800009 | input method client detached. |
 
 **Example**
@@ -3090,10 +3348,10 @@ Disables listening for the event of obtaining the index of text at the cursor. T
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
+| Name | Type   | Mandatory | Description                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | Yes  | Listening type. The value is fixed at **'getTextIndexAtCursor'**.|
-| callback | () => number | No | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Type of the listener to set. The value is fixed to 'getTextIndexAtCursor'. |
+| callback | () => number | No  | Callback function to unsubscribe from. It must be the same as the one passed to the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from.|
 
 **Example**
 
@@ -3123,16 +3381,16 @@ Subscribes to the event for text preview operations in an input method applicati
 
 **Parameters**
 
-| Name  | Type  | Mandatory| Description    |
+| Name     | Type   | Mandatory | Description     |
 | -------- | ----- | ---- | ------ |
-| type     | string  | Yes  | Event type, which is **'setPreviewText'**.|
-| callback | [SetPreviewTextCallback](#setpreviewtextcallback17) | Yes  | Callback used to return the result. It is used to receive and return the text preview.|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'setPreviewText'. |
+| callback | [SetPreviewTextCallback](#setpreviewtextcallback17) | Yes   | Callback used to receive the preview text content and return it. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
@@ -3170,10 +3428,10 @@ Unsubscribes from the event for text preview operations in an input method appli
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
+| Name | Type   | Mandatory | Description                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | Yes  | Event type, which is **'setPreviewText'**.|
-| callback | [SetPreviewTextCallback](#setpreviewtextcallback17) | No | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Listening type. The value is fixed at 'setPreviewText'. |
+| callback | [SetPreviewTextCallback](#setpreviewtextcallback17) | No  | Callback function to unsubscribe from. It must be the same as the one passed in the on API.<br>If this parameter is not specified, all callback events of the corresponding type are unsubscribed from.|
 
 **Example**
 
@@ -3191,10 +3449,10 @@ inputMethodController.on('setPreviewText', setPreviewTextCallback1);
 console.info(`SetPreviewTextCallback1 subscribed to setPreviewText`);
 inputMethodController.on('setPreviewText', setPreviewTextCallback2);
 console.info(`SetPreviewTextCallback2 subscribed to setPreviewText`);
-// Cancel only the callback1 of setPreviewText.
+// Unsubscribe only from the callback1 of setPreviewText.
 inputMethodController.off('setPreviewText', setPreviewTextCallback1);
 console.info(`SetPreviewTextCallback1 unsubscribed from setPreviewText`);
-// Cancel all callbacks of setPreviewText.
+// Unsubscribe from all callbacks of setPreviewText.
 inputMethodController.off('setPreviewText');
 console.info(`All callbacks unsubscribed from setPreviewText`);
 ```
@@ -3213,16 +3471,16 @@ Subscribes to the event of finishing text preview. This API uses an asynchronous
 
 **Parameters**
 
-| Name  | Type  | Mandatory| Description    |
+| Name     | Type   | Mandatory | Description     |
 | -------- | ----- | ---- | ------ |
-| type     | string  | Yes  | Event type, which is **'finishTextPreview'**.|
-| callback | Callback&lt;void&gt; | Yes  | Callback used to return the result. It is used to process the logic of finishing text preview. Return type: void|
+| type     | string  | Yes   | Type of the listener to set. The value is fixed at 'finishTextPreview'. |
+| callback | Callback&lt;void&gt; | Yes   | Callback function. When the logic for finishing preview text processing succeeds, err is undefined; otherwise, it is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
@@ -3243,10 +3501,10 @@ inputMethodController.on('finishTextPreview', finishTextPreviewCallback1);
 console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
 inputMethodController.on('finishTextPreview', finishTextPreviewCallback2);
 console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
-// Cancel only the callback1 of finishTextPreview.
+// Unsubscribe only the callback1 of finishTextPreview.
 inputMethodController.off('finishTextPreview', finishTextPreviewCallback1);
 console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
-// Cancel all callbacks of finishTextPreview.
+// Unsubscribe all callbacks of finishTextPreview.
 inputMethodController.off('finishTextPreview');
 console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
@@ -3261,10 +3519,10 @@ Unsubscribes from the event of finishing text preview. This API uses an asynchro
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
+| Name | Type   | Mandatory | Description                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | Yes  | Event type, which is **'finishTextPreview'**.|
-| callback | Callback&lt;void&gt; | No | Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| type   | string | Yes   | Sets the listening type. The value is fixed at 'finishTextPreview'. |
+| callback | Callback&lt;void&gt; | No  | Callback function to unsubscribe from. It must be the same as the one passed in the on API.<br>If this parameter is not specified, all callback events corresponding to the type are unsubscribed from.|
 
 **Example**
 
@@ -3283,17 +3541,28 @@ inputMethodController.on('finishTextPreview', finishTextPreviewCallback1);
 console.info(`FinishTextPreviewCallback1 subscribed to finishTextPreview`);
 inputMethodController.on('finishTextPreview', finishTextPreviewCallback2);
 console.info(`FinishTextPreviewCallback2 subscribed to finishTextPreview`);
-// Cancel only the callback1 of finishTextPreview.
+// Unsubscribe only from the callback1 of finishTextPreview.
 inputMethodController.off('finishTextPreview', finishTextPreviewCallback1);
 console.info(`FinishTextPreviewCallback1 unsubscribed from finishTextPreview`);
-// Cancel all callbacks of finishTextPreview.
+// Unsubscribe from all callbacks of finishTextPreview.
 inputMethodController.off('finishTextPreview');
 console.info(`All callbacks unsubscribed from finishTextPreview`);
 ```
 
 ## InputMethodSetting<sup>8+</sup>
 
-In the following API examples, you must first use [getSetting](#inputmethodgetsetting9) to obtain an **InputMethodSetting** instance, and then call the APIs using the obtained instance.
+**InputMethodSetting** provides input method configuration and query capabilities, and offers the following features for foreground applications:
+
+- Input method change subscription: subscribe to input method and subtype change events through [on('imeChange')](#onimechange9), and receive a notification when the user switches the input method.
+- Input method list query: query the list of enabled/disabled input methods through [getInputMethods](#getinputmethods9), query the list of all installed input methods through [getAllInputMethods](js-apis-inputmethod.md#getallinputmethods11), and query the subtype list of a specified input method through [listInputMethodSubtype](#listinputmethodsubtype9).
+- Panel visibility query: query whether the input method panel is displayed through **isPanelShown**.
+- Input method selection dialog: display the input method selection dialog through **showOptionalInputMethods** (deprecated; **InputMethodListDialog** is recommended).
+
+It must be used after you obtain the **InputMethodSetting** instance through [getSetting](#inputmethodgetsetting9).
+
+For the following APIs, you must first use [getSetting](#inputmethodgetsetting9) to obtain an **InputMethodSetting** instance, and then call the APIs using the obtained instance.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 ### on('imeChange')<sup>9+</sup>
 
@@ -3305,10 +3574,10 @@ Enables listening for the input method and subtype change event. This API uses a
 
 **Parameters**
 
-| Name  | Type                           | Mandatory| Description                                                        |
+| Name   | Type                            | Mandatory | Description                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                        | Yes  | Listening type. The value is fixed at **'imeChange'**.|
-| callback | (inputMethodProperty: [InputMethodProperty](#inputmethodproperty8), inputMethodSubtype: [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)) => void  | Yes| Callback used to return the input method attributes and subtype.|
+| type     | string                        | Yes   | Type of the listener to set. The value is fixed at 'imeChange'. |
+| callback | (inputMethodProperty: [InputMethodProperty](#inputmethodproperty8), inputMethodSubtype: [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)) => void  | Yes | Callback used to return the input method attribute object and subtype object. |
 
 **Example**
 
@@ -3332,10 +3601,10 @@ Disables listening for the input method and subtype change event. This API uses 
 
 **Parameters**
 
-| Name  | Type   | Mandatory| Description         |
+| Name   | Type    | Mandatory | Description          |
 | -------- | --------- | ---- | --------------- |
-| type     | string    | Yes  | Listening type. The value is fixed at **'imeChange'**.|
-| callback | (inputMethodProperty: [InputMethodProperty](#inputmethodproperty8), inputMethodSubtype: [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)) => void  | No| Callback used to return the input method attributes and subtype.|
+| type     | string    | Yes   | Set the listening type. The value is fixed to 'imeChange'. |
+| callback | (inputMethodProperty: [InputMethodProperty](#inputmethodproperty8), inputMethodSubtype: [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)) => void  | No | Callback used to return the unsubscribed input method attribute object and subtype object. |
 
 **Example**
 
@@ -3353,18 +3622,18 @@ Obtains all subtypes of a specified input method. This API uses an asynchronous 
 
 **Parameters**
 
-| Name  | Type                                              | Mandatory| Description                  |
+| Name   | Type                                               | Mandatory | Description                   |
 | -------- | -------------------------------------------------- | ---- | ---------------------- |
-| inputMethodProperty | [InputMethodProperty](#inputmethodproperty8)| Yes| Input method.|
-| callback | AsyncCallback&lt;Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>&gt; | Yes| Callback used to return all subtypes of the specified input method.|
+| inputMethodProperty | [InputMethodProperty](#inputmethodproperty8)| Yes | Input method application. |
+| callback | AsyncCallback&lt;Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>&gt; | Yes | Callback used to return all subtypes of the specified input method application. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800001 | bundle manager error.                 |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3378,7 +3647,7 @@ let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
   packageName: 'com.example.keyboard',
-  methodId: 'propertyId',
+  methodId: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3402,23 +3671,23 @@ Obtains all subtypes of a specified input method. This API uses a promise to ret
 
 **Parameters**
 
-| Name  | Type                                              | Mandatory| Description                  |
+| Name   | Type                                               | Mandatory | Description                   |
 | -------- | -------------------------------------------------- | ---- | ---------------------- |
-| inputMethodProperty | [InputMethodProperty](#inputmethodproperty8)| Yes| Input method.|
+| inputMethodProperty | [InputMethodProperty](#inputmethodproperty8)| Yes | Input method application. |
 
 **Return value**
 
-| Type                                                       | Description                  |
+| Type                                                        | Description                   |
 | ----------------------------------------------------------- | ---------------------- |
-| Promise<Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>> | Promise used to return all subtypes of the specified input method.|
+| Promise&lt;Array&lt;[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)&gt;&gt; | Promise object, which returns all subtypes of the specified input method application. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800001 | bundle manager error.                 |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3432,7 +3701,7 @@ let inputMethodProperty: inputMethod.InputMethodProperty = {
   name: 'com.example.keyboard',
   id: 'propertyId',
   packageName: 'com.example.keyboard',
-  methodId: 'propertyId',
+  methodId: 'propertyId'
 }
 let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
 
@@ -3453,15 +3722,15 @@ Obtains all subtypes of this input method. This API uses an asynchronous callbac
 
 **Parameters**
 
-| Name  | Type                                              | Mandatory| Description                  |
+| Name   | Type                                               | Mandatory | Description                   |
 | -------- | -------------------------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback&lt;Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>&gt; | Yes  | Callback used to return all subtypes of the current input method.|
+| callback | AsyncCallback&lt;Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>&gt; | Yes   | Callback function. When all subtypes of the current input method application are returned successfully, err is undefined and data is the obtained list of InputMethodSubtype; otherwise, it is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800001 | bundle manager error.                 |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -3492,15 +3761,15 @@ Obtains all subtypes of this input method. This API uses a promise to return the
 
 **Return value**
 
-| Type                                                       | Description                  |
+| Type                                                        | Description                   |
 | ----------------------------------------------------------- | ---------------------- |
-| Promise<Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)>> | Promise used to return all subtypes of the current input method.|
+| Promise&lt;Array&lt;[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)&gt;&gt;| Promise object, which returns all subtypes of the current input method application. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800001 | bundle manager error.                 |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -3537,18 +3806,18 @@ Obtains a list of activated or deactivated input methods. This API uses an async
 
 **Parameters**
 
-| Name  | Type                                               | Mandatory| Description                         |
+| Name   | Type                                                | Mandatory | Description                          |
 | -------- | --------------------------------------------------- | ---- | ----------------------------- |
-| enable   | boolean                                             | Yes  |Whether to return a list of activated input methods. The value **true** means to return a list of activated input methods, and **false** means to return a list of deactivated input methods.|
-| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; |  Yes | Callback used to return a list of activated or deactivated input methods.|
+| enable   | boolean                                             | Yes   |The value **true** indicates returning the list of activated input methods, and the value **false** indicates returning the list of inactivated input methods. |
+| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; |  Yes  | Callback used to return the result. If the list of activated/inactivated input methods is obtained successfully, **err** is **undefined** and data is the obtained list of **InputMethodProperty** objects; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                           |
+| ID | Error Message                            |
 | -------- | ----------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800001 | bundle manager error.               |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3582,23 +3851,23 @@ Obtains a list of activated or deactivated input methods. This API uses a promis
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                   |
-| ------ | ------- | ---- | ----------------------- |
-| enable | boolean | Yes  |Whether to return a list of activated input methods. The value **true** means to return a list of activated input methods, and **false** means to return a list of deactivated input methods.|
+| Name   | Type    | Mandatory | Description                    |
+| ------ | ------- | --------- | ------------------------------ |
+| enable | boolean | Yes       | - **true** indicates returning the list of activated input methods, and **false** indicates returning the list of inactivated input methods. |
 
 **Return value**
 
-| Type                                                        | Description                                      |
+| Type                                                         | Description                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| Promise\<Array\<[InputMethodProperty](#inputmethodproperty8)>> | Promise used to return a list of activated or deactivated input methods.|
+| Promise&lt;Array&lt;[InputMethodProperty](#inputmethodproperty8)&gt;&gt; | Promise object, returns the list of activated/inactivated input methods. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                           |
+| ID | Error Message                            |
 | -------- | ----------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800001 | bundle manager error.               |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3623,31 +3892,33 @@ Obtains a list of activated or deactivated input methods. This API returns the r
 
 > **NOTE**
 >
-> An activated input method refers to an input method that is enabled. The default input method is enabled by default. Other input methods can be enabled or disabled as needed.
+> The synchronous API blocks the main thread and may easily affect UI interaction. Use it with caution.
 >
-> The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
+> Enabled input methods are input method applications that are enabled. The default input method is enabled by default, and other input methods can be set to enabled or disabled.
+>
+> The enabled input method list includes the default input method and input method applications that have been set to enabled. The disabled input method list includes other installed input methods except the enabled input methods.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters**
 
-| Name| Type   | Mandatory| Description                   |
+| Name   | Type    | Mandatory | Description                    |
 | ------ | ------- | ---- | ----------------------- |
-| enable | boolean | Yes  |Whether to return a list of activated input methods. The value **true** means to return a list of activated input methods, and **false** means to return a list of deactivated input methods.|
+| enable | boolean | Yes  |- **true** indicates returning the enabled input method list, and **false** indicates returning the disabled input method list. |
 
 **Return value**
 
-| Type                                                | Description                         |
+| Type                                                 | Description                          |
 | ---------------------------------------------------- | ----------------------------- |
-| Array\<[InputMethodProperty](#inputmethodproperty8)> | List of activated or deactivated input methods.|
+| Array\<[InputMethodProperty](#inputmethodproperty8)> | List of activated or deactivated input methods. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800001 | bundle manager error.                 |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3667,15 +3938,15 @@ Obtains a list of all input methods. This API uses an asynchronous callback to r
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                          |
+| Name   | Type                                                         | Mandatory | Description                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | Yes  | Callback used to return a list of all input methods.|
+| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | Yes   | Callback function. When the list of all input methods is returned successfully, **err** is **undefined** and data is the obtained list of **InputMethodProperty** objects; otherwise, it is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                           |
+| ID | Error Message                            |
 | -------- | ----------------------------------- |
 | 12800001 | bundle manager error.               |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -3704,15 +3975,15 @@ Obtains a list of all input methods. This API uses a promise to return the resul
 
 **Return value**
 
-| Type                                                        | Description                             |
+| Type                                                         | Description                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array\<[InputMethodProperty](#inputmethodproperty8)>> | Promise used to return a list of all input methods.|
+| Promise&lt;Array&lt;[InputMethodProperty](#inputmethodproperty8)&gt;&gt; | Promise object, returns the list of all input methods. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                           |
+| ID | Error Message                            |
 | -------- | ----------------------------------- |
 | 12800001 | bundle manager error.              |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -3735,19 +4006,23 @@ getAllInputMethodsSync(): Array&lt;InputMethodProperty&gt;
 
 Obtains a list of all input methods. This API returns the result synchronously.
 
+> **NOTE**
+>
+> The synchronous API blocks the main thread and may easily affect UI interaction. Use it with caution.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Return value**
 
-| Type                                                | Description              |
+| Type                                                 | Description               |
 | ---------------------------------------------------- | ------------------ |
-| Array\<[InputMethodProperty](#inputmethodproperty8)> | List of all input methods.|
+| Array\<[InputMethodProperty](#inputmethodproperty8)> | List of all input methods. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                           |
+| ID | Error Message                            |
 | -------- | ----------------------------------- |
 | 12800001 | bundle manager error.              |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -3771,15 +4046,15 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the input method selection dialog box is displayed successfully, err is undefined and data is true; otherwise, err is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3815,15 +4090,15 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object.|
+| Promise&lt;boolean&gt; | Promise object. Returns **true** if the input method selection dialog is displayed successfully, and **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                            |
+| ID | Error Message                             |
 | -------- | -------------------------------------- |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -3857,9 +4132,9 @@ Obtains a list of installed input methods. This API uses an asynchronous callbac
 
 **Parameters**
 
-| Name  | Type                                              | Mandatory| Description                  |
+| Name   | Type                                               | Mandatory | Description                   |
 | -------- | -------------------------------------------------- | ---- | ---------------------- |
-| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | Yes  | Callback used to return the list of installed input methods.|
+| callback | AsyncCallback&lt;Array<[InputMethodProperty](#inputmethodproperty8)>&gt; | Yes   | Callback used to return the result. If the list of installed input methods is returned successfully, **err** is **undefined** and data is the obtained list of **InputMethodProperty** objects; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -3889,9 +4164,9 @@ Obtains a list of installed input methods. This API uses a promise to return the
 
 **Return value**
 
-| Type                                                       | Description                  |
+| Type                                                        | Description                   |
 | ----------------------------------------------------------- | ---------------------- |
-| Promise<Array<[InputMethodProperty](#inputmethodproperty8)>> | Promise used to return the list of installed input methods.|
+| Promise&lt;Array&lt;[InputMethodProperty](#inputmethodproperty8)&gt;&gt; | Promise object, which returns the list of installed input methods. |
 
 **Example**
 
@@ -3919,9 +4194,9 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the input method selection dialog box is displayed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -3951,9 +4226,9 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -3977,15 +4252,15 @@ Obtains the input method state. This API uses a promise to return the result.
 
 **Return value**
 
-| Type                                   | Description                                                        |
+| Type                                    | Description                                                         |
 | --------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[EnabledState](#enabledstate15)> | Promise used to return the result. **EnabledState.DISABLED** indicates that the input method is disabled, **EnabledState.BASIC_MODE** indicates that the input method is in basic mode, and **EnabledState.FULL_EXPERIENCE_MODE** indicates that the input method is in full experience mode.|
+| Promise&lt;[EnabledState](#enabledstate15)&gt; | Promise object. Returns **EnabledState.DISABLED** to indicate that the input method is not enabled; returns **EnabledState.BASIC_MODE** to indicate basic mode; returns **EnabledState.FULL_EXPERIENCE_MODE** to indicate full experience mode.|
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
-| ID| Error Message                           |
+| ID | Error Message                            |
 | -------- | ----------------------------------- |
 | 12800004 | not an input method application.    |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -3999,5 +4274,5 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
   console.info(`Succeeded in getInputMethodState, status: ${status}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getInputMethodState, code: ${err.code}, message: ${err.message}`);
-})
+});
 ```

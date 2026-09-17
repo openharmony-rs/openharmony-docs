@@ -340,11 +340,9 @@ WebResourceHandler已经失效。
 
 **可能原因**
 
-1.对应的请求在WebSchemeHandler中没有拦截；
-
-2.该请求拦截在构造返回体之前，因为某些原因已经请求结束；
-
-3.该WebResourceHandler已经调用过didFinish和didFail。
+1. 对应的请求在WebSchemeHandler中没有拦截。
+2. 该请求拦截在构造返回体之前，因为某些原因已经请求结束。
+3. 该WebResourceHandler已经调用过didFinish和didFail。
 
 
 **处理步骤**

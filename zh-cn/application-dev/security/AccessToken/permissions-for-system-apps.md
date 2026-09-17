@@ -9319,3 +9319,143 @@
 **支持设备**：PC/2in1 | Car | Phone | Tablet | TV | Wearable
 
 **起始版本**：26.1.0
+
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+
+允许应用安装自由分发的应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
+ 
+允许应用跳过企业重签名证书校验。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Phone | PC/2in1 | Tablet
+ 
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DEVICE_INFO_WRITE
+
+允许应用设置车辆下挂设备的参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.DEVICE_INFO_READ
+
+允许应用获取车辆下挂设备的参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.LICENSE_WRITE
+
+允许应用申请车辆临时License。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.LICENSE_READ
+
+允许应用获取车辆License相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CURTAIN_WRITE
+
+允许应用设置幕布模式与运动指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CURTAIN_READ
+
+允许应用获取幕布模式与运动状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CLUSTER_INFO_WRITE
+
+允许应用设置仪表个性化参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CLUSTER_INFO_READ
+
+允许应用获取仪表个性化设置相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0

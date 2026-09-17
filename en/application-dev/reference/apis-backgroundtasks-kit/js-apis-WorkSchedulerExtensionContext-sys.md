@@ -6,18 +6,19 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2926e8b0a22c06ee385f90757b573a71e6cb5894 translatedAt=2026-09-15T13:59:29.490Z pushedAt=2026-09-17T09:13:29.721Z -->
 
-The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the **WorkSchedulerExtensionAbility**.
+The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the **WorkSchedulerExtensionAbility**. This module provides the context for deferred task scheduling and allows you to start or stop the **ServiceExtensionAbility** when a task is started or stopped.
 
 This module directly serves as the context for **WorkSchedulerExtension** and provides the capability to access resources specific to **WorkSchedulerExtensionAbility**.
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module can be used only in the stage model.
+> - The APIs of this module can be used only in the stage model.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs provided by this module are system APIs.
 
 ## How to Use
 
@@ -28,7 +29,7 @@ import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTas
 
 class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStart(workInfo: workScheduler.WorkInfo) {
-        let WorkSchedulerExtensionContext = this.context; // Obtain the WorkSchedulerExtensionContext.
+        let workSchedulerExtensionContext = this.context; // Obtain the WorkSchedulerExtensionContext
     }
 }
 ```
@@ -37,7 +38,7 @@ class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-Starts a **ServiceExtensionAbility**. This API uses a promise to return the result.
+Starts the **ServiceExtensionAbility**. This API is used to start the associated service ability when a task is running in the background. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -45,7 +46,7 @@ Starts a **ServiceExtensionAbility**. This API uses a promise to return the resu
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Information about the **Want** used for starting an ability.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Information about the **Want** used for starting an ability. This parameter must contain necessary fields such as **bundleName** and **abilityName**.|
 
 **Return value**
 
@@ -93,7 +94,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
       this.context.startServiceExtensionAbility(want).then(() => {
         console.info('succeeded in starting ServiceExtensionAbility.');
       }).catch ((err: BusinessError) => {
-        console.error('failed to start ServiceExtensionAbility.');
+        console.error(`failed to start ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }
 
@@ -107,7 +108,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-Stops a **ServiceExtensionAbility**. This API uses a promise to return the result.
+Stops the ServiceExtensionAbility. This API is used when the task running in the background is complete or the associated service capability is no longer needed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -115,7 +116,7 @@ Stops a **ServiceExtensionAbility**. This API uses a promise to return the resul
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Information about the **Want** used for stopping an ability.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Required | Information about the **Want** used for stopping an ability. This parameter must contain necessary fields such as **bundleName** and **abilityName**. |
 
 **Return value**
 
@@ -164,7 +165,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
       this.context.stopServiceExtensionAbility(want).then(() => {
         console.info('succeeded in stopping ServiceExtensionAbility.');
       }).catch ((err: BusinessError) => {
-        console.error('failed to stop ServiceExtensionAbility.');
+        console.error(`failed to stop ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }
 }

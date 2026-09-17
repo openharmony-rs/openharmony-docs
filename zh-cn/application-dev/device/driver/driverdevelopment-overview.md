@@ -77,7 +77,7 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 | C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
 | C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
 
-Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用。在其他进程（包括子进程）中使用可能会出现功能异常，具体可参考[在子进程或非驱动ability中调用ddk的c-api失败](./externaldevice-faqs.md#在子进程或非驱动ability中调用ddk的c-api失败)。
+Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用。在其他进程（包括子进程）中使用可能会出现功能异常，具体可参考[在子进程或非驱动Ability中调用DDK的C-API失败](./externaldevice-faqs.md#在子进程或非驱动ability中调用ddk的c-api失败)。
 
 <!--RP1--><!--RP1End-->
 

@@ -453,7 +453,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // subscriber不再使用时需要将其置为null，避免内存泄露
+      // subscriber不再使用时需要将其置为null，避免内存泄漏
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });

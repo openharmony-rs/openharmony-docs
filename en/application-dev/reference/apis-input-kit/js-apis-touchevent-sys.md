@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:22:50.258Z pushedAt=2026-09-03T08:34:12.442Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:31:12.885Z pushedAt=2026-09-11T03:19:01.377Z -->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -60,4 +60,4 @@ Defines a touch event.
 | Name        | Type      | Read-Only  | Optional  | Description       |
 | ---------- | ---------- | ---- | ---- | --------- |
 | fixedMode | [FixedMode](#fixedmode) | No | Yes | Coordinate correction mode. The default value is FixedMode.NONE.|
-| isInject<sup>20+</sup> | boolean | No | Yes | Whether the touchscreen input event is an injection event. The default value is false. For details about injection events, see [@ohos.multimodalInput.inputEventClient](js-apis-inputeventclient-sys.md).|
+| isInject<sup>20+</sup> | boolean | No | Yes | Whether the touch event is an injection event. The default value is false. For details about injection events, see [@ohos.multimodalInput.inputEventClient](js-apis-inputeventclient-sys.md).|

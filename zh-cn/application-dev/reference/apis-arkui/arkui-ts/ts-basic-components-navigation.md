@@ -1656,7 +1656,11 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 
 preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
-预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当后续调用[pushPath](#pushpath10)时，若参数匹配，将使用预加载的页面实例进行快速显示。使用Promise异步回调。
+预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当未加载页面的页面参数和页面名称，与预加载info相同时，将使用预加载的页面实例进行快速显示。
+
+> **说明：**
+>
+> 使用该接口会立刻创建目标navDestination节点，并触发其所在自定义节点的[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)与[onDidBuild](ts-custom-component-lifecycle.md#ondidbuild12)生命周期。
 
 **起始版本：** 26.1.0
 
@@ -1681,11 +1685,10 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)、[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001    | Internal error.|
 | 100005    | Builder function not registered. |
 | 100006    | NavDestination not found.|
@@ -3921,7 +3924,7 @@ struct PageOne {
         this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.Code}, message: ${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message: ${err.message}`);
       }
     })
   }
@@ -4040,7 +4043,7 @@ struct PageOneComponent {
         this.eventStr += '<onReady>';
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.code}, message:${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message:${err.message}`);
       }
     })
   }
@@ -4108,7 +4111,7 @@ struct NavigationExample {
           Scroll(this.scrollerForScroll) {
             Column() {
               // $r('app.media.image_1')需要替换为开发者所需的资源文件
-              Image($r('app.media.image_1'))// 设置与标题栏高度一致，以便观察STACK效果
+              Image($r('app.media.image_1')) // 设置与标题栏高度一致，以便观察STACK效果
                 .height(138)
                 .width('100%')
               Button('BarStyle.STANDARD')

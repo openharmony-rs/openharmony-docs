@@ -231,6 +231,8 @@ TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组�
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ### 导入对象
 
 ``` ts

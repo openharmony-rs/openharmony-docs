@@ -6,9 +6,9 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:21:23.166Z pushedAt=2026-09-03T08:42:47.286Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:02:57.293Z pushedAt=2026-09-11T03:07:31.650Z -->
 
-The inputEventClient module provides the capability to inject input event, including key, mouse/touchpad, and touchscreen events.
+The inputEventClient module provides the capability to inject input events, including key, mouse/touchpad, and touchscreen events.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ Creates a keyboard controller for simulating key operations. This API uses a pro
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -84,7 +84,7 @@ Creates a mouse controller for simulating mouse operations. This API uses a prom
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -142,7 +142,7 @@ Creates a touch controller for simulating touch operations. This API uses a prom
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -197,9 +197,7 @@ struct Index {
 Provides the capability of simulating key operations. The simulated key operation sequence must meet the following requirements:
 
 1. A key can only be pressed when it is in the released state, or when it is the most recently pressed key and has not been released.
-
 2. A key can only be released after it has been pressed.
-
 3. A maximum of five keys can be pressed and held simultaneously.
 
 ### pressKey
@@ -210,7 +208,7 @@ Presses a key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -281,7 +279,7 @@ Releases a key. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -320,11 +318,8 @@ For details, see [pressKey](#presskey).
 Provides the capability of simulating mouse operations. The simulated mouse operation sequence must meet the following requirements:
 
 1. A mouse button can be pressed only when it is in the released state.
-
 2. A mouse button can only be released after it has been pressed.
-
 3. A valid axis event sequence must begin with a **beginAxis** call, followed by zero or more **updateAxis** calls, and end with an **endAxis** call.
-
 4. Only one axis event sequence can be in progress at a time.
 
 ### moveTo
@@ -335,7 +330,7 @@ Moves the mouse cursor to the specified display coordinates. This API uses a pro
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -404,7 +399,7 @@ Presses a mouse button. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -475,7 +470,7 @@ Release a mouse button. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -517,7 +512,7 @@ Starts an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -593,7 +588,7 @@ Updates an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -636,7 +631,7 @@ Ends an axis event. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -676,7 +671,7 @@ Represents information about a single touch point on the display.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -692,7 +687,6 @@ Represents information about a single touch point on the display.
 Provides the capability of simulating touch operations. The simulated touch operation sequence must meet the following requirements:
 
 1. All touch points must share the same **displayId**.
-
 2. Each touch point must begin with a **touchDown()** call, followed by zero or more **touchMove()** calls, and end with an **touchUp()** call.
 
 ### touchDown
@@ -703,7 +697,7 @@ Presses down a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -795,7 +789,7 @@ Moves a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -837,7 +831,7 @@ Releases a touch point. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 

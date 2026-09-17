@@ -174,7 +174,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 
 创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1659,7 +1659,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
 | [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
-| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.1.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.2.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1709,7 +1709,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 
 基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2520,7 +2520,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1875,197 +1875,197 @@ struct Index {
 
 借助垃圾回收机制去取消\@Monitor的监听是不稳定的，开发者可以采用以下两种方式去管理\@Monitor的失效时间：
 
-1、将\@Monitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@Monitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@Monitor回调已不会再被触发。
+1. 将\@Monitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@Monitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@Monitor回调已不会再被触发。
 
-<!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) -->   
+   <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) --> 
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
+   
+     constructor(info: Info) {
+       this.info = info;
+     }
+   }
+   
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
+   
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
+   
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
+   
+     @Monitor('infoWrapper.info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
+   
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+     }
+   
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
+   
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
+   
+     build() {
+       Column() {
+         // 点击Button切换showFlag，触发Child组件的创建/销毁
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
+   ![monitor-sync-22](./figures/monitor-sync-22.gif)
 
-@ObservedV2
-class InfoWrapper {
-  public info?: Info;
+2. 主动置空监听的对象。当自定义组件即将销毁时，主动置空\@Monitor的监听目标，这样\@Monitor无法再监听原监听目标的变化，达到取消\@Monitor监听的效果。
 
-  constructor(info: Info) {
-    this.info = info;
-  }
-}
+   <!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->  
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
+   
+     constructor(info: Info) {
+       this.info = info;
+     }
+   
+     @Monitor('info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
+   }
+   
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
+   
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
+   
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
+   
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+       this.infoWrapper.info = undefined; // 使InfoWrapper对info.age的监听失效
+     }
+   
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
+   
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
+   
+     build() {
+       Column() {
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
-@ObservedV2
-class Info {
-  @Trace public age: number;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Param @Require infoWrapper: InfoWrapper;
-
-  @Monitor('infoWrapper.info.age')
-  onInfoAgeChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
-  }
-
-  build() {
-    Column() {
-      Text(`${this.infoWrapper.info?.age}`)
-        .fontSize(20)
-        .margin(10)
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  dataArray: Info[] = [];
-  @Local showFlag: boolean = true;
-
-  aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataArray.push(new Info(i));
-    }
-  }
-
-  build() {
-    Column() {
-      // 点击Button切换showFlag，触发Child组件的创建/销毁
-      Button('change showFlag')
-        .onClick(() => {
-          this.showFlag = !this.showFlag;
-        })
-        .margin(10)
-      Button('change number')
-        .onClick(() => {
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
-          this.dataArray.forEach((info: Info) => {
-            info.age += 100;
-          })
-        })
-        .margin(10)
-      if (this.showFlag) {
-        Column() {
-          Text('Children')
-            .fontSize(20)
-            .margin(10)
-          ForEach(this.dataArray, (info: Info) => {
-            Child({ infoWrapper: new InfoWrapper(info) })
-          })
-        }
-        .borderColor(Color.Red)
-        .borderWidth(2)
-      }
-    }
-    .width('100%')
-  }
-}
-```
-
-![monitor-sync-22](./figures/monitor-sync-22.gif)
-
-2、主动置空监听的对象。当自定义组件即将销毁时，主动置空\@Monitor的监听目标，这样\@Monitor无法再监听原监听目标的变化，达到取消\@Monitor监听的效果。
-
-<!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->  
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@ObservedV2
-class InfoWrapper {
-  public info?: Info;
-
-  constructor(info: Info) {
-    this.info = info;
-  }
-
-  @Monitor('info.age')
-  onInfoAgeChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-}
-
-@ObservedV2
-class Info {
-  @Trace public age: number;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Param @Require infoWrapper: InfoWrapper;
-
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
-    this.infoWrapper.info = undefined; // 使InfoWrapper对info.age的监听失效
-  }
-
-  build() {
-    Column() {
-      Text(`${this.infoWrapper.info?.age}`)
-        .fontSize(20)
-        .margin(10)
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  dataArray: Info[] = [];
-  @Local showFlag: boolean = true;
-
-  aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataArray.push(new Info(i));
-    }
-  }
-
-  build() {
-    Column() {
-      Button('change showFlag')
-        .onClick(() => {
-          this.showFlag = !this.showFlag;
-        })
-        .margin(10)
-      Button('change number')
-        .onClick(() => {
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
-          this.dataArray.forEach((info: Info) => {
-            info.age += 100;
-          })
-        })
-        .margin(10)
-      if (this.showFlag) {
-        Column() {
-          Text('Children')
-            .fontSize(20)
-            .margin(10)
-          ForEach(this.dataArray, (info: Info) => {
-            Child({ infoWrapper: new InfoWrapper(info) })
-          })
-        }
-        .borderColor(Color.Red)
-        .borderWidth(2)
-      }
-    }
-    .width('100%')
-  }
-}
-```
-
-![monitor-sync-23](./figures/monitor-sync-23.gif)
+   ![monitor-sync-23](./figures/monitor-sync-23.gif)
 
 ### 正确设置\@Monitor入参
 

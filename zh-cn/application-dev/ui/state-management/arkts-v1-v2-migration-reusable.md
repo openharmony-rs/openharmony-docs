@@ -753,7 +753,6 @@ struct QuestionSwiperItem {
         })
       // 显示题目图片
       Image(this.itemData?.image)
-        .width('100%')
         .borderRadius(12)
         .objectFit(ImageFit.Contain)
         .margin({

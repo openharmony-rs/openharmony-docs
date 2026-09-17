@@ -1,4 +1,4 @@
-# EnterpriseAdminExtensionContext（企业设备管理扩展能力上下文环境）
+# EnterpriseAdminExtensionContext (企业设备管理扩展能力上下文环境)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -78,6 +78,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
+
 需要在module.json5中配置被启动组件的信息。permissions为可选字段，需根据实际情况进行替换或者不填。
 
 ```json5

@@ -263,12 +263,12 @@
 | napi_delete_property | 尝试从给定Object中删除给定key属性。 | napi_invalid_arg | 入参key为nullptr | 确保入参正确 |
 | napi_delete_property | 尝试从给定Object中删除给定key属性。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
 | napi_delete_property | 尝试从给定Object中删除给定key属性。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 | napi_invalid_arg | 入参key为nullptr | 确保入参正确 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 | napi_invalid_arg | 入参key为nullptr | 确保入参正确 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_set_named_property | 对给定Object设置一个给定名称的属性。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_set_named_property | 对给定Object设置一个给定名称的属性。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
 | napi_set_named_property | 对给定Object设置一个给定名称的属性。 | napi_invalid_arg | 入参utf8name为nullptr | 确保入参正确 |

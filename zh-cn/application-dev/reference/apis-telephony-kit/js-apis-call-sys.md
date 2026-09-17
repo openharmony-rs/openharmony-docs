@@ -377,6 +377,59 @@ call.answerCall(1).then(() => {
 });
 ```
 
+## call.answerCall<sup>22+</sup>
+
+answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\<void\>
+
+接听rtt来电。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.ANSWER_CALL
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| videoState | [VideoStateType](#videostatetype7) | 是   | 表示以视频或语音接听呼叫。|
+| callId | number | 是   | 表示待接听的callId。|
+| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
+
+**返回值：**
+
+| 类型                | 说明                        |
+| ------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8400001  | Invalid parameter value.                     |
+| 8400002  | Operation failed. Cannot connect to service. |
+| 8400003  | System internal error.                       |
+| 8400999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callId: number = 1;
+
+call.answerCall(call.VideoStateType.TYPE_VOICE, callId, true).then(() => {
+    console.info(`answerCall success, RTT call answered.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, code:${err.code}, message:${err.message}`);
+});
+```
+
 ## call.hangUpCall<sup>9+</sup>
 
 hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
@@ -433,7 +486,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ANSWER_CALL
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.SET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -1669,6 +1722,7 @@ startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\):
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -1794,6 +1848,8 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -1814,6 +1870,7 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -2624,6 +2681,7 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -2655,6 +2713,8 @@ separateConference\(callId: number\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -2675,6 +2735,7 @@ separateConference\(callId: number\): Promise\<void\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |

@@ -6,15 +6,18 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=28903ea5a24732cb787188ec1c145c9efbd00425 translatedAt=2026-09-01T01:20:42.364Z pushedAt=2026-09-03T08:45:36.484Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:58:26.646Z pushedAt=2026-09-11T07:01:28.514Z -->
 
 The inputDevice module implements input device management functions such as listening for the connection and disconnection of input devices and querying input device information such as the device name.
+
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+
 ## Modules to Import
+
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -557,7 +560,7 @@ Obtains the information about the input device with the specified ID. This API u
 | Name    | Type                                                    | Mandatory| Description                            |
 | -------- | -------------------------------------------------------- | ---- | -------------------------------- |
 | deviceId | number                                                   | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.                    |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes | Callback function. If the retrieval is successful, **err** is **undefined**, and **data** is the input device information. Otherwise, **err** is an error object. |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | Yes | Callback used to return the result. If the retrieval is successful, **err** is **undefined**, and **data** is the input device information. Otherwise, **err** is an error object. |
 
 **Example**
 
@@ -649,7 +652,7 @@ Queries whether a specified input device supports specified keys. This API uses 
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
 | deviceId | number                                    | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
 | keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | Yes  | Keys to be queried. A maximum of five keys can be specified.               |
-| callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | Yes  | Callback function. If the query is successful, **err** is **undefined**, and **data** is the key support query result (elements in the array correspond one-to-one to those in **keys**; **true** indicates supported, and **false** indicates not supported). Otherwise, **err** is an error object.                           |
+| callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | Yes  | Callback used to return the result. If the query is successful, **err** is **undefined**, and **data** is the key support query result (elements in the array correspond one-to-one to those in **keys**; **true** indicates supported, and **false** indicates not supported). Otherwise, **err** is an error object.                           |
 
 **Error codes**
 
@@ -1057,6 +1060,7 @@ Specifies whether to enable a function key (for example, **CapsLock**). This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](errorcode-inputdevice.md).
 
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
@@ -1154,13 +1158,12 @@ Provides information about an input device.
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
 | id                   | number                                 | No| No| Unique ID of the input device. If a physical device is repeatedly plugged and unplugged, its ID may change.|
 | name                 | string                                 | No| No| Name of the input device.                                            |
 | sources              | Array&lt;[SourceType](#sourcetype9)&gt; | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
-| axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | No| No| Axis information of the input device.                                          |
+| axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | No| No| Axis range of the input device.                                          |
 | bus<sup>9+</sup>     | number                                 | No| No| Bus type of the input device. By default, the bus type reported by the input device prevails.            |
 | product<sup>9+</sup> | number                                 | No| No| Product information of the input device.                                        |
 | vendor<sup>9+</sup>  | number                                 | No| No| Vendor information of the input device.                                        |

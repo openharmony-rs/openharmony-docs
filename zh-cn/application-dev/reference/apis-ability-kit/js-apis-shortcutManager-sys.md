@@ -6,7 +6,7 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)信息的增加、删除以及查询等。
+本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)信息的增加、删除以及查询等。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.addDesktopShortcutInfo
 
-addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1), userId: number) : Promise\<void>
+addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md), userId: number) : Promise\<void>
 
 增加指定用户的快捷方式信息。使用Promise异步回调。
 
@@ -37,7 +37,7 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 快捷方式信息。 |
 | userId     | number | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 
 **返回值：**
@@ -108,7 +108,7 @@ struct ShortcutExample {
 
 ## shortcutManager.deleteDesktopShortcutInfo
 
-deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1), userId: number) : Promise\<void>
+deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md), userId: number) : Promise\<void>
 
 删除指定用户的快捷方式信息。使用Promise异步回调。
 
@@ -122,7 +122,7 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 快捷方式信息。 |
 | userId     | number | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 
 **返回值：**
@@ -211,7 +211,7 @@ updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 是   | 快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 快捷方式信息。 |
 | userId     | number | 是   | 用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。|
 
 **返回值：**
@@ -271,7 +271,7 @@ try {
 
 ## shortcutManager.getAllDesktopShortcutInfo
 
-getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>>
+getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>>
 
 查询指定用户的所有快捷方式信息。
 
@@ -291,7 +291,7 @@ getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-api
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
+| Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>> | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
 
 **错误码：**
 
@@ -356,7 +356,7 @@ addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Pro
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
+|  shortcutInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>    |   是  |  待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：</br> 1.ShortcutInfo中的sourceType字段会被设置为2。</br> 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。</br> 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。  |
 | userId     | number | 是   | 动态快捷方式所属的用户ID。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。默认值：调用方所在用户，取值范围：大于等于0。|
 
 **返回值：**
@@ -504,7 +504,7 @@ setShortcutsEnabled(shortcutsInfo: Array\<ShortcutInfo>, isEnabled: boolean): Pr
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
-|  shortcutsInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)>    |   是  |  待启用或禁用的静态快捷方式。<br>**说明：**<br>本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以ShortcutInfo中的appIndex和sourceType设置不生效。  |
+|  shortcutsInfo   |   Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)>    |   是  |  待启用或禁用的静态快捷方式。<br>**说明：**<br>本接口不区分主应用和分身应用，且仅对静态快捷方式生效，所以ShortcutInfo中的appIndex和sourceType设置不生效。  |
 | isEnabled    | boolean| 是   | 快捷方式是否启用。true：快捷方式启用；false：快捷方式禁用。 |
 
 **返回值：**
@@ -596,7 +596,7 @@ getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: st
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)\> | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 

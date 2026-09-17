@@ -81,7 +81,7 @@
 | <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)](#oh_imagesourcenative_setsvgresourcelimitlevel) | 设置图像源的SVG资源限制级别。此函数仅对SVG格式图片生效。必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，设置的资源限制会在DOM解析和渲染阶段生效。 |
 | <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)](#oh_imagesourcenative_getsvgresourcelimitlevel) | 获取图像源的SVG资源限制级别。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | 通过图片解码参数创建OH_PixelmapNative指针。 |
-| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | 根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。 |
+| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | 根据解码参数创建PixelMap，通过allocator指定内存类型。传入IMAGE_ALLOCATOR_TYPE_AUTO时，由系统自动选择共享内存或DMA内存；需要指定内存类型时，传入IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。在处理此接口返回的PixelMap时，应考虑步幅（stride）的影响。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)](#oh_imagesourcenative_createpixelmaplist) | 通过图片解码参数创建OH_PixelmapNative数组。<br> 注意，此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options, OH_PictureNative **picture)](#oh_imagesourcenative_createpicture) | 通过图片解码创建OH_PictureNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | 通过指定序号的图片解码创建OH_PictureNative指针。 |
@@ -1082,6 +1082,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 
 通过图片解码参数创建OH_PixelmapNative指针。
 
+系统自动选择共享内存或DMA内存。从API version 15开始，需要指定内存类型时，应调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。相关说明请参见[系统默认的内存分配方式](../../media/image/image-allocator-type-c.md#系统默认的内存分配方式)。
+
 使用场景：适用于将JPEG、PNG、WebP、GIF单帧等编码图片解码为可读取、处理或再编码的PixelMap。解码前可通过OH_DecodingOptions设置帧序号、目标像素格式、目标尺寸、裁剪区域、期望动态范围等参数。
 
 使用约束：source、options和pixelmap均不能为空指针。调用前需先创建OH_ImageSourceNative对象；如需自定义解码参数，需先创建并设置OH_DecodingOptions对象。接口执行成功后，pixelmap指向新创建的OH_PixelmapNative对象；接口执行失败时，不应使用pixelmap指向的对象。
@@ -1113,7 +1115,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 **描述**
 
-根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。
+根据解码参数创建PixelMap，通过allocator指定内存类型。传入IMAGE_ALLOCATOR_TYPE_AUTO时，由系统自动选择共享内存或DMA内存；需要指定内存类型时，传入IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。在处理此接口返回的PixelMap时，应考虑步幅（stride）的影响。
 
 使用场景：适用于调用方需要明确指定PixelMap内存类型的场景。例如，后续图像处理链路要求DMA内存时，可指定IMAGE_ALLOCATOR_TYPE_DMA。
 
@@ -1130,7 +1132,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 解码参数。 |
-| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | 指示返回的PixelMap将使用哪种内存类型。 |
+| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | PixelMap的内存类型。传入IMAGE_ALLOCATOR_TYPE_AUTO时由系统自动选择共享内存或DMA内存；需要指定内存类型时，传入IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 指向c++本地层创建的OH_PixelmapNative对象的指针。 |
 
 **返回：**

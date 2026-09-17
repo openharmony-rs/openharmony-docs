@@ -78,7 +78,7 @@ query(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;FaultLogInfo&gt;
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
+| 801 | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **示例：**
@@ -140,7 +140,7 @@ query(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&gt;
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
+| 801 | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **示例：**

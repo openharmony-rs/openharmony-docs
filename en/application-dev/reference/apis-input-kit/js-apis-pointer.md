@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:23:26.658Z pushedAt=2026-09-03T09:10:07.594Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:28:32.246Z pushedAt=2026-09-11T06:21:36.644Z -->
 
 This module provides mouse cursor management, used to query and set mouse cursor related properties.
 
@@ -571,7 +571,6 @@ struct Index {
   }
 }
 ```
-
 ## pointer.setPointerStyle
 
 setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;
@@ -656,7 +655,7 @@ Sets the mouse pointer style type for a specified window and returns the result 
 | Name                 | Type                            | Mandatory  | Description              |
 | ------------------- | ------------------------------ | ---- | ---------------- |
 | windowId            | number                         | Yes   | Window ID. The value is an integer greater than or equal to 0.<br>If the window ID is valid and the corresponding window exists, the mouse pointer style of the window can be set properly.<br>If the window ID is valid but the window does not exist, the mouse pointer style can also be set properly.<br>The result can be obtained through [getPointerStyleSync](#pointergetpointerstylesync10).      |
-| pointerStyle        | [PointerStyle](#pointerstyle) | Yes    | Mouse cursor style. DEVELOPER_DEFINED_ICON cannot be passed in as a parameter.          |
+| pointerStyle        | [PointerStyle](#pointerstyle) | Yes    | Mouse pointer style. DEVELOPER_DEFINED_ICON cannot be passed in as a parameter.          |
 
 **Error codes**
 
@@ -667,7 +666,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
-
 ```js
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -780,16 +778,16 @@ Mouse pointer style types.
 | HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | Selecting text horizontally |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | Cross|![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | Circle|![Cursor_Circle.png](./figures/Cursor_Circle.png)|
-| LOADING<sup>10+</sup> | 42 | Animation loading<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Loading.png](./figures/Loading.png)|
-| RUNNING<sup>10+</sup> | 43 | Animation running in the background<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Running.png](./figures/Running.png)|
+| LOADING<sup>10+</sup> | 42 | Animated cursor for loading<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Loading.png](./figures/Loading.png)|
+| RUNNING<sup>10+</sup> | 43 | Animated cursor for background loading<br>**Atomic service API**: This API can be used in atomic services since API version 12.|![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST<sup>18+</sup>          | 44   | Scrolling east-west|![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
-| RUNNING_LEFT<sup>22+</sup>         | 45   | Running in the background (extension 1)|![Loading_Left.png](./figures/Loading_Left.png)|
-| RUNNING_RIGHT<sup>22+</sup>         | 46   | Running in the background (extension 2)|![Loading_Right.png](./figures/Loading_Right.png)|
+| RUNNING_LEFT<sup>22+</sup>         | 45   | Animated cursor for background running (extension 1) |![Loading_Left.png](./figures/Loading_Left.png)|
+| RUNNING_RIGHT<sup>22+</sup>         | 46   | Animated cursor for background running (extension 2) |![Loading_Right.png](./figures/Loading_Right.png)|
 | AECH_DEVELOPER_DEFINED_ICON<sup>22+</sup>         | 47   | Custom circular pointer|![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR<sup>20+</sup>         | 48   | Screen recording |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
-| LASER_CURSOR<sup>22+</sup>        | 49   | Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used for PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
-| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used for PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
-| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used for PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| LASER_CURSOR<sup>22+</sup>        | 49   | Hover cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to page up and down, which is suitable for scenarios such as PPT presentations and air operations. |![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | Click cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to page up and down, which is suitable for scenarios such as PPT presentations and air operations. |![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | Laser pointer cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to page up and down, which is suitable for scenarios such as PPT presentations and air operations. |![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
 | DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | Custom pointer. You can use [setCustomCursor](#pointersetcustomcursor15) to set a custom pointer. The custom pointer cannot be directly set using [setPointerStyle](#pointersetpointerstyle-1). |Custom pointer style, set via the API. This value is used by **getPointerStyle** to return data in specific scenarios (obtaining the style on a window where a custom pointer style has been set). It cannot be used as an input parameter of the **setCustomCursor** or **setPointerStyle** API.|
 
 ## pointer.setCustomCursor<sup>11+</sup>
@@ -867,13 +865,11 @@ struct Index {
   }
 }
 ```
-
 ## CustomCursor<sup>15+</sup>
 
 Defines custom cursor resources.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
-
 | Name    | Type    | Read-Only    | Optional    | Description    |
 | -------- | ------- | -------- | -------- | ------- |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
