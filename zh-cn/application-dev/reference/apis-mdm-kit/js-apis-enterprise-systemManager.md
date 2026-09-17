@@ -2058,7 +2058,7 @@ try {
   systemManager.addAllowedPrinterIPAddressesForAccount(ipArray);
   console.info('Succeeded in adding the allowed printer IP Addresses for current user.');
 } catch (err) {
-  console.error(`Failed to add the the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to add the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
