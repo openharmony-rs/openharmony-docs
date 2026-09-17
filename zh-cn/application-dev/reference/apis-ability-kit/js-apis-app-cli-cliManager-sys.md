@@ -284,7 +284,7 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 | toolName | string | 是 | CLI工具名称。 |
 | subCommand | string | 是 | CLI工具子命令名称。如果没有子命令则填空串。 |
 | args | Record\<string, Object\> | 是 | 命令执行的参数。 |
-| challenge | string | 是 | 使用[generateCliAuthResult](js-apis-abilityAccessCtrl-sys.md#generatecliauthresult)接口生成的授权结果。 |
+| challenge | string | 是 | 使用[requestToolPermissions](js-apis-abilityToolAccessCtrl-sys.md#abilitytoolaccessctrlrequesttoolpermissions)接口生成的[TicketInfo](js-apis-abilityToolAccessCtrl-sys.md#ticketinfo)中的ticket字符串。 |
 | execOptions | [ExecOptions](#execoptions) | 否 | 执行命令的可选参数。默认值：详见[ExecOptions](#execoptions)的具体属性默认值。 |
 
 **返回值：**
@@ -308,44 +308,44 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 **示例：**
 
 ```ts
-import { abilityAccessCtrl, cliManager } from '@kit.AbilityKit';
+import { abilityToolAccessCtrl, cliManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
 
-try {
-// 创建访问控制管理器实例
-const atManager = abilityAccessCtrl.createAtManager();
-let CLI_DEMO: abilityAccessCtrl.CliInfo = {
-    cliName: 'ohos-timer',
-    subCliName: '',
+// 定义CLI命令信息
+let cliCmdInfo: abilityToolAccessCtrl.CliCmdInfo = {
+  cliCmdName: 'ohos-aa',
+  subCliCmdName: 'start'
 };
-// 定义授权信息列表
-const authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
-    cliInfo: CLI_DEMO,
-    permissionNames: ['ohos.permission.APPROXIMATELY_LOCATION', 'ohos.permission.LOCATION'],
-    authorizationResults: [true, true],
-}];
-let tokenId = rpc.IPCSkeleton.getCallingTokenId();
-let agentId : string = '1001';
-// 生成CLI授权结果
-atManager.generateCliAuthResult(tokenId, agentId, authInfoList).then(async (result) => {
-    console.info(`generateCliAuthResult result=${JSON.stringify(result)}`);
-
-    let command: string = "ohos-timer";
-    let curArgs: Record<string, Object> = {
-    "duration": 10,
-    }
-    let subCommand: string = '';
-    let challenge: string = result.authResults[0];
-    // 执行CLI命令
-    let curSessionInfo: cliManager.CliSessionInfo = await cliManager.execTool(command, subCommand, curArgs, challenge);
-    console.info(`execTool result=${JSON.stringify(curSessionInfo)}`);
-}).catch((error: BusinessError) => {
-    console.error(`execTool error, code: ${error.code}, message: ${error.message}`);
-});
-} catch (error) {
-const err = error as BusinessError;
-console.error(`execTool error, code: ${err.code}, message: ${err.message}`);
+let cliOp: abilityToolAccessCtrl.OperationInfo = {
+  operationType: abilityToolAccessCtrl.OperationType.CLI,
+  info: cliCmdInfo
+};
+let permissionQuery: abilityToolAccessCtrl.PermissionQuery = {
+  operationInfo: [cliOp],
+  needTicket: true,
+  ticketExpireTimeMs: 10000
+};
+try {
+  // 查询工具权限并获取ticket
+  const res = await abilityToolAccessCtrl.requestToolPermissions(permissionQuery);
+  let command: string = 'ohos-aa';
+  let curArgs: Record<string, Object> = {
+    'bundlename': 'com.example.myapplication',
+    'abilityname': 'EntryAbility'
+  };
+  let subCommand: string = 'start';
+  let curOptions: cliManager.ExecOptions = {
+    background: false,
+    yieldMs: 5000,
+    timeout: 5
+  };
+  // 执行CLI命令
+  let curSessionInfo: cliManager.CliSessionInfo =
+    await cliManager.execTool(command, subCommand, curArgs, res.ticket?.ticket, curOptions);
+  console.info(`execTool result=${JSON.stringify(curSessionInfo)}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`execTool error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 

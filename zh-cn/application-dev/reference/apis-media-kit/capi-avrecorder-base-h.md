@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义了媒体AVRecorder的结构体、枚举和回调函数。
+定义AVRecorder的结构体、枚举和回调函数类型。
 
 **引用文件：** &lt;multimedia/player_framework/avrecorder_base.h&gt;
 

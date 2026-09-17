@@ -92,7 +92,7 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 
 | 参数项                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OH_Cursor *cursor                                            | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor                                            | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex                                          | 表示结果集中指定列的索引，索引值从0开始。                    |
 | [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) *columnType | 该参数是输出参数，结果集中指定列的数据类型[OH_ColumnType](capi-oh-data-value-h.md#oh_columntype)会写入该变量。 |
 
@@ -119,7 +119,7 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 | 参数项            | 描述                                                 |
 | ----------------- | ---------------------------------------------------- |
-| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针                          |
+| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针。                          |
 | const char *name  | 表示结果集中指定列的名称。                           |
 | int *columnIndex  | 该参数是输出参数，结果集中指定列的索引会写入该变量。 |
 
@@ -146,7 +146,7 @@ int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | char *name          | 该参数是输出参数，结果集中指定列的名称会写入该变量。         |
 | int length          | 该参数为输入参数，表示开发者传入的包括终止符在内的列名字符串的总长度。 |
@@ -200,7 +200,7 @@ int (*getRowCount)(OH_Cursor *cursor, int *count)
 
 | 参数项            | 描述                        |
 | ----------------- | --------------------------- |
-| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针 |
+| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针。 |
 
 **返回：**
 
@@ -280,7 +280,7 @@ int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | int64_t *value      | 该参数是输出参数，结果集中指定列的值会以int64_t形式写入该变量。 |
 
@@ -307,7 +307,7 @@ int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | double *value       | 该参数是输出参数，结果集中指定列的值会以double形式写入该变量。 |
 
@@ -334,7 +334,7 @@ int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int
 
 | 参数项               | 描述                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor    | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor    | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex  | 表示结果集中指定列的索引，索引值从0开始。                    |
 | unsigned char *value | 该参数是输出参数，结果集中指定列的值会以字节数组形式写入该变量。 |
 | int length           | 该参数为输入参数，表示传入的value的长度，该值可通过getSize获取。 |
@@ -362,7 +362,7 @@ int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | bool *isNull        | 该参数是输出参数，如果当前行中指定列的值为null，该值为true，否则为false。 |
 
@@ -389,7 +389,7 @@ int (*destroy)(OH_Cursor *cursor)
 
 | 参数项            | 描述                        |
 | ----------------- | --------------------------- |
-| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针 |
+| OH_Cursor *cursor | 表示指向OH_Cursor实例的指针。 |
 
 **返回：**
 
@@ -414,7 +414,7 @@ int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | Data_Asset *value   | 该参数是输出参数，结果集中指定列的值会以资产形式写入该变量。 |
 
@@ -441,7 +441,7 @@ int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uin
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                    |
 | Data_Asset **value  | 该参数是输出参数，结果集中指定列的值会以资产数组形式写入该变量。 |
 | uint32_t *length    | 既是入参又是出参：作为入参，需要开发者传入一个uint32_t类型的变量，表示输入缓冲区的大小；作为出参，表示函数执行后，length指向的变量会被更新为实际返回的资产数组的长度。 |

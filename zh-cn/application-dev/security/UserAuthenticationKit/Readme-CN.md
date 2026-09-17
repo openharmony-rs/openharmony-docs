@@ -17,5 +17,6 @@
 - [查询用户注册凭据的状态](obtain-enrolled-state-capabilities.md)
 - [使用嵌入式用户身份认证控件](user-auth-icon.md)
 - [查询指定认证类型的认证冻结状态](obtain-auth-lock-state-capabilities.md)
+- [查询和订阅用户识别结果](obtain-user-recognition-result.md)
 <!--RP1--><!--RP1End-->
 - [User Authentication Kit术语](user-authentication-glossary.md)

@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1a10f2e882133e3dde32de5f81cde43a3d4de71a translatedAt=2026-09-04T02:53:47.138Z pushedAt=2026-09-09T09:11:03.654Z -->
 
 ## Overview
 
@@ -123,8 +124,8 @@ Sets the fields returned in the result set.
 | Name| Description|
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
-| const char *const fields[] | Names of the columns to be returned.|
-| int32_t len | Field length.|
+| const char *const fields[] | Name of the field to return. |
+| int32_t len | Number of fields. |
 
 **Returns**
 
@@ -149,7 +150,7 @@ Sets the maximum number of rows for the returned result set.
 | Name| Description|
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
-| int32_t count | Maximum number of rows for the returned result set.|
+| int32_t count | Maximum number of rows in the result set. |
 
 **Returns**
 

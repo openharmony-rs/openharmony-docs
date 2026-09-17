@@ -45,7 +45,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.DistanceRank
 
-测距结果的距离挡位，不同的挡位对应不同的距离范围。
+测距结果的距离档位，不同的档位对应不同的距离范围。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 

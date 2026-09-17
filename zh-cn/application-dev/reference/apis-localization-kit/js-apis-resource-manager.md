@@ -3915,7 +3915,7 @@ getRawFdSync(path: string): RawFileDescriptor
 
 > **说明**
 >
-> 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄露。
+> 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄漏。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3969,7 +3969,7 @@ getRawFd(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;): void
 
 > **说明**
 >
-> 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄露。
+> 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄漏。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4027,7 +4027,7 @@ getRawFd(path: string): Promise&lt;RawFileDescriptor&gt;
 
 > **说明**
 >
-> 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄露。
+> 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync10)或[closeRawFd](#closerawfd9)关闭fd，避免资源泄漏。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
