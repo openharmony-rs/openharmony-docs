@@ -1019,7 +1019,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
+定义一个适用于WaterFlow、Grid、List、Swiper、LazyVWaterFlowLayout和LazyVGridLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
