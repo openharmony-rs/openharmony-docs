@@ -2619,7 +2619,7 @@ getAlbumsByIds(albumIds: Array&lt;number&gt;): Promise&lt;Map&lt;number, Album&g
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 14000011       | Internal system error.         |
+| 14000011       | System inner fail.         |
 
 **示例：**
 

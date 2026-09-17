@@ -1,12 +1,11 @@
 # LiveFormExtensionContext
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=62f2cf3101049cbc3c2c61a2e11dc625dab4e15c translatedAt=2026-07-31T08:25:38.109Z pushedAt=2026-07-31T09:28:46.669Z -->
+<!-- md-trans-meta sourceCommit=c85b75d8023cf23712791d9bbf1c3edc12e94276 translatedAt=2026-09-15T01:55:49.133Z pushedAt=2026-09-15T07:29:12.004Z -->
 
 LiveFormExtensionContext is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md), and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). It provides the capability to access specific LiveFormExtensionAbility resources and supports starting an app page from an interactive widget. This is applicable to scenarios where an interactive widget needs to respond to user taps and navigate to an app page, addressing the limitation that an interactive widget cannot proactively start an app page.
 
@@ -17,7 +16,6 @@ LiveFormExtensionContext is the context of [LiveFormExtensionAbility](./js-apis-
 > The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
-
 ```ts
 import { common } from '@kit.AbilityKit';
 ```
@@ -43,7 +41,6 @@ This API can only be used to start the page of the interactive widget provider (
 This API can only be called within the click event callback and must be called directly. Delayed calls are not supported. Otherwise, the error code 16501011 will be reported.
 
 **Use cases:**
-
 - Navigate to the app home page or details page by tapping in the active state of an interactive widget.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -59,7 +56,6 @@ This API can only be called within the click event callback and must be called d
 | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes   | Information about the app page to be started. Value rule: Only explicit **Want** is supported, and the **bundleName** and **abilityName** fields must be included. For details, see [Starting an App Component with Explicit Want](../../../application-dev/application-models/ability-startup-with-explicit-want.md). |
 
 **Return value** 
-
   | Type| Description   |
   | ------ | ------ |
   | Promise&lt;void&gt;  |  Promise that returns no value. | 
@@ -92,7 +88,6 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
   }
 };
 ```
-
 ```ts
 // pages/MyLiveFormPage.ets
 import { common } from '@kit.AbilityKit';
@@ -110,7 +105,7 @@ struct MyLiveFormPage {
     this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
   }
 
-   private startAbilityByLiveForm(): void {
+  private startAbilityByLiveForm(): void {
     try {
       // Replace the Want information with the actual one.
       this.liveFormContext?.startAbilityByLiveForm({
