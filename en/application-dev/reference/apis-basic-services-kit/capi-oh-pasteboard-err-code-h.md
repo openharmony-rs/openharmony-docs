@@ -43,7 +43,7 @@ Enumerates pasteboard error codes, which are used to identify the pasteboard ope
 **Since**: 13
 
 | Enum Item| Description|
-| -- | -- | -- |
+| -- | -- |
 | ERR_OK = 0 | Operation successful.|
 | ERR_PERMISSION_ERROR = 201 | Permission verification failed.|
 | ERR_INVALID_PARAMETER = 401 | Invalid parameter.|
