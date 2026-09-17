@@ -496,6 +496,20 @@
 
 **起始版本**：20
 
+## ohos.permission.kernel.USB_CAPTURE
+
+允许应用抓取USB数据包。
+
+获取此权限后，应用程序需用户认证后才可以进行USB抓包，无此权限不允许抓取。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
 ## ohos.permission.kernel.NET_RAW
 
 允许应用抓取网络数据包。
