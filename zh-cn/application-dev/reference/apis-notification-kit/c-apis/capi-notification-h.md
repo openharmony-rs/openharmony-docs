@@ -28,13 +28,13 @@
 bool OH_Notification_IsNotificationEnabled(void)
 ```
 
-**描述**
+**描述：**
 
 查询当前应用通知使能状态。
 
 **起始版本：** 13
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

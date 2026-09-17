@@ -24,6 +24,12 @@ XComponent组件枚举类型定义，用于描述XComponent的渲染类型，支
 | -- | -- | -- |
 | [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | 定义XComponent类型枚举值。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| ARKUI_XCOMPONENT_H | XComponent组件枚举类型定义，用于描述XComponent的渲染类型，支持EGL/OpenGLES绘制及媒体数据写入场景，可满足开发者定制内容单独或与组件合成展示的渲染需求。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+
 ## 枚举类型说明
 
 ### ArkUI_XComponentType

@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义焦点管理接口，主要用于主动转移焦点、清除焦点、管理焦点转移默认行为、控制焦点激活态，以及设置按键事件的处理模式。适用于页面切换、键盘导航等需要统一管理焦点状态和焦点转移行为的场景，有助于提升焦点控制的可预测性和交互体验。
+定义焦点管理接口，主要用于主动转移焦点、清除焦点、管理焦点转移默认行为、控制焦点激活态，以及设置按键事件的处理模式。适用于页面切换、键盘导航等需要统一管理焦点状态和焦点转移行为的场景， 有助于提升焦点控制的可预测性和交互体验。
 
 **库：** libace_ndk.z.so
 
@@ -70,11 +70,11 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 | -- | -- |
 | ArkUI_NodeHandle node | 节点。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 请求成功。      <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE} 节点无法获得焦点。      <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR} 祖先节点无法获得焦点。      <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT} 节点不存在。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 请求成功。<br>    <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE} 节点无法获得焦点。<br>    <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR} 祖先节点无法获得焦点。<br>    <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT} 节点不存在。 |
 
 ### OH_ArkUI_FocusClear()
 

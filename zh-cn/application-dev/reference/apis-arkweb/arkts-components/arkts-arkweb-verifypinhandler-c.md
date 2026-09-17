@@ -1,15 +1,10 @@
 # VerifyPinHandler
 
-VerifyPinHandler是Web组件中处理PIN码验证请求的类，用于在Web页面中需要身份认证的场景（如安全支付、敏感操作确认等）增强应用安全性。当需要用户PIN码认证时，该处理器通过onVerifyPin事件回调提供给应用， 允许应用响应PIN码验证结果，有效防止未授权访问并保护用户隐私。示例代码参考[onVerifyPin](arkts-arkweb-web-attribute.md#onverifypin)。
+VerifyPinHandler是Web组件中处理PIN码验证请求的类，用于在Web页面中需要身份认证的场景（如安全支付、敏感操作确认等）增强应用安全性。当需要用户PIN码认证时，该处理器通过onVerifyPin事件回调提供给应用，允许应用响应PIN码验证结果，有效防止未授权访问并保护用户隐私。示例代码参考[onVerifyPin](arkts-arkweb-web-comp-attribute.md#onverifypin)。
 
 **起始版本：** 22
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## confirm
 

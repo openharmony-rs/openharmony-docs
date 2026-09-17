@@ -1,6 +1,8 @@
 # BackForwardList
 
-BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接口，通过 [getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取。该接口提供对页面导航历史记录的只读访问能力，开发者可以获取当前历 史列表的基本信息（当前索引和历史条目总数），以及通过索引获取指定历史记录项的详细信息。@interface BackForwardList [since 9 - 11]
+BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接口，通过[getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取。该接口提供对页面导航历史记录的只读访问能力，开发者可以获取当前历史列表的基本信息（当前索引和历史条目总数），以及通过索引获取指定历史记录项的详细信息。
+
+@interface BackForwardList [since 9 - 11]
 
 **起始版本：** 9
 
@@ -9,6 +11,7 @@ BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接�
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## getItemAtIndex
@@ -17,11 +20,11 @@ BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接�
 getItemAtIndex(index: number): HistoryItem
 ```
 
-获取历史列表中指定索引的历史记录项信息。需先通过[getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取 BackForwardList实例。
+获取历史列表中指定索引的历史记录项信息。需先通过[getBackForwardEntries](arkts-arkweb-webview-webviewcontroller-c.md#getbackforwardentries)方法获取BackForwardList实例。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -41,40 +44,7 @@ getItemAtIndex(index: number): HistoryItem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. 3.Parameter verification failed. |
-
-**示例**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  @State icon: image.PixelMap | undefined = undefined;
-
-  build() {
-    Column() {
-      Button('getBackForwardEntries')
-        .onClick(() => {
-          try {
-            let list = this.controller.getBackForwardEntries();
-            let historyItem = list.getItemAtIndex(list.currentIndex);
-            console.info("HistoryItem: " + JSON.stringify(historyItem));
-            this.icon = historyItem.icon;
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 ## currentIndex
 
@@ -88,7 +58,7 @@ currentIndex: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -104,6 +74,6 @@ size: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

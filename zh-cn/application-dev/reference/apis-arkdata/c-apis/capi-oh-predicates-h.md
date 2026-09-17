@@ -20,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) | OH_Predicates |  |
+| [OH_Predicates](capi-rdb-oh-predicates.md) | OH_Predicates | 表示谓词。 |
 
 ### 枚举
 
@@ -32,9 +32,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notlike) | 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。<br>此方法类似于SQL语句中的“Not like”。 |
-| [int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_glob) | 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与like方法不同，此方法的输入参数区分大小写。 |
-| [int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notglob) | 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与Not Like方法不同，此方法的输入参数区分大小写。 |
+| [int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notlike) | 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。 <br>此方法类似于SQL语句中的“Not like”。 |
+| [int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_glob) | 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与like方法不同，此方法的输入参数区分大小写。 |
+| [int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notglob) | 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与Not Like方法不同，此方法的输入参数区分大小写。 |
 | [int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)](#oh_predicates_having) | 设置OH_Predicates以指定条件来过滤分组结果，这些结果将出现在最终结果中。 |
 
 ## 枚举类型说明
@@ -45,7 +45,7 @@
 enum OH_OrderType
 ```
 
-**描述**
+**描述：**
 
 排序方式。
 
@@ -65,9 +65,9 @@ enum OH_OrderType
 int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
-**描述**
+**描述：**
 
-设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。<br>此方法类似于SQL语句中的“Not like”。
+设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。 <br>此方法类似于SQL语句中的“Not like”。
 
 **起始版本：** 20
 
@@ -79,7 +79,7 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 | const char *field | 表示数据库表中的列名，不能为空。 |
 | const char *pattern | 表示要比较的指定值，不能为空。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -91,9 +91,9 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
-**描述**
+**描述：**
 
-设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与like方法不同，此方法的输入参数区分大小写。
+设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与like方法不同，此方法的输入参数区分大小写。
 
 **起始版本：** 20
 
@@ -105,7 +105,7 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 | const char *field | 表示数据库表中的列名，不能为空。 |
 | const char *pattern | 表示与谓词匹配的值，不能为空。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -117,9 +117,9 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)
 ```
 
-**描述**
+**描述：**
 
-设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与Not Like方法不同，此方法的输入参数区分大小写。
+设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与Not Like方法不同，此方法的输入参数区分大小写。
 
 **起始版本：** 20
 
@@ -131,7 +131,7 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 | const char *field | 表示数据库表中的列名，不能为空。 |
 | const char *pattern | 表示要比较的指定值，不能为空。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -143,7 +143,7 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)
 ```
 
-**描述**
+**描述：**
 
 设置OH_Predicates以指定条件来过滤分组结果，这些结果将出现在最终结果中。
 
@@ -155,9 +155,9 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 | const char *conditions | 表示having子句中的过滤条件，不能为空且不能为空字符串。 |
-| [const OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
+| const OH_Data_Values *values | 表示指向{@link OH_Data_Values}实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

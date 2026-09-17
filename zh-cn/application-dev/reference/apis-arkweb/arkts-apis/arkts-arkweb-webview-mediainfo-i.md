@@ -1,6 +1,6 @@
 # MediaInfo
 
-[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建 接管网页媒体播放的播放器。
+[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
 
 **起始版本：** 12
 
@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## attributes
@@ -37,7 +38,7 @@ controlList: string[]
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -47,13 +48,15 @@ controlList: string[]
 controlsShown: boolean
 ```
 
-`&lt;video&gt;` 或 `&lt;audio&gt;` 中是否有 `controls` 属性。true 表示有，false 表示没有。
+`&lt;video&gt;` 或 `&lt;audio&gt;` 中是否有 `controls` 属性。
+
+true 表示有，false 表示没有。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -97,7 +100,7 @@ mediaSrcList: MediaSourceInfo[]
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -109,11 +112,11 @@ mediaType: MediaType
 
 媒体的类型。
 
-**类型：** MediaType
+**类型：** [MediaType](arkts-arkweb-webview-mediatype-e.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -123,13 +126,15 @@ mediaType: MediaType
 muted: boolean
 ```
 
-是否要求静音播放。true 表示静音播放，false 表示未静音播放。
+是否要求静音播放。
+
+true 表示静音播放，false 表示未静音播放。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -145,7 +150,7 @@ posterUrl: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -161,7 +166,7 @@ preload: Preload
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -177,6 +182,6 @@ surfaceInfo: NativeMediaPlayerSurfaceInfo
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

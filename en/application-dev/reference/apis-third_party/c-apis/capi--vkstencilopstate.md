@@ -1,0 +1,4 @@
+# VkStencilOpState
+
+## Overview
+

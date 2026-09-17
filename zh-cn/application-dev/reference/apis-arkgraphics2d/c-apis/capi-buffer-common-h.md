@@ -27,7 +27,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。Move from native_buffer.h to native_common.h |
+| [OH_NativeBuffer_ColorSpace](#oh_nativebuffer_colorspace) | OH_NativeBuffer_ColorSpace | OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h |
 | [OH_NativeBuffer_MetadataKey](#oh_nativebuffer_metadatakey) | OH_NativeBuffer_MetadataKey | 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。 |
 | [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | OH_NativeBuffer格式的枚举。 |
 | [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | OH_NativeBuffer转换类型的枚举。 |
@@ -42,9 +42,9 @@
 enum OH_NativeBuffer_ColorSpace
 ```
 
-**描述**
+**描述：**
 
-OH_NativeBuffer的颜色空间。Move from native_buffer.h to native_common.h
+OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -93,7 +93,7 @@ OH_NativeBuffer的颜色空间。Move from native_buffer.h to native_common.h
 enum OH_NativeBuffer_MetadataKey
 ```
 
-**描述**
+**描述：**
 
 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。
 
@@ -114,7 +114,7 @@ enum OH_NativeBuffer_MetadataKey
 enum OH_NativeBuffer_Format
 ```
 
-**描述**
+**描述：**
 
 OH_NativeBuffer格式的枚举。
 
@@ -127,24 +127,24 @@ OH_NativeBuffer格式的枚举。
 | NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 |  |
 | NATIVEBUFFER_PIXEL_FMT_CLUT1 |  |
 | NATIVEBUFFER_PIXEL_FMT_CLUT4 |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5658,                 /// < RGBA5658格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_4444,                 /// < RGBX4444格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_4444,                 /// < RGBA4444格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGB_444,                   /// < RGB444格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_5551,                 /// < RGBX5551格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5551,                 /// < RGBA5551格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGB_555,                   /// < RGB555格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBX_8888,                 /// < RGBX8888格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGBA_8888,                 /// < RGBA8888格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_RGB_888,                   /// < RGB888格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGR_565,                   /// < BGR565格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_4444,                 /// < BGRX4444格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_4444,                 /// < BGRA4444格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_5551,                 /// < BGRX5551格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_5551,                 /// < BGRA5551格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGRX_8888,                 /// < BGRX8888格式。 */ |  |
-| NATIVEBUFFER_PIXEL_FMT_BGRA_8888,                 /// < BGRA8888格式。 */ |  |
-| /** |  |
+| NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_4444 | RGBA4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_444 | RGB444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_5551 | RGBX5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_5551 | RGBA5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_555 | RGB555格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBX_8888 | RGBX8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | RGBA8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_RGB_888 | RGB888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGR_565 | BGR565格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_4444 | BGRX4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_4444 | BGRA4444格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_5551 | BGRX5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888格式。 |
+| NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888格式。 |
 | NATIVEBUFFER_PIXEL_FMT_YUV_422_I |  |
 | NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP |  |
 | NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP |  |
@@ -167,7 +167,7 @@ OH_NativeBuffer格式的枚举。
 | NATIVEBUFFER_PIXEL_FMT_Y8 = 40 |  |
 | NATIVEBUFFER_PIXEL_FMT_Y16 = 41 |  |
 | NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 |  |
-| } OH_NativeBuffer_Format; |  |
+| } OH_NativeBuffer_Format; | NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF          /** 无效格式 |
 
 ### OH_NativeBuffer_TransformType
 
@@ -175,7 +175,7 @@ OH_NativeBuffer格式的枚举。
 enum OH_NativeBuffer_TransformType
 ```
 
-**描述**
+**描述：**
 
 OH_NativeBuffer转换类型的枚举。
 
@@ -185,18 +185,18 @@ OH_NativeBuffer转换类型的枚举。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NATIVEBUFFER_ROTATE_90,               /**< 旋转90度 */ | NATIVEBUFFER_ROTATE_NONE = 0,         /**< 不旋转 |
-| NATIVEBUFFER_ROTATE_180,              /**< 旋转180度 */ | NATIVEBUFFER_ROTATE_90,               /**< 旋转90度 |
-| NATIVEBUFFER_ROTATE_270,              /**< 旋转270度 */ | NATIVEBUFFER_ROTATE_180,              /**< 旋转180度 |
-| NATIVEBUFFER_FLIP_H,                  /**< 水平翻转 */ | NATIVEBUFFER_ROTATE_270,              /**< 旋转270度 |
-| NATIVEBUFFER_FLIP_V,                  /**< 垂直翻转 */ | NATIVEBUFFER_FLIP_H,                  /**< 水平翻转 |
-| NATIVEBUFFER_FLIP_H_ROT90,            /**< 水平翻转并旋转90度 */ | NATIVEBUFFER_FLIP_V,                  /**< 垂直翻转 |
-| NATIVEBUFFER_FLIP_V_ROT90,            /**< 垂直翻转并旋转90度 */ | NATIVEBUFFER_FLIP_H_ROT90,            /**< 水平翻转并旋转90度 |
-| NATIVEBUFFER_FLIP_H_ROT180,           /**< 水平翻转并旋转180度 */ | NATIVEBUFFER_FLIP_V_ROT90,            /**< 垂直翻转并旋转90度 |
-| NATIVEBUFFER_FLIP_V_ROT180,           /**< 垂直翻转并旋转180度 */ | NATIVEBUFFER_FLIP_H_ROT180,           /**< 水平翻转并旋转180度 |
-| NATIVEBUFFER_FLIP_H_ROT270,           /**< 水平翻转并旋转270度 */ | NATIVEBUFFER_FLIP_V_ROT180,           /**< 垂直翻转并旋转180度 |
-| NATIVEBUFFER_FLIP_V_ROT270,           /**< 垂直翻转并旋转270度 */ | NATIVEBUFFER_FLIP_H_ROT270,           /**< 水平翻转并旋转270度 |
-| } OH_NativeBuffer_TransformType; | NATIVEBUFFER_FLIP_V_ROT270,           /**< 垂直翻转并旋转270度 |
+| NATIVEBUFFER_ROTATE_NONE = 0 | 不旋转 |
+| NATIVEBUFFER_ROTATE_90 | 旋转90度 |
+| NATIVEBUFFER_ROTATE_180 | 旋转180度 |
+| NATIVEBUFFER_ROTATE_270 | 旋转270度 |
+| NATIVEBUFFER_FLIP_H | 水平翻转 |
+| NATIVEBUFFER_FLIP_V | 垂直翻转 |
+| NATIVEBUFFER_FLIP_H_ROT90 | 水平翻转并旋转90度 |
+| NATIVEBUFFER_FLIP_V_ROT90 | 垂直翻转并旋转90度 |
+| NATIVEBUFFER_FLIP_H_ROT180 | 水平翻转并旋转180度 |
+| NATIVEBUFFER_FLIP_V_ROT180 | 垂直翻转并旋转180度 |
+| NATIVEBUFFER_FLIP_H_ROT270 | 水平翻转并旋转270度 |
+| NATIVEBUFFER_FLIP_V_ROT270 | 垂直翻转并旋转270度 |
 
 ### OH_NativeBuffer_VideoDimensionType
 
@@ -204,7 +204,7 @@ OH_NativeBuffer转换类型的枚举。
 enum OH_NativeBuffer_VideoDimensionType
 ```
 
-**描述**
+**描述：**
 
 视频维度类型枚举。
 
@@ -225,7 +225,7 @@ enum OH_NativeBuffer_VideoDimensionType
 enum OH_NativeBuffer_3D_MetadataKey
 ```
 
-**描述**
+**描述：**
 
 表示NativeBuffer的3D元数据枚举属性。
 

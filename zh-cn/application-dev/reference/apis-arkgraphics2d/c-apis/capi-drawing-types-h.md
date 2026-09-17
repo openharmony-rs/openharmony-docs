@@ -2,7 +2,7 @@
 
 ## 概述
 
-文件中定义了用于绘制2D图形的数据类型，包括画布、画笔、画刷、位图和路径。这些数据类型提供了2D图形绘制能力，适用于需要在画布上绑定画笔和画刷绘制各种形状、图片和文字的场景，可以灵活定义路径和位图，帮助开发者高效实现自定义图形绘制、图像处理等功能，满足复杂的2D图形绘制需求。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+文件中定义了用于绘制2D图形的数据类型，包括画布、画笔、画刷、位图和路径。这些数据类型提供了2D图形绘制能力， 适用于需要在画布上绑定画笔和画刷绘制各种形状、图片和文字的场景，可以灵活定义路径和位图， 帮助开发者高效实现自定义图形绘制、图像处理等功能，满足复杂的2D图形绘制需求。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **库：** libnative_drawing.so
 
@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | OH_Drawing_Point2D: 定义一个二维的坐标点。<br/>OH_Drawing_Corner_Radii: 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | OH_Drawing_Point2D: 定义一个二维的坐标点。<br/>OH_Drawing_Corner_Radii: 定义一个圆角半径， 该圆角半径由x轴方向和y轴方向上的半径组成。 |
 | [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | 定义一个三维的坐标点。 |
 | [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | 定义矩形框样式结构体。 |
 | [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | 定义图片信息结构体。 |
@@ -67,8 +67,14 @@
 | -- | -- | -- |
 | [OH_Drawing_ColorFormat](#oh_drawing_colorformat) | OH_Drawing_ColorFormat | 用于描述位图像素的存储格式。 |
 | [OH_Drawing_AlphaFormat](#oh_drawing_alphaformat) | OH_Drawing_AlphaFormat | 用于描述位图像素的透明度分量。 |
-| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s : source，源的缩写。<br>d : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。 |
+| [OH_Drawing_BlendMode](#oh_drawing_blendmode) | OH_Drawing_BlendMode | 混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。 <br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。 <br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写： <br>s : source，源的缩写。 <br>d : destination，目标的缩写。 <br>sa : source alpha，源透明度的缩写。 <br>da : destination alpha，目标透明度的缩写。 <br>计算结果用如下缩写表示： <br>r : 如果4个通道的计算方式相同，用r表示。 <br>ra : 如果只操作透明度通道，用ra表示。 <br>rc : 如果操作3个颜色通道，用rc表示。 |
 | [OH_Drawing_TextEncoding](#oh_drawing_textencoding) | OH_Drawing_TextEncoding | 文本编码类型枚举。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| OH_Drawing_Point2D OH_Drawing_Corner_Radii | 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。<br>**起始版本：** 12 |
 
 ## 枚举类型说明
 
@@ -78,7 +84,7 @@
 enum OH_Drawing_ColorFormat
 ```
 
-**描述**
+**描述：**
 
 用于描述位图像素的存储格式。
 
@@ -99,7 +105,7 @@ enum OH_Drawing_ColorFormat
 enum OH_Drawing_AlphaFormat
 ```
 
-**描述**
+**描述：**
 
 用于描述位图像素的透明度分量。
 
@@ -118,9 +124,9 @@ enum OH_Drawing_AlphaFormat
 enum OH_Drawing_BlendMode
 ```
 
-**描述**
+**描述：**
 
-混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。<br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。<br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写：<br>s : source，源的缩写。<br>d : destination，目标的缩写。<br>sa : source alpha，源透明度的缩写。<br>da : destination alpha，目标透明度的缩写。<br>计算结果用如下缩写表示：<br>r : 如果4个通道的计算方式相同，用r表示。<br>ra : 如果只操作透明度通道，用ra表示。<br>rc : 如果操作3个颜色通道，用rc表示。
+混合模式枚举。混合模式的操作会为两种颜色（源色、目标色）生成一种新的颜色。 <br>这些操作在红、绿、蓝3个颜色通道上是相同的（透明度有另外的处理规则）。 <br>对于这些，我们使用透明度通道作为示例，而不是单独命名每个通道。为简洁起见，我们使用以下缩写： <br>s : source，源的缩写。 <br>d : destination，目标的缩写。 <br>sa : source alpha，源透明度的缩写。 <br>da : destination alpha，目标透明度的缩写。 <br>计算结果用如下缩写表示： <br>r : 如果4个通道的计算方式相同，用r表示。 <br>ra : 如果只操作透明度通道，用ra表示。 <br>rc : 如果操作3个颜色通道，用rc表示。
 
 **起始版本：** 11
 
@@ -162,7 +168,7 @@ enum OH_Drawing_BlendMode
 enum OH_Drawing_TextEncoding
 ```
 
-**描述**
+**描述：**
 
 文本编码类型枚举。
 

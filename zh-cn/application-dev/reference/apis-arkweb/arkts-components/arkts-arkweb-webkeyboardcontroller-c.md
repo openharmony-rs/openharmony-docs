@@ -1,15 +1,10 @@
 # WebKeyboardController
 
-WebKeyboardController是ArkWeb提供的用于控制Web组件自定义键盘行为的控制器类。当Web页面中的输入框需要弹出键盘时，开发者可通过 [onInterceptKeyboardAttach](arkts-arkweb-web-attribute.md#oninterceptkeyboardattach)事件拦截系统默认键盘的挂载，并使用WebKeyboardController向当前聚焦的 Web输入框执行插入字符、前向/后向删除、发送Enter等功能键以及关闭自定义键盘等操作。该类适用于需要为Web场景实现自定义安全键盘、表情键盘、手写键盘或业务专属输入面板的应用，使开发者能够完全接管Web输入框的键盘输入逻辑。
+WebKeyboardController是ArkWeb提供的用于控制Web组件自定义键盘行为的控制器类。当Web页面中的输入框需要弹出键盘时，开发者可通过[onInterceptKeyboardAttach](arkts-arkweb-web-comp-attribute.md#oninterceptkeyboardattach)事件拦截系统默认键盘的挂载，并使用WebKeyboardController向当前聚焦的Web输入框执行插入字符、前向/后向删除、发送Enter等功能键以及关闭自定义键盘等操作。该类适用于需要为Web场景实现自定义安全键盘、表情键盘、手写键盘或业务专属输入面板的应用，使开发者能够完全接管Web输入框的键盘输入逻辑。
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## close
 
@@ -33,7 +28,7 @@ WebKeyboardController的构造函数。
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -53,7 +48,7 @@ deleteBackward(length: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| length | number | 是 | 删除光标后面的指定长度字符。 取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标后面所有字符；参数值为负数时，不执行删除操作。 |
+| length | number | 是 | 删除光标后面的指定长度字符。<br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标后面所有字符；参数值为负数时，不执行删除操作。 |
 
 ## deleteForward
 
@@ -71,7 +66,7 @@ deleteForward(length: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| length | number | 是 | 删除光标前面的指定长度字符。 取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标前面所有字符；参数值为负数时，不执行删除操作。 |
+| length | number | 是 | 删除光标前面的指定长度字符。<br>取值范围：[-2147483648 , 2147483647]，当参数值大于字符长度时，默认删除光标前面所有字符；参数值为负数时，不执行删除操作。 |
 
 ## insertText
 

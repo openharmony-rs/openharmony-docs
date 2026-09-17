@@ -1,0 +1,127 @@
+# createUnpremultipliedPixelMap
+
+## Modules to Import
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+```
+
+## createUnpremultipliedPixelMap
+
+```TypeScript
+function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback<void>): void
+```
+
+Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha format.
+
+**Since:** 12
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| src | [PixelMap](arkts-image-image-pixelmap-i.md) | Yes | The source pixelmap. |
+| dst | [PixelMap](arkts-image-image-pixelmap-i.md) | Yes | The destination pixelmap. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the operation result. If the operation fails, an error message is returned. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [62980103](../errorcode-image.md#62980103-unsupported-image-type) | The image data is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [62980246](../errorcode-image.md#62980246-failure-in-reading-the-pixelmap) | Failed to read the pixelMap. |
+| [62980248](../errorcode-image.md#62980248-no-modification-to-the-pixelmap) | Pixelmap not allow modify. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createUnpremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16 indicates the size of the pixel buffer to create. The value is calculated as follows: width × height × 4.
+  let bufferArr = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    bufferArr[i] = 255;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
+  }
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
+  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
+  let dstPixelMap = image.createPixelMapSync(optsForUnpre);
+  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in converting the PixelMap.');
+  });
+}
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createUnpremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16 indicates the size of the pixel buffer to create. The value is calculated as follows: width × height × 4.
+  let bufferArr = new Uint8Array(color);
+  for (let i = 0; i < bufferArr.length; i += 4) {
+    bufferArr[i] = 255;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
+  }
+  let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.PREMUL};
+  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
+  let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 }, alphaType: image.AlphaType.UNPREMUL};
+  let dstPixelMap = image.createPixelMapSync(optsForUnpre);
+  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting the PixelMap.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+
+## createUnpremultipliedPixelMap
+
+```TypeScript
+function createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise<void>
+```
+
+Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha format.
+
+**Since:** 12
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| src | [PixelMap](arkts-image-image-pixelmap-i.md) | Yes | The source pixelmap. |
+| dst | [PixelMap](arkts-image-image-pixelmap-i.md) | Yes | The destination pixelmap. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | A Promise instance used to return the operation result. If the operation fails, an error message is returned. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [62980103](../errorcode-image.md#62980103-unsupported-image-type) | The image data is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| [62980246](../errorcode-image.md#62980246-failure-in-reading-the-pixelmap) | Failed to read the pixelMap. |
+| [62980248](../errorcode-image.md#62980248-no-modification-to-the-pixelmap) | Pixelmap not allow modify. |
+
+**Examples**
+
+See [createUnpremultipliedPixelMap](#createunpremultipliedpixelmap)

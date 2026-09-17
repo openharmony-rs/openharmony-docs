@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## key
@@ -17,7 +18,7 @@
 key: string
 ```
 
-唯一标识插帧页面的key值。与[setBlanklessLoadingWithParams](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithparams)的key 值相同。
+唯一标识插帧页面的key值。与[setBlanklessLoadingWithParams](arkts-arkweb-webview-webviewcontroller-c.md#setblanklessloadingwithparams)的key值相同。
 
 **类型：** string
 

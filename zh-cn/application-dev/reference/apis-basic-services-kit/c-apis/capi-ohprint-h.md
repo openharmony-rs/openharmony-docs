@@ -2,7 +2,7 @@
 
 ## 概述
 
-Declares APIs for discovering and connecting to printers, printingfiles, and querying the list of added printers and printer information.
+Declares APIs for discovering and connecting to printers, printing files, and querying the list of added printers and printer information.
 
 **库：** libohprint.so
 
@@ -78,6 +78,17 @@ Declares APIs for discovering and connecting to printers, printingfiles, and que
 | [typedef void(\*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)](#oh_print_onjobstatechanged) | OH_Print_OnJobStateChanged | 打印任务状态回调。 |
 | [Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)](#oh_print_startprintwithjobstatecallback) | - | 此API下发打印任务，并附带任务状态变更回调功能。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void(*Print_WriteResultCallback)(const char *jobId, uint32_t code) | 写文件结果回调。<br>**起始版本：** 13 |
+| void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs, Print_WriteResultCallback writeCallback) | 打印开始布局回调。<br>**起始版本：** 13 |
+| void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state) | 打印任务状态回调。<br>**起始版本：** 13 |
+| void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo) | 打印机发现回调。<br>**起始版本：** 12 |
+| void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo) | 打印机变更回调。<br>**起始版本：** 12 |
+| void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state) | 打印任务状态回调。<br>**起始版本：** 24 |
+
 ## 枚举类型说明
 
 ### Print_ErrorCode
@@ -86,7 +97,7 @@ Declares APIs for discovering and connecting to printers, printingfiles, and que
 enum Print_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 定义错误码。
 
@@ -112,7 +123,7 @@ enum Print_ErrorCode
 enum Print_PrinterState
 ```
 
-**描述**
+**描述：**
 
 表示打印机状态。
 
@@ -130,7 +141,7 @@ enum Print_PrinterState
 enum Print_DiscoveryEvent
 ```
 
-**描述**
+**描述：**
 
 表示打印机发现事件。
 
@@ -149,7 +160,7 @@ enum Print_DiscoveryEvent
 enum Print_PrinterEvent
 ```
 
-**描述**
+**描述：**
 
 表示打印机变更事件。
 
@@ -168,7 +179,7 @@ enum Print_PrinterEvent
 enum Print_DuplexMode
 ```
 
-**描述**
+**描述：**
 
 表示双面打印模式。
 
@@ -186,7 +197,7 @@ enum Print_DuplexMode
 enum Print_ColorMode
 ```
 
-**描述**
+**描述：**
 
 表示色彩模式。
 
@@ -204,7 +215,7 @@ enum Print_ColorMode
 enum Print_OrientationMode
 ```
 
-**描述**
+**描述：**
 
 表示方向模式。
 
@@ -224,7 +235,7 @@ enum Print_OrientationMode
 enum Print_Quality
 ```
 
-**描述**
+**描述：**
 
 表示打印质量。
 
@@ -242,7 +253,7 @@ enum Print_Quality
 enum Print_DocumentFormat
 ```
 
-**描述**
+**描述：**
 
 表示文档的 MIME 媒体类型。
 
@@ -262,7 +273,7 @@ enum Print_DocumentFormat
 enum Print_JobDocAdapterState
 ```
 
-**描述**
+**描述：**
 
 表示打印任务文档适配器状态。
 
@@ -284,7 +295,7 @@ enum Print_JobDocAdapterState
 enum OH_Print_JobState
 ```
 
-**描述**
+**描述：**
 
 表示打印任务状态。
 
@@ -306,7 +317,7 @@ enum OH_Print_JobState
 typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 ```
 
-**描述**
+**描述：**
 
 写文件结果回调。
 
@@ -325,7 +336,7 @@ typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs, Print_WriteResultCallback writeCallback)
 ```
 
-**描述**
+**描述：**
 
 打印开始布局回调。
 
@@ -347,7 +358,7 @@ typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Pr
 typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 ```
 
-**描述**
+**描述：**
 
 打印任务状态回调。
 
@@ -366,7 +377,7 @@ typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
 ```
 
-**描述**
+**描述：**
 
 打印机发现回调。
 
@@ -385,7 +396,7 @@ typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const
 typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)
 ```
 
-**描述**
+**描述：**
 
 打印机变更回调。
 
@@ -404,7 +415,7 @@ typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Prin
 Print_ErrorCode OH_Print_Init()
 ```
 
-**描述**
+**描述：**
 
 此 API 检查并拉起打印服务，初始化打印客户端，并建立与打印服务的连接。
 
@@ -412,7 +423,7 @@ Print_ErrorCode OH_Print_Init()
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -424,13 +435,13 @@ Print_ErrorCode OH_Print_Init()
 Print_ErrorCode OH_Print_Release()
 ```
 
-**描述**
+**描述：**
 
 此 API 关闭与打印服务的连接，解散先前的回调，并释放打印客户端资源。
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -442,7 +453,7 @@ Print_ErrorCode OH_Print_Release()
 Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback callback)
 ```
 
-**描述**
+**描述：**
 
 此 API 开始发现打印机。
 
@@ -456,7 +467,7 @@ Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback ca
 | -- | -- |
 | [Print_PrinterDiscoveryCallback](capi-ohprint-h.md#print_printerdiscoverycallback) callback | 打印机发现事件的 [Print_PrinterDiscoveryCallback](capi-ohprint-h.md#print_printerdiscoverycallback)。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -468,7 +479,7 @@ Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback ca
 Print_ErrorCode OH_Print_StopPrinterDiscovery()
 ```
 
-**描述**
+**描述：**
 
 此 API 停止发现打印机。
 
@@ -476,7 +487,7 @@ Print_ErrorCode OH_Print_StopPrinterDiscovery()
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -488,7 +499,7 @@ Print_ErrorCode OH_Print_StopPrinterDiscovery()
 Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)
 ```
 
-**描述**
+**描述：**
 
 此 API 使用打印机 ID 连接打印机。
 
@@ -502,7 +513,7 @@ Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)
 | -- | -- |
 | const char *printerId | 待连接的打印机 ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -514,7 +525,7 @@ Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)
 Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)
 ```
 
-**描述**
+**描述：**
 
 此 API 开始发起打印任务。
 
@@ -528,7 +539,7 @@ Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)
 | -- | -- |
 | [const Print_PrintJob](capi-print-print-printjob.md) *printJob | 指向指定打印任务信息的 [Print_PrintJob](capi-print-print-printjob.md) 实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -540,7 +551,7 @@ Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)
 Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallback callback)
 ```
 
-**描述**
+**描述：**
 
 此 API 注册打印机变更回调。
 
@@ -554,7 +565,7 @@ Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallba
 | -- | -- |
 | [Print_PrinterChangeCallback](capi-ohprint-h.md#print_printerchangecallback) callback | 待注册的 [Print_PrinterChangeCallback](capi-ohprint-h.md#print_printerchangecallback)。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -566,7 +577,7 @@ Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallba
 void OH_Print_UnregisterPrinterChangeListener()
 ```
 
-**描述**
+**描述：**
 
 此 API 注销打印机变更回调。
 
@@ -580,7 +591,7 @@ void OH_Print_UnregisterPrinterChangeListener()
 Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)
 ```
 
-**描述**
+**描述：**
 
 此 API 查询已添加的打印机列表。
 
@@ -594,7 +605,7 @@ Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)
 | -- | -- |
 | [Print_StringList](capi-print-print-stringlist.md) *printerIdList | 用于存储查询到的打印机 ID 列表的 [Print_StringList](capi-print-print-stringlist.md) 实例指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -606,7 +617,7 @@ Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)
 void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)
 ```
 
-**描述**
+**描述：**
 
 此 API 释放用于查询的打印机列表内存。
 
@@ -624,7 +635,7 @@ void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)
 Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterInfo **printerInfo)
 ```
 
-**描述**
+**描述：**
 
 此 API 根据打印机 ID 查询打印机信息。
 
@@ -639,7 +650,7 @@ Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterIn
 | const char *printerId | 待查询的打印机 ID。 |
 | [Print_PrinterInfo](capi-print-print-printerinfo.md) **printerInfo | 用于存储打印机信息的 [Print_PrinterInfo](capi-print-print-printerinfo.md) 指针的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -651,7 +662,7 @@ Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterIn
 void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)
 ```
 
-**描述**
+**描述：**
 
 此 API 释放用于查询的打印机信息内存。
 
@@ -669,13 +680,13 @@ void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)
 Print_ErrorCode OH_Print_LaunchPrinterManager()
 ```
 
-**描述**
+**描述：**
 
 此 API 启动系统的打印机管理窗口。
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -687,7 +698,7 @@ Print_ErrorCode OH_Print_LaunchPrinterManager()
 Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Print_StringList *propertyKeyList, Print_PropertyList *propertyList)
 ```
 
-**描述**
+**描述：**
 
 此 API 根据属性关键字列表查询对应的打印机属性值。
 
@@ -703,7 +714,7 @@ Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Pri
 | [const Print_StringList](capi-print-print-stringlist.md) *propertyKeyList | 待查询的属性关键字列表。 |
 | [Print_PropertyList](capi-print-print-propertylist.md) *propertyList | 查询到的打印机属性值列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -715,7 +726,7 @@ Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Pri
 void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)
 ```
 
-**描述**
+**描述：**
 
 此 API 释放用于查询的属性列表内存。
 
@@ -733,7 +744,7 @@ void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)
 Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Print_PropertyList *propertyList)
 ```
 
-**描述**
+**描述：**
 
 此 API 根据属性键值对列表设置打印机属性。
 
@@ -748,7 +759,7 @@ Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Pr
 | const char *printerId | 待设置的打印机 ID。 |
 | [const Print_PropertyList](capi-print-print-propertylist.md) *propertyList | 待设置的打印机属性值列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -760,7 +771,7 @@ Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Pr
 Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const Print_StringList *propertyKeyList)
 ```
 
-**描述**
+**描述：**
 
 此 API 根据属性关键字列表将打印机属性恢复为默认设置。
 
@@ -775,7 +786,7 @@ Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const P
 | const char *printerId | 待恢复的打印机 ID。 |
 | [const Print_StringList](capi-print-print-stringlist.md) *propertyKeyList | 待恢复的属性关键字列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -787,7 +798,7 @@ Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const P
 Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)
 ```
 
-**描述**
+**描述：**
 
 此 API 提供启动打印对话框的能力。
 
@@ -803,7 +814,7 @@ Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_Prin
 | [Print_PrintDocCallback](capi-print-print-printdoccallback.md) printDocCallback | 打印文档状态回调。 |
 | void *context | 调用方应用的上下文。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -815,7 +826,7 @@ Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_Prin
 typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)
 ```
 
-**描述**
+**描述：**
 
 打印任务状态回调。
 
@@ -834,7 +845,7 @@ typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState s
 Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)
 ```
 
-**描述**
+**描述：**
 
 此API下发打印任务，并附带任务状态变更回调功能。
 
@@ -849,10 +860,10 @@ Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *pr
 | [const Print_PrintJob](capi-print-print-printjob.md) *printJob | 打印任务结构体。 |
 | [OH_Print_OnJobStateChanged](capi-ohprint-h.md#oh_print_onjobstatechanged) jobStateChangedCb | 打印任务状态回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。      <br>[PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 表示需要 {@link ohos.permission.PRINT} 权限。      <br>[PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) jobStateChangedCb为NULL。      <br>[PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode) 表示无法复制回调函数。      <br>[PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 表示无法连接到打印服务。      <br>[PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) 表示打印服务中无法创建打印任务结构体。      <br>[PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode) 无法在已连接的打印机列表中找到该打印机。      <br>[PRINT_ERROR_INVALID_PRINT_JOB](capi-ohprint-h.md#print_errorcode) 表示无法在任务队列中找到该任务。 |
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>    <br>[PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 表示需要 {@link ohos.permission.PRINT} 权限。<br>    <br>[PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) jobStateChangedCb为NULL。<br>    <br>[PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode) 表示无法复制回调函数。<br>    <br>[PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 表示无法连接到打印服务。<br>    <br>[PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) 表示打印服务中无法创建打印任务结构体。<br>    <br>[PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode) 无法在已连接的打印机列表中找到该打印机。<br>    <br>[PRINT_ERROR_INVALID_PRINT_JOB](capi-ohprint-h.md#print_errorcode) 表示无法在任务队列中找到该任务。 |
 
 

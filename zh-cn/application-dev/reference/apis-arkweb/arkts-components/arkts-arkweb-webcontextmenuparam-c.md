@@ -1,15 +1,16 @@
 # WebContextMenuParam
 
-WebContextMenuParam是ArkWeb组件中用于承载长按页面元素或鼠标右键弹出的上下文菜单信息的参数类，作为`onContextMenuShow`事件回调的数据载体，封装了菜单弹出位置、链接地址、媒体类型、选中文本、编辑 状态等关键信息。自定义Web组件上下文菜单时，使用WebContextMenuParam获取用户长按/右击位置的网页元素详细信息（如链接URL、图片内容、媒体类型、输入框类型、编辑状态等），判断用户操作场景，决定是否拦截默认菜单并构建自定义菜单项。自定义Web组件长按或右键菜单（如替换默认菜单、根据不同元素类型提供差异化菜单项、预览图片等）时，在`onContextMenuShow`事件回调中使用WebContextMenuParam获取上下文信息。示例代码参考[onContextMenuShow](arkts-arkweb-web-attribute.md#oncontextmenushow)。
+WebContextMenuParam是ArkWeb组件中用于承载长按页面元素或鼠标右键弹出的上下文菜单信息的参数类，作为`onContextMenuShow`事件回调的数据载体，封装了菜单弹出位置、链接地址、媒体类型、选中文本、编辑状态等关键信息。
+
+自定义Web组件上下文菜单时，使用WebContextMenuParam获取用户长按/右击位置的网页元素详细信息（如链接URL、图片内容、媒体类型、输入框类型、编辑状态等），判断用户操作场景，决定是否拦截默认菜单并构建自定义菜单项。
+
+自定义Web组件长按或右键菜单（如替换默认菜单、根据不同元素类型提供差异化菜单项、预览图片等）时，在`onContextMenuShow`事件回调中使用WebContextMenuParam获取上下文信息。
+
+示例代码参考[onContextMenuShow](arkts-arkweb-web-comp-attribute.md#oncontextmenushow)。
 
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## constructor
 
@@ -21,7 +22,7 @@ WebContextMenuParam的构造函数。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -35,7 +36,7 @@ existsImageContents(): boolean
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -73,7 +74,7 @@ getEditStateFlags(): number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -81,7 +82,7 @@ getEditStateFlags(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取网页元素可编辑标识，参照[ContextMenuEditStateFlags]{ |
+| number | 获取网页元素可编辑标识，参照[ContextMenuEditStateFlags](arkts-arkweb-contextmenueditstateflags-e.md)。 |
 
 ## getInputFieldType
 
@@ -93,7 +94,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -111,14 +112,14 @@ getLinkUrl(): string
 
 获取经过安全检查的URL链接地址，可用于构建自定义菜单时提供"打开链接"、"分享链接"、"复制链接"等操作。
 
-> **说明：**
+> **说明：** 
 > 
 > 与getUnfilteredLinkUrl()相比，该方法会对URL进行安全检查；与getSourceUrl()相比，该方法获取的是长按位置处的链接URL，而getSourceUrl()获取的是选中元素的src属性URL（如图
 > 像、媒体等资源）。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -136,13 +137,13 @@ getMediaType(): ContextMenuMediaType
 
 获取网页元素的媒体类型。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 22开始，[getContextMenuMediaType](#getcontextmenumediatype)提供更丰富的媒体类型识别能力。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -168,7 +169,7 @@ getPreviewHeight(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预览图的高。 |
+| number | 预览图的高。<br>单位：px（物理像素）。 |
 
 ## getPreviewWidth
 
@@ -186,7 +187,7 @@ getPreviewWidth(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 预览图的宽。 |
+| number | 预览图的宽。<br>单位：px（物理像素）。 |
 
 ## getSelectionText
 
@@ -198,7 +199,7 @@ getSelectionText(): string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -218,7 +219,7 @@ getSourceType(): ContextMenuSourceType
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -238,7 +239,7 @@ getSourceUrl(): string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -258,7 +259,7 @@ getUnfilteredLinkUrl(): string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -278,7 +279,7 @@ isEditable(): boolean
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -298,7 +299,7 @@ x(): number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -306,7 +307,7 @@ x(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取成功时返回非负整数，失败时返回-1。 |
+| number | 获取成功时返回非负整数，失败时返回-1。<br>单位：px（物理像素）。 |
 
 ## y
 
@@ -318,7 +319,7 @@ y(): number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -326,4 +327,4 @@ y(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取成功时返回非负整数，失败时返回-1。 |
+| number | 获取成功时返回非负整数，失败时返回-1。<br>单位：px（物理像素）。 |

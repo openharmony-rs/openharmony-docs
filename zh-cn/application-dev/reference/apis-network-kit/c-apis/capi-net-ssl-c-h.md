@@ -36,7 +36,7 @@
 uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)
 ```
 
-**描述**
+**描述：**
 
 对外暴露的证书链校验接口。
 
@@ -48,10 +48,10 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | 用户传入的待校验证书。 |
-| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | 用户指定的证书，若为空则以系统预置证书进行校验。 |
+| const struct NetStack_CertBlob *cert | 用户传入的待校验证书。 |
+| const struct NetStack_CertBlob *caCert | 用户指定的证书，若为空则以系统预置证书进行校验。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -63,7 +63,7 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)
 ```
 
-**描述**
+**描述：**
 
 获取证书锁定信息。
 
@@ -76,9 +76,9 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 | 参数项 | 描述 |
 | -- | -- |
 | const char *hostname | 主机名。 |
-| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) *pin | 证书锁定信息的结构体。 |
+| NetStack_CertificatePinning *pin | 证书锁定信息的结构体。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -90,7 +90,7 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)
 ```
 
-**描述**
+**描述：**
 
 获取证书信息。
 
@@ -103,9 +103,9 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 | 参数项 | 描述 |
 | -- | -- |
 | const char *hostname | 主机名。 |
-| [NetStack_Certificates](capi-netstack-netstack-certificates.md) *certs | 证书信息的结构体。 |
+| NetStack_Certificates *certs | 证书信息的结构体。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -117,7 +117,7 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 ```
 
-**描述**
+**描述：**
 
 释放证书内容。
 
@@ -129,7 +129,7 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetStack_Certificates](capi-netstack-netstack-certificates.md) *certs | 证书信息。 |
+| NetStack_Certificates *certs | 证书信息。 |
 
 ### OH_Netstack_IsCleartextPermitted()
 
@@ -137,7 +137,7 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 ```
 
-**描述**
+**描述：**
 
 整体明文HTTP是否允许。
 
@@ -151,7 +151,7 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 | -- | -- |
 | bool *isCleartextPermitted | 输出参数，如果允许明文流量，则true，否则false。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -163,7 +163,7 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)
 ```
 
-**描述**
+**描述：**
 
 按域名明文HTTP是否允许。
 
@@ -178,7 +178,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 | const char *hostname | 主机名。 |
 | bool *isCleartextPermitted | 输出参数，如果允许指定主机名的明文流量，则true，否则false。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -190,7 +190,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)
 ```
 
-**描述**
+**描述：**
 
 检查组件是否已配置开启明文HTTP拦截功能。
 
@@ -203,7 +203,7 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 | const char *component | 组件名称，当前支持的组件：Network Kit、ArkWeb。 |
 | bool *componentCfg | 输出参数，组件是否配置开启明文HTTP拦截功能，如果开启则为true，否则为false。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -215,13 +215,13 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob *cert, size_t certCount, const struct NetStack_CertBlob *caCert, const char *hostname, struct NetStack_CertBlob **outSortedChain, size_t *outSortedCount)
 ```
 
-**描述**
+**描述：**
 
 创建并验证排序的证书链。
 
->**说明：** 
->After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the
- *       allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
+> **说明：**
+>
+> After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
 **起始版本：** 26.0.0
 
@@ -229,14 +229,14 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *cert | 要验证的证书链。不能为NULL或空。 |
+| const struct NetStack_CertBlob *cert | 要验证的证书链。不能为NULL或空。 |
 | size_t certCount | 证书链中的证书数量。 |
-| [const struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *caCert | 用户指定的CA证书。如果为NULL，则使用预设证书。 |
+| const struct NetStack_CertBlob *caCert | 用户指定的CA证书。如果为NULL，则使用预设证书。 |
 | const char *hostname | 预期的服务器主机名。 |
-| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) **outSortedChain | 用于接收排序证书链的指针。如果调用者不需要链数据，可以为NULL。仅在返回值为0时有效。必须使用OH_NetStack_FreeCertChain释放分配的内存。 |
+| struct NetStack_CertBlob **outSortedChain | 用于接收排序证书链的指针。 如果调用者不需要链数据，可以为NULL。 仅在返回值为0时有效。 必须使用OH_NetStack_FreeCertChain释放分配的内存。 |
 | size_t *outSortedCount | 用于接收排序证书数量的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -248,7 +248,7 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)
 ```
 
-**描述**
+**描述：**
 
 释放由OH_NetStack_CreateAndVerifySortedCertChain分配的证书链。
 
@@ -258,7 +258,7 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct NetStack_CertBlob](capi-netstack-netstack-certblob.md) *certChain | 从outSortedChain接收的证书链指针。如果为NULL，此函数不执行任何操作。 |
+| struct NetStack_CertBlob *certChain | 从outSortedChain接收的证书链指针。 如果为NULL，此函数不执行任何操作。 |
 | size_t certCount | 证书链中的证书数量。 |
 
 

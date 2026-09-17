@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## isRealTitle
 
 ```TypeScript
 isRealTitle?: boolean
 ```
 
-document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。默认值：false
+document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。
+
+默认值：false
 
 **类型：** boolean
 
@@ -37,6 +34,6 @@ document标题内容。
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

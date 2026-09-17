@@ -6,7 +6,7 @@ typedef struct ffrt_function_header_t {...} ffrt_function_header_t
 
 ## 概述
 
-任务执行体，用于定义任务的执行和销毁回调。`exec`回调在任务被调度时调用，`destroy`回调在任务完成后被调用以释放任务相关资源。两者共同管理FFRT任务的完整生命周期。
+任务执行体，用于定义任务的执行和销毁回调。<br> `exec`回调在任务被调度时调用，`destroy`回调在任务完成后被调用以释放任务相关资源。两者共同管理FFRT任务的完整生命周期。
 
 **起始版本：** 10
 

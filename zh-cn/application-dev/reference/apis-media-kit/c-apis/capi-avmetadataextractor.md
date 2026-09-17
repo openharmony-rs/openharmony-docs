@@ -7,6 +7,7 @@
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
+
 ## 文件汇总
 
 | 名称 | 描述 |

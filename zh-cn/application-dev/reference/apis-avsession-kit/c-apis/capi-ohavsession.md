@@ -7,6 +7,7 @@
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
+
 ## 文件汇总
 
 | 名称 | 描述 |

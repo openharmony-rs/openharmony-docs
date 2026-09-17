@@ -28,7 +28,7 @@
 enum CloudDisk_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 定义云盘管理模块的错误码。
 

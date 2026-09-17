@@ -1,0 +1,4 @@
+# VkRenderPassSampleLocationsBeginInfoEXT
+
+## Overview
+

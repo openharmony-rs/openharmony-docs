@@ -1,0 +1,4 @@
+# VkSharedPresentSurfaceCapabilitiesKHR
+
+## Overview
+

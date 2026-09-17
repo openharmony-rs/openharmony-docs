@@ -1,0 +1,4 @@
+# VkDedicatedAllocationMemoryAllocateInfoNV
+
+## Overview
+

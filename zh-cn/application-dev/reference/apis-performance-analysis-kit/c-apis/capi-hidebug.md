@@ -2,9 +2,10 @@
 
 ## 概述
 
-Provides debug code define.For example, you can use these code for check result or parameter of HiDebug function.
+Provides debug code define.<br> For example, you can use these code for check result or parameter of HiDebug function.
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

@@ -25,7 +25,7 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_AvoidArea](capi-windowmanager-windowmanager-avoidarea.md) | WindowManager_AvoidArea | The struct describes the avoid area. |
 | [struct](capi-windowmanager-struct.md) | OH_PixelmapNative | Describes the pixel image information. |
 | [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | 帧率指标数据对象。 |
-| [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Window density information, including the system display size scaling factor, system default display sizescaling factor, and custom display size scaling factor of the screen where the window is located. |
+| [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Window density information, including the system display size scaling factor, system default display size scaling factor, and custom display size scaling factor of the screen where the window is located. |
 
 ### 枚举
 
@@ -41,6 +41,13 @@ The file declares the common enums and definitions of the window manager.
 | -- | -- | -- |
 | [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | density信息回调类型。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*OH_WindowManager_FrameMetricsMeasuredCallback)( int32_t windowId, const OH_WindowManager_FrameMetrics* metrics) | 帧率指标回调类型。<br>**起始版本：** 26.0.0 |
+| void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info) | density信息回调类型。<br>**起始版本：** 24 |
 
 ## 枚举类型说明
 

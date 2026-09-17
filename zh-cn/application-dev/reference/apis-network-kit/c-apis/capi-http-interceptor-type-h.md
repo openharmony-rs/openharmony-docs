@@ -37,6 +37,12 @@
 | -- | -- | -- |
 | [typedef OH_Interceptor_Result (\*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)](#oh_http_interceptorhandler) | OH_Http_InterceptorHandler | 定义HTTP拦截器处理函数。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| OH_Interceptor_Result (*OH_Http_InterceptorHandler)( OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified) | 定义HTTP拦截器处理函数。<br>**起始版本：** 24 |
+
 ## 枚举类型说明
 
 ### OH_Interceptor_Stage
@@ -45,7 +51,7 @@
 enum OH_Interceptor_Stage
 ```
 
-**描述**
+**描述：**
 
 定义拦截器的执行阶段。
 
@@ -62,7 +68,7 @@ enum OH_Interceptor_Stage
 enum OH_Interceptor_Type
 ```
 
-**描述**
+**描述：**
 
 定义拦截器的类型。
 
@@ -79,7 +85,7 @@ enum OH_Interceptor_Type
 enum OH_Interceptor_Result
 ```
 
-**描述**
+**描述：**
 
 定义拦截器的处理结果。
 
@@ -99,7 +105,7 @@ enum OH_Interceptor_Result
 typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_Request *request, OH_Http_Interceptor_Response *response, int32_t *isModified)
 ```
 
-**描述**
+**描述：**
 
 定义HTTP拦截器处理函数。
 
@@ -111,9 +117,9 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_
 | -- | -- |
 | [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) \*request | HTTP请求数据包指针（仅在请求阶段有效）。 |
 | [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) \*response | HTTP响应数据包指针（仅在响应阶段有效）。 |
-| int32_t \*isModified | 标识拦截器是否修改了数据包。对OH_TYPE_READ_ONLY类型拦截器无效，可配置为nullptr。<br>- 0表示未对数据执行修改操作。<br>- 非0表示已对数据执行修改操作。 |
+| int32_t \*isModified | 标识拦截器是否修改了数据包。对OH_TYPE_READ_ONLY类型拦截器无效，可配置为nullptr。 <br>- 0表示未对数据执行修改操作。 <br>- 非0表示已对数据执行修改操作。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

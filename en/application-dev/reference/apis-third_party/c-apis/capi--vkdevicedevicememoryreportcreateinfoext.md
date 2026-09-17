@@ -1,0 +1,4 @@
+# VkDeviceDeviceMemoryReportCreateInfoEXT
+
+## Overview
+

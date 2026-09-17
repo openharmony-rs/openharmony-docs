@@ -42,11 +42,20 @@
 | [Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_deleteframerates) | - | 删除帧率列表。 |
 | [Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutput, int32_t minFps, int32_t maxFps)](#oh_previewoutput_setframerate) | - | 设置预览输出帧率。 |
 | [Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_getactiveframerate) | - | 获取当前预览输出帧率。 |
-| [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported) ](#oh_previewoutput_isbandwidthcompressionsupported) | - | 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。 |
-| [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | 使能预览带宽压缩。<br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之前调用，否则会影响预览流出流格式。 |
+| [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)
+ ](#oh_previewoutput_isbandwidthcompressionsupported) | - | 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。 |
+| [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | 使能预览带宽压缩。 <br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之前调用，否则会影响预览流出流格式。 |
 | [bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previewOutput)](#oh_previewoutput_islogviewassistsupported) | - | 检查是否支持辅助监看功能。 |
-| [Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* previewOutput, bool enable)](#oh_previewoutput_setlogviewassistenable) | - | 使能辅助监看功能。<br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之后调用。 |
+| [Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* previewOutput, bool enable)](#oh_previewoutput_setlogviewassistenable) | - | 使能辅助监看功能。 <br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之后调用。 |
 | [Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput* previewOutput, const char* surfaceId)](#oh_previewoutput_adddeferredsurface) | - | 配置延迟预览的Surface。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*OH_PreviewOutput_OnFrameStart)(Camera_PreviewOutput* previewOutput) | 在[PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)中被调用的预览输出帧开始回调。<br>**起始版本：** 11 |
+| void (*OH_PreviewOutput_OnFrameEnd)(Camera_PreviewOutput* previewOutput, int32_t frameCount) | 在[PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)中被调用的预览输出帧结束回调。<br>**起始版本：** 11 |
+| void (*OH_PreviewOutput_OnError)(Camera_PreviewOutput* previewOutput, Camera_ErrorCode errorCode) | 在[PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)中被调用的预览输出帧错误回调。<br>**起始版本：** 11 |
 
 ## 函数说明
 
@@ -130,7 +139,7 @@ Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* preview
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 预览输出实例。 |
 | [PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)* callback | 要注册的预览输出更改事件回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -155,7 +164,7 @@ Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previ
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 预览输出实例。 |
 | [PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)* callback | 要注销的预览输出更改事件回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -179,7 +188,7 @@ Camera_ErrorCode OH_PreviewOutput_Start(Camera_PreviewOutput* previewOutput)
 | -- | -- |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 要启动的预览输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -203,7 +212,7 @@ Camera_ErrorCode OH_PreviewOutput_Stop(Camera_PreviewOutput* previewOutput)
 | -- | -- |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 要停止的预览输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -227,7 +236,7 @@ Camera_ErrorCode OH_PreviewOutput_Release(Camera_PreviewOutput* previewOutput)
 | -- | -- |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 要释放的预览输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -252,7 +261,7 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveProfile(Camera_PreviewOutput* preview
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 提供当前预览输出配置文件的预览输出实例。 |
 | Camera_Profile** profile | 如果方法调用成功，将记录当前的预览输出配置文件。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -276,7 +285,7 @@ Camera_ErrorCode OH_PreviewOutput_DeleteProfile(Camera_Profile* profile)
 | -- | -- |
 | Camera_Profile* profile | 要被删除的预览配置文件实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -302,7 +311,7 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previ
 | int displayRotation | 当前显示的旋转角度。 |
 | Camera_ImageRotation* imageRotation | 预览旋转角度结果。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -327,7 +336,7 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation(Camer
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 用于获取预览旋转角度的预览输出实例。 |
 | Camera_ImageRotation* imageRotation | 预览旋转角度结果。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -351,9 +360,9 @@ Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previ
 | -- | -- |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 用于设置预览旋转角度的预览输出实例。 |
 | Camera_ImageRotation previewRotation | 预览的显示旋转角度。 |
-| bool isDisplayLocked | Surface在屏幕旋转时是否锁定方向，未设置时默认取值为false，即不锁定方向。true表示锁定方向，false表示不锁定方向。详情请参考{@link SurfaceRotationOptions}。 |
+| bool isDisplayLocked | Surface在屏幕旋转时是否锁定方向，未设置时默认取值为false，即不锁定方向。true表示锁定方向，false表示不锁定方向。详情请参考 {@link SurfaceRotationOptions}。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -379,7 +388,7 @@ Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* p
 | Camera_FrameRateRange** frameRateRange | 如果方法调用成功，将记录支持的预览输出帧率列表。 |
 | uint32_t* size | 如果方法调用成功，将记录支持的预览输出帧率列表大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -404,7 +413,7 @@ Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* preview
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 预览输出实例。 |
 | Camera_FrameRateRange* frameRateRange | 要删除的帧率列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -430,7 +439,7 @@ Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutp
 | int32_t minFps | 要设置的最小值。 |
 | int32_t maxFps | 要设置的最大值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -455,7 +464,7 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previ
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 传递当前预览输出帧率的预览输出实例。 |
 | Camera_FrameRateRange* frameRateRange | 如果方法调用成功，则将记录当前的{@link Camera_FrameRateRange}。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -464,7 +473,8 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previ
 ### OH_PreviewOutput_IsBandwidthCompressionSupported()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported) 
+Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)
+ 
 ```
 
 **描述：**
@@ -480,7 +490,7 @@ Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_Preview
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 预览输出实例。 |
 | isSupported | 是否支持带宽压缩的结果。true表示支持，false表示不支持。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -494,7 +504,7 @@ Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutpu
 
 **描述：**
 
-使能预览带宽压缩。<br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之前调用，否则会影响预览流出流格式。
+使能预览带宽压缩。 <br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之前调用，否则会影响预览流出流格式。
 
 **起始版本：** 23
 
@@ -505,7 +515,7 @@ Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutpu
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 传递当前要预览带宽压缩使能的预览输出实例。 |
 | bool enabled | 是否使能预览带宽压缩。true表示使能，false表示不使能。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -529,7 +539,7 @@ bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previ
 | -- | -- |
 | [const Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 预览输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -543,7 +553,7 @@ Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* p
 
 **描述：**
 
-使能辅助监看功能。<br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之后调用。
+使能辅助监看功能。 <br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之后调用。
 
 **起始版本：** 26.0.0
 
@@ -554,7 +564,7 @@ Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* p
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 指向当前要使能辅助监看的预览输出实例的指针。 |
 | bool enable | 是否使能预览辅助监看。true表示使能，false表示不使能。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -579,7 +589,7 @@ Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput*
 | [const Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 添加surfaceId的预览输出实例。 |
 | const char* surfaceId | 用于创建Camera_PreviewOutput实例的surfaceId。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

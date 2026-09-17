@@ -1,0 +1,4 @@
+# VkMemoryDedicatedRequirements
+
+## Overview
+

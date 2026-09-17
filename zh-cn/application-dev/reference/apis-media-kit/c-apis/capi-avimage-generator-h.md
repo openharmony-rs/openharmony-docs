@@ -37,13 +37,13 @@
 OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建OH_AVImageGenerator实例，用于生成指定时间点视频帧。
 
 **起始版本：** 18
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -55,7 +55,7 @@ OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int32_t fd, int64_t offset, int64_t size)
 ```
 
-**描述**
+**描述：**
 
 通过媒体文件描述符设置数据源。
 
@@ -70,7 +70,7 @@ OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int
 | int64_t offset | 媒体源在文件描述符中的偏移量。 |
 | int64_t size | 媒体源的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -82,7 +82,7 @@ OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int
 OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
 ```
 
-**描述**
+**描述：**
 
 从视频资源中获取指定时间点视频帧。
 
@@ -97,7 +97,7 @@ OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator
 | OH_AVImageGenerator_QueryOptions options | 指定如何根据给定时间点查找视频帧的选项。 |
 | OH_PixelmapNative** pixelMap | 获取的视频帧对象。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -109,7 +109,7 @@ OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator
 OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 ```
 
-**描述**
+**描述：**
 
 释放用于OH_AVImageGenerator的资源以及销毁OH_AVImageGenerator实例。
 
@@ -121,7 +121,7 @@ OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 | -- | -- |
 | [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* generator | 指向OH_AVImageGenerator实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

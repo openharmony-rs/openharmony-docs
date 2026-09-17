@@ -28,7 +28,7 @@
 enum ImageEffect_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 效果器错误码。
 

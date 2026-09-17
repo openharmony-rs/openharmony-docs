@@ -9,6 +9,7 @@ MediaSourceInfo 是表示媒体源信息的数据类。在 Web 媒体播放场�
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## format
@@ -23,7 +24,7 @@ format: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -39,7 +40,7 @@ source: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -51,7 +52,7 @@ type: SourceType
 
 媒体源的类型。
 
-**类型：** SourceType
+**类型：** [SourceType](arkts-arkweb-webview-sourcetype-e.md)
 
 **起始版本：** 12
 

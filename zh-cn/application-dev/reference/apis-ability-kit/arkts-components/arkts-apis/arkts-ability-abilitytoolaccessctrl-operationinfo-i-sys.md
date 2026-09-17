@@ -1,0 +1,46 @@
+# OperationInfo（系统接口）
+
+操作信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+```
+
+## info
+
+```TypeScript
+info: CliCmdInfo | Permissions
+```
+
+操作详细信息。
+
+**类型：** [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md) &#124; Permissions
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**系统接口：** 此接口为系统接口。
+
+## operationType
+
+```TypeScript
+operationType: OperationType
+```
+
+操作类型。
+
+**类型：** OperationType
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Security.Asset
+
+**系统接口：** 此接口为系统接口。

@@ -75,6 +75,14 @@
 | [OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()](#oh_arkui_decorationstyleoptions_create) | - | 创建一个装饰线样式对象。当该对象不再使用时，请调用[OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy)销毁。 |
 | [void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_decorationstyleoptions_destroy) | - | 销毁装饰线样式对象。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*ArkUI_TextCreateMenuCallback)( ArkUI_TextMenuItemArray* items, void* userData ) | 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。<br>**起始版本：** 22 |
+| void (*ArkUI_TextPrepareMenuCallback)( ArkUI_TextMenuItemArray* items, void* userData ) | 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。<br>**起始版本：** 22 |
+| bool (*ArkUI_TextMenuItemClickCallback)( const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData ) | 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。<br>**起始版本：** 22 |
+
 ## 枚举类型说明
 
 ### ArkUI_TextAlignment
@@ -399,7 +407,7 @@ enum ArkUI_TextSpanType
 | ARKUI_TEXT_SPAN_TYPE_TEXT = 0 | 选中文本内容为文字类型。 |
 | ARKUI_TEXT_SPAN_TYPE_IMAGE = 1 | 选中文本内容为图像类型。 |
 | ARKUI_TEXT_SPAN_TYPE_MIXED = 2 | 选中文本内容为图文混合类型。 |
-| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，选中文本后会显示与选中文本内容类型对应的菜单。如果设置为此类型但其他类型未设置时，选中文本后会显示此类型对应的菜单。例如，同时设置了文本识别类型为ARKUI_TEXT_SPAN_TYPE_TEXT、ARKUI_TEXT_SPAN_TYPE_DEFAULT的两个菜单，此时选中文本内容为文字类型会触发ARKUI_TEXT_SPAN_TYPE_TEXT对应的菜单弹出，选中文本内容为图像类型则会触发ARKUI_TEXT_SPAN_TYPE_DEFAULT对应的菜单弹出。 |
+| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，选中文本后会显示与选中文本内容类型对应的菜单。如果设置为此类型但其他类型未设置时，选中文本后会显示此类型对应的菜单。 例如，同时设置了文本识别类型为ARKUI_TEXT_SPAN_TYPE_TEXT、ARKUI_TEXT_SPAN_TYPE_DEFAULT的两个菜单， 此时选中文本内容为文字类型会触发ARKUI_TEXT_SPAN_TYPE_TEXT对应的菜单弹出，选中文本内容为图像类型则会触发ARKUI_TEXT_SPAN_TYPE_DEFAULT对应的菜单弹出。 |
 
 ### ArkUI_TextResponseType
 
@@ -418,7 +426,7 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
-| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
+| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。 例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单， 此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
 
 
 ## 函数说明
@@ -482,7 +490,7 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, 
 | int32_t end | 选中文本结束索引。 |
 | void\* userData | 用户自定义数据。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -500,7 +508,7 @@ ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 
 **起始版本：** 22
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -580,7 +588,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-showcounterconfig.md)* config | 指向文本输入框计数器的配置对象指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -604,7 +612,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 | -- | -- |
 | [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-showcounterconfig.md)* config | 指向文本输入框计数器的配置对象指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -622,7 +630,7 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 **起始版本：** 22
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -658,7 +666,7 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 
 **起始版本：** 22
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -694,7 +702,7 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()
 
 **起始版本：** 22
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -730,7 +738,7 @@ ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()
 
 **起始版本：** 23
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -788,9 +796,9 @@ void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseCon
 
 | 参数项 | 描述 |
 | -- | -- |
-| {ArkUI_TextContentBaseController*} | controller 待修改的配置对象指针。通过此controller将起始索引与结束索引传递给与其绑定的输入框组件并进行滚动操作。 |
-| {int32_t} | start 起始文字索引值。起始索引应小于等于结束索引，否则接口调用无效。取值范围[0, 输入框文本总长度]，起始索引小于0视为0，大于总长度视为总长度。 |
-| {int32_t} | end 结束文字索引值。结束索引应大于等于起始索引，否则接口调用无效。取值范围[0, 输入框文本总长度]，结束索引小于0视为0，大于总长度视为总长度。 |
+| {ArkUI_TextContentBaseController*} | controller 待修改的配置对象指针。 通过此controller将起始索引与结束索引传递给与其绑定的输入框组件并进行滚动操作。 |
+| {int32_t} | start 起始文字索引值。 起始索引应小于等于结束索引，否则接口调用无效。取值范围[0, 输入框文本总长度]，起始索引小于0视为0，大于总长度视为总长度。 |
+| {int32_t} | end 结束文字索引值。 结束索引应大于等于起始索引，否则接口调用无效。取值范围[0, 输入框文本总长度]，结束索引小于0视为0，大于总长度视为总长度。 |
 
 ### OH_ArkUI_DecorationStyleOptions_Create()
 
@@ -804,7 +812,7 @@ OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
 
 **起始版本：** 24
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

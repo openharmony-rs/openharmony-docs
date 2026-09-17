@@ -1,0 +1,4 @@
+# VkExternalBufferProperties
+
+## Overview
+

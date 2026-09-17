@@ -5,6 +5,7 @@
 Provide the definition of the C interface for the audio module.
 
 **起始版本：** 26.0.0
+
 ## 文件汇总
 
 | 名称 | 描述 |

@@ -1,0 +1,4 @@
+# VkExternalMemoryProperties
+
+## Overview
+

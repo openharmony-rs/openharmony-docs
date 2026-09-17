@@ -27,7 +27,7 @@ ArkUI提供的Native侧自定义弹窗接口集合，用于在Native层创建和
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | 弹窗避让键盘后，和键盘之间距离。  |
+| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | 弹窗避让键盘后，和键盘之间距离。<br>  |
 | [int32_t (\*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)](#setlevelmode) | 设置弹窗的显示层级。 |
 | [int32_t (\*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)](#setleveluniqueid) | 设置弹窗显示层级页面下的节点id。 |
 | [int32_t (\*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)](#setimmersivemode) | 设置嵌入式弹窗蒙层的显示区域。 |
@@ -42,7 +42,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 
 **描述：**
 
-弹窗避让键盘后，和键盘之间距离。 
+弹窗避让键盘后，和键盘之间距离。<br> 
 
 > **说明：**
 >
@@ -58,11 +58,11 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 |  float distance | 弹窗与键盘之间保持的避让距离，单位由unit参数指定。 |
 |  ArkUI_LengthMetricUnit unit | 避让距离的单位，参数类型{@link ArkUI_LengthMetricUnit}。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。          <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。          <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} 接口初始化错误。          <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。          <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_CAPI_INIT_ERROR} 接口初始化错误。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### setLevelMode()
 
@@ -87,11 +87,11 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 | ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
 |  [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode | 显示层级的枚举值， 类型为[ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode)。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。         <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。         <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。         <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### setLevelUniqueId()
 
@@ -116,11 +116,11 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 | ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
 |  int32_t uniqueId | 指定节点id，会查找该节点所在页面，并将弹窗显示在该页面下。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。         <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。         <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。         <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### setImmersiveMode()
 
@@ -145,10 +145,10 @@ int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode
 | ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
 |  [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode | 显示区域类型的枚举值， 类型为[ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode)。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。         <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。         <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。         <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 

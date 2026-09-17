@@ -5,6 +5,7 @@
 Provide the definition of the C interface for the native OsAccount.
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

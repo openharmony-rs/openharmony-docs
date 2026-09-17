@@ -2,7 +2,7 @@
 
 ## 概述
 
-The file declares the APIs for obtaining the following ability resource information: bundle name, module name,ability name, icon, clone index, and whether the application is a default application.
+The file declares the APIs for obtaining the following ability resource information: bundle name, module name, ability name, icon, clone index, and whether the application is a default application.
 
 **库：** libbundle_ndk.z.so
 
@@ -55,11 +55,11 @@ BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityRes
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | char** bundleName | 获取的包名。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_NativeBundle_GetModuleName()
 
@@ -80,11 +80,11 @@ BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityRes
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | char** moduleName | 获取的模块名。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_NativeBundle_GetAbilityName()
 
@@ -105,11 +105,11 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityRe
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | char** abilityName | 获取的组件名。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_NativeBundle_GetLabel()
 
@@ -130,11 +130,11 @@ BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResource
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | char** label | 获取的应用名称。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_NativeBundle_GetAppIndex()
 
@@ -155,11 +155,11 @@ BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResou
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | int* appIndex | 获取的分身索引。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_NativeBundle_CheckDefaultApp()
 
@@ -180,11 +180,11 @@ BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityR
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | bool* isDefault | 组件所属的应用是否为默认应用，默认应用是指用户为特定文件类型或操作设定的首选应用。取值true为默认应用，false为非默认应用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_AbilityResourceInfo_Destroy()
 
@@ -205,11 +205,11 @@ BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityRe
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 要释放的组件资源信息。 |
 | size_t count | 表示组件资源信息数组的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 ### OH_NativeBundle_GetSize()
 
@@ -223,7 +223,7 @@ int OH_NativeBundle_GetSize()
 
 **起始版本：** 21
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -248,10 +248,10 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | 指定组件资源信息。 |
 | ArkUI_DrawableDescriptor** drawableIcon | 组件图标资源对应的{@link DrawableDescriptor}对象。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。      </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
+| BundleManager_ErrorCode | 执行结果。      <ul><li>如果获取成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。<br>    </li><li>如果获取失败，返回{@link BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID}，这是由于abilityResourceInfo为空指针所致。</li></ul> |
 
 

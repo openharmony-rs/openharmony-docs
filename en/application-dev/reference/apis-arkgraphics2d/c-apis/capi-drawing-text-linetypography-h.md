@@ -1,0 +1,130 @@
+# drawing_text_lineTypography.h
+
+## Overview
+
+Provides APIs related to typography lines, such as obtaining the number of characters that can be typeset starting from a specified position.
+
+**Library**: libnative_drawing.so
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 8
+
+**Related module**: [Drawing](capi-drawing.md)
+
+## Summary
+
+### Function
+
+| Name | Description |
+| -- | -- |
+| [OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_TypographyCreate* handler)](#oh_drawing_createlinetypography) | Creates a pointer to a typography line object {@link OH_Drawing_LineTypography}. The typography line object serves as a container for storing text content and styles, and can be used to calculate single-line typography information. |
+| [void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)](#oh_drawing_destroylinetypography) | Releases the memory occupied by an {@link OH_Drawing_LineTypography} object. |
+| [size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography, size_t startIndex, double width)](#oh_drawing_linetypographygetlinebreak) | Obtains the number of characters that can fit in the layout from the specified position within a limited layout width. |
+| [OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography, size_t startIndex, size_t count)](#oh_drawing_linetypographycreateline) | Creates a pointer to an {@link OH_Drawing_TextLine} object based on the text content in a specified range. |
+
+## Function description
+
+### OH_Drawing_CreateLineTypography()
+
+```c
+OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_TypographyCreate* handler)
+```
+
+**Description**
+
+Creates a pointer to a typography line object {@link OH_Drawing_LineTypography}. The typography line object serves as a container for storing text content and styles, and can be used to calculate single-line typography information.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 18
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| OH_Drawing_TypographyCreate* handler | Pointer to the {@link OH_Drawing_TypographyCreate} object, which is obtained from<br>    {@link OH_Drawing_CreateTypographyHandler}. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| OH_Drawing_LineTypography* | Returns the pointer to the {@link OH_Drawing_LineTypography} object created. |
+
+### OH_Drawing_DestroyLineTypography()
+
+```c
+void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)
+```
+
+**Description**
+
+Releases the memory occupied by an {@link OH_Drawing_LineTypography} object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 18
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| OH_Drawing_LineTypography* lineTypography | Pointer to the {@link OH_Drawing_LineTypography} object, which is obtained from [OH_Drawing_CreateLineTypography](capi-drawing-text-linetypography-h.md#oh_drawing_createlinetypography). |
+
+### OH_Drawing_LineTypographyGetLineBreak()
+
+```c
+size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography, size_t startIndex, double width)
+```
+
+**Description**
+
+Obtains the number of characters that can fit in the layout from the specified position within a limited layout width.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 18
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| OH_Drawing_LineTypography* lineTypography | Pointer to the {@link OH_Drawing_LineTypography} object, which is obtained from [OH_Drawing_CreateLineTypography](capi-drawing-text-linetypography-h.md#oh_drawing_createlinetypography). |
+| size_t startIndex | Start position (inclusive) for calculating the typography. The value is an integer in the range [0, total count of text characters). |
+| double width | Layout width. The value is a floating point number greater than 0, in px. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| size_t | Returns the number of characters. |
+
+### OH_Drawing_LineTypographyCreateLine()
+
+```c
+OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography, size_t startIndex, size_t count)
+```
+
+**Description**
+
+Creates a pointer to an {@link OH_Drawing_TextLine} object based on the text content in a specified range.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 18
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| OH_Drawing_LineTypography* lineTypography | Pointer to the {@link OH_Drawing_LineTypography} object, which is obtained from [OH_Drawing_CreateLineTypography](capi-drawing-text-linetypography-h.md#oh_drawing_createlinetypography). |
+| size_t startIndex | Start position for layout calculation. The value is an integer in the range [0, total number of text characters). |
+| size_t count | Number of characters to be typeset from the specified typography start position. The value is an integer in the range [0, total count of text characters), and the sum of startIndex and count cannot exceed the total count of text characters. <br>You can first use [OH_Drawing_LineTypographyGetLineBreak](capi-drawing-text-linetypography-h.md#oh_drawing_linetypographygetlinebreak) to obtain a reasonable total count of characters that can be typeset. If this value is set to 0, the content from startIndex to the end of the text is returned. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| OH_Drawing_TextLine* | Pointer to the {@link OH_Drawing_TextLine} object. |
+
+

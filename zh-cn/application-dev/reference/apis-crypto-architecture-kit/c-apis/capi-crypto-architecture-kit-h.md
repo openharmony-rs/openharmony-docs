@@ -14,5 +14,3 @@
 
 **相关模块：** [CryptoArchitectureKit](capi-cryptoarchitecturekit.md)
 
-## 汇总
-

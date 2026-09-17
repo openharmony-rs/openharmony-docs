@@ -30,17 +30,15 @@
 enum OH_Core_HdrType
 ```
 
-**描述**
+**描述：**
 
 HDR类型枚举。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 18
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CORE_HDR_TYPE_NONE = 0 | 此选项用于标记非HDR类型。 |
-| OH_CORE_HDR_TYPE_VIVID = 1 | 此选项用于标记HDR Vivid类型。 |
+| OH_CORE_HDR_TYPE_NONE = 0 |  |
+| OH_CORE_HDR_TYPE_VIVID = 1 |  |
 
 

@@ -22,7 +22,7 @@ The struct describes the main window information.
 | -- | -- |
 | uint64_t displayId | ID of the display to which the main window belongs. |
 | int32_t windowId | Window ID. The default value is **0**, and the value is an integer. |
-| bool showing | Foreground/Background status of the main window. **true** if the main window is in the foreground, **falseotherwise. |
+| bool showing | Foreground/Background status of the main window. **true** if the main window is in the foreground, **false**<br>otherwise. |
 | const char* label | Pointer to the task name of the main window. |
 
 

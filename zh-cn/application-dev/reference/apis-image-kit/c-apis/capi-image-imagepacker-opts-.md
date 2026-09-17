@@ -6,7 +6,7 @@ typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
 
 ## 概述
 
-声明用于将图像编码到缓冲区或文件的api。可用于将像素数据编码到目标缓冲区或文件中。
+定义图像编码选项信息。
 
 **起始版本：** 11
 

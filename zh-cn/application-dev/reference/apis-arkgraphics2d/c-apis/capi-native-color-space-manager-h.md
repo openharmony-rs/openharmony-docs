@@ -32,8 +32,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)](#oh_nativecolorspacemanager_createfromname) | 通过colorSpaceName创建OH_NativeColorSpaceManager实例。<br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。 |
-| [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)](#oh_nativecolorspacemanager_createfromprimariesandgamma) | 通过原色和伽马值创建OH_NativeColorSpaceManager实例。<br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。 |
+| [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)](#oh_nativecolorspacemanager_createfromname) | 通过colorSpaceName创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。 |
+| [OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)](#oh_nativecolorspacemanager_createfromprimariesandgamma) | 通过原色和伽马值创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。 |
 | [void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_destroy) | 销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。 |
 | [int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getcolorspacename) | 获取色彩空间名称。 |
 | [WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)](#oh_nativecolorspacemanager_getwhitepoint) | 获取白点。 |
@@ -47,7 +47,7 @@
 enum ColorSpaceName
 ```
 
-**描述**
+**描述：**
 
 色彩空间枚举。
 
@@ -98,9 +98,9 @@ enum ColorSpaceName
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)
 ```
 
-**描述**
+**描述：**
 
-通过colorSpaceName创建OH_NativeColorSpaceManager实例。<br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
+通过colorSpaceName创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
 
 **起始版本：** 13
 
@@ -110,7 +110,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 | -- | -- |
 | [ColorSpaceName](capi-native-color-space-manager-h.md#colorspacename) colorSpaceName | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的色彩空间名称。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -122,9 +122,9 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)
 ```
 
-**描述**
+**描述：**
 
-通过原色和伽马值创建OH_NativeColorSpaceManager实例。<br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
+通过原色和伽马值创建OH_NativeColorSpaceManager实例。 <br>每次调用此函数时，都会创建一个新的OH_NativeColorSpaceManager实例。
 
 **起始版本：** 13
 
@@ -133,9 +133,9 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 | 参数项 | 描述 |
 | -- | -- |
 | [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的色彩原色。 |
-| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于校正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为1.0表示线性色彩空间。 |
+| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于校正亮度范围。 <br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为1.0表示线性色彩空间。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -147,7 +147,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
-**描述**
+**描述：**
 
 销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。
 
@@ -165,7 +165,7 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
-**描述**
+**描述：**
 
 获取色彩空间名称。
 
@@ -177,7 +177,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 | -- | -- |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* nativeColorSpaceManager | 表示指向OH_NativeColorSpaceManager实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -189,7 +189,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
-**描述**
+**描述：**
 
 获取白点。
 
@@ -201,7 +201,7 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 | -- | -- |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* nativeColorSpaceManager | 表示指向OH_NativeColorSpaceManager实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -213,7 +213,7 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
-**描述**
+**描述：**
 
 获取伽马值。
 
@@ -225,7 +225,7 @@ float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColo
 | -- | -- |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)* nativeColorSpaceManager | 表示指向OH_NativeColorSpaceManager实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

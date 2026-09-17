@@ -1,0 +1,15 @@
+# DynamicIconInfo（系统接口）
+
+```TypeScript
+export type DynamicIconInfo = _BundleInfo.DynamicIconInfo
+```
+
+应用的动态图标信息。
+
+**起始版本：** 20
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+**类型：** [_BundleInfo.DynamicIconInfo](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md)

@@ -1,0 +1,4 @@
+# VkSamplerCaptureDescriptorDataInfoEXT
+
+## Overview
+

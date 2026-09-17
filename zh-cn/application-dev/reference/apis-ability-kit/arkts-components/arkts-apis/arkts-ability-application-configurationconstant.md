@@ -1,0 +1,24 @@
+# @ohos.application.ConfigurationConstant(ConfigurationConstant)
+
+ConfigurationConstant模块提供配置信息枚举值定义的能力。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [ConfigurationConstant/ConfigurationConstant](arkts-ability-app-ability-configurationconstant.md)
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## 导入模块
+
+```TypeScript
+```
+
+## 汇总
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColorMode](arkts-ability-configurationconstant-colormode-depr-e.md) | 表示颜色模式的枚举。 |

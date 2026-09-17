@@ -2,7 +2,7 @@
 
 ## 概述
 
-Want是对象间信息传递的载体，可以用于应用组件间的信息传递。 Want的使用场景之一是作为startAbility的参数，其包含了指定的启动目标，以及启动时需携带的相关数据，如bundleName和abilityName字段分别指明目标Ability所在应用的Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时，可使用Want作为载体将这些数据传递给Ability B。
+Want是对象间信息传递的载体，可以用于应用组件间的信息传递。 Want的使用场景之一是作为startAbility的参数，其包含了指定的启动目标，以及启动时需携带的相关数据， 如bundleName和abilityName字段分别指明目标Ability所在应用的Bundle名称以及对应包内的Ability名称。当Ability A需要启动Ability B并传入一些数据时， 可使用Want作为载体将这些数据传递给Ability B。
 
 **库：** libability_base_want.so
 
@@ -62,7 +62,7 @@ AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)
 | -- | -- |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) element | Element数据结构。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -86,7 +86,7 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -111,7 +111,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, Abil
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) element | Element结构体。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -136,7 +136,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, Abil
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 | [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)* element | Element结构体。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -162,7 +162,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, co
 | const char* key | Want中字符串参数键名。 |
 | const char* value | Want中字符串。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -189,7 +189,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 | char* value | Want中字符串。 |
 | size_t valueSize | value字符串长度。如果valueSize小于实际需要获取的value长度，则会报{@link ABILITY_BASE_ERROR_CODE_PARAM_INVALID}错误。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -215,7 +215,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 | const char* key | Want中字符串参数键名。 |
 | int32_t fd | 文件描述符，可通过{@link fileIo.open}获取。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -241,7 +241,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const cha
 | const char* key | Want中字符串参数键名。 |
 | int32_t* fd | 文件描述符。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -266,7 +266,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)* want | Want指针。 |
 | const char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考{@link Want}中的uri描述。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -292,7 +292,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 | char* uri | 表示URI。如果在Want中指定了URI，则Want将匹配指定的URI信息。URI可参考{@link Want}中的uri描述。 |
 | size_t uriSize | URI字符串长度。如果uriSize小于实际需要获取的URI长度，则会报{@link ABILITY_BASE_ERROR_CODE_PARAM_INVALID}错误。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -318,7 +318,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, c
 | const char* key | Want中int32_t类型值的参数键名。 |
 | int32_t value | Want中int32_t类型的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -344,7 +344,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, c
 | const char* key | Want中int32_t类型值的参数键名。 |
 | int32_t* value | Want中int32_t类型的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -370,7 +370,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, co
 | const char* key | Want中bool类型值的参数键名。 |
 | bool value | Want中bool类型的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -396,7 +396,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, co
 | const char* key | Want中bool类型值的参数键名。 |
 | bool* value | Want中bool类型的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -422,7 +422,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 | const char* key | Want中double类型值的参数键名。 |
 | double value | Want中double类型的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -448,7 +448,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, 
 | const char* key | Want中double类型值的参数键名。 |
 | double* value | Want中double类型的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

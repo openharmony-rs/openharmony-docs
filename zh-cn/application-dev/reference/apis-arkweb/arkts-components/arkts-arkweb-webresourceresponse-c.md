@@ -1,15 +1,10 @@
 # WebResourceResponse
 
-WebResourceResponse是Web组件中表示HTTP响应并允许自定义网页资源响应的类。它在onHttpErrorReceive等事件中向应用提供服务器返回响应的状态码、状态描述、响应头、响应数据、编码、MIME类型等信息； 在资源请求拦截场景中允许应用自定义响应的状态码、状态描述、响应头、响应数据、编码、MIME类型及数据就绪状态，从而由应用接管特定资源的返回内容。示例代码参考 [onHttpErrorReceive事件](arkts-arkweb-web-attribute.md#onhttperrorreceive)。
+WebResourceResponse是Web组件中表示HTTP响应并允许自定义网页资源响应的类。它在onHttpErrorReceive等事件中向应用提供服务器返回响应的状态码、状态描述、响应头、响应数据、编码、MIME类型等信息；在资源请求拦截场景中允许应用自定义响应的状态码、状态描述、响应头、响应数据、编码、MIME类型及数据就绪状态，从而由应用接管特定资源的返回内容。示例代码参考[onHttpErrorReceive事件](arkts-arkweb-web-comp-attribute.md#onhttperrorreceive)。
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## constructor
 
@@ -21,7 +16,7 @@ WebResourceResponse的构造函数。用于创建HTTP响应对象，常用于资
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -35,7 +30,7 @@ getReasonMessage(): string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -55,7 +50,7 @@ getResponseCode(): number
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -75,7 +70,7 @@ getResponseData(): string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -91,7 +86,7 @@ getResponseData(): string
 getResponseDataEx(): string | number | ArrayBuffer | Resource | undefined
 ```
 
-获取资源响应数据，支持多种数据类型。与getResponseData相比，该方法支持返回number（文件句柄）、ArrayBuffer（二进制数据）、Resource（\$rawfile资源）等多种类型，建议在需要灵活数据类型支持 时优先使用。
+获取资源响应数据，支持多种数据类型。与getResponseData相比，该方法支持返回number（文件句柄）、ArrayBuffer（二进制数据）、Resource（&#36;rawfile资源）等多种类型，建议在需要灵活数据类型支持时优先使用。
 
 **起始版本：** 13
 
@@ -101,7 +96,7 @@ getResponseDataEx(): string | number | ArrayBuffer | Resource | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| string \| number \| ArrayBuffer \| Resource \| undefined | string返回HTML格式的字符串。 number返回文件句柄。 ArrayBuffer返回二进 制数据。 Resource返回`\\$rawfile`资源。 如果没有可用数据，返回`undefined`。 |
+| string &#124; number &#124; ArrayBuffer &#124; Resource &#124; undefined | string返回HTML格式的字符串。 number返回文件句柄。 ArrayBuffer返回二进制数据。 Resource返回`&#36;rawfile`资源。 如果没有可用数据，返回`undefined`。 |
 
 ## getResponseEncoding
 
@@ -113,7 +108,7 @@ getResponseEncoding(): string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -133,7 +128,7 @@ getResponseHeader(): Array<Header>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -171,7 +166,7 @@ getResponseMimeType(): string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -191,7 +186,7 @@ setReasonMessage(reason: string): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -199,7 +194,7 @@ setReasonMessage(reason: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reason | string | 是 | 要设置的资源响应的状态码描述。状态码描述是对状态码的文本说明，通常与状态码对应使用，例如状态码为200时描述可设为“OK”，状态码为404时描述可设为“Not Found”。该 描述会包含在HTTP响应中，便于客户端或开发者了解响应结果。 |
+| reason | string | 是 | 要设置的资源响应的状态码描述。状态码描述是对状态码的文本说明，通常与状态码对应使用，例如状态码为200时描述可设为“OK”，状态码为404时描述可设为“Not Found”。该描述会包含在HTTP响应中，便于客户端或开发者了解响应结果。 |
 
 ## setResponseCode
 
@@ -211,7 +206,7 @@ setResponseCode(code: number): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -219,7 +214,7 @@ setResponseCode(code: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| code | number | 是 | 要设置的资源响应的状态码。如果该资源请求失败或响应状态为错误状态，请参考 [@ohos.web.netErrorList](../arkts-apis/arkts-arkweb-web-neterrorlist-webneterrorlist-e.md)设置相应错误码。常见错误码场景：404表示资源不存在，请检查资源路径；500表示服 务器内部错误，请检查服务器状态；403表示无访问权限，请申请相应访问权限；401表示未授权，请检查认证信息。根据错误码检查网络配置、服务器状态或资源访问权限。避免设置错误码为 ERR_IO_PENDING，设置为该错误码可 能会导致XMLHttpRequest同步请求阻塞。 |
+| code | number | 是 | 要设置的资源响应的状态码。如果该资源请求失败或响应状态为错误状态，请参考[@ohos.web.netErrorList](../arkts-apis/arkts-arkweb-web-neterrorlist-webneterrorlist-e.md)设置相应错误码。常见错误码场景：404表示资源不存在，请检查资源路径；500表示服务器内部错误，请检查服务器状态；403表示无访问权限，请申请相应访问权限；401表示未授权，请检查认证信息。根据错误码检查网络配置、服务器状态或资源访问权限。避免设置错误码为 ERR_IO_PENDING，设置为该错误码可能会导致XMLHttpRequest同步请求阻塞。 |
 
 ## setResponseData
 
@@ -231,7 +226,7 @@ setResponseData(data: string | number | Resource | ArrayBuffer): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -239,7 +234,7 @@ setResponseData(data: string | number | Resource | ArrayBuffer): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | string \| number \| Resource \| ArrayBuffer | 是 | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负 责关闭。Resource表示应用rawfile目录下文件资源。ArrayBuffer表示资源的原始二进制数据。<br>**起始版本：** 11 |
+| data | string &#124; number &#124; Resource &#124; ArrayBuffer | 是 | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源。ArrayBuffer表示资源的原始二进制数据。<br>**适用版本：** 11 |
 
 ## setResponseEncoding
 
@@ -251,7 +246,7 @@ setResponseEncoding(encoding: string): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -271,7 +266,7 @@ setResponseHeader(header: Array<Header>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -289,10 +284,9 @@ setResponseIsReady(IsReady: boolean): void
 
 设置资源响应数据是否已经就绪。
 
-> **说明：**
+> **说明：** 
 > 
-> - 在资源请求拦截场景中，应先调用setResponseData()、setResponseEncoding()、setResponseMimeType()、setResponseHeader()、
-> setResponseCode()、setReasonMessage()等方法设置响应的各个属性。最后调用setResponseIsReady(true)来触发资源返回。
+> - 在资源请求拦截场景中，应先调用setResponseData()、setResponseEncoding()、setResponseMimeType()、setResponseHeader()、setResponseCode()、setReasonMessage()等方法设置响应的各个属性。最后调用setResponseIsReady(true)来触发资源返回。
 > 
 > - 异步数据场景：需先调用setResponseIsReady(false)，待数据准备好后调用setResponseData()等设置方法，最后调用setResponseIsReady(true)来触发资源返回。
 > 
@@ -300,7 +294,7 @@ setResponseIsReady(IsReady: boolean): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -308,7 +302,7 @@ setResponseIsReady(IsReady: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| IsReady | boolean | 是 | 资源响应数据是否已经就绪。 true表示资源响应数据已经就绪，false表示资源响应数据未就绪。 如果数据是异步提供，需要显式设置为false。设置为非法值如null，undefined或者不设置都会被认为数据已经准备好。 |
+| IsReady | boolean | 是 | 资源响应数据是否已经就绪。<br>true表示资源响应数据已经就绪，false表示资源响应数据未就绪。<br>如果数据是异步提供，需要显式设置为false。设置为非法值如null，undefined或者不设置都会被认为数据已经准备好。 |
 
 ## setResponseMimeType
 
@@ -320,7 +314,7 @@ setResponseMimeType(mimeType: string): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -328,4 +322,4 @@ setResponseMimeType(mimeType: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mimeType | string | 是 | 要设置的资源响应的媒体（MIME）类型。常见的MIME类型包括：text/html（HTML文档）、application/json（JSON数据）、image/png（ PNG图片）等。 |
+| mimeType | string | 是 | 要设置的资源响应的媒体（MIME）类型。常见的MIME类型包括：text/html（HTML文档）、application/json（JSON数据）、image/png（PNG图片）等。 |

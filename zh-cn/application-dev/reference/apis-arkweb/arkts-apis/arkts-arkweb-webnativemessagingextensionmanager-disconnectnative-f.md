@@ -26,13 +26,13 @@ function disconnectNative(connectionId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| connectionId | number | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由 [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)方法返回。建立连接后需要通过disconnectNative释放。需使用由 connectNative返回的有效连接ID。 |
+| connectionId | number | 是 | 连接的标识ID，用于标识一次Web原生消息扩展连接，由[connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)方法返回。建立连接后需要通过disconnectNative释放。需使用由connectNative返回的有效连接ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

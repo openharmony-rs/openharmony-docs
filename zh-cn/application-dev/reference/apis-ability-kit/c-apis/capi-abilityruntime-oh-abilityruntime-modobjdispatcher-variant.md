@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 
 ## 概述
 
-定义使用联合体加类型标签的变体结构，通过类型标签区分实际数据类型，用于在参数传递和返回值接收中安全传递多种类型的值。<br>变体值由vt字段决定实际存储的数据类型和联合体中有效的成员。<br>当变体持有堆分配资源（如字符串、容器句柄）时，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。<br>简单类型（布尔、整数、浮点数）不持有堆资源，无需调用VariantClear释放。
+定义使用联合体加类型标签的变体结构，通过类型标签区分实际数据类型，用于在参数传递和返回值接收中安全传递多种类型的值。<br>变体值由vt字段决定实际存储的数据类型和联合体中有效的成员。<br>当变体持有堆分配资源（ 如字符串、容器句柄）时，需调用[OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)释放。<br>简单类型（布尔、整数、浮点数）不持有堆资源， 无需调用VariantClear释放。
 
 **起始版本：** 26.0.0
 
@@ -45,6 +45,7 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 | [OH_AbilityRuntime_ModObjDispatcher_MapHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-map8h.md) pmapVal | 映射句柄。<br>**起始版本：** 26.0.0 |
 | [OH_AbilityRuntime_ModObjDispatcher_StructHandle](capi-abilityruntime-oh-abilityruntime-modularobjectdispatcher-struct8h.md) pstructVal | 结构体句柄。<br>**起始版本：** 26.0.0 |
 | OHIPCRemoteProxy *premoteProxyVal | 远端Proxy对象句柄。<br>**起始版本：** 26.0.0 |
-| OHIPCRemoteStub *premoteStubVal; } u | 远端Stub对象句柄。<br>**起始版本：** 26.0.0 |
+| OHIPCRemoteStub *premoteStubVal;
+ } u | 远端Stub对象句柄。<br>**起始版本：** 26.0.0 |
 
 

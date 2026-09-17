@@ -1,0 +1,4 @@
+# VkPipelineDiscardRectangleStateCreateInfoEXT
+
+## Overview
+

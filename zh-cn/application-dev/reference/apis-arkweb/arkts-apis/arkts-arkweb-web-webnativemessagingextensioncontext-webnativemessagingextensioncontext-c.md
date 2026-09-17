@@ -1,12 +1,12 @@
 # WebNativeMessagingExtensionContext
 
-WebNativeMessagingExtensionContext是Web原生消息扩展（ [WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)）的运行上下文，继承自ExtensionContext，为 扩展Ability提供生命周期管理、Ability启动以及原生消息连接控制能力。开发者可在继承WebNativeMessagingExtensionAbility的扩展中通过`this.context`获取该上下文，进而调用 [startAbility](#startability)启动其他Ability、调用 [startAbilityForResult](#startabilityforresult)启动UIAbility并接收返回结果、调用 [terminateSelf](#terminateself)结束当前扩展，或调用 [stopNativeConnection](#stopnativeconnection)停止指定的Web原生消息连接。
+WebNativeMessagingExtensionContext是Web原生消息扩展（[WebNativeMessagingExtensionAbility](arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)）的运行上下文，继承自ExtensionContext，为扩展Ability提供生命周期管理、Ability启动以及原生消息连接控制能力。开发者可在继承WebNativeMessagingExtensionAbility的扩展中通过`this.context`获取该上下文，进而调用[startAbility](#startability)启动其他Ability、调用[startAbilityForResult](#startabilityforresult)启动UIAbility并接收返回结果、调用[terminateSelf](#terminateself)结束当前扩展，或调用[stopNativeConnection](#stopnativeconnection)停止指定的Web原生消息连接。
 
-> **说明:**
+> **说明：** 
 > 
 > 本模块接口仅可在Stage模型下使用。
 
-**继承/实现关系：** WebNativeMessagingExtensionContext extends ExtensionContext
+**继承/实现关系：** WebNativeMessagingExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **起始版本：** 21
 
@@ -15,6 +15,7 @@ WebNativeMessagingExtensionContext是Web原生消息扩展（ [WebNativeMessagin
 ## 导入模块
 
 ```TypeScript
+import { WebNativeMessagingExtensionContext } from '@kit.ArkWeb';
 ```
 
 ## startAbility
@@ -23,7 +24,7 @@ WebNativeMessagingExtensionContext是Web原生消息扩展（ [WebNativeMessagin
 startAbility(want: Want, options?: StartOptions): Promise<void>
 ```
 
-使用Promise异步回调启动Ability。如需获取启动的UIAbility退出时的返回结果，可以使用 [startAbilityForResult](#startabilityforresult)。
+使用Promise异步回调启动Ability。如需获取启动的UIAbility退出时的返回结果，可以使用[startAbilityForResult](#startabilityforresult)。
 
 **起始版本：** 21
 
@@ -36,13 +37,13 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 表示需要启动的Ability的信息，包含bundleName、abilityName等属性，用于指定要启动的目标Ability。 |
-| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动选项，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。当需要自定义启动配置时传入，不传入时使 用系统默认启动配置。 |
+| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动选项，用于指定目标UIAbility启动时的选项，包括但不局限于窗口模式、目标UIAbility启动时所在的屏幕等。当需要自定义启动配置时传入，不传入时使用系统默认启动配置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -106,9 +107,9 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>
 ```
 
-启动一个UIAbility，使用Promise异步回调接收被拉起的UIAbility退出时的返回结果。 UIAbility被启动后，有如下情况:  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。  
+启动一个UIAbility，使用Promise异步回调接收被拉起的UIAbility退出时的返回结果。UIAbility被启动后，有如下情况:
+
+- 正常情况下可通过调用[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如销毁UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。  
 - 只支持拉起自己应用的UIAbility。
 
@@ -123,7 +124,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 表示需要启动的UIAbility的信息，包含bundleName、abilityName等属性，用于指定要启动的目标UIAbility。 |
-| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动选项，用于配置UIAbility的窗口模式等。当需要自定义启动配置时传入，不传入时使用系统默认启动配置。各字段默认值参考 [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md)说明。 |
+| options | [StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动选项，用于配置UIAbility的窗口模式等。当需要自定义启动配置时传入，不传入时使用系统默认启动配置。各字段默认值参考[StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md)说明。 |
 
 **返回值：**
 
@@ -214,7 +215,7 @@ stopNativeConnection(connectionId: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -267,7 +268,7 @@ terminateSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

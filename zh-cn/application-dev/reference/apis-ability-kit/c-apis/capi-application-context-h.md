@@ -31,12 +31,12 @@
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetresourcedir) | 获取本应用的应用级的资源目录。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)](#oh_abilityruntime_startselfuiability) | 启动当前应用的UIAbility。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlaunchparameter) | 获取本应用首次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。 |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter) | 获取本应用最近一次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。适用于需要获取最近一次启动时传递的参数，用于处理最新的启动请求、页面跳转参数解析等场景。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlatestparameter) | 获取本应用最近一次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。适用于需要获取最近一次启动时传递的参数，用于处理最新的启动请求、 页面跳转参数解析等场景。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want, AbilityRuntime_StartOptions *options)](#oh_abilityruntime_startselfuiabilitywithstartoptions) | 通过StartOptions启动当前应用的UIAbility。 |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)](#oh_abilityruntime_startselfuiabilitywithpidresult) | 通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。<br>接口不能在应用主线程调用，但可以在应用创建的{@link ChildProcess}的主线程中调用。<br>如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)](#oh_abilityruntime_startselfuiabilitywithpidresult) | 通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。 <br>接口不能在应用主线程调用，但可以在应用创建的{@link ChildProcess}的主线程中调用。 <br>如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlogfiledir) | 获取本应用的应用级的日志文件目录。 |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)](#oh_abilityruntime_applicationcontextnotifypagechanged) | 该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。系统可按产品策略调整/恢复页面。适用于三方框架页面导航追踪、页面状态同步、系统级页面优化等场景。 |
-| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | 获取当前应用的UIAbility子进程信息。包括使用ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT通过startAbility创建的子进程。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)](#oh_abilityruntime_applicationcontextnotifypagechanged) | 该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。系统可按产品策略调整/恢复页面。适用于三方框架页面导航追踪、页面状态同步、 系统级页面优化等场景。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_AbilityRuntime_ChildProcessInfosHandle* infos, uint32_t* count)](#oh_abilityruntime_acquireuiabilitychildprocessinfos) | 获取当前应用的UIAbility子进程信息。<br> 包括使用ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT通过startAbility创建的子进程。 |
 
 ## 函数说明
 
@@ -60,7 +60,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* b
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -84,7 +84,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 | -- | -- |
 | AbilityRuntime_AreaMode* areaMode | 指向接收数据加密等级的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -110,7 +110,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char*
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -136,7 +136,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -162,7 +162,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -188,7 +188,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -214,7 +214,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -240,7 +240,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -266,7 +266,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -292,7 +292,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -319,7 +319,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -345,7 +345,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *
 | -- | -- |
 | AbilityBase_Want *want | 启动当前应用UIAbility时需要的Want信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -371,7 +371,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入缓冲区的字符串长度（单位：字节）。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -385,7 +385,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 
 **描述：**
 
-获取本应用最近一次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。适用于需要获取最近一次启动时传递的参数，用于处理最新的启动请求、页面跳转参数解析等场景。
+获取本应用最近一次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。适用于需要获取最近一次启动时传递的参数，用于处理最新的启动请求、 页面跳转参数解析等场景。
 
 **起始版本：** 21
 
@@ -397,7 +397,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入缓冲区的字符串长度（单位：字节）。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -422,9 +422,9 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityBase_Want *want | 启动当前应用UIAbility时需要的Want信息。 |
-| AbilityRuntime_StartOptions *options | 启动当前应用UIAbility时需要的StartOptions信息。如果该参数中{@link startVisibility}属性的值不为空，必须确保当前应用已添加到状态栏，否则会返回{@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED}错误码。 |
+| AbilityRuntime_StartOptions *options | 启动当前应用UIAbility时需要的StartOptions信息。如果该参数中{@link startVisibility}属性的值不为空，必须确保当前应用已添加到状态栏，否则会返回<br>    {@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED}错误码。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -438,7 +438,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 
 **描述：**
 
-通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。<br>接口不能在应用主线程调用，但可以在应用创建的{@link ChildProcess}的主线程中调用。<br>如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。
+通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。 <br>接口不能在应用主线程调用，但可以在应用创建的{@link ChildProcess}的主线程中调用。 <br>如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -449,10 +449,10 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityBase_Want *want | 启动当前应用UIAbility时需要的Want信息。 |
-| AbilityRuntime_StartOptions *options | 启动当前应用UIAbility时需要的StartOptions信息。如果该参数中{@link startVisibility}属性的值不为空，必须确保当前应用已添加到状态栏，否则会返回{@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED}错误码。 |
+| AbilityRuntime_StartOptions *options | 启动当前应用UIAbility时需要的StartOptions信息。如果该参数中{@link startVisibility}属性的值不为空，必须确保当前应用已添加到状态栏，否则会返回<br>    {@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED}错误码。 |
 | int32_t *targetPid | 目标UIAbility所在的进程号，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -478,7 +478,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char*
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -492,7 +492,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(c
 
 **描述：**
 
-该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。系统可按产品策略调整/恢复页面。适用于三方框架页面导航追踪、页面状态同步、系统级页面优化等场景。
+该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。系统可按产品策略调整/恢复页面。适用于三方框架页面导航追踪、页面状态同步、 系统级页面优化等场景。
 
 **起始版本：** 23
 
@@ -504,7 +504,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(c
 | int32_t targetPageNameLength | 目标页面路径长度。 |
 | int32_t windowId | 目标页面对应的{@link WindowInfo}中的窗口ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -518,7 +518,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_
 
 **描述：**
 
-获取当前应用的UIAbility子进程信息。包括使用ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT通过startAbility创建的子进程。
+获取当前应用的UIAbility子进程信息。<br> 包括使用ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT通过startAbility创建的子进程。
 
 **起始版本：** 26.1.0
 
@@ -526,13 +526,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AbilityRuntime_ChildProcessInfosHandle* infos | 输出参数，指向子进程信息集合的指针。不能为nullptr。当不存在子进程时，将指针**infos**的解引用值设置为nullptr。 |
+| OH_AbilityRuntime_ChildProcessInfosHandle* infos | 输出参数，指向子进程信息集合的指针。不能为nullptr。 当不存在子进程时，将指针**infos**的解引用值设置为nullptr。 |
 | uint32_t* count | 输出参数，返回子进程的个数。不能是nullptr。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  <li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}如果调用成功则返回</li>  <li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  <li>{@link_RUNTIME_ERROR_CODE_INTERNAL}如果发生内部错误</li> |
+| AbilityRuntime_ErrorCode | <ul>  <li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}如果调用成功则返回</li><br><li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li><br><li>{@link_RUNTIME_ERROR_CODE_INTERNAL}如果发生内部错误</li> |
 
 

@@ -1,0 +1,4 @@
+# VkStridedDeviceAddressRegionKHR
+
+## Overview
+

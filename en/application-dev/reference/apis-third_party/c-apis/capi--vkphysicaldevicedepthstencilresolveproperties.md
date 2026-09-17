@@ -1,0 +1,4 @@
+# VkPhysicalDeviceDepthStencilResolveProperties
+
+## Overview
+

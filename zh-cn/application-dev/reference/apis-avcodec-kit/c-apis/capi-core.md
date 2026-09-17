@@ -7,6 +7,7 @@ Core模块提供用于媒体系统的基础骨干能力，包含内存、错误�
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
+
 ## 文件汇总
 
 | 名称 | 描述 |

@@ -20,6 +20,6 @@ Describes the configuration of the main window screenshot.
 
 | 名称 | 描述 |
 | -- | -- |
-| bool useCache | Whether the existing screenshot of the main window should be used. The default value is **true**. When it is setto **true**, the system uses the existing screenshot of the main window, or captures the latest screenshot if noexisting screenshot is saved. When it is set to **false**, the system captures the latest screenshot of the mainwindow. |
+| bool useCache | Whether the existing screenshot of the main window should be used. The default value is **true**. When it is set to **true**, the system uses the existing screenshot of the main window, or captures the latest screenshot if no existing screenshot is saved. When it is set to **false**, the system captures the latest screenshot of the main window. |
 
 

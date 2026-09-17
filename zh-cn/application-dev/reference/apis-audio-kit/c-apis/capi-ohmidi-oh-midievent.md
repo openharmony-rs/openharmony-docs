@@ -20,8 +20,8 @@ MIDI事件结构体（通用）。事件数据以Universal MIDI Packets（UMP）
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t timestamp | Timestamp in nanoseconds.Base time obtained via clock_gettime(CLOCK_MONOTONIC, &time)0 indicates "send immediately".<br>**起始版本：** 24 |
-| size_t length | Number of 32-bit words in the packet.e.g., 1 for Type 2/4 (64-bit messages use 2 words)<br>**起始版本：** 24 |
-| uint32_t *data | Pointer to UMP data (Must be 4-byte aligned).This contains the raw UMP words (uint32_t).<br>**起始版本：** 24 |
+| uint64_t timestamp | Timestamp in nanoseconds. Base time obtained via clock_gettime(CLOCK_MONOTONIC, &time) 0 indicates "send immediately".<br>**起始版本：** 24 |
+| size_t length | Number of 32-bit words in the packet. e.g., 1 for Type 2/4 (64-bit messages use 2 words)<br>**起始版本：** 24 |
+| uint32_t *data | Pointer to UMP data (Must be 4-byte aligned). This contains the raw UMP words (uint32_t).<br>**起始版本：** 24 |
 
 

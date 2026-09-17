@@ -12,5 +12,3 @@
 
 **相关模块：** [DeviceManager](capi-devicemanager.md)
 
-## 汇总
-

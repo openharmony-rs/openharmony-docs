@@ -40,7 +40,7 @@ bool OH_AT_CheckSelfPermission(const char *permission)
 | -- | -- |
 | const char *permission | - 需要校验的权限名称。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

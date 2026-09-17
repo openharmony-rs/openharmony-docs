@@ -1,0 +1,594 @@
+# NotificationRequest
+
+Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior.
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## actionButtons
+
+```TypeScript
+actionButtons?: Array<NotificationActionButton>
+```
+
+Notification button. This parameter is left empty by default. A notification can contain a maximum of two buttons. Since API version 16, a notification can contain a maximum of three buttons for wearables.
+
+**Type:** Array&lt;[NotificationActionButton](arkts-notification-notificationactionbutton-notificationactionbutton-i.md)&gt;
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## appMessageId
+
+```TypeScript
+appMessageId?: string
+```
+
+Unique identifier field carried when an application sends a notification, used for notification deduplication. If the same application publishes notifications carrying the same **appMessageId** through different channels such as local and cloud, the device displays only one message, and subsequent duplicate notifications received will be silently deduplicated without being displayed or alerted. The deduplication identifier is valid only within 24 hours after the notification is published, and becomes invalid after 24 hours or after the device restarts. The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
+
+**Type:** string
+
+**Since:** 12
+
+**System capability:** SystemCapability.Notification.Notification
+
+## autoDeletedTime
+
+```TypeScript
+autoDeletedTime?: number
+```
+
+Scheduled auto-delete time for the notification. You can set this parameter to automatically delete the notification after the specified time. Default value: **0**. This parameter does not take effect if a value less than 0 or a past time is passed in. Data format: timestamp. Unit: millisecond. For example, to delete a notification after it has been retained for 3 seconds (3000 ms), the corresponding deletion time is: **new Date().getTime()** + 3000.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## badgeIconStyle
+
+```TypeScript
+badgeIconStyle?: number
+```
+
+Notification badge type. Not supported currently.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## badgeNumber
+
+```TypeScript
+badgeNumber?: number
+```
+
+Number of notifications displayed on the application icon. The value is accumulated. The default value is **0**.
+
+If the value of **badgeNumber** is less than or equal to 0, the badge number is not displayed;
+
+if the value is greater than 99, **99+** is displayed on the badge.
+
+For example, if an application publishes three notifications, and `badgeNumber` is set to **2**, **0**, and **3** in sequence, the application displays **2**, **2**, and **5** accordingly.
+
+**Type:** number
+
+**Since:** 9
+
+**System capability:** SystemCapability.Notification.Notification
+
+## color
+
+```TypeScript
+color?: number
+```
+
+Background color of the notification. Not supported currently.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## colorEnabled
+
+```TypeScript
+colorEnabled?: boolean
+```
+
+Whether the notification background color can be enabled. Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## content
+
+```TypeScript
+content: NotificationContent
+```
+
+Notification display content, including the notification title and body.
+
+**Type:** [NotificationContent](arkts-notification-notificationcontent-notificationcontent-i.md)
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## creatorBundleName
+
+```TypeScript
+readonly creatorBundleName?: string
+```
+
+Name of the application that creates the notification.
+
+**Type:** string
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## creatorPid
+
+```TypeScript
+readonly creatorPid?: number
+```
+
+PID used for creating the notification.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## creatorUid
+
+```TypeScript
+readonly creatorUid?: number
+```
+
+UID of the application that creates the notification.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## creatorUserId
+
+```TypeScript
+readonly creatorUserId?: number
+```
+
+ID of the user who creates the notification.
+
+**Type:** number
+
+**Since:** 8
+
+**System capability:** SystemCapability.Notification.Notification
+
+## deliveryTime
+
+```TypeScript
+deliveryTime?: number
+```
+
+Notification delivery time. This parameter is automatically generated by the system and does not require configuration. Data format: timestamp. Unit: millisecond.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## distributedOption
+
+```TypeScript
+distributedOption?: DistributedOptions
+```
+
+Distributed notification options. Not supported currently.
+
+**Type:** [DistributedOptions](arkts-notification-notificationrequest-distributedoptions-i.md)
+
+**Since:** 8
+
+**System capability:** SystemCapability.Notification.Notification
+
+## extraInfo
+
+```TypeScript
+extraInfo?: { [key: string]: any }
+```
+
+Extended parameters, used to provide custom services for applications. This parameter is left blank by default.
+
+The key value is assigned by the system. Manual modification does not take effect. The system automatically changes the value to the actual value during data transmission.
+
+- **ohos.notificationManager.wantUri**: **uri** field in the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) object,  
+which is passed to the application when the user taps a notification. This field can be obtained via the [getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications) API call.
+
+**Type:** { [key: string]: any }
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## groupName
+
+```TypeScript
+groupName?: string
+```
+
+Group to which the notification belongs. When different notifications have the same **groupName**, these notifications will be displayed as a group. The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
+
+**Type:** string
+
+**Since:** 8
+
+**System capability:** SystemCapability.Notification.Notification
+
+## hashCode
+
+```TypeScript
+readonly hashCode?: string
+```
+
+Unique ID of the notification.
+
+**Type:** string
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## id
+
+```TypeScript
+id?: number
+```
+
+Notification ID. The default value is **0**. If a notification with the same ID exists, the notification is updated. If no notification with the same ID exists, a new notification is created.
+
+**Type:** number
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## isAlertOnce
+
+```TypeScript
+isAlertOnce?: boolean
+```
+
+Whether to send a notification only once when the notification is published or updated. The default value is **false**.
+
+- **true**: A notification is sent only when the notification is published for the first time. For subsequent  
+update, the notification mode is changed to [LEVEL_LOW](arkts-notification-notificationmanager-slotlevel-e.md).  
+- **false**: A notification is sent based on the configured notification mode.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## isCountDown
+
+```TypeScript
+isCountDown?: boolean
+```
+
+Whether to display the countdown time. Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## isFloatingIcon
+
+```TypeScript
+isFloatingIcon?: boolean
+```
+
+Whether the notification is displayed as a floating icon in the status bar. Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## isOngoing
+
+```TypeScript
+isOngoing?: boolean
+```
+
+Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## isStopwatch
+
+```TypeScript
+isStopwatch?: boolean
+```
+
+Whether to display the stopwatch. Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## isUnremovable
+
+```TypeScript
+isUnremovable?: boolean
+```
+
+Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## label
+
+```TypeScript
+label?: string
+```
+
+Notification label. The **label** field functions similarly to an ID and can be used alone or combined with the ID to serve as the notification identifier. It is recommended to use the ID. If the **label** is not empty when a notification is published, the corresponding **label** must also be specified when the notification is updated or deleted. The size does not exceed 202 bytes, and the excess part will be truncated. The value is empty by default.
+
+**Type:** string
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## largeIcon
+
+```TypeScript
+largeIcon?: image.PixelMap
+```
+
+Icon on the right of the notification. Empty by default. When `content` uses [NotificationPictureContent](arkts-notification-notificationcontent-notificationpicturecontent-i.md), setting this parameter does not take effect.<br>The total bytes of the icon pixel number does not exceed 192KB (the total bytes of the icon pixel number is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). After exceeding, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style&lt;!--RP1--&gt;&lt;!--RP1End--&gt;.
+
+**Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## notificationFlags
+
+```TypeScript
+notificationFlags?: NotificationFlags
+```
+
+Notification flags. The default value is empty. This parameter is writable since API version 23. You can set this parameter to reduce the notification modes. This parameter does not take effect when the notification slot type is LIVE_VIEW.
+
+@readonly [since 8 - 22]
+
+**Type:** [NotificationFlags](arkts-notification-notificationflags-notificationflags-i.md)
+
+**Since:** 8
+
+**Model restriction:** 
+- API version 23 and later: This API can be used in both the stage model and FA model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+## notificationSlotType
+
+```TypeScript
+notificationSlotType?: notificationManager.SlotType
+```
+
+Notification slot type. The default value is **OTHER_TYPES**. The notification reminder mode varies depending on the notification slot type.
+
+**Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
+
+**Since:** 11
+
+**System capability:** SystemCapability.Notification.Notification
+
+## overlayIcon
+
+```TypeScript
+overlayIcon?: image.PixelMap
+```
+
+Overlay icon of the notification, which replaces the icon on the left of the notification. Empty by default. This API takes effect only when [notificationSlotType](arkts-notification-notificationrequest-notificationrequest-i.md) is set to SOCIAL_COMMUNICATION. <br>The total bytes of the icon pixel number does not exceed 192KB (the total bytes of the icon pixel number is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). After exceeding, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style&lt;!--RP3--&gt;&lt;!--RP3End--&gt;.
+
+**Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
+
+**Since:** 23
+
+**System capability:** SystemCapability.Notification.Notification
+
+## priorityNotificationType
+
+```TypeScript
+priorityNotificationType?: notificationManager.PriorityNotificationType
+```
+
+Notification priority type. The default value is **OTHER**. If this parameter is set, the notification is pinned on the top and displayed in a highlighted manner in the notification center. The actual display effect depends on the device capability and notification center UI style.
+
+**Type:** [notificationManager.PriorityNotificationType](arkts-notification-notificationmanager-prioritynotificationtype-e.md)
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+## removalWantAgent
+
+```TypeScript
+removalWantAgent?: WantAgent
+```
+
+Behavior intent of an application, which is triggered when a notification is removed. This parameter is left empty by default. Currently, redirection to UIAbility is not supported. Only common events can be published (that is, the **actionType** field of WantAgentInfo is set to **4**).
+
+**Type:** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md)
+
+**Since:** 9
+
+**System capability:** SystemCapability.Notification.Notification
+
+## showDeliveryTime
+
+```TypeScript
+showDeliveryTime?: boolean
+```
+
+Whether to display the time when the notification is delivered. Not supported currently.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## slotType
+
+```TypeScript
+slotType?: notification.SlotType
+```
+
+Notification slot type. The default value is **OTHER_TYPES**.
+
+**Type:** [notification.SlotType](arkts-notification-notification-slottype-depr-e.md)
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+**Substitutes:** [notificationSlotType](#notificationslottype)
+
+**System capability:** SystemCapability.Notification.Notification
+
+## smallIcon
+
+```TypeScript
+smallIcon?: image.PixelMap
+```
+
+Icon on the left of the notification. Empty by default. It is automatically generated by the system and does not need to be configured by the developer.<br>The total bytes of the icon pixel number does not exceed 192KB (the total bytes of the icon pixel number is obtained through [getPixelBytesNumber](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md#getpixelbytesnumber)). After exceeding, the setting does not take effect. The recommended icon pixel dimensions are 128*128. The actual display effect depends on device capabilities and the notification center UI style&lt;!--RP4--&gt;&lt;!--RP4End--&gt;.
+
+**Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## sound
+
+```TypeScript
+sound?: string
+```
+
+Path of the custom application notification ringtone resource. By default, this parameter is left empty. The following two types of audio resources are supported:
+
+- Resource file: Audio file preconfigured in the application. It must be stored in the **resources/rawfile**  
+directory. To use the resource file, directly pass the file name.  
+- Sandbox file: Audio file downloaded from the network or generated by the user. It must be stored in the **files**  
+directory or its subdirectory in the EL1 area of the [sandbox file directory](../../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path). The input format is **uri::{fileUri}**, where **fileUri** is the path obtained through [getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md). For example, if an application transfers the downloaded audio resource demo.mp3 to the sandbox file directory /data/storage/el1/base/files/, the path obtained through **getUriFromPath** is **file://{bundleName}/data/storage/el1/base/files/demo.mp3**. You can use this path to release a notification to play the audio resource downloaded by the application.
+
+Supported formats: M4A, AAC, MP3, OGG, WAV, FLAC, and AMR.
+
+**Type:** string
+
+**Since:** 12
+
+**System capability:** SystemCapability.Notification.Notification
+
+## tapDismissed
+
+```TypeScript
+tapDismissed?: boolean
+```
+
+Whether the notification is automatically cleared when the notification carries **wantAgent** or **actionButtons**. This parameter is valid only when the notification carries **wantAgent** or **actionButtons**. The default value is **true**.
+
+- **true**: The current notification is automatically cleared after the notification or button is tapped.  
+- **false**: The current notification is retained after the notification or button is tapped.
+
+**Type:** boolean
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification
+
+## template
+
+```TypeScript
+template?: NotificationTemplate
+```
+
+Notification template. This parameter is left empty by default.
+
+**Type:** [NotificationTemplate](arkts-notification-notificationtemplate-notificationtemplate-i.md)
+
+**Since:** 8
+
+**System capability:** SystemCapability.Notification.Notification
+
+## updateOnly
+
+```TypeScript
+updateOnly?: boolean
+```
+
+Whether to update notifications only. The default value is **false**.
+
+- **true**: If a notification with the same ID exists, the notification is updated. If no notification with the  
+same ID exists, the update fails and no new notification is created.  
+- **false**: If a notification with the same ID exists, the notification is updated. If no notification with the  
+same ID exists, a new notification is created.
+
+**Type:** boolean
+
+**Since:** 18
+
+**System capability:** SystemCapability.Notification.Notification
+
+## wantAgent
+
+```TypeScript
+wantAgent?: WantAgent
+```
+
+Behavior intent of an application, which is triggered when a notification is clicked. This parameter is left empty by default.
+
+**Type:** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md)
+
+**Since:** 7
+
+**System capability:** SystemCapability.Notification.Notification

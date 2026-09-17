@@ -53,12 +53,20 @@
 | [OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)](#oh_avmediasourceloader_create) | - | 创建一个OH_AVMediaSourceLoader实例。成功时返回OH_AVMediaSourceLoader指针，失败时返回空指针。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)](#oh_avmediasourceloader_destroy) | - | 释放OH_AVMediaSourceLoader实例。 |
 | [OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_AVMediaSourceLoader *loader)](#oh_avmediasource_setmediasourceloader) | - | 为媒体源实例设置一个源加载器。 |
-| [typedef int64_t (\*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData)](#oh_avmediasourceloaderonsourceopenedcallback) | OH_AVMediaSourceLoaderOnSourceOpenedCallback | 定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。客户端必须在处理完请求后立即返回句柄。 |
-| [typedef void (\*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t requestedOffset, int64_t requestedLength, void *userData)](#oh_avmediasourceloaderonsourcereadcallback) | OH_AVMediaSourceLoaderOnSourceReadCallback | 定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader)方法推送数据。客户端必须在处理完请求后立即返回。 |
+| [typedef int64_t (\*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData)](#oh_avmediasourceloaderonsourceopenedcallback) | OH_AVMediaSourceLoaderOnSourceOpenedCallback | 定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。 客户端必须在处理完请求后立即返回句柄。 |
+| [typedef void (\*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t requestedOffset, int64_t requestedLength, void *userData)](#oh_avmediasourceloaderonsourcereadcallback) | OH_AVMediaSourceLoaderOnSourceReadCallback | 定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader) 方法推送数据。客户端必须在处理完请求后立即返回。 |
 | [typedef void (\*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void *userData)](#oh_avmediasourceloaderonsourceclosedcallback) | OH_AVMediaSourceLoaderOnSourceClosedCallback | 定义由服务端调用的SourceCloseCallback函数。客户端应释放相关资源，并在处理完请求后立即返回。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceOpenedCallback callback, void *userData)](#oh_avmediasourceloader_setsourceopencallback) | - | 为OH_AVMediaSourceLoader设置打开回调函数。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceReadCallback callback, void *userData)](#oh_avmediasourceloader_setsourcereadcallback) | - | 为OH_AVMediaSourceLoader设置读取回调函数。 |
 | [OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceClosedCallback callback, void *userData)](#oh_avmediasourceloader_setsourceclosecallback) | - | 为OH_AVMediaSourceLoader设置关闭回调函数。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData) | 定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。 客户端必须在处理完请求后立即返回句柄。<br>**起始版本：** 23 |
+| void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t requestedOffset, int64_t requestedLength, void *userData) | 定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader) 方法推送数据。客户端必须在处理完请求后立即返回。<br>**起始版本：** 23 |
+| void (*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void *userData) | 定义由服务端调用的SourceCloseCallback函数。客户端应释放相关资源，并在处理完请求后立即返回。<br>**起始版本：** 23 |
 
 ## 枚举类型说明
 
@@ -68,7 +76,7 @@
 enum AVLoadingRequestError
 ```
 
-**描述**
+**描述：**
 
 网络加载请求的错误码枚举。
 
@@ -93,13 +101,13 @@ enum AVLoadingRequestError
 OH_AVHttpHeader *OH_AVHttpHeader_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建一个HTTP头部实例。
 
 **起始版本：** 23
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -111,7 +119,7 @@ OH_AVHttpHeader *OH_AVHttpHeader_Create(void)
 OH_AVErrCode OH_AVHttpHeader_Destroy(OH_AVHttpHeader *header)
 ```
 
-**描述**
+**描述：**
 
 释放一个HTTP头部实例。
 
@@ -123,7 +131,7 @@ OH_AVErrCode OH_AVHttpHeader_Destroy(OH_AVHttpHeader *header)
 | -- | -- |
 | [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -135,7 +143,7 @@ OH_AVErrCode OH_AVHttpHeader_Destroy(OH_AVHttpHeader *header)
 OH_AVErrCode OH_AVHttpHeader_GetCount(OH_AVHttpHeader *header, uint32_t *count)
 ```
 
-**描述**
+**描述：**
 
 获取HTTP头部实例中的记录项数量。
 
@@ -148,7 +156,7 @@ OH_AVErrCode OH_AVHttpHeader_GetCount(OH_AVHttpHeader *header, uint32_t *count)
 | [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 指向OH_AVHttpHeader实例的指针。 |
 | uint32_t *count | 用于输出头部实例中记录项的数量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -160,7 +168,7 @@ OH_AVErrCode OH_AVHttpHeader_GetCount(OH_AVHttpHeader *header, uint32_t *count)
 OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key, const char *value)
 ```
 
-**描述**
+**描述：**
 
 向HTTP头部实例中添加一个键值对记录。
 
@@ -174,7 +182,7 @@ OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key,
 | const char *key | 记录的键名。 |
 | const char *value | 记录的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -186,7 +194,7 @@ OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key,
 OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, const char **key, const char **value)
 ```
 
-**描述**
+**描述：**
 
 通过索引获取HTTP头部实例中的键值对记录。
 
@@ -201,7 +209,7 @@ OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, 
 | const char **key | 用于输出记录的键名。 |
 | const char **value | 用于输出记录的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -213,7 +221,7 @@ OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, 
 OH_AVMediaSource *OH_AVMediaSource_CreateWithUrl(const char *url, OH_AVHttpHeader *header)
 ```
 
-**描述**
+**描述：**
 
 通过URL创建媒体源。
 
@@ -226,7 +234,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithUrl(const char *url, OH_AVHttpHeade
 | const char *url | 媒体源的URL。支持以下流媒体格式：HLS、HTTP-FLV、DASH和HTTPS。 |
 | [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | 附加到网络请求的HTTP头部。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -238,7 +246,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithUrl(const char *url, OH_AVHttpHeade
 OH_AVMediaSource *OH_AVMediaSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 ```
 
-**描述**
+**描述：**
 
 通过OH_AVDataSource创建媒体源。
 
@@ -250,7 +258,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithDataSource(OH_AVDataSource *dataSou
 | -- | -- |
 | OH_AVDataSource *dataSource | 指向OH_AVDataSource的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -262,7 +270,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithDataSource(OH_AVDataSource *dataSou
 OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int64_t size)
 ```
 
-**描述**
+**描述：**
 
 通过文件描述符（FileDescriptor）创建媒体源。
 
@@ -276,7 +284,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int6
 | int64_t offset | 开始读取的文件偏移量。 |
 | int64_t size | 文件大小（以字节为单位）。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -288,7 +296,7 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int6
 OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)
 ```
 
-**描述**
+**描述：**
 
 释放media source实例。
 
@@ -300,7 +308,7 @@ OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)
 | -- | -- |
 | [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) *source | 指向OH_AVMediaSource实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -312,7 +320,7 @@ OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)
 OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *mimetype)
 ```
 
-**描述**
+**描述：**
 
 设置媒体MIME类型以处理扩展媒体源。
 
@@ -323,9 +331,9 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) *source | 指向OH_AVMediaSource的指针。 |
-| const char *mimetype | 媒体源的MIME类型。 |
+| const char *mimetype | 媒体源的MIME类型。{@link AV_MimeTypes} |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -337,7 +345,7 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingRequest *request, const char **url)
 ```
 
-**描述**
+**描述：**
 
 获取请求的URL。
 
@@ -350,7 +358,7 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingReques
 | [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | OH_AVMediaSourceLoadingRequest实例。 |
 | const char **url | 用于输出的URL字符串。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -362,7 +370,7 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingReques
 OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadingRequest *request, OH_AVHttpHeader **header)
 ```
 
-**描述**
+**描述：**
 
 获取请求的HTTP头部。
 
@@ -375,7 +383,7 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadin
 | [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | OH_AVMediaSourceLoadingRequest实例。 |
 | [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) **header | 用于HTTP请求的HTTP头部。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -387,7 +395,7 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadin
 int32_t OH_AVMediaSourceLoadingRequest_RespondData(OH_AVMediaSourceLoadingRequest *request, int64_t uuid, int64_t offset, const uint8_t *data, uint64_t dataSize)
 ```
 
-**描述**
+**描述：**
 
 用于向AVPlayer发送请求数据的接口。
 
@@ -403,7 +411,7 @@ int32_t OH_AVMediaSourceLoadingRequest_RespondData(OH_AVMediaSourceLoadingReques
 | const uint8_t *data | 发送给播放器的媒体数据。 |
 | uint64_t dataSize | 发送给播放器的数据长度。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -415,7 +423,7 @@ int32_t OH_AVMediaSourceLoadingRequest_RespondData(OH_AVMediaSourceLoadingReques
 void OH_AVMediaSourceLoadingRequest_RespondHeader(OH_AVMediaSourceLoadingRequest *request, int64_t uuid, OH_AVHttpHeader *header, const char *redirectUrl)
 ```
 
-**描述**
+**描述：**
 
 应用用于向AVPlayer发送响应头部的接口，必须在首次调用[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)之前调用。
 
@@ -427,7 +435,7 @@ void OH_AVMediaSourceLoadingRequest_RespondHeader(OH_AVMediaSourceLoadingRequest
 | -- | -- |
 | [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) *request | 资源打开请求的参数。 |
 | int64_t uuid | 资源句柄的ID。 |
-| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | HTTP响应中的头部信息。应用可将该头部字段与底层支持的字段进行交集处理后再传入，也可直接传入所有对应的头部信息。 |
+| [OH_AVHttpHeader](capi-avmediasource-oh-avhttpheader.md) *header | HTTP响应中的头部信息。 应用可将该头部字段与底层支持的字段进行交集处理后再传入，也可直接传入所有对应的头部信息。 |
 | const char *redirectUrl | HTTP响应中包含的重定向URL（如果存在）。 |
 
 ### OH_AVMediaSourceLoadingRequest_FinishLoading()
@@ -436,7 +444,7 @@ void OH_AVMediaSourceLoadingRequest_RespondHeader(OH_AVMediaSourceLoadingRequest
 void OH_AVMediaSourceLoadingRequest_FinishLoading(OH_AVMediaSourceLoadingRequest *request, int64_t uuid, AVLoadingRequestError error)
 ```
 
-**描述**
+**描述：**
 
 通知播放器当前请求的状态。在推送完单个资源的所有数据后，应用应发送LOADING_ERROR_SUCCESS状态，以通知播放器资源推送已完成。
 
@@ -456,13 +464,13 @@ void OH_AVMediaSourceLoadingRequest_FinishLoading(OH_AVMediaSourceLoadingRequest
 OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建一个OH_AVMediaSourceLoader实例。成功时返回OH_AVMediaSourceLoader指针，失败时返回空指针。
 
 **起始版本：** 23
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -474,7 +482,7 @@ OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)
 OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)
 ```
 
-**描述**
+**描述：**
 
 释放OH_AVMediaSourceLoader实例。
 
@@ -486,7 +494,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)
 | -- | -- |
 | [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | 待释放的OH_AVMediaSourceLoader实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -498,7 +506,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)
 OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_AVMediaSourceLoader *loader)
 ```
 
-**描述**
+**描述：**
 
 为媒体源实例设置一个源加载器。
 
@@ -511,7 +519,7 @@ OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_
 | [OH_AVMediaSource](capi-avmediasource-oh-avmediasource.md) *source | 需要网络代理的OH_AVMediaSource。 |
 | [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) *loader | OH_AVMediaSourceLoader实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -523,9 +531,9 @@ OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_
 typedef int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSourceLoadingRequest *request, void *userData)
 ```
 
-**描述**
+**描述：**
 
-定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。客户端必须在处理完请求后立即返回句柄。
+定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。 客户端必须在处理完请求后立即返回句柄。
 
 **起始版本：** 23
 
@@ -536,7 +544,7 @@ typedef int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSource
 | [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) \*request | 资源打开请求的参数，包含所请求资源的详细信息及数据推送方式。 |
 | void \*userData | 用户在OH_AVMediaSourceLoader_SetSourceOpenCallback中设置的数据。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -548,9 +556,9 @@ typedef int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSource
 typedef void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t requestedOffset, int64_t requestedLength, void *userData)
 ```
 
-**描述**
+**描述：**
 
-定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader)方法推送数据。客户端必须在处理完请求后立即返回。
+定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader) 方法推送数据。客户端必须在处理完请求后立即返回。
 
 **起始版本：** 23
 
@@ -569,7 +577,7 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t
 typedef void (*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void *userData)
 ```
 
-**描述**
+**描述：**
 
 定义由服务端调用的SourceCloseCallback函数。客户端应释放相关资源，并在处理完请求后立即返回。
 
@@ -588,7 +596,7 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void 
 OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceOpenedCallback callback, void *userData)
 ```
 
-**描述**
+**描述：**
 
 为OH_AVMediaSourceLoader设置打开回调函数。
 
@@ -602,7 +610,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader
 | [OH_AVMediaSourceLoaderOnSourceOpenedCallback](capi-avmedia-source-h.md#oh_avmediasourceloaderonsourceopenedcallback) callback | 要设置的打开回调函数。 |
 | void *userData | 回调函数中使用的用户自定义数据。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -614,7 +622,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader
 OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceReadCallback callback, void *userData)
 ```
 
-**描述**
+**描述：**
 
 为OH_AVMediaSourceLoader设置读取回调函数。
 
@@ -628,7 +636,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader
 | [OH_AVMediaSourceLoaderOnSourceReadCallback](capi-avmedia-source-h.md#oh_avmediasourceloaderonsourcereadcallback) callback | 要设置的读取回调函数。 |
 | void *userData | 回调函数中使用的用户自定义数据。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -640,7 +648,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader
 OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoader *loader, OH_AVMediaSourceLoaderOnSourceClosedCallback callback, void *userData)
 ```
 
-**描述**
+**描述：**
 
 为OH_AVMediaSourceLoader设置关闭回调函数。
 
@@ -654,7 +662,7 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoade
 | [OH_AVMediaSourceLoaderOnSourceClosedCallback](capi-avmedia-source-h.md#oh_avmediasourceloaderonsourceclosedcallback) callback | 要设置的关闭回调函数。 |
 | void *userData | 回调函数中使用的用户自定义数据。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

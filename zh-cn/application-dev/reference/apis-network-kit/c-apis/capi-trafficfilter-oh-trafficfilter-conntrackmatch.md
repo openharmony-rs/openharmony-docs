@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_ConntrackMatch {...} OH_TrafficFilter_ConntrackM
 
 ## 概述
 
-连接跟踪匹配条件基于连接跟踪状态匹配报文
+连接跟踪匹配条件<br> 基于连接跟踪状态匹配报文
 
 **起始版本：** 26.1.0
 

@@ -41,7 +41,7 @@ typedef struct Http_Response {...} Http_Response
 void (*destroyResponse)(struct Http_Response **response)
 ```
 
-**描述**
+**描述：**
 
 销毁HTTP响应的回调函数
 

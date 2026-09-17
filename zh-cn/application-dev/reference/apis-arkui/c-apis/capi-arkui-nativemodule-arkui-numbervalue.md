@@ -1,7 +1,7 @@
 # ArkUI_NumberValue
 
 ```c
-typedef struct ArkUI_NumberValue {...} ArkUI_NumberValue
+typedef union ArkUI_NumberValue {...} ArkUI_NumberValue
 ```
 
 ## 概述
@@ -13,4 +13,15 @@ ArkUI 在 Native 侧使用的数字类型，用于通过统一类型承载浮点
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **所在头文件：** [common_type.h](capi-common-type-h.md)
+
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| float f32 |  |
+| int32_t i32 |  |
+| uint32_t u32 |  |
+
 

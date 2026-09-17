@@ -1,0 +1,4 @@
+# VkBufferCaptureDescriptorDataInfoEXT
+
+## Overview
+

@@ -20,9 +20,9 @@ typedef struct OH_AudioConverter_Format {...} OH_AudioConverter_Format
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Audio_EncodingType](capi-native-audio-suite-base-h.md#oh_audio_encodingtype) encodingType | Audio encoding format type.<br>**起始版本：** 26.0.0 |
-| [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | Audio sampling rate.<br>**起始版本：** 26.0.0 |
+| OH_Audio_EncodingType encodingType | Audio encoding format type.<br>**起始版本：** 26.0.0 |
+| OH_Audio_SampleRate samplingRate | Audio sampling rate.<br>**起始版本：** 26.0.0 |
 | OH_AudioChannelLayout channelLayout | Audio channel layout.<br>**起始版本：** 26.0.0 |
-| [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | Audio sample format.<br>**起始版本：** 26.0.0 |
+| OH_Audio_SampleFormat sampleFormat | Audio sample format.<br>**起始版本：** 26.0.0 |
 
 

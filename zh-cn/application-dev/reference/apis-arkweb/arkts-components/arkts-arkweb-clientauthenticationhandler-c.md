@@ -1,15 +1,10 @@
 # ClientAuthenticationHandler
 
-ClientAuthenticationHandler是Web组件中处理SSL客户端证书认证请求的类。当服务器请求客户端证书进行TLS双向认证时，该处理器通过`onClientAuthenticationRequest`事件回调提供给 应用，允许应用选择合适的证书凭据进行响应。示例代码参考[onClientAuthenticationRequest](arkts-arkweb-web-attribute.md#onclientauthenticationrequest)事件。
+ClientAuthenticationHandler是Web组件中处理SSL客户端证书认证请求的类。当服务器请求客户端证书进行TLS双向认证时，该处理器通过`onClientAuthenticationRequest`事件回调提供给应用，允许应用选择合适的证书凭据进行响应。示例代码参考[onClientAuthenticationRequest](arkts-arkweb-web-comp-attribute.md#onclientauthenticationrequest)事件。
 
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## cancel
 
@@ -21,32 +16,9 @@ cancel(): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-**示例**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .onDataResubmitted((event) => {
-          console.info('onDataResubmitted');
-          event.handler.cancel();
-        })
-    }
-  }
-}
-```
 
 ## confirm
 
@@ -58,7 +30,7 @@ confirm(priKeyFile: string, certChainFile: string): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -79,7 +51,7 @@ confirm(authUri: string): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -106,7 +78,7 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | identity | string | 是 | 用于识别凭据的唯一标识值。 |
-| credentialTypeOrCertChainFile | [CredentialType](arkts-arkweb-credentialtype-e.md) \| string | 是 | 类型为CredentialType时，代表凭据类型；类型为string时，表示证书链文件路径。 |
+| credentialTypeOrCertChainFile | [CredentialType](arkts-arkweb-credentialtype-e.md) &#124; string | 是 | 类型为CredentialType时，代表凭据类型；类型为string时，表示证书链文件路径。 |
 
 **错误码：**
 
@@ -124,7 +96,7 @@ ClientAuthenticationHandler的构造函数。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -138,6 +110,6 @@ ignore(): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

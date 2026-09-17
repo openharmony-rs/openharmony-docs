@@ -1,0 +1,4 @@
+# VkMemoryOpaqueCaptureAddressAllocateInfo
+
+## Overview
+

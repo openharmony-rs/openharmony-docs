@@ -6,7 +6,7 @@ typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
 
 ## 概述
 
-提供公共事件订阅者信息结构体声明。该结构体用于描述订阅者的配置信息，在调用创建订阅者接口时作为参数传入。
+提供公共事件订阅者信息结构体声明。该结构体用于描述订阅者的配置信息，在调用创建订阅者 接口时作为参数传入。
 
 **起始版本：** 12
 

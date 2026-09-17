@@ -1,0 +1,4 @@
+# VkPhysicalDeviceSampleLocationsPropertiesEXT
+
+## Overview
+

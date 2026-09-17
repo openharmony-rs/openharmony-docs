@@ -1,0 +1,25 @@
+# C API<!--c-contentembedkit-->
+
+- Module<!--contentembedkit-module-->
+    - [ContentEmbed](capi-contentembed.md)
+- Header file<!--contentembedkit-headerfile-->
+    - [content_embed_proxy.h](capi-content-embed-proxy-h.md)
+    - [content_embed_common.h](capi-content-embed-common-h.md)
+    - [content_embed_extension.h](capi-content-embed-extension-h.md)
+    - [content_embed_document.h](capi-content-embed-document-h.md)
+- Struct<!--contentembedkit-struct-->
+    - [ContentEmbed_Info](capi-contentembed-contentembed-info.md)
+    - [ContentEmbed_Format](capi-contentembed-contentembed-format.md)
+    - [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md)
+    - [ContentEmbed_Document](capi-contentembed-contentembed-document.md)
+    - [ContentEmbed_Capability](capi-contentembed-contentembed-capability.md)
+    - [ContentEmbed_ExtensionContext](capi-contentembed-contentembed-extensioncontext.md)
+    - [ContentEmbed_ExtensionContext*](capi-contentembed-contentembed-extensioncontext8h.md)
+    - [ContentEmbed_ExtensionInstance](capi-contentembed-contentembed-extensioninstance.md)
+    - [ContentEmbed_ExtensionInstance*](capi-contentembed-contentembed-extensioninstance8h.md)
+    - [ContentEmbed_Object](capi-contentembed-contentembed-object.md)
+    - [ContentEmbed_Object*](capi-contentembed-contentembed-object8h.md)
+    - [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)
+    - [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)
+    - [ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)
+    - [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)

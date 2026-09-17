@@ -1,0 +1,4 @@
+# VkAccelerationStructureCaptureDescriptorDataInfoEXT
+
+## Overview
+

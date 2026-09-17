@@ -1,0 +1,4 @@
+# VkPipelineCoverageReductionStateCreateInfoNV
+
+## Overview
+

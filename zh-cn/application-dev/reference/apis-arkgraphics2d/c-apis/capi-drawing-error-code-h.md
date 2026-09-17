@@ -2,7 +2,7 @@
 
 ## 概述
 
-声明与绘图模块中的错误码相关的函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+声明与绘图模块中的错误码相关的函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **库：** libnative_drawing.so
 
@@ -24,8 +24,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_ErrorCode OH_Drawing_ErrorCodeGet()](#oh_drawing_errorcodeget) | 获取本模块最近一次的错误码。<br>本模块的错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号，在执行成功后不会被重置为OH_DRAWING_SUCCESS。可通过[OH_Drawing_ErrorCodeReset](capi-drawing-error-code-h.md#oh_drawing_errorcodereset)重置错误码。 |
-| [void OH_Drawing_ErrorCodeReset(void)](#oh_drawing_errorcodereset) | 将本模块的错误码重置为OH_DRAWING_SUCCESS。<br>通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)获取的本模块错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号，但是不会在执行成功后被重置为OH_DRAWING_SUCCESS。<br>调用本接口可将错误码重置为OH_DRAWING_SUCCESS，避免多个接口间互相干扰，方便开发者调试。 |
+| [OH_Drawing_ErrorCode OH_Drawing_ErrorCodeGet()](#oh_drawing_errorcodeget) | 获取本模块最近一次的错误码。 <br>本模块的错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号， 在执行成功后不会被重置为OH_DRAWING_SUCCESS。可通过[OH_Drawing_ErrorCodeReset](capi-drawing-error-code-h.md#oh_drawing_errorcodereset)重置错误码。 |
+| [void OH_Drawing_ErrorCodeReset(void)](#oh_drawing_errorcodereset) | 将本模块的错误码重置为OH_DRAWING_SUCCESS。 <br>通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)获取的本模块错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号， 但是不会在执行成功后被重置为OH_DRAWING_SUCCESS。 <br>调用本接口可将错误码重置为OH_DRAWING_SUCCESS，避免多个接口间互相干扰，方便开发者调试。 |
 
 ## 枚举类型说明
 
@@ -35,7 +35,7 @@
 enum OH_Drawing_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 枚举本模块可能产生的错误码。
 
@@ -44,7 +44,7 @@ enum OH_Drawing_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_DRAWING_SUCCESS = 0 | 操作成功完成。<br>**起始版本：** 12 |
-| OH_DRAWING_ERROR_NO_PERMISSION = 201 | 权限校验失败。请检查是否已申请所需权限。<br>**起始版本：** 12 |
+| OH_DRAWING_ERROR_NO_PERMISSION = 201 | 权限校验失败，应用无权限使用该API，需要申请权限。<br>**起始版本：** 12 |
 | OH_DRAWING_ERROR_INVALID_PARAMETER = 401 | 无效的输入参数，如参数中传入了NULL。请检查参数类型、取值范围或参数是否为空。<br>**起始版本：** 12 |
 | OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE = 26200001 | 输入参数不在有效的范围内。请检查参数值是否在接口文档规定的有效范围内。<br>**起始版本：** 12 |
 | OH_DRAWING_ERROR_ALLOCATION_FAILED = 26200002 | 内存分配失败。<br>**起始版本：** 13 |
@@ -67,13 +67,13 @@ enum OH_Drawing_ErrorCode
 OH_Drawing_ErrorCode OH_Drawing_ErrorCodeGet()
 ```
 
-**描述**
+**描述：**
 
-获取本模块最近一次的错误码。<br>本模块的错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号，在执行成功后不会被重置为OH_DRAWING_SUCCESS。可通过[OH_Drawing_ErrorCodeReset](capi-drawing-error-code-h.md#oh_drawing_errorcodereset)重置错误码。
+获取本模块最近一次的错误码。 <br>本模块的错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号， 在执行成功后不会被重置为OH_DRAWING_SUCCESS。可通过[OH_Drawing_ErrorCodeReset](capi-drawing-error-code-h.md#oh_drawing_errorcodereset)重置错误码。
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -85,9 +85,9 @@ OH_Drawing_ErrorCode OH_Drawing_ErrorCodeGet()
 void OH_Drawing_ErrorCodeReset(void)
 ```
 
-**描述**
+**描述：**
 
-将本模块的错误码重置为OH_DRAWING_SUCCESS。<br>通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)获取的本模块错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号，但是不会在执行成功后被重置为OH_DRAWING_SUCCESS。<br>调用本接口可将错误码重置为OH_DRAWING_SUCCESS，避免多个接口间互相干扰，方便开发者调试。
+将本模块的错误码重置为OH_DRAWING_SUCCESS。 <br>通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)获取的本模块错误码会在不以错误码为返回值的接口执行失败时被置为对应的错误编号， 但是不会在执行成功后被重置为OH_DRAWING_SUCCESS。 <br>调用本接口可将错误码重置为OH_DRAWING_SUCCESS，避免多个接口间互相干扰，方便开发者调试。
 
 **起始版本：** 18
 

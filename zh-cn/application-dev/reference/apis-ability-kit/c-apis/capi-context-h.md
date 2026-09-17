@@ -62,7 +62,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength |   在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -89,7 +89,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -116,7 +116,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -143,7 +143,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -170,7 +170,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -197,7 +197,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength |   在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -224,7 +224,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -251,7 +251,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -278,7 +278,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -303,7 +303,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取数据加密等级的上下文。 |
 | AbilityRuntime_AreaMode* areaMode | 指向接收数据加密等级的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -328,7 +328,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要设置数据加密等级的上下文。 |
 | AbilityRuntime_AreaMode areaMode | 数据加密等级。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -355,7 +355,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -382,7 +382,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

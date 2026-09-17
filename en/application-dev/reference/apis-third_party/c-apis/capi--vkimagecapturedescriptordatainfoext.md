@@ -1,0 +1,4 @@
+# VkImageCaptureDescriptorDataInfoEXT
+
+## Overview
+

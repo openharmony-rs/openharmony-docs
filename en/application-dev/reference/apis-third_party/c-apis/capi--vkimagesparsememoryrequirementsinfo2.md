@@ -1,0 +1,4 @@
+# VkImageSparseMemoryRequirementsInfo2
+
+## Overview
+

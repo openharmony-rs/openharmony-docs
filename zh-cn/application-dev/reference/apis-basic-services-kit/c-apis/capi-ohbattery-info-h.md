@@ -31,9 +31,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | 标识剩余电池电量百分比变化后发送的常见事件。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.PowerManager.BatteryManager.Core |
-| static const char * COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | 标识充电状态更改后发送的常见事件。<br>**起始版本：** 13 |
-| static const char * COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | 标识连接的充电器类型更改后发送的常见事件。<br>**起始版本：** 13 |
+| static const char *COMMON_EVENT_KEY_CAPACITY = "soc" | 标识剩余电池电量百分比变化后发送的常见事件。<br>**起始版本：** 13 |
+| static const char *COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | 标识充电状态更改后发送的常见事件。<br>**起始版本：** 13 |
+| static const char *COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | 标识连接的充电器类型更改后发送的常见事件。<br>**起始版本：** 13 |
 
 ## 枚举类型说明
 
@@ -43,7 +43,7 @@
 enum BatteryInfo_BatteryPluggedType
 ```
 
-**描述**
+**描述：**
 
 定义连接的充电器类型。
 
@@ -66,13 +66,13 @@ enum BatteryInfo_BatteryPluggedType
 int32_t OH_BatteryInfo_GetCapacity()
 ```
 
-**描述**
+**描述：**
 
 返回当前电池电量百分比。可用于电池监控应用显示电量信息、低电量提醒功能判断是否需要提示用户、省电模式触发判断等场景。
 
 **起始版本：** 13
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -84,13 +84,13 @@ int32_t OH_BatteryInfo_GetCapacity()
 BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 ```
 
-**描述**
+**描述：**
 
 返回连接的充电器类型。可用于充电状态检测应用判断当前充电方式、充电提醒功能展示充电类型图标、省电策略根据充电类型调整等场景。
 
 **起始版本：** 13
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

@@ -1,6 +1,8 @@
 # WebStorageOrigin
 
-提供Web SQL数据库的使用信息。@interface WebStorageOrigin [since 9 - 11]
+提供Web SQL数据库的使用信息。
+
+@interface WebStorageOrigin [since 9 - 11]
 
 **起始版本：** 9
 
@@ -9,6 +11,7 @@
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## origin
@@ -23,7 +26,7 @@ origin: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -33,13 +36,15 @@ origin: string
 quota: number
 ```
 
-指定源的存储配额。单位：byte。
+指定源的存储配额。
+
+单位：byte。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -49,12 +54,14 @@ quota: number
 usage: number
 ```
 
-指定源的存储量。单位：byte。
+指定源的存储量。
+
+单位：byte。
 
 **类型：** number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

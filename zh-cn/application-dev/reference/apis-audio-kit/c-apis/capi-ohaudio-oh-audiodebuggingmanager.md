@@ -6,7 +6,7 @@ typedef struct OH_AudioDebuggingManager OH_AudioDebuggingManager
 
 ## 概述
 
-声明音频调试管理器。音频调试管理器为开发者提供了很多功能，可以通过音频系统运行时信息。
+声明音频调试管理器。 音频调试管理器为开发者提供了很多功能，可以通过 音频系统运行时信息。
 
 **起始版本：** 26.0.0
 

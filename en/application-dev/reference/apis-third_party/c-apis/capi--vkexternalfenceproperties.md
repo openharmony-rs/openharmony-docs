@@ -1,0 +1,4 @@
+# VkExternalFenceProperties
+
+## Overview
+

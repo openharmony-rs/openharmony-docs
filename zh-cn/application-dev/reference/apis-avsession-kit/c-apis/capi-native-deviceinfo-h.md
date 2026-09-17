@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | - | 输出设备信息的定义。 |
-| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) | AVSession_DeviceInfo | 设备信息的结构体声明。该结构体用于存储设备信息及详细属性。 |
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) | AVSession_DeviceInfo | 设备信息的结构体声明。 该结构体用于存储设备信息及详细属性。 |
 
 ### 函数
 
@@ -39,7 +39,7 @@
 AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceInfo, AVSession_AVCastCategory *aVCastCategory)
 ```
 
-**描述**
+**描述：**
 
 获取目标设备的投播类别。
 
@@ -50,13 +50,13 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| [AVSession_AVCastCategory](capi-native-avsession-base-h.md#avsession_avcastcategory) *aVCastCategory | 返回aVCastCategory值的指针变量。 |
+| AVSession_AVCastCategory *aVCastCategory | 返回aVCastCategory值的指针变量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数aVCastCategory为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数aVCastCategory为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceId()
 
@@ -64,7 +64,7 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, char **deviceId)
 ```
 
-**描述**
+**描述：**
 
 获取目标设备的设备ID。
 
@@ -77,11 +77,11 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
 | char **deviceId | 用于获取设备ID字符串指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceId为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceId为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceName()
 
@@ -89,7 +89,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, char **deviceName)
 ```
 
-**描述**
+**描述：**
 
 获取目标设备的设备名称。
 
@@ -102,11 +102,11 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
 | char **deviceName | 用于获取设备名称字符串指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceName为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceName为nullptr。 |
 
 ### OH_DeviceInfo_GetDeviceType()
 
@@ -114,7 +114,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, AVSession_DeviceType *deviceType)
 ```
 
-**描述**
+**描述：**
 
 获取目标设备的设备类型。
 
@@ -125,13 +125,13 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| [AVSession_DeviceType](capi-native-avsession-base-h.md#avsession_devicetype) *deviceType | 返回设备类型的指针变量。 |
+| AVSession_DeviceType *deviceType | 返回设备类型的指针变量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceType为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceType为nullptr。 |
 
 ### OH_DeviceInfo_GetSupportedProtocols()
 
@@ -139,7 +139,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, 
 AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *deviceInfo, uint32_t *deviceProtocolType)
 ```
 
-**描述**
+**描述：**
 
 获取目标设备支持的协议。
 
@@ -152,10 +152,10 @@ AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *devi
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
 | uint32_t *deviceProtocolType | 用于获取设备支持协议类型的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceProtocolType为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER：\n                                          1. 参数deviceInfo为nullptr。\n                                          2. 参数deviceProtocolType为nullptr。 |
 
 

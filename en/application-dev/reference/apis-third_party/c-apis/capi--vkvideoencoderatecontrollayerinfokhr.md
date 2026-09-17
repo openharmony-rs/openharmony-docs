@@ -1,0 +1,4 @@
+# VkVideoEncodeRateControlLayerInfoKHR
+
+## Overview
+

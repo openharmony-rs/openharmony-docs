@@ -2,7 +2,7 @@
 
 ## 概述
 
-声明用于查询终端设备信息的API。该模块提供了获取设备类型、制造商、品牌、型号、版本信息等设备基础信息的能力，适用于需要根据设备特性进行适配、统计设备信息或进行设备管理的场景。这些API通过读取系统属性获取设备信息，返回值为指向常量字符串的指针。该指针指向系统内部存储的数据，调用者无需释放内存。
+声明用于查询终端设备信息的API。 该模块提供了获取设备类型、制造商、品牌、型号、版本信息等设备基础信息的能力， 适用于需要根据设备特性进行适配、统计设备信息或进行设备管理的场景。 这些API通过读取系统属性获取设备信息，返回值为指向常量字符串的指针。 该指针指向系统内部存储的数据，调用者无需释放内存。
 
 **引用文件：** <deviceinfo.h>
 
@@ -56,7 +56,7 @@
 const char *OH_GetDeviceType(void)
 ```
 
-**描述**
+**描述：**
 
 获取设备类型。返回预定义的设备类型字符串。
 
@@ -64,7 +64,7 @@ const char *OH_GetDeviceType(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -76,7 +76,7 @@ const char *OH_GetDeviceType(void)
 const char *OH_GetManufacture(void)
 ```
 
-**描述**
+**描述：**
 
 获取设备制造商。
 
@@ -84,7 +84,7 @@ const char *OH_GetManufacture(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -96,7 +96,7 @@ const char *OH_GetManufacture(void)
 const char *OH_GetBrand(void)
 ```
 
-**描述**
+**描述：**
 
 获取设备品牌。
 
@@ -104,7 +104,7 @@ const char *OH_GetBrand(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -116,7 +116,7 @@ const char *OH_GetBrand(void)
 const char *OH_GetMarketName(void)
 ```
 
-**描述**
+**描述：**
 
 获取外部产品系列，即外部产品名称。
 
@@ -124,7 +124,7 @@ const char *OH_GetMarketName(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -136,7 +136,7 @@ const char *OH_GetMarketName(void)
 const char *OH_GetProductSeries(void)
 ```
 
-**描述**
+**描述：**
 
 获取产品系列。
 
@@ -144,7 +144,7 @@ const char *OH_GetProductSeries(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -156,7 +156,7 @@ const char *OH_GetProductSeries(void)
 const char *OH_GetProductModel(void)
 ```
 
-**描述**
+**描述：**
 
 获取认证型号。
 
@@ -164,7 +164,7 @@ const char *OH_GetProductModel(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -176,7 +176,7 @@ const char *OH_GetProductModel(void)
 const char *OH_GetSoftwareModel(void)
 ```
 
-**描述**
+**描述：**
 
 获取内部软件子型号，当多个硬件型号共用同一软件版本时，该字段用于区分不同的软件分支。
 
@@ -184,7 +184,7 @@ const char *OH_GetSoftwareModel(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -196,7 +196,7 @@ const char *OH_GetSoftwareModel(void)
 const char *OH_GetHardwareModel(void)
 ```
 
-**描述**
+**描述：**
 
 获取硬件版本号。
 
@@ -204,7 +204,7 @@ const char *OH_GetHardwareModel(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -216,7 +216,7 @@ const char *OH_GetHardwareModel(void)
 const char *OH_GetBootloaderVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取Bootloader版本号。
 
@@ -224,7 +224,7 @@ const char *OH_GetBootloaderVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -236,7 +236,7 @@ const char *OH_GetBootloaderVersion(void)
 const char *OH_GetAbiList(void)
 ```
 
-**描述**
+**描述：**
 
 获取应用二进制接口（Abi）。
 
@@ -244,7 +244,7 @@ const char *OH_GetAbiList(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -256,7 +256,7 @@ const char *OH_GetAbiList(void)
 const char *OH_GetSecurityPatchTag(void)
 ```
 
-**描述**
+**描述：**
 
 获取安全补丁级别。
 
@@ -264,7 +264,7 @@ const char *OH_GetSecurityPatchTag(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -276,7 +276,7 @@ const char *OH_GetSecurityPatchTag(void)
 const char *OH_GetDisplayVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取产品版本。
 
@@ -284,7 +284,7 @@ const char *OH_GetDisplayVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -296,7 +296,7 @@ const char *OH_GetDisplayVersion(void)
 const char *OH_GetIncrementalVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取差异版本。
 
@@ -304,7 +304,7 @@ const char *OH_GetIncrementalVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -316,7 +316,7 @@ const char *OH_GetIncrementalVersion(void)
 const char *OH_GetOsReleaseType(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统的发布类型。返回预定义的发布类型字符串。
 
@@ -324,7 +324,7 @@ const char *OH_GetOsReleaseType(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -336,7 +336,7 @@ const char *OH_GetOsReleaseType(void)
 const char *OH_GetOSFullName(void)
 ```
 
-**描述**
+**描述：**
 
 获取完整的系统版本名。
 
@@ -344,7 +344,7 @@ const char *OH_GetOSFullName(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -356,7 +356,7 @@ const char *OH_GetOSFullName(void)
 int OH_GetSdkApiVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统软件API版本。
 
@@ -364,7 +364,7 @@ int OH_GetSdkApiVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -376,7 +376,7 @@ int OH_GetSdkApiVersion(void)
 int OH_GetFirstApiVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本。
 
@@ -384,7 +384,7 @@ int OH_GetFirstApiVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -396,7 +396,7 @@ int OH_GetFirstApiVersion(void)
 const char *OH_GetVersionId(void)
 ```
 
-**描述**
+**描述：**
 
 获取版本ID。
 
@@ -404,7 +404,7 @@ const char *OH_GetVersionId(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -416,7 +416,7 @@ const char *OH_GetVersionId(void)
 const char *OH_GetBuildType(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统的构建类型。
 
@@ -424,7 +424,7 @@ const char *OH_GetBuildType(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -436,7 +436,7 @@ const char *OH_GetBuildType(void)
 const char *OH_GetBuildUser(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统的构建用户。
 
@@ -444,7 +444,7 @@ const char *OH_GetBuildUser(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -456,7 +456,7 @@ const char *OH_GetBuildUser(void)
 const char *OH_GetBuildHost(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统的构建主机。
 
@@ -464,7 +464,7 @@ const char *OH_GetBuildHost(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -476,7 +476,7 @@ const char *OH_GetBuildHost(void)
 const char *OH_GetBuildTime(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统的构建时间。
 
@@ -484,7 +484,7 @@ const char *OH_GetBuildTime(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -496,7 +496,7 @@ const char *OH_GetBuildTime(void)
 const char *OH_GetBuildRootHash(void)
 ```
 
-**描述**
+**描述：**
 
 获取系统的构建版本Hash。
 
@@ -504,7 +504,7 @@ const char *OH_GetBuildRootHash(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -516,7 +516,7 @@ const char *OH_GetBuildRootHash(void)
 const char *OH_GetDistributionOSName(void)
 ```
 
-**描述**
+**描述：**
 
 获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。
 
@@ -524,7 +524,7 @@ const char *OH_GetDistributionOSName(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -536,7 +536,7 @@ const char *OH_GetDistributionOSName(void)
 const char *OH_GetDistributionOSVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取ISV发行版系统版本号。
 
@@ -544,7 +544,7 @@ const char *OH_GetDistributionOSVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -556,7 +556,7 @@ const char *OH_GetDistributionOSVersion(void)
 int OH_GetDistributionOSApiVersion(void)
 ```
 
-**描述**
+**描述：**
 
 获取ISV发行版系统API版本。
 
@@ -564,7 +564,7 @@ int OH_GetDistributionOSApiVersion(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -576,7 +576,7 @@ int OH_GetDistributionOSApiVersion(void)
 const char *OH_GetDistributionOSReleaseType(void)
 ```
 
-**描述**
+**描述：**
 
 获取ISV发行版系统类型。
 
@@ -584,7 +584,7 @@ const char *OH_GetDistributionOSReleaseType(void)
 
 **起始版本：** 10
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

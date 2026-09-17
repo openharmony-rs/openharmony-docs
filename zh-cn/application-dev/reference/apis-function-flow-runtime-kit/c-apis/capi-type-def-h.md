@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md) | ffrt_function_header_t | 任务执行体，用于定义任务的执行和销毁回调。`exec`回调在任务被调度时调用，`destroy`回调在任务完成后被调用以释放任务相关资源。两者共同管理FFRT任务的完整生命周期。 |
+| [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md) | ffrt_function_header_t | 任务执行体，用于定义任务的执行和销毁回调。<br> `exec`回调在任务被调度时调用，`destroy`回调在任务完成后被调用以释放任务相关资源。两者共同管理FFRT任务的完整生命周期。 |
 | [ffrt_dependence_t](capi-ffrt-ffrt-dependence-t.md) | ffrt_dependence_t | 依赖数据项结构，用于描述任务间的单个依赖关系。 |
 | [ffrt_deps_t](capi-ffrt-ffrt-deps-t.md) | ffrt_deps_t | 依赖结构体，用于保存任务的依赖列表。 |
 | [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md) | ffrt_task_attr_t | 任务属性结构体，用于存储任务的属性信息。 |
@@ -40,25 +40,30 @@
 | [ffrt_qos_default_t](#ffrt_qos_default_t) | ffrt_qos_default_t | 任务QoS类型枚举。 |
 | [ffrt_storage_size_t](#ffrt_storage_size_t) | ffrt_storage_size_t | 多种类型结构体的存储大小定义，单位是字节。 |
 | [ffrt_function_kind_t](#ffrt_function_kind_t) | ffrt_function_kind_t | 任务类型枚举，用于区分通用并发任务和队列调度的任务。 |
-| [ffrt_dependence_type_t](#ffrt_dependence_type_t) | ffrt_dependence_type_t | 依赖类型枚举。用于指定任务间的依赖关系（数据就绪或任务完成）。 |
+| [ffrt_dependence_type_t](#ffrt_dependence_type_t) | ffrt_dependence_type_t | 依赖类型枚举。<br> 用于指定任务间的依赖关系（数据就绪或任务完成）。 |
 | [ffrt_error_t](#ffrt_error_t) | ffrt_error_t | 错误码枚举，由FFRT接口返回。 |
 | [ffrt_mutex_type](#ffrt_mutex_type) | ffrt_mutex_type | 互斥锁类型枚举。 |
-| [qos_default](#qos_default) | - | 任务QoS类型枚举。各枚举值与[ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t)中对应的枚举值等价。 |
+| [qos_default](#qos_default) | - | 任务QoS类型枚举。<br> 各枚举值与[ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t)中对应的枚举值等价。 |
 
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*ffrt_function_t)(void*)](#ffrt_function_t) | ffrt_function_t | 任务执行函数指针类型。函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。 |
-| [typedef void (\*ffrt_poller_cb)(void* data, uint32_t event)](#ffrt_poller_cb) | ffrt_poller_cb | poller回调函数类型。当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。 |
-| [typedef void (\*ffrt_timer_cb)(void* data)](#ffrt_timer_cb) | ffrt_timer_cb | 定时器回调函数类型。当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。 |
+| [typedef void (\*ffrt_function_t)(void*)](#ffrt_function_t) | ffrt_function_t | 任务执行函数指针类型。<br> 函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。 |
+| [typedef void (\*ffrt_poller_cb)(void* data, uint32_t event)](#ffrt_poller_cb) | ffrt_poller_cb | poller回调函数类型。<br> 当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。 |
+| [typedef void (\*ffrt_timer_cb)(void* data)](#ffrt_timer_cb) | ffrt_timer_cb | 定时器回调函数类型。<br> 当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。 |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| [ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t)  | 纤程存储大小，单位是字节。该常量定义纤程存储大小。实际值取决于目标架构：- `__aarch64__`：22- `__arm__`：64- `__x86_64__`：8<br>**起始版本：** 20 |
 | using qos = int | QoS类型。<br>**起始版本：** 10 |
+| int ffrt_qos_t | QoS类型，用于设置任务的QoS等级。<br>**起始版本：** 10 |
+| void (*ffrt_function_t)(void*) | 任务执行函数指针类型。<br> 函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。<br>**起始版本：** 10 |
+| void* ffrt_task_handle_t | 任务句柄，用于标识不同的任务。<br>**起始版本：** 10 |
+| void (*ffrt_poller_cb)(void* data, uint32_t event) | poller回调函数类型。<br> 当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。<br>**起始版本：** 12 |
+| void (*ffrt_timer_cb)(void* data) | 定时器回调函数类型。<br> 当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。<br>**起始版本：** 12 |
+| int ffrt_timer_t | 定时器句柄，用于标识已创建的定时器。<br>**起始版本：** 12 |
 
 ## 枚举类型说明
 
@@ -68,7 +73,7 @@
 enum ffrt_queue_priority_t
 ```
 
-**描述**
+**描述：**
 
 并发队列中用于排序任务调度的任务优先级类型枚举。
 
@@ -87,7 +92,7 @@ enum ffrt_queue_priority_t
 enum ffrt_qos_default_t
 ```
 
-**描述**
+**描述：**
 
 任务QoS类型枚举。
 
@@ -95,14 +100,14 @@ enum ffrt_qos_default_t
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ffrt_qos_inherit = -1 | 继承。继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
-| ffrt_qos_background | 后台任务。最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
-| ffrt_qos_utility | 实用工具类任务。用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
-| ffrt_qos_default | 默认类型。无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
-| ffrt_qos_user_initiated | 用户发起的任务。用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
-| ffrt_qos_deadline_request | 时限请求任务。用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
-| ffrt_qos_user_interactive | 用户交互任务。适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
-| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级。等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
+| ffrt_qos_inherit = -1 | 继承。<br> 继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
+| ffrt_qos_background | 后台任务。<br> 最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
+| ffrt_qos_utility | 实用工具类任务。<br> 用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
+| ffrt_qos_default | 默认类型。<br> 无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
+| ffrt_qos_user_initiated | 用户发起的任务。<br> 用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
+| ffrt_qos_deadline_request | 时限请求任务。<br> 用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
+| ffrt_qos_user_interactive | 用户交互任务。<br> 适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
+| ffrt_qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br> 等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
 
 ### ffrt_storage_size_t
 
@@ -110,7 +115,7 @@ enum ffrt_qos_default_t
 enum ffrt_storage_size_t
 ```
 
-**描述**
+**描述：**
 
 多种类型结构体的存储大小定义，单位是字节。
 
@@ -124,7 +129,7 @@ enum ffrt_storage_size_t
 | ffrt_cond_storage_size = 64 | 条件变量存储大小，单位是字节。 |
 | ffrt_queue_attr_storage_size = 128 | 队列属性存储大小，单位是字节。 |
 | ffrt_rwlock_storage_size = 64 | 读写锁存储大小，单位是字节。<br>**起始版本：** 18 |
-| #if defined(__aarch64__) | 纤程存储大小，单位是字节。该常量定义纤程存储大小。实际值取决于目标架构：- `__aarch64__`：22- `__arm__`：64- `__x86_64__`：8<br>**起始版本：** 20 |
+| ffrt_fiber_storage_size = 22 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
 
 ### ffrt_function_kind_t
 
@@ -132,7 +137,7 @@ enum ffrt_storage_size_t
 enum ffrt_function_kind_t
 ```
 
-**描述**
+**描述：**
 
 任务类型枚举，用于区分通用并发任务和队列调度的任务。
 
@@ -149,9 +154,9 @@ enum ffrt_function_kind_t
 enum ffrt_dependence_type_t
 ```
 
-**描述**
+**描述：**
 
-依赖类型枚举。用于指定任务间的依赖关系（数据就绪或任务完成）。
+依赖类型枚举。<br> 用于指定任务间的依赖关系（数据就绪或任务完成）。
 
 **起始版本：** 10
 
@@ -166,7 +171,7 @@ enum ffrt_dependence_type_t
 enum ffrt_error_t
 ```
 
-**描述**
+**描述：**
 
 错误码枚举，由FFRT接口返回。
 
@@ -187,7 +192,7 @@ enum ffrt_error_t
 enum ffrt_mutex_type
 ```
 
-**描述**
+**描述：**
 
 互斥锁类型枚举。
 
@@ -205,22 +210,22 @@ enum ffrt_mutex_type
 enum qos_default
 ```
 
-**描述**
+**描述：**
 
-任务QoS类型枚举。各枚举值与[ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t)中对应的枚举值等价。
+任务QoS类型枚举。<br> 各枚举值与[ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t)中对应的枚举值等价。
 
 **起始版本：** 10
 
 | 枚举项 | 描述 |
 | -- | -- |
-| qos_inherit = ffrt_qos_inherit | 继承。继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
-| qos_background = ffrt_qos_background | 后台任务。最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
-| qos_utility = ffrt_qos_utility | 实用工具类任务。用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
-| qos_default = ffrt_qos_default | 默认类型。无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
-| qos_user_initiated = ffrt_qos_user_initiated | 用户发起的任务。用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
-| qos_deadline_request = ffrt_qos_deadline_request | 时限请求任务。用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
-| qos_user_interactive = ffrt_qos_user_interactive | 用户交互任务。适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
-| qos_max = ffrt_qos_user_interactive | 最高QoS等级。等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
+| qos_inherit = ffrt_qos_inherit | 继承。<br> 继承调用线程的QoS。用于任务需要采用创建者优先级的场景。 |
+| qos_background = ffrt_qos_background | 后台任务。<br> 最低优先级。用于用户无感知的工作，例如后台数据同步或日志刷新。 |
+| qos_utility = ffrt_qos_utility | 实用工具类任务。<br> 用于用户可感知但不主动等待的长时间任务，例如数据加载或内容索引。 |
+| qos_default = ffrt_qos_default | 默认类型。<br> 无特殊QoS要求时使用的默认QoS，适用于大多数一般任务。 |
+| qos_user_initiated = ffrt_qos_user_initiated | 用户发起的任务。<br> 用于用户主动触发、需要快速响应但不阻塞UI的任务，例如打开文档或执行搜索。 |
+| qos_deadline_request = ffrt_qos_deadline_request | 时限请求任务。<br> 用于有明确截止时间的任务，系统优先保障其调度资源。<br>**起始版本：** 23 |
+| qos_user_interactive = ffrt_qos_user_interactive | 用户交互任务。<br> 适用于UI响应等需要立即与用户交互的操作。<br>**起始版本：** 23 |
+| qos_max = ffrt_qos_user_interactive | 最高QoS等级。<br> 等价于ffrt_qos_user_interactive。<br>**起始版本：** 23 |
 
 
 ## 函数说明
@@ -231,9 +236,9 @@ enum qos_default
 typedef void (*ffrt_function_t)(void*)
 ```
 
-**描述**
+**描述：**
 
-任务执行函数指针类型。函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。
+任务执行函数指针类型。<br> 函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。
 
 **起始版本：** 10
 
@@ -243,9 +248,9 @@ typedef void (*ffrt_function_t)(void*)
 typedef void (*ffrt_poller_cb)(void* data, uint32_t event)
 ```
 
-**描述**
+**描述：**
 
-poller回调函数类型。当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。
+poller回调函数类型。<br> 当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。
 
 **起始版本：** 12
 
@@ -262,9 +267,9 @@ poller回调函数类型。当poller检测到已注册事件时调用该回调�
 typedef void (*ffrt_timer_cb)(void* data)
 ```
 
-**描述**
+**描述：**
 
-定时器回调函数类型。当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。
+定时器回调函数类型。<br> 当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。
 
 **起始版本：** 12
 

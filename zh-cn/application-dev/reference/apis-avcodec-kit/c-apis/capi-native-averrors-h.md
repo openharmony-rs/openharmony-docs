@@ -30,26 +30,24 @@
 enum OH_AVErrCode
 ```
 
-**描述**
+**描述：**
 
 媒体框架错误码。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AV_ERR_OK = 0 | 操作成功。 |
-| AV_ERR_NO_MEMORY = 1 | 无内存。 |
-| AV_ERR_OPERATE_NOT_PERMIT = 2 | 操作不允许。 |
-| AV_ERR_INVALID_VAL = 3 | 无效值。 |
-| AV_ERR_IO = 4 | IO错误。 |
-| AV_ERR_TIMEOUT = 5 | 超时错误。 |
-| AV_ERR_UNKNOWN = 6 | 未知错误。 |
-| AV_ERR_SERVICE_DIED = 7 | 服务死亡。 |
-| AV_ERR_INVALID_STATE = 8 | 当前状态不支持此操作。 |
-| AV_ERR_UNSUPPORT = 9 | 未支持的接口。 |
+| AV_ERR_OK = 0 |  |
+| AV_ERR_NO_MEMORY = 1 |  |
+| AV_ERR_OPERATE_NOT_PERMIT = 2 |  |
+| AV_ERR_INVALID_VAL = 3 |  |
+| AV_ERR_IO = 4 |  |
+| AV_ERR_TIMEOUT = 5 |  |
+| AV_ERR_UNKNOWN = 6 |  |
+| AV_ERR_SERVICE_DIED = 7 |  |
+| AV_ERR_INVALID_STATE = 8 |  |
+| AV_ERR_UNSUPPORT = 9 |  |
 | AV_ERR_INPUT_DATA_ERROR = 10 |  输入数据错误。<br>**起始版本：** 12 |
 | AV_ERR_UNSUPPORTED_FORMAT = 11 |  不支持的格式。<br>**起始版本：** 18 |
 | AV_ERR_EXTEND_START = 100 | 扩展错误码初始值。 |
@@ -69,7 +67,7 @@ enum OH_AVErrCode
 | AV_ERR_IO_SSL_SERVER_CERT_UNTRUSTED = 5411010 |  SSL服务器证书不受信任。<br>**起始版本：** 14 |
 | AV_ERR_IO_UNSUPPORTED_REQUEST = 5411011 |  网络协议不支持该请求。<br>**起始版本：** 14 |
 | AV_ERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012 |  不允许HTTP明文访问。<br>**起始版本：** 23 |
-| AV_ERR_STREAM_CHANGED = 5410005 |  同步模式下流格式发生变更。可以通过调用接口{@link OH_VideoEncoder_GetOutputDescription}（视频编码）、{@link OH_VideoDecoder_GetOutputDescription}（视频解码）、{@link OH_AudioCodec_GetOutputDescription}音频编解码来获取更新后流的配置信息。<br>**起始版本：** 20 |
+| AV_ERR_STREAM_CHANGED = 5410005 |  同步模式下流格式发生变更。 可以通过调用接口{@link OH_VideoEncoder_GetOutputDescription}（视频编码）、{@link OH_VideoDecoder_GetOutputDescription}（视频解码）、<br>{@link OH_AudioCodec_GetOutputDescription}音频编解码来获取更新后流的配置信息。<br>**起始版本：** 20 |
 | AV_ERR_TRY_AGAIN_LATER = 5410006 |  同步模式下临时缓冲区查询失败，建议等待短暂间隔后重试操作。<br>**起始版本：** 20 |
 | AV_ERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003 |  该媒体源或者当前设备不支持超分。<br>**起始版本：** 23 |
 | AV_ERR_SUPER_RESOLUTION_NOT_ENABLED = 5410004 |  未使能超分。<br>**起始版本：** 23 |

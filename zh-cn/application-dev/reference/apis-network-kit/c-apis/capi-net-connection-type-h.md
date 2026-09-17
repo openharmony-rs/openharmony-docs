@@ -58,6 +58,20 @@
 | [typedef void (\*OH_NetConn_NetUnavailable)(void)](#oh_netconn_netunavailable) | OH_NetConn_NetUnavailable | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。 |
 | [typedef void (\*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)](#oh_netconn_netblockstatuschange) | OH_NetConn_NetBlockStatusChange | 网络阻塞状态变更回调。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res) | 指向自定义DNS解析器的指针。<br>**起始版本：** 11 |
+| void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy) | 应用的http代理信息变化回调。<br>**起始版本：** 12 |
+| void (*OH_NetConn_GlobalHttpProxyRefreshCallback)( int32_t result, const NetConn_HttpProxy *proxy, void *userContext) | 全局HTTP代理重新认证结果的回调。<br>**起始版本：** 26.0.0 |
+| void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle) | 网络可用回调。<br>**起始版本：** 12 |
+| void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities) | 网络能力集变更回调。<br>**起始版本：** 12 |
+| void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties) | 网络连接属性变更回调。<br>**起始版本：** 12 |
+| void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle) | 网络断开回调。<br>**起始版本：** 12 |
+| void (*OH_NetConn_NetUnavailable)(void) | 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。<br>**起始版本：** 12 |
+| void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked) | 网络阻塞状态变更回调。<br>**起始版本：** 12 |
+
 ## 函数说明
 
 ### OH_NetConn_CustomDnsResolver()
@@ -66,7 +80,7 @@
 typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, const struct addrinfo *hint, struct addrinfo **res)
 ```
 
-**描述**
+**描述：**
 
 指向自定义DNS解析器的指针。
 
@@ -87,7 +101,7 @@ typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv, 
 typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 ```
 
-**描述**
+**描述：**
 
 应用的http代理信息变化回调。
 
@@ -105,7 +119,7 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)
 ```
 
-**描述**
+**描述：**
 
 全局HTTP代理重新认证结果的回调。
 
@@ -116,8 +130,8 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t result | 重新认证的结果。0表示成功，其他值表示失败。 |
-| [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | The refreshed global HTTP proxy information when result is 0. If re-authenticationfails, proxy is NULL.<br>The proxy object is owned by the system and is valid only during this callbackinvocation. The caller must not free or modify it. If the caller needs to use theproxy information after the callback returns, the caller must make a deep copy. |
-| void \*userContext | The user-defined data passed to OH_NetConn_RefreshGlobalHttpProxyWithCallback. The systemdoes not access, copy, or release it. |
+| [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | The refreshed global HTTP proxy information when result is 0. If re-authentication fails, proxy is NULL.<br> The proxy object is owned by the system and is valid only during this callback invocation. The caller must not free or modify it. If the caller needs to use the proxy information after the callback returns, the caller must make a deep copy. |
+| void \*userContext | The user-defined data passed to OH_NetConn_RefreshGlobalHttpProxyWithCallback. The system does not access, copy, or release it. |
 
 ### OH_NetConn_NetworkAvailable()
 
@@ -125,7 +139,7 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 ```
 
-**描述**
+**描述：**
 
 网络可用回调。
 
@@ -143,7 +157,7 @@ typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities)
 ```
 
-**描述**
+**描述：**
 
 网络能力集变更回调。
 
@@ -162,7 +176,7 @@ typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle, N
 typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *connConnetionProperties)
 ```
 
-**描述**
+**描述：**
 
 网络连接属性变更回调。
 
@@ -181,7 +195,7 @@ typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netH
 typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 ```
 
-**描述**
+**描述：**
 
 网络断开回调。
 
@@ -199,7 +213,7 @@ typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 typedef void (*OH_NetConn_NetUnavailable)(void)
 ```
 
-**描述**
+**描述：**
 
 网络不可用回调，在指定的超时时间内网络未激活时触发该回调，如果未设置超时时间则不会触发该回调。
 
@@ -211,7 +225,7 @@ typedef void (*OH_NetConn_NetUnavailable)(void)
 typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)
 ```
 
-**描述**
+**描述：**
 
 网络阻塞状态变更回调。
 

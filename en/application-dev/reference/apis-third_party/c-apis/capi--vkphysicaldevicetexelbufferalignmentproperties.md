@@ -1,0 +1,4 @@
+# VkPhysicalDeviceTexelBufferAlignmentProperties
+
+## Overview
+

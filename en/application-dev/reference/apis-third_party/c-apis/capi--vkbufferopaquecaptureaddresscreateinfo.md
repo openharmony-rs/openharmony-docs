@@ -1,0 +1,4 @@
+# VkBufferOpaqueCaptureAddressCreateInfo
+
+## Overview
+

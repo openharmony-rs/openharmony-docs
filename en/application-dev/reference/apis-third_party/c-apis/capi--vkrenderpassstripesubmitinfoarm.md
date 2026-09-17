@@ -1,0 +1,4 @@
+# VkRenderPassStripeSubmitInfoARM
+
+## Overview
+

@@ -1,0 +1,112 @@
+# @ohos.enterprise.applicationManager(应用管理)
+
+本模块提供应用管理能力，包括管理应用运行禁止名单、应用运行允许名单、开机自启动应用名单、保活应用名单、不可关停应用名单、后台防冻结应用名单、允许发送通知应用名单、允许跨设备应用名单等。适用于企业设备管理场景，可实现应用运行权限管控、开机自启动管理、保活应用管理等，提升企业设备安全性和合规性。
+
+> **说明：** 
+> 
+> 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../../mdm/mdm-kit-guide.md)。
+> [applicationManager.isAppKioskAllowed](arkts-mdm-applicationmanager-isappkioskallowed-f.md)除外，该接口对所有应用开放。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## 导入模块
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+```
+
+## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [addAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-addalloweddistributeabilityconnbundles-f.md) | 为指定用户下的特定分布式业务添加允许跨设备的应用名单。即名单中的应用可以不受[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)的限制，通过使用该特定分布式业务跨设备传输数据。 |
+| [addAllowedNotificationBundles](arkts-mdm-applicationmanager-addallowednotificationbundles-f.md) | 添加允许发送通知的应用名单。设置通知允许名单后，不在此名单内的应用无法发送通知。 |
+| [addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md) | 添加应用至应用运行允许名单，添加至允许名单的应用允许在指定用户下运行，不在允许名单的应用不允许在指定用户下运行。 |
+| [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md) | 为当前用户添加开机自启动应用名单。通过本接口添加至自启动名单的应用，禁止用户在设备上手动取消应用自启动，但可通过[removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md)接口将应用从自启动名单中移除。 |
+| [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md) | 为指定用户添加开机自启动应用名单，并设置是否禁止该用户手动取消应用自启动。 |
+| [addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。从API version 21开始，如果应用运行允许名单[addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [addDockApp](arkts-mdm-applicationmanager-adddockapp-f.md) | 根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。 |
+| [addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md) | 为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。 |
+| [addHideLauncherIcon](arkts-mdm-applicationmanager-addhidelaunchericon-f.md) | 添加隐藏桌面应用图标名单。 |
+| [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md) | 添加保活应用名单，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。 |
+| [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md) | 添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。 |
+| [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md) | 为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。 |
+| [clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md) | 清除应用产生的所有数据。 |
+| [getAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-getalloweddistributeabilityconnbundles-f.md) | 获取指定用户下特定分布式业务的允许跨设备应用名单。 |
+| [getAllowedKioskApps](arkts-mdm-applicationmanager-getallowedkioskapps-f.md) | 获取允许在Kiosk模式下运行的应用。 |
+| [getAllowedKioskApps](arkts-mdm-applicationmanager-getallowedkioskapps-f.md) | 获取允许在Kiosk模式下运行的应用。 |
+| [getAllowedNotificationBundles](arkts-mdm-applicationmanager-getallowednotificationbundles-f.md) | 获取允许发送通知的应用名单。 |
+| [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md) | 获取指定用户下的应用运行允许名单。 |
+| [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md) | 获取指定用户下的应用运行允许名单。 |
+| [getApplicationWindowStates](arkts-mdm-applicationmanager-getapplicationwindowstates-f.md) | 查询指定应用的窗口状态信息列表。可以查询到应用是否在底部Dock栏，以及当前应用窗口是否在前台显示等信息。 |
+| [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md) | 查询当前用户开机自启动应用名单。 |
+| [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md) | 查询当前用户开机自启动应用名单。 |
+| [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md) | 查询指定用户下的开机自启动应用名单。 |
+| [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md) | 查询指定用户下的开机自启动应用名单。 |
+| [getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md) | 获取当前/指定用户下的应用运行禁止名单。 |
+| [getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md) | 获取当前/指定用户下的应用运行禁止名单。 |
+| [getDockApps](arkts-mdm-applicationmanager-getdockapps-f.md) | 获取当前快捷栏中应用信息的列表。 |
+| [getFreezeExemptedApps](arkts-mdm-applicationmanager-getfreezeexemptedapps-f.md) | 获取当前设备下所有用户后台防冻结应用名单。 |
+| [getFreezeExemptedApps](arkts-mdm-applicationmanager-getfreezeexemptedapps-f.md) | 获取当前设备下所有用户后台防冻结应用名单。 |
+| [getHideLauncherIcon](arkts-mdm-applicationmanager-gethidelaunchericon-f.md) | 查询当前用户下隐藏桌面应用图标名单。 |
+| [getKeepAliveApps](arkts-mdm-applicationmanager-getkeepaliveapps-f.md) | 获取保活应用包名。 |
+| [getKeepAliveApps](arkts-mdm-applicationmanager-getkeepaliveapps-f.md) | 获取保活应用包名。 |
+| [getUserNonStopApps](arkts-mdm-applicationmanager-getusernonstopapps-f.md) | 获取当前设备下所有用户不可关停应用名单。 |
+| [getUserNonStopApps](arkts-mdm-applicationmanager-getusernonstopapps-f.md) | 获取当前设备下所有用户不可关停应用名单。 |
+| [isAbilityDisabled](arkts-mdm-applicationmanager-isabilitydisabled-f.md) | 获取指定应用（系统应用和三方应用均支持）的Ability组件是否被禁用。 |
+| [isAbilityDisabled](arkts-mdm-applicationmanager-isabilitydisabled-f.md) | 获取指定应用（系统应用和三方应用均支持）的Ability组件是否被禁用。 |
+| [isAppKioskAllowed](arkts-mdm-applicationmanager-isappkioskallowed-f.md) | 查询某应用是否允许在Kiosk模式下运行。 |
+| [isModifyAutoStartAppsDisallowed](arkts-mdm-applicationmanager-ismodifyautostartappsdisallowed-f.md) | 查询指定用户是否禁止取消应用自启动。 |
+| [isModifyKeepAliveAppsDisallowed](arkts-mdm-applicationmanager-ismodifykeepaliveappsdisallowed-f.md) | 查询应用是否禁止取消保活。 |
+| [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md) | 查询指定用户账户在给定时间段内，各应用在前台运行的累计时长统计信息。查询的最小粒度是天，调用时需要传入起始时间（startTime）、结束时间（endTime）以及目标用户账户ID（accountId）。请求参数startTime和endTime为毫秒级时间戳，支持调用方传入自定义值，startTime默认取当天的00:00:00.000，endTime默认取当天的24:00:00.000（即次日零点）。请求参数接口返回BundleStatsInfo数组，每个元素包含一个应用的包名，其分身索引值及其对应时间段内的前台使用时长（毫秒级时间戳）。若startTime为0，则表示从设备首次开机的时间开始查询。若起始时间晚于结束时间，接口将返回错误码9200012。 |
+| [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md) | 查询当前用户下指定应用在特定时间段内使用流量情况。使用Promise异步回调。 |
+| [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md) | 为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。 |
+| [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md) | 从允许发送通知的应用名单中移除应用。 |
+| [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md) | 将应用从指定用户下的应用运行允许名单中移除。移除后，该应用将不允许在指定用户下运行。 |
+| [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md) | 为当前用户删除开机自启动应用名单。删除后，应用将不再开机自启动。 |
+| [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md) | 删除指定用户的开机自启动应用名单中的指定应用。 |
+| [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md) | 将应用从当前/指定用户下的应用运行禁止名单中移除。移除后，该应用将允许在当前/指定用户下运行。 |
+| [removeDockApp](arkts-mdm-applicationmanager-removedockapp-f.md) | 从快捷栏中移除应用。 |
+| [removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md) | 为指定用户删除后台防冻结应用名单。删除后，应用可以被系统冻结。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
+| [removeHideLauncherIcon](arkts-mdm-applicationmanager-removehidelaunchericon-f.md) | 取消隐藏桌面应用图标名单。 |
+| [removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md) | 移除保活应用名单中的指定应用。 |
+| [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md) | 为指定用户删除不可关停应用名单。删除后，用户可以在设备上正常关停该应用。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。 |
+| [setAbilityDisabled](arkts-mdm-applicationmanager-setabilitydisabled-f.md) | 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。 |
+| [setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md) | 设置允许在Kiosk模式下运行的应用。 |
+| [setKioskFeatures](arkts-mdm-applicationmanager-setkioskfeatures-f.md) | 设置Kiosk模式的特征。通过本接口可以控制在Kiosk模式下能否进入通知中心、控制中心。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [addDisallowedRunningBundles](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前用户下运行，不在禁止名单中的应用允许运行。使用callback异步回调。从API version 21开始，如果应用运行允许名单[addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [addDisallowedRunningBundles](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在指定用户（通过userId指定）下运行，不在禁止名单中的应用允许运行。使用callback异步回调。从API version 21开始，如果应用运行允许名单[addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [addDisallowedRunningBundles](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md) | 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。使用Promise异步回调。从API version 21开始，如果应用运行允许名单[addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。 |
+| [getDisallowedRunningBundles](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md) | 获取当前用户下的应用运行禁止名单。使用callback异步回调。 |
+| [getDisallowedRunningBundles](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md) | 获取指定用户（通过userId指定）下的应用运行禁止名单。使用callback异步回调。 |
+| [getDisallowedRunningBundles](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md) | 获取当前/指定用户下的应用运行禁止名单，使用Promise异步回调。 |
+| [removeDisallowedRunningBundles](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md) | 移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在当前用户下运行。使用callback异步回调。 |
+| [removeDisallowedRunningBundles](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md) | 移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在指定用户（通过userId指定）下运行。使用callback异步回调。 |
+| [removeDisallowedRunningBundles](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md) | 移除当前/指定用户在应用运行禁止名单中的应用，使用Promise异步回调。 |
+<!--DelEnd-->
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [BundleStatsInfo](arkts-mdm-applicationmanager-bundlestatsinfo-i.md) | 应用包统计信息。 |
+| [DockInfo](arkts-mdm-applicationmanager-dockinfo-i.md) | 快捷栏中的应用信息。 |
+| [WindowStateInfo](arkts-mdm-applicationmanager-windowstateinfo-i.md) | 应用窗口状态信息。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md) | Kiosk模式的特征。 |
+| [ServiceType](arkts-mdm-applicationmanager-servicetype-e.md) | 分布式业务类型。 |
+| [WindowState](arkts-mdm-applicationmanager-windowstate-e.md) | 应用窗口状态。 |

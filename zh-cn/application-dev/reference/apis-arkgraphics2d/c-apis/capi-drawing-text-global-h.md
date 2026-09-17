@@ -25,7 +25,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)](#oh_drawing_settexthighcontrast) | 设置文本渲染高对比度模式。<br>该接口设置后整个进程都会生效，进程内所有页面共用相同模式。<br>可通过调用此接口设置文本渲染高对比度模式，也可通过系统设置界面中高对比度文字配置开关进行开启/关闭。使用此接口设置文本渲染高对比度的优先级高于系统设置。<br>该接口针对应用的文字自绘制场景不生效。 |
+| [void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)](#oh_drawing_settexthighcontrast) | 设置文本渲染高对比度模式。 <br>该接口设置后整个进程都会生效，进程内所有页面共用相同模式。 <br>可通过调用此接口设置文本渲染高对比度模式，也可通过系统设置界面中高对比度文字配置开关进行开启/关闭。使用此接口设置文本渲染高对比度的优先级高于系统设置。 <br>该接口针对应用的文字自绘制场景不生效。 |
 | [void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)](#oh_drawing_settextundefinedglyphdisplay) | 设置未定义字形的呈现方式，调用此接口后影响本进程后续渲染的所有文本。 |
 
 ## 枚举类型说明
@@ -36,7 +36,7 @@
 enum OH_Drawing_TextHighContrast
 ```
 
-**描述**
+**描述：**
 
 文本渲染高对比度模式枚举。
 
@@ -54,7 +54,7 @@ enum OH_Drawing_TextHighContrast
 enum OH_Drawing_TextUndefinedGlyphDisplay
 ```
 
-**描述**
+**描述：**
 
 显示未定义字形的方式。
 
@@ -76,9 +76,9 @@ enum OH_Drawing_TextUndefinedGlyphDisplay
 void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 ```
 
-**描述**
+**描述：**
 
-设置文本渲染高对比度模式。<br>该接口设置后整个进程都会生效，进程内所有页面共用相同模式。<br>可通过调用此接口设置文本渲染高对比度模式，也可通过系统设置界面中高对比度文字配置开关进行开启/关闭。使用此接口设置文本渲染高对比度的优先级高于系统设置。<br>该接口针对应用的文字自绘制场景不生效。
+设置文本渲染高对比度模式。 <br>该接口设置后整个进程都会生效，进程内所有页面共用相同模式。 <br>可通过调用此接口设置文本渲染高对比度模式，也可通过系统设置界面中高对比度文字配置开关进行开启/关闭。使用此接口设置文本渲染高对比度的优先级高于系统设置。 <br>该接口针对应用的文字自绘制场景不生效。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -96,7 +96,7 @@ void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action)
 void OH_Drawing_SetTextUndefinedGlyphDisplay(OH_Drawing_TextUndefinedGlyphDisplay undefinedGlyphDisplay)
 ```
 
-**描述**
+**描述：**
 
 设置未定义字形的呈现方式，调用此接口后影响本进程后续渲染的所有文本。
 

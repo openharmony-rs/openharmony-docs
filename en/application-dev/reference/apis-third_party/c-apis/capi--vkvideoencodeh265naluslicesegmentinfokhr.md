@@ -1,0 +1,4 @@
+# VkVideoEncodeH265NaluSliceSegmentInfoKHR
+
+## Overview
+

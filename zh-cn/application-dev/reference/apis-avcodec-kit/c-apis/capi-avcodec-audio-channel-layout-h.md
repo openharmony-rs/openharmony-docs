@@ -20,18 +20,18 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| AudioChannelSet : uint64_t | 音频声道数集合，将每一个声道数映射为uint64_t的变量。(API11废弃) |
-| AudioChannelLayout : uint64_t | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。(API11废弃) |
+| [AudioChannelSet](#audiochannelset) | 音频声道数集合，将每一个声道数映射为uint64_t的变量。(API11废弃) |
+| [AudioChannelLayout](#audiochannellayout) | 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。(API11废弃) |
 
 ## 枚举类型说明
 
-### AudioChannelSet : uint64_t
+### AudioChannelSet
 
 ```c
-enum AudioChannelSet : uint64_t
+enum AudioChannelSet
 ```
 
-**描述**
+**描述：**
 
 音频声道数集合，将每一个声道数映射为uint64_t的变量。
 
@@ -68,13 +68,13 @@ enum AudioChannelSet : uint64_t
 | AMBISONICS_ACN14 = 1ULL << 55U | 三阶立体声声道数14 |
 | AMBISONICS_ACN15 = 1ULL << 56U | 三阶立体声声道数15 |
 
-### AudioChannelLayout : uint64_t
+### AudioChannelLayout
 
 ```c
-enum AudioChannelLayout : uint64_t
+enum AudioChannelLayout
 ```
 
-**描述**
+**描述：**
 
 音频声道数类型，将用户申请的解码器输出格式表示为编解码器的声道类型。
 

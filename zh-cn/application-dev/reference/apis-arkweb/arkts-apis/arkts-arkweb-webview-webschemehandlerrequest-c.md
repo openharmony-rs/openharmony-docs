@@ -1,6 +1,6 @@
 # WebSchemeHandlerRequest
 
-WebSchemeHandlerRequest类模块定义了通过WebSchemeHandler拦截到的资源请求的封装对象。当开发者注册自定义协议处理器（WebSchemeHandler）后，Web内核在拦截到匹配协议的请求时会创建 WebSchemeHandlerRequest实例并传递给回调方法。该对象提供以下请求信息查询方法：获取请求头信息、请求URL、请求方法、来源URL、判断是否为主框架请求、是否关联用户手势、获取请求体流、资源类型以及触发该请求的 Frame URL，从而据此决定是否拦截该请求并构造相应响应。
+WebSchemeHandlerRequest类模块定义了通过WebSchemeHandler拦截到的资源请求的封装对象。当开发者注册自定义协议处理器（WebSchemeHandler）后，Web内核在拦截到匹配协议的请求时会创建WebSchemeHandlerRequest实例并传递给回调方法。该对象提供以下请求信息查询方法：获取请求头信息、请求URL、请求方法、来源URL、判断是否为主框架请求、是否关联用户手势、获取请求体流、资源类型以及触发该请求的Frame URL，从而据此决定是否拦截该请求并构造相应响应。
 
 **起始版本：** 12
 
@@ -9,6 +9,7 @@ WebSchemeHandlerRequest类模块定义了通过WebSchemeHandler拦截到的资�
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## getFrameUrl
@@ -29,10 +30,6 @@ getFrameUrl(): string
 | --- | --- |
 | string | 返回触发此请求的Frame的URL。 |
 
-**示例**
-
-完整示例代码参考onRequestStart。
-
 ## getHeader
 
 ```TypeScript
@@ -43,7 +40,7 @@ getHeader(): Array<WebHeader>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -51,11 +48,7 @@ getHeader(): Array<WebHeader>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;WebHeader&gt; | 返回资源请求头信息。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。
+| Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | 返回资源请求头信息。 |
 
 ## getHttpBodyStream
 
@@ -67,7 +60,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -75,11 +68,7 @@ getHttpBodyStream(): WebHttpBodyStream | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebHttpBodyStream](arkts-arkweb-webview-webhttpbodystream-c.md) \| null | 返回资源请求中的WebHttpBodyStream，如果没有则返回null。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。
+| [WebHttpBodyStream](arkts-arkweb-webview-webhttpbodystream-c.md) &#124; null | 返回资源请求中的WebHttpBodyStream，如果没有则返回null。 |
 
 ## getReferrer
 
@@ -91,7 +80,7 @@ getReferrer(): string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -100,10 +89,6 @@ getReferrer(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 获取到的referrer。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。
 
 ## getRequestMethod
 
@@ -115,7 +100,7 @@ getRequestMethod(): string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -124,10 +109,6 @@ getRequestMethod(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 返回请求方法。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。
 
 ## getRequestResourceType
 
@@ -147,10 +128,6 @@ getRequestResourceType(): WebResourceType
 | --- | --- |
 | [WebResourceType](arkts-arkweb-webview-webresourcetype-e.md) | 返回资源请求的资源类型。 |
 
-**示例**
-
-完整示例代码参考onRequestStart。
-
 ## getRequestUrl
 
 ```TypeScript
@@ -161,7 +138,7 @@ getRequestUrl(): string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -170,10 +147,6 @@ getRequestUrl(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 返回资源请求的URL信息。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。
 
 ## hasGesture
 
@@ -185,7 +158,7 @@ hasGesture(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -194,10 +167,6 @@ hasGesture(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回资源请求是否与手势（如点击）相关联，如果资源请求与手势相关联则返回true，否则返回false。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。
 
 ## isMainFrame
 
@@ -209,7 +178,7 @@ isMainFrame(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -218,7 +187,3 @@ isMainFrame(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 判断资源请求是否为主Frame，如果资源请求是主Frame则返回true，否则返回false。 |
-
-**示例**
-
-完整示例代码参考onRequestStart。

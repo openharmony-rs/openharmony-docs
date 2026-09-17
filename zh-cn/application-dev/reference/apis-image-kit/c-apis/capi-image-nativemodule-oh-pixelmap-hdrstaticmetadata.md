@@ -6,7 +6,7 @@ typedef struct OH_Pixelmap_HdrStaticMetadata {...} OH_Pixelmap_HdrStaticMetadata
 
 ## 概述
 
-表示HDR_STATIC_METADATA关键字对应的静态元数据值，用于描述HDR显示设备的能力信息及内容亮度特征（如三基色坐标、白点坐标、最值亮度、内容最大亮度等），在调用[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)和[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)时作为[OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md)的成员使用。
+表示HDR_STATIC_METADATA关键字对应的静态元数据值，用于描述HDR显示设备的能力信息及内容亮度特征 （如三基色坐标、白点坐标、最值亮度、内容最大亮度等），在调用[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)和 [OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)时作为[OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md)的成员使用。
 
 **起始版本：** 12
 

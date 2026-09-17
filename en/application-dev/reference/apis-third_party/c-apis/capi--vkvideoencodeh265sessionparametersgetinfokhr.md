@@ -1,0 +1,4 @@
+# VkVideoEncodeH265SessionParametersGetInfoKHR
+
+## Overview
+

@@ -29,7 +29,7 @@
 enum Udmf_ErrCode
 ```
 
-**描述**
+**描述：**
 
 错误码信息。
 
@@ -47,7 +47,7 @@ enum Udmf_ErrCode
 enum Udmf_ListenerStatus
 ```
 
-**描述**
+**描述：**
 
 异步获取数据时的状态码枚举。
 

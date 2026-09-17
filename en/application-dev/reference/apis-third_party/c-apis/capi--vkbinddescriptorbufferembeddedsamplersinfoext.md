@@ -1,0 +1,4 @@
+# VkBindDescriptorBufferEmbeddedSamplersInfoEXT
+
+## Overview
+

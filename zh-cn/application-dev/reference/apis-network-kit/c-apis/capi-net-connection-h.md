@@ -29,19 +29,19 @@
 | [int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)](#oh_netconn_getallnets) | 查询所有激活的数据网络。 |
 | [int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#ohos_netconn_registerdnsresolver) | 注册自定义DNS解析器。(API13废弃) |
 | [int32_t OHOS_NetConn_UnregisterDnsResolver(void)](#ohos_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。(API13废弃) |
-| [int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registerdnsresolver) | 注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](capi-net-connection-h.md#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。<br>建议使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)时，需要使用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)接口取消注册。(API26.0.0废弃) |
+| [int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registerdnsresolver) | 注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](capi-net-connection-h.md#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。 <br>建议使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)时，需要使用 [OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)接口取消注册。(API26.0.0废弃) |
 | [int32_t OH_NetConn_UnregisterDnsResolver(void)](#oh_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。(API26.0.0废弃) |
-| [int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registercustomdnsresolver) | 注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。<br>同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。<br>作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。 |
+| [int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registercustomdnsresolver) | 注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。 <br>同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。 <br>作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。 |
 | [int32_t OH_NetConn_UnregisterCustomDnsResolver(void)](#oh_netconn_unregistercustomdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)](#oh_netconn_bindsocket) | 将套接字绑定到特定的网络。 |
 | [int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)](#oh_netconn_setapphttpproxy) | 为当前应用设置http代理配置信息。 |
 | [int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)](#oh_netconn_registerapphttpproxycallback) | 注册监听应用http代理变化的回调。 |
 | [void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)](#oh_netconn_unregisterapphttpproxycallback) | 注销监听应用http代理变化的回调。 |
-| [int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)](#oh_netconn_refreshglobalhttpproxywithcallback) | 请求全局HTTP代理重新认证，并通过一次性回调报告结果。该函数提交异步重新认证请求。返回值为0表示请求已被接受，不表示重新认证成功。最终结果通过回调报告。<br>如果该函数返回0，回调最多会被调用一次。回调被调用后，将由系统自动释放。<br>如果该函数返回非0值，回调不会被调用。<br>回调可能在系统工作线程上调用。调用者必须确保回调实现是线程安全的并快速返回。<br>调用者必须确保回调函数和userData在回调被调用之前保持有效。 |
+| [int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)](#oh_netconn_refreshglobalhttpproxywithcallback) | 请求全局HTTP代理重新认证，并通过一次性回调报告结果。<br> 该函数提交异步重新认证请求。返回值为0表示请求已被接受，不表示重新认证成功。 最终结果通过回调报告。<br><br> 如果该函数返回0，回调最多会被调用一次。回调被调用后，将由系统自动释放。<br><br> 如果该函数返回非0值，回调不会被调用。<br><br> 回调可能在系统工作线程上调用。调用者必须确保回调实现是线程安全的并快速返回。<br><br> 调用者必须确保回调函数和userData在回调被调用之前保持有效。 |
 | [int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback, uint32_t timeout, uint32_t *callbackId)](#oh_netconn_registernetconncallback) | 注册监听网络状态变化的回调。 |
 | [int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)](#oh_netconn_registerdefaultnetconncallback) | 注册监听默认网络状态变化的回调。 |
 | [int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)](#oh_netconn_unregisternetconncallback) | 注销监听网络状态变化的回调。 |
-| [NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)](#oh_netconn_setpacurl) | 设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。 |
+| [NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)](#oh_netconn_setpacurl) | 设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。 通过解析脚本地址可以获取代理信息。 |
 | [NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)](#oh_netconn_getpacurl) | 获取系统级代理自动配置（PAC）脚本地址。 |
 | [int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)](#oh_netconn_queryproberesult) | 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口涉及网络操作，避免在主流程调用，否则可能导致UI卡顿。 |
 | [int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *option, NetConn_TraceRouteInfo *traceRouteInfo)](#oh_netconn_querytraceroute) | 查询网络跟踪路由。 |
@@ -54,7 +54,7 @@
 int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 ```
 
-**描述**
+**描述：**
 
 查询是否有默认激活的数据网络。
 
@@ -70,7 +70,7 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 | -- | -- |
 | int32_t *hasDefaultNet | 是否有默认网络。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -82,7 +82,7 @@ int32_t OH_NetConn_HasDefaultNet(int32_t *hasDefaultNet)
 int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 ```
 
-**描述**
+**描述：**
 
 获取激活的默认的数据网络。
 
@@ -96,9 +96,9 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 存放网络ID。 |
+| NetConn_NetHandle *netHandle | 存放网络ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -110,7 +110,7 @@ int32_t OH_NetConn_GetDefaultNet(NetConn_NetHandle *netHandle)
 int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 ```
 
-**描述**
+**描述：**
 
 查询默认数据网络是否计流量。
 
@@ -126,7 +126,7 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 | -- | -- |
 | int32_t *isMetered | 是否激活。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -138,7 +138,7 @@ int32_t OH_NetConn_IsDefaultNetMetered(int32_t *isMetered)
 int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn_ConnectionProperties *prop)
 ```
 
-**描述**
+**描述：**
 
 查询某个数据网络的链路信息。
 
@@ -152,10 +152,10 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 存放网络ID。 |
-| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) *prop | 存放链路信息。 |
+| NetConn_NetHandle *netHandle | 存放网络ID。 |
+| NetConn_ConnectionProperties *prop | 存放链路信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -167,7 +167,7 @@ int32_t OH_NetConn_GetConnectionProperties(NetConn_NetHandle *netHandle, NetConn
 int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetCapabilities *netCapabilities)
 ```
 
-**描述**
+**描述：**
 
 查询某个网络的能力集。
 
@@ -181,10 +181,10 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 存放网络ID。 |
-| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) *netCapabilities | 存放能力集。 |
+| NetConn_NetHandle *netHandle | 存放网络ID。 |
+| NetConn_NetCapabilities *netCapabilities | 存放能力集。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -196,7 +196,7 @@ int32_t OH_NetConn_GetNetCapabilities(NetConn_NetHandle *netHandle, NetConn_NetC
 int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 ```
 
-**描述**
+**描述：**
 
 查询默认的网络代理。
 
@@ -208,9 +208,9 @@ int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *httpProxy | 存放代理配置信息。 |
+| NetConn_HttpProxy *httpProxy | 存放代理配置信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -222,7 +222,7 @@ int32_t OH_NetConn_GetDefaultHttpProxy(NetConn_HttpProxy *httpProxy)
 int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, struct addrinfo **res, int32_t netId)
 ```
 
-**描述**
+**描述：**
 
 通过netId获取DNS结果。
 
@@ -242,7 +242,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 | struct addrinfo **res | 存放DNS查询结果，以链表形式返回。 |
 | int32_t netId | DNS查询netId为0时，使用默认netId查询。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -254,7 +254,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 ```
 
-**描述**
+**描述：**
 
 释放DNS结果。
 
@@ -270,7 +270,7 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 | -- | -- |
 | struct addrinfo *res | DNS查询结果链表头。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -282,7 +282,7 @@ int32_t OH_NetConn_FreeDnsResult(struct addrinfo *res)
 int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 ```
 
-**描述**
+**描述：**
 
 查询所有激活的数据网络。
 
@@ -296,9 +296,9 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) *netHandleList | 网络信息列表。 |
+| NetConn_NetHandleList *netHandleList | 网络信息列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -310,7 +310,7 @@ int32_t OH_NetConn_GetAllNets(NetConn_NetHandleList *netHandleList)
 int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
-**描述**
+**描述：**
 
 注册自定义DNS解析器。
 
@@ -326,9 +326,9 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | 指向自定义DNS解析器的指针。 |
+| OH_NetConn_CustomDnsResolver resolver | 指向自定义DNS解析器的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -340,7 +340,7 @@ int32_t OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 ```
 
-**描述**
+**描述：**
 
 取消注册自定义DNS解析器。
 
@@ -352,7 +352,7 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 
 **替代接口：** OH_NetConn_UnregisterDnsResolver
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -364,9 +364,9 @@ int32_t OHOS_NetConn_UnregisterDnsResolver(void)
 int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
-**描述**
+**描述：**
 
-注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](capi-net-connection-h.md#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。<br>建议使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)时，需要使用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)接口取消注册。
+注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](capi-net-connection-h.md#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。 <br>建议使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_registercustomdnsresolver)时，需要使用 [OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)接口取消注册。
 
 **起始版本：** 13
 
@@ -378,9 +378,9 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | 指向自定义DNS解析器的指针。 |
+| OH_NetConn_CustomDnsResolver resolver | 指向自定义DNS解析器的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -392,7 +392,7 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 int32_t OH_NetConn_UnregisterDnsResolver(void)
 ```
 
-**描述**
+**描述：**
 
 取消注册自定义DNS解析器。
 
@@ -402,7 +402,7 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 **替代接口：** OH_NetConn_UnregisterCustomDnsResolver
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -414,9 +414,9 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 ```
 
-**描述**
+**描述：**
 
-注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。<br>同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。<br>作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
+注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。 <br>同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。 <br>作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](capi-net-connection-h.md#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
 
 **起始版本：** 26.0.0
 
@@ -424,9 +424,9 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver | 指向自定义DNS解析器的指针。 |
+| OH_NetConn_CustomDnsResolver resolver | 指向自定义DNS解析器的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -438,13 +438,13 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 ```
 
-**描述**
+**描述：**
 
 取消注册自定义DNS解析器。
 
 **起始版本：** 26.0.0
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -456,7 +456,7 @@ int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 ```
 
-**描述**
+**描述：**
 
 将套接字绑定到特定的网络。
 
@@ -469,9 +469,9 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t socketFd | 由用户构造的套接字。 |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | 指针类型，指向包含网络ID的网络句柄。 |
+| NetConn_NetHandle *netHandle | 指针类型，指向包含网络ID的网络句柄。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -483,7 +483,7 @@ int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)
 int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 ```
 
-**描述**
+**描述：**
 
 为当前应用设置http代理配置信息。
 
@@ -495,9 +495,9 @@ int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *httpProxy | 需要设置的http代理配置信息。 |
+| NetConn_HttpProxy *httpProxy | 需要设置的http代理配置信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -509,7 +509,7 @@ int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)
 int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)
 ```
 
-**描述**
+**描述：**
 
 注册监听应用http代理变化的回调。
 
@@ -521,10 +521,10 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NetConn_AppHttpProxyChange](capi-net-connection-type-h.md#oh_netconn_apphttpproxychange) appHttpProxyChange | 需要注册的监听回调。 |
+| OH_NetConn_AppHttpProxyChange appHttpProxyChange | 需要注册的监听回调。 |
 | uint32_t *callbackId | 回调注册后生成的id, 关联已注册的回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -536,7 +536,7 @@ int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange ap
 void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 ```
 
-**描述**
+**描述：**
 
 注销监听应用http代理变化的回调。
 
@@ -556,9 +556,9 @@ void OH_NetConn_UnregisterAppHttpProxyCallback(uint32_t callbackId)
 int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxyRefreshCallback callback, void *userContext)
 ```
 
-**描述**
+**描述：**
 
-请求全局HTTP代理重新认证，并通过一次性回调报告结果。该函数提交异步重新认证请求。返回值为0表示请求已被接受，不表示重新认证成功。最终结果通过回调报告。<br>如果该函数返回0，回调最多会被调用一次。回调被调用后，将由系统自动释放。<br>如果该函数返回非0值，回调不会被调用。<br>回调可能在系统工作线程上调用。调用者必须确保回调实现是线程安全的并快速返回。<br>调用者必须确保回调函数和userData在回调被调用之前保持有效。
+请求全局HTTP代理重新认证，并通过一次性回调报告结果。<br> 该函数提交异步重新认证请求。返回值为0表示请求已被接受，不表示重新认证成功。 最终结果通过回调报告。<br><br> 如果该函数返回0，回调最多会被调用一次。回调被调用后，将由系统自动释放。<br><br> 如果该函数返回非0值，回调不会被调用。<br><br> 回调可能在系统工作线程上调用。调用者必须确保回调实现是线程安全的并快速返回。<br><br> 调用者必须确保回调函数和userData在回调被调用之前保持有效。
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -568,10 +568,10 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NetConn_GlobalHttpProxyRefreshCallback](capi-net-connection-type-h.md#oh_netconn_globalhttpproxyrefreshcallback) callback | 用于接收重新认证结果的一次性回调，不能为NULL。 |
+| OH_NetConn_GlobalHttpProxyRefreshCallback callback | 用于接收重新认证结果的一次性回调，不能为NULL。 |
 | void *userContext | 传递给回调的用户定义数据，可以为NULL。系统不会访问、复制或释放它。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -583,7 +583,7 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetConn_NetConnCallback *netConnCallback, uint32_t timeout, uint32_t *callbackId)
 ```
 
-**描述**
+**描述：**
 
 注册监听网络状态变化的回调。
 
@@ -602,7 +602,7 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 | uint32_t timeout | 超时时间，单位为毫秒，为0时表示无限等待。 |
 | uint32_t *callbackId | 出参，对应本次注册成功的回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -614,7 +614,7 @@ int32_t OH_NetConn_RegisterNetConnCallback(NetConn_NetSpecifier *specifier, NetC
 int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netConnCallback, uint32_t *callbackId)
 ```
 
-**描述**
+**描述：**
 
 注册监听默认网络状态变化的回调。
 
@@ -631,7 +631,7 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 | callback | 注册的回调函数集合。 |
 | uint32_t *callbackId | 出参，对应本次注册成功的回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -643,7 +643,7 @@ int32_t OH_NetConn_RegisterDefaultNetConnCallback(NetConn_NetConnCallback *netCo
 int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 ```
 
-**描述**
+**描述：**
 
 注销监听网络状态变化的回调。
 
@@ -659,7 +659,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 | -- | -- |
 | uint32_t callBackId | 需要被注销的回调对应ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -671,9 +671,9 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 ```
 
-**描述**
+**描述：**
 
-设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。通过解析脚本地址可以获取代理信息。
+设置当前PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，比如：http://127.0.0.1:21998/PacProxyScript.pac。 通过解析脚本地址可以获取代理信息。
 
 **需要权限：** ohos.permission.SET_PAC_URL
 
@@ -685,11 +685,11 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 | -- | -- |
 | const char *pacUrl | 需要设置的PAC脚本地址。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。      <br>{@link NETCONN_SUCCESS} 成功。      <br>{@link NETCONN_PERMISSION_DENIED} 缺少权限。      <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。      <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。      <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
+| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。<br>    <br>{@link NETCONN_SUCCESS} 成功。<br>    <br>{@link NETCONN_PERMISSION_DENIED} 缺少权限。<br>    <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。<br>    <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。<br>    <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
 
 ### OH_NetConn_GetPacUrl()
 
@@ -697,7 +697,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 ```
 
-**描述**
+**描述：**
 
 获取系统级代理自动配置（PAC）脚本地址。
 
@@ -709,11 +709,11 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 | -- | -- |
 | char *pacUrl | 获取的PAC脚本地址。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。      <br>{@link NETCONN_SUCCESS} 成功。      <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。      <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。      <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
+| NetConn_ErrorCode | 结果定义在 {@link NetConn_ErrorCode}。<br>    <br>{@link NETCONN_SUCCESS} 成功。<br>    <br>{@link NETCONN_PARAMETER_ERROR} 参数错误。<br>    <br>{@link NETCONN_OPERATION_FAILED} 无法连接到服务。<br>    <br>{@link NETCONN_INTERNAL_ERROR} 内部错误。 |
 
 ### OH_NetConn_QueryProbeResult()
 
@@ -721,7 +721,7 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)
 ```
 
-**描述**
+**描述：**
 
 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口涉及网络操作，避免在主流程调用，否则可能导致UI卡顿。
 
@@ -735,9 +735,9 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 | -- | -- |
 | char *destination | 需要探测的目标域名或者IP地址。对于域名，探测前会进行域名解析，将域名解析为目标IP，之后发起探测。域名解析时间不包含在duration指示的探测持续时间内。 |
 | int32_t duration | 探测持续时间。单位：秒。探测间隔为1秒，因此可通过本字段控制探测次数。 |
-| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | 丢包率和往返时间（RTT）。 |
+| NetConn_ProbeResultInfo *probeResultInfo | 丢包率和往返时间（RTT）。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -749,7 +749,7 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *option, NetConn_TraceRouteInfo *traceRouteInfo)
 ```
 
-**描述**
+**描述：**
 
 查询网络跟踪路由。
 
@@ -762,10 +762,10 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 | 参数项 | 描述 |
 | -- | -- |
 | char *destination | 目的地址。 |
-| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) *option | 路由参数选项。 |
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | 路由结果。需传入数组指针，数组大小代表路由跳数，默认30跳。若自定义跳数，则需保证数组大小与option字段中的maxJumpNumber数值保持一致。 |
+| NetConn_TraceRouteOption *option | 路由参数选项。 |
+| NetConn_TraceRouteInfo *traceRouteInfo | 路由结果。需传入数组指针，数组大小代表路由跳数，默认30跳。若自定义跳数，则需保证数组大小与option字段中的maxJumpNumber数值保持一致。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_TCPFlagsMatch {...} OH_TrafficFilter_TCPFlagsMat
 
 ## 概述
 
-TCP标志匹配条件基于TCP标志设置匹配TCP报文
+TCP标志匹配条件<br> 基于TCP标志设置匹配TCP报文
 
 **起始版本：** 26.1.0
 

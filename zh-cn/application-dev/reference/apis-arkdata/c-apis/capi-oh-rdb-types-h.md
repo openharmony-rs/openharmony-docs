@@ -47,7 +47,7 @@
 enum Rdb_ConflictResolution
 ```
 
-**描述**
+**描述：**
 
 表示冲突解决策略的枚举。
 
@@ -71,13 +71,13 @@ enum Rdb_ConflictResolution
 OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 ```
 
-**描述**
+**描述：**
 
 创建[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)的实例对象。
 
 **起始版本：** 23
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -94,7 +94,7 @@ OH_RDB_DestroyReturningContext
 void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 ```
 
-**描述**
+**描述：**
 
 销毁[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例对象。
 
@@ -112,7 +112,7 @@ void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *const fields[], int32_t len)
 ```
 
-**描述**
+**描述：**
 
 设置结果集中返回的字段。
 
@@ -126,7 +126,7 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 | const char *const fields[] | 要返回的字段名。 |
 | int32_t len | 字段数量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -138,7 +138,7 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 ```
 
-**描述**
+**描述：**
 
 设置返回结果集的最大行数量。
 
@@ -151,7 +151,7 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 | int32_t count | 表示返回结果集的最大行数量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -163,7 +163,7 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 ```
 
-**描述**
+**描述：**
 
 获取数据变化的游标，默认包含1024行。
 
@@ -175,11 +175,11 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 返回指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。      <br>如果获取游标失败，则返回nullptr。使用[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)接口释放内存时会销毁游标，无需单独释放。 |
+| OH_Cursor * | 返回指向{@link OH_Cursor}结构体实例的指针。      <br>如果获取游标失败，则返回nullptr。使用[OH_RDB_DestroyReturningContext](capi-oh-rdb-types-h.md#oh_rdb_destroyreturningcontext)接口释放内存时会销毁游标，无需单独释放。 |
 
 ### OH_RDB_GetChangedCount()
 
@@ -187,7 +187,7 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 ```
 
-**描述**
+**描述：**
 
 获取受此操作影响的数据行的数量。
 
@@ -199,7 +199,7 @@ int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | 指向[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

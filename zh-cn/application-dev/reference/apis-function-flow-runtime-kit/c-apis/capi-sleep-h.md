@@ -18,7 +18,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [FFRT_C_API int ffrt_usleep(uint64_t usec)](#ffrt_usleep) | 将调用线程挂起指定的时长。若`usec`超过支持的最大值则按最大值截断。 |
+| [FFRT_C_API int ffrt_usleep(uint64_t usec)](#ffrt_usleep) | 将调用线程挂起指定的时长。<br> 若`usec`超过支持的最大值则按最大值截断。 |
 | [FFRT_C_API void ffrt_yield(void)](#ffrt_yield) | 将控制权让出给其他任务，使其有机会被执行。 |
 
 ## 函数说明
@@ -29,9 +29,9 @@
 FFRT_C_API int ffrt_usleep(uint64_t usec)
 ```
 
-**描述**
+**描述：**
 
-将调用线程挂起指定的时长。若`usec`超过支持的最大值则按最大值截断。
+将调用线程挂起指定的时长。<br> 若`usec`超过支持的最大值则按最大值截断。
 
 **起始版本：** 10
 
@@ -41,7 +41,7 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 | -- | -- |
 | uint64_t usec | 调用线程被挂起的时长，单位是微秒。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -53,7 +53,7 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 FFRT_C_API void ffrt_yield(void)
 ```
 
-**描述**
+**描述：**
 
 将控制权让出给其他任务，使其有机会被执行。
 

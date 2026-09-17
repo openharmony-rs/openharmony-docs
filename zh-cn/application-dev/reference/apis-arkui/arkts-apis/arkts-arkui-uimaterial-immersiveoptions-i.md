@@ -154,7 +154,7 @@ materialColor?: ResourceColor
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
-**默认值：** Color.Transparent
+**默认值：** undefined
 
 **起始版本：** 26.0.0
 

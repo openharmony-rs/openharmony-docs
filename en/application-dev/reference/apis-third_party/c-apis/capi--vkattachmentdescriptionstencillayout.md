@@ -1,0 +1,4 @@
+# VkAttachmentDescriptionStencilLayout
+
+## Overview
+

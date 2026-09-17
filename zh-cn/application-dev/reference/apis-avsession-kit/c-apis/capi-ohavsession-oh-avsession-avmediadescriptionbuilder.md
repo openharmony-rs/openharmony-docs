@@ -6,7 +6,7 @@ typedef struct OH_AVSession_AVMediaDescriptionBuilder OH_AVSession_AVMediaDescri
 
 ## 概述
 
-音视频媒体描述构建器的声明。构建器的实例用于创建媒体描述信息。
+音视频媒体描述构建器的声明。 构建器的实例用于创建媒体描述信息。
 
 **起始版本：** 23
 

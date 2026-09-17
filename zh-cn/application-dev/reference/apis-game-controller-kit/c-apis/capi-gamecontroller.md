@@ -5,6 +5,7 @@
 Provides APIs for game controller capability.
 
 **起始版本：** 21
+
 ## 文件汇总
 
 | 名称 | 描述 |

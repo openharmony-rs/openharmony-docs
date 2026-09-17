@@ -29,7 +29,7 @@
 int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)
 ```
 
-**描述**
+**描述：**
 
 获取以太网网卡MAC地址列表。
 
@@ -43,9 +43,9 @@ int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Ethernet_MacAddrInfoList](capi-netmanager-ext-ethernet-macaddrinfolist.md) *macAddrList | 以太网网卡MAC地址列表。 |
+| Ethernet_MacAddrInfoList *macAddrList | 以太网网卡MAC地址列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -57,7 +57,7 @@ int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)
 int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)
 ```
 
-**描述**
+**描述：**
 
 获取以太网网卡IP地址列表。
 
@@ -71,9 +71,9 @@ int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Ethernet_NetAddrList](capi-netmanager-ext-ethernet-netaddrlist.md) *netAddrList | 以太网网卡IP地址列表。 |
+| Ethernet_NetAddrList *netAddrList | 以太网网卡IP地址列表。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

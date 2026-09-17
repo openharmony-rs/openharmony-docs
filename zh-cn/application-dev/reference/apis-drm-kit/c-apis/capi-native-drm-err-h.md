@@ -30,7 +30,7 @@
 enum Drm_ErrCode
 ```
 
-**描述**
+**描述：**
 
 DRM错误码。
 

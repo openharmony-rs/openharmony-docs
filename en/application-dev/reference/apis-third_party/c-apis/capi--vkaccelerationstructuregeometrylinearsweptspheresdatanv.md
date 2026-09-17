@@ -1,0 +1,4 @@
+# VkAccelerationStructureGeometryLinearSweptSpheresDataNV
+
+## Overview
+

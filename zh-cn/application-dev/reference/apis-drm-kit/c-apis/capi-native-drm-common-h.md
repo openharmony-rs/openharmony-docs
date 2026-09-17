@@ -29,8 +29,8 @@
 | [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | DRM_PsshInfo | DRM内容保护系统专用头（Protection System Specific Header）信息。 |
 | [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 加密媒体内容的DRM信息。 |
 | [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | DRM_MediaKeySystemDescription | DRM解决方案名称及其UUID的列表。 |
-| [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | MediaKeySystem结构，用于表示一个媒体密钥系统实例。MediaKeySystem提供数字版权保护能力，负责DRM插件配置管理、设备证书管理、统计信息获取、内容保护级别查询以及创建MediaKeySession等功能。通过OH_MediaKeySystem_Create接口创建实例，通过OH_MediaKeySystem_Destroy接口销毁实例。 |
-| [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | MediaKeySession结构，用于表示一个媒体密钥会话实例。MediaKeySession是DRM解密流程的核心组件，负责生成许可证请求、处理许可证响应、管理密钥状态等功能。每个MediaKeySession实例对应一个播放会话的密钥解密过程。通过OH_MediaKeySystem_CreateMediaKeySession接口创建实例，通过OH_MediaKeySession_Destroy接口销毁实例。每个MediaKeySystem可创建多个MediaKeySession实例，用于处理不同的播放会话。 |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | MediaKeySystem结构，用于表示一个媒体密钥系统实例。MediaKeySystem提供数字版权保护能力， 负责DRM插件配置管理、设备证书管理、统计信息获取、内容保护级别查询以及创建MediaKeySession等功能。 通过OH_MediaKeySystem_Create接口创建实例，通过OH_MediaKeySystem_Destroy接口销毁实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | MediaKeySession结构，用于表示一个媒体密钥会话实例。MediaKeySession是DRM解密流程的核心组件， 负责生成许可证请求、处理许可证响应、管理密钥状态等功能。每个MediaKeySession实例对应一个播放会话的密钥解密过程。 通过OH_MediaKeySystem_CreateMediaKeySession接口创建实例，通过OH_MediaKeySession_Destroy接口销毁实例。 每个MediaKeySystem可创建多个MediaKeySession实例，用于处理不同的播放会话。 |
 
 ### 枚举
 
@@ -77,6 +77,12 @@
 | -- | -- | -- |
 | [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调函数。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo) | 应用为从媒体源获取DRM信息而设置的回调函数。<br>**起始版本：** 11 |
+
 ## 枚举类型说明
 
 ### DRM_EventType
@@ -85,7 +91,7 @@
 enum DRM_EventType
 ```
 
-**描述**
+**描述：**
 
 监听事件类型。
 
@@ -108,7 +114,7 @@ enum DRM_EventType
 enum DRM_ContentProtectionLevel
 ```
 
-**描述**
+**描述：**
 
 内容保护级别。
 
@@ -130,7 +136,7 @@ enum DRM_ContentProtectionLevel
 enum DRM_MediaKeyType
 ```
 
-**描述**
+**描述：**
 
 媒体密钥类型。
 
@@ -149,7 +155,7 @@ enum DRM_MediaKeyType
 enum DRM_MediaKeyRequestType
 ```
 
-**描述**
+**描述：**
 
 媒体密钥请求类型。
 
@@ -172,7 +178,7 @@ enum DRM_MediaKeyRequestType
 enum DRM_OfflineMediaKeyStatus
 ```
 
-**描述**
+**描述：**
 
 离线媒体密钥状态。
 
@@ -192,7 +198,7 @@ enum DRM_OfflineMediaKeyStatus
 enum DRM_CertificateStatus
 ```
 
-**描述**
+**描述：**
 
 设备DRM证书状态。
 
@@ -217,7 +223,7 @@ enum DRM_CertificateStatus
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
-**描述**
+**描述：**
 
 应用为从媒体源获取DRM信息而设置的回调函数。
 

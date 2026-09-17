@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## detectedContentfulNodesCount
 
 ```TypeScript
 detectedContentfulNodesCount?: number
 ```
 
-在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。表示当前命中了多少有内容的节点。
+在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。
+
+表示当前命中了多少有内容的节点。
 
 **类型：** number
 

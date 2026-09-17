@@ -53,11 +53,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 | uint32_t index | 要检索的子进程信息的索引。必须严格小于计数。 |
 | OH_AbilityRuntime_ChildProcessInfoHandle *info | 检索到的指定索引的单个子进程信息句柄。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li>  <li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  </ul> |
+| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li><br><li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetPid()
 
@@ -78,11 +78,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 | OH_AbilityRuntime_ChildProcessInfoHandle info | 指向子进程信息的指针。不能是nullptr。 |
 | int32_t *pid | 输出参数，返回子进程PID。不能是nullptr。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li>  <li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  </ul> |
+| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li><br><li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetParentPid()
 
@@ -103,11 +103,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 | OH_AbilityRuntime_ChildProcessInfoHandle info | 指向子进程信息的指针。不能是nullptr。 |
 | int32_t *parentPid | 输出参数，返回父进程PID。不能是nullptr。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li>  <li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  </ul> |
+| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li><br><li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果提供的参数无效。</li>  </ul> |
 
 ### OH_AbilityRuntime_ChildProcessInfo_GetProcessName()
 
@@ -130,11 +130,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 | uint32_t processNameSize | 【in】表示缓冲区的大小（以字节为单位），包括尾随NUL。 |
 | uint32_t *requiredSize | 【out】所需的大小（以字节为单位），包括尾随NUL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li>  <li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果processName或requireSize为NULL，则  或者processNameSize为0。</li>  <li>如果缓冲区太小，则会出现<li>{@link_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL}。</li>  <li>如果字符串拷贝操作失败，则会出现<li>{@link_RUNTIME_ERROR_CODE_INTERNAL}。</li>  </ul> |
+| AbilityRuntime_ErrorCode | <ul>  如果操作成功，则返回<li>{@link_RUNTIME_ERROR_CODE_NO_ERROR}。</li><br><li>{@link_RUNTIME_ERROR_CODE_PARAM_INVALID}如果processName或requireSize为NULL，则<br>或者processNameSize为0。</li><br><li>如果缓冲区太小，则会出现<li>{@link_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL}。</li><br><li>如果字符串拷贝操作失败，则会出现<li>{@link_RUNTIME_ERROR_CODE_INTERNAL}。</li>  </ul> |
 
 ### OH_AbilityRuntime_ReleaseChildProcessInfos()
 
@@ -152,6 +152,6 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AbilityRuntime_ChildProcessInfosHandle *infos | 【in】要释放的子进程信息。它不能为NULL。释放后，handle将被设置为NULL。 |
+| OH_AbilityRuntime_ChildProcessInfosHandle *infos | 【in】要释放的子进程信息。它不能为NULL。 释放后，handle将被设置为NULL。 |
 
 

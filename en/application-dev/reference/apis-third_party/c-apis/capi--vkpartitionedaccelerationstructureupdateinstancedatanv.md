@@ -1,0 +1,4 @@
+# VkPartitionedAccelerationStructureUpdateInstanceDataNV
+
+## Overview
+

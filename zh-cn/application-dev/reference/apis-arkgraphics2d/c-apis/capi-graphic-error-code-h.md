@@ -28,7 +28,7 @@
 enum OHNativeErrorCode
 ```
 
-**描述**
+**描述：**
 
 接口错误码说明（仅用于查询）。
 

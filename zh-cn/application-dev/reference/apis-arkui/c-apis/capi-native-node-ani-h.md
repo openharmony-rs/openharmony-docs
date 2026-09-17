@@ -47,11 +47,11 @@ int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object
 | ani_object frameNode | ArkTS侧创建的FrameNode对象。 |
 | ArkUI_NodeHandle* handle | ArkUI_NodeHandle指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_GetContextFromAniValue()
 
@@ -73,11 +73,11 @@ int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object co
 | ani_object context | ArkTS侧创建的UIContext对象。 |
 | ArkUI_ContextHandle* handle | ArkUI_ContextHandle指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_GetNodeContentFromAniValue()
 
@@ -99,11 +99,11 @@ int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env *env, ani_objec
 | ani_object nodeContent | ArkTS侧创建的NodeContent对象。 |
 | ArkUI_NodeContentHandle *content | ArkUI_NodeContentHandle指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_GetNavDestinationAniParam()
 
@@ -125,11 +125,11 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle
 | ani_env* env | ANI的环境指针。 |
 | ani_value* param | 返回的页面参数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。      <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。      <br>{@link ARKUI_ERROR_CODE_GET_INFO_FAILED} 查询页面参数信息失败。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_GET_INFO_FAILED} 查询页面参数信息失败。 |
 
 ### OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue()
 
@@ -151,11 +151,11 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue(ani_env *env, an
 | ani_object drawable | 表示在ArkTS侧创建的<b>DrawableDescriptor</b>对象。 |
 | ArkUI_DrawableDescriptor **drawableDescriptor | 表示指向<b>ArkUI_DrawableDescriptor</b>对象的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误代码。      如果操作成功，则返回 {@link ARKUI_ERROR_CODE_NO_ERROR}。      如果发生参数错误，则返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| int32_t | 返回错误代码。      如果操作成功，则返回 {@link ARKUI_ERROR_CODE_NO_ERROR}。<br>    如果发生参数错误，则返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 ### OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue()
 
@@ -177,10 +177,10 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue(ani_env 
 | ani_object resource | 表示在ArkTS端创建的<b>Resource</b>对象。 |
 | ArkUI_DrawableDescriptor **drawableDescriptor | 表示指向<b>ArkUI_DrawableDescriptor</b>对象的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误代码。      如果操作成功，则返回 {@link ARKUI_ERROR_CODE_NO_ERROR}。      如果发生参数错误，则返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
+| int32_t | 返回错误代码。      如果操作成功，则返回 {@link ARKUI_ERROR_CODE_NO_ERROR}。<br>    如果发生参数错误，则返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID}。 |
 
 

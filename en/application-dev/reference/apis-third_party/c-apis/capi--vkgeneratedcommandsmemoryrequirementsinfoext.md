@@ -1,0 +1,4 @@
+# VkGeneratedCommandsMemoryRequirementsInfoEXT
+
+## Overview
+

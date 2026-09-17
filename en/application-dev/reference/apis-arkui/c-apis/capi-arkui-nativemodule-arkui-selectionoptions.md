@@ -1,0 +1,16 @@
+# ArkUI_SelectionOptions
+
+```c
+typedef struct ArkUI_SelectionOptions ArkUI_SelectionOptions
+```
+
+## Overview
+
+Defines the options for selection operation.
+
+**Since**: 23
+
+**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Header file**: [native_type.h](capi-native-type-h.md)
+

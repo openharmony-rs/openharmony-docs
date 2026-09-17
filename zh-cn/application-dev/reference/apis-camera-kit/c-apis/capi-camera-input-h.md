@@ -31,7 +31,7 @@
 | [Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)](#oh_camerainput_open) | - | 打开相机。 |
 | [Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint64_t* secureSeqId)](#oh_camerainput_opensecurecamera) | - | 打开安全相机。 |
 | [Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)](#oh_camerainput_close) | - | 关闭相机。 |
-| [Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)](#oh_camerainput_release) | - | 释放相机输入实例。<br>和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。 |
+| [Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)](#oh_camerainput_release) | - | 释放相机输入实例。 <br>和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。 |
 | [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | 查询设备不同折叠状态下，相机物理镜头角度是否可变。 |
 | [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | 获取设备当前折叠状态下的物理镜头角度。 |
 | [Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)](#oh_camerainput_usephysicalcameraorientation) | - | 选择是否使用物理镜头角度。 |
@@ -39,6 +39,13 @@
 | [Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_registerocclusiondetectioncallback) | - | 注册相机镜头遮挡、脏污检测事件回调。 |
 | [Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_unregisterocclusiondetectioncallback) | - | 注销相机镜头遮挡、脏污检测事件回调。 |
 | [Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)](#oh_camerainput_openconcurrentcameras) | - | 根据指定并发类型打开相机。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode) | 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。<br>**起始版本：** 11 |
+| void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult) | 相机镜头遮挡、脏污检测结果回调。<br>**起始版本：** 23 |
 
 ## 函数说明
 
@@ -88,7 +95,7 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
 | [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)* callback | 要注册的相机输入更改事件回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -113,7 +120,7 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
 | [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)* callback | 要注销的相机输入更改事件回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -137,7 +144,7 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 要打开的Camera_Input实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -162,7 +169,7 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 要打开的Camera_Input实例。 |
 | uint64_t* secureSeqId | 表示安全摄像头的序列值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -186,7 +193,7 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 要关闭的Camera_Input实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -200,7 +207,7 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 **描述：**
 
-释放相机输入实例。<br>和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。
+释放相机输入实例。 <br>和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。
 
 **起始版本：** 11
 
@@ -210,7 +217,7 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 要释放的Camera_Input实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -235,7 +242,7 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 | {CameraInput} | cameraInput the [Camera_Input](capi-oh-camera-camera-input.md) instance. |
 | {bool} | isVariable the result of whether physical camera orientation is variable. |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -260,7 +267,7 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
 | uint32_t* orientation | 如果方法调用成功，将返回设备当前折叠状态下的物理镜头角度。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -285,7 +292,7 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
 | bool isUsed | 选择是否使用物理镜头角度。true表示使用，false表示不使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -329,7 +336,7 @@ Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input*
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
 | [OH_CameraInput_OnOcclusionDetectionCallback](capi-camera-input-h.md#oh_camerainput_onocclusiondetectioncallback) occlusionDetectionCallback | 要注册的相机镜头遮挡、脏污检测事件回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -354,7 +361,7 @@ Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Inpu
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
 | [OH_CameraInput_OnOcclusionDetectionCallback](capi-camera-input-h.md#oh_camerainput_onocclusiondetectioncallback) occlusionDetectionCallback | 要注销的相机镜头遮挡、脏污检测事件回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -379,7 +386,7 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 要打开的Camera_Input实例。 |
 | Camera_ConcurrentType type | 指定并发类型。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
