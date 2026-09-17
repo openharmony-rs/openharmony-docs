@@ -160,7 +160,7 @@ ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* s
 
 | 类型                           | 说明 |
 |------------------------------|----|
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) | Post Message端口结构体指针。   |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)* | Post Message端口结构体指针。   |
 
 ### destroyWebMessagePorts()
 
