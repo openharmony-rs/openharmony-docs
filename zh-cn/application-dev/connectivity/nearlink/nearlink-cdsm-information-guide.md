@@ -21,7 +21,7 @@
 | createCdsmClient(address: string): CdsmClient | 创建合作设备集合客户端实例。 |
 | getCdsmInfo(): CdsmInfo | 主动查询合作设备集合里所有成员设备的信息。 |
 | onCdsmInfoChange(callback: Callback&lt;CdsmInfo&gt;): void | 订阅远端设备合作设备集合信息变化事件。使用callback异步回调。 |
-| offCdsmInfoChange(callback?: Callback&lt;CdsmInfo&gt;): void | 取消订阅远端设备合作设备集合信息变化事件。 |
+| offCdsmInfoChange(callback?: Callback&lt;CdsmInfo&gt;): void | 取消订阅远端设备合作设备集合信息变化事件。使用callback异步回调。 |
 
 ## 开发步骤
 

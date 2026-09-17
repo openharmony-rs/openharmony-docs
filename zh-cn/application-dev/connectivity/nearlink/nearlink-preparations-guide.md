@@ -75,7 +75,7 @@
 | -------- | -------- |
 | getState(): NearlinkState | 主动查询星闪开关状态。 |
 | onStateChange(callback: Callback&lt;NearlinkState&gt;): void | 订阅星闪开关状态变化事件。使用callback异步回调。 |
-| offStateChange(callback?: Callback&lt;NearlinkState&gt;): void | 取消订阅星闪开关状态变化事件。 |
+| offStateChange(callback?: Callback&lt;NearlinkState&gt;): void | 取消订阅星闪开关状态变化事件。使用callback异步回调。 |
 
 ### 开发步骤
 

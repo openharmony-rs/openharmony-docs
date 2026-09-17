@@ -23,7 +23,7 @@
 | startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt; | 启动星闪广播。使用Promise异步回调。 |
 | stopAdvertising(advertisingId: number): Promise&lt;void&gt; | 停止星闪广播。使用Promise异步回调。 |
 | onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 订阅星闪广播状态变化事件。使用callback异步回调。 |
-| offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 取消订阅星闪广播状态变化事件。 |
+| offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 取消订阅星闪广播状态变化事件。使用callback异步回调。 |
 
 ### 开发步骤
 
@@ -149,9 +149,9 @@
 | 接口名 | 描述 |
 | -------- | -------- |
 | startScan(filters: Array&lt;ScanFilters&gt; \| null, options?: ScanOptions): Promise&lt;void&gt; | 启动星闪扫描。使用Promise异步回调。 |
-| stopScan(): Promise&lt;void&gt; | 停止星闪扫描。 |
-| onDeviceFound(callback: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 订阅扫描结果。使用callback异步回调。 |
-| offDeviceFound(callback?: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 取消订阅扫描结果。 |
+| stopScan(): Promise&lt;void&gt; | 停止星闪扫描。使用Promise异步回调。 |
+| onDeviceFound(callback: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 订阅星闪扫描结果。使用callback异步回调。 |
+| offDeviceFound(callback?: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 取消订阅星闪扫描结果。使用callback异步回调。 |
 
 ### 开发步骤
 
