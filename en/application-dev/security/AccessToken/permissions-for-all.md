@@ -496,6 +496,20 @@ With this permission, the application can detect information such as the user's 
 
 **Valid since**: 20
 
+## ohos.permission.kernel.USB_CAPTURE
+
+Allows an application to capture usb data packets.
+
+With this permission, the application needs user authentication before it can capture USB data packets. Otherwise, this operation is not allowed.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
+
 ## ohos.permission.kernel.NET_RAW
 
 Allows an application to capture network data packets.
