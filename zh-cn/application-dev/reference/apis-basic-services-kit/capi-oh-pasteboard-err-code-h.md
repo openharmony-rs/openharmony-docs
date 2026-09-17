@@ -43,7 +43,7 @@ enum PASTEBOARD_ErrCode
 **起始版本：** 13
 
 | 枚举项 | 描述 |
-| -- | -- | -- |
+| -- | -- |
 | ERR_OK = 0 | 执行成功。 |
 | ERR_PERMISSION_ERROR = 201 | 权限校验失败。 |
 | ERR_INVALID_PARAMETER = 401 | 非法参数。 |
