@@ -152,6 +152,51 @@
 
 <!-- @[keyboard_notification_mix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioKeyboardSoundSample/entry/src/main/ets/common/controllers/KeyboardSoundController.ets) -->
 
+``` TypeScript
+async init(): Promise<void> {
+  this.renderer = await audio.createAudioRenderer({
+    streamInfo: {
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+      channels: audio.AudioChannel.CHANNEL_2,
+      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+    },
+    rendererInfo: {
+      // 使用通知音类型，将默认焦点策略从STOP降为DUCK。
+      usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION,
+      rendererFlags: 0,
+    },
+  });
+  const r = this.renderer;
+  r.on('writeData', (buf: ArrayBuffer) => { this.fillAudioData(buf) });
+}
+
+async play(): Promise<void> {
+  if (!this.renderer) {
+    return;
+  }
+  const token = ++this.playToken;
+  if (this.isStarted) {
+    await this.renderer.stop();
+    this.isStarted = false;
+  }
+  // 设置MIX策略，优先级低于DUCK，实现完全并发。
+  this.renderer.setIndependentAudioSessionStrategy({
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  }, audio.AudioSessionBehaviorFlags.DEFAULT_BEHAVIOR);
+  // 播放按键音。
+  await this.renderer.start();
+  this.isStarted = true;
+  await new Promise<void>((resolve: () => void) => {
+    setTimeout(resolve, AudioConstants.KEY_SOUND_DURATION_MS_NOTIFICATION);
+  });
+  if (token === this.playToken && this.isStarted) {
+    await this.renderer.stop();
+    this.isStarted = false;
+  }
+}
+```
+
 ## 同应用内焦点管理场景概述
 
 同一应用内会存在同时创建多条音频流的现象，例如音乐播放器在播放背景音乐的同时重新播放一首音乐，短视频播放器在播放视频的同时背景音乐也在播放。
