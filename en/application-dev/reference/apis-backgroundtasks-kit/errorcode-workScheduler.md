@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=d5faa0a49f7aa05b46e226421c5d5fb30796f2fe translatedAt=2026-09-15T12:49:02.061Z pushedAt=2026-09-17T03:42:50.278Z -->
 
 > **NOTE**
 >
@@ -19,7 +20,7 @@ Memory operation failed.
 
 **Description**
 
-This error code is reported when a memory operation fails.
+Memory operation failed.
 
 **Possible Causes**
 
@@ -28,10 +29,10 @@ This error code is reported when a memory operation fails.
 
 **Solution**
 
-1. Release the memory.
-2. Check whether memory leak occurs.
+1. Check for memory leak in the app code, such as unreleased objects and circular references.
+2. Check the memory usage of the app and release unnecessary memory resources.
 
-## 9700002 Parcel Operation Failure
+## 9700002 Parcel Read/Write Operation Failure
 
 **Error Message**
 
@@ -48,7 +49,7 @@ This error code is reported when parcel data fails to be read or written during 
 
 **Solution**
 
-Try again later or restart the device.
+The system is experiencing an internal error. Try again later or restart the device.
 
 ## 9700003 System Service Failure
 
@@ -58,7 +59,7 @@ System service operation failed.
 
 **Description**
 
-This error code is reported when the client process fails to request the system service.
+The client process fails to request the system service.
 
 **Possible Causes**
 
@@ -67,28 +68,32 @@ This error code is reported when the client process fails to request the system 
 
 **Solution**
 
-Try again later or restart the device.
+The system service is experiencing an internal error. Try again later or restart the device.
 
-## 9700004 workInfo Verification Failure
+## 9700004 Parameter Verification Failed
 
 **Error Message**
 
-Check on workInfo failed.
+Input param failed.
 
 **Description**
 
-This error code is reported when the **workInfo** parameter is abnormal.
+Invalid input parameter.
 
 **Possible Causes**
 
-1. The value of **bundleName** in **workInfo** does not match the UID of the application.
+1. For parameter **workInfo**, the bundle name does not match the app UID.
 2. The Work Scheduler task to cancel or query does not exist.
+3. For parameter **taskInfo**, the ability name is not a launcher ability or the task ID verification fails.
 
 **Solution**
 
-Check the **workInfo** parameters.
+1. Check whether the bundle name in **workInfo** matches the app UID.
+2. If this error occurs when you cancel or query a deferred task, ensure that the task has been correctly created.
+3. Check whether the ability name in **taskInfo** is a launcher ability.
+4. If you want to complete, query, or cancel a registered update task in the background , check whether the task ID is correct.
 
-## 9700005 startWork Call Failure
+## 9700005 StartWork Failure
 
 **Error Message**
 
@@ -100,10 +105,35 @@ This error code is reported when the request for a deferred task fails.
 
 **Possible Causes**
 
-1. The Work Scheduler task already exists.
-2. The application has already requested 10 Work Scheduler tasks.
+1. The deferred task already exists.
+2. Each application UID can add up to 10 delayed tasks.
 3. The repeat interval of a Work Scheduler task must be at least 20 minutes.
 
 **Solution**
 
-Check the input parameters and application code.
+1. If a message is displayed indicating that the task already exists, do not create the same task again.
+2. Check whether the app has requested more than 10 deferred tasks.
+3. Check whether the repeat interval of the duplicate task is at least 20 minutes.
+<!--Del-->
+## 9700006 Failed to Verify the Execution Frequency Parameters
+
+**Error Message**
+
+Failed to check the execution frequency parameters.
+
+**Description**
+
+Failed to check the execution frequency parameters.
+
+**Possible Causes**
+
+1. The **uid** parameter does not exist or is in an incorrect format.
+2. The **workId** parameter is in an incorrect format or does not exist.
+3. The **interval** parameter is in an incorrect format or is not within the allowed range.
+
+**Solution**
+
+1. Check whether the **uid** parameter matches the app UID.
+2. Check whether the **workId** parameter matches the work ID of the deferred task requested by the app.
+3. Check whether the **interval** parameter is within the allowed range.
+<!--DelEnd-->
