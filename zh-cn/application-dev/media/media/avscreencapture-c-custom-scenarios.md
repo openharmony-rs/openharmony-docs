@@ -1,4 +1,4 @@
-# AVScreenCapture录屏自定义场景
+﻿# AVScreenCapture录屏自定义场景
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -65,6 +65,10 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 // 释放CaptureStrategy对象。
 OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
+
+> **说明：**
+>
+> 从API version 26.1.0开始，当录屏模式设置为[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)时，无论[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，都不会弹出Picker。
 
 ## 设置旋转适配
 
