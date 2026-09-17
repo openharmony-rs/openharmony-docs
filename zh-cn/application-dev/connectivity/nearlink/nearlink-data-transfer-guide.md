@@ -6,7 +6,7 @@
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
 
-提供星闪数传相关的端口通道建立和数据传输等功能，同一设备可以同时承担数据发送端和接收端的角色。
+提供星闪数据传输相关的端口通道建立和数据收发等功能，同一设备可以同时承担数据发送端和接收端的角色。
 
 ## 场景介绍
 
@@ -16,12 +16,12 @@
 
 > **说明：**
 >
-> 1. 端口通道不保证链路加密。如需加密数传，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
+> 1. 端口通道不保证链路加密。如需加密数据传输，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
 > 2. 链路是否加密可通过[getAcbState()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#getacbstate)接口查询，ENCRYPTED状态表示链路已加密。
 
 ## 接口说明
 
-使用星闪传输数据，完整的API说明以及示例代码请参考：[@ohos.nearlink.dataTransfer (星闪数传能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+使用星闪传输数据，完整的API说明以及示例代码请参考：[@ohos.nearlink.dataTransfer (星闪数据传输能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
