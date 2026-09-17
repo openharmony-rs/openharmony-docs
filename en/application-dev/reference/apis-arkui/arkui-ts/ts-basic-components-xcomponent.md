@@ -219,7 +219,7 @@ Sets the brightness of HDR video playback for the component.
 hdrBrightness(brightness: number, type?: HdrType)
 
 Adjusts the brightness of HDR content displayed by the component.<br>
-If the **type** parameter is set to a value other than [HdrType](see #hdrtype24 for enumeration description).DEFAULT, check whether the **hdrFormats** attribute of [Display](../js-apis-display.md#display) contains the corresponding [HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat) before calling this API.<br>The current device supports the corresponding HDR type and the parameter setting takes effect only when the value of **hdrFormats** contains the corresponding **HDRFormat**. Otherwise, the default value [HdrType](#hdrtype24).DEFAULT is used.<br>
+If the **type** parameter is set to a value other than [HdrType](#hdrtype24).DEFAULT, check whether the **hdrFormats** attribute of [Display](../js-apis-display.md#display) contains the corresponding [HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat) before calling this API.<br>The current device supports the corresponding HDR type and the parameter setting takes effect only when the value of **hdrFormats** contains the corresponding **HDRFormat**. Otherwise, the default value [HdrType](#hdrtype24).DEFAULT is used.<br>
 The mapping is as follows.
    | Value of type| HDRFormat that hdrFormats Must Contain|
    | -------- | -------- |
