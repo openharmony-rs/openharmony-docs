@@ -9077,20 +9077,6 @@ Allows an application to access data on the external storage card of the dashcam
 
 **Since**: 26.2.0
 
-## ohos.permission.kernel.USB_CAPTURE
-
-With this permission, the application needs user authentication before it can capture USB data packets. Otherwise, this operation is not allowed.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: false
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Since**: 26.1.0
-
 ## ohos.permission.AUTH_MODEL_DOWNLOAD
 
 Allows a system application to send the authorization results for model download requests to the model management service.
