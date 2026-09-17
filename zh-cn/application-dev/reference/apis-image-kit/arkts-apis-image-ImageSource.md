@@ -1139,12 +1139,17 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const array: ArrayBuffer = new ArrayBuffer(100);
-imageSourceApi.updateData(array, false, 0, 10).then(() => {
-  console.info('Succeeded in updating data.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
-})
+async function UpdateDatay(imageSourceObj : image.ImageSource) {
+  const array: ArrayBuffer = new ArrayBuffer(100);
+  try {
+    // 该接口为异步接口，调用时需保证执行时序。
+    await imageSourceObj.updateData(array, false, 0, 10);
+    console.info('Succeeded in updating data.');
+  } catch (err) {
+    const e: BusinessError = err as BusinessError;
+    console.error(`Failed to update data.code is ${e.code},message is ${e.message}`);
+  }
+}
 ```
 
 ArkTS-Sta示例：
