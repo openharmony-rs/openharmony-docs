@@ -363,6 +363,8 @@
 
 **起始版本：** 26.1.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称 | 类型 | 只读 | 可选 | 说明  |

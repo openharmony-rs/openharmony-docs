@@ -94,6 +94,8 @@ Enumerates the reasons for the window focus state change.
 
 **Since**: 26.1.0
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name    | Value| Description                                             |

@@ -356,6 +356,8 @@ Describes the focus state change information of the window.
 
 **Since**: 26.1.0
 
+**Model constraint**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Window.SessionManager
 
 | Name  | Type  | Read-Only| Optional| Description  |

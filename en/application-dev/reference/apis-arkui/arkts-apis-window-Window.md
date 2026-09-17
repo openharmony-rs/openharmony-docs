@@ -5610,13 +5610,15 @@ try {
 }
 ```
 
-## on('windowFocusStateChange')
+## onWindowFocusStateChange
 
-on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
+onWindowFocusStateChange(callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
 
 Subscribes to the focus state change event of the window. When the focus state of the window changes, the callback is triggered to return the focus state change information of the window.
 
 **Since**: 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5624,7 +5626,6 @@ Subscribes to the focus state change event of the window. When the focus state o
 
 | Name  | Type                                                                                     | Mandatory| Description                                                                                                   |
 | -------- | -------------------------------------------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------------- |
-| type     | string                                                                                  | Yes  | Event type. The value is fixed at **'windowFocusStateChange'**, indicating the window focus state change event.|
 | callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | Yes  | Callback used to return the focus state change information of the window, including whether the window gains focus, the reason for the change, and the IDs of the adjacent focused windows in the same process.|
 
 **Error codes**
@@ -5641,7 +5642,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
-  windowClass.on('windowFocusStateChange', (data: window.WindowFocusState) => {
+  windowClass.onWindowFocusStateChange((data: window.WindowFocusState) => {
     console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
   });
 } catch (exception) {
@@ -5649,13 +5650,15 @@ try {
 }
 ```
 
-## off('windowFocusStateChange')
+## offWindowFocusStateChange
 
-off(type: 'windowFocusStateChange', callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
+offWindowFocusStateChange(callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
 
 Unsubscribes from the focus state change event of the window.
 
 **Since**: 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5663,7 +5666,6 @@ Unsubscribes from the focus state change event of the window.
 
 | Name  | Type                                                                                     | Mandatory| Description                                                                        |
 | -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------- |
-| type     | string                                                                                  | Yes  | Event type. The value is fixed at **'windowFocusStateChange'**, indicating the window focus state change event.    |
 | callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | No  | Callback used to return the focus state change information of the window. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
@@ -5684,11 +5686,11 @@ const callback = (data: window.WindowFocusState) => {
 }
 try {
   // Enable listening through the on API.
-  windowClass.on('windowFocusStateChange', callback);
+  windowClass.onWindowFocusStateChange(callback);
   // Disable the listening of a specified callback.
-  windowClass.off('windowFocusStateChange', callback);
+  windowClass.offWindowFocusStateChange(callback);
   // Unregister all the callbacks that have been registered through on().
-  windowClass.off('windowFocusStateChange');
+  windowClass.offWindowFocusStateChange();
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
