@@ -233,7 +233,7 @@ ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回设置圆角半径的宽度后的RectShape对象，可用于链式调用继续配置矩形形状。 |
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回设置圆角半径宽度后的RectShape对象，可用于链式调用继续配置矩形形状。 |
 
 ### radiusHeight
 
