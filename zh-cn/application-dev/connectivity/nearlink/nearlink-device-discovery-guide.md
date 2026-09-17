@@ -96,7 +96,7 @@
     };
     ```
 
-4. 开启星闪广播，返回advertisingId表示当前广播索引。其中advertisingParams为第3步构造的广播参数。
+4. 启动星闪广播，返回advertisingId表示本次启动的广播ID。其中advertisingParams为第3步构造的广播参数。
 
     <!-- @[advertising_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -110,7 +110,7 @@
     }
     ```
 
-5. 停止星闪广播。其中advId为第4步开启广播时返回的广播索引。
+5. 停止星闪广播。其中advId为第4步启动广播时返回的广播ID。
 
     <!-- @[advertising_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -327,7 +327,7 @@
     }
     ```
 
-4. 配置扫描参数，扫描过滤器配置期望的设备名称、地址等信息。过滤器至少携带一个过滤条件，可配置多组，组之间的条件为或的关系，一组过滤器内的条件为与的关系；filters传null表示不过滤，传空数组或所有字段均为空的过滤器数组时，将返回[36100042 数组为空](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100042-数组为空)错误。
+4. 配置扫描过滤器，设置期望的设备名称、地址等信息。过滤器至少携带一个过滤条件，可配置多个，多个过滤器之间的条件为或的关系，单个过滤器内的条件为与的关系；filters传null表示不过滤，传空数组或所有字段均为空的过滤器数组时，将返回[36100042 数组为空](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100042-数组为空)错误。
 
     <!-- @[scan_config_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
@@ -344,7 +344,7 @@
     }
     ```
 
-5. 开启星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
+5. 启动星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     

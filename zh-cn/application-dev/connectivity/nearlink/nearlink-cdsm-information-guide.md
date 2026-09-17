@@ -35,7 +35,7 @@
     import { cdsm } from '@kit.ConnectivityKit';
     ```
 
-2. 定义CDSM客户端变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取的设备地址，且该设备是合作设备集合的成员设备。
+2. 定义合作设备集合客户端（CDSM客户端）变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取的设备地址，且该设备是合作设备集合的成员设备。
 
     <!-- @[cdsm_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
     

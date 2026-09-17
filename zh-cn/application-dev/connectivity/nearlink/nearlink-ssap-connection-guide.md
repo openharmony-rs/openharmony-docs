@@ -11,7 +11,7 @@
 - 服务端：服务的承载方，创建服务并声明其中的属性（Property），接收并响应客户端对属性的读写请求；属性值变化时，可向已开启通知的客户端推送更新。
 - 客户端：服务的使用方，扫描发现服务端设备并发起连接，连接后可获取服务端支持的服务列表，读取或写入属性，并订阅属性变化通知。
 
-服务端创建服务并声明属性后，客户端可扫描发现并连接服务端，获取服务列表、读写属性并订阅属性变化通知，交互完成后断开连接。
+服务端创建服务并声明属性后，客户端可扫描发现并连接服务端，获取服务列表、读写属性并订阅属性变化通知（交互完成后可断开连接，断开连接的说明参见对应API参考）。
 
 典型开发场景如：键盘、鼠标等外围设备作为服务端向中心设备提供输入服务，中心设备上的应用作为客户端访问外围设备的服务与属性。
 
@@ -145,7 +145,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyRead()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertyread)、[offPropertyWrite()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertywrite)取消订阅。
+7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyWrite()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertywrite)取消订阅。
 
     <!-- @[ssap_server_on_property_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
     
@@ -196,11 +196,11 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 | 接口名 | 描述 |
 | -------- | -------- |
 | createClient(address: string): Client | 创建SSAP客户端实例。 |
-| connect(): Promise&lt;void&gt; | 向服务端发起连接。 |
+| connect(): Promise&lt;void&gt; | 向服务端发起连接。使用Promise异步回调。 |
 | getServices(): Promise&lt;Array&lt;Service&gt;&gt; | 获取服务端支持的服务列表。使用Promise异步回调。 |
 | readProperty(property: Property): Promise&lt;Property&gt; | 读取服务端属性。使用Promise异步回调。 |
 | writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void&gt; | 写入服务端属性。使用Promise异步回调。 |
-| setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt; | 启用或禁用属性变化的通知。 |
+| setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt; | 启用或禁用属性变化的通知。使用Promise异步回调。 |
 | onPropertyChange(callback: Callback&lt;Property&gt;): void | 订阅属性变化事件。使用callback异步回调。 |
 | onConnectionStateChange(callback: Callback&lt;ConnectionChangeState&gt;): void | 订阅连接状态变化事件。使用callback异步回调。 |
 
@@ -212,6 +212,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     import { ssap } from '@kit.ConnectivityKit';
     ```
 
@@ -268,7 +269,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-6. 向服务端发起连接。连接成功后将触发步骤4订阅的连接状态事件，可在回调中确认连接结果。
+6. 向服务端发起连接。连接成功后将触发步骤4订阅的连接状态变化事件，可在回调中确认连接结果。
 
     <!-- @[ssap_client_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     

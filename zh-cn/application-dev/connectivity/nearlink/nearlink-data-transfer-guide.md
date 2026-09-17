@@ -16,7 +16,7 @@
 
 > **说明：**
 >
-> 1. 数据传输通道不保证链路加密。如需加密数传，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
+> 1. 端口通道不保证链路加密。如需加密数传，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
 > 2. 链路是否加密可通过[getAcbState()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#getacbstate)接口查询，ENCRYPTED状态表示链路已加密。
 
 ## 接口说明
@@ -25,8 +25,8 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| createPort(uuid: string): void | 注册端口服务。 |
-| destroyPort(uuid: string): void | 销毁端口服务。 |
+| createPort(uuid: string): void | 注册端口通道。 |
+| destroyPort(uuid: string): void | 销毁端口通道。 |
 | connect(params: ConnectionParams): Promise&lt;void&gt; | 连接远端设备，建立端口通道。使用Promise异步回调。 |
 | disconnect(params: ConnectionParams): Promise&lt;void&gt; | 断开端口通道连接。使用Promise异步回调。 |
 | writeData(params: DataParams): Promise&lt;void&gt; | 通过设备地址和UUID向远端设备发数据。使用Promise异步回调。 |
