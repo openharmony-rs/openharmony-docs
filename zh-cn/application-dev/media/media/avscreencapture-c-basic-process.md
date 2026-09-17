@@ -555,7 +555,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 > **说明：**
 >
-> 录制虚拟扩展屏幕时，扩展屏幕的显示模式受[screen.setMultiScreenMode](../../reference/apis-arkui/js-apis-screen-sys.md#screen_setmultiscreenmode13)限制：针对有内置屏的设备，仅能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。该接口为系统接口，仅在PC/2in1设备及电脑模式下可用。
+> 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制请参考[screen.setMultiScreenMode](../../reference/apis-arkui/js-apis-screen-sys.md#screen_setmultiscreenmode13)。
 
 <!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
