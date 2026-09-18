@@ -93,7 +93,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
    }
    ```
 
-4. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the canvas for custom drawing operations.
+4. Override the [draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the canvas for custom drawing operations.
    
    <!-- @[arkts_graphics_draw_direct_canvas_api_rewrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
    
@@ -173,7 +173,7 @@ Obtain the canvas that can be directly displayed through [RenderNode](../referen
 
 4. Create a **PixelMap** in the **aboutToAppear()** function of **MyNodeController**.
 
-5. Override the [draw()](../reference//apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
+5. Override the [draw()](../reference/apis-arkui/js-apis-arkui-renderNode.md#draw) function of the custom **RenderNode** to obtain the offscreen canvas for drawing.
 
    1. Use the **PixelMap** created in Step 4 to construct the offscreen canvas.
    2. Perform custom drawing operations on the offscreen canvas.
