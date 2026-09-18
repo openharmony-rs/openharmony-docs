@@ -68,6 +68,16 @@
 | [typedef void (\*Http_OnHeaderReceiveCallback)(Http_Headers *headers)](#http_onheaderreceivecallback) | Http_OnHeaderReceiveCallback | 收到HTTP响应头的回调函数。 |
 | [typedef void (\*Http_OnVoidCallback)(void)](#http_onvoidcallback) | Http_OnVoidCallback | 请求的DataEnd或Cancel事件回调的回调函数。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode) | 接收到HTTP响应的回调函数。<br>**起始版本：** 20 |
+| void (*Http_OnDataReceiveCallback)(const char *data, size_t length) | 接收到数据的回调。<br>**起始版本：** 20 |
+| void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize) | 请求/响应数据传输过程中调用的回调函数。<br>**起始版本：** 20 |
+| void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers) | 收到HTTP响应头的回调函数。<br>**起始版本：** 20 |
+| void (*Http_OnVoidCallback)(void) | 请求的DataEnd或Cancel事件回调的回调函数。<br>**起始版本：** 20 |
+
 ## 枚举类型说明
 
 ### Http_ErrCode
@@ -76,7 +86,7 @@
 enum Http_ErrCode
 ```
 
-**描述**
+**描述：**
 
 定义HTTP请求的错误码。
 
@@ -126,7 +136,7 @@ enum Http_ErrCode
 enum Http_ResponseCode
 ```
 
-**描述**
+**描述：**
 
 定义HTTP响应码。
 
@@ -177,7 +187,7 @@ enum Http_ResponseCode
 enum Http_AddressFamilyType
 ```
 
-**描述**
+**描述：**
 
 定义解析目标域名时限定的地址类型。
 
@@ -195,7 +205,7 @@ enum Http_AddressFamilyType
 enum Http_HttpProtocol
 ```
 
-**描述**
+**描述：**
 
 HTTP协议版本号枚举定义。
 
@@ -214,7 +224,7 @@ HTTP协议版本号枚举定义。
 enum Http_CertType
 ```
 
-**描述**
+**描述：**
 
 证书类型枚举。
 
@@ -232,7 +242,7 @@ enum Http_CertType
 enum Http_ProxyType
 ```
 
-**描述**
+**描述：**
 
 代理配置类型枚举定义。
 
@@ -253,7 +263,7 @@ enum Http_ProxyType
 typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode)
 ```
 
-**描述**
+**描述：**
 
 接收到HTTP响应的回调函数。
 
@@ -272,7 +282,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 ```
 
-**描述**
+**描述：**
 
 接收到数据的回调。
 
@@ -291,7 +301,7 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize)
 ```
 
-**描述**
+**描述：**
 
 请求/响应数据传输过程中调用的回调函数。
 
@@ -310,7 +320,7 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 ```
 
-**描述**
+**描述：**
 
 收到HTTP响应头的回调函数。
 
@@ -328,7 +338,7 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 typedef void (*Http_OnVoidCallback)(void)
 ```
 
-**描述**
+**描述：**
 
 请求的DataEnd或Cancel事件回调的回调函数。
 

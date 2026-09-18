@@ -32,7 +32,7 @@ environment模块接口定义，使用environment提供的native接口，获取�
  FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 ```
 
-**描述**
+**描述：**
 
 获取当前用户下载目录的沙箱路径，用于访问对应目录中的文件。
 
@@ -44,11 +44,11 @@ environment模块接口定义，使用environment提供的native接口，获取�
 | -- | -- |
 | char **result | 返回Download根目录的沙箱路径。该字符串由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -56,7 +56,7 @@ environment模块接口定义，使用environment提供的native接口，获取�
  FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 ```
 
-**描述**
+**描述：**
 
 获取当前用户桌面目录的沙箱路径，用于访问对应目录中的文件。
 
@@ -68,11 +68,11 @@ environment模块接口定义，使用environment提供的native接口，获取�
 | -- | -- |
 | char **result | 返回Desktop根目录的沙箱路径。该字符串由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -80,7 +80,7 @@ environment模块接口定义，使用environment提供的native接口，获取�
  FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)
 ```
 
-**描述**
+**描述：**
 
 获取当前用户文档目录的沙箱路径，用于访问对应目录中的文件。
 
@@ -92,10 +92,10 @@ environment模块接口定义，使用environment提供的native接口，获取�
 | -- | -- |
 | char **result | 返回Document根目录的沙箱路径。该字符串由系统分配内存，调用者需在使用完毕后通过free()释放，避免内存泄漏。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_DEVICE_NOT_SUPPORTED} 801 - Device not supported.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 

@@ -30,7 +30,7 @@ fileio模块接口定义，提供获取文件存储位置的native接口，帮�
  FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileIO_FileLocation *location)
 ```
 
-**描述**
+**描述：**
 
 Obtains the location of a file.
 
@@ -44,10 +44,10 @@ Obtains the location of a file.
 | int uriLength | 入参uri字符串的长度。 |
 | FileIO_FileLocation *location | 输出文件存储位置的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.           {@link ERR_ENOENT} 13900002 - No such file or directory.           {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码           {@link ERR_INVALID_PARAMETER} 401 - Invalid input parameter, pointer is null.<br>        {@link ERR_ENOENT} 13900002 - No such file or directory.<br>        {@link ERR_ENOMEM} 13900011 - Failed to apply for memory. |
 
 

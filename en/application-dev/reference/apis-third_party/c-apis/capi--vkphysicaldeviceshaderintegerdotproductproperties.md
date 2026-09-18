@@ -1,0 +1,4 @@
+# VkPhysicalDeviceShaderIntegerDotProductProperties
+
+## Overview
+

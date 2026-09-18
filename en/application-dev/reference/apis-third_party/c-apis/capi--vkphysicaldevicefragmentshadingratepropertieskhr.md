@@ -1,0 +1,4 @@
+# VkPhysicalDeviceFragmentShadingRatePropertiesKHR
+
+## Overview
+

@@ -1,0 +1,4 @@
+# VkVideoEncodeCapabilitiesKHR
+
+## Overview
+

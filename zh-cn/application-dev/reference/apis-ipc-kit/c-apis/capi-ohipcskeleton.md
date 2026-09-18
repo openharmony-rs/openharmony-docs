@@ -7,6 +7,7 @@ ipc_cskeleton.h提供IPC框架TokenId、凭据、PID/UID、线程池配置等功
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

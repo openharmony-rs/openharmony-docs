@@ -18,12 +18,12 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioAccessoryInfo](capi-ohaudio-oh-audioaccessoryinfo.md) | OH_AudioAccessoryInfo | 定义音频配件的基本信息。<br><b>版本控制：</b>调用方在将此结构体传递给框架之前，必须将structSize设置为sizeof(OH_AudioAccessoryInfo)。 |
-| [OH_AudioAccessoryNoiseReductionCapability](capi-ohaudio-oh-audioaccessorynoisereductioncapability.md) | OH_AudioAccessoryNoiseReductionCapability | 定义音频配件的降噪能力。<br> |
-| [OH_AudioAccessoryCapabilities](capi-ohaudio-oh-audioaccessorycapabilities.md) | OH_AudioAccessoryCapabilities | 定义音频配件的能力。<br><b>版本控制：</b>调用方必须将structSize设置为sizeof(OH_AudioAccessoryCapabilities)。 |
-| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) | OH_AudioAccessoryManager | 声明音频配件管理器。用于管理音频配件相关功能。 |
-| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) | OH_AudioAccessory | 声明音频配件。用于表示一个音频配件设备实例。 |
-| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) | OH_AudioAccessoryInputStream | 声明音频配件输入流。用于表示音频配件的输入音频流。 |
+| [OH_AudioAccessoryInfo](capi-ohaudio-oh-audioaccessoryinfo.md) | OH_AudioAccessoryInfo | 定义音频配件的基本信息。<br> <b>版本控制：</b>调用方在将此结构体传递给框架之前，必须将structSize设置为sizeof(OH_AudioAccessoryInfo)。 |
+| [OH_AudioAccessoryNoiseReductionCapability](capi-ohaudio-oh-audioaccessorynoisereductioncapability.md) | OH_AudioAccessoryNoiseReductionCapability | 定义音频配件的降噪能力。 |
+| [OH_AudioAccessoryCapabilities](capi-ohaudio-oh-audioaccessorycapabilities.md) | OH_AudioAccessoryCapabilities | 定义音频配件的能力。<br> <b>版本控制：</b>调用方必须将structSize设置为sizeof(OH_AudioAccessoryCapabilities)。 |
+| [OH_AudioAccessoryManager](capi-ohaudio-oh-audioaccessorymanager.md) | OH_AudioAccessoryManager | 声明音频配件管理器。<br> 用于管理音频配件相关功能。 |
+| [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) | OH_AudioAccessory | 声明音频配件。<br> 用于表示一个音频配件设备实例。 |
+| [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) | OH_AudioAccessoryInputStream | 声明音频配件输入流。<br> 用于表示音频配件的输入音频流。 |
 
 ### 枚举
 
@@ -39,7 +39,7 @@
 enum OH_AudioAccessoryType
 ```
 
-**描述**
+**描述：**
 
 枚举音频配件连接类型。
 

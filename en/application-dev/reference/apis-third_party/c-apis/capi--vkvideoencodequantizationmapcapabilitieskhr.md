@@ -1,0 +1,4 @@
+# VkVideoEncodeQuantizationMapCapabilitiesKHR
+
+## Overview
+

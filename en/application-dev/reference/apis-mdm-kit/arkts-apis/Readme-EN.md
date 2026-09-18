@@ -1,0 +1,553 @@
+# ArkTS API<!--arkts-mdmkit-->
+
+- [@ohos.enterprise.accountManager(Account Management)](arkts-mdm-enterprise-accountmanager.md)
+  - [activateOsAccount](arkts-mdm-accountmanager-activateosaccount-f.md)
+  <!--Del-->
+  - [addOsAccount(system api)](arkts-mdm-accountmanager-addosaccount-f-sys.md)<!--DelEnd-->
+  - [addOsAccountAsync](arkts-mdm-accountmanager-addosaccountasync-f.md)
+  - [createNormalOsAccount](arkts-mdm-accountmanager-createnormalosaccount-f.md)
+  <!--Del-->
+  - [disallowAddLocalAccount(system api)](arkts-mdm-accountmanager-disallowaddlocalaccount-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [disallowAddOsAccountByUser(system api)](arkts-mdm-accountmanager-disallowaddosaccountbyuser-f-sys.md)<!--DelEnd-->
+  - [disallowOsAccountAddition](arkts-mdm-accountmanager-disallowosaccountaddition-f.md)
+  - [getDomainAccountPolicy](arkts-mdm-accountmanager-getdomainaccountpolicy-f.md)
+  <!--Del-->
+  - [isAddOsAccountByUserDisallowed(system api)](arkts-mdm-accountmanager-isaddosaccountbyuserdisallowed-f-sys.md)<!--DelEnd-->
+  - [isOsAccountAdditionDisallowed](arkts-mdm-accountmanager-isosaccountadditiondisallowed-f.md)
+  - [removeOsAccount](arkts-mdm-accountmanager-removeosaccount-f.md)
+  - [setDomainAccountPolicy](arkts-mdm-accountmanager-setdomainaccountpolicy-f.md)
+  - [DomainAccountPolicy](arkts-mdm-accountmanager-domainaccountpolicy-i.md)
+- [@ohos.enterprise.adminManager(Administrator Permission Management)](arkts-mdm-enterprise-adminmanager.md)
+  <!--Del-->
+  - [authorizeAdmin(system api)](arkts-mdm-adminmanager-authorizeadmin-f-sys.md)<!--DelEnd-->
+  - [disableAdmin](arkts-mdm-adminmanager-disableadmin-f.md)
+  <!--Del-->
+  - [disableAdmin(system api)](arkts-mdm-adminmanager-disableadmin-f-sys.md)<!--DelEnd-->
+  - [disableDeviceAdmin](arkts-mdm-adminmanager-disabledeviceadmin-f.md)
+  <!--Del-->
+  - [disableSuperAdmin(system api)](arkts-mdm-adminmanager-disablesuperadmin-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [enableAdmin(system api)](arkts-mdm-adminmanager-enableadmin-f-sys.md)<!--DelEnd-->
+  - [enableDeviceAdmin](arkts-mdm-adminmanager-enabledeviceadmin-f.md)
+  - [enableSelfDeviceAdmin](arkts-mdm-adminmanager-enableselfdeviceadmin-f.md)
+  <!--Del-->
+  - [getAdmins(system api)](arkts-mdm-adminmanager-getadmins-f-sys.md)<!--DelEnd-->
+  - [getDelegatedBundleNames](arkts-mdm-adminmanager-getdelegatedbundlenames-f.md)
+  - [getDelegatedPolicies](arkts-mdm-adminmanager-getdelegatedpolicies-f.md)
+  <!--Del-->
+  - [getEnterpriseInfo(system api)](arkts-mdm-adminmanager-getenterpriseinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getEnterpriseManagedTips(system api)](arkts-mdm-adminmanager-getenterprisemanagedtips-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getSuperAdmin(system api)](arkts-mdm-adminmanager-getsuperadmin-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [isAdminEnabled(system api)](arkts-mdm-adminmanager-isadminenabled-f-sys.md)<!--DelEnd-->
+  - [isByodAdmin](arkts-mdm-adminmanager-isbyodadmin-f.md)
+  <!--Del-->
+  - [isSuperAdmin(system api)](arkts-mdm-adminmanager-issuperadmin-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [replaceSuperAdmin(system api)](arkts-mdm-adminmanager-replacesuperadmin-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setAdminRunningMode(system api)](arkts-mdm-adminmanager-setadminrunningmode-f-sys.md)<!--DelEnd-->
+  - [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md)
+  <!--Del-->
+  - [setDelegatedPolicies(system api)](arkts-mdm-adminmanager-setdelegatedpolicies-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setEnterpriseInfo(system api)](arkts-mdm-adminmanager-setenterpriseinfo-f-sys.md)<!--DelEnd-->
+  - [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md)
+  <!--Del-->
+  - [subscribeManagedEvent(system api)](arkts-mdm-adminmanager-subscribemanagedevent-f-sys.md)<!--DelEnd-->
+  - [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)
+  <!--Del-->
+  - [unsubscribeManagedEvent(system api)](arkts-mdm-adminmanager-unsubscribemanagedevent-f-sys.md)<!--DelEnd-->
+  - [unsubscribeManagedEventSync](arkts-mdm-adminmanager-unsubscribemanagedeventsync-f.md)
+  <!--Del-->
+  - [EnterpriseInfo(system api)](arkts-mdm-adminmanager-enterpriseinfo-i-sys.md)<!--DelEnd-->
+  - [AdminType](arkts-mdm-adminmanager-admintype-e.md)
+  <!--Del-->
+  - [AdminType(system api)](arkts-mdm-adminmanager-admintype-e-sys.md)<!--DelEnd-->
+  - [ManagedEvent](arkts-mdm-adminmanager-managedevent-e.md)
+  - [Policy](arkts-mdm-adminmanager-policy-e.md)
+  <!--Del-->
+  - [RunningMode(system api)](arkts-mdm-adminmanager-runningmode-e-sys.md)<!--DelEnd-->
+- [@ohos.enterprise.applicationManager(Application Management)](arkts-mdm-enterprise-applicationmanager.md)
+  - [addAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-addalloweddistributeabilityconnbundles-f.md)
+  - [addAllowedNotificationBundles](arkts-mdm-applicationmanager-addallowednotificationbundles-f.md)
+  - [addAllowedRunningBundles](arkts-mdm-applicationmanager-addallowedrunningbundles-f.md)
+  - [addAutoStartApps](arkts-mdm-applicationmanager-addautostartapps-f.md)
+  <!--Del-->
+  - [addDisallowedRunningBundles(system api)](arkts-mdm-applicationmanager-adddisallowedrunningbundles-f-sys.md)<!--DelEnd-->
+  - [addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md)
+  - [addDockApp](arkts-mdm-applicationmanager-adddockapp-f.md)
+  - [addFreezeExemptedApps](arkts-mdm-applicationmanager-addfreezeexemptedapps-f.md)
+  - [addHideLauncherIcon](arkts-mdm-applicationmanager-addhidelaunchericon-f.md)
+  - [addKeepAliveApps](arkts-mdm-applicationmanager-addkeepaliveapps-f.md)
+  - [addUserNonStopApps](arkts-mdm-applicationmanager-addusernonstopapps-f.md)
+  - [clearUpApplicationData](arkts-mdm-applicationmanager-clearupapplicationdata-f.md)
+  - [getAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-getalloweddistributeabilityconnbundles-f.md)
+  - [getAllowedKioskApps](arkts-mdm-applicationmanager-getallowedkioskapps-f.md)
+  - [getAllowedNotificationBundles](arkts-mdm-applicationmanager-getallowednotificationbundles-f.md)
+  - [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md)
+  - [getApplicationWindowStates](arkts-mdm-applicationmanager-getapplicationwindowstates-f.md)
+  - [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md)
+  <!--Del-->
+  - [getDisallowedRunningBundles(system api)](arkts-mdm-applicationmanager-getdisallowedrunningbundles-f-sys.md)<!--DelEnd-->
+  - [getDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-getdisallowedrunningbundlessync-f.md)
+  - [getDockApps](arkts-mdm-applicationmanager-getdockapps-f.md)
+  - [getFreezeExemptedApps](arkts-mdm-applicationmanager-getfreezeexemptedapps-f.md)
+  - [getHideLauncherIcon](arkts-mdm-applicationmanager-gethidelaunchericon-f.md)
+  - [getKeepAliveApps](arkts-mdm-applicationmanager-getkeepaliveapps-f.md)
+  - [getUserNonStopApps](arkts-mdm-applicationmanager-getusernonstopapps-f.md)
+  - [isAbilityDisabled](arkts-mdm-applicationmanager-isabilitydisabled-f.md)
+  - [isAppKioskAllowed](arkts-mdm-applicationmanager-isappkioskallowed-f.md)
+  - [isModifyAutoStartAppsDisallowed](arkts-mdm-applicationmanager-ismodifyautostartappsdisallowed-f.md)
+  - [isModifyKeepAliveAppsDisallowed](arkts-mdm-applicationmanager-ismodifykeepaliveappsdisallowed-f.md)
+  - [publishFormToDesktop](arkts-mdm-applicationmanager-publishformtodesktop-f.md)
+  - [queryBundleStatsInfos](arkts-mdm-applicationmanager-querybundlestatsinfos-f.md)
+  - [queryTrafficStats](arkts-mdm-applicationmanager-querytrafficstats-f.md)
+  - [removeAllowedDistributeAbilityConnBundles](arkts-mdm-applicationmanager-removealloweddistributeabilityconnbundles-f.md)
+  - [removeAllowedNotificationBundles](arkts-mdm-applicationmanager-removeallowednotificationbundles-f.md)
+  - [removeAllowedRunningBundles](arkts-mdm-applicationmanager-removeallowedrunningbundles-f.md)
+  - [removeAutoStartApps](arkts-mdm-applicationmanager-removeautostartapps-f.md)
+  <!--Del-->
+  - [removeDisallowedRunningBundles(system api)](arkts-mdm-applicationmanager-removedisallowedrunningbundles-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-removedisallowedrunningbundlessync-f.md)
+  - [removeDockApp](arkts-mdm-applicationmanager-removedockapp-f.md)
+  - [removeFreezeExemptedApps](arkts-mdm-applicationmanager-removefreezeexemptedapps-f.md)
+  - [removeHideLauncherIcon](arkts-mdm-applicationmanager-removehidelaunchericon-f.md)
+  - [removeKeepAliveApps](arkts-mdm-applicationmanager-removekeepaliveapps-f.md)
+  - [removeUserNonStopApps](arkts-mdm-applicationmanager-removeusernonstopapps-f.md)
+  - [setAbilityDisabled](arkts-mdm-applicationmanager-setabilitydisabled-f.md)
+  - [setAllowedKioskApps](arkts-mdm-applicationmanager-setallowedkioskapps-f.md)
+  - [setKioskFeatures](arkts-mdm-applicationmanager-setkioskfeatures-f.md)
+  - [BundleStatsInfo](arkts-mdm-applicationmanager-bundlestatsinfo-i.md)
+  - [DockInfo](arkts-mdm-applicationmanager-dockinfo-i.md)
+  - [FormInfo](arkts-mdm-applicationmanager-forminfo-i.md)
+  - [WindowStateInfo](arkts-mdm-applicationmanager-windowstateinfo-i.md)
+  - [KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md)
+  - [ServiceType](arkts-mdm-applicationmanager-servicetype-e.md)
+  - [WindowState](arkts-mdm-applicationmanager-windowstate-e.md)
+- [@ohos.enterprise.bluetoothManager(Bluetooth Management)](arkts-mdm-enterprise-bluetoothmanager.md)
+  - [addAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-addallowedbluetoothdevices-f.md)
+  - [addDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-adddisallowedbluetoothdevices-f.md)
+  - [addDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-adddisallowedbluetoothprotocols-f.md)
+  - [getAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-getallowedbluetoothdevices-f.md)
+  - [getBluetoothInfo](arkts-mdm-bluetoothmanager-getbluetoothinfo-f.md)
+  - [getDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-getdisallowedbluetoothdevices-f.md)
+  - [getDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-getdisallowedbluetoothprotocols-f.md)
+  <!--Del-->
+  - [isBluetoothDisabled(system api)](arkts-mdm-bluetoothmanager-isbluetoothdisabled-f-sys.md)<!--DelEnd-->
+  - [removeAllowedBluetoothDevices](arkts-mdm-bluetoothmanager-removeallowedbluetoothdevices-f.md)
+  - [removeDisallowedBluetoothDevices](arkts-mdm-bluetoothmanager-removedisallowedbluetoothdevices-f.md)
+  - [removeDisallowedBluetoothProtocols](arkts-mdm-bluetoothmanager-removedisallowedbluetoothprotocols-f.md)
+  <!--Del-->
+  - [setBluetoothDisabled(system api)](arkts-mdm-bluetoothmanager-setbluetoothdisabled-f-sys.md)<!--DelEnd-->
+  - [turnOffBluetooth](arkts-mdm-bluetoothmanager-turnoffbluetooth-f.md)
+  - [turnOnBluetooth](arkts-mdm-bluetoothmanager-turnonbluetooth-f.md)
+  - [BluetoothInfo](arkts-mdm-bluetoothmanager-bluetoothinfo-i.md)
+  - [Protocol](arkts-mdm-bluetoothmanager-protocol-e.md)
+  - [TransferPolicy](arkts-mdm-bluetoothmanager-transferpolicy-e.md)
+- [@ohos.enterprise.browser(Browser Management)](arkts-mdm-enterprise-browser.md)
+  - [getManagedBrowserPolicy](arkts-mdm-browser-getmanagedbrowserpolicy-f.md)
+  <!--Del-->
+  - [getPolicies(system api)](arkts-mdm-browser-getpolicies-f-sys.md)<!--DelEnd-->
+  - [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md)
+  - [getSelfManagedBrowserPolicy](arkts-mdm-browser-getselfmanagedbrowserpolicy-f.md)
+  - [getSelfManagedBrowserPolicyVersion](arkts-mdm-browser-getselfmanagedbrowserpolicyversion-f.md)
+  - [setManagedBrowserPolicy](arkts-mdm-browser-setmanagedbrowserpolicy-f.md)
+  <!--Del-->
+  - [setPolicies(system api)](arkts-mdm-browser-setpolicies-f-sys.md)<!--DelEnd-->
+  - [setPolicySync](arkts-mdm-browser-setpolicysync-f.md)
+- [@ohos.enterprise.bundleManager(Bundle Management)](arkts-mdm-enterprise-bundlemanager.md)
+  <!--Del-->
+  - [addAllowedInstallBundles(system api)](arkts-mdm-bundlemanager-addallowedinstallbundles-f-sys.md)<!--DelEnd-->
+  - [addAllowedInstallBundlesSync](arkts-mdm-bundlemanager-addallowedinstallbundlessync-f.md)
+  <!--Del-->
+  - [addDisallowedInstallBundles(system api)](arkts-mdm-bundlemanager-adddisallowedinstallbundles-f-sys.md)<!--DelEnd-->
+  - [addDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-adddisallowedinstallbundlessync-f.md)
+  <!--Del-->
+  - [addDisallowedUninstallBundles(system api)](arkts-mdm-bundlemanager-adddisalloweduninstallbundles-f-sys.md)<!--DelEnd-->
+  - [addDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-adddisalloweduninstallbundlessync-f.md)
+  - [addInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-addinstallationallowedappdistributiontypes-f.md)
+  <!--Del-->
+  - [getAllowedInstallBundles(system api)](arkts-mdm-bundlemanager-getallowedinstallbundles-f-sys.md)<!--DelEnd-->
+  - [getAllowedInstallBundlesSync](arkts-mdm-bundlemanager-getallowedinstallbundlessync-f.md)
+  <!--Del-->
+  - [getDisallowedInstallBundles(system api)](arkts-mdm-bundlemanager-getdisallowedinstallbundles-f-sys.md)<!--DelEnd-->
+  - [getDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-getdisallowedinstallbundlessync-f.md)
+  <!--Del-->
+  - [getDisallowedUninstallBundles(system api)](arkts-mdm-bundlemanager-getdisalloweduninstallbundles-f-sys.md)<!--DelEnd-->
+  - [getDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-getdisalloweduninstallbundlessync-f.md)
+  - [getInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-getinstallationallowedappdistributiontypes-f.md)
+  - [getInstalledBundleList](arkts-mdm-bundlemanager-getinstalledbundlelist-f.md)
+  - [getInstalledBundleStorageStats](arkts-mdm-bundlemanager-getinstalledbundlestoragestats-f.md)
+  - [install](arkts-mdm-bundlemanager-install-f.md)
+  <!--Del-->
+  - [install(system api)](arkts-mdm-bundlemanager-install-f-sys.md)<!--DelEnd-->
+  - [installForResult](arkts-mdm-bundlemanager-installforresult-f.md)
+  - [installMarketApps](arkts-mdm-bundlemanager-installmarketapps-f.md)
+  <!--Del-->
+  - [removeAllowedInstallBundles(system api)](arkts-mdm-bundlemanager-removeallowedinstallbundles-f-sys.md)<!--DelEnd-->
+  - [removeAllowedInstallBundlesSync](arkts-mdm-bundlemanager-removeallowedinstallbundlessync-f.md)
+  <!--Del-->
+  - [removeDisallowedInstallBundles(system api)](arkts-mdm-bundlemanager-removedisallowedinstallbundles-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedInstallBundlesSync](arkts-mdm-bundlemanager-removedisallowedinstallbundlessync-f.md)
+  <!--Del-->
+  - [removeDisallowedUninstallBundles(system api)](arkts-mdm-bundlemanager-removedisalloweduninstallbundles-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedUninstallBundlesSync](arkts-mdm-bundlemanager-removedisalloweduninstallbundlessync-f.md)
+  - [removeInstallationAllowedAppDistributionTypes](arkts-mdm-bundlemanager-removeinstallationallowedappdistributiontypes-f.md)
+  - [uninstall](arkts-mdm-bundlemanager-uninstall-f.md)
+  <!--Del-->
+  - [uninstall(system api)](arkts-mdm-bundlemanager-uninstall-f-sys.md)<!--DelEnd-->
+  - [ApplicationInfo](arkts-mdm-bundlemanager-applicationinfo-i.md)
+  - [BundleInfo](arkts-mdm-bundlemanager-bundleinfo-i.md)
+  - [BundleStorageStats](arkts-mdm-bundlemanager-bundlestoragestats-i.md)
+  - [InstallParam](arkts-mdm-bundlemanager-installparam-i.md)
+  - [Resource](arkts-mdm-bundlemanager-resource-i.md)
+  - [SignatureInfo](arkts-mdm-bundlemanager-signatureinfo-i.md)
+  - [AppDistributionType](arkts-mdm-bundlemanager-appdistributiontype-e.md)
+  - [BundleInfoGetFlag](arkts-mdm-bundlemanager-bundleinfogetflag-e.md)
+- [@ohos.enterprise.common(Common Module)](arkts-mdm-enterprise-common.md)
+  - [ApplicationInstance](arkts-mdm-common-applicationinstance-i.md)
+  - [InstallationResult](arkts-mdm-common-installationresult-i.md)
+  - [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md)
+  - [EnterpriseAdminExtensionContext](arkts-mdm-common-enterpriseadminextensioncontext-t.md)
+  - [ManagedPolicy](arkts-mdm-common-managedpolicy-e.md)
+  - [QueryPolicy](arkts-mdm-common-querypolicy-e.md)
+  - [Result](arkts-mdm-common-result-e.md)
+  - [StartupScene](arkts-mdm-common-startupscene-e.md)
+<!--Del-->
+- [@ohos.enterprise.dateTimeManager(System Time Management)](arkts-mdm-enterprise-datetimemanager.md)<!--DelEnd-->
+  <!--Del-->
+  - [disallowModifyDateTime(system api)](arkts-mdm-datetimemanager-disallowmodifydatetime-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [isModifyDateTimeDisallowed(system api)](arkts-mdm-datetimemanager-ismodifydatetimedisallowed-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setDateTime(system api)](arkts-mdm-datetimemanager-setdatetime-f-sys.md)<!--DelEnd-->
+- [@ohos.enterprise.deviceControl(Device Control Management)](arkts-mdm-enterprise-devicecontrol.md)
+  <!--Del-->
+  - [lockScreen(system api)](arkts-mdm-devicecontrol-lockscreen-f-sys.md)<!--DelEnd-->
+  - [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)
+  <!--Del-->
+  - [reboot(system api)](arkts-mdm-devicecontrol-reboot-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [resetFactory(system api)](arkts-mdm-devicecontrol-resetfactory-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [shutdown(system api)](arkts-mdm-devicecontrol-shutdown-f-sys.md)<!--DelEnd-->
+  - [Operation](arkts-mdm-devicecontrol-operation-e.md)
+- [@ohos.enterprise.deviceInfo(Device Information Management)](arkts-mdm-enterprise-deviceinfo.md)
+  - [getDeviceInfo](arkts-mdm-deviceinfo-getdeviceinfo-f.md)
+  <!--Del-->
+  - [getDeviceName(system api)](arkts-mdm-deviceinfo-getdevicename-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getDeviceSerial(system api)](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getDisplayVersion(system api)](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md)<!--DelEnd-->
+- [@ohos.enterprise.deviceSettings(Device Settings Management)](arkts-mdm-enterprise-devicesettings.md)
+  - [addHiddenSettingsMenu](arkts-mdm-devicesettings-addhiddensettingsmenu-f.md)
+  - [getHiddenSettingsMenu](arkts-mdm-devicesettings-gethiddensettingsmenu-f.md)
+  <!--Del-->
+  - [getPowerPolicy(system api)](arkts-mdm-devicesettings-getpowerpolicy-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getScreenOffTime(system api)](arkts-mdm-devicesettings-getscreenofftime-f-sys.md)<!--DelEnd-->
+  - [getValue](arkts-mdm-devicesettings-getvalue-f.md)
+  - [getValueForAccount](arkts-mdm-devicesettings-getvalueforaccount-f.md)
+  <!--Del-->
+  - [installUserCertificate(system api)](arkts-mdm-devicesettings-installusercertificate-f-sys.md)<!--DelEnd-->
+  - [removeHiddenSettingsMenu](arkts-mdm-devicesettings-removehiddensettingsmenu-f.md)
+  - [setHomeWallpaper](arkts-mdm-devicesettings-sethomewallpaper-f.md)
+  <!--Del-->
+  - [setPowerPolicy(system api)](arkts-mdm-devicesettings-setpowerpolicy-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setScreenOffTime(system api)](arkts-mdm-devicesettings-setscreenofftime-f-sys.md)<!--DelEnd-->
+  - [setSwitchStatus](arkts-mdm-devicesettings-setswitchstatus-f.md)
+  - [setUnlockWallpaper](arkts-mdm-devicesettings-setunlockwallpaper-f.md)
+  - [setValue](arkts-mdm-devicesettings-setvalue-f.md)
+  - [setValueForAccount](arkts-mdm-devicesettings-setvalueforaccount-f.md)
+  <!--Del-->
+  - [uninstallUserCertificate(system api)](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [CertBlob(system api)](arkts-mdm-devicesettings-certblob-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PowerPolicy(system api)](arkts-mdm-devicesettings-powerpolicy-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PowerPolicyAction(system api)](arkts-mdm-devicesettings-powerpolicyaction-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PowerScene(system api)](arkts-mdm-devicesettings-powerscene-e-sys.md)<!--DelEnd-->
+  - [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md)
+  - [SettingsMenu](arkts-mdm-devicesettings-settingsmenu-e.md)
+  - [SwitchKey](arkts-mdm-devicesettings-switchkey-e.md)
+  - [SwitchStatus](arkts-mdm-devicesettings-switchstatus-e.md)
+- [@ohos.enterprise.EnterpriseAdminExtensionAbility(EnterpriseAdminExtensionAbility)](arkts-mdm-enterprise-enterpriseadminextensionability.md)
+  - [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)
+- [@ohos.enterprise.locationManager(Location Service Management)](arkts-mdm-enterprise-locationmanager.md)
+  - [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md)
+  - [setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md)
+  - [LocationPolicy](arkts-mdm-locationmanager-locationpolicy-e.md)
+- [@ohos.enterprise.networkManager(Network Management)](arkts-mdm-enterprise-networkmanager.md)
+  - [addApn](arkts-mdm-networkmanager-addapn-f.md)
+  - [addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md)
+  - [addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md)
+  <!--Del-->
+  - [addIptablesFilterRule(system api)](arkts-mdm-networkmanager-addiptablesfilterrule-f-sys.md)<!--DelEnd-->
+  - [deleteApn](arkts-mdm-networkmanager-deleteapn-f.md)
+  <!--Del-->
+  - [getAllNetworkInterfaces(system api)](arkts-mdm-networkmanager-getallnetworkinterfaces-f-sys.md)<!--DelEnd-->
+  - [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md)
+  - [getDomainFilterRules](arkts-mdm-networkmanager-getdomainfilterrules-f.md)
+  - [getFirewallRules](arkts-mdm-networkmanager-getfirewallrules-f.md)
+  <!--Del-->
+  - [getGlobalProxy(system api)](arkts-mdm-networkmanager-getglobalproxy-f-sys.md)<!--DelEnd-->
+  - [getGlobalProxyForAccount](arkts-mdm-networkmanager-getglobalproxyforaccount-f.md)
+  - [getGlobalProxySync](arkts-mdm-networkmanager-getglobalproxysync-f.md)
+  <!--Del-->
+  - [getIpAddress(system api)](arkts-mdm-networkmanager-getipaddress-f-sys.md)<!--DelEnd-->
+  - [getIpAddressSync](arkts-mdm-networkmanager-getipaddresssync-f.md)
+  <!--Del-->
+  - [getMac(system api)](arkts-mdm-networkmanager-getmac-f-sys.md)<!--DelEnd-->
+  - [getMacSync](arkts-mdm-networkmanager-getmacsync-f.md)
+  <!--Del-->
+  - [isNetworkInterfaceDisabled(system api)](arkts-mdm-networkmanager-isnetworkinterfacedisabled-f-sys.md)<!--DelEnd-->
+  - [isNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-isnetworkinterfacedisabledsync-f.md)
+  <!--Del-->
+  - [listIptablesFilterRules(system api)](arkts-mdm-networkmanager-listiptablesfilterrules-f-sys.md)<!--DelEnd-->
+  - [queryApn](arkts-mdm-networkmanager-queryapn-f.md)
+  - [removeDomainFilterRule](arkts-mdm-networkmanager-removedomainfilterrule-f.md)
+  - [removeFirewallRule](arkts-mdm-networkmanager-removefirewallrule-f.md)
+  <!--Del-->
+  - [removeIptablesFilterRule(system api)](arkts-mdm-networkmanager-removeiptablesfilterrule-f-sys.md)<!--DelEnd-->
+  - [setEthernetConfig](arkts-mdm-networkmanager-setethernetconfig-f.md)
+  <!--Del-->
+  - [setGlobalProxy(system api)](arkts-mdm-networkmanager-setglobalproxy-f-sys.md)<!--DelEnd-->
+  - [setGlobalProxyForAccount](arkts-mdm-networkmanager-setglobalproxyforaccount-f.md)
+  - [setGlobalProxySync](arkts-mdm-networkmanager-setglobalproxysync-f.md)
+  <!--Del-->
+  - [setNetworkInterfaceDisabled(system api)](arkts-mdm-networkmanager-setnetworkinterfacedisabled-f-sys.md)<!--DelEnd-->
+  - [setNetworkInterfaceDisabledSync](arkts-mdm-networkmanager-setnetworkinterfacedisabledsync-f.md)
+  - [setPreferredApn](arkts-mdm-networkmanager-setpreferredapn-f.md)
+  - [turnOffMobileData](arkts-mdm-networkmanager-turnoffmobiledata-f.md)
+  - [turnOnMobileData](arkts-mdm-networkmanager-turnonmobiledata-f.md)
+  - [updateApn](arkts-mdm-networkmanager-updateapn-f.md)
+  <!--Del-->
+  - [AddFilterRule(system api)](arkts-mdm-networkmanager-addfilterrule-i-sys.md)<!--DelEnd-->
+  - [DomainFilterRule](arkts-mdm-networkmanager-domainfilterrule-i.md)
+  - [FirewallRule](arkts-mdm-networkmanager-firewallrule-i.md)
+  - [InterfaceConfig](arkts-mdm-networkmanager-interfaceconfig-i.md)
+  <!--Del-->
+  - [RemoveFilterRule(system api)](arkts-mdm-networkmanager-removefilterrule-i-sys.md)<!--DelEnd-->
+  - [Action](arkts-mdm-networkmanager-action-e.md)
+  <!--Del-->
+  - [AddMethod(system api)](arkts-mdm-networkmanager-addmethod-e-sys.md)<!--DelEnd-->
+  - [Direction](arkts-mdm-networkmanager-direction-e.md)
+  - [IpSetMode](arkts-mdm-networkmanager-ipsetmode-e.md)
+  - [LogType](arkts-mdm-networkmanager-logtype-e.md)
+  - [Protocol](arkts-mdm-networkmanager-protocol-e.md)
+- [@ohos.enterprise.restrictions(Restrictions)](arkts-mdm-enterprise-restrictions.md)
+  - [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md)
+  <!--Del-->
+  - [disableMicrophone(system api)](arkts-mdm-restrictions-disablemicrophone-f-sys.md)<!--DelEnd-->
+  - [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md)
+  - [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)
+  - [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md)
+  - [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md)
+  - [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md)
+  <!--Del-->
+  - [isFingerprintAuthDisabled(system api)](arkts-mdm-restrictions-isfingerprintauthdisabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [isHdcDisabled(system api)](arkts-mdm-restrictions-ishdcdisabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [isMicrophoneDisabled(system api)](arkts-mdm-restrictions-ismicrophonedisabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [isPrinterDisabled(system api)](arkts-mdm-restrictions-isprinterdisabled-f-sys.md)<!--DelEnd-->
+  - [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md)
+  - [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)
+  - [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md)
+  <!--Del-->
+  - [setFingerprintAuthDisabled(system api)](arkts-mdm-restrictions-setfingerprintauthdisabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setHdcDisabled(system api)](arkts-mdm-restrictions-sethdcdisabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPrinterDisabled(system api)](arkts-mdm-restrictions-setprinterdisabled-f-sys.md)<!--DelEnd-->
+  - [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md)
+  - [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md)
+  - [FeatureForAccount](arkts-mdm-restrictions-featureforaccount-e.md)
+  - [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md)
+  - [SettingsForAccount](arkts-mdm-restrictions-settingsforaccount-e.md)
+  - [SettingsForDevice](arkts-mdm-restrictions-settingsfordevice-e.md)
+- [@ohos.enterprise.securityManager(Security Management)](arkts-mdm-enterprise-securitymanager.md)
+  - [addAllowedPermissionBundle](arkts-mdm-securitymanager-addallowedpermissionbundle-f.md)
+  - [addUserExtendCredential](arkts-mdm-securitymanager-adduserextendcredential-f.md)
+  - [cancelScreenWatermarkImage](arkts-mdm-securitymanager-cancelscreenwatermarkimage-f.md)
+  - [cancelWatermarkImage](arkts-mdm-securitymanager-cancelwatermarkimage-f.md)
+  - [closeSession](arkts-mdm-securitymanager-closesession-f.md)
+  - [getAllowedPermissionBundles](arkts-mdm-securitymanager-getallowedpermissionbundles-f.md)
+  - [getAppClipboardPolicy](arkts-mdm-securitymanager-getappclipboardpolicy-f.md)
+  <!--Del-->
+  - [getDeviceEncryptionStatus(system api)](arkts-mdm-securitymanager-getdeviceencryptionstatus-f-sys.md)<!--DelEnd-->
+  - [getDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-getdevicesecuritylevelpolicy-f.md)
+  - [getDisallowedPermissions](arkts-mdm-securitymanager-getdisallowedpermissions-f.md)
+  - [getExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-getexternalsourceextensionspolicy-f.md)
+  - [getPasswordPolicy](arkts-mdm-securitymanager-getpasswordpolicy-f.md)
+  <!--Del-->
+  - [getPasswordPolicy(system api)](arkts-mdm-securitymanager-getpasswordpolicy-f-sys.md)<!--DelEnd-->
+  - [getPermissionManagedState](arkts-mdm-securitymanager-getpermissionmanagedstate-f.md)
+  <!--Del-->
+  - [getSecurityPatchTag(system api)](arkts-mdm-securitymanager-getsecuritypatchtag-f-sys.md)<!--DelEnd-->
+  - [getSecurityStatus](arkts-mdm-securitymanager-getsecuritystatus-f.md)
+  - [getUnlockPolicy](arkts-mdm-securitymanager-getunlockpolicy-f.md)
+  - [getUserCertificates](arkts-mdm-securitymanager-getusercertificates-f.md)
+  - [getUserExtendCredential](arkts-mdm-securitymanager-getuserextendcredential-f.md)
+  - [getWatermarkImageApps](arkts-mdm-securitymanager-getwatermarkimageapps-f.md)
+  - [installEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-installenterpriseresignaturecertificate-f.md)
+  - [installUserCertificate](arkts-mdm-securitymanager-installusercertificate-f.md)
+  - [isScreenLockDisabledForAccount](arkts-mdm-securitymanager-isscreenlockdisabledforaccount-f.md)
+  - [openSession](arkts-mdm-securitymanager-opensession-f.md)
+  - [removeAllowedPermissionBundle](arkts-mdm-securitymanager-removeallowedpermissionbundle-f.md)
+  - [removeUserExtendCredential](arkts-mdm-securitymanager-removeuserextendcredential-f.md)
+  - [setAppClipboardPolicy](arkts-mdm-securitymanager-setappclipboardpolicy-f.md)
+  - [setDeviceSecurityLevelPolicy](arkts-mdm-securitymanager-setdevicesecuritylevelpolicy-f.md)
+  - [setDisallowedPermission](arkts-mdm-securitymanager-setdisallowedpermission-f.md)
+  - [setExternalSourceExtensionsPolicy](arkts-mdm-securitymanager-setexternalsourceextensionspolicy-f.md)
+  - [setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md)
+  - [setPermissionManagedState](arkts-mdm-securitymanager-setpermissionmanagedstate-f.md)
+  - [setScreenLockDisabledForAccount](arkts-mdm-securitymanager-setscreenlockdisabledforaccount-f.md)
+  - [setScreenWatermarkImage](arkts-mdm-securitymanager-setscreenwatermarkimage-f.md)
+  - [setUnlockPolicy](arkts-mdm-securitymanager-setunlockpolicy-f.md)
+  - [setWatermarkImage](arkts-mdm-securitymanager-setwatermarkimage-f.md)
+  - [uninstallEnterpriseReSignatureCertificate](arkts-mdm-securitymanager-uninstallenterpriseresignaturecertificate-f.md)
+  - [uninstallUserCertificate](arkts-mdm-securitymanager-uninstallusercertificate-f.md)
+  - [AddCredentialInfo](arkts-mdm-securitymanager-addcredentialinfo-i.md)
+  - [ApplicationInstance](arkts-mdm-securitymanager-applicationinstance-i.md)
+  - [CertBlob](arkts-mdm-securitymanager-certblob-i.md)
+  <!--Del-->
+  - [DeviceEncryptionStatus(system api)](arkts-mdm-securitymanager-deviceencryptionstatus-i-sys.md)<!--DelEnd-->
+  - [PasswordPolicy](arkts-mdm-securitymanager-passwordpolicy-i.md)
+  - [RemoveCredentialInfo](arkts-mdm-securitymanager-removecredentialinfo-i.md)
+  - [UserExtCredentialInfo](arkts-mdm-securitymanager-userextcredentialinfo-i.md)
+  - [WatermarkProperties](arkts-mdm-securitymanager-watermarkproperties-i.md)
+  - [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md)
+  - [DeviceSecurityLevelPolicy](arkts-mdm-securitymanager-devicesecuritylevelpolicy-e.md)
+  - [PasswordAlgs](arkts-mdm-securitymanager-passwordalgs-e.md)
+  - [PermissionManagedState](arkts-mdm-securitymanager-permissionmanagedstate-e.md)
+  - [UnlockPolicy](arkts-mdm-securitymanager-unlockpolicy-e.md)
+- [@ohos.enterprise.systemManager(System Management)](arkts-mdm-enterprise-systemmanager.md)
+  - [addAllowedPrinterIPAddressesForAccount](arkts-mdm-systemmanager-addallowedprinteripaddressesforaccount-f.md)
+  - [addAllowedPrinterIPAddressesForDevice](arkts-mdm-systemmanager-addallowedprinteripaddressesfordevice-f.md)
+  - [addDisallowedNearLinkProtocols](arkts-mdm-systemmanager-adddisallowednearlinkprotocols-f.md)
+  - [addKeyEventPolicies](arkts-mdm-systemmanager-addkeyeventpolicies-f.md)
+  - [finishLogCollected](arkts-mdm-systemmanager-finishlogcollected-f.md)
+  - [getAllowedPrinterIPAddressesForAccount](arkts-mdm-systemmanager-getallowedprinteripaddressesforaccount-f.md)
+  - [getAllowedPrinterIPAddressesForDevice](arkts-mdm-systemmanager-getallowedprinteripaddressesfordevice-f.md)
+  - [getAutoUnlockAfterReboot](arkts-mdm-systemmanager-getautounlockafterreboot-f.md)
+  - [getDisallowedNearLinkProtocols](arkts-mdm-systemmanager-getdisallowednearlinkprotocols-f.md)
+  - [getInstallLocalEnterpriseAppEnabled](arkts-mdm-systemmanager-getinstalllocalenterpriseappenabled-f.md)
+  - [getInstallLocalEnterpriseAppEnabledForAccount](arkts-mdm-systemmanager-getinstalllocalenterpriseappenabledforaccount-f.md)
+  - [getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md)
+  - [getLocalHotaDomain](arkts-mdm-systemmanager-getlocalhotadomain-f.md)
+  - [getNTPServer](arkts-mdm-systemmanager-getntpserver-f.md)
+  - [getOtaUpdatePolicy](arkts-mdm-systemmanager-getotaupdatepolicy-f.md)
+  - [getUpdateAuthData](arkts-mdm-systemmanager-getupdateauthdata-f.md)
+  - [getUpdateResult](arkts-mdm-systemmanager-getupdateresult-f.md)
+  - [isActivationLockDisabled](arkts-mdm-systemmanager-isactivationlockdisabled-f.md)
+  - [isOtaUpdateNonceEnable](arkts-mdm-systemmanager-isotaupdatenonceenable-f.md)
+  - [notifyUpdatePackages](arkts-mdm-systemmanager-notifyupdatepackages-f.md)
+  - [removeAllowedPrinterIPAddressesForAccount](arkts-mdm-systemmanager-removeallowedprinteripaddressesforaccount-f.md)
+  - [removeAllowedPrinterIPAddressesForDevice](arkts-mdm-systemmanager-removeallowedprinteripaddressesfordevice-f.md)
+  - [removeDisallowedNearLinkProtocols](arkts-mdm-systemmanager-removedisallowednearlinkprotocols-f.md)
+  - [removeKeyEventPolicies](arkts-mdm-systemmanager-removekeyeventpolicies-f.md)
+  - [setActivationLockDisabled](arkts-mdm-systemmanager-setactivationlockdisabled-f.md)
+  - [setAutoUnlockAfterReboot](arkts-mdm-systemmanager-setautounlockafterreboot-f.md)
+  - [setInstallLocalEnterpriseAppEnabled](arkts-mdm-systemmanager-setinstalllocalenterpriseappenabled-f.md)
+  - [setInstallLocalEnterpriseAppEnabledForAccount](arkts-mdm-systemmanager-setinstalllocalenterpriseappenabledforaccount-f.md)
+  - [setLocalHotaDomain](arkts-mdm-systemmanager-setlocalhotadomain-f.md)
+  - [setNTPServer](arkts-mdm-systemmanager-setntpserver-f.md)
+  - [setOtaUpdateNonceEnable](arkts-mdm-systemmanager-setotaupdatenonceenable-f.md)
+  - [setOtaUpdatePolicy](arkts-mdm-systemmanager-setotaupdatepolicy-f.md)
+  - [startCollectLog](arkts-mdm-systemmanager-startcollectlog-f.md)
+  - [ErrorInfo](arkts-mdm-systemmanager-errorinfo-i.md)
+  - [KeyEvent](arkts-mdm-systemmanager-keyevent-i.md)
+  - [KeyEventPolicy](arkts-mdm-systemmanager-keyeventpolicy-i.md)
+  - [KeyItem](arkts-mdm-systemmanager-keyitem-i.md)
+  - [NotifyDescription](arkts-mdm-systemmanager-notifydescription-i.md)
+  - [OtaUpdatePolicy](arkts-mdm-systemmanager-otaupdatepolicy-i.md)
+  - [Package](arkts-mdm-systemmanager-package-i.md)
+  - [PackageDescription](arkts-mdm-systemmanager-packagedescription-i.md)
+  - [SystemUpdateInfo](arkts-mdm-systemmanager-systemupdateinfo-i.md)
+  - [UpdatePackageInfo](arkts-mdm-systemmanager-updatepackageinfo-i.md)
+  - [UpdateResult](arkts-mdm-systemmanager-updateresult-i.md)
+  - [KeyAction](arkts-mdm-systemmanager-keyaction-e.md)
+  - [KeyCode](arkts-mdm-systemmanager-keycode-e.md)
+  - [KeyPolicy](arkts-mdm-systemmanager-keypolicy-e.md)
+  - [NearLinkProtocol](arkts-mdm-systemmanager-nearlinkprotocol-e.md)
+  - [PackageType](arkts-mdm-systemmanager-packagetype-e.md)
+  - [PolicyType](arkts-mdm-systemmanager-policytype-e.md)
+  - [UpdateStatus](arkts-mdm-systemmanager-updatestatus-e.md)
+- [@ohos.enterprise.telephonyManager(Telephony Management)](arkts-mdm-enterprise-telephonymanager.md)
+  - [activeSim](arkts-mdm-telephonymanager-activesim-f.md)
+  - [addIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-addincomingcallpolicynumbers-f.md)
+  - [addOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-addoutgoingcallpolicynumbers-f.md)
+  - [deactiveSim](arkts-mdm-telephonymanager-deactivesim-f.md)
+  - [getDefaultData](arkts-mdm-telephonymanager-getdefaultdata-f.md)
+  - [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md)
+  - [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md)
+  - [hangupCalling](arkts-mdm-telephonymanager-hangupcalling-f.md)
+  - [isSimDisabled](arkts-mdm-telephonymanager-issimdisabled-f.md)
+  - [removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md)
+  - [removeOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-removeoutgoingcallpolicynumbers-f.md)
+  - [setDefaultData](arkts-mdm-telephonymanager-setdefaultdata-f.md)
+  - [setSimDisabled](arkts-mdm-telephonymanager-setsimdisabled-f.md)
+  - [setSimEnabled](arkts-mdm-telephonymanager-setsimenabled-f.md)
+- [@ohos.enterprise.usbManager(USB Management)](arkts-mdm-enterprise-usbmanager.md)
+  - [addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md)
+  - [addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md)
+  - [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md)
+  <!--Del-->
+  - [disableUsb(system api)](arkts-mdm-usbmanager-disableusb-f-sys.md)<!--DelEnd-->
+  - [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md)
+  - [getDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-getdisallowedpermissiveusbdevices-f.md)
+  - [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md)
+  - [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md)
+  <!--Del-->
+  - [isUsbDisabled(system api)](arkts-mdm-usbmanager-isusbdisabled-f-sys.md)<!--DelEnd-->
+  - [removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md)
+  - [removeDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-removedisallowedpermissiveusbdevices-f.md)
+  - [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md)
+  <!--Del-->
+  - [setUsbPolicy(system api)](arkts-mdm-usbmanager-setusbpolicy-f-sys.md)<!--DelEnd-->
+  - [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md)
+  - [PermissiveUsbDeviceType](arkts-mdm-usbmanager-permissiveusbdevicetype-i.md)
+  - [UsbDeviceId](arkts-mdm-usbmanager-usbdeviceid-i.md)
+  - [UsbDeviceType](arkts-mdm-usbmanager-usbdevicetype-i.md)
+  - [Descriptor](arkts-mdm-usbmanager-descriptor-e.md)
+  - [UsbPolicy](arkts-mdm-usbmanager-usbpolicy-e.md)
+- [@ohos.enterprise.wifiManager(Wi-Fi Management)](arkts-mdm-enterprise-wifimanager.md)
+  - [addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md)
+  - [addDisallowedWifiList](arkts-mdm-wifimanager-adddisallowedwifilist-f.md)
+  - [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md)
+  - [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md)
+  <!--Del-->
+  - [isWifiActive(system api)](arkts-mdm-wifimanager-iswifiactive-f-sys.md)<!--DelEnd-->
+  - [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md)
+  <!--Del-->
+  - [isWifiDisabled(system api)](arkts-mdm-wifimanager-iswifidisabled-f-sys.md)<!--DelEnd-->
+  - [removeAllowedWifiList](arkts-mdm-wifimanager-removeallowedwifilist-f.md)
+  - [removeDisallowedWifiList](arkts-mdm-wifimanager-removedisallowedwifilist-f.md)
+  <!--Del-->
+  - [setWifiDisabled(system api)](arkts-mdm-wifimanager-setwifidisabled-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setWifiProfile(system api)](arkts-mdm-wifimanager-setwifiprofile-f-sys.md)<!--DelEnd-->
+  - [setWifiProfileSync](arkts-mdm-wifimanager-setwifiprofilesync-f.md)
+  - [turnOffWifi](arkts-mdm-wifimanager-turnoffwifi-f.md)
+  - [turnOnWifi](arkts-mdm-wifimanager-turnonwifi-f.md)
+  - [IpProfile](arkts-mdm-wifimanager-ipprofile-i.md)
+  - [WifiAccessInfo](arkts-mdm-wifimanager-wifiaccessinfo-i.md)
+  - [WifiEapProfile](arkts-mdm-wifimanager-wifieapprofile-i.md)
+  - [WifiProfile](arkts-mdm-wifimanager-wifiprofile-i.md)
+  - [EapMethod](arkts-mdm-wifimanager-eapmethod-e.md)
+  - [IpType](arkts-mdm-wifimanager-iptype-e.md)
+  - [Phase2Method](arkts-mdm-wifimanager-phase2method-e.md)
+  - [WifiSecurityType](arkts-mdm-wifimanager-wifisecuritytype-e.md)
+- application<!--arkts-mdmkit-application-->
+  - [EnterpriseAdminExtensionContext(EnterpriseAdminExtensionContext)](arkts-mdm-enterpriseadminextensioncontext.md)
+    - [EnterpriseAdminExtensionContext](arkts-mdm-enterpriseadminextensioncontext-c.md)

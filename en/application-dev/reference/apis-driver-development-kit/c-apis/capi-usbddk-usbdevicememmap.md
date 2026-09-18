@@ -1,0 +1,29 @@
+# UsbDeviceMemMap
+
+```c
+typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
+```
+
+## Overview
+
+Device memory map created by calling {@link OH_Usb_CreateDeviceMemMap}. A buffer using the device memory map can improve data transmission performance.
+
+**Since**: 10
+
+**Related module**: [UsbDdk](capi-usbddk.md)
+
+**Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| uint8_t * const address | Buffer address. |
+| const size_t size | Buffer size. |
+| uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the offset starts from the buffer address. |
+| uint32_t bufferLength | Length of the used buffer. By default, the value is equal to the buffer size, indicating that the entire buffer is used. |
+| uint32_t transferedLength | Length of the transferred data. |
+
+

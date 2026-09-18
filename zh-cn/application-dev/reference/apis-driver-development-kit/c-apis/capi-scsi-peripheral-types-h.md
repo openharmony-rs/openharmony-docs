@@ -61,7 +61,7 @@
 enum ScsiPeripheral_DdkErrCode
 ```
 
-**描述**
+**描述：**
 
 SCSI Peripheral DDK错误码。
 
@@ -86,7 +86,7 @@ SCSI Peripheral DDK错误码。
 enum ScsiPeripheral_Status
 ```
 
-**描述**
+**描述：**
 
 定义用于响应的SCSI状态。
 

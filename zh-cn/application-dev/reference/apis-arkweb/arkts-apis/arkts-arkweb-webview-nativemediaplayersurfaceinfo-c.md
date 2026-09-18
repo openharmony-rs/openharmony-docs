@@ -1,6 +1,6 @@
 # NativeMediaPlayerSurfaceInfo
 
-NativeMediaPlayerSurfaceInfo 使用enableNativeMediaPlayer来进行同层渲染的 surface 信息配置。该类允许应用接管网页媒体播放功能，通过配置 surface 的 id 和位置信息，实现网页媒体内容与应用界面的同层渲染融合，提升媒体播放体验。
+NativeMediaPlayerSurfaceInfo 使用[enableNativeMediaPlayer](../arkts-components/arkts-arkweb-web-comp-attribute.md#enablenativemediaplayer)来进行同层渲染的surface 信息配置。该类允许应用接管网页媒体播放功能，通过配置 surface 的 id 和位置信息，实现网页媒体内容与应用界面的同层渲染融合，提升媒体播放体验。
 
 **起始版本：** 12
 
@@ -9,6 +9,7 @@ NativeMediaPlayerSurfaceInfo 使用enableNativeMediaPlayer来进行同层渲染�
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## id
@@ -17,13 +18,15 @@ NativeMediaPlayerSurfaceInfo 使用enableNativeMediaPlayer来进行同层渲染�
 id: string
 ```
 
-surface 的 id，用于同层渲染的 NativeImage 的 surfaceId。详见NativeEmbedDataInfo。
+surface 的 id，用于同层渲染的 NativeImage 的 surfaceId。
+
+详见[NativeEmbedDataInfo](../arkts-components/arkts-arkweb-nativeembeddatainfo-i.md)。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

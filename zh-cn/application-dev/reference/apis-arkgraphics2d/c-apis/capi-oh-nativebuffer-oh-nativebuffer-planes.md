@@ -14,3 +14,13 @@ OH_NativeBuffer的图像平面格式信息。
 
 **所在头文件：** [native_buffer.h](capi-native-buffer-h.md)
 
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| uint32_t planeCount | 不同平面的数量 |
+| [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) planes[4] | 图像平面数组 |
+
+

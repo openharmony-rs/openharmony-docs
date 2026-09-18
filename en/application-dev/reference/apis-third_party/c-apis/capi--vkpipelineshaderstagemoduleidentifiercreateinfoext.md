@@ -1,0 +1,4 @@
+# VkPipelineShaderStageModuleIdentifierCreateInfoEXT
+
+## Overview
+

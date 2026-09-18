@@ -1,0 +1,4 @@
+# VkSurfaceProtectedCapabilitiesKHR
+
+## Overview
+

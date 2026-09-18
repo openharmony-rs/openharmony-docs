@@ -30,7 +30,7 @@ typedef struct ffrt_mutex_t {...} ffrt_mutex_t
 uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
 ```
 
-**描述**
+**描述：**
 
 互斥锁的内部存储。请勿直接访问，通过`ffrt_mutex_*`等接口管理。
 

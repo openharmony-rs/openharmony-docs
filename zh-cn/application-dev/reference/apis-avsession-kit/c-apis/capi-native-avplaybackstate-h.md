@@ -38,7 +38,7 @@
 AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* playbackState, AVSession_PlaybackState* state)
 ```
 
-**描述**
+**描述：**
 
 获取播放的状态。
 
@@ -49,13 +49,13 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | 表示播放状态实例对象。 |
-| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate)* state | 指针变量将返回播放状态值。 |
+| AVSession_PlaybackState* state | 指针变量将返回播放状态值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数state为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数state为nullptr。 |
 
 ### OH_AVSession_GetPlaybackPosition()
 
@@ -63,7 +63,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState* playbackState, AVSession_PlaybackPosition* position)
 ```
 
-**描述**
+**描述：**
 
 获取播放状态的位置。
 
@@ -76,11 +76,11 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | 表示播放状态实例对象。 |
 | [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)* position | 指针变量将返回播放位置值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数position为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数position为nullptr。 |
 
 ### OH_AVSession_GetPlaybackSpeed()
 
@@ -88,7 +88,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* playbackState, int32_t* speed)
 ```
 
-**描述**
+**描述：**
 
 获取播放状态的倍速。
 
@@ -101,11 +101,11 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | 表示播放状态实例对象。 |
 | int32_t* speed | 指针变量将返回播放倍速值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数speed为nullptr。 |
+| AVSession_ErrCode | AV_SESSION_ERR_SUCCESS：函数执行成功。\n          AV_SESSION_ERR_INVALID_PARAMETER 参数验证失败原因如下：\n                                                          1. 参数playbackState为nullptr。\n                                                          2. 参数speed为nullptr。 |
 
 ### OH_AVSession_GetPlaybackVolume()
 
@@ -113,7 +113,7 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* playbackState, int32_t* volume)
 ```
 
-**描述**
+**描述：**
 
 获取投播音量
 
@@ -126,10 +126,10 @@ AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* p
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | OH_AVSession_AVPlaybackState对象指针 |
 | int32_t* volume | 返回的音量 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | 返回调用执行结果 |
+| AVSession_ErrCode | 返回调用执行结果 |
 
 

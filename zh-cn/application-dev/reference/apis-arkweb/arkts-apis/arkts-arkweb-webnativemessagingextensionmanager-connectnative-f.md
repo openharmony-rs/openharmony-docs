@@ -34,7 +34,7 @@ function connectNative(context: UIAbilityContext, want: Want, callback: WebExten
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 连接的标识ID，由[connectNative]{ |
+| number | 连接的标识ID，由[connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md)方法返回，用于唯一标识一次Web原生消息扩展连接。连接建立后需要通过disconnectNative释放。 |
 
 **错误码：**
 

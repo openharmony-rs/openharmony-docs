@@ -1,0 +1,4 @@
+# VkVideoReferenceSlotInfoKHR
+
+## Overview
+

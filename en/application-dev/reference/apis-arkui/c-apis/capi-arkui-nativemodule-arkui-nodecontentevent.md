@@ -1,0 +1,16 @@
+# ArkUI_NodeContentEvent
+
+```c
+typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent
+```
+
+## Overview
+
+Defines the general structure of a node content event.
+
+**Since**: 12
+
+**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**Header file**: [native_node.h](capi-native-node-h.md)
+

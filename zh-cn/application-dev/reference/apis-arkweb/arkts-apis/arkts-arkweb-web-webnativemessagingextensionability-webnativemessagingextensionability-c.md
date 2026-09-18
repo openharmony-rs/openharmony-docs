@@ -2,7 +2,7 @@
 
 为开发者提供Web原生消息通信能力，继承自ExtensionAbility。
 
-**继承/实现关系：** WebNativeMessagingExtensionAbility extends ExtensionAbility
+**继承/实现关系：** WebNativeMessagingExtensionAbility extends [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md)
 
 **起始版本：** 21
 

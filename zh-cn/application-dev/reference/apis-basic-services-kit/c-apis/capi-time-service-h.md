@@ -34,7 +34,7 @@
 enum TimeService_ErrCode
 ```
 
-**描述**
+**描述：**
 
 枚举错误码。
 
@@ -55,7 +55,7 @@ enum TimeService_ErrCode
 TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 ```
 
-**描述**
+**描述：**
 
 获取当前系统时区。
 
@@ -68,9 +68,9 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 | 参数项 | 描述 |
 | -- | -- |
 | char *timeZone | 时区ID字符数组，成功时写入当前系统时区ID字符串，当timeZone不为NULL且操作失败时写入空字符串，字符串以'\0'结尾。 |
-| uint32_t len | 时区ID字符数组分配的内存大小，当前时区字符串没有最大长度规格，建议申请足够多的内存，至少不能低于31字节。当len小于或等于实际时区字符串长度（不含结束符）时，返回TIMESERVICE_ERR_INVALID_PARAMETER。 |
+| uint32_t len | 时区ID字符数组分配的内存大小，当前时区字符串没有最大长度规格，建议申请足够多的内存，至少不能低于31字节。 当len小于或等于实际时区字符串长度（不含结束符）时，返回TIMESERVICE_ERR_INVALID_PARAMETER。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

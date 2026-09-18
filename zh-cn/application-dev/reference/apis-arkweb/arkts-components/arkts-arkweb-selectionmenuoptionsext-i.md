@@ -6,18 +6,17 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## menuType
 
 ```TypeScript
 menuType?: MenuType
 ```
 
-自定义选择菜单类型。默认值：`MenuType.SELECTION_MENU`。从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。
+自定义选择菜单类型。
+
+默认值：`MenuType.SELECTION_MENU`。
+
+从API version 20起，`MenuType.PREVIEW_MENU`支持超链接预览。
 
 **类型：** [MenuType](../../apis-arkui/arkts-apis/arkts-arkui-menutype-e.md)
 

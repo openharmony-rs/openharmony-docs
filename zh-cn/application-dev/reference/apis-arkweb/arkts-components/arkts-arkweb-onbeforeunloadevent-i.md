@@ -6,18 +6,17 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## isReload
 
 ```TypeScript
 isReload?: boolean
 ```
 
-页面是否刷新。当页面因刷新即将离开时，isReload为true；当页面因关闭即将离开时，isReload为false。默认值：false。
+页面是否刷新。
+
+当页面因刷新即将离开时，isReload为true；当页面因关闭即将离开时，isReload为false。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -37,7 +36,7 @@ message: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -53,7 +52,7 @@ result: JsResult
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -69,6 +68,6 @@ url: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

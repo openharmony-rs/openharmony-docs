@@ -28,5 +28,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| ETHERNET_MAX_NET_SIZE 32 ETHERNET_MAX_STR_LEN 256 |  |
+| ETHERNET_MAX_NET_SIZE 32 |  |
 

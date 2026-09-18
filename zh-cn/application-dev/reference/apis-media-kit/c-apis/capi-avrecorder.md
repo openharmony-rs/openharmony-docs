@@ -2,11 +2,12 @@
 
 ## 概述
 
-AVRecorder提供媒体录制能力，支持配置录制参数及实时状态回调，适用于视频通话录制、语音备忘录等需要将音视频内容录制保存为文件的场景。<br>开发者可根据开发需求，参考对应的开发指南及样例：<br>- [使用AVRecorder录制音频（C/C++）](../../../media/media/using-ndk-avrecorder-for-audio-recording.md)<br>- [使用AVRecorder录制视频（C/C++）](../../../media/media/using-ndk-avrecorder-for-video-recording.md)<br>
+AVRecorder提供媒体录制能力，支持配置录制参数及实时状态回调，适用于视频通话录制、语音备忘录等需要将音视频内容录制保存为文件的场景。<br><br> 开发者可根据开发需求，参考对应的开发指南及样例：<br><br> - [使用AVRecorder录制音频（C/C++）](../../../media/media/using-ndk-avrecorder-for-audio-recording.md)<br> - [使用AVRecorder录制视频（C/C++）](../../../media/media/using-ndk-avrecorder-for-video-recording.md)<br>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
 **起始版本：** 18
+
 ## 文件汇总
 
 | 名称 | 描述 |

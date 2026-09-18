@@ -45,7 +45,7 @@
 enum OH_Huks_ExternalCryptoTag
 ```
 
-**描述**
+**描述：**
 
 列举参数集合中使用的标签值。
 
@@ -66,7 +66,7 @@ enum OH_Huks_ExternalCryptoTag
 enum OH_Huks_ExternalPinAuthState
 ```
 
-**描述**
+**描述：**
 
 列举Ukey PIN码认证状态。
 

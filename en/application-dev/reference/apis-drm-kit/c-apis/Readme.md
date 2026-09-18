@@ -1,0 +1,23 @@
+# C API<!--c-drmkit-->
+
+- Module<!--drmkit-module-->
+    - [Drm](capi-drm.md)
+- Header file<!--drmkit-headerfile-->
+    - [native_mediakeysession.h](capi-native-mediakeysession-h.md)
+    - [native_mediakeysystem.h](capi-native-mediakeysystem-h.md)
+    - [native_drm_err.h](capi-native-drm-err-h.md)
+    - [native_drm_common.h](capi-native-drm-common-h.md)
+- Struct<!--drmkit-struct-->
+    - [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md)
+    - [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md)
+    - [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md)
+    - [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md)
+    - [DRM_Statistics](capi-drm-drm-statistics.md)
+    - [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md)
+    - [DRM_KeysInfo](capi-drm-drm-keysinfo.md)
+    - [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md)
+    - [DRM_PsshInfo](capi-drm-drm-psshinfo.md)
+    - [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md)
+    - [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md)
+    - [MediaKeySystem](capi-drm-mediakeysystem.md)
+    - [MediaKeySession](capi-drm-mediakeysession.md)

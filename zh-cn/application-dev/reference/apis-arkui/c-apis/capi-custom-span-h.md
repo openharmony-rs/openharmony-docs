@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义CustomSpan相关的结构体和接口，用于实现自定义绘制Span的精确尺寸测量、布局排版和绘制效果。支持开发者在富文本编辑器、聊天应用、文档应用等场景中实现图文混排、表情内嵌、自定义标记等功能，提供灵活的自定义绘制Span能力，帮助开发者提升开发效率，实现更丰富的文本排版效果。
+定义CustomSpan相关的结构体和接口，用于实现自定义绘制Span的精确尺寸测量、布局排版和绘制效果。支持开发者在富文本编辑器、聊天应用、文档应用等场景中实现图文混排、表情内嵌、自定义标记等功能， 提供灵活的自定义绘制Span能力，帮助开发者提升开发效率，实现更丰富的文本排版效果。
 
 **库：** libace_ndk.z.so
 
@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_CustomSpanMeasureInfo](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md) | ArkUI_CustomSpanMeasureInfo | 自定义Span组件的测量信息。该结构体用于在自定义Span组件的测量回调中提供组件的测量数据，帮助开发者实现自定义文本组件的精确尺寸测量与布局排版。 |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | 自定义Span组件的度量指标，用于描述自定义Span的宽高、位置等布局信息。开发者可通过该结构体设置自定义Span的宽高数据，实现更精准的文本布局控制和排版优化。适用于需要精细控制文本显示效果的场景，如富文本编辑器中的图文混排、聊天应用中的表情内嵌、文档应用中的自定义标记等。 |
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | 自定义Span组件的度量指标，用于描述自定义Span的宽高、位置等布局信息。开发者可通过该结构体设置自定义Span的宽高数据，实现更精准的文本布局控制和排版优化。 适用于需要精细控制文本显示效果的场景，如富文本编辑器中的图文混排、聊天应用中的表情内嵌、文档应用中的自定义标记等。 |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | 自定义段落组件的绘制信息，用于在该组件的绘制回调中向开发者传递绘制信息，开发者可在自定义绘制流程中获取并使用该信息，实现定制化的段落组件绘制效果。 |
 
 ### 函数
@@ -78,7 +78,7 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 | -- | -- |
 | [ArkUI_CustomSpanMeasureInfo](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md)* info |  自定义段落组件测量信息指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -121,11 +121,11 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | CustomSpanMetrics实例。 |
 | float width | 宽度大小，单位为vp。默认值为0.0f，负值与默认值效果一致。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n          {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n          异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n          异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
@@ -146,11 +146,11 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | CustomSpanMetrics实例。 |
 | float height | 高度大小，单位为vp。默认值为0.0f，负值与默认值效果一致。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n          {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n          异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。 \n          {@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 \n<br>        {@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 \n          异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_Dispose()
 
@@ -188,7 +188,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 | -- | -- |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info |  自定义段落组件绘制信息指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -212,7 +212,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 | -- | -- |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info |  自定义段落组件绘制信息指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -236,7 +236,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 | -- | -- |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info |  自定义段落组件绘制信息指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -260,7 +260,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 | -- | -- |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* info |  自定义段落组件绘制信息指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -278,7 +278,7 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -296,7 +296,7 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -314,7 +314,7 @@ ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

@@ -50,11 +50,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRun
 | char* buffer | 接收实例ID字符串的缓冲区指针。实例ID为UUID格式，长度为37字节。 |
 | const int32_t bufferSize | 缓冲区长度，必须至少为37字节。确保缓冲区至少有额外一个字节用于'\0'。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}表示操作成功。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}表示nativeAbilityWrapper或buffer为空指针，或bufferSize小于37。 |
+| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}表示操作成功。<br>    <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}表示nativeAbilityWrapper或buffer为空指针，或bufferSize小于37。 |
 
 ### OH_AbilityRuntime_GetAbilityName()
 
@@ -77,11 +77,11 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_N
 | const int32_t bufferSize | 缓冲区长度（字节）。确保缓冲区至少有额外一个字节用于'\0'。 |
 | int32_t *writeLength | 输出Ability名称字符串长度。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}表示操作成功。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}表示nativeAbilityWrapper或writeLength为空指针，或缓冲区太小无法存储Ability名称。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID}表示NativeAbility数据信息无效或不完整。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL}表示内部错误。 |
+| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}表示操作成功。<br>    <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}表示nativeAbilityWrapper或writeLength为空指针，或缓冲区太小无法存储Ability名称。<br>    <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID}表示NativeAbility数据信息无效或不完整。<br>    <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL}表示内部错误。 |
 
 ### OH_AbilityRuntime_GetEnv()
 
@@ -102,10 +102,10 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbi
 | [const AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-abilityruntime-nativeabilitywrapper.md)* nativeAbilityWrapper | NativeAbility数据信息指针。 |
 | napi_env* env | 接收napi_env值的指针。napi_env在进程终止前一直有效。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}表示操作成功。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}表示nativeAbilityWrapper或env为空指针。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID}表示NativeAbility数据信息无效或不完整。 |
+| AbilityRuntime_ErrorCode | 返回错误码。      <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}表示操作成功。<br>    <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}表示nativeAbilityWrapper或env为空指针。<br>    <br>返回{@link ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID}表示NativeAbility数据信息无效或不完整。 |
 
 

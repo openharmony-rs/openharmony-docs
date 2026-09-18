@@ -1,15 +1,10 @@
 # WebResourceRequest
 
-WebResourceRequest是Web组件中表示网络资源请求的类，提供了关于请求资源的详细元数据。该对象在`onErrorReceive`、`onHttpErrorReceive`以及请求拦截等事件回调中使用，用于帮助开发者诊断 网络错误、监控请求状态和实现资源拦截控制。通过使用该类，应用可以提升错误处理能力、增强请求可控性和优化用户体验。示例代码参考[onErrorReceive事件](arkts-arkweb-web-attribute.md#onerrorreceive)。
+WebResourceRequest是Web组件中表示网络资源请求的类，提供了关于请求资源的详细元数据。该对象在`onErrorReceive`、`onHttpErrorReceive`以及请求拦截等事件回调中使用，用于帮助开发者诊断网络错误、监控请求状态和实现资源拦截控制。通过使用该类，应用可以提升错误处理能力、增强请求可控性和优化用户体验。示例代码参考[onErrorReceive事件](arkts-arkweb-web-comp-attribute.md#onerrorreceive)。
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## constructor
 
@@ -21,7 +16,7 @@ WebResourceRequest的构造函数。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -35,7 +30,7 @@ getRequestHeader(): Array<Header>
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -55,7 +50,7 @@ getRequestMethod(): string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -75,7 +70,7 @@ getRequestUrl(): string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -95,7 +90,7 @@ isMainFrame(): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -103,7 +98,7 @@ isMainFrame(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源请求是否为主frame的判断结果。 |
+| boolean | 返回资源请求是否为主frame的判断结果。<br>true表示资源请求为主frame，false表示资源请求不为主frame。 |
 
 ## isRedirect
 
@@ -115,7 +110,7 @@ isRedirect(): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -123,7 +118,7 @@ isRedirect(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源请求是否被服务端重定向。 |
+| boolean | 返回资源请求是否被服务端重定向。<br>true表示资源请求被服务端重定向，false表示资源请求未被服务端重定向。 |
 
 ## isRequestGesture
 
@@ -135,7 +130,7 @@ isRequestGesture(): boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -143,4 +138,4 @@ isRequestGesture(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回资源请求是否与手势（如点击）相关联。 |
+| boolean | 返回资源请求是否与手势（如点击）相关联。<br>true表示返回资源请求与手势（如点击）相关联，false表示返回资源请求与手势（如点击）不相关联。 |

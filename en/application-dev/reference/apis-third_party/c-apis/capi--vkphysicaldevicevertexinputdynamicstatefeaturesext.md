@@ -1,0 +1,4 @@
+# VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT
+
+## Overview
+

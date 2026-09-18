@@ -424,7 +424,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 | -- | -- |
 | int32_t size | 辅助线数量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -547,7 +547,7 @@ const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int
 | ArkUI_GuidelineOption* guideline | 辅助线信息。 |
 | int32_t index | 辅助线索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -572,7 +572,7 @@ ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guidelin
 | ArkUI_GuidelineOption* guideline | 辅助线信息。 |
 | int32_t index | 辅助线索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -597,7 +597,7 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 | ArkUI_GuidelineOption* guideline | 辅助线信息。 |
 | int32_t index | 辅助线索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -622,7 +622,7 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 | ArkUI_GuidelineOption* guideline | 辅助线信息。 |
 | int32_t index | 辅助线索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -646,7 +646,7 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 | -- | -- |
 | int32_t size | 屏障数量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -749,7 +749,7 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 | ArkUI_BarrierOption* barrierStyle | 屏障信息。 |
 | int32_t index | 屏障索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -774,7 +774,7 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 | ArkUI_BarrierOption* barrierStyle | 屏障信息。 |
 | int32_t index | 屏障索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -800,7 +800,7 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 | int32_t index | 屏障索引值。 |
 | int32_t referencedIndex | 依赖的组件Id索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -825,7 +825,7 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 | ArkUI_BarrierOption* barrierStyle | 屏障信息。 |
 | int32_t index | 屏障索引值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -843,7 +843,7 @@ ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1043,7 +1043,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1067,7 +1067,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1091,7 +1091,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1115,7 +1115,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1139,7 +1139,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1163,7 +1163,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1187,7 +1187,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1211,7 +1211,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1235,7 +1235,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1259,7 +1259,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1283,7 +1283,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1307,7 +1307,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1331,7 +1331,7 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* 
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1355,7 +1355,7 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* op
 | -- | -- |
 | ArkUI_AlignmentRuleOption* option | 相对容器中子组件的对齐规则信息。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1373,7 +1373,7 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 
 **起始版本：** 21
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1397,7 +1397,7 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edge
 | -- | -- |
 | [const ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1459,11 +1459,11 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
 | float* value | PositionEdges对应方向的值，单位vp。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -1503,11 +1503,11 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
 | float* value | PositionEdges对应方向的值，单位vp。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -1547,11 +1547,11 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
 | float* value | PositionEdges对应方向的值，单位vp。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -1591,11 +1591,11 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | 指向PositionEdges对象的指针。 |
 | float* value | PositionEdges对应方向的值，单位vp。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -1609,7 +1609,7 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 
 **起始版本：** 21
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -1671,11 +1671,11 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。 |
 | [ArkUI_PixelRoundCalcPolicy](capi-layout-h.md#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -1715,11 +1715,11 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。 |
 | [ArkUI_PixelRoundCalcPolicy](capi-layout-h.md#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -1759,11 +1759,11 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。 |
 | [ArkUI_PixelRoundCalcPolicy](capi-layout-h.md#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -1803,10 +1803,10 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | 指向PixelRoundPolicy对象的指针。 |
 | [ArkUI_PixelRoundCalcPolicy](capi-layout-h.md#arkui_pixelroundcalcpolicy)* value | PixelRoundPolicy对应方向的取整策略。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。       返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
+| int32_t | 返回错误码。       返回 {@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。<br>     返回 {@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示参数无效。 |
 
 

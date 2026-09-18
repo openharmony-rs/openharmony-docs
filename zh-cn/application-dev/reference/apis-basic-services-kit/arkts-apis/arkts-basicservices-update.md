@@ -1,0 +1,127 @@
+# @ohos.update
+
+@ohos.update模块提供系统升级和恢复出厂设置功能，支持在线升级、本地SD卡升级和恢复出厂设置三大核心能力，帮助设备厂商OTA（Over-The-Air，空中下载）客户端、系统应用实现版本管理、升级控制和设备维护。适用于系统版本更新、离线升级、设备数据清理等场景。
+
+升级范围：升级整个系统，包括内置资源和预置应用，不包括第三方应用。确保系统完整性，避免第三方应用兼容性问题，提升升级稳定性和安全性。
+
+升级类型：本地SD卡升级、在线升级。
+
+各升级类型的设计逻辑和适用场景如下：
+
+- **本地SD卡升级**：详见[术语](../../../basic-services/update/update-kit-term.md)。
+
+使用场景：需要从本地存储设备进行系统升级。
+
+**收益说明**：
+
+解决无法联网自动升级的问题，适合离线环境或网络不稳定场景下的系统升级需求，无需依赖升级包管理服务器，降低升级成本。
+
+- **在线升级**：详见[术语](../../../basic-services/update/update-kit-term.md)。
+
+使用场景：需要通过网络自动检查和升级系统。
+
+通过Updater对象实现接口的调用。依赖设备厂商部署的升级包管理服务器（服务端系统，提供版本检查、升级包下载等功能），接口由设备厂商实现。
+
+**收益说明**：
+
+支持用户及时获取系统更新，提升升级效率和用户体验。支持自动版本检查、后台下载、断点续传等功能，降低用户操作成本。
+
+**恢复出厂设置**：
+
+使用场景：需要清除用户数据、恢复设备出厂状态。适用于解决系统异常、设备转赠或报废、隐私保护、存储空间释放等场景。传统恢复方式存在数据残留、密钥未清除、清理不彻底等问题，本模块提供分级恢复能力满足不同安全需求。
+
+**收益说明**：
+
+支持用户快速解决系统异常问题、释放存储空间、保护隐私数据安全。提供三种恢复模式满足不同安全等级需求，普通恢复适用于日常维护场景，强制恢复适用于数据销毁场景，深度恢复适用于设备报废等极端场景，实现数据清理的分级管理，降低运维成本。
+
+> **说明：** 
+> 
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。本模块接口为系统接口。系统应用权限申请请参考系统应用开发指南，应用扩展权限申请请参考应用扩展开发指南。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.Update.UpdateService
+
+**系统接口：** 此接口为系统接口。
+
+## 导入模块
+
+```TypeScript
+import { update } from '@kit.BasicServicesKit';
+```
+
+## 汇总
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [getLocalUpdater](arkts-basicservices-update-getlocalupdater-f-sys.md) | 获取本地升级对象，用于从本地存储设备（如SD卡）执行系统升级。调用此方法后，系统返回LocalUpdater工具类对象，提供本地升级包校验、安装等功能。 |
+| [getOnlineUpdater](arkts-basicservices-update-getonlineupdater-f-sys.md) | 获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA(详见[术语](../../../basic-services/update/update-kit-term.md))升级客户端应用、在线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。 |
+| [getRestorer](arkts-basicservices-update-getrestorer-f-sys.md) | 获取恢复出厂设置对象，用于执行恢复出厂设置相关操作。调用此方法后，系统返回Restorer工具类对象，提供三种恢复出厂方式： |
+<!--DelEnd-->
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BusinessType](arkts-basicservices-update-businesstype-i-sys.md) | 升级业务类型。 |
+| [CheckResult](arkts-basicservices-update-checkresult-i-sys.md) | 版本检查结果。 |
+| [ClearOptions](arkts-basicservices-update-clearoptions-i-sys.md) | 清除异常选项，用于指定要清除的异常状态类型。 |
+| [ComponentDescription](arkts-basicservices-update-componentdescription-i-sys.md) | 组件描述文件。 |
+| [CurrentVersionInfo](arkts-basicservices-update-currentversioninfo-i-sys.md) | 当前版本信息。 |
+| [DescriptionInfo](arkts-basicservices-update-descriptioninfo-i-sys.md) | 版本描述文件信息。 |
+| [DescriptionOptions](arkts-basicservices-update-descriptionoptions-i-sys.md) | 描述文件选项，用于指定描述文件的格式和语言。对象包含format(描述文件格式，可选STANDARD或SIMPLIFIED)和language(语言代码，如'zh-cn')字段。 |
+| [DownloadOptions](arkts-basicservices-update-downloadoptions-i-sys.md) | 下载选项，包含allowNetwork(允许下载的网络类型)和order(升级指令)字段，用于控制下载行为。 |
+| [ErrorMessage](arkts-basicservices-update-errormessage-i-sys.md) | 错误信息。 |
+| [EventClassifyInfo](arkts-basicservices-update-eventclassifyinfo-i-sys.md) | 事件信息。 |
+| [EventInfo](arkts-basicservices-update-eventinfo-i-sys.md) | 事件信息对象，用于接收升级事件通知时传递的事件详情。包含eventId(事件ID，标识具体事件类型)和taskBody(任务数据，包含任务状态和进度)字段。 |
+| [FactoryResetInfo](arkts-basicservices-update-factoryresetinfo-i-sys.md) | 恢复出厂设置信息。 |
+| [FactoryResetStrategy](arkts-basicservices-update-factoryresetstrategy-i-sys.md) | 恢复出厂设置策略，包含scope(重置范围)和strategy(重置策略描述)字段。 |
+| [LocalUpdater](arkts-basicservices-update-localupdater-i-sys.md) | 提供校验本地升级包签名和完整性、安装本地升级包、监听本地升级事件等本地固件更新功能的工具类。 |
+| [NewVersionInfo](arkts-basicservices-update-newversioninfo-i-sys.md) | 新版本数据。 |
+| [PauseDownloadOptions](arkts-basicservices-update-pausedownloadoptions-i-sys.md) | 暂停下载选项，用于控制暂停行为。对象包含isAllowAutoResume字段，true表示允许自动恢复，false表示需手动恢复。 |
+| [Restorer](arkts-basicservices-update-restorer-i-sys.md) | 提供清除用户数据分区、深度清除用户数据和操作系统分区、同步清除文件密钥等恢复出厂设置功能的工具类。 |
+| [ResumeDownloadOptions](arkts-basicservices-update-resumedownloadoptions-i-sys.md) | 恢复下载选项，用于指定恢复下载的网络类型。对象包含allowNetwork字段，用于设置允许下载的网络类型。 |
+| [TaskBody](arkts-basicservices-update-taskbody-i-sys.md) | 任务数据。 |
+| [TaskInfo](arkts-basicservices-update-taskinfo-i-sys.md) | 任务信息。 |
+| [Updater](arkts-basicservices-update-updater-i-sys.md) | 提供在线检查新版本、下载升级包、安装升级包、管理升级策略、获取版本信息等系统在线更新功能的工具类。 |
+| [UpgradeFile](arkts-basicservices-update-upgradefile-i-sys.md) | 升级文件，包含文件类型和文件路径，用于指定要安装的本地升级包。 |
+| [UpgradeInfo](arkts-basicservices-update-upgradeinfo-i-sys.md) | 升级信息。 |
+| [UpgradeOptions](arkts-basicservices-update-upgradeoptions-i-sys.md) | 升级选项，包含升级指令等配置，用于指定升级操作类型。 |
+| [UpgradePeriod](arkts-basicservices-update-upgradeperiod-i-sys.md) | 升级时间段。 |
+| [UpgradePolicy](arkts-basicservices-update-upgradepolicy-i-sys.md) | 升级策略，用于控制升级行为。 |
+| [VersionComponent](arkts-basicservices-update-versioncomponent-i-sys.md) | 版本组件。 |
+| [VersionDigestInfo](arkts-basicservices-update-versiondigestinfo-i-sys.md) | 版本摘要。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [BusinessSubType](arkts-basicservices-update-businesssubtype-e-sys.md) | 升级类型。 |
+| [BusinessVendor](arkts-basicservices-update-businessvendor-e-sys.md) | 设备厂家。 |
+| [ComponentType](arkts-basicservices-update-componenttype-e-sys.md) | 组件类型。 |
+| [DescriptionFormat](arkts-basicservices-update-descriptionformat-e-sys.md) | 描述文件格式。 |
+| [DescriptionType](arkts-basicservices-update-descriptiontype-e-sys.md) | 描述文件类型。 |
+| [EffectiveMode](arkts-basicservices-update-effectivemode-e-sys.md) | 生效模式。 |
+| [EventClassify](arkts-basicservices-update-eventclassify-e-sys.md) | 事件类型。 |
+| [EventId](arkts-basicservices-update-eventid-e-sys.md) | 事件ID。 |
+| [FactoryResetScope](arkts-basicservices-update-factoryresetscope-e-sys.md) | 恢复出厂设置范围。 |
+| [NetType](arkts-basicservices-update-nettype-e-sys.md) | 网络类型，用于指定下载的网络类型。设置CELLULAR仅允许数据网络下载，设置WIFI仅允许WIFI下载，设置CELLULAR_AND_WIFI允许两者均可下载。 |
+| [Order](arkts-basicservices-update-order-e-sys.md) | 升级指令。 |
+| [OtaMode](arkts-basicservices-update-otamode-e-sys.md) | 升级模式。 |
+| [UpgradeAction](arkts-basicservices-update-upgradeaction-e-sys.md) | 升级方式。 |
+| [UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md) | 升级状态。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 类型（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [UpgradeTaskCallback](arkts-basicservices-update-upgradetaskcallback-t-sys.md) | 事件回调。 |
+<!--DelEnd-->

@@ -1,0 +1,4 @@
+# VkSemaphoreTypeCreateInfo
+
+## Overview
+

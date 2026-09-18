@@ -43,6 +43,10 @@
 | [WebSocket_OnErrorCallback](capi-net-websocket-type-h.md#websocket_onerrorcallback) onError | Pointer to the callback invoked when the WebSocket client receives an error message. |
 | [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) onClose | Pointer to the callback invoked when the WebSocket client receives a close message. |
 | [WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md) requestOptions | 客户端建立连接请求内容。 |
+| void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult) | websocket客户端接收open消息的回调函数定义。<br>**起始版本：** 11 |
+| void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length) | websocket客户端接收数据的回调函数定义。<br>**起始版本：** 11 |
+| void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult) | websocket客户端接收error错误消息的回调函数定义。<br>**起始版本：** 11 |
+| void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult) | webSocket客户端接收close消息的回调函数定义。<br>**起始版本：** 11 |
 
 ## 函数说明
 
@@ -52,7 +56,7 @@
 typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)
 ```
 
-**描述**
+**描述：**
 
 websocket客户端接收open消息的回调函数定义。
 
@@ -71,7 +75,7 @@ websocket客户端接收open消息的回调函数定义。
 typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)
 ```
 
-**描述**
+**描述：**
 
 websocket客户端接收数据的回调函数定义。
 
@@ -91,7 +95,7 @@ websocket客户端接收数据的回调函数定义。
 typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)
 ```
 
-**描述**
+**描述：**
 
 websocket客户端接收error错误消息的回调函数定义。
 
@@ -110,7 +114,7 @@ websocket客户端接收error错误消息的回调函数定义。
 typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)
 ```
 
-**描述**
+**描述：**
 
 webSocket客户端接收close消息的回调函数定义。
 

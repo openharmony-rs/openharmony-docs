@@ -1,0 +1,4 @@
+# VkBindImageMemorySwapchainInfoKHR
+
+## Overview
+

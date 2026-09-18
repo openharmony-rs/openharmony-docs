@@ -201,7 +201,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 **起始版本：** 15
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -244,11 +244,11 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项。 |
 | float scale | 缩放值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_SnapshotOptions_SetColorMode()
 
@@ -267,14 +267,14 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| int32_t colorSpace | 指定截图使用的色彩空间。<br>如果知道需要截图的组件使用的色彩空间，可以通过colorSpace参数指定，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：3（RGB色域为Display P3类型）、4（RGB色域为SRGB类型）、27（RGB色域为DISPLAY BT2020类型）。<br>默认值：4<br>仅当isAuto设置为false，该参数设置生效。 |
-| bool isAuto | 是否由系统自动决定所使用的色彩空间。<br>true表示系统自动决定所使用的色彩空间。在不确定组件使用的色彩空间时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的色彩空间。<br>false表示使用通过colorSpace字段设置的色彩空间类型进行截图。<br>默认值：false |
+| int32_t colorSpace | 指定截图使用的色彩空间。 <br>如果知道需要截图的组件使用的色彩空间，可以通过colorSpace参数指定，并将isAuto设置为false，以达到预期的截图效果。 <br>支持的取值为：3（RGB色域为Display P3类型）、4（RGB色域为SRGB类型）、27（RGB色域为DISPLAY BT2020类型）。 <br>默认值：4 <br>仅当isAuto设置为false，该参数设置生效。 |
+| bool isAuto | 是否由系统自动决定所使用的色彩空间。 <br>true表示系统自动决定所使用的色彩空间。在不确定组件使用的色彩空间时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的色彩空间。 <br>false表示使用通过colorSpace字段设置的色彩空间类型进行截图。 <br>默认值：false |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
 
@@ -293,14 +293,14 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| int32_t dynamicRangeMode | 指定截图使用的动态范围模式。<br>如果知道截图对象使用的动态范围模式，可通过dynamicRangeMode参数指定动态范围模式，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：{@link ArkUI_DynamicRangeMode}枚举值。<br>默认值：ARKUI_DYNAMIC_RANGE_MODE_STANDARD<br>仅当isAuto设置为false，该参数设置生效。 |
-| bool isAuto | 是否由系统自动决定所使用的动态范围模式。<br>true表示系统自动决定所使用的动态范围模式。在不确定组件使用的动态范围模式时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的动态范围模式。<br>false表示使用通过dynamicRangeMode字段设置的动态范围模式进行截图。<br>默认值：false |
+| int32_t dynamicRangeMode | 指定截图使用的动态范围模式。 <br>如果知道截图对象使用的动态范围模式，可通过dynamicRangeMode参数指定动态范围模式，并将isAuto设置为false，以达到预期的截图效果。 <br>支持的取值为：{@link ArkUI_DynamicRangeMode}枚举值。 <br>默认值：ARKUI_DYNAMIC_RANGE_MODE_STANDARD <br>仅当isAuto设置为false，该参数设置生效。 |
+| bool isAuto | 是否由系统自动决定所使用的动态范围模式。 <br>true表示系统自动决定所使用的动态范围模式。在不确定组件使用的动态范围模式时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的动态范围模式。 <br>false表示使用通过dynamicRangeMode字段设置的动态范围模式进行截图。 <br>默认值：false |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。 	<br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>	<br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -314,7 +314,7 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 **起始版本：** 17
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -355,14 +355,14 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-| float* value | 阈值数组。其中每个元素代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
+| float* value | 阈值数组。其中每个元素代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。 每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
 | int32_t size | 阈值数组大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>   <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。    <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
@@ -383,11 +383,11 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | 可见区域变化监听的参数实例。 |
 | int32_t value | 预期更新间隔，单位为ms。定义了开发者期望的更新间隔。默认值：1000。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常    <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。    <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>   <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常    <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
 
@@ -406,13 +406,13 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-| bool measureFromViewport | 当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。默认值：false |
+| bool measureFromViewport | 当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false， 则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪， 无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。 默认值：false |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
@@ -434,11 +434,11 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 | float* value | 阈值数组。 |
 | int32_t* size | 阈值数组大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。     <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。     <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。     <br>异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | 错误码。     <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 成功。<br>    <br>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 函数参数异常。<br>    <br>{@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} 数组大小不够。     <br>异常原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
@@ -458,7 +458,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -482,7 +482,7 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

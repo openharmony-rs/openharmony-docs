@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) | MetadataOutput_Callbacks | 元数据输出的回调。 |
-| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md) | Camera_MetadataOutput | 元数据输出对象。<br> 可以使用{@link OH_CameraManager_CreateMetadataOutput}方法与OH_CameraManager_CreateMetadataOutputWithObjectTypes方法（从API version 23开始支持）创建指针。 |
+| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md) | Camera_MetadataOutput | 元数据输出对象。<br> 可以使用{@link OH_CameraManager_CreateMetadataOutput} 方法与OH_CameraManager_CreateMetadataOutputWithObjectTypes方法（从API version 23开始支持）创建指针。 |
 
 ### 函数
 
@@ -41,8 +41,17 @@
 | [Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)](#) | - | 添加元数据对象类型。 |
 | [Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOutput* metadataOutput, Camera_MetadataObjectType* types, uint32_t size)](#) | - | 移除元数据对象类型。 |
 | [bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_islockmetadataobjecttrackingsupported) | - | 检查设备是否支持锁定元数据对象（如猫脸、狗脸）追踪功能。 |
-| [Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput, Camera_Point* pointOfInterest)](#oh_metadataoutput_lockmetadataobjecttracking) | - | 锁定对特定元数据对象（如猫脸、狗脸）的追踪。<br>该功能以pointOfInterest所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。<br>被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。 |
+| [Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput, Camera_Point* pointOfInterest)](#oh_metadataoutput_lockmetadataobjecttracking) | - | 锁定对特定元数据对象（如猫脸、狗脸）的追踪。 <br>该功能以pointOfInterest所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。 <br>被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。 |
 | [Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataOutput* metadataOutput)](#oh_metadataoutput_unlockmetadataobjecttracking) | - | 解锁元数据对象（如猫脸、狗脸）的追踪。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutput* metadataOutput, Camera_MetadataObject* metadataObject, uint32_t size) | 在[MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md)中被调用的元数据输出元数据对象可用回调。<br>**起始版本：** 11 |
+| void (*OH_MetadataOutput_OnMetadataObjectExtAvailable)(void* context, OH_Camera_MetadataObjectExt** metadataObjectExt, uint32_t size) | 用于监听元数据对象上报事件的回调。使用[OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback](capi-metadata-output-h.md#oh_metadataoutput_registermetadataobjectextavailablecallback)进行注册。<br>**起始版本：** 26.0.0 |
+| void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode) | 在[MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md)中被调用的元数据输出错误回调。<br>**起始版本：** 11 |
+| void (*OH_MetadataOutput_OnErrorExt)(void* context, Camera_ErrorCode errorCode) | 在元数据输出期间，用于监听错误事件的回调。<br>**起始版本：** 26.0.0 |
 
 ## 函数说明
 
@@ -153,7 +162,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metad
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 元数据输出实例。 |
 | [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md)* callback | 要注册的元数据输出回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -178,7 +187,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* met
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 元数据输出实例。 |
 | [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md)* callback | 要注销的元数据输出回调。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -204,7 +213,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterMetadataObjectExtAvailableCallback(Ca
 | void* context | 用户提供的上下文指针。 |
 | [OH_MetadataOutput_OnMetadataObjectExtAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectextavailable) callback | 监听元数据对象上报事件的回调的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -230,7 +239,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterMetadataObjectExtAvailableCallback(
 | void* context | 用户提供的上下文指针。 |
 | [OH_MetadataOutput_OnMetadataObjectExtAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectextavailable) callback | 监听元数据对象上报事件的回调的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -256,7 +265,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterErrorExtCallback(Camera_MetadataOutpu
 | void* context | 用户提供的上下文指针。 |
 | [OH_MetadataOutput_OnErrorExt](capi-metadata-output-h.md#oh_metadataoutput_onerrorext) callback | 监听错误事件的回调的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -282,7 +291,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterErrorExtCallback(Camera_MetadataOut
 | void* context | 用户提供的上下文指针。 |
 | [OH_MetadataOutput_OnErrorExt](capi-metadata-output-h.md#oh_metadataoutput_onerrorext) callback | 监听错误事件的回调的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -306,7 +315,7 @@ Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 要启动的元数据输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -330,7 +339,7 @@ Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 要停止的元数据输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -354,7 +363,7 @@ Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 要释放的元数据输出实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -380,7 +389,7 @@ Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput
 | Camera_MetadataObjectType* types | 用于添加到Camera_MetadataOutput实例的元数据对象类型数组。 |
 | uint32_t size | 元数据对象类型数组长度。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -406,7 +415,7 @@ Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOut
 | Camera_MetadataObjectType* types | 从Camera_MetadataOutput实例移除的元数据对象类型数组。 |
 | uint32_t size | 元数据对象类型数组长度。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -430,7 +439,7 @@ bool OH_MetadataOutput_IsLockMetadataObjectTrackingSupported(const Camera_Metada
 | -- | -- |
 | [const Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | MetadataOutput实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -444,7 +453,7 @@ Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOut
 
 **描述：**
 
-锁定对特定元数据对象（如猫脸、狗脸）的追踪。<br>该功能以pointOfInterest所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。<br>被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。
+锁定对特定元数据对象（如猫脸、狗脸）的追踪。 <br>该功能以pointOfInterest所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。 <br>被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。
 
 **起始版本：** 26.0.0
 
@@ -455,7 +464,7 @@ Camera_ErrorCode OH_MetadataOutput_LockMetadataObjectTracking(Camera_MetadataOut
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 元数据输出实例的指针。 |
 | Camera_Point* pointOfInterest | 期望追踪对应位置对象的点的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -479,7 +488,7 @@ Camera_ErrorCode OH_MetadataOutput_UnlockMetadataObjectTracking(Camera_MetadataO
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | 元数据输出实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

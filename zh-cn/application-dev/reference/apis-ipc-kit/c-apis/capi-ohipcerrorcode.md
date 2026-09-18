@@ -7,6 +7,7 @@
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

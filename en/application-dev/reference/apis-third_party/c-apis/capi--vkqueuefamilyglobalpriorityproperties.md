@@ -1,0 +1,4 @@
+# VkQueueFamilyGlobalPriorityProperties
+
+## Overview
+

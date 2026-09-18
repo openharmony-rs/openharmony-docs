@@ -1,0 +1,4 @@
+# VkPipelineSampleLocationsStateCreateInfoEXT
+
+## Overview
+

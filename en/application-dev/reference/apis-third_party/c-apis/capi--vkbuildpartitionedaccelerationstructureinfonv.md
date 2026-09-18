@@ -1,0 +1,4 @@
+# VkBuildPartitionedAccelerationStructureInfoNV
+
+## Overview
+

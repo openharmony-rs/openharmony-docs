@@ -1,0 +1,26 @@
+# OH_AVDataSource
+
+```c
+typedef struct OH_AVDataSource {...} OH_AVDataSource
+```
+
+## Overview
+
+The struct describes a user-defined data source.
+
+**Since**: 12
+
+**Related module**: [CodecBase](capi-codecbase.md)
+
+**Header file**: [native_avcodec_base.h](capi-native-avcodec-base-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| int64_t size |  |
+| [OH_AVDataSourceReadAt](capi-native-avcodec-base-h.md#oh_avdatasourcereadat) readAt |  |
+
+

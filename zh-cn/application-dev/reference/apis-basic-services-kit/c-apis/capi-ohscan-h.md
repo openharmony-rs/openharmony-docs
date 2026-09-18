@@ -2,7 +2,7 @@
 
 ## 概述
 
-Declares APIs for discovering and connecting to scanners, scanning pictures, querying the scan progress, andsetting parameters for scanning.
+Declares APIs for discovering and connecting to scanners, scanning pictures, querying the scan progress, and setting parameters for scanning.
 
 **库：** libohscan.so
 
@@ -44,6 +44,12 @@ Declares APIs for discovering and connecting to scanners, scanning pictures, que
 | [int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)](#oh_scan_getpicturescanprogress) | - | 此API可获取扫描仪扫描图片的进度。必须传入非空值，扫描进度将写入指针指向的结构体 |
 | [int32_t OH_Scan_Exit()](#oh_scan_exit) | - | 此API可用于退出扫描服务，释放扫描框架内存，并注销扫描仪发现回调 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount) | 扫描仪设备发现回调，通过[OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery)注册指针指向的内存将在回调函数结束时释放<br>**起始版本：** 12 |
+
 ## 枚举类型说明
 
 ### Scan_ErrorCode
@@ -52,7 +58,7 @@ Declares APIs for discovering and connecting to scanners, scanning pictures, que
 enum Scan_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 定义错误码
 
@@ -85,7 +91,7 @@ enum Scan_ErrorCode
 typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount)
 ```
 
-**描述**
+**描述：**
 
 扫描仪设备发现回调，通过[OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery)注册指针指向的内存将在回调函数结束时释放
 
@@ -104,7 +110,7 @@ typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int3
 int32_t OH_Scan_Init()
 ```
 
-**描述**
+**描述：**
 
 此API检查并拉起扫描服务，初始化扫描客户端，并建立与扫描服务的连接
 
@@ -112,7 +118,7 @@ int32_t OH_Scan_Init()
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -124,7 +130,7 @@ int32_t OH_Scan_Init()
 int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 ```
 
-**描述**
+**描述：**
 
 此API开始发现扫描仪，注册回调函数处理发现的扫描仪设备
 
@@ -138,7 +144,7 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 | -- | -- |
 | [Scan_ScannerDiscoveryCallback](capi-ohscan-h.md#scan_scannerdiscoverycallback) callback | 扫描仪发现事件的[Scan_ScannerDiscoveryCallback](capi-ohscan-h.md#scan_scannerdiscoverycallback)回调函数 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -150,7 +156,7 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 int32_t OH_Scan_OpenScanner(const char* scannerId)
 ```
 
-**描述**
+**描述：**
 
 此API连接到扫描仪设备
 
@@ -164,7 +170,7 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 | -- | -- |
 | const char* scannerId | 用于连接扫描仪的ID |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -176,7 +182,7 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 int32_t OH_Scan_CloseScanner(const char* scannerId)
 ```
 
-**描述**
+**描述：**
 
 此API用于关闭已连接的扫描仪设备
 
@@ -190,7 +196,7 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 | -- | -- |
 | const char* scannerId | 用于断开扫描仪连接的ID |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -202,7 +208,7 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t* errorCode)
 ```
 
-**描述**
+**描述：**
 
 此API可用于获取扫描仪可设置的选项列表返回的结构体指针指向的内存会在[OH_Scan_Exit](capi-ohscan-h.md#oh_scan_exit)时自动释放，每个型号在内存中只会存储一份副本
 
@@ -217,7 +223,7 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 | const char* scannerId | 用于获取扫描仪参数的ID |
 | int32_t* errorCode | 如果执行成功，errorCode返回[SCAN_ERROR_NONE](capi-ohscan-h.md#scan_errorcode)，否则返回特定的错误码，参考[Scan_ErrorCode](capi-ohscan-h.md#scan_errorcode) |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -229,7 +235,7 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option, const char* value)
 ```
 
-**描述**
+**描述：**
 
 此API可用于设置扫描仪的某个选项参数传入的选项和值从[OH_Scan_GetScannerParameter](capi-ohscan-h.md#oh_scan_getscannerparameter)获取
 
@@ -245,7 +251,7 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 | const int32_t option | 要设置的选项编号。取值范围从0到 optionCount - 1，从[Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)获取 |
 | const char* value | 要设置的选项值，有效值从ranges获取，从[Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)获取 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -257,7 +263,7 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 ```
 
-**描述**
+**描述：**
 
 此API允许扫描仪开始扫描
 
@@ -272,7 +278,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 | const char* scannerId | 此ID用于启动指定扫描仪的扫描任务 |
 | bool batchMode | 是否以批处理模式启动扫描仪 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -284,7 +290,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 int32_t OH_Scan_CancelScan(const char* scannerId)
 ```
 
-**描述**
+**描述：**
 
 此API允许扫描仪取消扫描
 
@@ -298,7 +304,7 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 | -- | -- |
 | const char* scannerId | 此ID用于取消指定扫描仪的扫描任务 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -310,7 +316,7 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)
 ```
 
-**描述**
+**描述：**
 
 此API可获取扫描仪扫描图片的进度。必须传入非空值，扫描进度将写入指针指向的结构体
 
@@ -325,7 +331,7 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 | const char* scannerId | 用于查询扫描仪图像扫描进度的ID |
 | [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)* prog | 扫描图片的[Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)，必须为非空值 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -337,7 +343,7 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 int32_t OH_Scan_Exit()
 ```
 
-**描述**
+**描述：**
 
 此API可用于退出扫描服务，释放扫描框架内存，并注销扫描仪发现回调
 
@@ -345,7 +351,7 @@ int32_t OH_Scan_Exit()
 
 **起始版本：** 12
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

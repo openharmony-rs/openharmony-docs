@@ -65,7 +65,7 @@
 enum CryptoSignature_ParamType
 ```
 
-**描述**
+**描述：**
 
 定义签名参数类型。
 
@@ -89,7 +89,7 @@ enum CryptoSignature_ParamType
 OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify **verify)
 ```
 
-**描述**
+**描述：**
 
 根据给定的算法名称创建验签上下文。
 
@@ -99,14 +99,14 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 验签算法名称，不能为NULL。取值如下：- RSA PKCS1模式：格式为"RSA|PKCS1|摘要"，示例："RSA|PKCS1|SHA256"、"RSA|PKCS1|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- RSA PSS模式：格式为"RSA|PSS|摘要|MGF1摘要"，示例："RSA|PSS|SHA256|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA验签恢复：格式为"RSA|PKCS1|摘要|Recover"，示例："RSA|PKCS1|SHA256|Recover"、"RSA|PKCS1|SHA512|Recover"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- ECDSA算法：格式为"ECC|摘要"，示例："ECC|SHA256"、"ECC|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- DSA算法：格式为"DSA|摘要"，示例："DSA|SHA256"、"DSA|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- SM2算法：取值为"SM2|SM3"。- Ed25519算法：取值为"Ed25519"。 |
+| const char *algoName | [in] 验签算法名称，不能为NULL。取值如下： - RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。 摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。 摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。 - RSA验签恢复：格式为"RSA\|PKCS1\|摘要\|Recover"，示例："RSA\|PKCS1\|SHA256\|Recover"、"RSA\|PKCS1\|SHA512\|Recover"。 摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。 摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。 摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - SM2算法：取值为"SM2\|SM3"。 - Ed25519算法：取值为"Ed25519"。 |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | [out] 指向验签上下文指针的指针。verify不能为NULL，*verify必须为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} verify为NULL，algoName为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持该算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} verify为NULL，algoName为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持该算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -119,7 +119,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pubKey)
 ```
 
-**描述**
+**描述：**
 
 使用给定的公钥初始化验签上下文。
 
@@ -130,13 +130,13 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
-| [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md) *pubKey | [in] 公钥。不能为NULL。 |
+| OH_CryptoPubKey *pubKey | [in] 公钥。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或pubKey为NULL，或密钥类型与签名算法不匹配。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 验签初始化失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或pubKey为NULL，或密钥类型与签名算法不匹配。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 验签初始化失败。</li>          </ul> |
 
 **参考：**
 
@@ -151,7 +151,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *in)
 ```
 
-**描述**
+**描述：**
 
 追加待验签的消息数据。
 
@@ -162,13 +162,13 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待验签的数据。不能为NULL。 |
+| Crypto_DataBlob *in | [in] 待验签的数据。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或in为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 验签更新失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或in为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 验签更新失败。</li>          </ul> |
 
 **参考：**
 
@@ -181,7 +181,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_DataBlob *signData)
 ```
 
-**描述**
+**描述：**
 
 验签消息数据。
 
@@ -192,10 +192,10 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待验签的数据。如果数据已通过[OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)接口更新了所有数据，此参数可以为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *signData | [in] 签名数据。不能为NULL。 |
+| Crypto_DataBlob *in | [in] 待验签的数据。如果数据已通过[OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)接口更新了所有数据，此参数可以为NULL。 |
+| Crypto_DataBlob *signData | [in] 签名数据。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -207,7 +207,7 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob *signData, Crypto_DataBlob *rawSignData)
 ```
 
-**描述**
+**描述：**
 
 恢复签名数据，仅支持RSA算法。
 
@@ -218,14 +218,14 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *signData | [in] 签名数据。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *rawSignData | [out] 指向用于存储原始签名数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将rawSignData初始化为{0}，不要预分配rawSignData->data内存。 |
+| Crypto_DataBlob *signData | [in] 签名数据。不能为NULL。 |
+| Crypto_DataBlob *rawSignData | [out] 指向用于存储原始签名数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将rawSignData初始化为{0}， 不要预分配rawSignData->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx、signData或rawSignData为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 恢复失败。可能的原因：签名数据长度与RSA密钥模数大小不匹配。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx、signData或rawSignData为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 恢复失败。可能的原因：签名数据长度与RSA密钥模数大小不匹配。</li>          </ul> |
 
 ### OH_CryptoVerify_GetAlgoName()
 
@@ -233,7 +233,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 ```
 
-**描述**
+**描述：**
 
 获取验签上下文的算法名称。
 
@@ -245,7 +245,7 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -257,7 +257,7 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
-**描述**
+**描述：**
 
 设置验签上下文的指定参数。
 
@@ -269,13 +269,13 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] 签名参数类型。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] 输入数据。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
+| Crypto_DataBlob *value | [in] 输入数据。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或value为NULL，value->data为NULL，             value->len与type期望的大小不匹配，或type不是有效的CryptoSignature_ParamType。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 设置参数失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或value为NULL，value->data为NULL，<br>           value->len与type期望的大小不匹配，或type不是有效的CryptoSignature_ParamType。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 设置参数失败。</li>          </ul> |
 
 ### OH_CryptoVerify_GetParam()
 
@@ -283,7 +283,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
-**描述**
+**描述：**
 
 获取验签上下文的指定参数。
 
@@ -295,13 +295,13 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 | -- | -- |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) *ctx | [in] 验签上下文。不能为NULL。 |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] 签名参数类型。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将value初始化为{0}，不要预分配value->data内存。 |
+| Crypto_DataBlob *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将value初始化为{0}，不要预分配 value->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或value为NULL，或type不是有效的CryptoSignature_ParamType。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 输出数据的内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 获取参数失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或value为NULL，或type不是有效的CryptoSignature_ParamType。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 输出数据的内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 获取参数失败。</li>          </ul> |
 
 ### OH_CryptoVerify_Destroy()
 
@@ -309,7 +309,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 ```
 
-**描述**
+**描述：**
 
 销毁验签上下文。
 
@@ -327,7 +327,7 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sign)
 ```
 
-**描述**
+**描述：**
 
 根据给定的算法名称创建签名上下文。
 
@@ -337,14 +337,14 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 签名算法名称，不能为NULL。取值如下：- RSA PKCS1模式：格式为"RSA|PKCS1|摘要"，示例："RSA|PKCS1|SHA256"、"RSA|PKCS1|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- RSA PSS模式：格式为"RSA|PSS|摘要|MGF1摘要"，示例："RSA|PSS|SHA256|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA仅签名：格式为"RSA|PKCS1|摘要|OnlySign"，示例："RSA|PKCS1|SHA256|OnlySign"、"RSA|PKCS1|SHA512|OnlySign"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- ECDSA算法：格式为"ECC|摘要"，示例："ECC|SHA256"、"ECC|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- DSA算法：格式为"DSA|摘要"，示例："DSA|SHA256"、"DSA|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- SM2算法：取值为"SM2|SM3"。- Ed25519算法：取值为"Ed25519"。 |
+| const char *algoName | [in] 签名算法名称，不能为NULL。取值如下： - RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。 摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。 摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。 - RSA仅签名：格式为"RSA\|PKCS1\|摘要\|OnlySign"，示例："RSA\|PKCS1\|SHA256\|OnlySign"、"RSA\|PKCS1\|SHA512\|OnlySign"。 摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。 摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。 摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。 - SM2算法：取值为"SM2\|SM3"。 - Ed25519算法：取值为"Ed25519"。 |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) **sign | [out] 指向签名上下文指针的指针。sign不能为NULL，*sign必须为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} sign或algoName为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持该算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} sign或algoName为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持该算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -357,7 +357,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privKey)
 ```
 
-**描述**
+**描述：**
 
 初始化签名上下文。
 
@@ -368,13 +368,13 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] 签名上下文。不能为NULL。 |
-| [OH_CryptoPrivKey](capi-cryptoasymkeyapi-oh-cryptoprivkey.md) *privKey | [in] 私钥。不能为NULL。 |
+| OH_CryptoPrivKey *privKey | [in] 私钥。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或privKey为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名初始化失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或privKey为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名初始化失败。</li>          </ul> |
 
 **参考：**
 
@@ -388,7 +388,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob *in)
 ```
 
-**描述**
+**描述：**
 
 更新待签名的数据。
 
@@ -399,13 +399,13 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] 签名上下文。不能为NULL。 |
-| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待签名的数据。不能为NULL。 |
+| const Crypto_DataBlob *in | [in] 待签名的数据。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或in为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名更新失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或in为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名更新失败。</li>          </ul> |
 
 **参考：**
 
@@ -418,7 +418,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
-**描述**
+**描述：**
 
 结束签名操作。
 
@@ -429,14 +429,14 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] 签名上下文。不能为NULL。 |
-| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待签名的数据。如果数据已通过[OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)接口更新了所有数据，此参数可以为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储签名结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| const Crypto_DataBlob *in | [in] 待签名的数据。如果数据已通过[OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)接口更新了所有数据，此参数可以为NULL。 |
+| Crypto_DataBlob *out | [out] 指向用于存储签名结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或out为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或out为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名失败。</li>          </ul> |
 
 ### OH_CryptoSign_GetAlgoName()
 
@@ -444,7 +444,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 ```
 
-**描述**
+**描述：**
 
 获取签名上下文的算法名称。
 
@@ -456,7 +456,7 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] 签名上下文。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -468,7 +468,7 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, const Crypto_DataBlob *value)
 ```
 
-**描述**
+**描述：**
 
 设置签名上下文的指定参数。
 
@@ -480,13 +480,13 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] 签名上下文。不能为NULL。 |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] 签名参数类型。 |
-| [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] 输入数据。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
+| const Crypto_DataBlob *value | [in] 输入数据。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或value为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或value为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSign_GetParam()
 
@@ -494,7 +494,7 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_ParamType type, Crypto_DataBlob *value)
 ```
 
-**描述**
+**描述：**
 
 获取签名上下文的指定参数。
 
@@ -506,13 +506,13 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 | -- | -- |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) *ctx | [in] 签名上下文。不能为NULL。 |
 | [CryptoSignature_ParamType](capi-crypto-signature-h.md#cryptosignature_paramtype) type | [in] 签名参数类型。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将value初始化为{0}，不要预分配value->data内存。 |
+| Crypto_DataBlob *value | [out] 指向用于存储输出数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将value初始化为{0}，不要预分配 value->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或value为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或value为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSign_Destroy()
 
@@ -520,7 +520,7 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 ```
 
-**描述**
+**描述：**
 
 销毁签名上下文。
 
@@ -538,7 +538,7 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature, OH_CryptoEccSignatureSpec **spec)
 ```
 
-**描述**
+**描述：**
 
 创建ECC签名规格，同时支持SM2签名。
 
@@ -548,14 +548,14 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *eccSignature | [in] DER格式的ECC签名数据，如果为NULL则创建空的签名规格。 |
+| Crypto_DataBlob *eccSignature | [in] DER格式的ECC签名数据，如果为NULL则创建空的签名规格。 |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) **spec | [out] 指向ECC签名规格指针的指针。spec不能为NULL，*spec必须为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec为NULL或spec不为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 解析eccSignature失败，             或eccSignature包含无效的DER编码ECDSA-Sig-Value。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec为NULL或spec不为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 解析eccSignature失败，             或eccSignature包含无效的DER编码ECDSA-Sig-Value。</li>          </ul> |
 
 **参考：**
 
@@ -569,7 +569,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)
 ```
 
-**描述**
+**描述：**
 
 获取ECC签名规格中的r和s值。
 
@@ -580,14 +580,14 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC签名规格。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *r | [out] 指向用于存储r值的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将r初始化为{0}，不要预分配r->data内存。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *s | [out] 指向用于存储s值的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将s初始化为{0}，不要预分配s->data内存。 |
+| Crypto_DataBlob *r | [out] 指向用于存储r值的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将r初始化为{0}，不要预分配r->data内存。 |
+| Crypto_DataBlob *s | [out] 指向用于存储s值的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将s初始化为{0}，不要预分配s->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec、r或s为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec、r或s为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoEccSignatureSpec_SetRAndS()
 
@@ -595,7 +595,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *r, Crypto_DataBlob *s)
 ```
 
-**描述**
+**描述：**
 
 设置ECC签名规格中的r和s值。
 
@@ -606,14 +606,14 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC签名规格。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *r | [in] r值。本接口会对r和s中的数据进行深拷贝，调用者在接口返回后可立即释放r和s。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *s | [in] s值。不能为NULL。 |
+| Crypto_DataBlob *r | [in] r值。本接口会对r和s中的数据进行深拷贝，调用者在接口返回后可立即释放r和s。不能为NULL。 |
+| Crypto_DataBlob *s | [in] s值。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec、r或s为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec、r或s为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -626,7 +626,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *spec, Crypto_DataBlob *out)
 ```
 
-**描述**
+**描述：**
 
 将ECC签名规格编码为DER格式的签名数据。
 
@@ -637,13 +637,13 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC签名规格。不能为NULL。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储编码签名数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将out初始化为{0}，不要预分配out->data内存。 |
+| Crypto_DataBlob *out | [out] 指向用于存储编码签名数据的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将out初始化为{0}，不要预分配 out->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec或out为NULL，或尚未通过             [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)设置r和s值。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 编码失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec或out为NULL，或尚未通过<br>           [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)设置r和s值。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 编码失败。</li>          </ul> |
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 
@@ -651,7 +651,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 ```
 
-**描述**
+**描述：**
 
 销毁ECC签名规格。
 

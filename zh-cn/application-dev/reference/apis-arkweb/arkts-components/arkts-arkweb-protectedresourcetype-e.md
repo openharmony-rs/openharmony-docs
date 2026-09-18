@@ -12,11 +12,13 @@ ProtectedResourceType 枚举定义了 Web 组件需要访问的受保护资源�
 MidiSysex = "TYPE_MIDI_SYSEX"
 ```
 
-MIDI SYSEX资源。目前仅支持权限事件上报，MIDI设备的使用还未支持。
+MIDI SYSEX资源。
+
+目前仅支持权限事件上报，MIDI设备的使用还未支持。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -30,7 +32,7 @@ VIDEO_CAPTURE = "TYPE_VIDEO_CAPTURE"
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,7 +46,7 @@ AUDIO_CAPTURE = "TYPE_AUDIO_CAPTURE"
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -58,6 +60,6 @@ SENSOR = 'TYPE_SENSOR'
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

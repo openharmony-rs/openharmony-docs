@@ -28,7 +28,7 @@
 enum OsAccount_ErrCode
 ```
 
-**描述**
+**描述：**
 
 枚举错误码。
 

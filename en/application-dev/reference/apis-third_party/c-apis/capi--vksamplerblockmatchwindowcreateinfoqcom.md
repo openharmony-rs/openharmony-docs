@@ -1,0 +1,4 @@
+# VkSamplerBlockMatchWindowCreateInfoQCOM
+
+## Overview
+

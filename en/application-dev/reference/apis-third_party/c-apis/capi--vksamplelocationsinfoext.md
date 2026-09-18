@@ -1,0 +1,4 @@
+# VkSampleLocationsInfoEXT
+
+## Overview
+

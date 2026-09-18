@@ -20,7 +20,7 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| ArkUI_FinishCallbackType type | 在动画中定义结束回调的回调类型，用于指定回调的触发方式。取值原则：ARKUI_FINISH_CALLBACK_REMOVED(0)表示动画结束并立即删除时触发回调，ARKUI_FINISH_CALLBACK_LOGICALLY(1)表示动画逻辑上完成（可能仍处于长尾状态）时触发回调。不同回调类型的触发时机不同，请根据业务场景选择合适的类型。未显式设置type时，按ARKUI_FINISH_CALLBACK_REMOVED处理。 |
+| ArkUI_FinishCallbackType type | 在动画中定义结束回调的回调类型，用于指定回调的触发方式。取值原则：ARKUI_FINISH_CALLBACK_REMOVED(0)表示动画结束并立即删除时触发回调， ARKUI_FINISH_CALLBACK_LOGICALLY(1)表示动画逻辑上完成（可能仍处于长尾状态）时触发回调。不同回调类型的触发时机不同，请根据业务场景选择合适的类型。未显式设置type时， 按ARKUI_FINISH_CALLBACK_REMOVED处理。 |
 | void* userData | 用于动画播放结束回调，传递用户自定义数据。需确保userData在动画播放结束回调触发时仍有效，避免悬空指针导致未定义行为。设置该成员为NULL时，回调函数将不会接收到userData参数。 |
 
 
@@ -28,7 +28,7 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | 动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数，开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。 |
+| [void (\*callback)(void* userData)](#callback) | 动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数， 开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。 |
 
 ## 成员函数说明
 
@@ -40,6 +40,6 @@ void (*callback)(void* userData)
 
 **描述：**
 
-动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数，开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。
+动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数， 开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。
 
 

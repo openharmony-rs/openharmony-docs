@@ -1,0 +1,4 @@
+# VkPipelineVertexInputDivisorStateCreateInfo
+
+## Overview
+

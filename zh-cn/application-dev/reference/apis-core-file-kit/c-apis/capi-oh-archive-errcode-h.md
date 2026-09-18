@@ -22,6 +22,12 @@
 | -- | -- | -- |
 | [OH_Archive_ErrCode](#oh_archive_errcode) | OH_Archive_ErrCode | 压缩解压模块错误码。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| FILE_MANAGEMENT_ARCHIVE_OH_ARCHIVE_ERRCODE_H | 提供压缩解压模块错误码的声明。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.FileManagement.File.FileIO |
+
 ## 枚举类型说明
 
 ### OH_Archive_ErrCode
@@ -30,7 +36,7 @@
 enum OH_Archive_ErrCode
 ```
 
-**描述**
+**描述：**
 
 压缩解压模块错误码。
 

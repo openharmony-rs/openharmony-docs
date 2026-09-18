@@ -1,0 +1,4 @@
+# VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV
+
+## Overview
+

@@ -24,6 +24,7 @@ typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
 | union | 选项内容。 |
 | void* ptr | void*类型。 |
 | int num | int类型。 |
-| bool boolean; } content | bool类型。 |
+| bool boolean;
+ } content | bool类型。 |
 
 

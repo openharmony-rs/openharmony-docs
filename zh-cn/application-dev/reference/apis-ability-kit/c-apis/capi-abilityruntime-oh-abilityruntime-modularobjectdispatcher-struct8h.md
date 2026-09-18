@@ -6,7 +6,7 @@ typedef struct OH_AbilityRuntime_ModularObjectDispatcher_Struct* OH_AbilityRunti
 
 ## 概述
 
-结构体句柄。<br>该句柄指向一个具名字段的结构体实例，字段类型通过类型库元数据定义。<br>可通过[OH_AbilityRuntime_ModObjDispatcher_StructCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structcreate)创建，使用完毕后需通过[OH_AbilityRuntime_ModObjDispatcher_StructRelease](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structrelease)释放。
+结构体句柄。<br>该句柄指向一个具名字段的结构体实例，字段类型通过类型库元数据定义。<br>可通过[OH_AbilityRuntime_ModObjDispatcher_StructCreate](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structcreate)创建， 使用完毕后需通过[OH_AbilityRuntime_ModObjDispatcher_StructRelease](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structrelease)释放。
 
 **起始版本：** 26.0.0
 

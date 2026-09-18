@@ -28,7 +28,7 @@
 enum GameController_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 此枚举定义游戏控制器的错误码。
 

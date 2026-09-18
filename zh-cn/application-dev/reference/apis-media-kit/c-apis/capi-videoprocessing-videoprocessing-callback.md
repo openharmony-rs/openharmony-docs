@@ -6,7 +6,7 @@ typedef struct VideoProcessing_Callback VideoProcessing_Callback
 
 ## 概述
 
-视频处理回调对象类型。<br>定义一个VideoProcessing_Callback空指针，调用{@link OH_VideoProcessingCallback_Create}来创建一个回调对象。创建之前该指针必须为空。通过调用{@link OH_VideoProcessing_RegisterCallback}来向视频处理实例注册回调对象。
+视频处理回调对象类型。 <br>定义一个VideoProcessing_Callback空指针，调用{@link OH_VideoProcessingCallback_Create}来创建一个回调对象。<br>创建之前该指针必须为空。通过调用{@link OH_VideoProcessing_RegisterCallback}来向视频处理实例注册回调对象。
 
 **起始版本：** 12
 

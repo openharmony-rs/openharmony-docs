@@ -4,6 +4,8 @@
 
 声明剪贴板框架错误码信息。剪贴板错误码用于标识剪贴板操作过程中的执行结果，开发者可通过错误码判断操作是否成功以及失败的具体原因。
 
+**引用文件：** <database/pasteboard/oh_pasteboard_err_code.h>
+
 **库：** libpasteboard.so
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -28,7 +30,7 @@
 enum PASTEBOARD_ErrCode
 ```
 
-**描述**
+**描述：**
 
 剪贴板错误码枚举，用于标识剪贴板操作的执行结果，开发者可通过错误码判断操作是否成功以及失败的具体原因。
 

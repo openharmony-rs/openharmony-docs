@@ -1,0 +1,4 @@
+# VkPhysicalDeviceRenderPassStripedPropertiesARM
+
+## Overview
+

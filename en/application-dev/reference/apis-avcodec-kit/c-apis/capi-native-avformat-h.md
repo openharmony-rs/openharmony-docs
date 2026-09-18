@@ -1,0 +1,691 @@
+# native_avformat.h
+
+## Overview
+
+The file declares the functions and enums related to OH_AVFormat.
+
+**Library**: libnative_media_core.so
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Since**: 9
+
+**Related module**: [Core](capi-core.md)
+
+## Summary
+
+### Struct
+
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_AVFormat](capi-core-oh-avformat.md) | OH_AVFormat | Describes a native object for the OH_AVFormat interface. |
+
+### Enum
+
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_AVPixelFormat](#oh_avpixelformat) | OH_AVPixelFormat | Enumerates the video pixel formats. |
+
+### Function
+
+| Name | Description |
+| -- | -- |
+| [struct OH_AVFormat *OH_AVFormat_Create(void)](#oh_avformat_create) | Create an OH_AVFormat handle pointer to read and write data |
+| [struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t sampleRate, int32_t channelCount)](#oh_avformat_createaudioformat) | Create an audio OH_AVFormat handle pointer to read and write data |
+| [struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t width, int32_t height)](#oh_avformat_createvideoformat) | Create a video OH_AVFormat handle pointer to read and write data |
+| [void OH_AVFormat_Destroy(struct OH_AVFormat *format)](#oh_avformat_destroy) | Destroys an OH_AVFormat instance. The instance cannot be destroyed repeatedly. |
+| [bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)](#oh_avformat_copy) | Copies an OH_AVFormat instance. |
+| [bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)](#oh_avformat_setintvalue) | Assigns a value of the int type to a {@link key} in an OH_AVFormat instance. This function can be used to set<br>only parameters of the int type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint32_t value)](#oh_avformat_setuintvalue) | Assigns an unsigned int value to the key of an OH_AVFormat instance. This API can be used to set only parameters of the unsigned int type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)](#oh_avformat_setlongvalue) | Assigns a value of the long type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the long type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)](#oh_avformat_setfloatvalue) | Assigns a value of the float type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the float type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)](#oh_avformat_setdoublevalue) | Assigns a value of the double type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the double type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)](#oh_avformat_setstringvalue) | Assigns a value of the string type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the string type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)](#oh_avformat_setbuffer) | Writes data blocks of a specified length to an OH_AVFormat instance. This function can be used to set only parameters of the buffer type. For details, see {@link native_avcodec_base.h}. |
+| [bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)](#oh_avformat_getintvalue) | Obtains the value of the int type of a {@link key} in an OH_AVFormat instance. |
+| [bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint32_t *out)](#oh_avformat_getuintvalue) | Obtains the value of the unsigned int type from an OH_AVFormat instance using a key. |
+| [bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)](#oh_avformat_getlongvalue) | Obtains the value of the long type of a {@link key} in an OH_AVFormat instance. |
+| [bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)](#oh_avformat_getfloatvalue) | Obtains the value of the float type of a {@link key} in an OH_AVFormat instance. |
+| [bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)](#oh_avformat_getdoublevalue) | Obtains the value of the double type of a {@link key} in an OH_AVFormat instance. |
+| [bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)](#oh_avformat_getstringvalue) | Obtains the value of the string type of a {@link key} in an OH_AVFormat instance. |
+| [bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)](#oh_avformat_getbuffer) | Reads data blocks of a specified length from an OH_AVFormat instance. |
+| [const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)](#oh_avformat_dumpinfo) | Returns a string consisting of key-value pairs in an OH_AVFormat instance. A string of up to 1024 bytes can be returned. The string pointer is released when the OH_AVFormat instance is destroyed. |
+| [bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)](#oh_avformat_getintbuffer) | Reads an array of int32_t data from an OH_AVFormat instance.<br> Note that the buffer lifecycle is bound to the OH_AVFormat instance. The buffer becomes invalid automatically when the OH_AVFormat instance is destroyed.<br> To keep the data for an extended period, explicitly copy the data to newly allocated memory. |
+| [bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)](#oh_avformat_setintbuffer) | Writes data blocks of the int32_t type with a specified length to an OH_AVFormat instance. |
+| [uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)](#oh_avformat_getkeycount) | Obtains the total number of keys in an OH_AVFormat instance. |
+| [bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)](#oh_avformat_getkey) | Obtains the key name string from an OH_AVFormat instance by index. |
+
+## Enum type description
+
+### OH_AVPixelFormat
+
+```c
+enum OH_AVPixelFormat
+```
+
+**Description**
+
+Enumerates the video pixel formats.
+
+**Since**: 9
+
+| Enum item | Description |
+| -- | -- |
+| AV_PIXEL_FORMAT_YUVI420 = 1 |  |
+| AV_PIXEL_FORMAT_NV12 = 2 |  |
+| AV_PIXEL_FORMAT_NV21 = 3 |  |
+| AV_PIXEL_FORMAT_SURFACE_FORMAT = 4 |  |
+| AV_PIXEL_FORMAT_RGBA = 5 |  |
+| AV_PIXEL_FORMAT_RGBA1010102 = 6 |  |
+
+
+## Function description
+
+### OH_AVFormat_Create()
+
+```c
+struct OH_AVFormat *OH_AVFormat_Create(void)
+```
+
+**Description**
+
+Create an OH_AVFormat handle pointer to read and write data
+
+**Since**: 9
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [struct OH_AVFormat *](capi-core-oh-avformat.md) | Pointer to an OH_AVFormat instance. If system resources are insufficient, NULL is returned. |
+
+### OH_AVFormat_CreateAudioFormat()
+
+```c
+struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t sampleRate, int32_t channelCount)
+```
+
+**Description**
+
+Create an audio OH_AVFormat handle pointer to read and write data
+
+**Since**: 10
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| const char *mimeType | Pointer to a string that describes the MIME type. For details, see {@link AVCODEC_MIMETYPE}. |
+| int32_t sampleRate | Sampling rate, in Hz. |
+| int32_t channelCount | Number of audio channels. For example, 1 indicates mono and 2 indicates stereo. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [struct OH_AVFormat *](capi-core-oh-avformat.md) | Pointer to the OH_AVFormat instance created. If the operation fails, NULL is returned.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of mimeType is NULL.      <br>2. System resources are insufficient. |
+
+### OH_AVFormat_CreateVideoFormat()
+
+```c
+struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t width, int32_t height)
+```
+
+**Description**
+
+Create a video OH_AVFormat handle pointer to read and write data
+
+**Since**: 10
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| const char *mimeType | Pointer to a string that describes the MIME type. For details, see {@link AVCODEC_MIMETYPE}. |
+| int32_t width | Image width, in pixels. |
+| int32_t height | Image height, in pixels. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [struct OH_AVFormat *](capi-core-oh-avformat.md) | Pointer to the OH_AVFormat instance created. If the operation fails, NULL is returned.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of mimeType is NULL.      <br>2. System resources are insufficient. |
+
+### OH_AVFormat_Destroy()
+
+```c
+void OH_AVFormat_Destroy(struct OH_AVFormat *format)
+```
+
+**Description**
+
+Destroys an OH_AVFormat instance. The instance cannot be destroyed repeatedly.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+
+### OH_AVFormat_Copy()
+
+```c
+bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
+```
+
+**Description**
+
+Copies an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *to | Pointer to the OH_AVFormat instance to which the data will be copied. |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *from | Pointer to the OH_AVFormat instance from which the data will be copied. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The input parameter is nullptr.      <br>2. The value of OH_AVFormat fails parameter structure verification. |
+
+### OH_AVFormat_SetIntValue()
+
+```c
+bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)
+```
+
+**Description**
+
+Assigns a value of the int type to a {@link key} in an OH_AVFormat instance. This function can be used to set<br>only parameters of the int type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| int32_t value | Value of the data to write. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value type corresponding to the key is incorrect. |
+
+### OH_AVFormat_SetUintValue()
+
+```c
+bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint32_t value)
+```
+
+**Description**
+
+Assigns an unsigned int value to the key of an OH_AVFormat instance. This API can be used to set only parameters of the unsigned int type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 23
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| uint32_t value | Value of the data to write. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr. |
+
+### OH_AVFormat_SetLongValue()
+
+```c
+bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)
+```
+
+**Description**
+
+Assigns a value of the long type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the long type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| int64_t value | Value of the data to write. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value type corresponding to the key is incorrect. |
+
+### OH_AVFormat_SetFloatValue()
+
+```c
+bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)
+```
+
+**Description**
+
+Assigns a value of the float type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the float type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| float value | Value of the data to write. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value type corresponding to the key is incorrect. |
+
+### OH_AVFormat_SetDoubleValue()
+
+```c
+bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)
+```
+
+**Description**
+
+Assigns a value of the double type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the double type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| double value | Value of the data to write. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value type corresponding to the key is incorrect. |
+
+### OH_AVFormat_SetStringValue()
+
+```c
+bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)
+```
+
+**Description**
+
+Assigns a value of the string type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the string type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| const char *value | Pointer to the data to be written to the string. The length should not exceed 256 bytes. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The passed-in value of value is a null pointer.      <br>5. The value type corresponding to the key is incorrect. |
+
+### OH_AVFormat_SetBuffer()
+
+```c
+bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)
+```
+
+**Description**
+
+Writes data blocks of a specified length to an OH_AVFormat instance. This function can be used to set only parameters of the buffer type. For details, see {@link native_avcodec_base.h}.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| const uint8_t *addr | Pointer to the address to which data is written. The lifecycle is managed by the developer. |
+| size_t size | Length of the data written, in MB. The value range is (0, 1]. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of addr is nullptr.      <br>5. The size is 0 or exceeds the upper limit 1 MB.      <br>6. The value type corresponding to the key is incorrect. |
+
+### OH_AVFormat_GetIntValue()
+
+```c
+bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)
+```
+
+**Description**
+
+Obtains the value of the int type of a {@link key} in an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| int32_t *out | Pointer to the value of the data read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of out is nullptr.      <br>5. The obtained key does not exist or is not set. |
+
+### OH_AVFormat_GetUintValue()
+
+```c
+bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint32_t *out)
+```
+
+**Description**
+
+Obtains the value of the unsigned int type from an OH_AVFormat instance using a key.
+
+**Since**: 23
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| uint32_t *out | Pointer to the value of the data read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of out is nullptr. |
+
+### OH_AVFormat_GetLongValue()
+
+```c
+bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)
+```
+
+**Description**
+
+Obtains the value of the long type of a {@link key} in an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| int64_t *out | Pointer to the value of the data read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of out is nullptr.      <br>5. The obtained key does not exist or is not set. |
+
+### OH_AVFormat_GetFloatValue()
+
+```c
+bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)
+```
+
+**Description**
+
+Obtains the value of the float type of a {@link key} in an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| float *out | Pointer to the value of the data read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of out is nullptr.      <br>5. The obtained key does not exist or is not set. |
+
+### OH_AVFormat_GetDoubleValue()
+
+```c
+bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)
+```
+
+**Description**
+
+Obtains the value of the double type of a {@link key} in an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| double *out | Pointer to the value of the data read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of out is nullptr.      <br>5. The obtained key does not exist or is not set. |
+
+### OH_AVFormat_GetStringValue()
+
+```c
+bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)
+```
+
+**Description**
+
+Obtains the value of the string type of a {@link key} in an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| const char **out | Double pointer to the string read. The lifecycle of the **out** data matches the string in **format**. To keep the **out** data for an extended period of time, you must copy it to the memory. The maximum length of the output string is 256 bytes. If the length exceeds 256 bytes, **false** is returned. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of out is nullptr.      <br>5. The system resources are insufficient.      <br>6. The obtained key does not exist or is not set.      <br>7. The length of the out data exceeds 256 bytes. |
+
+### OH_AVFormat_GetBuffer()
+
+```c
+bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)
+```
+
+**Description**
+
+Reads data blocks of a specified length from an OH_AVFormat instance.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| uint8_t **addr | Double pointer to the address where the data read is stored. The data read is destroyed when the OH_AVFormat instance is destroyed. To hold the data for an extended period of time, copy it to the memory. |
+| size_t *size | Pointer to the size of the data read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of addr is nullptr.      <br>5. The value of size is nullptr.      <br>6. The obtained key does not exist or is not set. |
+
+### OH_AVFormat_DumpInfo()
+
+```c
+const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
+```
+
+**Description**
+
+Returns a string consisting of key-value pairs in an OH_AVFormat instance. A string of up to 1024 bytes can be returned. The string pointer is released when the OH_AVFormat instance is destroyed.
+
+**Since**: 9
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| const char * | A string consisting of key-value pairs. If the operation fails, NULL is returned.      <br>The possible causes of an operation failure are as follows:      <br>1.  The value of format is NULL.      <br>2. System resources are insufficient. |
+
+### OH_AVFormat_GetIntBuffer()
+
+```c
+bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)
+```
+
+**Description**
+
+Reads an array of int32_t data from an OH_AVFormat instance.<br> Note that the buffer lifecycle is bound to the OH_AVFormat instance. The buffer becomes invalid automatically when the OH_AVFormat instance is destroyed.<br> To keep the data for an extended period, explicitly copy the data to newly allocated memory.
+
+**Since**: 20
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to read. |
+| int32_t **addr | Double pointer to the memory where the data is stored. |
+| size_t *size | Pointer to the number of elements read. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of addr is nullptr.      <br>5. The value of size is nullptr. |
+
+### OH_AVFormat_SetIntBuffer()
+
+```c
+bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)
+```
+
+**Description**
+
+Writes data blocks of the int32_t type with a specified length to an OH_AVFormat instance.
+
+**Since**: 20
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [struct OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| const char *key | Pointer to the key of the data to write. |
+| const int32_t *addr | Pointer to the address to which data is written. The lifecycle is managed by the developer. |
+| size_t size | Length of the data to write, in units of elements, not bytes. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | true if the operation is successful; false otherwise.      <br>The possible causes of an operation failure are as follows:      <br>1. The value of format is nullptr.      <br>2. The value of format fails parameter structure verification.      <br>3. The value of key is nullptr.      <br>4. The value of addr is nullptr.      <br>5. The value of size is 0. |
+
+### OH_AVFormat_GetKeyCount()
+
+```c
+uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)
+```
+
+**Description**
+
+Obtains the total number of keys in an OH_AVFormat instance.
+
+**Since**: 23
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| uint32_t | Returns the number of keys on success; returns 0 otherwise. |
+
+### OH_AVFormat_GetKey()
+
+```c
+bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)
+```
+
+**Description**
+
+Obtains the key name string from an OH_AVFormat instance by index.
+
+**Since**: 23
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AVFormat](capi-core-oh-avformat.md) *format | Pointer to an OH_AVFormat instance. |
+| uint32_t index | Index of the key to be queried. The value range is [0, OH_AVFormat_GetKeyCount(format)). |
+| const char **key | Output pointer for receiving the key name string. The lifecycle of the string is bound to the **format**<br>object. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| bool | Returns true on success; returns false otherwise. |
+
+

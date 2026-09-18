@@ -21,6 +21,12 @@
 | [ArkWeb_ErrorCode](#arkweb_errorcode) | ArkWeb_ErrorCode | 定义ArkWeb NDK接口异常错误码。 |
 | [ArkWeb_BlanklessErrorCode](#arkweb_blanklesserrorcode) | ArkWeb_BlanklessErrorCode | 定义无白屏加载的异常错误码。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| ARKWEB_ERROR_CODE_H | 声明ArkWeb NDK接口异常错误码，用于在ArkWeb相关接口调用失败时返回具体的错误信息，帮助开发者快速定位和解决问题。这些错误码覆盖了初始化、参数校验、URL处理、Cookie管理、库加载等常见异常场景。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
+
 ## 枚举类型说明
 
 ### ArkWeb_ErrorCode
@@ -29,7 +35,7 @@
 enum ArkWeb_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 定义ArkWeb NDK接口异常错误码。
 
@@ -56,7 +62,7 @@ enum ArkWeb_ErrorCode
 enum ArkWeb_BlanklessErrorCode
 ```
 
-**描述**
+**描述：**
 
 定义无白屏加载的异常错误码。
 
@@ -68,7 +74,7 @@ enum ArkWeb_BlanklessErrorCode
 | ARKWEB_BLANKLESS_ERR_UNKNOWN = -1 | 未知错误，内部状态错误等。 |
 | ARKWEB_BLANKLESS_ERR_INVALID_ARGS = -2 | 参数不合法。 |
 | ARKWEB_BLANKLESS_ERR_CONTROLLER_NOT_INITED = -3 | WebViewController未绑定组件。 |
-| ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4 | 未匹配到key值，对于OH_NativeArkWeb_SetBlanklessLoadingWithKey需与OH_NativeArkWeb_GetBlanklessInfoWithKey配套使用并且key值一致，否则返回该错误码。 |
+| ARKWEB_BLANKLESS_ERR_KEY_NOT_MATCH = -4 | 未匹配到key值，对于OH_NativeArkWeb_SetBlanklessLoadingWithKey需与OH_NativeArkWeb_GetBlanklessInfoWithKey配套使用 并且key值一致，否则返回该错误码。 |
 | ARKWEB_BLANKLESS_ERR_SIGNIFICANT_CHANGE = -5 | 当相似度较低时，系统会判定为跳变太大，OH_NativeArkWeb_SetBlanklessLoadingWithKey接口启用插帧不成功。 |
 | ARKWEB_BLANKLESS_ERR_DEVICE_NOT_SUPPORT = 801 | 该设备不适用于此功能。 |
 

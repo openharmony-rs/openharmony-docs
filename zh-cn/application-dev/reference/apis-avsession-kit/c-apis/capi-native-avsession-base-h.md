@@ -40,7 +40,7 @@
 enum AVSession_Type
 ```
 
-**描述**
+**描述：**
 
 会话类型枚举。
 
@@ -60,7 +60,7 @@ enum AVSession_Type
 enum AVSession_PlaybackState
 ```
 
-**描述**
+**描述：**
 
 媒体播放状态的相关属性枚举。
 
@@ -88,7 +88,7 @@ enum AVSession_PlaybackState
 enum AVSession_LoopMode
 ```
 
-**描述**
+**描述：**
 
 定义媒体播放循环模式。
 
@@ -108,7 +108,7 @@ enum AVSession_LoopMode
 enum AVSession_ControlCommand
 ```
 
-**描述**
+**描述：**
 
 播控命令枚举。
 
@@ -129,7 +129,7 @@ enum AVSession_ControlCommand
 enum AVMetadata_SkipIntervals
 ```
 
-**描述**
+**描述：**
 
 定义快进或快退的时间间隔。
 
@@ -147,7 +147,7 @@ enum AVMetadata_SkipIntervals
 enum AVMetadata_DisplayTag
 ```
 
-**描述**
+**描述：**
 
 当前媒体资源的金标枚举，即应用媒体音源的特殊类型标识。
 
@@ -163,7 +163,7 @@ enum AVMetadata_DisplayTag
 enum AVSession_ConnectionState
 ```
 
-**描述**
+**描述：**
 
 设备连接状态枚举。
 
@@ -184,7 +184,7 @@ enum AVSession_ConnectionState
 enum AVSession_AVCastCategory
 ```
 
-**描述**
+**描述：**
 
 表示不同播放场景的投播类别枚举。
 
@@ -192,8 +192,8 @@ enum AVSession_AVCastCategory
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CATEGORY_LOCAL = 0 | 默认投播类别是本地。默认投屏类型为本地。媒体本地路由支持内置扬声器、音频插孔、A2DP（Advanced Audio Distribution Profile）设备。 |
-| CATEGORY_REMOTE = 1 | 远程类别。表示媒体正在远程设备上展示，应用需要一个{@link OH_AVCastController}来控制远程播放。 |
+| CATEGORY_LOCAL = 0 | 默认投播类别是本地。 默认投屏类型为本地。媒体本地路由支持内置扬声器、音频插孔、A2DP（Advanced Audio Distribution Profile）设备。 |
+| CATEGORY_REMOTE = 1 | 远程类别。 表示媒体正在远程设备上展示，应用需要一个{@link OH_AVCastController}来控制远程播放。 |
 
 ### AVSession_DeviceType
 
@@ -201,7 +201,7 @@ enum AVSession_AVCastCategory
 enum AVSession_DeviceType
 ```
 
-**描述**
+**描述：**
 
 设备类型枚举。
 
@@ -224,7 +224,7 @@ enum AVSession_DeviceType
 enum AVSession_ProtocolType
 ```
 
-**描述**
+**描述：**
 
 协议类型枚举。
 
@@ -232,12 +232,12 @@ enum AVSession_ProtocolType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 默认为本地设备。包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。 |
-| TYPE_LOCAL = 0 | 默认为本地设备。包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。<br>**起始版本：** 23 |
-| * @since 23 | Cast+的Stream模式。表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。 |
-| TYPE_CAST_PLUS_STREAM = 2 | Cast+的Stream模式。表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。<br>**起始版本：** 23 |
-| * @since 23 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。 |
-| TYPE_DLNA = 4 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。<br>**起始版本：** 23 |
+| * @since 23 | 默认为本地设备。 包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。 |
+| TYPE_LOCAL = 0 | 默认为本地设备。 包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。<br>**起始版本：** 23 |
+| * @since 23 | Cast+的Stream模式。 表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。 |
+| TYPE_CAST_PLUS_STREAM = 2 | Cast+的Stream模式。 表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。<br>**起始版本：** 23 |
+| * @since 23 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。 表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。 |
+| TYPE_DLNA = 4 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。 表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。<br>**起始版本：** 23 |
 | * @since 23 | 表示该设备支持高清晰度的音频投播，以获得更好的音质。 |
 | TYPE_CAST_PLUS_AUDIO = 8 | 表示该设备支持高清晰度的音频投播，以获得更好的音质。<br>**起始版本：** 23 |
 
@@ -247,7 +247,7 @@ enum AVSession_ProtocolType
 enum AVSession_AVCastControlCommandType
 ```
 
-**描述**
+**描述：**
 
 命令类型枚举。
 
@@ -282,7 +282,7 @@ enum AVSession_AVCastControlCommandType
 enum AVSession_PlaybackSpeed
 ```
 
-**描述**
+**描述：**
 
 播放倍速类型枚举。
 
@@ -311,7 +311,7 @@ enum AVSession_PlaybackSpeed
 enum AVSession_PlaybackFilter
 ```
 
-**描述**
+**描述：**
 
 播放状态过滤器枚举。
 

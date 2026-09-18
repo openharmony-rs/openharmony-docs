@@ -6,7 +6,7 @@ typedef struct RawFile RawFile
 
 ## 概述
 
-RawFile表示一个已打开的rawfile对象。通过{@link OH_ResourceManager_OpenRawFile}函数获取，使用完后须调用[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)关闭并释放。
+RawFile表示一个已打开的rawfile对象。通过{@link OH_ResourceManager_OpenRawFile}函数获取，使用完后须调用 [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)关闭并释放。
 
 **起始版本：** 8
 

@@ -51,7 +51,7 @@
 enum Rdb_EncryptionAlgo
 ```
 
-**描述**
+**描述：**
 
 数据库加密算法。
 
@@ -69,7 +69,7 @@ enum Rdb_EncryptionAlgo
 enum Rdb_HmacAlgo
 ```
 
-**描述**
+**描述：**
 
 打开数据库时支持的HMAC算法。
 
@@ -87,7 +87,7 @@ enum Rdb_HmacAlgo
 enum Rdb_KdfAlgo
 ```
 
-**描述**
+**描述：**
 
 打开数据库时支持的KDF算法。
 
@@ -108,13 +108,13 @@ enum Rdb_KdfAlgo
 OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 ```
 
-**描述**
+**描述：**
 
 创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
 
 **起始版本：** 20
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -131,7 +131,7 @@ OH_Rdb_DestroyCryptoParam
 int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 ```
 
-**描述**
+**描述：**
 
 销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
 
@@ -143,7 +143,7 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 | -- | -- |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -155,7 +155,7 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)
 ```
 
-**描述**
+**描述：**
 
 设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)对象的密钥数据。
 
@@ -169,7 +169,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 | const uint8_t *key | 表示指向密钥数据的指针。 |
 | int32_t length | 表示密钥数组的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -181,7 +181,7 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 ```
 
-**描述**
+**描述：**
 
 设置打开加密数据库时使用的KDF算法迭代次数。
 
@@ -194,7 +194,7 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 | int64_t iteration | 表示迭代次数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -206,7 +206,7 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
-**描述**
+**描述：**
 
 设置打开加密数据库时使用的加密算法。
 
@@ -219,7 +219,7 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 | int32_t algo | 表示加密算法。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -231,7 +231,7 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
-**描述**
+**描述：**
 
 设置打开加密数据库时使用的HMAC算法。
 
@@ -244,7 +244,7 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 | int32_t algo | 表示HMAC算法。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -256,7 +256,7 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 ```
 
-**描述**
+**描述：**
 
 设置打开加密数据库时使用的KDF算法。
 
@@ -269,7 +269,7 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 | int32_t algo | 表示KDF算法。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -281,7 +281,7 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 ```
 
-**描述**
+**描述：**
 
 设置打开加密数据库时使用的页大小。
 
@@ -294,7 +294,7 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | 表示指向[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例的指针。 |
 | int64_t size | 表示页大小，单位为字节，取值应为2的幂值，最小值为1024，最大值65536。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

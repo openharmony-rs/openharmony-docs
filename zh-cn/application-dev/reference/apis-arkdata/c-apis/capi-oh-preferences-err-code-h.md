@@ -28,7 +28,7 @@
 enum OH_Preferences_ErrCode
 ```
 
-**描述**
+**描述：**
 
 错误码信息。
 

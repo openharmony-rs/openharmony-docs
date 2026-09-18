@@ -24,7 +24,7 @@ EditText = 0
 
 **替代接口：** [EditText](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#edittext)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,7 +42,7 @@ Email = 1
 
 **替代接口：** [Email](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#email)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,7 +60,7 @@ HttpAnchor = 2
 
 **替代接口：** [HttpAnchor](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#httpanchor)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,7 +78,7 @@ HttpAnchorImg = 3
 
 **替代接口：** [HttpAnchorImg](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#httpanchorimg)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -96,7 +96,7 @@ HTML::img标签。
 
 **替代接口：** [Img](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#img)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -114,7 +114,7 @@ Map = 5
 
 **替代接口：** [Map](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#map)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -132,7 +132,7 @@ Phone = 6
 
 **替代接口：** [Phone](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#phone)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -150,6 +150,6 @@ Unknown = 7
 
 **替代接口：** [Unknown](../arkts-apis/arkts-arkweb-webview-webhittesttype-e.md#unknown)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

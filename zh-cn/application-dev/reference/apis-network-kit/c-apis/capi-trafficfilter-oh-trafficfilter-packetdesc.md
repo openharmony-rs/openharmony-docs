@@ -6,7 +6,7 @@ typedef struct OH_TrafficFilter_PacketDesc {...} OH_TrafficFilter_PacketDesc
 
 ## 概述
 
-报文描述符包含五元组信息和报文数据
+报文描述符<br> 包含五元组信息和报文数据
 
 **起始版本：** 26.1.0
 

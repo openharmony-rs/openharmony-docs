@@ -1,0 +1,49 @@
+# FocusState
+
+枚举，焦距状态。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## FOCUS_STATE_SCAN
+
+```TypeScript
+FOCUS_STATE_SCAN = 0
+```
+
+触发对焦。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## FOCUS_STATE_FOCUSED
+
+```TypeScript
+FOCUS_STATE_FOCUSED = 1
+```
+
+对焦成功。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## FOCUS_STATE_UNFOCUSED
+
+```TypeScript
+FOCUS_STATE_UNFOCUSED = 2
+```
+
+未完成对焦。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core

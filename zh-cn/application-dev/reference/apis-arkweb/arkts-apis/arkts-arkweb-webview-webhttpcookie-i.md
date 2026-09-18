@@ -9,6 +9,7 @@ cookie的相关字段。
 ## 导入模块
 
 ```TypeScript
+import { webview } from '@kit.ArkWeb';
 ```
 
 ## domain
@@ -31,7 +32,7 @@ domain: string
 expiresDate: string
 ```
 
-cookie的过期时间。时间格式详见[Date](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Date)。传入不符合该格式的时间字符串 时，该cookie设置不生效。
+cookie的过期时间。时间格式详见[Date](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Date)。传入不符合该格式的时间字符串时，该cookie设置不生效。
 
 **类型：** string
 
@@ -45,7 +46,9 @@ cookie的过期时间。时间格式详见[Date](https://developer.mozilla.org/z
 isHttpOnly: boolean
 ```
 
-标记该cookie是否只能通过HTTP请求访问。true表示仅能通过HTTP访问，不能通过JavaScript访问，false表示可以通过JavaScript访问。
+标记该cookie是否只能通过HTTP请求访问。
+
+true表示仅能通过HTTP访问，不能通过JavaScript访问，false表示可以通过JavaScript访问。
 
 **类型：** boolean
 
@@ -59,7 +62,9 @@ isHttpOnly: boolean
 isSecure: boolean
 ```
 
-标记该cookie是否只能通过HTTPS发送。true表示仅能通过HTTPS发送，不能通过HTTP发送，false表示可以通过HTTP发送。
+标记该cookie是否只能通过HTTPS发送。
+
+true表示仅能通过HTTPS发送，不能通过HTTP发送，false表示可以通过HTTP发送。
 
 **类型：** boolean
 
@@ -73,7 +78,9 @@ isSecure: boolean
 isSessionCookie: boolean
 ```
 
-标记该cookie是否是session cookie。true表示是session cookie，false表示不是session cookie。
+标记该cookie是否是session cookie。
+
+true表示是session cookie，false表示不是session cookie。
 
 **类型：** boolean
 

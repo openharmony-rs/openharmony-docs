@@ -1,0 +1,4 @@
+# VkPhysicalDeviceSubgroupProperties
+
+## Overview
+

@@ -35,7 +35,7 @@
 enum ContentEmbed_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 提供内容嵌入模块的错误码定义。
 
@@ -70,7 +70,7 @@ enum ContentEmbed_ErrorCode
 enum ContentEmbed_CapabilityCode
 ```
 
-**描述**
+**描述：**
 
 嵌入文档对象支持的功能枚举，并支持通过位掩码组合多个能力值。
 

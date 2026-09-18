@@ -1,0 +1,4 @@
+# VkAttachmentSampleCountInfoAMD
+
+## Overview
+

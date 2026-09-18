@@ -30,7 +30,7 @@ typedef struct ffrt_cond_t {...} ffrt_cond_t
 uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
 ```
 
-**描述**
+**描述：**
 
 条件变量的内部存储。请勿直接访问，通过`ffrt_cond_*`等接口管理。
 

@@ -6,7 +6,7 @@ typedef struct OH_AVRecorder_EncoderInfo {...} OH_AVRecorder_EncoderInfo
 
 ## 概述
 
-提供AVRecorder编码器能力信息，包括编码器的MIME类型、比特率范围、帧率范围等参数，适用于在录制前查询和选择合适的音频或视频编码器配置的场景，帮助开发者根据编码器能力参数选择最优编码配置。开发者可通过{@link OH_AVRecorder_GetAvailableEncoder}接口获取该结构体对象。
+提供AVRecorder编码器能力信息，包括编码器的MIME类型、比特率范围、帧率范围等参数，适用于在录制前查询和选择合适的音频或视频编码器配置的场景，帮助开发者根据编码器能力参数选择最优编码配置。 开发者可通过{@link OH_AVRecorder_GetAvailableEncoder}接口获取该结构体对象。
 
 **起始版本：** 18
 
@@ -27,7 +27,7 @@ typedef struct OH_AVRecorder_EncoderInfo {...} OH_AVRecorder_EncoderInfo
 | [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) width | 编码器支持的视频帧宽度范围，单位为像素（px）。仅适用于视频编码器。 |
 | [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) height | 编码器支持的视频帧高度范围，单位为像素（px）。仅适用于视频编码器。 |
 | [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) channels | 编码器支持的音频声道数的范围，取值由设备编码器能力决定，常见取值为1（单声道）或2（立体声）。仅适用于音频编码器。 |
-| int32_t *sampleRate | 音频采样率列表，包含所有支持的音频采样率值，取值由设备编码器能力决定，常见取值如8000、16000、44100、48000等，单位为赫兹（Hz）。与sampleRateLen字段配合使用，sampleRateLen表示该列表的长度。仅适用于音频编码器。 |
+| int32_t *sampleRate | 音频采样率列表，包含所有支持的音频采样率值，取值由设备编码器能力决定，常见取值如8000、16000、44100、48000等，单位为赫兹（Hz）。 与sampleRateLen字段配合使用，sampleRateLen表示该列表的长度。仅适用于音频编码器。 |
 | int32_t sampleRateLen | 音频采样率列表长度，取值为大于0的整数，与sampleRate字段配合使用，表示sampleRate数组中元素的个数。仅适用于音频编码器。 |
 
 

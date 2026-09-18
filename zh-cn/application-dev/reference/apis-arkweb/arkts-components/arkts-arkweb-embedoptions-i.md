@@ -6,18 +6,19 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## supportCssDisplayChange
 
 ```TypeScript
 supportCssDisplayChange?: boolean
 ```
 
-设置同层渲染可见性接口是否支持显示属性。同层渲染可见性接口默认支持同层标签相对于视口的可见状态。设置为true时，支持显示CSS属性，包括visibility、display和宽高。设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。
+设置同层渲染可见性接口是否支持显示属性。
+
+同层渲染可见性接口默认支持同层标签相对于视口的可见状态。
+
+设置为true时，支持显示CSS属性，包括visibility、display和宽高。
+
+设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。
 
 **类型：** boolean
 
@@ -33,12 +34,46 @@ supportCssDisplayChange?: boolean
 supportDefaultIntrinsicSize?: boolean
 ```
 
-设置同层渲染元素是否支持固定大小 300 * 150。当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。为true时，固定大小为 300 * 150。为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。默认值：false单位：px
+设置同层渲染元素是否支持固定大小 300 * 150。
+
+当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。
+
+为true时，固定大小为 300 * 150。
+
+为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。
+
+默认值：false
+
+单位：px
 
 **类型：** boolean
 
 **默认值：** false
 
 **起始版本：** 16
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## supportTransformRotateAndSkew
+
+```TypeScript
+supportTransformRotateAndSkew?: boolean
+```
+
+同层渲染组件是否支持CSS变换旋转和倾斜。
+
+该属性仅在enableNatvieEmbedMode开关打开时生效，不支持动态修改。
+
+设置为**true**时，同层渲染组件可以正确处理CSS变换旋转/倾斜。
+
+设置为**false**或未设置时，保留原始行为。
+
+**类型：** boolean
+
+**默认值：** false
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

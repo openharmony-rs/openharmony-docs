@@ -2,7 +2,7 @@
 
 ## 概述
 
-The file declares the window management APIs. You can use the APIs to set and obtain the properties of awindow, and set its status bar style and navigation bar style.
+The file declares the window management APIs. You can use the APIs to set and obtain the properties of a window, and set its status bar style and navigation bar style.
 
 **库：** libnative_window_manager.so
 
@@ -46,15 +46,21 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getinputhandlingduration) | - | 获取当前帧中手势处理的耗时。 |
 | [int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)](#oh_windowmanager_framemetrics_getlayoutmeasureduration) | - | 获取当前帧中布局测量的耗时。 |
 | [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | 获取当前帧开始的时间戳。 |
-| [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | 订阅窗口帧率指标变更监听事件。该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。 |
-| [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | 取消订阅窗口帧率指标变更监听事件。该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。 |
+| [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | 订阅窗口帧率指标变更监听事件。 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。 如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。 |
+| [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | 取消订阅窗口帧率指标变更监听事件。 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。 |
 | [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | 获取窗口所在屏幕的系统默认显示大小缩放因子。 |
 | [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | 获取窗口所在屏幕的系统显示大小缩放因子。 |
 | [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | 获取窗口的自定义显示大小缩放因子。 |
-| [int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)](#oh_windowmanager_getdensityinfocopy) | - | 获取窗口所在屏幕的系统显示大小缩放系数，窗口所在屏幕的系统默认显示大小缩放系数，以及当前窗口自定义设置的显示大小缩放系数。 |
-| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Listen for changes in the display size scaling factor information of the window. The callback function istriggered when any of the system display size scaling factor, system default display size scaling factor, orcustom display size scaling factor of the screen where the window resides changes. |
-| [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unlisten for changes in the display size scaling factor information of the window. The callback function istriggered when any of the system display size scaling factor, system default display size scaling factor, orcustom display size scaling factor of the screen where the window resides changes. |
+| [int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)](#oh_windowmanager_getdensityinfocopy) | - | 获取窗口所在屏幕的系统显示大小缩放系数，窗口所在屏幕的系统默认显示大小缩放系数， 以及当前窗口自定义设置的显示大小缩放系数。 |
+| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Listen for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. |
+| [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unlisten for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. |
 | [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | 释放DensityInfo指针指向的内存空间 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize) | 接收主窗口截图列表的回调接口。<br>**起始版本：** 21 |
 
 ## 函数说明
 
@@ -78,7 +84,7 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 | bool enabled | 设置状态栏是否显示。true表示设置状态栏显示，false表示设置状态栏隐藏。 |
 | bool enableAnimation | 设置是否开启状态栏的显隐动画。true表示开启状态栏的显隐动画，false表示关闭状态栏的显隐动画。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -103,7 +109,7 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 | int32_t windowId | 主窗口id。传入非主窗口id时调用无效。不存在对应窗口id时接口返回错误码WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL。 |
 | int32_t color | 要设置的颜色值，格式为ARGB。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -129,7 +135,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 | bool enabled | 设置导航栏是否显示。true表示设置导航栏显示，false表示设置导航栏隐藏。 |
 | bool enableAnimation | 设置是否开启导航栏的显隐动画。true表示开启导航栏的显隐动画，false表示关闭导航栏的显隐动画。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -155,7 +161,7 @@ int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_Avoi
 | WindowManager_AvoidAreaType type | 避让区域的类型。 |
 | WindowManager_AvoidArea* avoidArea | 返回指向指定窗口的避让区域的指针，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -180,7 +186,7 @@ int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | bool* isShow | 返回指定窗口是否显示的结果。true表示指定窗口显示，false表示指定窗口不显示，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -204,7 +210,7 @@ int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -229,7 +235,7 @@ int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | bool isTouchable | 窗口是否可触。true表示窗口可触，false表示窗口不可触。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -254,7 +260,7 @@ int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | bool isFocusable | 窗口是否可获焦。true表示窗口可获焦，false表示窗口不可获焦。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -279,7 +285,7 @@ int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* 
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | const char* color | 设置窗口的背景色。该参数为字符串类型，格式为十六进制RGB或ARGB颜色。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -304,7 +310,7 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | float brightness | 指定的屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -329,7 +335,7 @@ int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScre
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | bool isKeepScreenOn | 指定窗口是否开启屏幕常亮。true表示开启屏幕常亮，false表示关闭屏幕常亮。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -356,7 +362,7 @@ int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | bool isPrivacy | 指定窗口是否开启隐私模式。true表示开启隐私模式，false表示关闭隐私模式。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -381,7 +387,7 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
 | WindowManager_WindowProperties* windowProperties | 返回指向指定窗口的属性的指针，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -403,10 +409,10 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。窗口id非法或者窗口已经销毁，不能获取指定窗口截图，需要传入有效的窗口id才能成功获取指定窗口截图。请通过窗口对象调用{@link getWindowProperties()}接口（ArkTS接口）获取有效的窗口id。 |
+| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 窗口id非法或者窗口已经销毁，不能获取指定窗口截图，需要传入有效的窗口id才能成功获取指定窗口截图。 请通过窗口对象调用{@link getWindowProperties()}接口（ArkTS接口）获取有效的窗口id。 |
 | OH_PixelmapNative* pixelMap | 返回指向指定窗口的截图的指针，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -432,7 +438,7 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowMan
 | WindowManager_Rect** windowLayoutInfoList | 指定屏幕上可见的窗口布局信息数组的数组指针，作为出参使用。 |
 | size_t* windowLayoutInfoSize | 指定屏幕上可见的窗口布局信息数组长度的指针，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -473,11 +479,11 @@ int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* to
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
-| Input_TouchEvent* touchEvent | 多模触摸事件，具体可见{@link Input_TouchEvent}，事件定义在oh_input_manager.h中。该参数包含的部分字段有参数限制，其中，action应为大于等于0且小于等于3的整数；id、displayX、displayY和actionTime应为不小于0的整数。以上参数不符合限制条件会返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示：窗口管理器服务异常。 |
+| Input_TouchEvent* touchEvent | 多模触摸事件，具体可见{@link Input_TouchEvent}，事件定义在oh_input_manager.h中。该参数包含的部分字段有参数限制，其中， action应为大于等于0且小于等于3的整数；id、displayX、displayY和actionTime应为不小于0的整数。 以上参数不符合限制条件会返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示：窗口管理器服务异常。 |
 | int32_t windowX | 注入事件相对于注入窗口的落点横坐标。该参数为整数。 |
 | int32_t windowY | 注入事件相对于注入窗口的落点纵坐标。该参数为整数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -504,7 +510,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 | WindowManager_MainWindowInfo** infoList | 指向主窗口信息列表的指针，作为出参使用。 |
 | size_t* mainWindowInfoSize | 指向主窗口信息数组长度的指针，作为出参使用。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -570,7 +576,7 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 | WindowManager_WindowSnapshotConfig config | 获取窗口截图时的配置信息。 |
 | [OH_WindowManager_WindowSnapshotCallback](capi-oh-window-h.md#oh_windowmanager_windowsnapshotcallback) callback | 获取窗口截图的回调对象。用于返回窗口截图列表，并按照指定的窗口ID列表顺序排列。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -615,7 +621,7 @@ int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovemen
 | int32_t windowId | 创建窗口时的窗口ID。该参数为整数。 |
 | bool isCursorFollowMovement | 设置鼠标光标的锁定模式，若为true，则光标会跟随鼠标移动；若为false，则光标不会跟随鼠标移动。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -641,7 +647,7 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口ID。该参数为整数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -666,7 +672,7 @@ int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_Fr
 | const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | bool* isFirstDrawFrame | 作为出参使用，表示当前帧是否为首帧，true表示是首帧，false表示不是首帧。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -691,7 +697,7 @@ int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowMa
 | const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | uint64_t* duration | 作为出参使用，表示当前帧中手势处理的耗时，单位为纳秒。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -716,7 +722,7 @@ int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowMa
 | const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | uint64_t* duration | 作为出参使用，表示当前帧中布局测量的耗时，单位为纳秒。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -741,7 +747,7 @@ int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_F
 | const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | uint64_t* timestamp | 作为出参使用，表示当前帧开始的时间戳，单位为纳秒。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -755,7 +761,7 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 
 **描述：**
 
-订阅窗口帧率指标变更监听事件。该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。
+订阅窗口帧率指标变更监听事件。 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。 如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。
 
 **起始版本：** 26.0.0
 
@@ -766,7 +772,7 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 | int32_t windowId | 创建窗口时的窗口ID。 |
 | OH_WindowManager_FrameMetricsMeasuredCallback callback | 用于返回帧率指标结果的回调函数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -780,7 +786,7 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 
 **描述：**
 
-取消订阅窗口帧率指标变更监听事件。该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。
+取消订阅窗口帧率指标变更监听事件。 该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。 如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。
 
 **起始版本：** 26.0.0
 
@@ -791,7 +797,7 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 | int32_t windowId | 创建窗口时的窗口ID。 |
 | OH_WindowManager_FrameMetricsMeasuredCallback callback | 用于返回帧率指标结果的回调函数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -816,11 +822,11 @@ int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_De
 | const OH_WindowManager_DensityInfo* info | 显示当前窗口的大小缩放因子信息。 |
 | float* density | 系统默认显示尺寸比例因子 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。  {@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
+| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。<br>{@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
 
 ### OH_WindowManager_DensityInfo_GetSystemDensity()
 
@@ -841,11 +847,11 @@ int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_Den
 | const OH_WindowManager_DensityInfo* info | 显示当前窗口的大小缩放因子信息。 |
 | float* density | 系统显示尺寸比例因子 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。  {@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
+| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。<br>{@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
 
 ### OH_WindowManager_DensityInfo_GetCustomDensity()
 
@@ -864,13 +870,13 @@ int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_Den
 | 参数项 | 描述 |
 | -- | -- |
 | const OH_WindowManager_DensityInfo* info | 当前窗口所在屏幕的显示大小缩放因子信息。 |
-| float* density | 窗口的自定义显示大小缩放因子。返回值-1表示没有自定义已设置显示大小缩放因子，或已重置。 |
+| float* density | 窗口的自定义显示大小缩放因子。返回值-1表示没有自定义 已设置显示大小缩放因子，或已重置。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。  {@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
+| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。<br>{@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
 
 ### OH_WindowManager_GetDensityInfoCopy()
 
@@ -880,7 +886,7 @@ int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowMan
 
 **描述：**
 
-获取窗口所在屏幕的系统显示大小缩放系数，窗口所在屏幕的系统默认显示大小缩放系数，以及当前窗口自定义设置的显示大小缩放系数。
+获取窗口所在屏幕的系统显示大小缩放系数，窗口所在屏幕的系统默认显示大小缩放系数， 以及当前窗口自定义设置的显示大小缩放系数。
 
 **起始版本：** 24
 
@@ -889,13 +895,13 @@ int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowMan
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建window时的WindowId。 |
-| const OH_WindowManager_DensityInfo** info | 显示当前窗口的显示密度信息。返回值NULL表示当前设备不支持此接口。 |
+| const OH_WindowManager_DensityInfo** info | 显示当前窗口的显示密度信息。 返回值NULL表示当前设备不支持此接口。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。  {@link WINDOWS_MANAGER_ERRORCODE_STATE_ABNORMAL}此窗口状态不正常。可能原因：  1.窗口不被创建或销毁；  2.该窗口状态不正常。  {@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
+| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。<br>{@link WINDOWS_MANAGER_ERRORCODE_STATE_ABNORMAL}此窗口状态不正常。可能原因：<br>1.窗口不被创建或销毁；<br>2.该窗口状态不正常。<br>{@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
 
 ### OH_WindowManager_RegisterDensityInfoChangeCallback()
 
@@ -905,7 +911,7 @@ int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_
 
 **描述：**
 
-Listen for changes in the display size scaling factor information of the window. The callback function istriggered when any of the system display size scaling factor, system default display size scaling factor, orcustom display size scaling factor of the screen where the window resides changes.
+Listen for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes.
 
 **起始版本：** 24
 
@@ -916,11 +922,11 @@ Listen for changes in the display size scaling factor information of the window.
 | int32_t windowId | WindowId when window is created. |
 | OH_WindowManager_DensityInfoCallback callback | Callback used to return the result of density information. |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          {@link WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL} this window state is abnormal. Possible cause:              1. The window is not created or destroyed;              2. This window state is abnormal.          {@link WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM} Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.<br>        {@link WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL} this window state is abnormal. Possible cause:<br>            1. The window is not created or destroyed;<br>            2. This window state is abnormal.<br>        {@link WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM} Parameter error. Possible cause:              1. Invalid parameter range. |
 
 ### OH_WindowManager_UnregisterDensityInfoChangeCallback()
 
@@ -930,7 +936,7 @@ int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, O
 
 **描述：**
 
-Unlisten for changes in the display size scaling factor information of the window. The callback function istriggered when any of the system display size scaling factor, system default display size scaling factor, orcustom display size scaling factor of the screen where the window resides changes.
+Unlisten for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes.
 
 **起始版本：** 24
 
@@ -941,11 +947,11 @@ Unlisten for changes in the display size scaling factor information of the windo
 | int32_t windowId | WindowId when window is created. |
 | OH_WindowManager_DensityInfoCallback callback | Callback used to return the result of density information. |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          {@link WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL} this window state is abnormal. Possible cause:              1. The window is not created or destroyed;              2. This window state is abnormal.          {@link WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM} Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.<br>        {@link WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL} this window state is abnormal. Possible cause:<br>            1. The window is not created or destroyed;<br>            2. This window state is abnormal.<br>        {@link WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM} Parameter error. Possible cause:              1. Invalid parameter range. |
 
 ### OH_WindowManager_DensityInfo_Release()
 
@@ -965,10 +971,10 @@ int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo*
 | -- | -- |
 | const OH_WindowManager_DensityInfo* info | 显示当前窗口的DensityInfo。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。  {@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
+| int32_t | 返回执行的状态代码。  {@link WS_OK}函数调用成功。<br>{@link WINDOWS_MANAGER_ERRORCODE_INCORRECT_PARAM}参数错误。可能原因：  1.参数范围非法。 |
 
 

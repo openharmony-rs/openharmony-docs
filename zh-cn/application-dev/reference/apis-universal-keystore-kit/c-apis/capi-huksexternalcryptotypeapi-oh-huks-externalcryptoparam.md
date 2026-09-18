@@ -26,6 +26,7 @@ typedef struct OH_Huks_ExternalCryptoParam {...} OH_Huks_ExternalCryptoParam
 | int32_t int32Param | int32_t类型参数。<br>**起始版本：** 22 |
 | uint32_t uint32Param | uint32_t类型参数。<br>**起始版本：** 22 |
 | uint64_t uint64Param | uint64_t类型参数。<br>**起始版本：** 22 |
-| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) blob; } | OH_Huks_Blob类型参数。<br>**起始版本：** 22 |
+| struct OH_Huks_Blob blob;
+ } | OH_Huks_Blob类型参数。<br>**起始版本：** 22 |
 
 

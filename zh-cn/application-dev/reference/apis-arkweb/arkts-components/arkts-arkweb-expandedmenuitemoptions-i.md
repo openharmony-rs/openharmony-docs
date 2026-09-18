@@ -6,14 +6,9 @@
 
 **废弃版本：** 20
 
-**替代接口：** [editMenuOptions](arkts-arkweb-web-attribute.md#editmenuoptions)
+**替代接口：** [editMenuOptions](arkts-arkweb-web-comp-attribute.md#editmenuoptions)
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-## 导入模块
-
-```TypeScript
-```
 
 ## action
 
@@ -29,7 +24,7 @@ action: (selectedText: {plainText: string}) => void
 
 **替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -55,7 +50,7 @@ content: ResourceStr
 
 **替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -75,6 +70,6 @@ startIcon?: ResourceStr
 
 **替代接口：** [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

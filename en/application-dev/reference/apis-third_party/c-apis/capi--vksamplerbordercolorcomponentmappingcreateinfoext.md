@@ -1,0 +1,4 @@
+# VkSamplerBorderColorComponentMappingCreateInfoEXT
+
+## Overview
+

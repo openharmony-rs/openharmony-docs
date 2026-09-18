@@ -47,7 +47,7 @@ Provides the enums, structs, macros, and error codes used by **CertManager** API
 enum OH_CM_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 Enumerates error codes.
 
@@ -74,7 +74,7 @@ Enumerates error codes.
 enum OH_CM_CertificatePurpose
 ```
 
-**描述**
+**描述：**
 
 证书凭据用途类型。
 

@@ -36,7 +36,7 @@
 Http_Headers *OH_Http_CreateHeaders(void)
 ```
 
-**描述**
+**描述：**
 
 创建HTTP请求或者响应的头。
 
@@ -44,11 +44,11 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 **起始版本：** 20
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Http_Headers *](capi-netstack-http-headers.md) | Http_Headers 返回HTTP请求或者响应的头，指向Http_Headers。 |
+| Http_Headers * | Http_Headers 返回HTTP请求或者响应的头，指向Http_Headers。 |
 
 ### OH_Http_DestroyHeaders()
 
@@ -56,7 +56,7 @@ Http_Headers *OH_Http_CreateHeaders(void)
 void OH_Http_DestroyHeaders(Http_Headers **headers)
 ```
 
-**描述**
+**描述：**
 
 销毁HTTP请求或者响应的头。
 
@@ -68,7 +68,7 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) **headers | 要被销毁的HTTP请求或响应的头，是通过OH_Http_CreateHeaders生成的数据。 |
+| Http_Headers **headers | 要被销毁的HTTP请求或响应的头，是通过OH_Http_CreateHeaders生成的数据。 |
 
 ### OH_Http_SetHeaderValue()
 
@@ -76,7 +76,7 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)
 ```
 
-**描述**
+**描述：**
 
 设置HTTP请求或者响应的头的键值对。
 
@@ -88,11 +88,11 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct Http_Headers](capi-netstack-http-headers.md) *headers | 指向要设置的Http_Headers的指针。 |
+| struct Http_Headers *headers | 指向要设置的Http_Headers的指针。 |
 | const char *name | 键值。 |
 | const char *value | 键值对应的值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -104,7 +104,7 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)
 ```
 
-**描述**
+**描述：**
 
 通过键获取请求或响应头的值。
 
@@ -116,14 +116,14 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) *headers | 指向要获取值的Http_Headers的指针。 |
+| Http_Headers *headers | 指向要获取值的Http_Headers的指针。 |
 | const char *name | 键值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Http_HeaderValue *](capi-netstack-http-headervalue.md) | Http_HeaderValue 指向获取的Http_HeaderValue的指针。 |
+| Http_HeaderValue * | Http_HeaderValue 指向获取的Http_HeaderValue的指针。 |
 
 ### OH_Http_GetHeaderEntries()
 
@@ -131,7 +131,7 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 ```
 
-**描述**
+**描述：**
 
 获取请求或响应头的所有键值对。
 
@@ -143,13 +143,13 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Http_Headers](capi-netstack-http-headers.md) *headers | 指向要获取值的Http_Headers的指针。 |
+| Http_Headers *headers | 指向要获取值的Http_Headers的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Http_HeaderEntry *](capi-netstack-http-headerentry.md) | Http_HeaderEntry 指向获取的Http_HeaderEntry的指针。 |
+| Http_HeaderEntry * | Http_HeaderEntry 指向获取的Http_HeaderEntry的指针。 |
 
 ### OH_Http_DestroyHeaderEntries()
 
@@ -157,7 +157,7 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 ```
 
-**描述**
+**描述：**
 
 销毁OH_Http_GetHeaderEntries中获取的所有键值对。
 
@@ -169,7 +169,7 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Http_HeaderEntry](capi-netstack-http-headerentry.md) **headerEntry | 指向要销毁的Http_HeaderEntry的指针，是通过OH_Http_GetHeaderEntries获取的数据。 |
+| Http_HeaderEntry **headerEntry | 指向要销毁的Http_HeaderEntry的指针，是通过OH_Http_GetHeaderEntries获取的数据。 |
 
 ### OH_Http_CreateRequest()
 
@@ -177,7 +177,7 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 Http_Request *OH_Http_CreateRequest(const char *url)
 ```
 
-**描述**
+**描述：**
 
 创建HTTP请求。
 
@@ -191,11 +191,11 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 | -- | -- |
 | const char *url | 请求URL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Http_Request *](capi-netstack-http-request.md) | 返回创建的请求，指向Http_Request的指针。 |
+| Http_Request * | 返回创建的请求，指向Http_Request的指针。 |
 
 ### OH_Http_Request()
 
@@ -203,7 +203,7 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)
 ```
 
-**描述**
+**描述：**
 
 发起HTTP请求。
 
@@ -217,11 +217,11 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Http_Request](capi-netstack-http-request.md) *request | 发送的请求，指向Http_Request的指针。 |
-| [Http_ResponseCallback](capi-net-http-type-h.md#http_responsecallback) callback | 请求的响应，指向Http_ResponseCallback。 |
-| [Http_EventsHandler](capi-netstack-http-eventshandler.md) handler | 监听不同HTTP事件的回调函数，指向Http_EventsHandler。 |
+| Http_Request *request | 发送的请求，指向Http_Request的指针。 |
+| Http_ResponseCallback callback | 请求的响应，指向Http_ResponseCallback。 |
+| Http_EventsHandler handler | 监听不同HTTP事件的回调函数，指向Http_EventsHandler。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -233,7 +233,7 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 void OH_Http_Destroy(struct Http_Request **request)
 ```
 
-**描述**
+**描述：**
 
 中断HTTP请求。
 
@@ -245,6 +245,6 @@ void OH_Http_Destroy(struct Http_Request **request)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct Http_Request](capi-netstack-http-request.md) **request | 要中断的请求，指向Http_Request的指针，参考[Http_Request](capi-netstack-http-request.md)。 |
+| struct Http_Request **request | 要中断的请求，指向Http_Request的指针，参考{@link Http_Request}。 |
 
 

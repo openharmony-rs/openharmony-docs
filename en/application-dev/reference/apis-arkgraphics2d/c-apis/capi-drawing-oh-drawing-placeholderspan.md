@@ -1,0 +1,29 @@
+# OH_Drawing_PlaceholderSpan
+
+```c
+typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan
+```
+
+## Overview
+
+This struct describes the placeholder that acts as a span.
+
+**Since**: 11
+
+**Related module**: [Drawing](capi-drawing.md)
+
+**Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| double width | Width of a placeholder. |
+| double height | Height of a placeholder. |
+| [OH_Drawing_PlaceholderVerticalAlignment](capi-drawing-text-typography-h.md#oh_drawing_placeholderverticalalignment) alignment | Alignment mode of a placeholder. |
+| [OH_Drawing_TextBaseline](capi-drawing-text-typography-h.md#oh_drawing_textbaseline) baseline | Baseline of a placeholder. |
+| double baselineOffset | Baseline offset of a placeholder. |
+
+

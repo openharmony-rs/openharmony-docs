@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## activeMatchOrdinal
 
 ```TypeScript
@@ -23,7 +18,7 @@ activeMatchOrdinal: number
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -33,13 +28,17 @@ activeMatchOrdinal: number
 isDoneCounting: boolean
 ```
 
-当次页内查找操作是否结束。true表示当次页内查找操作结束，false表示未结束。该方法可能回调多次，直到isDoneCounting为true。
+当次页内查找操作是否结束。
+
+true表示当次页内查找操作结束，false表示未结束。
+
+该方法可能回调多次，直到isDoneCounting为true。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -55,6 +54,6 @@ numberOfMatches: number
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

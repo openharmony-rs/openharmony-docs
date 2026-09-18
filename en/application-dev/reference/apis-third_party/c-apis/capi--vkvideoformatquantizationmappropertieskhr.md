@@ -1,0 +1,4 @@
+# VkVideoFormatQuantizationMapPropertiesKHR
+
+## Overview
+

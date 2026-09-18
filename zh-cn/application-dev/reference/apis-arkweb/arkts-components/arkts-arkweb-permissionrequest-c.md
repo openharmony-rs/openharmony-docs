@@ -1,11 +1,10 @@
 # PermissionRequest
 
-PermissionRequest 是 Web 组件用于授权或拒绝权限请求的对象。当网页尝试访问受保护的系统资源（如摄像头、麦克风、地理位置等）时，ArkWeb 内核会通过 [onPermissionRequest](arkts-arkweb-web-attribute.md#onpermissionrequest)事件回调向应用发送权限请求，应用通过 PermissionRequest 对象来决定是否授权这些请求。该对象适用 于需要在应用中管理网页对敏感资源的访问权限、保护用户隐私、确保资源访问安全可控等场景，帮助开发者灵活处理网页权限请求。
+PermissionRequest 是 Web 组件用于授权或拒绝权限请求的对象。当网页尝试访问受保护的系统资源（如摄像头、麦克风、地理位置等）时，ArkWeb 内核会通过[onPermissionRequest](arkts-arkweb-web-comp-attribute.md#onpermissionrequest)事件回调向应用发送权限请求，应用通过 PermissionRequest 对象来决定是否授权这些请求。该对象适用于需要在应用中管理网页对敏感资源的访问权限、保护用户隐私、确保资源访问安全可控等场景，帮助开发者灵活处理网页权限请求。
 
-> **说明：**
+> **说明：** 
 > 
-> - [grant](#grant)()与 [deny](#deny)() 方法互斥，对于同一个 PermissionRequest 对象，
-> 只能调用其中一个方法。
+> - [grant](#grant)()与 [deny](#deny)() 方法互斥，对于同一个 PermissionRequest 对象，只能调用其中一个方法。
 > 
 > - 调用 grant() 或 deny() 后，该 PermissionRequest 对象已完成响应，不允许重复调用。
 > 
@@ -19,11 +18,6 @@ PermissionRequest 是 Web 组件用于授权或拒绝权限请求的对象。当
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## constructor
 
 ```TypeScript
@@ -34,7 +28,7 @@ PermissionRequest的构造函数。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,7 +42,7 @@ deny(): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -62,7 +56,7 @@ getAccessibleResource(): Array<string>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -70,7 +64,7 @@ getAccessibleResource(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;string&gt; | 网页所请求的权限资源列表。 |
+| Array&lt;string&gt; | 网页所请求的权限资源列表。 |
 
 ## getOrigin
 
@@ -82,7 +76,7 @@ getOrigin(): string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -102,7 +96,7 @@ grant(resources: Array<string>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -110,4 +104,4 @@ grant(resources: Array<string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| resources | Array &lt;string&gt; | 是 | 网页被授予的权限资源列表，需通过 getAccessibleResource() 获取，类型参考 [ProtectedResourceType](arkts-arkweb-protectedresourcetype-e.md)。传入该参数后，网页将获得对指定资源的访问权限，若传入空列表，则表示拒绝所有权限请求。 |
+| resources | Array&lt;string&gt; | 是 | 网页被授予的权限资源列表，需通过 getAccessibleResource() 获取，类型参考[ProtectedResourceType](arkts-arkweb-protectedresourcetype-e.md)。传入该参数后，网页将获得对指定资源的访问权限，若传入空列表，则表示拒绝所有权限请求。 |

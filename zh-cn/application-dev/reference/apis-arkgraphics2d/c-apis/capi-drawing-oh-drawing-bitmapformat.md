@@ -20,7 +20,7 @@ typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorFormat | 描述位图像素的存储格式。 |
-| [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaFormat | 描述位图像素的透明度分量。 |
+| OH_Drawing_ColorFormat colorFormat | 描述位图像素的存储格式。 |
+| OH_Drawing_AlphaFormat alphaFormat | 描述位图像素的透明度分量。 |
 
 

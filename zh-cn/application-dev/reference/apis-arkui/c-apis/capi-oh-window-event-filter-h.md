@@ -2,7 +2,7 @@
 
 ## 概述
 
-The file declares the APIs for a window to filter multimodal key events. When a multimodal input event passesthrough the window, the window can interrupt the event to prevent it from being further distributed.
+The file declares the APIs for a window to filter multimodal key events. When a multimodal input event passes through the window, the window can interrupt the event to prevent it from being further distributed.
 
 **库：** libnative_window_manager.so
 
@@ -31,6 +31,14 @@ The file declares the APIs for a window to filter multimodal key events. When a 
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter* outMouseEventFilter)](#oh_nativewindowmanager_getmouseeventfilter) | - | 获取指定窗口注册的多模鼠标事件过滤函数。 |
 | [WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter* outTouchEventFilter)](#oh_nativewindowmanager_gettoucheventfilter) | - | 获取指定窗口注册的多模触摸事件过滤函数。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent) | 定义多模按键的过滤函数。<br>**起始版本：** 12 |
+| bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent) | 定义多模鼠标事件的过滤函数。<br>**起始版本：** 15 |
+| bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent) | 定义多模触摸事件的过滤函数。<br>**起始版本：** 15 |
+
 ## 函数说明
 
 ### OH_NativeWindowManager_KeyEventFilter()
@@ -51,7 +59,7 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 | -- | -- |
 | Input_KeyEvent\* keyEvent | 多模按键事件，具体可见{@link Input_KeyEvent}，事件定义在oh_input_manager中。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -76,7 +84,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 | int32_t windowId | 窗口ID。 |
 | [OH_NativeWindowManager_KeyEventFilter](capi-oh-window-event-filter-h.md#oh_nativewindowmanager_keyeventfilter) keyEventFilter | 多模按键的过滤函数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -100,7 +108,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t 
 | -- | -- |
 | int32_t windowId | 窗口ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -124,7 +132,7 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 | -- | -- |
 | Input_MouseEvent\* mouseEvent | 多模鼠标事件，具体可见{@link Input_MouseEvent}，事件定义在oh_input_manager中。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -149,7 +157,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 | int32_t windowId | 窗口ID。 |
 | [OH_NativeWindowManager_MouseEventFilter](capi-oh-window-event-filter-h.md#oh_nativewindowmanager_mouseeventfilter) mouseEventFilter | 多模鼠标事件的过滤函数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -173,7 +181,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_
 | -- | -- |
 | int32_t windowId | 窗口ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -197,7 +205,7 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 | -- | -- |
 | Input_TouchEvent\* touchEvent | 多模触摸事件，具体可见{@link Input_TouchEvent}，事件定义在oh_input_manager中。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -222,7 +230,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 | int32_t windowId | 窗口ID。 |
 | [OH_NativeWindowManager_TouchEventFilter](capi-oh-window-event-filter-h.md#oh_nativewindowmanager_toucheventfilter) touchEventFilter | 多模触摸事件的过滤函数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -246,7 +254,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 | -- | -- |
 | int32_t windowId | 窗口ID。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -271,7 +279,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowI
 | int32_t windowId | 窗口ID。 |
 | [OH_NativeWindowManager_KeyEventFilter](capi-oh-window-event-filter-h.md#oh_nativewindowmanager_keyeventfilter)* outKeyEventFilter | 返回已注册的多模按键事件过滤函数指针。如果窗口没有注册过滤器，*outKeyEventFilter将返回NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -296,7 +304,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windo
 | int32_t windowId | 窗口ID。 |
 | [OH_NativeWindowManager_MouseEventFilter](capi-oh-window-event-filter-h.md#oh_nativewindowmanager_mouseeventfilter)* outMouseEventFilter | 返回已注册的多模鼠标事件过滤函数指针。如果窗口没有注册过滤器，*outMouseEventFilter将返回NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -321,7 +329,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windo
 | int32_t windowId | 窗口ID。 |
 | [OH_NativeWindowManager_TouchEventFilter](capi-oh-window-event-filter-h.md#oh_nativewindowmanager_toucheventfilter)* outTouchEventFilter | 返回已注册的多模触摸事件过滤函数指针。如果窗口没有注册过滤器，*outTouchEventFilter将返回NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

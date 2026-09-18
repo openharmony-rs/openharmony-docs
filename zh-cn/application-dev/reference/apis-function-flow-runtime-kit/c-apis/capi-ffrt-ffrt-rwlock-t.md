@@ -30,7 +30,7 @@ typedef struct ffrt_rwlock_t {...} ffrt_rwlock_t
 uint32_t storage[(ffrt_rwlock_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
 ```
 
-**描述**
+**描述：**
 
 读写锁的内部存储。请勿直接访问，通过`ffrt_rwlock_*`等接口管理。
 

@@ -1,0 +1,4 @@
+# VkDescriptorSetLayoutBindingFlagsCreateInfo
+
+## Overview
+

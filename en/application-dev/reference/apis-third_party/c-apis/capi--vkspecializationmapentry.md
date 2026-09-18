@@ -1,0 +1,4 @@
+# VkSpecializationMapEntry
+
+## Overview
+

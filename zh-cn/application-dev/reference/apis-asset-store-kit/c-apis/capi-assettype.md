@@ -5,6 +5,7 @@
 Provides the enums, structs, and error codes used in the Asset APIs.
 
 **起始版本：** 11
+
 ## 文件汇总
 
 | 名称 | 描述 |

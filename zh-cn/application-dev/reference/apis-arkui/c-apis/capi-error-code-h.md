@@ -51,9 +51,9 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | 组件事件中不存在该数据。错误码的详细介绍请参见{@link 106108 数据不存在}。<br>**起始版本：** 12 |
 | ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | 组件事件不支持返回值。错误码的详细介绍请参见{@link 106109 不支持返回值}。<br>**起始版本：** 12 |
 | ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | 暂不支持该事件类型。错误码的详细介绍请参见{@link 106110 暂不支持该事件类型}。<br>**起始版本：** 21 |
-| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。错误码的详细介绍请参见{@link 106200 传入的索引值非法}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。错误码的详细介绍请参见{@link 106201 查询路由导航信息失败}。<br>**起始版本：** 12 |
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。错误码的详细介绍请参见{@link 106202 传入的buffer size异常}。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | 传入的索引值非法。 错误码的详细介绍请参见{@link 106200 传入的索引值非法}。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | 查询路由导航信息失败。 错误码的详细介绍请参见{@link 106201 查询路由导航信息失败}。<br>**起始版本：** 12 |
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。 错误码的详细介绍请参见{@link 106202 传入的buffer size异常}。<br>**起始版本：** 12 |
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 | 传入的节点未挂载到组件树上。错误码的详细介绍请参见{@link 106203 传入的节点未挂载到组件树上}。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 | 不支持在非UI线程操作传入的节点。错误码的详细介绍请参见{@link 106204 不支持在非UI线程操作传入的节点}。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 | 反色能力入参错误。错误码的详细介绍请参见{@link 106205 反色能力入参错误}。<br>**起始版本：** 20 |
@@ -68,7 +68,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 | 未找到对应的渲染子节点。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 | 参数值超出范围。错误码的详细介绍请参见{@link 渲染节点错误码}。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 | 当前渲染节点从{@link FrameNode}中获取。错误码的详细介绍请参见{@link 106406 当前渲染节点从FrameNode中获取}。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 | 当前渲染节点从{@link FrameNode}中获取且该{@link FrameNode}已被取消接纳为附属节点或销毁。错误码的详细介绍请参见{@link 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁}。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 | 当前渲染节点从{@link FrameNode}中获取且该{@link FrameNode}已被取消接纳为附属节点或销毁。错误码的详细介绍请参见<br>{@link 106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁}。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 | 当前节点不处于被接纳状态。错误码的详细介绍请参见{@link 106408 当前节点不处于被接纳状态}。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 | 当前节点无法获得焦点。错误码的详细介绍请参见{@link 150001 节点无法获得焦点}。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 | 当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见{@link 150002 祖先节点无法获得焦点}。<br>**起始版本：** 15 |

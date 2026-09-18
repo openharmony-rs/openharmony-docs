@@ -2,7 +2,7 @@
 
 ## 概述
 
-文件中定义了与颜色相关的功能函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+文件中定义了与颜色相关的功能函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **库：** libnative_drawing.so
 
@@ -28,7 +28,7 @@
 uint32_t OH_Drawing_ColorSetArgb(uint32_t alpha, uint32_t red, uint32_t green, uint32_t blue)
 ```
 
-**描述**
+**描述：**
 
 用于将4个变量（分别描述透明度、红色、绿色和蓝色）转化为一个描述颜色的32位（ARGB）变量。
 
@@ -43,7 +43,7 @@ uint32_t OH_Drawing_ColorSetArgb(uint32_t alpha, uint32_t red, uint32_t green, u
 | uint32_t green | 描述绿色的变量，变量范围是0x00~0xFF。超出范围时取低8位有效。 |
 | uint32_t blue | 描述蓝色的变量，变量范围是0x00~0xFF。超出范围时取低8位有效。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

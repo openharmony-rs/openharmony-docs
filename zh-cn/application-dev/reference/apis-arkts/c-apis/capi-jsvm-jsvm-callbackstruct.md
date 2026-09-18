@@ -27,17 +27,17 @@ typedef struct JSVM_CallbackStruct {...} JSVM_CallbackStruct
 
 | 名称 | 描述 |
 | -- | -- |
-| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#jsvm_value) | 用户提供的native回调函数的指针。 |
+| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | 用户提供的native回调函数的指针。 |
 
 ## 成员函数说明
 
-### JSVM_Value()
+### callback()
 
 ```c
 JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 ```
 
-**描述**
+**描述：**
 
 用户提供的native回调函数的指针。
 

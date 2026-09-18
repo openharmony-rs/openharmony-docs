@@ -1,0 +1,4 @@
+# VkPrivateDataSlotCreateInfo
+
+## Overview
+

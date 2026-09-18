@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## isMainFrame
 
 ```TypeScript
 isMainFrame?: boolean
 ```
 
-是否是主文档触发。true表示是主文档触发，false表示不是主文档触发。
+是否是主文档触发。
+
+true表示是主文档触发，false表示不是主文档触发。
 
 **类型：** boolean
 
@@ -31,13 +28,13 @@ isMainFrame?: boolean
 isRefreshed: boolean
 ```
 
-true表示该页面是被重新加载的（调用[refresh&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh)接口），false表示该页 面是新加载的。
+true表示该页面是被重新加载的（调用[refresh&lt;sup&gt;9+&lt;/sup&gt;](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#refresh)接口），false表示该页面是新加载的。
 
 **类型：** boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -53,6 +50,6 @@ url: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

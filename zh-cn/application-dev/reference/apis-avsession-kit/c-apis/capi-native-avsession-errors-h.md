@@ -31,7 +31,7 @@
 enum AVSession_ErrCode
 ```
 
-**描述**
+**描述：**
 
 播控错误码。
 
@@ -99,7 +99,7 @@ enum AVSession_ErrCode
 enum AVSessionCallback_Result
 ```
 
-**描述**
+**描述：**
 
 定义音视频会话回调结果枚举。
 
@@ -116,7 +116,7 @@ enum AVSessionCallback_Result
 enum AVMetadata_Result
 ```
 
-**描述**
+**描述：**
 
 播控元数据错误码。
 
@@ -134,7 +134,7 @@ enum AVMetadata_Result
 enum AVQueueItem_Result
 ```
 
-**描述**
+**描述：**
 
 播放列表中单项的错误码。
 

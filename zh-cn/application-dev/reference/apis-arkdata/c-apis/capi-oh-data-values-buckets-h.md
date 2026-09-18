@@ -40,13 +40,13 @@
 OH_Data_VBuckets *OH_VBuckets_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建OH_Data_VBuckets实例。
 
 **起始版本：** 18
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -63,7 +63,7 @@ OH_VBuckets_Destroy
 int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 ```
 
-**描述**
+**描述：**
 
 销毁OH_Data_VBuckets对象。
 
@@ -75,7 +75,7 @@ int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 | -- | -- |
 | [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *buckets | 表示指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -87,7 +87,7 @@ int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 ```
 
-**描述**
+**描述：**
 
 添加OH_VBucket类型数据。
 
@@ -98,9 +98,9 @@ int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *buckets | 表示指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。 |
-| [const OH_VBucket](capi-rdb-oh-vbucket.md) *row | 表示指向[OH_VBucket](capi-rdb-oh-vbucket.md)实例的指针。 |
+| const OH_VBucket *row | 表示指向{@link OH_VBucket}实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -112,7 +112,7 @@ int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 ```
 
-**描述**
+**描述：**
 
 添加OH_Data_VBuckets类型数据。
 
@@ -125,7 +125,7 @@ int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 | [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *buckets | 表示指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。 |
 | [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | 表示指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -137,7 +137,7 @@ int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 int OH_VBuckets_RowCount(OH_Data_VBuckets *buckets, size_t *count)
 ```
 
-**描述**
+**描述：**
 
 获取OH_Data_VBuckets中OH_VBucket的行数。
 
@@ -148,9 +148,9 @@ int OH_VBuckets_RowCount(OH_Data_VBuckets *buckets, size_t *count)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *buckets | 表示指向[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)实例的指针。 |
-| size_t *count | 一个输出参数，表示[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)中[OH_VBucket](capi-rdb-oh-vbucket.md)的个数。 |
+| size_t *count | 一个输出参数，表示[OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md)中{@link OH_VBucket}的个数。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

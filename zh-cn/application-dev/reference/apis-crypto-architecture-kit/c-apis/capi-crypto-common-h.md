@@ -43,7 +43,7 @@
 enum OH_Crypto_ErrCode
 ```
 
-**描述**
+**描述：**
 
 枚举错误码。
 
@@ -65,7 +65,7 @@ enum OH_Crypto_ErrCode
 enum Crypto_CipherMode
 ```
 
-**描述**
+**描述：**
 
 定义加解密模式。
 
@@ -85,7 +85,7 @@ enum Crypto_CipherMode
 void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 ```
 
-**描述**
+**描述：**
 
 释放数据Blob的内存。
 

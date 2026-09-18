@@ -48,7 +48,7 @@
 enum CryptoKdf_ParamType
 ```
 
-**描述**
+**描述：**
 
 定义KDF参数类型。
 
@@ -74,7 +74,7 @@ enum CryptoKdf_ParamType
 OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)
 ```
 
-**描述**
+**描述：**
 
 创建KDF参数。
 
@@ -84,14 +84,14 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] KDF参数算法名称，不能为NULL。取值如下：- 从API version 20开始支持"HKDF"、"PBKDF2"、"SCRYPT"。- 从API version 22开始支持"X963KDF"。 |
+| const char *algoName | [in] KDF参数算法名称，不能为NULL。取值如下： - 从API version 20开始支持"HKDF"、"PBKDF2"、"SCRYPT"。 - 从API version 22开始支持"X963KDF"。 |
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) **params | [out] 指向KDF参数指针的指针。params不能为NULL，*params必须为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} algoName或params为NULL，             或者algoName不是支持的KDF类型。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} algoName或params为NULL，<br>           或者algoName不是支持的KDF类型。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -104,7 +104,7 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)
 ```
 
-**描述**
+**描述：**
 
 设置KDF参数。
 
@@ -116,13 +116,13 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, Crypto
 | -- | -- |
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) *params | [in] KDF参数。不能为NULL。 |
 | [CryptoKdf_ParamType](capi-crypto-kdf-h.md#cryptokdf_paramtype) type | [in] KDF参数类型。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | [in] KDF参数值。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
+| Crypto_DataBlob *value | [in] KDF参数值。本接口会对value中的数据进行深拷贝，调用者在接口返回后可立即释放value。不能为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} params或value为NULL，             value->data为NULL，或者type对于KDF算法无效。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 参数拷贝内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} params或value为NULL，<br>           value->data为NULL，或者type对于KDF算法无效。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 参数拷贝内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoKdfParams_Destroy()
 
@@ -130,7 +130,7 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, Crypto
 void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)
 ```
 
-**描述**
+**描述：**
 
 销毁KDF参数。
 
@@ -148,7 +148,7 @@ void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)
 OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 ```
 
-**描述**
+**描述：**
 
 根据给定的算法名称创建KDF上下文。
 
@@ -158,14 +158,14 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] KDF算法名称。不能为NULL。格式为"KDF类型|摘要算法"，取值如下：- 从API version 20开始支持"PBKDF2|SHA1"、"PBKDF2|SHA224"、"PBKDF2|SHA256"、"PBKDF2|SHA384"、"PBKDF2|SHA512"、"PBKDF2|SM3"。从API version 26.0.0开始支持"PBKDF2|SHA3-256"、"PBKDF2|SHA3-384"、"PBKDF2|SHA3-512"。- 从API version 20开始支持"HKDF|SHA1"、"HKDF|SHA224"、"HKDF|SHA256"、"HKDF|SHA384"、"HKDF|SHA512"、"HKDF|SM3"。HKDF支持可选的第三个参数指定模式："EXTRACT_AND_EXPAND"（默认）、"EXTRACT_ONLY"、"EXPAND_ONLY"，示例："HKDF|SHA256|EXTRACT_ONLY"。从API version 26.0.0开始支持"HKDF|SHA3-256"、"HKDF|SHA3-384"、"HKDF|SHA3-512"。- 从API version 20开始支持"SCRYPT"。- 从API version 22开始支持"X963KDF|SHA1"、"X963KDF|SHA224"、"X963KDF|SHA256"、"X963KDF|SHA384"、"X963KDF|SHA512"。从API version 26.0.0开始支持"X963KDF|SHA3-256"、"X963KDF|SHA3-384"、"X963KDF|SHA3-512"。 |
+| const char *algoName | [in] KDF算法名称。不能为NULL。格式为"KDF类型\|摘要算法"，取值如下： - 从API version 20开始支持"PBKDF2\|SHA1"、"PBKDF2\|SHA224"、"PBKDF2\|SHA256"、 "PBKDF2\|SHA384"、"PBKDF2\|SHA512"、"PBKDF2\|SM3"。 从API version 26.0.0开始支持"PBKDF2\|SHA3-256"、"PBKDF2\|SHA3-384"、"PBKDF2\|SHA3-512"。 - 从API version 20开始支持"HKDF\|SHA1"、"HKDF\|SHA224"、"HKDF\|SHA256"、"HKDF\|SHA384"、"HKDF\|SHA512"、"HKDF\|SM3"。 HKDF支持可选的第三个参数指定模式："EXTRACT_AND_EXPAND"（默认）、 "EXTRACT_ONLY"、"EXPAND_ONLY"，示例："HKDF\|SHA256\|EXTRACT_ONLY"。 从API version 26.0.0开始支持"HKDF\|SHA3-256"、"HKDF\|SHA3-384"、"HKDF\|SHA3-512"。 - 从API version 20开始支持"SCRYPT"。 - 从API version 22开始支持"X963KDF\|SHA1"、"X963KDF\|SHA224"、 "X963KDF\|SHA256"、"X963KDF\|SHA384"、"X963KDF\|SHA512"。 从API version 26.0.0开始支持"X963KDF\|SHA3-256"、"X963KDF\|SHA3-384"、"X963KDF\|SHA3-512"。 |
 | [OH_CryptoKdf](capi-cryptokdfapi-oh-cryptokdf.md) **ctx | [out] 指向KDF上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} algoName或ctx为NULL。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} algoName或ctx为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -178,7 +178,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)
 ```
 
-**描述**
+**描述：**
 
 派生密钥。
 
@@ -191,13 +191,13 @@ OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParam
 | [OH_CryptoKdf](capi-cryptokdfapi-oh-cryptokdf.md) *ctx | [in] KDF上下文。不能为NULL。 |
 | [const OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) *params | [in] KDF参数。不能为NULL。 |
 | int keyLen | [in] 派生密钥的字节长度。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *key | [out] 指向用于存储派生密钥的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将key初始化为{0}，不要预分配key->data内存。 |
+| Crypto_DataBlob *key | [out] 指向用于存储派生密钥的Crypto_DataBlob结构体的指针。不能为NULL。 调用前需将key初始化为{0}，不要预分配 key->data内存。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx、params或key为NULL，             或者keyLen小于等于0，或者缺少必需的参数（如HKDF的密钥、Scrypt的密码或盐值）。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li>          <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密钥派生失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx、params或key为NULL，<br>           或者keyLen小于等于0，或者缺少必需的参数（如HKDF的密钥、Scrypt的密码或盐值）。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密钥派生失败。</li>          </ul> |
 
 ### OH_CryptoKdf_Destroy()
 
@@ -205,7 +205,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParam
 void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)
 ```
 
-**描述**
+**描述：**
 
 销毁KDF上下文。
 

@@ -20,7 +20,7 @@ typedef struct ffrt_task_attr_t {...} ffrt_task_attr_t
 
 | 名称 | 描述 |
 | -- | -- |
-| [uint32_t storage[(ffrt_task_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | 任务属性的内部存储。请勿直接访问，通过{@link ffrt_task_attr_init}和`ffrt_task_attr_set_*`等接口管理内容。 |
+| [uint32_t storage[(ffrt_task_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]](#sizeof) | 任务属性的内部存储。请勿直接访问， 通过{@link ffrt_task_attr_init}和`ffrt_task_attr_set_*`等接口管理内容。 |
 
 ## 成员函数说明
 
@@ -30,8 +30,8 @@ typedef struct ffrt_task_attr_t {...} ffrt_task_attr_t
 uint32_t storage[(ffrt_task_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)]
 ```
 
-**描述**
+**描述：**
 
-任务属性的内部存储。请勿直接访问，通过{@link ffrt_task_attr_init}和`ffrt_task_attr_set_*`等接口管理内容。
+任务属性的内部存储。请勿直接访问， 通过{@link ffrt_task_attr_init}和`ffrt_task_attr_set_*`等接口管理内容。
 
 

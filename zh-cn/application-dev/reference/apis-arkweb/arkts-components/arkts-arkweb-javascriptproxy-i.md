@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## 导入模块
-
-```TypeScript
-```
-
 ## asyncMethodList
 
 ```TypeScript
@@ -23,7 +18,7 @@ asyncMethodList?: Array<string>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -35,11 +30,11 @@ controller: WebController | WebviewController
 
 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。
 
-**类型：** [WebController](arkts-arkweb-webcontroller-c.md) \| [WebviewController](arkts-arkweb-webviewcontroller-t.md)
+**类型：** [WebController](arkts-arkweb-webcontroller-c.md) &#124; [WebviewController](arkts-arkweb-webviewcontroller-t.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -55,7 +50,7 @@ methodList: Array<string>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -71,7 +66,7 @@ name: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -87,7 +82,7 @@ object: object
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -97,12 +92,16 @@ object: object
 permission?: string
 ```
 
-json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。示例请参考[前端页面调用应用侧函数](../../../web/web-in-page-app-function-invoking.md)。
+json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。
+
+JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。
+
+示例请参考[前端页面调用应用侧函数](../../../web/web-in-page-app-function-invoking.md)。
 
 **类型：** string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core

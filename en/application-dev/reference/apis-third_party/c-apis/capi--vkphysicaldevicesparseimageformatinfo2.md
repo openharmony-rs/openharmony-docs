@@ -1,0 +1,4 @@
+# VkPhysicalDeviceSparseImageFormatInfo2
+
+## Overview
+

@@ -1,0 +1,26 @@
+# OH_Drawing_BitmapFormat
+
+```c
+typedef struct OH_Drawing_BitmapFormat {...} OH_Drawing_BitmapFormat
+```
+
+## Overview
+
+This struct describes the pixel format of a bitmap, including the color type and alpha type.
+
+**Since**: 8
+
+**Related module**: [Drawing](capi-drawing.md)
+
+**Header file**: [drawing_bitmap.h](capi-drawing-bitmap-h.md)
+
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| OH_Drawing_ColorFormat colorFormat | Storage format of bitmap pixels. |
+| OH_Drawing_AlphaFormat alphaFormat | Alpha format of bitmap pixels. |
+
+

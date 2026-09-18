@@ -1,0 +1,87 @@
+# @ohos.security.asset(关键资产存储服务)
+
+关键资产存储服务提供了用户短敏感数据的安全存储及管理能力。其中，短敏感数据可以是密码类（账号/密码）、Token类（应用凭据）、其他关键明文（如银行卡号）等长度较短的用户敏感数据。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.Security.Asset
+
+## 导入模块
+
+```TypeScript
+import { asset } from '@kit.AssetStoreKit';
+```
+
+## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [add](arkts-assetstore-asset-add-f.md) | 新增一条关键资产。使用Promise异步回调。 |
+| [addSync](arkts-assetstore-asset-addsync-f.md) | 新增一条关键资产，使用同步方式返回结果。 |
+| [batchAdd](arkts-assetstore-asset-batchadd-f.md) | 批量新增关键资产。使用Promise异步回调。 |
+| [batchRemove](arkts-assetstore-asset-batchremove-f.md) | 批量删除符合条件的关键资产。使用Promise异步回调。 |
+| [batchUpdate](arkts-assetstore-asset-batchupdate-f.md) | 批量更新符合条件的关键资产。使用Promise异步回调。 |
+| [postQuery](arkts-assetstore-asset-postquery-f.md) | 查询的后置处理，用于需要用户认证的关键资产（与[asset.preQuery](arkts-assetstore-asset-prequery-f.md)函数成对出现）。使用Promise异步回调。 |
+| [postQuerySync](arkts-assetstore-asset-postquerysync-f.md) | 查询的后置处理，用于需要用户认证的关键资产。需与[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)函数成对出现。使用同步方式返回结果。 |
+| [preQuery](arkts-assetstore-asset-prequery-f.md) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.query](arkts-assetstore-asset-query-f.md)和[asset.postQuery](arkts-assetstore-asset-postquery-f.md)接口。使用Promise异步回调。 |
+| [preQuerySync](arkts-assetstore-asset-prequerysync-f.md) | 查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.querySync](arkts-assetstore-asset-querysync-f.md)、[asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md)。使用同步方式返回结果。 |
+| [query](arkts-assetstore-asset-query-f.md) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuery](arkts-assetstore-asset-prequery-f.md)接口，在本函数后调用[asset.postQuery](arkts-assetstore-asset-postquery-f.md)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。 |
+| [querySync](arkts-assetstore-asset-querysync-f.md) | 查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQuerySync](arkts-assetstore-asset-prequerysync-f.md)，在本函数后调用[asset.postQuerySync](arkts-assetstore-asset-postquerysync-f.md)，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用同步方式返回结果。 |
+| [querySyncResult](arkts-assetstore-asset-querysyncresult-f.md) | 执行同步操作后，查询同步执行结果。使用Promise异步回调。 |
+| [remove](arkts-assetstore-asset-remove-f.md) | 删除符合条件的一条或多条关键资产。使用Promise异步回调。 |
+| [removeSync](arkts-assetstore-asset-removesync-f.md) | 删除符合条件的一条或多条关键资产，使用同步方式。 |
+| [update](arkts-assetstore-asset-update-f.md) | 更新符合条件的一条关键资产。使用Promise异步回调。 |
+| [updateSync](arkts-assetstore-asset-updatesync-f.md) | 更新符合条件的一条关键资产，使用同步方式返回结果。 |
+
+<!--Del-->
+### 函数（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [addAsUser](arkts-assetstore-asset-addasuser-f-sys.md) | 在指定用户空间中新增一条关键资产。使用Promise异步回调。 |
+| [postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md) | 在指定用户空间中查询的后置处理，用于需要用户认证的关键资产（与[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md)函数成对出现）。使用Promise异步回调。 |
+| [preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md) | 在指定用户空间中查询的预处理，用于需要用户认证的关键资产。在用户认证成功后，应当随后调用[asset.queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md)和[asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md)接口。使用Promise异步回调。 |
+| [queryAsUser](arkts-assetstore-asset-queryasuser-f-sys.md) | 在指定用户空间中查询一条或多条符合条件的关键资产。若查询需要用户认证的关键资产，则需要在本函数前调用[asset.preQueryAsUser](arkts-assetstore-asset-prequeryasuser-f-sys.md)接口，在本函数后调用[asset.postQueryAsUser](arkts-assetstore-asset-postqueryasuser-f-sys.md)接口，开发步骤请参考[开发指导](../../../security/AssetStoreKit/asset-js-query-auth.md)。使用Promise异步回调。 |
+| [removeAsUser](arkts-assetstore-asset-removeasuser-f-sys.md) | 从指定用户空间中删除符合条件的一条或多条关键资产。使用Promise异步回调。 |
+| [updateAsUser](arkts-assetstore-asset-updateasuser-f-sys.md) | 在指定用户空间中更新符合条件的一条关键资产。使用Promise异步回调。 |
+<!--DelEnd-->
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [BatchErrInfo](arkts-assetstore-asset-batcherrinfo-i.md) | 批量操作中单个关键资产的错误信息。 |
+| [BatchResult](arkts-assetstore-asset-batchresult-i.md) | [batchAdd](arkts-assetstore-asset-batchadd-f.md)和[batchUpdate](arkts-assetstore-asset-batchupdate-f.md)批量操作的结果。 |
+| [SyncResult](arkts-assetstore-asset-syncresult-i.md) | 关键资产同步的结果。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [Accessibility](arkts-assetstore-asset-accessibility-e.md) | 枚举，关键资产基于锁屏状态的访问控制类型。 |
+| [AuthType](arkts-assetstore-asset-authtype-e.md) | 枚举，关键资产支持的用户认证类型。 |
+| [ConflictResolution](arkts-assetstore-asset-conflictresolution-e.md) | 枚举，新增关键资产时的冲突（如：别名相同）处理策略。 |
+| [ErrorCode](arkts-assetstore-asset-errorcode-e.md) | 表示错误码的枚举。 |
+| [OperationType](arkts-assetstore-asset-operationtype-e.md) | 枚举，附属的操作类型。 |
+| [ReturnType](arkts-assetstore-asset-returntype-e.md) | 枚举，关键资产查询返回的结果类型。 |
+| [SyncType](arkts-assetstore-asset-synctype-e.md) | 枚举，关键资产支持的同步类型。 |
+| [Tag](arkts-assetstore-asset-tag-e.md) | 枚举，关键资产支持的属性名称类型，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的键。 |
+| [TagType](arkts-assetstore-asset-tagtype-e.md) | 枚举，关键资产属性支持的数据类型。 |
+| [WrapType](arkts-assetstore-asset-wraptype-e.md) | 枚举，关键资产支持的加密导入导出类型。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [AuthType](arkts-assetstore-asset-authtype-e-sys.md) | 枚举，关键资产支持的用户认证类型。 |
+<!--DelEnd-->
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [AssetMap](arkts-assetstore-asset-assetmap-t.md) | 关键资产属性的键-值对集合。 |
+| [Value](arkts-assetstore-asset-value-t.md) | 关键资产属性的内容，用作[AssetMap](arkts-assetstore-asset-assetmap-t.md)的值。 |

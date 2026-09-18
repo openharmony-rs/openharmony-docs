@@ -26,7 +26,7 @@ typedef struct Http_RequestOptions {...} Http_RequestOptions
 | uint32_t readTimeout | 读取超时时间。 |
 | uint32_t connectTimeout | 连接超时时间。 |
 | [Http_HttpProtocol](capi-net-http-type-h.md#http_httpprotocol) httpProtocol | HTTP protocol. For details, see [Http_HttpProtocol](capi-net-http-type-h.md#http_httpprotocol). |
-| [Http_Proxy](capi-netstack-http-proxy.md) *httpProxy | Pointer to the HTTP proxy configuration, which indicates whether to use a proxy. By default, proxy is not used.For details, see [Http_Proxy](capi-netstack-http-proxy.md). |
+| [Http_Proxy](capi-netstack-http-proxy.md) *httpProxy | Pointer to the HTTP proxy configuration, which indicates whether to use a proxy. By default, proxy is not used. For details, see [Http_Proxy](capi-netstack-http-proxy.md). |
 | const char *caPath | 证书路径，如果设置了此参数，系统将使用用户指定路径的CA证书（开发者需保证该路径下CA证书的可访问性），否则将使用系统预设CA证书。 |
 | int64_t resumeFrom | 用于设置下载起始位置，该参数只能用于GET方法，不要用于其他。 |
 | int64_t resumeTo | 用于设置下载结束位置，该参数只能用于GET方法，不要用于其他。 |

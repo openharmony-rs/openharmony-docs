@@ -38,7 +38,7 @@
 enum NetStack_CertType
 ```
 
-**描述**
+**描述：**
 
 Certificate type enums.
 
@@ -56,7 +56,7 @@ Certificate type enums.
 enum NetStack_CertificatePinningKind
 ```
 
-**描述**
+**描述：**
 
 Certificate pinning type enums.
 
@@ -72,7 +72,7 @@ Certificate pinning type enums.
 enum NetStack_HashAlgorithm
 ```
 
-**描述**
+**描述：**
 
 Hash algorithm enums.
 

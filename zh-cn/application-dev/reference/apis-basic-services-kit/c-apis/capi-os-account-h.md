@@ -29,7 +29,7 @@
 OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 ```
 
-**描述**
+**描述：**
 
 获取调用方进程所属的系统账号的名称。
 
@@ -42,11 +42,11 @@ OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 | char *buffer | 名称字符数组，其应具有能够存放名称和结束字符（'\0'）的空间，且最大长度为LOGIN_NAME_MAX。 |
 | size_t buffer_size | 名称字符数组的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | <ul>          <li>[OS_ACCOUNT_ERR_OK](capi-os-account-common-h.md#osaccount_errcode) 操作成功。</li>          <li>[OS_ACCOUNT_ERR_INTERNAL_ERROR](capi-os-account-common-h.md#osaccount_errcode) 内部错误。</li>          <li>[OS_ACCOUNT_ERR_INVALID_PARAMETER](capi-os-account-common-h.md#osaccount_errcode) 表示buffer为空指针或名称长度（包括结束字符'\0'）大于buffer_size。</li>          </ul> |
+| OsAccount_ErrCode | <ul>          <li>{@link OS_ACCOUNT_ERR_OK} 操作成功。</li><br>        <li>{@link OS_ACCOUNT_ERR_INTERNAL_ERROR} 内部错误。</li><br>        <li>{@link OS_ACCOUNT_ERR_INVALID_PARAMETER} 表示buffer为空指针或名称长度（包括结束字符'\0'）大于buffer_size。</li>          </ul> |
 
 ### OH_OsAccount_GetNameByLocalId()
 
@@ -54,7 +54,7 @@ OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, size_t name_size)
 ```
 
-**描述**
+**描述：**
 
 根据本地ID获取目标系统账号的名称。
 
@@ -70,10 +70,10 @@ OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, siz
 | char *name | 名称字符数组，其应具有能够存放名称和结束字符（'\0'）的空间，最大长度为LOGIN_NAME_MAX。 |
 | size_t name_size | 名称字符数组的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | <ul>          <li>[OS_ACCOUNT_ERR_OK](capi-os-account-common-h.md#osaccount_errcode) 操作成功。</li>          <li>[OS_ACCOUNT_ERR_PERMISSION_DENIED](capi-os-account-common-h.md#osaccount_errcode) 权限不足。</li>          <li>[OS_ACCOUNT_ERR_INTERNAL_ERROR](capi-os-account-common-h.md#osaccount_errcode) 内部错误。</li>          <li>[OS_ACCOUNT_ERR_INVALID_PARAMETER](capi-os-account-common-h.md#osaccount_errcode) name为空指针或名称长度（包括结束字符'\0'）大于name_size。</li>          <li>[OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND](capi-os-account-common-h.md#osaccount_errcode) 账号不存在。</li>          <li>[OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT](capi-os-account-common-h.md#osaccount_errcode) 受限账号。</li>          </ul> |
+| OsAccount_ErrCode | <ul>          <li>{@link OS_ACCOUNT_ERR_OK} 操作成功。</li><br>        <li>{@link OS_ACCOUNT_ERR_PERMISSION_DENIED} 权限不足。</li><br>        <li>{@link OS_ACCOUNT_ERR_INTERNAL_ERROR} 内部错误。</li><br>        <li>{@link OS_ACCOUNT_ERR_INVALID_PARAMETER} name为空指针或名称长度（包括结束字符'\0'）大于name_size。</li><br>        <li>{@link OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND} 账号不存在。</li><br>        <li>{@link OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT} 受限账号。</li>          </ul> |
 
 

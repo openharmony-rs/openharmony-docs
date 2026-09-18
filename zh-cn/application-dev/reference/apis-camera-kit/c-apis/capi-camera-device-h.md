@@ -55,7 +55,7 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 | Camera_Device* camera | 用于获取属性的Camera_Device。 |
 | uint32_t* orientation | 返回相机sensor角度属性。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -80,7 +80,7 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 | Camera_Device* camera | 用于获取属性的Camera_Device。 |
 | char** hostDeviceName | 返回远程设备名称属性。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -105,7 +105,7 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera
 | Camera_Device* camera | 用于获取属性的Camera_Device。 |
 | Camera_HostDeviceType* hostDeviceType | 远程设备类型属性。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -131,7 +131,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 | uint32_t** equivalentFocalLengths | 输出参数，返回等效焦距数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -156,7 +156,7 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 | const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
 | bool* isLogicalCamera | 输出参数，返回表示是否为逻辑摄像头的布尔值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -182,7 +182,7 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 | Camera_Device** constituentCameras | 输出参数，返回组成逻辑摄像头的物理摄像头集合指针数组。 |
 | uint32_t* size | 输出物理摄像头数量数组的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -208,7 +208,7 @@ Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Dev
 | Camera_Device* constituentCameras | 期望被释放的组成逻辑摄像头的物理摄像头集合。 |
 | uint32_t size | 物理摄像头数量数组的大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -233,7 +233,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 | const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
 | float* lensFocalLength | 输出参数，返回镜头焦距值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -258,7 +258,7 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 | const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
 | float* minimumFocusDistance | 输出参数，返回最小对焦距离。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -284,7 +284,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 | float** lens | 输出参数，返回镜头畸变参数数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -310,7 +310,7 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 | float** intrinsicCalibration | 输出参数，返回内参标定参数数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -336,7 +336,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 | float* width | 输出参数，返回传感器宽度（单位：毫米）。 |
 | float* height | 输出参数，返回传感器高度（单位：毫米）。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -362,7 +362,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 | uint32_t* width | 输出参数，返回像素阵列宽度（单位：像素）。 |
 | uint32_t* height | 输出参数，返回像素阵列高度（单位：像素）。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -387,7 +387,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 | const Camera_Device* camera | 用于获取属性的Camera_Device指针。 |
 | OH_Camera_SensorColorFilterArrangement* sensorCFA | 输出参数，返回传感器滤色阵列排列枚举值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -412,7 +412,7 @@ Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device
 | const Camera_Device* camera | 指向用于检索属性的Camera_Device的指针。 |
 | OH_Camera_AutomotiveCameraPosition* automotiveCameraPosition | 输出参数，返回Car设备摄像头位置枚举值。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

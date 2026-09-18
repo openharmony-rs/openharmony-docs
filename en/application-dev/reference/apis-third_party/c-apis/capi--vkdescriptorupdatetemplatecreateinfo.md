@@ -1,0 +1,4 @@
+# VkDescriptorUpdateTemplateCreateInfo
+
+## Overview
+

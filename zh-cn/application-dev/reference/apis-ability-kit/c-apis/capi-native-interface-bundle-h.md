@@ -23,6 +23,12 @@
 | [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md) | OH_NativeBundle_Metadata | 元数据信息。 |
 | [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md) | OH_NativeBundle_ModuleMetadata | 模块元数据的信息。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| FOUNDATION_APPEXECFWK_STANDARD_KITS_APPKIT_NATIVE_BUNDLE_INCLUDE_NATIVE_INTERFACE_BUNDLE_H | 提供查询应用包信息的功能，包括应用包名、应用指纹、应用appId等。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.BundleManager.BundleFramework.Core |
+
 ### 函数
 
 | 名称 | 描述 |
@@ -50,7 +56,7 @@ OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 
 **起始版本：** 9
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -68,7 +74,7 @@ char* OH_NativeBundle_GetAppId()
 
 **起始版本：** 11
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -86,7 +92,7 @@ char* OH_NativeBundle_GetAppIdentifier()
 
 **起始版本：** 11
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -104,7 +110,7 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 
 **起始版本：** 13
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -122,7 +128,7 @@ char* OH_NativeBundle_GetCompatibleDeviceType()
 
 **起始版本：** 14
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -146,7 +152,7 @@ bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 | -- | -- |
 | bool* isDebugMode | 表示应用是否处于调试模式，取值为true表示可调试模式，取值为false表示不可调试模式。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -170,7 +176,7 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 | -- | -- |
 | size_t* size | 表示模块元数据数组大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -194,14 +200,14 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* fileType | 表示待查询的特定文件类型，推荐使用{@link UTD类型}，比如：'general.plain-text'、'general.image'。目前也可以兼容使用{@link MIME type类型}和文件后缀名称，如：'text/xml' 、 '.png'等。文件后缀与文件类型的映射关系参见{@link UTD预置列表}。不支持传'\*\/\*'。 |
+| char* fileType | 表示待查询的特定文件类型，推荐使用{@link UTD类型}，比如：'general.plain-text'、'general.image'。目前也可以兼容使用{@link MIME type类型}<br>    和文件后缀名称，如：'text/xml' 、 '.png'等。文件后缀与文件类型的映射关系参见{@link UTD预置列表}。不支持传'\*\/\*'。 |
 | OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo | 表示返回的组件资源信息列表。 |
 | size_t* size | 表示返回的组件资源信息列表大小。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| BundleManager_ErrorCode | <ul><li>如果调用成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。</li><li>      如果调用方没有正确的权限，返回{@link BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED}。</li></ul> |
+| BundleManager_ErrorCode | <ul><li>如果调用成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。</li><li><br>    如果调用方没有正确的权限，返回{@link BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED}。</li></ul> |
 
 

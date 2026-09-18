@@ -1,7 +1,7 @@
 # OH_Rdb_Config
 
 ```c
-struct OH_Rdb_Config {...}
+typedef struct OH_Rdb_Config {...} OH_Rdb_Config
 ```
 
 ## 概述
