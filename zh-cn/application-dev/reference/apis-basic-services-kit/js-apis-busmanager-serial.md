@@ -341,14 +341,17 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 <!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
-// 取消监听串口数据接收
-port.offDataRead();
-
-// 取消指定的监听回调
+// 先注册回调
 let callback = (data: Uint8Array) => {
   console.info(`received data length: ${data.length}`);
 };
+port.onDataRead(callback);
+
+// 取消指定的监听回调
 port.offDataRead(callback);
+
+// 或者取消所有监听
+port.offDataRead();
 ```
 
 ### flush
@@ -783,14 +786,17 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 <!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
-// 取消监听串口断开事件
-port.offDisconnect();
-
-// 取消指定的监听回调
+// 先注册回调
 let disconnectedCallback = () => {
   console.info('serial port disconnected');
 };
+port.onDisconnect(disconnectedCallback);
+
+// 取消指定的监听回调
 port.offDisconnect(disconnectedCallback);
+
+// 或者取消所有监听
+port.offDisconnect();
 ```
 
 ## SerialPortInfo
