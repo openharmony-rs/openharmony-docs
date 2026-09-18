@@ -34,7 +34,7 @@ setMonitorForCrownEvents(handler: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为(event)=>{ return false/true; }。<br/>返回true时，旋转表冠事件不再分发给获焦的组件。<br/>返回false时，旋转表冠事件会继续分发给获焦组件。当回调的返回值异常时，例如返回值为undefined或无返回值，默认取值为false。<br/>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
+| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为(event) => { return true; }或(event) => { return false; }。<br/>返回true时，旋转表冠事件不再分发给获焦的组件。<br/>返回false时，旋转表冠事件会继续分发给获焦组件。当回调的返回值异常时，例如返回值为undefined或无返回值，默认取值为false。<br/>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
 
 
 **表1** CrownEvent对象属性列表
@@ -140,7 +140,7 @@ export default {
         setMonitorForCrownEvents((event) => {
             console.info('event timestamp is: ', event.timeStamp, ', angularVelocity is: ',
                 event.angularVelocity);
-            console.info('rotate is: ', event.rotate);
+            console.info('degree is: ', event.degree);
             return this.flag;
         })
     },

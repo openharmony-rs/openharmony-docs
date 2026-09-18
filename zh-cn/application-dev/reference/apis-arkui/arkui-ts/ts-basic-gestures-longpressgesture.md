@@ -186,7 +186,7 @@ struct LongPressGestureExample {
   build() {
     Column() {
       Text('LongPress onAction:' + this.count).fontSize(28)
-        // 单指长按文本触发该手势事件
+        // 至少一指长按文本触发该手势事件
         .gesture(
         // 设置长按手势识别器识别的手势的最大移动距离为200px
         LongPressGesture({ repeat: true, allowableMovement: 200 })

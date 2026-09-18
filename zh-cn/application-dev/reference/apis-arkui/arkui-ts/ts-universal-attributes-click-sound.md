@@ -22,7 +22,7 @@ ArkTS-Dyn: enableClickSoundEffect(enabled: boolean | undefined): T
 
 ArkTS-Sta: enableClickSoundEffect(enabled: boolean | undefined): this
 
-设置组件是否启用默认点击音效。是否能够发音依赖设备声音相关的设置，如静音模式下不会播放音效。
+设置组件是否启用默认点击音效。是否能够播放音效依赖设备声音相关的设置，如静音模式下不会播放音效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,9 +51,9 @@ ArkTS-Sta: enableClickSoundEffect(enabled: boolean | undefined): this
 ## 示例
 ### 示例1（禁用默认点击音效）
 
-该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义发音。自定义发音可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
+该示例通过配置enableClickSoundEffect属性，实现组件禁用默认点击音效，开发者可以在onClick回调中调用音频相关接口自定义播放音效。自定义播放音效可参考[SoundPool播放短音频指南](../../../media/media/using-soundpool-for-playback.md)。
 
-从API version 24开始，新增[enableClickSoundEffect](#enableclicksoundeffect)属性。
+从API version 24开始，新增[enableClickSoundEffect](#enableclicksoundeffect)接口。
 
 ArkTS-Dyn示例：
 ```ts
@@ -68,7 +68,7 @@ struct Index {
         .width('200')
         .enableClickSoundEffect(false)
         .onClick(() => {
-          // 此处自定义发音，参考SoundPool播放短音频指南
+          // 此处自定义播放点击音效，参考SoundPool播放短音频指南
         })
     }
     .width('100%')
@@ -97,7 +97,7 @@ struct Example {
         .width('200')
         .enableClickSoundEffect(false)
         .onClick(() => {
-          // 此处自定义发音，参考SoundPool播放短音频指南
+          // 此处自定义播放点击音效，参考SoundPool播放短音频指南
         })
     }
     .width('100%')

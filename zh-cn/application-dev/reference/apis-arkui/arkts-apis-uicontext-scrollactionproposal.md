@@ -79,6 +79,7 @@ import {
   BaseGestureHandlingProposal,
   GestureHandlingResolution,
   ScrollActionProposal,
+  GestureShortcut,
 } from '@ohos.arkui.UIContext'
 
 @Entry

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-CSS是描述HML页面结构的样式语言。所有组件均存在系统默认样式，也可在页面CSS样式文件中对组件、页面自定义不同的样式。
+CSS是描述HML页面样式的样式语言。所有组件均存在系统默认样式，也可在页面CSS样式文件中对组件、页面自定义不同的样式。
 
 
 ## 样式导入
@@ -105,7 +105,7 @@ css伪类是选择器中的关键字，用于指定要选择元素的特殊状�
 | 名称       | 支持组件                                | 描述                                       |
 | -------- | ----------------------------------- | ---------------------------------------- |
 | :active  | input[type="button"]           | 表示被用户激活的元素，如：被用户按下的按钮。轻量级智能穿戴上伪类选择器上仅支持background-color&nbsp;和background-image&nbsp;的样式设置。 |
-| :checked | input[type="checkbox"、type="radio"] | 表示checked属性为true的元素。轻量级智能穿戴上伪类选择器上仅支持background-color&nbsp;和background-image&nbsp;的样式设置。 |
+| :checked | input[type="checkbox"], input[type="radio"] | 表示checked属性为true的元素。轻量级智能穿戴上伪类选择器上仅支持background-color&nbsp;和background-image&nbsp;的样式设置。 |
 
 伪类示例如下，设置按钮的:active伪类可以控制被用户按下时的样式：
 
@@ -128,7 +128,7 @@ css伪类是选择器中的关键字，用于指定要选择元素的特殊状�
 
 ## 样式预编译
 
-预编译提供了利用特有语法生成css的程序，可以提供变量、运算等功能，令开发者更便捷地定义组件样式，目前支持less、sass和scss的预编译。使用样式预编译时，需要将原css文件后缀改为less、sass或scss，如index.css改为index.less、index.sass或index.scss。
+样式预编译支持使用特有语法生成CSS，并提供变量、运算等功能，便于开发者定义组件样式。目前支持Less、Sass和SCSS。使用样式预编译时，需要将原css文件后缀改为less、sass或scss，如index.css改为index.less、index.sass或index.scss。
 
 - 当前文件使用样式预编译，例如将原index.css改为index.less：
 
