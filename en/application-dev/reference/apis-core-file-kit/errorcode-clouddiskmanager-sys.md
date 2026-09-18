@@ -360,11 +360,11 @@ The number of active placeholder hydration tasks has reached the limit.
 
 **Description**
 
-The number of active hydration tasks has reached the limit.
+The number of pending (queued) hydration tasks has reached the limit.
 
 **Possible Causes**
 
-The number of active hydration tasks of a single cloud disk application reaches five, or the global number of active hydration tasks reaches ten.
+The number of pending hydration tasks of a single cloud disk application reaches 20, or the number of pending hydration tasks globally reaches 40.
 
 **Solution**
 

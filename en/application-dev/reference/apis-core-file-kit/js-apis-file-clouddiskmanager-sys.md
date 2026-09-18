@@ -244,7 +244,7 @@ try {
 
 off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-Unsubscribes from hydration progress events. If **callback** is specified, only the specified callback is unsubscribed. If **callback** is not specified, all 'hydrateProgress' callbacks registered on the current instance are unsubscribed. If the current instance has not subscribed to the event, calling this API throws error code 34400021.
+Unsubscribes from hydration progress events. All 'hydrateProgress' callbacks registered on the current instance are unsubscribed regardless of whether **callback** is specified. If the current instance has not subscribed to the event, calling this API throws error code 34400021.
 
 **Since**: 26.1.0
 
@@ -259,7 +259,7 @@ Unsubscribes from hydration progress events. If **callback** is specified, only 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | type | 'hydrateProgress' | Yes| Type of the event to unsubscribe from. The value is 'hydrateProgress' (hydration progress event).|
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | No| Callback to be unregistered. If this parameter is not specified, all 'hydrateProgress' callbacks registered on the current instance are unsubscribed.|
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | No| Callback to be unregistered. All 'hydrateProgress' callbacks registered on the current instance are unsubscribed regardless of this parameter.|
 
 **Error codes**
 
@@ -310,7 +310,7 @@ Starts or cancels hydration of a placeholder file. This API is applicable to the
 >
 > - If **callbackType** is **FETCH_DATA**, hydration starts. The promise is fulfilled once the hydration task is created and queued. This only indicates that the task has been created, not that the file has started downloading or the hydration is complete. To obtain the actual progress, subscribe to [on('hydrateProgress')](#onhydrateprogress26). The file hydration state changes from PENDING and IN_PROGRESS to the final state COMPLETED or CANCELLED.
 > - If **callbackType** is **CANCEL_FETCH_DATA**, hydration is cancelled. If an in-progress hydration task exists for the target file, the task is cancelled (the progress callback finally receives the CANCELLED state). If no in-progress hydration task exists, the promise is rejected with error code 34400032.
-> - The number of hydration tasks is limited (five for a single cloud disk application and ten globally). When the limit is reached, the promise is rejected with error code 34400034. In this case, wait for some tasks to complete or be cancelled, and then try again.
+> - The number of pending (queued) hydration tasks is limited (20 for a single cloud disk application and 40 globally). When the limit is reached, the promise is rejected with error code 34400034. In this case, wait for some hydration tasks to complete or be cancelled, and then try again. In addition, a maximum of five hydration tasks of a single cloud disk application and ten hydration tasks globally can run at the same time, and excess tasks wait in the queue without an error being reported.
 
 **Since**: 26.1.0
 
@@ -497,7 +497,7 @@ Describes the progress of a hydration task, which is reported by the callback su
 
 | Name     | Type  | Read-Only| Optional| Description     |
 | --------- | ------ | ---- | ---- | ---------------------------- |
-| filePath | string | No  | No  | File path, which is the same as that passed in to [hydratePlaceholder](#hydrateplaceholder26).    |
+| filePath | string | No  | No  | File path.    |
 | state   | [HydrateProgressState](#hydrateprogressstate26) | No  | No  | Hydration progress state.  |
 | processedSize   | number | No  | No  | Number of bytes hydrated. This field is valid only when **state** is IN_PROGRESS.  |
 | totalSize   | number | No  | No  | Total size of the file being hydrated, in bytes.  |
