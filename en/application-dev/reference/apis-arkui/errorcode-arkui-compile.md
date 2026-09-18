@@ -17,7 +17,7 @@
 **Description**<br>
 This error code is reported when the callback function for the @Watch decorator is not defined.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The variable decorated with @Watch is defined in the struct, but the corresponding callback function is missing.
 
 **Solution**<br>
@@ -28,9 +28,9 @@ Define a callback function with the same name in the struct to handle the watche
 \'@BuilderParam\' property can only initialized by \'@Builder\' function or \'@LocalBuilder\' method in struct.
 
 **Description**<br>
-This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder.
+This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder or @LocalBuilder.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @BuilderParam decorated variable is being initialized using a regular function or variable of another type.
 
 **Solution**<br>
@@ -43,7 +43,7 @@ The property \'xxx\' cannot have multiple state management decorators.
 **Description**<br>
 This error code is reported when a variable is decorated with multiple state management decorators.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The same variable is decorated with multiple state management decorators.
 
 **Solution**<br>
@@ -56,7 +56,7 @@ The \'xxx\' property \'yyy\' must be specified a default value.
 **Description**<br>
 This error code is reported when variables decorated with @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, or @Provide are not initialized.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Variables decorated with @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, or @Provide are not initialized.
 
 **Solution**<br>
@@ -69,7 +69,7 @@ The \'xxx\' property cannot be specified a default value.
 **Description**<br>
 This error code is reported when initialization is performed on variables decorated with decorators such as @Consume, @Link, and @ObjectLink.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Initialization is performed when defining variables decorated with decorators such as @Consume, @Link, and @ObjectLink.
 
 **Solution**<br>
@@ -82,7 +82,7 @@ The property \'xxx\' must specify a type.
 **Description**<br>
 This error code is reported when the type is not specified for a variable decorated with a decorator.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The type is not specified for a variable decorated with a decorator.
 
 **Solution**<br>
@@ -95,7 +95,7 @@ Specify the type for the variable decorated with the decorator.
 **Description**<br>
 This error code is reported when the type of a variable decorated with @ObjectLink is not a class or union type decorated with @Observed defined in an .ets file.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The variable decorated with @ObjectLink is initialized using a class that is not decorated with @Observed or another incompatible type.
 
 **Solution**<br>
@@ -108,7 +108,7 @@ The \'xxx\' property \'yyy\' cannot be a \'zzz\' object.
 **Description**<br>
 This error code is reported when a variable decorated with @State or other state decorators is of type CustomDialogController.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A state variable decorator is used on a variable of type CustomDialogController.
 
 **Solution**<br>
@@ -121,7 +121,7 @@ The decorator \'xxx\' cannot have the same name as the built-in style attribute 
 **Description**<br>
 This error code is reported when a custom decorator has the same name as a built-in property.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The custom decorator name conflicts with a built-in property name.
 
 **Solution**<br>
@@ -134,7 +134,7 @@ Regular variable \'xxx\' can not be decorated with \'@Watch\'.
 **Description**<br>
 This error code is reported when a regular variable is decorated with @Watch.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Watch decorator is used on a regular variable.
 
 **Solution**<br>
@@ -147,7 +147,7 @@ Use @Watch only on state variables decorated with appropriate state variable dec
 **Description**<br>
 This error code is reported when the parameter of the @Watch decorator is not a string.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A non-string value is used as the parameter for the @Watch decorator.
 
 **Solution**<br>
@@ -160,7 +160,7 @@ The inner decorator \'xxx\' cannot be used together with custom decorator.
 **Description**<br>
 This error code is reported when built-in component decorators such as @State are used together with custom decorators.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A custom decorator is applied to a variable that already has a built-in component decorator, such as @State.
 
 **Solution**<br>
@@ -173,7 +173,7 @@ The \'xxx\' component can only be nested in the \'yyy\' parent component.
 **Description**<br>
 This error code is reported when a component's parent is not the specified parent component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The parent component of a component (for example, **Blank**) is not within the allowed range of parent components.
 
 **Solution**<br>
@@ -186,7 +186,7 @@ The Button component with a label parameter can not have any child.
 **Description**<br>
 This error code is reported when a **Button** component with a label contains child components.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The **Button** component includes both a label and child components, which is not allowed.
 
 **Solution**<br>
@@ -194,12 +194,12 @@ Remove either the label content or the child component content (including the br
 
 ## 10905203 .stateStyles Syntax Check Error
 **Error Message**<br>
-\'.stateStyles\' doesn't conform standard.
+\'.stateStyles\' doesn't conform to standard.
 
 **Description**<br>
 This error code is reported when the **stateStyles** property does not comply with the syntax.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The **stateStyles** property is incorrectly specified or does not conform to the required syntax.
 
 **Solution**<br>
@@ -212,7 +212,7 @@ Ensure that different states in **stateStyles** are correctly specified.
 **Description**<br>
 This error code is reported when a statement does not comply with the UI component syntax.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The code does not follow the basic UI component syntax.
 
 **Solution**<br>
@@ -225,7 +225,7 @@ Then statement cannot be null in if statement.
 **Description**<br>
 This error code is reported when the **if** statement is missing a **then** clause.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The **then** statement in the **if** syntax is empty.
 
 **Solution**<br>
@@ -238,7 +238,7 @@ Condition expression cannot be null in if statement.
 **Description**<br>
 This error code is reported when the **if** statement is missing a condition.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The judgment condition of the **if** statement is empty.
 
 **Solution**<br>
@@ -251,7 +251,7 @@ In the trailing lambda case, \'xxx\' must have one and only one property decorat
 **Description**<br>
 This error code is reported when multiple variables decorated with @BuilderParam are defined in the trailing closure scenario, or a variable decorated with @BuilderParam contains parameters.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 In the trailing closure scenario, there can be only one variable decorated with @BuilderParam (excluding parameters).
 
 **Solution**<br>
@@ -264,7 +264,7 @@ Only UI component syntax can be written here.
 **Description**<br>
 This error code is reported when content other than UI syntax is used.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Non-UI syntax is used.
 
 **Solution**<br>
@@ -277,7 +277,7 @@ In an \'@Entry\' decorated component, the \'build\' method can have only one roo
 **Description**<br>
 This error code is reported when multiple root containers are defined in the **build()** method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple root containers are defined in the build() method.
 
 **Solution**<br>
@@ -290,7 +290,7 @@ The struct \'xxx\' must have at least and at most one 'build' method.
 **Description**<br>
 This error code is reported when multiple **build()** methods are defined in the struct component, or the **build()** method is missing.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple **build()** methods are defined in the struct, or the **build()** method is missing.
 
 **Solution**<br>
@@ -303,7 +303,7 @@ The \'@CustomDialog\' decorated custom component must contain a property of the 
 **Description**<br>
 This error code is reported when a custom component decorated with @CustomDialog lacks a member property of the CustomDialogController type.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The custom component decorated with @CustomDialog does not have a member property of the CustomDialogController type.
 
 **Solution**<br>
@@ -316,7 +316,7 @@ Structs are not allowed to inherit from classes or implement interfaces.
 **Description**<br>
 This error code is reported when a struct is defined as a subclass or implementation of another class or API.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The struct extends another class or implements another API.
 
 **Solution**<br>
@@ -329,7 +329,7 @@ Static methods in custom components cannot be decorated by \'@LocalBuilder\'.
 **Description**<br>
 This error code is reported when the @LocalBuilder decorator is used on static methods in custom components.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @LocalBuilder decorator is used on static methods.
 
 **Solution**<br>
@@ -342,7 +342,7 @@ Remove the **static** keyword.
 **Description**<br>
 This error code is reported when parameters are included in functions decorated with @Styles.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Parameters are included in functions decorated with @Styles.
 
 **Solution**<br>
@@ -355,7 +355,7 @@ The \'build\' method can not have arguments.
 **Description**<br>
 This error code is reported when parameters are included in the **build()** method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Parameters are included in the **build()** method.
 
 **Solution**<br>
@@ -368,7 +368,7 @@ The static variable of struct cannot be used together with built-in decorators.
 **Description**<br>
 This error code is reported when a built-in decorator is used to decorate a static variable in the struct.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A built-in decorator is used to decorate a static variable in the struct.
 
 **Solution**<br>
@@ -381,7 +381,7 @@ Property \'xxx\' cannot initialize using \'\$\' to create a reference to a varia
 **Description**<br>
 This error code is reported when $ is used incorrectly to decorate a variable. $ can only be used on child component attributes decorated with @Link.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The \$ symbol is used to decorate a property member that is decorated with @Prop or other property members not decorated with @Link in a child component.
 
 **Solution**<br>
@@ -394,7 +394,7 @@ The \'xxx\' property \'yyy\' cannot be assigned to the \'zzz\' property \'nnn\'.
 **Description**<br>
 This error code is reported when the value assignment between parent and child components is incorrect.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A regular variable is used to initialize a member variable decorated with @Link in a child component.
 
 **Solution**<br>
@@ -407,7 +407,7 @@ The property \'xxx\' in the custom component \'yyy\' is missing (mandatory to sp
 **Description**<br>
 This error code is reported when variables decorated with @Link are not initialized from the parent component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The member variable decorated with @Link in the child component is not initialized when the parent component calls the child component.
 
 **Solution**<br>
@@ -420,7 +420,7 @@ The property \'xxx\' in the custom component \'yyy\' cannot be initialized here 
 **Description**<br>
 This error code is reported when variables decorated with @StorageProp, @StorageLink, @Consume, or other decorators are initialized when a parent component calls a child component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Member variables decorated with @StorageProp, @StorageLink, and @Consume are initialized when the parent component calls the child component.
 
 **Solution**<br>
@@ -433,7 +433,7 @@ When the two-way binding syntax is used, the initial value of property \'xxx\' m
 **Description**<br>
 This error code is reported when non-variables are used for parent-child transfer using **!!** with a V2 component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Functions, constants, or literals are used for parent-child transfer using **!!** with a V2 component.
 
 **Solution**<br>
@@ -446,7 +446,7 @@ When the two-way binding syntax is used, the variable \'xxx\' must be decorated 
 **Description**<br>
 This error code is reported when @Param is not used together with @Event when **!!** is used with a V2 component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 When a V2 component is used, the child component variable is not decorated with @Param or the @Event decorated callback method is not defined.
 
 **Solution**<br>
@@ -459,7 +459,7 @@ The optional character can not be used in the initial value of property \'xxx\'.
 **Description**<br>
 This error code is reported when optional symbols are used to transfer @Param decorated variables defined by child components in the V2 scenario.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 In the V2 scenario, an optional symbol is used for initializing an @Param decorated variable in the child component.
 
 **Solution**<br>
@@ -472,7 +472,7 @@ Avoid using optional symbols when initializing variables decorated with @Param i
 **Description**<br>
 This error code is reported when the initialization of the @Prop and @BuilderParam decorated variables is incorrect.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Require decorator is used with @Prop and @BuilderParam to decorate child component variables, but these variables fail to be initialized when the parent component calls the child component.
 
 **Solution**<br>
@@ -485,7 +485,7 @@ A V2 component cannot be used with any member property decorated by \'@Link\' in
 **Description**<br>
 This error code is reported when a V2 component is used together with the @Link decorator of a V1 component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 V1 components containing the @Link decorator are used within V2 components.
 
 **Solution**<br>
@@ -498,7 +498,7 @@ Property \'xxx\' in the \'@ComponentV2\' component \'yyy\' is not allowed to be 
 **Description**<br>
 This error code is reported when a property decorated with a V2 decorator is assigned to a V1 component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The V1 component called is assigned with a property decorated with a V2 decorator.
 
 **Solution**<br>
@@ -511,7 +511,7 @@ The \'xxx\' property \'yyy\' in the custom component \'zzz\' cannot be initializ
 **Description**<br>
 This error code is reported when variables decorated with specific decorators are initialized during parent-child component calls.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A variable decorated with a specific decorator in a child component is not correctly initialized when called in the parent component.
 
 **Solution**<br>
@@ -524,7 +524,7 @@ In a struct decorated with \'@ComponentV2\', \'@Require\' can only be used with 
 **Description**<br>
 This error code is reported when the @Require decorator is used with a decorator other than @Param in the V2 scenario.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Require decorator is used with a decorator other than @Param in the V2 scenario.
 
 **Solution**<br>
@@ -537,7 +537,7 @@ When a variable decorated with \'@Once\', it must also be decorated with \'@Para
 **Description**<br>
 This error code is reported when the @Once decorator is used without the @Param decorator in the V2 scenario.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The variable decorated with @Once is not decorated with @Param in the V2 scenario.
 
 **Solution**<br>
@@ -550,7 +550,7 @@ When a variable decorated with \'@Param\' is not assigned a default value, it mu
 **Description**<br>
 This error code is reported when a variable decorated with @Param in a V2 component is not assigned a default value and is not decorated with @Require.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 In the V2 scenario, the @Param decorator is used to decorate variables that are not assigned default values or decorated with the @Require decorator.
 
 **Solution**<br>
@@ -563,7 +563,7 @@ Assign a default value to the variable decorated with @Param or decorate it with
 **Description**<br>
 This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Other types of variables or regular functions are used to initialize variables decorated with @BuilderParam.
 
 **Solution**<br>
@@ -576,7 +576,7 @@ The property \'xxx\' must specify a type.
 **Description**<br>
 This error code is reported when the member property type of a state variable fails verification.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The type of the state variable is not declared.
 
 **Solution**<br>
@@ -589,7 +589,7 @@ Declare the type for the state variable. The type must meet the verification req
 **Description**<br>
 This error code is reported when @Entry in the service widget does not support the specified input parameter.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 An invalid parameter is passed to @Entry in the service widget.
 
 **Solution**<br>
@@ -602,7 +602,7 @@ Rectify the issue based on the error message.
 **Description**<br>
 This error code is reported when decorators such as @Extend do not have exactly one parameter.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 When using decorators such as @Extend, no parameter is provided or multiple parameters are provided.
 
 **Solution**<br>
@@ -615,7 +615,7 @@ Unknown resource name \'xxx\'.
 **Description**<br>
 This error code is reported when the resource name fails verification.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The provided resource name is incorrect.
 
 **Solution**<br>
@@ -628,7 +628,7 @@ Unknown resource type \'xxx\'.
 **Description**<br>
 This error code is reported when the resource type fails verification.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The provided resource type is incorrect.
 
 **Solution**<br>
@@ -641,7 +641,7 @@ Unknown resource source \'xxx\'.
 **Description**<br>
 This error code is reported when the resource source fails verification.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The provided resource source is incorrect.
 
 **Solution**<br>
@@ -654,7 +654,7 @@ Invalid resource file parameter. Enter a value in the format of \'xxx.yyy.zzz\'.
 **Description**<br>
 This error code is reported when the resource is incorrectly referenced.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The format used to reference resources is incorrect.
 
 **Solution**<br>
@@ -667,7 +667,7 @@ No such \'xxx\' resource in current module.
 **Description**<br>
 This error code is reported when the **\$rawfile\(\)** references a resource that does not exist.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The provided resource does not exist.
 
 **Solution**<br>
@@ -680,7 +680,7 @@ The wrapBuilder\'s parameter should be a \'@Builder\' function.
 **Description**<br>
 This error code is reported when the parameter of **wrapBuilder** is not a global function decorated with @Builder.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The parameter of **wrapBuilder** is not an @Builder decorated function.
 
 **Solution**<br>
@@ -693,7 +693,7 @@ Change the parameter of **wrapBuilder** to a global function decorated with @Bui
 **Description**<br>
 This error code is reported when the method decorated with the @Styles decorator contains parameters.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The method decorated with the @Styles decorator contains parameters.
 
 **Solution**<br>
@@ -706,7 +706,7 @@ The function can not be decorated by \'@Extend\' and \'@AnimatedExtend\' at the 
 **Description**<br>
 This error code is reported when both @AnimatedExtend and @Extend decorators are used to decorate the same API.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Both the @AnimatedExtend and @Extend decorators are used to decorate the same API.
 
 **Solution**<br>
@@ -719,7 +719,7 @@ Remove either the @Extend or @AnimatedExtend decorator.
 **Description**<br>
 This error code is reported when invalid decorators such as @State are used to decorate methods.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Property decorators such as @State are used to decorate methods.
 
 **Solution**<br>
@@ -732,7 +732,7 @@ The component \'xxx\' can only have the child component \'yyy\'.
 **Description**<br>
 This error code is reported when unsupported child components are used in components such as **ContainerSpan**.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A component such as **ContainerSpan** is used incorrectly with a child component outside the supported range.
 
 **Solution**<br>
@@ -745,7 +745,7 @@ The \'xxx\' component can have only one child component.
 **Description**<br>
 This error code is reported when components such as **Button** that allows only a single child component contains multiple child components.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple child components are defined in a component that allows only a single child component.
 
 **Solution**<br>
@@ -758,7 +758,7 @@ When the component \'xxx\' set \'yyy\' as \'zzz\', it can only have a single chi
 **Description**<br>
 This error code is reported when multiple child components are defined for a specific component attribute that allows only a single child component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple child components are defined for a specific component attribute that allows only a single child component.
 
 **Solution**<br>
@@ -771,7 +771,7 @@ The component \'xxx\' can't have any child.
 **Description**<br>
 This error code is reported when components such as **Image** contain braces (child components).
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Child components are defined for components that do not allow child components, such as **Image**.
 
 **Solution**<br>
@@ -784,7 +784,7 @@ When the component \'xxx\' set \'yyy\' as \'zzz\', it can't have any child.
 **Description**<br>
 This error code is reported when child components are defined for the target component attribute that does not allow child components.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Child components are defined for the target component attribute that does not allow child components.
 
 **Solution**<br>
@@ -795,13 +795,13 @@ Delete the child components from the target component.
 Use the \'xxx\' decorator only in the global scope.
 
 **Description**<br>
-This error code is reported when decorators such as @Extend is used to decorate a member property method of a class or struct.
+This error code is reported when decorators such as @Extend are used to decorate a member property method of a class or struct.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A decorator such as @Extend is used in a class or struct.
 
 **Solution**<br>
-Follow the usage guidelines of decorators.
+Follow the usage guidelines of decorators such as @Extend and use them to decorate global functions.
 
 ## 10905337 Incorrect Decorator Use
 **Error Message**<br>
@@ -810,7 +810,7 @@ The \'xxx\' decorator can only be used with \'struct\'.
 **Description**<br>
 This error code is reported when a struct decorator is used to decorate non-structs.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Struct decorators such as @Component and @ComponentV2 are used to decorate non-structs, such as functions.
 
 **Solution**<br>
@@ -823,7 +823,7 @@ The \'xxx\' decorator can only be used in a \'struct\' decorated with \'@Compone
 **Description**<br>
 This error code is reported when a V2 member decorator is used in a struct not decorated with @ComponentV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The V2 member decorator is used in a struct decorated with @Component.
 
 **Solution**<br>
@@ -836,7 +836,7 @@ The \'xxx\' decorator can only be used in a \'struct\' decorated with \'@Compone
 **Description**<br>
 This error code is reported when the member decorator of V1 is used in a struct not decorated with @Component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The V1 member decorator is used in a struct decorated with @ComponentV2.
 
 **Solution**<br>
@@ -849,7 +849,7 @@ A class decorated by \'@Observed\' cannot inherit from a class decorated by \'@O
 **Description**<br>
 This error code is reported when an @Observed decorated class inherits from an @ObservedV2 decorated class.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 An @Observed decorated class inherits from an @ObservedV2 decorated class.
 
 **Solution**<br>
@@ -862,7 +862,7 @@ A class decorated by \'@ObservedV2\' cannot inherit from a class decorated by \'
 **Description**<br>
 This error code is reported when an @ObservedV2 decorated class inherits from an @Observed decorated class.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 An @ObservedV2 decorated class inherits from an @Observed decorated class.
 
 **Solution**<br>
@@ -873,9 +873,9 @@ Inherit from a class decorated with @ObservedV2 or change the class decorator to
 A class can not be decorated by \'@Observed\' and \'@ObservedV2\' at the same time.
 
 **Description**<br>
-This error code is reported when a class is decorated with both @Observed and @ObservedV2.
+This error code is reported when a class is decorated with both \'@Observed\' and \'@ObservedV2\'.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Both @Observed and @ObservedV2 are used to decorate the same class.
 
 **Solution**<br>
@@ -888,11 +888,11 @@ The \'xxx\' can decorate only member variables in a \'class\'.
 **Description**<br>
 This error code is reported when decorators designed to decorate member variables in a class are used to decorate methods instead.
 
-**Possible Cause**<br>
-Decorators designed to decorate member variables in a class, such as @Type, are used to decorate methods instead.
+**Possible Causes**<br>
+You use decorators such as @Type to decorate methods in the class.
 
 **Solution**<br>
-Remove the decorators in question from methods in the class.
+Delete the decorators such as @Type from the method in the class.
 
 ## 10905341 Incorrect Mixed Use of @Type and @Observed
 **Error Message**<br>
@@ -901,7 +901,7 @@ The \'xxx\' decorator can not be used in a \'class\' decorated with \'@Observed\
 **Description**<br>
 This error code is reported when the decorator used in an @Observed decorated class is not supported.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The decorator used in an @Observed decorated class is not supported.
 
 **Solution**<br>
@@ -912,13 +912,13 @@ Remove the unsupported decorator.
 The \'xxx\' decorator can not be used in a \'class\' decorated with \'@Sendable\'.
 
 **Description**<br>
-This error code is reported when the decorator used in an @Sendable decorated class is not supported.
+This error code is reported when the decorator such as @Type used in an @Sendable decorated class is not supported.
 
-**Possible Cause**<br>
-The decorator used in an @Sendable decorated class is not supported.
+**Possible Causes**<br>
+The decorator such as @Type used in an @Sendable decorated class is not supported.
 
 **Solution**<br>
-Remove the unsupported decorator.
+Remove the unsupported decorator such as @Type.
 
 ## 10905343 Incorrect Use of Decorators Designed to Decorate Member Methods in an @ObservedV2 Decorated Class
 **Error Message**<br>
@@ -927,7 +927,7 @@ The \'xxx\' can decorate only member \'yyy\' within a \'class\' decorated with \
 **Description**<br>
 This error code is reported when decorators designed to decorate member methods in an @ObservedV2 decorated class are used to decorate member methods in classes decorated with @Observed.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Decorators designed to decorate member methods in an @ObservedV2 decorated class are used to decorate member methods in classes decorated with @Observed.
 
 **Solution**<br>
@@ -940,7 +940,7 @@ Use the decorator in question, such as @Monitor, only in @ObservedV2 decorated c
 **Description**<br>
 This error code is reported when a decorator designed for V1 is used with an @ObservedV2 decorated class.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A decorator designed for V1, such as @Track, is used with an @ObservedV2 decorated class.
 
 **Solution**<br>
@@ -953,8 +953,8 @@ The \'xxx\' decorator can decorate only member variables of a class.
 **Description**<br>
 This error code is reported when a decorator designed for use within a class is applied outside of a class.
 
-**Possible Cause**<br>
-A decorator designed for use within a class, such as @Track, are applied outside of a class.
+**Possible Causes**<br>
+A decorator designed for use within a class, such as @Track, is applied outside of a class.
 
 **Solution**<br>
 Make sure the decorators designed for use within a class are applied only within a class.
@@ -966,7 +966,7 @@ Make sure the decorators designed for use within a class are applied only within
 **Description**<br>
 This error code is reported when decorators such as @Local, @Param, @Once, @Event, @Provider, @Consume, and @BuilderParam are used to decorate non-member properties in @ComponentV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Local, @Param, @Once, @Event, @Provider, @Consume, or @BuilderParam decorator is used to decorate a non-member property in @ComponentV2.
 
 **Solution**<br>
@@ -979,7 +979,7 @@ Use @Local, @Param, @Once, @Event, @Provider, @Consume, and @BuilderParam only t
 **Description**<br>
 This error code is reported when method decorators, such as @LocalBuilder and @Monitor, are used to decorate non-methods.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Method decorators, such as @LocalBuilder and @Monitor, are used to decorate property variables, global functions, or methods in classes.
 
 **Solution**<br>
@@ -992,7 +992,7 @@ Use the method decorators only to decorate methods.
 **Description**<br>
 This error code is reported when @Computed is used to decorate a method that is not a getter.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Computed decorator is used to decorate a non-getter method.
 
 **Solution**<br>
@@ -1005,7 +1005,7 @@ A function can only be decorated with one of the \'@AnimatedExtend\', \'@Builder
 **Description**<br>
 This error code is reported when two different method decorators are defined on the same method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple method decorators are defined on the same method.
 
 **Solution**<br>
@@ -1018,7 +1018,7 @@ Duplicate \'xxx\' decorators for method are not allowed.
 **Description**<br>
 This error code is reported when the same decorator is applied to the same method multiple times.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The same decorator is used repeatedly for a method.
 
 **Solution**<br>
@@ -1031,7 +1031,7 @@ The member property or method can not be decorated by multiple built-in decorato
 **Description**<br>
 This error code is reported when multiple built-in decorators are used to decorate the same member property or method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple built-in decorators are used on the same member property or method.
 
 **Solution**<br>
@@ -1044,7 +1044,7 @@ The type of the \'xxx\' property can not be a class decorated with \'@ObservedV2
 **Description**<br>
 This error code is reported when a class decorated with @ObservedV2 is used as the type of a state variable.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A class decorated with @ObservedV2 is used as the type of a state variable.
 
 **Solution**<br>
@@ -1057,7 +1057,7 @@ Avoid using classes decorated with @ObservedV2 as the type for state variables.
 **Description**<br>
 This error code is reported when @Concurrent is used to decorate a specific function.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Concurrent decorator is used to decorate a specific function.
 
 **Solution**<br>
@@ -1070,7 +1070,7 @@ Do not use the @Concurrent decorator on specific functions.
 **Description**<br>
 This error code is reported when @Concurrent is used to decorate methods.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Concurrent decorator is used to decorate methods.
 
 **Solution**<br>
@@ -1083,7 +1083,7 @@ The struct \'xxx\' cannot have the same name as the built-in component \'xxx\'.
 **Description**<br>
 This error code is reported when the name of a custom component matches the name of a built-in component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The custom component has the same name as a built-in component.
 
 **Solution**<br>
@@ -1096,7 +1096,7 @@ The struct \'xxx\' cannot have the same name as the built-in attribute \'xxx\'.
 **Description**<br>
 This error code is reported when the name of a custom component matches the name of a built-in component attribute method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The custom component has the same name as an attribute method of a built-in component.
 
 **Solution**<br>
@@ -1109,7 +1109,7 @@ The struct \'xxx\' can not be decorated with \'@ComponentV2\' and \'@Component\'
 **Description**<br>
 This error code is reported when a struct is decorated with multiple incompatible decorators such as @ComponentV2, @Component, @Reusable, and @CustomDialog.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple decorators that are not compatible with each other are used on the same struct.
 
 **Solution**<br>
@@ -1122,7 +1122,7 @@ Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for 
 **Description**<br>
 This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Solution**<br>
@@ -1135,7 +1135,7 @@ A page configured in \'main_pages.json\' or \'build-profile.json5\' must have on
 **Description**<br>
 This error code is reported when the @Entry decorator is missing or incorrectly used on the home page.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The home page is not decorated with the @Entry decorator.
 
 **Solution**<br>
@@ -1148,7 +1148,7 @@ A page can't contain more than one \'@Entry\' decorator.
 **Description**<br>
 This error code is reported when multiple @Entry decorators are used on a single page.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple @Entry decorators are used on a single page.
 
 **Solution**<br>
@@ -1161,7 +1161,7 @@ A page can contain at most 10 \'@Preview\' decorators.
 **Description**<br>
 This error code is reported when more than 10 @Preview decorators are used on a single page.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 More than 10 @Preview decorators are used on the same page.
 
 **Solution**<br>
@@ -1174,7 +1174,7 @@ A struct must have a name.
 **Description**<br>
 This error code is reported when a struct is not named.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 No name is provided for the struct.
 
 **Solution**<br>
@@ -1187,7 +1187,7 @@ Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for 
 **Description**<br>
 This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog and is called by the parent component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Solution**<br>
@@ -1200,7 +1200,7 @@ The member property or method can not be decorated by multiple decorators.
 **Description**<br>
 This error code is reported when multiple decorators are used on the same member property or method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Multiple decorators are used on the same member property or method.
 
 **Solution**<br>
@@ -1213,7 +1213,7 @@ The module name \'xxx\' can not be the same as the inner component name.
 **Description**<br>
 This error code is reported when the name of a custom component matches the name of a built-in component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The custom component has the same name as a built-in component.
 
 **Solution**<br>
@@ -1226,7 +1226,7 @@ UI component \'xxx\' cannot be used in this place.
 **Description**<br>
 This error code is reported when the ArkUI built-in component is used outside the allowed context, such as outside the @Builder or build() method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The built-in component is used outside the @Builder or build() method, which does not meet the usage restrictions.
 
 **Solution**<br>
@@ -1239,7 +1239,7 @@ The struct name cannot contain reserved tag name: \'xxx\'.
 **Description**<br>
 This error code is reported when the name of a custom component matches the name of an existing component.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The custom component has the same name as an existing component.
 
 **Solution**<br>
@@ -1252,7 +1252,7 @@ Should not add return type to the function that is decorated by Styles.
 **Description**<br>
 This error code is reported when functions decorated with @Styles return function types.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The return value of the function decorated with @Styles is of the function type.
 
 **Solution**<br>
@@ -1265,7 +1265,7 @@ A struct declaration without the \'default\' modifier must have a name.
 **Description**<br>
 This error code is reported when a struct declaration without the default modifier is not named.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The struct is declared without the default modifier and is not named.
 
 **Solution**<br>
@@ -1278,7 +1278,7 @@ Should not add return type to the function that is decorated by Extend.
 **Description**<br>
 This error code is reported when functions decorated with @Extend return function types.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The return value of the function decorated with @Extend is of the function type.
 
 **Solution**<br>
@@ -1291,7 +1291,7 @@ A property decorated by \'xxx\' cannot be used with two-bind syntax.
 **Description**<br>
 This error code is reported when the @Computed decorator is incorrectly used with two-way binding syntax.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @Computed decorator and two-way binding syntax are used together.
 
 **Solution**<br>
@@ -1304,7 +1304,7 @@ A property decorated by \'xxx\' cannot define a set method.
 **Description**<br>
 This error code is reported when the @Computed decorator is used on a setter method.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The setter method is decorated using the @Computed decorator.
 
 **Solution**<br>
@@ -1317,7 +1317,7 @@ When the two-way binding syntax is used, do not assign a value to \'xxx\' variab
 **Description**<br>
 This error code is reported when a value is assigned to the variable in an @Event decorated method while two-way binding syntax is used.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Two-way binding syntax is used and a value is passed to the @Event method.
 
 **Solution**<br>
@@ -1330,7 +1330,7 @@ The \'@Reusable\' and \'@ReusableV2\' decorators cannot be applied simultaneousl
 **Description**<br>
 This error code is reported when @Reusable and @ReusableV2 are used together.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 Both @Reusable and @ReusableV2 are used to decorate a component.
 
 **Solution**<br>
@@ -1343,7 +1343,7 @@ Do not use @Reusable and @ReusableV2 together. Choose one appropriate decorator.
 **Description**<br>
 This error code is reported when @ReusableV2 is used to decorate custom components that are not decorated with @ComponentV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The @ReusableV2 decorator is used to decorate components that are not decorated with @ComponentV2.
 
 **Solution**<br>
@@ -1356,7 +1356,7 @@ A custom component decorated with \'@Component\' cannot contain child components
 **Description**<br>
 This error code is reported when components decorated with @Component contain child components decorated with @ReusableV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A component decorated with @Component calls a child component decorated with @ReusableV2.
 
 **Solution**<br>
@@ -1369,7 +1369,7 @@ A custom component decorated with \'@Reusable\' cannot contain any child compone
 **Description**<br>
 This error code is reported when components decorated with @Reusable contain child components decorated with @ReusableV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A component decorated with @Reusable calls a child component decorated with @ReusableV2.
 
 **Solution**<br>
@@ -1382,7 +1382,7 @@ A custom component decorated with \'@ReusableV2\' cannot contain child component
 **Description**<br>
 This error code is reported when components decorated with @ReusableV2 contain child components decorated with @Reusable.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 A component decorated with @ReusableV2 calls a child component decorated with @Reusable.
 
 **Solution**<br>
@@ -1395,7 +1395,7 @@ Property \'xxx\' must be initialized through the component constructor.
 **Description**<br>
 This error code is reported when the variable decorated with @Require is not initialized during parent component construction.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The variable decorated with @Require is not initialized during parent component construction.
 
 **Solution**<br>
@@ -1408,7 +1408,7 @@ The template attribute of the Repeat component cannot contain any custom compone
 **Description**<br>
 This error code is reported when **Repeat.template** contains custom components decorated with @ReusableV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The **template** property of **Repeat** contains a custom component decorated with @ReusableV2.
 
 **Solution**<br>
@@ -1421,7 +1421,7 @@ The reuse attribute is only applicable to custom components decorated with both 
 **Description**<br>
 This error code is reported when the **reuse** attribute is incorrectly applied to components that are not properly decorated for reuse functionality.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The **reuse** attribute is not used with custom components that are decorated with both @ComponentV2 and @ReusableV2.
 
 **Solution**<br>
@@ -1434,7 +1434,7 @@ The reuseId attribute is not applicable to custom components decorated with both
 **Description**<br>
 This error code is reported when **reuseId** is used for custom components decorated with @ComponentV2 and @ReusableV2.
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 **reuseId** is used for custom components decorated with @ComponentV2 and @ReusableV2.
 
 **Solution**<br>
@@ -1447,8 +1447,307 @@ The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 **Description**<br>
 This error code is reported at runtime when the ArkUI state management V1 decorator is used for variables of the **Function** or **() => void** type. Since API version 23, this issue is intercepted in the compilation phase to avoid potential runtime exceptions. The ArkUI state management V1 decorators include [\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management/arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md).
 
-**Possible Cause**<br>
+**Possible Causes**<br>
 The V1 decorator is used for a variable of the **Function** or **() => void** type.
 
 **Solution**<br>
 Delete the V1 decorator used for the variable of the **Function** or **() => void** type based on the error description.
+
+## 10905360 Name of the @Extend Decorated Function Cannot Be the Same as an Attribute Name
+**Error Message**<br>
+The \'@Extend\' function cannot have the same name as the built-in style attribute \'xxx\' of the component \'yyy\'.
+
+**Description**<br>
+This error code is reported when the name of the [\@Extend](../../../application-dev/ui/state-management/arkts-extend.md) decorated function is the same as the name of a built-in attribute of the corresponding component.
+
+**Possible Causes**<br>
+You name the \@Extend decorated function of the component the same as a built-in attribute of the component.
+
+**Solution**<br>
+Modify the name of the \@Extend decorated function to ensure that it is different from the name of any built-in attribute of the component.
+
+## 10905361 Variables Decorated with \@Env Cannot Have Initial Values
+**Error Message**<br>
+The \'@Env\' property cannot be specified a default value.
+
+**Description**<br>
+This error code is reported when variables decorated with [\@Env](../../../application-dev/ui/state-management/arkts-environment.md) are assigned initial values.
+
+**Possible Causes**<br>
+You assign initial values to variables decorated with \@Env.
+
+**Solution**<br>
+Avoid assigning initial values to variables decorated with \@Env.
+
+##  10905250 \@Env Decorator Can Be Used Only in Structs Decorated with \@Component and \@ComponentV2
+**Error Message**<br>
+The \'@Env\' decorator can only be used in structs decorated by \'@Component\' or \'@ComponentV2\'.
+
+**Description**<br>
+This error code is reported when the \@Env decorator is used in structs other than those decorated with \@Component and \@ComponentV2.
+
+**Possible Causes**<br>
+You use the @Env decorator in a class or globally.
+
+**Solution**<br>
+Ensure that the \@Env decorator is used only in structs decorated with \@Component and \@ComponentV2.
+
+##  10905251 \@Env Decorator Can Be Used Only to Decorate Instances of a Specific Class or Its Child Classes
+**Error Message**<br>
+The \'@Env\' decorator can only decorate \'WindowSizeLayoutBreakpointInfo\', \'SizeInVP\', \'Size\', \'UIEnvWindowAvoidAreaInfoPX\', \'UIEnvWindowAvoidAreaInfoVP\' classes or their child classes.
+
+**Description**<br>
+This error code is reported when the \@Env decorator is used to decorate instances of classes other than a specific class or its child classes.
+
+**Possible Causes**<br>
+You use the \@Env decorator to decorate instances of classes other than the specified type and its child classes.
+
+**Solution**<br>
+Use the \@Env decorator to decorate only instances of the specific class and its child classes.
+
+##  10905252 Variables Decorated with \@Env Can Only Initialize the State Variables Decorated with \@Param When a Struct Decorated with \@ComponentV2 Is Constructed
+**Error Message**<br>
+Within structs decorated with \'@ComponentV2\', \'@Env\' can only initialize variables decorated with \'@Param\'.
+
+**Description**<br>
+This error code is reported in the following scenario: When a struct decorated with \@ComponentV2 is constructed, variables decorated with \@Env initialize state variables decorated with decorators other than \@Param.
+
+**Possible Causes**<br>
+When constructing a struct decorated with \@ComponentV2, you use variables decorated with \@Env to initialize state variables decorated with decorators other than \@Param.
+
+**Solution**<br>
+Do not use variables decorated with \@Env to initialize state variables decorated with V2 decorators other than \@Param.
+
+## 10905253 Variables Decorated with \@Env Can Only Initialize Common Variables When a Struct Decorated with \@Component Is Constructed
+**Error Message**<br>
+Within structs decorated with \'@Component\', \'@Env\' can only initialize regular (non-decorated) variables.
+
+**Description**<br>
+This error code is reported in the following scenario: When a struct decorated with \@Component is constructed, variables decorated with \@Env initialize variables other than common variables.
+
+**Possible Causes**<br>
+When constructing a struct decorated with \@Component, you use variables decorated with \@Env to initialize state variables.
+
+**Solution**<br>
+When constructing a struct decorated with \@Component, do not use variables decorated with \@Env to initialize state variables.
+
+## 10905364 Enhanced Verification on the Data Source of State Variables Decorated with \@Link
+**Error Message**<br>
+The type of the parent component's state variable initializing the \'@Link\' variable \'xxx\' must match the \'@Link\' variable's declared type.
+
+**Description**<br>
+This error code is reported when the data source used by the parent component to initialize the state variable decorated with \@Link in the child component is not a state variable of the corresponding type.
+
+**Possible Causes**<br>
+You use the properties of a state variable or a state variable of an incorrect type to initialize the state variables decorated with \@Link.
+
+**Solution**<br>
+Use the state variable of the corresponding type to initialize the state variables decorated with \@Link.
+
+## 10905365 \@SyncMonitor Decorator Accepts Only Constant Strings as Parameters and Does Not Allow Variables to Be Passed
+**Error Message**<br>
+Only constant expressions are supported as parameters in \'@SyncMonitor\'. Variables are not allowed.
+
+**Description**<br>
+This error code is reported when the following condition is not met: The [\@SyncMonitor](../../../application-dev/ui/state-management/arkts-new-syncmonitor.md) decorator accepts only constant strings as parameters and does not allow variables to be passed.
+
+**Possible Causes**<br>
+You pass a variable, constant, or function's return value as the parameter of the \@SyncMonitor decorator.
+
+**Solution**<br>
+To ensure the certainty of the input value, pass a constant string as the parameter of the \@SyncMonitor decorator.
+
+## 10905366 \@SyncMonitor Cannot Observe Non-existent Variables or Non-state Variables (Except in Wildcard Mode)
+**Error Message**<br>
+\'@SyncMonitor\' cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.
+
+**Description**<br>
+This error code is reported when the following condition is not met: \@SyncMonitor cannot observe non-existent variables or non-state variables (except in wildcard mode).
+
+**Possible Causes**<br>
+You pass a non-existent variable or a non-state variable in the parameters of the \@SyncMonitor decorator.
+
+**Solution**<br>
+Pass an existing state variable in the parameters of the \@SyncMonitor decorator.
+
+## 10905367 Symbol '.*' Must Be Placed at the End of the String in the Wildcard-based Observation Scenario of \@SyncMonitor and \@Monitor
+**Error Message**<br>
+In wildcard-based monitoring scenarios with \'xxx\', the .* pattern must be placed at the end of the string.
+
+**Description**<br>
+This error code is reported when symbol '.*' is not placed at the end of the string in the wildcard-based observation scenario of \@SyncMonitor and \@Monitor.
+
+**Possible Causes**<br>
+You place symbol '.*' in an incorrect position in the wildcard-based observation scenario of \@SyncMonitor or \@Monitor.
+
+**Solution**<br>
+Place symbol '.*' at the end of the string.
+
+## 10905368 Strict Key-Value Matching Between Parameters of the \@Env Decorator and Decorated Variable Types
+**Error Message**<br>
+Invalid parameter. State variables decorated with \'@Env\' of type \'xxx\' can only accept \'yyy\'.
+
+**Description**<br>
+This error code is reported when the strict key-value matching between parameters of the \@Env decorator and decorated variable types is not met.
+
+**Possible Causes**<br>
+You do not pass values based on the strict key-value matching between parameters of the \@Env decorator and decorated variable types.
+
+**Solution**<br>
+Pass the correct decorator parameters based on the matching.
+
+## 10905369 \@ComponentReuse Decorated Function Must Define Specific Parameter Types in the Struct Decorated with \@Component
+**Error Message**<br>
+In a struct decorated with \'@Component\', the function decorated with \'@ComponentReuse\' has the following input parameter: params : Record\<string, Object | null | undefined\>.
+
+**Description**<br>
+This error code is reported when the \@ComponentReuse decorated function does not define specific parameter types in the struct decorated with \@Component.
+
+**Possible Causes**<br>
+No parameter is defined or the parameter type is incorrect in the function decorated with \@ComponentReuse in the struct decorated with \@Component.
+
+**Solution**<br>
+Define the corresponding parameter type in the function decorated with \@ComponentReuse.
+
+## 10905370 \@ComponentReuse Decorated Function Cannot Have Input Parameters in the Struct Decorated with \@ComponentV2
+**Error Message**<br>
+Methods decorated with \'@ComponentReuse\' in \'@ComponentV2\' cannot have input parameters.
+
+**Description**<br>
+This error code is reported when the \@ComponentReuse decorated function has input parameters in the struct decorated with \@ComponentV2.
+
+**Possible Causes**<br>
+You define parameters in the function decorated with \@ComponentReuse in the struct decorated with \@ComponentV2.
+
+**Solution**<br>
+Delete the defined parameters from the function decorated with \@ComponentReuse.
+
+## 10905371 Method Decorated with a Specific Lifecycle Decorator Cannot Have Input Parameters
+**Error Message**<br>
+Methods decorated with \'xxx\' cannot have input parameters.
+
+**Description**<br>
+This error code is reported when the method decorated with a specific lifecycle decorator (for example, [\@ComponentRecycle](../../../application-dev/ui/state-management/arkts-custom-components-new-lifecycle.md)) has input parameters.
+
+**Possible Causes**<br>
+You define parameters in the method decorated with a specific lifecycle decorator.
+
+**Solution**<br>
+Delete the defined parameters from the function decorated with a specific lifecycle decorator.
+
+## 10905372 Value Passed to enableWildcard Must Be a Boolean Keyword When \@Monitor Uses Wildcards
+**Error Message**<br>
+The value of 'enableWildcard' must be a Boolean keyword.
+
+**Description**<br>
+This error code is reported when the value passed to **enableWildcard** is not a Boolean keyword.
+
+**Possible Causes**<br>
+When \@Monitor uses wildcards, you pass a non-Boolean keyword value to the **enableWildcard** attribute.
+
+**Solution**<br>
+Use the true or false keyword for the **enableWildcard** attribute.
+
+## 10905373 poolAccepts Cannot Accept a Non-reusable Component After Global Reuse Is Enabled
+**Error Message**<br>
+\'xxx\' is not a \'@Reusable\' or \'@ReusableV2\' component and cannot be added to poolAccepts.
+
+**Description**<br>
+This error code is reported when the **poolAccepts** attribute cannot accept a non-reuse component after global reuse is enabled.
+
+**Possible Causes**<br>
+After global reuse is enabled, a non-reusable component is passed to the **poolAccepts** attribute.
+
+**Solution**<br>
+When global reuse is used, only reused components can be passed to **poolAccepts**.
+
+## 10905374 Component Itself Cannot Be Passed in poolAccepts After Global Reuse Is Enabled
+**Error Message**<br>
+\'xxx\' cannot list itself in poolAccepts. The pool is not yet ready when \'xxx\' is being constructed.
+
+**Description**<br>
+This error code is reported when a component itself cannot be passed in the **poolAccepts** attribute after global reuse is enabled because the reuse pool is not ready during component build.
+
+**Possible Causes**<br>
+After global reuse is enabled, the component itself is passed in the **poolAccepts** attribute.
+
+**Solution**<br>
+When global reuse is used, do not pass the component itself in **poolAccepts**.
+
+## 10905375 reusePool and poolAccepts Must Be Passed When Global Reuse Is Enabled for the Component
+**Error Message**<br>
+\'xxx\' must provide both reusePool and poolAccepts. Neither can be omitted when using the global reuse pool.
+
+**Description**<br>
+This error code is reported when **reusePool** and **poolAccepts** are not both passed at the same time for the global reuse pool.
+
+**Possible Causes**<br>
+Only one of the **reusePool** and **poolAccepts** attributes is passed when you use the global reuse pool.
+
+**Solution**<br>
+Pass both **reusePool** and **poolAccepts** when using the global reuse pool.
+
+## 10905376 poolAccepts Cannot Be an Empty Array for the Global Reuse Pool
+**Error Message**<br>
+PoolAccepts cannot be an empty array. Provide at least one \'@Reusable\' or \'@ReusableV2\' component.
+
+**Description**<br>
+This error code is reported when **poolAccepts** is an empty array for the global reuse pool. (At least one reusable component must be passed.)
+
+**Possible Causes**<br>
+You pass an empty array to the **poolAccepts** attribute for the global reuse pool.
+
+**Solution**<br>
+Pass at least one reusable component in **poolAccepts** for the global reuse pool.
+
+## 10905377 reusePool of the Global Reuse Pool Must Be of the Correct Type
+**Error Message**<br>
+ReusePool must be either \'shared\' or \'perInstance\'. The value \'xxx\' is not valid.
+
+**Description**<br>
+This error code is reported when an invalid value (such as \'xxx\') is passed in **reusePool** for the global reuse pool.
+
+**Possible Causes**<br>
+You pass an invalid value other than \'shared\' or \'perInstance\' in the **reusePool** attribute for the global reuse pool.
+
+**Solution**<br>
+Pass \'shared\' or \'perInstance\' in the **reusePool** attribute for the global reuse pool.
+
+## 10905378 reusePool of the Global Reuse Pool Must Be a String
+**Error Message**<br>
+ReusePool can only accept string literal.
+
+**Description**<br>
+This error code is reported when the **reusePool** attribute of the global reuse pool is not a string.
+
+**Possible Causes**<br>
+You pass a variable, constant, or function's return value in the **reusePool** attribute of the global reuse pool.
+
+**Solution**<br>
+Ensure that the **reusePool** attribute of the global reuse pool is a string.
+
+## 10905381 Variable Type Decorated with \@CustomEnv or \@Env Decorator Must Be Consistent with the Generic Type of the Decorator Parameter
+**Error Message**<br>
+The type of the property decorated with \'xxx\' must be consistent with the generic type of the key.
+
+**Description**<br>
+This error code is reported when the variable type decorated with \@CustomEnv or \@Env Decorator is inconsistent with the generic type of the decorator parameter.
+
+**Possible Causes**<br>
+The variable type decorated with the \@CustomEnv or \@Env Decorator is inconsistent with the generic type of the decorator parameter.
+
+**Solution**<br>
+Ensure that the variable type is consistent with the generic type of the decorator parameter.
+
+## 10905382 Parameter in \@CustomEnv Must Comply with a Specific Syntax Format
+**Error Message**<br>
+Invalid key for \'@CustomEnv\', \'@CustomEnv\' key must be global const and created from CustomEnvKey.create\<T\>().
+
+**Description**<br>
+This error code is reported when the parameter in the \@CustomEnv decorator does not comply with a specific syntax format (constants initialized by **CustomEnvKey.create\<T\>()**).
+
+**Possible Causes**<br>
+The parameter passed in the \@CustomEnv decorator does not comply with a specific syntax format.
+
+**Solution**<br>
+Modify the parameter passed in the \@CustomEnv decorator based on the requirements of constants initialized by **CustomEnvKey.create\<T\>()**.
