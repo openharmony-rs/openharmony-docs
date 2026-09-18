@@ -14,7 +14,7 @@ typedef struct OH_PrivacyProtectInfo {...} OH_PrivacyProtectInfo
 
 隐私保护信息结构体。
 
-用于在屏幕录制场景中对系统窗口和敏感应用进行隐私保护。通过设置该结构体的成员变量，可以控制是否开启系统窗口隐私保护和敏感应用隐私保护，避免在屏幕录制过程中泄露隐私信息。systemWindowProtection控制系统窗口级别的隐私保护，sensitiveAppProtection控制敏感应用级别的隐私保护，适用于需要在屏幕录制时保护用户隐私数据的场景。
+用于在屏幕录制场景中对系统窗口和敏感应用进行隐私保护。systemWindowProtection控制系统窗口级别的隐私保护，sensitiveAppProtection控制敏感应用级别的隐私保护，适用于需要在屏幕录制时保护用户隐私数据的场景。
 
 **起始版本：** 24
 
