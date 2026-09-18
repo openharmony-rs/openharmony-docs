@@ -396,7 +396,7 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 
 | 参数名    | 类型                          | 必填 | 说明                                        |
 | --------- | --------------------------- | ---- | ------------------------------------------- |
-| queryType | [CustomType](#customtype)[] | 是   | 自定义类型：包含用户基本信息、界面选项卡配置、代码编译选项和系统设置项。 |
+| queryType | [CustomType](#customtype)[] | 是   | 自定义类型：包含用户基本信息、界面选项卡配置、合集信息和设置项。 |
 
 **返回值：**
 
