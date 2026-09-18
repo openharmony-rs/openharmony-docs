@@ -145,7 +145,7 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -279,7 +279,7 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -405,7 +405,7 @@ ArkTS-Sta: delete(table: string, predicates: dataSharePredicates.DataSharePredic
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -482,7 +482,7 @@ ArkTS-Sta: delete(table: string, predicates: dataSharePredicates.DataSharePredic
 
 | **错误码ID** | **错误信息**      |
 |-----------| --------------------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -552,7 +552,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 | **错误码ID** | **错误信息**           |
 |-----------| ------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+ |
@@ -621,7 +621,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | **错误码ID** | **错误信息**      |
 |-----------| --------------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+ |
@@ -695,7 +695,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | **错误码ID** | **错误信息**         |
 |-----------| ----------- |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+ |
@@ -764,9 +764,9 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | **错误码ID** | **错误信息**     |
 |-----------|--------------|
-| 202       | if permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
-| 801       | Capability not supported.  |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
@@ -874,9 +874,9 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | **错误码ID** | **错误信息**            |
 |-----------|---------------------------|
-| 202       | if permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800014  | The target instance is already closed.<br>适用版本：12+      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
@@ -979,7 +979,7 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 | **错误码ID** | **错误信息**           |
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.                      |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+           |
 | 14800014  | The target instance is already closed.<br>适用版本：12+                        |
@@ -1052,7 +1052,7 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 | **错误码ID** | **错误信息**      |
 |-----------|------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
-| 801       | Capability not supported.                 |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.          |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+       |
 | 14800014  | The target instance is already closed.<br>适用版本：12+      |
@@ -1126,7 +1126,7 @@ querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, ca
 | **错误码ID** | **错误信息**       |
 |-----------|--------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
-| 801       | Capability not supported.       |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported. |
 | 14800000  | Inner error.            |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+         |
 | 14800014  | The target instance is already closed.<br>适用版本：12+          |
@@ -1204,7 +1204,7 @@ ArkTS-Sta: lockCloudContainer(): Promise&lt;int&gt;
 
 | **错误码ID** | **错误信息**            |
 |-----------|---------------------------|
-| 202       | Permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1247,7 +1247,7 @@ unlockCloudContainer(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**            |
 |-----------|---------------------------|
-| 202       | Permission verification failed, application which is not a system application uses system API.  |
+| 202       | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1290,7 +1290,7 @@ restore(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
 | 14800011  | The current operation failed because the database is corrupted.<br>适用版本：12+ |
@@ -1373,7 +1373,7 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -1455,7 +1455,7 @@ ArkTS-Sta: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicate
 
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
@@ -1550,7 +1550,7 @@ ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&g
 
 | **错误码ID** | **错误信息**     |
 |-----------|---------------|
-| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 202       | Permission verification failed. A non-system application calls a system API. |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -1616,7 +1616,7 @@ ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 | **错误码ID** | **错误信息**          |
 |-----------| ------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | The capability is not supported because the database is not a vector DB. |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The database is not a vector DB. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
