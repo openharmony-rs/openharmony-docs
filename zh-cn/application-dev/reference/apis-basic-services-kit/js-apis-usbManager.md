@@ -886,28 +886,22 @@ async function bulkTransfer() {
     console.error(`connect device failed`);
     return;
   }
-  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+  for (let i = 0; i < device.configs?.[0]?.interfaces?.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicePipe, interfaces);
-      if (ret !== 0) {
-        console.error(`claim interface failed`);
-        continue;
-      }
+      if (ret !== 0) { continue; }
       let buffer = new Uint8Array(128);
-      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
-        console.info(`bulkTransfer = ${ret}`);
-        ret = usbManager.releaseInterface(devicePipe, interfaces);
-        console.info(`releaseInterface = ${ret}`);
-        if (i === device.configs?.[0]?.interfaces.length - 1) {
-          usbManager.closePipe(devicePipe);
-        }
+      await usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((size: number) => {
+        console.info(`bulkTransfer = ${size}`);
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
+      usbManager.releaseInterface(devicePipe, interfaces);
     }
   }
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -977,7 +971,8 @@ async function usbSubmitTransfer() {
     return value.direction === 0 && value.type === 2;
   });
   // 声明接口控制权，force参数为true表示强制获取
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);
@@ -1084,7 +1079,8 @@ async function usbCancelTransfer() {
     return;
   }
   // 声明接口控制权，force参数为true表示强制获取。
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);
@@ -1214,12 +1210,14 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   let flag = usbManager.hasAccessoryRight(accList?.[0]);
   console.info(`hasAccessoryRight success, ret:${flag}`);
 } catch (error) {
-  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`hasAccessoryRight error ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1260,13 +1258,15 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function requestAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
     let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     console.info(`requestAccessoryRight success, ret:${flag}`);
   } catch (error) {
-    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`requestAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1303,6 +1303,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function cancelAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1313,7 +1314,8 @@ async function cancelAccessoryRight() {
     usbManager.cancelAccessoryRight(accList?.[0]);
     console.info(`cancelAccessoryRight success`);
   } catch (error) {
-    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`cancelAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1344,11 +1346,13 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`);
 } catch (error) {
-  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`getAccessoryList error ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1393,6 +1397,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 <!--code_no_check-->
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 async function openAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1407,7 +1412,8 @@ async function openAccessory() {
     console.info('readSync ret: ' + readLength.toString(10));
     usbManager.closeAccessory(handle);
   } catch (error) {
-    console.error(`openAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`openAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1442,6 +1448,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function closeAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1453,7 +1460,8 @@ async function closeAccessory() {
     usbManager.closeAccessory(handle);
     console.info(`closeAccessory success`);
   } catch (error) {
-    console.error(`closeAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`closeAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1523,7 +1531,8 @@ async function resetUsbDevice() {
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicePipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err) {
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
     console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
   usbManager.closePipe(devicePipe);
@@ -1570,8 +1579,8 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
-  reqType: 0x80,
-  target: 0,
+  reqType: usbManager.USBControlRequestType.USB_REQUEST_TYPE_STANDARD,
+  target: usbManager.USBRequestTargetType.USB_REQUEST_TARGET_DEVICE,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
