@@ -330,7 +330,7 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFol
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) *syncFolder | 表示具有占位符支持的同步文件夹。 |
+| [const OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) *syncFolder | 待注册的带占位符同步根路径。 |
 
 **返回：**
 
@@ -451,8 +451,8 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **sy
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) **syncFolders | 输出参数。返回[OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)的数组，用于存储同步文件夹。 |
-| size_t *count | 输出参数。返回同步文件夹的数量。 |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) **syncFolders | 输出参数。返回带占位符的同步根路径数组[OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)。 |
+| size_t *count | 输出参数。当前应用注册的带占位符同步根数量。当没有带占位符同步根时为0。 |
 
 **返回：**
 
