@@ -382,7 +382,7 @@
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
     {
         if (parameter == nullptr) {
-            // 异常处理
+            // 异常处理。
         }
         // 输入帧buffer对应的index，送入InIndexQueue队列。
         // 输入帧的数据avformat送入InFormatQueue队列。
