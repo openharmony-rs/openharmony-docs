@@ -25,9 +25,9 @@ import { cloudDiskManager } from '@kit.CoreFileKit';
 
 同步根访问器，为系统文件管理应用提供获取所有已注册的同步根列表（包括路径、包名、状态等详细信息）的能力。
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 ### constructor
 
@@ -35,11 +35,11 @@ constructor()
 
 SyncFolderAccessor的构造函数，用于创建SyncFolderAccessor类的实例。
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
-**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
 **错误码：**
 
@@ -82,11 +82,11 @@ getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
 获取所有注册的同步根信息，适用于系统文件管理应用展示和管理三方云盘同步根列表的场景。使用Promise异步回调。
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
-**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
 **返回值：**
 
@@ -143,11 +143,11 @@ try {
 
 云盘系统访问器，为系统文件管理应用提供对三方云盘占位符文件执行水合与脱水的能力，并支持订阅水合进度。在使用前，需要先创建CloudDiskSystemAccessor实例。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 ### constructor<sup>26+</sup>
 
@@ -155,11 +155,11 @@ constructor()
 
 CloudDiskSystemAccessor的构造函数，用于创建CloudDiskSystemAccessor类的实例。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 **错误码：**
 
@@ -191,13 +191,13 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 
 订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。同一实例仅可注册一个回调，未取消订阅前再次调用本接口将抛出34400022错误码。可通过[off('hydrateProgress')](#offhydrateprogress26)取消订阅。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -247,22 +247,22 @@ try {
 
 off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-取消订阅水合进度事件。传入callback时仅取消指定的回调；不传入callback时取消当前实例已注册的所有'hydrateProgress'回调。当前实例尚未订阅时调用本接口将抛出34400021错误码。
+取消订阅水合进度事件。无论是否传入callback，均取消当前实例已注册的所有'hydrateProgress'回调。当前实例尚未订阅时调用本接口将抛出34400021错误码。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'hydrateProgress' | 是 | 取消订阅的事件类型，取值为'hydrateProgress'（水合进度事件）。 |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 否 | 待取消的回调函数。缺省时取消当前实例已注册的所有'hydrateProgress'回调。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 否 | 待取消的回调函数。此参数传入与否均取消当前实例已注册的所有'hydrateProgress'回调。 |
 
 **错误码：**
 
@@ -313,15 +313,15 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 >
 > - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。实际进度需通过[on('hydrateProgress')](#onhydrateprogress26)订阅获取，文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
 > - callbackType取CANCEL_FETCH_DATA时取消水合：目标文件存在进行中的水合任务时将其取消（进度回调最终收到CANCELLED状态）；不存在进行中的水合任务时Promise被拒绝并返回34400032错误码。
-> - 水合任务数量存在上限（单个云盘应用5个、全局10个），达到上限时Promise被拒绝并返回34400034错误码，可等待部分任务完成或取消后再重试。
+> - 待处理（排队中）的水合任务数量存在上限（单个云盘应用20个、全局40个），达到上限时Promise被拒绝并返回34400034错误码，可等待部分水合任务完成或取消后再重试。此外，单个云盘应用同时执行的水合任务最多5个、全局最多10个，超出部分排队等待，不会报错。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -397,13 +397,13 @@ dehydrateFile(filePath: string): Promise&lt;void&gt;
 > - 文件已处于未水合状态时调用本接口为幂等操作，Promise正常兑现。
 > - 文件存在进行中的水合任务时不允许脱水，Promise被拒绝并返回34400019错误码。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -463,9 +463,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 表示同步根信息，包含同步根的路径、包名、状态以及显示别名等详细信息，用于系统文件管理应用识别和管理不同云盘的同步根。
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 类型   | 只读 | 可选 | 说明      |
 | --------- | ------ | ---- | ---- | ---------------------------- |
@@ -479,9 +479,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，三方云盘同步根的状态。
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
@@ -492,15 +492,15 @@ accessor.dehydrateFile(filePath).then(() => {
 
 描述水合任务的进度信息，通过[on('hydrateProgress')](#onhydrateprogress26)订阅的回调获取。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 类型   | 只读 | 可选 | 说明      |
 | --------- | ------ | ---- | ---- | ---------------------------- |
-| filePath | string | 否   | 否   | 文件路径，与调用[hydratePlaceholder](#hydrateplaceholder26)时传入的文件路径一致。     |
+| filePath | string | 否   | 否   | 文件路径。     |
 | state   | [HydrateProgressState](#hydrateprogressstate26) | 否   | 否   | 水合进度状态。   |
 | processedSize   | number | 否   | 否   | 已水合的字节数，仅state为IN_PROGRESS时有效。   |
 | totalSize   | number | 否   | 否   | 正在水合的文件总大小，单位为字节。   |
@@ -509,11 +509,11 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，水合任务的水合进度状态。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
@@ -526,11 +526,11 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，云盘文件数据获取及脱水授权的回调类型。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
@@ -542,11 +542,11 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，水合任务的优先级。
 
-**起始版本：** 26.1.0
+**起始版本**： 26.1.0
 
-**系统接口：**此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力：**SystemCapability.FileManagement.CloudDiskManager
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
