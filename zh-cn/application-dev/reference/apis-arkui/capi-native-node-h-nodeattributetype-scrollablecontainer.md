@@ -1652,7 +1652,7 @@ NODE_WATER_FLOW_COLUMN_TEMPLATE = 1010001
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用[columnsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#columnstemplate)('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
-普通模板串（非repeat形式）中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
 设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
@@ -1679,7 +1679,7 @@ NODE_WATER_FLOW_ROW_TEMPLATE = 1010002
 
 设置当前瀑布流组件布局行的数量，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。可使用[rowsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#rowstemplate)('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
-普通模板串（非repeat形式）中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
 设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
@@ -1998,7 +1998,7 @@ NODE_GRID_COLUMN_TEMPLATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID = 1013000
 
 设置当前Grid组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用[columnsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
-普通模板串（非repeat形式）中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
 设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
@@ -2025,7 +2025,7 @@ NODE_GRID_ROW_TEMPLATE = 1013001
 
 设置当前Grid布局行的数量或最小行高值，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。可使用[rowsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate)('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
 track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
-普通模板串（非repeat形式）中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
 设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
