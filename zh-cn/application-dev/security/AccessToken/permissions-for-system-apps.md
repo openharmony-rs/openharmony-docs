@@ -471,7 +471,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_HVAC
 
@@ -487,7 +487,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.FRIDGE_INFO
 
@@ -503,7 +503,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_FRIDGE
 
@@ -519,7 +519,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.SEAT_INFO
 
@@ -535,7 +535,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SEAT
 
@@ -551,7 +551,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DOOR_INFO
 
@@ -567,7 +567,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DOOR
 
@@ -583,7 +583,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.LOCK_INFO
 
@@ -599,7 +599,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_LOCK
 
@@ -615,7 +615,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.WINDOW_INFO
 
@@ -631,7 +631,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WINDOW
 
@@ -647,7 +647,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.SUNROOF_INFO
 
@@ -663,7 +663,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SUNROOF
 
@@ -679,7 +679,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_STEERINGWHEEL
 
@@ -695,7 +695,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ENERGY_PORT_COVER_INFO
 
@@ -711,7 +711,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ENERGY_PORT_COVER
 
@@ -727,7 +727,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.EXTERIOR_LIGHT_INFO
 
@@ -743,7 +743,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_LIGHT
 
@@ -759,7 +759,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_CAMERA_INFO
 
@@ -775,7 +775,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_CAMERA
 
@@ -791,7 +791,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.EXTERIOR_CAMERA_INFO
 
@@ -807,7 +807,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_CAMERA
 
@@ -823,7 +823,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_SPEAKER_INFO
 
@@ -839,7 +839,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_SPEAKER
 
@@ -855,7 +855,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.EXTERIOR_SPEAKER_INFO
 
@@ -871,7 +871,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EXTERIOR_SPEAKER
 
@@ -887,7 +887,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.WIPER_INFO
 
@@ -903,7 +903,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WIPER
 
@@ -919,7 +919,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MIRROR_INFO
 
@@ -935,7 +935,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_MIRROR
 
@@ -951,7 +951,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.HORN_INFO
 
@@ -967,7 +967,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_HORN
 
@@ -983,7 +983,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CHB_INFO
 
@@ -999,7 +999,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CHB
 
@@ -1015,7 +1015,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CODEBOX_INFO
 
@@ -1031,7 +1031,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CODEBOX
 
@@ -1047,7 +1047,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.STANDEMBLEM_INFO
 
@@ -1063,7 +1063,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_STANDEMBLEM
 
@@ -1079,7 +1079,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.GRILLE_INFO
 
@@ -1095,7 +1095,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_GRILLE
 
@@ -1111,7 +1111,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.WIRELESSCHARGER_INFO
 
@@ -1127,7 +1127,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WIRELESSCHARGER
 
@@ -1143,7 +1143,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.PROJECTORSCREEN_INFO
 
@@ -1159,7 +1159,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_PROJECTORSCREEN
 
@@ -1175,7 +1175,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DRIVE_INFORMATION
 
@@ -1191,7 +1191,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.BODY_SENSOR_INFO
 
@@ -1207,7 +1207,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_BODY_SENSOR
 
@@ -1223,7 +1223,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.VSC_SYSTEM_INFO
 
@@ -1239,7 +1239,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_VSC_SYSTEM
 
@@ -1255,7 +1255,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CHG_DISCHG_INFO
 
@@ -1271,7 +1271,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CHG_DISCHG
 
@@ -1287,7 +1287,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.EPB_INFO
 
@@ -1303,7 +1303,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_EPB
 
@@ -1319,7 +1319,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.PBS_INFO
 
@@ -1335,7 +1335,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_PBS
 
@@ -1351,7 +1351,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.TIRE_SYSTEM_INFO
 
@@ -1367,7 +1367,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
 
@@ -1383,7 +1383,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.TOW_SYSTEM_INFO
 
@@ -1399,7 +1399,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
 
@@ -1415,7 +1415,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.SUSPENSION_SYSTEM_INFO
 
@@ -1431,7 +1431,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
 
@@ -1447,7 +1447,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ACCELERATOR_PEDAL
 
@@ -1463,7 +1463,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
 
@@ -1479,7 +1479,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_MODE_INFO
 
@@ -1495,7 +1495,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_CAR_MODE
 
@@ -1511,7 +1511,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DRIVING_MODE_INFO
 
@@ -1527,7 +1527,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DRIVING_MODE
 
@@ -1543,7 +1543,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_HEATING_MODULE_INFO
 
@@ -1559,7 +1559,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
 
@@ -1575,7 +1575,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.SPECIAL_MOBILITY_MODE_INFO
 
@@ -1591,7 +1591,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
 
@@ -1607,7 +1607,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.BUTTON_LEVER_INFO
 
@@ -1623,7 +1623,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
 
@@ -1639,7 +1639,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.WHC_INFO
 
@@ -1655,7 +1655,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_WHC
 
@@ -1671,7 +1671,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.PRIVACYCURTAIN_INFO
 
@@ -1687,7 +1687,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
 
@@ -1703,7 +1703,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.POWER_MANAGEMENT_INFO
 
@@ -1719,7 +1719,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
 
@@ -1735,7 +1735,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.SMARTKEY_INFO
 
@@ -1751,7 +1751,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SMARTKEY
 
@@ -1767,7 +1767,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ETC_INFO
 
@@ -1783,7 +1783,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ETC
 
@@ -1799,7 +1799,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.HUD_INFO
 
@@ -1815,7 +1815,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_HUD
 
@@ -1831,7 +1831,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.NAVIGATION_INFO
 
@@ -1847,7 +1847,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_NAVIGATION
 
@@ -1863,7 +1863,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.OXYGEN_CONCENTRATOR_INFO
 
@@ -1879,7 +1879,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
 
@@ -1895,7 +1895,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_SEAT_BELT_INFO
 
@@ -1911,7 +1911,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
 
@@ -1927,7 +1927,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.FRONT_REAR_TRUNK_INFO
 
@@ -1943,7 +1943,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
 
@@ -1959,7 +1959,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.RANGE_EXTENDER_INFO
 
@@ -1975,7 +1975,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
 
@@ -1991,7 +1991,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DIFFERENTIAL_LOCK_INFO
 
@@ -2007,7 +2007,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
 
@@ -2023,7 +2023,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ARMREST_SCREEN_INFO
 
@@ -2039,7 +2039,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
 
@@ -2055,7 +2055,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ARMREST_BOX_INFO
 
@@ -2071,7 +2071,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ARMREST_BOX
 
@@ -2087,7 +2087,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_REAR_SPOILER_INFO
 
@@ -2103,7 +2103,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
 
@@ -2119,7 +2119,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_PEDAL_INFO
 
@@ -2135,7 +2135,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
 
@@ -2151,7 +2151,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ELECTRIC_DRIVE_SYSTEM_INFO
 
@@ -2167,7 +2167,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
 
@@ -2183,7 +2183,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.SPACE_PARTITIONING_INFO
 
@@ -2199,7 +2199,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
 
@@ -2215,7 +2215,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.USB_INFO
 
@@ -2231,7 +2231,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_USB
 
@@ -2247,7 +2247,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -7642,7 +7642,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
 
@@ -7670,7 +7670,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.AUTO_UPDATER
 
@@ -7698,7 +7698,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.READ_HARDWARE_CONFIG
 
@@ -7712,7 +7712,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
 
@@ -7726,7 +7726,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
 
@@ -7740,7 +7740,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
 
@@ -7754,7 +7754,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
 
@@ -7768,7 +7768,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
 
@@ -7782,7 +7782,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
 
@@ -7796,7 +7796,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
 
@@ -7812,7 +7812,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
 
@@ -7828,7 +7828,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
 
@@ -7842,7 +7842,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
 
@@ -7856,7 +7856,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
@@ -8720,7 +8720,7 @@
 
 **支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CREATE_SIGN_CONTENT_TRUST
 
@@ -8762,7 +8762,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.TBOX_CELLULAR_INFO
 
@@ -8776,7 +8776,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MANAGE_TBOX_WIFI
 
@@ -8790,7 +8790,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.TBOX_WIFI_INFO
 
@@ -8804,7 +8804,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.PACKET_CAPTURE_INFO
 
@@ -8818,7 +8818,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CCN_SELF_HEALING
 
@@ -8832,7 +8832,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.AUTO_OTA_PROXY
 
@@ -8888,7 +8888,7 @@
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MANAGE_ENTERPRISE_UNLOCK_CONFIGS
 
@@ -8902,7 +8902,7 @@
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
@@ -9008,7 +9008,7 @@
 
 **支持设备**：Wearable | TV | Tablet | Phone | PC/2in1 | Car | LiteWearable | Smartlock | Router
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MUTE_VOIP_CAPTURE
 
@@ -9064,7 +9064,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DEVICE_AUTH
 
@@ -9078,7 +9078,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.AutoWiredProjection
 
@@ -9092,7 +9092,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
 
@@ -9120,7 +9120,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_FILE_MONITOR_DIR
 
@@ -9136,7 +9136,7 @@
 
 **支持设备**：PC/2in1 | Phone | Tablet | TV | Smartlock | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
 
@@ -9150,7 +9150,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
 
@@ -9164,7 +9164,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
 
@@ -9178,7 +9178,7 @@
 
 **支持设备**：PC/2in1 | Car | Phone | Wearable | Tablet | TV
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 
@@ -9192,7 +9192,7 @@
 
 **支持设备**：PC/2-in-1 | Car | Phone | Tablet | TV | Wearable
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
 
@@ -9206,7 +9206,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
 
@@ -9220,7 +9220,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
@@ -9234,7 +9234,7 @@
 
 **支持设备**：Tablet | PC/2in1
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MANAGE_SHARE_PHOTO
 
@@ -9248,7 +9248,7 @@
 
 **支持设备**：Phone | Tablet | PC/2in1 | Car | TV | Wearable
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MANAGE_LOH
 
@@ -9262,7 +9262,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MANAGE_LOH_PTY
 
@@ -9276,7 +9276,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.MANAGE_LOH_PTY_ROOT
 
@@ -9290,7 +9290,7 @@
 
 **支持设备**：PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.CLEAR_BACKGROUND_APPS
 
@@ -9304,7 +9304,7 @@
 
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SOFTBUS_MANAGER_RESOURCE
 
@@ -9318,7 +9318,7 @@
 
 **支持设备**：PC/2in1 | Car | Phone | Tablet | TV | Wearable
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 
@@ -9332,7 +9332,7 @@
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
  
@@ -9346,7 +9346,7 @@
  
 **支持设备**：Phone | PC/2in1 | Tablet
  
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DEVICE_INFO_WRITE
 
@@ -9360,7 +9360,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DEVICE_INFO_READ
 
@@ -9374,7 +9374,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.LICENSE_WRITE
 
@@ -9388,7 +9388,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.LICENSE_READ
 
@@ -9402,7 +9402,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CURTAIN_WRITE
 
@@ -9416,7 +9416,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CURTAIN_READ
 
@@ -9430,7 +9430,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CLUSTER_INFO_WRITE
 
@@ -9444,7 +9444,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CLUSTER_INFO_READ
 
@@ -9458,4 +9458,4 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
