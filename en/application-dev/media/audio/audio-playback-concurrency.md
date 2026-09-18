@@ -1,4 +1,4 @@
-# Introduction to Audio Focus and Audio Sessions
+# Introduction to Audio Focus
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->

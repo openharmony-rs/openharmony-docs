@@ -1,27 +1,29 @@
 # Audio Kit
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=8478ec4698910b30203efbe7815bce1603fa5a99 translatedAt=2026-09-18T03:36:44.297Z pushedAt=2026-09-18T10:57:14.743Z -->
 
 - [About This Kit](audio-kit-intro.md)
-- [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md)
 - Audio Focus and Audio Session Management<!--audio-session-->
+  - [Audio Focus and Audio Session Overview](audio-playback-concurrency-audio-session-overview.md)
   - [Introduction to Audio Focus](audio-playback-concurrency.md)
-  - [Audio Session Management](audio-session-management.md)
+  - [Using AudioSession to Manage Audio Focus (ArkTS)](audio-session-management.md)
   - [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md)
 - Audio Playback<!--audio-playback-->
   - [Audio Playback Overview](audio-playback-overview.md)
+  - [Choosing the Right Playback Stream Type](using-right-streamusage-for-playback.md)
   - [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
-  - [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md)
+  - [Using AudioRenderer for Audio Playback (ArkTS)](using-audiorenderer-for-playback.md)
   <!--Del-->
   - [Using TonePlayer for Audio Playback (for System Applications Only)](using-toneplayer-for-playback-sys.md)
   <!--DelEnd-->
   - [Low-Latency Audio Playback (C/C++)](audio-fast-playback.md)
   - [Low-Power Audio Playback](power-saving-for-playback.md)
-  - [Using AudioHaptic for Audio-Haptic Playback (ArkTs)](using-audiohaptic-for-playback.md)
+  - [Using AudioHaptic for Audio-Haptic Playback (ArkTS)](using-audiohaptic-for-playback.md)
   - [Using SoundPlayer for System Sound Effect Playback](using-soundplayer-for-playback.md)
   - [Volume Management](volume-management.md)
   - [Spatial Audio Capability Query and Status Subscription](public-audio-spatialization-management.md)
@@ -37,14 +39,20 @@
   <!--DelEnd-->
 - Audio Recording<!--audio-recording-->
   - [Audio Recording Overview](audio-recording-overview.md)
-  - [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md)
-  - [Using AudioCapturer for Audio Recording (ArkTs)](using-audiocapturer-for-recording.md)
-  - [Low-latency Audio Recording (C/C++)](audio-fast-recording.md)
+  - Microphone Recording Development (External Recording)<!--external-audio-recording-->
+    - [Choosing the Right Recording Stream Type](using-right-sourcetype-for-recording.md)
+    - [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md)
+    - [Using AudioCapturer for Audio Recording (ArkTs)](using-audiocapturer-for-recording.md)
+    - [Low-Latency Audio Recording (C/C++)](audio-fast-recording.md)
+    - [Implementing Background Recording](background-recording.md)
+  - System Audio Recording Development (Internal Recording)<!--system-audio-recording-->
+    - [System Audio Recording Overview and API Selection](audio-recording-system-audio-overview.md)
+    - [Implementing System Audio Recording](implement-system-audio-recording.md)
   - [Managing Microphone Mute Status](mic-management.md)
   - [Querying and Listening for the Recording Status of Other Applications](audio-recording-stream-management.md)
   - [Recording Concurrency Strategy Description](audio-recording-concurrency.md)
-  - [Audio Monitoring](audio-ear-monitor.md)
-  - [Low-Latency Audio Monitoring](audio-ear-monitor-loopback.md)
+  - [Implementing Custom Audio Loopback](audio-ear-monitor.md)
+  - [Implementing Low-Latency Audio Loopback](audio-ear-monitor-loopback.md)
 - Audio Device Routing Management<!--audio-device-->
   - [Querying and Listening for Audio Input Devices](audio-input-device-management.md)
   - [Querying and Listening for Audio Output Devices](audio-output-device-management.md)
@@ -60,8 +68,21 @@
 - Audio Creation<!--audio-production-creation-->
   - [Audio Creation Overview (C/C++)](audio-suite.md)
   - [Offline Editing (C/C++)](audio-suite-manual-rendering.md)
-  - [Real-Time Rendering (C/C++)](audio-suite-real-time-rendering.md)
+  - [Real-Time Preview (C/C++)](audio-suite-real-time-rendering.md)
+  - [Audio Format Conversion (C/C++)](audio-suite-format-converter.md)
+  - [Spatial Rendering (C/C++)](audio-suite-space-render.md)
+  - [Audio Effects (C/C++)](audio-suite-effects.md)
+- MIDI Device Communication<!--midi-->
+  - [OH_MIDI Overview (C/C++)](midi-overview.md)
+  - [Using OH_MIDI for MIDI Development (C/C++)](using-ohmidi.md)
 - OpenSL ES Development (Not Recommended)<!--not-recommended-->
   - [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md)
   - [Using OpenSL ES for Audio Playback (C/C++)](using-opensl-es-for-playback.md)
   - [Using OpenSL ES for Audio Recording (C/C++)](using-opensl-es-for-recording.md)
+- Audio Kit FAQs<!--audio-issues-->
+  - [Using Audio Snapshots for Troubleshooting](audio-runtime-debugging-info.md)
+  - [Troubleshooting Silent Playback Issues](audio-playback-no-sound-troubleshooting.md)
+  - [Troubleshooting Audio Playback Stuttering and Noise Issues](audio-playback-performance-troubleshooting.md)
+  - [Troubleshooting Silent Recording Issues](audio-recording-no-audio-troubleshooting.md)
+  - [Troubleshooting Volume Change Callback Issues](audio-stream-volume-callback-debugging.md)
+- [Glossary](audio-glossary.md)

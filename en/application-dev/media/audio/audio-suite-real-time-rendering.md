@@ -1,4 +1,4 @@
-# Real-Time Rendering (C/C++)
+# Real-Time Preview (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
