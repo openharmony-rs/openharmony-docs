@@ -87,7 +87,7 @@ struct SmartGestureControllerExample {
 
 registerMonitor(monitorCallback: Callback\<BaseGestureHandlingProposal, GestureHandlingResolution\>): void
 
-注册智慧手势监听回调。在系统处理当前智慧手势前，应用可通过callback接收当前手势的默认动作处理并进行自定义干预，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。
+注册智慧手势监听回调。在系统处理当前智慧手势前，应用可通过callback接收当前手势的默认动作处理并进行自定义干预，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。使用callback异步回调。
 
 > **说明：**
 >
