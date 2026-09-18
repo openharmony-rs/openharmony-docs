@@ -176,7 +176,7 @@ libohusb_manager.so
 
 使用完毕后必须调用`OH_UsbManager_FreeUsbDeviceList`释放设备数组。
 
-<!-- @[CApiGetUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiGetUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 OH_UsbManager_UsbDevice *devices = nullptr;
@@ -188,7 +188,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 }
 ```
 
-<!-- @[CApiFreeUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiFreeUsbDeviceList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 OH_UsbManager_UsbDevice *devices = nullptr;
@@ -213,7 +213,7 @@ bool freed = false;
 
 若无权限，调用`OH_UsbManager_RequestPermission`异步请求权限。该函数会立即返回，请求结果通过`OH_UsbManager_PermissionCallback`回调通知。仅在授权成功后才可进行设备连接操作。
 
-<!-- @[CApiHasPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiHasPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 std::string deviceName;
@@ -228,7 +228,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 }
 ```
 
-<!-- @[CApiRequestPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiRequestPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 RequestPermissionContext *context = static_cast<RequestPermissionContext *>(data);
@@ -248,7 +248,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 
 连接成功后，可调用`OH_UsbManager_GetFileDescriptor`获取设备管道的文件描述符（fd），该fd可用于基于ioctl的底层USB传输操作。
 
-<!-- @[CApiConnectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiConnectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 uint32_t busNum = 0;
@@ -267,7 +267,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 }
 ```
 
-<!-- @[CApiGetFileDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiGetFileDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 (void)info;
@@ -307,7 +307,7 @@ if (code != OH_USBMANAGER_SUCCESS) {
 
 > **重要：**<br>资源释放顺序为先关闭管道，再释放设备数组。确保异常退出路径上也执行释放操作，避免资源泄漏。
 
-<!-- @[CApiClosePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[CApiClosePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 (void)info;
