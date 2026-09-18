@@ -929,7 +929,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)<number \| [Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1]<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start//app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start//app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
+| scale  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)<number \| [Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1]<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -953,7 +953,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)<number \| [Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>设置maxFontScale属性后，search组件内容最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start//app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start//app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
+| scale  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)<number \| [Resource](ts-types.md#resource)><br>ArkTS-Sta: double \| [Resource](ts-types.md#resource) \| undefined | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>设置maxFontScale属性后，search组件内容最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
 
 ### editMenuOptions<sup>12+</sup>
 

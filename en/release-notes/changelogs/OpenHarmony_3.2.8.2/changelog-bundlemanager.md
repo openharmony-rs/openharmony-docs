@@ -169,7 +169,7 @@ import appControl form '@ohos.bundle.appControl'
 
 ## cl.bundlemanager.4 BundleInfo Structure Changes
 
-All **bundle/bundleInfo.d.ts** fields in the bundle manager are deprecated. [bundle/bundleInfo.d.ts]((https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundle/bundleInfo.d.ts)) is changed to [bundleManager/BundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts), involving field type changes.
+All **bundle/bundleInfo.d.ts** fields in the bundle manager are deprecated. [bundle/bundleInfo.d.ts]((https:/gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundle/bundleInfo.d.ts)) is changed to [bundleManager/BundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts), involving field type changes.
 
 **Change Impacts**
 

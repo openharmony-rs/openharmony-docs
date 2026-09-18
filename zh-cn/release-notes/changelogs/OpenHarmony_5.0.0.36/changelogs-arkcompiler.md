@@ -8,7 +8,7 @@
 
 **变更原因**
 
-Sendable对象需要遵循[使用规则](../../..//application-dev/arkts-utils/arkts-sendable.md#sendable使用规则)，共享模块需要遵循[使用规则](../../..//application-dev/arkts-utils/arkts-sendable-module.md#使用规格)，在Sendable&共享模块的部分需要约束的export场景中，编译器缺少检查，导致这些场景会发生运行时异常但是没有编译时错误。在本次版本更新中，修复了这些约束的编译时检查，将运行时异常提前到编译时。旨在通过编译时错误或警告，帮助开发者更早发现Sendable&共享模块使用约束，减少运行时定位成本。
+Sendable对象需要遵循[使用规则](../../../application-dev/arkts-utils/arkts-sendable.md#sendable使用规则)，共享模块需要遵循[使用规则](../../../application-dev/arkts-utils/arkts-sendable-module.md#使用规格)，在Sendable&共享模块的部分需要约束的export场景中，编译器缺少检查，导致这些场景会发生运行时异常但是没有编译时错误。在本次版本更新中，修复了这些约束的编译时检查，将运行时异常提前到编译时。旨在通过编译时错误或警告，帮助开发者更早发现Sendable&共享模块使用约束，减少运行时定位成本。
 
 **变更影响**
 

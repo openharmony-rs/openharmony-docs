@@ -167,7 +167,7 @@ import appControl form '@ohos.bundle.appControl'
 
 ## cl.bundlemanager.4 BundleInfo结构体变更，包管理原有bundle/bundleInfo.d.ts字段全部废弃变更为bundleManager/bundleInfo.d.ts，涉及字段属性变化。
 
-包管理原有bundle/bundleInfo.d.ts字段全部废弃。由老的[bundle/bundleInfo.d.ts]((https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundle/bundleInfo.d.ts))变更为[bundleManager/bundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts)，涉及字段属性变化。
+包管理原有bundle/bundleInfo.d.ts字段全部废弃。由老的[bundle/bundleInfo.d.ts]((https:/gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundle/bundleInfo.d.ts))变更为[bundleManager/bundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts)，涉及字段属性变化。
 
 
 **变更影响**<br>
