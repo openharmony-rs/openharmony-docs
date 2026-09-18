@@ -190,8 +190,8 @@ import { formInfo } from '@kit.FormKit';
 | NO_SPACE       | 1    | 表示没有空间添加卡片。           |
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
-| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.1.0 |
-| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.1.0 |
+| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.0.1 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -660,9 +660,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 卡片使用方服务信息。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -681,9 +681,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 远端卡片使用方服务信息。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -705,9 +705,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 跨设备发布卡片的结果。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

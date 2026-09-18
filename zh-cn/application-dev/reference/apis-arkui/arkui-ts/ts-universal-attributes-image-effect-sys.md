@@ -141,7 +141,7 @@ markLayeredRender(value: boolean | undefined): T
 
 标记节点是否为独立图层进行绘制，基于该分层标记使能离屏缓存并且在后续帧会复用此缓存，缓存需要刷新时会基于脏区进行局部刷新，达到降负载效果。未通过该接口设置时，节点不标记为独立图层进行绘制。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -151,7 +151,7 @@ markLayeredRender(value: boolean | undefined): T
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **参数：**
 

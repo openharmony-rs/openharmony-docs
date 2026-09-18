@@ -333,7 +333,7 @@ ImageSource的初始化选项。
 
 | 名称              | 类型                               | 只读 | 可选 | 说明               |
 | ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
-| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | 否   | 是   | SVG（Scalable Vector Graphics）图像解析和绘制时使用的资源限制。该限制对非SVG图像无效，于SVG元数据解析前生效，因此也应用于图像信息获取。<br>默认值为NONE，它使用系统定义的默认资源限制，不会禁用SVG资源保护。<br>**起始版本：** 26.1.0 |
+| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | 否   | 是   | SVG（Scalable Vector Graphics）图像解析和绘制时使用的资源限制。该限制对非SVG图像无效，于SVG元数据解析前生效，因此也应用于图像信息获取。<br>默认值为NONE，它使用系统定义的默认资源限制，不会禁用SVG资源保护。<br>**起始版本：** 26.0.1 |
 
 ## SVGResourceLimitLevel
 
@@ -341,7 +341,7 @@ ImageSource的初始化选项。
 
 更高等级允许解析和绘制SVG图像时使用更少的资源，无论指定哪种等级，系统资源限制都会实施。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -552,4 +552,4 @@ async function ModifyImageAllProperties(imageSource: image.ImageSource) {
 
 | 名称         | 类型 | 只读 | 可选 | 说明                                                         |
 | ------------ | ---- | ---- | ---- | ------------------------------------------------------------ |
-| c2paDataSize | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 是   | 编码时按照C2PA 2.4嵌入规范预留C2PA数据空间。<br>单位为字节（Byte），取值范围为[0, 4194304]，默认值为0，表示不添加预留空间。<br>该参数仅对JPEG和HEIF生效。其中JPEG遵循ISO/IEC 18477-3（JPEG XT）及ISO/IEC 19566-5:2023，使用以`JP`和`c2pa`标识的连续APP11段预留并以0填充；HEIF遵循ISO/IEC 14496-12（ISO BMFF），使用Extended UUID为`D8FEC3D6-1B0E-483C-9297-5828877EC481`的顶层`uuid` box预留并以0填充。<br>当设置非零值但无法完成预留时，编码失败。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。 |
+| c2paDataSize | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 是   | 编码时按照C2PA 2.4嵌入规范预留C2PA数据空间。<br>单位为字节（Byte），取值范围为[0, 4194304]，默认值为0，表示不添加预留空间。<br>该参数仅对JPEG和HEIF生效。其中JPEG遵循ISO/IEC 18477-3（JPEG XT）及ISO/IEC 19566-5:2023，使用以`JP`和`c2pa`标识的连续APP11段预留并以0填充；HEIF遵循ISO/IEC 14496-12（ISO BMFF），使用Extended UUID为`D8FEC3D6-1B0E-483C-9297-5828877EC481`的顶层`uuid` box预留并以0填充。<br>当设置非零值但无法完成预留时，编码失败。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。 |

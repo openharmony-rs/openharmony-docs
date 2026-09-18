@@ -212,7 +212,7 @@ type EventProcess = (event: string, args: Record\<string, Object>) => void
 
 **ArkTS-Sta起始版本：** 23
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **参数：**
 

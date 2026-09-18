@@ -14,7 +14,7 @@ typedef struct OH_CloudDisk_PlaceholderInfo {...} OH_CloudDisk_PlaceholderInfo
 
 占位符相关操作使用的文件元数据信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [CloudDisk](capi-clouddisk.md)
 
@@ -26,6 +26,6 @@ typedef struct OH_CloudDisk_PlaceholderInfo {...} OH_CloudDisk_PlaceholderInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t logicalSize | 占位符文件的逻辑大小，表示其对应云端文件的大小，单位为字节。<br>**起始版本：** 26.1.0 |
-| uint64_t atimeMs | 占位符文件对应云端文件的创建时间，单位为毫秒。<br>**起始版本：** 26.1.0 |
-| uint64_t mtimeMs | 占位符文件对应云端文件的最后一次修改时间，单位为毫秒。<br>**起始版本：** 26.1.0 |
+| uint64_t logicalSize | 占位符文件的逻辑大小，表示其对应云端文件的大小，单位为字节。<br>**起始版本：** 26.0.1 |
+| uint64_t atimeMs | 占位符文件对应云端文件的创建时间，单位为毫秒。<br>**起始版本：** 26.0.1 |
+| uint64_t mtimeMs | 占位符文件对应云端文件的最后一次修改时间，单位为毫秒。<br>**起始版本：** 26.0.1 |

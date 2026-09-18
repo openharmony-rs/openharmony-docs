@@ -1677,9 +1677,9 @@ getTouchpadScrollDirection(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**ArkTS-Dyn起始版本**：26.1.0
+**ArkTS-Dyn起始版本**：26.0.1
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1764,9 +1764,9 @@ getTouchpadScrollDirection(): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**ArkTS-Dyn起始版本**：26.1.0
+**ArkTS-Dyn起始版本**：26.0.1
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **返回值**：
 

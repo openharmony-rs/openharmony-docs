@@ -461,7 +461,7 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -605,7 +605,7 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId:
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -737,7 +737,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 | 801 | Capability not supported. |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -870,7 +870,7 @@ ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, use
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -1356,7 +1356,7 @@ ArkTS-Sta: setDefaultApplicationForAppClone(type: string, elementName: ElementNa
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability and type do not match. |
 | 17700061 | The specified app index is invalid. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -1435,9 +1435,9 @@ ArkTS-Sta: getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 

@@ -1248,7 +1248,7 @@ ShadowOptions对象中不支持fill字段。
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 24 |
 | resourceValue  | string |  是  |  是  | 获取属性字符串的图片资源路径。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
-| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  是  |  是  | 获取属性字符串的图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  是  |  是  | 获取属性字符串的图片拉伸选项。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 |
 
 ### constructor
 
@@ -1368,7 +1368,7 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 | objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否    | 是 | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>默认值：ImageFit.Cover <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否    | 是 | 设置图片布局。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  否   | 是 | 设置属性字符串的图片颜色滤镜效果。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
-| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否  | 是 | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否  | 是 | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 |
 
 ## ImageAttachmentLayoutStyle对象说明
 
@@ -1406,7 +1406,7 @@ ResourceStr类型图片设置项。
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br>默认值：false<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 24 |
-| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否  |  是  | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否  |  是  | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 |
 
 ## CustomSpan
 
@@ -4054,7 +4054,7 @@ struct TailIndentsExample {
 
 该示例通过设置[ImageAttachment](#imageattachmentinterface对象说明)中的resizable属性，对图片不同方向进行拉伸。
 
-从API版本26.1.0开始，ImageAttachment接口新增resizable属性。
+从API版本26.0.1开始，ImageAttachment接口新增resizable属性。
 
 ```ts
 @Entry

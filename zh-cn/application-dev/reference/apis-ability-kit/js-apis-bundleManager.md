@@ -283,9 +283,9 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 | 名称 | 值 | 说明 |
 | -------- | ------ | ------------------------------------------------------------ |
@@ -1973,9 +1973,9 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 
 获取指定应用的安装状态。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
