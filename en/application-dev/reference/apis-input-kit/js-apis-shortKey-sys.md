@@ -1,4 +1,4 @@
-#  @ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)
+# @ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=28903ea5a24732cb787188ec1c145c9efbd00425 translatedAt=2026-09-01T01:22:18.811Z pushedAt=2026-09-03T08:34:45.245Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:30:21.321Z pushedAt=2026-09-11T09:14:05.445Z -->
 
 The **shortKey** module provides APIs to set the delay for starting an ability using a shortcut key. For example, you can set the delay to 3 seconds so that a screenshot is taken when you press and hold the shortcut key for 3 seconds.
 
@@ -16,13 +16,14 @@ The **shortKey** module provides APIs to set the delay for starting an ability u
 >
 > - The APIs provided by this module are system APIs.
 
-##  Modules to Import
+
+## Modules to Import
 
 ```js
 import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
-##  shortKey.setKeyDownDuration
+## shortKey.setKeyDownDuration
 
 setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -35,7 +36,7 @@ Sets the delay for starting an ability using shortcut keys. This API uses an asy
 | Name    | Type               | Mandatory| Description                                                        |
 | ---------- | ------------------- | ---- | ------------------------------------------------------------ |
 | businessKey| string              | Yes  | Unique service ID registered on the multimodal side. It corresponds to **businessId** in the **ability_launch_config.json** file. You need to query this parameter on your own before calling the API.|
-| delay      | number              | Yes  | Delay for starting an ability using shortcut keys, in milliseconds. This field is invalid only when shortcut keys are used.|
+| delay      | number              | Yes  | Duration after a shortcut key is pressed before the Ability is launched, in ms. This parameter is supported only when a shortcut key is pressed.|
 | callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is undefined. Otherwise, **err** is an error object.|
 
 **Error codes**

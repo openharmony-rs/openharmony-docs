@@ -44,7 +44,9 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -133,7 +135,9 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -231,7 +235,9 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -338,7 +344,9 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -433,7 +441,9 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -533,7 +543,9 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1177,6 +1189,8 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 > - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 >
 > - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2360,7 +2374,9 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+>
+> - 该接口支持应用分身，开发者可在[OpenLinkOptions](js-apis-app-ability-openLinkOptions.md)的parameters传入[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)指定拉起分身应用。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3021,6 +3037,91 @@ export default class EntryAbility extends UIAbility {
       // 设置UIAbility实例的图标和标签信息
       try {
         this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
+          .then(() => {
+            console.info('setAbilityInstanceInfo success');
+          }).catch((err: BusinessError) => {
+            console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+      }
+    });
+  }
+}
+```
+
+### setAbilityInstanceInfo
+
+setAbilityInstanceInfo(label: string, icon: image.PixelMap, groupId: string): Promise&lt;void&gt;
+
+设置当前UIAbility实例的图标、标签和图标聚合标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示，groupId用于设置快捷栏中应用内UIAbility的图标聚合标签。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限**： ohos.permission.SET_ABILITY_INSTANCE_INFO
+
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| label | string | 是 | 新的图标标签。标签长度不超过1024字节，且不可为空字符串。 |
+| icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 新的图标。建议图标大小为512px*512px。 |
+| groupId | string | 是 | 快捷栏中应用内UIAbility的图标聚合标签。长度不超过64个字符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 801 | Capability not supported. |
+| 16000011 | The context does not exist. |
+| 16000050 | Window operations encountered failures. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', async (err, data) => {
+      if (err.code) {
+        console.error(`loadContent failed, code is ${err.code}`);
+        return;
+      }
+
+      let newLabel: string = 'instance label';
+      let groupId: string = 'group label';
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      };
+      let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
+      // 设置UIAbility实例的图标、标签和图标聚合标签信息
+      try {
+        this.context.setAbilityInstanceInfo(newLabel, imagePixelMap, groupId)
           .then(() => {
             console.info('setAbilityInstanceInfo success');
           }).catch((err: BusinessError) => {
@@ -3858,7 +3959,7 @@ startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<vo
 >
 > 子进程生命周期跟随父进程，父进程退出时子进程自动退出。
 >
-> 该接口不支持应用分身。
+> 该接口支持应用分身，使用规则：want的parameters的APP_CLONE_INDEX_KEY必须与调用方应用的分身索引一致，主应用可以不设置APP_CLONE_INDEX_KEY。
 
 **起始版本：** 26.0.0
 

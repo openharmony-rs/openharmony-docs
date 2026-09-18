@@ -79,6 +79,40 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string | 是   | 当前网格布局列的数量、固定列宽或最小列宽值。 |
 
+### columnsTemplate
+
+columnsTemplate(template: string | ItemFillPolicy)
+
+设置当前网格布局列的数量、固定列宽或最小列宽值，不设置时默认1列。
+
+当template设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+
+当template设置为ItemFillPolicy类型时，将根据LazyVGridLayout内容区宽度对应的[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+
+断点判断使用的内容区宽度：内容区宽度 = 组件宽度 − 左右内边距（padding）− 占用布局的左右边框（border）宽度。
+
+例如，ItemFillPolicy的fillType属性设置为PresetFillType.BREAKPOINT_DEFAULT时，在内容区宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
+
+使用效果可以参考[示例4](#示例4基于断点配置列数)。
+
+> **说明：**
+>
+> string类型和ItemFillPolicy类型设置的是同一个属性，多次设置时以最后一次设置为准。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                      |
+| ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
+| template  | string&nbsp;\|&nbsp;[ItemFillPolicy](ts-types.md#itemfillpolicy22) | 是   | 当前网格布局列的数量、固定列宽或最小列宽值。template为string类型时，表示列数、固定列宽或最小列宽值；template为ItemFillPolicy类型时，根据LazyVGridLayout内容区宽度对应的断点类型自动确定列数。 |
+
 ### columnsGap
 
 columnsGap(value: LengthMetrics): T
@@ -645,3 +679,93 @@ struct LazyVGridLayoutColumnsTemplateDemo {
 ```
 
 ![](figures/scroll-lazyvgridlayout-columntemplate.gif)
+
+### 示例4（基于断点配置列数）
+
+该示例通过[columnsTemplate](#columnstemplate-1)设置ItemFillPolicy，并将fillType设置为PresetFillType.BREAKPOINT_SM1MD2LG3，实现LazyVGridLayout根据内容区宽度对应的断点类型自动确定列数。
+
+LazyVGridLayout内容区宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。
+
+从API版本26.2.0开始，新增支持columnsTemplate设置为ItemFillPolicy类型。
+
+<!--code_no_check-->
+```ts
+import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutItemFillPolicyDemo {
+  private sm1md2lg3Data: MyDataSource<number> = new MyDataSource<number>();
+
+  aboutToAppear(): void {
+    // 初始化LazyForEach数据
+    for (let i = 0; i < 12; i++) {
+      this.sm1md2lg3Data.pushData(i);
+    }
+  }
+
+  // 构建Header，展示当前使用的断点列数策略
+  @Builder
+  HeaderBuilder() {
+    Column() {
+      Text('ItemFillPolicy: BREAKPOINT_SM1MD2LG3')
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#182230')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .padding({ bottom: 8 })
+  }
+
+  @Builder
+  GridItemBuilder(item: number, backgroundColor: string) {
+    Text(item.toString())
+      .height(56)
+      .width('100%')
+      .borderRadius(6)
+      .backgroundColor(backgroundColor)
+      .fontColor('#182230')
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Scroll() {
+        LazyColumnLayout() {
+          LazyVGridLayout() {
+            LazyForEach(this.sm1md2lg3Data, (item: number) => {
+              this.GridItemBuilder(item, '#FFE6A8')
+            })
+          }
+          // 根据LazyVGridLayout内容区宽度对应的断点自动调整列数
+          // sm及以下显示1列，md显示2列，lg及以上显示3列
+          .columnsTemplate({ fillType: PresetFillType.BREAKPOINT_SM1MD2LG3 })
+          // 行间距和列间距均为8vp
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.HeaderBuilder)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+        }
+        .space(LengthMetrics.vp(16))
+        .width('100%')
+      }
+      .width('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ top: 48, left: 12, right: 12, bottom: 12 })
+  }
+}
+```
+
+下图展示竖屏单列变成横屏双列的效果。
+
+![](figures/lazyvgridlayout_item_fill_policy.gif)

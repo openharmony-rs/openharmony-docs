@@ -6,11 +6,11 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:21:52.178Z pushedAt=2026-09-03T08:36:00.731Z -->
+<!-- md-trans-meta sourceCommit=527ac908d69187319557716a0a0cfad380663b5d translatedAt=2026-09-11T01:19:40.061Z pushedAt=2026-09-11T03:21:48.041Z -->
 
 The **gestureEvent** module provides gesture events reported by devices.
 
->  **NOTE**
+> **NOTE**
 >
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >

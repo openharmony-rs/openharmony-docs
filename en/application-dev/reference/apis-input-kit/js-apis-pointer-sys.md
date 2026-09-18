@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:25:03.192Z pushedAt=2026-09-03T08:58:58.704Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:23:31.363Z pushedAt=2026-09-11T06:36:13.572Z -->
 
 The **pointer** module provides APIs to query and set pointer attributes.
 
@@ -37,7 +37,7 @@ Sets the mouse pointer speed. This API uses an asynchronous callback to return t
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | number                    | Yes    | Mouse movement speed. The value range is [1, 20], and the default value is **10**.   |
+| speed    | number                    | Yes    | Mouse pointer speed. The value range is [1, 20], and the default value is **10**.   |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -48,6 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
 
 **Example**
 
@@ -94,7 +95,7 @@ Sets the mouse pointer speed. This API uses a promise to return the result.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | Yes | Mouse movement speed. The value range is [1, 20], and the default value is **10**. |
+| speed | number | Yes | Mouse pointer speed. The value range is [1, 20], and the default value is **10**. |
 
 **Return value**
 
@@ -110,6 +111,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api.<br/>Applicable version: 12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
 
 **Example**
 
@@ -154,7 +156,7 @@ Sets the mouse pointer speed. This API returns the result synchronously.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.|
+| speed | number | Yes    | Mouse pointer speed. The value range is [1, 20], and the default value is 10. |
 
 **Error codes**
 
@@ -214,6 +216,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 202  | Permission denied, non-system app called system api.<br/>Applicable Version: 12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
 
 **Example**
 
@@ -313,7 +316,7 @@ Obtains the mouse pointer speed. This API returns the result synchronously.
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| number | Mouse pointer speed. The value ranges from 1 to 20. |
+| number | Returns the mouse movement speed, with a value range of [1, 20]. |
 
 **Error codes**
 
@@ -817,7 +820,7 @@ Sets the number of mouse scroll lines. This API uses an asynchronous callback to
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | Yes   | Number of mouse scroll lines. The value ranges from 1 to 100. The default value is **3**.  |
+| rows     | number                    | Yes    | Mouse scroll lines. The value range is [1, 100], and the default value is 3.   |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -874,7 +877,7 @@ Sets the number of mouse scroll lines. This API uses a promise to return the res
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | Yes   | Number of mouse scroll lines. The value ranges from 1 to 100. The default value is **3**.|
+| rows  | number | Yes    | Mouse scroll lines. The value range is [1, 100], and the default value is 3. |
 
 **Return value**
 
@@ -1149,7 +1152,7 @@ struct Index {
 
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
-getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 Obtains the touchpad scroll switch state. This API uses an asynchronous callback to return the result.
 
@@ -1376,7 +1379,7 @@ struct Index {
 
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
-getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
 
 Obtains the touchpad scroll direction. This API uses an asynchronous callback to return the result.
 
@@ -1603,7 +1606,7 @@ struct Index {
 
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
-getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 Obtains the touchpad tap switch state. This API uses an asynchronous callback to return the result.
 
@@ -1616,7 +1619,6 @@ Obtains the touchpad tap switch state. This API uses an asynchronous callback to
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
 | callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad tap switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
-
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -1725,7 +1727,7 @@ Sets the touchpad pointer speed. This API uses an asynchronous callback to retur
 
 | Name      | Type                       | Mandatory  | Description                                   |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | Yes   |Touchpad pointer speed. The value range is [1, 11]. The default value is **6**. |
+| speed | number | Yes | Cursor movement speed. The value range is [1, 11], and the default value is 6. |
 | callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1751,7 +1753,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad cursor speed.
+            // Set the touchpad pointer speed.
             pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1782,7 +1784,7 @@ Sets the touchpad pointer speed. This API uses a promise to return the result.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | Yes   | Touchpad pointer speed The value range is [1, 11]. The default value is **6**.   |
+| speed| number | Yes    | Cursor movement speed. The value range is [1, 11], and the default value is 6.    |
 
 **Return value**
 
@@ -1867,7 +1869,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad cursor speed.
+            // Obtain the touchpad pointer speed.
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1898,7 +1900,7 @@ Obtains the touchpad pointer speed. This API uses a promise to return the result
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise used to return the touchpad pointer speed. The value range is [1, 11].|
+| Promise\<number> | Promise used to return the touchpad cursor movement speed. The value range of speed is [1, 11]. |
 
 **Error codes**
 
@@ -2057,7 +2059,7 @@ struct Index {
 
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
-getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 Obtains the touchpad pinch switch state. This API uses an asynchronous callback to return the result.
 
@@ -2284,7 +2286,7 @@ struct Index {
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
-getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 Obtains the touchpad multi-finger swipe switch state. This API uses an asynchronous callback to return the result.
 
@@ -2867,6 +2869,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
+
 **Example**
 
 ```js
@@ -2910,7 +2913,7 @@ Obtains the pointer size. This API returns the result synchronously.
 
 | Type                   | Description                 |
 | --------------------- | ------------------- |
-| number | Mouse cursor size. The value range is [1, 7]. |
+| number | Mouse pointer size. The value range is [1, 7]. |
 
 **Error codes**
 
@@ -2919,6 +2922,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
+
 
 **Example**
 
@@ -3164,7 +3168,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse cursor color.
+            // Obtain the mouse pointer color.
             pointer.getPointerColor((error: BusinessError, color: number) => {
               if (error) {
                 console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3204,6 +3208,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
+
 
 **Example**
 
@@ -3257,6 +3262,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
+
 
 **Example**
 

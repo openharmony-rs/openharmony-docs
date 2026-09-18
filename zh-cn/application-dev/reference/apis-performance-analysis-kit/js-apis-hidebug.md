@@ -1057,6 +1057,7 @@ VM内存信息。
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**起始版本**：26.1.0 |
 
 ## tags<sup>12+</sup>
 
@@ -1749,4 +1750,30 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```
+## hidebug.getAppRunningUniqueId
+
+getAppRunningUniqueId(): string
+
+获取应用程序的运行唯一标识符。
+
+**起始版本**：26.1.0
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let apprunningId = hidebug.getAppRunningUniqueId();
+console.info(`apprunningId: ${apprunningId}`);
 ```

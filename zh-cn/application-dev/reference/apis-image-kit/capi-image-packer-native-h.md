@@ -404,7 +404,7 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 > - C2PA是一项用于记录和验证数字内容来源及编辑历史的技术规范。编码时按照C2PA 2.4嵌入规范预留C2PA数据空间，单位为字节（Byte），取值范围为[0, 4194304]，默认值为0，表示不预留空间。
 > - 该参数仅对JPEG和HEIF生效。其中，JPEG遵循ISO/IEC 18477-3（JPEG XT）及ISO/IEC 19566-5:2023，使用以`JP`和`c2pa`标识的连续APP11段预留并以0填充；HEIF遵循ISO/IEC 14496-12（ISO BMFF），使用Extended UUID为`D8FEC3D6-1B0E-483C-9297-5828877EC481`的顶层`uuid` box预留并以0填充。当设置非零值但无法完成预留时，编码失败。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -431,7 +431,7 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 
 获取编码输出中为C2PA数据预留的空间大小，单位为字节（Byte）。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

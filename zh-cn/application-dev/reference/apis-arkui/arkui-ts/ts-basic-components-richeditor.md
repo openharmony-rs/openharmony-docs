@@ -1210,7 +1210,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否 | 否    | 图片垂直对齐方式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | 否 | 否    | 图片缩放类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | 否 | 是   | 图片布局样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -2077,7 +2077,7 @@ SymbolSpan样式选项。
 | textShadow<sup>11+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 否 | 是    | 设置文字阴影效果。<br>默认值：undefined，不设置文字阴影效果。<br>该接口支持以数组形式入参，实现多重文字阴影。<br>**说明：**<br>仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | lineHeight<sup>12+</sup>    | number \| string \| [Resource](ts-types.md#resource) | 否 | 是    | 设置文本的文本行高。<br>默认值：不设置时自适应字体大小。<br>number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](#fallbacklinespacing23)属性将生效。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | letterSpacing<sup>12+</sup> | number \| string             | 否 | 是    | 设置文本字符间距，默认单位为fp。默认值：0。当取值为负值时，文字会发生压缩。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多Font Feature能力介绍可参考[font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType Features](https://sparanoid.com/lab/opentype-features/)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | strokeWidth<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br>默认值：0。<br>单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。<br>取值范围：(-∞, +∞)<br>与[shaderStyle](#richeditorparagraphstyle11)同时设置时，shaderStyle不生效。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -2124,7 +2124,7 @@ SymbolSpan样式选项。
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| 否| 是    | 图片垂直对齐方式。<br>默认值：ImageSpanAlignment.BOTTOM <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | 否| 是    | 图片缩放类型。<br> 默认值：ImageFit.Cover。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | 否| 是    | 图片布局样式。默认值：{"borderRadius":"","margin":""}<br>   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
@@ -6999,7 +6999,7 @@ struct ScrollToVisibleDemo {
 
 该示例通过设置[RichEditorImageSpanStyle](#richeditorimagespanstyle)的resizable属性，对图片不同方向进行拉伸。
 
-从API版本26.1.0开始，RichEditorImageSpanStyle新增resizable属性。
+从API版本26.0.1开始，RichEditorImageSpanStyle新增resizable属性。
 
 ```ts
 @Entry
