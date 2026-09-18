@@ -140,7 +140,7 @@ try {
 
 Cloud disk system accessor that enables the File Manager to hydrate and dehydrate placeholder files of third-party cloud disks, and subscribe to hydration progress. Before use, you must create a **CloudDiskSystemAccessor** instance.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 
@@ -152,7 +152,7 @@ constructor()
 
 A constructor used to create a **CloudDiskSystemAccessor** instance.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 
@@ -188,7 +188,7 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 
 Subscribes to hydration progress events. This API is applicable to the scenario where the File Manager displays the hydration progress of files. After the subscription, progress notifications of all hydration tasks of the current user (including those initiated by third-party cloud disk applications through the CAPI) are received, and files are distinguished by **filePath** in [HydrateProgress](#hydrateprogress26). Only one callback can be registered on the same instance. Calling this API again before the subscription is cancelled throws error code 34400022. To cancel the subscription, use [off('hydrateProgress')](#offhydrateprogress26).
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -246,7 +246,7 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 
 Unsubscribes from hydration progress events. All 'hydrateProgress' callbacks registered on the current instance are unsubscribed regardless of whether **callback** is specified. If the current instance has not subscribed to the event, calling this API throws error code 34400021.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -312,7 +312,7 @@ Starts or cancels hydration of a placeholder file. This API is applicable to the
 > - If **callbackType** is **CANCEL_FETCH_DATA**, hydration is cancelled. If an in-progress hydration task exists for the target file, the task is cancelled (the progress callback finally receives the CANCELLED state). If no in-progress hydration task exists, the promise is rejected with error code 34400032.
 > - The number of pending (queued) hydration tasks is limited (20 for a single cloud disk application and 40 globally). When the limit is reached, the promise is rejected with error code 34400034. In this case, wait for some hydration tasks to complete or be cancelled, and then try again. In addition, a maximum of five hydration tasks of a single cloud disk application and ten hydration tasks globally can run at the same time, and excess tasks wait in the queue without an error being reported.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -394,7 +394,7 @@ Dehydrates a fully hydrated placeholder file, reverting it to an unhydrated plac
 > - Calling this API on a file that is already unhydrated is an idempotent operation, and the promise is fulfilled.
 > - Dehydration is not allowed when an in-progress hydration task exists for the file. In this case, the promise is rejected with error code 34400019.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -489,7 +489,7 @@ Enumerates the states of the sync root.
 
 Describes the progress of a hydration task, which is reported by the callback subscribed via [on('hydrateProgress')](#onhydrateprogress26).
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 
@@ -506,7 +506,7 @@ Describes the progress of a hydration task, which is reported by the callback su
 
 Enumerates the states of the hydration progress.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 
@@ -523,7 +523,7 @@ Enumerates the states of the hydration progress.
 
 Enumerates the callback types of cloud file data fetching and dehydration authorization.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 
@@ -539,7 +539,7 @@ Enumerates the callback types of cloud file data fetching and dehydration author
 
 Enumerates the priorities of hydration tasks.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **System API**: This is a system API.
 

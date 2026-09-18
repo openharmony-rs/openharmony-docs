@@ -143,7 +143,7 @@ try {
 
 云盘系统访问器，为系统文件管理应用提供对三方云盘占位符文件执行水合与脱水的能力，并支持订阅水合进度。在使用前，需要先创建CloudDiskSystemAccessor实例。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -155,7 +155,7 @@ constructor()
 
 CloudDiskSystemAccessor的构造函数，用于创建CloudDiskSystemAccessor类的实例。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -191,7 +191,7 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 
 订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。同一实例仅可注册一个回调，未取消订阅前再次调用本接口将抛出34400022错误码。可通过[off('hydrateProgress')](#offhydrateprogress26)取消订阅。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -249,7 +249,7 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 
 取消订阅水合进度事件。无论是否传入callback，均取消当前实例已注册的所有'hydrateProgress'回调。当前实例尚未订阅时调用本接口将抛出34400021错误码。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -315,7 +315,7 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 > - callbackType取CANCEL_FETCH_DATA时取消水合：目标文件存在进行中的水合任务时将其取消（进度回调最终收到CANCELLED状态）；不存在进行中的水合任务时Promise被拒绝并返回34400032错误码。
 > - 待处理（排队中）的水合任务数量存在上限（单个云盘应用20个、全局40个），达到上限时Promise被拒绝并返回34400034错误码，可等待部分水合任务完成或取消后再重试。此外，单个云盘应用同时执行的水合任务最多5个、全局最多10个，超出部分排队等待，不会报错。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -397,7 +397,7 @@ dehydrateFile(filePath: string): Promise&lt;void&gt;
 > - 文件已处于未水合状态时调用本接口为幂等操作，Promise正常兑现。
 > - 文件存在进行中的水合任务时不允许脱水，Promise被拒绝并返回34400019错误码。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
 
@@ -492,7 +492,7 @@ accessor.dehydrateFile(filePath).then(() => {
 
 描述水合任务的进度信息，通过[on('hydrateProgress')](#onhydrateprogress26)订阅的回调获取。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -509,7 +509,7 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，水合任务的水合进度状态。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -526,7 +526,7 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，云盘文件数据获取及脱水授权的回调类型。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -542,7 +542,7 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，水合任务的优先级。
 
-**起始版本**： 26.1.0
+**起始版本**： 26.0.1
 
 **系统接口**：此接口为系统接口。
 
