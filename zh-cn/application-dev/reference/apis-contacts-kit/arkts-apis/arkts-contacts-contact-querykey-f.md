@@ -18,7 +18,7 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey-1)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** queryKey(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -114,7 +114,7 @@ function queryKey(context: Context, id: number, callback: AsyncCallback<string>)
 
 **示例**
 
-参见 [queryKey](#querykey)
+参见 queryKey
 
 
 ## queryKey
@@ -129,7 +129,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey-3)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** queryKey(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -145,7 +145,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **示例**
 
-参见 [queryKey](#querykey)
+参见 queryKey
 
 
 ## queryKey
@@ -180,7 +180,7 @@ function queryKey(context: Context, id: number, holder: Holder, callback: AsyncC
 
 **示例**
 
-参见 [queryKey](#querykey)
+参见 queryKey
 
 
 ## queryKey
@@ -195,7 +195,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey-5)(context: Context, id: number, holder?: Holder)
+**替代接口：** queryKey(context: Context, id: number, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -216,7 +216,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **示例**
 
-参见 [queryKey](#querykey)
+参见 queryKey
 
 
 ## queryKey
@@ -256,4 +256,4 @@ function queryKey(context: Context, id: number, holder?: Holder): Promise<string
 
 **示例**
 
-参见 [queryKey](#querykey)
+参见 queryKey

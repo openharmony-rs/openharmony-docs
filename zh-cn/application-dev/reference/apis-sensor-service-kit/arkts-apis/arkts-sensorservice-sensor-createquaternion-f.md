@@ -104,4 +104,4 @@ function createQuaternion(rotationVector: Array<number>): Promise<Array<number>>
 
 **示例**
 
-参见 [createQuaternion](#createquaternion)
+参见 createQuaternion

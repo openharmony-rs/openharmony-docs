@@ -8,7 +8,7 @@
 
 **废弃版本：** 10
 
-**替代接口：** [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md)
+**替代接口：** HidHostProfile
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

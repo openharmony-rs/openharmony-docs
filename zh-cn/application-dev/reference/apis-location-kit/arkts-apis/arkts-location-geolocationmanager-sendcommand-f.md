@@ -102,4 +102,4 @@ function sendCommand(command: LocationCommand): Promise<void>
 
 **示例**
 
-参见 [sendCommand](#sendcommand)
+参见 sendCommand

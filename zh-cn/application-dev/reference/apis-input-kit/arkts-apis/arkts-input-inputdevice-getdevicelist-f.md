@@ -109,4 +109,4 @@ function getDeviceList(): Promise<Array<number>>
 
 **示例**
 
-参见 [getDeviceList](#getdevicelist)
+参见 getDeviceList

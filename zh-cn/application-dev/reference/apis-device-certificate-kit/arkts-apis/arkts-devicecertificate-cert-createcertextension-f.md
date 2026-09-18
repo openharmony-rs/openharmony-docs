@@ -137,4 +137,4 @@ function createCertExtension(inStream: EncodingBlob): Promise<CertExtension>
 
 **示例**
 
-参见 [createCertExtension](#createcertextension)
+参见 createCertExtension

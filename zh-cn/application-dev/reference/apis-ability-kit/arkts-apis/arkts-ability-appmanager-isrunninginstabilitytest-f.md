@@ -95,4 +95,4 @@ function isRunningInStabilityTest(): Promise<boolean>
 
 **示例**
 
-参见 [isRunningInStabilityTest](#isrunninginstabilitytest)
+参见 isRunningInStabilityTest

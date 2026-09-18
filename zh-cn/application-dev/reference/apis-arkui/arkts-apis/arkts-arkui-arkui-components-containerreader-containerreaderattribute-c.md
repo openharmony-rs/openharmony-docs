@@ -2,7 +2,7 @@
 
 除支持[通用属性](../arkts-components/arkts-arkui-commonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** ContainerReaderAttribute extends CommonMethod<ContainerReaderAttribute>
+**继承/实现关系：** ContainerReaderAttribute extends CommonMethod&lt;ContainerReaderAttribute&gt;
 
 **起始版本：** 26.0.0
 

@@ -130,7 +130,7 @@ function createRotationMatrix(rotationVector: Array<number>): Promise<Array<numb
 
 **示例**
 
-参见 [createRotationMatrix](#createrotationmatrix)
+参见 createRotationMatrix
 
 
 ## createRotationMatrix
@@ -165,7 +165,7 @@ function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>
 
 **示例**
 
-参见 [createRotationMatrix](#createrotationmatrix)
+参见 createRotationMatrix
 
 
 ## createRotationMatrix
@@ -204,4 +204,4 @@ function createRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>
 
 **示例**
 
-参见 [createRotationMatrix](#createrotationmatrix)
+参见 createRotationMatrix

@@ -98,4 +98,4 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 
 **示例**
 
-参见 [getAbilityInfo](#getabilityinfo)
+参见 getAbilityInfo

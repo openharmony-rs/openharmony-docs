@@ -3,13 +3,13 @@
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-ShortcutInfo](#shortcutinfo)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用bundleManager-ShortcutInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [ShortcutInfo](#shortcutinfo)
+**替代接口：** ShortcutInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -223,7 +223,7 @@ readonly wants: Array<ShortcutWant>
 
 快捷方式意图列表。
 
-**类型：** Array&lt;[ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)&gt;
+**类型：** Array&lt;ShortcutWant&gt;
 
 **起始版本：** 7
 

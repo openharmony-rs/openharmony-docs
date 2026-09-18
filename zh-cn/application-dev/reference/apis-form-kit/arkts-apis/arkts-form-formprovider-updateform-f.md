@@ -142,4 +142,4 @@ function updateForm(formId: string, formBindingData: formBindingData.FormBinding
 
 **示例**
 
-参见 [updateForm](#updateform)
+参见 updateForm

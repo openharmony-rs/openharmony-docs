@@ -4,7 +4,7 @@
 
 > **说明：** 
 > 
-> 背景图片的同步加载可能会带来潜在性能问题，详情可见[Image](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#image-1)中说明。
+> 背景图片的同步加载可能会带来潜在性能问题，详情可见Image中说明。
 
 **起始版本：** 18
 

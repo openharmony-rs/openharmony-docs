@@ -301,7 +301,7 @@ function createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback<X50
 
 **示例**
 
-参见 [createX509CertChain](#createx509certchain)
+参见 createX509CertChain
 
 
 ## createX509CertChain
@@ -340,4 +340,4 @@ function createX509CertChain(certs: Array<X509Cert>): X509CertChain
 
 **示例**
 
-参见 [createX509CertChain](#createx509certchain)
+参见 createX509CertChain

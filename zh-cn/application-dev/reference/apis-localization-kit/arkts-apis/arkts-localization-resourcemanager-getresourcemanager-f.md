@@ -149,7 +149,7 @@ export function getResourceManager(bundleName: string, callback: AsyncCallback<R
 
 **示例**
 
-参见 [getResourceManager](#getresourcemanager)
+参见 getResourceManager
 
 
 ## getResourceManager
@@ -174,7 +174,7 @@ export function getResourceManager(): Promise<ResourceManager>
 
 **示例**
 
-参见 [getResourceManager](#getresourcemanager)
+参见 getResourceManager
 
 
 ## getResourceManager
@@ -205,4 +205,4 @@ export function getResourceManager(bundleName: string): Promise<ResourceManager>
 
 **示例**
 
-参见 [getResourceManager](#getresourcemanager)
+参见 getResourceManager

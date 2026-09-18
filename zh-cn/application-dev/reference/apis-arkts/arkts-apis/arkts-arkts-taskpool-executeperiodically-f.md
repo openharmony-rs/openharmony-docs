@@ -159,4 +159,4 @@ function executePeriodically<A extends Array<Object>, R>(period: number, task: G
 
 **示例**
 
-参见 [executePeriodically](#executeperiodically)
+参见 executePeriodically

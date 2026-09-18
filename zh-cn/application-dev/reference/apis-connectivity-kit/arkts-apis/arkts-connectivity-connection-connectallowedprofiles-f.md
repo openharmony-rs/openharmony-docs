@@ -122,4 +122,4 @@ API版本26.0.0之前，需先调用[connection.pairDevice](arkts-connectivity-c
 
 **示例**
 
-参见 [connectAllowedProfiles](#connectallowedprofiles)
+参见 connectAllowedProfiles

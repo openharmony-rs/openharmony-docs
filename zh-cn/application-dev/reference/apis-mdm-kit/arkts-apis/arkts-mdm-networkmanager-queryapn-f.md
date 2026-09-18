@@ -127,4 +127,4 @@ function queryApn(admin: Want, apnId: string): Record<string, string>
 
 **示例**
 
-参见 [queryApn](#queryapn)
+参见 queryApn

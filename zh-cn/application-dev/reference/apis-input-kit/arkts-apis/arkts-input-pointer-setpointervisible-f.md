@@ -124,4 +124,4 @@ function setPointerVisible(visible: boolean): Promise<void>
 
 **示例**
 
-参见 [setPointerVisible](#setpointervisible)
+参见 setPointerVisible

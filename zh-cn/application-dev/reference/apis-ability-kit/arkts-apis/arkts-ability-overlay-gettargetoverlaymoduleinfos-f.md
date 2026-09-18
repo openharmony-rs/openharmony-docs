@@ -110,4 +110,4 @@ function getTargetOverlayModuleInfos(targetModuleName: string): Promise<Array<Ov
 
 **示例**
 
-参见 [getTargetOverlayModuleInfos](#gettargetoverlaymoduleinfos)
+参见 getTargetOverlayModuleInfos

@@ -1,6 +1,6 @@
 # CommonTransition
 
-页面转场通用动效，通过PageTransitionEnter和[PageTransitionExit](arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit)继承使用，需在pageTransition()函数中配置，slide与translate均涉及位置移动：slide适用于需要沿预置方向（左/右/上/下/START/END）滑入滑出的场景，使用简单；translate适用于需要自定义平移距离的场景，灵活性更高。当slide和translate同时设置时，默认生效slide。scale、opacity分别设置缩放和透明度效果，可与上述效果组合使用。
+页面转场通用动效，通过PageTransitionEnter和PageTransitionExit继承使用，需在pageTransition()函数中配置，slide与translate均涉及位置移动：slide适用于需要沿预置方向（左/右/上/下/START/END）滑入滑出的场景，使用简单；translate适用于需要自定义平移距离的场景，灵活性更高。当slide和translate同时设置时，默认生效slide。scale、opacity分别设置缩放和透明度效果，可与上述效果组合使用。
 
 **起始版本：** 7
 

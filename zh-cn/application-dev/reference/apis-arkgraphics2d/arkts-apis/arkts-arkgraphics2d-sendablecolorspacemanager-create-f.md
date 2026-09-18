@@ -101,4 +101,4 @@ function create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number)
 
 **示例**
 
-参见 [create](#create)
+参见 create

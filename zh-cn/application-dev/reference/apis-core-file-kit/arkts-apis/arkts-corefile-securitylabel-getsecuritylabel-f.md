@@ -102,4 +102,4 @@ function getSecurityLabel(path: string, callback: AsyncCallback<string>): void
 
 **示例**
 
-参见 [getSecurityLabel](#getsecuritylabel)
+参见 getSecurityLabel

@@ -243,4 +243,4 @@ function generateKeyItem(keyAlias: string, options: HuksOptions): Promise<void>
 
 **示例**
 
-参见 [generateKeyItem](#generatekeyitem)
+参见 generateKeyItem

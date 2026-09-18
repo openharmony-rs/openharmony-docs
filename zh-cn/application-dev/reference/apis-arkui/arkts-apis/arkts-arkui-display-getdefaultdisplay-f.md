@@ -83,4 +83,4 @@ function getDefaultDisplay(): Promise<Display>
 
 **示例**
 
-参见 [getDefaultDisplay](#getdefaultdisplay)
+参见 getDefaultDisplay

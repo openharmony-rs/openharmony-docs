@@ -99,4 +99,4 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **示例**
 
-参见 [getActiveNotifications](#getactivenotifications)
+参见 getActiveNotifications

@@ -122,4 +122,4 @@ function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<nu
 
 **示例**
 
-参见 [addCandidateConfig](#addcandidateconfig)
+参见 addCandidateConfig

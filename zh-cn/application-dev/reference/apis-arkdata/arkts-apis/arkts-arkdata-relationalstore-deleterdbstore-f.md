@@ -85,7 +85,7 @@ function deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCa
 
 **示例**
 
-参见 [deleteRdbStore](#deleterdbstore)
+参见 deleteRdbStore
 
 
 ## deleteRdbStore
@@ -127,7 +127,7 @@ function deleteRdbStore(context: Context, name: string): Promise<void>
 
 **示例**
 
-参见 [deleteRdbStore](#deleterdbstore)
+参见 deleteRdbStore
 
 
 ## deleteRdbStore
@@ -172,4 +172,4 @@ function deleteRdbStore(context: Context, config: StoreConfig): Promise<void>
 
 **示例**
 
-参见 [deleteRdbStore](#deleterdbstore)
+参见 deleteRdbStore

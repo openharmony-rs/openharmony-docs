@@ -100,4 +100,4 @@ function getSimOperatorNumeric(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getSimOperatorNumeric](#getsimoperatornumeric)
+参见 getSimOperatorNumeric

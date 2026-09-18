@@ -135,4 +135,4 @@ function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>): Prom
 
 **示例**
 
-参见 [bindDevice](#binddevice)
+参见 bindDevice

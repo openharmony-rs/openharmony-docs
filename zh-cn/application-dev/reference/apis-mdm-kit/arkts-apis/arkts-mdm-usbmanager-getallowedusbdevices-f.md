@@ -114,4 +114,4 @@ function getAllowedUsbDevices(admin: Want | null): Array<UsbDeviceId>
 
 **示例**
 
-参见 [getAllowedUsbDevices](#getallowedusbdevices)
+参见 getAllowedUsbDevices

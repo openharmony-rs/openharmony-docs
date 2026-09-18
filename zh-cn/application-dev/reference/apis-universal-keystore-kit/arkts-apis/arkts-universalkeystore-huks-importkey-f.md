@@ -167,4 +167,4 @@ function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 
 **示例**
 
-参见 [importKey](#importkey)
+参见 importKey

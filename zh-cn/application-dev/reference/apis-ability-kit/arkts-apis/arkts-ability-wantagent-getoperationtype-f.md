@@ -206,4 +206,4 @@ function getOperationType(agent: WantAgent): Promise<number>
 
 **示例**
 
-参见 [getOperationType](#getoperationtype)
+参见 getOperationType

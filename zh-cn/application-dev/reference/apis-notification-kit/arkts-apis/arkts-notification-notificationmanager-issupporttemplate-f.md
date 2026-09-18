@@ -97,4 +97,4 @@ function isSupportTemplate(templateName: string): Promise<boolean>
 
 **示例**
 
-参见 [isSupportTemplate](#issupporttemplate)
+参见 isSupportTemplate

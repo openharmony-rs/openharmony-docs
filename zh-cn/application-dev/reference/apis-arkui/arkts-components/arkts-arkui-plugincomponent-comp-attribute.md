@@ -8,7 +8,7 @@
 
 除通用事件外，还支持以下事件。
 
-**继承/实现关系：** PluginComponentAttribute extends CommonMethod<PluginComponentAttribute>
+**继承/实现关系：** PluginComponentAttribute extends CommonMethod&lt;PluginComponentAttribute&gt;
 
 **起始版本：** 9
 

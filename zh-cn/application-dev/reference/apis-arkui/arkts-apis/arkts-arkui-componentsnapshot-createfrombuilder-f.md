@@ -232,4 +232,4 @@ function createFromBuilder(builder: CustomBuilder, delay?: number,
 
 **示例**
 
-参见 [createFromBuilder](#createfrombuilder)
+参见 createFromBuilder

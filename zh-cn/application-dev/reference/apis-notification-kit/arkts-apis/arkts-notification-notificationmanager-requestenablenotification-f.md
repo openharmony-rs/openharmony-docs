@@ -166,7 +166,7 @@ function requestEnableNotification(context: UIAbilityContext, callback: AsyncCal
 
 **示例**
 
-参见 [requestEnableNotification](#requestenablenotification)
+参见 requestEnableNotification
 
 
 ## requestEnableNotification
@@ -203,7 +203,7 @@ function requestEnableNotification(): Promise<void>
 
 **示例**
 
-参见 [requestEnableNotification](#requestenablenotification)
+参见 requestEnableNotification
 
 
 ## requestEnableNotification
@@ -259,4 +259,4 @@ function requestEnableNotification(context: UIAbilityContext): Promise<void>
 
 **示例**
 
-参见 [requestEnableNotification](#requestenablenotification)
+参见 requestEnableNotification

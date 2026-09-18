@@ -149,4 +149,4 @@ function startChildProcess(srcEntry: string, startMode: StartMode, callback: Asy
 
 **示例**
 
-参见 [startChildProcess](#startchildprocess)
+参见 startChildProcess

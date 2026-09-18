@@ -139,4 +139,4 @@ function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
 
 **示例**
 
-参见 [getWantAgent](#getwantagent)
+参见 getWantAgent

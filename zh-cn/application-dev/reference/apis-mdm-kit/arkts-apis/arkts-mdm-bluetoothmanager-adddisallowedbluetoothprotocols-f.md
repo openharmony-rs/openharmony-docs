@@ -138,4 +138,4 @@ function addDisallowedBluetoothProtocols(admin: Want, accountId: number, protoco
 
 **示例**
 
-参见 [addDisallowedBluetoothProtocols](#adddisallowedbluetoothprotocols)
+参见 addDisallowedBluetoothProtocols

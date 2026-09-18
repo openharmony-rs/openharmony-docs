@@ -72,4 +72,4 @@ function cancelAllReminders(): Promise<void>
 
 **示例**
 
-参见 [cancelAllReminders](#cancelallreminders)
+参见 cancelAllReminders

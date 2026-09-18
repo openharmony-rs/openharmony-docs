@@ -107,7 +107,7 @@ function selectContacts(): Promise<Array<Contact>>
 
 **示例**
 
-参见 [selectContacts](#selectcontacts)
+参见 selectContacts
 
 
 ## selectContacts
@@ -139,7 +139,7 @@ function selectContacts(options: ContactSelectionOptions, callback: AsyncCallbac
 
 **示例**
 
-参见 [selectContacts](#selectcontacts)
+参见 selectContacts
 
 
 ## selectContacts
@@ -176,4 +176,4 @@ function selectContacts(options: ContactSelectionOptions): Promise<Array<Contact
 
 **示例**
 
-参见 [selectContacts](#selectcontacts)
+参见 selectContacts

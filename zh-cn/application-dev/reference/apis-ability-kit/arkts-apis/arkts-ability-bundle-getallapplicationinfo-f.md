@@ -103,7 +103,7 @@ function getAllApplicationInfo(bundleFlags: number, callback: AsyncCallback<Arra
 
 **示例**
 
-参见 [getAllApplicationInfo](#getallapplicationinfo)
+参见 getAllApplicationInfo
 
 
 ## getAllApplicationInfo
@@ -137,4 +137,4 @@ function getAllApplicationInfo(bundleFlags: number, userId?: number): Promise<Ar
 
 **示例**
 
-参见 [getAllApplicationInfo](#getallapplicationinfo)
+参见 getAllApplicationInfo

@@ -64,4 +64,4 @@ function isNRSupported(slotId: number): boolean
 
 **示例**
 
-参见 [isNRSupported](#isnrsupported)
+参见 isNRSupported

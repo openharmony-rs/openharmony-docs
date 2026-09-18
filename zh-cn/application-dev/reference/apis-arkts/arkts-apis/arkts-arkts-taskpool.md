@@ -68,7 +68,7 @@ import { taskpool } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../../napi/qos-guidelines.md#qos等级定义)。 |
+| [Priority](arkts-arkts-taskpool-priority-e.md) | 表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考QoS等级定义。 |
 | [State](arkts-arkts-taskpool-state-e.md) | 表示任务（Task）状态的枚举。 |
 
 ### 类型

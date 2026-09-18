@@ -112,4 +112,4 @@ function getBundleNameByUid(uid: number): Promise<string>
 
 **示例**
 
-参见 [getBundleNameByUid](#getbundlenamebyuid)
+参见 getBundleNameByUid

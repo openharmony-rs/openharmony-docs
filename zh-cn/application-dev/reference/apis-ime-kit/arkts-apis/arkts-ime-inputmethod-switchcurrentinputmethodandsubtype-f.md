@@ -125,4 +125,4 @@ function switchCurrentInputMethodAndSubtype(
 
 **示例**
 
-参见 [switchCurrentInputMethodAndSubtype](#switchcurrentinputmethodandsubtype)
+参见 switchCurrentInputMethodAndSubtype

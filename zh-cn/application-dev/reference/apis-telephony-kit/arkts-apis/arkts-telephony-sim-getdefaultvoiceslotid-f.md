@@ -71,4 +71,4 @@ function getDefaultVoiceSlotId(): Promise<number>
 
 **示例**
 
-参见 [getDefaultVoiceSlotId](#getdefaultvoiceslotid)
+参见 getDefaultVoiceSlotId

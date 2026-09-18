@@ -102,4 +102,4 @@ function getAbilityIcon(bundleName: string, abilityName: string): Promise<image.
 
 **示例**
 
-参见 [getAbilityIcon](#getabilityicon)
+参见 getAbilityIcon

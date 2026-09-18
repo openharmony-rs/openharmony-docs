@@ -100,4 +100,4 @@ function getAltitude(seaPressure: number, currentPressure: number): Promise<numb
 
 **示例**
 
-参见 [getAltitude](#getaltitude)
+参见 getAltitude

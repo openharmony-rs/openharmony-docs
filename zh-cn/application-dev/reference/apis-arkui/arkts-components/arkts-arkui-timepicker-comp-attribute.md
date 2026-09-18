@@ -4,7 +4,7 @@
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TimePickerAttribute extends CommonMethod<TimePickerAttribute>
+**继承/实现关系：** TimePickerAttribute extends CommonMethod&lt;TimePickerAttribute&gt;
 
 **起始版本：** 8
 

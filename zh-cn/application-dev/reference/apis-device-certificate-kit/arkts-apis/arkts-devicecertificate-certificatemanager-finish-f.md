@@ -156,7 +156,7 @@ function finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallba
 
 **示例**
 
-参见 [finish](#finish)
+参见 finish
 
 
 ## finish
@@ -196,4 +196,4 @@ function finish(handle: Uint8Array, signature?: Uint8Array): Promise<CMResult>
 
 **示例**
 
-参见 [finish](#finish)
+参见 finish

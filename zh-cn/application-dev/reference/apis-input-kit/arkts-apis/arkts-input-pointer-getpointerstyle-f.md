@@ -148,4 +148,4 @@ function getPointerStyle(windowId: number): Promise<PointerStyle>
 
 **示例**
 
-参见 [getPointerStyle](#getpointerstyle)
+参见 getPointerStyle

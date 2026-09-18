@@ -122,4 +122,4 @@ function update(handle: Uint8Array, data: Uint8Array): Promise<void>
 
 **示例**
 
-参见 [update](#update)
+参见 update

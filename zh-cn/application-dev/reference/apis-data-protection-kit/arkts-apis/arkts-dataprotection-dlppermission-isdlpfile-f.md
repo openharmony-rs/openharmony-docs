@@ -111,4 +111,4 @@ function isDLPFile(fd: number, callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 [isDLPFile](#isdlpfile)
+参见 isDLPFile

@@ -4,7 +4,7 @@
 
 @extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 
-**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod<IndicatorComponentAttribute>
+**继承/实现关系：** IndicatorComponentAttribute extends CommonMethod&lt;IndicatorComponentAttribute&gt;
 
 **起始版本：** 15
 

@@ -18,7 +18,7 @@ function setUserRestriction(admin: Want, settingsItem: string, restricted: boole
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setUserRestriction](#setuserrestriction-1)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
+**替代接口：** setUserRestriction(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
@@ -117,4 +117,4 @@ function setUserRestriction(admin: Want, settingsItem: SettingsForDevice, restri
 
 **示例**
 
-参见 [setUserRestriction](#setuserrestriction)
+参见 setUserRestriction

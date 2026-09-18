@@ -120,4 +120,4 @@ function getPrivateCertificate(keyUri: string): Promise<CMResult>
 
 **示例**
 
-参见 [getPrivateCertificate](#getprivatecertificate)
+参见 getPrivateCertificate

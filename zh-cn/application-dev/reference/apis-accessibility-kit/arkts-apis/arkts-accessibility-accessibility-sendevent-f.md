@@ -99,4 +99,4 @@ function sendEvent(event: EventInfo): Promise<void>
 
 **示例**
 
-参见 [sendEvent](#sendevent)
+参见 sendEvent

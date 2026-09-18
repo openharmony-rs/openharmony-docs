@@ -134,4 +134,4 @@ function switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise<bo
 
 **示例**
 
-参见 [switchCurrentInputMethodSubtype](#switchcurrentinputmethodsubtype)
+参见 switchCurrentInputMethodSubtype

@@ -109,4 +109,4 @@ function isPointerVisible(): Promise<boolean>
 
 **示例**
 
-参见 [isPointerVisible](#ispointervisible)
+参见 isPointerVisible

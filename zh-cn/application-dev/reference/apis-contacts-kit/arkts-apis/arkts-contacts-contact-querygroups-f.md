@@ -18,7 +18,7 @@ function queryGroups(callback: AsyncCallback<Array<Group>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#querygroups-1)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**替代接口：** queryGroups(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -112,7 +112,7 @@ function queryGroups(context: Context, callback: AsyncCallback<Array<Group>>): v
 
 **示例**
 
-参见 [queryGroups](#querygroups)
+参见 queryGroups
 
 
 ## queryGroups
@@ -127,7 +127,7 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#querygroups-3)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**替代接口：** queryGroups(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -142,7 +142,7 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 
 **示例**
 
-参见 [queryGroups](#querygroups)
+参见 queryGroups
 
 
 ## queryGroups
@@ -176,7 +176,7 @@ function queryGroups(context: Context, holder: Holder, callback: AsyncCallback<A
 
 **示例**
 
-参见 [queryGroups](#querygroups)
+参见 queryGroups
 
 
 ## queryGroups
@@ -191,7 +191,7 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#querygroups-5)(context: Context, holder?: Holder)
+**替代接口：** queryGroups(context: Context, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -211,7 +211,7 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 **示例**
 
-参见 [queryGroups](#querygroups)
+参见 queryGroups
 
 
 ## queryGroups
@@ -250,4 +250,4 @@ function queryGroups(context: Context, holder?: Holder): Promise<Array<Group>>
 
 **示例**
 
-参见 [queryGroups](#querygroups)
+参见 queryGroups

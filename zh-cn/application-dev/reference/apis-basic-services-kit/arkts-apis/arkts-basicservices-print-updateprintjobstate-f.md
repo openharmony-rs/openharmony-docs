@@ -115,4 +115,4 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 
 **示例**
 
-参见 [updatePrintJobState](#updateprintjobstate)
+参见 updatePrintJobState

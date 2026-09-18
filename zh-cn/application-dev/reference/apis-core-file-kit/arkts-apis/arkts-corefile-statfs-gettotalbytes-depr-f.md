@@ -85,4 +85,4 @@ function getTotalBytes(path: string): Promise<number>
 
 **示例**
 
-参见 [getTotalBytes](#gettotalbytes)
+参见 getTotalBytes

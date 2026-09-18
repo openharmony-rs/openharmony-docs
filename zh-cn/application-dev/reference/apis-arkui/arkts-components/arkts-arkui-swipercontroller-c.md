@@ -37,7 +37,7 @@ changeIndex(index: number, useAnimation?: boolean)
 changeIndex(index: number, animationMode?: SwiperAnimationMode | boolean)
 ```
 
-翻页至指定页面。翻页带动效切换过程，时长通过Swiper的[duration](#duration)属性设置。
+翻页至指定页面。翻页带动效切换过程，时长通过Swiper的duration属性设置。
 
 > **说明：** 
 
@@ -212,7 +212,7 @@ preloadItems(indices: Optional<Array<number>>): Promise<void>
 showNext()
 ```
 
-翻至下一页。翻页带动效切换过程，时长通过Swiper的[duration](arkts-arkui-swiper-comp-attribute.md#duration)属性设置。
+翻至下一页。翻页带动效切换过程，时长通过Swiper的duration属性设置。
 
 **起始版本：** 7
 
@@ -228,7 +228,7 @@ showNext()
 showPrevious()
 ```
 
-翻至上一页。翻页带动效切换过程，时长通过Swiper的[duration](arkts-arkui-swiper-comp-attribute.md#duration)属性设置。
+翻至上一页。翻页带动效切换过程，时长通过Swiper的duration属性设置。
 
 **起始版本：** 7
 

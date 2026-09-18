@@ -84,4 +84,4 @@ function getCurrentBundleStats(): Promise<BundleStats>
 
 **示例**
 
-参见 [getCurrentBundleStats](#getcurrentbundlestats)
+参见 getCurrentBundleStats

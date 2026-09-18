@@ -124,4 +124,4 @@ function getDeviceInfo(deviceId: number): Promise<InputDeviceData>
 
 **示例**
 
-参见 [getDeviceInfo](#getdeviceinfo)
+参见 getDeviceInfo

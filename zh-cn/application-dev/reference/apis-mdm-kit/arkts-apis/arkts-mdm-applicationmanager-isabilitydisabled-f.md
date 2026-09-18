@@ -129,4 +129,4 @@ function isAbilityDisabled(admin: Want | null, bundleName: string, accountId: nu
 
 **示例**
 
-参见 [isAbilityDisabled](#isabilitydisabled)
+参见 isAbilityDisabled

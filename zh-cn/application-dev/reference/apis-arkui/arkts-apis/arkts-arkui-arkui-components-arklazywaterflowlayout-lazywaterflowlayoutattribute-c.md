@@ -4,7 +4,7 @@
 
 @extends CommonMethod&lt;T&gt;
 
-**继承/实现关系：** LazyWaterFlowLayoutAttribute extends CommonMethod<T>
+**继承/实现关系：** LazyWaterFlowLayoutAttribute extends CommonMethod&lt;T&gt;
 
 **起始版本：** 26.0.0
 

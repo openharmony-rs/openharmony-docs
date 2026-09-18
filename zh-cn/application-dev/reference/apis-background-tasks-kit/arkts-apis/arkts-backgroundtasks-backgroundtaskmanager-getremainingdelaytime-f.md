@@ -105,4 +105,4 @@ function getRemainingDelayTime(requestId: number): Promise<number>
 
 **示例**
 
-参见 [getRemainingDelayTime](#getremainingdelaytime)
+参见 getRemainingDelayTime

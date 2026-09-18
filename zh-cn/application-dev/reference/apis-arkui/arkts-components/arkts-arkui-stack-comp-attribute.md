@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** StackAttribute extends CommonMethod<StackAttribute>
+**继承/实现关系：** StackAttribute extends CommonMethod&lt;StackAttribute&gt;
 
 **起始版本：** 7
 

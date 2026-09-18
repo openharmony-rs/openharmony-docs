@@ -138,7 +138,7 @@ function pairDevice(deviceId: string): Promise<void>
 
 **示例**
 
-参见 [pairDevice](#pairdevice)
+参见 pairDevice
 
 
 ## pairDevice
@@ -183,4 +183,4 @@ function pairDevice(deviceId: BluetoothAddress): Promise<void>
 
 **示例**
 
-参见 [pairDevice](#pairdevice)
+参见 pairDevice

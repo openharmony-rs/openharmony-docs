@@ -22,7 +22,7 @@ function createPbapServerProfile(): PbapServerProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| [PbapServerProfile](arkts-connectivity-pbap-pbapserverprofile-i-sys.md) | 返回PSE实例。该类继承于[BaseProfile](arkts-connectivity-pbap-baseprofile-t.md)，因此可以使用其父类中的方法。和该实例角色相对应的是PCE角色。 |
+| PbapServerProfile | 返回PSE实例。该类继承于[BaseProfile](arkts-connectivity-pbap-baseprofile-t.md)，因此可以使用其父类中的方法。和该实例角色相对应的是PCE角色。 |
 
 **错误码：**
 

@@ -120,4 +120,4 @@ function getTotalSize(path: string, callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getTotalSize](#gettotalsize)
+参见 getTotalSize

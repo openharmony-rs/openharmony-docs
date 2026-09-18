@@ -101,4 +101,4 @@ function cancelGroup(groupName: string): Promise<void>
 
 **示例**
 
-参见 [cancelGroup](#cancelgroup)
+参见 cancelGroup

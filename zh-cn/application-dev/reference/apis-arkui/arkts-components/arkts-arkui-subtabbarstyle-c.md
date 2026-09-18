@@ -264,7 +264,7 @@ padding(value: Padding | Dimension): SubTabBarStyle
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 子页签的内边距属性（不支持百分比设置），用于调整页签内容与边界的距离。<br>取值范围：[0, +∞]<br>异常值时取默认值。<br>默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}<br>**说明：** <br>从API version 12开始，参数支持[LocalizedPadding](ts-types.md#localizedpadding12)类型，支持镜像能力。 |
+| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 子页签的内边距属性（不支持百分比设置），用于调整页签内容与边界的距离。<br>取值范围：[0, +∞]<br>异常值时取默认值。<br>默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}<br>**说明：** <br>从API version 12开始，参数支持LocalizedPadding类型，支持镜像能力。 |
 
 **返回值：**
 

@@ -90,4 +90,4 @@ function read(callback: AsyncCallback<number[]>): void
 
 **示例**
 
-参见 [read](#read)
+参见 read

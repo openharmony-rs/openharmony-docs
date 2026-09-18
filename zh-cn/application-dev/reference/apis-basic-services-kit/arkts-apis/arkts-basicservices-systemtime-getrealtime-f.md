@@ -117,7 +117,7 @@ function getRealTime(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getRealTime](#getrealtime)
+参见 getRealTime
 
 
 ## getRealTime
@@ -156,4 +156,4 @@ function getRealTime(isNano?: boolean): Promise<number>
 
 **示例**
 
-参见 [getRealTime](#getrealtime)
+参见 getRealTime

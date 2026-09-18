@@ -147,4 +147,4 @@ function createX500DistinguishedName(nameDer: Uint8Array): Promise<X500Distingui
 
 **示例**
 
-参见 [createX500DistinguishedName](#createx500distinguishedname)
+参见 createX500DistinguishedName

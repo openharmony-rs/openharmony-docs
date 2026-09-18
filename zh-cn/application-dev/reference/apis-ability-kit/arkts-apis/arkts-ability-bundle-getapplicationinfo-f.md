@@ -112,7 +112,7 @@ function getApplicationInfo(bundleName: string, bundleFlags: number, callback: A
 
 **示例**
 
-参见 [getApplicationInfo](#getapplicationinfo)
+参见 getApplicationInfo
 
 
 ## getApplicationInfo
@@ -149,4 +149,4 @@ function getApplicationInfo(bundleName: string, bundleFlags: number, userId?: nu
 
 **示例**
 
-参见 [getApplicationInfo](#getapplicationinfo)
+参见 getApplicationInfo

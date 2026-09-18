@@ -111,4 +111,4 @@ function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>
 
 **示例**
 
-参见 [getOverlayModuleInfo](#getoverlaymoduleinfo)
+参见 getOverlayModuleInfo

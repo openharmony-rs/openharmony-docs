@@ -98,4 +98,4 @@ function getOperatorName(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getOperatorName](#getoperatorname)
+参见 getOperatorName

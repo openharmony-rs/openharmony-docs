@@ -116,7 +116,7 @@ function isRadioOn(slotId?: number): Promise<boolean>
 
 **示例**
 
-参见 [isRadioOn](#isradioon)
+参见 isRadioOn
 
 
 ## isRadioOn
@@ -152,4 +152,4 @@ function isRadioOn(callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 [isRadioOn](#isradioon)
+参见 isRadioOn

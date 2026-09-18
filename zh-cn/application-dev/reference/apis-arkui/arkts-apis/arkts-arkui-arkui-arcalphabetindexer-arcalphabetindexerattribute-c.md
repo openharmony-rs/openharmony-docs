@@ -4,7 +4,7 @@
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** ArcAlphabetIndexerAttribute extends CommonMethod<ArcAlphabetIndexerAttribute>
+**继承/实现关系：** ArcAlphabetIndexerAttribute extends CommonMethod&lt;ArcAlphabetIndexerAttribute&gt;
 
 **起始版本：** 18
 

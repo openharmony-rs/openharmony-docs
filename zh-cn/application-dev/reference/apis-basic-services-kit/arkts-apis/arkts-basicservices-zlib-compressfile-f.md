@@ -138,4 +138,4 @@ function compressFile(inFile: string, outFile: string, options: Options): Promis
 
 **示例**
 
-参见 [compressFile](#compressfile)
+参见 compressFile

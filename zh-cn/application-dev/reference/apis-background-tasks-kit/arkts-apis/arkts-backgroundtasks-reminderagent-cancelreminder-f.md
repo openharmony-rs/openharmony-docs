@@ -79,4 +79,4 @@ function cancelReminder(reminderId: number): Promise<void>
 
 **示例**
 
-参见 [cancelReminder](#cancelreminder)
+参见 cancelReminder

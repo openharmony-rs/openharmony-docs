@@ -4,7 +4,7 @@
 
 除支持通用事件，还支持以下事件：
 
-**继承/实现关系：** CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
+**继承/实现关系：** CalendarPickerAttribute extends CommonMethod&lt;CalendarPickerAttribute&gt;
 
 **起始版本：** 10
 

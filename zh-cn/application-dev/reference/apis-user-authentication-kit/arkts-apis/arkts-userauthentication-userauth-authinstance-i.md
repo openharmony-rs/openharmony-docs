@@ -83,7 +83,7 @@ off: (name: AuthEventKey) => void
 
 **废弃版本：** 10
 
-**替代接口：** [off](arkts-userauthentication-userauth-userauthinstance-i.md#off)
+**替代接口：** off
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -144,7 +144,7 @@ on: (name: AuthEventKey, callback: AuthEvent) => void
 
 **废弃版本：** 10
 
-**替代接口：** [on](arkts-userauthentication-userauth-userauthinstance-i.md#on)
+**替代接口：** on
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 

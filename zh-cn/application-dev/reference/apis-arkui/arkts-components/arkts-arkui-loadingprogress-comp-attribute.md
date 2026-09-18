@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
+**继承/实现关系：** LoadingProgressAttribute extends CommonMethod&lt;LoadingProgressAttribute&gt;
 
 **起始版本：** 8
 

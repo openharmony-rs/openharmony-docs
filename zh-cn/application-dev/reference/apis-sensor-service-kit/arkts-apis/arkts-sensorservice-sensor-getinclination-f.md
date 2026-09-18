@@ -117,4 +117,4 @@ function getInclination(inclinationMatrix: Array<number>): Promise<number>
 
 **示例**
 
-参见 [getInclination](#getinclination)
+参见 getInclination

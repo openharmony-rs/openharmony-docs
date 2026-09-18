@@ -78,4 +78,4 @@ function flushCachedGnssLocations(): Promise<boolean>
 
 **示例**
 
-参见 [flushCachedGnssLocations](#flushcachedgnsslocations)
+参见 flushCachedGnssLocations

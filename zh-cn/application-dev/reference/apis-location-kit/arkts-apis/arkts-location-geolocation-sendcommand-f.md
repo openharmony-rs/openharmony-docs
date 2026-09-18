@@ -87,4 +87,4 @@ function sendCommand(command: LocationCommand): Promise<boolean>
 
 **示例**
 
-参见 [sendCommand](#sendcommand)
+参见 sendCommand

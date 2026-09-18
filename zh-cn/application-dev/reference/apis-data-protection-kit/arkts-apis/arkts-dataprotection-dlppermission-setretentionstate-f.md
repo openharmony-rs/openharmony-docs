@@ -106,4 +106,4 @@ function setRetentionState(docUris: Array<string>, callback: AsyncCallback<void>
 
 **示例**
 
-参见 [setRetentionState](#setretentionstate)
+参见 setRetentionState

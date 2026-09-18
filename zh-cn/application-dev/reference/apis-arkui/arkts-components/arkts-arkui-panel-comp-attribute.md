@@ -4,7 +4,7 @@
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** PanelAttribute extends CommonMethod<PanelAttribute>
+**继承/实现关系：** PanelAttribute extends CommonMethod&lt;PanelAttribute&gt;
 
 **起始版本：** 7
 

@@ -147,4 +147,4 @@ function createAVSession(context: Context, tag: string, type: AVSessionType): Pr
 
 **示例**
 
-参见 [createAVSession](#createavsession)
+参见 createAVSession

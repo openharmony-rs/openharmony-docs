@@ -124,7 +124,7 @@ function queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCall
 
 **示例**
 
-参见 [queryAbilityByWant](#queryabilitybywant)
+参见 queryAbilityByWant
 
 
 ## queryAbilityByWant
@@ -161,4 +161,4 @@ function queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): P
 
 **示例**
 
-参见 [queryAbilityByWant](#queryabilitybywant)
+参见 queryAbilityByWant

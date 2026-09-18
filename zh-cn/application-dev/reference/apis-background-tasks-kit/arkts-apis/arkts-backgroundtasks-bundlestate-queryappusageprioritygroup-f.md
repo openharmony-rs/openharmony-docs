@@ -79,4 +79,4 @@ The priority defined in a priority group restricts the resource usage of an appl
 
 **示例**
 
-参见 [queryAppUsagePriorityGroup](#queryappusageprioritygroup)
+参见 queryAppUsagePriorityGroup

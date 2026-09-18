@@ -73,4 +73,4 @@ function traceByValue(level: HiTraceOutputLevel, name: string, count: number): v
 
 **示例**
 
-参见 [traceByValue](#tracebyvalue)
+参见 traceByValue

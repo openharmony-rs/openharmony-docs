@@ -151,4 +151,4 @@ function createX509Cert(inStream: EncodingBlob): Promise<X509Cert>
 
 **示例**
 
-参见 [createX509Cert](#createx509cert)
+参见 createX509Cert

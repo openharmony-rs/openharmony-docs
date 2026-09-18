@@ -98,4 +98,4 @@ function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 **示例**
 
-参见 [isKeyExist](#iskeyexist)
+参见 isKeyExist

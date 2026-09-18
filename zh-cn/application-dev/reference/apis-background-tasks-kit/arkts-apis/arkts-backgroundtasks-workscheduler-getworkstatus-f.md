@@ -102,4 +102,4 @@ function getWorkStatus(workId: number): Promise<WorkInfo>
 
 **示例**
 
-参见 [getWorkStatus](#getworkstatus)
+参见 getWorkStatus

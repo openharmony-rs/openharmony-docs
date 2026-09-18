@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** QRCodeAttribute extends CommonMethod<QRCodeAttribute>
+**继承/实现关系：** QRCodeAttribute extends CommonMethod&lt;QRCodeAttribute&gt;
 
 **起始版本：** 7
 

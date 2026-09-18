@@ -116,4 +116,4 @@ function getDisallowedBluetoothDevices(admin: Want | null): Array<string>
 
 **示例**
 
-参见 [getDisallowedBluetoothDevices](#getdisallowedbluetoothdevices)
+参见 getDisallowedBluetoothDevices

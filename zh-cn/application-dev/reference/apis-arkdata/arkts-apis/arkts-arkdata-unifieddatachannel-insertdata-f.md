@@ -134,4 +134,4 @@ function insertData(options: Options, data: UnifiedData): Promise<string>
 
 **示例**
 
-参见 [insertData](#insertdata)
+参见 insertData

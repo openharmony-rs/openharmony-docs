@@ -91,4 +91,4 @@ function writeNdefTag(data: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [writeNdefTag](#writendeftag)
+参见 writeNdefTag

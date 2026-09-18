@@ -100,4 +100,4 @@ function getCardType(slotId: number): Promise<CardType>
 
 **示例**
 
-参见 [getCardType](#getcardtype)
+参见 getCardType

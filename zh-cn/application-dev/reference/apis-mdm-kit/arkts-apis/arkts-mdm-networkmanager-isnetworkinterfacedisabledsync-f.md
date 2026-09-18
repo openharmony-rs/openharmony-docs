@@ -119,4 +119,4 @@ function isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: st
 
 **示例**
 
-参见 [isNetworkInterfaceDisabledSync](#isnetworkinterfacedisabledsync)
+参见 isNetworkInterfaceDisabledSync

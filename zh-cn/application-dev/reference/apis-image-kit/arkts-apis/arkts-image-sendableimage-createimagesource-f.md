@@ -137,7 +137,7 @@ function createImageSource(fd: number): ImageSource
 
 **示例**
 
-参见 [createImageSource](#createimagesource)
+参见 createImageSource
 
 
 ## createImageSource
@@ -172,4 +172,4 @@ function createImageSource(buf: ArrayBuffer): ImageSource
 
 **示例**
 
-参见 [createImageSource](#createimagesource)
+参见 createImageSource

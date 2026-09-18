@@ -113,4 +113,4 @@ function getAllowedKioskApps(admin: Want | null): Array<string>
 
 **示例**
 
-参见 [getAllowedKioskApps](#getallowedkioskapps)
+参见 getAllowedKioskApps

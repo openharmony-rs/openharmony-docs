@@ -136,4 +136,4 @@ function removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback
 
 **示例**
 
-参见 [removeUntrustedConfig](#removeuntrustedconfig)
+参见 removeUntrustedConfig

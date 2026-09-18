@@ -139,4 +139,4 @@ function sendAccessibilityEvent(event: EventInfo): Promise<void>
 
 **示例**
 
-参见 [sendAccessibilityEvent](#sendaccessibilityevent)
+参见 sendAccessibilityEvent

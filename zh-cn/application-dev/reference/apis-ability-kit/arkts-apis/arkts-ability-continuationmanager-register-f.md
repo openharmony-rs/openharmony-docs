@@ -106,7 +106,7 @@ function register(options: ContinuationExtraParams, callback: AsyncCallback<numb
 
 **示例**
 
-参见 [register](#register)
+参见 register
 
 
 ## register
@@ -141,4 +141,4 @@ function register(options?: ContinuationExtraParams): Promise<number>
 
 **示例**
 
-参见 [register](#register)
+参见 register

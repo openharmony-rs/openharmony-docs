@@ -102,7 +102,7 @@ function getAllBundleInfo(bundleFlag: BundleFlag, callback: AsyncCallback<Array<
 
 **示例**
 
-参见 [getAllBundleInfo](#getallbundleinfo)
+参见 getAllBundleInfo
 
 
 ## getAllBundleInfo
@@ -136,4 +136,4 @@ function getAllBundleInfo(bundleFlag: BundleFlag, userId?: number): Promise<Arra
 
 **示例**
 
-参见 [getAllBundleInfo](#getallbundleinfo)
+参见 getAllBundleInfo

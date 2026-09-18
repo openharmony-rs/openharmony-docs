@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
+**继承/实现关系：** HyperlinkAttribute extends CommonMethod&lt;HyperlinkAttribute&gt;
 
 **起始版本：** 7
 

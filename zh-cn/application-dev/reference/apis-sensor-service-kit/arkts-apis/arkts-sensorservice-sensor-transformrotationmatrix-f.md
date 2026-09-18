@@ -97,4 +97,4 @@ function transformRotationMatrix(inRotationVector: Array<number>, coordinates: C
 
 **示例**
 
-参见 [transformRotationMatrix](#transformrotationmatrix)
+参见 transformRotationMatrix

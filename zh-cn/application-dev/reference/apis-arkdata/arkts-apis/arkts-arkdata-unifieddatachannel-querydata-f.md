@@ -136,4 +136,4 @@ function queryData(options: Options): Promise<Array<UnifiedData>>
 
 **示例**
 
-参见 [queryData](#querydata)
+参见 queryData

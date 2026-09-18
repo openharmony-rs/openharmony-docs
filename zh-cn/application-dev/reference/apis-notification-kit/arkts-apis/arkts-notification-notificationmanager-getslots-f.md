@@ -108,4 +108,4 @@ function getSlots(): Promise<Array<NotificationSlot>>
 
 **示例**
 
-参见 [getSlots](#getslots)
+参见 getSlots

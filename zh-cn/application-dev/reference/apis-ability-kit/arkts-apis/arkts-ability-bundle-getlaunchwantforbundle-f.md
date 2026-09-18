@@ -90,4 +90,4 @@ function getLaunchWantForBundle(bundleName: string): Promise<Want>
 
 **示例**
 
-参见 [getLaunchWantForBundle](#getlaunchwantforbundle)
+参见 getLaunchWantForBundle

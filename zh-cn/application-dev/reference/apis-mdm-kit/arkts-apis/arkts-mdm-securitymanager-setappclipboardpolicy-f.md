@@ -116,4 +116,4 @@ function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: numbe
 
 **示例**
 
-参见 [setAppClipboardPolicy](#setappclipboardpolicy)
+参见 setAppClipboardPolicy

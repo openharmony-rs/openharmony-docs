@@ -4,7 +4,7 @@
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** RefreshAttribute extends CommonMethod<RefreshAttribute>
+**继承/实现关系：** RefreshAttribute extends CommonMethod&lt;RefreshAttribute&gt;
 
 **起始版本：** 8
 

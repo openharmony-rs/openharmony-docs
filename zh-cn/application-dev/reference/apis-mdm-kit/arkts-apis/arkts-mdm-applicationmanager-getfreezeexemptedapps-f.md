@@ -113,4 +113,4 @@ function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInst
 
 **示例**
 
-参见 [getFreezeExemptedApps](#getfreezeexemptedapps)
+参见 getFreezeExemptedApps

@@ -79,4 +79,4 @@ function isOperationAllowed(): Promise<boolean>
 
 **示例**
 
-参见 [isOperationAllowed](#isoperationallowed)
+参见 isOperationAllowed

@@ -6,7 +6,7 @@
 
 @extends CommonMethod [since 7 - 10] @extends CommonMethod&lt;DataPanelAttribute&gt; [since 11]
 
-**继承/实现关系：** DataPanelAttribute extends CommonMethod<DataPanelAttribute>
+**继承/实现关系：** DataPanelAttribute extends CommonMethod&lt;DataPanelAttribute&gt;
 
 **起始版本：** 7
 

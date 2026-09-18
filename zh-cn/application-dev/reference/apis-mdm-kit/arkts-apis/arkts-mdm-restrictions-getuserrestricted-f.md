@@ -127,4 +127,4 @@ function getUserRestricted(admin: Want | null, settingsItem: SettingsForDevice):
 
 **示例**
 
-参见 [getUserRestricted](#getuserrestricted)
+参见 getUserRestricted

@@ -91,4 +91,4 @@ function getAllDisplays(): Promise<Array<Display>>
 
 **示例**
 
-参见 [getAllDisplays](#getalldisplays)
+参见 getAllDisplays

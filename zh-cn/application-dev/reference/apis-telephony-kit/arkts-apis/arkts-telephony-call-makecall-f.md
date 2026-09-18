@@ -122,7 +122,7 @@ function makeCall(phoneNumber: string): Promise<void>
 
 **示例**
 
-参见 [makeCall](#makecall)
+参见 makeCall
 
 
 ## makeCall
@@ -163,7 +163,7 @@ function makeCall(phoneNumber: string, options?: MakeCallOptions): Promise<void>
 
 **示例**
 
-参见 [makeCall](#makecall)
+参见 makeCall
 
 
 ## makeCall
@@ -203,4 +203,4 @@ function makeCall(context: Context, phoneNumber: string): Promise<void>
 
 **示例**
 
-参见 [makeCall](#makecall)
+参见 makeCall

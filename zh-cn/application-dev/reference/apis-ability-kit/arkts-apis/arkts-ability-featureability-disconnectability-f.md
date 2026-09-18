@@ -121,4 +121,4 @@ function disconnectAbility(connection: number): Promise<void>
 
 **示例**
 
-参见 [disconnectAbility](#disconnectability)
+参见 disconnectAbility

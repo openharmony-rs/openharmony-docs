@@ -136,4 +136,4 @@ function addKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: nu
 
 **示例**
 
-参见 [addKeepAliveApps](#addkeepaliveapps)
+参见 addKeepAliveApps

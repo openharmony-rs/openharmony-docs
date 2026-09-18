@@ -104,4 +104,4 @@ function isCellularDataRoamingEnabled(slotId: number): Promise<boolean>
 
 **示例**
 
-参见 [isCellularDataRoamingEnabled](#iscellulardataroamingenabled)
+参见 isCellularDataRoamingEnabled

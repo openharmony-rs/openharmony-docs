@@ -40,7 +40,7 @@ buttonTextModifier?: TextModifier
 
 设置按钮文本属性，如设置文本颜色、字体大小等。默认值：undefined，值为undefined时，默认使用系统按钮文本属性。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 26.0.0
 

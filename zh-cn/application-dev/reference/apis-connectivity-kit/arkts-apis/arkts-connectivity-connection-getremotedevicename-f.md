@@ -116,4 +116,4 @@ function getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 **示例**
 
-参见 [getRemoteDeviceName](#getremotedevicename)
+参见 getRemoteDeviceName

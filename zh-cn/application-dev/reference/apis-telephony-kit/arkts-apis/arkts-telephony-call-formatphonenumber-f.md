@@ -120,7 +120,7 @@ function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): 
 
 **示例**
 
-参见 [formatPhoneNumber](#formatphonenumber)
+参见 formatPhoneNumber
 
 
 ## formatPhoneNumber
@@ -156,4 +156,4 @@ function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>)
 
 **示例**
 
-参见 [formatPhoneNumber](#formatphonenumber)
+参见 formatPhoneNumber

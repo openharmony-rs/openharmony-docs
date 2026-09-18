@@ -104,4 +104,4 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Prom
 
 **示例**
 
-参见 [formatPhoneNumberToE164](#formatphonenumbertoe164)
+参见 formatPhoneNumberToE164

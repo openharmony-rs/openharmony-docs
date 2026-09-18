@@ -100,4 +100,4 @@ function getActiveNotificationCount(): Promise<number>
 
 **示例**
 
-参见 [getActiveNotificationCount](#getactivenotificationcount)
+参见 getActiveNotificationCount

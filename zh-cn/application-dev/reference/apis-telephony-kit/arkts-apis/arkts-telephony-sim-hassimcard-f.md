@@ -98,4 +98,4 @@ function hasSimCard(slotId: number): Promise<boolean>
 
 **示例**
 
-参见 [hasSimCard](#hassimcard)
+参见 hasSimCard

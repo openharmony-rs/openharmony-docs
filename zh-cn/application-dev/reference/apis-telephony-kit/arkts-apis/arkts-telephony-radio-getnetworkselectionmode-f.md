@@ -98,4 +98,4 @@ function getNetworkSelectionMode(slotId: number): Promise<NetworkSelectionMode>
 
 **示例**
 
-参见 [getNetworkSelectionMode](#getnetworkselectionmode)
+参见 getNetworkSelectionMode

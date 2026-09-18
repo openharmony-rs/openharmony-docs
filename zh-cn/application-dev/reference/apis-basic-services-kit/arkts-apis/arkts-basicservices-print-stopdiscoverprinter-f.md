@@ -93,4 +93,4 @@ function stopDiscoverPrinter(): Promise<void>
 
 **示例**
 
-参见 [stopDiscoverPrinter](#stopdiscoverprinter)
+参见 stopDiscoverPrinter

@@ -117,7 +117,7 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getRealActiveTime](#getrealactivetime)
+参见 getRealActiveTime
 
 
 ## getRealActiveTime
@@ -156,4 +156,4 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 **示例**
 
-参见 [getRealActiveTime](#getrealactivetime)
+参见 getRealActiveTime

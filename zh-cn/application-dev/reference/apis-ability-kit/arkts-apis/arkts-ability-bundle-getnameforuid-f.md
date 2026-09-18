@@ -88,4 +88,4 @@ function getNameForUid(uid: number): Promise<string>
 
 **示例**
 
-参见 [getNameForUid](#getnameforuid)
+参见 getNameForUid

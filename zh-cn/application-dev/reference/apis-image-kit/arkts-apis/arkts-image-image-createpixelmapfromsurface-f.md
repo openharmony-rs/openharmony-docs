@@ -101,4 +101,4 @@ Creates a PixelMap object from surface id.
 
 **示例**
 
-参见 [createPixelMapFromSurface](#createpixelmapfromsurface)
+参见 createPixelMapFromSurface

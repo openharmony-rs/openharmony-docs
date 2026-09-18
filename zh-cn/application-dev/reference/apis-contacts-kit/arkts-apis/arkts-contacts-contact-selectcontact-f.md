@@ -79,4 +79,4 @@ function selectContact(): Promise<Array<Contact>>
 
 **示例**
 
-参见 [selectContact](#selectcontact)
+参见 selectContact

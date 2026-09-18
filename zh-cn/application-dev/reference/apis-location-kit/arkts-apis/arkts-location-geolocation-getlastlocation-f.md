@@ -78,4 +78,4 @@ function getLastLocation(): Promise<Location>
 
 **示例**
 
-参见 [getLastLocation](#getlastlocation)
+参见 getLastLocation

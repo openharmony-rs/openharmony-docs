@@ -94,4 +94,4 @@ function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void
 
 **示例**
 
-参见 [getLinkedInfo](#getlinkedinfo)
+参见 getLinkedInfo

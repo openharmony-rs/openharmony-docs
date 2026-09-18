@@ -26,13 +26,13 @@ Common()
 | --- | --- |
 | [@AnimatableExtend](arkts-arkui-common-comp-animatableextend-d.md) | @AnimatableExtend装饰器用于自定义可动画的属性方法，该装饰器内定义的函数在动画过程中会被逐帧调用，直到动画结束。 |
 | [@Builder](arkts-arkui-common-comp-builder-d.md) | \@Builder装饰的函数也称为“自定义构建函数”，用于封装可复用的UI构建逻辑，可在自定义组件中多次调用，从而减少代码重复、提升UI构建的可维护性，适用于需要复用相同UI结构的场景。 |
-| [@BuilderParam](arkts-arkui-common-comp-builderparam-d.md) | \@BuilderParam用于装饰指向[@Builder](arkts-arkui-common-comp-builder-d.md#builder)函数的变量，使自定义组件能够接收外部传入的\@Builder函数，实现UI内容的自定义渲染。适用于需要将父组件的UI构建逻辑传递给子组件、实现组件内容动态定制的场景。 |
+| [@BuilderParam](arkts-arkui-common-comp-builderparam-d.md) | \@BuilderParam用于装饰指向@Builder函数的变量，使自定义组件能够接收外部传入的\@Builder函数，实现UI内容的自定义渲染。适用于需要将父组件的UI构建逻辑传递给子组件、实现组件内容动态定制的场景。 |
 | [@Component](arkts-arkui-common-comp-component-d.md) | \@Component装饰器能装饰struct关键字声明的结构体。struct被\@Component装饰后具备组件化的能力，可实现UI的封装与复用，适用于构建可复用的自定义组件、拆分复杂界面等场景。使用时需要实现build方法描述UI，一个struct只能被一个\@Component装饰。 |
 | [@ComponentV2](arkts-arkui-common-comp-componentv2-d.md) | @ComponentV2主要配合状态管理V2使用，相比[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)，@ComponentV2支持对象的深度观测和深度监听，装饰器易用性高、拓展性强，适用于需要深度观测嵌套对象状态的场景。除非特别说明，@ComponentV2装饰的自定义组件将与@Component装饰的自定义组件保持相同的行为。 |
 | [@Computed](arkts-arkui-common-comp-computed-d.md) | @Computed为方法装饰器，用于状态管理V2中，装饰getter方法，使其变为计算属性，其返回值会被缓存，仅当依赖的源数据发生变化时才重新计算，减少重复计算带来的开销。 |
 | [@Concurrent](arkts-arkui-common-comp-concurrent-d.md) | Defining Concurrent MethodDecorator |
-| [@Consume](arkts-arkui-common-comp-consume-d.md) | [@Provide](arkts-arkui-common-comp-provide-d.md#provide)和\@Consume配套使用，用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，实现跨组件层级的双向同步，适用于需要在多层嵌套组件间共享状态的场景，能够避免逐层传递的繁琐，简化组件间的通信逻辑。\@Consume装饰的变量作为数据消费方，通过别名或变量名与\@Provide装饰的变量建立双向绑定关系。当\@Provide或\@Consume装饰的变量发生变化时，变化会自动同步到对方。匹配规则：优先使用别名匹配，若未设置别名则使用变量名匹配。 |
-| [@Consumer](arkts-arkui-common-comp-consumer-d.md) | [@Provider](arkts-arkui-common-comp-provider-d.md#provider)和@Consumer搭配使用，用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中，实现跨组件层级的数据双向同步。@Consumer装饰数据消费方，从数据源获取数据，适用于多层嵌套组件间需要共享和同步状态的场景，可避免通过多层组件逐级传递数据的繁琐操作，简化跨组件层级状态管理。如果@Consumer在组件树中未找到别名匹配的@Provider，将使用自身初始值，不进行数据同步。 |
+| [@Consume](arkts-arkui-common-comp-consume-d.md) | @Provide和\@Consume配套使用，用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，实现跨组件层级的双向同步，适用于需要在多层嵌套组件间共享状态的场景，能够避免逐层传递的繁琐，简化组件间的通信逻辑。\@Consume装饰的变量作为数据消费方，通过别名或变量名与\@Provide装饰的变量建立双向绑定关系。当\@Provide或\@Consume装饰的变量发生变化时，变化会自动同步到对方。匹配规则：优先使用别名匹配，若未设置别名则使用变量名匹配。 |
+| [@Consumer](arkts-arkui-common-comp-consumer-d.md) | @Provider和@Consumer搭配使用，用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中，实现跨组件层级的数据双向同步。@Consumer装饰数据消费方，从数据源获取数据，适用于多层嵌套组件间需要共享和同步状态的场景，可避免通过多层组件逐级传递数据的繁琐操作，简化跨组件层级状态管理。如果@Consumer在组件树中未找到别名匹配的@Provider，将使用自身初始值，不进行数据同步。 |
 | [@CustomDialog](arkts-arkui-common-comp-customdialog-d.md) | Defining CustomDialog ClassDecorator |
 | [@CustomEnv](arkts-arkui-common-comp-customenv-d.md) | 用于获取自定义环境变量。 |
 | [@Entry](arkts-arkui-common-comp-entry-d.md) | \@Entry装饰的自定义组件将作为UI页面的入口，被框架识别为页面的根组件，适用于构建独立UI页面的场景。 |
@@ -41,7 +41,7 @@ Common()
 | [@Extend](arkts-arkui-common-comp-extend-d.md) | \@Extend装饰器用于扩展指定组件的样式，支持在装饰的函数中统一定义多个样式属性，并可通过参数传递实现样式的灵活复用，适用于需要将相同样式应用到多个组件、减少样式代码重复的场景。 |
 | [@Link](arkts-arkui-common-comp-link-d.md) | @Link用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，接收父组件传入的状态变量的引用，建立父子组件间的双向数据绑定。适用于需要在子组件中直接修改父组件状态、简化父子组件通信的场景。 |
 | [@Local](arkts-arkui-common-comp-local-d.md) | @Local用于状态管理V2中，表示组件内部的状态，使得自定义组件内部的变量具有观测能力。适用于需要在自定义组件内部维护和观测局部状态的场景（如计数器、开关状态等）。使用@Local可以简化组件内部状态管理逻辑，当状态变化时自动触发UI刷新，无需手动管理。 |
-| [@LocalBuilder](arkts-arkui-common-comp-localbuilder-d.md) | `@LocalBuilder`拥有和局部[`@Builder`](arkts-arkui-common-comp-builder-d.md#builder)相同的功能，且比局部`@Builder`能够更好地确定组件的父子关系和状态管理的父子关系。适用于需要在自定义构建函数中维持组件父子关系，并保持状态管理同步的场景。开发指南参考：[`@LocalBuilder`装饰器：维持组件关系](../../../ui/state-management/arkts-localBuilder.md)。 |
+| [@LocalBuilder](arkts-arkui-common-comp-localbuilder-d.md) | `@LocalBuilder`拥有和局部`@Builder`相同的功能，且比局部`@Builder`能够更好地确定组件的父子关系和状态管理的父子关系。适用于需要在自定义构建函数中维持组件父子关系，并保持状态管理同步的场景。开发指南参考：[`@LocalBuilder`装饰器：维持组件关系](../../../ui/state-management/arkts-localBuilder.md)。 |
 | [@LocalStorageLink](arkts-arkui-common-comp-localstoragelink-d.md) | @LocalStorageLink在状态管理V1中使用，用于与LocalStorage中指定键名对应的属性建立双向数据同步：@LocalStorageLink装饰的变量与LocalStorage中对应属性任一方发生变化时，变更均会同步到另一方。适用于需要在多个组件间共享UI状态并与LocalStorage保持数据实时同步的场景，可避免逐层传递数据，保证跨组件数据一致性。 |
 | [@LocalStorageProp](arkts-arkui-common-comp-localstorageprop-d.md) | @LocalStorageProp在状态管理V1中使用，用于与LocalStorage中指定键名对应的属性建立单向数据同步：LocalStorage中对应属性值的变更会同步到@LocalStorageProp装饰的变量，但仅修改@LocalStorageProp装饰的变量不会同步回LocalStorage。适用于需要在多个组件间共享LocalStorage且仅保持单向数据流的场景，可避免不必要的数据回写。 |
 | [@Monitor](arkts-arkui-common-comp-monitor-d.md) | @Monitor装饰器在状态管理V2中用于监听状态变量修改，使得状态变量支持深度监听。适用于需要在状态变量或其嵌套属性发生变化时执行自定义逻辑（如数据同步、UI刷新、日志记录等）的场景。相比状态管理V1的@Watch，@Monitor支持深度监听嵌套对象属性的变化，并从API版本26.0.0开始支持通配符能力，可更灵活地匹配状态变量路径。 |
@@ -51,19 +51,19 @@ Common()
 | [@Once](arkts-arkui-common-comp-once-d.md) | @Once作为辅助装饰器，用于状态管理V2中，需要搭配[ |
 | [@Param](arkts-arkui-common-comp-param-d.md) | @Param在状态管理V2中用于接收外部输入，实现父子组件之间的单向数据同步。适用于父组件需要向子组件单向传递状态数据的场景，能够简化组件间通信，保证数据流向清晰。@Param装饰的变量不允许在组件内部直接修改，如需子组件向父组件同步数据，请配合@Event使用。 |
 | [@Preview](arkts-arkui-common-comp-preview-d.md) | 定义预览类装饰器。 |
-| [@Prop](arkts-arkui-common-comp-prop-d.md) | @Prop用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，接收外部传入值，并与父组件建立单向同步关系。当父组件中[@State](arkts-arkui-common-comp-state-d.md#state)等装饰的状态变量发生变化时，会同步更新到子组件中对应的@Prop变量，触发子组件重新渲染。@Prop采用单向数据流机制，子组件对@Prop变量的修改仅在子组件内部生效，不会反向同步到父组件。适用于子组件需要响应父组件状态变化但不需要反向修改的场景。 |
-| [@Provide](arkts-arkui-common-comp-provide-d.md) | \@Provide和[@Consume](arkts-arkui-common-comp-consume-d.md#consume)配套使用，用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，实现跨组件层级的双向同步，适用于需要跨越多层组件传递状态、避免逐层传递的场景，能够解决组件层级较深时状态传递繁琐的问题。\@Provide装饰的变量作为数据源，通过别名或变量名与\@Consume装饰的变量建立双向绑定关系。当\@Provide或\@Consume装饰的变量发生变化时，变化会自动同步到对方。 |
+| [@Prop](arkts-arkui-common-comp-prop-d.md) | @Prop用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，接收外部传入值，并与父组件建立单向同步关系。当父组件中@State等装饰的状态变量发生变化时，会同步更新到子组件中对应的@Prop变量，触发子组件重新渲染。@Prop采用单向数据流机制，子组件对@Prop变量的修改仅在子组件内部生效，不会反向同步到父组件。适用于子组件需要响应父组件状态变化但不需要反向修改的场景。 |
+| [@Provide](arkts-arkui-common-comp-provide-d.md) | \@Provide和@Consume配套使用，用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，实现跨组件层级的双向同步，适用于需要跨越多层组件传递状态、避免逐层传递的场景，能够解决组件层级较深时状态传递繁琐的问题。\@Provide装饰的变量作为数据源，通过别名或变量名与\@Consume装饰的变量建立双向绑定关系。当\@Provide或\@Consume装饰的变量发生变化时，变化会自动同步到对方。 |
 | [@Provider](arkts-arkui-common-comp-provider-d.md) | @Provider和@Consumer搭配使用，用于状态管理V2中，实现跨组件层级的数据双向同步。@Provider装饰数据提供方，为子组件提供数据，适用于组件层级较深、需要跨多层组件共享状态且避免逐层传递数据的场景，可简化状态管理流程，降低组件间的耦合度。 |
 | [@Require](arkts-arkui-common-comp-require-d.md) | \@Require装饰器用于校验[\@Prop](../../../ui/state-management/arkts-prop.md)、[\@State](../../../ui/state-management/arkts-state.md)、[\@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、[\@BuilderParam](../../../ui/state-management/arkts-builderparam.md)、[\ |
 | [@Reusable](arkts-arkui-common-comp-reusable-d.md) | 为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@Reusable装饰\@Component装饰的自定义组件，实现组件复用。\@Reusable支持通过reuseId标识不同类型的可复用组件，提供aboutToReuse回调接收复用参数，并支持配置内存优化策略。该装饰器适用于列表滚动、频繁切换组件显示与隐藏等需要反复创建销毁组件的场景。 |
-| [@ReusableV2](arkts-arkui-common-comp-reusablev2-d.md) | 为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](arkts-arkui-common-comp-componentv2-d.md#componentv2)装饰的自定义组件，达成组件复用的效果，适用于列表滚动、频繁切换组件显示/隐藏等需要反复创建和销毁组件的场景，支持通过参数配置内存优化策略。 |
+| [@ReusableV2](arkts-arkui-common-comp-reusablev2-d.md) | 为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰\@ComponentV2装饰的自定义组件，达成组件复用的效果，适用于列表滚动、频繁切换组件显示/隐藏等需要反复创建和销毁组件的场景，支持通过参数配置内存优化策略。 |
 | [@Sendable](arkts-arkui-common-comp-sendable-d.md) | Defining Sendable ClassDecorator The Sendable decorator can be used only for classes. A class with this decorator is marked as sendable, and the class object can be shared globally. Since 12, the Sendable decorator can be used for function and typeAlias also. A function with this decorator is marked as sendable, and the function can be an shareable property of sendable-class object. A typeAlias with this decorator is marked as sendable, and the typeAlias can be used to declare properties, variables, and arguments that need to be assigned with sendable-function. |
 | [@State](arkts-arkui-common-comp-state-d.md) | @State用于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，将自定义组件内的普通变量转变为状态变量，当状态变量变化时，触发组件内UI重新渲染。适用于需要在组件内管理可变状态的场景。 |
 | [@StorageLink](arkts-arkui-common-comp-storagelink-d.md) | @StorageLink是状态管理V1的装饰器，用于与AppStorage中指定键名的属性建立双向数据同步：当@StorageLink装饰的变量发生变化时，变更会同步到AppStorage中该键名对应的属性；当AppStorage中该键名对应的属性发生变化时，变更也会同步回@StorageLink装饰的变量。适用于需要跨页面、跨Ability共享AppStorage全局状态并与AppStorage保持双向数据同步的场景，可避免逐层传递状态数据，保证数据一致性。 |
 | [@StorageProp](arkts-arkui-common-comp-storageprop-d.md) | @StorageProp用于状态管理V1中，与AppStorage中对应的属性建立单向数据同步。AppStorage中对应属性的变化会同步到@StorageProp装饰的变量，但仅修改@StorageProp装饰的变量不会同步回AppStorage。适用于需要跨页面、跨Ability感知AppStorage全局状态变化且仅保持单向数据流的场景，可避免不必要的数据回写。 |
 | [@Styles](arkts-arkui-common-comp-styles-d.md) | \@Styles装饰器用于将多条样式设置提炼为一个方法，在组件声明处直接调用，实现自定义样式的定义与复用。适用于多个组件需要共享相同样式、减少重复代码、提升样式一致性维护效率的场景。 |
 | [@SyncMonitor](arkts-arkui-common-comp-syncmonitor-d.md) | @SyncMonitor用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)，同步监听状态变量修改，使得状态变量支持深度监听。适用于需要精确监听对象嵌套属性变化、数组元素修改等深层状态变化的场景，解决了传统监听方式无法感知深层属性变化的问题，提升状态管理的精确性和开发效率。 |
-| [@Trace](arkts-arkui-common-comp-trace-d.md) | @Trace是属性装饰器，用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中。[@ObservedV2](arkts-arkui-common-comp-observedv2-d.md#observedv2)与@Trace配套使用，装饰类以及类中的属性，使被装饰的类和属性具有深度观测能力，即能够深度观测嵌套对象中属性值的变化，并触发UI自动刷新，适用于需要精确观测和管理类属性变化状态的场景。 |
+| [@Trace](arkts-arkui-common-comp-trace-d.md) | @Trace是属性装饰器，用于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中。@ObservedV2与@Trace配套使用，装饰类以及类中的属性，使被装饰的类和属性具有深度观测能力，即能够深度观测嵌套对象中属性值的变化，并触发UI自动刷新，适用于需要精确观测和管理类属性变化状态的场景。 |
 | [@Track](arkts-arkui-common-comp-track-d.md) | @Track用于状态管理V1中，通过装饰class对象的指定属性实现属性级精准观测。当被@Track装饰的属性发生变化时，系统仅更新依赖该属性的UI组件，从而减少不必要的UI重渲染。适用于class对象包含较多属性，需要减少冗余UI刷新、优化渲染性能的场景。 |
 | [@Watch](arkts-arkui-common-comp-watch-d.md) | @Watch装饰器用于状态管理V1中，监听状态变量的变化，并在变量变化时触发指定回调函数。适用于状态变量变化时需要自动执行联动逻辑、数据同步或计算衍生值的场景。 |
 
@@ -86,7 +86,7 @@ Common()
 | [BaseEvent](arkts-arkui-baseevent-i.md) | 基础事件类型。 |
 | [BindOptions](arkts-arkui-bindoptions-i.md) | 半模态、全模态的公共配置接口。 |
 | [BlurOptions](arkts-arkui-bluroptions-i.md) | 灰阶模糊参数。 |
-| [BlurSnapshotOptions](arkts-arkui-blursnapshotoptions-i-sys.md) | 模糊快照优化选项。设置该对象后，将开启模糊优化。 |
+| BlurSnapshotOptions | 模糊快照优化选项。设置该对象后，将开启模糊优化。 |
 | [BlurStyleOptions](arkts-arkui-blurstyleoptions-i.md) | 模糊样式选项，用于配置模糊效果的深浅色模式、取色模式、灰阶模糊参数和模糊程度。 |
 | [BorderImageOption](arkts-arkui-borderimageoption-i.md) | Border image option |
 | [Callback](arkts-arkui-callback-i.md) | 定义基础的回调函数。 |
@@ -103,9 +103,9 @@ Common()
 | [CrownEvent](arkts-arkui-crownevent-i.md) | 组件接收表冠事件的数据结构。内容包括时间戳、旋转角速度、旋转角度、表冠动作和阻止事件冒泡。 |
 | [CustomPopupOptions](arkts-arkui-custompopupoptions-i.md) | 弹出自定义气泡的信息。 |
 | [DateRange](arkts-arkui-daterange-i.md) | Defines a range of dates. |
-| [DepthColorRGB](arkts-arkui-depthcolorrgb-i-sys.md) | 深度空间中的RGB颜色。用于为组件设置空间效果参数。 |
-| [DepthVector3](arkts-arkui-depthvector3-i-sys.md) | 深度空间中的三维向量。用于为组件设置空间效果参数。 |
-| [DepthVector4](arkts-arkui-depthvector4-i-sys.md) | 深度空间中的4D向量。用于为组件设置空间效果参数。 |
+| DepthColorRGB | 深度空间中的RGB颜色。用于为组件设置空间效果参数。 |
+| DepthVector3 | 深度空间中的三维向量。用于为组件设置空间效果参数。 |
+| DepthVector4 | 深度空间中的4D向量。用于为组件设置空间效果参数。 |
 | [DismissContentCoverAction](arkts-arkui-dismisscontentcoveraction-i.md) |  |
 | [DismissPopupAction](arkts-arkui-dismisspopupaction-i.md) | 气泡关闭的信息。 |
 | [DismissSheetAction](arkts-arkui-dismisssheetaction-i.md) | 半模态关闭前的回调。 |
@@ -115,7 +115,7 @@ Common()
 | [DragPreviewOptions](arkts-arkui-dragpreviewoptions-i.md) | 设置拖拽过程中预览图处理模式及数量角标的显示。 |
 | [DropOptions](arkts-arkui-dropoptions-i.md) | 设置落入过程的参数。 |
 | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | edgeEffect属性参数对象。 |
-| [EdgeLightParams](arkts-arkui-edgelightparams-i-sys.md) | 定义边缘流光效果参数。 |
+| EdgeLightParams | 定义边缘流光效果参数。 |
 | [EditModeOptions](arkts-arkui-editmodeoptions-i.md) | List/Grid组件编辑模式选项属性参数对象。 |
 | [EntryOptions](arkts-arkui-entryoptions-i.md) | 页面入口配置选项，用于在\@Entry装饰页面时配置路由名称、状态存储和共享存储等参数。 |
 | [EventTarget](arkts-arkui-eventtarget-i.md) | [BaseEvent](arkts-arkui-baseevent-i.md)中参数target的类型。 |
@@ -128,7 +128,7 @@ Common()
 | [GeometryInfo](arkts-arkui-geometryinfo-i.md) | 父组件（自定义组件）布局信息，继承自[SizeResult](arkts-arkui-sizeresult-i.md)。 |
 | [GeometryTransitionOptions](arkts-arkui-geometrytransitionoptions-i.md) |  |
 | [GestureModifier](arkts-arkui-gesturemodifier-i.md) | 开发者需要自定义class实现GestureModifier接口。 |
-| [GravityCenterOptions](arkts-arkui-gravitycenteroptions-i-sys.md) | 定义引力中心参数。 |
+| GravityCenterOptions | 定义引力中心参数。 |
 | [HistoricalPoint](arkts-arkui-historicalpoint-i.md) | 历史点信息。 |
 | [HorizontalAlignParam](arkts-arkui-horizontalalignparam-i.md) | 定义相对容器的水平对齐规则。 |
 | [HoverEvent](arkts-arkui-hoverevent-i.md) | 继承于[BaseEvent](arkts-arkui-baseevent-i.md)。 |
@@ -148,7 +148,7 @@ Common()
 | [LayoutBorderInfo](arkts-arkui-layoutborderinfo-i.md) | 子组件边框信息 |
 | [LayoutChild](arkts-arkui-layoutchild-i.md) | 布局和测量发生时，框架传递给子组件的信息。 |
 | [LayoutInfo](arkts-arkui-layoutinfo-i.md) | 子组件布局位置信息 |
-| [LightSource](arkts-arkui-lightsource-i-sys.md) | 一个组件支持添加1个光源。 |
+| LightSource | 一个组件支持添加1个光源。 |
 | [LinearGradient](arkts-arkui-lineargradient-i.md) | Linear Gradient Interface |
 | [LinearGradientBlurOptions](arkts-arkui-lineargradientbluroptions-i.md) |  |
 | [LinearGradientOptions](arkts-arkui-lineargradientoptions-i.md) | 线性渐变的参数。 |
@@ -173,10 +173,10 @@ Common()
 | [OverlayOptions](arkts-arkui-overlayoptions-i.md) | 浮层的定位。 |
 | [PickerDialogButtonStyle](arkts-arkui-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker |
 | [PickerTextStyle](arkts-arkui-pickertextstyle-i.md) | Provide an interface for the text style of picker |
-| [PixelMapMock](arkts-arkui-pixelmapmock-i-sys.md) | 带有release函数的像素图对象。 |
+| PixelMapMock | 带有release函数的像素图对象。 |
 | [PixelRoundPolicy](arkts-arkui-pixelroundpolicy-i.md) | 指定组件级像素取整的方向。 |
 | [PixelStretchEffectOptions](arkts-arkui-pixelstretcheffectoptions-i.md) | 像素扩展属性集合，用于描述像素扩展的信息。 |
-| [PointLightStyle](arkts-arkui-pointlightstyle-i-sys.md) | 通过设置光源和被照亮的类型实现点光源照亮周围组件的UI效果。 |
+| PointLightStyle | 通过设置光源和被照亮的类型实现点光源照亮周围组件的UI效果。 |
 | [PopupBorderLinearGradient](arkts-arkui-popupborderlineargradient-i.md) | 弹出边框线性渐变色。 |
 | [PopupCommonOptions](arkts-arkui-popupcommonoptions-i.md) | 配置弹出气泡的参数。使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getPromptAction()](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取到[PromptAction](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md)对象，再通过该对象调用[openPopup](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#openpopup)和[updatePopup](../arkts-apis/arkts-arkui-arkui-uicontext-promptaction-c.md#updatepopup)时传入的options参数。 |
 | [PopupMaskType](arkts-arkui-popupmasktype-i.md) | 设置遮罩层颜色。 |
@@ -203,8 +203,8 @@ Common()
 | [SheetTitleOptions](arkts-arkui-sheettitleoptions-i.md) | 半模态面板的标题。 |
 | [SizeResult](arkts-arkui-sizeresult-i.md) | 组件尺寸信息。 |
 | [SmartGestureShortcutOptions](arkts-arkui-smartgestureshortcutoptions-i.md) | 智慧手势响应行为配置对象。 |
-| [SpatialEffectParams](arkts-arkui-spatialeffectparams-i-sys.md) | 空间效果选项。用于为组件设置空间效果参数。 |
-| [SpatialPosition](arkts-arkui-spatialposition-i-sys.md) | 三维空间中的空间角位置。用于为组件设置空间效果参数。 |
+| SpatialEffectParams | 空间效果选项。用于为组件设置空间效果参数。 |
+| SpatialPosition | 三维空间中的空间角位置。用于为组件设置空间效果参数。 |
 | [SpringBackAction](arkts-arkui-springbackaction-i.md) | 控制半模态关闭前的回弹。 |
 | [StateStyles](arkts-arkui-statestyles-i.md) | 组件不同状态下的样式。 |
 | [SweepGradientOptions](arkts-arkui-sweepgradientoptions-i.md) | 角度渐变参数。 |
@@ -232,7 +232,7 @@ Common()
 | [AccessibilityTransparentCallback](arkts-arkui-accessibilitytransparentcallback-t.md) | 提供开启朗读类辅助应用后未能被无障碍悬浮响应的触摸事件回调类型。 |
 | [AnimationRange](arkts-arkui-animationrange-t.md) | 动画开始和结束时相对预览原图缩放比例。 |
 | [AreaChangeCallback](arkts-arkui-areachangecallback-t.md) | 组件区域变化事件的回调类型。 |
-| [Blender](arkts-arkui-blender-t-sys.md) | [Blender](arkts-arkui-blender-t-sys.md) |
+| Blender | Blender |
 | [BorderRadiusType](arkts-arkui-borderradiustype-t.md) | 圆角类型。 |
 | [BuilderCallback](arkts-arkui-buildercallback-t.md) | `BuilderCallback`是全局`@Builder`函数的类型别名，作为`mutableBuilder`函数的入参类型，用于指定待封装的全局`@Builder`函数。 |
 | [CircleShape](arkts-arkui-circleshape-t.md) | 导入CircleShape类型对象。 |
@@ -315,13 +315,13 @@ Common()
 | [ChainStyle](arkts-arkui-chainstyle-e.md) | 定义链的风格，支持attributeModifier动态设置属性方法。 |
 | [ContentClipMode](arkts-arkui-contentclipmode-e.md) | 表示滚动容器的内容裁剪模式。 |
 | [DismissReason](arkts-arkui-dismissreason-e.md) | 关闭原因类型。 |
-| [DistortionMode](arkts-arkui-distortionmode-e-sys.md) | 非线性形变动画模式的枚举。 |
-| [DragAnimationType](arkts-arkui-draganimationtype-e-sys.md) | 拖拽动画类型。 |
+| DistortionMode | 非线性形变动画模式的枚举。 |
+| DragAnimationType | 拖拽动画类型。 |
 | [DragBehavior](arkts-arkui-dragbehavior-e.md) | 当设置[DragResult](arkts-arkui-dragresult-e.md)为DROP_ENABLED后，可设置DragBehavior为复制（COPY）或剪切（MOVE）。当DragBehavior为复制（COPY）时，拖拽对象的角标会显示加号；为剪切（MOVE）时，拖拽对象的角标不会显示加号。DragBehavior用来向开发者描述数据的处理方式是复制（COPY）还是剪切（MOVE），但无法最终决定对数据的实际处理方式。DragBehavior会通过onDragEnd带回给数据拖出方，发起拖拽的一方可通过DragBehavior来区分做出的是复制（COPY）还是剪切（MOVE）数据的不同行为。 |
 | [DraggingSizeChangeEffect](arkts-arkui-draggingsizechangeeffect-e.md) | 当一个节点上同时设置长按浮起预览（参考bindContextMenu）与拖拽时，使用该字段设置长按浮起预览图与拖拽预览图过渡动效方式。 |
 | [DragPreviewMode](arkts-arkui-dragpreviewmode-e.md) | 设置拖拽预览图的显示模式。 |
 | [DragResult](arkts-arkui-dragresult-e.md) | 定义拖拽操作的结果及组件的落入选定状态。 |
-| [EdgeLightMode](arkts-arkui-edgelightmode-e-sys.md) | 边缘光效动画模式枚举。 |
+| EdgeLightMode | 边缘光效动画模式枚举。 |
 | [EffectEdge](arkts-arkui-effectedge-e.md) | 表示当前边缘效果要生效的边缘。 |
 | [EffectType](arkts-arkui-effecttype-e.md) | 效果模板类型的枚举值。效果模板为预设的视觉效果参数配置，包含模糊半径、饱和度、亮度和颜色等参数。 |
 | [FinishCallbackType](arkts-arkui-finishcallbacktype-e.md) | 动画中定义onFinish回调的类型。 |
@@ -356,7 +356,7 @@ Common()
 | [ThemeColorMode](arkts-arkui-themecolormode-e.md) | 设置颜色模式。 |
 | [TouchTestStrategy](arkts-arkui-touchteststrategy-e.md) | 事件派发策略。 |
 | [TransitionEdge](arkts-arkui-transitionedge-e.md) | 转场边缘类型。 |
-| [TransitionHierarchyStrategy](arkts-arkui-transitionhierarchystrategy-e-sys.md) | 共享元素动画过程中in/out组件层级位置移动策略枚举。 |
+| TransitionHierarchyStrategy | 共享元素动画过程中in/out组件层级位置移动策略枚举。 |
 
 ## 示例
 

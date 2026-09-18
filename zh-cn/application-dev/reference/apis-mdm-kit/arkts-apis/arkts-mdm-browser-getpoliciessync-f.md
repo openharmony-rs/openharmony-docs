@@ -115,4 +115,4 @@ function getPoliciesSync(admin: Want | null, appId: string): string
 
 **示例**
 
-参见 [getPoliciesSync](#getpoliciessync)
+参见 getPoliciesSync

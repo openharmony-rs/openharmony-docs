@@ -93,4 +93,4 @@ function isDefaultApplication(type: string) : Promise<boolean>
 
 **示例**
 
-参见 [isDefaultApplication](#isdefaultapplication)
+参见 isDefaultApplication

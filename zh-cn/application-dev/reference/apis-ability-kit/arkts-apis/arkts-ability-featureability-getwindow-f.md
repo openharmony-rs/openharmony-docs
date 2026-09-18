@@ -79,4 +79,4 @@ function getWindow(): Promise<window.Window>
 
 **示例**
 
-参见 [getWindow](#getwindow)
+参见 getWindow

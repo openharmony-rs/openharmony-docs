@@ -2,9 +2,9 @@
 
 除支持[通用属性](arkts-arkui-commonmethod-c.md)和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持通用事件和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+除支持通用事件和滚动组件通用事件外，还支持以下事件：
 
-**继承/实现关系：** GridAttribute extends ScrollableCommonMethod<GridAttribute>
+**继承/实现关系：** GridAttribute extends ScrollableCommonMethod&lt;GridAttribute&gt;
 
 **起始版本：** 7
 
@@ -16,7 +16,7 @@
 alignItems(alignment: Optional<GridItemAlignment>)
 ```
 
-设置Grid中GridItem的对齐方式， 使用方法可以参考[示例9](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例9以当前行最高的griditem的高度为其他griditem的高度)。
+设置Grid中GridItem的对齐方式， 使用方法可以参考示例9。
 
 **起始版本：** 12
 
@@ -148,7 +148,7 @@ columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为tr
 
 auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
 
-使用效果可以参考[示例8](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例8设置自适应列数)。
+使用效果可以参考示例8。
 
 设置为'0fr'时，该列的列宽为0，不显示GridItem。设置为其他非法值时，GridItem显示为固定1列。
 
@@ -567,9 +567,9 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 由于拖拽检测也需要长按，且事件处理机制优先触发子组件事件，GridItem上绑定[LongPressGesture](arkts-arkui-longpressgestureinterface-i.md)时无法触发拖拽。如有长按和拖拽同时使用的需求可以使用通用拖拽事件。
 
-拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例16实现griditem自定义拖拽)。
+拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考示例16（实现GridItem自定义拖拽）。
 
-不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](arkts-arkui-dynamicnode-c.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
+不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考示例17（通过拖拽事件实现GridItem拖拽）。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](arkts-arkui-dynamicnode-c.md#onmove)接口实现该效果，参考示例22（使用OnMove进行拖拽）。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
 **起始版本：** 8
 
@@ -973,7 +973,7 @@ supportAnimation(value: boolean)
 
 仅在大小规则的Grid中支持拖拽动画，跨行或跨列场景不支持。
 
-supportAnimation动画效果参考[示例5（Grid拖拽场景）](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#示例5grid拖拽场景)，其他动画效果需要应用自定义拖拽实现。
+supportAnimation动画效果参考示例5（Grid拖拽场景），其他动画效果需要应用自定义拖拽实现。
 
 **起始版本：** 8
 

@@ -171,7 +171,7 @@ setAlbumName(name: string): void
 readonly comment: string
 ```
 
-用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest)类型校验。<br>如果类（如MediaAlbumChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类
+用于MediaChangeRequest类型校验。<br>如果类（如MediaAlbumChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类
 
 **类型：** string
 

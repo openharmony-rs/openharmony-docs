@@ -113,4 +113,4 @@ function getUserNonStopApps(admin: Want | null): Array<common.ApplicationInstanc
 
 **示例**
 
-参见 [getUserNonStopApps](#getusernonstopapps)
+参见 getUserNonStopApps

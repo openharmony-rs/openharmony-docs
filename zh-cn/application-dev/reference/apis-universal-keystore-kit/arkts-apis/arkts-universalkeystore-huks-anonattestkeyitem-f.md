@@ -296,4 +296,4 @@ function anonAttestKeyItem(keyAlias: string, options: HuksOptions): Promise<Huks
 
 **示例**
 
-参见 [anonAttestKeyItem](#anonattestkeyitem)
+参见 anonAttestKeyItem

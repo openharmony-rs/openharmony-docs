@@ -98,4 +98,4 @@ function find(id: string): Promise<Window>
 
 **示例**
 
-参见 [find](#find)
+参见 find

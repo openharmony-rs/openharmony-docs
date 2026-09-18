@@ -124,4 +124,4 @@ function getKeyboardType(deviceId: number): Promise<KeyboardType>
 
 **示例**
 
-参见 [getKeyboardType](#getkeyboardtype)
+参见 getKeyboardType

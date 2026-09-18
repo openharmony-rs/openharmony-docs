@@ -118,4 +118,4 @@ function getAllowedBluetoothDevices(admin: Want | null): Array<string>
 
 **示例**
 
-参见 [getAllowedBluetoothDevices](#getallowedbluetoothdevices)
+参见 getAllowedBluetoothDevices

@@ -312,4 +312,4 @@ Imports a wrapped key. This API uses a promise to return the result.
 
 **示例**
 
-参见 [importWrappedKeyItem](#importwrappedkeyitem)
+参见 importWrappedKeyItem

@@ -116,4 +116,4 @@ function getSimAccountInfo(slotId: number): Promise<IccAccountInfo>
 
 **示例**
 
-参见 [getSimAccountInfo](#getsimaccountinfo)
+参见 getSimAccountInfo

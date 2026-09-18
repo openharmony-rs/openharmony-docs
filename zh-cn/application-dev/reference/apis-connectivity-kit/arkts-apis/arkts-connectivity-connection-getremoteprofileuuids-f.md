@@ -114,4 +114,4 @@ function getRemoteProfileUuids(deviceId: string): Promise<Array<ProfileUuids>>
 
 **示例**
 
-参见 [getRemoteProfileUuids](#getremoteprofileuuids)
+参见 getRemoteProfileUuids

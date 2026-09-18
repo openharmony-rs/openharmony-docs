@@ -104,4 +104,4 @@ function cancelAll(): Promise<void>
 
 **示例**
 
-参见 [cancelAll](#cancelall)
+参见 cancelAll

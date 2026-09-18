@@ -94,4 +94,4 @@ function createVideoPlayer(): Promise<VideoPlayer>
 
 **示例**
 
-参见 [createVideoPlayer](#createvideoplayer)
+参见 createVideoPlayer

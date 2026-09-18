@@ -123,4 +123,4 @@ function getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 **示例**
 
-参见 [getBundleInfoSync](#getbundleinfosync)
+参见 getBundleInfoSync

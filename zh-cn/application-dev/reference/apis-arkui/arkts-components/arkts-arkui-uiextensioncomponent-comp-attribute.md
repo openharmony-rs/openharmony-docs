@@ -2,7 +2,7 @@
 
 定义UIExtensionComponent的属性函数。
 
-**继承/实现关系：** UIExtensionComponentAttribute extends CommonMethod<UIExtensionComponentAttribute>
+**继承/实现关系：** UIExtensionComponentAttribute extends CommonMethod&lt;UIExtensionComponentAttribute&gt;
 
 **起始版本：** 10
 

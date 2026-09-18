@@ -150,4 +150,4 @@ function addSlot(type: SlotType): Promise<void>
 
 **示例**
 
-参见 [addSlot](#addslot)
+参见 addSlot

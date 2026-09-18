@@ -123,4 +123,4 @@ function registerWebAdInterface(controller: web_webview.WebviewController, conte
 
 **示例**
 
-参见 [registerWebAdInterface](#registerwebadinterface)
+参见 registerWebAdInterface

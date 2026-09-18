@@ -95,4 +95,4 @@ function getDefaultVoiceSimId(): Promise<number>
 
 **示例**
 
-参见 [getDefaultVoiceSimId](#getdefaultvoicesimid)
+参见 getDefaultVoiceSimId

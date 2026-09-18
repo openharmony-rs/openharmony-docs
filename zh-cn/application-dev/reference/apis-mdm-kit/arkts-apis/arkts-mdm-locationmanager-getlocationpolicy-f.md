@@ -115,4 +115,4 @@ function getLocationPolicy(admin: Want | null): LocationPolicy
 
 **示例**
 
-参见 [getLocationPolicy](#getlocationpolicy)
+参见 getLocationPolicy

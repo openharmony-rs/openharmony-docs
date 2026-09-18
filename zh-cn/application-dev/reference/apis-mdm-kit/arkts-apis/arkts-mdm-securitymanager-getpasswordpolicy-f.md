@@ -126,4 +126,4 @@ function getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 **示例**
 
-参见 [getPasswordPolicy](#getpasswordpolicy)
+参见 getPasswordPolicy

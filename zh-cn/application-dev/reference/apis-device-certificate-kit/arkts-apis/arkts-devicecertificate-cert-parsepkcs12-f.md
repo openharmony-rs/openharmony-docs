@@ -439,4 +439,4 @@ function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
 
 **示例**
 
-参见 [parsePkcs12](#parsepkcs12)
+参见 parsePkcs12

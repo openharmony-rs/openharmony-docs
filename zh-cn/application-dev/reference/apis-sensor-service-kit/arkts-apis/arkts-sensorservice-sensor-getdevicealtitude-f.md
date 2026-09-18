@@ -111,4 +111,4 @@ function getDeviceAltitude(seaPressure: number, currentPressure: number): Promis
 
 **示例**
 
-参见 [getDeviceAltitude](#getdevicealtitude)
+参见 getDeviceAltitude

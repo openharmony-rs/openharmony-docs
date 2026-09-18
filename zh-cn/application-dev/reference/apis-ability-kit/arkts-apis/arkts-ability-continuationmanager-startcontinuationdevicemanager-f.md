@@ -147,7 +147,7 @@ function startContinuationDeviceManager(
 
 **示例**
 
-参见 [startContinuationDeviceManager](#startcontinuationdevicemanager)
+参见 startContinuationDeviceManager
 
 
 ## startContinuationDeviceManager
@@ -194,4 +194,4 @@ function startContinuationDeviceManager(token: number, options?: ContinuationExt
 
 **示例**
 
-参见 [startContinuationDeviceManager](#startcontinuationdevicemanager)
+参见 startContinuationDeviceManager

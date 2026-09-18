@@ -89,4 +89,4 @@ function createAVMetadataExtractor(callback: AsyncCallback<AVMetadataExtractor>)
 
 **示例**
 
-参见 [createAVMetadataExtractor](#createavmetadataextractor)
+参见 createAVMetadataExtractor

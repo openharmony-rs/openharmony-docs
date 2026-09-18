@@ -148,4 +148,4 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 **示例**
 
-参见 [showActionMenu](#showactionmenu)
+参见 showActionMenu

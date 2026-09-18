@@ -78,7 +78,7 @@ dividerModifier?: DividerModifier
 
 默认值：系统默认值。
 
-**类型：** [DividerModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** DividerModifier
 
 **起始版本：** 13
 

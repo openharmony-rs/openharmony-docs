@@ -88,4 +88,4 @@ function createRunningLock(name: string, type: RunningLockType): Promise<Running
 
 **示例**
 
-参见 [createRunningLock](#createrunninglock)
+参见 createRunningLock

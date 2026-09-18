@@ -98,4 +98,4 @@ function saveAppState(context?: UIAbilityContext): boolean
 
 **示例**
 
-参见 [saveAppState](#saveappstate)
+参见 saveAppState

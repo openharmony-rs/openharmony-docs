@@ -114,4 +114,4 @@ function getSingleSensor(type: SensorId): Promise<Sensor>
 
 **示例**
 
-参见 [getSingleSensor](#getsinglesensor)
+参见 getSingleSensor

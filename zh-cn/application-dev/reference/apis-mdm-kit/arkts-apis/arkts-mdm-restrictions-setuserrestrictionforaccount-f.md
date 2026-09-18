@@ -123,4 +123,4 @@ function setUserRestrictionForAccount(admin: Want, settingsItem: SettingsForAcco
 
 **示例**
 
-参见 [setUserRestrictionForAccount](#setuserrestrictionforaccount)
+参见 setUserRestrictionForAccount

@@ -114,4 +114,4 @@ function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<numbe
 
 **示例**
 
-参见 [addDeviceConfig](#adddeviceconfig)
+参见 addDeviceConfig

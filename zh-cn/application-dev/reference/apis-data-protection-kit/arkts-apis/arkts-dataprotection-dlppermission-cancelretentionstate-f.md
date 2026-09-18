@@ -100,4 +100,4 @@ function cancelRetentionState(docUris: Array<string>, callback: AsyncCallback<vo
 
 **示例**
 
-参见 [cancelRetentionState](#cancelretentionstate)
+参见 cancelRetentionState

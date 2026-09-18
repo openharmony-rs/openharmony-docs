@@ -117,4 +117,4 @@ function getKeepAliveApps(admin: Want | null, accountId: number): Array<string>
 
 **示例**
 
-参见 [getKeepAliveApps](#getkeepaliveapps)
+参见 getKeepAliveApps

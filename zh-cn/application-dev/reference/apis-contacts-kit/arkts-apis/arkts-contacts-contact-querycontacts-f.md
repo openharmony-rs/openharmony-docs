@@ -18,7 +18,7 @@ function queryContacts(callback: AsyncCallback<Array<Contact>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts-1)(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContacts(context: Context, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -153,7 +153,7 @@ function queryContacts(context: Context, callback: AsyncCallback<Array<Contact>>
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -168,7 +168,7 @@ function queryContacts(holder: Holder, callback: AsyncCallback<Array<Contact>>):
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts-3)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContacts(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -183,7 +183,7 @@ function queryContacts(holder: Holder, callback: AsyncCallback<Array<Contact>>):
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -217,7 +217,7 @@ function queryContacts(context: Context, holder: Holder, callback: AsyncCallback
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -232,7 +232,7 @@ function queryContacts(attrs: ContactAttributes, callback: AsyncCallback<Array<C
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts-5)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContacts(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -247,7 +247,7 @@ function queryContacts(attrs: ContactAttributes, callback: AsyncCallback<Array<C
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -281,7 +281,7 @@ function queryContacts(context: Context, attrs: ContactAttributes, callback: Asy
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -296,7 +296,7 @@ function queryContacts(holder: Holder, attrs: ContactAttributes, callback: Async
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts-7)(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContacts(context: Context, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -312,7 +312,7 @@ function queryContacts(holder: Holder, attrs: ContactAttributes, callback: Async
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -347,7 +347,7 @@ function queryContacts(context: Context, holder: Holder, attrs: ContactAttribute
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -362,7 +362,7 @@ function queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise<Arra
 
 **废弃版本：** 10
 
-**替代接口：** [queryContacts](#querycontacts-9)(context: Context, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** queryContacts(context: Context, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -383,7 +383,7 @@ function queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise<Arra
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts
 
 
 ## queryContacts
@@ -423,4 +423,4 @@ function queryContacts(context: Context, holder?: Holder, attrs?: ContactAttribu
 
 **示例**
 
-参见 [queryContacts](#querycontacts)
+参见 queryContacts

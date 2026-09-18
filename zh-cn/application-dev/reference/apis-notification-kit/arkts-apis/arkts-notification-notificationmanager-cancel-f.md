@@ -142,7 +142,7 @@ function cancel(id: number, label: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [cancel](#cancel)
+参见 cancel
 
 
 ## cancel
@@ -192,4 +192,4 @@ function cancel(id: number, label?: string): Promise<void>
 
 **示例**
 
-参见 [cancel](#cancel)
+参见 cancel

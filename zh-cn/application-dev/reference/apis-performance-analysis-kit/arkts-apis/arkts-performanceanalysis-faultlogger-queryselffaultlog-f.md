@@ -111,4 +111,4 @@ function querySelfFaultLog(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 **示例**
 
-参见 [querySelfFaultLog](#queryselffaultlog)
+参见 querySelfFaultLog

@@ -116,4 +116,4 @@ function removeCandidateConfig(networkId: number, callback: AsyncCallback<void>)
 
 **示例**
 
-参见 [removeCandidateConfig](#removecandidateconfig)
+参见 removeCandidateConfig

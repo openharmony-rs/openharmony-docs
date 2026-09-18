@@ -98,4 +98,4 @@ function exportKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 
 **示例**
 
-参见 [exportKey](#exportkey)
+参见 exportKey

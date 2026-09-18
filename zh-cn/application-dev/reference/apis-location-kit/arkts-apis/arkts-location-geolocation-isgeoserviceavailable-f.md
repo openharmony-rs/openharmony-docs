@@ -78,4 +78,4 @@ function isGeoServiceAvailable(): Promise<boolean>
 
 **示例**
 
-参见 [isGeoServiceAvailable](#isgeoserviceavailable)
+参见 isGeoServiceAvailable

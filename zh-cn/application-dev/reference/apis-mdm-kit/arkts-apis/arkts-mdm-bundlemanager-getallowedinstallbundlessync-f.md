@@ -117,4 +117,4 @@ function getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): A
 
 **示例**
 
-参见 [getAllowedInstallBundlesSync](#getallowedinstallbundlessync)
+参见 getAllowedInstallBundlesSync

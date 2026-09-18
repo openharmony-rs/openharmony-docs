@@ -118,4 +118,4 @@ function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callb
 
 **示例**
 
-参见 [enableLeakWatcher](#enableleakwatcher)
+参见 enableLeakWatcher

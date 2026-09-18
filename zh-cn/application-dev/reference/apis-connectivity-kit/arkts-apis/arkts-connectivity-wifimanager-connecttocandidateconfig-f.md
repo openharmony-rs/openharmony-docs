@@ -107,4 +107,4 @@ function connectToCandidateConfig(settings: ConnectSettings): Promise<void>
 
 **示例**
 
-参见 [connectToCandidateConfig](#connecttocandidateconfig)
+参见 connectToCandidateConfig

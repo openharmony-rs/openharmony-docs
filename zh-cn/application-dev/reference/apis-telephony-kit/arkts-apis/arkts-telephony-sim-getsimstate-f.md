@@ -98,4 +98,4 @@ function getSimState(slotId: number): Promise<SimState>
 
 **示例**
 
-参见 [getSimState](#getsimstate)
+参见 getSimState

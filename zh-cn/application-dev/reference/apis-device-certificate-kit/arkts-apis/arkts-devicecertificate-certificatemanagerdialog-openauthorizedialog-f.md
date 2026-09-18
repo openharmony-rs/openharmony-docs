@@ -141,4 +141,4 @@ function openAuthorizeDialog(context: common.Context, authorizeRequest: Authoriz
 
 **示例**
 
-参见 [openAuthorizeDialog](#openauthorizedialog)
+参见 openAuthorizeDialog

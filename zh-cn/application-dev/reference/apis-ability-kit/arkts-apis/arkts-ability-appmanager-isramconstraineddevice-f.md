@@ -87,4 +87,4 @@ function isRamConstrainedDevice(callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 [isRamConstrainedDevice](#isramconstraineddevice)
+参见 isRamConstrainedDevice

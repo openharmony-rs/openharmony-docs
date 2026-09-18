@@ -23,7 +23,7 @@
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[DeviceKVStore.getResultSet](../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用callback异步回调。
+关闭由DeviceKVStore.getResultSet返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -80,7 +80,7 @@ try {
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由[DeviceKVStore.getResultSet](../../../reference/apis-arkdata/js-apis-distributed-data.md#getresultset8-4)返回的KvStoreResultSet对象，使用Promise异步回调。
+关闭由DeviceKVStore.getResultSet返回的KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 

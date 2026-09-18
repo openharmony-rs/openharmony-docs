@@ -95,4 +95,4 @@ function getFreeSize(): Promise<number>
 
 **示例**
 
-参见 [getFreeSize](#getfreesize)
+参见 getFreeSize

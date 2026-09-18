@@ -135,4 +135,4 @@ function getProfileByExtensionAbility(moduleName: string, extensionAbilityName: 
 
 **示例**
 
-参见 [getProfileByExtensionAbility](#getprofilebyextensionability)
+参见 getProfileByExtensionAbility

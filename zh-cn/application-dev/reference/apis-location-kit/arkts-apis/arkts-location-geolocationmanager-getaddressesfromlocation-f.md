@@ -115,4 +115,4 @@ function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array
 
 **示例**
 
-参见 [getAddressesFromLocation](#getaddressesfromlocation)
+参见 getAddressesFromLocation

@@ -136,4 +136,4 @@ function deleteData(options: Options): Promise<Array<UnifiedData>>
 
 **示例**
 
-参见 [deleteData](#deletedata)
+参见 deleteData

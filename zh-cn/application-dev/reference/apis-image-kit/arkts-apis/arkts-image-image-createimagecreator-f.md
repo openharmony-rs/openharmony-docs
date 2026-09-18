@@ -94,4 +94,4 @@ function createImageCreator(size: Size, format: ImageFormat, capacity: number): 
 
 **示例**
 
-参见 [createImageCreator](#createimagecreator)
+参见 createImageCreator

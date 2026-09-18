@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** ProgressAttribute extends CommonMethod<ProgressAttribute<Type>>
+**继承/实现关系：** ProgressAttribute extends CommonMethod&lt;ProgressAttribute&lt;Type&gt;&gt;
 
 **起始版本：** 7
 

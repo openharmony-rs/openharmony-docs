@@ -672,8 +672,6 @@ src: string
 
 1. fd类型播放：fd://xx
 
-![](../../../reference/apis-media-kit/figures/zh-cn_image_url.png)
-
 2. http网络播放: http://xx
 3. https网络播放: https://xx
 4. hls网络播放路径：http://xx或者https://xx

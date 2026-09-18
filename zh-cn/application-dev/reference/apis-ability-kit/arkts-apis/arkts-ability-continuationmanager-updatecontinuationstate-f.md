@@ -134,4 +134,4 @@ function updateContinuationState(token: number, deviceId: string, status: Device
 
 **示例**
 
-参见 [updateContinuationState](#updatecontinuationstate)
+参见 updateContinuationState

@@ -110,4 +110,4 @@ function transformCoordinateSystem(inRotationVector: Array<number>, coordinates:
 
 **示例**
 
-参见 [transformCoordinateSystem](#transformcoordinatesystem)
+参见 transformCoordinateSystem

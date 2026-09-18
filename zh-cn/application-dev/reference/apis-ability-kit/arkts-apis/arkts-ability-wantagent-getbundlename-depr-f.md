@@ -159,4 +159,4 @@ function getBundleName(agent: WantAgent): Promise<string>
 
 **示例**
 
-参见 [getBundleName](#getbundlename)
+参见 getBundleName

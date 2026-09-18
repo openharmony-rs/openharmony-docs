@@ -79,4 +79,4 @@ function getMinWidth(): Promise<number>
 
 **示例**
 
-参见 [getMinWidth](#getminwidth)
+参见 getMinWidth

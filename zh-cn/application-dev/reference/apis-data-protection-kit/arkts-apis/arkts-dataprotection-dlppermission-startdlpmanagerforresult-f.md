@@ -151,4 +151,4 @@ function startDLPManagerForResult(context: common.Context, want: Want, window: w
 
 **示例**
 
-参见 [startDLPManagerForResult](#startdlpmanagerforresult)
+参见 startDLPManagerForResult

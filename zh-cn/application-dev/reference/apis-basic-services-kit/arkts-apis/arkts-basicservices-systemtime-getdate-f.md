@@ -99,4 +99,4 @@ function getDate(): Promise<Date>
 
 **示例**
 
-参见 [getDate](#getdate)
+参见 getDate

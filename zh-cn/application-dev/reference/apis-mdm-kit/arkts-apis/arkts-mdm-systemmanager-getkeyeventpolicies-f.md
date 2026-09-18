@@ -116,4 +116,4 @@ function getKeyEventPolicies(admin: Want | null): Array<KeyEventPolicy>
 
 **示例**
 
-参见 [getKeyEventPolicies](#getkeyeventpolicies)
+参见 getKeyEventPolicies

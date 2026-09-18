@@ -147,4 +147,4 @@ function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 
 **示例**
 
-参见 [exportKeyItem](#exportkeyitem)
+参见 exportKeyItem

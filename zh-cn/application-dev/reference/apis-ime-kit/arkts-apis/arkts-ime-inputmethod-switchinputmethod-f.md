@@ -147,4 +147,4 @@ function switchInputMethod(target: InputMethodProperty): Promise<boolean>
 
 **示例**
 
-参见 [switchInputMethod](#switchinputmethod)
+参见 switchInputMethod

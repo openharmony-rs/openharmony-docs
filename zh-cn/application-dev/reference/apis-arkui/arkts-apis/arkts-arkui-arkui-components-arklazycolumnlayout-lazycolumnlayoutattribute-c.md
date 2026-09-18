@@ -4,7 +4,7 @@
 
 @extends CommonMethod&lt;LazyColumnLayoutAttribute&gt;
 
-**继承/实现关系：** LazyColumnLayoutAttribute extends CommonMethod<LazyColumnLayoutAttribute>
+**继承/实现关系：** LazyColumnLayoutAttribute extends CommonMethod&lt;LazyColumnLayoutAttribute&gt;
 
 **起始版本：** 26.0.0
 

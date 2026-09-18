@@ -136,4 +136,4 @@ function removeDisallowedBluetoothProtocols(admin: Want, accountId: number, prot
 
 **示例**
 
-参见 [removeDisallowedBluetoothProtocols](#removedisallowedbluetoothprotocols)
+参见 removeDisallowedBluetoothProtocols

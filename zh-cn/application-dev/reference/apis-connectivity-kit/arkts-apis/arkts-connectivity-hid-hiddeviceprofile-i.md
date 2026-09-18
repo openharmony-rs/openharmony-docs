@@ -24,7 +24,7 @@ connect(deviceId: BluetoothAddress): void
 
 向指定的HID主机发起连接。
 
-调用该接口前需要先调用[registerHidDevice](#registerhiddevice)完成HID设备能力注册。可通过订阅[on('connectionStateChange')](../../../reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)事件来感知连接是否成功。当不需要连接时需调用[disconnect](#disconnect)断开连接。此外，调用[unregisterHidDevice](#unregisterhiddevice)解除注册也会断开已有的HID主机连接。
+调用该接口前需要先调用[registerHidDevice](#registerhiddevice)完成HID设备能力注册。可通过订阅on('connectionStateChange')事件来感知连接是否成功。当不需要连接时需调用[disconnect](#disconnect)断开连接。此外，调用[unregisterHidDevice](#unregisterhiddevice)解除注册也会断开已有的HID主机连接。
 
 **起始版本：** 23
 

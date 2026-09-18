@@ -115,4 +115,4 @@ function getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPo
 
 **示例**
 
-参见 [getExternalSourceExtensionsPolicy](#getexternalsourceextensionspolicy)
+参见 getExternalSourceExtensionsPolicy

@@ -90,7 +90,7 @@ function deletePreferences(context: Context, options: Options, callback: AsyncCa
 
 **示例**
 
-参见 [deletePreferences](#deletepreferences)
+参见 deletePreferences
 
 
 ## deletePreferences
@@ -134,7 +134,7 @@ function deletePreferences(context: Context, name: string): Promise<void>
 
 **示例**
 
-参见 [deletePreferences](#deletepreferences)
+参见 deletePreferences
 
 
 ## deletePreferences
@@ -181,4 +181,4 @@ function deletePreferences(context: Context, options: Options): Promise<void>
 
 **示例**
 
-参见 [deletePreferences](#deletepreferences)
+参见 deletePreferences

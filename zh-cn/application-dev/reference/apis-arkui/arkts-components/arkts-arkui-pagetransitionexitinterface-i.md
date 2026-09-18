@@ -4,7 +4,7 @@
 
 @extends CommonTransition&lt;PageTransitionExitInterface&gt; @interface PageTransitionExitInterface
 
-**继承/实现关系：** PageTransitionExitInterface extends CommonTransition<PageTransitionExitInterface>
+**继承/实现关系：** PageTransitionExitInterface extends CommonTransition&lt;PageTransitionExitInterface&gt;
 
 **起始版本：** 7
 

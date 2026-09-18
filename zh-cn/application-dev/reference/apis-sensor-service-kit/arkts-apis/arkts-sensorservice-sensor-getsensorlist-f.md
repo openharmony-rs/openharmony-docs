@@ -101,4 +101,4 @@ function getSensorList(): Promise<Array<Sensor>>
 
 **示例**
 
-参见 [getSensorList](#getsensorlist)
+参见 getSensorList

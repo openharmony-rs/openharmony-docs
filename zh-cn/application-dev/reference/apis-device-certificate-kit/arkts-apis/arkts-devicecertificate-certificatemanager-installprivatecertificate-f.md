@@ -155,7 +155,7 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 **示例**
 
-参见 [installPrivateCertificate](#installprivatecertificate)
+参见 installPrivateCertificate
 
 
 ## installPrivateCertificate
@@ -199,4 +199,4 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 **示例**
 
-参见 [installPrivateCertificate](#installprivatecertificate)
+参见 installPrivateCertificate

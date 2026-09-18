@@ -162,7 +162,7 @@ function getAutoStartApps(admin: Want | null): Array<Want>
 
 **示例**
 
-参见 [getAutoStartApps](#getautostartapps)
+参见 getAutoStartApps
 
 
 ## getAutoStartApps
@@ -204,7 +204,7 @@ function getAutoStartApps(admin: Want, accountId: number): Array<Want>
 
 **示例**
 
-参见 [getAutoStartApps](#getautostartapps)
+参见 getAutoStartApps
 
 
 ## getAutoStartApps
@@ -246,4 +246,4 @@ function getAutoStartApps(admin: Want | null, accountId: number): Array<Want>
 
 **示例**
 
-参见 [getAutoStartApps](#getautostartapps)
+参见 getAutoStartApps

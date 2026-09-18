@@ -184,7 +184,7 @@ function stopAdvertising(advertisingId: number, callback: AsyncCallback<void>): 
 
 完全停止发送BLE广播。使用Callback异步回调。
 
-与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取完全停止广播结果。
+与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过ble.on('advertisingStateChange')回调获取完全停止广播结果。
 
 **起始版本：** 11
 
@@ -215,7 +215,7 @@ function stopAdvertising(advertisingId: number, callback: AsyncCallback<void>): 
 
 **示例**
 
-参见 [stopAdvertising](#stopadvertising)
+参见 stopAdvertising
 
 
 ## stopAdvertising
@@ -226,7 +226,7 @@ function stopAdvertising(advertisingId: number): Promise<void>
 
 完全停止发送BLE广播。使用Promise异步回调。
 
-与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取完全停止广播结果。
+与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过ble.on('advertisingStateChange')回调获取完全停止广播结果。
 
 **起始版本：** 11
 
@@ -262,4 +262,4 @@ function stopAdvertising(advertisingId: number): Promise<void>
 
 **示例**
 
-参见 [stopAdvertising](#stopadvertising)
+参见 stopAdvertising

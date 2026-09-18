@@ -98,4 +98,4 @@ function getAbilityLabel(bundleName: string, abilityName: string): Promise<strin
 
 **示例**
 
-参见 [getAbilityLabel](#getabilitylabel)
+参见 getAbilityLabel

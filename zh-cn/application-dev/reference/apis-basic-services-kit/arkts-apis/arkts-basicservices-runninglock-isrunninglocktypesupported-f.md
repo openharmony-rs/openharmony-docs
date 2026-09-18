@@ -82,4 +82,4 @@ function isRunningLockTypeSupported(type: RunningLockType): Promise<boolean>
 
 **示例**
 
-参见 [isRunningLockTypeSupported](#isrunninglocktypesupported)
+参见 isRunningLockTypeSupported

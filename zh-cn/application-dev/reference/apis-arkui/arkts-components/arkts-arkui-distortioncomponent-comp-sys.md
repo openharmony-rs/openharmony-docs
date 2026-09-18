@@ -22,7 +22,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [DistortionComponentOptions](arkts-arkui-distortioncomponentoptions-i-sys.md) | 否 | 空间扭曲形变选项，用于配置组件的空间形变效果。不设置该参数或该参数设置为undefined时组件正常渲染、不施加任何形变效果。 |
+| options | DistortionComponentOptions | 否 | 空间扭曲形变选项，用于配置组件的空间形变效果。不设置该参数或该参数设置为undefined时组件正常渲染、不施加任何形变效果。 |
 
 ## 汇总
 
@@ -30,12 +30,12 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [DistortionComponentOptions](arkts-arkui-distortioncomponentoptions-i-sys.md) | 空间扭曲形变选项。 |
-| [DistortionParam](arkts-arkui-distortionparam-i-sys.md) | 空间扭曲形变参数。 |
+| DistortionComponentOptions | 空间扭曲形变选项。 |
+| DistortionParam | 空间扭曲形变参数。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [Vector2](arkts-arkui-vector2-t-sys.md) | 二维向量类型，包含x和y坐标，表示位置坐标关系。 |
-| [Vector4](arkts-arkui-vector4-t-sys.md) | 四维向量类型，包含x、y、z、w，各数值表示桶形形变程度。 |
+| Vector2 | 二维向量类型，包含x和y坐标，表示位置坐标关系。 |
+| Vector4 | 四维向量类型，包含x、y、z、w，各数值表示桶形形变程度。 |

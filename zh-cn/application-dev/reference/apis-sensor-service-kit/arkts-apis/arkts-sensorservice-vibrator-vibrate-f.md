@@ -125,7 +125,7 @@ function vibrate(duration: number): Promise<void>
 
 **示例**
 
-参见 [vibrate](#vibrate)
+参见 vibrate
 
 
 ## vibrate
@@ -165,7 +165,7 @@ function vibrate(effectId: EffectId): Promise<void>
 
 **示例**
 
-参见 [vibrate](#vibrate)
+参见 vibrate
 
 
 ## vibrate
@@ -201,4 +201,4 @@ function vibrate(effectId: EffectId, callback?: AsyncCallback<void>): void
 
 **示例**
 
-参见 [vibrate](#vibrate)
+参见 vibrate

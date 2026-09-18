@@ -98,4 +98,4 @@ function createAVRecorder(): Promise<AVRecorder>
 
 **示例**
 
-参见 [createAVRecorder](#createavrecorder)
+参见 createAVRecorder

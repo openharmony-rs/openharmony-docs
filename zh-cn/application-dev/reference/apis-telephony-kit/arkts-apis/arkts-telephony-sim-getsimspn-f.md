@@ -100,4 +100,4 @@ function getSimSpn(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getSimSpn](#getsimspn)
+参见 getSimSpn

@@ -91,4 +91,4 @@ function getCellularDataFlowType(): Promise<DataFlowType>
 
 **示例**
 
-参见 [getCellularDataFlowType](#getcellulardataflowtype)
+参见 getCellularDataFlowType

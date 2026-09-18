@@ -71,4 +71,4 @@ function getDefaultCellularDataSlotId(): Promise<number>
 
 **示例**
 
-参见 [getDefaultCellularDataSlotId](#getdefaultcellulardataslotid)
+参见 getDefaultCellularDataSlotId

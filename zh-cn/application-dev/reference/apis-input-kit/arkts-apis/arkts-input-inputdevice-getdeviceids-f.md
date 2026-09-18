@@ -107,4 +107,4 @@ function getDeviceIds(): Promise<Array<number>>
 
 **示例**
 
-参见 [getDeviceIds](#getdeviceids)
+参见 getDeviceIds

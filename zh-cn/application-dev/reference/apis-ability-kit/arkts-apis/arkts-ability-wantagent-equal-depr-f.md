@@ -165,4 +165,4 @@ function equal(agent: WantAgent, otherAgent: WantAgent): Promise<boolean>
 
 **示例**
 
-参见 [equal](#equal)
+参见 equal

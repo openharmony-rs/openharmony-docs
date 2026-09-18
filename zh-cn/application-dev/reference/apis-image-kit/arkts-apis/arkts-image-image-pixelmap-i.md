@@ -487,7 +487,7 @@ Copies this PixelMap object. This API uses a promise to return the result.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | [62980102](../errorcode-image.md#62980102-图片分配内存错误) | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | Image YUV And ASTC types are not supported. |
 | [62980104](../errorcode-image.md#62980104-图片初始化错误) | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -515,7 +515,7 @@ Copies this PixelMap object. This API returns the result synchronously.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | [62980102](../errorcode-image.md#62980102-图片分配内存错误) | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | Image YUV And ASTC types are not supported. |
 | [62980104](../errorcode-image.md#62980104-图片初始化错误) | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -630,7 +630,7 @@ Starting from API 26.0.0, it is recommended to use [extractAlphaPixelMapSync](#e
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## createCroppedAndScaledPixelMap
 
@@ -735,7 +735,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## createScaledPixelMapSync
 
@@ -768,7 +768,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## crop
 
@@ -852,7 +852,7 @@ Starting from API 26.0.0, it is recommended to use [applyCropSync](#applycropsyn
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## extractAlphaPixelMap
 
@@ -1007,7 +1007,7 @@ Starting from API 26.0.0, it is recommended to use [applyFlipSync](#applyflipsyn
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## getBytesNumberPerRow
 
@@ -1149,7 +1149,7 @@ Obtains the image information. This API returns the result synchronously.
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## getMetadata
 
@@ -1180,7 +1180,7 @@ Obtains the value of the metadata with a given key in this PixelMap.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980302](../errorcode-image.md#62980302-内存拷贝失败) | Memory copy failed. Possibly caused by invalid metadata value. |
 
@@ -1360,7 +1360,7 @@ Starting from API 26.0.0, it is recommended to use [setOpacitySync](#setopacitys
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## readAllPixelsToBuffer
 
@@ -1518,7 +1518,7 @@ Starting from API 26.0.0, it is recommended to use [readPixelsToAreaSync](#readp
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## readPixelsToArea
 
@@ -1678,7 +1678,7 @@ Starting from API 26.0.0, it is recommended to use [readAllPixelsToBufferSync](#
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## release
 
@@ -1816,7 +1816,7 @@ Starting from API 26.0.0, it is recommended to use [applyRotateSync](#applyrotat
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## scale
 
@@ -1912,7 +1912,7 @@ Starting from API 26.0.0, it is recommended to use [applyScale](#applyscale) ins
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## scaleSync
 
@@ -1942,7 +1942,7 @@ Starting from API 26.0.0, it is recommended to use [applyScaleSync](#applyscales
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## scaleSync
 
@@ -1973,7 +1973,7 @@ Starting from API 26.0.0, it is recommended to use [applyScaleSync](#applyscales
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## setColorSpace
 
@@ -2025,7 +2025,7 @@ Sets a memory name for this PixelMap.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.The length of the input parameter is too long. 2.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | [62980286](../errorcode-image.md#62980286-pixelmap设置内存标识符失败) | Memory format not supported. |
 
 ## setMetadata
@@ -2058,7 +2058,7 @@ Sets the value for the metadata with a given key in this PixelMap. This API uses
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | [62980173](../errorcode-image.md#62980173-dma内存空间错误) | The DMA memory does not exist. |
 | [62980302](../errorcode-image.md#62980302-内存拷贝失败) | Memory copy failed. Possibly caused by invalid metadata value. |
 
@@ -2160,7 +2160,7 @@ Sets whether to detach from the original thread when this PixelMap is transmitte
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## toSdr
 
@@ -2271,7 +2271,7 @@ Starting from API 26.0.0, it is recommended to use [applyTranslateSync](#applytr
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## unmarshalling
 
@@ -2463,7 +2463,7 @@ Starting from API 26.0.0, it is recommended to use [writeAllPixelsFromBufferSync
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## writePixels
 
@@ -2625,7 +2625,7 @@ Starting from API 26.0.0, it is recommended to use [writePixelsFromAreaSync](#wr
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| [501](../errorcode-image.md#501-资源被其他线程占用访问被拒绝) | The resource is unavailable as it is occupied by another thread. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 
 ## isEditable
 

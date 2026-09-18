@@ -117,4 +117,4 @@ function getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
 **示例**
 
-参见 [getUsbStorageDeviceAccessPolicy](#getusbstoragedeviceaccesspolicy)
+参见 getUsbStorageDeviceAccessPolicy

@@ -94,4 +94,4 @@ function startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Pro
 
 **示例**
 
-参见 [startVibration](#startvibration)
+参见 startVibration

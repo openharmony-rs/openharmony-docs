@@ -142,7 +142,7 @@ function getTopWindow(): Promise<Window>
 
 **示例**
 
-参见 [getTopWindow](#gettopwindow)
+参见 getTopWindow
 
 
 ## getTopWindow
@@ -179,7 +179,7 @@ function getTopWindow(ctx: BaseContext): Promise<Window>
 
 **示例**
 
-参见 [getTopWindow](#gettopwindow)
+参见 getTopWindow
 
 
 ## getTopWindow
@@ -212,4 +212,4 @@ function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 
 **示例**
 
-参见 [getTopWindow](#gettopwindow)
+参见 getTopWindow

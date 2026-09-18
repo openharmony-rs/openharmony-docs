@@ -200,4 +200,4 @@ Imports a key in plaintext. This API uses a promise to return the result.
 
 **示例**
 
-参见 [importKeyItem](#importkeyitem)
+参见 importKeyItem

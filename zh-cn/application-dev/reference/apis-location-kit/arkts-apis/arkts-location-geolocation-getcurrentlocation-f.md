@@ -97,7 +97,7 @@ function getCurrentLocation(callback: AsyncCallback<Location>): void
 
 **示例**
 
-参见 [getCurrentLocation](#getcurrentlocation)
+参见 getCurrentLocation
 
 
 ## getCurrentLocation
@@ -132,4 +132,4 @@ function getCurrentLocation(request?: CurrentLocationRequest): Promise<Location>
 
 **示例**
 
-参见 [getCurrentLocation](#getcurrentlocation)
+参见 getCurrentLocation

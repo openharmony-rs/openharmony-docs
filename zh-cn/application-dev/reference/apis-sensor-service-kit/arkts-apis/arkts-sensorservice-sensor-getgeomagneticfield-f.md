@@ -107,4 +107,4 @@ function getGeomagneticField(locationOptions: LocationOptions, timeMillis: numbe
 
 **示例**
 
-参见 [getGeomagneticField](#getgeomagneticfield)
+参见 getGeomagneticField

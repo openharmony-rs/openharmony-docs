@@ -99,4 +99,4 @@ function getKeyProperties(keyAlias: string, options: HuksOptions): Promise<HuksR
 
 **示例**
 
-参见 [getKeyProperties](#getkeyproperties)
+参见 getKeyProperties

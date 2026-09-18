@@ -142,4 +142,4 @@ function getAngleVariation(currentRotationMatrix: Array<number>, preRotationMatr
 
 **示例**
 
-参见 [getAngleVariation](#getanglevariation)
+参见 getAngleVariation

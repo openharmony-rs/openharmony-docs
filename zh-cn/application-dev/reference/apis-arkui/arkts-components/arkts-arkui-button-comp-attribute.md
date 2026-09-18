@@ -4,7 +4,7 @@
 
 支持通用事件。
 
-**继承/实现关系：** ButtonAttribute extends CommonMethod<ButtonAttribute>
+**继承/实现关系：** ButtonAttribute extends CommonMethod&lt;ButtonAttribute&gt;
 
 **起始版本：** 7
 

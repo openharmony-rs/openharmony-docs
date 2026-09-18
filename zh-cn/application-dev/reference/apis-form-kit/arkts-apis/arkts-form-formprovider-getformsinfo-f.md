@@ -127,7 +127,7 @@ function getFormsInfo(callback: AsyncCallback<Array<formInfo.FormInfo>>): void
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+参见 getFormsInfo
 
 
 ## getFormsInfo
@@ -167,4 +167,4 @@ function getFormsInfo(filter?: formInfo.FormInfoFilter): Promise<Array<formInfo.
 
 **示例**
 
-参见 [getFormsInfo](#getformsinfo)
+参见 getFormsInfo

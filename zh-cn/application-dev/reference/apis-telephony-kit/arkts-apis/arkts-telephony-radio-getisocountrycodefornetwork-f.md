@@ -98,4 +98,4 @@ function getISOCountryCodeForNetwork(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getISOCountryCodeForNetwork](#getisocountrycodefornetwork)
+参见 getISOCountryCodeForNetwork

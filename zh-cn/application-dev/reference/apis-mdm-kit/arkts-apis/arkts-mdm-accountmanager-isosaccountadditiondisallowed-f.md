@@ -118,4 +118,4 @@ function isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): 
 
 **示例**
 
-参见 [isOsAccountAdditionDisallowed](#isosaccountadditiondisallowed)
+参见 isOsAccountAdditionDisallowed

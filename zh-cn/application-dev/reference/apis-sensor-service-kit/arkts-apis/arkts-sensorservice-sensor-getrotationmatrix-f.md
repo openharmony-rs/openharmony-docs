@@ -152,7 +152,7 @@ function getRotationMatrix(rotationVector: Array<number>): Promise<Array<number>
 
 **示例**
 
-参见 [getRotationMatrix](#getrotationmatrix)
+参见 getRotationMatrix
 
 
 ## getRotationMatrix
@@ -184,7 +184,7 @@ function getRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>, c
 
 **示例**
 
-参见 [getRotationMatrix](#getrotationmatrix)
+参见 getRotationMatrix
 
 
 ## getRotationMatrix
@@ -221,4 +221,4 @@ function getRotationMatrix(gravity: Array<number>, geomagnetic: Array<number>): 
 
 **示例**
 
-参见 [getRotationMatrix](#getrotationmatrix)
+参见 getRotationMatrix

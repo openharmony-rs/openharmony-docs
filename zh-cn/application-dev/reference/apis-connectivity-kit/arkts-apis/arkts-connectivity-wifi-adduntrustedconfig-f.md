@@ -136,4 +136,4 @@ function addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<bo
 
 **示例**
 
-参见 [addUntrustedConfig](#adduntrustedconfig)
+参见 addUntrustedConfig

@@ -109,4 +109,4 @@ function createAVPlayer(): Promise<AVPlayer>
 
 **示例**
 
-参见 [createAVPlayer](#createavplayer)
+参见 createAVPlayer

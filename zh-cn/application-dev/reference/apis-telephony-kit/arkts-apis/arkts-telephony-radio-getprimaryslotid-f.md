@@ -87,4 +87,4 @@ function getPrimarySlotId(): Promise<number>
 
 **示例**
 
-参见 [getPrimarySlotId](#getprimaryslotid)
+参见 getPrimarySlotId

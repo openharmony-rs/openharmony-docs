@@ -1,8 +1,8 @@
 # Rect属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
 
-**继承/实现关系：** RectAttribute extends CommonShapeMethod<RectAttribute>
+**继承/实现关系：** RectAttribute extends CommonShapeMethod&lt;RectAttribute&gt;
 
 **起始版本：** 7
 

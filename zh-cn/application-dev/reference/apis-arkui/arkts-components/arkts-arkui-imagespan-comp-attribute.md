@@ -6,7 +6,7 @@
 
 @extends CommonMethod&lt;ImageSpanAttribute&gt; [since 10 - 10] @extends BaseSpan&lt;ImageSpanAttribute&gt; [since 11]
 
-**继承/实现关系：** ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
+**继承/实现关系：** ImageSpanAttribute extends BaseSpan&lt;ImageSpanAttribute&gt;
 
 **起始版本：** 10
 

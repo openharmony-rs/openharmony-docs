@@ -104,4 +104,4 @@ function updateConnectStatus(token: number, deviceId: string, status: DeviceConn
 
 **示例**
 
-参见 [updateConnectStatus](#updateconnectstatus)
+参见 updateConnectStatus

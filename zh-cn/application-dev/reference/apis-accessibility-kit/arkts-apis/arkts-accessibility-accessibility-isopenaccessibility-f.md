@@ -80,4 +80,4 @@ function isOpenAccessibility(): Promise<boolean>
 
 **示例**
 
-参见 [isOpenAccessibility](#isopenaccessibility)
+参见 isOpenAccessibility
