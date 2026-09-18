@@ -121,8 +121,6 @@ EXTERN_C_END
 
     ```js
     import { image } from '@kit.ImageKit';
-    export const add:(a: number, b: number) => image.PixelMap;
-    export const transform: (a: image.PixelMap) => image.PixelMap;
     export const testGetImageInfo: (a: image.PixelMap) => image.PixelMap;
     export const testAccessPixels: (a: image.PixelMap) => image.PixelMap;
     export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
