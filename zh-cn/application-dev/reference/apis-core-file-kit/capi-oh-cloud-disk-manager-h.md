@@ -87,7 +87,7 @@ enum CloudDisk_SyncState
 | SYNC_FAILED = 3 | 文件同步失败。 |
 | SYNC_CANCELED = 4 | 文件同步取消。 |
 | SYNC_CONFLICTED = 5 | 文件同步冲突。 |
-| OH_CLOUD_DISK_CLOSE_MODIFY = 6 | 修改内容后关闭文件。<br>**起始版本：** 26.1.0 |
+| OH_CLOUD_DISK_CLOSE_MODIFY = 6 | 修改内容后关闭文件。<br>**起始版本：** 26.0.1 |
 
 ### CloudDisk_OperationType
 
@@ -439,7 +439,7 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 
 在已注册的同步根路径下创建占位符文件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -465,7 +465,7 @@ CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPat
 
 判断已注册的同步根路径下的指定文件是否为占位符文件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -491,7 +491,7 @@ CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFo
 
 将已注册的同步根路径下的占位符文件转换为0字节的普通文件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -516,7 +516,7 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPat
 
 更新同步根路径下文件的元数据，支持占位符文件和普通文件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

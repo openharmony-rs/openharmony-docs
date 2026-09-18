@@ -14,9 +14,9 @@
 >
 > 当前页面仅包含本模块的系统接口参数，其他公共属性定义可参考[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -32,9 +32,9 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

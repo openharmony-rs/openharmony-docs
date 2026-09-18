@@ -2189,7 +2189,7 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolR
 
 触发分析工具的执行。使用callback异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2254,7 +2254,7 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
 
 取消分析工具的执行。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4144,7 +4144,7 @@ convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array
 转换传入的PhotoAsset属性到媒体库兼容文件格式属性。
 
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -7324,7 +7324,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -8404,7 +8404,7 @@ setCameraEditData(editData: MediaAssetEditData): void
 
 保存资产的相机编辑数据。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -13611,10 +13611,10 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
-| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 | SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  慢动作视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
-| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与CINEMATIC_VIDEO相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与CINEMATIC_VIDEO相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 
 ## NotifyChangeType<sup>20+</sup>
 
@@ -13718,7 +13718,7 @@ async function example(context: Context) {
 | HIDDEN_TIME | 'hidden_time'  | 文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
-| MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -13753,8 +13753,8 @@ async function example(context: Context) {
 | NICK_NAME_ATTR | 'nickname' | 相册昵称。 |
 | EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。 |
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
-| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0 |
-| CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.1.0 |
+| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.0.1 |
+| CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.0.1 |
 
 ## AlbumOperationType
 
@@ -13790,7 +13790,7 @@ async function example(context: Context) {
 | --- | --- | --- | --- | --- |
 | attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。|
 | type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。 |
-| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20。<br>在API版本26.0.0，数组中的每个字符串长度不超过500个字符。<br>从API版本26.1.0开始，数组中的每个字符串长度不超过8192个字符。|
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20。<br>在API版本26.0.0，数组中的每个字符串长度不超过500个字符。<br>从API版本26.0.1开始，数组中的每个字符串长度不超过8192个字符。|
 
 ## AlbumAttributeInfo
 
@@ -14143,7 +14143,7 @@ try {
 
 表示智慧分析工具类型的枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14203,7 +14203,7 @@ try {
 
 调用分析工具的配置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14220,7 +14220,7 @@ try {
 
 分析工具执行结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14237,7 +14237,7 @@ try {
 
 取消分析工具的配置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

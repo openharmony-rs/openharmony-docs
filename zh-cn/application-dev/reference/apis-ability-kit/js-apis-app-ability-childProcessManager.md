@@ -966,9 +966,9 @@ getChildProcessInfos(): Promise&lt;Array&lt;ChildProcessInformation&gt;&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本**：26.1.0
+**ArkTS-Dyn起始版本**：26.0.1
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **返回值：**
 

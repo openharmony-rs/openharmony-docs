@@ -275,9 +275,9 @@ updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise\<
 
 更新指定用户的快捷方式信息。使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

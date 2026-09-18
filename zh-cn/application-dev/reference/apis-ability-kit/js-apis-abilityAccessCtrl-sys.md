@@ -586,7 +586,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 设置指定子身份资料下指定权限的弹窗开关状态。适用于系统应用需要对某一子身份资料的用户授权权限单独控制授权弹窗的场景。调用成功后，该子身份资料请求此权限时将遵循指定状态：`CLOSED`时不弹出权限弹窗，`OPEN`时正常弹出权限弹窗。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -709,7 +709,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions, subProfileId: numb
 
 获取指定子身份资料下指定权限的弹窗开关状态。适用于系统应用在权限管理界面展示或核验某一子身份资料的权限弹窗配置。调用成功后，Promise返回该权限当前的弹窗开关状态，可据此判断应用请求该权限时是否会弹出授权窗口。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

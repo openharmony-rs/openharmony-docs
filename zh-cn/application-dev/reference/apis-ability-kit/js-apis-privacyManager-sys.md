@@ -578,7 +578,7 @@ setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: number): Prom
 
 设置是否记录指定子身份资料的权限使用情况。适用于系统应用需要为某一子身份资料独立控制权限使用记录的场景。调用成功后，系统按`status`更新该子身份资料的开关状态；设置为`false`时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord)不会为该子身份资料产生权限使用记录，并会删除其历史权限使用记录。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -687,7 +687,7 @@ getPermissionUsedRecordToggleStatus(subProfileId: number): Promise&lt;boolean&gt
 
 获取指定子身份资料的权限使用记录开关状态。适用于系统应用按子身份资料展示或核验权限使用记录开关配置的场景。调用成功后，Promise返回该子身份资料的当前开关状态：`true`表示开启记录，`false`表示关闭记录。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

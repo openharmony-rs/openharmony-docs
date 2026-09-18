@@ -1048,9 +1048,9 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -1068,9 +1068,9 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1088,9 +1088,9 @@ type PasscodePromptCallback = (submit: PasscodeSubmitCallback, params: PasscodeP
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -1113,9 +1113,9 @@ registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **参数：**
 
@@ -1164,9 +1164,9 @@ unregisterPasscodePromptCallback(): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.0.1
 
-**ArkTS-Sta起始版本：** 26.1.0
+**ArkTS-Sta起始版本：** 26.0.1
 
 **错误码：**
 

@@ -2182,7 +2182,7 @@ dlpPermission.getControlledAppLists().then((res) => {
 
 可以执行的插件命令枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2203,7 +2203,7 @@ processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
 
 处理透明加解密场景下的插件相关命令。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

@@ -418,7 +418,7 @@ dumpJsHeapData(filename: string): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -465,7 +465,7 @@ dumpJsHeapData(filename: string, needClean: boolean): void
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1273,7 +1273,7 @@ VM内存信息。
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23      |
 | cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
-| threadName           | string  | 否  | 是  | 线程名。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**ArkTS-Dyn起始版本**：26.0.1<br>**ArkTS-Sta起始版本**：26.0.1 |
 
 ## tags<sup>12+</sup>
 
@@ -1407,7 +1407,7 @@ TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。�
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 | 名称         | 值   | 说明                                                         |
 | ------------ | ---- | ------------------------------------------------------------ |
@@ -1659,7 +1659,7 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1732,7 +1732,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1807,7 +1807,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 
 **ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -2025,7 +2025,7 @@ setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -2134,13 +2134,13 @@ getAppRunningUniqueId(): string
 
 获取应用程序的运行唯一标识符。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**ArkTS-Dyn起始版本**：26.1.0
+**ArkTS-Dyn起始版本**：26.0.1
 
-**ArkTS-Sta起始版本**：26.1.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **返回值**：
 

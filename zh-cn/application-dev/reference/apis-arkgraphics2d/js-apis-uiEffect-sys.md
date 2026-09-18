@@ -1501,9 +1501,9 @@ ArkTS-Sta: haloBloom(tintColor: Color, bloomFactor: double, glowExposure: double
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -1606,9 +1606,9 @@ ArkTS-Sta: spinBlur(center: common2D.Point, angle: double, samples: int): Filter
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -2335,9 +2335,9 @@ RGBA格式的颜色描述。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -2863,9 +2863,9 @@ static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRef
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3030,9 +3030,9 @@ static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3151,9 +3151,9 @@ ArkTS-Sta: static createFractalGlassMask(glassNum: int, glassStrength: double, g
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3267,9 +3267,9 @@ ArkTS-Sta: createBinocularMask(radiusX: double, radiusY: double, gap: double, so
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3457,9 +3457,9 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3480,9 +3480,9 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -3499,9 +3499,9 @@ BrightnessBlender参数列表。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本:** 26.1.0
+**ArkTS-Dyn起始版本:** 26.0.1
 
-**ArkTS-Sta起始版本:** 26.1.0
+**ArkTS-Sta起始版本:** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
