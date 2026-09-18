@@ -17,7 +17,7 @@
 
 **系统能力：** SystemCapability.USB.USBManager
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [UsbManager](capi-usbmanager.md)
 
@@ -65,17 +65,17 @@ enum OH_UsbManager_ErrorCode
 
 枚举USB管理器的错误码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_USBMANAGER_SUCCESS = 0 | 操作成功。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | 权限被拒绝。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | 服务异常。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | 不存在该设备（可能已被断开连接）。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | 内存不足。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | 传输I/O错误。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | 无效参数。对不可为空的参数传入了空指针。<br>**起始版本：** 26.1.0 |
+| OH_USBMANAGER_SUCCESS = 0 | 操作成功。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | 权限被拒绝。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | 服务异常。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | 不存在该设备（可能已被断开连接）。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | 内存不足。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | 传输I/O错误。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | 无效参数。对不可为空的参数传入了空指针。<br>**起始版本：** 26.0.1 |
 
 ### OH_UsbManager_RequestDirection
 
@@ -87,12 +87,12 @@ enum OH_UsbManager_RequestDirection
 
 枚举USB请求方向。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | 用于从主机向设备写入数据的请求。<br>**起始版本：** 26.1.0 |
-| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | 用于从设备向主机读取数据的请求。<br>**起始版本：** 26.1.0 |
+| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | 用于从主机向设备写入数据的请求。<br>**起始版本：** 26.0.1 |
+| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | 用于从设备向主机读取数据的请求。<br>**起始版本：** 26.0.1 |
 
 
 ## 函数说明
@@ -107,7 +107,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 
 获取所有已连接USB设备的列表。调用者必须调用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)<br>释放返回的数组。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -134,7 +134,7 @@ void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t 
 
 释放之前由[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)返回的设备数组。<br>调用后该指针失效，不得再使用。传入null或数量为0是安全的空操作。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -153,7 +153,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 
 连接USB设备并打开用于通信的管道。返回的管道必须通过调用<br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br>仅需要设备结构体中的**busNum**和**devAddress**字段；其他字段将被忽略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -178,7 +178,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 
 检查应用是否有权限访问指定设备。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -203,7 +203,7 @@ typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCo
 
 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的<br>回调类型。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -223,7 +223,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 
 异步请求访问指定USB设备的权限。这可能触发系统弹窗询问用户是否授权。<br>函数立即返回，结果通过回调传递。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -249,7 +249,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的<br>低层USB传输。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -274,7 +274,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pip
 
 关闭USB设备管道并释放底层资源。该管道必须从[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)<br>获取。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

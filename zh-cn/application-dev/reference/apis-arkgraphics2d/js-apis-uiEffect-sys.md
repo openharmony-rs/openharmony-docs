@@ -1164,7 +1164,7 @@ haloBloom(tintColor: Color, bloomFactor: number, glowExposure: number): Filter
 >
 > 建议作为前景滤镜使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1226,7 +1226,7 @@ spinBlur(center: common2D.Point, angle: number, samples: number): Filter
 >
 > 建议作为前景滤镜使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1775,7 +1775,7 @@ RGBA格式的颜色描述。
 
 扭曲环遮罩参数，用于指定光环的半径、宽度、变化量、旋转角度、3D朝向和噪声演化。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2224,7 +2224,7 @@ static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRef
 
 创建一个模拟棱镜色散效果的扫光折射遮罩[Mask](#mask20)实例。该遮罩会在组件上生成一条带有颜色分离效果的扫光光带。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2318,7 +2318,7 @@ static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 
 创建一个表示扭曲光环的[Mask](#mask20)实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2385,7 +2385,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 
 创建一个分形玻璃蒙版。通过分形条纹对输入纹理进行周期性水平位移采样，产生类似玻璃折射的扭曲效果。当启用对称模式时，扭曲效果关于图像垂直轴对称。可以配合[displacementDistort](#displacementdistort20)使用，产生光栅折射的视觉效果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2446,7 +2446,7 @@ static createBinocularMask(radiusX: number, radiusY: number, gap: number, softne
 
 创建一个双目蒙版，生成一个左右对称的双椭圆弧形蒙版形状。可以与[maskDispersion](#maskdispersion20)滤镜配合使用，用于控制色散效果的作用区域和方向。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2578,7 +2578,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 创建扫光折射遮罩的必选参数，包括遮罩半径、边缘厚度、折射强度、波纹宽度、扫光偏移和色散偏移量。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2599,7 +2599,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 棱镜形状类型枚举，用于指定扫光折射遮罩中棱镜的几何形状。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2616,7 +2616,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 创建扫光折射遮罩的可选参数，用于配置棱镜的形状、尺寸和扫光中心位置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

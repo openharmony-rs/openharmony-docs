@@ -105,8 +105,8 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。该属性仅在[preferType](#sheetoptions)设置为[SheetType.CONTENT_COVER](#sheettype11枚举说明)（全屏弹窗样式）时生效，其他弹窗样式设置该属性无效。<br>默认值：ModalTransition.DEFAULT<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br>默认值：RenderStrategy.FAST <br>**说明：** 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br>默认值：undefined，会清除由该接口设置的材质效果。 <br>**说明：** <br> - 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](#示例10半模态设置系统材质)。<br> - 使用该接口设置材质会赋予关闭按钮一种系统内置的材质效果。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| titleBarHoverMode | [SheetTitleBarHoverMode](#sheettitlebarhovermode) | 否 | 是 |标题栏悬浮模式。仅当标题栏存在时生效。<br>默认值：SheetTitleBarHoverMode.STANDARD<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| scrollBarState | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 |半模态内容区Scroll滚动条的显示状态。<br>默认值：BarState.Off<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| titleBarHoverMode | [SheetTitleBarHoverMode](#sheettitlebarhovermode) | 否 | 是 |标题栏悬浮模式。仅当标题栏存在时生效。<br>默认值：SheetTitleBarHoverMode.STANDARD<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scrollBarState | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 |半模态内容区Scroll滚动条的显示状态。<br>默认值：BarState.Off<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -362,9 +362,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 标题栏背景模糊样式枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -379,9 +379,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 标题栏悬浮模式枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1093,7 +1093,7 @@ struct SheetMaterialExample {
 
 该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
 
-从API版本26.1.0开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。
 
 ```ts
 // xxx.ets
@@ -1163,7 +1163,7 @@ struct SheetMaterialExample {
 
 该示例通过scrollBarState属性设置半模态内容区滚动条的显示状态，点击按钮在[BarState](ts-appendix-enums.md#barstate)的Off、On、Auto和未设置之间切换。
 
-从API版本26.1.0开始，[SheetOptions](#sheetoptions)新增scrollBarState属性。
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增scrollBarState属性。
 
 ```ts
 // xxx.ets

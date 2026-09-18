@@ -144,8 +144,8 @@ enum HiDebug_ErrorCode
 | HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 整机系统可用内存低于2GB。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 整机系统可用存储空间低于存储阈值，阈值为总存储容量的3%与15GB中的较大值。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。<br>**起始版本：** 24 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 资源采集异步嵌套深度参数无效。<br>**起始版本：** 26.1.0 |
-| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 资源采集异步任务回栈深度参数无效。<br>**起始版本：** 26.1.0 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 资源采集异步嵌套深度参数无效。<br>**起始版本：** 26.0.1 |
+| HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 资源采集异步任务回栈深度参数无效。<br>**起始版本：** 26.0.1 |
 
 ### HiDebug_TraceFlag
 
@@ -221,9 +221,9 @@ enum OH_HiDebug_ResourceType
 | OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24 |
 | OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24 |
 | OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
-| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.1.0 |
-| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.1.0 |
-| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.0.1 |
+| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.0.1 |
+| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.0.1 |
 
 ### OH_HiDebug_MemListenerType
 

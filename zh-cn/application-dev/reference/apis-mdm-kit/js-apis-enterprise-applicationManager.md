@@ -3598,7 +3598,7 @@ publishFormToDesktop(formInfo: FormInfo): string
 >
 > 3. 不支持添加1\*1尺寸卡片到桌面。如果formInfo传1\*1卡片信息，调用本接口会报9201050错误码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
 
@@ -3670,7 +3670,7 @@ async function publishFormToDesktop() {
 
 卡片信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

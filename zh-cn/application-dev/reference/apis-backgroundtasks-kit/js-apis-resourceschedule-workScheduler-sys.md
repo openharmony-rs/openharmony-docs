@@ -38,7 +38,7 @@ setExecFrequency(info: FrequencyInfo): void
 
 设置应用所在活跃分组的执行频率。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -90,7 +90,7 @@ resetExecFrequency(uid: number): void
 
 重置应用所在活跃分组的执行频率。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,7 +138,7 @@ try {
 
 FrequencyInfo作为参数设置时，uid、workId、interval为必填项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

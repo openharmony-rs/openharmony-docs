@@ -1681,6 +1681,8 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
 
 ## ohos.permission.GET_ALL_BUNDLE_INFO
  

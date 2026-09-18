@@ -330,7 +330,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -417,7 +417,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId: number, ca
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -498,7 +498,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 | 801 | Capability not supported. |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -579,7 +579,7 @@ setDefaultApplicationSync(type: string, elementName: ElementName, userId?: numbe
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -934,7 +934,7 @@ setDefaultApplicationForAppClone(type: string, elementName: ElementName, appInde
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability and type do not match. |
 | 17700061 | The specified app index is invalid. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -1001,7 +1001,7 @@ getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: number, use
 
 当前仅支持`BROWSER`类型的查询。未被授予ohos.permission.DEFAULT_WEB_BROWSER权限的应用将从结果中排除。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 - 当userId为当前用户时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
