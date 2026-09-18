@@ -12,7 +12,7 @@ typedef struct OH_CloudDisk_SyncFolderEx {...} OH_CloudDisk_SyncFolderEx
 
 ## 概述
 
-同步根路径属性信息，包含同步根路径、同步状态、显示名称和是否支持占位符等信息。开发者可通过该结构体获取同步根路径的完整属性，用于云盘同步功能中的同步根路径管理。
+定义带占位符支持的云盘同步文件夹。必须将版本字段设置为有效的版本宏(例如{@ Cloud_DISK_SYNC_LAYER_EX_VERSION_1})，然后才能传递结构到任何API。运行时使用版本来确定字段有效；当指定低版本时，在较高版本中引入的字段将被忽略。
 
 **起始版本：** 26.1.0
 
@@ -26,15 +26,8 @@ typedef struct OH_CloudDisk_SyncFolderEx {...} OH_CloudDisk_SyncFolderEx
 
 | 名称 | 描述 |
 | -- | -- |
-| version | 同步根版本信息，当前版本信息为[OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-clouddisk-clouddisk-syncfolderex.md#OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1) 。|
-| CloudDisk_SyncFolderPath path | 同步根路径，用于指定云盘同步的根目录位置。 |
-| [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 同步根路径状态，具体取值及含义参见[CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate)。 |
-| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步根路径别名信息，用于设置同步根路径的显示名称，便于用户识别和管理。
-| isSupportPlaceHolder | 同步根路径是否支持占位符。true：表示同步根支持占位符，false：表示同步根不支持占位符。默认值为false。 |
-
-### 宏定义
-
-| 名称 | 描述 |
-| -- | -- |
-| OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1| 同步根路径属性中的版本信息。<br>**起始版本：** 26.1.0 |
-
+| uint32_t version | 指示此结构体的版本。必须初始化为有效的版本宏，例如 {@ Cloud_DISK_SYNC_FLYER_EX_VERSION_1}。<br>**起始版本：** 26.1.0 |
+| CloudDisk_SyncFolderPath path | sync文件夹路径。<br>**起始版本：** 26.1.0 |
+| [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 指示同步文件夹的状态。<br>**起始版本：** 26.1.0 |
+| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步文件夹的displayName信息。<br>**起始版本：** 26.1.0 |
+| bool isSupportPlaceHolder | 同步文件夹是否支持占位符。<br>**起始版本：** 26.1.0 |
