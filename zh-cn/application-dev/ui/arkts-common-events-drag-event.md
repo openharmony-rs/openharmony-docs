@@ -917,7 +917,7 @@ export struct DropAnimationExample {
               if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
                 hilog.info(DOMAIN, TAG, '%{public}s', 'Drag Success');
               } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                hilog.info(DOMAIN, TAG, '%{public}s', 'Drag failed');
+                hilog.error(DOMAIN, TAG, '%{public}s', 'Drag failed');
               }
             })
 
