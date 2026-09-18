@@ -1859,7 +1859,14 @@ try {
 
 addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
-为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[addAllowedPrinterIPAddressesForAccount](#systemmanageraddallowedprinteripaddressesforaccount)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为设备添加白名单后，可通过[removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
+为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+- 已通过[addAllowedPrinterIPAddressesForAccount](#systemmanageraddallowedprinteripaddressesforaccount)设置白名单后再调用本接口，会报策略冲突（9200010）。
+- 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
+- 为设备添加白名单后，可通过[removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice)移除白名单；白名单为空时，所有网络打印机均不受本策略管控。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.1
 
@@ -1870,8 +1877,6 @@ addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1917,6 +1922,10 @@ removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
 为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -1926,8 +1935,6 @@ removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1982,7 +1989,7 @@ getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&l
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF 和 ALL，不传时，等效于SELF。                                   |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF和ALL，不传时，等效于SELF。                                   |
 
 **返回值：**
 
@@ -2016,7 +2023,15 @@ try {
 
 addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
-为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为当前用户添加白名单后，可通过[removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
+为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+- 已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)设置白名单后，再调用本接口，会报策略冲突（9200010）。
+- 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
+- 为当前用户添加白名单后，可通过[removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount)移除白名单；当白名单为空时，所有网络打印机均不受本策略管控。
+- 如果需要为当前设备添加基于IP的网络打印机白名单策略，请参考[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)接口。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.1
 
@@ -2028,7 +2043,6 @@ addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2075,6 +2089,10 @@ removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): voi
 
 为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -2085,7 +2103,6 @@ removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): voi
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2140,7 +2157,7 @@ getAllowedPrinterIPAddressesForAccount(queryPolicy?: common.QueryPolicy): Array&
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF 和 ALL，不传时，等效于SELF。                                   |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF和ALL，不传时，等效于SELF。                                   |
 
 **返回值：**
 
