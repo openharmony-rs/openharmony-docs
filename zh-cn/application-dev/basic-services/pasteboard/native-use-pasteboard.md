@@ -93,7 +93,7 @@
 4. 订阅剪贴板变化。
 
     <!-- @[pasteboard_native4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
-   
+    
     ``` C++
     static void PasteboardTestObserver()
     {
