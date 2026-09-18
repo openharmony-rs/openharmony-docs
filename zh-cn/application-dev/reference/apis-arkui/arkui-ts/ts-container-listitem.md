@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ListItem用于展示列表中的具体列表项，支持设置划出菜单、选中状态、鼠标框选和卡片样式等能力，必须配合List组件使用，适用于需要在列表中展示内容并对单个列表项进行交互操作（如滑动删除、选中标记）的场景。
+ListItem用于展示列表中的具体列表项，支持设置滑出菜单、选中状态、鼠标框选和卡片样式等能力，必须配合List组件使用，适用于需要在列表中展示内容并对单个列表项进行交互操作（如滑动删除、选中标记）的场景。
 
 > **说明：**
 >
@@ -181,7 +181,7 @@ ArkTS-Dyn: swipeAction(value: SwipeActionOptions)
 
 ArkTS-Sta: swipeAction(value: SwipeActionOptions | undefined)
 
-用于设置ListItem的划出组件。
+用于设置ListItem的滑出组件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -195,7 +195,7 @@ ArkTS-Sta: swipeAction(value: SwipeActionOptions | undefined)
 
 | 参数名 | 类型                                              | 必填 | 说明                 |
 | ------ | ------------------------------------------------- | ---- | -------------------- |
-| value  | ArkTS-Dyn: [SwipeActionOptions](#swipeactionoptions9对象说明)<br/>ArkTS-Sta: [SwipeActionOptions](#swipeactionoptions9对象说明) \| undefined | 是   | ListItem的划出组件配置，用于设置划出时显示的组件、滑动效果和滑动状态回调等。<br/>取值为undefined时，恢复默认行为，没有ListItem划出组件。|
+| value  | ArkTS-Dyn: [SwipeActionOptions](#swipeactionoptions9对象说明)<br/>ArkTS-Sta: [SwipeActionOptions](#swipeactionoptions9对象说明) \| undefined | 是   | ListItem的滑出组件配置，用于设置滑出时显示的组件、滑动效果和滑动状态回调等。<br/>取值为undefined时，恢复默认行为，没有ListItem滑出组件。|
 
 ## Sticky<sup>(deprecated)</sup>枚举说明
 
@@ -251,29 +251,33 @@ ListItem元素编辑模式枚举。
 
 | 名称     | 值 | 说明      |
 | ------ | ------ | --------- |
-|   Spring   |    0    | ListItem滑动距离超过划出组件大小后可以继续滑动。<br>如果设置了删除区域，ListItem滑动距离超过删除阈值后可以继续滑动，<br/>松手后按照弹簧阻尼曲线回弹。 |
-|   None   |    1    | ListItem滑动距离不能超过划出组件大小。<br>如果设置了删除区域，ListItem滑动距离不能超过删除阈值，<br/>并且在设置删除回调的情况下，达到删除阈值后松手触发删除回调。 |
+|   Spring   |    0    | ListItem滑动距离超过滑出组件大小后可以继续滑动。<br>如果设置了删除区域，ListItem滑动距离超过删除阈值后可以继续滑动，<br/>松手后按照弹簧阻尼曲线回弹。 |
+|   None   |    1    | ListItem滑动距离不能超过滑出组件大小。<br>如果设置了删除区域，ListItem滑动距离不能超过删除阈值，<br/>并且在设置删除回调的情况下，达到删除阈值后松手触发删除回调。 |
 
 ## SwipeActionOptions<sup>9+</sup>对象说明
 
 start和end对应的@builder函数中顶层必须是单个组件（如果顶层是if/else、ForEach等渲染控制语句，则必须保证其仅能生成单个组件），否则会引发未定义行为。
 
-滑动手势只在ListItem区域上生效，如果子组件滑出ListItem区域外，在ListItem以外部分不会响应滑动手势。所以在多列模式下，建议不要将划出组件设置太宽。
+滑动手势只在ListItem区域上生效，如果子组件滑出ListItem区域外，在ListItem以外的部分不会响应滑动手势。所以在多列模式下，建议不要将滑出组件宽度设置过大。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                         | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| start | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向右滑动时item左边的组件（List垂直布局时）或ListItem向下滑动时item上方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧划出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| end | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向左滑动时item右边的组件（List垂直布局时）或ListItem向上滑动时item下方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧划出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| edgeEffect | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明) | 否 | 是 | 滑动效果。<br/>默认值：SwipeEdgeEffect.Spring<br/>SwipeEdgeEffect.Spring表示弹簧效果，滑动距离超过划出组件大小后可继续滑动并按弹簧阻尼曲线回弹；SwipeEdgeEffect.None表示无弹簧效果，滑动距离不能超过划出组件大小。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| start | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向右滑动时item左边的组件（List垂直布局时）或ListItem向下滑动时item上方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧滑出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| end | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10对象说明) | 否 | 是 | ListItem向左滑动时item右边的组件（List垂直布局时）或ListItem向上滑动时item下方的组件（List水平布局时）。<br/>默认值：无（不设置时不显示该侧滑出组件）<br/>**说明：** <br/>当取值为CustomBuilder或SwipeActionItem的builder时，@builder函数中顶层必须是单个组件，否则会引发未定义行为。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| edgeEffect | [SwipeEdgeEffect](#swipeedgeeffect9枚举说明) | 否 | 是 | 滑动效果。<br/>默认值：SwipeEdgeEffect.Spring<br/>SwipeEdgeEffect.Spring表示弹簧效果，滑动距离超过滑出组件大小后可继续滑动并按弹簧阻尼曲线回弹；SwipeEdgeEffect.None表示无弹簧效果，滑动距离不能超过滑出组件大小。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
 | onOffsetChange<sup>11+</sup> | ArkTS-Dyn: (offset: number) => void<br/> ArkTS-Sta: (offset: double) => void                                     | 否   | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）位置发生变化触发，以vp为单位。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
 
 ## SwipeActionItem<sup>10+</sup>对象说明
 
-SwipeActionItem用于配置[SwipeActionOptions](#swipeactionoptions9对象说明)中的start或end划出项，包括划出时显示的操作项、长距离操作区域的距离阈值，以及进入、退出长距离操作区域、抬手触发操作和状态变化时的回调。
+SwipeActionItem用于配置[SwipeActionOptions](#swipeactionoptions9对象说明)中的start或end滑出项，包括滑出时显示的操作项、长距离操作区域的距离阈值，以及进入、退出长距离操作区域、抬手触发操作和状态变化时的回调。
 
-作为start划出项时，List为垂直布局时显示在ListItem左侧，List为水平布局时显示在ListItem上方；作为end划出项时，List为垂直布局时显示在ListItem右侧，List为水平布局时显示在ListItem下方。
+作为start滑出项时，List为垂直布局时显示在ListItem左侧，List为水平布局时显示在ListItem上方；作为end滑出项时，List为垂直布局时显示在ListItem右侧，List为水平布局时显示在ListItem下方。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -281,10 +285,10 @@ SwipeActionItem用于配置[SwipeActionOptions](#swipeactionoptions9对象说明
 
 | 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| actionAreaDistance | [Length](ts-types.md#length) | 否 | 是 | 设置组件长距离滑动删除距离阈值。即划出组件被完全滑进视窗后，继续滑动触发删除的距离阈值。<br/>默认值：56vp <br/>**说明：** <br/>不支持设置百分比。<br/>删除距离阈值大于等于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸，或删除距离阈值小于等于0时，不会形成删除区域。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| onAction | () => void | 否 | 是 | 组件进入长距删除区后抬手时触发。<br/>**说明：** <br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，滑动后松手的位置超过或等于该取值才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| onEnterActionArea | () => void | 否 | 是 | 在滑动条目进入删除区域时调用，只触发一次，当再次进入时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，进入该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| onExitActionArea | () => void | 否 | 是 | 当滑动条目退出删除区域时调用，只触发一次，当再次退出时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，退出该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| actionAreaDistance | [Length](ts-types.md#length) | 否 | 是 | 设置组件长距离滑动删除距离阈值。即滑出组件被完全滑进视窗后，继续滑动触发删除的距离阈值。<br/>默认值：56vp <br/>**说明：** <br/>不支持设置百分比。<br/>删除距离阈值大于等于ListItem在滑动方向上的尺寸减去滑出组件在滑动方向上的尺寸，或删除距离阈值小于等于0时，不会形成删除区域。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| onAction | () => void | 否 | 是 | 组件进入长距删除区后抬手时触发。<br/>**说明：** <br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去滑出组件在滑动方向上的尺寸时，滑动后松手的位置超过或等于该取值才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| onEnterActionArea | () => void | 否 | 是 | 在滑动列表项进入删除区域时调用，只触发一次，当再次进入时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去滑出组件在滑动方向上的尺寸时，进入该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| onExitActionArea | () => void | 否 | 是 | 当滑动列表项退出删除区域时调用，只触发一次，当再次退出时仍触发。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去滑出组件在滑动方向上的尺寸时，退出该区域才会触发回调；未设置actionAreaDistance时，按默认值56vp计算。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>同时设置builderComponent时，builderComponent的优先级高于该参数。即同时设置builder和builderComponent时，以builderComponent设置的值为准。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 | builderComponent<sup>18+</sup> | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<br/>ArkTS-Sta: [ComponentContentBase](../js-apis-arkui-ComponentContent.md#componentcontentbase) | 否 | 是 | 当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列表方向为“水平”时）时显示的操作项。<br/>默认值：无（不设置时无操作项显示） <br/>**说明：** <br/>该参数的优先级高于参数builder。即同时设置builder和builderComponent时，以builderComponent设置的值为准。<br/> 同一个builderComponent不推荐同时给不同的start/end使用，否则会导致显示问题。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | onStateChange<sup>11+</sup> | (state:[SwipeActionState](#swipeactionstate11枚举说明)) => void | 否 | 是 |当列表项滑动状态变化时候触发。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
@@ -306,7 +310,7 @@ ListItem组件参数。
 <!--Table: 10%; auto; 10%; 10%; auto-->
 | 名称  | 类型                                  | 只读 | 可选 | 说明                                                         |
 | ----- | ----------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| style | [ListItemStyle](#listitemstyle10枚举说明) | 否   | 是 | 设置ListItem组件卡片样式。<br/>默认值：ListItemStyle.NONE<br/>设置为ListItemStyle.NONE时无样式。<br/>设置为ListItemStyle.CARD时，建议配合[ListItemGroup](ts-container-listitemgroup.md)的ListItemGroupStyle.CARD同时使用，显示默认卡片样式。  <br/>卡片样式下，ListItem默认规格：高度48vp，宽度100%，左右内边距8vp。如果需要实现ListItem高度自适应，可以把height设置为undefined。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当设置为ListItemStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
+| style | [ListItemStyle](#listitemstyle10枚举说明) | 否   | 是 | 设置ListItem组件卡片样式。<br/>默认值：ListItemStyle.NONE<br/>设置为ListItemStyle.NONE时无样式。<br/>设置为ListItemStyle.CARD时，建议配合[ListItemGroup](ts-container-listitemgroup.md)的ListItemGroupStyle.CARD同时使用，显示默认卡片样式。  <br/>卡片样式下，ListItem默认规格：高度48vp，宽度100%，左右内边距8vp。如果需要实现ListItem高度自适应，可以把height设置为undefined。<br/>卡片样式下，为卡片内的列表项提供了默认的focused、hovered、pressed、selected和disabled样式。<br/>**说明：**<br/>当设置为ListItemStyle.CARD时，List的listDirection属性值须为Axis.Vertical，如果设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
 
 ## ListItemStyle<sup>10+</sup>枚举说明
 
@@ -344,8 +348,8 @@ ListItem组件卡片样式枚举。
 | 名称      | 值     | 说明                                                       |
 | --------- | --------- | ------------------------------------------------------------ |
 | COLLAPSED | 0 | 收起状态，操作项处于隐藏状态。 |
-| EXPANDED  | 1 | 展开状态，操作项处于显示状态。<br/>**说明：**<br/>需要ListItem设置划出操作项。 |
-| ACTIONING | 2 | 长距离状态，当ListItem进入长距删除区后删除ListItem的状态。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去划出组件在滑动方向上的尺寸时，滑动后松手的位置超过或等于该取值才能进入该状态。 |
+| EXPANDED  | 1 | 展开状态，操作项处于显示状态。<br/>**说明：**<br/>需要ListItem设置滑出操作项。 |
+| ACTIONING | 2 | 长距离状态，当ListItem进入长距删除区后删除ListItem的状态。<br/>**说明：**<br/>actionAreaDistance的最终取值大于0，且小于ListItem在滑动方向上的尺寸减去滑出组件在滑动方向上的尺寸时，滑动后松手的位置超过或等于该取值才能进入该状态。 |
 
 ## 事件
 
@@ -395,13 +399,19 @@ attributeModifier(modifier: AttributeModifier\<ListItemAttribute> | AttributeMod
 
 ## ListItemSwipeActionManager<sup>21+</sup>
 
-ListItem划出菜单的管理器。
+ListItem滑出菜单的管理器。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### expand<sup>21+</sup>
 
 expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
-展开指定ListItem的划出菜单。
+展开指定ListItem的滑出菜单。
 
 > **说明：**
 >
@@ -422,7 +432,7 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 | 参数名     | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | node | [FrameNode](../js-apis-arkui-frameNode.md) | 是   | ListItem节点对象。 |
-| direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21枚举说明) | 是   | ListItem划出菜单的展开方向。 |
+| direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21枚举说明) | 是   | ListItem滑出菜单的展开方向。 |
 
 **错误码：**
 
@@ -437,7 +447,7 @@ expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 collapse(node: FrameNode): void
 
-收起指定ListItem的划出菜单。
+收起指定ListItem的滑出菜单。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +476,7 @@ collapse(node: FrameNode): void
 
 ## ListItemSwipeActionDirection<sup>21+</sup>枚举说明
 
-ListItem划出菜单的展开方向。
+ListItem滑出菜单的展开方向。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -480,7 +490,7 @@ ListItem划出菜单的展开方向。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| START |  0  | 当列表方向是垂直方向时，LTR模式下表示ListItem的左边，RTL模式下表示ListItem的右边。当列表是水平方向时，表示ListItem的上边。 |
+| START |  0  | 当列表方向是垂直方向时，LTR（Left-To-Right，从左到右）模式下表示ListItem的左边，RTL（Right-To-Left，从右到左）模式下表示ListItem的右边。当列表是水平方向时，表示ListItem的上边。 |
 | END   |  1  | 当列表方向是垂直方向时，LTR模式下表示ListItem的右边，RTL模式下表示ListItem的左边。当列表是水平方向时，表示ListItem的下边。 |
 
 ## 示例
@@ -595,7 +605,7 @@ struct ListItemExample {
 
 ![listItem1](figures/listItem1.gif)
 
-### 示例2（设置划出组件）
+### 示例2（设置滑出组件）
 该示例展示了ListItem设置了swipeAction的横滑效果。
 
 ArkTS-Dyn示例：
@@ -839,15 +849,16 @@ struct ListItemExample3 {
 
 ![ListItemStyle](figures/listItem3.jpeg)
 
-### 示例4（通过ComponentContent设置划出组件）
+### 示例4（通过ComponentContent设置滑出组件）
 
-该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem中的划出组件操作时显示的操作项。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置ListItem滑出组件时显示的操作项。
 
 ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class BuilderParams {
   text: string | Resource;
@@ -864,7 +875,12 @@ function itemBuilder(params: BuilderParams) {
   Row() {
     Button(params.text).margin(4)
     Button('Set').margin(4).onClick(() => {
-      params.scroller.closeAllSwipeActions();
+      try {
+        params.scroller.closeAllSwipeActions();
+      } catch (err) {
+        let error: BusinessError = err as BusinessError;
+        console.error(`closeAllSwipeActions failed, error code: ${error.code}, message: ${error.message}`);
+      }
     })
   }.padding(4).justifyContent(FlexAlign.SpaceEvenly)
 }
@@ -1040,14 +1056,15 @@ struct ListItemExample {
 
 ![ListItemStyle](figures/deleteListItem_example04.gif)
 
-### 示例5（通过ListItemSwipeActionManager管理划出菜单）
-从API version 21开始，该示例通过[ListItemSwipeActionManager](#listitemswipeactionmanager21)管理ListItem的划出菜单。
+### 示例5（通过ListItemSwipeActionManager管理滑出菜单）
+从API version 21开始，该示例通过[ListItemSwipeActionManager](#listitemswipeactionmanager21)管理ListItem的滑出菜单。
 
 ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { FrameNode } from '@kit.ArkUI';
 
 @Entry
 @Component
