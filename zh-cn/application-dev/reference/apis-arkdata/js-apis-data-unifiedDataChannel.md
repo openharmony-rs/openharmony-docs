@@ -723,6 +723,7 @@ let types = unifiedData.getTypes();
 | summary   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 | 
 | totalSize | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | overview<sup>22+</sup>   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| filenameExtensions   | Array\<string> | 是 | 否 | 统一数据对象中文件记录的文件扩展名数组。扩展名是唯一的，包括前导句点，并使用小写ASCII字母。例如，文件myphoto.png的扩展名是'.png'。如果没有有效的文件扩展名，则返回空数组。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -747,6 +748,7 @@ function parseSummary(summary: unifiedDataChannel.Summary) {
   }
   let overviewRecord = summary.overview as Record<string, number>;
   let totalSize = summary.totalSize;
+  let filenameExtensions = summary.filenameExtensions;
 }
 ```
 
