@@ -1269,14 +1269,11 @@ VM内存信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
 | 名称               | 类型    | 只读 | 可选 | 说明                                |
 | -------------------| ------- |----|----| ----------------------------------- |
-| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
-| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
+| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23      |
+| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0 |
 
 ## tags<sup>12+</sup>
 
@@ -2130,4 +2127,32 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```
+## hidebug.getAppRunningUniqueId
+
+getAppRunningUniqueId(): string
+
+获取应用程序的运行唯一标识符。
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let apprunningId = hidebug.getAppRunningUniqueId();
+console.info(`apprunningId: ${apprunningId}`);
 ```
