@@ -50,7 +50,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1 | OH_CloudDisk_SyncFolderEx服务的版本1。当结构体被扩展时，将定义新的版本宏。运行库使用版本字段确定哪些字段有效。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1 | 用于标识OH_CloudDisk_SyncFolderEx结构体的版本。当结构体扩展新字段时，将定义新的版本宏。代码运行时通过版本信息确定有效字段，读取方应先校验OH_CloudDisk_SyncFolderEx结构体中的version再访问对应字段，避免访问未定义内存。<br>**起始版本：** 26.0.1 |
 
 ### 函数
 
