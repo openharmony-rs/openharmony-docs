@@ -10030,7 +10030,7 @@ operateAttribute(operation: AlbumOperation): void
 **系统接口**：此接口为系统接口。
 
 **需要权限**：
-- API版本26.1.0+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB 或 ohos.permission.WRITE_IMAGEVIDEO
+- API版本26.0.1+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB 或 ohos.permission.WRITE_IMAGEVIDEO
 - API版本26.0.0：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
