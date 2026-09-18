@@ -80,4 +80,4 @@ Operation failed.
 
 **处理步骤**
 
-在数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口。
+在拖拽释放后的数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口。

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
+用于触发捏合手势，常用于实现图片、页面内容等对象的缩放交互。默认使用2指，可通过fingers参数设置参与手势计算的手指数，取值范围为2至5；实际触发手势的手指数量可以多于fingers参数值，但只有最先落下的与fingers相同数目的手指参与手势计算。最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
 
 >  **说明：**
 >
@@ -221,7 +221,7 @@ struct PinchGestureExample {
             this.pinchY = event.pinchCenterY
           }
         })
-        .onActionEnd((event: GestureEvent) => {
+        .onActionEnd(() => {
           this.pinchValue = this.scaleValue
           console.info('Pinch end')
         })
@@ -307,7 +307,7 @@ struct PinchGestureExample {
           this.curScale = this.preScale * event.scale;
           let targetDisplayWidth = this.contentWidth * this.curScale;
           let targetDisplayHeight = this.contentHeight * this.curScale;
-          // 本次缩放前手指中点在本次缩放后的坐标
+          // 本次缩放前手指中点对应的图片位置在本次缩放后的坐标
           const pointX = (this.screenWidth - targetDisplayWidth) / 2 + targetDisplayWidth * this.pntX;
           const pointY = (this.screenHeight - targetDisplayHeight) / 2 + targetDisplayHeight * this.pntY;
           // 将pointX、pointY移动到缩放后的手指中点，需要移动的距离

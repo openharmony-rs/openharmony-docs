@@ -1568,7 +1568,7 @@ struct ImageExample {
                       // 类型匹配成功，记录数据Uri
                       let image = arr[0] as unifiedDataChannel.Image;
                       this.uri = image.imageUri;
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, this.uri);
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -2143,8 +2143,10 @@ struct VideoExample {
                 if (dragData != null) {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
-                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.FILE_URI) {
+                      let fileUri = arr[0].getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, fileUri.oriUri);
+
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -2155,7 +2157,7 @@ struct VideoExample {
                 console.info(`percentage: ${progress.progress}`);
               };
             let info: unifiedDataChannel.DataLoadInfo =
-              { types: new Set([uniformTypeDescriptor.UniformDataType.VIDEO]), recordCount: 100 }
+              { types: new Set([uniformTypeDescriptor.UniformDataType.FILE_URI]), recordCount: 1 }
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,

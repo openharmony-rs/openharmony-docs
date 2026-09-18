@@ -50,6 +50,7 @@ import {
   SmartGestureController,
   BaseGestureHandlingProposal,
   GestureHandlingResolution,
+  GestureShortcut,
   TargetedGestureProposal,
   ClickActionProposal,
   SelectActionProposal,
