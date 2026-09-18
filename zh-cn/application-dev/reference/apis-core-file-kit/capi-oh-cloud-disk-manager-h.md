@@ -50,7 +50,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1 | OH_CloudDisk_SyncFolderEx服务的版本1。当结构体被扩展时，将定义新的版本宏。运行库使用版本字段确定哪些字段有效。<br>**起始版本：** 26.1.0 |
+| OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1 | OH_CloudDisk_SyncFolderEx服务的版本1。当结构体被扩展时，将定义新的版本宏。运行库使用版本字段确定哪些字段有效。<br>**起始版本：** 26.0.1 |
 
 ### 函数
 
@@ -324,13 +324,13 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFol
 
 使用占位符支持信息注册同步文件夹。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) *syncFolder | 指示具有占位符支持的同步文件夹。 |
+| [const OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) *syncFolder | 表示具有占位符支持的同步文件夹。 |
 
 **返回：**
 
@@ -445,7 +445,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **sy
 
 获取具有占位符支持信息的同步文件夹。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
