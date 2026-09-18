@@ -104,7 +104,9 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。
 
-**需要权限**：ohos.permission.GET_NETWORK_INFO
+**需要权限**：
+- API版本22之前：N/A
+- API版本22+：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
@@ -143,9 +145,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
 
-**需要权限**：
-- API版本22之前：N/A
-- API版本22+：ohos.permission.GET_NETWORK_INFO
+**需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
