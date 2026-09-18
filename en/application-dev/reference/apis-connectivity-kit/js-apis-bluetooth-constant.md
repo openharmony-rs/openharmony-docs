@@ -165,7 +165,7 @@ Enumerates the Bluetooth device subclasses, which are further subdivided based o
 
 ## ProfileUuids<sup>12+</sup>
 
-Enumerates the [Universally Unique Identifiers (UUIDs)](../../connectivity/terminology.md#uuid) of Bluetooth profiles, which are defined by [Bluetooth Special Interest Group](../../connectivity/terminology.md#bluetooth-sig).
+Enumerates the [Universally Unique Identifiers (UUIDs)](../../connectivity/terminology.md#uuid) of Bluetooth profiles, which are defined by [Bluetooth Special Interest Group](../../connectivity//terminology.md#bluetooth-sig).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
