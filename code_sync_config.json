@@ -46146,5 +46146,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/pasteboard/native-use-pasteboard.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":26,
+						"name":"pasteboard_native2",
+						"start_line":18
+					},
+					{
+						"end_line":56,
+						"name":"pasteboard_native4",
+						"start_line":44
+					},
+					{
+						"end_line":100,
+						"name":"pasteboard_native5",
+						"start_line":57
+					}
+				]
+			}
+		]
 	}
 ]
