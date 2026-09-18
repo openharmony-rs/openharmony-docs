@@ -1915,7 +1915,7 @@ try {
 
 removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
-为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，IP在已移除的白名单内的网络打印机，将无法打印。
+为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
 
 **起始版本：** 26.0.1
 
@@ -2003,10 +2003,10 @@ getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&l
 **示例：**
 
 ```ts
-import { systemManager } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
 
 try {
-  let result: string[] = systemManager.getAllowedPrinterIPAddressesForDevice();
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForDevice(common.QueryPolicy.ALL);
   console.info(`Succeeded in querying the allowed printer IP Addresses for the device.`);
 } catch (err) {
   console.error(`Failed to query the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
@@ -2016,7 +2016,7 @@ try {
 
 addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
-为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为设备添加白名单后，可通过[removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
+为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为当前用户添加白名单后，可通过[removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
 
 **起始版本：** 26.0.1
 
@@ -2073,7 +2073,7 @@ try {
 
 removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
-为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，IP在已移除的白名单内的网络打印机，将无法打印。
+为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
 
 **起始版本：** 26.0.1
 
