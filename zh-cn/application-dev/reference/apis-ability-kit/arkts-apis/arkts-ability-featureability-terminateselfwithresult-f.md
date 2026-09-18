@@ -129,4 +129,4 @@ function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 **示例**
 
-参见 [terminateSelfWithResult](#terminateselfwithresult)
+参见 terminateSelfWithResult

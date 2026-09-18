@@ -106,4 +106,4 @@ function createMessage(pdu: Array<number>, specification: string): Promise<Short
 
 **示例**
 
-参见 [createMessage](#createmessage)
+参见 createMessage

@@ -225,4 +225,4 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 **示例**
 
-参见 [create](#create)
+参见 create

@@ -126,4 +126,4 @@ function getDisallowedUsbDevices(admin: Want | null): Array<UsbDeviceType>
 
 **示例**
 
-参见 [getDisallowedUsbDevices](#getdisallowedusbdevices)
+参见 getDisallowedUsbDevices

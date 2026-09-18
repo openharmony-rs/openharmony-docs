@@ -35,8 +35,8 @@ import { cert } from '@kit.DeviceCertificateKit';
 | [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示创建X.509证书链对象。使用Promise方式返回结果。 |
 | [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示创建X.509证书链对象。使用Callback异步回调。 |
 | [createX509CertChain](arkts-devicecertificate-cert-createx509certchain-f.md) | 表示使用X509Cert数组方式创建X.509证书链对象，并同步返回结果。 |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
-| [createX509Crl](arkts-devicecertificate-cert-createx509crl-depr-f.md#createx509crl) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
+| createX509Crl | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
+| createX509Crl | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
 | [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Callback异步回调。 |
 | [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md) | 表示创建X.509证书吊销列表对象。使用Promise方式返回结果。 |
 | [generateCsr](arkts-devicecertificate-cert-generatecsr-f.md) | 表示使用指定的私钥，传入主体、扩展、摘要算法、输出格式等配置参数去生成CSR。 |

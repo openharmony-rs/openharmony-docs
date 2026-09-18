@@ -136,4 +136,4 @@ function uploadFile(context: BaseContext, config: UploadConfig): Promise<UploadT
 
 **示例**
 
-参见 [uploadFile](#uploadfile)
+参见 uploadFile

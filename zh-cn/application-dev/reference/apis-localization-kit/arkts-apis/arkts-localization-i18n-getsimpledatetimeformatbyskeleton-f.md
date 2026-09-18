@@ -107,4 +107,4 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: int
 
 **示例**
 
-参见 [getSimpleDateTimeFormatBySkeleton](#getsimpledatetimeformatbyskeleton)
+参见 getSimpleDateTimeFormatBySkeleton

@@ -4,7 +4,7 @@
 
 支持以下事件：
 
-**继承/实现关系：** SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>
+**继承/实现关系：** SecurityUIExtensionComponentAttribute extends CommonMethod&lt;SecurityUIExtensionComponentAttribute&gt;
 
 **起始版本：** 26.0.0
 

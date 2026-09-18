@@ -136,4 +136,4 @@ function query(faultType: FaultType): Promise<Array<FaultLogInfo>>
 
 **示例**
 
-参见 [query](#query)
+参见 query

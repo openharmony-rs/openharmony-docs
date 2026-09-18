@@ -290,4 +290,4 @@ function attestKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 
 **示例**
 
-参见 [attestKeyItem](#attestkeyitem)
+参见 attestKeyItem

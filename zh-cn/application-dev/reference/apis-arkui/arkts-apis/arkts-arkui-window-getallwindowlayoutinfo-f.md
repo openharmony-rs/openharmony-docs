@@ -100,4 +100,4 @@ function getAllWindowLayoutInfo(displayId: number, option?: WindowInfoOptions): 
 
 **示例**
 
-参见 [getAllWindowLayoutInfo](#getallwindowlayoutinfo)
+参见 getAllWindowLayoutInfo

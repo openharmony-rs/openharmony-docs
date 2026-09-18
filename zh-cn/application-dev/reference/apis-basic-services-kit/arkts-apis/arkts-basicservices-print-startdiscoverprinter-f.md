@@ -108,4 +108,4 @@ function startDiscoverPrinter(extensionList: Array<string>): Promise<void>
 
 **示例**
 
-参见 [startDiscoverPrinter](#startdiscoverprinter)
+参见 startDiscoverPrinter

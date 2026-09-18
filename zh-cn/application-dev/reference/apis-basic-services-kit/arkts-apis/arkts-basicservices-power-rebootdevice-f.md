@@ -18,7 +18,7 @@ function rebootDevice(reason: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [reboot](arkts-basicservices-power-reboot-f-sys.md)
+**替代接口：** reboot
 
 **需要权限：** ohos.permission.REBOOT
 

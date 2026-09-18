@@ -106,4 +106,4 @@ function flushCachedGnssLocations(): Promise<void>
 
 **示例**
 
-参见 [flushCachedGnssLocations](#flushcachedgnsslocations)
+参见 flushCachedGnssLocations

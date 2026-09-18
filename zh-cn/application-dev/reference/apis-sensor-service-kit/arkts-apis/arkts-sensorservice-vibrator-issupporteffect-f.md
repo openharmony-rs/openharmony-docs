@@ -145,4 +145,4 @@ function isSupportEffect(effectId: string): Promise<boolean>
 
 **示例**
 
-参见 [isSupportEffect](#issupporteffect)
+参见 isSupportEffect

@@ -132,4 +132,4 @@ function hasKeyItem(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 **示例**
 
-参见 [hasKeyItem](#haskeyitem)
+参见 hasKeyItem

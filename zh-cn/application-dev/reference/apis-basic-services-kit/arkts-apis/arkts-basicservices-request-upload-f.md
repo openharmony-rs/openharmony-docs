@@ -116,4 +116,4 @@ function upload(config: UploadConfig): Promise<UploadTask>
 
 **示例**
 
-参见 [upload](#upload)
+参见 upload

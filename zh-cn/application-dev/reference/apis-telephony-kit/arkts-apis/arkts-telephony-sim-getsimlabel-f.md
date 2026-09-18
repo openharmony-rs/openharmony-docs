@@ -99,4 +99,4 @@ function getSimLabel(slotId: number): Promise<SimLabel>
 
 **示例**
 
-参见 [getSimLabel](#getsimlabel)
+参见 getSimLabel

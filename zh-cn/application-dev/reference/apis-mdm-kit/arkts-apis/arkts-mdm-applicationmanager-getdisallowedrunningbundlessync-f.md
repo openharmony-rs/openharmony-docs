@@ -117,4 +117,4 @@ function getDisallowedRunningBundlesSync(admin: Want | null, accountId?: number)
 
 **示例**
 
-参见 [getDisallowedRunningBundlesSync](#getdisallowedrunningbundlessync)
+参见 getDisallowedRunningBundlesSync

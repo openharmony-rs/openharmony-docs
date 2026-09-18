@@ -36,7 +36,7 @@ colorMode?: string
 deviceType?: string
 ```
 
-组件预览渲染的设备类型，默认为Phone。设备类型枚举值参考[deviceTypes标签](docroot:./../../../quick-start/module-configuration-file.md#devicetypes标签)。
+组件预览渲染的设备类型，默认为Phone。设备类型枚举值参考deviceTypes标签。
 
 **类型：** string
 

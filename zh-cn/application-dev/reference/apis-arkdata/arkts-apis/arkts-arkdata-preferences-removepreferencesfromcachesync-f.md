@@ -90,4 +90,4 @@ function removePreferencesFromCacheSync(context: Context, options: Options): voi
 
 **示例**
 
-参见 [removePreferencesFromCacheSync](#removepreferencesfromcachesync)
+参见 removePreferencesFromCacheSync

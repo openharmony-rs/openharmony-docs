@@ -8,7 +8,7 @@
 
 > **使用说明：**
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../../application-models/application-context-stage.md#获取应用文件路径)。<br>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../../application-models/application-context-stage.md#获取应用文件路径)。<br>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：文件URI。
 
 ## 导入模块
 
@@ -36,7 +36,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [close](arkts-corefile-file-fs-close-f.md) | 关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。使用Promise异步回调。 |
 | [close](arkts-corefile-file-fs-close-f.md) | 关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。使用callback异步回调。 |
 | [closeSync](arkts-corefile-file-fs-closesync-f.md) | 以同步方法关闭文件或目录，关闭后文件描述符fd失效，不可再用于读写等操作。 |
-| [connectDfs](arkts-corefile-file-fs-connectdfs-f.md) | 业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内[onStatus](../../../reference/apis-core-file-kit/js-apis-file-fs.md#onstatus12)通知应用。 |
+| [connectDfs](arkts-corefile-file-fs-connectdfs-f.md) | 业务调用connectDfs接口，触发建链。如果对端设备出现异常，业务执行回调DfsListeners内onStatus通知应用。 |
 | [copy](arkts-corefile-file-fs-copy-f.md) | 拷贝文件或目录。使用Promise异步回调。 |
 | [copy](arkts-corefile-file-fs-copy-f.md) | 拷贝文件或者目录。使用callback异步回调。 |
 | [copy](arkts-corefile-file-fs-copy-f.md) | 拷贝文件或者目录。使用callback异步回调。 |
@@ -154,7 +154,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [AtomicFile](arkts-corefile-file-fs-atomicfile-c.md) | AtomicFile是一个用于对文件进行原子读写等操作的类。 |
 | [ReadStream](arkts-corefile-file-fs-readstream-c.md) | 文件可读流，需要先通过fileIo.createReadStream方法来构建一个ReadStream实例。ReadStream继承自数据流基类stream.Readable。ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。 |
 | [TaskSignal](arkts-corefile-file-fs-tasksignal-c.md) | 拷贝中断信号。 |
-| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流，需要先通过[fileIo.createWriteStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。 |
+| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | 文件可写流，需要先通过fileIo.createWriteStream方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../../apis-arkts/arkts-apis/arkts-arkts-stream-writable-c.md)。 |
 
 ### 接口
 
@@ -178,8 +178,8 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | 可选项类型，支持read接口使用。 |
 | [ReadStreamOptions](arkts-corefile-file-fs-readstreamoptions-i.md) | 可选项类型，支持 createReadStream 接口使用。 |
 | [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md) | 可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](arkts-corefile-file-fs-readoptions-i.md)。 |
-| [Stat](arkts-corefile-file-fs-stat-i.md) | 文件具体信息，包含文件大小、权限模式、访问时间、修改时间等属性。在调用Stat的方法前，需要先通过[stat()](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。 |
-| [Stream](arkts-corefile-file-fs-stream-i.md) | 文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过[fileIo.createStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatestream)方法或者[fileIo.fdopenStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiofdopenstream)（同步或异步）来构建一个Stream实例。 |
+| [Stat](arkts-corefile-file-fs-stat-i.md) | 文件具体信息，包含文件大小、权限模式、访问时间、修改时间等属性。在调用Stat的方法前，需要先通过stat()方法（同步或异步）构建一个Stat实例。 |
+| [Stream](arkts-corefile-file-fs-stream-i.md) | 文件流，提供流式读写文件数据的能力，使用完毕后需调用close关闭。在调用Stream的方法前，需要先通过fileIo.createStream方法或者fileIo.fdopenStream（同步或异步）来构建一个Stream实例。 |
 | [Watcher](arkts-corefile-file-fs-watcher-i.md) | 文件目录变化监听对象。由createWatcher接口获得。 |
 | [WatchEvent](arkts-corefile-file-fs-watchevent-i.md) | 事件接口 |
 | [WatchEventListener](arkts-corefile-file-fs-watcheventlistener-i.md) | 事件监听接口，当监听的文件或目录发生变动事件时触发回调。 |

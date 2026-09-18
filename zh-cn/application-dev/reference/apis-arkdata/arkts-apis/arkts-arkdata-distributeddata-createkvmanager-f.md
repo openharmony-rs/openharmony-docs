@@ -104,4 +104,4 @@ function createKVManager(config: KVManagerConfig): Promise<KVManager>
 
 **示例**
 
-参见 [createKVManager](#createkvmanager)
+参见 createKVManager

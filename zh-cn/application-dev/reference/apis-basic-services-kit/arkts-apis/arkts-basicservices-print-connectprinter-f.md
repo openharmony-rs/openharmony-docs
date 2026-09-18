@@ -104,4 +104,4 @@ function connectPrinter(printerId: string): Promise<void>
 
 **示例**
 
-参见 [connectPrinter](#connectprinter)
+参见 connectPrinter

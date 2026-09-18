@@ -116,4 +116,4 @@ function unbindDevice(deviceId: number): Promise<number>
 
 **示例**
 
-参见 [unbindDevice](#unbinddevice)
+参见 unbindDevice

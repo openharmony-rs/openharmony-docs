@@ -23,7 +23,7 @@ function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): v
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** 
 - API版本20+：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -128,4 +128,4 @@ function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: b
 
 **示例**
 
-参见 [setDisallowedPolicy](#setdisallowedpolicy)
+参见 setDisallowedPolicy

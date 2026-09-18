@@ -22,7 +22,7 @@ activated?: SymbolGlyphModifier
 
 默认值：fontColor：&#36;r('sys.color.icon_emphasize')，fontSize：24vp。
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 13
 
@@ -42,7 +42,7 @@ normal?: SymbolGlyphModifier
 
 默认值：fontColor：&#36;r('sys.color.icon_primary')，fontSize：24vp。
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 13
 

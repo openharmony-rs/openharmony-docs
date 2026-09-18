@@ -18,7 +18,7 @@ function queryContactsByEmail(email: string, callback: AsyncCallback<Array<Conta
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail-1)(context: Context, email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByEmail(context: Context, email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -150,7 +150,7 @@ function queryContactsByEmail(context: Context, email: string, callback: AsyncCa
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -165,7 +165,7 @@ function queryContactsByEmail(email: string, holder: Holder, callback: AsyncCall
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail-3)(context: Context, email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByEmail(context: Context, email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -181,7 +181,7 @@ function queryContactsByEmail(email: string, holder: Holder, callback: AsyncCall
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -217,7 +217,7 @@ function queryContactsByEmail(context: Context, email: string, holder: Holder,
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -232,7 +232,7 @@ function queryContactsByEmail(email: string, attrs: ContactAttributes, callback:
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail-5)(context: Context, email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByEmail(context: Context, email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -248,7 +248,7 @@ function queryContactsByEmail(email: string, attrs: ContactAttributes, callback:
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -284,7 +284,7 @@ function queryContactsByEmail(context: Context, email: string, attrs: ContactAtt
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -299,7 +299,7 @@ function queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttri
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail-7)(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByEmail(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -316,7 +316,7 @@ function queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttri
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -352,7 +352,7 @@ function queryContactsByEmail(context: Context, email: string, holder: Holder, a
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -367,7 +367,7 @@ function queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAtt
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByEmail](#querycontactsbyemail-9)(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** queryContactsByEmail(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -389,7 +389,7 @@ function queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAtt
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail
 
 
 ## queryContactsByEmail
@@ -430,4 +430,4 @@ function queryContactsByEmail(context: Context, email: string, holder?: Holder, 
 
 **示例**
 
-参见 [queryContactsByEmail](#querycontactsbyemail)
+参见 queryContactsByEmail

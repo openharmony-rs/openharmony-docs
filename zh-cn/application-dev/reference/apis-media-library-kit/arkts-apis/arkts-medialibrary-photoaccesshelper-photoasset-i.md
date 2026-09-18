@@ -447,7 +447,7 @@ readonly photoType: PhotoType
 readonly uri: string
 ```
 
-媒体文件资源URI（如：**file://media/Photo/1/IMG_datetime_0001/displayName.jpg**）， 详情参见用户文件URI介绍中的[媒体文件URI](../../../file-management/user-file-uri-intro.md#media-file-uri).
+媒体文件资源URI（如：**file://media/Photo/1/IMG_datetime_0001/displayName.jpg**）， 详情参见用户文件URI介绍中的媒体文件URI.
 
 **类型：** string
 

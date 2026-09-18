@@ -113,4 +113,4 @@ function setDevicePinCode(deviceId: string, code: string): Promise<void>
 
 **示例**
 
-参见 [setDevicePinCode](#setdevicepincode)
+参见 setDevicePinCode

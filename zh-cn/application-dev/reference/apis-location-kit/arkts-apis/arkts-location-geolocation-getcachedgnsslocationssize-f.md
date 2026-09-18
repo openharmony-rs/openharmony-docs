@@ -78,4 +78,4 @@ function getCachedGnssLocationsSize(): Promise<number>
 
 **示例**
 
-参见 [getCachedGnssLocationsSize](#getcachedgnsslocationssize)
+参见 getCachedGnssLocationsSize

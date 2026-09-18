@@ -120,4 +120,4 @@ function getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number
 
 **示例**
 
-参见 [getGeomagneticInfo](#getgeomagneticinfo)
+参见 getGeomagneticInfo

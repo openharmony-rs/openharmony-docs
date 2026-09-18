@@ -117,4 +117,4 @@ function createAudioCapturer(options: AudioCapturerOptions): Promise<AudioCaptur
 
 **示例**
 
-参见 [createAudioCapturer](#createaudiocapturer)
+参见 createAudioCapturer

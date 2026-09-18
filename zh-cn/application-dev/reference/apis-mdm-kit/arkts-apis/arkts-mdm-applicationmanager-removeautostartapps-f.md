@@ -126,4 +126,4 @@ function removeAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId:
 
 **示例**
 
-参见 [removeAutoStartApps](#removeautostartapps)
+参见 removeAutoStartApps

@@ -105,4 +105,4 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 
 **示例**
 
-参见 [hash](#hash)
+参见 hash

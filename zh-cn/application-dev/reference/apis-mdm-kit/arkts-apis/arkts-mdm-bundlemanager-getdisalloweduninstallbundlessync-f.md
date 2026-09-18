@@ -119,4 +119,4 @@ function getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: numbe
 
 **示例**
 
-参见 [getDisallowedUninstallBundlesSync](#getdisalloweduninstallbundlessync)
+参见 getDisallowedUninstallBundlesSync

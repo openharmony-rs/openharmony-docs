@@ -147,4 +147,4 @@ function getKeyItemProperties(keyAlias: string, options: HuksOptions): Promise<H
 
 **示例**
 
-参见 [getKeyItemProperties](#getkeyitemproperties)
+参见 getKeyItemProperties

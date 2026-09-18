@@ -195,4 +195,4 @@ function setWatermarkImage(admin: Want, bundleName: string, source: string | ima
 
 **示例**
 
-参见 [setWatermarkImage](#setwatermarkimage)
+参见 setWatermarkImage

@@ -10,7 +10,7 @@
 
 **废弃版本：** 10
 
-**替代接口：** [HandsFreeAudioGatewayProfile](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md)
+**替代接口：** HandsFreeAudioGatewayProfile
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -34,7 +34,7 @@ connect(device: string): void
 
 **废弃版本：** 10
 
-**替代接口：** [connect](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md#connect)
+**替代接口：** connect
 
 **需要权限：** 
 - API版本10+：ohos.permission.ACCESS_BLUETOOTH
@@ -86,7 +86,7 @@ disconnect(device: string): void
 
 **废弃版本：** 10
 
-**替代接口：** [disconnect](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md#disconnect)
+**替代接口：** disconnect
 
 **需要权限：** 
 - API版本10+：ohos.permission.ACCESS_BLUETOOTH

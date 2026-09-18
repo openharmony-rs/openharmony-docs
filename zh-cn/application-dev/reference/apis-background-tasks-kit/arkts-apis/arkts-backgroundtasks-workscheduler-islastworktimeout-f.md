@@ -109,7 +109,7 @@ function isLastWorkTimeOut(workId: number, callback: AsyncCallback<boolean>): vo
 
 **示例**
 
-参见 [isLastWorkTimeOut](#islastworktimeout)
+参见 isLastWorkTimeOut
 
 
 ## isLastWorkTimeOut
@@ -150,4 +150,4 @@ function isLastWorkTimeOut(workId: number): Promise<boolean>
 
 **示例**
 
-参见 [isLastWorkTimeOut](#islastworktimeout)
+参见 isLastWorkTimeOut

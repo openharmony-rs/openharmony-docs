@@ -92,7 +92,7 @@ function removePreferencesFromCache(context: Context, options: Options, callback
 
 **示例**
 
-参见 [removePreferencesFromCache](#removepreferencesfromcache)
+参见 removePreferencesFromCache
 
 
 ## removePreferencesFromCache
@@ -137,7 +137,7 @@ function removePreferencesFromCache(context: Context, name: string): Promise<voi
 
 **示例**
 
-参见 [removePreferencesFromCache](#removepreferencesfromcache)
+参见 removePreferencesFromCache
 
 
 ## removePreferencesFromCache
@@ -185,4 +185,4 @@ function removePreferencesFromCache(context: Context, options: Options): Promise
 
 **示例**
 
-参见 [removePreferencesFromCache](#removepreferencesfromcache)
+参见 removePreferencesFromCache

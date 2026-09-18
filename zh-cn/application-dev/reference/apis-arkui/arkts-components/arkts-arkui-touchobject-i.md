@@ -74,7 +74,7 @@ displayY: number
 globalDisplayX?: number
 ```
 
-触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+触摸点在全局坐标系中的X坐标。
 
 单位：vp
 
@@ -96,7 +96,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+触摸点在全局坐标系中的Y坐标。
 
 单位：vp
 

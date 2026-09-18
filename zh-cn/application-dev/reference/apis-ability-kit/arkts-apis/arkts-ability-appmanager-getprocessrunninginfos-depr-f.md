@@ -89,4 +89,4 @@ function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo
 
 **示例**
 
-参见 [getProcessRunningInfos](#getprocessrunninginfos)
+参见 getProcessRunningInfos

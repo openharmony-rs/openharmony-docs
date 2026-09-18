@@ -126,4 +126,4 @@ function supportKeys(deviceId: number, keys: Array<KeyCode>): Promise<Array<bool
 
 **示例**
 
-参见 [supportKeys](#supportkeys)
+参见 supportKeys

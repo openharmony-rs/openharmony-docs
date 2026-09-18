@@ -14,7 +14,7 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, cal
 
 重新启动指定标识的BLE广播。使用Callback异步回调。
 
-[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取重新启动广播结果。
+[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过ble.on('advertisingStateChange')回调获取重新启动广播结果。
 
 **起始版本：** 11
 
@@ -189,7 +189,7 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Pr
 
 重新启动指定标识的BLE广播。使用Promise异步回调。
 
-[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取启动广播结果。
+[AdvertisingEnableParams](arkts-connectivity-ble-advertisingenableparams-i.md)中advertisingId对应的广播资源已在[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配。若[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时指定了广播持续时间，超时后广播自动停止，调用此接口可重新启动同一路BLE广播。通过[ble.disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)停止的广播，调用此接口可重新启动同一路BLE广播。通过ble.on('advertisingStateChange')回调获取启动广播结果。
 
 **起始版本：** 11
 
@@ -225,4 +225,4 @@ function enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Pr
 
 **示例**
 
-参见 [enableAdvertising](#enableadvertising)
+参见 enableAdvertising

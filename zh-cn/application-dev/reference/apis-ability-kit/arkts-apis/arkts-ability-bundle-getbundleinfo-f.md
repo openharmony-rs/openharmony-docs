@@ -120,7 +120,7 @@ function getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncC
 
 **示例**
 
-参见 [getBundleInfo](#getbundleinfo)
+参见 getBundleInfo
 
 
 ## getBundleInfo
@@ -159,4 +159,4 @@ function getBundleInfo(bundleName: string, bundleFlags: number, options?: Bundle
 
 **示例**
 
-参见 [getBundleInfo](#getbundleinfo)
+参见 getBundleInfo

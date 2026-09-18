@@ -95,4 +95,4 @@ function getDefaultSmsSimId(): Promise<number>
 
 **示例**
 
-参见 [getDefaultSmsSimId](#getdefaultsmssimid)
+参见 getDefaultSmsSimId

@@ -18,7 +18,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-1)(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByPhoneNumber(context: Context, phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -152,7 +152,7 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, callb
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -167,7 +167,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callbac
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-3)(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -183,7 +183,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callbac
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -218,7 +218,7 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holde
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -233,7 +233,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttribute
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-5)(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByPhoneNumber(context: Context, phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -249,7 +249,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttribute
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -284,7 +284,7 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, attrs
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -299,7 +299,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: 
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-7)(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -316,7 +316,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: 
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -353,7 +353,7 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holde
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -368,7 +368,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?
 
 **废弃版本：** 10
 
-**替代接口：** [queryContactsByPhoneNumber](#querycontactsbyphonenumber-9)(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
+**替代接口：** queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder?: Holder, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -390,7 +390,7 @@ function queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber
 
 
 ## queryContactsByPhoneNumber
@@ -431,4 +431,4 @@ function queryContactsByPhoneNumber(context: Context, phoneNumber: string, holde
 
 **示例**
 
-参见 [queryContactsByPhoneNumber](#querycontactsbyphonenumber)
+参见 queryContactsByPhoneNumber

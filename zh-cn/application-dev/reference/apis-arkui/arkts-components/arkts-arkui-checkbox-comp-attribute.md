@@ -4,7 +4,7 @@
 
 支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** CheckboxAttribute extends CommonMethod<CheckboxAttribute>
+**继承/实现关系：** CheckboxAttribute extends CommonMethod&lt;CheckboxAttribute&gt;
 
 **起始版本：** 8
 

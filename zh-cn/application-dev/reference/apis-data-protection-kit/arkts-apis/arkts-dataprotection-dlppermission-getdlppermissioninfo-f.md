@@ -102,4 +102,4 @@ function getDLPPermissionInfo(callback: AsyncCallback<DLPPermissionInfo>): void
 
 **示例**
 
-参见 [getDLPPermissionInfo](#getdlppermissioninfo)
+参见 getDLPPermissionInfo

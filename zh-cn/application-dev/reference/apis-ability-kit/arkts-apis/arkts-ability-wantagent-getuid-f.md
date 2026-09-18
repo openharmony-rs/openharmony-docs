@@ -212,4 +212,4 @@ function getUid(agent: WantAgent): Promise<number>
 
 **示例**
 
-参见 [getUid](#getuid)
+参见 getUid

@@ -111,4 +111,4 @@ function getQuaternion(rotationVector: Array<number>): Promise<Array<number>>
 
 **示例**
 
-参见 [getQuaternion](#getquaternion)
+参见 getQuaternion

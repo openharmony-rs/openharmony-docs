@@ -119,4 +119,4 @@ function stop(stopMode: VibratorStopMode, callback?: AsyncCallback<void>): void
 
 **示例**
 
-参见 [stop](#stop)
+参见 stop

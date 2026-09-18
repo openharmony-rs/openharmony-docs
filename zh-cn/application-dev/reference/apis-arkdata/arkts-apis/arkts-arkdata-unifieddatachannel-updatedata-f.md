@@ -175,4 +175,4 @@ function updateData(options: Options, data: UnifiedData): Promise<void>
 
 **示例**
 
-参见 [updateData](#updatedata)
+参见 updateData

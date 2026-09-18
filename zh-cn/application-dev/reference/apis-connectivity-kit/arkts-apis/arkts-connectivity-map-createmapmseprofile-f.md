@@ -22,7 +22,7 @@ function createMapMseProfile(): MapMseProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| [MapMseProfile](arkts-connectivity-map-mapmseprofile-i-sys.md) | 返回MapMseProfile实例，该实例可用于本端作为MSE设备进行蓝牙消息访问相关操作。 |
+| MapMseProfile | 返回MapMseProfile实例，该实例可用于本端作为MSE设备进行蓝牙消息访问相关操作。 |
 
 **错误码：**
 

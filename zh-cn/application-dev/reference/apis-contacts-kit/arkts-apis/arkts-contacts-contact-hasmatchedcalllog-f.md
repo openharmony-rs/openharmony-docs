@@ -98,4 +98,4 @@ function hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: n
 
 **示例**
 
-参见 [hasMatchedCallLog](#hasmatchedcalllog)
+参见 hasMatchedCallLog

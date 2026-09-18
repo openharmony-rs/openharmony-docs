@@ -103,7 +103,7 @@ function isMediaKeySystemSupported(name: string, mimeType: string): boolean
 
 **示例**
 
-参见 [isMediaKeySystemSupported](#ismediakeysystemsupported)
+参见 isMediaKeySystemSupported
 
 
 ## isMediaKeySystemSupported
@@ -142,4 +142,4 @@ function isMediaKeySystemSupported(name: string): boolean
 
 **示例**
 
-参见 [isMediaKeySystemSupported](#ismediakeysystemsupported)
+参见 isMediaKeySystemSupported

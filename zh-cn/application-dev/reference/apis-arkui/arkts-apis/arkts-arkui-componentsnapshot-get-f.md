@@ -179,4 +179,4 @@ function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 **示例**
 
-参见 [get](#get)
+参见 get

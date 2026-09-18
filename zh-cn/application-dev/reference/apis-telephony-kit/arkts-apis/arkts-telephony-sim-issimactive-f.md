@@ -78,4 +78,4 @@ function isSimActive(slotId: number): Promise<boolean>
 
 **示例**
 
-参见 [isSimActive](#issimactive)
+参见 isSimActive

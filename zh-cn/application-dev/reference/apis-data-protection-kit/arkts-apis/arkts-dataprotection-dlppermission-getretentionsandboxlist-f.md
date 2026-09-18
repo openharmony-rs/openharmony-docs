@@ -112,7 +112,7 @@ function getRetentionSandboxList(bundleName: string, callback: AsyncCallback<Arr
 
 **示例**
 
-参见 [getRetentionSandboxList](#getretentionsandboxlist)
+参见 getRetentionSandboxList
 
 
 ## getRetentionSandboxList
@@ -147,4 +147,4 @@ function getRetentionSandboxList(callback: AsyncCallback<Array<RetentionSandboxI
 
 **示例**
 
-参见 [getRetentionSandboxList](#getretentionsandboxlist)
+参见 getRetentionSandboxList

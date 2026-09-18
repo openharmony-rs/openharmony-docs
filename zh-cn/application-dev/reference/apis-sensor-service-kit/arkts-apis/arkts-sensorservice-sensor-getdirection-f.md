@@ -104,4 +104,4 @@ function getDirection(rotationMatrix: Array<number>): Promise<Array<number>>
 
 **示例**
 
-参见 [getDirection](#getdirection)
+参见 getDirection

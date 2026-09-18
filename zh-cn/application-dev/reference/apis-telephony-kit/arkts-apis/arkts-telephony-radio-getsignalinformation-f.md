@@ -98,4 +98,4 @@ function getSignalInformation(slotId: number): Promise<Array<SignalInformation>>
 
 **示例**
 
-参见 [getSignalInformation](#getsignalinformation)
+参见 getSignalInformation

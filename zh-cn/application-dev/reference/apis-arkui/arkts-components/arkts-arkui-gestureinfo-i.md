@@ -60,7 +60,7 @@ type: GestureControl.GestureType
 
 当手势为未暴露类型的系统内置手势事件时，type的值为-1。
 
-**类型：** [GestureControl.GestureType](arkts-arkui-gesturecontrol-gesturetype-e.md)
+**类型：** GestureControl.GestureType
 
 **起始版本：** 11
 

@@ -161,4 +161,4 @@ function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
 
 **示例**
 
-参见 [createX509Crl](#createx509crl)
+参见 createX509Crl

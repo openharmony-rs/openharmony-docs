@@ -115,4 +115,4 @@ function getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback<Bundl
 
 **示例**
 
-参见 [getBundleInfoForSelf](#getbundleinfoforself)
+参见 getBundleInfoForSelf

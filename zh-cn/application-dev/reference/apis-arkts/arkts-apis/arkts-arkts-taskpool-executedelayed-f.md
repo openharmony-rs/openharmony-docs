@@ -128,4 +128,4 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 
 **示例**
 
-参见 [executeDelayed](#executedelayed)
+参见 executeDelayed

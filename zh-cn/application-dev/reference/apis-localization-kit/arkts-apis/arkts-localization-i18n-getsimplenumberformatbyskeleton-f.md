@@ -107,4 +107,4 @@ export function getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.
 
 **示例**
 
-参见 [getSimpleNumberFormatBySkeleton](#getsimplenumberformatbyskeleton)
+参见 getSimpleNumberFormatBySkeleton

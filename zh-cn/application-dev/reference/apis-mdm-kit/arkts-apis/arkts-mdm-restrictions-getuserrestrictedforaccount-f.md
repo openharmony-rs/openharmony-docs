@@ -134,4 +134,4 @@ function getUserRestrictedForAccount(admin: Want | null, settingsItem: SettingsF
 
 **示例**
 
-参见 [getUserRestrictedForAccount](#getuserrestrictedforaccount)
+参见 getUserRestrictedForAccount

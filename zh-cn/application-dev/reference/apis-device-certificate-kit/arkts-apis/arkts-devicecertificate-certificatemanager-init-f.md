@@ -124,4 +124,4 @@ function init(authUri: string, spec: CMSignatureSpec): Promise<CMHandle>
 
 **示例**
 
-参见 [init](#init)
+参见 init

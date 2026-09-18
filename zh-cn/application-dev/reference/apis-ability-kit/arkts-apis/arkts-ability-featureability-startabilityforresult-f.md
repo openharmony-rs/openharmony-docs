@@ -138,4 +138,4 @@ function startAbilityForResult(parameter: StartAbilityParameter): Promise<Abilit
 
 **示例**
 
-参见 [startAbilityForResult](#startabilityforresult)
+参见 startAbilityForResult

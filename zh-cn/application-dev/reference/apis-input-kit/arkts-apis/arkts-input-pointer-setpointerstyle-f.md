@@ -146,4 +146,4 @@ function setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise<
 
 **示例**
 
-参见 [setPointerStyle](#setpointerstyle)
+参见 setPointerStyle

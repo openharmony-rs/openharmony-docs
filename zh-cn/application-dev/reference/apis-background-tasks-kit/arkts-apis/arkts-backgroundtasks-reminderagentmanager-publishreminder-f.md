@@ -122,4 +122,4 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 **示例**
 
-参见 [publishReminder](#publishreminder)
+参见 publishReminder

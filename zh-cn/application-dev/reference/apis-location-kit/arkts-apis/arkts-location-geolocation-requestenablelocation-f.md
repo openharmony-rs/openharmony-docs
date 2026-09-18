@@ -74,4 +74,4 @@ function requestEnableLocation(): Promise<boolean>
 
 **示例**
 
-参见 [requestEnableLocation](#requestenablelocation)
+参见 requestEnableLocation

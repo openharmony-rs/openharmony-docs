@@ -158,4 +158,4 @@ function getProfileByAbility(moduleName: string, abilityName: string, metadataNa
 
 **示例**
 
-参见 [getProfileByAbility](#getprofilebyability)
+参见 getProfileByAbility

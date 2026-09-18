@@ -18,7 +18,7 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact](#updatecontact-1)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -144,7 +144,7 @@ function updateContact(context: Context, contact: Contact, callback: AsyncCallba
 
 **示例**
 
-参见 [updateContact](#updatecontact)
+参见 updateContact
 
 
 ## updateContact
@@ -159,7 +159,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact](#updatecontact-3)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** updateContact(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -175,7 +175,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **示例**
 
-参见 [updateContact](#updatecontact)
+参见 updateContact
 
 
 ## updateContact
@@ -210,7 +210,7 @@ function updateContact(context: Context, contact: Contact, attrs: ContactAttribu
 
 **示例**
 
-参见 [updateContact](#updatecontact)
+参见 updateContact
 
 
 ## updateContact
@@ -225,7 +225,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact](#updatecontact-5)(context: Context, contact: Contact, attrs?: ContactAttributes)
+**替代接口：** updateContact(context: Context, contact: Contact, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -246,7 +246,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **示例**
 
-参见 [updateContact](#updatecontact)
+参见 updateContact
 
 
 ## updateContact
@@ -286,4 +286,4 @@ function updateContact(context: Context, contact: Contact, attrs?: ContactAttrib
 
 **示例**
 
-参见 [updateContact](#updatecontact)
+参见 updateContact

@@ -162,4 +162,4 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 
 **示例**
 
-参见 [getLastWindow](#getlastwindow)
+参见 getLastWindow

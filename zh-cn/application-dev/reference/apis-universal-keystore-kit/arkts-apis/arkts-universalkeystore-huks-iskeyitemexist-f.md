@@ -183,4 +183,4 @@ function isKeyItemExist(keyAlias: string, options: HuksOptions): Promise<boolean
 
 **示例**
 
-参见 [isKeyItemExist](#iskeyitemexist)
+参见 isKeyItemExist

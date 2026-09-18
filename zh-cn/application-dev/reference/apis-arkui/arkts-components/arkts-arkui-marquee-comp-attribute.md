@@ -4,7 +4,7 @@
 
 除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件。
 
-**继承/实现关系：** MarqueeAttribute extends CommonMethod<MarqueeAttribute>
+**继承/实现关系：** MarqueeAttribute extends CommonMethod&lt;MarqueeAttribute&gt;
 
 **起始版本：** 8
 

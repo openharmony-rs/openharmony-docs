@@ -12,7 +12,7 @@
 
 组件的宽高必须显式设置为非零有效值。
 
-不支持到达边缘后继续滚动的场景。当**UIExtensionComponent**宿主和UIExtensionAbility都支持内容滚动时，基于手势的滚动会导致**UIExtensionComponent**内外同时响应，包括但不限于Scroll、Swiper、List、Grid等可滚动容器。关于如何避免**UIExtensionComponent**内外同时滚动的详细信息，请参见[示例2](../../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#example-2-isolating-scrolling-inside-and-outside-of-uiextensioncomponent)。
+不支持到达边缘后继续滚动的场景。当**UIExtensionComponent**宿主和UIExtensionAbility都支持内容滚动时，基于手势的滚动会导致**UIExtensionComponent**内外同时响应，包括但不限于Scroll、Swiper、List、Grid等可滚动容器。关于如何避免**UIExtensionComponent**内外同时滚动的详细信息，请参见示例2。
 
 ## 子组件
 
@@ -42,7 +42,7 @@ UIExtensionComponent(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | import('../api/@ohos.app.ability.Want').default | 是 | 表示UIExtensionAbility的want |
-| options | [UIExtensionOptions](arkts-arkui-uiextensionoptions-i-sys.md) | 否 | UIExtensionComponentAttribute的构造配置 |
+| options | UIExtensionOptions | 否 | UIExtensionComponentAttribute的构造配置 |
 
 ## 汇总
 
@@ -50,22 +50,22 @@ UIExtensionComponent(
 
 | 名称 | 说明 |
 | --- | --- |
-| [TerminationInfo](arkts-arkui-terminationinfo-i-sys.md) | 用于表示被拉起的UIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时的返回结果。 |
-| [UIExtensionOptions](arkts-arkui-uiextensionoptions-i-sys.md) | 用于在UIExtensionComponent进行构造时传递可选的构造参数。 |
-| [UIExtensionProxy](arkts-arkui-uiextensionproxy-i-sys.md) | 用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability，并订阅和取消订阅扩展Ability的注册事件。 |
+| TerminationInfo | 用于表示被拉起的UIExtensionAbility通过调用`terminateSelfWithResult`或者`terminateSelf`正常退出时的返回结果。 |
+| UIExtensionOptions | 用于在UIExtensionComponent进行构造时传递可选的构造参数。 |
+| UIExtensionProxy | 用于在双方建立连接成功后，组件使用方将数据发送给被拉起的Ability，并订阅和取消订阅扩展Ability的注册事件。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [ReceiveCallback](arkts-arkui-receivecallback-t-sys.md) | 回调函数，用于封装被拉起的Ability发送的数据。 |
+| ReceiveCallback | 回调函数，用于封装被拉起的Ability发送的数据。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [DpiFollowStrategy](arkts-arkui-dpifollowstrategy-e-sys.md) | 表示不同类型的DpiFollowStrategy的枚举。 |
-| [WindowModeFollowStrategy](arkts-arkui-windowmodefollowstrategy-e-sys.md) | 窗口Mode跟随策略，用于设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。 |
+| DpiFollowStrategy | 表示不同类型的DpiFollowStrategy的枚举。 |
+| WindowModeFollowStrategy | 窗口Mode跟随策略，用于设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。 |
 
 ## 示例
 

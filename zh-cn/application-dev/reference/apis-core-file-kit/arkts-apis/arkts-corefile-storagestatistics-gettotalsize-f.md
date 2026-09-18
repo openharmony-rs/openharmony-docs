@@ -95,4 +95,4 @@ function getTotalSize(): Promise<number>
 
 **示例**
 
-参见 [getTotalSize](#gettotalsize)
+参见 getTotalSize

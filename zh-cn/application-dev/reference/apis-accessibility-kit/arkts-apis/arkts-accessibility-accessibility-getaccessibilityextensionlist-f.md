@@ -85,4 +85,4 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 **示例**
 
-参见 [getAccessibilityExtensionList](#getaccessibilityextensionlist)
+参见 getAccessibilityExtensionList

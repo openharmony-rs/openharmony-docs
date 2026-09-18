@@ -140,4 +140,4 @@ function setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperT
 
 **示例**
 
-参见 [setWallpaper](#setwallpaper)
+参见 setWallpaper

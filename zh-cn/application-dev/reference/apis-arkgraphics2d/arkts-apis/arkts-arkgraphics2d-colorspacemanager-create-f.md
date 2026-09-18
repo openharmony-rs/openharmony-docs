@@ -105,4 +105,4 @@ function create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManage
 
 **示例**
 
-参见 [create](#create)
+参见 create

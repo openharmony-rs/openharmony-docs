@@ -100,4 +100,4 @@ function getISOCountryCodeForSim(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getISOCountryCodeForSim](#getisocountrycodeforsim)
+参见 getISOCountryCodeForSim

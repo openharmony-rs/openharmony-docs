@@ -107,4 +107,4 @@ export function getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.
 
 **示例**
 
-参见 [getSimpleDateTimeFormatByPattern](#getsimpledatetimeformatbypattern)
+参见 getSimpleDateTimeFormatByPattern

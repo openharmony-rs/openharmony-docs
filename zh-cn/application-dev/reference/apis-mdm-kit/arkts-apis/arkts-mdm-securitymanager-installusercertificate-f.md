@@ -144,4 +144,4 @@ function installUserCertificate(admin: Want, certificate: CertBlob, accountId: n
 
 **示例**
 
-参见 [installUserCertificate](#installusercertificate)
+参见 installUserCertificate

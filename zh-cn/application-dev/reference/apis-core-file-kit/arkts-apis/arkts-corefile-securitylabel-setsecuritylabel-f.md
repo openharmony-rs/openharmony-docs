@@ -104,4 +104,4 @@ function setSecurityLabel(path: string, type: DataLevel, callback: AsyncCallback
 
 **示例**
 
-参见 [setSecurityLabel](#setsecuritylabel)
+参见 setSecurityLabel

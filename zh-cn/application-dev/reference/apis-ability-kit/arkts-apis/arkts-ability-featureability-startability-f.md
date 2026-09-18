@@ -119,4 +119,4 @@ function startAbility(parameter: StartAbilityParameter): Promise<number>
 
 **示例**
 
-参见 [startAbility](#startability)
+参见 startAbility

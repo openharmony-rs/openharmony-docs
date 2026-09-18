@@ -1,8 +1,8 @@
 # Ellipse属性/事件
 
-支持[通用属性](arkts-arkui-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)。
+支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性。
 
-**继承/实现关系：** EllipseAttribute extends CommonShapeMethod<EllipseAttribute>
+**继承/实现关系：** EllipseAttribute extends CommonShapeMethod&lt;EllipseAttribute&gt;
 
 **起始版本：** 7
 

@@ -18,7 +18,7 @@ function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>
 
 **废弃版本：** 10
 
-**替代接口：** [obtainAllWorks](#obtainallworks-1)(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
+**替代接口：** obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -103,7 +103,7 @@ function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void
 
 **示例**
 
-参见 [obtainAllWorks](#obtainallworks)
+参见 obtainAllWorks
 
 
 ## obtainAllWorks
@@ -137,4 +137,4 @@ function obtainAllWorks(): Promise<Array<WorkInfo>>
 
 **示例**
 
-参见 [obtainAllWorks](#obtainallworks)
+参见 obtainAllWorks

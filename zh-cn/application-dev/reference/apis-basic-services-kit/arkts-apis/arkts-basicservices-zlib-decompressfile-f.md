@@ -157,7 +157,7 @@ function decompressFile(inFile: string, outFile: string, callback: AsyncCallback
 
 **示例**
 
-参见 [decompressFile](#decompressfile)
+参见 decompressFile
 
 
 ## decompressFile
@@ -205,4 +205,4 @@ function decompressFile(inFile: string, outFile: string, options?: Options): Pro
 
 **示例**
 
-参见 [decompressFile](#decompressfile)
+参见 decompressFile

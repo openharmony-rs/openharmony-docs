@@ -155,7 +155,7 @@ function getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
 
 **示例**
 
-参见 [getAppClipboardPolicy](#getappclipboardpolicy)
+参见 getAppClipboardPolicy
 
 
 ## getAppClipboardPolicy
@@ -198,7 +198,7 @@ function getAppClipboardPolicy(admin: Want, bundleName: string, accountId: numbe
 
 **示例**
 
-参见 [getAppClipboardPolicy](#getappclipboardpolicy)
+参见 getAppClipboardPolicy
 
 
 ## getAppClipboardPolicy
@@ -241,4 +241,4 @@ function getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId
 
 **示例**
 
-参见 [getAppClipboardPolicy](#getappclipboardpolicy)
+参见 getAppClipboardPolicy

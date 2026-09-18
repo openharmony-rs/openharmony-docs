@@ -88,4 +88,4 @@ function dumpJsHeapData(filename : string, needClean : boolean) : void
 
 **示例**
 
-参见 [dumpJsHeapData](#dumpjsheapdata)
+参见 dumpJsHeapData

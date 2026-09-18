@@ -259,7 +259,7 @@ function startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncC
 
 **示例**
 
-参见 [startAdvertising](#startadvertising)
+参见 startAdvertising
 
 
 ## startAdvertising
@@ -309,4 +309,4 @@ function startAdvertising(advertisingParams: AdvertisingParams): Promise<number>
 
 **示例**
 
-参见 [startAdvertising](#startadvertising)
+参见 startAdvertising

@@ -6,7 +6,7 @@
 
 不支持点击事件等通用事件。仅支持以下事件。
 
-**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod<EmbeddedComponentAttribute>
+**继承/实现关系：** EmbeddedComponentAttribute extends CommonMethod&lt;EmbeddedComponentAttribute&gt;
 
 **起始版本：** 12
 

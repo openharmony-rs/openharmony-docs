@@ -91,4 +91,4 @@ function getCellularDataState(): Promise<DataConnectState>
 
 **示例**
 
-参见 [getCellularDataState](#getcellulardatastate)
+参见 getCellularDataState

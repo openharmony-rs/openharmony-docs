@@ -112,4 +112,4 @@ function getValidReminders(): Promise<Array<ReminderRequest>>
 
 **示例**
 
-参见 [getValidReminders](#getvalidreminders)
+参见 getValidReminders

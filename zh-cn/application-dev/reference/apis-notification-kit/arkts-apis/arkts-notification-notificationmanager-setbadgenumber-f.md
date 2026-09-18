@@ -113,4 +113,4 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 **示例**
 
-参见 [setBadgeNumber](#setbadgenumber)
+参见 setBadgeNumber

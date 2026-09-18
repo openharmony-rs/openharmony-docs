@@ -77,4 +77,4 @@ function getAppMemorySize(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getAppMemorySize](#getappmemorysize)
+参见 getAppMemorySize

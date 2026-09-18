@@ -84,7 +84,7 @@ function getPreferences(context: Context, options: Options, callback: AsyncCallb
 
 **示例**
 
-参见 [getPreferences](#getpreferences)
+参见 getPreferences
 
 
 ## getPreferences
@@ -125,7 +125,7 @@ function getPreferences(context: Context, name: string): Promise<Preferences>
 
 **示例**
 
-参见 [getPreferences](#getpreferences)
+参见 getPreferences
 
 
 ## getPreferences
@@ -169,4 +169,4 @@ function getPreferences(context: Context, options: Options): Promise<Preferences
 
 **示例**
 
-参见 [getPreferences](#getpreferences)
+参见 getPreferences

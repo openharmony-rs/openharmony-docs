@@ -99,4 +99,4 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 
 **示例**
 
-参见 [addNotificationSlot](#addnotificationslot)
+参见 addNotificationSlot

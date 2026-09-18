@@ -128,4 +128,4 @@ function downloadFile(context: BaseContext, config: DownloadConfig): Promise<Dow
 
 **示例**
 
-参见 [downloadFile](#downloadfile)
+参见 downloadFile

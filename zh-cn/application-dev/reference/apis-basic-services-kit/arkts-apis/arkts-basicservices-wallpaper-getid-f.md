@@ -86,4 +86,4 @@ function getId(wallpaperType: WallpaperType): Promise<number>
 
 **示例**
 
-参见 [getId](#getid)
+参见 getId

@@ -104,4 +104,4 @@ function getOpKey(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getOpKey](#getopkey)
+参见 getOpKey

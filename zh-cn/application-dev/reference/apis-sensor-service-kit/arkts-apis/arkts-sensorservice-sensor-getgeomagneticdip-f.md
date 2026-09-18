@@ -98,4 +98,4 @@ function getGeomagneticDip(inclinationMatrix: Array<number>): Promise<number>
 
 **示例**
 
-参见 [getGeomagneticDip](#getgeomagneticdip)
+参见 getGeomagneticDip

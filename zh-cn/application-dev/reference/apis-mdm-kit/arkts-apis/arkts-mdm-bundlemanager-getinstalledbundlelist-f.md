@@ -126,4 +126,4 @@ function getInstalledBundleList(admin: Want, accountId: number, bundleInfoGetFla
 
 **示例**
 
-参见 [getInstalledBundleList](#getinstalledbundlelist)
+参见 getInstalledBundleList

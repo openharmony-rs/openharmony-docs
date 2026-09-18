@@ -16,7 +16,7 @@ gestures: GestureHandler<TapGestureHandler | LongPressGestureHandler | PanGestur
 
 **说明：** 
 
-当需要为一个组件同时添加单击和双击手势时，可在[GestureGroup](arkts-arkui-tapgesture-comp-con.md#gesturegroup)中添加两个[TapGesture](arkts-arkui-gesturecontrol-n.md#tapgesture)，需要双击手势在前，单击手势在后，否则不生效。
+当需要为一个组件同时添加单击和双击手势时，可在GestureGroup中添加两个TapGesture，需要双击手势在前，单击手势在后，否则不生效。
 
 **类型：** [GestureHandler](arkts-arkui-gesturehandler-c.md)&lt;[TapGestureHandler](arkts-arkui-tapgesturehandler-c.md) &#124; [LongPressGestureHandler](arkts-arkui-longpressgesturehandler-c.md) &#124; [PanGestureHandler](arkts-arkui-pangesturehandler-c.md) &#124; [SwipeGestureHandler](arkts-arkui-swipegesturehandler-c.md) &#124; [PinchGestureHandler](arkts-arkui-pinchgesturehandler-c.md) &#124; [RotationGestureHandler](arkts-arkui-rotationgesturehandler-c.md) &#124; [GestureGroupHandler](arkts-arkui-gesturegrouphandler-c.md)&gt;[]
 

@@ -112,4 +112,4 @@ function getDisallowedWifiList(admin: Want | null): Array<WifiAccessInfo>
 
 **示例**
 
-参见 [getDisallowedWifiList](#getdisallowedwifilist)
+参见 getDisallowedWifiList

@@ -4,7 +4,7 @@
 
 支持以下事件：
 
-**继承/实现关系：** DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
+**继承/实现关系：** DynamicComponentAttribute extends CommonMethod&lt;DynamicComponentAttribute&gt;
 
 **起始版本：** 26.0.0
 

@@ -90,4 +90,4 @@ function getDLPSupportedFileTypes(callback: AsyncCallback<Array<string>>): void
 
 **示例**
 
-参见 [getDLPSupportedFileTypes](#getdlpsupportedfiletypes)
+参见 getDLPSupportedFileTypes

@@ -148,7 +148,7 @@ function cancel(group: TaskGroup): void
 
 **示例**
 
-参见 [cancel](#cancel)
+参见 cancel
 
 
 ## cancel
@@ -186,4 +186,4 @@ function cancel(taskId: number): void
 
 **示例**
 
-参见 [cancel](#cancel)
+参见 cancel

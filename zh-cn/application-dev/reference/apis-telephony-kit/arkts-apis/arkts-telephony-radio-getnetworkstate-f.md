@@ -118,7 +118,7 @@ function getNetworkState(slotId?: number): Promise<NetworkState>
 
 **示例**
 
-参见 [getNetworkState](#getnetworkstate)
+参见 getNetworkState
 
 
 ## getNetworkState
@@ -154,4 +154,4 @@ function getNetworkState(callback: AsyncCallback<NetworkState>): void
 
 **示例**
 
-参见 [getNetworkState](#getnetworkstate)
+参见 getNetworkState

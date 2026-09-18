@@ -118,4 +118,4 @@ function removeSlot(slotType: SlotType): Promise<void>
 
 **示例**
 
-参见 [removeSlot](#removeslot)
+参见 removeSlot

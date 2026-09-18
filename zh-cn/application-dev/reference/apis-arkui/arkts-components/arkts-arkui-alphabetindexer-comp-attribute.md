@@ -10,7 +10,7 @@ padding属性默认为4vp。
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
+**继承/实现关系：** AlphabetIndexerAttribute extends CommonMethod&lt;AlphabetIndexerAttribute&gt;
 
 **起始版本：** 7
 

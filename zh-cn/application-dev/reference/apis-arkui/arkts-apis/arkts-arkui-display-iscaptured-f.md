@@ -88,4 +88,4 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 **示例**
 
-参见 [isCaptured](#iscaptured)
+参见 isCaptured

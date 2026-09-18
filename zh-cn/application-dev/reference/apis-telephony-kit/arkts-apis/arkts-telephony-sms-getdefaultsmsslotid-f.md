@@ -71,4 +71,4 @@ function getDefaultSmsSlotId(): Promise<number>
 
 **示例**
 
-参见 [getDefaultSmsSlotId](#getdefaultsmsslotid)
+参见 getDefaultSmsSlotId

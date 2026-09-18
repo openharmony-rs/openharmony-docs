@@ -139,4 +139,4 @@ function addAutoStartApps(admin: Want, autoStartApps: Array<Want>, accountId: nu
 
 **示例**
 
-参见 [addAutoStartApps](#addautostartapps)
+参见 addAutoStartApps

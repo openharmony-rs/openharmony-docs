@@ -96,4 +96,4 @@ Queries state data of the current bundle within a specified period.
 
 **示例**
 
-参见 [queryCurrentBundleActiveStates](#querycurrentbundleactivestates)
+参见 queryCurrentBundleActiveStates

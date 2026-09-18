@@ -4,7 +4,7 @@
 
 不支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** SymbolSpanAttribute extends CommonMethod<SymbolSpanAttribute>
+**继承/实现关系：** SymbolSpanAttribute extends CommonMethod&lt;SymbolSpanAttribute&gt;
 
 **起始版本：** 11
 
@@ -42,7 +42,7 @@ effectStrategy(value: SymbolEffectStrategy)
 
 NONE表示无动效，适用于静态展示场景；SCALE表示整体缩放动效，适用于需要吸引用户注意力的场景，如按钮点击反馈；HIERARCHICAL表示层级动效，适用于需要突出图标层次感的场景。
 
-不同动效策略效果可以参考[示例1（设置渲染和动效策略）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#示例1设置渲染和动效策略)。
+不同动效策略效果可以参考示例1（设置渲染和动效策略）。
 
 > **说明：** 
 > 

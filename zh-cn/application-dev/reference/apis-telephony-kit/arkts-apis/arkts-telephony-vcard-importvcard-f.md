@@ -136,7 +136,7 @@ function importVCard(context: Context, filePath: string, accountId?: number): Pr
 
 **示例**
 
-参见 [importVCard](#importvcard)
+参见 importVCard
 
 
 ## importVCard
@@ -174,4 +174,4 @@ function importVCard(context: Context, filePath: string, callback: AsyncCallback
 
 **示例**
 
-参见 [importVCard](#importvcard)
+参见 importVCard

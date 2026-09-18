@@ -119,4 +119,4 @@ function getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number)
 
 **示例**
 
-参见 [getDisallowedInstallBundlesSync](#getdisallowedinstallbundlessync)
+参见 getDisallowedInstallBundlesSync

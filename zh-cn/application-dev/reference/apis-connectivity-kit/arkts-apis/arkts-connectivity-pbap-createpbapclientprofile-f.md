@@ -24,7 +24,7 @@ function createPbapClientProfile(): PbapClientProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| [PbapClientProfile](arkts-connectivity-pbap-pbapclientprofile-i-sys.md) | 返回pbap客户端配置文件的实例。 |
+| PbapClientProfile | 返回pbap客户端配置文件的实例。 |
 
 **错误码：**
 

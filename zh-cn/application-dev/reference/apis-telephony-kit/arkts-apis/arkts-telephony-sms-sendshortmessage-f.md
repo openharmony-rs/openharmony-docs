@@ -147,4 +147,4 @@ function sendShortMessage(options: SendMessageOptions): Promise<void>
 
 **示例**
 
-参见 [sendShortMessage](#sendshortmessage)
+参见 sendShortMessage

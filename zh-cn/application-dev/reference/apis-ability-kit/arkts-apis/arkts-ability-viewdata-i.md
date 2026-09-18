@@ -32,7 +32,7 @@ pageNodeInfos: Array<PageNodeInfo>
 
 页面节点信息。
 
-**类型：** Array&lt;[PageNodeInfo](arkts-ability-pagenodeinfo-i-sys.md)&gt;
+**类型：** Array&lt;PageNodeInfo&gt;
 
 **起始版本：** 26.0.0
 
@@ -50,7 +50,7 @@ pageRect: AutoFillRect
 
 页面的位置坐标与宽高信息。在PC/2in1设备上，密码保险箱以弹窗形式展示，为保证弹窗位置跟随输入框，left和top需置为0。
 
-**类型：** [AutoFillRect](arkts-ability-autofillrect-i-sys.md)
+**类型：** AutoFillRect
 
 **起始版本：** 26.0.0
 

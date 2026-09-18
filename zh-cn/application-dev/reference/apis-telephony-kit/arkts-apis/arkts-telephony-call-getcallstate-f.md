@@ -69,4 +69,4 @@ function getCallState(): Promise<CallState>
 
 **示例**
 
-参见 [getCallState](#getcallstate)
+参见 getCallState

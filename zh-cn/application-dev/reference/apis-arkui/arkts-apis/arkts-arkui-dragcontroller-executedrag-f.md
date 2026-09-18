@@ -100,4 +100,4 @@ function executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): 
 
 **示例**
 
-参见 [executeDrag](#executedrag)
+参见 executeDrag

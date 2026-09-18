@@ -71,4 +71,4 @@ function terminateSelf(): Promise<void>
 
 **示例**
 
-参见 [terminateSelf](#terminateself)
+参见 terminateSelf

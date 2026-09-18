@@ -160,4 +160,4 @@ function cancel(agent: WantAgent): Promise<void>
 
 **示例**
 
-参见 [cancel](#cancel)
+参见 cancel

@@ -101,4 +101,4 @@ function write(eventName: string, eventType: EventType, keyValues: object, callb
 
 **示例**
 
-参见 [write](#write)
+参见 write

@@ -4,7 +4,7 @@
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TabsAttribute extends CommonMethod<TabsAttribute>
+**继承/实现关系：** TabsAttribute extends CommonMethod&lt;TabsAttribute&gt;
 
 **起始版本：** 7
 
@@ -610,7 +610,7 @@ Tab页签切换后触发的事件。
 
 > 使用自定义页签时，在onChange事件中联动可能会导致滑动页面切换后才执行页签联动，引起自定义页签切换效果延迟。建议在
 > [onAnimationStart](#onanimationstart)中监听并刷新当前索引，以确保动效能够及时触发。具体实现可参考
-> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-tabs.md#示例3自定义页签切换联动)。
+> 示例3。
 > 
 > 如果在动画过程中index参数发生变化，将使用最新值触发回调。
 

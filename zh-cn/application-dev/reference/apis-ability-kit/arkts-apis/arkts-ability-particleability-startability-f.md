@@ -115,4 +115,4 @@ function startAbility(parameter: StartAbilityParameter): Promise<void>
 
 **示例**
 
-参见 [startAbility](#startability)
+参见 startAbility

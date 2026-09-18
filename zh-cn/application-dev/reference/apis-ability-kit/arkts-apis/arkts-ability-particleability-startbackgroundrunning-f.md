@@ -152,4 +152,4 @@ function startBackgroundRunning(id: number, request: NotificationRequest): Promi
 
 **示例**
 
-参见 [startBackgroundRunning](#startbackgroundrunning)
+参见 startBackgroundRunning

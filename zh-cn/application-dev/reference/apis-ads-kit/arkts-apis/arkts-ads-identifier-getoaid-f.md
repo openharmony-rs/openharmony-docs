@@ -97,4 +97,4 @@ function getOAID(): Promise<string>
 
 **示例**
 
-参见 [getOAID](#getoaid)
+参见 getOAID

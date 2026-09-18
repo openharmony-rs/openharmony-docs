@@ -468,4 +468,4 @@ abortSession终止密钥操作。使用Promise异步回调。
 
 **示例**
 
-参见 [abortSession](#abortsession)
+参见 abortSession

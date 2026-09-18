@@ -89,4 +89,4 @@ function createAVImageGenerator(callback: AsyncCallback<AVImageGenerator>): void
 
 **示例**
 
-参见 [createAVImageGenerator](#createavimagegenerator)
+参见 createAVImageGenerator

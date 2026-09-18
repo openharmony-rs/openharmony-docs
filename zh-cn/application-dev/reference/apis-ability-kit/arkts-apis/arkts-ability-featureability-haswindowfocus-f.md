@@ -73,4 +73,4 @@ function hasWindowFocus(): Promise<boolean>
 
 **示例**
 
-参见 [hasWindowFocus](#haswindowfocus)
+参见 hasWindowFocus

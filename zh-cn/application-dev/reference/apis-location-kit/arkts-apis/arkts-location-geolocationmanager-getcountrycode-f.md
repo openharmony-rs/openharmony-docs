@@ -98,4 +98,4 @@ function getCountryCode(): Promise<CountryCode>
 
 **示例**
 
-参见 [getCountryCode](#getcountrycode)
+参见 getCountryCode

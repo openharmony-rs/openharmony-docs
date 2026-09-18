@@ -17,7 +17,7 @@ function run(startupTasks: Array<string>, config?: StartupConfig): Promise<void>
 > **说明：** 
 > 
 > 本接口不支持执行feature类型HAP中的启动任务，如需要使用相关能力请调用
-> [startupManager.run](#run-1)
+> startupManager.run
 > 接口。
 
 **起始版本：** 12
@@ -163,4 +163,4 @@ function run(startupTasks: Array<string>, context: common.AbilityStageContext, c
 
 **示例**
 
-参见 [run](#run)
+参见 run

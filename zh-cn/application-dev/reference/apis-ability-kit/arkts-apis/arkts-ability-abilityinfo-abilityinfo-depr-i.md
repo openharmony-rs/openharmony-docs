@@ -4,13 +4,13 @@ Ability信息，未做特殊说明的属性，均通过[bundle.getAbilityInfo](a
 
 > **说明：** 
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-AbilityInfo](#abilityinfo)替代。
+> 从API version 9开始，该模块不再维护，建议使用bundleManager-AbilityInfo替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [AbilityInfo](#abilityinfo)
+**替代接口：** AbilityInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

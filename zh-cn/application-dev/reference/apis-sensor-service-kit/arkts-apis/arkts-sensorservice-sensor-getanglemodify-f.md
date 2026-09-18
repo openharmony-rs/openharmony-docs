@@ -97,4 +97,4 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 **示例**
 
-参见 [getAngleModify](#getanglemodify)
+参见 getAngleModify

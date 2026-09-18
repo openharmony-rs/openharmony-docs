@@ -75,4 +75,4 @@ function isScreenOn(): Promise<boolean>
 
 **示例**
 
-参见 [isScreenOn](#isscreenon)
+参见 isScreenOn

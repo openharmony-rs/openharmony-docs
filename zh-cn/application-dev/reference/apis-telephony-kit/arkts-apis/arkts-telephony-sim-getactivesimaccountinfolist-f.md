@@ -103,4 +103,4 @@ function getActiveSimAccountInfoList(): Promise<Array<IccAccountInfo>>
 
 **示例**
 
-参见 [getActiveSimAccountInfoList](#getactivesimaccountinfolist)
+参见 getActiveSimAccountInfoList

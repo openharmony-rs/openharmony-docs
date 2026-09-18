@@ -120,4 +120,4 @@ function setFormNextRefreshTime(formId: string, minute: number): Promise<void>
 
 **示例**
 
-参见 [setFormNextRefreshTime](#setformnextrefreshtime)
+参见 setFormNextRefreshTime

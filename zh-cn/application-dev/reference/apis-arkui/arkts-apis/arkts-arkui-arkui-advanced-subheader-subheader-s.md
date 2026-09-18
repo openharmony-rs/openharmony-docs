@@ -256,7 +256,7 @@ primaryTitleModifier?: TextModifier
 
 **说明：** 只有primaryTitle生效时，该参数才会生效。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 12
 
@@ -298,7 +298,7 @@ secondaryTitleModifier?: TextModifier
 
 默认值：undefined，表示使用系统默认样式。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 12
 

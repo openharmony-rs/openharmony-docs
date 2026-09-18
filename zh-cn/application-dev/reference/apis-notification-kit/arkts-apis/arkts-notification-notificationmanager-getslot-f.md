@@ -118,4 +118,4 @@ function getSlot(slotType: SlotType): Promise<NotificationSlot>
 
 **示例**
 
-参见 [getSlot](#getslot)
+参见 getSlot

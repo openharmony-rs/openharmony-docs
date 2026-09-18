@@ -150,4 +150,4 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 **示例**
 
-参见 [showDialog](#showdialog)
+参见 showDialog

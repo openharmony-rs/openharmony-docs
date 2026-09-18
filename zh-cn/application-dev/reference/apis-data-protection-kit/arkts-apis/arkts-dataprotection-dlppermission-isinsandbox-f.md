@@ -90,4 +90,4 @@ function isInSandbox(callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 [isInSandbox](#isinsandbox)
+参见 isInSandbox

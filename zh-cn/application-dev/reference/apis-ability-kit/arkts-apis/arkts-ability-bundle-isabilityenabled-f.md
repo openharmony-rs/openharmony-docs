@@ -91,4 +91,4 @@ function isAbilityEnabled(info: AbilityInfo): Promise<boolean>
 
 **示例**
 
-参见 [isAbilityEnabled](#isabilityenabled)
+参见 isAbilityEnabled

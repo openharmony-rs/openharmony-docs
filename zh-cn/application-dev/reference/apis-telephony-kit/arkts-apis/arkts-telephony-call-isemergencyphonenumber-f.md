@@ -112,7 +112,7 @@ function isEmergencyPhoneNumber(phoneNumber: string, options?: EmergencyNumberOp
 
 **示例**
 
-参见 [isEmergencyPhoneNumber](#isemergencyphonenumber)
+参见 isEmergencyPhoneNumber
 
 
 ## isEmergencyPhoneNumber
@@ -146,4 +146,4 @@ function isEmergencyPhoneNumber(phoneNumber: string, callback: AsyncCallback<boo
 
 **示例**
 
-参见 [isEmergencyPhoneNumber](#isemergencyphonenumber)
+参见 isEmergencyPhoneNumber

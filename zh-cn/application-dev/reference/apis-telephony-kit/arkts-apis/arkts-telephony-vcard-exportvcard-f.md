@@ -149,7 +149,7 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 
 **示例**
 
-参见 [exportVCard](#exportvcard)
+参见 exportVCard
 
 
 ## exportVCard
@@ -187,4 +187,4 @@ function exportVCard(context: Context, predicates: dataSharePredicates.DataShare
 
 **示例**
 
-参见 [exportVCard](#exportvcard)
+参见 exportVCard

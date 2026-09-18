@@ -124,4 +124,4 @@ Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha for
 
 **示例**
 
-参见 [createUnpremultipliedPixelMap](#createunpremultipliedpixelmap)
+参见 createUnpremultipliedPixelMap

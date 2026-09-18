@@ -124,4 +124,4 @@ function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.P
 
 **示例**
 
-参见 [getIncomingCallPolicyNumbers](#getincomingcallpolicynumbers)
+参见 getIncomingCallPolicyNumbers

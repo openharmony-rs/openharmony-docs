@@ -126,4 +126,4 @@ function createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendere
 
 **示例**
 
-参见 [createSoundPool](#createsoundpool)
+参见 createSoundPool

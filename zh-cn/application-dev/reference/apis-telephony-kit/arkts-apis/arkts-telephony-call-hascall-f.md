@@ -69,4 +69,4 @@ function hasCall(): Promise<boolean>
 
 **示例**
 
-参见 [hasCall](#hascall)
+参见 hasCall

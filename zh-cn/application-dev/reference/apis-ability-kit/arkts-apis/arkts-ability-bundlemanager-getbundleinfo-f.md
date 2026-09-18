@@ -196,7 +196,7 @@ function getBundleInfo(bundleName: string, bundleFlags: number, userId: number, 
 
 **示例**
 
-参见 [getBundleInfo](#getbundleinfo)
+参见 getBundleInfo
 
 
 ## getBundleInfo
@@ -241,4 +241,4 @@ function getBundleInfo(bundleName: string, bundleFlags: number, userId?: number)
 
 **示例**
 
-参见 [getBundleInfo](#getbundleinfo)
+参见 getBundleInfo

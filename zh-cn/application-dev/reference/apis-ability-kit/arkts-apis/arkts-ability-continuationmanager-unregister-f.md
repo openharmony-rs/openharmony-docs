@@ -92,4 +92,4 @@ function unregister(token: number): Promise<void>
 
 **示例**
 
-参见 [unregister](#unregister)
+参见 unregister

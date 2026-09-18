@@ -85,4 +85,4 @@ function cancelBackgroundRunning(): Promise<void>
 
 **示例**
 
-参见 [cancelBackgroundRunning](#cancelbackgroundrunning)
+参见 cancelBackgroundRunning

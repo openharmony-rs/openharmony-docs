@@ -95,4 +95,4 @@ function isCellularDataEnabled(): Promise<boolean>
 
 **示例**
 
-参见 [isCellularDataEnabled](#iscellulardataenabled)
+参见 isCellularDataEnabled

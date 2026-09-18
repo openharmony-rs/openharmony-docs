@@ -109,7 +109,7 @@ function startDeviceManager(token: number, options: ContinuationExtraParams, cal
 
 **示例**
 
-参见 [startDeviceManager](#startdevicemanager)
+参见 startDeviceManager
 
 
 ## startDeviceManager
@@ -145,4 +145,4 @@ function startDeviceManager(token: number, options?: ContinuationExtraParams): P
 
 **示例**
 
-参见 [startDeviceManager](#startdevicemanager)
+参见 startDeviceManager

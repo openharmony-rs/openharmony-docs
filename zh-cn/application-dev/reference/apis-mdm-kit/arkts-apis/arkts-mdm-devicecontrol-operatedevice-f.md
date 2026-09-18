@@ -118,4 +118,4 @@ function operateDevice(admin: Want, operation: Operation, addition?: string): vo
 
 **示例**
 
-参见 [operateDevice](#operatedevice)
+参见 operateDevice

@@ -121,4 +121,4 @@ function unregisterContinuation(token: number): Promise<void>
 
 **示例**
 
-参见 [unregisterContinuation](#unregistercontinuation)
+参见 unregisterContinuation

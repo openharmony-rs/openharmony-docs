@@ -90,4 +90,4 @@ function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number): Promise
 
 **示例**
 
-参见 [getBundleArchiveInfo](#getbundlearchiveinfo)
+参见 getBundleArchiveInfo

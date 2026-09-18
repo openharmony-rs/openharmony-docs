@@ -115,4 +115,4 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 
 **示例**
 
-参见 [setOverlayEnabled](#setoverlayenabled)
+参见 setOverlayEnabled

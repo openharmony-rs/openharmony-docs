@@ -117,7 +117,7 @@ function getCurrentTime(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getCurrentTime](#getcurrenttime)
+参见 getCurrentTime
 
 
 ## getCurrentTime
@@ -156,4 +156,4 @@ function getCurrentTime(isNano?: boolean): Promise<number>
 
 **示例**
 
-参见 [getCurrentTime](#getcurrenttime)
+参见 getCurrentTime

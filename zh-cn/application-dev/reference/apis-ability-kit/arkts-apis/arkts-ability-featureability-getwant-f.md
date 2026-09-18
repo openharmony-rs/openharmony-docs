@@ -73,4 +73,4 @@ function getWant(): Promise<Want>
 
 **示例**
 
-参见 [getWant](#getwant)
+参见 getWant

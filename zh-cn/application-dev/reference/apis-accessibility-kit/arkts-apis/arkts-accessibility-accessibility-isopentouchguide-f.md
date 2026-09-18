@@ -80,4 +80,4 @@ function isOpenTouchGuide(): Promise<boolean>
 
 **示例**
 
-参见 [isOpenTouchGuide](#isopentouchguide)
+参见 isOpenTouchGuide

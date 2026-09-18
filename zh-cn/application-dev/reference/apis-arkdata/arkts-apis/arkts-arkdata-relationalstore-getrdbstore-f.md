@@ -126,4 +126,4 @@ getRdbStore支持多线程并发操作。
 
 **示例**
 
-参见 [getRdbStore](#getrdbstore)
+参见 getRdbStore

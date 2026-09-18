@@ -107,4 +107,4 @@ function getAddressesFromLocationName(request: GeoCodeRequest): Promise<Array<Ge
 
 **示例**
 
-参见 [getAddressesFromLocationName](#getaddressesfromlocationname)
+参见 getAddressesFromLocationName

@@ -120,4 +120,4 @@ function getFreeSize(path: string, callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 [getFreeSize](#getfreesize)
+参见 getFreeSize

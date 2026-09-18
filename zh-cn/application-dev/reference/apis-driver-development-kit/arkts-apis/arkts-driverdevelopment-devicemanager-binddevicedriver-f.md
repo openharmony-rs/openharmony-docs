@@ -128,4 +128,4 @@ function bindDeviceDriver(deviceId: number, onDisconnect: AsyncCallback<number>)
 
 **示例**
 
-参见 [bindDeviceDriver](#binddevicedriver)
+参见 bindDeviceDriver

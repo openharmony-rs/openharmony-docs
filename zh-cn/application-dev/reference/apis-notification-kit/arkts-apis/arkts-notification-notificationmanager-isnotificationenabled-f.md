@@ -169,4 +169,4 @@ function isNotificationEnabled(): Promise<boolean>
 
 **示例**
 
-参见 [isNotificationEnabled](#isnotificationenabled)
+参见 isNotificationEnabled

@@ -105,4 +105,4 @@ Creates a PixelMap object from surface id.
 
 **示例**
 
-参见 [createPixelMapFromSurfaceSync](#createpixelmapfromsurfacesync)
+参见 createPixelMapFromSurfaceSync

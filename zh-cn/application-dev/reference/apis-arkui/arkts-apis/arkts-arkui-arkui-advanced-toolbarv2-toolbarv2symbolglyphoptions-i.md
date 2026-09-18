@@ -20,7 +20,7 @@ activated?: SymbolGlyphModifier
 
 Modifier of toolbarV2's activated symbol.
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 18
 
@@ -38,7 +38,7 @@ normal: SymbolGlyphModifier
 
 Modifier of toolbarV2's normal symbol.
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 18
 

@@ -82,4 +82,4 @@ function isIdleState(bundleName: string): Promise<boolean>
 
 **示例**
 
-参见 [isIdleState](#isidlestate)
+参见 isIdleState

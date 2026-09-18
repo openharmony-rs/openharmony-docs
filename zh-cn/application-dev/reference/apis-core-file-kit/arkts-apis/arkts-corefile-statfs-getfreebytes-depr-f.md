@@ -85,4 +85,4 @@ function getFreeBytes(path: string): Promise<number>
 
 **示例**
 
-参见 [getFreeBytes](#getfreebytes)
+参见 getFreeBytes

@@ -101,4 +101,4 @@ function getPowerMode(callback: AsyncCallback<PowerMode>): void
 
 **示例**
 
-参见 [getPowerMode](#getpowermode)
+参见 getPowerMode

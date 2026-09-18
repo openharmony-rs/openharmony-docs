@@ -140,4 +140,4 @@ function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult
 
 **示例**
 
-参见 [generateKey](#generatekey)
+参见 generateKey

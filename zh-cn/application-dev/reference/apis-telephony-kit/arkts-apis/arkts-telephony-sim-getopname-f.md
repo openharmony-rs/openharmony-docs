@@ -104,4 +104,4 @@ function getOpName(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getOpName](#getopname)
+参见 getOpName

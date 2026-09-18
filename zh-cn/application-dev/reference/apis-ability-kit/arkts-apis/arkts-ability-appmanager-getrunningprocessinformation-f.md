@@ -107,4 +107,4 @@ function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInfor
 
 **示例**
 
-参见 [getRunningProcessInformation](#getrunningprocessinformation)
+参见 getRunningProcessInformation

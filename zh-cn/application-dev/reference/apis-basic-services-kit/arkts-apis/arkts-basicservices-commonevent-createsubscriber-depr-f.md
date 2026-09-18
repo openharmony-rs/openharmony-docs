@@ -109,4 +109,4 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 **示例**
 
-参见 [createSubscriber](#createsubscriber)
+参见 createSubscriber

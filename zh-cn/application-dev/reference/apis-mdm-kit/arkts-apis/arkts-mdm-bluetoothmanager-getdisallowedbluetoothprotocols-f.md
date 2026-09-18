@@ -136,4 +136,4 @@ function getDisallowedBluetoothProtocols(admin: Want | null, accountId: number, 
 
 **示例**
 
-参见 [getDisallowedBluetoothProtocols](#getdisallowedbluetoothprotocols)
+参见 getDisallowedBluetoothProtocols

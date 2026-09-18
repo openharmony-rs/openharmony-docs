@@ -24,7 +24,7 @@ function createA2dpSnkProfile(): A2dpSinkProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| [A2dpSinkProfile](arkts-connectivity-a2dp-a2dpsinkprofile-i-sys.md) | 返回profile的实例。 |
+| A2dpSinkProfile | 返回profile的实例。 |
 
 **错误码：**
 

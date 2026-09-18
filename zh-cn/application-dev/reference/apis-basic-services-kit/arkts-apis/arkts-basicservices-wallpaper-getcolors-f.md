@@ -86,4 +86,4 @@ function getColors(wallpaperType: WallpaperType): Promise<Array<RgbaColor>>
 
 **示例**
 
-参见 [getColors](#getcolors)
+参见 getColors

@@ -115,4 +115,4 @@ function createMac(macSpec: MacSpec): Mac
 
 **示例**
 
-参见 [createMac](#createmac)
+参见 createMac

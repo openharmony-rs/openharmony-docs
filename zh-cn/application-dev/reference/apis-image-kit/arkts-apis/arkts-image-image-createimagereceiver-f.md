@@ -102,7 +102,7 @@ function createImageReceiver(size: Size, format: ImageFormat, capacity: number):
 
 **示例**
 
-参见 [createImageReceiver](#createimagereceiver)
+参见 createImageReceiver
 
 
 ## createImageReceiver
@@ -141,4 +141,4 @@ function createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | un
 
 **示例**
 
-参见 [createImageReceiver](#createimagereceiver)
+参见 createImageReceiver

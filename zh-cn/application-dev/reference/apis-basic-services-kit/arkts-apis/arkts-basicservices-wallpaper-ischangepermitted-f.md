@@ -79,4 +79,4 @@ function isChangePermitted(): Promise<boolean>
 
 **示例**
 
-参见 [isChangePermitted](#ischangepermitted)
+参见 isChangePermitted

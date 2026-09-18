@@ -122,7 +122,7 @@ function from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number,
 
 **示例**
 
-参见 [from](#from)
+参见 from
 
 
 ## from
@@ -161,7 +161,7 @@ function from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 **示例**
 
-参见 [from](#from)
+参见 from
 
 
 ## from
@@ -193,4 +193,4 @@ function from(value: string, encoding?: BufferEncoding): FastBuffer
 
 **示例**
 
-参见 [from](#from)
+参见 from

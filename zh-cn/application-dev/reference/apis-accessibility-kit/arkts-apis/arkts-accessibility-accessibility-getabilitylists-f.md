@@ -99,4 +99,4 @@ function getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Pro
 
 **示例**
 
-参见 [getAbilityLists](#getabilitylists)
+参见 getAbilityLists

@@ -94,4 +94,4 @@ function create(name: string, type: RunningLockType): Promise<RunningLock>
 
 **示例**
 
-参见 [create](#create)
+参见 create

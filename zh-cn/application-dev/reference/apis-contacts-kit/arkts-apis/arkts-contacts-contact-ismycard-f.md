@@ -18,7 +18,7 @@ function isMyCard(id: number, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 10
 
-**替代接口：** [isMyCard](#ismycard-1)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** isMyCard(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -95,7 +95,7 @@ function isMyCard(context: Context, id: number, callback: AsyncCallback<boolean>
 
 **示例**
 
-参见 [isMyCard](#ismycard)
+参见 isMyCard
 
 
 ## isMyCard
@@ -110,7 +110,7 @@ function isMyCard(id: number): Promise<boolean>
 
 **废弃版本：** 10
 
-**替代接口：** [isMyCard](#ismycard-3)(context: Context, id: number)
+**替代接口：** isMyCard(context: Context, id: number)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -130,7 +130,7 @@ function isMyCard(id: number): Promise<boolean>
 
 **示例**
 
-参见 [isMyCard](#ismycard)
+参见 isMyCard
 
 
 ## isMyCard
@@ -169,4 +169,4 @@ function isMyCard(context: Context, id: number): Promise<boolean>
 
 **示例**
 
-参见 [isMyCard](#ismycard)
+参见 isMyCard

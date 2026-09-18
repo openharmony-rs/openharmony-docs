@@ -90,4 +90,4 @@ function getFile(wallpaperType: WallpaperType): Promise<number>
 
 **示例**
 
-参见 [getFile](#getfile)
+参见 getFile

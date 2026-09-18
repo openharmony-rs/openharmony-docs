@@ -115,4 +115,4 @@ function getAllowedRunningBundles(admin: Want | null, accountId: number): Array<
 
 **示例**
 
-参见 [getAllowedRunningBundles](#getallowedrunningbundles)
+参见 getAllowedRunningBundles

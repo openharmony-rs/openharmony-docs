@@ -81,4 +81,4 @@ function removeNotificationSlot(slotType: notification.SlotType): Promise<void>
 
 **示例**
 
-参见 [removeNotificationSlot](#removenotificationslot)
+参见 removeNotificationSlot

@@ -32,7 +32,7 @@ Inline
 
 不支持showError属性。
 
-[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)下，不支持拖入文本。
+内联模式下，不支持拖入文本。
 
 **起始版本：** 9
 

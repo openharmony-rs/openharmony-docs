@@ -192,7 +192,7 @@ function createColorPicker(source: image.PixelMap, region: Array<number>): Promi
 
 **示例**
 
-参见 [createColorPicker](#createcolorpicker)
+参见 createColorPicker
 
 
 ## createColorPicker
@@ -226,7 +226,7 @@ function createColorPicker(source: image.PixelMap, callback: AsyncCallback<Color
 
 **示例**
 
-参见 [createColorPicker](#createcolorpicker)
+参见 createColorPicker
 
 
 ## createColorPicker
@@ -261,4 +261,4 @@ function createColorPicker(source: image.PixelMap, region: Array<number>, callba
 
 **示例**
 
-参见 [createColorPicker](#createcolorpicker)
+参见 createColorPicker

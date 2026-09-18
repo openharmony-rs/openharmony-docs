@@ -114,4 +114,4 @@ function getAutoUnlockAfterReboot(admin: Want | null): boolean
 
 **示例**
 
-参见 [getAutoUnlockAfterReboot](#getautounlockafterreboot)
+参见 getAutoUnlockAfterReboot

@@ -114,4 +114,4 @@ function getInstallationAllowedAppDistributionTypes(admin: Want | null): Array<A
 
 **示例**
 
-参见 [getInstallationAllowedAppDistributionTypes](#getinstallationallowedappdistributiontypes)
+参见 getInstallationAllowedAppDistributionTypes

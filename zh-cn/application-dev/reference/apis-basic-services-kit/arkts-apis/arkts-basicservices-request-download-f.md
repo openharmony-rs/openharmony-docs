@@ -105,4 +105,4 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 **示例**
 
-参见 [download](#download)
+参见 download

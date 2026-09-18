@@ -20,7 +20,7 @@ request: WebResourceRequest
 
 网页请求的封装信息。
 
-**类型：** [WebResourceRequest](../../apis-arkweb/arkts-components/arkts-arkweb-webresourcerequest-c.md)
+**类型：** WebResourceRequest
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ response: WebResourceResponse
 
 资源响应的封装信息。
 
-**类型：** [WebResourceResponse](../../apis-arkweb/arkts-components/arkts-arkweb-webresourceresponse-c.md)
+**类型：** WebResourceResponse
 
 **起始版本：** 12
 

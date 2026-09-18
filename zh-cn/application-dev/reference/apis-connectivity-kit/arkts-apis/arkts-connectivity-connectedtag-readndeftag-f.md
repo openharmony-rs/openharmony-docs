@@ -82,4 +82,4 @@ function readNdefTag(callback: AsyncCallback<string>): void
 
 **示例**
 
-参见 [readNdefTag](#readndeftag)
+参见 readNdefTag

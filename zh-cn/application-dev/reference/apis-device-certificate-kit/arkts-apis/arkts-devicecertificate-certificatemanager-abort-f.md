@@ -114,4 +114,4 @@ function abort(handle: Uint8Array): Promise<void>
 
 **示例**
 
-参见 [abort](#abort)
+参见 abort

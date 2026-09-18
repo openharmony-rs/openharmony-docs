@@ -110,4 +110,4 @@ function uninstallPrivateCertificate(keyUri: string): Promise<void>
 
 **示例**
 
-参见 [uninstallPrivateCertificate](#uninstallprivatecertificate)
+参见 uninstallPrivateCertificate

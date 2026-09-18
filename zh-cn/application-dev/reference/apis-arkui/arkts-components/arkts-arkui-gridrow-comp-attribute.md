@@ -4,7 +4,7 @@
 
 除支持[通用事件](arkts-arkui-commonmethod-c.md)外，还支持以下事件：
 
-**继承/实现关系：** GridRowAttribute extends CommonMethod<GridRowAttribute>
+**继承/实现关系：** GridRowAttribute extends CommonMethod&lt;GridRowAttribute&gt;
 
 **起始版本：** 9
 
@@ -44,7 +44,7 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 > **说明：** 
 > 
-> - 当[断点参照物](../../../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpointsreference枚举说明)设置为BreakpointsReference.ComponentSize时，不要在onBreakpointChange回调中动态修改GridRow组件的padding或margin属性值，否则可能导致组件尺寸计算循环触发、布局抖动或渲染性能下降。
+> - 当断点参照物设置为BreakpointsReference.ComponentSize时，不要在onBreakpointChange回调中动态修改GridRow组件的padding或margin属性值，否则可能导致组件尺寸计算循环触发、布局抖动或渲染性能下降。
 
 **起始版本：** 9
 

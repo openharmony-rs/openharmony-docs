@@ -12,7 +12,7 @@
 scrollStep?: number
 ```
 
-无障碍手势触发的无障碍滚动操作中的组件操作步数。默认值基于组件默认值。不支持的组件配置不生效。当前支持组件：slider，用于slider组件聚焦后通过手势上下扫动触发slider组件的滑动操作。滑动距离：scrollStep* [step](../../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions)。取值范围：[1, ([max](../../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions) - [min](../../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions))/[step](../../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions)]，默认值为1。超出取值范围时取默认值1；在取值范围内，scrollStep为非整数时向下取整。
+无障碍手势触发的无障碍滚动操作中的组件操作步数。默认值基于组件默认值。不支持的组件配置不生效。当前支持组件：slider，用于slider组件聚焦后通过手势上下扫动触发slider组件的滑动操作。滑动距离：scrollStep* step。取值范围：[1, (max - min)/step]，默认值为1。超出取值范围时取默认值1；在取值范围内，scrollStep为非整数时向下取整。
 
 **类型：** number
 

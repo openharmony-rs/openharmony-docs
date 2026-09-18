@@ -98,4 +98,4 @@ function hasOperatorPrivileges(slotId: number): Promise<boolean>
 
 **示例**
 
-参见 [hasOperatorPrivileges](#hasoperatorprivileges)
+参见 hasOperatorPrivileges

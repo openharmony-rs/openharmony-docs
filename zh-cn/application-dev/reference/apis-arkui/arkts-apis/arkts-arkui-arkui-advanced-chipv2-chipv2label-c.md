@@ -212,7 +212,7 @@ public modifier?: TextModifier
 
 默认值：undefined，不应用修饰器。
 
-**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** TextModifier
 
 **起始版本：** 26.0.0
 

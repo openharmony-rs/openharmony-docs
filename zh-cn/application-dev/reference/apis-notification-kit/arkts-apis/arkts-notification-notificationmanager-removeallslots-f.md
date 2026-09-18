@@ -107,4 +107,4 @@ function removeAllSlots(): Promise<void>
 
 **示例**
 
-参见 [removeAllSlots](#removeallslots)
+参见 removeAllSlots

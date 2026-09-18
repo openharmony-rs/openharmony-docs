@@ -4,7 +4,7 @@
 
 支持通用事件。
 
-**继承/实现关系：** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
+**继承/实现关系：** ColumnSplitAttribute extends CommonMethod&lt;ColumnSplitAttribute&gt;
 
 **起始版本：** 7
 

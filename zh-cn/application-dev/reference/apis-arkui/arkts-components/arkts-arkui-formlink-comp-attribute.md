@@ -4,7 +4,7 @@
 
 不支持通用事件。
 
-**继承/实现关系：** FormLinkAttribute extends CommonMethod<FormLinkAttribute>
+**继承/实现关系：** FormLinkAttribute extends CommonMethod&lt;FormLinkAttribute&gt;
 
 **起始版本：** 10
 

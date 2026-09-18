@@ -184,4 +184,4 @@ function deleteKeyItem(keyAlias: string, options: HuksOptions): Promise<void>
 
 **示例**
 
-参见 [deleteKeyItem](#deletekeyitem)
+参见 deleteKeyItem

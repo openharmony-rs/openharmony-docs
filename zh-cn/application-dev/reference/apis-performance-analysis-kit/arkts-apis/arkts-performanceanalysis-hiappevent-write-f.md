@@ -130,4 +130,4 @@ function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [write](#write)
+参见 write

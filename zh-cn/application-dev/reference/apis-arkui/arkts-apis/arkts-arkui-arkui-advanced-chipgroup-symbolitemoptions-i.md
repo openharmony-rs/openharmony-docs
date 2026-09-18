@@ -114,7 +114,7 @@ symbol: SymbolGlyphModifier
 
 尾部图标的SymbolGlyphModifier配置对象，用于设置图标的显示样式、渲染模式等。
 
-**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
+**类型：** SymbolGlyphModifier
 
 **起始版本：** 14
 

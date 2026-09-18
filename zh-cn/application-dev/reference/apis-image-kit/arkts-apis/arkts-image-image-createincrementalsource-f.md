@@ -122,4 +122,4 @@ function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): Ima
 
 **示例**
 
-参见 [CreateIncrementalSource](#createincrementalsource)
+参见 CreateIncrementalSource

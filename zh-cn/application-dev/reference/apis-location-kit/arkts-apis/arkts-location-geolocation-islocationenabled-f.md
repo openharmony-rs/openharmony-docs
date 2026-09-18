@@ -78,4 +78,4 @@ function isLocationEnabled(): Promise<boolean>
 
 **示例**
 
-参见 [isLocationEnabled](#islocationenabled)
+参见 isLocationEnabled

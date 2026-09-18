@@ -25,7 +25,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-depr-f.md#createformbindingdata) | 创建一个FormBindingData对象。 |
+| createFormBindingData | 创建一个FormBindingData对象。 |
 
 ### 接口
 

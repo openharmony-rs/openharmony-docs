@@ -103,4 +103,4 @@ function deleteKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 
 **示例**
 
-参见 [deleteKey](#deletekey)
+参见 deleteKey

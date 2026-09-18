@@ -86,4 +86,4 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 
 **示例**
 
-参见 [isApplicationEnabled](#isapplicationenabled)
+参见 isApplicationEnabled

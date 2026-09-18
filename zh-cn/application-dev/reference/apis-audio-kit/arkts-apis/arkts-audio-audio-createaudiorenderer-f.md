@@ -117,4 +117,4 @@ function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRender
 
 **示例**
 
-参见 [createAudioRenderer](#createaudiorenderer)
+参见 createAudioRenderer

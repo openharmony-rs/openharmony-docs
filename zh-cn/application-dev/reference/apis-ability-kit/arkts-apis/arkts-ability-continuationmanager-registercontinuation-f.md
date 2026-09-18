@@ -142,7 +142,7 @@ function registerContinuation(options: ContinuationExtraParams, callback: AsyncC
 
 **示例**
 
-参见 [registerContinuation](#registercontinuation)
+参见 registerContinuation
 
 
 ## registerContinuation
@@ -188,4 +188,4 @@ function registerContinuation(options?: ContinuationExtraParams): Promise<number
 
 **示例**
 
-参见 [registerContinuation](#registercontinuation)
+参见 registerContinuation

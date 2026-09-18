@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** FlexAttribute extends CommonMethod<FlexAttribute>
+**继承/实现关系：** FlexAttribute extends CommonMethod&lt;FlexAttribute&gt;
 
 **起始版本：** 7
 

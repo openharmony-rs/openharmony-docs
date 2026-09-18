@@ -136,7 +136,7 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 
 **示例**
 
-参见 [dumpJsRawHeapData](#dumpjsrawheapdata)
+参见 dumpJsRawHeapData
 
 
 ## dumpJsRawHeapData
@@ -190,4 +190,4 @@ function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boo
 
 **示例**
 
-参见 [dumpJsRawHeapData](#dumpjsrawheapdata)
+参见 dumpJsRawHeapData

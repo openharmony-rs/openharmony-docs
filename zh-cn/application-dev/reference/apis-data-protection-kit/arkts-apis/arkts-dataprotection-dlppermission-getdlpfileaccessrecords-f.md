@@ -92,4 +92,4 @@ function getDLPFileAccessRecords(callback: AsyncCallback<Array<AccessedDLPFileIn
 
 **示例**
 
-参见 [getDLPFileAccessRecords](#getdlpfileaccessrecords)
+参见 getDLPFileAccessRecords

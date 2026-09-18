@@ -4,7 +4,7 @@
 
 @extends CommonMethod&lt;StepperAttribute&gt;
 
-**继承/实现关系：** StepperAttribute extends CommonMethod<StepperAttribute>
+**继承/实现关系：** StepperAttribute extends CommonMethod&lt;StepperAttribute&gt;
 
 **起始版本：** 8
 

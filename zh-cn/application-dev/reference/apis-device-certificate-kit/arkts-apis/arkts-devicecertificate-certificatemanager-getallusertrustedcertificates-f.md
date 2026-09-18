@@ -120,4 +120,4 @@ function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>
 
 **示例**
 
-参见 [getAllUserTrustedCertificates](#getallusertrustedcertificates)
+参见 getAllUserTrustedCertificates

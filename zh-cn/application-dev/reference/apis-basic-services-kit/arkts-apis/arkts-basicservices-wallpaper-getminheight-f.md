@@ -79,4 +79,4 @@ function getMinHeight(): Promise<number>
 
 **示例**
 
-参见 [getMinHeight](#getminheight)
+参见 getMinHeight

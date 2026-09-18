@@ -138,7 +138,7 @@ function create(id: string, type: WindowType): Promise<Window>
 
 **示例**
 
-参见 [create](#create)
+参见 create
 
 
 ## create
@@ -177,7 +177,7 @@ function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>
 
 **示例**
 
-参见 [create](#create)
+参见 create
 
 
 ## create
@@ -212,4 +212,4 @@ function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncC
 
 **示例**
 
-参见 [create](#create)
+参见 create

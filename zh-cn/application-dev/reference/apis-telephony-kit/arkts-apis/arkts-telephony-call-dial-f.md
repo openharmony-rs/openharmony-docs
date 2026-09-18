@@ -22,7 +22,7 @@ function dial(phoneNumber: string, options: DialOptions, callback: AsyncCallback
 
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
+**替代接口：** dialCall
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -87,7 +87,7 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
+**替代接口：** dialCall
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -108,7 +108,7 @@ function dial(phoneNumber: string, options?: DialOptions): Promise<boolean>
 
 **示例**
 
-参见 [dial](#dial)
+参见 dial
 
 
 ## dial
@@ -127,7 +127,7 @@ function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [dialCall](arkts-telephony-call-dialcall-f-sys.md)
+**替代接口：** dialCall
 
 **需要权限：** ohos.permission.PLACE_CALL
 
@@ -142,4 +142,4 @@ function dial(phoneNumber: string, callback: AsyncCallback<boolean>): void
 
 **示例**
 
-参见 [dial](#dial)
+参见 dial

@@ -4,7 +4,7 @@
 
 支持[通用事件](arkts-arkui-commonmethod-c.md)。
 
-**继承/实现关系：** GaugeAttribute extends CommonMethod<GaugeAttribute>
+**继承/实现关系：** GaugeAttribute extends CommonMethod&lt;GaugeAttribute&gt;
 
 **起始版本：** 8
 

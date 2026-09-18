@@ -115,4 +115,4 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **示例**
 
-参见 [publish](#publish)
+参见 publish

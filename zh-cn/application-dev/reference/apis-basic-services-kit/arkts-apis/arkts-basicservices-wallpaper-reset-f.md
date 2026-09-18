@@ -90,4 +90,4 @@ function reset(wallpaperType: WallpaperType): Promise<void>
 
 **示例**
 
-参见 [reset](#reset)
+参见 reset

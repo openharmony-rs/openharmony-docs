@@ -122,4 +122,4 @@ function getOrientation(rotationMatrix: Array<number>): Promise<Array<number>>
 
 **示例**
 
-参见 [getOrientation](#getorientation)
+参见 getOrientation
