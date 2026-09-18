@@ -2551,7 +2551,7 @@ async function test(){
 
 setVolume(volume: number): void
 
-设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。
+调节当前播放的视频/音频的媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。此接口功能不对系统其他音量生效，如需调节其他音量（如系统音量、应用音量等）请参考[播放音量管理](../../media/audio/volume-management.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
