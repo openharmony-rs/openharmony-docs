@@ -154,7 +154,7 @@ enum OH_ImageSource_SVGResourceLimitLevel
 
 SVG资源限制级别的枚举。级别越高，解析和渲染SVG图片时允许使用的资源越少。无论指定哪个级别，系统资源限制都会生效。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -1027,7 +1027,7 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 
 设置图像源的SVG资源限制级别。此函数仅对SVG格式图片生效。必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，设置的资源限制会在DOM解析和渲染阶段生效。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -1054,7 +1054,7 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 
 获取图像源的SVG资源限制级别。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

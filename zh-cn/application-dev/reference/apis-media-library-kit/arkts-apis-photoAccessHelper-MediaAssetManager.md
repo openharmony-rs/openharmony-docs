@@ -540,7 +540,7 @@ static requestCompositeAuxiliaryImageData(context: Context, asset: PhotoAsset, d
 
 AI增强会额外产生一张图片，该图片与原始图组成复合图。复合图中额外产生的图片默认用于显示，另一张原始图称为辅助图。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 

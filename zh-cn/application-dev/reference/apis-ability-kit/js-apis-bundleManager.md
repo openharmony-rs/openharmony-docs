@@ -242,7 +242,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 应用安装状态枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1954,7 +1954,7 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 
 获取指定应用的安装状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
