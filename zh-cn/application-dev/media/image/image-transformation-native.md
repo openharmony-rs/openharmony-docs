@@ -119,12 +119,13 @@ EXTERN_C_END
 
 1. 打开src\main\cpp\types\libentry\index.d.ts(其中libentry根据工程名生成)，导入如下引用文件：
 
-    ```js
-    import { image } from '@kit.ImageKit';
-    export const testGetImageInfo: (a: image.PixelMap) => image.PixelMap;
-    export const testAccessPixels: (a: image.PixelMap) => image.PixelMap;
-    export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
-    ```
+   <!-- @[ndk_pixelmap_js_export_image_transformation_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/NdkPixelMap_js/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+   ```js
+   export const testGetImageInfo: (a: image.PixelMap) => image.PixelMap;
+   export const testAccessPixels: (a: image.PixelMap) => image.PixelMap;
+   export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
+   ```
 
 2. 打开src\main\ets\pages\index.ets，导入"libentry.so"(根据工程名生成)；调用Native接口，传入JS的资源对象。示例如下：
 
