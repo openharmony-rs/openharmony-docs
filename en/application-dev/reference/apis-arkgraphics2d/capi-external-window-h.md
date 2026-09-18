@@ -12,9 +12,9 @@
 
 This file declares the functions for obtaining and using **NativeWindow**.
 
-<!--RP1-->
+<!--Del-->
 
-**Sample**: [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--RP1End-->
+**Sample**: [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--DelEnd-->
 
 **File to include**: <native_window/external_window.h>
 
