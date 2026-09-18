@@ -174,7 +174,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 |<!--DelRow-->ArkUI | [@ohos.window (Window) (System API)](../apis-arkui/js-apis-window-sys.md)  |
 |<!--DelRow-->Audio Kit| [@ohos.multimedia.audio (Audio Management) (System API)](../apis-audio-kit/js-apis-audio-sys.md) |
 |<!--DelRow-->AVSession Kit| [@ohos.multimedia.avsession (AVSession Management) (System API)](../apis-avsession-kit/js-apis-avsession-sys.md)  |
-| Background Tasks Kit| [@ohos.reminderAgent (Agent-powered Reminder)](..//apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
+| Background Tasks Kit| [@ohos.reminderAgent (Agent-powered Reminder)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md) |
 | Background Tasks Kit| [@ohos.reminderAgentManager (Agent-Powered Reminders)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md) |
 | Basic Services Kit| [@ohos.account.appAccount (App Account Management)](../apis-basic-services-kit/js-apis-appAccount.md) |
 | Basic Services Kit | [@ohos.account.distributedAccount (Distributed Account Management)](../apis-basic-services-kit/js-apis-distributed-account.md) |

@@ -121,7 +121,7 @@ Adds the following fields to the **module.json5** file that jointly specify the 
 
 ### Graphics
 
-Adds the C APIs, including functions and enums, for offering GPU rendering capabilities for direct drawing to the screen buffer. ([API Reference]((https://gitcode.com/openharmony/docs/blob/OpenHarmony-5.1.0-Release/en/application-dev/reference/apis-arkgraphics2d/drawing__path__effect_8h.md))
+Adds the C APIs, including functions and enums, for offering GPU rendering capabilities for direct drawing to the screen buffer. ([API Reference]((https:/gitcode.com/openharmony/docs/blob/OpenHarmony-5.1.0-Release/en/application-dev/reference/apis-arkgraphics2d/drawing__path__effect_8h.md))
 
 
 ### Distributed Data Management
