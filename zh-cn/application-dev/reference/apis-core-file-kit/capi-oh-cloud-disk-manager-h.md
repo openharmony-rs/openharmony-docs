@@ -156,6 +156,19 @@ enum CloudDisk_SyncFolderState
 | INACTIVE = 0 | 表示同步根路径的状态是未激活的。 |
 | ACTIVE = 1 | 表示同步根路径的状态是激活的。 |
 
+## 宏定义说明
+
+### OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1
+
+```c
+#define OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1
+```
+
+**描述**
+
+[OH_CloudDisk_SyncFolderEx](capi-clouddisk-clouddisk-syncfolderex.md)服务的版本1。当结构体被扩展时，将定义新的版本宏。运行库使用版本字段确定哪些字段有效
+
+**起始版本：** 26.1.0
 
 ## 函数说明
 
