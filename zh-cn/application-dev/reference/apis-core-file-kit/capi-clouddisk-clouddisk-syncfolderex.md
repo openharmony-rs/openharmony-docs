@@ -26,7 +26,7 @@ typedef struct OH_CloudDisk_SyncFolderEx {...} OH_CloudDisk_SyncFolderEx
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t version | 指示此结构体的版本。必须初始化为有效的版本宏，例如 [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#%E5%AE%8F%E5%AE%9A%E4%B9%89)。<br>**起始版本：** 26.1.0 |
+| uint32_t version | 指示此结构体的版本。必须初始化为有效的版本宏，例如 [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义)。<br>**起始版本：** 26.1.0 |
 | CloudDisk_SyncFolderPath path | sync文件夹路径。<br>**起始版本：** 26.1.0 |
 | [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 指示同步文件夹的状态。<br>**起始版本：** 26.1.0 |
 | [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步文件夹的displayName信息。<br>**起始版本：** 26.1.0 |
