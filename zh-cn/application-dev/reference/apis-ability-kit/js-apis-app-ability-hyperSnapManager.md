@@ -30,7 +30,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 表示快启发生错误的场景，用户可以传入不同的错误场景枚举值来获取快启不同场景发生的错误信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -45,7 +45,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 表示快启发生错误的错误码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,7 +66,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 描述快启的错误信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -174,7 +174,7 @@ getLastError(errType: HyperSnapErrorType): Promise&lt;HyperSnapErrorInfo&gt;
 > - 若指定场景未发生过错误，则返回的errorInfo中code的值为ERR_OK，occurTimeStamp的值为0。
 > - 只保留应用最后一次快启相关错误，不区分具体是哪一个快照。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

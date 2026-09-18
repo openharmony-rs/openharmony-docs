@@ -1662,9 +1662,9 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 >
 > 使用该接口会立刻创建目标navDestination节点，并触发其所在自定义节点的[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)与[onDidBuild](ts-custom-component-lifecycle.md#ondidbuild12)生命周期。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2264,9 +2264,9 @@ Navigation分割线颜色及上下边距。
 
 预加载页面选项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2289,8 +2289,8 @@ Navigation配置项。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| recyclePagesOnLowMemory | boolean | 否 | 是 | 是否在收到低内存信号时回收不可见页面。<br/>默认值：false<br/>true：收到低内存信号时回收不可见的NavDestination页面实例，NavPathInfo会保留，页面后续可被重新创建。<br/>false：收到低内存信号时不回收不可见的NavDestination页面实例。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/> |
-| clearContentStackOnPrimaryNavigation | boolean | 否 | 是 | 是否开启Navigation左起右清栈能力。<br/>默认值：false。值为true时表示开启左起右清栈能力，值为false时表示关闭左起右清栈能力。<br/>**左起右清栈能力说明：**<br/>Navigation显示为split模式时，如果用户在主页侧（NavBar或者是主页NavDestination）的操作（比如点击页面中的按钮等）触发了页面跳转，那么Navigation页面栈中第一个新创建的页面之前的页面会被系统清除，只保留第一个新创建的页面及其之后的页面。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| recyclePagesOnLowMemory | boolean | 否 | 是 | 是否在收到低内存信号时回收不可见页面。<br/>默认值：false<br/>true：收到低内存信号时回收不可见的NavDestination页面实例，NavPathInfo会保留，页面后续可被重新创建。<br/>false：收到低内存信号时不回收不可见的NavDestination页面实例。<br/>**起始版本：** 26.0.1<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br/> |
+| clearContentStackOnPrimaryNavigation | boolean | 否 | 是 | 是否开启Navigation左起右清栈能力。<br/>默认值：false。值为true时表示开启左起右清栈能力，值为false时表示关闭左起右清栈能力。<br/>**左起右清栈能力说明：**<br/>Navigation显示为split模式时，如果用户在主页侧（NavBar或者是主页NavDestination）的操作（比如点击页面中的按钮等）触发了页面跳转，那么Navigation页面栈中第一个新创建的页面之前的页面会被系统清除，只保留第一个新创建的页面及其之后的页面。<br/>**起始版本：** 26.0.1<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -5898,7 +5898,7 @@ struct NavigationTitleMaterialDemo {
 
 该示例演示如何使用clearContentStackOnPrimaryNavigation属性，开启Navigation左起右清栈效果。
 
-从API版本26.1.0开始，[NavigationConfiguration](#navigationconfiguration)新增了clearContentStackOnPrimaryNavigation属性。
+从API版本26.0.1开始，[NavigationConfiguration](#navigationconfiguration)新增了clearContentStackOnPrimaryNavigation属性。
 
 ```ts
 // xxx.ets

@@ -2090,7 +2090,7 @@ napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 
 获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

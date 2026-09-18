@@ -2184,7 +2184,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 >
 > 5. 本接口用于设置用户可选择的设备安全级别范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -2237,7 +2237,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 >
 > 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -2379,7 +2379,7 @@ try {
 
 设备安全级别策略枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

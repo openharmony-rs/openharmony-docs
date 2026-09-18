@@ -913,7 +913,7 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 通行码提交回调函数类型。应用通过此回调将用户输入的通行码提交给系统。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -931,7 +931,7 @@ type PasscodeSubmitCallback = (passcode: Uint8Array) => void
 
 通行码输入请求的参数，用于传递挑战值等上下文信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -949,7 +949,7 @@ type PasscodePromptCallback = (submit: PasscodeSubmitCallback, params: PasscodeP
 
 通行码请求回调函数类型。当系统需要用户输入通行码时，会调用此回调，应用需通过submit回调提交用户输入的通行码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -970,7 +970,7 @@ registerPasscodePromptCallback(callback: PasscodePromptCallback): void
 
 注册通行码请求回调。系统请求通行码时会调用此回调。若已注册过回调，新的回调将替换原有回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -1019,7 +1019,7 @@ unregisterPasscodePromptCallback(): void
 
 取消注册通行码请求回调。取消后，系统将不再调用应用注册的通行码请求回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 

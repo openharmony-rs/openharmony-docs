@@ -5762,7 +5762,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachm
 
 设置图片样式中的图片拉伸切片。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -5791,7 +5791,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageA
 
 获取图片样式中的图片拉伸切片。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -5820,7 +5820,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(
 
 设置图片样式中的图片拉伸栅格。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -5846,7 +5846,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(
 
 获取图片样式中的图片拉伸栅格。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

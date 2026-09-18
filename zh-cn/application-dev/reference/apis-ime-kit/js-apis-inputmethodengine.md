@@ -120,7 +120,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_NEW_PASSWORD<sup>20+</sup> | number | 11 | 新密码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_NUMBER_DECIMAL<sup>20+</sup> | number | 12 | 带小数点的数字编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | 验证码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
-| PATTERN_ONE_TIME_CODE_NUMBER | number | 15 | 数字验证码编辑框。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| PATTERN_ONE_TIME_CODE_NUMBER | number | 15 | 数字验证码编辑框。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | OPTION_ASCII | number | 20 | 允许输入ASCII值。 |
 | OPTION_NONE | number | 0 | 不指定编辑框输入属性。 |
 | OPTION_AUTO_CAP_CHARACTERS | number | 2 | 允许输入字符。 |
@@ -3137,7 +3137,7 @@ keyboardController.hideKeyboard().then(() => {
 
 exitCurrentInputType(callback: AsyncCallback&lt;void&gt;): void
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.1.0开始，支持提供系统级输入能力的输入法应用调用。使用callback异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3174,7 +3174,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 exitCurrentInputType(): Promise&lt;void&gt;
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.1.0开始，支持提供系统级输入能力的输入法应用调用。使用promise异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
