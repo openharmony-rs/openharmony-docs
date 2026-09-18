@@ -25,7 +25,7 @@
      * 14800033 - SQLite: Data type mismatch.
      * 14800034 - SQLite: Library used incorrectly.
 
-     变更后的错误码详细介绍请参见[关系型数据库错误码](../../../application-dev/reference/apis-arkdata/errorcode-data-rdb.md)。
+     变更后的错误码详细介绍请参见[关系型数据库错误码](../../../application-dev/reference//apis-arkdata/errorcode-data-rdb.md)。
 
 **变更影响**
 

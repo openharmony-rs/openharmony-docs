@@ -8,7 +8,7 @@ Other
 
 **Reason for Change**
 
-A sendable object must comply with the [usage rules](../../../application-dev/arkts-utils/arkts-sendable.md#sendable-usage-rules), and a shared module must comply with the [specifications](../../../application-dev/arkts-utils/arkts-sendable-module.md#specifications). In export scenarios where some constraints should be made, the compiler does not check for the restrictions. As a result, a runtime exception occurs, but no compilation error is reported. In this version update, a compile-time check is added for these constraints. You can find the code that fails to meet the sendable and shared module usage constraints earlier through compile-time errors or warnings, reducing fault locating costs at the runtime.
+A sendable object must comply with the [usage rules](../../..//application-dev/arkts-utils/arkts-sendable.md#sendable-usage-rules), and a shared module must comply with the [specifications](../../..//application-dev/arkts-utils/arkts-sendable-module.md#specifications). In export scenarios where some constraints should be made, the compiler does not check for the restrictions. As a result, a runtime exception occurs, but no compilation error is reported. In this version update, a compile-time check is added for these constraints. You can find the code that fails to meet the sendable and shared module usage constraints earlier through compile-time errors or warnings, reducing fault locating costs at the runtime.
 
 **Change Impact**
 
