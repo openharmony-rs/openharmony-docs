@@ -76,6 +76,14 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 
 播放状态改变的回调函数。
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | 设置的播放状态。 |
+| void* userData | 传递的用户数据。 |
+
 **起始版本：** 23
 
 ### OH_AVCastControllerCallback_MediaItemChange()
@@ -90,6 +98,14 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(O
 
 **起始版本：** 23
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)* avQueueItem | 设置音视频队列项。 |
+| void* userData | 传递的用户数据。 |
+
 ### OH_AVCastControllerCallback_PlayNext()
 
 ```c
@@ -101,6 +117,13 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayNext)(OH_AVCas
 播放下一首的回调函数。
 
 **起始版本：** 23
+
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| void* userData | 传递的用户数据。 |
 
 ### OH_AVCastControllerCallback_PlayPrevious()
 
@@ -114,6 +137,13 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayPrevious)(OH_A
 
 **起始版本：** 23
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| void* userData | 传递的用户数据。 |
+
 ### OH_AVCastControllerCallback_SeekDone()
 
 ```c
@@ -125,6 +155,14 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_SeekDone)(OH_AVCas
 跳转完成的回调函数。
 
 **起始版本：** 23
+
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| int32_t position | 跳转后的位置。 |
+| void* userData | 传递的用户数据。 |
 
 ### OH_AVCastControllerCallback_EndOfStream()
 
@@ -138,6 +176,13 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_EndOfStream)(OH_AV
 
 **起始版本：** 23
 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| void* userData | 传递的用户数据。 |
+
 ### OH_AVCastControllerCallback_Error()
 
 ```c
@@ -149,6 +194,14 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_Error)(OH_AVCastCo
 播放错误的回调函数。
 
 **起始版本：** 23
+
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | OH_AVCastController实例指针。 |
+| void* userData | 传递的用户数据。 |
+| [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) error | 投播播放错误码。 |
 
 ### OH_AVCastController_Destroy()
 
