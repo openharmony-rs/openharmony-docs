@@ -54,6 +54,7 @@ import {
   BaseGestureHandlingProposal,
   GestureHandlingResolution,
   ScrollActionProposal,
+  GestureShortcut,
 } from '@kit.ArkUI';
 
 @Entry
