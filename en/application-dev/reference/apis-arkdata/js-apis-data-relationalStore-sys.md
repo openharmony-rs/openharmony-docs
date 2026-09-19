@@ -1310,61 +1310,6 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
 }
 ```
 
-### requestFullDataDonation<sup>26+</sup>
-
-requestFullDataDonation(tables: Array&lt;string&gt;): Promise&lt;void&gt;
-
-主动触发指定分布式表的全量数据捐赠，使用Promise异步回调。
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**参数：**
-
-| 参数名      | 类型                                  | 必填  | 说明              |
-| -------- | ----------------------------------- | --- |-----------------|
-| tables   | Array&lt;string&gt;                 | 是   | 要全量捐赠的分布式数据库的表名。  |
-| callback | AsyncCallback&lt;void&gt;           | 是   | 回调函数。当设置分布式列表成功，err为undefined，否则为错误对象。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
-
-| **错误码ID** | **错误信息**                                                             |
-| ------------ | ----------------------------------------------------------------------- |
-| 202          | Permission verification failed. A non-system application calls a system API.|
-| 14800001     | Invalid arguments. Parameter out of range or empty table list.  |
-| 14800014     | The target instance is already closed.                            |
-| 14800043     | The database does not support this scenario.|
-
-**示例：**
-
-```ts
-import { relationalStore } from '@kit.ArkData';
-
-let store: relationalStore.RdbStore | null = null;
-async function requestFullDataDonationExample() 
-{
-  if (store === null) {
-    console.error('RdbStore is null.');
-    return;
-  }
-  try {
-    const tables: Array<string> = ['EMPLOYEE'];
-    await store.requestFullDataDonation(tables);
-    console.info('Full data donation request submitted successfully.');
-  } catch (e) {
-    const error = e as Error;
-    console.error(`Failed to request full data donation, code: ${error.message}`);
-  }
-}
-```
-
 ## cleanDeviceDirtyData
 
 cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
