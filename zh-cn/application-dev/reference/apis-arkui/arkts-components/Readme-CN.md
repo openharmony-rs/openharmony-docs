@@ -1711,7 +1711,7 @@
   - [MenuItemConfiguration](arkts-arkui-menuitemconfiguration-i.md)
   - [MenuOutlineOptions](arkts-arkui-menuoutlineoptions-i.md)
   - [SelectOption](arkts-arkui-selectoption-i.md)
-  - [OnSelectCallback](arkts-arkui-onselectcallback-t-2.md)
+  - [OnSelectCallback](arkts-arkui-onselectcallback-t-1.md)
   - [ArrowPosition](arkts-arkui-arrowposition-e.md)
   - [AvoidanceMode](arkts-arkui-avoidancemode-e.md)
   - [MenuAlignType](arkts-arkui-menualigntype-e.md)
