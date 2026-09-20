@@ -9460,3 +9460,15 @@ Allows an application to get information related to instrument cluster personali
 **Supported devices**: cars
 
 **Valid since**: 26.0.1
+
+## ohos.permission.SET_DSL_MODE
+
+Allows an application to modify the device security level (DSL) configuration.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Valid since**: 26.2.0

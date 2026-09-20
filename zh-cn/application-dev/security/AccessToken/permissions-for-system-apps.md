@@ -9491,3 +9491,15 @@
 **支持设备**：Car
 
 **起始版本**：26.0.1
+
+## ohos.permission.SET_DSL_MODE
+
+允许应用修改DSL（Device security level）配置。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**起始版本**：26.2.0
