@@ -508,7 +508,7 @@ With this permission, the application can capture capture USB packets only after
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.kernel.NET_RAW
 
