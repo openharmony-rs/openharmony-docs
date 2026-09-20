@@ -85,7 +85,7 @@ createKVManager(config: KVManagerConfig): Promise&lt;KVManager&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ------ | ------ |
-| config |[KVManagerConfig](#kvmanager) | 是  | 提供KVManager实例的配置信息，包括调用方的包名和用户信息。 |
+| config |[KVManagerConfig](#kvmanagerconfig) | 是  | 提供KVManager实例的配置信息，包括调用方的包名和用户信息。 |
 
 **返回值：**
 
@@ -3184,10 +3184,10 @@ getEntries(query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 **参数：**
 
-| 参数名  | 类型 | 必填  | 说明                    |
-| -----  | ------  | ----  | ----------------------- |
-| query  |[Query](#query8)   | 是    |表示要匹配的键前缀。  |
-| callback  |AsyncCallback&lt;[Entry](#entry)[]&gt;   | 是    |回调函数。返回与指定Query对象匹配的键值对列表。  |
+| 参数名  | 类型 | 必填  | 说明                  |
+| -----  | ------  | ----  | --------------------- |
+| query  |[Query](#query8)   | 是    |表示查询对象。  |
+| callback  |AsyncCallback&lt;[Entry](#entry)[]&gt;   | 是    |回调函数。返回与指定Query对象匹配的键值对列表。 |
 
 **示例：**
 
