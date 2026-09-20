@@ -127,7 +127,7 @@ onFaultReportReady(): void
 | ArkUI | [@ohos.window (Window)](../apis-arkui/arkts-apis-window.md)|
 | AudioKit | [@ohos.multimedia.audio (Audio Management)](../apis-audio-kit/arkts-apis-audio.md)|
 | BackgroundTasksKit | [@ohos.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)|
-| BackgroundTasksKit | [@ohos.reminderAgent (reminderAgent)](..//apis-backgroundtasks-kit/js-apis-reminderAgent.md)|
+| BackgroundTasksKit | [@ohos.reminderAgent (reminderAgent)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md)|
 | BackgroundTasksKit | [@ohos.reminderAgentManager (Agent-Powered Reminders)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)|
 | BackgroundTasksKit | [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)|
 | BasicServicesKit | [@ohos.power (System Power Management)](../apis-basic-services-kit/js-apis-power.md)|
