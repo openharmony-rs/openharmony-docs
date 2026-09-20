@@ -444,6 +444,27 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 14. 不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
 
+15. 在使用globalConnect持久化[集合类型](#globalconnect支持的集合类型)（如`Array`、`Map`、`Set`、`collections.Array`、`collections.Map`、`collections.Set`）时，若容器内部元素类型为基础类型（如`number`、`string`、`boolean`），则不应声明`defaultSubCreator`，否则会导致编辑、编译报错。
+
+    `defaultSubCreator`的类型为`StorageDefaultCreator<S>`，其泛型参数`S`受`S extends object`约束，而`number`、`string`、`boolean`等基础类型在ArkTS中不继承自`object`，无法满足该约束，因此当容器内部元素类型为基础类型时，声明`defaultSubCreator`将导致编辑、编译报错。
+    
+    当容器内部元素类型为自定义`class`类型（即继承自`object`的引用类型）时，才需要声明`defaultSubCreator`，用于通知状态管理框架如何创建容器内的对象项。如下示例以`Array<number>`为例展示正反用法：
+
+    ```typescript
+    // 反例：容器内元素类型为基础类型number，声明defaultSubCreator会导致编辑、编译报错
+    @Local arr1: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>()),
+      defaultSubCreator: () => 10
+    })!;
+
+    // 正例：容器内元素类型为基础类型number，不声明defaultSubCreator
+    @Local arr2: Array<number> = PersistenceV2.globalConnect({
+      type: Array<number>,
+      defaultCreator: () => UIUtils.makeObserved(new Array<number>())
+    })!;
+    ```
+
 ## globalConnect支持的类型
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
