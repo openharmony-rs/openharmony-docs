@@ -1294,3 +1294,21 @@ The number of signed-in accounts reaches the upper limit.
 **处理步骤**
 
 尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。
+
+## 9201055 获取USB设备序列号失败
+
+**错误信息**
+
+Failed to obtain the USB serial number.
+
+**错误描述**
+
+获取指定USB设备序列号失败。
+
+**可能原因**
+
+USB设备未连接或不支持序列号获取。
+
+**处理步骤**
+
+重新拔插USB设备，再尝试获取序列号。
