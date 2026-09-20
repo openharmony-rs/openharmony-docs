@@ -338,20 +338,19 @@ registerSessionEvent(sessionId: number) {
 
 <!-- @[disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
+``` TypeScript
+disconnectRemoteAbility(): void {
   hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
   if (this.sessionId == -1) {
     hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-  return;
+    return;
   }
   abilityConnectionManager.disconnect(this.sessionId);
 
   hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
   abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
-  ```
+}
+```
 
 
 ### 调测验证
