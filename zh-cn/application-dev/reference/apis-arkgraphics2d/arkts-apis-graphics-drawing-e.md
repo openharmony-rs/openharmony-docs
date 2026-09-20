@@ -389,3 +389,14 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | TRIANGLES_VERTEXMODE           | 0    | 顶点按顺序每三个一组，分别构成独立的三角形。 |![TRIANGLES_VERTEXMODE](figures/Triangles-VertexMode.png) |
 | TRIANGLESSTRIP_VERTEXMODE          | 1    | 连续的三角形共享一条边，对于连续表面效率高。 |![TRIANGLESSTRIP_VERTEXMODE](figures/TrianglesStrip-VertexMode.png) |
 | TRIANGLESFAN_VERTEXMODE       | 2    | 所有三角形共享一个顶点。适用于绘制圆形/扇形的场景。   |![TRIANGLESFAN_VERTEXMODE](figures/TrianglesFan-VertexMode.png) |
+
+## AtlasInterpolationMode
+
+精灵图序列帧动画的插值模式枚举。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称        | 值   | 说明                                                         |
+| ----------- | ---- | ------------------------------------------------------------ |
+| NONE        | 0    | 无插值。每一帧作为独立步骤单独显示。                          |
+| FRAME_BLEND | 1    | 帧间插值。在相邻帧之间进行平滑过渡。                          |
