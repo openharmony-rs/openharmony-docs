@@ -358,23 +358,6 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 > 设置POPUP_SHEET避让方式时，半模态只避让由面板内的文本框组件拉起的软键盘场景，其他场景半模态无需避让。
 >
 
-## SheetTitleBarBackgroundBlur
-
-标题栏背景模糊样式枚举。
-
-**起始版本：** 26.0.1
-
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称      | 值 | 说明           |
-| ------- | ---- | -------- |
-| NONE | 0 | 无模糊效果。  |
-| GRADIENT    | 1 | 渐变模糊，从标题栏顶部向下渐变至透明。 |
-
 ## SheetTitleBarHoverMode
 
 标题栏悬浮模式枚举。
