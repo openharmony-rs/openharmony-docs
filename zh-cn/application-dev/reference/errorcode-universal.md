@@ -27,9 +27,9 @@ Permission verification failed. The application does not have the permission req
 
 **处理步骤**
 
-1. 在配置文件中补充接口依赖的权限。
+1. 在配置文件中补充接口依赖的权限。具体请[参考](../security/AccessToken/declare-permissions.md)。
 
-2. 针对敏感权限增加动态申请逻辑。
+2. 针对敏感权限增加动态申请逻辑。具体请[参考](../security/AccessToken/request-user-authorization.md)。
 
 3. 确保调用方应用身份符合接口权限要求。
 
@@ -84,8 +84,8 @@ Access denied due to user access control policy. Possible causes:
 
 **可能原因**
 
-1. 用户约束策略禁止执行此操作。
-2. 调用方无执行此操作的特权。
+1. 系统账号约束禁止此操作。
+2. 执行此操作所需的特权已过期或未被授予。
 
 **处理步骤**
 
@@ -156,7 +156,7 @@ Capability not supported. Possible causes: 1. The hardware does not support the 
 
 **可能原因**
 
-可能出现该错误码的场景为：硬件不支持，芯片不支持，依赖的业务特性不支持。
+可能出现该错误码的场景为：硬件不支持或依赖的业务特性不支持。
 
 **处理步骤**
 
@@ -181,24 +181,5 @@ The service is unavailable in the current country or region.
 **处理步骤**
 
 应用应捕获错误，对服务提供的功能进行隔离，避免影响用户体验。可以进一步查询开发者资料获取Kit支持的国家和地区信息。
-
-## 804 API 不支持模拟器使用
-
-**错误信息**
-
-The capability is not supported on the emulator at this time.
-
-**错误描述**
-
-模拟器暂不支持此API，请在真实设备上调测。
-
-**可能原因**
-
-1. 模拟器暂未实现此API，将在后续版本实现。
-2. 此API涉及硬件交互，模拟器无法实现。
-
-**处理步骤**
-
-在真实设备上调用API接口不会返回804错误码，应用正式代码可不用处理，请在真实设备上调测。
 
 <!--RP1--><!--RP1End-->
