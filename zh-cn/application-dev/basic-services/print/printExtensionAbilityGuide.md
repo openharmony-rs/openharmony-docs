@@ -28,11 +28,13 @@
     在工程entry Module对应的ets目录（./entry/src/main/ets）下，新建目录及ArkTS文件。例如新建一个目录并命名为PrintExtensionAbility，在PrintExtensionAbility目录下，新建一个ArkTS文件并命名为MyPrintExtension.ets，用以实现打印扩展能力接口。
 
 2. 打开MyPrintExtension.ets文件，导入模块。
+    <!-- @[print_extension_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets) -->
     ```ts
     import { PrintExtensionAbility } from '@kit.BasicServicesKit';
     ```
 
 3. 实现PrintExtensionAbility提供的接口。
+    <!-- @[print_extension_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets) -->
     ```ts
     import { PrintExtensionAbility } from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
