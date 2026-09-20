@@ -222,13 +222,11 @@ The scope font is not found.
 
 **可能原因**
 
-1. 尚未安装scope字体或调用方bundleName与字体所有者不匹配。
-2. URL与已安装的scope字体不匹配。
+未安装该字体或字体路径（url）输入错误。
  
 **处理步骤**
 
-1. 请确认应用是否安装此scope字体，查询、卸载前需先调用[installScopeFont](js-apis-font-manager.md#installscopefont)安装字体。
-2. 请检查URL是否正确。
+请检查应用是否安装此字体，以及检查字体路径（url）是否正确。
 
 ## 31100113 字体服务状态监听器已注册
 
@@ -256,17 +254,17 @@ The maximum number of font observers has been reached.
 
 **错误描述**
 
-同一用户下注册的字体服务状态监听器数量超过最大限制（5个）。
+同一用户下注册的字体服务状态变化监听器数量超过最大限制（5个）。
 
 **可能原因**
 
-同一用户下已有5个不同应用注册了字体服务状态监听器。
+同一用户下已有5个不同应用注册了字体服务状态变化监听器。
 
 **处理步骤**
 
-请等待其他应用注销字体服务状态监听器后再重试。
+请等待其他应用注销字体服务状态变化监听器后再重试。
 
-## 31100115 字体服务状态监听器未注册
+## 31100115 字体服务状态变化监听器未注册
 
 **错误信息**
 
@@ -274,12 +272,14 @@ The font observer is not registered.
 
 **错误描述**
 
-安装应用级字体或注销字体服务状态监听器时，该字体服务状态监听器未注册。
+安装应用级字体或注销字体服务状态变化监听器时，该字体服务状态变化监听器未注册。
 
 **可能原因**
 
-应用未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器，或字体服务状态监听器已注销。
+1、调用[installScopeFont](js-apis-font-manager.md#installScopeFont)接口安装应用级字体时，未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)接口注册字体服务状态变化监听器。
+2、调用[offFontObserver](js-apis-font-manager.md#offfontobserver)接口注销字体服务状态变化监听器时，未注册监听器或监听器已被注销。
 
 **处理步骤**
 
-请先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器后再执行[installScopeFont](js-apis-font-manager.md#installScopeFont)安装应用级字体或[offFontObserver](js-apis-font-manager.md#offfontobserver)注销字体服务状态监听器。
+1、调用[installScopeFont](js-apis-font-manager.md#installScopeFont)接口安装应用级字体前，需先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)接口注册字体服务状态变化监听器。
+2、调用[offFontObserver](js-apis-font-manager.md#offfontobserver)接口注销字体服务状态变化监听器前，需确保已注册监听器且未被注销。
