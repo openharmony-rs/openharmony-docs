@@ -27,8 +27,8 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 | `-w {WinId} {ArkUI option}` | 查看指定窗口的ArkUI渲染信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI节点数量、渲染状态等信息。 |
 | `-p` | 查看窗口父子树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构等问题。 |
 | `-c` | 查看窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息）。 |
-| `-user all` | 查看所有前台用户的窗口信息 | `hidumper -s WindowManagerService -a '-user all -a'` | 多用户或多屏多用户场景下，需要分用户查看所有用户各自的窗口信息。<br><!--PR1-->针对搭载OpenHarmony 7.1及以上版本的设备，新增支持-user参数。<!--PR1End--> |
-| `-user {userId}` | 查看指定用户的窗口信息 | `hidumper -s WindowManagerService -a '-user 100 -a'` | 多用户场景下，已知用户ID，需要查看特定用户名下的窗口信息。<br><!--PR1-->针对搭载OpenHarmony 7.1及以上版本的设备，新增支持-user参数。<!--PR1End--> |
+| `-user all` | 查看所有前台用户的窗口信息 | `hidumper -s WindowManagerService -a '-user all -a'` | 多用户或多屏多用户场景下，需要分用户查看所有用户各自的窗口信息。<br><!--RP2-->针对搭载OpenHarmony 7.1及以上版本的设备，新增支持此参数。<!--RP2End--> |
+| `-user {userId}` | 查看指定用户的窗口信息 | `hidumper -s WindowManagerService -a '-user 100 -a'` | 多用户场景下，已知用户ID，需要查看特定用户名下的窗口信息。<br><!--RP2-->针对搭载OpenHarmony 7.1及以上版本的设备，新增支持此参数。<!--RP2End--> |
 
 > **说明：**
 >
