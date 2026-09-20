@@ -790,6 +790,8 @@ struct MaskDispersion {
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
         this.pixelMap = pixelMap;
+      }).finally(() => {
+        imageSource.release();
       })
     })
   }
@@ -918,7 +920,7 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 
 | 类型              | 说明                               |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | 返回挂载了由置换贴图控制的光照效果的Filter。 |
+| [Filter](#filter) | 返回挂载了由置换贴图控制的平行光照效果的Filter。 |
 
 **错误码：**
 
@@ -1131,6 +1133,8 @@ struct BlurBubblesRiseExample {
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
+        }).finally(() => {
+          imageSource.release();
         });
       });
   }
@@ -1970,11 +1974,10 @@ struct Index {
         return undefined;
       }
       const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
+      imageSource.release();
       if (!pixelMap) {
-        imageSource.release();
         return undefined;
       }
-      imageSource.release();
       return pixelMap;
     } catch (err) {
       return undefined;

@@ -748,6 +748,8 @@ struct MaskDispersion {
       let imageSource = image.createImageSource(buffer);
       imageSource.createPixelMap().then(pixelMap => {
         this.pixelMap = pixelMap;
+      }).finally(() => {
+        imageSource.release();
       })
     })
   }
@@ -880,7 +882,7 @@ Provides an illumination effect based on [Mask](#mask20) and parallel light for 
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter that mounts the lighting effect controlled by the displacement map.|
+| [Filter](#filter) | Returns the filter that mounts the parallel lighting effect controlled by the displacement map.|
 
 **Error codes**
 
@@ -1095,6 +1097,8 @@ struct BlurBubblesRiseExample {
         let imageSource: image.ImageSource = image.createImageSource(buffer);
         imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
           this.maskImage = pixelmap as PixelMap;
+        }).finally(() => {
+          imageSource.release();
         });
       });
   }
@@ -1792,11 +1796,10 @@ struct Index {
         return undefined;
       }
       const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
+      imageSource.release();
       if (!pixelMap) {
-        imageSource.release();
         return undefined;
       }
-      imageSource.release();
       return pixelMap;
     } catch (err) {
       return undefined;
