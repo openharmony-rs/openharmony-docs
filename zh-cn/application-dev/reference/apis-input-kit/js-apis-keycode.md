@@ -388,5 +388,5 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_PTZ_EXPOSE_RIGHT | 3239 | 云台曝光右调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | KEYCODE_PTZ_SHUTTER_LEFT | 3240 | 云台快门速度左调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | KEYCODE_PTZ_SHUTTER_RIGHT | 3241 | 云台快门速度右调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| KEYCODE_PTZ_APERTURE_LEFT | 3242 | 云台光圈向左调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| KEYCODE_PTZ_APERTURE_RIGHT | 3243 | 云台光圈向右调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| KEYCODE_PTZ_APERTURE_LEFT | 3242 | 云台光圈左调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| KEYCODE_PTZ_APERTURE_RIGHT | 3243 | 云台光圈右调节。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
