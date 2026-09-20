@@ -84,7 +84,7 @@ setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -162,7 +162,7 @@ pausePlayback()
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 ### reset<sup>20+</sup>
 
@@ -182,7 +182,7 @@ reset()
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 ### restart<sup>20+</sup>
 
@@ -202,7 +202,7 @@ restart()
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 ### setPlaybackPeriod<sup>20+</sup>
 
@@ -227,7 +227,7 @@ setPlaybackPeriod(startTime: number, endTime: number)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 ### enableTransition<sup>20+</sup>
 
@@ -251,7 +251,7 @@ enableTransition(enabled: boolean)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 ### enableAutoPlay<sup>20+</sup>
 
@@ -275,7 +275,7 @@ enableAutoPlay(enabled: boolean)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 ### notifyMovingPhotoTransition<sup>23+</sup>
   
@@ -295,4 +295,4 @@ notifyMovingPhotoTransition(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
