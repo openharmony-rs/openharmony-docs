@@ -89,7 +89,7 @@
 
 具体开发实例如下：
 
-调用[openSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#opensession8)接口一个新的凭据管理会话。
+调用[openSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#opensession8)接口打开一个新的凭据管理会话。
 
    ```ts
    let session: Uint8Array = await userIDM.openSession();
@@ -292,10 +292,10 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    let enrolledCredInfoList: osAccount.EnrolledCredInfo[] = await userIDM.getAuthInfo();
    ```
 
-2. 调用[getAuthInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getauthinfo8)接口，获取指定类型的凭据信息（以指纹凭据为例）。
+2. 调用[getAuthInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getauthinfo8)接口，获取指定类型的凭据信息（以PIN码凭据为例）。
 
    ```ts
-      let enrolledFingerCredInfoList: osAccount.EnrolledCredInfo[] =
+      let enrolledPinCredInfoList: osAccount.EnrolledCredInfo[] =
         await userIDM.getAuthInfo(osAccount.AuthType.PIN);
    ```
 
