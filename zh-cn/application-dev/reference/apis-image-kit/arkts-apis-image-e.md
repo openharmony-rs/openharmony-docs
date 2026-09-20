@@ -604,7 +604,7 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、图片格式�
 | YUV_Y | 1      | 亮度信息。  |
 | YUV_U | 2      | 蓝色色度分量信息。  |
 | YUV_V | 3      | 红色色度分量信息。  |
-| JPEG  | 4      | JPEG 类型。 |
+| JPEG  | 4      | JPEG类型。 |
 
 ## DecodingDynamicRange<sup>12+</sup>
 
