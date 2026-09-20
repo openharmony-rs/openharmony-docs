@@ -40,7 +40,7 @@ Select(options: Array<SelectOption>)
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnSelectCallback](arkts-arkui-onselectcallback-t-1.md) | 下拉菜单选中某一项时触发的回调函数类型定义。 |
+| [OnSelectCallback](arkts-arkui-onselectcallback-t-2.md) | 下拉菜单选中某一项时触发的回调函数类型定义。 |
 
 ### 枚举
 
