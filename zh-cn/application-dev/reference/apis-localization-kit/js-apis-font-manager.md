@@ -11,7 +11,7 @@
 - 安装应用级或会话级字体文件，支持`.ttf`、`.ttc`、`.otf` 格式。
 - 根据字体路径卸载已安装的字体。
 - 查询已安装字体的作用范围。
-- 注册字体服务状态监听器，当字体服务异常退出时通知应用。
+- 注册字体服务状态变化监听器，当字体服务异常退出时通知应用。
 
 >  **说明：**
 >
@@ -37,12 +37,12 @@ import { fontManager } from '@kit.LocalizationKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| APP | 0 | 应用级字体。随应用注册生命周期管理，应用退出、字体服务退出、账号退出或设备重启时自动清理。适用于应用私有字体，需先调用[onFontObserver](#onfontobserver)注册监听后才能安装。 |
-| SESSION | 1 | 会话级字体。不随应用退出而清理，仅在账号退出或设备重启时清理。适用于不强依赖安装应用的字体，生命周期独立于安装应用。 |
+| APP | 0 | 应用级字体。字体的生命周期跟随应用的生命周期，应用退出或字体服务异常退出时，安装的字体文件会被自动清理\卸载。需先调用[onFontObserver](#onfontobserver)注册监听后才能安装。 |
+| SESSION | 1 | 会话级字体。字体的生命周期不跟随应用的生命周期，设备重启或当前用户退出（多用户场景下）时，安装的字体文件会被自动清理\卸载。 |
 
 ## FontClientObserver
 
-字体服务状态监听器。
+字体服务状态变化监听器。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,7 +82,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 >
 > - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
 >
-> - 支持安装的字体文件个数最大数量为200。从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
+> - PC/2in1支持安装的字体文件最大数量为800，其他设备支持安装的字体文件个数最大数量为200。
 
 
 **起始版本：** 26.0.1
@@ -98,7 +98,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ----- |
 | url | string | 是 | 待安装的字体文件路径，仅支持.ttf、.ttc和.otf格式的字体文件。 |
-| scope | [FontScope](#fontscope) | 是 | 字体作用范围。该值必须是 [FontScope](#fontscope)的枚举值。 |
+| scope | [FontScope](#fontscope) | 是 | 字体作用范围。 |
 
 **返回值：**
 
@@ -243,11 +243,11 @@ async function getFontScope() {
 
 onFontObserver(observer: FontClientObserver): void
 
-注册字体服务状态监听器。
+注册字体服务状态变化监听器。
 
 > **说明：**
 >
-> 每个应用仅可注册一个字体服务状态变化监听器，重复注册会报错；以及一个设备最多5个应用同时注册，否则会报错。
+> 每个应用仅可注册一个字体服务状态变化监听器，重复注册会报错；以及同一用户最多5个应用同时注册，否则会报错。
 
 **起始版本：** 26.0.1
 
@@ -261,7 +261,7 @@ onFontObserver(observer: FontClientObserver): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ----- |
-| observer | [FontClientObserver](#fontclientobserver) | 是 | 字体服务状态监听器。 |
+| observer | [FontClientObserver](#fontclientobserver) | 是 | 字体服务状态变化监听器。 |
 
 **错误码：**
 
@@ -297,7 +297,7 @@ try {
 
 offFontObserver(): void
 
-注销字体服务状态监听器。
+注销字体服务状态变化监听器。
 
 **起始版本：** 26.0.1
 
