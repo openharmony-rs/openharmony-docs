@@ -6,7 +6,6 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=46668cda9aaace36f4a919b8eb13e2e13e40b6ef translatedAt=2026-08-14T03:41:39.214Z pushedAt=2026-08-14T07:11:37.716Z -->
 
 ArkWeb is a multi-process model, which consists of the application process, Web rendering process, Web GPU process, Web incubation process, and Foundation process.
 

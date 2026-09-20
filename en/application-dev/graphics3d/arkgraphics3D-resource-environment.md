@@ -5,11 +5,11 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:32:50.308Z pushedAt=2026-09-15T13:19:23.556Z -->
+<!-- md-trans-meta sourceCommit=c13d9575d4aa298d3ecd2c86e7d6822ce4e7d811 translatedAt=2026-09-20T06:44:53.592Z pushedAt=2026-09-20T08:14:40.508Z -->
 
-Environment is a description of the 3D scene background, which can be created based on images. To simulate a real-world environment in a 3D scene, you can map a square or sphere onto an image and wrap the image around the square or sphere.
+Environment: used to define the background of a 3D scene and can be created based on images. It maps an environment map onto a cube or sphere surface (such as equirectangular projection) to simulate a real-world environment background. It also provides Image-Based Lighting (IBL), which affects the ambient lighting of objects through indirect diffuse reflection and other methods, making objects blend into the scene more naturally and improving rendering realism.
 
-ArkGraphics 3D allows you to create environment resources and define the background of 3D scenes.
+ArkGraphics 3D allows you to create environment resources to define the background of 3D scenes.
 
 ## How to Develop
 1. Import the required modules.

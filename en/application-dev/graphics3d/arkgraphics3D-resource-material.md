@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:33:29.916Z pushedAt=2026-09-15T13:19:27.821Z -->
+<!-- md-trans-meta sourceCommit=c13d9575d4aa298d3ecd2c86e7d6822ce4e7d811 translatedAt=2026-09-20T06:47:41.191Z pushedAt=2026-09-20T08:20:45.295Z -->
 
 Materials are essential resources that define the visual appearance of an object's surface. They determine how an object interacts with light, thereby affecting its final rendering result, such as color, metallic appearance, and roughness.
 
@@ -87,7 +87,7 @@ The metallic-roughness material based on PBR rendering, which conforms to the gl
 
 - **emissive**: emissive color and texture, expressing the self-luminous effect of the material.
 
-  Use case: suitable for materials that need to display light sources or self-luminous effects, such as lights, screens, glowing signs, and fluorescent materials.
+Use case: suitable for materials that need to display light sources or self-luminous effects, such as screens, glowing signs, and fluorescent materials.
 
 - **clearCoat**: clear coat strength, simulating materials with a transparent reflective layer, such as car paint.
 
@@ -201,7 +201,7 @@ You can create shader materials using the **MaterialType.SHADER** type when you 
 
 6. Create a shader resource.
 
-   Create a custom shader resource through **SceneResourceFactory.createShader()**. The created shader resource can be bound to the shader material in subsequent steps to implement custom rendering logic.
+Create a custom shader resource through **SceneResourceFactory.createShader()**. The created shader resource can be bound to the shader material in subsequent steps to implement custom rendering logic.
 
    <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 

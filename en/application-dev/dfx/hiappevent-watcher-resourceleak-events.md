@@ -6,13 +6,13 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=281a5975cfb5f25896e63aa56d3d9f8deabd3462 translatedAt=2026-08-15T01:47:45.131Z pushedAt=2026-08-15T07:17:12.529Z -->
+<!-- md-trans-meta sourceCommit=ebff5e10b9171acbbf0d8a914d975151d283ad88 translatedAt=2026-09-20T06:35:23.390Z pushedAt=2026-09-20T07:51:09.469Z -->
 
 ## Overview
 
 Resource leaks occur when resources, such as handles, threads, or memory, are not properly released during application running. As a result, the resources are occupied for a long time and cannot be used by other applications. If a certain type of resource is exhausted, the system may crash or restart.
 
-This topic describes the fields of the resource leak event. For details about how to use the ArkTs and C/C++ APIs provided by HiAppEvent to subscribe to system resource leak events, see the following documents:  
+This topic describes the fields and specifications of the resource leak event. For details about how to use the ArkTS and C/C++ APIs provided by HiAppEvent to subscribe to system resource leak events, see the following documents:
 
 - [Subscribing to Resource Leak Events (ArkTS)](hiappevent-watcher-resourceleak-events-arkts.md)
 

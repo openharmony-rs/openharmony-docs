@@ -6,13 +6,14 @@
 <!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=1a7fdda7cb0bdacc6b1c367c8fd0def17530cd88 translatedAt=2026-08-15T01:52:44.760Z pushedAt=2026-08-15T08:41:31.843Z -->
+<!-- md-trans-meta sourceCommit=2a185ecf7a3839e4625ff0cba57a675a3ecd00e7 translatedAt=2026-09-20T06:53:37.175Z pushedAt=2026-09-20T08:30:16.591Z -->
 
 ## Function Description
 
 Character rules vary greatly across different languages. Character processing ensures that text can be processed with similar logic under different language rules.
 
 ## How to Develop
+
 
 1. Import the required module.
 
@@ -104,6 +105,7 @@ Character rules vary greatly across different languages. Character processing en
   let breakText = iterator.getLineBreakText(); // breakText = 'Apple is my favorite fruit.'
   ```
 
+
 - File path mirroring: File path mirroring means to localize a file path string when a mirrored language is passed in, so as to achieve the mirroring display effect of the file path in that language. You can implement file path mirroring by using the [getUnicodeWrappedFilePath](../reference/apis-localization-kit/js-apis-i18n.md#getunicodewrappedfilepath20) API of the **I18NUtil** class. The sample code is as follows:
 
   <!-- @[get_unicode_wrapped_file_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
@@ -112,18 +114,18 @@ Character rules vary greatly across different languages. Character processing en
   let mirrorPath = '';
   let unMirrorPath = '';
 
-  // Perform file path mirroring if mirrorPath is passed.
+  // Pass in a mirrored language to mirror the path.
   let path = 'data/out/tmp';
   
   try {
     let delimiter = '/';
     let locale: Intl.Locale = new Intl.Locale('ar');
-    // mirrorPath = 'tmp/out/data/'
+    // mirrorPath = 'tmp/out/data'
     mirrorPath = i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale);
 
     // A non-mirrored language is passed in. The path is not processed.
     let localeZh: Intl.Locale = new Intl.Locale('zh');
-    // unMirrorPath = '/data/out/tmp'
+    // unMirrorPath = 'data/out/tmp'
     unMirrorPath = i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, localeZh);
   } catch (error) {
     console.error(`call I18NUtil.getUnicodeWrappedFilePath failed, error code: ${error.code}, message: ${error.message}.`);
@@ -131,5 +133,3 @@ Character rules vary greatly across different languages. Character processing en
   ```
 
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

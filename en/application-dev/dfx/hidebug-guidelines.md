@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3bab2b5b5264b2a320ce362e13ec1f6589bae7b3 translatedAt=2026-09-14T09:10:01.993Z pushedAt=2026-09-15T13:09:48.465Z -->
+<!-- md-trans-meta sourceCommit=d22176aef2aefeb271d9bd1f54001223b0683394 translatedAt=2026-09-20T06:39:18.986Z pushedAt=2026-09-20T08:10:01.082Z -->
 
 HiDebug can obtain the memory, CPU, and GPU data of the system or application processes, and enable process trace collection.
 
@@ -383,7 +383,7 @@ Starting from API version 26.0.0, HiDebug supports registering a memory dump lis
 
 ## Managing Asynchronous Contexts
 
-Starting from API version 26.0.0, HiDebug provides asynchronous context management APIs for establishing and releasing asynchronous call chain relationships in custom asynchronous task scenarios. With these APIs, you can push and pop an asynchronous context when submitting and completing an asynchronous task, enabling performance analysis tools such as the [hiperf command-line tool](hiperf.md) and the [OH_HiDebug_RequestThreadLiteSampling API](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_requestthreadlitesampling) to trace the complete asynchronous call stack.
+Starting from API version 26.0.0, HiDebug provides asynchronous context management APIs for establishing and releasing asynchronous call chain relationships in custom asynchronous task scenarios. With these APIs, you can push and pop asynchronous contexts when submitting and completing asynchronous tasks, respectively. Only the [hiprofiler](hiprofiler.md#async_type-parameter-details) tuning component supports tracing the complete asynchronous call stack.
 
 > **NOTE**
 >

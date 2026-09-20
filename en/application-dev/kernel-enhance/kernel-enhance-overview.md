@@ -1,12 +1,11 @@
 # About This Kit
-
 <!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: Kernel-->
 <!--Owner: @gatieme; @fang-jinxu; @yzl-kongzhenhua-->
 <!--Designer: @tanyihua; @lingminghw; @wangxiayang-->
 <!--Tester: @panny060; @RayShih; @lianxuanself-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=84e5c687623c619df721fa927b62d6782396d98d translatedAt=2026-08-04T13:30:04.807Z pushedAt=2026-08-05T08:14:48.417Z -->
+<!-- md-trans-meta sourceCommit=905e00e3e84f04c7629697b9e3c8998abbecf462 translatedAt=2026-09-20T06:56:16.004Z pushedAt=2026-09-20T08:34:16.874Z -->
 
 ## Function Description
 
@@ -58,9 +57,7 @@ Proper use of QoS can significantly improve app performance:
 Purgeable Memory is preferentially reclaimed when the system is under pressure, which can effectively relieve memory pressure.
 
 - It is suitable for storing large data blocks of at least 4 KiB when the rebuild cost is low.
-
 - It is released directly instead of being compressed when system memory is low.
-
 - Users rebuild the data when it is used again.
 
 ### Gewu Service Optimization
@@ -68,9 +65,7 @@ Purgeable Memory is preferentially reclaimed when the system is under pressure, 
 The Gewu service provides the following optimizations for on-device inference scenarios:
 
 - **Resource management optimization**: Dynamically loads resources on demand to avoid resource waste.
-
 - **QoS-aware scheduling**: Schedules inference tasks based on their importance to maintain a smooth user experience.
-
 - **Inference acceleration**: Improves inference efficiency by optimizing resource management and scheduling.
 
 ## Constraints
@@ -82,19 +77,17 @@ The Gewu service provides the following optimizations for on-device inference sc
 ### Purgeable Memory Constraints
 
 - It is suitable for storing large data blocks of at least 4 KiB when the rebuild cost is low.
-
 - Users need to restore the data by themselves before using it again.
 
 ### Gewu Service Constraints
 
 - The Gewu service is supported since API version 20.
-
 - The related dynamic library `libqos.so` is required.
 
 ## References
 
 - [QoS Development](qos-guidelines.md)
-
 - [Purgeable Memory Development](purgeable-memory-guidelines.md)
-
 - [Gewu Service Development](gewu-ndk-api-guidelines.md)
+
+<!--RP1--><!--RP1End-->
