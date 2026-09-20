@@ -5,7 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=bfb534f7ef7aee7bc4a0cc1282b3267eac00ff8c translatedAt=2026-09-18T02:59:05.267Z pushedAt=2026-09-18T10:02:19.116Z -->
+<!-- md-trans-meta sourceCommit=bfb534f7ef7aee7bc4a0cc1282b3267eac00ff8c translatedAt=2026-09-18T02:59:05.267Z pushedAt=2026-09-20T03:53:08.403Z -->
 
 Since API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides various audio effect nodes. You can select appropriate effect nodes to process audio based on your service requirements.
 
@@ -14,17 +14,17 @@ Since API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudio
 | Effect Type | Node Type | Initial API Version | Purpose | Description |
 |---------|---------|--------|------|------|
 | [Equalizer](#equalizer) | EFFECT_NODE_TYPE_EQUALIZER | API version 22 | Adjusts frequency bands to change the frequency characteristics of audio. | - |
-| [Noise Reduction](#noise-reduction) | EFFECT_NODE_TYPE_NOISE_REDUCTION | API version 22 | Reduces background noise and improves voice clarity. | - |
-| [Sound Field](#sound-field) | EFFECT_NODE_TYPE_SOUND_FIELD | API version 22 | Adjusts the spatial sense of sound and the sound field range. | - |
-| [Source Separation](#source-separation) | EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION | API version 22 | Separates vocals from accompaniment (multi-output). | This feature depends on the NPU. Before creating a node, call [OH_AudioSuiteEngine_IsNodeTypeSupported()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_isnodetypesupported) to check whether the node type is supported. |
-| [Voice Beautification](#voice-beautification) | EFFECT_NODE_TYPE_VOICE_BEAUTIFIER | API version 22 | Improves sound quality and listening experience. | - |
-| [Environmental Effect](#environmental-effect) | EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT | API version 22 | Simulates the acoustic effects of different environments. | - |
-| [Audio Mixing](#audio-mixing) | EFFECT_NODE_TYPE_AUDIO_MIXER | API version 22 | Mixes multiple audio streams into one. | - |
-| [Spatial Rendering](#spatial-rendering) | EFFECT_NODE_TYPE_SPACE_RENDER | API version 23 | 3D spatial audio positioning and rendering. | - |
-| [Traditional Voice Change](#traditional-voice-change) | EFFECT_NODE_TYPE_PURE_VOICE_CHANGE | API version 23 | Traditional voice change based on gender and pitch. | - |
-| [General Voice Change](#general-voice-change) | EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE | API version 23 | Various stylized voice change effects. | - |
-| [Pitch and Speed Change](#pitch-and-speed-change) | EFFECT_NODE_TYPE_TEMPO_PITCH | API version 23 | Changes the speed and pitch of audio. | - |
-| [HOA Spatial Audio](#hoa-spatial-audio) | EFFECT_NODE_TYPE_HOA_SPACE_RENDER | API version 26.0.0 | Renders high-order Ambisonics (HOA) to binaural audio. | - |
+| [Noise reduction](#noise-reduction) | EFFECT_NODE_TYPE_NOISE_REDUCTION | API version 22 | Reduces background noise and improves voice clarity. | - |
+| [Sound field](#sound-field) | EFFECT_NODE_TYPE_SOUND_FIELD | API version 22 | Adjusts the spatial sense of sound and the sound field range. | - |
+| [Source separation](#source-separation) | EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION | API version 22 | Separates vocals from accompaniment (multi-output). | This feature depends on the NPU. Before creating a node, call [OH_AudioSuiteEngine_IsNodeTypeSupported()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_isnodetypesupported) to check whether the node type is supported. |
+| [Voice beautification](#voice-beautification) | EFFECT_NODE_TYPE_VOICE_BEAUTIFIER | API version 22 | Improves sound quality and listening experience. | - |
+| [Environmental effect](#environmental-effect) | EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT | API version 22 | Simulates the acoustic effects of different environments. | - |
+| [Audio mixing](#audio-mixing) | EFFECT_NODE_TYPE_AUDIO_MIXER | API version 22 | Mixes multiple audio streams into one. | - |
+| [Spatial rendering](#spatial-rendering) | EFFECT_NODE_TYPE_SPACE_RENDER | API version 23 | 3D spatial audio positioning and rendering. | - |
+| [Traditional voice changing](#traditional-voice-changing) | EFFECT_NODE_TYPE_PURE_VOICE_CHANGE | API version 23 | Traditional voice change based on gender and pitch. | - |
+| [General voice changing](#general-voice-changing) | EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE | API version 23 | Various stylized voice change effects. | - |
+| [Speed and pitch changing](#speed-and-pitch-changing) | EFFECT_NODE_TYPE_TEMPO_PITCH | API version 23 | Changes the speed and pitch of audio. | - |
+| [HOA spatial audio](#hoa-spatial-audio) | EFFECT_NODE_TYPE_HOA_SPACE_RENDER | API version 26.0.0 | Renders high-order Ambisonics (HOA) to binaural audio. | - |
 
 ## Equalizer
 
@@ -194,7 +194,7 @@ OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
 OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(params.environmentType));
 ```
 
-## Mixing
+## Audio Mixing
 
 The audio mixer effect node [EFFECT_NODE_TYPE_AUDIO_MIXER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) is used to mix multiple input audio streams into a single output. The number of audio mixer nodes in each pipeline does not exceed 3.
 
@@ -364,7 +364,7 @@ OH_AudioSuiteEngine_SetGeneralVoiceChangeType(
     *node, static_cast<OH_AudioSuite_GeneralVoiceChangeType>(params.generalVoiceChangeType));
 ```
 
-## Speed and Pitch Shifting
+## Speed and Pitch Changing
 
 The speed and pitch shifting effect node [EFFECT_NODE_TYPE_TEMPO_PITCH](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) is used to change the playback speed and pitch of audio independently or simultaneously.
 

@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=71348747bbf9793e9f5f1c2fb40af0c2fb7152f7 translatedAt=2026-09-18T04:10:19.646Z pushedAt=2026-09-18T10:31:40.109Z -->
+<!-- md-trans-meta sourceCommit=71348747bbf9793e9f5f1c2fb40af0c2fb7152f7 translatedAt=2026-09-18T04:10:19.646Z pushedAt=2026-09-20T03:54:19.035Z -->
 
 The recording stream type is defined by [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8), which identifies the usage scenario of the recording stream to the system. The system uses it for the [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) and [audio channel configuration](audio-performance.md#understanding-the-system-audio-channel). Certain types also correspond to specific audio recording processing scenarios.
 
@@ -19,10 +19,10 @@ When selecting a `SourceType`, first determine the actual purpose of the recorde
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup> | Speech recognition. | Corresponds to the speech recognition processing scenario. The system can match the speech recognition input path based on the device configuration. |
 | SOURCE_TYPE_PLAYBACK_CAPTURE | Records the raw audio data that other applications send to the system for playback. | Deprecated since API version 12. Audio Kit no longer provides the internal recording interface. For internal recording scenarios, use [AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md). |
 | SOURCE_TYPE_VOICE_COMMUNICATION | VoIP voice or video calls. | Enhances voice recording and suppresses non-voice sounds such as ambient noise. According to the [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) definition, starting recording alone enables the 3A algorithm. |
-| SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | Records voice messages. | Identifies the voice message recording scenario. According to the system default [audio focus policy](audio-playback-concurrency.md#音频焦点策略), starting recording pauses the currently playing music, and notifies the music application to resume playback after recording ends. |
+| SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | Records voice messages. | Identifies the voice message recording scenario. According to the system default [audio focus policy](audio-playback-concurrency.md#audio-focus-strategy), starting recording pauses the currently playing music, and notifies the music application to resume playback after recording ends. |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | Camera recording. | Identifies the recording purpose to the system. The system can match the recording input path based on the device configuration. |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup> | Obtains the raw audio collected by the microphone. | According to the [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) definition, the system does not apply algorithm processing to the collected data. |
-| SOURCE_TYPE_LIVE<sup>20+</sup> | Live streaming. | On supported devices, the system provides [echo cancellation](using-audiocapturer-for-recording.md#回声消除功能). Before use, call [isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20) to check whether the current device supports this capability. |
+| SOURCE_TYPE_LIVE<sup>20+</sup> | Live streaming. | On supported devices, the system provides [echo cancellation](using-audiocapturer-for-recording.md#echo-cancellation). Before use, call [isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20) to check whether the current device supports this capability. |
 
 ## Impact of Recording Stream Type on Audio Services
 

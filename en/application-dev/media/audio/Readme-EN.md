@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8478ec4698910b30203efbe7815bce1603fa5a99 translatedAt=2026-09-18T03:36:44.297Z pushedAt=2026-09-18T10:57:14.743Z -->
+<!-- md-trans-meta sourceCommit=8478ec4698910b30203efbe7815bce1603fa5a99 translatedAt=2026-09-18T03:36:44.297Z pushedAt=2026-09-20T03:55:02.078Z -->
 
 - [About This Kit](audio-kit-intro.md)
 - Audio Focus and Audio Session Management<!--audio-session-->
@@ -14,7 +14,7 @@
   - [Using AudioSession to Manage Audio Focus (ArkTS)](audio-session-management.md)
   - [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md)
 - Audio Playback<!--audio-playback-->
-  - [Audio Playback Overview](audio-playback-overview.md)
+  - [Audio Playback Development](audio-playback-overview.md)
   - [Choosing the Right Playback Stream Type](using-right-streamusage-for-playback.md)
   - [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
   - [Using AudioRenderer for Audio Playback (ArkTS)](using-audiorenderer-for-playback.md)
@@ -38,7 +38,7 @@
   - [Collaborative Audio Management (for System Applications Only)](audio-collaborative-management-sys.md)
   <!--DelEnd-->
 - Audio Recording<!--audio-recording-->
-  - [Audio Recording Overview](audio-recording-overview.md)
+  - [Audio Recording Development](audio-recording-overview.md)
   - Microphone Recording Development (External Recording)<!--external-audio-recording-->
     - [Choosing the Right Recording Stream Type](using-right-sourcetype-for-recording.md)
     - [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md)
