@@ -35509,6 +35509,16 @@
 						"end_line":287,
 						"name":"aip_releaseImageModel_operating",
 						"start_line":273
+					},
+					{
+						"end_line":54,
+						"name":"aip_getSupportedCloudModel_operating",
+						"start_line":46
+					},
+					{
+						"end_line":77,
+						"name":"aip_getCloudTextEmbeddingModel_operating",
+						"start_line":58
 					}
 				]
 			},
@@ -35574,6 +35584,16 @@
 						"end_line":254,
 						"name":"aip_releaseImageModel_operating",
 						"start_line":240
+					},
+					{
+						"end_line":57,
+						"name":"aip_getSupportedCloudModel_operating",
+						"start_line":49
+					},
+					{
+						"end_line":80,
+						"name":"aip_getCloudTextEmbeddingModel_operating",
+						"start_line":61
 					}
 				]
 			}
