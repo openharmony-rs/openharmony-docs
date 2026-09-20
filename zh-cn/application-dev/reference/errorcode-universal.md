@@ -19,9 +19,9 @@ Permission verification failed. The application does not have the permission req
 
 **可能原因**
 
-1. 应用配置文件未声明对应权限。
+1. 应用配置文件未声明对应权限。具体请[参考](../security/AccessToken/declare-permissions.md)。
 
-2. 敏感权限未完成动态申请，用户未授予权限。
+2. 敏感权限未完成动态申请，用户未授予权限。具体请[参考](../security/AccessToken/request-user-authorization.md)。
 
 3. 应用身份不满足接口的权限调用约束。
 
