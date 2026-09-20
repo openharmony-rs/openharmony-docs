@@ -402,8 +402,8 @@ enum Input_KeyCode
 | OH_INPUT_KEYCODE_PTZ_CLICK = 3235 | 云台单击键<br/>**起始版本：** 26.1.0 |
 | OH_INPUT_KEYCODE_PTZ_FOCUS_LEFT = 3236 | 云台调焦左调节<br/>**起始版本：** 26.1.0 |
 | OH_INPUT_KEYCODE_PTZ_FOCUS_RIGHT = 3237 | 云台调焦右调节<br/>**起始版本：** 26.1.0 |
-| OH_INPUT_KEYCODE_PTZ_EXPOSE_LEFT = 3238 | 云台曝光左调节<br/>**起始版本：** 26.1.0 |
-| OH_INPUT_KEYCODE_PTZ_EXPOSE_RIGHT = 3239 | 云台曝光右调节<br/>**起始版本：** 26.1.0 |
+| OH_INPUT_KEYCODE_PTZ_EXPOSURE_LEFT = 3238 | 云台曝光左调节<br/>**起始版本：** 26.1.0 |
+| OH_INPUT_KEYCODE_PTZ_EXPOSURE_RIGHT = 3239 | 云台曝光右调节<br/>**起始版本：** 26.1.0 |
 | OH_INPUT_KEYCODE_PTZ_SHUTTER_LEFT = 3240 | 云台快门速度左调节<br/>**起始版本：** 26.1.0 |
 | OH_INPUT_KEYCODE_PTZ_SHUTTER_RIGHT = 3241 | 云台快门速度右调节<br/>**起始版本：** 26.1.0 |
 | OH_INPUT_KEYCODE_PTZ_APERTURE_LEFT = 3242 | 云台光圈左调节<br/>**起始版本：** 26.1.0 |
