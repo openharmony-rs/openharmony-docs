@@ -44,7 +44,7 @@ Not supported.
 | -------- | -------- | -------- | -------- | -------- |
 | color | &lt;color&gt; | \#ffffff| No| Font color of the scrolling text.|
 | font-size | &lt;length&gt; | 30 | No| Font size of the scrolling text.|
-| font-family | string | SourceHanSansSC-Regular | No| Font. Only the **SourceHanSansSC-Regular** font is supported.|
+| font-family | string | SourceHanSansSC-Regular | No| Font.|
 | width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, the default value **0** is used.|
 | height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used.|
 | padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
