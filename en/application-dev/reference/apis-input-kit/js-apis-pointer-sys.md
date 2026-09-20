@@ -2676,7 +2676,7 @@ Sets the mouse pointer size. This API uses a promise to return the result.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | Yes   | Pointer size. The value ranges from **1** to **7**. The default value is **1**.|
+| size  | number | Yes   | Pointer size. The value ranges from [1, 7]. The default value is **1**.|
 
 **Return value**
 
@@ -2736,7 +2736,7 @@ Sets the pointer size. This API returns the result synchronously.
 
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | Yes   | Pointer size. The value ranges from **1** to **7**. The default value is **1**.|
+| size  | number | Yes   | Pointer size. The value ranges from [1, 7]. The default value is **1**.|
 
 **Error codes**
 
@@ -2786,7 +2786,7 @@ Obtains the current mouse pointer size. This API uses an asynchronous callback t
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained mouse pointer size (value range: [1-7]). Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained mouse pointer size (value range: [1, 7]). Otherwise, **err** is an error object.|
 
 **Error codes**
 

@@ -3374,7 +3374,7 @@ Subscribes to hotkey events.
 > **NOTE**
 >
 > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**:
-> 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.
+> 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing [1, 4] keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.
 > 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
@@ -3962,7 +3962,7 @@ Queries the maximum number of touch points supported by the device.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *count | Maximum number of touch points supported by the device. The value of **count** ranges from 0 to 10, and -1 indicates an unknown number. |
+| int32_t *count | Maximum number of touch points supported by the device. The value of **count** ranges from [0, 10], and -1 indicates an unknown number. |
 
 **Return value**
 
@@ -4836,7 +4836,7 @@ Obtains the pointer size level of the specified mouse pointer information object
 | Parameter| Description|
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo()](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo()](#oh_input_getcursorinfo) to query the current mouse pointer information.|
-| int32_t* sizeLevel | Cursor size level of the mouse cursor information. The value range is an integer from 1 to 7, and a larger value indicates a larger cursor. For the application custom cursor [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the actual pixelmap size prevails. |
+| int32_t* sizeLevel | Cursor size level of the mouse cursor information. The value range is [1, 7], and a larger value indicates a larger cursor. For the application custom cursor [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the actual pixelmap size prevails. |
 
 **Return value**
 
