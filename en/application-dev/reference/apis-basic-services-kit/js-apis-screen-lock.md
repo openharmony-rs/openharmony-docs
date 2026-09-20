@@ -1,5 +1,4 @@
 # @ohos.screenLock (Screen Lock)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
@@ -153,7 +152,7 @@ ArkTS Example:
   ```
 
 > **NOTE**
-> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API ([isScreenLocked(callback)](#screenLockisscreenlockeddeprecated)) instead.
+> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API  instead.
 
 ## screenLock.isSecureMode<sup>(deprecated)</sup>
 
@@ -280,7 +279,7 @@ ArkTS Example:
   ```
 
 > **NOTE**
-> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API ([isSecureMode(callback)](#screenLockissecuremodedeprecated)) instead.
+> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API instead.
 
 ## screenLock.unlockScreen<sup>(deprecated)</sup>
 
