@@ -47,7 +47,7 @@
 
 - requestPermissions：标识当前应用运行时需向系统申请的权限集合，应用申请的权限只有在此处配置的才会生效。
 
-- extensionAbilitie.permissions：标识当前ExtensionAbility组件自定义的权限信息，表示当其他应用访问该ExtensionAbility时，需要申请相应的权限信息，仅做权限校验使用。
+- extensionAbilities.permissions：标识当前ExtensionAbility组件自定义的权限信息，表示当其他应用访问该ExtensionAbility时，需要申请相应的权限信息，仅做权限校验使用。
 
 **参考链接**
 

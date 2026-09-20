@@ -1,10 +1,12 @@
 # Interface (MediaKeySession)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用[createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession)获取一个MediaKeySession实例。
 
 > **说明：**
@@ -23,7 +25,7 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 
 生成媒体密钥请求。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -33,7 +35,7 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 | -------- | ----------------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------|
 | mimeType  | string     | 是   | 媒体类型，DRM解决方案名称，可通过[isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported-1)查询。 |
 | initData  | Uint8Array     | 是   | 初始数据，即加密流中的PSSH box中的实际PSSH数据。可通过监听AVPlayer的'mediaKeySystemInfoUpdate'事件（[on('mediaKeySystemInfoUpdate')](../apis-media-kit/arkts-apis-media-AVPlayer.md#onmediakeysysteminfoupdate11)）获取DRM信息，从中提取pssh字段生成initData。具体开发流程可参考[基于AVPlayer播放DRM节目(ArkTS)](../../media/drm/drm-avplayer-arkts-integration.md)。                                                                                                     |
-| mediaKeyType| number     | 是   | 媒体密钥类型。取值范围为[0, 1]。0表示在线，1表示离线。<br>传入指定范围外的参数会导致参数校验失败，抛出错误码401。                                                                                    |
+| mediaKeyType| number | 是   | 媒体密钥类型。取值范围为[0, 1]。0表示在线，1表示离线。<br>传入指定范围外的参数会导致参数校验失败，抛出错误码401。                                                                                    |
 | options  | [OptionsData[]](arkts-apis-drm-i.md#optionsdata)     | 否   | 可选数据。默认值为空数组。                                                                                                  |
 
 **返回值：**
@@ -49,8 +51,8 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                | The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -72,7 +74,7 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 
 处理媒体密钥响应。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -95,8 +97,8 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -118,7 +120,7 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 
 检查当前媒体密钥状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -134,8 +136,8 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -153,7 +155,7 @@ clearMediaKeys(): void
 
 清除当前媒体密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -163,8 +165,8 @@ clearMediaKeys(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -187,7 +189,7 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 
 生成离线媒体密钥释放请求。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -210,8 +212,8 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -235,7 +237,7 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 
 如果设备上的DRM解决方案不支持离线媒体密钥释放，将抛出错误码24700101。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -259,8 +261,8 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -287,7 +289,7 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 
 恢复离线媒体密钥。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -310,8 +312,8 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -333,7 +335,7 @@ getContentProtectionLevel(): ContentProtectionLevel
 
 获取当前会话的内容保护级别。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -349,8 +351,8 @@ getContentProtectionLevel(): ContentProtectionLevel
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -369,7 +371,7 @@ requireSecureDecoderModule(mimeType: string): boolean
 
 是否需要安全解码。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -392,8 +394,8 @@ requireSecureDecoderModule(mimeType: string): boolean
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 
@@ -411,7 +413,7 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
 监听密钥请求事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -429,7 +431,7 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -451,7 +453,7 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
 该接口用于注销已在on('keyRequired')中注册的监听，当播放DRM节目需要获取媒体密钥时触发的事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -469,7 +471,7 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -487,7 +489,7 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 
 监听密钥过期事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -505,7 +507,7 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -525,7 +527,7 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 
 注销密钥过期事件监听。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -543,7 +545,7 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -561,7 +563,7 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 
 监听DRM解决方案自定义事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -579,7 +581,7 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -599,7 +601,7 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 
 注销DRM解决方案自定义事件监听。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -617,7 +619,7 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -635,7 +637,7 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 监听密钥过期更新事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -653,7 +655,7 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.        |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -673,7 +675,7 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 
 注销过期更新事件监听。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -691,7 +693,7 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.       |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -709,7 +711,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 监听密钥变化事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -727,7 +729,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -749,7 +751,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 
 注销密钥变化事件监听。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -767,7 +769,7 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                | All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **示例：**
 
@@ -785,7 +787,7 @@ destroy(): void
 
 销毁MediaKeySession实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -795,8 +797,8 @@ destroy(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                | All unknown errors                  |
-| 24700201                | Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **示例：**
 

@@ -1,12 +1,16 @@
 # Class (WebHttpBodyStream)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=c3549f5fc26f86afdb3e7a215c50ff6d6d5cab0c translatedAt=2026-08-07T04:48:07.938Z pushedAt=2026-08-07T08:11:40.007Z -->
 
-Represents the body of the data being sent in POST and PUT requests. It accepts data of the BYTES, FILE, BLOB, and CHUNKED types. Note that other APIs in this class can be called only after [initialize](#initialize12) is called successfully.
+WebHttpBodyStream is an HTTP request body data stream object used to read the request body data of POST, PUT, and other requests in custom scheme interception scenarios. This object is obtained through the getHttpBodyStream method of WebSchemeHandlerRequest and supports data of the BYTES, FILE, BLOB, and CHUNKED types. Developers can use this API to read uplink data in a custom protocol interceptor, enabling inspection or forwarding of the request body. Note: Other APIs in this class can be called only after [initialize](#initialize12) succeeds.
+
+WebHttpBodyStream works in conjunction with [WebSchemeHandlerRequest](./arkts-apis-webview-WebSchemeHandlerRequest.md): WebSchemeHandlerRequest represents the intercepted request, and WebHttpBodyStream represents the HTTP body data stream of that request. By reading data from the stream, developers can obtain the complete request body content.
 
 > **NOTE**
 >
@@ -139,7 +143,7 @@ Reads data from this **WebHttpBodyStream** instance.
 
 | Name  | Type   |  Mandatory | Description                      |
 | --------| ------- | ---- | ---------------------------|
-|  size | number | Yes  | Number of bytes obtained from the **WebHttpBodyStream** instance.|
+| size | number | Yes | Number of bytes to read from the WebHttpBodyStream. Unit: byte. |
 
 **Return value**
 
@@ -171,7 +175,7 @@ Obtains the size of data in this **WebHttpBodyStream** instance. This API always
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Size of data in the current **WebHttpBodyStream** instance.|
+| number | Data size of the WebHttpBodyStream, in bytes. |
 
 **Example**
 
@@ -189,7 +193,7 @@ Reads the current read position in this **WebHttpBodyStream** instance.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Current read position in the **WebHttpBodyStream** instance.|
+| number | Current read position in WebHttpBodyStream. Unit: Byte. |
 
 **Example**
 

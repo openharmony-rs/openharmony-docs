@@ -6,17 +6,19 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:32:47.620Z pushedAt=2026-08-10T09:35:00.725Z -->
 
-Since API version 23, the algorithm library supports obtaining a public key based on a private key.
+Starting from API version 23, the Crypto Architecture Kit supports obtaining a public key object from a private key object.
 
 The following uses RSA as an example to describe how to obtain a public key based on a private key.
 
 ## Linking the Dynamic Library in the CMake Script
+
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
-For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+For the corresponding algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
 ## How to Develop
 
@@ -118,3 +120,5 @@ OH_Crypto_ErrCode doTestGetPubkeyFromPrikey()
     return ret;
 }
 ```
+
+<!--no_check-->

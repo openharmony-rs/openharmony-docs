@@ -5,7 +5,8 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e0214054a7df2ce46c1cc90c27d2ee8fbbb7a19d translatedAt=2026-09-03T10:28:00.179Z pushedAt=2026-09-05T10:47:30.418Z -->
 
 PhotoEditorExtensionContext provides the context environment for the PhotoEditorExtensionAbility. It inherits from ExtensionContext and provides PhotoEditorExtensionAbility related configuration and APIs for saving images.
 > **NOTE**

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -310,7 +310,7 @@ private callFoldableCallback(): void {
   this.promptAction.openToast({ message: '调用register displayMode方法' }).catch((error: Error) => {
     console.error(`callFoldableCallback error ${JSON.stringify(error)}`);
   }).then(() => {
-    let registerIndex = displayNapi.registerFoldDisplayModeChange();
+    let registerIndex: number = displayNapi.registerFoldDisplayModeChange();
     console.info(`register foldable value is: ${registerIndex}`);
     console.info(`unregister foldable value is: ${displayNapi.unregisterFoldDisplayModeChange(registerIndex)}`);
   });
@@ -328,7 +328,7 @@ private callDealListenCallback(): void {
   this.promptAction.openToast({ message: '调用register change方法' }).catch((error: Error) => {
     console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
   }).then(() => {
-    let registerIndex = displayNapi.registerDisplayChange();
+    let registerIndex: number = displayNapi.registerDisplayChange();
     console.info(`register display change value is: ${registerIndex}`);
     console.info(`unregister display change value is: ${displayNapi.unregisterDisplayChange(registerIndex)}`);
   });

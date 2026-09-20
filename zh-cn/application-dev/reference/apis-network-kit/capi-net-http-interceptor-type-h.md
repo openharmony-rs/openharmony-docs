@@ -59,7 +59,6 @@ enum OH_Interceptor_Stage
 
 **起始版本：** 24
 
-**参数：**
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_STAGE_REQUEST | 拦截器处理请求。 |
@@ -75,11 +74,10 @@ enum OH_Interceptor_Type
 
 定义拦截器的类型。
 
-**参数：**
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TYPE_READ_ONLY | 只读拦截器。**起始版本：** 24。 |
-| OH_TYPE_MODIFY_NETWORK_KIT | 可修改拦截器。仅针对Network Kit HTTP请求生效。**起始版本：** 26.0.0。 |
+| OH_TYPE_READ_ONLY | 只读拦截器。<br>**起始版本：** 24 |
+| OH_TYPE_MODIFY_NETWORK_KIT | 可修改拦截器。仅针对Network Kit HTTP请求生效。<br>**起始版本：** 26.0.0 |
 
 ### OH_Interceptor_Result
 
@@ -93,7 +91,6 @@ enum OH_Interceptor_Result
 
 **起始版本：** 24
 
-**参数：**
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_CONTINUE | 继续处理。 |

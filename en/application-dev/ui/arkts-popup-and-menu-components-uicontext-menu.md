@@ -11,9 +11,9 @@ The [Menu](arkts-popup-and-menu-components-menu.md) component is a great option 
 ## Displaying a Menu
 
 To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18). The following is a basic example:
-
+   
  <!-- @[open_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
-
+ 
  ``` TypeScript
  this.getUIContext().getPromptAction()
    .openMenu(this.contentNode, { id: targetId }, {
@@ -26,8 +26,8 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
      hilog.error(0xFF00, 'globalOpenMenu', 'openMenu error: ' + err.code + ' ' + err.message);
    });
  ```
-
  
+ <!--Del-->![openMenu]  (figures/openMenu.gif)<!--DelEnd-->
 
 ### Creating a ComponentContent Instance
    
@@ -48,7 +48,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
  @Builder
  export function buildText(params: Params) {
    Popup({
-     // Set the icon for the menu.
+     // Set the icon content.
      icon: {
        // Replace $r('app.media.app_icon') with the actual resource file.
        image: $r('app.media.app_icon'),
@@ -64,7 +64,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
        fontColor: Color.Black,
        fontWeight: FontWeight.Normal
      } as PopupTextOptions,
-     // Set the text content.
+     // Set the message content.
      message: {
        text: `This is a Popup message 1`,
        fontSize: 15,
@@ -183,8 +183,8 @@ this.getUIContext().getPromptAction()
     hilog.error(0xFF00, 'globalOpenMenu', 'updateMenu error: ' + err.code + ' ' + err.message);
   });
 ```
-
-
+   
+   <!--Del-->![openMenu] (figures/openMenu.gif)<!--DelEnd-->
 
 ## Closing the Menu
 
@@ -202,8 +202,8 @@ this.getUIContext().getPromptAction()
     hilog.error(0xFF00, 'globalOpenMenu', 'closeMenu error: ' + err.code + ' ' + err.message);
   });
 ```
-
-
+   
+<!--Del-->![openMenu]  (figures/openMenu.gif)<!--DelEnd-->
 
 > **NOTE**
 >

@@ -19,9 +19,9 @@ import { serial } from '@kit.BasicServicesKit';
 
 ## serial.getSerialPortList
 
-getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
+getSerialPortList(): Promise&lt;SerialPort[]&gt;
 
-查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等应用。
+查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。用于需要识别可用串口设备的场景，如工业设备连接、物联网设备管理、嵌入式系统调试等场景。
 
 **起始版本：** 26.0.0
 
@@ -78,7 +78,7 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 ### open
 
-open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
+open(config?: SerialConfigs): Promise&lt;void&gt;
 
 打开串口设备。使用Promise异步回调。用于建立与串口设备的通信连接，如传感器数据采集、设备控制命令发送、串口打印机等场景。
 
@@ -295,7 +295,7 @@ port.onDataRead((data: Uint8Array) => {
 
 offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
-取消监听串口接收数据事件。使用callback异步回调。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
+取消监听串口接收数据事件。用于不再需要监听串口数据接收时释放监听资源，如应用切换到其他功能、主动断开连接后清理监听等场景。
 
 **配对调用：**
 - 与onDataRead()方法配对使用，用于取消onDataRead()注册的监听
@@ -442,6 +442,10 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 设置RTS（请求发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于控制硬件流控的请求发送信号，如启用RTS/CTS硬件流控时控制发送权、与支持硬件流控的设备通信等场景。
 
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用setRts()设置RTS信号
+- 未调用open()就调用setRts()会抛出错误码35700005（Port not open）
+
 **与setDtr的区别：** setRts和setDtr分别控制RTS/CTS和DTR/DSR两种硬件信号。RTS/CTS主要用于数据流控制，可通过SerialConfigs.rtscts启用自动流控；DTR/DSR主要用于设备状态控制和检测，用于特殊协议或设备状态管理。
 
 **起始版本：** 26.0.0
@@ -491,6 +495,10 @@ port.setRts(true).then(() => {
 getCts(): Promise&lt;boolean&gt;
 
 获取CTS（清除发送）信号状态。使用Promise异步回调。需在串口打开后调用。用于查询硬件流控的清除发送信号状态，判断是否可以发送数据，如启用RTS/CTS硬件流控时检查发送权、与支持硬件流控的设备通信前检查状态等场景。
+
+**调用顺序：**
+- 必须先调用open()打开串口，才能调用getCts()获取CTS信号
+- 未调用open()就调用getCts()会抛出错误码35700005（Port not open）
 
 **与getDsr的区别：** 
 - getCts查询CTS信号（清除发送），属于RTS/CTS硬件流控信号，用于判断是否可以发送数据；getDsr查询DSR信号（数据设备就绪），属于DTR/DSR设备状态信号，用于判断通信设备是否准备就绪。
@@ -727,7 +735,7 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.BusManager.Serial
+**系统能力：**  SystemCapability.BusManager.Serial
 
 **参数：**
 

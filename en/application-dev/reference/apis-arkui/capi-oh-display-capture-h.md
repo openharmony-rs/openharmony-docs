@@ -1,10 +1,11 @@
 # oh_display_capture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=00aa695a42976a3a58a556fb5c9c98adb86b2fa2 translatedAt=2026-08-27T08:41:23.907Z pushedAt=2026-08-27T12:20:02.868Z -->
 
 ## Overview
 
@@ -60,3 +61,5 @@ Takes a screenshot of the entire screen. This API can be used to capture a speci
 | Type| Description|
 | -- | -- |
 | [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_NO_PERMISSION**: The permission verification fails and the application does not have the permission to use the API. You need to apply for the permission.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED**: The device does not support this API.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
+
+

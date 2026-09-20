@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel; @Luobniz21-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=8e4ee7947dfeb3a89be0dfff4e576f69a510a94f translatedAt=2026-09-03T12:03:40.482Z pushedAt=2026-09-05T10:47:30.864Z -->
 
-The module defines the information of a multi-instance application in the running state. The information can be obtained through [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of appManager.
+Defines the runtime state structure information of a multi-instance application, including the instance identifier, application UID, and process ID. It is obtained through [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of appManager, and is used to monitor and manage the runtime state of multi-instance applications. For details about the development guide for application multi-instance, see [Creating a Multi-instance Application](../../quick-start/multiInstance.md).
 
 > **NOTE**
 > 
@@ -24,24 +25,23 @@ The module defines the information of a multi-instance application in the runnin
 | Name                     | Type  | Read-Only| Optional | Description      |
 | ------------------------- | ------ | ---- | ---- | --------- |
 | instanceKey | string | No| No | Unique instance ID of a multi-instance application.|
-| uid | number | No| No | UID of the application.|
+| uid | number | No | No | UID of the application. |
 | pids | Array\<number> | No| No | Process ID set of the application.|
 
 **Example**
 
 ```ts
 import { appManager } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
-      hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
+      console.info(`getRunningMultiAppInfo success`);
     }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
-    })
-} catch (err) {
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+      console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+    });
+} catch (err: BusinessError) {
+  console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
 }
 ```

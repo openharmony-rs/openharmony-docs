@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:19:47.458Z pushedAt=2026-08-25T07:25:57.354Z -->
 
 This module provides basic capabilities for managing abstract color space objects, including creating criterion color space objects (such as sRGB, DCI-P3, and BT2020) and custom color space objects, as well as obtaining attributes such as the color space type, white point value, and gamma value. It is suitable for scenarios where color consistency needs to be ensured, such as image processing, video rendering, and cross-device color display. It helps you implement accurate color management and conversion, improving user experience in color display.
 

@@ -25,6 +25,7 @@ Data loss prevention (DLP) is a system solution provided to prevent data disclos
 - **DLPFileAccess**: enumerates the permissions on a DLP file, which defines the file access level.
 - **ActionType**: enumerates the actions to be performed after the file permission expires.
 - **AccountType**: enumerates the types of authorized accounts.
+- **PluginCmd**: enumerates the plugin commands to be executed.
 
 ### Key APIs
 
@@ -94,6 +95,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -103,14 +105,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 
-let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
+let uri = 'file://docs/storage/Users/currentUser/Documents/test.txt.dlp';
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
 dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
     console.info(JSON.stringify(isDLPFile));
-}).catch((error: BusinessError)=> {
-    console.error(error.message);
-}).finally(()=> {
+}).catch((error: BusinessError) => {
+    console.error(`Failed to check if file is DLP file. Code: ${error.code}, message: ${error.message}`);
+}).finally(() => {
     if (file !== undefined) {
         fileIo.closeSync(file);
     }
@@ -141,6 +143,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -169,6 +172,8 @@ getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
 Queries the permission information of the current DLP sandbox, including permissions on the file and operations that can be performed (such as viewing, editing, and copying). This API can be called only in DLP sandbox applications. This API uses a promise to return the result.
 
+You are advised to call [isInSandbox](#dlppermissionisinsandbox) first to check whether the current environment is a sandbox environment.
+
 When processing files in the DLP sandbox, the system determines the operations that can be performed for the current user to prevent calling unauthorized capabilities.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
@@ -185,6 +190,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -199,8 +205,8 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // Check whether the app
     dlpPermission.getDLPPermissionInfo().then((permissionInfo: dlpPermission.DLPPermissionInfo) => {
       console.info('permissionInfo', JSON.stringify(permissionInfo));
     }).catch((error: BusinessError)=> {
-      console.error(JSON.stringify(error));
-    })
+      console.error(`Failed to get DLP permission info. Code: ${error.code}, message: ${error.message}`);
+    });
   }
 });
 ```
@@ -228,6 +234,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -278,6 +285,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -312,6 +320,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100011 | The system ability works abnormally. |
 
 **Example**
@@ -329,7 +338,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 Subscribes to a DLP file open event. After this API is successfully called, a callback notification is sent to the current application when the DLP file is opened. This API can be called only in non-DLP sandbox applications.
 
- You can subscribe to this event when your application needs to perform specific operations (such as logging and updating the UI) after a DLP file is opened.
+You can subscribe to this event when your application needs to perform specific operations (such as logging and updating the UI) after a DLP file is opened.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -347,6 +356,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -384,6 +394,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -420,6 +431,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -458,6 +470,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -468,7 +481,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
-    console.error('isInSandbox error', err.code, err.message);
+    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('isInSandbox: ', JSON.stringify(isInSandbox));
   }
@@ -497,6 +510,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -534,6 +548,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
@@ -579,6 +594,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -602,7 +618,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => {
 
 setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the retention state for sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API can be called only in DLP sandbox applications. This API uses an asynchronous callback to return the result.
+Sets the retention state for DLP sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API can be called only in DLP sandbox applications. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -620,6 +636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100006 | No permission to call this API, which is available only for DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -674,6 +691,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -705,7 +723,7 @@ This API is used to cancel the retention state for sandbox application and resto
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | docUris | Array&lt;string&gt; | Yes| URIs of the files to be canceled with the retention state. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 401 is thrown.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the cancellation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -714,6 +732,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 
@@ -761,6 +780,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -801,6 +821,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -810,7 +831,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList("bundleName", (err, sandboxList) => {
+dlpPermission.getRetentionSandboxList('bundleName', (err, sandboxList) => {
   if (err) {
     console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
@@ -825,7 +846,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 Obtains the sandbox applications in the retention state of an application. This API uses an asynchronous callback to return the result.
 
-This API is used to query the sandbox retention information of a specified application, so that the sandbox environment in the retention state can be checked or managed. This API can be called only in non-DLP sandbox applications.
+This API is used to query the sandbox retention information of the current application, so that the sandbox environment in the retention state can be checked or managed. This API can be called only in non-DLP sandbox applications.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -842,6 +863,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -853,7 +875,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
   if (err) {
-    console.error('getRetentionSandboxList error,', err.code, err.message);
+    console.error(`Failed to get retention sandbox list. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info('retentionSandboxList', JSON.stringify(retentionSandboxList));
   }
@@ -882,6 +904,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -902,7 +925,7 @@ dlpPermission.getDLPFileAccessRecords().then((accessRecords) => { // Obtain the 
 
 getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void
 
-Obtains the list of DLP files that are accessed recently. After the API is successfully called, the file access records are returned, which can be used to track and manage the usage of DLP files. This API uses an asynchronous callback to return the result.
+Obtains the list of DLP files that are accessed recently. After the API is successfully called, the file access records are returned, which can be used to track and manage the usage of DLP files. This API can be called only in non-DLP sandbox applications. This API uses an asynchronous callback to return the result.
 
 This API is used to obtain the list of DLP files that are accessed recently, which can be used to track and manage file usage.
 
@@ -921,6 +944,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -975,6 +999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100016 | The uri field is missing in the want parameter. |
@@ -1000,6 +1025,84 @@ if (context !== undefined) {
         console.info('res.want', JSON.stringify(res.want));
     }); // Start the DLP manager application.
 }
+```
+
+## dlpPermission.startDLPManagerForResult
+
+startDLPManagerForResult(context: common.Context, want: Want, window: window.Window): Promise&lt;DLPManagerResult&gt;
+
+Starts the DLP manager application in a specified window in borderless mode. This API uses a promise to return the result.
+
+This API starts the DLP manager application to configure file permissions and return the user operation result to the caller.
+
+> **NOTE**
+>
+> This API can be called only by domain accounts.
+
+**Since:** 26.2.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| context | [common.Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| App context.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Request object, which must contain the **uri** and **displayName** fields.|
+| window | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | Yes| Window instance created by the application.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;[DLPManagerResult](#dlpmanagerresult11)&gt; | Promise used to return the **DLPManagerResult** object.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100016 | The uri field is missing in the want parameter. |
+| 19100017 | The displayName field is missing in the want parameter. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { common, Want } from '@kit.AbilityKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+let config: window.Configuration = {
+  name: "dlp_test_window",
+  windowType: window.WindowType.TYPE_FLOAT,
+  ctx: new UIContext().getHostContext() as common.Context
+};
+window.createWindow(config).then((windowClass) => {
+  windowClass.setUIContent('pages/index/BlankPage');
+  windowClass.setWindowFocusable(true);
+  windowClass.setWindowBackgroundColor("#00000000");
+
+  let context = new UIContext().getHostContext() as common.Context; // Obtain the current context.
+  if (context !== undefined) {
+    let want: Want = {
+      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+      "parameters": {
+        "displayName": "1.txt"
+      }
+    }; // Construct request parameters, which must include uri and displayName.
+    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
+      console.info('res.resultCode', res.resultCode);
+      console.info('res.want', JSON.stringify(res.want));
+      windowClass.destroyWindow();
+    }); // Start the DLP manager application.
+  }
+});
 ```
 
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
@@ -1030,6 +1133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1068,6 +1172,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100007 | No permission to call this API, which is available only for non-DLP sandbox applications. |
 | 19100011 | The system ability works abnormally. |
@@ -1105,6 +1210,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100018 | The application is not authorized. |
@@ -1145,6 +1251,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 
 | ID| Error Message|
 | -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100011 | The system ability works abnormally. |
 
 **Example**
@@ -1155,7 +1262,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.isDLPFeatureProvided().then((isFeatureProvided) => { // Check whether the current system provides the encryption protection feature.
   console.info('isFeatureProvided', JSON.stringify(isFeatureProvided));
 }).catch((err: BusinessError) => {
-  console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
+  console.error(`Failed to check if DLP feature is provided. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 });
 ```
 
@@ -1188,6 +1295,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1307,7 +1415,7 @@ Represents information about the trigger of the DLP manager application.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| resultCode | number | No| No| Result code returned after the DLP manager application is started and exits. The value ranges from 0 to 3.|
+| resultCode | number | No| No| Result code returned after the DLP manager application is started and exits. The value ranges from 0 to 3. The value **0** indicates success, while other values indicate failure.|
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Data returned after the DLP manager application is started and exits.|
 
 ## RetentionSandboxInfo
@@ -1352,8 +1460,8 @@ This API encrypts a plaintext file to generate a DLP file that can be accessed o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of a plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
-| dlpFd | number | Yes| FD of an encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| plaintextFd | number | Yes| FD of a plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| dlpFd | number | Yes| FD of an encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **dlpFd** is less than 0, an error log is generated, and the function stops running. If the value of **dlpFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 | property | [DLPProperty](#dlpproperty21) | Yes| General policy of DLP files.|
 | customProperty | [CustomProperty](#customproperty21) | Yes| Enterprise custom policy.|
 
@@ -1370,6 +1478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1387,7 +1496,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
-let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
+let plainFilePath: string = 'file://docs/storage/Users/currentUser/Documents/test.txt';
 let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd; // Open a plaintext file.
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd; // Open a DLP file.
@@ -1436,8 +1545,8 @@ This API decrypts DLP files into plaintext files, which is applicable to exporti
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the DLP file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
-| plaintextFd | number | Yes| FD of the decrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| dlpFd | number | Yes| FD of the DLP file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **dlpFd** is less than 0, an error log is generated, and the function stops running. If the value of **dlpFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| plaintextFd | number | Yes| FD of the plaintext file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 
 **Return value**
 
@@ -1452,6 +1561,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1508,7 +1618,7 @@ This API obtains the policy information of a DLP file for analysis in scenarios 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the DLP file to be queried. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| dlpFd | number | Yes| FD of the DLP file to be queried. The value range is [0, 2<sup>31</sup>-1]. If the value of **dlpFd** is less than 0, an error log is generated, and the function stops running. If the value of **dlpFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 
 **Return value**
 
@@ -1523,6 +1633,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1610,7 +1721,7 @@ Represents the authorization information.
 | allowedOpenCount | number | No| Yes| Number of allowed opening times. The default value is **0**. No value range restriction is specified.|
 | waterMarkConfig<sup>23+</sup> | boolean | No| Yes| Whether watermarks are required. **true**: yes; **false**: no. This parameter is left empty by default.|
 | countdown<sup>23+</sup> | number | No| Yes| Validity period for file viewing, in seconds. The default value is **0**. After the validity period expires, the file is automatically closed. The value range is [-2<sup>31</sup>, 2<sup>31</sup>-1].<br>**Model restriction**: This API can be used only in the stage model.|
-| extensionFields<sup>24+</sup> | Record<string, Object> | No| Yes| Extended attribute of a DLP file. This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.|
+| extensionFields<sup>24+</sup> | Record\<string, Object> | No| Yes| Extended attribute of a DLP file. This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AuthUser<sup>21+</sup>
 
@@ -1632,6 +1743,8 @@ Registers the callback capability with the system ability (SA). This API is used
 > **NOTE**
 >
 > [registerPlugin](#registerplugin21) requires identical parameters to this API. [connectServer](#connectserver21) is called by the SA and the parameters are returned through the callback.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
 
 ### connectServer<sup>21+</sup>
 connectServer(requestId: string, requestData: string, callback: Callback\<string\>): void
@@ -1663,6 +1776,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100011 | The system ability works abnormally. |
   
 **Example**
@@ -1695,6 +1809,8 @@ Calls **registerPlugin** and **unregisterPlugin** to register or unregister call
 >
 > **registerPlugin** registers callback capabilities in the SA, and **unregisterPlugin** unregisters callback capabilities from the SA.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 ### constructor<sup>21+</sup>
 
 constructor()
@@ -1712,6 +1828,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
   
 **Example**
 
@@ -1753,6 +1870,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1788,11 +1906,11 @@ static unregisterPlugin(): void
   
 Unregisters a callback from the SA.
 
-This API unregisters a callback and releases resources when an application exits, ensuring that the callback capability is correctly released.
+This API unregisters a callback and releases resources when an application exits.
 
 > **NOTE**
 >
-> **unregisterPlugin** unregisters a plug-in from the SA.
+> **unregisterPlugin** unregisters a plugin from the SA.
   
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26.0.0. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
 
@@ -1805,6 +1923,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable versions: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1999,7 +2118,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let appList: Array<string> = ["appId1", "appId2"];
+let appList: Array<string> = ['appId1', 'appId2'];
 let userId: number = 100;
 dlpPermission.setControlledAppLists(appList, userId).then(() => {
   console.info("Successfully set controlled appLists.");
@@ -2056,5 +2175,80 @@ dlpPermission.getControlledAppLists().then((res) => {
   console.error(JSON.stringify(error));
 }).finally(() => {
   console.info("Completed getControlledAppLists operation.");
+})
+```
+
+## PluginCmd
+
+Enumerates the plugin commands that can be executed.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| CMD_BASE_INSTALL_PLUGIN | 0x1001 | Command for installing a plugin.|
+| CMD_BASE_INSTALL_CONFIG_FILE | 0x1002 | Command for installing a configuration file.|
+| CMD_BASE_INSTALL_SUFFIX_FILTER_FILE | 0x1003 | Command for installing a suffix filtering file. |
+| CMD_BASE_UNINSTALL_PLUGIN | 0x1004 | Command for unloading a plugin.|
+| CMD_BASE_QUERY_TRANSPARENT_CRYPTO_STATUS | 0x1005 | Command for querying the status of transparent encryption and decryption.|
+| CMD_EVENT_REPORT_COMMON | 0x2001 | Command for sending common data to a plugin.|
+
+## dlpPermission.processPluginCommand
+
+processPluginCommand(code: PluginCmd, message: string): Promise&lt;string&gt;
+
+Processes plugin commands in transparent encryption and decryption scenarios. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions:** ohos.permission.DLP_POLICY_MANAGER
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| code | [PluginCmd](#plugincmd) | Yes| Command of the plugin to be processed.|
+| message | string | Yes| Information to be processed. The value contains a maximum of 4096 bytes. If the value is out of range, error code 19100001 is thrown.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise used to return the execution result of the current command.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100025 | The file is invalid. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const cmd: dlpPermission.PluginCmd = dlpPermission.PluginCmd.CMD_BASE_INSTALL_PLUGIN;
+const message: string = "testPath";
+dlpPermission.processPluginCommand(cmd, message).then((res) => {
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+}).finally(() => {
+  console.info("Completed processPluginCommand operation.");
 })
 ```

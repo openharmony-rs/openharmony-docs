@@ -374,7 +374,11 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到闪控窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 ### setUIContext
 

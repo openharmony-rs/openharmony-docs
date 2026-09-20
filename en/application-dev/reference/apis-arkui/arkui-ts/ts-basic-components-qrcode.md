@@ -5,16 +5,17 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=15d062acadbaecdb97e3e492b286bd277a5fbc2e translatedAt=2026-09-03T04:21:22.283Z pushedAt=2026-09-10T02:07:25.236Z -->
 
-The **QRCode** component is used to display a QR code.
+The **QRCode** component is used to display a single QR code. It supports customizing the QR code color, background color, and content opacity, and is suitable for scenarios where a QR code needs to be displayed for scanning to obtain string information.
 
 >  **NOTE**
 >
-> This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 > 
-> The pixel count of the **QRCode** component is subject to the content. If the component size is not large enough, the content may fail to be displayed. In this case, you need to resize the component.
-
-
+> - The pixel count of the **QRCode** component is subject to the content. If the component size is not large enough, the content may fail to be displayed. In this case, you need to resize the component.
+>
+> <!--RP1--><!--RP1End-->
 ## Child Components
 
 Not supported
@@ -36,7 +37,7 @@ Creates a **QRCode** component. The displayed QR code can be scanned to obtain t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | Yes| Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>The Resource type is supported since API version 20.<br>**NOTE**<br>If this parameter is set to **null**, it is equivalent to passing the string **"null"**. If it is set to **undefined**, it is equivalent to passing the string **"undefined"**. Passing an empty string will result in an invalid QR code.|
+| value | [ResourceStr](ts-types.md#resourcestr) | Yes | Content of the QR code. A maximum of 512 characters are supported. If this limit is exceeded, the first 512 characters are used.<br>The Resource type is supported since API version 20.<br>**NOTE** <br>If this parameter is set to **null**, it is equivalent to passing the string **"null"**. If it is set to **undefined**, it is equivalent to passing the string **"undefined"**. Passing an empty string will result in an invalid QR code. |
 
 ## Attributes
 
@@ -58,7 +59,7 @@ Sets the color of the QR code.
 
 | Name| Type                                      | Mandatory| Description        |
 | ------ | ------------------------------------------ | ---- | ------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | QR code color. The default value is **'#ff000000'** and does not change with the system color mode.<br>|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | QR code color. The default value is **'#ff000000'** and does not change with the system color mode. |
 
 ### backgroundColor
 
@@ -76,7 +77,7 @@ Sets the background color of the QR code.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the QR code.<br>Default value: **Color.White**<br>Since API version 11, the default value is **'#ffffffff'** and does not change with the system color mode.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Background color of the QR code.<br>Default value: **Color.White** <br>Since API version 11, the default value is changed to **'#ffffffff'** and does not change with the system color mode. |
 
 ### contentOpacity<sup>11+</sup>
 
@@ -86,13 +87,15 @@ Sets the opacity of the QR code content. The minimum value is 0, and the maximum
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                | Mandatory| Description                                    |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the QR code content.<br>Default value: **1**<br>Value range: [0, 1]. If the value is out of the range, the default value is used.|
+| value  | number \| [Resource](ts-types.md#resource) | Yes   | Opacity of the QR code content.<br>Default value: **1**<br>Value range: [0, 1]. If the value is out of range, the default value is used. |
 
 
 ## Events
@@ -114,19 +117,19 @@ struct QRCodeExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('normal').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('normal').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140)
 
       // Set the color of the QR code.
-      Text('color').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('color').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).color(0xF7CE00).width(140).height(140)
 
       // Set the background color of the QR code.
-      Text('backgroundColor').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('backgroundColor').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).backgroundColor(Color.Orange)
 
       // Set the opacity of QR code content.
-      Text('contentOpacity').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('contentOpacity').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.1)
     }.width('100%').margin({ top: 5 })
   }

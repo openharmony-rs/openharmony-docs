@@ -96,7 +96,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 
 onDisconnect(): void
 
-Defines a callback triggered when the client disconnects from the **SelectionExtensionAbility** (for example, when the user disables the word selection function or switches the word selection app). You can perform cleanup operations for the **onConnect** callback in this callback. For example, you can [destroyPanel](js-apis-selectionInput-selectionManager.md#destroypanel) to destroy the created panel, or call [off('selectionCompleted')](js-apis-selectionInput-selectionManager.md#selectionmanageroffselectioncompleted) to unsubscribe from the word selection completion event.
+Defines a callback triggered when the client disconnects from the **SelectionExtensionAbility** (for example, when the user disables the word selection function or switches the word selection app). You can perform cleanup operations for the **onConnect** callback in this callback. For example, you can call [destroyPanel](js-apis-selectionInput-selectionManager.md#destroypanel) to destroy the created panel, or call [off('selectionCompleted')](js-apis-selectionInput-selectionManager.md#selectionmanageroffselectioncompleted) to unsubscribe from the word selection completion event.
 
 The callback is triggered only when the **SelectionExtensionAbility** is disconnected normally. It is not triggered in cases of abnormal disconnection (for example, process termination due to low memory conditions).
 
@@ -113,7 +113,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[SelectionExtensionAbility]';
 
 class ServiceExtAbility extends SelectionExtensionAbility {
-  // Implement the onDisconnect lifecycle callback to perform related cleanup operations when the client disconnects from the SelectionExtensionAbility.
+  // Implement the onDisconnect lifecycle callback to perform cleanup operations when the client disconnects from the SelectionExtensionAbility.
   onDisconnect(): void {
     hilog.info(0x0000, TAG, `onDisconnect`);
   }

@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T11:21:56.312Z pushedAt=2026-09-05T10:47:30.610Z -->
 
-The module defines the result code and data returned to the caller when a started UIAbility is terminated.
+Defines the result code and data returned to the caller after a [UIAbility](../../application-models/ability-terminology.md#uiability) is started and exits.
 
 > **NOTE**
 >
@@ -39,4 +40,4 @@ In the FA model, you can use [startAbilityForResult](js-apis-ability-featureAbil
 | Name       |  Type                | Read-only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
 | resultCode  | number               | No  | No  | Result code returned by the target party to the caller after the UIAbility of the target party is started and then terminated.<br>- In normal cases, the result code sent by the target party is returned.<br>- In abnormal cases, the value **-1** is returned.                               |
-| want  | [Want](js-apis-app-ability-want.md) | No  | Yes  | Data returned after the started UIAbility is terminated.|
+| want  | [Want](js-apis-app-ability-want.md) | No   | Yes   | Data returned to the caller after the UIAbility is started and exits. It can carry the returned parameters or information. If not passed, the default value is null. |

@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9f53a9e77747af975b5a889ab884bf4bcac288aa translatedAt=2026-06-30T10:23:54.093Z pushedAt=2026-06-30T13:49:28.813Z -->
+<!-- md-trans-meta sourceCommit=99de6ea4cb9fbb5492225360bd6bd82121ebd7c1 translatedAt=2026-08-24T11:38:38.138Z pushedAt=2026-08-25T07:40:15.512Z -->
 
 ## Overview
 
@@ -87,7 +87,7 @@ A user uploads a video to the platform. The processing steps include: parsing, t
 
 ![image](figures/ffrt_figure1.png)
 
-The FFRT provides task graph that can describe the task dependency and parallelize the preceding video processing process. The code is as follows:
+The graph-based concurrency paradigm provided by FFRT can describe task dependencies and parallelize the preceding video processing flow. The code is as follows:
 
 <!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
 
@@ -132,7 +132,7 @@ Video release
 
 ## Example: Fibonacci Sequence
 
-Each number in the Fibonacci sequence is the sum of the first two numbers. The process of calculating the Fibonacci number can well express the task dependency through the data object. The code for calculating the Fibonacci number using the FFRT framework is as follows:
+Each number in the Fibonacci sequence is the sum of the first two numbers. The process of calculating the Fibonacci number can effectively express the task dependency through the data object. The code for calculating the Fibonacci number using the FFRT framework is as follows:
 
 <!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
 
@@ -185,7 +185,7 @@ Fibonacci(5) is 5
 
 In the example, `fibonacci(x-1)` and `fibonacci(x-2)` are submitted to FFRT as two tasks. After the two tasks are complete, the results are accumulated. Although a single task is split into two subtasks, the subtasks can be further split. Therefore, the concurrency of the entire computational graph is very high.
 
-Each task forms a call tree in the FFRT.
+All tasks form a call tree inside FFRT.
 
 ![image](figures/ffrt_figure2.png)
 
@@ -201,8 +201,8 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 > **NOTE**
 >
-> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - For details about how to use FFRT C++ APIs, see [Using FFRT C++ API](ffrt-development-guideline.md#using-ffrt-c-api-1).
+> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file inclusion statement.
 
 ## Constraints
 

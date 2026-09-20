@@ -1,4 +1,4 @@
-# ArkUI_ColorPropertyHandle
+# ArkUI_ColorProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

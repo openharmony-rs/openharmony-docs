@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=46feed4577bffdfe046a46315f0b167380ccfaa2 translatedAt=2026-09-01T12:50:17.368Z pushedAt=2026-09-07T07:57:52.747Z -->
 
 > **NOTE**
 >
@@ -30,8 +31,8 @@ You can use the strings listed in the following table.
 
 | Type | Description|
 | -----  | ---- |
-| 'audio' | Audio session.|
-| 'video' | Video session.|
+| 'audio' | Audio.|
+| 'video' | Video.|
 | 'voice_call'<sup>11+</sup> | Voice call.|
 | 'video_call'<sup>12+</sup> | Video call.|
 | 'photo'<sup>22+</sup> |  Image.|
@@ -54,13 +55,13 @@ Defines the commands that can be sent by a cast controller.
 | 'stop'           | Stop the playback. No parameter is required.        |
 | 'playNext'       | Play the next media asset. No parameter is required.      |
 | 'playPrevious'   | Play the previous media asset. No parameter is required.      |
-| 'fastForward'    | Fast-forward. The corresponding parameter is of the number type, in milliseconds.      |
-| 'rewind'         | Rewind. The corresponding parameter is of the number type, in milliseconds.       |
-| 'seek'           | Seek to the specified time. The corresponding parameter is of the number type, in milliseconds.|
+| 'fastForward'    | Fast forward. The corresponding parameter is of the number type, in milliseconds.       |
+| 'rewind'         | Rewind. The corresponding parameter is of the number type, in milliseconds.        |
+| 'seek'           | Seek to the specified time. The corresponding parameter is of the number type, in milliseconds. |
 | 'setVolume'      | Set the volume. The corresponding parameter is of the number type. You can use [AVPlaybackState.maxVolume](arkts-apis-avsession-i.md#avplaybackstate10) to obtain the maximum system volume.    |
-| 'setSpeed'       | Set the playback speed. In the audio and video casting scenario, when the remote device is connected using the DLNA protocol, this parameter cannot be set. The corresponding parameter is [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8).|
+| 'setSpeed'       | Set the playback speed. In the audio and video casting scenario, when the remote device is connected using the DLNA protocol, this parameter cannot be set. The corresponding parameter is [media.PlaybackSpeed](../apis-media-kit/arkts-apis-media-e.md#playbackspeed8). |
 | 'setLoopMode'    | Set the loop mode. The corresponding parameter is [LoopMode](arkts-apis-avsession-e.md#loopmode10).|
-| 'toggleFavorite' | Switch to the favorite status. No parameter is required.   |
+| 'toggleFavorite' | Switch to the favorite status. The corresponding parameter is [AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10), which specifies the media asset ID. |
 | 'toggleMute' | Switch to the mute status. No parameter is required.|
 
 ## ExtraInfo<sup>18+</sup>
@@ -73,7 +74,7 @@ Defines the custom media packet set by the provider.
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-|{[key: string]: Object;} | **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
+|{[key: string]: Object;} |**key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all available remote devices.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type. |
 
 ## KeyRequestCallback<sup>12+</sup>
 
@@ -89,7 +90,7 @@ Defines the callback invoked for the media key request event.
 
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
-| assetId     | string  | Yes  | Media asset ID.|
+| assetId     | string  | Yes   | Unique ID of a media asset. |
 | requestData |  Uint8Array  | Yes  | Data carried in the media key request.                           |
 
 **Example**
@@ -97,7 +98,7 @@ Defines the callback invoked for the media key request event.
 ```ts
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
   console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
-}
+};
 ```
 
 ## AVControlCommandType<sup>10+</sup>
@@ -107,7 +108,7 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 
 Defines the commands that can be sent to a session.
 
-You can use the union of the strings listed in the following table.
+The value of this type can be any of the following strings.
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -115,18 +116,18 @@ You can use the union of the strings listed in the following table.
 | ---------------- | ------------ |
 | 'play'           | Play the media. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | 'pause'          | Pause the playback. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| 'stop'           | Stop the playback. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| 'stop'           | Stop the playback. No parameter is required.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | 'playNext'       | Play the next media asset. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | 'playPrevious'   | Play the previous media asset. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| 'fastForward'    | Fast-forward. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| 'rewind'         | Rewind. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| 'seek'           | Seek to the specified time. The corresponding parameter is of the number type.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| 'fastForward'    | Fast-forward. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11), which indicates the fast-forward skip interval.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| 'rewind'         | Rewind. For details about the corresponding parameters, see [SkipIntervals](arkts-apis-avsession-e.md#skipintervals11), which indicates the rewind skip interval.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| 'seek'           | Seek to the specified time. The corresponding parameter is of the number type, in milliseconds (ms).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | 'setSpeed'       | Set the playback speed. The corresponding parameter is of the number type.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | 'setLoopMode'    | Set the loop mode. The corresponding parameter is [LoopMode](arkts-apis-avsession-e.md#loopmode10).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | 'setTargetLoopMode' <sup>18+</sup>   | Set the target loop mode. The corresponding parameter is [LoopMode](arkts-apis-avsession-e.md#loopmode10).<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| 'toggleFavorite' | Switch to the favorite status. The corresponding parameter is [AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10).<br>**Atomic service API:** This API can be used in atomic services since API version 12.   |
+| 'toggleFavorite' | Switch to the favorite status. The corresponding parameter is [AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10), which specifies the media asset ID.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | 'playFromAssetId' <sup>11+</sup>| Play the media asset with the specified asset ID.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| 'playWithAssetId' <sup>20+</sup>    | Play the media asset with the specified asset ID. The corresponding parameter is [AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10).<br>The string length must be less than 40960 bytes.<br>**Atomic service API:** This API can be used in atomic services since API version 20.|
+| 'playWithAssetId' <sup>20+</sup>    | Play the media asset with the specified asset ID. The corresponding parameter is [AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10). The string length of **assetId** must be less than 40,960 bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | 'answer' <sup>11+</sup>        | Answer a call. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.     |
 | 'hangUp' <sup>11+</sup>         | The call is disconnecting. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.     |
 | 'toggleCallMute' <sup>11+</sup>  | Switch to the mute status of a call. No parameter is required.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
@@ -163,7 +164,7 @@ Defines a callback function type that takes no parameters.
 
 ## TwoParamCallback<sup>22+</sup>
 
-type TwoParamCallback\<T, G> = (data1: T, data2: G) => void
+type TwoParamCallback\<T, G\> = (data1: T, data2: G) => void
 
 Defines a callback type that takes two parameters.
 
@@ -171,7 +172,24 @@ Defines a callback type that takes two parameters.
 
 **Parameters**
 
+| Name   | Type | Required | Description   |
+|-------|----| ---- |------|
+| data1 | T  | Yes   | First data parameter received by the callback function. The specific type and meaning are defined by the caller. |
+| data2 | G  | Yes   | Second data parameter received by the callback function. The specific type and meaning are defined by the caller. |
+
+## EventProcess
+
+type EventProcess = (event: string, args: Record\<string, Object) => void
+
+Defines a general function type for processing events and parameters.
+
+**Since:** 26.1.0
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+**Parameters**
+
 | Name  | Type| Mandatory| Description  |
 |-------|----| ---- |------|
-| data1 | T  | Yes  | Parameter 1.|
-| data2 | G  | Yes  | Parameter 2.|
+| event | string  | Yes   | Request event. |
+| args | Record\<string, Object>  | Yes   | Parameters associated with the event. |

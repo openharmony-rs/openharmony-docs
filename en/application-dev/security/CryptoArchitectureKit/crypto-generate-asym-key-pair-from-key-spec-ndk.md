@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:29:14.011Z pushedAt=2026-08-10T08:24:59.925Z -->
 
 This topic walks you through on how to generate an RSA, an ECC, and an SM2 asymmetric key pair (**KeyPair**) based on the specified key parameters and obtain the key parameter properties.
 
@@ -13,9 +14,9 @@ The **KeyPair** object created can be used for subsequent operations, such as en
 
 ## Generating an RSA Key Pair Based on Key Parameters
 
-For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
-1. Call [OH_CryptoAsymKeySpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_create) to set the algorithm name to **RSA** and the key parameter type to **CRYPTO_ASYM_KEY_KEY_PAIR_SPEC** to create a parameter object (**keySpec**).
+1. Call [OH_CryptoAsymKeySpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_create), set the algorithm name to **RSA** and the key parameter type to **CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC**, and create a parameter object (**keySpec**).
 
 2. Specify the RSA key pair data (**pk**, **sk**, and **n**) of the uint8_t type and encapsulate them into [Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md).
 
@@ -30,7 +31,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 
 6. Pass the private key and public key in the key pair, and call [OH_CryptoPrivKey_GetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_getparam) and [OH_CryptoPubKey_GetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_getparam) to obtain the key parameters of the private key and public key in the RSA algorithm.
 
-<!-- @[TestRsa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
+<!-- @[TestRsa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
 
 ``` C++
 
@@ -172,10 +173,9 @@ OH_Crypto_ErrCode doTestRsaGenKeyPairBySpec()
 }
 ```
 
-
 ## Generating an ECC Key Pair Based on Key Parameters
 
-For details about the algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
 
 1. Call [OH_CryptoAsymKeySpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_create) to set the algorithm name to **ECC** and the key parameter type to **CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC** to create a parameter object (**keySpec**).
 
@@ -192,7 +192,7 @@ For details about the algorithm specifications, see [ECC](crypto-asym-key-genera
 
 6. Pass the private key and public key in the key pair, and call [OH_CryptoPrivKey_GetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_getparam) and [OH_CryptoPubKey_GetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_getparam) to obtain the key parameters of the private key and public key in the ECC algorithm.
 
-<!-- @[TestEcc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/ecc.cpp) -->
+<!-- @[TestEcc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/ecc.cpp) -->
 
 ``` C++
 
@@ -464,10 +464,9 @@ OH_Crypto_ErrCode doTestEccGenKeyPairBySpec()
 }
 ```
 
-
 ## Generating an SM2 Key Pair Based on the Elliptic Curve Name
 
-For details about the algorithm specifications, see [SM2](crypto-asym-key-generation-conversion-spec.md#sm2).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2).
 
 1. Call [OH_CryptoAsymKeySpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_create) to set the algorithm name to **SM2** and the key parameter type to **CRYPTO_ASYM_KEY_KEY_PAIR_SPEC** to create a key parameter object (**keySpec**).
 
@@ -488,7 +487,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-key-genera
 
 8. Pass the private key and public key in the key pair, and call [OH_CryptoPrivKey_GetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_getparam) and [OH_CryptoPubKey_GetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_getparam) to obtain the key parameters of the private key and public key in the SM2 algorithm.
 
-<!-- @[TestSm2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
+<!-- @[TestSm2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
 
 ``` C++
 
@@ -668,3 +667,5 @@ OH_Crypto_ErrCode doTestSm2GenKeyPairBySpec()
     return ret;
 }
 ```
+
+<!--no_check-->

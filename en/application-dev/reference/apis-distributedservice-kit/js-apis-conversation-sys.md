@@ -5,7 +5,7 @@
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=6a0c4a565ec3c4eada9375dc1f53febf5f813a4b translatedAt=2026-07-27T01:18:24.922Z pushedAt=2026-07-27T01:19:49.939Z -->
+<!-- md-trans-meta sourceCommit=13c8a436d2c729ca494c1251c49f536b24653eac translatedAt=2026-09-08T07:22:37.432Z pushedAt=2026-09-08T09:24:30.329Z -->
 
 The DSoftBus module **conversation** provides APIs for cross-device interaction of apps, including obtaining the trusted device list, and sending and receiving session data. With this module, your app can obtain trusted devices under the same account, register a listener to receive cross-device data, and send data to a specified device through a session channel. This module is applicable to scenarios that require cross-device collaboration and multi-device data transfer, simplifying the development of cross-device interaction.
 
@@ -17,7 +17,7 @@ The DSoftBus module **conversation** provides APIs for cross-device interaction 
 
 ## Modules to Import
 
-```js
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 ```
 
@@ -54,7 +54,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -104,14 +104,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty.|
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
-| 2004001  | Remote not supported.|
-| 2004002  | Duplicate calls, previous call still in progress.|
-| 2004003  | Send data failed.|
-| 2004004  | Wait remote ack timeout.|
+| 2004001  | Remote system version is too low.|
+| 2004002  | Failed to start ability on the remote side.|
+| 2004003  | Failed to send data.|
+| 2004004  | Timeout while waiting for acknowledgement from the remote side.|
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -172,7 +172,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -225,7 +225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-```ts
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -255,7 +255,7 @@ Defines the device node information, including the network ID, device name, devi
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | networkId          | string | No   |No   | Network ID of the device, which uniquely identifies a device on a distributed network and is used for device addressing during data sending. It is an alternative to UDID. Either of them can be used for data sending.    |
 | deviceName           | string | No   |No  | Device name.|
-| deviceTypeId            | number | No   |No   | Device type ID, which indicates the device type. The value is an integer, for example, **0x0E** is the mobile phone ID, **0x11** is the tablet ID, **0x9C** is the TV ID, and **0x0C** is the PC ID. The specific value is subject to the system definition.|
+| deviceTypeId            | number | No    | No    | Device type ID, which indicates the device type. The value is an integer, for example, **0x0E** is the mobile phone ID, **0x11** is the tablet ID, **0x9C** is the TV ID, and **0x0C** is the PC ID. The specific value is subject to the system definition. |
 | nearby            | boolean | No   |No   | Whether the device is in the near field. The value **true** indicates that the device is in the near field, and the value **false** indicates that the device is not in the near field.|
 | udid            | string | No   |No   | UDID of the device, which uniquely identifies a device and is used for device addressing during data sending. Different from the network ID, the UDID is a permanent and unique ID of a device and does not change with the network topology. They are alternative to each other and either of them can be used for data sending.|
 

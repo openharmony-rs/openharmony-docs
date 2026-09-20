@@ -6,7 +6,6 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=a270c55b827d252527f4262cac3c5e49e3cbee5f translatedAt=2026-07-28T06:47:21.850Z pushedAt=2026-07-28T09:11:53.089Z -->
 
 Device usage statistics include the usage of applications, notifications, and the system. In application usage statistics, you can query the application usage, event logs, and bundle groups. The application records (usage history statistics) cached by components are flushed to the database for persistent storage within 30 minutes after an event is reported.
 

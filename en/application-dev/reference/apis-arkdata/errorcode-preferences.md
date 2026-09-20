@@ -1,10 +1,11 @@
-# User Preference Error Codes
+# User Preferences Error Codes
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=937a80eb167419199390c0c4ac6ab793f1de76dc translatedAt=2026-09-04T03:17:33.688Z pushedAt=2026-09-09T09:11:03.697Z -->
 
 > **NOTE**
 >

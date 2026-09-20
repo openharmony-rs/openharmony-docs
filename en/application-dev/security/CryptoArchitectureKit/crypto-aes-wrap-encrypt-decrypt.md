@@ -6,16 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:23:59.618Z pushedAt=2026-08-07T07:33:28.555Z -->
 
-From API version 22, the crypto algorithm library supports encryption and decryption with AES-WRAP.
+From API version 22, the crypto algorithm library supports encryption and decryption with this algorithm.
 
-For details, see [AES-WRAP encryption and decryption algorithm specifications](crypto-sym-encrypt-decrypt-spec.md#aes-wrap).
+For the corresponding algorithm specifications, see [AES-WRAP encryption and decryption algorithm specifications](crypto-encryption-decryption.md#aes-wrap).
 
 **Encryption**
 
 1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit AES symmetric key (**SymKey**).
 
-   In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
+    For details about how to generate an AES symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance of the AES128-WRAP type for encryption.
 
@@ -162,3 +163,5 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
     }
   }
   ```
+
+  <!--no_check-->

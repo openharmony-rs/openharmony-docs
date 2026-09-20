@@ -1,7 +1,7 @@
 # 使用扩展的Node-API接口在异步线程中运行和停止事件循环
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -214,13 +214,15 @@
    <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
    
    ``` JSON5
-   "buildOption": {
-     "arkOptions" : {
-       "runtimeOnly" : {
-         "sources": [
-           "./src/main/ets/pages/ObjectUtils.ets"
-         ]
-       }
+     "buildOption": {
+       "arkOptions" : {
+         "runtimeOnly" : {
+           "sources": [
+             "./src/main/ets/pages/ObjectUtils.ets"
+           ]
+         }
+       },
+   // ...
      },
    ```
 

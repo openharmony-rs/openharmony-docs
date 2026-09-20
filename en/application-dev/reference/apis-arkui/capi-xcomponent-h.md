@@ -5,10 +5,11 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=86516607de4ae31b89a087b4feaa5c2b41c67026 translatedAt=2026-08-29T09:18:09.759Z pushedAt=2026-08-31T01:48:20.877Z -->
 
 ## Overview
 
-Defines the enumerations of the **XComponent** component.
+Defines the enumerations of the **XComponent** component, which are used to describe the rendering types of **XComponent**. They support EGL/OpenGL ES drawing and media data write scenarios, meeting your rendering requirements to display custom content individually or composited with the component.
 
 **File to include:** <arkui/node_attributes/xcomponent.h>
 
@@ -47,4 +48,4 @@ Enumerates the types of the **XComponent** component.
 | Value| Description|
 | -- | -- |
 | ARKUI_XCOMPONENT_TYPE_SURFACE = 0 | The custom content of EGL/OpenGL ES and media data is displayed individually on the screen.|
-| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is grouped and displayed together with content of the component.|
+| ARKUI_XCOMPONENT_TYPE_TEXTURE = 2 | The custom content of EGL/OpenGL ES and media data is composited with the **XComponent** content and then displayed on the screen. |

@@ -1027,6 +1027,8 @@ enableDepthFusion(enabled: boolean): void
 
 启用深度融合功能。
 
+进行设置之前先使用[isDepthFusionSupported](#isdepthfusionsupported14)检查设备是否支持深度融合。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -1194,6 +1196,8 @@ function getSketchRatio(previewOutput: camera.PreviewOutput): number {
 enableSketch(enabled: boolean): void
 
 使能画中画。
+
+进行设置之前先使用[isSketchSupported](#issketchsupported11)检查设备是否支持画中画。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1636,6 +1640,8 @@ function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput, type: c
 deferImageDelivery(type: DeferredDeliveryImageType): void
 
 开启相关类型分段式能力。
+
+设置之前，需要调用[isDeferredImageDeliverySupported](#isdeferredimagedeliverysupported11)判断当前模式是否支持相关分段式能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2129,7 +2135,7 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |美颜类型为自动时支持的美颜强度，0表明关闭美颜，其余正值表明自动的美颜强度。    |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | 美颜类型为光滑时支持的美颜强度，0表明关闭光滑，其余正值表明光滑的美颜强度。    |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | 美颜类型为瘦脸时支持的美颜强度，0表明关闭瘦脸，其余正值表明瘦脸的美颜强度。   |
-| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3位B通道值。    |
+| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3为B通道值。    |
 
 **系统接口：** 此接口为系统接口。
 
@@ -3047,7 +3053,7 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |美颜类型为自动时支持的美颜强度，0表明关闭美颜，其余正值表明自动的美颜强度。    |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | 美颜类型为光滑时支持的美颜强度，0表明关闭光滑，其余正值表明光滑的美颜强度。    |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | 美颜类型为瘦脸时支持的美颜强度，0表明关闭瘦脸，其余正值表明瘦脸的美颜强度。   |
-| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3位B通道值。    |
+| SKIN_TONE      | [-1, 16242611]      | 美颜类型为美肤时支持的美颜强度，-1表明关闭美肤，其余非负值为使用RGB表示的美肤美颜强度，<br> 16242611转化为16进制为0xF7D7B3，F7为R通道值，D7为G通道值，B3为B通道值。    |
 
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11)替代。
@@ -8231,6 +8237,8 @@ function getLightPaintingType(lightPaintingPhotoSession: camera.LightPaintingPho
 setLightPaintingType(type: LightPaintingType): void
 
 设置当前生效的流光快门模式类型。
+
+可以先通过[getSupportedLightPaintingTypes](#getsupportedlightpaintingtypes12)获取当前设备所支持的流光快门模式类型。
 
 **系统接口：** 此接口为系统接口。
 

@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6562fbd401d378f77bd26dc6da64bda65c04a650 translatedAt=2026-09-01T12:59:20.216Z pushedAt=2026-09-07T08:50:05.090Z -->
 
 ## Overview
 
@@ -34,9 +35,9 @@ Defines the playback state.
 | Name| Description|
 | -- | -- |
 | [AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* playbackState, AVSession_PlaybackState* state)](#oh_avsession_getplaybackstate) | Obtains the playback state.|
-| [AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState* playbackState, AVSession_PlaybackPosition* position)](#oh_avsession_getplaybackposition) | Obtains the playback position.|
-| [AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* playbackState, int32_t* speed)](#oh_avsession_getplaybackspeed) | Obtains the playback speed.|
-| [AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* playbackState, int32_t* volume)](#oh_avsession_getplaybackvolume) | Obtains the playback volume.|
+| [AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState* playbackState, AVSession_PlaybackPosition* position)](#oh_avsession_getplaybackposition) | Obtains the playback position. |
+| [AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* playbackState, int32_t* speed)](#oh_avsession_getplaybackspeed) | Obtains the playback speed. |
+| [AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* playbackState, int32_t* volume)](#oh_avsession_getplaybackvolume) | Obtains the playback volume. |
 
 ## Function Description
 
@@ -57,7 +58,7 @@ Obtains the playback state.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate)* state | Pointer to the playback state value.|
+| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate)* state | Pointer to the playback state. |
 
 **Return value**
 
@@ -82,7 +83,7 @@ Obtains the playback position.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)* position | Pointer to the playback position value.|
+| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)* position | Pointer to the playback position. |
 
 **Return value**
 
@@ -107,7 +108,7 @@ Obtains the playback speed.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| int32_t* speed | Pointer to the playback speed value.|
+| int32_t* speed | Pointer to the playback speed. |
 
 **Return value**
 
@@ -132,10 +133,12 @@ Obtains the playback volume.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| int32_t* volume | Pointer to the playback volume value.|
+| int32_t* volume | Pointer to the playback volume. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
 | [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**: The parameter verification fails. The possible causes are as follows:<br>                                                         1. The **playbackState** parameter is **nullptr**.<br>                                                         2. The **volume** parameter is **nullptr**.|
+
+

@@ -277,7 +277,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 撤销授权指定应用的URI。使用callback异步回调。
 
 > **说明：**
-> 
+>
 >- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
 >- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
@@ -335,7 +335,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 撤销授权指定应用的URI。使用Promise异步回调。
 
 > **说明：**
-> 
+>
 >- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
 >- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 

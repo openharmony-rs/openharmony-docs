@@ -6,10 +6,10 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-16T10:45:16.827Z pushedAt=2026-07-17T02:16:20.639Z -->
+<!-- md-trans-meta sourceCommit=1feed0b046b40660a4130301121d6c2113e5f853 translatedAt=2026-08-19T04:15:40.424Z pushedAt=2026-08-19T06:25:57.194Z -->
 
 ```c
-typedef struct {...} ArkUI_AccessibilityProviderCallbacksWithInstance
+typedef struct ArkUI_AccessibilityProviderCallbacksWithInstance {...} ArkUI_AccessibilityProviderCallbacksWithInstance
 ```
 
 ## Overview
@@ -84,7 +84,7 @@ Finds the node information matching the specified text content. Callback functio
 | -- | -- |
 | const char* instanceId | Pointer to the instance ID of the third-party framework.|
 | int64_t elementId | Unique ID of the accessibility element, which must point to a text component. |
-|  const char* text | Pointer to the text content to match in the component.|
+| const char* text | Pointer to the text content that the component needs to match. The following matching rules need to be described: matching mode (exact match or fuzzy match), whether the matching is case-sensitive, and so on. |
 | int32_t requestId | Request ID, which is used to associate the request process. It is recommended that this ID be logged to facilitate fault locating. |
 |  [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList | Pointer to the list of all accessibility elements found.|
 
@@ -210,7 +210,7 @@ int32_t (*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t el
 
 **Description**
 
-Obtains the cursor position within a text component of the current accessibility node. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.
+Obtains the cursor position within the current text component. Callback function implemented by the third-party platform and registered with the system. Multi-instance scenarios are supported.
 
 **Since**: 15
 

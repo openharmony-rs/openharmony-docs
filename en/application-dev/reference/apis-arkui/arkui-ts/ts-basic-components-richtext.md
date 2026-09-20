@@ -1,10 +1,11 @@
 # RichText
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-03T11:49:31.510Z -->
 
 The **RichText** component parses and displays HTML text.
 
@@ -89,7 +90,7 @@ Among the [universal attributes](ts-component-general-attributes.md), only the *
 | \<p>\</p> | Defines a paragraph.| \<p>This is a paragraph\</p>|
 | \<br/> | Inserts a newline character.| \<p>This is a paragraph\<br/>This is a new paragraph\</p>|
 | \<font/> | Defines the font style for the text contained within it, including the font face, size, and color. In the <font/> tag, the font size can be set only to a number ranging from 1 to 7, with the default value being **3**. This tag is deprecated in HTML 4.01 and not supported in XHTML1.0 Strict DTD. Use the CSS font properties to style text instead. CSS syntax: \<p style="font-size: 35px; font-family: verdana; color: rgb(24,78,228)"> | \<font size="3" face="arial" color="red">This is in red\</font> |
-| \<hr/> | Defines a thematic break (such as a shift of topic) on an HTML page and creates a horizontal line.| \<p>This is a paragraph\</p>\<hr/>\<p>This is a paragraph\</p> |
+| \<hr/> | Defines a thematic change in the HTML page (for example, a shift of topic), and displays it as a horizontal line. | \<p> This is a paragraph.\</p>\<hr/>\<p> This is a paragraph.\</p> |
 | \<image>\</image> | Defines an image.| \<image src="resource://rawfile/icon.png">\</image> |
 | \<div>\</div> | Defines a generic container that is generally used to group block-level elements. It allows you to apply CSS styles to multiple elements at the same time.| \<div style='color:#0000FF'>\<h3>This is the heading in a div element\</h3>\</div> |
 | \<i>\</i> | Displays text in italic style.| \<i>This is in italic style\</i>|
@@ -177,7 +178,7 @@ Loads local resource files through **$rawfile**.
   }
   ```
 
-The following is an example of loading a link with the hash (#) route through the resources protocol in Webview.
+Load through the resource protocol, which applies to the Webview loading links with "#" routes.
 
 When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead. If the URL contains a number sign (#), the content following the number sign is treated as an anchor (fragment).
 

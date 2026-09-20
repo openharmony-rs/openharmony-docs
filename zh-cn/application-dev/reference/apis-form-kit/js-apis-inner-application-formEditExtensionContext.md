@@ -25,7 +25,7 @@ FormEditExtensionContext提供访问特定于FormEditExtensionAbility资源的�
 
 ### startSecondPage
 
-startSecondPage(want: Want): Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt;
+startSecondPage(want: Want): Promise&lt;AbilityResult&gt;
 
 拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
 
@@ -114,7 +114,7 @@ startUIAbility(want: Want): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

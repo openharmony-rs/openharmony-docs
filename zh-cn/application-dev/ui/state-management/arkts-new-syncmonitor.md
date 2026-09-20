@@ -28,7 +28,7 @@
 
 - 单个\@SyncMonitor装饰器能够同时监听多个属性的变化，当这些属性在一次事件中共同变化时，只会触发一次\@SyncMonitor的回调方法。 当\@SyncMonitor监听整个数组时，更改数组的某一项不会被监听到。
 
-- 在继承类场景中，可以在父子类中对同一个属性分别定义\@SyncMonitor进行监听，当属性变化时，父子组件中定义的\@SyncMonitor回调均会被调用。
+- 在继承类场景中，可以在父子类中对同一个属性分别定义\@SyncMonitor进行监听，当属性变化时，父子类中定义的\@SyncMonitor回调均会被调用。
 
 - \@SyncMonitor装饰器具有深度监听的能力，能够监听嵌套类、多维数组、对象数组中指定项的变化。对于嵌套类、对象数组中成员属性变化的监听要求该类被\@ObservedV2装饰且该属性被\@Trace装饰。
 
@@ -701,7 +701,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
   1. 执行`onClick`；
   2. 打印`arr[1] assign ...`；
-  3. 执行`onArrChangedSync`，打印日志: '@SyncMonitor: arr: [0,100,2,3,4,5], m.dirty [arr.1]'；
+  3. 执行`onArrChangedSync`，打印日志: '@SyncMonitor: arr: [0,100,2,3,4,5], m.dirty: [arr.1]'；
   4. 打印日志`arr[2] assign ...`；
   5. 执行`onArrChangedSync`, 打印日志: '@SyncMonitor: arr: [0,100,200,3,4,5], m.dirty: [arr.2]'；
   6. onClick执行完毕，打印日志`.. done`。
@@ -1804,7 +1804,7 @@ struct Index {
     Column() {
       Button('change age')
         .onClick(() => {
-          this.info.age = 25; // 状态变量age改变
+          this.info.age = 25; // age改变
         })
     }
   }
@@ -1916,7 +1916,8 @@ struct Index {
 * `@SyncMonitor('*')` - 错误，不存在属性名称
 
 ### 监听变量从可访问变为不可访问和从不可访问变为可访问
-\@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。从API version 20开始，如果需要监听可访问到不可访问和不可访问到可访问的状态变化，可以使用[addMonitor](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不访问和从不可访问到可访问)。
+
+\@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。从API version 20开始，可以使用addMonitor[监听变量从可访问到不可访问和从不可访问到可访问](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不可访问和从不可访问到可访问)的状态变化。
 
 \@SyncMonitor可以监听变量从可访问变为不可访问或从不可访问变为可访问的变化。在下面的例子中，点击三个Button，均会触发`onChange`的回调。
 

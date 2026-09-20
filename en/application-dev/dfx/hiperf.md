@@ -6,7 +6,7 @@
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f723d457b4c69fd7c9854a237d35cae9f2a87b83 translatedAt=2026-07-30T03:04:23.195Z pushedAt=2026-07-30T08:42:49.322Z -->
+<!-- md-trans-meta sourceCommit=f723d457b4c69fd7c9854a237d35cae9f2a87b83 translatedAt=2026-07-30T03:04:23.195Z pushedAt=2026-07-31T08:52:16.117Z -->
 
 hiperf is a command line tool that integrates multiple performance analysis capabilities, enabling you to identify system bottlenecks, locate software hotspots, optimize code efficiency, and collect and analyze runtime performance data.
 
@@ -274,9 +274,9 @@ Collects the performance data of a specified process or application, including t
 | --exclude-process | Names of processes to exclude from collection. This parameter must be used together with -a. |
 | --pipe_input | In device development, this parameter is used to establish a command input channel when a client process calls hiperf. You can refer to the [hiperf_client API](../../device-dev/subsystems/subsys-toolchain-hiperf.md) to use this capability. In app development, this parameter is not needed. |
 | --pipe_output | In device development, this parameter is used to establish a response output channel when a client process calls hiperf. You can refer to the [hiperf_client API](../../device-dev/subsystems/subsys-toolchain-hiperf.md) to use this capability. In app development, this parameter is not needed. |
-| --append-smo-data | When this parameter is enabled, the name of the original .so file in the packaged .so is added.<br>**NOTE**<br>This parameter is supported since API version 23. |
-| --add-counter | Collects the performance counter values of the events specified by this parameter. Multiple events are separated by commas. This parameter must be used together with --no-inherit.<br>**NOTE**<br>This parameter is supported since API version 26.0.0. |
-| --raw-data | Enables the collection of raw binary event data, typically used to obtain detailed information about tracepoint events.<br>**NOTE**<br>This parameter is supported since API version 26.0.0. |
+| --append-smo-data | When this parameter is enabled, the name of the original .so file in the packaged .so is added.<br>**Note:** This parameter is supported since API version 23. |
+| --add-counter | Collects the performance counter values of the events specified by this parameter. Multiple events are separated by commas. This parameter must be used together with --no-inherit.<br>**Note:** This parameter is supported since API version 26.0.0. |
+| --raw-data | Enables the collection of raw binary event data, typically used to obtain detailed information about tracepoint events.<br>**Note:** This parameter is supported since API version 26.0.0. |
 
 <!--RP1End-->
 

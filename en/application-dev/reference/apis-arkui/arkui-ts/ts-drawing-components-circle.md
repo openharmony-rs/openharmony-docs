@@ -5,6 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=11c46acbe9df6fc188da088a51a1ed091ee20c28 translatedAt=2026-08-28T01:23:44.907Z pushedAt=2026-08-31T02:42:25.669Z -->
 
  The **Circle** component is used to draw a circle.
 
@@ -17,10 +18,13 @@
 
 None
 
-
 ## APIs
 
-Circle(value?: CircleOptions)
+### Circle
+
+new Circle(value?: CircleOptions)
+
+Creates a circle. After the call, a **Circle** object is created, and its width and height can be set.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -32,32 +36,13 @@ Circle(value?: CircleOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [CircleOptions](#circleoptions)| No| Options of the circle.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
+| value | [CircleOptions](#circleoptions) | No | Circle size. Pass this parameter when you need to customize the circle size. If it is not passed, width and height default to **0**.<br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
-## CircleOptions
+### Circle
 
-Describes the options of the circle.
+Circle(value?: CircleOptions)
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| width | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-| height | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-
-## Attributes
-
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
-
-### fill
-
-fill(value: ResourceColor)
-
-Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
+Creates a circle. After the call, a **Circle** object is created, and its width and height can be set.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -69,13 +54,11 @@ Sets the color of the fill area. This attribute can be dynamically set using [at
 
 | Name| Type                                      | Mandatory| Description                                  |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: [Color](ts-appendix-enums.md#color).Black<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
+| value | [CircleOptions](#circleoptions) | No | Circle size. Pass this parameter when you need to customize the circle size. If it is not passed, width and height default to **0**.<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
-### fillOpacity
+## CircleOptions
 
-fillOpacity(value: number | string | Resource)
-
-Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Describes the drawing attributes of the **Circle** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -83,39 +66,26 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| width | [Length](ts-types.md#length) | No | Yes | Width. The value must be greater than or equal to 0. Set this attribute when you need to customize the circle size. If it is not set, the default value **0** is used.<br>Default unit: vp<br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value. |
+| height | [Length](ts-types.md#length) | No | Yes | Height. The value must be greater than or equal to 0. Set this attribute when you need to customize the circle size. If it is not set, the default value **0** is used.<br>Default unit: vp<br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value. |
 
-| Name| Type                                                        | Mandatory| Description                          |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other invalid value is treated as **1.0**.<br>For the string type, the value is a character string of the number type. The value range is the same as that of the number type.<br>For the Resource type, the value is a character string from the system resource or application resource. The value range is the same as that of the number type.<br>Invalid value **NaN** is treated as **0.0**, while invalid values **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
+## Attributes
+
+In addition to the [universal attributes](ts-component-general-attributes.md) and [universal drawing attributes](ts-drawing-components-common.md), the following attributes are supported:
 
 ### stroke
 
-stroke(value: ResourceColor)
+stroke(value: ResourceColor | ColorMetrics)
 
-Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke opacity is **0**, meaning no stroke is displayed.
+Sets the stroke color. [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) can be used to describe the color for HDR brightening. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke color is [Color](ts-appendix-enums.md#color).Transparent, that is, no stroke is drawn. Abnormal values undefined and null are treated as the default value, and NaN and Infinity are treated as [Color](ts-appendix-enums.md#color).Black.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+**Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description      |
-| ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Default value: [Color](ts-appendix-enums.md#color).Transparent<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as [Color](ts-appendix-enums.md#color).Black.|
-
-### strokeDashArray
-
-strokeDashArray(value: Array&lt;any&gt;)
-
-Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value must be greater than or equal to 0. Invalid values are treated as the default value.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,107 +93,19 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the circle outline. Elements alternate between dash length and gap length.<br>Default value: **[]** (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes   | Stroke color.<br>Default value: [Color](ts-appendix-enums.md#color).Transparent<br>The abnormal values **undefined** and **null** are handled as the default value, and **NaN** and **Infinity** are handled as [Color](ts-appendix-enums.md#color).Black. |
 
-### strokeDashOffset
+### fill
 
-strokeDashOffset(value: number | string)
+fill(value: ResourceColor | ColorMetrics)
 
-Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the color of the fill area. [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) can be used to describe the color for HDR brightening. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default fill color is [Color](ts-appendix-enums.md#color).Black. Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value. When this attribute is set together with the universal attribute **foregroundColor**, the one set later takes effect.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+**Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                                |
-| ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>Invalid values **undefined** and **null** are treated as the default value. If set to **NaN** or **Infinity**, **strokeDashArray** has no effect.|
-
-### strokeLineCap
-
-strokeLineCap(value: LineCapStyle)
-
-Sets the cap style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                             | Mandatory| Description                                            |
-| ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-
-### strokeLineJoin
-
-strokeLineJoin(value: LineJoinStyle)
-
-Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not work for the **Circle** component, which does not have corners.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                               | Mandatory| Description                                              |
-| ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
-
-### strokeMiterLimit
-
-strokeMiterLimit(value: number | string)
-
-Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not take effect for the **Circle** component, which does not have a miter join.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                                          |
-| ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The **undefined**, **null**, and **NaN** values are invalid and treated as the default value. If set to **Infinity**, **stroke** has no effect.|
-
-### strokeOpacity
-
-strokeOpacity(value: number | string | Resource)
-
-Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                      |
-| ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>Default value: opacity set by the [stroke](#stroke) API<br>Invalid value **NaN** is treated as **0.0**, while invalid values **undefined**, **null**, and **Infinity** are treated as **1.0**.|
-
-### strokeWidth
-
-strokeWidth(value: Length)
-
-Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,25 +113,7 @@ Sets the stroke width. This attribute can be dynamically set using [attributeMod
 
 | Name| Type                        | Mandatory| Description                    |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>Invalid values **undefined**, **null**, and **NaN** are treated as the default value, and invalid value **Infinity** is treated as **0**.|
-
-### antiAlias
-
-antiAlias(value: boolean)
-
-Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description                                 |
-| ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable anti-aliasing.<br>- **true**: enable<br>- **false**: disable<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Color of the area to fill.<br>Default value: [Color](ts-appendix-enums.md#color).Black <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value. |
 
 ## Examples
 
@@ -313,7 +177,7 @@ This example shows how to use **attributeModifier** to dynamically set the **fil
 // xxx.ets
 class MyCircleModifier implements AttributeModifier<CircleAttribute> {
   applyNormalAttribute(instance: CircleAttribute): void {
-    // Fill color: #707070; fill opacity: 0.5; stroke color: #2787D9; stroke dash array: [20]; offset to left: 15; cap style: semi-circle; stroke opacity: 0.5; stroke width: 10; anti-aliasing enabled.
+    // Set the fill color to #707070, fill opacity to 0.5, stroke color to #2787D9, dash pattern to [20], dash offset to 15, line cap style to round, stroke opacity to 0.5, stroke width to 10, and enable anti-aliasing.
     instance.fill("#707070")
     instance.fillOpacity(0.5)
     instance.stroke("#2787D9")
@@ -342,3 +206,46 @@ struct CircleModifierDemo {
 ```
 
 ![](figures/circleModifier.png)
+
+### Example 4: Using ColorMetrics to Set HDR Fill and Stroke Colors
+
+You can use [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) to set HDR colors for the **Circle** component, achieving a brightness effect beyond the normal display range. The [fill](#fill) API is used to set the color of the fill area, and the [stroke](#stroke) API is used to set the stroke color. In the following example, the left side uses an HDR warm gold fill and an ice blue stroke (with a brightness multiplier greater than 1.0), while the right side uses ordinary SDR colors as a comparison. On an HDR-capable screen, the left side is noticeably brighter and more vivid than the right side.
+
+Since API version 26.0.0, the **Circle** component-specific [fill](#fill) and [stroke](#stroke) APIs are added, which support passing the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type to achieve the HDR brightening effect.
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleHDRDemo {
+  build() {
+    Column({ space: 30 }) {
+      Row({ space: 60 }) {
+        // HDR fill and stroke: Color component values can exceed 1.0, and the portion exceeding 1.0 is used to represent highlights beyond the normal screen brightness range.
+        Column({ space: 8 }) {
+          Circle()
+            .width(120).height(120).strokeWidth(6)
+            .fill(ColorMetrics.createHDRColor(ColorSpace.BT2020, 2.5, 1.2, 0.0, 1)) // Highlight warm gold
+            .stroke(ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 0.8, 2.5, 1)) // Highlight ice blue
+          Text('HDR').fontColor(Color.White).fontSize(14)
+        }
+
+        // SDR fill and stroke: Color component values range from 0.0 to 1.0, which is the conventional standard dynamic range color display.
+        Column({ space: 8 }) {
+          Circle()
+            .width(120).height(120).strokeWidth(6)
+            .fill('#ffc800') // Normal golden yellow
+            .stroke('#0066ff') // Normal dark blue
+          Text('SDR').fontColor(Color.White).fontSize(14)
+        }
+      }
+    }
+    .width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![circleHdr](figures/circleHdr.png)

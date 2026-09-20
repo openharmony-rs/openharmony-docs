@@ -1,15 +1,19 @@
 # native_vsync.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @opasser-->
 <!--Designer: @opasser-->
 <!--Tester: @zhouhuan31-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=fbd5498c39c68f230d16c816fc3c145f898c4a1a translatedAt=2026-08-24T09:13:45.790Z pushedAt=2026-08-31T11:51:28.833Z -->
 
 ## Purpose
 
 This file declares the functions for obtaining and using native virtual synchronization (VSync).
+
 <!--RP1-->
+
 **Sample**: [NDKNativeImage](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeImage)<!--RP1End-->
 
 **File to include**: <native_vsync/native_vsync.h>
@@ -36,11 +40,11 @@ This file declares the functions for obtaining and using native virtual synchron
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*OH_NativeVSync_FrameCallback)(long long timestamp, void *data)](#oh_nativevsync_framecallback) | OH_NativeVSync_FrameCallback | Defines the pointer to a VSync callback function.|
-| [OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)](#oh_nativevsync_create) | - | Creates an **OH_NativeVSync** instance. A new **OH_NativeVSync** instance is created each time this function is called.<br>This API must be used in pair with [OH_NativeVSync_Destroy](capi-native-vsync-h.md#oh_nativevsync_destroy). Otherwise, memory leak occurs.|
+| [OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)](#oh_nativevsync_create) | - | Creates an OH_NativeVSync instance. Each call creates a new instance.<br>This API must be used together with [OH_NativeVSync_Destroy](capi-native-vsync-h.md#oh_nativevsync_destroy); otherwise, a memory leak occurs. |
 | [OH_NativeVSync* OH_NativeVSync_Create_ForAssociatedWindow(uint64_t windowID, const char* name, unsigned int length)](#oh_nativevsync_create_forassociatedwindow) | - | Creates an **OH_NativeVSync** instance to bind with a window. A new **OH_NativeVSync** instance is created each time this API is called.<br>The actual VSync period of the **OH_NativeVSync** instance created by calling this function may be different from the system's VSync period. The system adjusts the actual VSync period based on the window status.|
 | [void OH_NativeVSync_Destroy(OH_NativeVSync* nativeVsync)](#oh_nativevsync_destroy) | - | Destroys an **OH_NativeVSync** instance.<br>Once the **OH_NativeVSync** pointer is destroyed, it should not be used, as this can result in dangling pointer problems. Pay special attention to the management of the **OH_NativeVSync** pointer in multithreaded scenarios.|
-| [int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)](#oh_nativevsync_requestframe) | - | Requests the next VSync signal. When the signal arrives, a callback function is invoked.<br>If this function is called for multiple times in the same frame, only the last callback function is invoked.<br>If this function and the [OH_NativeVSync_RequestFrameWithMultiCallback](capi-native-vsync-h.md#oh_nativevsync_requestframewithmulticallback) function are called in the same frame, the current function call does not take effect.|
-| [int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)](#oh_nativevsync_requestframewithmulticallback) | - | Requests the next VSync signal. When the signal arrives, a callback function is invoked.<br>If this function is called for multiple times in the same frame, every callback function is invoked.|
+| [int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)](#oh_nativevsync_requestframe) | - | Requests the next vsync signal. When the signal arrives, the callback function is invoked.<br>If this API is called multiple times within the same frame, only the last callback is triggered.<br>If this API and [OH_NativeVSync_RequestFrameWithMultiCallback](capi-native-vsync-h.md#oh_nativevsync_requestframewithmulticallback) are called within the same frame, this API does not take effect. |
+| [int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH_NativeVSync_FrameCallback callback, void* data)](#oh_nativevsync_requestframewithmulticallback) | - | Requests the next vsync signal. When the signal arrives, the callback function is invoked.<br>If this API is called multiple times within the same frame, every callback passed in is executed. |
 | [int OH_NativeVSync_GetPeriod(OH_NativeVSync* nativeVsync, long long* period)](#oh_nativevsync_getperiod) | - | Obtains the VSync period.<br>The VSync period is refreshed only when the **OH_NativeVSync_FrameCallback** callback is received following a request for a VSync signal via **OH_NativeVSync_RequestFrame**.<br>To obtain the VSync period for the first time using this function, you need to call **OH_NativeVSync_RequestFrame** to request a VSync signal. Once the **OH_NativeVSync_FrameCallback** callback is received, the vsync period can be obtained.|
 | [int OH_NativeVSync_DVSyncSwitch(OH_NativeVSync* nativeVsync, bool enable)](#oh_nativevsync_dvsyncswitch) | - | Enables DVSync to improve the smoothness of self-drawing animations.<br>DVSync, short for Decoupled VSync, is a frame timing management policy that is decoupled from the hardware's VSync.<br>DVSync drives the early rendering of upcoming animation frames by sending VSync signals with future timestamps. These frames are stored in a frame buffer queue. This helps DVSync reduce potential frame drops and therefore enhances the smoothness of animations.<br>DVSync requires free self-drawing frame buffers to store these pre-rendered animation frames. Therefore, you must ensure that at least one free frame buffer is available. Otherwise, do not enable DVSync.<br>After DVSync is enabled, you must correctly respond to the early VSync signals and request the subsequent VSync after the animation frame associated with the previous VSync is complete. In addition, the self-drawing frames must carry timestamps that align with VSync.<br>After the animation ends, disable DVSync.<br>On a platform that does not support DVSync or if another application has enabled DVSync, the attempt to enable it will not take effect, and the application still receives normal VSync signals.|
 | [int OH_NativeVSync_SetExpectedFrameRateRange(OH_NativeVSync* nativeVsync, OH_NativeVSync_ExpectedRateRange* range)](#oh_nativevsync_setexpectedframeraterange) | - | Sets the expected VSync frame rate and its range.|
@@ -61,12 +65,11 @@ Defines the pointer to a VSync callback function.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| long long timestamp | System timestamp obtained by VSync using **CLOCK_MONOTONIC**, in nanoseconds.|
+| long long timestamp | System timestamp obtained by VSync using CLOCK_MONOTONIC, in nanoseconds. |
 |  void *data | Pointer to user-defined data.|
 
 ### OH_NativeVSync_Create()
@@ -77,12 +80,11 @@ OH_NativeVSync* OH_NativeVSync_Create(const char* name, unsigned int length)
 
 **Description**
 
-Creates an **OH_NativeVSync** instance. A new **OH_NativeVSync** instance is created each time this function is called.<br>This API must be used in pair with [OH_NativeVSync_Destroy](capi-native-vsync-h.md#oh_nativevsync_destroy). Otherwise, memory leak occurs.
+Creates an OH_NativeVSync instance. Each call creates a new instance. The number of OH_NativeVSync instances is limited, and a null pointer is returned when the limit is exceeded.<br>This API must be used together with [OH_NativeVSync_Destroy](capi-native-vsync-h.md#oh_nativevsync_destroy); otherwise, a memory leak occurs.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -110,7 +112,6 @@ Creates an **OH_NativeVSync** instance to bind with a window. A new **OH_NativeV
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 14
-
 
 **Parameters**
 
@@ -140,7 +141,6 @@ Destroys an **OH_NativeVSync** instance.<br>Once the **OH_NativeVSync** pointer 
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -155,12 +155,11 @@ int OH_NativeVSync_RequestFrame(OH_NativeVSync* nativeVsync, OH_NativeVSync_Fram
 
 **Description**
 
-Requests the next VSync signal. When the signal arrives, a callback function is invoked.<br>If this function is called for multiple times in the same frame, only the last callback function is invoked.<br>If this function and the [OH_NativeVSync_RequestFrameWithMultiCallback](capi-native-vsync-h.md#oh_nativevsync_requestframewithmulticallback) function are called in the same frame, the current function call does not take effect.
+Requests the next VSync signal. When the signal arrives, the callback function callback is invoked.<br>If this API is called multiple times within the same frame, only the last callback is triggered.<br>If this API and [OH_NativeVSync_RequestFrameWithMultiCallback](capi-native-vsync-h.md#oh_nativevsync_requestframewithmulticallback) are called within the same frame, this API does not take effect.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -184,12 +183,11 @@ int OH_NativeVSync_RequestFrameWithMultiCallback(OH_NativeVSync* nativeVsync, OH
 
 **Description**
 
-Requests the next VSync signal. When the signal arrives, a callback function is invoked.<br>If this function is called for multiple times in the same frame, every callback function is invoked.
+Requests the next VSync signal. When the signal arrives, the callback function callback is invoked.<br>If this API is called multiple times within the same frame, every callback passed in is executed.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -219,7 +217,6 @@ Obtains the VSync period.<br>The VSync period is refreshed only when the **OH_Na
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -247,7 +244,6 @@ Enables DVSync to improve the smoothness of self-drawing animations.<br>DVSync, 
 
 **Since**: 14
 
-
 **Parameters**
 
 | Name| Description|
@@ -274,7 +270,6 @@ Sets the expected frame rate and its range. The actual frame rate may be differe
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
 
 **Since**: 20
-
 
 **Parameters**
 

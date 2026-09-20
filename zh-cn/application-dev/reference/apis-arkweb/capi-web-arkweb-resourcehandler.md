@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -17,6 +17,8 @@ ArkWeb_ResourceHandler是用于处理被拦截的Scheme请求的资源处理器�
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 

@@ -1,14 +1,15 @@
-# @ohos.bundle.overlay (overlay Module)
+# @ohos.bundle.overlay (overlay Feature Module)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9dd9c9b18255d12a5799f25458403aea81c3ef0c translatedAt=2026-09-03T12:25:11.085Z pushedAt=2026-09-08T07:50:15.336Z -->
 
-The module provides APIs for querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of an application with the overlay feature, and disabling and enabling the feature.
+This module provides APIs for querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of an application with the overlay feature, and disabling and enabling the feature.
 
-An application with the overlay feature contains an overlay resource package. For details about this package, see [Overlay Mechanism](../../quick-start/resource-categories-and-access.md#overlay-mechanism).
+An overlay feature module means that the current module contains an overlay resource package, and the application to which the current module belongs is an application with the overlay feature. For details about the overlay resource package, see [Overlay Mechanism](../../quick-start/resource-categories-and-access.md#overlay-mechanism).
 
 > **NOTE**
 >
@@ -27,7 +28,7 @@ import { overlay } from '@kit.AbilityKit';
 
 setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 
-Enables or disables a module with the overlay feature in the current application. This API uses a promise to return the result.
+Sets the enabled or disabled state of the overlay feature module in the current application. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -35,14 +36,14 @@ Enables or disables a module with the overlay feature in the current application
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| moduleName  | string | Yes   | Name of the module with the overlay feature.              |
-| isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. **true** to enable, **false** otherwise.|
+| moduleName  | string | Yes    | Name of the overlay feature module in the current app.               |
+| isEnabled   | boolean  | Yes  | Whether to enable the overlay feature. The value **true** indicates enabled, and **false** indicates disabled. |
 
 **Return value**
 
 | Type                       | Description                |
 | ------------------------- | ------------------ |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -81,7 +82,7 @@ try {
 
 setOverlayEnabled(moduleName: string, isEnabled: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
+Sets the enabled/disabled state of the overlay feature module in the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -89,9 +90,9 @@ Enables or disables a module with the overlay feature in the current application
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| moduleName  | string | Yes   | Name of the module with the overlay feature.              |
-| isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. **true** to enable, **false** otherwise.|
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| moduleName  | string | Yes    | Name of the module with the overlay feature in the current app.    |
+| isEnabled   | boolean  | Yes  | Whether to enable the module. The value **true** means enabled, and **false** means disabled. |
+| callback    | AsyncCallback\<void> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) invoked when the enabled/disabled state of the overlay feature of the specified module is set successfully. In this case, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -131,7 +132,7 @@ try {
 
 getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 
-Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo of the overlay feature module in the current application. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -139,7 +140,7 @@ Obtains the OverlayModuleInfo about a module with the overlay feature in the cur
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | ------------------------------------------ |
-| moduleName | string | Yes   | Name of the module with the overlay feature.    |
+| moduleName | string | Yes    | Name of the overlay feature module in the current app.     |
 
 **Return value**
 
@@ -182,7 +183,7 @@ let moduleName = "feature";
 
 getOverlayModuleInfo(moduleName: string, callback: AsyncCallback\<OverlayModuleInfo>): void
 
-Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
+Obtains the OverlayModuleInfo of the overlay feature module in the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -190,8 +191,8 @@ Obtains the OverlayModuleInfo about a module with the overlay feature in the cur
 
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
-| moduleName | string | Yes   | Name of the module with the overlay feature.    |
-| callback    | AsyncCallback\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                  |
+| moduleName | string | Yes    | Name of the overlay feature module in the current app.     |
+| callback    | AsyncCallback\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of the specified module in the current app is obtained successfully, **err** is undefined. Otherwise, the callback returns a specific error object.                   |
 
 **Error codes**
 
@@ -231,7 +232,7 @@ try {
 
 getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayModuleInfo>>
 
-Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result. If the API call fails, null may be returned. You need to verify the return value before using it.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -290,7 +291,7 @@ Obtains the OverlayModuleInfo associated with the specified target module. Modul
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | targetModuleName | string | Yes   | Name of the target module specified by modules with the overlay feature.    |
-| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). When the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of the specified target module is obtained successfully, **err** returns **undefined**. Otherwise, the callback returns a specific error object.  |
 
 **Error codes**
 
@@ -330,7 +331,7 @@ try {
 
 type OverlayModuleInfo = _OverlayModuleInfo.OverlayModuleInfo
 
-Defines the information about a module with the overlay feature.
+OverlayModuleInfo contains the configuration information of the overlay feature module, such as its name, state, and target module, and is used to describe and manage the resource overlay configuration of an application.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 

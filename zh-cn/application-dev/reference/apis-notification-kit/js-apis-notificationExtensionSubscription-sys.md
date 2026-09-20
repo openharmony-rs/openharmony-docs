@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置通知授权状态。
+本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)状态。
 
 > **说明：**
 >
@@ -282,7 +282,7 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
 
 subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
-根据优先通知过滤条件订阅通知。使用Promise异步回调。
+根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
 
 **起始版本**：26.0.0
 

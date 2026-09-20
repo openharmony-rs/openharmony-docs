@@ -5,6 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-09-01T03:25:19.266Z pushedAt=2026-09-02T03:22:49.963Z -->
 
 The **Prompt** module provides APIs for creating and showing toasts, dialog boxes, and action menus.
 
@@ -39,7 +40,7 @@ Shows a toast.
 import prompt from '@ohos.prompt'
 prompt.showToast({
   message: 'Message Info',
-    duration: 2000
+  duration: 2000
 });
 ```
 
@@ -61,7 +62,7 @@ Describes the options for showing the toast.
 
 showDialog(options: ShowDialogOptions): Promise&lt;ShowDialogSuccessResponse&gt;
 
-Shows a dialog box. This API uses a promise to return the result synchronously.
+Shows a dialog box. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +118,7 @@ Shows a dialog box. This API uses an asynchronous callback to return the result.
 
 | Name     | Type                                      | Mandatory  | Description          |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| options  | [ShowDialogOptions](#showdialogoptions)  | Yes   | Dialog box options.|
+| options  | [ShowDialogOptions](#showdialogoptions)  | Yes    | Dialog box options. |
 | callback | AsyncCallback&lt;[ShowDialogSuccessResponse](#showdialogsuccessresponse)&gt; | Yes   | Callback used to return the dialog box response result.  |
 
 **Example**
@@ -160,7 +161,7 @@ Describes the options for showing the dialog box.
 | message | string                                                    | No  | Text body.                                                  |
 | buttons | [[Button](#button),[Button](#button)?,[Button](#button)?] | No  | Array of buttons in the dialog box. The array structure is **{text:'button', color: '\#666666'}**. Up to three buttons are supported. The first button is of the **positiveButton** type, the second is of the **negativeButton** type, and the third is of the **neutralButton** type.|
 
-## ShowDialogSuccessResponse 
+## ShowDialogSuccessResponse
 
 Describes the dialog box response result.
 
@@ -217,7 +218,7 @@ prompt.showActionMenu({
 
 showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;
 
-Shows an action menu. This API uses a promise to return the result synchronously.
+Shows an action menu. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -290,3 +291,4 @@ Describes the menu item button in the action menu.
 | ----- | ------ | ---- | -------------- |
 | text  | string | Yes  | Button text.|
 | color | string | Yes  | Text color of the button.|
+

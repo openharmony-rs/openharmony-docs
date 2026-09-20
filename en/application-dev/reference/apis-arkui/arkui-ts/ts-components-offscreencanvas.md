@@ -1,32 +1,32 @@
-#  OffscreenCanvas
+# OffscreenCanvas
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:35:51.899Z pushedAt=2026-08-01T06:42:55.883Z -->
 
 The **OffscreenCanvas** component is used to draw custom graphics.
 
-When the [Canvas](ts-components-canvas-canvas.md) component or **CanvasRenderingContext2D** object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
+When the [Canvas](ts-components-canvas-canvas.md) component or [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
 
 > **NOTE**
 >
-> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates to new APIs in later versions are marked with a superscript to indicate the initial API version of the API.
 >
-> **OffscreenCanvas** cannot be used in **ServiceExtensionAbility**. It is recommended that you use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen rendering in **ServiceExtensionAbility**.
+> **OffscreenCanvas** cannot be used in **ServiceExtensionAbility**. For offscreen drawing in **ServiceExtensionAbility**, use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) instead.
 
 ## Child Components
 
 Not supported
 
-## APIs
-
-### constructor
+## constructor
 
 constructor(width: number, height: number)
 
-Constructs an OffscreenCanvas for creating an offscreen canvas object.
+Constructs an **OffscreenCanvas** object.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -38,14 +38,14 @@ Constructs an OffscreenCanvas for creating an offscreen canvas object.
 
 | Name| Type| Mandatory| Description                       |
 | ------ | -------- | ---- | ------------------------------------- |
-| width  | number   | Yes | Width of the offscreen canvas.<br>**NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
-| height | number   | Yes | Height of the offscreen canvas.<br>**NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| width  | number   | Yes  | Width of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0.<br>Unit: vp. |
+| height | number   | Yes  | Height of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0.<br>Unit: vp. |
 
-### constructor<sup>12+</sup>
+## constructor<sup>12+</sup>
 
 constructor(width: number, height: number, unit: LengthMetricsUnit)
 
-Constructs an **OffscreenCanvas** for creating an offscreen canvas object. The unit mode is configurable for the **OffscreenCanvas** object.
+Creates an **OffscreenCanvas** object, with support for configuring the unit mode.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -59,9 +59,9 @@ Constructs an **OffscreenCanvas** for creating an offscreen canvas object. The u
 
 | Name| Type| Mandatory| Description                       |
 | ------ | -------- | ---- | ------------------------------------- |
-| width  | number   | Yes | Width of the offscreen canvas.<br>**NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
-| height | number   | Yes | Height of the offscreen canvas.<br>**NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
-| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes  |  Unit mode of the OffscreenCanvas object. The value cannot be dynamically changed once set. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).<br>Invalid values **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
+| width  | number   | Yes  | Width of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0.<br>The unit is determined by the unit parameter. Default unit: vp. |
+| height | number   | Yes  | Height of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0.<br>The unit is determined by the unit parameter. Default unit: vp. |
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | Yes   |  Unit mode of the **OffscreenCanvas** object. Once configured, it cannot be changed dynamically. The configuration method is the same as that of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md). Optional values: **DEFAULT** (default unit mode, which uses vp as the unit and automatically adapts based on the screen density) and PX (px pixel unit, which is suitable for scenarios requiring precise pixel control, where the width and height values are calculated based on physical pixels).<br>Abnormal values **NaN** and **Infinity** are treated as the default value.<br>Default value: **DEFAULT**.|
 
 ## Attributes
 
@@ -75,8 +75,8 @@ The following attributes are supported.
 
 | Name  | Type  | Read Only| Optional| Description|
 | ------ | ------ | ------ | ------- | ---- |
-| width  | number | No |  No | Width of the offscreen canvas.<br>Default unit: vp|
-| height | number | No |  No | Height of the offscreen canvas.<br>Default unit: vp|
+| width  | number | No  |  No  | Width of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0.<br>Unit: vp. |
+| height | number | No  |  No  | Height of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0.<br>Unit: vp. |
 
 ### width
 
@@ -160,7 +160,11 @@ struct OffscreenCanvasPage {
 
 transferToImageBitmap(): ImageBitmap
 
-Creates an **ImageBitmap** object from the most recently rendered image of the offscreen canvas.
+Creates an **ImageBitmap** object from the current content of the **OffscreenCanvas** component.
+
+> **NOTE**
+>
+> After the **OffscreenCanvas** object has been passed to a Worker thread through **postMessage**, the original thread (sender) is not allowed to call the **transferToImageBitmap** method of the object. Otherwise, an exception is thrown.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -199,7 +203,7 @@ struct OffscreenCanvasPage {
           offContext.fillRect(0, 0, 400, 600)
           offContext.fillStyle = '#000000'
           offContext.font = '40px serif bold'
-          offContext.fillText("Offscreen : Hello World!", 20, 60)
+          offContext.fillText('Offscreen : Hello World!', 20, 60)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
         })
@@ -218,6 +222,12 @@ getContext(contextType: "2d", options?: RenderingContextSettings): OffscreenCanv
 
 Obtains the drawing context of the offscreen canvas.
 
+> **NOTE**
+>
+> - After the **OffscreenCanvas** object uses **getContext** to obtain the drawing context, the object cannot be passed to any other thread through **postMessage**. Otherwise, an exception is thrown.
+>
+> - After the **OffscreenCanvas** object has been passed to a Worker thread through **postMessage**, the original thread (sender) is not allowed to call the **getContext** method of the object. Otherwise, an exception is thrown.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Model restriction:** This API can be used only in the stage model.
@@ -228,8 +238,8 @@ Obtains the drawing context of the offscreen canvas.
 
 | Name | Type| Mandatory| Description   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| contextType | string | Yes  | Context type of the offscreen canvas. The value can only be **"2d"**.<br>**"2d"**: creates an **OffscreenCanvasRenderingContext2D** object that represents a two-dimensional rendering context.<br>The values **undefined** and **null** are considered as invalid values, and **undefined** is returned.|
-| options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No| Parameters of the **OffscreenCanvasRenderingContext2D** object. For details, see [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>**undefined** and **null** values are processed based on the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>Default value: **null**.|
+| contextType | string | Yes  | Type of the drawing context of the **OffscreenCanvas** component. Currently, only the "2d" type is supported.<br>"2d": Creates an **OffscreenCanvasRenderingContext2D** object that represents a 2D rendering context.<br>The abnormal values **undefined** and **null** are treated as invalid values, and the API returns **undefined**.|
+| options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No | Parameters used to configure the **OffscreenCanvasRenderingContext2D** object. See [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings). This parameter is passed when custom rendering context settings (such as enabling antialiasing) are required. If not passed, the default settings are used (**antialias** defaults to **false**).<br>The abnormal values **undefined** and **null** are treated as the default values of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>Default value: **null** |
 
 **Return value**
 
@@ -257,15 +267,15 @@ struct OffscreenCanvasExamplePage {
           .onReady(() => {
             let offContext = this.offscreenCanvas.getContext("2d", this.settings)
             offContext.font = '70px sans-serif'
-            offContext.fillText("Offscreen : Hello World!", 20, 60)
-            offContext.fillStyle = "#0000ff"
+            offContext.fillText('Offscreen : Hello World!', 20, 60)
+            offContext.fillStyle = '#0000ff'
             offContext.fillRect(230, 350, 50, 50)
-            offContext.fillStyle = "#EE0077"
+            offContext.fillStyle = '#EE0077'
             offContext.translate(70, 70)
             offContext.fillRect(230, 350, 50, 50)
-            offContext.fillStyle = "#77EE0077"
+            offContext.fillStyle = '#77EE0077'
             offContext.translate(-70, -70)
-            offContext.fillStyle = "#00ffff"
+            offContext.fillStyle = '#00ffff'
             offContext.rotate(45 * Math.PI / 180);
             offContext.fillRect(180, 120, 50, 50);
             offContext.rotate(-45 * Math.PI / 180);
@@ -288,20 +298,19 @@ struct OffscreenCanvasExamplePage {
 
 ![en-us_image_0000001194032666](figures/offscreen_canvas.png)
 
-
 ## Concurrent Thread Drawing
 
-Since API version 11, when an application creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to pass the **OffscreenCanvas** instance to the worker thread for drawing, and use **onmessage** to receive the drawing results sent by the worker thread for display.
+Since API version 11, when an app creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to pass the **OffscreenCanvas** instance to the worker for drawing, and use **onmessage** to receive the **ImageBitmap** object sent by the worker thread for display.
 
 > **NOTE**
 >
-> After the **OffscreenCanvas** instance uses **getContext** to obtain the drawing context, it cannot be passed to other threads through **postMessage**. Otherwise, an exception is thrown.
+> After the **OffscreenCanvas** object uses **getContext** to obtain the drawing context, the object cannot be passed to any other thread through **postMessage**. Otherwise, an exception is thrown.
 >
-> After an **OffscreenCanvas** object is passed to a thread through **postMessage**, it cannot use the **getContext** or **transferToImageBitmap** APIs. Otherwise, an exception is thrown.
+> After the **OffscreenCanvas** object has been passed to a Worker thread through **postMessage**, the original thread (sender) is not allowed to call the **getContext** or **transferToImageBitmap** method of the object. Otherwise, an exception is thrown.
 >
-> After an **OffscreenCanvas** object is passed to a thread through **postMessage**, it cannot be passed to any other thread through **postMessage**. Otherwise, an exception is thrown.
+> After the **OffscreenCanvas** object has been passed to a Worker thread through **postMessage**, the object cannot be passed to other threads through **postMessage** again. Otherwise, an exception is thrown.
 >
-> The Previewer of DevEco Studio does not support the display of content drawn in the Worker thread.
+> The previewer of DevEco Studio does not support displaying content drawn in a worker thread.
 
 **Example**
 

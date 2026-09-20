@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=28903ea5a24732cb787188ec1c145c9efbd00425 translatedAt=2026-09-01T01:22:18.811Z pushedAt=2026-09-03T08:34:45.245Z -->
 
 The **shortKey** module provides APIs to set the delay for starting an ability using a shortcut key. For example, you can set the delay to 3 seconds so that a screenshot is taken when you press and hold the shortcut key for 3 seconds.
 
@@ -15,11 +16,10 @@ The **shortKey** module provides APIs to set the delay for starting an ability u
 >
 > - The APIs provided by this module are system APIs.
 
-
 ##  Modules to Import
 
 ```js
-import { shortKey } from '@kit.InputKit';
+import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
 ##  shortKey.setKeyDownDuration
@@ -62,7 +62,7 @@ struct Index {
         .onClick(() => {
           try {
             // Set the delay for starting the ability to 500 ms.
-            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
+            shortKey.setKeyDownDuration('businessId', 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -72,7 +72,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -123,10 +123,10 @@ struct Index {
         .onClick(() => {
           try {
             // Set the delay for starting the ability to 500 ms.
-            shortKey.setKeyDownDuration("businessId", 500).then(() => {
+            shortKey.setKeyDownDuration('businessId', 500).then(() => {
               console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);

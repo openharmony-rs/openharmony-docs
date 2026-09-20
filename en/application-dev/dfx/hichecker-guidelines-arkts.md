@@ -6,11 +6,11 @@
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=7e7d6409a2aeb9923fc9cffe01b519a65da6c97b translatedAt=2026-07-30T02:57:49.276Z pushedAt=2026-07-30T08:05:15.931Z -->
+<!-- md-trans-meta sourceCommit=111816d7ef19f2d98b21b4e02b20c33665536af8 translatedAt=2026-08-21T03:19:28.364Z pushedAt=2026-08-21T09:31:34.376Z -->
 
 ## Overview
 
-HiChecker is provided to check issues that may be easily ignored during application development. Such issues include time-consuming thread calling and ability resource leakage in application processes. The issues are recorded in logs or lead to process crashes explicitly so that you can find and rectify them.
+HiChecker can be used as a detection capability during app development to identify issues that are easily overlooked during code execution, such as time-consuming calls on app threads and resource leaks of abilities in app processes. You can identify and fix these issues by reviewing logs or process crashes, thereby improving the user experience.
 
 ## Basic Concepts
 
@@ -20,7 +20,7 @@ HiChecker is provided to check issues that may be easily ignored during applicat
 
 1. The application calls HiChecker APIs to add, remove, query, and modify rules. 
 
-2. When a time-consuming call or ability resource leakage occurs, HiChecker reports an event based on the rule triggered.
+2. When a subsystem makes a time-consuming call or an ability resource leak occurs, HiChecker notifies the occurrence of the corresponding event. When the detection conditions are met, HiChecker performs the corresponding action.
 
 ## Constraints
 

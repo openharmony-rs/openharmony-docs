@@ -48,6 +48,10 @@ Native Messaging的错误列表。
 
 ## WebExtensionConnectionCallback
 
+作为连接网络原生消息扩展时的输入参数，它用于接收连接期间的状态变化。
+
+**系统能力:** SystemCapability.Web.Webview.Core
+
 ### onConnect
 onConnect(connection: ConnectionNativeInfo): void
 

@@ -1,12 +1,16 @@
 # Class (Router)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @fangzhiyuan1-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d04563276400e6bf6dde4f753c5b0383bf91013a translatedAt=2026-08-05T03:17:56.292Z pushedAt=2026-08-06T05:56:19.288Z -->
 
-Provides APIs to access pages through URLs. You can use the APIs to navigate to a specified page in an application, replace the current page with another one in the same application, and return to the previous page or a specified page.
+The Router class provides page navigation capabilities, including navigating to a specified page within the app, replacing the current page with another page in the same app, and returning to the previous page or a specified page. It also supports named route navigation, page stack management, parameter passing, and return confirmation dialog boxes. It is suitable for scenarios that require unified management of page navigation flows and handling data transfer between pages. When integrated with UIContext, it enables flexible routing control.
+
+The router class manages page navigation based on the page stack mechanism, which supports a maximum capacity of 32 pages. When pushUrl is called, the target page is pushed onto the top of the stack. When replaceUrl is called, the current page is popped from the stack and destroyed, and the target page is pushed onto the top of the stack. When back is called, the top page of the stack is popped.
 
 > **NOTE**
 >
@@ -14,13 +18,27 @@ Provides APIs to access pages through URLs. You can use the APIs to navigate to 
 >
 > - The initial APIs of this class are supported since API version 10.
 >
-> - In the following API examples, you must first use [getRouter()](arkts-apis-uicontext-uicontext.md#getrouter) in **UIContext** to obtain a **Router** instance, and then call the APIs using the obtained instance.
+> - The APIs of this module can be used only in the stage model.
+>
+> - For the following APIs, you must first use the [getRouter()](arkts-apis-uicontext-uicontext.md#getrouter) method in UIContext to obtain a Router object, and then call the corresponding method through this object.
+>
+> - Router provides the following two routing modes:
+>
+>   - **Standard routing** ([pushUrl](#pushurl)/[replaceUrl](#replaceurl)): Identifies the target oage by a URL path. This mode is suitable for simple page navigation scenarios.
+>
+>   - **Named routing** ([pushNamedRoute](#pushnamedroute)/[replaceNamedRoute](#replacenamedroute)): Identifies the target page by a name. Before navigation, the target page must be loaded through import. This mode is suitable for cross-package navigation scenarios.
+>
+>   It is recommended to use name routing in scenarios where page paths may change or unified routing management is required, and use standard routing in other scenarios. Select the method based on whether you need to return to the previous page.
 
 ## pushUrl
 
 pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 Navigates to a specified page in the application. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> pushUrl() adds a new page to the top of the page stack, increasing the page stack depth by 1 (the maximum is 32 pages; error code 100003 is reported if the limit is exceeded). You can subsequently call back() to return to the previous page or call replaceUrl() to replace the current page.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -30,13 +48,13 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | Name    | Type                                      | Mandatory  | Description       |
 | ------- | ---------------------------------------- | ---- | --------- |
-| options | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Page routing parameters.|
+| options | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes    | Redirect page description, including fields such as **url** (target page path) and **params** (parameters passed). |
 
 **Return value**
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -55,8 +73,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define the class for passing parameters.
-class innerParams {
+// Define the internal class for passing parameters.
+class InnerParams {
   array: number[];
 
   constructor(tuple: number[]) {
@@ -64,11 +82,12 @@ class innerParams {
   }
 }
 
+// Define the route parameter class.
 class RouterParams {
-  data: innerParams;
+  data: InnerParams;
 
   constructor(tuple: number[]) {
-    this.data = new innerParams(tuple);
+    this.data = new InnerParams(tuple);
   }
 }
 
@@ -77,8 +96,8 @@ class RouterParams {
 struct Index {
   async routePage() {
     let options: router.RouterOptions = {
-      url: 'pages/second',
-      params: new RouterParams([12, 45, 78])
+      url: 'pages/second',  // Path of the target page to navigate to.
+      params: new RouterParams([12, 45, 78])  // Page parameters to pass.
     }
     this.getUIContext()
       .getRouter()
@@ -88,7 +107,7 @@ struct Index {
       })
       .catch((err: ESObject) => {
         console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
-      })
+      });
   }
 
   build() {
@@ -109,7 +128,7 @@ struct Index {
 
 ```ts
 // Receive the passed parameters on the second page.
-class innerParams {
+class InnerParams {
   array: number[];
 
   constructor(tuple: number[]) {
@@ -118,10 +137,10 @@ class innerParams {
 }
 
 class RouterParams {
-  data: innerParams;
+  data: InnerParams;
 
   constructor(tuple: number[]) {
-    this.data = new innerParams(tuple);
+    this.data = new InnerParams(tuple);
   }
 }
 
@@ -138,6 +157,7 @@ struct Second {
         .fontSize(30)
         .onClick(() => {
           try {
+            // Enable the back confirmation dialog box.
             this.getUIContext().getRouter().showAlertBeforeBackPage({ message: 'Are you sure to return?' })
           } catch (error) {
             // TODO: Implement error handling.
@@ -172,7 +192,7 @@ Navigates to a specified page in the application. This API uses an asynchronous 
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Page routing parameters.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.|
+| callback | AsyncCallback&lt;void&gt;                | Yes    | Callback invoked to return the page navigation result.<br/>On successful page navigation, **error** is **undefined**. On failed page navigation, **error** is the error object returned by the system.|
 
 **Error codes**
 
@@ -194,9 +214,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // Call the pushUrl API to navigate to a page.
     this.getUIContext().getRouter().pushUrl({
-      url: 'pages/routerpage2',
-      params: {
+      url: 'pages/routerpage2',  // Target page path for navigation.
+      params: {  // Page parameters to pass.
         data1: 'message',
         data2: {
           data3: [123, 456, 789]
@@ -247,13 +268,13 @@ Navigates to a specified page in the application. This API uses a promise to ret
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Page routing parameters. |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes    | Mode used for page navigation. The options are **Standard** (standard mode) and **Single** (singleton mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the single mode can avoid duplicate pages in the stack, making it ideal for singleton scenarios such as the sign-in page and home page. |
 
 **Return value**
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -272,8 +293,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Define the routing mode class.
 class RouterTmp {
-  Standard: router.RouterMode = router.RouterMode.Standard;
+  Standard: router.RouterMode = router.RouterMode.Standard;  // Standard routing mode.
 }
 
 let rtm: RouterTmp = new RouterTmp();
@@ -284,19 +306,19 @@ struct Index {
   async routePage() {
     this.getUIContext().getRouter().pushUrl({
         url: 'pages/routerpage2',
-        params: {
+        params: {  // Page parameters to pass.
           data1: 'message',
           data2: {
             data3: [123, 456, 789]
           }
         }
-      }, rtm.Standard)
+      }, rtm.Standard)  // Use the standard routing mode.
       .then(() => {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
         console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+      });
   }
 
   build() {
@@ -333,8 +355,8 @@ Navigates to a specified page in the application. This API uses an asynchronous 
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Page routing parameters. |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes    | Mode used for page navigation. The options are Standard (Standard Mode) or Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the single mode can avoid duplicate pages in the stack, suitable for singleton scenarios such as the sign-in pages and home page. |
+| callback | AsyncCallback&lt;void&gt;                | Yes    | Callback for the page navigation result.<br/>On successful page navigation, **error** is **undefined**. On failed page navigation, **error** is the error object returned by the system.    |
 
 **Error codes**
 
@@ -407,6 +429,10 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> replaceUrl() replaces the top page of the page stack, and the page stack depth remains unchanged. The key difference from pushUrl() is that pushUrl() pushes a new page onto the stack and increases the stack depth by 1, whereas replaceUrl() does not change the stack depth. The replaced page is directly destroyed and cannot be accessed again through back(). Applicable scenarios include: navigating to the home page after a successful sign-in (to prevent returning to the login page), page redirection, and temporary transit page navigation.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -421,7 +447,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -442,9 +468,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // Call the replaceUrl API to replace the page.
     this.getUIContext().getRouter().replaceUrl({
-        url: 'pages/detail',
-        params: {
+        url: 'pages/detail',  // Path of the target page to replace.
+        params: {  // Page parameters to pass.
           data1: 'message'
         }
       })
@@ -452,8 +479,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -490,7 +517,7 @@ Replaces the current page with another one in the application and destroys the c
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Description of the new page.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.  |
+| callback | AsyncCallback&lt;void&gt;                | Yes    | Callback used to return the page replacement result.<br/>If the page replacement is successful, **error** is **undefined**. If the page replacement fails, **error** is the error object returned by the system.   |
 
 **Error codes**
 
@@ -513,7 +540,7 @@ struct Index {
   async routePage() {
     this.getUIContext().getRouter().replaceUrl({
       url: 'pages/detail',
-      params: {
+      params: {  // Page parameters to pass.
         data1: 'message'
       }
     }, (err: Error) => {
@@ -550,7 +577,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another page in the app and destroys the replaced page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl), this API adds the **mode** parameter, which supports setting the mode used for page replacement.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -561,13 +588,13 @@ Replaces the current page with another one in the application and destroys the c
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Description of the new page. |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes    | Mode used for page replacement. The options are Standard (Standard Mode) or Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the singleton mode can avoid duplicate pages in the stack, making it suitable for singleton scenarios such as the sign-in page and home page. |
 
 **Return value**
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -605,8 +632,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -632,7 +659,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl-1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another page in the app and destroys the replaced page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl-1), this API adds the **mode** parameter, which supports setting the mode used for page replacement.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -643,8 +670,8 @@ Replaces the current page with another one in the application and destroys the c
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | Yes   | Description of the new page. |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
+| mode | [router.RouterMode](js-apis-router.md#routermode9) | Yes | Mode used for page replacement. The options are Standard (Standard Mode) or Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the singleton mode can avoid duplicate pages in the stack, making it suitable for singleton scenarios such as the sign-in page and home page. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback for the page replacement result.<br/>If the page replacement is successful, **error** is **undefined**. If the page replacement fails, **error** is the error object returned by the system. |
 
 **Error codes**
 
@@ -721,13 +748,13 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Name    | Type                                      | Mandatory  | Description       |
 | ------- | ---------------------------------------- | ---- | --------- |
-| options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Page routing parameters.|
+| options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes | Redirect page description, including fields such as **name** (named route name) and **params** (parameters to pass). |
 
 **Return value**
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -749,9 +776,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // Call the pushNamedRoute API to navigate to the named route page.
     this.getUIContext().getRouter().pushNamedRoute({
-        name: 'myPage',
-        params: {
+        name: 'myPage',  // Named route name.
+        params: {  // Page parameters to pass.
           data1: 'message',
           data2: {
             data3: [123, 456, 789]
@@ -762,8 +790,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -800,7 +828,7 @@ Navigates to a page using the named route. This API uses an asynchronous callbac
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Page routing parameters.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.  |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback invoked to return the page navigation result.<br/>If the page navigation is successful, **error** is **undefined**. If the page navigation fails, **error** is the error object returned by the system. |
 
 **Error codes**
 
@@ -859,6 +887,7 @@ struct Index {
   }
 }
 ```
+
 ## pushNamedRoute
 
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
@@ -874,13 +903,13 @@ Navigates to a page using the named route. This API uses a promise to return the
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Page routing parameters. |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes    | Mode used for page navigation. The options are Standard (Standard Mode) and Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the singleton mode can avoid duplicate pages in the stack, making it ideal for singleton scenarios such as the sign-in page and home page. |
 
 **Return value**
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -909,11 +938,11 @@ let rtm:RouterTmp = new RouterTmp();
 struct Index {
   async routePage() {
     this.getUIContext().getRouter().pushNamedRoute({
-        name: 'myPage',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
+      name: 'myPage',
+      params: {  // Page parameters passed.
+        data1: 'message',
+        data2: {
+          data3: [123, 456, 789]
           }
         }
       }, rtm.Standard)
@@ -921,8 +950,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -959,8 +988,8 @@ Navigates to a page using the named route. This API uses an asynchronous callbac
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Page routing parameters. |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes    | Mode used for page navigation. The options are Standard (Standard Mode) and Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the singleton mode can avoid duplicate pages being pushed to the stack, making it ideal for singleton scenarios such as the sign-in page and home page. |
+| callback | AsyncCallback&lt;void&gt;                | Yes    | Callback invoked to return the page navigation result.<br/>On successful page navigation, **error** is **undefined**. On failed page navigation, **error** is the system-returned error object.    |
 
 **Error codes**
 
@@ -1031,7 +1060,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with a specified Named Route page and destroys the replaced page. This API uses a promise to return the result. This API is suitable for scenarios such as managing pages with named routes in large applications, avoiding hard-coded URLs when routing paths may change, and enabling each module to manage its own named routes independently in modular development.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1047,7 +1076,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -1068,9 +1097,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // Call the replaceNamedRoute API to replace the Named Route page.
     this.getUIContext().getRouter().replaceNamedRoute({
         name: 'myPage',
-        params: {
+        params: {  // Page parameters to pass.
           data1: 'message'
         }
       })
@@ -1078,8 +1108,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -1116,7 +1146,7 @@ Replaces the current page with another one using the named route and destroys th
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Description of the new page.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.  |
+| callback | AsyncCallback&lt;void&gt;                | Mandatory    | Callback used to return the page replacement result.<br/>If the page replacement is successful, **error** is **undefined**. If the page replacement fails, **error** is the error object returned by the system.   |
 
 **Error codes**
 
@@ -1139,7 +1169,7 @@ struct Index {
   async routePage() {
     this.getUIContext().getRouter().replaceNamedRoute({
       name: 'myPage',
-      params: {
+      params: {  // Page parameters to pass.
         data1: 'message'
       }
     }, (err: Error) => {
@@ -1176,7 +1206,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with a specified named route page and destroys the replaced page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API adds the **mode** parameter, which supports setting the mode used for page replacement.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1187,14 +1217,13 @@ Replaces the current page with another one using the named route and destroys th
 | Name    | Type                                      | Mandatory  | Description        |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Description of the new page. |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | Yes    | Mode used for page replacement. The options are Standard and Single. Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the single mode can avoid duplicate pages in the stack and is suitable for singleton scenarios such as the sign-in page and home page. |
 
 **Return value**
 
 | Type                 | Description     |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -1232,8 +1261,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -1259,7 +1288,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute-1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with a specified named route page and destroys the replaced page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute-1), this API adds the **mode** parameter, which supports setting the mode used for page replacement.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1270,8 +1299,8 @@ Replaces the current page with another one using the named route and destroys th
 | Name     | Type                                      | Mandatory  | Description        |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | Yes   | Description of the new page. |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | Yes   | Routing mode.|
-| callback | AsyncCallback&lt;void&gt;                | Yes   | Callback for the router navigation result.<br>If the navigation succeeds, **error** is **undefined**. If the navigation fails, **error** is the error object returned by the system.   |
+| mode | [router.RouterMode](js-apis-router.md#routermode9) | Yes | Mode used for page replacement. The options are Standard (Standard Mode) or Single (Singleton Mode). Select based on page stack management requirements. The standard mode is suitable for regular page navigation, and the singleton mode can avoid duplicate pages from being pushed onto the stack, suitable for singleton scenarios such as sign-in pages and home pages. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback for the page replacement result.<br/>If the page replacement is successful, **error** is **undefined**. When the page replacement fails, **error** is the error object returned by the system. |
 
 **Error codes**
 
@@ -1340,6 +1369,10 @@ back(options?: router.RouterOptions ): void
 
 Returns to the previous page or a specified page.
 
+> **NOTE**
+>
+> If showAlertBeforeBackPage() was previously called to enable the return confirmation dialog box, calling back() will display a confirmation dialog box: if the user selects "Cancel", back() will not be executed; if the user selects "Confirm", back() will proceed. You can disable the return confirmation dialog box by calling hideAlertBeforeBackPage().
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -1348,13 +1381,14 @@ Returns to the previous page or a specified page.
 
 | Name    | Type                                      | Mandatory  | Description                                      |
 | ------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| options | [router.RouterOptions](js-apis-router.md#routeroptions) | No   | Description of the target page. The **url** parameter specifies the URL of the page to return to. If the page with the specified URL does not exist in the navigation stack, no action is performed. If the navigation stack contains the corresponding URL, the application returns to the page with the largest index.<br>If no URL is set, the application returns to the previous page, and the page is not rebuilt. The page in the page stack is not reclaimed. It will be reclaimed after being popped up.|
+| options | [router.RouterOptions](js-apis-router.md#routeroptions) | No | Description of the page to return to. This parameter is passed when you need to return to a specified page (specify the target page via the **url** field in **options**); it can be omitted when you only need to return to the previous page. The **url** field specifies the target page to return to: if the URL exists in the page stack, the system returns to the page with the same URL that has the largest index; if the URL does not exist, no operation is performed. If **url** is not set, the system returns to the previous page (the page will not be rebuilt and will be reclaimed after being popped from the stack). |
 
 **Example**
 
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1376,14 +1410,15 @@ Returns to the specified page.
 
 | Name    | Type                             | Mandatory  | Description        |
 | ------- | ------------------------------- | ---- | ---------- |
-| index | number | Yes   | Index of the target page to navigate to.<br> Value range: [0, +∞)|
-| params    | Object      | No   | Parameters carried when returning to the page.|
+| index | number | Yes | Index of the target page to return, starting from 0. Note: This differs from the index parameter of [getStateByIndex](#getstatebyindex12), which starts from 1. <br/> Value range: [0, +∞). If the index is out of the page stack range or no corresponding page exists, the user operation is not responded to. |
+| params | Object | No | Parameters carried when returning from the page. No parameters are carried if not passed. The carried parameters can be received through the [getParams](#getparams) method of the target page. |
 
 **Example**
 
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1395,6 +1430,7 @@ router.back(1);
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1408,6 +1444,10 @@ clear(): void
 
 Clears all historical pages in the stack and retains only the current page at the top of the stack.
 
+> **NOTE**
+>
+> Calling clear() clears all historical page stacks, retaining only the current page, and the page stack depth becomes 1. At this point, there is no history in the stack, and the back() method becomes ineffective, but methods such as pushUrl() and replaceUrl() can still be used normally. This operation is irreversible. After execution, the user cannot revisit any historical pages. It is recommended to use this method only in scenarios such as signing out or switching accounts. Before calling this method, be sure to persist critical page state data.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -1417,6 +1457,7 @@ Clears all historical pages in the stack and retains only the current page at th
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1450,6 +1491,7 @@ Obtains the number of pages in the current stack.
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1468,8 +1510,6 @@ Obtains the number of pages in the current stack.
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -1524,6 +1564,7 @@ Obtains state information about the current page.
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1551,7 +1592,7 @@ Obtains the status information about a page by its index.
 
 | Name    | Type                             | Mandatory  | Description        |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | Yes  | Index of the target page.<br> Value range: [1, +∞).|
+| index    | number | Yes  | Index of the page to obtain. The index starts from 1. Note: This is different from the index parameter of [back](#back12), which starts from 0. <br/> Value range: [1, +∞). **undefined** is returned when the index does not exist. |
 
 **Return value**
 
@@ -1564,6 +1605,7 @@ Obtains the status information about a page by its index.
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1577,11 +1619,12 @@ if (options != undefined) {
   console.info('params = ' + options.params);
 }
 ```
+
 ## getStateByUrl<sup>12+</sup>
 
-getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routerstate)>
+getStateByUrl(url: string): Array\<router.RouterState>
 
-Obtains the status information about a page by its URL.
+Obtains the state information of the page that matches the specified URL.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1591,7 +1634,7 @@ Obtains the status information about a page by its URL.
 
 | Name    | Type                             | Mandatory  | Description        |
 | ------- | ------------------------------- | ---- | ---------- |
-| url    | string | Yes  | URL of the target page. |
+| url    | string | Yes   | URL used to obtain the page information. It must use the in-app page path format. If no page corresponding to the URL exists in the page stack, an empty array is returned.  |
 
 **Return value**
 
@@ -1604,6 +1647,7 @@ Obtains the status information about a page by its URL.
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1621,7 +1665,7 @@ for (let i: number = 0; i < options.length; i++) {
 
 showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 
-Enables the display of a confirm dialog box before returning to the previous page.
+Enables the page return confirmation dialog box. After this method is called, when the user triggers a return operation (such as tapping the back key or calling the back method), the system will first display a confirmation dialog box asking the user whether to return. The return operation is executed only after the user confirms; if the user cancels, the current page is retained. This is suitable for scenarios such as form filling pages (to prevent accidental returns that cause data loss), important operation confirmation pages (such as payment or order submission), and content editing pages (when the user may have unsaved changes). This method is used in pair with hideAlertBeforeBackPage(): after calling this method to enable the dialog box, it is recommended to call hideAlertBeforeBackPage() to disable the dialog box at an appropriate time.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1631,7 +1675,7 @@ Enables the display of a confirm dialog box before returning to the previous pag
 
 | Name    | Type                                      | Mandatory  | Description       |
 | ------- | ---------------------------------------- | ---- | --------- |
-| options | [router.EnableAlertOptions](js-apis-router.md#enablealertoptions) | Yes   | Description of the dialog box.|
+| options | [router.EnableAlertOptions](js-apis-router.md#enablealertoptions) | Yes | Text dialog box information, including parameters such as **message** (dialog box prompt content). |
 
 **Error codes**
 
@@ -1647,6 +1691,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1668,7 +1713,7 @@ try {
 
 hideAlertBeforeBackPage(): void
 
-Disables the display of a confirm dialog box before returning to the previous page.
+Disables the page return confirmation dialog box. This is suitable for scenarios such as when the user has completed a save operation and can safely return, when the return confirmation is no longer needed after a page state change, and when dynamic control of the return behavior is required. This method is used in pair with showAlertBeforeBackPage(): after calling showAlertBeforeBackPage() to enable the dialog box, you can call this method to disable the dialog box at an appropriate time.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1679,6 +1724,7 @@ Disables the display of a confirm dialog box before returning to the previous pa
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
@@ -1691,7 +1737,7 @@ router.hideAlertBeforeBackPage();
 
 getParams(): Object
 
-Obtains the parameters passed from the page that initiates redirection to the current page.
+Obtains the parameters passed from the initiating page to the current page. The parameters are passed through the **params** field of RouterOptions or NamedRouterOptions during page navigation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1701,13 +1747,14 @@ Obtains the parameters passed from the page that initiates redirection to the cu
 
 | Type    | Description               |
 | ------ | ----------------- |
-| Object | Parameters passed from the page that initiates redirection to the current page.|
+| Object | Parameter object returned by the previous page through the **params** field. You can use this object to obtain the specific data passed during page navigation. |
 
 **Example**
 
 See the example for [PushUrl](#pushurl).
 
 <!--code_no_check-->
+
 ```ts
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();

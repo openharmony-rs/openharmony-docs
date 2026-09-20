@@ -1,25 +1,27 @@
 # Listening for Gamepad Axis and Button Events (C/C++)
-
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=ae8fea910c203d6791a838e7a3fb4d5339bb907d translatedAt=2026-06-22T10:07:25.226Z pushedAt=2026-06-22T10:10:10.247Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=0e9631a82844cd7c7c6929f54a07acb1f1b31933 translatedAt=2026-08-26T05:04:12.704Z pushedAt=2026-08-28T08:59:15.603Z -->
 
 > **NOTE**<br>
 > You need to develop [device online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for gamepad axis and button events.
 
+
 ## When to Use
 
 Game Controller Kit provides the capability of listening for gamepad axis and button events. After you register a listener for these events, callback notifications can be obtained when players operate the gamepad's buttons and joysticks.
+
 
 ## Buttons
 
 The following figure shows the buttons supported by Game Controller Kit.
 
 ![gamepad](figures/gamepad.png)
+
 
 ## Available APIs
 
@@ -50,7 +52,9 @@ For detailed API descriptions, see [GameController](../reference/apis-game-contr
 | OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor | Registers a listener for the Left Thumbstick axis event.| 
 | OH_GamePad_RightThumbstick_RegisterAxisInputMonitor | Registers a listener for the Right Thumbstick axis event.| 
 
+
 ## How to Develop
+
 
 ### Linking the Dynamic Library
 
@@ -58,11 +62,13 @@ For detailed API descriptions, see [GameController](../reference/apis-game-contr
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
+
 ### Importing the Module
 
 ```c
 #include <GameControllerKit/game_pad.h>
 ```
+
 
 ### Registering and Unregistering a Listener for the Axis Event
 
@@ -70,17 +76,18 @@ Call the corresponding APIs to register or unregister axis event callbacks and o
 
 The following table lists the physical axes and the APIs for obtaining their values.
 
-| Physical Axis| Axis Value Acquisition API| 
+| Physical Axis| Axis Value Acquisition API|
 | -------- | -------- |
-| LeftThumbstick | X-axis value: OH_GamePad_AxisEvent_GetXAxisValue<br>Y-axis value: OH_GamePad_AxisEvent_GetYAxisValue| 
-| RightThumbstick | Z-axis value: OH_GamePad_AxisEvent_GetZAxisValue<br>RZ-axis value: OH_GamePad_AxisEvent_GetRZAxisValue| 
-| DPAD | HatX-axis value: OH_GamePad_AxisEvent_GetHatXAxisValue<br>HatY-axis value: OH_GamePad_AxisEvent_GetHatYAxisValue| 
-| LeftTrigger | Brake-axis value: OH_GamePad_AxisEvent_GetBrakeAxisValue| 
-| RightTrigger | Gas-axis value: OH_GamePad_AxisEvent_GetGasAxisValue| 
+| LeftThumbstick | Obtain the axis value of the X axis through [OH_GamePad_AxisEvent_GetXAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getxaxisvalue).<br/>Obtain the axis value of the Y axis through [OH_GamePad_AxisEvent_GetYAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getyaxisvalue). |
+| RightThumbstick | Obtain the axis value of the Z axis through [OH_GamePad_AxisEvent_GetZAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getzaxisvalue).<br/>Obtain the axis value of the RZ axis through [OH_GamePad_AxisEvent_GetRZAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getrzaxisvalue). |
+| DPAD | Obtain the axis value of the HatX axis through [OH_GamePad_AxisEvent_GetHatXAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_gethatxaxisvalue).<br/>Obtain the axis value of the HatY axis through [OH_GamePad_AxisEvent_GetHatYAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_gethatyaxisvalue). |
+| LeftTrigger | Obtain the axis value of the Brake axis through [OH_GamePad_AxisEvent_GetBrakeAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getbrakeaxisvalue). |
+| RightTrigger | Obtain the axis value of the Gas axis through [OH_GamePad_AxisEvent_GetGasAxisValue](../reference/apis-game-controller-kit/capi-game-pad-event-h.md#oh_gamepad_axisevent_getgasaxisvalue). |
 
 The following uses the Left Thumbstick axis event as an example.
 
 ```c
+// Register the LeftThumbstick axis event listener.
 napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode =
@@ -95,6 +102,7 @@ napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_c
     return result;
 }
 
+// Unregister the LeftThumbstick axis event listener.
 napi_value GamePad::LeftThumbstick_UnregisterAxisInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode = OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor();
@@ -119,6 +127,7 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
     OnAxisEvent(axisEvent, "LeftThumbstick_OnAxisEvent", val);
 }
 ```
+
 
 ### Registering and Unregistering a Listener for the Button Event
 
@@ -149,6 +158,7 @@ The following table lists the button names and their values.
 The following uses the Left Shoulder button event as an example.
 
 ```c
+// Register the LeftShoulder key event listener.
 napi_value GamePad::LeftShoulder_RegisterButtonInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode =
@@ -163,6 +173,7 @@ napi_value GamePad::LeftShoulder_RegisterButtonInputMonitor(napi_env env, napi_c
     return result;
 }
 
+// Unregister the LeftShoulder key event listener.
 napi_value GamePad::LeftShoulder_UnregisterButtonInputMonitor(napi_env env, napi_callback_info info) {
     napi_value result;
     GameController_ErrorCode errorCode = OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor();

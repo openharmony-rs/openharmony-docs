@@ -6,7 +6,7 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d9160123fc8d1a4f4284e8e152caf5104ff3fd5d translatedAt=2026-07-30T09:20:24.949Z pushedAt=2026-07-30T14:14:35.475Z -->
+<!-- md-trans-meta sourceCommit=01403468d341b177a5e7b419ec8d3dfb50c26dd8 translatedAt=2026-08-21T03:20:28.132Z pushedAt=2026-08-21T09:38:12.283Z -->
 
 hidumper is a command line tool used to export system information. It can analyze the usage of system resources such as CPU, memory, and storage, query the running status of system services, and locate resource usage exceptions and communication problems.
 
@@ -333,7 +333,8 @@ Statistics
 
 | Field| Description|
 | -------- | -------- |
-| Counts | Number of occurrences of the same memory segment.|
+| Name | Name of the virtual memory mapping. |
+| Counts | Number of occurrences of memory segments with the same name. |
 | Category | Memory category.|
 
 Run the **hidumper --mem-smaps pid -v** command to obtain the detailed memory usage of a specified process. This command directly prints all memory information of the process and does not perform secondary processing on the same memory information.

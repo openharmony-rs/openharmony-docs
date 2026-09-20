@@ -3,11 +3,11 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-hfp模块提供了访问蓝牙呼叫接口的方法。
+hfp模块提供了访问蓝牙呼叫接口的方法，支持蓝牙免提通话（[HFP](../../connectivity/bluetooth/terminology.md#hfp)）的连接和断开等操作，适用于需要在设备间建立蓝牙通话音频连接的场景。
 
 > **说明：**
 >
@@ -24,10 +24,10 @@ import { hfp } from '@kit.ConnectivityKit';
 
 ## HandsFreeAudioGatewayProfile
 
-该实例表示蓝牙通话音频中的[HFP AG](../../connectivity/terminology.md#hfp-ag)角色‌。
+该实例表示蓝牙通话音频中的[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)角色‌。
 - 该类继承于[BaseProfile](js-apis-bluetooth-hfp.md#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的接口前，需通过[createHfpAgProfile](js-apis-bluetooth-hfp.md#hfpcreatehfpagprofile)接口构造该类的实例。
-- 和该实例角色相对应的是[HF](../../connectivity/terminology.md#hf)角色。
+- 和该实例角色相对应的是[HF](../../connectivity/bluetooth/terminology.md#hf)角色。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -36,7 +36,9 @@ import { hfp } from '@kit.ConnectivityKit';
 
 connect(deviceId: string): void
 
-连接设备的HFP服务。
+连接设备的HFP服务。例如，在车载通话、蓝牙耳机等免提通话场景中，可通过此接口主动建立与远端设备的HFP连接。
+
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -82,7 +84,9 @@ try {
 
 disconnect(deviceId: string): void
 
-断开连接设备的HFP服务。
+断开连接设备的HFP服务。例如，在用户主动断开蓝牙耳机或车载设备的免提通话连接时使用。
+
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -126,10 +130,10 @@ try {
 
 ## HandsFreeHfProfile
 
-该实例表示蓝牙通话音频中的[HF](../../connectivity/terminology.md#hf)角色‌。
+该实例表示蓝牙通话音频中的[HF](../../connectivity/bluetooth/terminology.md#hf)角色‌。
 - 该类继承于[BaseProfile](js-apis-bluetooth-hfp.md#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的接口前，需通过[createHfpHfProfile](js-apis-bluetooth-hfp.md#hfpcreatehfphfprofile)接口构造该类的实例。
-- 和该实例角色相对应的是[HFP AG](../../connectivity/terminology.md#hfp-ag)角色。
+- 和该实例角色相对应的是[HFP AG](../../connectivity/bluetooth/terminology.md#hfp-ag)角色。
 
 **起始版本**： 26.0.0
 
@@ -142,9 +146,9 @@ try {
 
 connect(deviceId: string): void
 
-连接设备的HFP服务。
+连接设备的HFP服务。例如，在蓝牙耳机或车载设备需要主动连接手机以进行免提通话时使用。
 
-需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，感知设备的HFP Profile的连接状态变化。
 
 **起始版本**： 26.0.0
 
@@ -194,7 +198,7 @@ disconnect(deviceId: string): void
 
 断开连接设备的HFP服务。
 
-需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，来感知设备的HFP Profile的连接状态变化。
+需要通过[BaseProfile.on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)接口注册回调，感知设备的HFP Profile的连接状态变化。
 
 **起始版本**： 26.0.0
 
@@ -226,7 +230,7 @@ disconnect(deviceId: string): void
 |2900004 | Profile not supported.                |
 |2900099 | Internal system error. For example, IPC error.          |
 
-**示例：**
+**示例**：
 
 ```js
 try {

@@ -1,7 +1,7 @@
 # Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -12,9 +12,9 @@ WebController适用于需要在应用侧对嵌入式Web组件进行主动控制�
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 8开始支持。
+> - 本Class从API version 8开始支持。
 >
 > - 该组件从API version 9开始废弃，建议使用[WebviewController](./arkts-apis-webview-WebviewController.md)代替。
 >
@@ -561,7 +561,7 @@ zoom(factor: number): void
 
 | 参数名    | 类型   | 必填   | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | 是    | 缩放系数。1表示保持当前缩放比例；小于1为缩小，大于1为放大。取值范围(0, 100]。 |
+| factor | number | 是    | 缩放系数。1表示恢复加载网页的默认缩放比例；小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例：**
 

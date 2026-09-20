@@ -43,7 +43,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 title参数的规格如下：
 
 - 不应包含扩展名。
-- 文件名字符串长度为1~255。
+- 文件名的字符串长度为1~255个字符。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -60,8 +60,8 @@ title参数的规格如下：
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| fetchColumns           | Array&lt;string&gt; | 否   | 否   | 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](arkts-apis-photoAccessHelper-PhotoAsset.md#get)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 谓词查询，显示过滤条件。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| fetchColumns           | Array&lt;string&gt; | 否   | 否   | 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](arkts-apis-photoAccessHelper-PhotoAsset.md#get)接口获取除上述默认属性外的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 谓词查询，用于指定过滤条件。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -71,9 +71,9 @@ title参数的规格如下：
 
 | 名称                   | 类型                        | 只读 | 可选 | 说明                                         |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
-| deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | 否   | 否   | 请求资源分发模式，可以指定对于该资源的请求策略，可被配置为快速模式，高质量模式，均衡模式三种策略。 |
+| deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | 否   | 否   | 请求资源分发模式，可配置为快速模式、高质量模式、均衡模式三种策略。                 |
 | compatibleMode<sup>15+</sup>      | [CompatibleMode](arkts-apis-photoAccessHelper-e.md#compatiblemode15) | 否   | 是   | 配置HDR视频资源转码模式，可指定配置为转码和不转码两种策略。默认为原视频资源内容模式即不转码。 |
-| mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | 否   | 是   | 配置HDR视频转码为SDR视频时的进度级回调。 |
+| mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | 否   | 是   | 配置HDR视频转码为SDR视频时的进度级回调。<br>当需要监控HDR视频转码进度时配置此参数。不填写时无法获取转码进度。 |
 
 ## ChangeData
 
@@ -84,7 +84,7 @@ title参数的规格如下：
 | 名称    | 类型                        | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type    | [NotifyType](arkts-apis-photoAccessHelper-e.md#notifytype) | 否   | 否   | ChangeData的通知类型。                                       |
-| uris    | Array&lt;string&gt;         | 否   | 否   | 相同[NotifyType](arkts-apis-photoAccessHelper-e.md#notifytype)的所有uri，可以是PhotoAsset或Album。 |
+| uris    | Array&lt;string&gt;         | 否   | 否   | 相同[NotifyType](arkts-apis-photoAccessHelper-e.md#notifytype)的所有URI字符串，对应PhotoAsset或Album的URI。 |
 | extraUris | Array&lt;string&gt;         | 否   | 否   | 相册中变动文件的uri数组。可能为undefined，使用前需要检查是否为undefined。                           |
 
 ## TextContextInfo<sup>12+</sup>
@@ -172,7 +172,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | uri       | string  | 否 | 否 | 媒体文件资源uri。 |
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否  | 媒体资产的类型（图片/视频）。 |
 | albumUri  | string  | 否 | 否 | 媒体资产（图片/视频）所属相册的uri。  |
-| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br>**起始版本：** 26.0.0   |
+| isFavorite | boolean  | 否 | 否 | 表示媒体资产（图片/视频）的收藏状态。true表示资产已收藏，false表示资产未收藏。<br>**起始版本：** 26.0.0                          |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
@@ -264,8 +264,8 @@ picker内宫格的捏合模式。
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution | boolean  | 否 | 否 | 是否支持启用高分辨率资产。true表示支持，false表示不支持。<br>**原子化服务API:** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持MIME types的类型。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| supportedHighResolution | boolean  | 否 | 否 | 表示应用是否支持获取高分辨率的媒体资源。true表示支持高分辨率资源请求，false表示仅支持标准分辨率资源。<br>**原子化服务API:** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持的MIME类型。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。       |
 
 ## MediaLibraryAvailability
 

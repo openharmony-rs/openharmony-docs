@@ -6,28 +6,21 @@
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-
+<!-- md-trans-meta sourceCommit=96e17581019f7c56bbb41cd0a0fe7f8461a8d7d1 translatedAt=2026-08-24T11:34:47.921Z pushedAt=2026-08-25T03:17:20.749Z -->
 
 ## Overview
 
-
 hiprofiler provides the performance profiling capabilities for you to analyze memory and performance issues.
-
 
 Its overall architecture comprises the profiling data display page on the PC and performance profiling service on the device. The PC and device services use the C/S model. The profiling data on the PC is displayed on the [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) and [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) pages. The device program consists of multiple parts that run in the system environment. The **hiprofilerd** process communicates with DevEco Studio to provide profiling services. The device also contains the CLI tool (**hiprofiler_cmd**) and data collection process (**hiprofiler_plugins**). Based on the Producer-Consumer model, the profiling service controls the data collection process to obtain profiling data and sends the data to DevEco Studio. Currently, plugins such as nativehook, CPU, ftrace, GPU, hiperf, xpower, and memory have been implemented, providing comprehensive profiling capabilities for CPU, GPU, memory, and power consumption.
 
-
-
 Benchmarking with profilers in the industry, hiprofiler provides more capabilities. For details, see [Plugin Parameters](#plugin-parameters), including cross-language stack unwinding, power consumption data obtaining, and long-time heap memory stack capturing.
-
-
 
 ## Environment Requirements
 
 - The environment for OpenHarmony Device Connector (hdc) has been set up. For details, see [Environment Setup](hdc.md#environment-setup).
 
 - The devices are properly connected and **hdc shell** is executed.
-
 
 ## Architecture
 
@@ -42,7 +35,6 @@ Benchmarking with profilers in the industry, hiprofiler provides more capabiliti
 5. The PC parses the data, generates lanes, and displays the obtained profiling data.
 
 ![hiprofiler-plugins](figures/hiprofiler-plugins.png)
-
 
 ## Command Syntax
 
@@ -77,11 +69,10 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
-
 | Command| Description|
 | -------- | -------- |
 | -c | After setting this option, you need to place the configuration file in the **/data/local/tmp** directory and input the path.|
-| -o | Sets the custom file save path, which must start with **/data/local/tmp**. If no path is set, the profiling data is saved to **/data/local/tmp/hiprofiler_data.htrace** by default. If the profiling is performed repeatedly, the file in the original path will be overwritten.|
+| -o | Custom file save path (must start with **/data/local/tmp**). If no path is set, the tuning data is automatically saved to **/data/local/tmp/hiprofiler_data.htrace**. Repeated tuning overwrites the file at the original path.<br>When capturing the [composite heap debug log](#capturing-composite-heap-profiling-logs-of-a-specified-process), the custom save path must be a file with the .zip suffix. If no path is set, the composite heap debug log is automatically saved to **/data/local/tmp/hiprofiler_data_{timestamp}.zip**. |
 | -k | Kills the existing profiling service process.|
 | -s | Starts the profiling service process.|
 | -t | Sets the profiling duration, in seconds. If you need to control the collection duration manually, use the **start**/**stop** command combination.|
@@ -89,12 +80,9 @@ CONFIG
 | start | After this option is set, profiling continues until you run the **hiprofiler_cmd stop** command. Use this command in the format **hiprofiler_cmd start params**, where **params** indicates other parameters passed to **hiprofiler_cmd**. This option cannot be used together with **-t**.<br>For details, see [Common Commands](#common-commands).<br>Note: This parameter is supported since API version 24. If **hiprofiler_cmd stop** is not executed after profiling starts, profiling ends automatically after 3600 seconds.|
 | stop | Stops profiling that was started by the **start** command.<br>Note: This parameter is supported since API version 24. The **start** and **stop** commands must be used in pairs to avoid repeatedly starting or stopping profiling.|
 
-
 After inputting the **hiprofiler_cmd** parameter, input the plugin configuration information, which starts with **<<CONFIG** and ends with **CONFIG**. The configuration varies depending on the plugin. For details, see [Plugin Parameters](#plugin-parameters).
 
-
 The following table describes the **session config** fields.
-
 
 | Field| Description|
 | -------- | -------- |
@@ -102,9 +90,7 @@ The following table describes the **session config** fields.
 | split_file | Whether to split a file. The value **true** means to split the file, and **false** means the opposite.|
 | split_file_max_size_mb | Maximum size of each split file when **split_file** is set to **true**.|
 
-
 The following table describes the **plugin_configs** fields.
-
 
 | Field| Description|
 | -------- | -------- |
@@ -112,9 +98,7 @@ The following table describes the **plugin_configs** fields.
 | sample_interval | Interval for the plugin to obtain profiling data, in milliseconds.|
 | config_data | Parameters of the plugin. The parameters required by each plugin are different. For details, see the **proto** definition of the plugins.<br>(The code path is **developtools/profiler/protos**.)|
 
-
 Download the generated trace file to the local PC by running the **hdc file recv** command, and then upload the file to SmartPerf or DevEco Studio for parsing.
-
 
 ## Plugins Supported
 
@@ -132,9 +116,7 @@ Download the generated trace file to the local PC by running the **hdc file recv
 | [hisysevent plugin](#hisysevent-plugin)| Obtains the HiSysEvent event data by running the HiSysEvent commands.| - |
 | [hidump plugin](#hidump-plugin)| Obtains the related data by running the SP_daemon commands.| - |
 
-
 ## Applications Signed by the Debug Certificate
-
 
 > **NOTE**
 >
@@ -154,9 +136,7 @@ If the application is a debug-type application, the following information is dis
 
 To build a debug application, you need to use a debug certificate for signature. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 
-
 ## Plugin Parameters
-
 
 ### nativehook
 
@@ -210,7 +190,7 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 | RES_ARK_GLOBAL_HANDLE | Ark global handle allocation stack.| 23 |
 | RES_VMA_ARKWEB | Memory tracing for the ArkWeb PA allocator.| 23 |
 | RES_ARK_LOCAL_HANDLE | Ark local handle allocation stack.| 23 |
-| RES_COMPOSITE_HEAP | Composite profiling logs, including call stack traces, rawheap heap snapshots, and map files.| 26.1.0 |
+| RES_COMPOSITE_HEAP | Composite heap debug log, which includes the call stack trace, heap snapshot rawheap, and map mapping file. | 26.0.0 |
 
 ### async_type Parameter Details
 
@@ -224,11 +204,9 @@ Obtains the call stack information of heap memory allocations (by the **malloc**
 | ARKTS_WORKER | Async stacks generated by ArkTS worker threads.| 24 |
 | ARKTS_TASKPOOL | Async stacks generated by the ArkTS task pool.| 24 |
 
-
 **Result analysis**
 
 The fp stack unwinding and cross-language stack unwinding are enabled (green frames denote JavaScript).
-
 > **NOTE**
 >
 > Set **fp_unwind** to **true**.
@@ -274,7 +252,6 @@ CONFIG
 ![hiprofiler-nativehook-fp](figures/hiprofiler-nativehook-fp.png)
 
 The dwarf stack unwinding and cross-language stack unwinding are enabled (native -> JS -> native stack frames are displayed).
-
 > **NOTE**
 >
 > Set **fp_unwind** to **false**.
@@ -320,7 +297,6 @@ CONFIG
 ![hiprofiler-nativehook-dwarf](figures/hiprofiler-nativehook-dwarf.png)
 
 Statistics mode is enabled (the stack data is displayed periodically).
-
 > **NOTE**
 >
 > Set **statistics_interval** to a value greater than **0**, which indicates how often statistics are generated. For example, **10** means statistics are generated every 10 seconds.
@@ -365,7 +341,6 @@ CONFIG
 ![hiprofiler-nativehook-statistical](figures/hiprofiler-nativehook-statistical.png)
 
 Non-statistics mode is enabled (the stack data is not displayed periodically).
-
 > **NOTE**
 >
 > Set **statistics_interval** to **0** or leave it unset.
@@ -407,7 +382,6 @@ CONFIG
 ```
 
 ![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
-
 
 ### ftrace-plugin
 
@@ -466,7 +440,6 @@ You can click the arrow on the right of **binder transaction** to go to the proc
 
 ![hiprofiler-ftrace-binder](figures/hiprofiler-ftrace-binder.png)
 
-
 ### memory-plugin
 
 **Parameters**
@@ -480,26 +453,47 @@ You can click the arrow on the right of **binder transaction** to go to the proc
 | parse_smaps_rollup | bool | Whether to read smaps statistics from the **smaps_rollup** node.| Data is read from the **/proc/{pid}/smaps_rollup** node. The profiling effect (for CPU and memory usage) is better than that of using the **report_smaps_mem_info** parameter.|
 
 The following memory information is displayed:
+
 - **MemTotal**: total memory size.
+
 - **MemFree**: free memory size.
+
 - **Buffers**: buffer size of files.
+
 - **Cached**: cache size.
+
 - **Shmem**: size of allocated shared memory.
+
 - **Slab**: kernel data cache size.
+
 - **SUnreclaim**: size of unreclaimable slab.
+
 - **SwapTotal**: total size of the swap space.
+
 - **SwapFree**: size of the unused swap space.
+
 - **Mapped**: size of the mapping for devices and files.
+
 - **VmallocUsed**: size of the used virtual memory.
+
 - **PageTables**: size of the index table that manages memory paging.
+
 - **KernelStack**: memory consumed by the kernel.
+
 - **Active**: size of the buffer or cache page file that is frequently used.
+
 - **Inactive**: size of the buffer or cache page file that is not frequently used.
+
 - **Unevictable**: size of the memory page that cannot be released.
+
 - **VmallocTotal**: total size of the vmalloc virtual memory.
+
 - **CmaTotal**: total size of the contiguous available memory.
+
 - **CmaFree**: size of the free available memory.
+
 - **Zram**: size of the used zRAM.
+
 - **ZramTotal**: total size of zRAM.
 
 >**NOTE**
@@ -592,7 +586,6 @@ You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **M
 
 You can go to **DevEco Studio** -> **Profiler** -> **Realtime Monitor** to obtain the power consumption data of related processes.
 
-
 ### gpu-plugin
 
 Obtain the GPU usage information.
@@ -603,7 +596,6 @@ Obtain the GPU usage information.
 | -------- | -------- | -------- | -------- |
 | pid | int | Process ID to profile, which is the same as the process ID in the **/proc/** node.| - |
 | report_gpu_info | bool | Whether to display the GPU usage of a specified process.| The value **true** means to display the GPU data of a specified process (PID needs to be set), and **false** means the opposite.|
-
 
 ### cpu-plugin
 
@@ -618,11 +610,17 @@ Obtain the CPU usage information.
 | skip_thread_cpu_info | bool | Whether to skip the thread CPU usage data.| The value **true** means to not display the CPU usage of each thread, which reduces the profiling overhead;<br>the value **false** means the opposite.|
 
 The following lists the basic CPU information:
+
 - **Start Time**: start time of the collection.
+
 - **Duration**: interval between the previous collection and the current collection.
+
 - **TotalLoad%**: total CPU usage.
+
 - **UserLoad%**: CPU usage in user mode.
+
 - **SystemLoad%**: CPU usage in kernel mode.
+
 - **Process**: process ID.
 
 **Result analysis**
@@ -668,13 +666,21 @@ Obtain the disk I/O usage information of the entire device.
 | report_io_stats | IoReportType | Disk I/O statistics.| The value is an enum type. Currently, only **IO_REPORT** is supported.|
 
 When **IO_REPORT** is set, the following disk I/O information is obtained:
+
 - **Data Read**: total number of bytes read from the disk to the memory.
+
 - **Data Read/sec**: number of bytes read from the disk to the memory per second.
+
 - **Data Write**: total number of bytes written from the memory to the disk.
+
 - **Data Write/sec**: number of bytes written from the memory to the disk per second.
+
 - **Reads In**: number of bytes read.
+
 - **Reads In/sec**: number of bytes read per second.
+
 - **Write Out**: number of bytes written.
+
 - **Write Out/sec**: number of bytes written per second.
 
 **Result analysis**
@@ -709,7 +715,6 @@ This command reads the basic disk I/O statistics. After the command is executed,
 
 ![diskio_001.png](figures/diskio_001.png)
 
-
 ### hidump-plugin
 
 Obtain the frame rate of an application process.
@@ -726,7 +731,6 @@ Obtain the frame rate of an application process.
 Currently, this plugin only supports trace data parsing on DevEco Studio. SmartPerf is not supported. For details, see the following figure.
 
 ![fps_001.png](figures/fps_001.png)
-
 
 ### hisysevent-plugin
 
@@ -773,7 +777,6 @@ This command captures information about all HiSysEvent subscriptions. After the 
 
 ![hisysevent_001.png](figures/hisysevent_001.png)
 
-
 ### network-plugin
 
 Obtains the network upload and download data, and collects statistics on network traffic and connection status provided by the network management module.
@@ -791,15 +794,25 @@ Obtains the network upload and download data, and collects statistics on network
 > **startup_process_name** and **restart_process_name** cannot be both empty.
 
 The following lists the network information:
+
 - **StartTime**: start time of the collection.
+
 - **Duration**: interval between the previous collection and the current collection.
+
 - **Data Received**: total number of received network bytes.
+
 - **Data Received/sec**: number of received network bytes per second.
+
 - **Data Send**: total number of sent network bytes.
+
 - **Data Send/sec**: number of sent network bytes per second.
+
 - **Packets In**: total number of received network packets.
+
 - **Packets In/sec**: number of received network packets per second.
+
 - **Packets Out**: total number of sent network packets.
+
 - **Packets Out/sec**: number of sent network packets per second.
 
 **Result analysis**
@@ -849,7 +862,6 @@ Obtains the network request information of a process, and records each HTTP requ
 | flush_interval | int | Disk flush interval.| No| A disk flush is triggered every **flush_interval** network requests, optimizing the I/O efficiency.<br>The default value is **1**.|
 | block | bool | Whether to enable the block mode.| No| **true**: Enable the block mode when the shared memory is full, which may affect the performance.<br>**false**: Discard the excess data when the shared memory is full.<br>The default value is **false**.|
 
-
 **Result analysis**
 
 Currently, SmartPerf does not support trace data parsing of this plugin. To analyze network data, use the NetWork feature of DevEco Studio Profiler. The reference is as follows:
@@ -859,7 +871,6 @@ Currently, SmartPerf does not support trace data parsing of this plugin. To anal
 ## Common Commands
 
 ### Sampling Records of Heap Memory Allocation Call Stack Data
-
 
 Capture the stack of heap memory allocation operations of the **com.example.insight_test_stage** process, and enable fp stack unwinding, offline symbolization, and statistics mode.
 
@@ -899,7 +910,6 @@ plugin_configs {
 }
 CONFIG
 ```
-
 
 The collected data is saved to the **/data/local/tmp/hiprofiler_data.htrace** file, which contains the function call information, thread and dynamic library memory allocation information, call stack count and allocation size required for memory leak analysis. Enabling offline symbolization, fp stack unwinding, and statistics mode can improve the data processing efficiency of the profiling service.
 
@@ -1073,6 +1083,7 @@ The LocalHandle memory recording feature requires the profiled application to lo
 How to load the profiling library at startup:
 
 1. If the application has exited, send the LocalHandle memory recording command with **startup_mode** set to **true**, and then start the application. Data collection starts after the application is launched.
+
 2. If the application is running, send the LocalHandle memory recording command with **startup_mode** set to **true**, and then restart the application. Data collection starts after the application restarts.
 
 > **NOTE**
@@ -1177,15 +1188,15 @@ CONFIG
 
 ### Capturing Composite Heap Profiling Logs of a Specified Process
 
-Since API version 26.1.0, capturing composite heap profiling logs of a specified process is supported. These logs include call stack traces, rawheap heap snapshots, and map files. They can be used together with [Capturing the Call Stack of GlobalHandle Objects in a Specified Process](#capturing-the-call-stack-of-globalhandle-objects-in-a-specified-process) and [Capturing the Call Stack of LocalHandle Objects in a Specified Process](#capturing-the-call-stack-of-localhandle-objects-in-a-specified-process).
+Starting from API version 26.0.0, capturing composite heap profiling logs of a specified process is supported. These logs include call stack traces, rawheap heap snapshots, and map files. They can be used together with [RES_ARK_GLOBAL_HANDLE](#capturing-the-call-stack-of-globalhandle-objects-in-a-specified-process) and [RES_ARK_LOCAL_HANDLE](#capturing-the-call-stack-of-localhandle-objects-in-a-specified-process).
 
 > **NOTE**
 >
-> To capture composite heap profiling logs, add **restrace_tag: "RES_COMPOSITE_HEAP"** to the [nativehook](#nativehook) configuration.
+> To capture composite heap profiling logs, add [restrace_tag](#restrace_tag-parameter-details): "RES_COMPOSITE_HEAP" to the [nativehook](#nativehook) configuration.
 >
-> Composite heap profiling logs are written to the **/data/local/tmp/** directory specified by **-o** as a compressed file named **hiprofiler_data_{timestamp}.zip**. Only the latest record is retained.
+> Composite heap profiling logs are saved to the zip file specified by the **-o** parameter of the [command line](#command-syntax). If the **-o** parameter is not set, the logs are saved to **/data/local/tmp/hiprofiler_data_{timestamp}.zip** by default. Only the latest composite heap profiling log file is retained.
 >
-> Only [applications signed by the debug certificate](#applications-signed-by-the-debug-certificate) can be collected.
+> The collected process only supports [applications signed by the debug certificate](#applications-signed-by-the-debug-certificate).
 
 Example:
 
@@ -1267,7 +1278,6 @@ The native heap captured by hiprofiler is different from that viewed by hidumper
 
 hidumper captures the process-level memory usage, while hiprofiler captures the heap memory data allocated by the user-mode process using basic library functions such as **malloc**, **mmap**, and **realloc**. The **operator new** function also calls **malloc**. Therefore, the native heap information captured by them differs in the thread memory cache, heap memory release delay, and memory used by the loader.
 
-
 ### What should I do if the target process freezes during profiling?
 
 **Symptom**
@@ -1276,11 +1286,15 @@ When the **hiprofiler_cmd** command is executed, and the fp or dwarf stack unwin
 
 **Possible Causes and Solution**
 
-You can change the **config** parameter in the **hiprofiler_cmd** command as follows:
+You can change the **config** parameter in the **hiprofiler_cmd** command.
 
-- Decrease the values of **max_stack_depth** and **max_js_stack_depth** to reduce the stack unwinding depth and the collection of call stack information.
-- Increase the value of **smb_pages** to increase the shared memory size for profiling data transmission. The default value is 16384 pages, that is, 16384 x 4096 = 67108864 bytes (64 MB). You can change the value to 128 MB.
-- Increase the value of **sample_interval** to increase the size of the sampling thread stack. The default value is 256. You can change the value to 512.
+The procedure is as follows:
+
+ - Decrease the values of **max_stack_depth** and **max_js_stack_depth** to reduce the stack unwinding depth and the collection of call stack information.
+
+ - Increase the value of **smb_pages** to increase the shared memory size for profiling data transmission. The default value is 16384 pages, that is, 16384 x 4096 = 67108864 bytes (64 MB). You can change the value to 128 MB.
+
+ - Increase the value of **sample_interval** to increase the size of the sampling thread stack. The default value is 256. You can change the value to 512.
 
 ### What should I do if fp stack unwinding fails during profiling?
 

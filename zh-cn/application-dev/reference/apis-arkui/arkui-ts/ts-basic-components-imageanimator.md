@@ -167,8 +167,6 @@ iterations(value: number)
 
 设置播放次数。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -260,8 +258,6 @@ onPause(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 onRepeat(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
 状态回调，动画重复播放时触发。
-
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

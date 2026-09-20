@@ -672,9 +672,9 @@ let tmp = one;
 one = two;
 two = tmp;
 
-let data: Number[] = [1, 2, 3, 4];
+let data: number[] = [1, 2, 3, 4];
 let head = data[0];
-let tail: Number[] = [];
+let tail: number[] = [];
 for (let i = 1; i < data.length; ++i) {
   tail.push(data[i]);
 }
@@ -1009,7 +1009,7 @@ drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
 <!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->
 
 ``` TypeScript
-function drawText(text: String, location: number[], bold: boolean) {
+function drawText(text: string, location: number[], bold: boolean) {
   let x = location[0];
   let y = location[1];
   text;
@@ -2617,7 +2617,7 @@ ArkTS不支持通用模块定义（UMD）。因为在ArkTS中没有“脚本”�
 
 ```typescript
 // math-lib.d.ts
-export const isPrime(x: number): boolean
+export function isPrime(x: number): boolean
 export as namespace mathLib
 
 // 脚本中
@@ -2629,7 +2629,7 @@ mathLib.isPrime(2)
 ```typescript
 // math-lib.d.ts
 namespace mathLib {
-  export isPrime(x: number): boolean
+  export function isPrime(x: number): boolean
 }
 
 // 程序中
@@ -2863,7 +2863,7 @@ function fn(i: I) {
 
 **级别：错误**
 
-**错误码：106050102**
+**错误码：10605102**
 
 在TypeScript中，如果一个接口继承了两个具有相同方法的接口，则必须使用联合类型声明该方法的返回值类型。在ArkTS中，由于接口不能包含两个无法区分的方法（如参数列表相同但返回类型不同），因此不能继承具有相同方法的两个接口。
 

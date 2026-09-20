@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=084bf627297e60b1f406ce34f5b473174466f7b3 translatedAt=2026-07-14T07:16:19.594Z pushedAt=2026-07-14T08:36:32.048Z -->
+<!-- md-trans-meta sourceCommit=ada336886a6e06f7fda77a14a7da94471e31c791 translatedAt=2026-08-11T10:12:27.761Z pushedAt=2026-08-11T11:34:06.138Z -->
 
 ## Overview
 
@@ -75,7 +75,7 @@ You can use the following APIs to listen for lifecycle changes of the **WindowSt
 
 In the stage model, when the main window transitions from foreground to background, it also drives the **UIAbility** lifecycle. In this model, extra attention should be paid to the differentiated behavior of this mechanism on different device types.
 
-- **On phones:** When the window transitions from foreground to background, it drives **UIAbility** to background.
+- **On Phone, TV, Wearable, and Car devices:** When the window transitions from the foreground state to the background state, it also drives the UIAbility to the background state.
 
 - **On tablets:**
 

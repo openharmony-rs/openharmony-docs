@@ -10,6 +10,14 @@
 
 目前系统模板仅支持进度条模板，通知模板[NotificationTemplate](../reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)中的data参数为用户自定义数据，用于显示与模板相关的数据。
 
+> **说明：**
+>
+> 从API version 26.1.0开始，对于上传下载等数据传输场景的进度通知，推荐使用长时任务提供的接口[`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)更新通知进度，无需调用`notificationManager.publish`。使用该接口前，需先申请数据传输类型的长时任务，开发指导请参考[长时任务(ArkTS)](../task-management/continuous-task.md)。
+>
+> 相较于调用`notificationManager.publish`，使用该接口具有以下优势：
+> - 灵活设置传输场景通知的提醒方式：进度达到100时，可通过[ProgressInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#progressinfo)的isMute字段选择静音或响铃加振动提醒。
+> - 与长时任务生命周期绑定：通知随长时任务申请而创建、取消而移除，无需单独维护通知ID和取消逻辑。
+
 ## 接口说明
 
 [`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate)是查询是否支持对应的通知模板，目前仅支持进度条模板。

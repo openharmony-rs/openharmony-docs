@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f41466f1bc5a86c627aa328ffe376fcc8b3bc45d translatedAt=2026-07-30T09:20:04.411Z pushedAt=2026-07-30T11:19:38.014Z -->
+<!-- md-trans-meta sourceCommit=f41466f1bc5a86c627aa328ffe376fcc8b3bc45d translatedAt=2026-07-30T09:20:04.411Z pushedAt=2026-07-31T08:51:01.634Z -->
 
 HiDebug can obtain the memory, CPU, and GPU data of the system or application processes, and enable process trace collection.
 
@@ -179,9 +179,9 @@ HiDebug can obtain VM memory data, GC statistics, and VM heap dump data.
 | hidebug.getAppVMMemoryInfo | Obtains VM memory information.|
 | hidebug.getVMRuntimeStats | Obtains the system [GC](../arkts-utils/gc-introduction.md) statistics.|
 | hidebug.getVMRuntimeStat | Obtains the specified system [GC](../arkts-utils/gc-introduction.md) statistics based on parameters.|
-| hidebug.dumpJsRawHeapData | Uses an asynchronous method to dump the VM raw heap snapshot for the current thread, assisting with [JS memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).<br/>**Note:**<br/>Supported since API version 18.<br/>Supported since API version 24, this API supports clearing nodeId cache.<br/>Supported since API version 26.0.0, this API supports dumping the VM raw heap snapshot of the process to which the current thread belongs.|
+| hidebug.dumpJsRawHeapData | Uses an asynchronous method to dump the VM raw heap snapshot for the current thread, assisting with [JS memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).<br/>**Note:**<br/>Supported since API version 18.<br/>Starting from API version 24, this API supports clearing nodeId cache.<br/>Starting from API version 26.0.0, this API supports dumping the VM raw heap snapshot of the process to which the current thread belongs.|
 | hidebug.setJsRawHeapTrimLevel | Sets the trimming level of the original heap snapshot stored by the current process.<br>Note: This API is supported since API version 20.|
-| hidebug.dumpJsHeapData | Exports the VM heap synchronously, assisting with [JS memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).<br/>**Note:** Supported since API version 24, this API supports clearing nodeId cache. |
+| hidebug.dumpJsHeapData | Exports the VM heap synchronously, assisting with [JS memory leak analysis](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-js-memleak-detection).<br/>**Note:** Starting from, this API supports clearing nodeId cache. |
 | hidebug.getAppMemoryLimit | Obtains the memory limit of an application process. **vmHeapLimit** is the VM heap size limit of the current thread, and **vmTotalHeapSize** is the total size limit of all VM heaps in the current process.|
 | hidebug.getAppVMObjectUsedSize | Obtains the VM memory size occupied by ArkTS objects.<br>Note: This API is supported since API version 21.|
 

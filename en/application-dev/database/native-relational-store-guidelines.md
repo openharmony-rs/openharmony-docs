@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0d0be136453164e04de0aa5f89855f22befe905b translatedAt=2026-07-28T06:45:13.316Z pushedAt=2026-07-28T08:02:53.466Z -->
+<!-- md-trans-meta sourceCommit=921278e933660eca5e4da36690033209b5219631 translatedAt=2026-08-20T06:22:21.218Z pushedAt=2026-08-20T12:07:02.938Z -->
 
 ## When to Use
 
@@ -508,7 +508,7 @@ Configure predicates to match data in **GLOB** or **NOT GLOB** mode. <br>Example
     ret = OH_Values_PutInt(values, 1); // The value of id is 1
     ret = OH_Values_PutInt(values, 2); // The value of data2 is 2
     ret = OH_Values_PutReal(values, 1.1); // The value of data3 is 1.1
-    ret = OH_Values_PutText(values, "1"); // The value of data3 is 1
+    ret = OH_Values_PutText(values, "1"); // The value of data4 is 1
     unsigned char val[] = {1, 2};
     ret = OH_Values_PutBlob(values, val, sizeof(val) / sizeof(val[0]));
     

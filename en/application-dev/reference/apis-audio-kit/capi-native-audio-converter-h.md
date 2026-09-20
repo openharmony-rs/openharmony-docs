@@ -18,7 +18,7 @@ This file declares the underlying data structures for input and output audio for
 
 **Since**: 26.0.0
 
-**Related module**: AudioConverter](capi-audioconverter.md)
+**Related module**: [AudioConverter](capi-audioconverter.md)
 
 ## Summary
 

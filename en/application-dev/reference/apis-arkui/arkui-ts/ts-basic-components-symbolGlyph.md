@@ -5,12 +5,15 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-03T12:15:03.072Z -->
 
-The **SymbolGlyph** component represents a symbol glyph.<!--RP1--><!--RP1End-->
+The **SymbolGlyph** component is used to display system preset symbol glyphs. It supports setting style attributes such as color, size, font weight, rendering strategy, and effect strategy, and is applicable to scenarios where system icons need to be displayed in an application, such as navigation bar icons, button icons, and status indicator icons. Compared with using image resources, **SymbolGlyph** offers advantages such as a smaller size, dynamic coloring, and animation support.<!--RP1--><!--RP1End-->
 
 >  **NOTE**
 >
->  This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Child Components
 
@@ -30,7 +33,7 @@ SymbolGlyph(value?: Resource)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [Resource](ts-types.md#resource)| No| Resource of the **SymbolGlyph** component, for example, **$r('sys.symbol.ohos_wifi')**.|
+| value | [Resource](ts-types.md#resource)| No | Resource name of the SymbolGlyph component, for example, $r('sys.symbol.ohos_wifi'). If it is not passed in, no icon is displayed. |
 
 >  **NOTE**
 >
@@ -44,7 +47,7 @@ The [universal attributes](ts-component-general-attributes.md) are supported. Fo
 
 fontColor(value: Array&lt;ResourceColor&gt;)
 
-Sets the color of the **SymbolGlyph** component.
+Sets the font color of the **SymbolGlyph** component.
 
 >**NOTE**
 >
@@ -60,15 +63,39 @@ Sets the color of the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | Yes  | Color of the **SymbolGlyph** component.<br> Default value: depending on the rendering strategy|
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | Yes   | Font color of the SymbolGlyph component.<br> When value is undefined, the default color of the icon is used, and the default color follows the theme.<br>The color setting effect varies with the rendering strategy. For details, see [SymbolRenderingStrategy](#symbolrenderingstrategy11). |
+
+### fontColor
+
+fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
+
+Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor) API, this API supports passing in a parameter of the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type.
+
+> **NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Since**: 26.0.0
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters** 
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ----- |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | Yes  | Color of the **SymbolGlyph** component. An array of the `ResourceColor` or `ColorMetrics` type is supported.<br> When **value** is **undefined**, the default color of the icon is used, and the default color follows the theme. |
 
 ### fontSize
 
 fontSize(value: number | string | Resource)
 
-Sets the size of the **SymbolGlyph** component. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
+Sets the font size of the **SymbolGlyph** component. When the string type is used, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
-The display size of the symbol glyph is controlled by the **fontSize** setting. Once **width** or **height** is specified, other universal attributes will only affect the size of the component's placeholder, not the symbol glyph itself.
+The display size of the icon is controlled by **fontSize**. After **width** or **height** is set, other universal attributes only take effect on the placeholder size of the component. If this API is not used, the default font size is 16fp.
 
 >**NOTE**
 >
@@ -84,13 +111,13 @@ The display size of the symbol glyph is controlled by the **fontSize** setting. 
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Size of the **SymbolGlyph** component.<br>Default value: **16fp**<br>Unit: [fp](ts-pixel-units.md)<br>Percentage strings are not supported.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Font size of the SymbolGlyph component.<br>Value range: [0, +∞)<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)<br>Percentage strings are not supported.|
 
 ### fontWeight
 
 fontWeight(value: number | FontWeight | string)
 
-Sets the font weight of the **SymbolGlyph** component. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.
+Sets the font weight of the **SymbolGlyph** component. If this API is not used, the default font weight is **FontWeight.Normal** (normal weight, corresponding to the value 400).
 
 The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
@@ -108,13 +135,34 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 | Name| Type                                                        | Mandatory| Description                                               |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font weight of the **SymbolGlyph** component.<br>Default value: **FontWeight.Normal**|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes   | Font weight of the SymbolGlyph component.<br>The value of the number type ranges from 100 to 900, with an interval of 100. The default value is 400. A larger value indicates a heavier font. The string type supports the string form of the number type value, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts.<br>**Note:**<br>If a value outside the value range is passed, the default value is used. If a value that does not meet the interval requirement is passed, the default value is also used (only values that are integer multiples of 100 are supported).|
+
+### fontWeight
+
+fontWeight(value: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+Sets the font weight of the symbol glyph in the **SymbolGlyph** component. It supports configuring, through **FontWeightConfigs**, whether to enable variable font weight adjustment (after which fine-grained font weight values that are not integer multiples of 100, such as 220 and 660, can be set) and whether to automatically update the font weight based on the device font weight level (after which the component font weight is automatically adjusted with the system font weight setting). If this API is not used, the default font weight is **FontWeight.Normal** (normal weight, corresponding to the value 400).
+
+**Since**: 26.0.0
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| value | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes | Font weight of the symbol glyph in the **SymbolGlyph** component.<br>For the number type, the value range is [100,&nbsp;900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. If the value is set too large, the font may be truncated in different fonts.<br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**; otherwise, the default value is used. |
+| fontWeightConfigs | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24) | No | Font weight configuration. Pass this parameter when variable font weight adjustment (setting fine-grained font weight values that are not integer multiples of 100, such as 220 and 660) or automatic font weight update based on the device font weight level is required. The default value is inherited from [FontWeightConfigs](ts-text-common.md#fontweightconfigs24). |
 
 ### renderingStrategy
 
 renderingStrategy(value: SymbolRenderingStrategy)
 
-Sets the rendering strategy of the **SymbolGlyph** component.
+Sets the rendering strategy of the **SymbolGlyph** component. If this API is not used, the default rendering strategy is **SymbolRenderingStrategy.SINGLE**.
 
 >**NOTE**
 >
@@ -130,7 +178,7 @@ Sets the rendering strategy of the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| value  | [SymbolRenderingStrategy](#symbolrenderingstrategy11) | Yes  | Rendering strategy of the **SymbolGlyph** component.<br>Default value: **SymbolRenderingStrategy.SINGLE**|
+| value  | [SymbolRenderingStrategy](#symbolrenderingstrategy11) | Yes   | Rendering strategy of the SymbolGlyph component.|
 
 The figure below shows the effects of different rendering strategies.
 
@@ -140,11 +188,16 @@ The figure below shows the effects of different rendering strategies.
 
 effectStrategy(value: SymbolEffectStrategy)
 
-Sets the effect strategy of the **SymbolGlyph** component.
+Sets the effect strategy of the **SymbolGlyph** component. If this API is not used, the default effect strategy is **SymbolEffectStrategy.NONE**.
 
->**NOTE**
+> **NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+> - Since API version 12, this API is supported in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+>
+> - For animation attributes, only the **effectStrategy** attribute or a single **symbolEffect** attribute is supported. Mixing multiple animation attributes is not supported.
+>
+> - This API supports only the three preset animation types: NONE, SCALE, and HIERARCHICAL. After being set, the animation plays automatically. To use richer animation types (such as appear, disappear, bounce, replacement, and pulse animations) or to control the playback state and trigger timing of the animation, use the [symbolEffect](#symboleffect12) API. The two cannot be used at the same time. For details, see the description of the [symbolEffect](#symboleffect12) API.
+
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -156,13 +209,17 @@ Sets the effect strategy of the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| value  | [SymbolEffectStrategy](#symboleffectstrategy11) | Yes  | Effect strategy of the **SymbolGlyph** component.<br>Default value: **SymbolEffectStrategy.NONE**|
+| value  | [SymbolEffectStrategy](#symboleffectstrategy11) | Yes   | Animation strategy of the SymbolGlyph component.|
 
 ### symbolEffect<sup>12+</sup>
 
 symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
 
-Sets the symbol effect and effect state for the **SymbolGlyph** component.
+Sets the effect strategy and playback state of the **SymbolGlyph** component. If this API is not used, the default animation is a **SymbolEffect** object, and the default playback state is **false**.
+
+> **NOTE**
+>
+> For animation attributes, only the **effectStrategy** attribute or a single **symbolEffect** attribute is supported. Mixing multiple animation attributes is not supported.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -174,14 +231,14 @@ Sets the symbol effect and effect state for the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| symbolEffect  | [SymbolEffect](#symboleffect12) | Yes  | Symbol effect of the **SymbolGlyph** component.<br>Default value: [SymbolEffect](#symboleffect12) |
-| isActive  | boolean | No  | Whether the effect is active.<br>**true**: playing. **false**: not playing.<br>Default value: **false**.|
+| symbolEffect  | [SymbolEffect](#symboleffect12) | Yes   | Animation strategy of the SymbolGlyph component. |
+| isActive  | boolean | No   | Playback state of the SymbolGlyph component animation.<br>The value **true** means to play, and **false** means not to play. |
 
 ### symbolEffect<sup>12+</sup>
 
 symbolEffect(symbolEffect: SymbolEffect, triggerValue?: number)
 
-Sets the symbol effect and effect trigger for the **SymbolGlyph** component.
+Sets the effect strategy and playback trigger of the **SymbolGlyph** component. If this API is not used, the default animation is a **SymbolEffect** object, and the default trigger value is -1.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -193,8 +250,8 @@ Sets the symbol effect and effect trigger for the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| symbolEffect | [SymbolEffect](#symboleffect12) | Yes  | Symbol effect of the **SymbolGlyph** component.<br>Default value: [SymbolEffect](#symboleffect12) |
-| triggerValue | number | No  | Value that, when changed, initiates the animation of the **SymbolGlyph** component.<br>To prevent the motion effect from triggering initially, set it to **-1**.|
+| symbolEffect | [SymbolEffect](#symboleffect12) | Yes | Animation strategy of the SymbolGlyph component.|
+| triggerValue | number | No | Trigger for playing the animation of the SymbolGlyph component. The animation is triggered when the value changes.<br>Set this parameter to -1 if you do not want to trigger the animation on the first time.|
 
 >  **NOTE**
 >
@@ -204,7 +261,7 @@ Sets the symbol effect and effect trigger for the **SymbolGlyph** component.
 
 minFontScale(scale: Optional\<number | Resource>)
 
-Sets the minimum font scale factor for the **SymbolGlyph** component.
+Sets the minimum font scale factor of the SymbolGlyph component. Applicable to scenarios where you need to prevent icons from becoming unrecognizable when the user's font scale setting is too small, for example, ensuring that icons maintain a minimum readable size under any system font setting.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -214,13 +271,13 @@ Sets the minimum font scale factor for the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | Yes  | Minimum font scale factor for the **SymbolGlyph** component.<br>Value range: [0, 1]<br>The value **0** results in the minimum scaling.<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.  |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | Yes   | Minimum font scale factor of the SymbolGlyph component.<br>Value range: [0, 1] <br>When set to 0, the scale is minimized.<br>**Note:** <br>When the set value is less than 0, it is treated as 0. When the set value is greater than 1, it is treated as 1. Invalid values do not take effect by default. When not set, the minimum scale factor is not limited.   |
 
 ### maxFontScale<sup>18+</sup>
 
 maxFontScale(scale: Optional\<number | Resource>)
 
-Sets the maximum font scale factor for the **SymbolGlyph** component.
+Sets the maximum font scale factor of the SymbolGlyph component. Applicable to scenarios where you need to prevent icons from exceeding the layout container or breaking interface consistency when the user's font scale setting is too large, for example, limiting the maximum display size of icons in a small-sized container.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -230,7 +287,7 @@ Sets the maximum font scale factor for the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | Yes  | Maximum font scale factor for the **SymbolGlyph** component.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | Yes   | Maximum font scale factor of the SymbolGlyph component.<br>Value range: [1, +∞)<br>**Note:** <br>If the set value is less than 1, it is processed as 1. If not set, the maximum scale factor is not limited. |
 
 ### shaderStyle<sup>20+</sup>
 
@@ -238,7 +295,7 @@ shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle)
 
 Applies a gradient or solid color shader effect to the **SymbolGlyph** component.
 
-This API supports [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20), [LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20), and [ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20). When set, **shaderStyle** takes precedence over [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) and any AI-based styling. To apply a simple solid color, using [fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor) is recommended.
+Can be displayed as a radial gradient [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20), a linear gradient [LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20), or a solid color [ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20). The priority of shaderStyle is higher than that of [fontColor](#fontcolor) and AI recognition. For solid colors, [fontColor](#fontcolor) is recommended.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -248,13 +305,13 @@ This API supports [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgrad
 
 | Name    | Type                                        | Mandatory                            | Description                              |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| shader | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes| Shader effect.<br>Input types and behavior:<br>Single **ShaderStyle** object: applies the specified effect to all layers. Array of **ShaderStyle** objects: applies the specified effect to the corresponding layer. Array of **undefined**: applies the default **SymbolGlyph** color to the corresponding layer. Layers unset retain their default color.<br> Based on the input, the system applies a radial gradient ([RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)), linear gradient ([LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)), or solid color ([ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)) to the **SymbolGlyph** component.<br>**NOTE**<br>Unit: [vp](ts-pixel-units.md)<br>Specify the center point and radius using percentages. If a non-percentage value (e.g., **10px**) is provided, it will be interpreted as 1000%.<br>You are advised to specify the radius using percentages.<br>Percentages are relative to the icon's size. The recommended value range is [0, 1).|
+| shader | Array\<[ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined\> \| [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | Yes | Radial gradient, linear gradient, or solid color.<br>When a ShaderStyle is passed in, it covers all layers. When an array is passed in, if a data item is ShaderStyle, it is applied to that layer; if an array item is undefined, that layer uses the default color of SymbolGlyph, and layers that are not set also use the default color. Based on the passed-in parameter, the radial gradient [RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20), linear gradient [LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20), or solid color [ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20) is processed accordingly, and finally set on the SymbolGlyph component to display a gradient color effect.<br>**NOTE**<br>Use a percentage for the center point. If a non-percentage value (for example, 10PX) is used, the effect is equivalent to setting 1000%.<br>It is recommended to use a percentage for the radius.<br>The percentage is based on the icon size. The recommended value range is [0, 1). |
 
 ### symbolShadow<sup>20+</sup>
 
 symbolShadow(shadow: Optional\<ShadowOptions\>)
 
-Sets the shadow effect of the **SymbolGlyph** component.
+Sets the shadow effect of the SymbolGlyph component. When this interface is not used to set the shadow, the default shadow effect is {radius: 0, color: Color.Black, offsetX: 0, offsetY: 0}.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -266,7 +323,7 @@ Sets the shadow effect of the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)\>  | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: [vp](ts-pixel-units.md)<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The **fill** and **type** attributes, as well as the enumerated values of **ColoringStrategy** within the **color **attribute, are not supported.|
+| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)>  | Yes  | Shadow effect of the SymbolGlyph component.<br>Unit: [vp](ts-pixel-units.md#basic-pixel-units)<br>**Note:** <br>Only the radius, color, offsetX, and offsetY attributes in ShadowOptions are supported. The fill and type attributes and the ColoringStrategy enum values in color are not supported.|
 
 ## ScaleSymbolEffect<sup>12+</sup>
 
@@ -282,8 +339,8 @@ Inherits from **SymbolEffect**.
 
 | Name| Type| Read-Only| Optional| Description |
 | ---- | ---- | ---- | ---- | ---- |
-| scope     | [EffectScope](#effectscope12)  |  No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**   |
-| direction | [EffectDirection](#effectdirection12) |  No  | Yes| Effect direction.<br>Default value: **EffectDirection.DOWN**|
+| scope     | [EffectScope](#effectscope12)  |  No   | Yes | Animation scope. For the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER    |
+| direction | [EffectDirection](#effectdirection12) |  No   | Yes | Animation direction. For the specific enumeration values and descriptions, see EffectDirection Enumeration Description.<br>Default value: EffectDirection.DOWN |
 
 ### constructor<sup>12+</sup>
 
@@ -301,8 +358,8 @@ A constructor used to create a **ScaleSymbolEffect** instance, which comes with 
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| scope     | [EffectScope](#effectscope12)         | No  | Effect scope.<br>Default value: **EffectScope.LAYER**   |
-| direction | [EffectDirection](#effectdirection12) | No  | Effect direction.<br>Default value: **EffectDirection.DOWN**|
+| scope     | [EffectScope](#effectscope12)         | No   | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
+| direction | [EffectDirection](#effectdirection12) | No   | Animation direction. For details about the specific enumeration values and descriptions, see EffectDirection Enumeration Description.<br>Default value: EffectDirection.DOWN |
 
 ## HierarchicalSymbolEffect<sup>12+</sup>
 
@@ -318,7 +375,7 @@ Inherits from **SymbolEffect**.
 
 | Name| Type| Read-Only| Optional| Description |
 | ---- | ---- | ---- | ---- | ---- |
-| fillStyle | [EffectFillStyle](#effectfillstyle12) | No  | Yes| Effect fill style.<br>Default value: **EffectFillStyle.CUMULATIVE**|
+| fillStyle | [EffectFillStyle](#effectfillstyle12) | No   | Yes | Animation mode.<br>Default value: EffectFillStyle.CUMULATIVE |
 
 ### constructor<sup>12+</sup>
 
@@ -336,7 +393,7 @@ A constructor used to create a **HierarchicalSymbolEffect** instance, which come
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| fillStyle | [EffectFillStyle](#effectfillstyle12) | No  | Effect fill style.<br>Default value: **EffectFillStyle.CUMULATIVE**|
+| fillStyle | [EffectFillStyle](#effectfillstyle12) | No   | Animation mode. For the specific enumeration values and descriptions, see EffectFillStyle Enumeration Description.<br>Default value: EffectFillStyle.CUMULATIVE |
 
 ## AppearSymbolEffect<sup>12+</sup>
 
@@ -352,7 +409,7 @@ Inherits from **SymbolEffect**.
 
 | Name| Type| Read-Only| Optional| Description |
 | ---- | ---- | ---- | ---- | ---- |
-| scope | [EffectScope](#effectscope12) | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**|
+| scope | [EffectScope](#effectscope12) | No | Yes | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 ### constructor<sup>12+</sup>
 
@@ -370,7 +427,7 @@ A constructor used to create an **AppearSymbolEffect** instance, which comes wit
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+| scope  | [EffectScope](#effectscope12) | No   | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 ## DisappearSymbolEffect<sup>12+</sup>
 
@@ -386,7 +443,7 @@ Inherits from **SymbolEffect**.
 
 | Name| Type| Read-Only| Optional| Description |
 | ---- | ---- | ---- | ---- | ---- |
-| scope | [EffectScope](#effectscope12) | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**|
+| scope | [EffectScope](#effectscope12) | No | Yes | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 ### constructor<sup>12+</sup>
 
@@ -404,7 +461,7 @@ A constructor used to create a **DisappearSymbolEffect** instance, which comes w
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+| scope  | [EffectScope](#effectscope12) | No   | Animation scope. For specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 ## BounceSymbolEffect<sup>12+</sup>
 
@@ -420,8 +477,8 @@ Inherits from **SymbolEffect**.
 
 | Name| Type| Read-Only| Optional| Description |
 | ---- | ---- | ---- | ---- | ---- |
-| scope     | [EffectScope](#effectscope12)         | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**   |
-| direction | [EffectDirection](#effectdirection12) | No  | Yes| Effect direction.<br>Default value: **EffectDirection.DOWN**|
+| scope     | [EffectScope](#effectscope12)         | No   | Yes | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER    |
+| direction | [EffectDirection](#effectdirection12) | No   | Yes | Animation direction. For details about the specific enumeration values and descriptions, see EffectDirection Enumeration Description.<br>Default value: EffectDirection.DOWN |
 
 ### constructor<sup>12+</sup>
 
@@ -439,8 +496,8 @@ A constructor used to create a **BounceSymbolEffect** instance, which comes with
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| scope     | [EffectScope](#effectscope12)         | No  | Effect scope.<br>Default value: **EffectScope.LAYER**   |
-| direction | [EffectDirection](#effectdirection12) | No  | Effect direction.<br>Default value: **EffectDirection.DOWN**|
+| scope     | [EffectScope](#effectscope12)         | No   | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER    |
+| direction | [EffectDirection](#effectdirection12) | No   | Animation direction. For details about the specific enumeration values and descriptions, see EffectDirection Enumeration Description.<br>Default value: EffectDirection.DOWN |
 
 ## ReplaceSymbolEffect<sup>12+</sup>
 
@@ -454,12 +511,10 @@ Inherits from **SymbolEffect**.
 
 ### Attributes
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
 | Name| Type| Read-Only| Optional| Description |
 | ---- | ---- | ---- | ---- | ---- |
-| scope | [EffectScope](#effectscope12) | No  | Yes| Effect scope.<br>Default value: **EffectScope.LAYER**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| replaceType<sup>20+</sup>  | [ReplaceEffectType](#replaceeffecttype20) | No  | Yes| Replacement effect type.<br>Default value: **ReplaceEffectType.SEQUENTIAL**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| scope | [EffectScope](#effectscope12) | No | Yes | Animation Scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER<br>**Widget capability:** Since API version 12, this interface supports use in ArkTS cards.<br>**Atomic service API:** Since API version 12, this API can be used in atomic services. |
+| replaceType<sup>20+</sup> | [ReplaceEffectType](#replaceeffecttype20) | No | Yes | Replacement Animation Type. For details about the specific enumeration values and descriptions, see ReplaceEffectType Enumeration Description.<br>Default value: ReplaceEffectType.SEQUENTIAL <br>**Widget capability:** Since API version 20, this interface supports use in ArkTS cards. <br>**Atomic service API:** Since API version 20, this API can be used in atomic services. |
 
 ### constructor<sup>12+</sup>
 
@@ -477,7 +532,7 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
+| scope  | [EffectScope](#effectscope12) | No   | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 ### constructor<sup>20+</sup>
 
@@ -495,8 +550,8 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 
 | Name| Type| Mandatory| Description |
 | ---- | ---- | ---- | ---- |
-| scope  | [EffectScope](#effectscope12) | No  | Effect scope.<br>Default value: **EffectScope.LAYER**|
-| replaceType  | [ReplaceEffectType](#replaceeffecttype20) | No  | Replacement effect type.<br>Default value: **ReplaceEffectType.SEQUENTIAL**|
+| scope  | [EffectScope](#effectscope12) | No   | Animation scope.<br>Default value: EffectScope.LAYER |
+| replaceType  | [ReplaceEffectType](#replaceeffecttype20) | No   | Replacement animation type.<br>Default value: ReplaceEffectType.SEQUENTIAL |
 
 ## SymbolEffectStrategy<sup>11+</sup>
 
@@ -526,9 +581,9 @@ Enumerates the rendering modes.
 
 | Name    | Value| Description                         |
 | ------ | --- | ----------------------------- |
-| SINGLE  | 0 | Single-color mode (default value).<br> The default color is black.<br> You can set one or multiple colors, but only the first color will be applied.|
-| MULTIPLE_COLOR  | 1 | Multi-color mode.<br> A maximum of three colors can be set. If only one color is set, it updates the color of the first layer, leaving other colors at their default values.<br> The sequence of color settings matches the layering order of the symbol; any colors beyond the number of symbol layers will not take effect.<br> Only color values are accepted. Opacity settings do not take effect.|
-|  MULTIPLE_OPACITY   | 2 | Layered mode.<br> The default color is black. You can set one or multiple colors, but only the first color will be applied.<br>Opacity is predefined for the layers: 100% for the first layer, 50% for the second layer, and 20% for the third layer. |
+| SINGLE  | 0 | Monochrome mode (default value).<br> One or more colors can be set, and the default is black.<br> When multiple colors are set, only the first color takes effect. |
+| MULTIPLE_COLOR  | 1 | Multicolor mode.<br> Up to three colors can be set. When only one color is set, the first-layer color of the symbol icon is modified, and the other colors remain the default colors.<br> The color setting order matches the icon layer order. When the number of colors is greater than the number of icon layers, the extra colors do not take effect.|
+|  MULTIPLE_OPACITY   | 2 | Layered mode.<br> The default is black, and one or more colors can be set. When multiple colors are set, only the first color takes effect.<br>The opacity is related to the layers. For a common symbol icon, the default opacity of the first layer is 100%, that of the second layer is 50%, and that of the third layer is 20%. When the set color contains opacity, the set opacity is superimposed with the default opacity of each layer. |
 
 ## SymbolEffect<sup>12+</sup>
 
@@ -624,21 +679,21 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Text("Light")
+          Text('Light')
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Lighter)
             .fontSize(96)
         }
 
         Column() {
-          Text("Normal")
+          Text('Normal')
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Normal)
             .fontSize(96)
         }
 
         Column() {
-          Text("Bold")
+          Text('Bold')
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Bold)
             .fontSize(96)
@@ -647,7 +702,7 @@ struct Index {
 
       Row() {
         Column() {
-          Text("Single-color mode")
+          Text('Monochrome')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -655,7 +710,7 @@ struct Index {
         }
 
         Column() {
-          Text("Multi-color mode")
+          Text('Multicolor')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
@@ -663,7 +718,7 @@ struct Index {
         }
 
         Column() {
-          Text ("Layered mode")
+          Text('Layered')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
@@ -673,21 +728,21 @@ struct Index {
 
       Row() {
         Column() {
-          Text("No effect")
+          Text('No animation')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.NONE)
         }
 
         Column() {
-          Text("Overall scale effect")
+          Text('Overall scale animation')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.SCALE)
         }
 
         Column() {
-          Text("Hierarchical effect")
+          Text('Hierarchical animation')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
@@ -701,7 +756,7 @@ struct Index {
 
 ###  Example 2: Setting Symbol and Shadow Effects
 
-This example demonstrates various symbol effects using the [symbolEffect](#symboleffect12) attribute (available since API version 12) and shadow effects with [symbolShadow](#symbolshadow20) (available since API version 20).
+Starting from API version 12, this example uses the [symbolEffect](#symboleffect12) attribute to demonstrate the effects of various animations and the shadow effect combined with [symbolShadow](#symbolshadow20) (starting from API version 20). Among them, disabling animations and quick replacement animations require API version 20 or later.
 
 ```ts
 // xxx.ets
@@ -712,7 +767,7 @@ struct Index {
   @State triggerValueReplace: number = 0;
   @State triggerValueReplace1: number = 0;
   @State triggerValueReplace2: number = 0;
-  @State renderMode: number = 1;
+  @State renderMode: SymbolRenderingStrategy = SymbolRenderingStrategy.MULTIPLE_COLOR;
 
   replaceFlag: boolean = true;
   replaceFlag1: boolean = true;
@@ -729,7 +784,7 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Text("Variable color effect")
+          Text('Variable color animation')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -740,7 +795,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text("Replacement effect")
+          Text('Replacement animation')
           SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.triggerValueReplace)
@@ -755,7 +810,7 @@ struct Index {
 
       Row() {
         Column() {
-          Text("Slash overlay")
+          Text('Disabled animation')
           SymbolGlyph(this.replaceFlag1 ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
             .fontSize(96)
             .renderingStrategy(this.renderMode)
@@ -768,7 +823,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text("Cross-fade transition")
+          Text('Fast replacement animation')
           SymbolGlyph(this.replaceFlag2 ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE), this.triggerValueReplace2)
@@ -780,7 +835,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text("Shadow effect")
+          Text('Shadow capability')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -804,13 +859,12 @@ struct Index {
 
 ### Example 3: Setting Gradient Color Effects
 
-This example demonstrates how to apply gradient colors to **SymbolGlyph** components using the [shaderStyle](#shaderstyle20) API, available since API version 20.
+Starting from API version 20, this example uses the [shaderStyle](#shaderstyle20) interface to implement the function of displaying the SymbolGlyph component as a gradient color.
 
 ```ts
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
 
   linearGradientOptions1: LinearGradientOptions = {
     angle: 45,
@@ -824,8 +878,8 @@ struct Index {
   };
 
   radialGradientOptions: RadialGradientOptions = {
-    center: ["50%", "50%"],
-    radius: "20%",
+    center: ['50%', '50%'],
+    radius: '20%',
     colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
     repeating: true,
   };
@@ -941,3 +995,120 @@ struct Index {
 }
 ```
 ![symbol](figures/SymbolGlyph_Example3.jpeg)
+
+### Example 4 (Setting the SymbolGlyph Color)
+
+This example passes a [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type parameter through the [fontColor](#fontcolor-1) attribute to set the color of the SymbolGlyph component.
+
+Starting from API version 26.0.0, [fontColor](#fontcolor-1) is newly supported.
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  blueColor: ColorMetrics[] = [ColorMetrics.resourceColor(Color.Blue)];
+  greenColor: ColorMetrics[] = [ColorMetrics.numeric(0x00FF00)];
+  blackColor: ColorMetrics[] = [ColorMetrics.rgba(0, 0, 0, 1.0)];
+
+  build() {
+    Column() {
+      Row({ space: 20 }) {
+        Column() {
+          Text('resourceColor blue')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.blueColor)
+        }
+
+        Column() {
+          Text('numeric green')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.greenColor)
+        }
+
+        Column() {
+          Text('rgba black')
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor(this.blackColor)
+        }
+      }.width('100%')
+    }.width('100%')
+  }
+}
+```
+
+![symbol](figures/SymbolGlyph_Example4.jpeg)
+
+### Example 5 (Setting Font Weight)
+
+This example uses the [fontWeight](#fontweight-1) attribute to demonstrate the effects of different font weight configurations of SymbolGlyph: the first row of symbol glyphs shows the effects of setting the font weight values to 220 and 660 respectively after enabling variable font weight; the second row of symbol glyphs shows the effects of setting the font weight to follow and not follow the automatic update of the device's system font weight level after setting the device's system font weight to bold.
+
+Since API version 26.0.0, the [fontWeight](#fontweight-1) attribute is added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('font weight: 220')
+          // ohos_trash is a system preset trash can symbol.
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(220, { enableVariableFontWeight: true })
+            .fontSize(96)
+        }
+        Column() {
+          Text('            ')
+        }
+        Column() {
+          Text('font weight: 660')
+          // ohos_trash is a system preset trash can symbol.
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(660, { enableVariableFontWeight: true })
+            .fontSize(96)
+        }
+      }
+      Row() {
+        Text('    ')
+      }
+      Row() {
+        Text('After set system text weight: Bold')
+      }
+      Row() {
+        Column() {
+          Text('device category: true')
+          // ohos_trash is a system preset trash can symbol.
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: true })
+            .fontSize(96)
+        }
+        Column() {
+          Text('    ')
+        }
+        Column() {
+          Text('device category: false')
+          // ohos_trash is a system preset trash can symbol.
+          SymbolGlyph($r('sys.symbol.ohos_trash'))
+            .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: false })
+            .fontSize(96)
+        }
+      }
+    }
+  }
+}
+```
+
+![symbolGlyphFontWeightConfigs](figures/symbolGlyphFontWeightConfigs.png)
+
+<!--no_check-->

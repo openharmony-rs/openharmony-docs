@@ -1,10 +1,14 @@
 # Drawing and Display Error Codes
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4e50217bab17d31bea74ffd285654969c1ffbf06 translatedAt=2026-08-24T09:19:50.171Z pushedAt=2026-08-31T11:58:44.069Z -->
+
+The graphics drawing and display error codes define the exceptions that may occur during 2D graphics drawing, including error identifiers for parameter verification and file operations. Developers can use these error codes to quickly locate and troubleshoot drawing-related issues, improving development and debugging efficiency. They apply to scenarios where ArkGraphics 2D is used for graphics drawing.
 
 > **NOTE**
 >
@@ -41,12 +45,14 @@ The file is not found. The specified file does not exist or the path is incorrec
 **Possible Causes**
 
 1. The file path is incorrect or the file does not exist.
+
 2. The file path case is incorrect.
 
 **Solution**
 
-1. Configure a correct and valid file path.
-2. Ensure that the file path case is correct.
+1. Check whether the file path format is correct and confirm that the file exists at the specified location.
+
+2. Check whether the file path case exactly matches the actual file name.
 
 ## 25900003 Failed to Open the File
 
@@ -61,11 +67,13 @@ Failed to open the file. The file cannot be opened due to permission or I/O issu
 **Possible Causes**
 
 1. The user does not have the permission to read the file.
+
 2. The file is occupied by another process.
 
 **Solution**
 
-1. Check the file permission and ensure that the file is readable.
+1. Verify the file permission settings and confirm that the current user has read permission on the file.
+
 2. Ensure that the file is not occupied by another process.
 
 ## 25900004 Failed to Locate the File
@@ -117,11 +125,13 @@ Failed to read the file. The file cannot be completely read or contains unreadab
 **Possible Causes**
 
 1. An I/O error occurs in the file.
+
 2. The memory is insufficient.
 
 **Solution**
 
 1. Ensure that the disk or storage device is normal.
+
 2. Ensure that the memory is sufficient for reading.
 
 ## 25900007 Empty File
@@ -140,24 +150,30 @@ The file size is 0 bytes.
 
 **Solution**
 
-Ensure that the file size is greater than 0 bytes.
+Check the file size attribute and confirm that the file content is not empty (the size is greater than 0 bytes).
 
 ## 25900008 File Damaged
 
 **Error Message**
 
-Corrupted file. The file content is invalid or damaged and cannot be parsed.
+Corrupted file. The file content is invalid, damaged, or an index out of bounds occurs when accessing TTC/OTC files, making it impossible to parse.
 
 **Description**
 
-The file is damaged. The file content is invalid or damaged and cannot be parsed.
+The file is damaged. The file content is invalid or damaged, or an index out of bounds occurs when accessing TTC/OTC files, making it impossible to parse.
 
 **Possible Causes**
 
 1. The file format is incorrect.
+
 2. The file content is damaged.
+
+3. The TTC/OTC file index is out of bounds.
 
 **Solution**
 
 1. Ensure that the file format is correct.
+
 2. Ensure that the file content is normal.
+
+3. Ensure that the index is within the supported range of TTC/OTC.

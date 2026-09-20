@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:46:06.068Z pushedAt=2026-07-20T10:41:31.589Z -->
+<!-- md-trans-meta sourceCommit=0db215da74052f413c7e510405ec74a1a5667839 translatedAt=2026-08-11T10:13:04.409Z pushedAt=2026-08-12T02:56:43.096Z -->
 
 ## Overview
 
@@ -14,9 +14,11 @@ Users can hold their mobile devices in various orientations. To ensure an optima
 
 The system provides screen rotation features, allowing you to define how your application responds to orientation changes.
 
-A device has four display orientations. When a user holds the device upright, if the screen width is greater than its height, it is in LANDSCAPE mode, and the opposite orientation is LANDSCAPE_INVERTED. Conversely, if the screen height is greater than its width, it is in PORTRAIT mode, and the opposite is PORTRAIT_INVERTED.
+A device has four display orientations. When a user holds the device upright, if the screen width is greater than its height, it is in **LANDSCAPE** mode, and the opposite orientation is **LANDSCAPE_INVERTED**. Conversely, if the screen height is greater than its width, it is in **PORTRAIT** mode, and the opposite is **PORTRAIT_INVERTED**.
 
-The system comprehensively determines the display orientation of an application based on the rotation policy set by the app, the current holding orientation of the device (gravity sensor angle), the status of the system rotation lock switch (which can be viewed/set by pulling down the control panel), and the application's scenario (such as split-screen, multi-window floating window, application background, etc.). The rotation policies set through the system take effect only on the main window; setting a rotation policy for a non-main window does not affect the display orientation.
+The system comprehensively determines the display orientation of an application based on the rotation policy set by the application, the current holding orientation of the device (gravity sensor angle), the system rotation lock switch status (which can be viewed or set by pulling down the control panel), and the scenario the application is in (such as split screen, smart multi-window floating window, or app background). For devices running OpenHarmony 7.0.0 or later, the system also considers the **Smart rotation** switch status (on devices that support the smart sensor, you can enable the Smart Rotation switch via **Settings** > **System** > **Smart rotation**) to determine the display orientation of the app.
+
+Only the main window supports setting a rotation policy. Setting a rotation policy for a non-main window has no effect and does not report an error, and does not affect the display orientation.
 
 The general principle of how the "application's scenario" affects the display orientation is as follows:
 
@@ -85,11 +87,11 @@ These four types lock the application to a specific orientation, regardless of h
 | AUTO_ROTATION_LANDSCAPE_RESTRICTED | 10 | Automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation can be landscape or reverse landscape.|
 | AUTO_ROTATION_UNSPECIFIED | 12 | Automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.|
 
-These seven types are commonly used to set the application to adjust its orientation according to the gravity sensor so that the application always displays the page correctly when the user holds the device.
+These seven orientation types are commonly used to set the app to adjust its orientation according to the gravity sensor so that the app always displays the page correctly when the user holds the device. For devices running OpenHarmony 7.0.0 or later, a new capability is added to set the app to adjust its orientation according to the smart sensor, and the final app orientation is determined by both the gravity sensor and the smart sensor together.
 
 There are some differences in these seven types depending on the usage scenario. For example:
 
-- Types with **RESTRICTED** (such as **AUTO_ROTATION_RESTRICTED**, **AUTO_ROTATION_PORTRAIT_RESTRICTED**, and **AUTO_ROTATION_LANDSCAPE_RESTRICTED**) are controlled by the rotation switch in the control panel. When the rotation lock is enabled, applications set to these types are fixed in the locked direction and no longer adjust the page according to the gravity sensor.
+- Types with **RESTRICTED** (such as **AUTO_ROTATION_RESTRICTED**, **AUTO_ROTATION_PORTRAIT_RESTRICTED**, and **AUTO_ROTATION_LANDSCAPE_RESTRICTED**) are controlled by the rotation switch in the control center. When rotation lock is enabled, apps with these types are fixed at the locked orientation and no longer adjust the page according to the gravity sensor. For devices running OpenHarmony 7.0.0 or later, when rotation lock is enabled, apps with these types are fixed at the locked orientation and no longer adjust the page according to either the gravity sensor or the smart sensor.
 
 - Types with **PORTRAIT** or **LANDSCAPE** restrict the application to rotate between portrait/inverted portrait and landscape/inverted landscape.
 
@@ -116,7 +118,7 @@ There are some differences in these seven types depending on the usage scenario.
 | USER_ROTATION_PORTRAIT_INVERTED | 15 | Temporarily rotates to reverse portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system.|
 | USER_ROTATION_LANDSCAPE_INVERTED | 16 | Temporarily rotates to reverse landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in the Control Panel. The orientation that can be rotated to is determined by the system.|
 
-These four types support automatic rotation based on the gravity sensor while also being controlled by the rotation lock switch in the control panel. Different from **AUTO_ROTATION_RESTRICTED**, these four types immediately temporarily rotate the application to the specified orientation when set. For example, if the user is holding the phone in portrait mode and the application is displayed in portrait, when the application sets the rotation strategy to **USER_ROTATION_LANDSCAPE**, the application immediately rotates to landscape display. These four types are commonly used by video applications when switching from PiP playback to full-screen playback.
+These four orientation types are controlled by the rotation lock in the control center and also support automatic rotation based on the gravity sensor. For devices running OpenHarmony 7.0.0 or later, a new capability is added to support automatic rotation based on the smart sensor (on devices that support the smart sensor, you can enable the Smart Rotation switch via **Settings > System > Smart Rotation**). They differ from **AUTO_ROTATION_RESTRICTED** in that when these four orientation types are set by the app, the app is immediately and temporarily rotated to the specified orientation. For example, when a user holds the phone in portrait mode and the app is displayed in portrait, if the app sets the rotation policy to **USER_ROTATION_LANDSCAPE**, the app immediately rotates to landscape display. These four types are typically used when a video app transitions from small-window playback to full-screen playback.
 
 > **NOTE**
 >

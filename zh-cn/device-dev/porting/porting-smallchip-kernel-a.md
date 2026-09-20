@@ -6,7 +6,7 @@
 
 ### 移植场景
 
-LiteOS-A当前支持ARMv7-a指令集架构，如果三方芯片为ARMv7-a架构，可以进行内核基础适配；否则还需要先根据芯片的架构来新增内核对该芯片架构的支持，这个工作较为复杂，不在这篇文章范围内。
+LiteOS-A当前支持ARMv7-a指令集架构，如果三方芯片为ARMv7-a架构，可以进行内核基础适配；否则还需要先根据芯片的架构来新增内核对该芯片架构的支持，该部分内容涉及底层架构适配，已超出本文的讨论范围。
 
 
 ### 目录规范
@@ -22,7 +22,7 @@ LiteOS-A提供系统运行所需的系统初始化流程和定制化配置选项
 如下图所示，LiteOS-A的初始化流程主要包含以下七步：
 
 
-1. 新增target_config.h文件，并且编写单板内存相关的配置宏DDR_MEM_ADDR和DDR_MEM_SIZE，分别表示内存起始地址和内存的长度，预链接脚本board.ld.S会根据这两个宏进行展开生成链接脚本board.ld。
+1. 新增target_config.h文件，并且编写单板内存相关的配置宏DDR_MEM_ADDR和DDR_MEM_SIZE，分别表示内存起始地址和内存的大小，预链接脚本board.ld.S会根据这两个宏进行展开生成链接脚本board.ld。
 
 2. 新增定义MMU映射全局数组(g_archMmuInitMapping)，指定各个内存段属性及虚实映射关系，内核启动阶段根据该表建立内存映射关系。
 
@@ -53,11 +53,11 @@ LiteOS-A提供系统运行所需的系统初始化流程和定制化配置选项
   
   | 配置项 | 说明 | 
   | -------- | -------- |
-  | OS_SYS_CLOCK | 系统cycle的频率。 | 
+  | OS_SYS_CLOCK | 系统时钟频率。 | 
   | DDR_MEM_ADDR | 系统内存的起始地址。 | 
   | DDR_MEM_SIZE | 系统内存的大小。 | 
   | PERIPH_PMM_BASE | 外设寄存器的起始地址。 | 
-  | PERIPH_PMM_SIZE | 外设寄存器的长度大小。 | 
+  | PERIPH_PMM_SIZE | 外设寄存器的大小。 | 
   | OS_HWI_MIN | 系统中断最小值。 | 
   | OS_HWI_MAX | 系统中断最大值。 | 
   | NUM_HAL_INTERRUPT_UART0 | UART0中断号。 | 
@@ -84,16 +84,16 @@ LiteOS-A提供系统运行所需的系统初始化流程和定制化配置选项
   
   | 层级 | 说明 | 
   | -------- | -------- |
-  | LOS_INIT_LEVEL_EARLIEST | 最早期初始化。<br/>说明：不依赖架构，单板以及后续模块会对其有依赖的纯软件模块初始化。<br/>例如：Trace模块。 | 
-  | LOS_INIT_LEVEL_ARCH_EARLY | 架构早期初始化。<br/>说明：架构相关，后续模块会对其有依赖的模块初始化，如启动过程中非必需的功能，建议放到LOS_INIT_LEVEL_ARCH层。 | 
-  | LOS_INIT_LEVEL_PLATFORM_EARLY | 平台早期初始化。<br/>说明：单板平台、驱动相关，后续模块会对其有依赖的模块初始化，如启动过程中必需的功能，建议放到LOS_INIT_LEVEL_PLATFORM层。<br/>例如：uart模块。 | 
-  | LOS_INIT_LEVEL_KMOD_PREVM | 内存初始化前的内核模块初始化。<br/>说明：在内存初始化之前需要使能的模块初始化。 | 
-  | LOS_INIT_LEVEL_VM_COMPLETE | 基础内存就绪后的初始化。<br/>说明：此时内存初始化完毕，需要进行使能且不依赖进程间通讯机制与系统进程的模块初始化。<br/>例如：共享内存功能。 | 
-  | LOS_INIT_LEVEL_ARCH | 架构后期初始化。<br/>说明：架构拓展功能相关，后续模块会对其有依赖的模块初始化。 | 
-  | LOS_INIT_LEVEL_PLATFORM | 平台后期初始化。<br/>说明：单板平台、驱动相关，后续模块会对其有依赖的模块初始化。<br/>例如：驱动内核抽象层初始化（mmc、mtd）。 | 
-  | LOS_INIT_LEVEL_KMOD_BASIC | 内核基础模块初始化。<br/>说明：内核可拆卸的基础模块初始化。<br/>例如：VFS初始化。 | 
-  | LOS_INIT_LEVEL_KMOD_EXTENDED | 内核扩展模块初始化。<br/>说明：内核可拆卸的扩展模块初始化。<br/>例如：系统调用初始化、ProcFS初始化、Futex初始化、HiLog初始化、HiEvent初始化、LiteIPC初始化。 | 
-  | LOS_INIT_LEVEL_KMOD_TASK | 内核任务创建。<br/>说明：进行内核任务的创建（内核线程，软件定时器任务）。<br/>例如：资源回收系统常驻任务的创建、SystemInit任务创建、CPU占用率统计任务创建。 | 
+  | LOS_INIT_LEVEL_EARLIEST | 最早期初始化。<br>说明：不依赖架构，单板以及后续模块会对其有依赖的纯软件模块初始化。<br>例如：Trace模块。 | 
+  | LOS_INIT_LEVEL_ARCH_EARLY | 架构早期初始化。<br>说明：架构相关，后续模块会对其有依赖的模块初始化，如启动过程中非必需的功能，建议放到LOS_INIT_LEVEL_ARCH层。 | 
+  | LOS_INIT_LEVEL_PLATFORM_EARLY | 平台早期初始化。<br>说明：单板平台、驱动相关，后续模块会对其有依赖的模块初始化，如启动过程中非必需的功能，建议放到LOS_INIT_LEVEL_PLATFORM层。<br>例如：uart模块。 | 
+  | LOS_INIT_LEVEL_KMOD_PREVM | 内存初始化前的内核模块初始化。<br>说明：在内存初始化之前需要使能的模块初始化。 | 
+  | LOS_INIT_LEVEL_VM_COMPLETE | 基础内存就绪后的初始化。<br>说明：此时内存初始化完毕，需要进行使能且不依赖进程间通讯机制与系统进程的模块初始化。<br>例如：共享内存功能。 | 
+  | LOS_INIT_LEVEL_ARCH | 架构后期初始化。<br>说明：架构拓展功能相关，后续模块会对其有依赖的模块初始化。 | 
+  | LOS_INIT_LEVEL_PLATFORM | 平台后期初始化。<br>说明：单板平台、驱动相关，后续模块会对其有依赖的模块初始化。<br>例如：驱动内核抽象层初始化（mmc、mtd）。 | 
+  | LOS_INIT_LEVEL_KMOD_BASIC | 内核基础模块初始化。<br>说明：内核可拆卸的基础模块初始化。<br>例如：VFS初始化。 | 
+  | LOS_INIT_LEVEL_KMOD_EXTENDED | 内核扩展模块初始化。<br>说明：内核可拆卸的扩展模块初始化。<br>例如：系统调用初始化、ProcFS初始化、Futex初始化、HiLog初始化、HiEvent初始化、LiteIPC初始化。 | 
+  | LOS_INIT_LEVEL_KMOD_TASK | 内核任务创建。<br>说明：进行内核任务的创建（内核线程，软件定时器任务）。<br>例如：资源回收系统常驻任务的创建、SystemInit任务创建、CPU占用率统计任务创建。 | 
 
   进行单板移植适配，推荐关注LOS_INIT_LEVEL_ARCH至LOS_INIT_LEVEL_KMOD_TASK之间的层级，且尽可能拆分初始化行为进行细化阶段注册。
 
@@ -137,7 +137,7 @@ cpu 0 entering scheduler
 
 根据上述系统启动阶段的打印可知，内核在启动时进行了该注册模块的初始化函数调用，完成该模块的初始化操作。
 
-系统启动完毕后进入内核态shell，能够运行task命令能够正常显示即可。
+系统启动完毕后进入内核态shell，运行task命令能够正常显示即可。
 
   
 ```shell

@@ -326,37 +326,43 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value returnResult = nullptr;
     switch (infoType) {
         case BYTE_LENGTH:
-            JSVM_Value len = nullptr;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
-            returnResult = len;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnLength: %{public}d", returnLength);
+            {
+                JSVM_Value len = nullptr;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
+                returnResult = len;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnLength: %{public}d", returnLength);
+                }
+                break;
             }
-            break;
         case ARRAY_BUFFER:
-            bool isArraybuffer = false;
-            JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
-            JSVM_Value isArray = nullptr;
-            JSVM_CALL(OH_JSVM_GetBoolean(env, isArraybuffer, &isArray));
-            returnResult = isArray;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
+            {
+                bool isArraybuffer = false;
+                JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
+                JSVM_Value isArray = nullptr;
+                JSVM_CALL(OH_JSVM_GetBoolean(env, isArraybuffer, &isArray));
+                returnResult = isArray;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
+                }
+                break;
             }
-            break;
         case BYTE_OFFSET:
-            JSVM_Value offset = nullptr;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
-            returnResult = offset;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnOffset: %{public}d", returnOffset);
+            {
+                JSVM_Value offset = nullptr;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
+                returnResult = offset;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, returnOffset: %{public}d", returnOffset);
+                }
+                break;
             }
-            break;
         default:
             break;
     }
@@ -485,52 +491,60 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
     // 根据属性名，返回TypedArray对应的属性值
     switch (infoTypeParam) {
         case INFO_TYPE:
-            // 如果传入的参数是int8类型的TypedArray数据，它的类型（type）为JSVM_INT8_ARRAY
-            JSVM_Value int8_type;
-            OH_JSVM_GetBoolean(env, type == JSVM_INT8_ARRAY, &int8_type);
-            result = int8_type;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(
-                    LOG_APP, "JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: %{public}d", type == JSVM_INT8_ARRAY);
+            {
+                // 如果传入的参数是int8类型的TypedArray数据，它的类型（type）为JSVM_INT8_ARRAY
+                JSVM_Value int8_type;
+                OH_JSVM_GetBoolean(env, type == JSVM_INT8_ARRAY, &int8_type);
+                result = int8_type;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(
+                        LOG_APP, "JSVM GetTypedArrayInfo success, JSVM_INT8_ARRAY: %{public}d", type == JSVM_INT8_ARRAY);
+                }
+                break;
             }
-            break;
         case INFO_LENGTH:
-            // TypedArray中的元素数
-            JSVM_Value jsvmLength;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, length, &jsvmLength));
-            result = jsvmLength;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, length: %{public}d", length);
+            {
+                // TypedArray中的元素数
+                JSVM_Value jsvmLength;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, length, &jsvmLength));
+                result = jsvmLength;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, length: %{public}d", length);
+                }
+                break;
             }
-            break;
         case INFO_BYTE_OFFSET:
-            // TypedArray数组的第一个元素所在的基础原生数组中的字节偏移量
-            JSVM_Value jsvmOffset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset));
-            result = jsvmOffset;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, byteOffset: %{public}d", byteOffset);
+            {
+                // TypedArray数组的第一个元素所在的基础原生数组中的字节偏移量
+                JSVM_Value jsvmOffset;
+                JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset));
+                result = jsvmOffset;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, byteOffset: %{public}d", byteOffset);
+                }
+                break;
             }
-            break;
         case INFO_ARRAY_BUFFER:
-            // TypedArray下的ArrayBuffer
-            bool isArrayBuffer = false;
-            JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-            JSVM_Value isArray = nullptr;
-            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-            result = isArray;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
+            {
+                // TypedArray下的ArrayBuffer
+                bool isArrayBuffer = false;
+                JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
+                JSVM_Value isArray = nullptr;
+                OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
+                result = isArray;
+                if (status != JSVM_OK) {
+                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+                } else {
+                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
+                }
+                break;
             }
-            break;
         default:
             break;
     }
@@ -579,6 +593,15 @@ cpp 部分代码：
 #include "hilog/log.h"
 // ...
 
+// 根据OH_JSVM_GetDataviewInfo的返回状态打印成功或失败日志
+static void LogGetDataViewInfo(JSVM_Status status, const char *name, int32_t value)
+{
+    if (status != JSVM_OK) {
+        OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
+        return;
+    }
+    OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, %{public}s: %{public}d", name, value);
+}
 
 // OH_JSVM_GetDataviewInfo的样例方法
 static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
@@ -587,59 +610,42 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // 将第二个参数转为int32类型的数字
     int32_t infoType = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
     size_t byteLength = 0;
-    void *data;
+    void *data = nullptr;
     JSVM_Value arrayBuffer = nullptr;
     size_t byteOffset = 0;
-    // 定义枚举类型与ArkTS侧枚举类型infoType顺序含义一致
     enum InfoTypeEnum { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
-    // 获取dataview信息
     JSVM_Status status = OH_JSVM_GetDataviewInfo(env, args[0], &byteLength, &data, &arrayBuffer, &byteOffset);
     JSVM_Value result = nullptr;
     switch (infoType) {
-        case BYTE_LENGTH:
+        case BYTE_LENGTH: {
             // 返回查询DataView的长度
-            JSVM_Value len;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &len));
-            result = len;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, byteLength: %{public}d", byteLength);
-            }
+            JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &result));
+            LogGetDataViewInfo(status, "byteLength", byteLength);
             break;
-        case ARRAY_BUFFER:
+        }
+        case ARRAY_BUFFER: {
             // 判断DataView的Info里的arraybuffer是否为arraybuffer
             bool isArrayBuffer = false;
             JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-            JSVM_Value isArray = nullptr;
-            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-            result = isArray;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
-            }
+            OH_JSVM_GetBoolean(env, isArrayBuffer, &result);
+            LogGetDataViewInfo(status, "isArrayBuffer", isArrayBuffer);
             break;
-        case BYTE_OFFSET:
+        }
+        case BYTE_OFFSET: {
             // 返回查询DataView的偏移量
-            JSVM_Value offset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &offset));
-            result = offset;
-            if (status != JSVM_OK) {
-                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-            } else {
-                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, byteOffset: %{public}d", byteOffset);
-            }
+            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &result));
+            LogGetDataViewInfo(status, "byteOffset", byteOffset);
             break;
+        }
         default:
             break;
     }
     return result;
 }
+
 // GetDataViewInfo注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetDataViewInfo},

@@ -18,13 +18,13 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 ## 接口说明
 
-创建Canvas常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
+创建Canvas常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)和[drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
-| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate (void) | 用于创建一个画布对象。 |
-| void OH_Drawing_CanvasBind (OH_Drawing_Canvas\*, OH_Drawing_Bitmap\*) | 用于将一个位图对象绑定到画布中，使得画布绘制的内容输出到位图中。 |
-| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | 通过surface对象获取画布对象。 |
+| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate(void) | 用于创建一个画布对象。 |
+| void OH_Drawing_CanvasBind(OH_Drawing_Canvas\* canvas, OH_Drawing_Bitmap\* bitmap) | 用于将一个位图对象绑定到画布中，使得画布绘制的内容输出到位图中。 |
+| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface\* surface) | 通过surface对象获取画布对象。 |
 
 
 ## 获取可直接显示的Canvas画布
@@ -226,7 +226,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
            pixels[i * RGBA_SIZE + 2] = 0xFF; // +2表示蓝色通道赋值，其余通道为0，颜色显蓝色
        }
    }
-   // 设置位图格式（长、宽、颜色类型、透明度类型）
+   // 设置位图格式（宽、高、颜色类型、透明度类型）
    OH_Pixelmap_InitializationOptions *createOps = nullptr;
    OH_PixelmapInitializationOptions_Create(&createOps);
    OH_PixelmapInitializationOptions_SetWidth(createOps, width);
@@ -243,10 +243,15 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
    // 采样选项对象
    OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
-       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+       FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
    // 绘制PixelMap
    OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
    OH_PixelmapNative_Release(pixelMapNative);
+   OH_PixelmapInitializationOptions_Release(createOps);
+   OH_Drawing_PixelMapDissolve(pixelMap);
+   OH_Drawing_RectDestroy(src);
+   OH_Drawing_RectDestroy(dst);
+   OH_Drawing_SamplingOptionsDestroy(samplingOptions);
    delete[] pixels;
    ```
 
@@ -267,7 +272,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
    // 采样选项对象
    OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
-       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+       FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
    // 绘制PixelMap
    OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
    ```

@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @huipeizi-->
 
-  - [性能优化概览](performance-overview.md)
+  - [应用性能优化概览](performance-overview.md)
   - [应用开发性能优化入门引导](application-performance-optimization-guidance.md)
   - [应用性能优化常见问题解决指导](performance-optimization-practical-guidance.md)
   - ArkTS高性能编程<!--arkts-high-performance-->
@@ -18,7 +18,7 @@
     - [避免开发过程中的冗余操作](avoiding-redundant-operations.md)
     - [使用AOT进行性能优化](performance-optimization-using-aot.md)
     - [高负载场景下线程优先级设置防止关键线程被打断](qos-protect-critical-threads.md)
-    - [延迟加载Lazy-Import使用指导](Lazy-Import-Instructions.md)
+    - [延迟加载lazy-import使用指导](Lazy-Import-Instructions.md)
   - 减少卡顿丢帧<!--reduce-frame-drops-->
     - [正确使用LazyForEach优化](lazyforeach_optimization.md)
     - [组件复用实践](component-recycle.md)
@@ -34,7 +34,7 @@
     - [Grid高性能开发指导](grid_optimization.md)
     - [合理使用自定义组件冻结功能](custom_component_freeze.md)
     - [避免在滑动场景的高频回调接口中处理耗时操作](avoid_high_frequency_callback_execute_lengthy_operation.md)
-    - [合理使用系统接口](reasonable_using_system_interfaces.md)
+    - [合理使用系统提供的接口](reasonable_using_system_interfaces.md)
     - [避免在主线程中执行耗时操作](avoid_time_consuming_operations_in_mainthread.md)
     - [图像模糊动效优化：静态模糊与动态模糊的性能对比解析](fuzzy_scene_performance_optimization.md)
     - [复杂绘制场景下使用Native Drawing自绘制能力替代Canvas提升性能](native_drawing_substitute_canvas.md)
@@ -48,7 +48,7 @@
     - [文件上传下载性能提升指导](improve-file-upload-and-download-performance.md)
     - [减少首帧绘制时的冗余操作](reduce-redundant-operations-when-render-first-frame.md)
     - [列表场景性能提升实践](list-perf-improvement.md)
-    - [动效能力实践](animation_practice.md)
+    - [应用程序动效能力实践](animation_practice.md)
     - [性能提升的其他方法](arkts-performance-improvement-recommendation.md)
     - [运行时动态加载页面提升性能](performance-dynamic-import.md)
     - [合理运行后台任务](reasonable-running-backgroundTask.md)
@@ -67,13 +67,13 @@
     - [应用性能分析工具CPU Profiler的使用指导](application-performance-analysis.md)
     - [使用HiDumper命令行工具优化性能](performance-optimization-using-hidumper.md)
     - [使用SmartPerf-Host分析应用性能](performance-optimization-using-smartperf-host.md)
-    - [常用trace使用指导](common-trace-using-instructions.md)
+    - [常用Trace使用指导](common-trace-using-instructions.md)
     - [状态变量组件定位工具实践](state-variable-dfx-practice.md)
     - [应用滑动场景帧率问题分析实践](long-frame-optimization.md)
     - [时延类性能问题分析实践](delay_related_performance.md)
     - [Web性能问题分析案例](web-analyse.md)
     - [应用性能问题分析指导](application-performance-guide.md)
-    - [页面布局检查器ArkUI Inspector](arkUI-inspector.md)
+    - [页面布局检查器ArkUI Inspector使用指导](arkUI-inspector.md)
     - [跨线程序列化耗时点分析](cross-thread-serialization-time-consumption-analysis.md)
   - 功耗<!--power-consumption-->
     - [高效利用HWC的低功耗设计](utilize_hwc_efficiently.md)

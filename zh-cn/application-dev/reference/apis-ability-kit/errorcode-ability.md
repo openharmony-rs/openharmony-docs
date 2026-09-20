@@ -94,7 +94,7 @@ Cannot start an invisible component.
 
 **处理步骤**
 
-1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示被拉应用调用失败，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
+1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示无法启动不可见组件，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
 2. 若应用需要拉起exported为false的ability，请申请ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用可申请）。
 
 ## 16000005 指定的进程权限校验失败
@@ -315,7 +315,6 @@ No matching ability is found.
 1. 确保隐式启动的参数配置正确，匹配规则详见[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。
 2. 确保对应的HAP包已安装。
 
-<!--Del-->
 ## 16000020 传入的Context对象不是Ability级别Context
 
 **错误信息**
@@ -333,7 +332,6 @@ The context is not ability context.
 **处理步骤**
 
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
-<!--DelEnd-->
 
 ## 16000021 模块名不存在
 
@@ -348,12 +346,12 @@ The module name does not exist.
 **可能原因**
 
 1. 传入的moduleName参数为空。
-2. HAP包中不存在moduleName对应的模块。
+2. HAP/HSP包中不存在moduleName对应的模块。
 
 **处理步骤**
 
 1. 确保传入的moduleName参数不为空。
-2. 确保传入的moduleName是在HAP包中存在的模块名。
+2. 确保传入的moduleName是在HAP/HSP包中存在的模块名。
 
 ## 16000050 内部错误
 
@@ -565,7 +563,7 @@ The API can be called only when the ability is running in the foreground.
 
 在调用接口前，请确保当前Ability已处于前台运行且界面可见状态。
 
-## 16000066  wukong模式，不允许移动Ability到前台/后台
+## 16000066 wukong模式，不允许移动Ability到前台/后台
 
 **错误信息**
 
@@ -1193,7 +1191,7 @@ Current ability is not in foreground.
 
 **错误信息**
 
-A maximum of four UIAbility instances can be started simultaneously.The current parameter exceeds the maximum number or is less than 1.
+A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.
 
 **错误描述**
 
@@ -1224,6 +1222,7 @@ startUIAbilities只支持启动UIAbility，如果目标组件为非UIAbility，�
 **处理步骤**
 
 检查Want中传入的组件类型，确保其为UIAbility组件。
+<!--DelEnd-->
 
 ## 16000122 待启动的目标组件被系统管控模块拦截
 
@@ -1297,6 +1296,7 @@ Want中的parameters指定了启动插件UIAbility。
 
 检查Want中的parameters参数，不要将ohos.params.pluginAbility设置为true。
 
+<!--Del-->
 ## 16000126 不支持启动DLP文件
 
 **错误信息**
@@ -1338,7 +1338,7 @@ The UIAbility does not belong to the caller.
 
 **错误信息**
 
-The UIAbility is already exist, can not start again.
+The UIAbility is already exists, can not start again.
 
 **错误描述**
 
@@ -2568,7 +2568,7 @@ Classes decorated with @InsightIntentEntity must implement InsightIntent.IntentE
 
 **处理步骤**
 
-确保类实现InsightIntent.IntentEntity或继承至其他意图实体。
+确保类实现InsightIntent.IntentEntity或继承自其他意图实体。
 
 ## 10110022 @InsightIntentForm装饰器修饰位置错误
 

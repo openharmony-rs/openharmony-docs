@@ -702,6 +702,36 @@ The credentials are no longer valid.
 伴随设备认证场景，删除伴随设备后，重新绑定伴随设备。
 <!--DelEnd-->
 
+## 12300302 授权操作需要用户交互，但当前交互操作受限
+
+**错误信息**
+
+User interaction is required but not allowed.
+
+**可能原因**
+
+该错误码表示该授权操作需要与用户交互确认，但当前交互操作受限，可能原因如下：
+1. 指定的UIAbility上下文无效。
+2. 应用未处于前台。
+
+**处理步骤**
+
+确保应用处于前台，并传入有效的UIAbilityContext。
+
+## 12300304 授权服务忙
+
+**错误信息**
+
+Authorization service is busy.
+
+**可能原因**
+
+系统正在处理另一个授权请求中。
+
+**处理步骤**
+
+请等待一段时间后重试，并降低调用频率。
+
 ## 12300401 系统账号子身份资料不存在
 
 **错误信息**
@@ -772,6 +802,20 @@ The foreground sub-profile with a logged-in distributed account cannot be direct
 **处理步骤**
 
 将前台子身份资料关联的分布式账号登出后，再触发切换操作。
+
+## 12300406 该分布式账号信息已经与目标系统账号的其他子身份资料绑定
+
+**错误信息**
+
+The distributed account information has already been bound to a sub-profile of the target OS account.
+
+**可能原因**
+
+该分布式账号信息已经与目标系统账号的其他子身份资料绑定。
+
+**处理步骤**
+
+停止绑定操作，或者在目标系统账号下触发解绑后再执行绑定操作。
 
 ## 12400001 应用不存在
 

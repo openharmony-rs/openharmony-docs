@@ -61,7 +61,7 @@ Marquee初始化参数。
 | loop<sup>8+</sup> | number | 否 | 是 | 设置重复滚动的次数，小于等于零时无限循环。<br>默认值：-1<br>**说明：**<br>ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。当设置为大于0的有限次数且播放完毕后，不可以通过改变start参数重置滚动次数重新开始播放。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | fromStart<sup>8+</sup> | boolean | 否 | 是 | 设置文本的滚动方向。<br>true：表示文本从头部位置开始正向滚动；false：表示文本反向滚动。<br>默认值：true<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | src<sup>8+</sup> | string | 否 | 否 | 需要滚动的文本。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br> 默认值：跑马灯组件宽度。 <br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 两轮跑马灯之间的间距。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br> 默认值：跑马灯组件宽度。 <br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | delay<sup>23+</sup> | number | 否 | 是 | 设置两轮滚动之间的延迟时间。<br>默认值：0 <br>取值范围：[0, +∞)，设置的值小于0时等价于设置0。<br>单位：毫秒<br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 属性
@@ -361,7 +361,7 @@ struct MarqueeExample {
 @Component
 struct MarqueeStop4 {
   @State change: boolean = true;
-  @State scrollDirection: String = '正向滚动';
+  @State scrollDirection: string = '正向滚动';
   @State marqueeText: string =
     'This is the text with the text overflow set marquee This is the text with the text overflow set marquee This is the text with the text overflow set marquee';
   @State numberStart: number = 0;

@@ -1,12 +1,11 @@
 # SkillInfo
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:57:28.662Z pushedAt=2026-06-25T06:26:39.941Z -->
+<!-- md-trans-meta sourceCommit=3a7b8d1fce741c2abccde7cccac39375139c4568 translatedAt=2026-09-03T11:18:11.355Z pushedAt=2026-09-05T10:47:30.596Z -->
 
 A skill is a capability encapsulation unit provided by the system for AI agents. Skills are declared through the skillProfiles tag in the [module.json5 Configuration File](../../quick-start/module-configuration-file.md#skillprofiles). An app can query installed skill information through the APIs provided by [skillManager](js-apis-skillManager.md), discovering and invoking AI agent capabilities on the device.
 
@@ -42,7 +41,9 @@ Skill configuration information, used to define the skill capabilities of an AI 
 | description   | string | Yes   | Yes   | Description of the skill. When the app calls the [skillManager](js-apis-skillManager.md) API and the [SkillInfoFlag](js-apis-skillManager.md#skillinfoflag) passed in does not include GET_SKILL_INFO_WITH_DESCRIPTION, this field returns the default value undefined. Developers must check the validity of the value to prevent code exceptions. |
 | srcEntries   | Array\<string\> | Yes   | Yes   | List of code file paths that implement the skill. When the app calls the [skillManager](js-apis-skillManager.md) API and the [SkillInfoFlag](js-apis-skillManager.md#skillinfoflag) passed in does not include GET_SKILL_INFO_WITH_SRC_ENTRIES, this field returns the default value undefined. Developers must check the validity of the value to prevent code exceptions.  |
 | permissions   | Array\<string\> | Yes   | Yes   | List of permissions required to call the skill. When the app calls the [skillManager](js-apis-skillManager.md) API and the [SkillInfoFlag](js-apis-skillManager.md#skillinfoflag) passed in does not include GET_SKILL_INFO_WITH_PERMISSIONS, this field returns the default value undefined. Developers must check the validity of the value to prevent code exceptions.  |
-| requestPermissions   | Array\<string\> | Yes   | Yes   | Permissions requested by the module where the skill is located. When the app calls the [skillManager](js-apis-skillManager.md) API and the [SkillInfoFlag](js-apis-skillManager.md#skillinfoflag) passed in does not include GET_SKILL_INFO_WITH_REQUEST_PERMISSIONS, this field returns the default value undefined. Developers must check the validity of the value to prevent code exceptions.|
+| requestPermissions   | Array\<string\> | Yes   | Yes   | List of permissions requested by the module where the skill resides. When an application calls the [skillManager](js-apis-skillManager.md) API and the [SkillInfoFlag](js-apis-skillManager.md#skillinfoflag) passed in does not include GET_SKILL_INFO_WITH_REQUEST_PERMISSIONS, this field returns the default value undefined. Developers must check the validity of the value to prevent code exceptions. |
+| version   | string | Yes   | Yes   | Version number of the skill, in the format of `major version.minor version.patch version`.   |
+| visibility   | string | Yes   | Yes   | Visibility of the skill. The supported values are as follows:<br/>-&nbsp;"private": private, visible only to the current application.<br/>-&nbsp;"system": system-level, visible to system applications and the current application.<br/>-&nbsp;"public": public, visible to all applications.   |
 
 ## SkillType
 

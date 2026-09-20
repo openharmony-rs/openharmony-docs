@@ -75,10 +75,10 @@ enum OH_NN_PerformanceMode
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_NN_PERFORMANCE_NONE = 0 | 无性能模式偏好。 |
-| OH_NN_PERFORMANCE_LOW = 1 | 低能耗模式。 |
+| OH_NN_PERFORMANCE_LOW = 1 | 低性能模式。 |
 | OH_NN_PERFORMANCE_MEDIUM = 2 | 中性能模式。 |
 | OH_NN_PERFORMANCE_HIGH = 3 | 高性能模式。 |
-| OH_NN_PERFORMANCE_EXTREME = 4 | 极致性能模式。 |
+| OH_NN_PERFORMANCE_EXTREME = 4 | 最高性能模式。 |
 
 ### OH_NN_Priority
 

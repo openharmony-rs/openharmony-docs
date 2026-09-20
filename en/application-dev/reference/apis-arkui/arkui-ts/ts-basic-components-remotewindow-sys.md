@@ -6,6 +6,7 @@
 <!--Designer: @comicchang; @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=c10312255ecef19f29bd3d6bbe3dc6680e25752e translatedAt=2026-09-03T11:49:24.126Z -->
 
 **RemoteWindow** is a component used to control the application window, providing the component animator and application window animation linkage during application startup and exit.
 
@@ -31,9 +32,9 @@ Creates a **RemoteWindow** through a window animation object.
 
 **Parameters**
 
-| Name| Type| Mandatory | Description|
+| Name | Type | Required | Description |
 | -------- | -------- | --------------- | -------- |
-| target | [WindowAnimationTarget](#windowanimationtarget) | Yes  | Description of the animation window to control.|
+| target | [WindowAnimationTarget](#windowanimationtarget) | Yes | Description of the animation window to be controlled. |
 
 ## WindowAnimationTarget
 
@@ -77,7 +78,7 @@ The [universal events](ts-component-general-events.md) are supported.
 ## Example
 The **RemoteWindow** component needs to receive the **WindowAnimationTarget** object from the **WindowAnimationController** object set by [windowAnimationManager](../js-apis-windowAnimationManager-sys.md). You can create a **RemoteWindowExample.ets** file as an example to encapsulate the **RemoteWindow** component and the passed **WindowAnimationTarget** object.
 
-The **RemoteWindow** component can be used only in the system home screen application. Therefore, you can place the **RemoteWindowExample** component in the **build** function of the **EntryView.ets** page of the home screen application, compile the application, and push the application installation package to the device.
+Since **RemoteWindow** can be used only in the system application Launcher, you can place the **RemoteWindowExample** component in the build function of the EntryView.ets page of Launcher, compile Launcher, and then push the Launcher installation package to the device system for running.
 
 ```ts
 // WindowAnimationControllerImpl.ets file

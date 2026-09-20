@@ -5,13 +5,16 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-02T11:55:47.795Z -->
 
-Event monopolization determines whether a component exclusively handles events, including built-in events and custom click, touch, or gesture events.<br>
-When a component with event monopolization is the first to respond to an interaction, only the events defined on this component will be triggered, and other components within the same window will not respond to the interaction.
+Sets whether a component monopolizes events, including built-in events and custom click, touch, and gesture events defined by developers.<br>
+Within a window, if an event on a component with monopolization control responds first, only the events set on this component are allowed to respond in this interaction, and events on other components in the same window do not respond. This capability applies to scenarios where a component needs to respond first and then prevent other components in the same window from responding, reducing interaction conflicts caused by simultaneous responses of multiple components.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## monopolizeEvents
 
@@ -27,17 +30,17 @@ Sets whether the component exclusively handles events.
 
 | Name  | Type| Mandatory| Description                 |
 | ----------- | -------- | ------------------------ | ------------------------ |
-| monopolize | boolean  | Yes| Whether the component exclusively handles events. **true**: The component exclusively handles events. **false**: The component does not exclusively handle events.<br>Default value: **false**.<br>**NOTE**<br>1. If a component is exclusively handling events after a finger is pressed on it, and another finger is pressed before the first finger is lifted, the component continues to exclusively handle events while interacting with the second finger. The same case applies to a third and more fingers.<br>2. If a component is bound through [parallelGesture](ts-gesture-settings.md#parallelgesture) to a gesture, for example, [pan gesture](ts-basic-gestures-pangesture.md), that can also be triggered by its child component, and the child component has event monopolization and is the first to respond, then the parent will not respond to the gesture.|
+| monopolize | boolean | Yes | Whether the component monopolizes events. The value true means the component monopolizes events, and false means the opposite.<br>Default value: false<br>**NOTE**<br>1. If the first finger triggers event monopolization of the component, and another finger is pressed before the first finger is lifted, the interaction of the second finger remains in the component monopolization state, and so on.<br>2. If the developer binds a gesture that is triggered simultaneously with the child component through [parallelGesture](ts-gesture-settings.md#parallelgesture), such as [PanGesture](ts-basic-gestures-pangesture.md), and the child component has monopolization control enabled and responds to the event first, the gesture of the parent component will not respond.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## Example
 
-This example demonstrates how to set **monopolizeEvents** to determine whether a component exclusively handles events.
+This example demonstrates how to set whether a component monopolizes events by configuring monopolizeEvents.
 
 ```ts
 // xxx.ets
@@ -63,48 +66,48 @@ struct Index {
       Button('clean')
         .fontSize(22)
         .margin(10)
-        // Change the value of the column's monopolizeEvents attribute through the button's click event.
+        // Clear the touch event prompt information of the inner and outer columns through the button click event.
         .onClick(() => {
-          this.messageOut = " "
-          this.messageInner = " "
+          this.messageOut = ' ';
+          this.messageInner = ' ';
         })
       Button('change monopolizeEvents')
         .fontSize(22)
         .margin(10)
-        // Change the value of the column's monopolizeEvents attribute through the button's click event.
+        // Toggle the monopolization control attribute of the inner column through the button click event.
         .onClick(() => {
-          this.monopolize = !this.monopolize
+          this.monopolize = !this.monopolize;
           if (!this.monopolize) {
-            this.message = "set monopolizeEvents false"
+            this.message = 'set monopolizeEvents false';
           } else {
-            this.message = "set monopolizeEvents true"
+            this.message = 'set monopolizeEvents true';
           }
         })
       Column() {
         Column() {
         }
-        // When this.monopolize is true, clicking the inner column triggers only a touch event on it, but not on the outer column.
-        // When this.monopolize is false, clicking the inner column triggers a touch event on it and the outer column.
+        // When this.monopolize is true, tapping the inner column triggers only its own touch event, not the touch event of the outer column.
+        // When this.monopolize is false, tapping the inner column triggers both its own touch event and the touch event of the outer column.
         .monopolizeEvents(this.monopolize)
         .width('100%')
         .height('40%')
         .backgroundColor(Color.Blue)
-        // Bind the inner column to the touch event.
+        // Bind the touch event to the inner column.
         .onTouch((event: TouchEvent) => {
           if (event.type == TouchType.Down) {
-            console.info("inner column touch down")
-            this.messageInner = "inner column touch down"
+            console.info('inner column touch down');
+            this.messageInner = 'inner column touch down';
           }
         })
       }
       .backgroundColor(Color.Gray)
       .height('100%')
       .width('100%')
-      // Bind the outer column to the touch event.
+      // Bind the touch event to the outer column.
       .onTouch((event) => {
         if (event.type == TouchType.Down) {
-          console.info("outside column touch down")
-          this.messageOut = "outside column touch down"
+          console.info('outside column touch down');
+          this.messageOut = 'outside column touch down';
         }
       })
     }

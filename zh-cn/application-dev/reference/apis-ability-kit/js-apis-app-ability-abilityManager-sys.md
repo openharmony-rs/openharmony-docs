@@ -956,7 +956,11 @@ export default class EntryAbility extends UIAbility {
 
 setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 
-设置或移除指定包名的进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
+设置或移除指定包名的主应用进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
+
+> **说明：**
+>
+> 该接口不支持设置或移除分身应用（指定包名）的进程保活状态。
 
 **系统接口**：此接口为系统接口。
 

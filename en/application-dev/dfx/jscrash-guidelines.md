@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a5ec2554156d2155d55febe6fc6bdd310c9d09c2 translatedAt=2026-07-30T03:08:10.215Z pushedAt=2026-07-30T09:10:46.632Z -->
+<!-- md-trans-meta sourceCommit=b9c42e164595fe68d45198f7f8fa7bb104fc62f1 translatedAt=2026-08-21T03:20:44.827Z pushedAt=2026-08-21T09:49:41.715Z -->
 
 ## Overview
 
@@ -20,13 +20,13 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 2. ArkCompiler runtime collects fault information and reports it to HiView.
 
-3. The Hiview DFX process supplements information that only it has permission to obtain (such as the overall memory status of the device and the app page switching trace), generates the corresponding crash log file, and stores it in the `/data/log/faultlog/faultlogger` directory.
+3. The HiView DFX process supplements information that only it has permission to obtain (such as the overall memory status of the device and the app page switching trace), generates the corresponding crash log file, and stores it in the `/data/log/faultlog/faultlogger` directory.
 
 4. To report a crash event, you can use HiAppEvent to subscribe to the [crash event](hiappevent-watcher-crash-events.md).  
 
 ## Constraints
 
-Throwing an exception in an asynchronous function modified by **async** does not cause a JS crash that leads to an app crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions). Starting from **API version 26.0.0**, when the app has registered ErrorManager to observe exceptions, exceptions other than non-catchable types (currently only OutOfMemoryError) will not generate HiAppEvent events for reporting.
+Actively throwing an exception in an async function does not cause a JS crash. You can observe the exception through [errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 ## Obtaining Logs
 

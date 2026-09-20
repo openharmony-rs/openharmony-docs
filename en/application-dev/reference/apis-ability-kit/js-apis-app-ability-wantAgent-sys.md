@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=601018e54f34cdc857359aef393bd4ded508397e translatedAt=2026-09-03T10:40:16.804Z pushedAt=2026-09-05T10:47:30.455Z -->
 
 The app.ability.WantAgent module provides APIs for creating and comparing WantAgent objects, and obtaining the user ID, Want, and bundle name of a WantAgent object. You are advised to use this module, since it will replace the [@ohos.wantAgent](js-apis-wantAgent.md) module in the near future.
 
@@ -55,7 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object.
+// Store the created WantAgent instance.
 let wantAgentData: _WantAgent;
 // WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -85,22 +86,23 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+// Callback for creating a WantAgent instance.
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
-  // getWant callback
+  // Callback for obtaining the Want data.
   let getWantCallback = (err: BusinessError, data: Want) => {
-    if(err.code) {
-      console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
+    if (err.code) {
+      console.error(`Failed to getWant. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info(`getWant success, data: ${JSON.stringify(data)}.`);
     }
   }
   try {
+    // Obtain the Want data of the WantAgent object.
     wantAgent.getWant(wantAgentData, getWantCallback);
   } catch(err) {
     let code = (err as BusinessError).code;
@@ -110,6 +112,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
 }
 
 try {
+  // Create a WantAgent instance.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   let code = (err as BusinessError).code;
@@ -153,15 +156,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000015   | Service timeout.|
 | 16000151   | Invalid wantAgent object.|
 
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
-
 **Example**
 
 ```ts
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object.
+// Store the created WantAgent instance.
 let wantAgentData: _WantAgent;
 // WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -191,14 +192,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+// Callback for creating a WantAgent instance.
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
   try {
+    // Obtain the Want data of the WantAgent object.
     wantAgent.getWant(wantAgentData).then((data)=>{
       console.info(`getWant success, data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError)=>{
@@ -212,6 +214,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
 }
 
 try {
+  // Create a WantAgent instance.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   let code = (err as BusinessError).code;
@@ -234,7 +237,7 @@ Enables or disables the WantAgent multithreading feature.
 
 | Name    | Type                 | Mandatory| Description                           |
 | ---------- | --------------------- | ---- | ------------------------------- |
-| isMultithreadingSupported    | boolean    | Yes  |Whether to enable the multithreading feature. **true** to enable, **false** otherwise.  |
+| isMultithreadingSupported    | boolean    | Yes   | Whether to enable the WantAgent multithreading transfer feature. The value true means to enable it, and false means to disable it.   |
 
 **Error codes**
 
@@ -242,7 +245,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message           |
 |-----------|--------------------|
-| 202       | Not system app. Interface caller is not a system app. |
+| 202       | Not System App. Interface caller is not a system app. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
@@ -282,7 +285,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // Define a getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`Failed to call getWantAgentCallback. Code is ${err.code}. Message is ${err.message}.`);
   } else {
@@ -290,16 +293,22 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   }
 
   try {
+    // Enable the WantAgent multithreading transfer feature.
     wantAgent.setWantAgentMultithreading(true);
   } catch (err) {
-    console.error(`Failed to set wantAgentMultithreading. Code is ${err.code}. Message is ${err.message}.`);
+    let code = (err as BusinessError).code;
+    let msg = (err as BusinessError).message;
+    console.error(`Failed to set wantAgentMultithreading. Code: ${code}, message: ${msg}`);
   }
 }
 
 try {
+  // Create a WantAgent instance.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
-  console.error(`Failed to get wantAgent. Code is ${err.code}. Message is ${err.message}.`);
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`Failed to get wantAgent. Code: ${code}, message: ${msg}`);
 }
 ```
 
@@ -327,7 +336,7 @@ Proactively triggers a WantAgent object, which involves executing the operations
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise used to return the data obtained from the WantAgent object.|
+| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise object used to return the data obtained by proactively triggering the WantAgent. |
 
 **Error codes**
 
@@ -405,15 +414,15 @@ class MyAbility extends UIAbility {
           });
         } catch (err) {
           console.error(`triggerAsync failed! ${err.code} ${err.message}`);
-        }
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let msg = (err as BusinessError).message;
-      console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
-    }
-  }
-}
+         }
+       });
+     } catch (err) {
+       let code = (err as BusinessError).code;
+       let msg = (err as BusinessError).message;
+       console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
+     }
+   }
+ }
 ```
 
 ## wantAgent.createLocalWantAgent<sup>20+</sup>
@@ -424,9 +433,9 @@ Creates a local WantAgent object.
 
 > **NOTE**
 > 
-> - The local WantAgent object created by calling this API is stored only on the WantAgent client and is not managed by the WantAgent server. Before using the local WantAgent object, verify the object to ensure security. 
+> - The local WantAgent object created by calling this API is stored only on the WantAgent client and is not managed by the WantAgent server. Before using the local WantAgent object, verify its validity and source to ensure security.
 >
-> - After the local WantAgent object is created, you can call [wantAgent.triggerAsync](#wantagenttriggerasync20) to trigger it.
+> - After the local WantAgent object is created, see [wantAgent.triggerAsync](#wantagenttriggerasync20) for the triggering method.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -531,7 +540,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { wantAgent } from '@kit.AbilityKit';
+import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 
 // Declare a wantAgent object.
@@ -566,6 +575,7 @@ let localWantAgentInfo: wantAgent.LocalWantAgentInfo = {
 // Create a WantAgent object and check whether it is local.
 try {
   wantAgentData = wantAgent.createLocalWantAgent(localWantAgentInfo);
+  // Check whether the WantAgent instance is a local instance.
   let isLocal: boolean = wantAgent.isLocalWantAgent(wantAgentData);
 } catch (err) {
   console.error('call isLocalWantAgent failed');
@@ -580,4 +590,4 @@ Enumerates the operation types supported by WantAgent objects.
 
 | Name                     | Value| Description                                           |
 |-------------------------|---|-----------------------------------------------|
-| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | Starts a ServiceExtensionAbility.<br>**System API**: This is a system API.|
+| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | Starts a ServiceExtension.<br>**System API**: This API is a system API. |

@@ -6,10 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
- 
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:25:54.240Z pushedAt=2026-08-10T07:28:08.047Z -->
+
 You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.
 
-For details about the ECC algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc). 
+For ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).  
 
 You can pass in the string parameter **format** to specify the format of the point data to obtain. To obtain compressed point data, set **format** to **COMPRESSED**. To obtain uncompressed point data, set **format** to **UNCOMPRESSED**.
 
@@ -39,11 +40,17 @@ function eccPointUncompressedToCompressed() {
 ## Converting Compressed Point Data into a Key Object
 
 1. Call [ECCKeyUtil.convertPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpoint12) to convert compressed ECC point data of the Uint8Array type into a [Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10) object.
+
 2. Call [ECCKeyUtil.genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11) with the curve name set to **NID_brainpoolP256r1** to generate the asymmetric common key parameters for the ECC key pair.
+
 3. Construct a [ECCPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#eccpubkeyspec10) object to specify the parameters for the ECC public key. **ECCPubKeySpec** is a child class of **AsyKeySpec**. Set **algName** to **ECC**, specify [AsyKeySpecType.PUBLIC_KEY_SPEC](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#asykeyspectype10), and set **pk** to the point object obtained.
+
 4. Call [createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10) with the public key parameters to create an asymmetric key generator (**AsyKeyGeneratorBySpec**) object.
+
 5. Call [AsyKeyGeneratorBySpec.generatePubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatepubkey10) to generate the public key.
+
 6. Call [ECCKeyUtil.getEncodedPoint](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpoint12) to obtain uncompressed point data.
+
 7. Call [PubKey.getAsyKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getasykeyspec10) to obtain the x coordinate of the ECC public key **pk**.
 
 <!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets) -->
@@ -73,3 +80,4 @@ async function eccPointCompressedToPoint() {
   console.info('ECC_PK_X_BN: ' + eccPkX);
 }
 ```
+<!--no_check-->

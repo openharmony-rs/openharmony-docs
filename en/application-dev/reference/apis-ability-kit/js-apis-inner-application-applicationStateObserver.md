@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=54a85e57a9e078c186b756489db16f65a538d313 translatedAt=2026-09-03T11:42:49.863Z pushedAt=2026-09-05T10:47:30.677Z -->
 
 The module defines an observer to listen for application state changes. It can be used as an input parameter in [on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14) to listen for lifecycle changes of the application.
 
@@ -36,7 +37,7 @@ Called when the foreground or background state of an application changes.
 
 onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
-Called when the ability state changes.
+Called when the [Ability](js-apis-app-ability-ability.md) state changes.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -78,7 +79,7 @@ Called when a process is destroyed.
 
 onProcessStateChanged(processData: ProcessData): void
 
-Called when the process state is changed.
+Called when the process state changes.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -126,7 +127,7 @@ Defines the process data.
 
 | Type| Description|
 | --- | --- |
-| [_ProcessData.default](js-apis-inner-application-processData.md) | Process data.|
+| _[ProcessData](js-apis-inner-application-processData.md).default | Process data information. |
 
 **Example**
 ```ts

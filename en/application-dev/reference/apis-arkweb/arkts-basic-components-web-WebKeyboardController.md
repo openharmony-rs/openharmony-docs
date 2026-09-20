@@ -1,12 +1,14 @@
 # Class (WebKeyboardController)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zourongchun-->
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=97514042d8acb624815178d3627a209c868aad1f translatedAt=2026-08-07T04:39:27.070Z pushedAt=2026-08-07T08:12:44.202Z -->
 
-Implements a controller to control the input, deletion, and closure of the custom keyboard. For details about the sample code, see [onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12).
+WebKeyboardController is a controller class provided by ArkWeb for controlling the custom keyboard behavior of the Web component. When an input field on a web page needs to display a keyboard, developers can intercept the mounting of the system default keyboard through the [onInterceptKeyboardAttach](./arkts-basic-components-web-events.md#oninterceptkeyboardattach12) event, and use WebKeyboardController to perform operations such as inserting characters, forward/backward deletion, sending function keys like Enter, and closing the custom keyboard on the currently focused web input field. This class is suitable for apps that need to implement custom secure keyboards, emoji keyboards, handwriting keyboards, or business-specific input panels for web scenarios, enabling developers to fully take over the keyboard input logic of web input fields.
 
 > **NOTE**
 >
@@ -36,13 +38,13 @@ Inserts characters into the **Web** component text box.
 
 | Name| Type| Mandatory| Description|
 | ------ | -------- | ---- | --------------------- |
-| text | string | Yes| Characters to insert into the **Web** component text box.|
+| text | string | Yes | Text inserted into the web input box at the current cursor position. If there is selected text, it is replaced with this text. An input event is triggered. The cursor moves to the end of the inserted text. |
 
 ## deleteForward<sup>12+</sup>
 
 deleteForward(length: number): void
 
-Deletes a specified number of characters forward in a **Web** component text box.
+Deletes a specified length of characters before the cursor.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -50,13 +52,13 @@ Deletes a specified number of characters forward in a **Web** component text box
 
 | Name| Type| Mandatory| Description                                                                                                  |
 | ------ | -------- | ---- |------------------------------------------------------------------------------------------------------|
-| length | number   | Yes  | Length of characters to delete forward in a **Web** component text box.<br>Value range: [-2147483648, 2147483647]. If the parameter value exceeds the character length, all characters before the cursor are deleted by default. If the parameter value is a negative number, the deletion is not performed.|
+| length | number | Yes | Deletes a specified length of characters before the cursor.<br>Value range: [-2147483648, 2147483647]. When the parameter value is greater than the character length, all characters before the cursor are deleted by default. When the parameter value is negative, no deletion is performed. |
 
 ## deleteBackward<sup>12+</sup>
 
 deleteBackward(length: number): void
 
-Deletes a specified number of characters backward in a **Web** component text box.
+Deletes a specified length of characters after the cursor.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -64,7 +66,7 @@ Deletes a specified number of characters backward in a **Web** component text bo
 
 | Name| Type| Mandatory| Description                |
 | ------ | -------- | ---- | ------------------------ |
-| length | number   | Yes  | Length of characters to delete backward in a **Web** component text box.<br>Value range: [-2147483648, 2147483647]. If the parameter value exceeds the character length, all characters after the cursor are deleted by default. If the parameter value is a negative number, the deletion is not performed.|
+| length | number | Yes | Number of characters to delete after the cursor.<br>Value range: [-2147483648, 2147483647]. If the parameter value is greater than the character length, all characters after the cursor are deleted by default. If the parameter value is negative, no deletion is performed. |
 
 ## sendFunctionKey<sup>12+</sup>
 
@@ -78,7 +80,7 @@ Inserts a function key. Currently, only the Enter key type is supported. For det
 
 | Name| Type| Mandatory| Description                                  |
 | ------ | -------- | ---- | ------------------------------------------ |
-| key    | number   | Yes  | Function key to insert into the **Web** component text box. Currently, only the Enter key is supported.|
+| key    | number   | Yes   | Type of the function key. Only the Enter key is supported. |
 
 ## close<sup>12+</sup>
 
@@ -87,3 +89,4 @@ close(): void
 Closes this custom keyboard.
 
 **System capability**: SystemCapability.Web.Webview.Core
+<!--no_check-->

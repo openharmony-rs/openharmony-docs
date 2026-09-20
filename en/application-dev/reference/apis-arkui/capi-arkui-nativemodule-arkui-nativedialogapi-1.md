@@ -6,7 +6,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8b7a7d18aa38aad39c3fae4dcbb93ef9e9d5f258 translatedAt=2026-07-17T12:19:47.068Z pushedAt=2026-07-29T01:51:25.317Z -->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-08-19T08:25:21.834Z pushedAt=2026-08-20T03:18:36.661Z -->
 
 ```c
 typedef struct {...} ArkUI_NativeDialogAPI_1
@@ -376,7 +376,7 @@ Specifies whether to use a custom style for the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool enableCustomStyle | Whether to use a custom style for the dialog box.<br>Default value: **false**.<br>**true**: The dialog box cannot use a custom style. Its width adapts to its child components, with zero corner radius and a transparent background.<br>**false**: The dialog box can use a custom style. Its height adapts to its child components and its width is defined by the grid system. The rounded corner radius is 24 vp. On PC and 2-in-1 devices, it automatically avoids screen edges and window title bars.|
+|  bool enableCustomStyle | Whether the dialog box container style can be customized.<br>Default value: **false**.<br>**true**: The dialog box container style can be customized. Its width adapts to its child nodes, with zero corner radius and a transparent background.<br>**false**: The dialog box container style cannot be customized. Its height adapts to its child nodes and its width is defined by the grid system. The corner radius is 24 vp. On PCs/2-in-1 devices, the container automatically avoids screen edges and window title bars. |
 
 **Returns**
 
@@ -499,7 +499,7 @@ Registers a callback for the dismissal event of a custom dialog box. Difference 
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 | void* userData | Pointer to user data.|
-| callback | Callback for the dismissal event of the custom dialog box.<br> - **event**: input parameter of the callback, which captures the reason for dismissal.|
+| void (*callback)(ArkUI_DialogDismissEvent* event) | Callback invoked when the custom dialog box is closed.<br> - **event**: input parameter of the callback, used to capture the reason for closure. |
 
 **Returns**
 

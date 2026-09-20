@@ -1,16 +1,16 @@
 # HML
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=82201e3613fa22fcc6d20e03f182f45ec888d4a4 translatedAt=2026-07-31T01:16:14.441Z pushedAt=2026-07-31T12:04:26.624Z -->
 
 HML is an HTML-like language that allows you to build pages based on components and events. HML pages provide advanced capabilities such as data binding, event binding, loop rendering, conditional rendering, and logic control.
 
-
 ## Page Structure
-
 
 ```html
 <!-- xxx.hml -->
@@ -22,9 +22,7 @@ HML is an HTML-like language that allows you to build pages based on components 
 </div>
 ```
 
-
 ## Data Binding
-
 
 ```html
 <!-- xxx.hml -->
@@ -52,7 +50,7 @@ Declare the variables used in the HML file for service widgets in the **data** f
 }
 ```
 
->  **NOTE**
+> **NOTE**
 >  - When using data binding, you can use the object operator or array operator on a key to access the bound data, for example, **{{key.value}}** and **{{key[0]}}**.
 >
 >  - String concatenation, logical operations, and ternary expressions are supported.
@@ -64,8 +62,8 @@ Declare the variables used in the HML file for service widgets in the **data** f
 >      - OR: {{flag1 || flag2}} (The OR operation can only be performed on two Boolean variables.)
 >      - NOT: {{! flag1}} (The NOT operation can only be performed on a Boolean variable.)
 >   - Ternary expressions:
->      - {{flag? key1: key2}} (**flag** is a Boolean variable. **key1** and **key2** can be variables or constants.)
->   - Notes
+>      - {{flag? key1:key2}} (**flag** is a Boolean variable. **key1** and **key2** can be variables or constants.)
+>   - Notes:
 >      - The default value is **false** when a Boolean-specific operation is performed on a non-Boolean variable.
 >      - The preceding variable and operation parsing do not support nesting.
 
@@ -79,10 +77,9 @@ Declare the events for service widgets in the **actions** field in the JSON file
 
   | Selector        | Example    | Default Value     | Description                                    |
   | ----------- | ------ | -------- | ---------------------------------------- |
-  | action      | string | "router" | Event type.<br>- **"router"**: redirection event.<br>- **"message"**: message event.|
+  | action      | string | "router" | Event type.<br/>- **"router"**: redirection event. |
   | abilityName | string | -        | Name of the ability to redirect to.                             |
   | params      | Object | -        | Additional parameter passed during the redirection.                            |
-
 
   ```json
   {
@@ -103,9 +100,8 @@ Declare the events for service widgets in the **actions** field in the JSON file
 
   | Selector   | Example    | Default Value    | Description        |
   | ------ | ------ | ------- | ------------ |
-  | action | string | message | Event type.     |
+  | action | string | message | Event type.<br/>- **"message"**: message event.      |
   | params | Object | -       | Additional parameter passed during the redirection.|
-
 
   ```json
   {
@@ -130,9 +126,7 @@ Declare the events for service widgets in the **actions** field in the JSON file
   </div>
   ```
 
-
 ## Loop Rendering
-
 
 ```html
 <!-- xxx.hml -->
@@ -152,7 +146,6 @@ Declare the events for service widgets in the **actions** field in the JSON file
   </div>
 </div>
 ```
-
 
 ```json
 {
@@ -184,13 +177,11 @@ The **tid** attribute accelerates the **for** loop and improves the re-rendering
 >
 >  - When you use the **for** loop, ensure that the objects contained in the array are of the same type.
 
-
 ## Conditional Rendering
 
 There are two ways to implement conditional rendering: **if-elif-else** or **show**.
 
 The **if-elif-else** statements must be used in sibling nodes. Otherwise, the compilation fails. The following example uses both ways to implement conditional rendering:
-
 
 ```html
 <!-- xxx.hml -->
@@ -200,7 +191,6 @@ The **if-elif-else** statements must be used in sibling nodes. Otherwise, the co
   <text else> Hello-World </text>
 </div>
 ```
-
 
 ```json
 {
@@ -213,12 +203,10 @@ The **if-elif-else** statements must be used in sibling nodes. Otherwise, the co
 
 If **show** is **true**, the node is rendered properly; if it is **false**, the display style will be **none**.
 
-
 ```html
 <!-- xxx.hml -->
 <text show="{{visible}}"> Hello World </text>
 ```
-
 
 ```json
 {
@@ -228,11 +216,9 @@ If **show** is **true**, the node is rendered properly; if it is **false**, the 
 }
 ```
 
-
 ## Logic Control Block
 
 **\<block>** makes loop rendering and conditional rendering more flexible. A **\<block>** will not be compiled as a real component. The **\<block>** supports the **if** attribute only.
-
 
 ```html
 <!-- xxx.hml --> 
@@ -243,7 +229,6 @@ If **show** is **true**, the node is rendered properly; if it is **false**, the 
   </block>
 </div>
 ```
-
 
 ```json
 { 

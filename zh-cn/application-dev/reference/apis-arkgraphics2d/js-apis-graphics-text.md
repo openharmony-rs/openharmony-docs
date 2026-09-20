@@ -873,6 +873,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 可变字体属性。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
@@ -3890,6 +3892,7 @@ getStringIndexForPosition(point: common2D.Point): number
 **示例：**
 
 ```ts
+import { common2D } from '@kit.ArkGraphics2D'
 let point : common2D.Point = { x: 15.0, y: 2.0 };
 let index = lines[0].getStringIndexForPosition(point);
 ```

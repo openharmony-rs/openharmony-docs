@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:53:40.062Z pushedAt=2026-07-30T06:29:35.138Z -->
+<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:53:40.062Z pushedAt=2026-07-31T08:45:58.658Z -->
 
 ## Overview
 
@@ -191,7 +191,7 @@ The following walks you through on how to subscribe to the application freeze ev
 
 ## Migrating App Freeze Events from the FaultLogger API
 
-The [@ohos.faultLogger (Fault Log)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API has been deprecated since API version 18 and is no longer maintained. Later versions recommend using [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) to subscribe to app freeze events. This section guides you through migrating from the FaultLogger API to the HiAppEvent API for subscribing to app freeze events.
+The [@ohos.faultLogger (FaultLogger)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API has been deprecated since API version 18 and is no longer maintained. Later versions recommend using [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) to subscribe to app freeze events. This section guides you through migrating from the FaultLogger API to the HiAppEvent API for subscribing to app freeze events.
 
 **APP_FREEZE** defined in the [FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) of FaultLogger is the app freeze fault type.
 
