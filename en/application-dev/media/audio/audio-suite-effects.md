@@ -22,8 +22,8 @@ Since API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudio
 | [Environmental effect](#environmental-effect) | EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT | API version 22 | Simulates the acoustic effects of different environments. | - |
 | [Mixing](#mixing) | EFFECT_NODE_TYPE_AUDIO_MIXER | API version 22 | Mixes multiple audio streams into one. | - |
 | [Spatial rendering](#spatial-rendering) | EFFECT_NODE_TYPE_SPACE_RENDER | API version 23 | Positions and renders 3D spatial audio. | - |
-| [Traditional voice changer](#traditional-voice-changer) | EFFECT_NODE_TYPE_PURE_VOICE_CHANGE | API version 23 | Traditional voice changing based on gender and pitch. | - |
-| [General voice changer](#general-voice-changer) | EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE | API version 23 | Various stylized voice changing effects. | - |
+| [Traditional voice changing](#traditional-voice-changing) | EFFECT_NODE_TYPE_PURE_VOICE_CHANGE | API version 23 | Traditional voice changing based on gender and pitch. | - |
+| [General voice changing](#general-voice-changing) | EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE | API version 23 | Various stylized voice changing effects. | - |
 | [Speed and pitch shifting](#speed-and-pitch-shifting) | EFFECT_NODE_TYPE_TEMPO_PITCH | API version 23 | Changes the speed and pitch of audio. | - |
 | [HOA spatial audio](#hoa-spatial-audio) | EFFECT_NODE_TYPE_HOA_SPACE_RENDER | API version 26.0.0 | Renders high-order Ambisonics (HOA) to binaural audio. | - |
 
@@ -296,42 +296,42 @@ switch (params.spaceRenderMode) {
 }
 ```
 
-## Traditional Voice Changer
+## Traditional Voice Changing
 
-The traditional voice changer effect node [EFFECT_NODE_TYPE_PURE_VOICE_CHANGE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) implements the traditional voice changer effect by specifying the gender, voice changer type, and pitch.
+The traditional voice changing effect node [EFFECT_NODE_TYPE_PURE_VOICE_CHANGE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) implements the traditional voice changing effect by specifying the gender, voice changing type, and pitch.
 
 ### Configuration Description
 
-The traditional voice changer effect node is configured through the [OH_AudioSuite_PureVoiceChangeOption](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) structure, which contains the following members:
+The traditional voice changing effect node is configured through the [OH_AudioSuite_PureVoiceChangeOption](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) structure, which contains the following members:
 
 | Name | Type | Description |
 |------|------|------|
-| optionGender | [OH_AudioSuite_PureVoiceChangeGenderOption](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangegenderoption) | Voice changer gender: 1 = female (PURE_VOICE_CHANGE_FEMALE), 2 = male (PURE_VOICE_CHANGE_MALE). |
-| optionType | [OH_AudioSuite_PureVoiceChangeType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangetype) | See the voice changer types below. |
+| optionGender | [OH_AudioSuite_PureVoiceChangeGenderOption](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangegenderoption) | Voice changing gender: 1 = female (PURE_VOICE_CHANGE_FEMALE), 2 = male (PURE_VOICE_CHANGE_MALE). |
+| optionType | [OH_AudioSuite_PureVoiceChangeType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_purevoicechangetype) | See the voice changing types below. |
 | pitch | float | Pitch. To use the system-recommended pitch, set it to OH_PURE_VOICE_DEFAULT_PITCH (0.0f) in [macros](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#macros) for the best effect. The custom value range is [0.3f, 3.0f]. |
 
-**Voice Changer Type**
+**Voice Changing Type**
 
 | Enumerated Value | Name | Description |
 |--------|------|------|
-| PURE_VOICE_CHANGE_TYPE_CARTOON = 1 | Cartoon | Cartoon-style voice changer. |
-| PURE_VOICE_CHANGE_TYPE_CUTE = 2 | Loli | Loli-style voice changer. |
-| PURE_VOICE_CHANGE_TYPE_FEMALE = 3 | Female | Female voice changer. |
-| PURE_VOICE_CHANGE_TYPE_MALE = 4 | Male | Male voice changer. |
-| PURE_VOICE_CHANGE_TYPE_MONSTER = 5 | Monster | Monster-style voice changer. |
-| PURE_VOICE_CHANGE_TYPE_ROBOTS = 6 | Robot | Robot-style voice changer. |
-| PURE_VOICE_CHANGE_TYPE_SEASONED = 7 | Uncle | Uncle-style voice changer. |
+| PURE_VOICE_CHANGE_TYPE_CARTOON = 1 | Cartoon | Cartoon-style voice changing. |
+| PURE_VOICE_CHANGE_TYPE_CUTE = 2 | Cute | Cute-style voice changing. |
+| PURE_VOICE_CHANGE_TYPE_FEMALE = 3 | Female | Female voice changing. |
+| PURE_VOICE_CHANGE_TYPE_MALE = 4 | Male | Male voice changing. |
+| PURE_VOICE_CHANGE_TYPE_MONSTER = 5 | Monster | Monster-style voice changing. |
+| PURE_VOICE_CHANGE_TYPE_ROBOTS = 6 | Robot | Robot-style voice changing. |
+| PURE_VOICE_CHANGE_TYPE_SEASONED = 7 | Uncle | Uncle-style voice changing. |
 
-### Setting the Traditional Voice Changer Effect Node
+### Setting the Traditional Voice Changing Effect Node
 
 <!-- @[audioSuite_SetPureVoiceChangeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
 
 ``` C
-// Set the node type to traditional voice changer.
+// Set the node type to traditional voice changing.
 OH_AudioSuiteNodeBuilder_SetNodeType(builder, OH_AudioNode_Type::EFFECT_NODE_TYPE_PURE_VOICE_CHANGE);
-// Create a traditional voice changer node.
+// Create a traditional voice changing node.
 OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
-// Set the traditional voice changer node effect.
+// Set the traditional voice changing node effect.
 OH_AudioSuite_PureVoiceChangeOption option;
 option.optionGender = static_cast<OH_AudioSuite_PureVoiceChangeGenderOption>(params.pureVoiceChangeGender);
 option.optionType = static_cast<OH_AudioSuite_PureVoiceChangeType>(params.pureVoiceChangeType);
@@ -339,37 +339,37 @@ option.pitch = params.pureVoiceChangePitch;
 OH_AudioSuiteEngine_SetPureVoiceChangeOption(*node, option);
 ```
 
-## General Voice Changer
+## General Voice Changing
 
-The general voice changer effect node [EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) provides a variety of stylized voice changer effects and is applicable to more scenarios.
+The general voice changing effect node [EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type) provides a variety of stylized voice changing effects and is applicable to more scenarios.
 
-### Voice Changer Type
+### Voice Changing Type
 
-The general voice changer effect node supports the following ten voice changer types, which are set through [OH_AudioSuite_GeneralVoiceChangeType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype):
+The general voice changing effect node supports the following ten voice changing types, which are set through [OH_AudioSuite_GeneralVoiceChangeType](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_generalvoicechangetype):
 
 | Enumerated Value | Name | Description |
 |--------|------|------|
-| GENERAL_VOICE_CHANGE_TYPE_CUTE = 1 | Loli | Loli-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2 | Cyberpunk | Cyberpunk-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3 | Female | Female voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_MALE = 4 | Male | Male voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_MIX = 5 | Reverb | Reverb-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6 | Monster | Monster-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7 | Uncle | Uncle-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | Synth | Synth-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | Trill | Trill-style voice changer. |
-| GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | War | War-style voice changer. |
+| GENERAL_VOICE_CHANGE_TYPE_CUTE = 1 | Cute | Cute-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_CYBERPUNK = 2 | Cyberpunk | Cyberpunk-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_FEMALE = 3 | Female | Female voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_MALE = 4 | Male | Male voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_MIX = 5 | Reverb | Reverb-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_MONSTER = 6 | Monster | Monster-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_SEASONED = 7 | Uncle | Uncle-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_SYNTH = 8 | Synth | Synth-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_TRILL = 9 | Trill | Trill-style voice changing. |
+| GENERAL_VOICE_CHANGE_TYPE_WAR = 10 | War | War-style voice changing. |
 
-### Setting Method for the General Voice Changer Effect Node
+### Setting Method for the General Voice Changing Effect Node
 
 <!-- @[audioSuite_SetGeneralVoiceChangeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
 
 ``` C
-// Set the node type to general voice changer.
+// Set the node type to general voice changing.
 OH_AudioSuiteNodeBuilder_SetNodeType(builder, OH_AudioNode_Type::EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE);
-// Create a general voice changer node.
+// Create a general voice changing node.
 OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
-// Set the general voice changer node effect.
+// Set the general voice changing node effect.
 OH_AudioSuiteEngine_SetGeneralVoiceChangeType(
     *node, static_cast<OH_AudioSuite_GeneralVoiceChangeType>(params.generalVoiceChangeType));
 ```
