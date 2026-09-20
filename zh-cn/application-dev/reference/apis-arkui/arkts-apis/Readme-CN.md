@@ -1908,5 +1908,3 @@
     - [CanvasPattern](arkts-arkui-canvaspattern-canvaspattern-i.md)
   - [console](arkts-arkui-console.md)
     - [console](arkts-arkui-console-c.md)
-  - [console](arkts-arkui-console.md)
-    - [console](arkts-arkui-console-c.md)

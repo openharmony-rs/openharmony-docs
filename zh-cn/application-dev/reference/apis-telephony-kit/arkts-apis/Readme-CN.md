@@ -422,7 +422,6 @@
   <!--Del-->
   - [isManualNetworkScanning(系统接口)](arkts-telephony-radio-ismanualnetworkscanning-f-sys.md)<!--DelEnd-->
   - [isNrSupported](arkts-telephony-radio-isnrsupported-f.md)
-  - [isNRSupported](arkts-telephony-radio-isnrsupported-f.md)
   - [isRadioOn](arkts-telephony-radio-isradioon-f.md)
   <!--Del-->
   - [off(系统接口)](arkts-telephony-radio-off-f-sys.md)<!--DelEnd-->
