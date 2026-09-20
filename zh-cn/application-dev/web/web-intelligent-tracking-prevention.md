@@ -43,17 +43,17 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
   ArkTS-Sta示例：
   <!-- @[enable_or_disable_web_component_anti_tracking](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/EnableIntTrackPrevent.ets) -->
-
+  
   ``` TypeScript
   import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  
     build() {
       Column() {
         Button('enableIntelligentTrackingPrevention')
@@ -106,17 +106,17 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
   ArkTS-Sta示例：
   <!-- @[check_if_web_component_anti_tracking_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/IsIntTrackPreventEnabled.ets) -->
-
+  
   ``` TypeScript
   import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  
     build() {
       Column() {
         Button('isIntelligentTrackingPreventionEnabled')
@@ -173,17 +173,17 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
   ArkTS-Sta示例：
   <!-- @[retrieve_blocked_and_visited_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/OnIntTrackPreventResult.ets) -->
-
+  
   ``` TypeScript
   import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  
     build() {
       Column() {
         // 需要打开智能防跟踪功能，才会触发onIntelligentTrackingPreventionResult回调
@@ -242,17 +242,17 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
   ArkTS-Sta示例：
   <!-- @[set_domains_to_bypass_intelligent_tracking](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/AddIntTrackPreventByPassList.ets) -->
-
+  
   ``` TypeScript
   import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  
     build() {
       Column() {
         Button('addIntelligentTrackingPreventionBypassingList')
@@ -305,17 +305,17 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
   ArkTS-Sta示例：
   <!-- @[partial_domain_name_list](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/RemoveIntTrackPreventByPassList.ets) -->
-
+  
   ``` TypeScript
   import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  
     build() {
       Column() {
         Button('removeIntelligentTrackingPreventionBypassingList')
@@ -361,16 +361,16 @@ Web组件支持智能防跟踪功能，即当跟踪型网站作为第三方插�
 
   ArkTS-Sta示例：
   <!-- @[clear_all_intelligent_tracking_prevention_bypasses](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/ClearIntTrackPreventByPassList.ets) -->
-
+  
   ``` TypeScript
   import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController(undefined);
-
+  
     build() {
       Column() {
         Button('clearIntelligentTrackingPreventionBypassingList')
