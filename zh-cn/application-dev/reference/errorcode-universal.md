@@ -94,7 +94,7 @@ Access denied due to user access control policy. Possible causes:
 3. 若目标操作受特权管控，则通过[acquireAuthorization](./apis-basic-services-kit/js-apis-osAccount-sys.md#acquireauthorization24)接口申请目标特权，若申请成功则继续执行目标操作，否则停止操作。
 <!--DelEnd-->
 
-## 401 函数参数数量或参数类型不匹配 
+## 401 函数参数数量或参数类型不匹配
 
 **错误信息**
 
@@ -132,6 +132,24 @@ Access denied due to user access control policy. Possible causes:
 
 请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败，阅读参数规格约束，按照可能原因进行排查。
 
+## 501 资源被其他线程占用，访问被拒绝 
+
+**错误信息**
+
+Access denied because the resource is occupied by another thread.
+
+**错误描述**
+
+资源已被其他线程占用锁定，本次访问请求被拒绝。
+
+**可能原因**
+
+当前资源正在被其他线程使用，无法完成操作。
+
+**处理步骤**
+
+确保同一组件/资源只在一个线程中使用。
+
 ## 801 API功能在部分设备不支持
 
 **错误信息**
@@ -151,5 +169,42 @@ Capability not supported. Possible causes: 1. The hardware does not support the 
 1. 应避免在该设备上使用此API。
 
 2. 若该API有前置的isxxxsupported接口，先调用isxxxsupported判断是否支持该API功能，再调用此API。
+
+## 803 服务在当前国家或地区不可用
+
+**错误信息**
+
+The service is unavailable in the current country or region.
+
+**错误描述**
+
+服务在当前国家或地区不可用。
+
+**可能原因**
+
+服务在当前国家未开放。
+
+**处理步骤**
+
+应用应捕获错误，对服务提供的功能进行隔离，避免影响用户体验。可以进一查询开发者资料获取Kit支持的国家和地区信息。
+
+## 804 API 不支持模拟器使用
+
+**错误信息**
+
+The capability is not supported on the emulator at this time.
+
+**错误描述**
+
+模拟器暂不支持此API，请在真实设备上调测。
+
+**可能原因**
+
+1. 模拟器暂未实现此API，将在后续版本实现。
+2. 此API涉及硬件交互，模拟器无法实现。
+
+**处理步骤**
+
+在真实设备上调用API接口不会返回804错误码，应用正式代码可不用处理，请在真实设备上调测。
 
 <!--RP1--><!--RP1End-->
