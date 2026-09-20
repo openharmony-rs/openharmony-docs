@@ -379,9 +379,9 @@ call.answerCall(1).then(() => {
 
 ## call.answerCall<sup>22+</sup>
 
-answerCall(videoState: VideoStateType, callId: int, isRtt:boolean\): Promise\<void\>
+answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\<void\>
 
-接听rtt来电。使用Promise异步回调。
+接听RTT来电。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -394,8 +394,8 @@ answerCall(videoState: VideoStateType, callId: int, isRtt:boolean\): Promise\<vo
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | videoState | [VideoStateType](#videostatetype7) | 是   | 表示以视频或语音接听呼叫。|
-| callId | int | 是   | 表示待接听的callId。|
-| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
+| callId | number | 是   | 表示待接听的callId。|
+| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(RTT)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
 
 **返回值：**
 
@@ -5127,7 +5127,7 @@ VoIP通话信息。
 | CALL_STATUS_ACTIVE        | 0    | 激活呼叫状态。   |
 | CALL_STATUS_HOLDING       | 1    | 保持呼叫状态。   |
 | CALL_STATUS_DIALING       | 2    | 呼叫状态拨号。   |
-| CALL_STATUS_ALERTING      | 3    | 电话报警状态。   |
+| CALL_STATUS_ALERTING      | 3    | 电话振铃状态。   |
 | CALL_STATUS_INCOMING      | 4    | 呼叫传入状态。   |
 | CALL_STATUS_WAITING       | 5    | 呼叫等待状态。   |
 | CALL_STATUS_DISCONNECTED  | 6    | 呼叫状态已断开。 |
