@@ -21,8 +21,6 @@
         - [IUsbInterface.idl](_i_usb_interface_8idl_v10.md)
         - [UsbTypes.idl](_usb_types_8idl_v10.md)
     - HdiUsb模块头文件（V1_1）
-        - [IUsbInterface.idl](_i_usb_interface_8idl_v11.md)
-        - [UsbTypes.idl](_usb_types_8idl_v11.md)
     - HdiUsb模块头文件（V1_2）
         - [IUsbdTransferCallback.idl](_i_usbd_transfer_callback_8idl_v1_2.md)
         - [IUsbInterface.idl](_i_usb_interface_8idl.md)
@@ -57,8 +55,6 @@
         - [USBDeviceInfo](_u_s_b_device_info_v10.md)
         - [UsbPipe](_usb_pipe_v10.md)
     - HdiUsb模块结构体（V1_1）
-        - [IUsbInterface](interface_i_usb_interface_v11.md)
-        - [UsbCtrlTransferParams](_usb_ctrl_transfer_params_v11.md)
     - HdiUsb模块结构体（V1_2）
         - [IUsbdTransferCallback](interface_i_usbd_transfer_callback_v1_2.md)
         - [IUsbInterface](interface_i_usb_interface.md)

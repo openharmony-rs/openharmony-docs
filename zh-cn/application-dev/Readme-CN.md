@@ -82,7 +82,6 @@
   - [性能](performance/Readme-CN.md)
 - 工具<!--tools-->
   - [DevEco Studio（OpenHarmony）使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)
-  - [调试工具](tools/Readme-CN.md)
 - 示例教程<!--example-tutorial-->
   - [示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/README_zh.md)
   - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md)
