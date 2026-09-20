@@ -96,7 +96,7 @@
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) --> 
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
@@ -104,8 +104,6 @@
      onWorkStart(workInfo: workScheduler.WorkInfo) {
        // ...
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
-       // 打印 parameters中的参数，如：参数key1
-       console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
      }
    
      // 延迟任务结束回调。当延迟任务2分钟超时或应用调用stopWork接口取消任务时，触发该回调。

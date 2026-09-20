@@ -12,6 +12,8 @@
 >  **说明：**
 > 
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.resourceschedule.workScheduler (延迟任务调度)](js-apis-resourceschedule-workScheduler.md)。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
