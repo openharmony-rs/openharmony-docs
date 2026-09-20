@@ -42,7 +42,7 @@ import { fontManager } from '@kit.LocalizationKit';
 
 ## FontClientObserver
 
-字体服务状态监听器，当字体服务意外终止时，将调用[onServiceDied](#onServiceDied)回调通知。
+字体服务状态监听器。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -52,7 +52,7 @@ import { fontManager } from '@kit.LocalizationKit';
 
 onServiceDied(): void
 
-字体服务异常退出时的回调函数。当字体服务意外终止时调用此方法，应用可在此回调中执行资源清理或重新注册等操作。
+字体服务异常退出时的回调函数，应用可在此回调函数中执行资源清理或重新注册等操作。
 
 **系统能力：** SystemCapability.Global.FontManager
 
@@ -82,7 +82,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 >
 > - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
 >
-> - 支持安装的字体文件个数最大数量为200.从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
+> - 支持安装的字体文件个数最大数量为200。从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
 
 
 **起始版本：** 26.0.1
@@ -243,11 +243,11 @@ async function getFontScope() {
 
 onFontObserver(observer: FontClientObserver): void
 
-注册字体服务状态监听器。当字体服务异常退出时，通过监听器回调通知应用。注销监听器请使用[offFontObserver](#offfontobserver)。
+注册字体服务状态监听器。
 
 > **说明：**
 >
-> 每个应用最多可注册一个监听器，重复注册将返回错误。同一设备上最多支持5个不同应用同时注册监听器。
+> 每个应用仅可注册一个字体服务状态变化监听器，重复注册会报错；以及一个设备最多5个应用同时注册，否则会报错。
 
 **起始版本：** 26.0.1
 
