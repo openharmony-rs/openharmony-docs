@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=e927796ba68acb42b31a64400ef3f800e94a271e translatedAt=2026-09-16T10:48:33.010Z pushedAt=2026-09-20T09:01:52.251Z -->
 
 ```c
 typedef struct OH_HiDebug_RequestTraceConfig {...} OH_HiDebug_RequestTraceConfig
@@ -13,7 +14,7 @@ typedef struct OH_HiDebug_RequestTraceConfig {...} OH_HiDebug_RequestTraceConfig
 
 ## Overview
 
-Defines a struct for the trace collection configuration.
+Defines a struct for the configuration for requesting trace collection. It is used to configure trace collection parameters in application performance analysis and debugging scenarios, such as locating performance issues like slow application startup, UI jank, and high CPU usage.
 
 **Since**: 24
 
