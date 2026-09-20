@@ -9288,3 +9288,143 @@ Allows a system application to manage SoftBus resources.
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
 **Valid since**: 26.1.0
+
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+
+Allows an application to install freely distributable applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
+ 
+Allows an application to skip enterprise re-signing certificate verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.1.0
+
+## ohos.permission.vehicle.DEVICE_INFO_WRITE
+
+Allows an application to configure parameters for devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.DEVICE_INFO_READ
+
+Allows an application to get parameters of devices attached to the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.LICENSE_WRITE
+
+Allows an application to apply for a temporary vehicle license.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.LICENSE_READ
+
+Allows an application to get license-related information about the vehicle.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CURTAIN_WRITE
+
+Allows an application to set curtain mode and motion commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CURTAIN_READ
+
+Allows an application to get curtain mode and motion status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CLUSTER_INFO_WRITE
+
+Allows an application to set the personalization parameters for the instrument cluster.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.vehicle.CLUSTER_INFO_READ
+
+Allows an application to get information related to instrument cluster personalization settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0

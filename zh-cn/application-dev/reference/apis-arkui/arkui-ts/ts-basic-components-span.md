@@ -317,7 +317,7 @@ fontVariations(fontVariations: Array&lt;FontVariation&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -394,6 +394,8 @@ baselineOffset(value: LengthMetrics): T
 | T | 返回当前Span的属性对象，用于链式调用。 |
 
 ## TextBackgroundStyle<sup>11+</sup>对象说明
+
+定义Span的背景样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

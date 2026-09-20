@@ -250,7 +250,7 @@ console.info(newArray.toString()); // 预期输出： a, b
 
 static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<T, T>): Array\<T>
 
-从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素。
+从一个实现了ArrayLike接口或Iterable接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素。
 
 **原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -281,7 +281,7 @@ console.info(newArray.toString()); // 预期输出： 1, 3, 5
 
 static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapFn\<U, T>): Array\<T>
 
-从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素，ArrayLike接口对象的元素类型可以和数组元素的类型不一样。
+从一个实现了ArrayLike接口或Iterable接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素，接口对象的元素类型可以和数组元素的类型不一样。
 
 **原子化服务API**： 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1633,7 +1633,7 @@ toLocaleString(): string
 // 当前应用所在系统为法国地区
 let array = new collections.Array<number | string>(1000, 'Test', 53621);
 let stringArray = array.toLocaleString();
-console.info(stringArray); // 预期输出：1, 000, Test, 53, 621
+console.info(stringArray); // 预期输出：1,000,Test,53,621
 ```
 
 ## splice
@@ -1689,11 +1689,11 @@ containsAll(elements: Array\<T>): boolean
 
 检查指定ArkTS Array中的所有元素是否均包含在此ArkTS Array中。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1739,11 +1739,11 @@ containsAll(elements: BuiltinArray\<T>): boolean
 >
 > BuiltinArray即JavaScript原生容器Array，并非ArkTS Array（collections.Array）。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1785,11 +1785,11 @@ retainAll(elements: Array\<T>): boolean
 
 仅保留此ArkTS Array中同时存在于指定ArkTS Array中的元素。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1838,11 +1838,11 @@ retainAll(elements: BuiltinArray\<T>): boolean
 >
 > BuiltinArray即JavaScript原生容器Array，并非ArkTS Array（collections.Array）。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1883,11 +1883,11 @@ retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Type
 
 仅保留此ArkTS Array中使指定断言函数返回true的元素。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1973,7 +1973,7 @@ for (let item of array) {
 
 | 参数名    | 类型   | 必填 | 说明                                                            |
 | ----- | ------ | ---- | ------------------------------------------------------------------ |
-| index | number | 是   | 所需代码单元的从零开始的索引。当index<0 或者index>=length，则会抛出错误。 |
+| index | number | 是   | 所需代码元素的从零开始的索引。当index<0 或者index>=length，则会抛出错误。 |
 
 **返回值：**
 

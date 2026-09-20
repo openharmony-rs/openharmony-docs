@@ -12,9 +12,9 @@
 
 Defines the functions for obtaining and using NativeWindow. NativeWindow is based on the producer-consumer model and manages the allocation, writing, and consumption of graphics buffers through a buffer queue. Developers request an OHNativeWindowBuffer through OHNativeWindow, write content into the buffer, and then send it back to the buffer queue for consumers to use, completing the content rendering process.
 
-<!--RP1-->
+<!--Del-->
 
-**Sample**: [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--RP1End-->
+**Sample**: [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--DelEnd-->
 
 **File to include**: <native_window/external_window.h>
 

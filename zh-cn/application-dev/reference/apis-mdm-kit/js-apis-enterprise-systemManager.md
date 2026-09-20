@@ -666,7 +666,7 @@ HOTA域名使用流程：
 4. 域名必须匹配正则表达式：^(?:\[a-zA-Z0-9\](?:\[a-zA-Z0-9.-\]*\[a-zA-Z0-9\])?\\.)+\[a-zA-Z\]{2,}$。此正则表达式不参与校验https\://部分。
 5. 传入空字符串表示将域名恢复为默认域名，空字符串不受上述校验规则约束。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -727,7 +727,7 @@ getLocalHotaDomain(admin: Want): string
 - 配置校验：升级前或升级异常后，通过查询本机HOTA域名确认设备当前升级服务器配置是否正确。
 - 批量管理：企业管理员可通过MDM平台批量查询各设备的本机HOTA域名配置，统一管控设备升级方向。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 > **说明：**
 >
@@ -1871,6 +1871,339 @@ try {
   console.info('Succeeded in getting installLocalEnterpriseAppEnabled.');
 } catch (err) {
   console.error(`Failed to get installLocalEnterpriseAppEnabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.addAllowedPrinterIPAddressesForDevice
+
+addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
+
+为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+- 已通过[addAllowedPrinterIPAddressesForAccount](#systemmanageraddallowedprinteripaddressesforaccount)设置白名单后再调用本接口，会报策略冲突（9200010）。
+- 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
+- 为设备添加白名单后，可通过[removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice)移除白名单；白名单为空时，所有网络打印机均不受本策略管控。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。最多可设置100个IP地址 （白名单内已设置60条IP，最多再设置40条）。|
+
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.|
+| 9200012  | Parameter verification failed. |
+| 9200019  | The policy list has exceeded the limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.addAllowedPrinterIPAddressesForDevice(ipArray);
+  console.info('Succeeded in adding the allowed printer IP Addresses for the device.');
+} catch (err) {
+  console.error(`Failed to add the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.removeAllowedPrinterIPAddressesForDevice
+
+removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
+
+为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.removeAllowedPrinterIPAddressesForDevice(ipArray);
+  console.info('Succeeded in removing the allowed printer IP Addresses for the device.');
+} catch (err) {
+  console.error(`Failed to remove the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getAllowedPrinterIPAddressesForDevice
+
+getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&lt;string&gt;
+
+获取设备基于IP管控的网络打印机白名单。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常返回白名单数组，在其他设备中返回空数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF和ALL，不传时，等效于SELF。                                   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt;          | 基于IP管控的网络打印机白名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForDevice(common.QueryPolicy.ALL);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for the device.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+## systemManager.addAllowedPrinterIPAddressesForAccount
+
+addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
+
+为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+- 已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)设置白名单后，再调用本接口，会报策略冲突（9200010）。
+- 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
+- 为当前用户添加白名单后，可通过[removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount)移除白名单；当白名单为空时，所有网络打印机均不受本策略管控。
+- 如果需要为当前设备添加基于IP的网络打印机白名单策略，请参考[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)接口。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。最多可设置100个IP地址 （白名单内已设置60条IP，最多再设置40条）。|
+
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.|
+| 9200012  | Parameter verification failed. |
+| 9200019  | The policy list has exceeded the limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+
+try {
+  systemManager.addAllowedPrinterIPAddressesForAccount(ipArray);
+  console.info('Succeeded in adding the allowed printer IP Addresses for current user.');
+} catch (err) {
+  console.error(`Failed to add the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.removeAllowedPrinterIPAddressesForAccount
+
+removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
+
+为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.removeAllowedPrinterIPAddressesForAccount(ipArray);
+  console.info('Succeeded in removing the allowed printer IP Addresses for current user.');
+} catch (err) {
+  console.error(`Failed to remove the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getAllowedPrinterIPAddressesForAccount
+
+getAllowedPrinterIPAddressesForAccount(queryPolicy?: common.QueryPolicy): Array&lt;string&gt;
+
+获取当前用户基于IP管控的网络打印机白名单。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常返回白名单数组，在其他设备中返回空数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF和ALL，不传时，等效于SELF。                                   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt;          | 当前用户基于IP管控的网络打印机白名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForAccount(common.QueryPolicy.SELF);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for current user.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 

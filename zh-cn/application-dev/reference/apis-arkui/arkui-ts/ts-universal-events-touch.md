@@ -89,7 +89,7 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 | 名称    | 类型                              | 只读 | 可选          | 说明                                  |
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | 否 | 否 | 触摸事件的类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| id      | number                                      | 否 | 否 | 手指唯一标识符。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
+| id      | number                                      | 否 | 否 | 触摸点唯一标识符。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
 | x       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | y       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | windowX<sup>10+</sup>  | number                       | 否 | 否 | 触摸点在当前应用窗口坐标系中的X坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |

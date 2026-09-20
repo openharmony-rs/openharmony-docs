@@ -28,7 +28,7 @@ Defines APIs for MD algorithms.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) | OH_CryptoDigest | Defines a digest struct. |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) | OH_CryptoDigest | Defines a struct, which indicates the digest context. |
 
 ### Functions
 

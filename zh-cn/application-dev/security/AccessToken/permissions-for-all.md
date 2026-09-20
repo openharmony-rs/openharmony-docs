@@ -793,7 +793,7 @@
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.DCAS_RUN_MODEL
 
@@ -821,7 +821,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
 
@@ -835,7 +835,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car | TV | Wearable
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 

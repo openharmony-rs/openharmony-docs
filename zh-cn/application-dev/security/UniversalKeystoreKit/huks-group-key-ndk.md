@@ -113,7 +113,6 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     return ret;
 }
-uint32_t OH_HUKS_TAG_KEY_ACCESS_GROUP = 5 << 28 | 523;
 static const uint32_t IV_SIZE = 16;
 static uint8_t IV[IV_SIZE] = { 0 };
 static OH_Crypto_ErrCode ret = genRandomNumber(IV_SIZE, IV);
@@ -278,7 +277,7 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "AES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = { (uint32_t)strlen(tmpInData), (uint8_t *)tmpInData };
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};

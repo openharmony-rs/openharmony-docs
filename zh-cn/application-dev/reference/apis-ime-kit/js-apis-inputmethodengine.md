@@ -120,6 +120,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_NEW_PASSWORD<sup>20+</sup> | number | 11 | 新密码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_NUMBER_DECIMAL<sup>20+</sup> | number | 12 | 带小数点的数字编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | 验证码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| PATTERN_ONE_TIME_CODE_NUMBER | number | 15 | 数字验证码编辑框。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | OPTION_ASCII | number | 20 | 允许输入ASCII值。 |
 | OPTION_NONE | number | 0 | 不指定编辑框输入属性。 |
 | OPTION_AUTO_CAP_CHARACTERS | number | 2 | 允许输入字符。 |
@@ -814,7 +815,7 @@ on(type: 'callingDisplayDidChange', callback: Callback\<number>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1904,7 +1905,7 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. 适用版本：18+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：18+ |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -2747,7 +2748,7 @@ setPrivacyMode(isPrivacyMode: boolean): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
@@ -2835,7 +2836,7 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801  |capability not supported.                          |
+| 801  |Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                          |
 | 12800002   |input method engine error. Possible causes:1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013   |window manager service error.                          |
 | 12800020   |invalid immersive effect. 1.The gradient mode and the fluid light mode can only be used when the immersive mode is enabled. 2.The fluid light mode can only be used when the gradient mode is enabled. 3.When the gradient mode is not enabled, the gradient height can only be 0. |
@@ -3136,7 +3137,7 @@ keyboardController.hideKeyboard().then(() => {
 
 exitCurrentInputType(callback: AsyncCallback&lt;void&gt;): void
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用callback异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3173,7 +3174,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 exitCurrentInputType(): Promise&lt;void&gt;
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用promise异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5125,7 +5126,7 @@ getAttachOptions(): AttachOptions
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported.<br>适用版本：19-19 |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>适用版本：19-19 |
 
 > **注意：**
 >
@@ -5159,7 +5160,7 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. 适用版本：19-19。 |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19-19。 |
 
 > **注意：**
 >

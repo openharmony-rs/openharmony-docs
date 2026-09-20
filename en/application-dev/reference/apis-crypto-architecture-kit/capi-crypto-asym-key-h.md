@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=76caeef80126e754bb89b8cf8b2b7380f3d3d3a7 translatedAt=2026-08-20T12:30:23.193Z pushedAt=2026-08-27T01:22:34.655Z -->
+<!-- md-trans-meta sourceCommit=9156c459010365a11405d991d0d3c37cc46f2ea1 translatedAt=2026-09-14T01:44:35.783Z pushedAt=2026-09-14T11:33:50.499Z -->
 
 ## Overview
 
@@ -182,6 +182,7 @@ Defines the specification type of an asymmetric key.
 | CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | Public key specifications.|
 | CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | Key pair specifications.|
 
+
 ## Function Description
 
 ### OH_CryptoAsymKeyGenerator_Create()
@@ -216,6 +217,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGenerat
 [OH_CryptoAsymKeyGenerator_Generate](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) for generating an asymmetric key pair.
 
 [OH_CryptoAsymKeyGenerator_Convert](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert) for converting asymmetric key data into a key pair.
+
 
 ### OH_CryptoAsymKeyGenerator_Generate()
 
@@ -409,7 +411,7 @@ Note: After the method is used, the memory for storing the **out** parameter mus
 
 | Type| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>**CRYPTO_INVALID_PARAMS**: The value of **key**, **out**, or **encodingStandard** is null, **type** is not a valid **Crypto_EncodingType**, or the encoding standard is incompatible with the key type.<br>**CRYPTO_NOT_SUPPORTED**: The encoding format is not supported.<br>**CRYPTO_MEMORY_ERROR**: Memory allocation fails.<br>**CRYPTO_OPERATION_ERROR**: Encoding fails. |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | **CRYPTO_SUCCESS**: The operation is successful.<br>**CRYPTO_INVALID_PARAMS**: The value of **key**, **out**, or **encodingStandard** is null, **type** is not a valid **Crypto_EncodingType**, or the encoding standard is incompatible with the key type.<br>**CRYPTO_NOT_SUPPORTED**: The encoding format is not supported.<br>**CRYPTO_MEMORY_ERROR**: Memory allocation fails.<br>**CRYPTO_OPERTION_ERROR**: Encoding fails. |
 
 ### OH_CryptoPubKey_GetParam()
 
@@ -494,6 +496,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoPrivKeyEncodin
 **Reference**
 
 [OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam) for setting a private key encoding parameter.
+
 
 ### OH_CryptoPrivKeyEncodingParams_SetParam()
 
@@ -808,6 +811,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoAsymKeyGenerat
 
 [OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair](capi-crypto-asym-key-h.md#oh_cryptoasymkeygeneratorwithspec_genkeypair) for generating a key pair based on asymmetric key specifications.
 
+
 ### OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair()
 
 ```c
@@ -887,6 +891,7 @@ Note: The created resource must be destroyed by calling [OH_CryptoEcPoint_Destro
 
 [OH_CryptoEcPoint_SetCoordinate](capi-crypto-asym-key-h.md#oh_cryptoecpoint_setcoordinate) for setting the X and Y coordinates of an elliptic curve point.
 
+
 ### OH_CryptoEcPoint_GetCoordinate()
 
 ```c
@@ -897,7 +902,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 Obtains the X and Y coordinates of an elliptic curve point.
 
-Note: After the method is used, the memory for storing the **x** and **y** parameters must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
+**Note:** After the method is used, the memory for storing the **x** and **y** parameters must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
 
@@ -945,6 +950,7 @@ Sets the X and Y coordinates of an elliptic curve point.
 
 [OH_CryptoEcPoint_Encode](capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode) for encoding an elliptic curve point in a specified format.
 
+
 ### OH_CryptoEcPoint_Encode()
 
 ```c
@@ -990,3 +996,5 @@ Destroys an elliptic curve point.
 | Name| Description|
 | -- | -- |
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) *point | Input parameter, indicating an elliptic curve point. |
+
+

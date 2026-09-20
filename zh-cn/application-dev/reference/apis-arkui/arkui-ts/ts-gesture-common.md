@@ -430,7 +430,7 @@ isHostBelongsTo(uniqueId: number): boolean
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| uniqueId | number | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。<br>取值为异常值时返回false。 |
+| uniqueId | number | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。<br>取值无法匹配到组件唯一ID时返回false。 |
 
 **返回值：**
 
@@ -458,7 +458,7 @@ getTapCount(): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设点击手势识别器连续点击次数阈值。<br>取值范围：[0, +∞) |
+| number | 预设点击手势识别器连续点击次数阈值。<br>取值范围：[1, +∞) |
 
 ## LongPressRecognizer<sup>18+</sup>
 
@@ -600,7 +600,7 @@ getAngle(): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br>取值范围：[0, +∞)<br>**说明：** <br>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
+| number | 预设旋转手势识别器触发旋转手势最小改变度数阈值，单位为deg。<br>取值范围：(0, 360]<br>**说明：** <br>当输入的改变度数的值小于等于0或大于360时，会被转化为默认值，默认值为1。 |
 
 ## PanRecognizer<sup>12+</sup>
 
@@ -717,7 +717,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | pinchCenterX | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的x轴坐标，单位为vp，用于PinchGesture手势触发场景。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | pinchCenterY | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的y轴坐标，单位为vp，用于PinchGesture手势触发场景。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | speed<sup>8+</sup> | number | 否 | 否  |快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s，用于SwipeGesture手势触发场景。<br>取值范围：[0, +∞)<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fingerList<sup>8+</sup> | [FingerInfo](#fingerinfo8对象说明)[] | 否 | 否 | 输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>1. 手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| fingerList<sup>8+</sup> | [FingerInfo](#fingerinfo8对象说明)[] | 否 | 否 | 输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>1. 对于触屏产生的手势，手指索引编号与位置对应，即fingerList[index]的id为index；鼠标、手写笔等其他输入源的id规则请参考[FingerInfo](#fingerinfo8对象说明)中的说明。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fingerInfos<sup>20+</sup> | [FingerInfo](#fingerinfo8对象说明)[] | 否 | 是 | 由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br/> **说明：**<br/>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | velocityX<sup>10+</sup> | number | 否 | 否 | 用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br>取值范围：(-∞, +∞) <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | velocityY<sup>10+</sup> | number | 否 | 否 | 用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br>取值范围：(-∞, +∞) <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -860,7 +860,7 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 | 名称      | 类型                                  | 只读   |    可选   | 说明        |
 | ---------  | -------------------------------------|-------| -----------|  -----------|
-| fingerList | [FingerInfo](#fingerinfo8对象说明)[] | 否 | 否 | 触发事件的所有手指信息。输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br>**说明：**<br>1. 手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fingerList | [FingerInfo](#fingerinfo8对象说明)[] | 否 | 否 | 触发事件的所有手指信息。输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br>**说明：**<br>1. 对于触屏产生的手势，手指索引编号与位置对应，即fingerList[index]的id为index；鼠标、手写笔等其他输入源的id规则请参考[FingerInfo](#fingerinfo8对象说明)中的说明。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fingerInfos<sup>20+</sup> | [FingerInfo](#fingerinfo8对象说明)[] | 否 | 是 | 参与触发事件的所有有效触点信息。由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br>**说明：**<br>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## TapGestureEvent<sup>11+</sup>对象说明

@@ -2453,17 +2453,17 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 
 > **说明：**
 >
-> 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
+> 1. 若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
 >
-> 2.以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
+> 2. 以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
 >
-> 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
+> 3. 仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
 >
-> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
+> 4. 仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
 >
-> 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
+> 5. 在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
 >
-> 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
+> 6. 若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
 >
 > 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
 >
@@ -3398,9 +3398,9 @@ addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 
 > **说明：**
 >
-> 1、本接口仅支持隐藏当前用户的桌面应用图标，不支持隐藏应用卡片。
+> 1. 本接口仅支持隐藏当前用户的桌面应用图标，不支持隐藏应用卡片。
 >
-> 2、如果被隐藏的应用有应用分身，会同步隐藏应用分身。
+> 2. 如果被隐藏的应用有应用分身，会同步隐藏应用分身。
 >
 > 3、不能把桌面所有应用都添加到隐藏名单中，否则所有应用都会显示到桌面上。
 >
@@ -3572,3 +3572,114 @@ try {
   console.error(`Failed to get hide launcher icon. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+## applicationManager.publishFormToDesktop
+
+publishFormToDesktop(formInfo: FormInfo): string
+
+添加指定卡片到当前用户的桌面。
+
+卡片数量上限在不同产品间可能有差异，以实际为准。一般限制如下：
+- 任一用户的桌面能放置的卡片上限为80张。
+- 设备上所有用户的卡片数量总和上限为512张。
+
+各设备的卡片找位规则如下：
+- 手机、平板：优先在当前页面找位，从页面左上角开始，按照从左往右、从上往下的顺序找可以放下卡片的空位；如果当前页面没有空位，则在下一页面找位；如果下一页面也无空位，则在当前页面右边创建一个新页面放置卡片；如果桌面已有18页（最多18页），则无法创建新页面。
+- 普通PC：从页面右上角开始，按照从上往下、从右往左的顺序找可以放下卡片的空位。
+- 折叠PC-展开态：从页面右上角开始，按照从上往下、从右往左的顺序找可以放下卡片的空位，且需要横屏、竖屏两种状态下都有空位，才会成功添加卡片。
+- 折叠PC-半折叠态（关闭全尺寸键盘）：先在上半屏页面右上角开始，按照从上往下、从右往左的顺序找空位，如果无空位，则在另一半屏页面找位。
+- 折叠PC-半折叠态（唤起全尺寸键盘）：只在当前显示的页面右上角开始，按照从上往下、从右往左的顺序找空位，不会在未显示的页面找位。
+
+> **说明：**
+>
+> 1. 如果卡片数量超过设备上限或桌面没有空位，调用本接口会报9201047错误码。
+>
+> 2. formInfo内部参数bundleName、moduleName、abilityName或name传空字符串时，调用本接口会报9200012错误码。formInfo内部参数传错误字符串时，调用本接口会报9201049错误码。formInfo内部参数dimension传值超出[formInfo.FormDimension](../apis-form-kit/js-apis-app-form-formInfo.md#formdimension)枚举有效范围时，调用本接口会报9200012错误码。
+>
+> 3. 不支持添加1\*1尺寸卡片到桌面。如果formInfo传1\*1卡片信息，调用本接口会报9201050错误码。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| formInfo  | [FormInfo](#forminfo) | 是   | 卡片信息。             |
+
+**返回值：**
+
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| string | 返回添加卡片的ID。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201047  | Form count limit reached or insufficient home screen space to add forms. |
+| 9201049  | The form does not exist. |
+| 9201050  | The form type is not supported. |
+| 9201051  | Failed to add the form to the desktop. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { formInfo, formProvider } from '@kit.FormKit';
+
+async function publishFormToDesktop() {
+  // 需根据实际情况进行替换
+  let filter: formInfo.FormInfoFilter = {
+    moduleName: 'entry'
+  };
+  // 此处调用formProvider.getFormsInfo接口查询应用自己的卡片信息，不是必须执行的步骤,按需使用
+  let formsInfos: Array<formInfo.FormInfo> = await formProvider.getFormsInfo(filter);
+  if (formsInfos.length == 0) {
+    return;
+  }
+  // 需根据实际情况进行替换
+  let form: applicationManager.FormInfo = {
+    bundleName: formsInfos[0].bundleName,
+    moduleName: formsInfos[0].moduleName,
+    abilityName: formsInfos[0].abilityName,
+    name: formsInfos[0].name,
+    dimension: formsInfos[0].defaultDimension
+  }
+  try {
+    let result: string = applicationManager.publishFormToDesktop(form);
+    console.info(`Succeeded in publishing form to desktop, result : ${JSON.stringify(result)}`);
+  } catch(err) {
+    console.error(`Failed to publish form to desktop. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+## FormInfo
+
+卡片信息。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 |  说明                       |
+| ----------- | --------| ---- | ----| ---------------------------- |
+| bundleName  | string | 否   | 否 | 卡片所属包的Bundle名称。|
+| moduleName  | string | 否   | 否 | 卡片所属模块的模块名称。|
+| abilityName | string | 否   | 否 | 卡片所属的Ability名称。|
+| name        | string | 否   | 否 | 卡片名称。|
+| dimension   | [formInfo.FormDimension](../apis-form-kit/js-apis-app-form-formInfo.md#formdimension) | 否   | 否 | 卡片尺寸。|

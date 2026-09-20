@@ -334,7 +334,7 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 > **说明：**
 >
-> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则，任意MDM应用取消激活时，该应用设置的设备锁屏口令策略会被清除。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -503,11 +503,11 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 
 > **说明：**
 >
-> 1.该接口能力仅在设备无锁屏密码时生效。
+> 1. 该接口能力仅在设备无锁屏密码时生效。
 > 
-> 2.设备默认属于启用滑动解锁的状态。
+> 2. 设备默认属于启用滑动解锁的状态。
 >
-> 3.设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
+> 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
 > 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
 >
@@ -967,7 +967,7 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
 > **说明：**
 >
-> 1.本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+> 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 >
 > 2.水印图片会以平铺方式重复覆盖整个应用界面。
 >
@@ -1533,7 +1533,7 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 
 > **说明：**
 >
-> 1.屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
+> 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
 > 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
 >
@@ -1653,9 +1653,9 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 
 > **说明：**
 >
-> 1.只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
+> 1. 只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
 >
-> 2.单个用户下最多可以禁用200个权限。
+> 2. 单个用户下最多可以禁用200个权限。
 >
 > 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
 >
@@ -1780,11 +1780,11 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 
 > **说明：**
 >
-> 1.必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
+> 1. 必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
 >
-> 2.应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
+> 2. 应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
 >
-> 3.当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
+> 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
 > 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
@@ -2165,6 +2165,115 @@ try {
 }
 ```
 
+
+## securityManager.setDeviceSecurityLevelPolicy
+
+setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
+
+设置设备安全级别策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全级别。
+
+> **说明：**
+>
+> 1. 设备安全级别是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
+>
+> 2. DSL0：出厂默认安全，设备保持出厂时的默认安全配置，未对系统安全能力做降级，安全性最高。
+>
+> 3. DSL1：降低安全性，在DSL0的基础上适度放宽部分系统安全管控，安全性低于DSL0。
+>
+> 4. DSL2：宽松安全性，在DSL1的基础上进一步放宽系统安全管控，安全性最低。
+>
+> 5. 本接口用于设置用户可选择的设备安全级别范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全级别策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+    securityManager.setDeviceSecurityLevelPolicy(securityManager.DeviceSecurityLevelPolicy.ALLOW_BALANCED);
+    console.info('setDeviceSecurityLevelPolicy success');
+} catch (err) {
+    console.error('setDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
+## securityManager.getDeviceSecurityLevelPolicy
+
+getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
+
+获取设备安全级别策略。
+
+> **说明：**
+>
+> 1. 本接口返回的设备安全级别策略为用户可选择的设备安全级别范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
+>
+> 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全级别策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+    let policy = securityManager.getDeviceSecurityLevelPolicy();
+    console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
+} catch (err) {
+    console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -2265,3 +2374,19 @@ try {
 | ----------- | -------- | ------------------------------- |
 | SCRYPT_HKDF_AES | 0  | SCRYPT-HKDF-AES组合加密算法。 |
 | SCRYPT_HKDF_SM4 | 1  | SCRYPT-HKDF-SM4组合加密算法。 |
+
+## DeviceSecurityLevelPolicy
+
+设备安全级别策略枚举。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DEFAULT_ENFORCED | 0 | 仅可选出厂默认安全（DSL0）。 |
+| ALLOW_BALANCED | 1 | 可选出厂默认安全（DSL0）和降低安全性（DSL1）。 |
+| ALLOW_FLEXIBLE | 2 | 可选出厂默认安全（DSL0）、降低安全性（DSL1）和宽松安全性（DSL2）。 |
