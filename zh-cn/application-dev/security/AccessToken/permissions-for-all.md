@@ -849,7 +849,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.GET_STORAGE_VOLUME_INFO
 
