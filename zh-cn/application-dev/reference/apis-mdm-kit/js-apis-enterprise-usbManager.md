@@ -887,6 +887,66 @@ try {
 }
 ```
 
+## usbManager.getUsbSerialNumber
+
+getUsbSerialNumber(busNum: number, devAddress: number): string
+
+获取USB设备的序列号。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明 |
+| ------ | ------------------------------------------------------- | ---- | ----- |
+| busNum  | number | 是   | USB设备的总线号，可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。 |
+| devAddress  | number | 是   | USB设备的地址，可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。 |
+
+**返回值：**
+
+| 类型                                                     | 说明                         |
+| -------------------------------------------------------- | ---------------------------- |
+| string | USB设备的序列号。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201055  | Failed to obtain the USB serial number. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { usbManager } from '@kit.MDMKit';
+import { usbManager as baseUsbManager } from '@kit.BasicServicesKit';
+
+// 获取已接入主设备的USB设备列表
+let devicesList: Array<baseUsbManager.USBDevice> = baseUsbManager.getDevices();
+console.info(`devicesList = ${devicesList}`);
+
+// 选取目标USB设备（此处以第一个设备为例），取出busNum和devAddress作为入参
+let device: baseUsbManager.USBDevice = devicesList[0];
+
+try {
+  let result: string = usbManager.getUsbSerialNumber(device.busNum, device.devAddress);
+  console.info(`Succeeded in getting USB serial number. Result: ${result}`);
+} catch (err) {
+  console.error(`Failed to get USB serial number. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## UsbDeviceId
 
 USB设备ID信息。
