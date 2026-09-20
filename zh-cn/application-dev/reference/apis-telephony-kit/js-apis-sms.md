@@ -260,7 +260,10 @@ let options: sms.SendMessageOptions = {
     deliveryCallback: deliveryCallback
 };
 sms.sendShortMessage(options, (err: BusinessError) => {
-    console.info(`callback: err->${JSON.stringify(err)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
 });
 ```
 
