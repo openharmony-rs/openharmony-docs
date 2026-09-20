@@ -16,7 +16,7 @@ position?: PositionT<number>
 
 默认值：{x:0, y:0}
 
-**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;number&gt;
+**类型：** [PositionT](arkts-arkui-positiont-t-1.md)&lt;number&gt;
 
 **默认值：** {x:0,y:0}
 

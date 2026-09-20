@@ -616,7 +616,7 @@ onSelect(callback: Optional<OnSelectCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;[OnSelectCallback](arkts-arkui-onselectcallback-t.md)&gt; | 是 | 下拉菜单选中某一项的回调。<br>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](arkts-arkui-optional-t.md)&lt;[OnSelectCallback](arkts-arkui-onselectcallback-t-1.md)&gt; | 是 | 下拉菜单选中某一项的回调。<br>当callback的值为undefined时，不使用回调函数。 |
 
 ## optionBgColor
 
