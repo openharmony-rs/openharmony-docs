@@ -67290,5 +67290,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/image/image-transformation-native.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/NdkPixelMap_js/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"ndk_pixelmap_js_export_image_transformation_api",
+						"start_line":25
+					}
+				]
+			}
+		]
 	}
 ]
