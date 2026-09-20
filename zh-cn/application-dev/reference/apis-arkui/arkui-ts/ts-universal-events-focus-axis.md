@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-焦点轴事件是指在与游戏手柄交互时，通过十字按键或者操作杆上报的轴事件，此轴事件通过获得焦点的组件分发并回调给应用。若组件默认可获焦，如Button，则不需要额外设置属性。若组件在默认情况下不可获焦，如Text和Image，可以通过将[focusable](./ts-universal-attributes-focus.md#focusable)属性设置为true来启用焦点轴事件。
+焦点轴事件是指在与游戏手柄交互时，通过十字按键或者操纵杆上报的轴事件，此轴事件通过获得焦点的组件分发并回调给应用。若组件默认可获焦，如Button，则不需要额外设置属性。若组件在默认情况下不可获焦，如Text和Image，可以通过将[focusable](./ts-universal-attributes-focus.md#focusable)属性设置为true来启用焦点轴事件。
 
 >  **说明：**
 >
@@ -18,7 +18,7 @@
 
 onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
-给组件绑定焦点轴事件回调。绑定该方法的组件获焦后，游戏手柄上的操作杆、十字按键等的操作会触发该回调。若组件默认不可获焦，需要先将[focusable](./ts-universal-attributes-focus.md#focusable)属性设置为true来启用焦点轴事件。
+给组件绑定焦点轴事件回调。绑定该方法的组件获焦后，游戏手柄上的操纵杆、十字按键等的操作会触发该回调。若组件默认不可获焦，需要先将[focusable](./ts-universal-attributes-focus.md#focusable)属性设置为true来启用焦点轴事件。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -51,7 +51,7 @@ onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
 ## 示例
 
-该示例通过按钮设置了焦点轴事件，当按钮获得焦点时，操控游戏手柄的十字按键或者操作杆将触发onFocusAxisEvent回调。
+该示例通过按钮设置了焦点轴事件，当按钮获得焦点时，操控游戏手柄的十字按键或者操纵杆将触发onFocusAxisEvent回调。
 
 ```ts
 // xxx.ets
@@ -95,6 +95,6 @@ struct FocusAxisEventExample {
 }
 ```
 
-游戏手柄操作杆移动时：
+游戏手柄操纵杆移动时：
 
 ![onFocusAxisEvent](figures/onFocusAxisEvent.png)
