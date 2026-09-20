@@ -98,13 +98,7 @@ Access denied due to user access control policy. Possible causes:
 
 **错误信息**
 
-1. 正确：不写401
-
-2. 历史错误-同步抛其他401异常：[Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
-
-3. 历史错误-异步抛其他401异常：[Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
-
-4. 历史错误-既有同步又有异步抛其他401异常：[Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
+Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.
 
 **错误描述**
 
