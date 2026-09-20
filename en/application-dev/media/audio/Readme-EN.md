@@ -5,13 +5,13 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8478ec4698910b30203efbe7815bce1603fa5a99 translatedAt=2026-09-18T03:36:44.297Z pushedAt=2026-09-20T03:55:02.078Z -->
+<!-- md-trans-meta sourceCommit=8478ec4698910b30203efbe7815bce1603fa5a99 translatedAt=2026-09-18T03:36:44.297Z pushedAt=2026-09-20T04:30:04.818Z -->
 
 - [About This Kit](audio-kit-intro.md)
 - Audio Focus and Audio Session Management<!--audio-session-->
   - [Audio Focus and Audio Session Overview](audio-playback-concurrency-audio-session-overview.md)
   - [Introduction to Audio Focus](audio-playback-concurrency.md)
-  - [Using AudioSession to Manage Audio Focus (ArkTS)](audio-session-management.md)
+  - [Audio Session Management (ArkTS)](audio-session-management.md)
   - [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md)
 - Audio Playback<!--audio-playback-->
   - [Audio Playback Development](audio-playback-overview.md)
@@ -42,7 +42,7 @@
   - Microphone Recording Development (External Recording)<!--external-audio-recording-->
     - [Choosing the Right Recording Stream Type](using-right-sourcetype-for-recording.md)
     - [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md)
-    - [Using AudioCapturer for Audio Recording (ArkTs)](using-audiocapturer-for-recording.md)
+    - [Using AudioCapturer for Audio Recording (ArkTS)](using-audiocapturer-for-recording.md)
     - [Low-Latency Audio Recording (C/C++)](audio-fast-recording.md)
     - [Implementing Background Recording](background-recording.md)
   - System Audio Recording Development (Internal Recording)<!--system-audio-recording-->
