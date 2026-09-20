@@ -9261,6 +9261,38 @@ Allows an application to pass Linux commands with root privileges to a container
 
 **Valid since**: 26.1.0
 
+## ohos.permission.MANAGE_VM
+ 	 
+Allows an application to call basic virtual machine capabilities.
+
+With this permission,the application can call basic virtual machine capabilities,such as installing,deleting,starting,and pausing virtual machines.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MANAGE_VM_EXTENDED
+ 	 
+Allows an application to call enhanced virtual machine capabilities.
+
+With this permission,the application can call enhanced virtual machine capabilities,such as importing and exporting virtual machine disk images and obtaining the host serial number(SN).
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.CLEAR_BACKGROUND_APPS
 
 Allows an application to clear background application resources.

@@ -9292,6 +9292,38 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.MANAGE_VM
+
+允许应用调用虚拟机基础能力。
+
+获取该权限后，应用可以调用虚拟机基础能力，如安装、删除、启动、暂停虚拟机等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.MANAGE_VM_EXTENDED
+
+允许应用调用虚拟机增强能力。
+
+获取该权限后，应用可以调用虚拟机增强能力，如导入、导出虚拟机磁盘镜像，获取宿主机SN序列号等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
 ## ohos.permission.CLEAR_BACKGROUND_APPS
 
 允许应用清理后台应用资源。
