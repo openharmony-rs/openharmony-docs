@@ -65,7 +65,7 @@
 
 ### 优化思路：使用多线程能力
 
-使用系统自带的[TaskPool](../arkts-utils//taskpool-introduction.md)多线程能力。
+使用系统自带的[TaskPool](../arkts-utils/taskpool-introduction.md)多线程能力。
 
 ```typescript
 import { taskpool } from '@kit.ArkTS';
@@ -158,7 +158,7 @@ async function mockRequestData(index: number, context: Context): Promise<ModelDe
 
 在上面的代码里，优化的思路主要是用子线程处理耗时操作，避免在主线程中执行耗时操作影响UI渲染，编译运行后，通过[SmartPerf Host](./performance-optimization-using-smartperf-host.md)工具抓取Trace。如下图所示，原先在主线程中的getRawFileContent的标签转移到了TaskWorker线程。
 
-![](./figures//trace_taskpool_callback.png) 
+![](./figures/trace_taskpool_callback.png) 
 
 从图中可以看到，主线程阻塞耗时明显减少，同时在右上角出现了新的trace，__H:Deserialize__，这个trace表示在反序列化taskpool线程返回的数据。依然存在一定耗时(17ms)，容易出现丢帧等问题。针对跨线程的序列化耗时问题，系统提供了[@Sendable装饰器](../arkts-utils/arkts-sendable.md#sendable装饰器)来实现内存共享。可以在返回的类对象ModelDetailVO上使用@Sendable装饰器，继续优化性能。
 
@@ -256,7 +256,7 @@ struct ViewB {
 ```
 上面的代码在子线程返回的类对象上使用了@Sendable，系统会使用共享内存的方式处理使用了@Sendable的类，从而降低反序列化的开销。
 
-![](./figures//trace_sendable_callback.png) 
+![](./figures/trace_sendable_callback.png) 
 
 从图中可以看到，反序列化的大小和耗时明显变少。
 

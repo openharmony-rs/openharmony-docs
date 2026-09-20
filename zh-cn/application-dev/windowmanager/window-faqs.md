@@ -64,7 +64,7 @@ export default class EntryAbility extends UIAbility {
 
 在应用开发中，动态获取窗口宽高主要用于实现响应式布局，以适应不同尺寸的设备或窗口状态变化（如分屏、最大化恢复、拖拽缩放等）。
 
-推荐使用[getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9)、[getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1)、[getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1)中的任一方法获取到Window实例（windowClass），再通过此实例调用[getWindowProperties()](../reference/apis-arkui//arkts-apis-window-Window.md#getwindowproperties9)接口得到其属性WindowProperties，通过属性获取窗口宽高即可。示例代码如下：
+推荐使用[getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9)、[getMainWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindow9-1)、[getSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getsubwindow9-1)中的任一方法获取到Window实例（windowClass），再通过此实例调用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)接口得到其属性WindowProperties，通过属性获取窗口宽高即可。示例代码如下：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
