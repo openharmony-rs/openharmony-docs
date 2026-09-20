@@ -69,7 +69,7 @@ Anonymous Object Rectification.
 | 名称 | 说明 |
 | --- | --- |
 | [ParticleTuple](arkts-arkui-particletuple-t.md) | 粒子元组，表示定义动画参数配置值对的类型。 |
-| [PositionT](arkts-arkui-positiont-t.md) | 用于设置或返回组件的位置。 |
+| [PositionT](arkts-arkui-positiont-t-1.md) | 用于设置或返回组件的位置。 |
 | [SizeT](arkts-arkui-sizet-t.md) | 定义Size类型。 |
 | [Vector2T](arkts-arkui-vector2t-t.md) | 定义Vector2T类型。其中Vector2T类型包含x和y两个属性值。 |
 

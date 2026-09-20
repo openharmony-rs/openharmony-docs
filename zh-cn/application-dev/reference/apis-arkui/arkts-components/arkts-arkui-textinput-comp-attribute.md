@@ -1080,7 +1080,7 @@ onContentScroll(callback: OnContentScrollCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t.md) | 是 | 文本内容滚动回调。<br>**适用版本：** 18 |
+| callback | [OnContentScrollCallback](arkts-arkui-oncontentscrollcallback-t-1.md) | 是 | 文本内容滚动回调。<br>**适用版本：** 18 |
 
 ## onCopy
 
@@ -1226,7 +1226,7 @@ onPaste(callback: OnPasteCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnPasteCallback](arkts-arkui-onpastecallback-t.md) | 是 | Executed when a paste operation is performed.<br>**适用版本：** 18 |
+| callback | [OnPasteCallback](arkts-arkui-onpastecallback-t-1.md) | 是 | Executed when a paste operation is performed.<br>**适用版本：** 18 |
 
 ## onSecurityStateChange
 
@@ -1296,7 +1296,7 @@ onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t.md) | 是 | 文本选择变化回调或光标位置变化回调。<br>**适用版本：** 18 |
+| callback | [OnTextSelectionChangeCallback](arkts-arkui-ontextselectionchangecallback-t-1.md) | 是 | 文本选择变化回调或光标位置变化回调。<br>**适用版本：** 18 |
 
 ## onWillAttachIME
 
