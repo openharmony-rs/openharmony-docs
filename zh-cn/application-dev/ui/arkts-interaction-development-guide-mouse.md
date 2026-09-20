@@ -500,18 +500,16 @@ struct MouseWheel {
 
 ![ListAxis](figures/listAxis.gif)
 
-## 鼠标事件转换
+## 鼠标事件转换开发步骤
 
 如果开发者在开发应用时，只考虑实现了触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致出现应用在使用鼠标操作时发生实际行为与预期不一致、甚至无法操作的情况。针对该场景，开发者可以通过在应用中新增配置文件的方式来控制是否将鼠标事件转换成触摸事件。
 
-### 开发步骤
-
-#### 增加配置文件
+### 增加配置文件
 在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
 
 ![easy_go](figures/easy_go.png)
 
-#### 生效设备类型配置
+### 生效设备类型配置
 easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置鼠标事件转换生效的设备类型；第二层配置对应设备类型下[鼠标左键或轴事件转触摸](#鼠标左键或轴事件转触摸配置)和[鼠标右键转长按](#鼠标右键转长按配置)
 
 **1. 配置示例**
@@ -532,7 +530,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 | 2in1   | PC/2in1类型设备上生效的配置，配置后common配置在PC/2in1类型设备上不再生效。 | 是   |
 | tablet | Tablet类型设备上生效的配置，配置后common配置在Tablet类型设备上不再生效。 | 是   |
 
-#### 鼠标左键或轴事件转触摸配置
+### 鼠标左键或轴事件转触摸配置
 
 通过配置easy_go.json第二层multiModalInputOptions字段，可以将对应设备类型下的鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上点击和触摸的效果。
 
@@ -567,7 +565,7 @@ mouse2TouchEventMode可配置字段说明：
 | xcomponentAndWebOnly | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
 | disabled             | 表示鼠标事件全部都不转换成触摸事件。                    |
 
-#### 鼠标右键转长按配置
+### 鼠标右键转长按配置
 
 通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
 
