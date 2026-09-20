@@ -172,3 +172,10 @@
     - [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
     <!--Del-->
     - [TouchPosition(系统接口)](arkts-accessibility-accessibilityextensioncontext-touchposition-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [FocusCondition(系统接口)](arkts-accessibility-focuscondition-t-sys.md)<!--DelEnd-->
+    - [FocusDirection](arkts-accessibility-focusdirection-t.md)
+    <!--Del-->
+    - [FocusRule(系统接口)](arkts-accessibility-focusrule-t-sys.md)<!--DelEnd-->
+    - [FocusType](arkts-accessibility-focustype-t.md)
+    - [WindowType](arkts-accessibility-windowtype-t.md)

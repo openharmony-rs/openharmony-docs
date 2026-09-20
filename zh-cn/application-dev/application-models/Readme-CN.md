@@ -119,6 +119,8 @@
     - 开发端侧智能体<!--agent-development-->
       - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
       - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
+      <!--Del-->
+      - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
       <!--DelEnd-->
 - 基于ModularObjectExtensionAbility的模块化对象开发指导 (C/C++)<!--modular-object-extension-ability-->
   - [模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)

@@ -41,4 +41,5 @@
         - [GnssRefTime](_gnss_ref_time.md)
         - [IGnssCallback](interface_i_gnss_callback.md)
         - [IGnssInterface](interface_i_gnss_interface.md)
+        - [LocationInfo](_location_info.md)
         - [SatelliteStatusInfo](_satellite_status_info.md)

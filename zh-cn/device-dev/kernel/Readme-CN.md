@@ -152,6 +152,7 @@
         - [双向链表](kernel-small-apx-dll.md)
         - [位操作](kernel-small-apx-bitwise.md)
       - [标准库](kernel-small-apx-library.md)
+      - [内核编码规范](kernel-mini-appx-code.md)
 - 标准系统内核（Linux）
   - [标准系统内核概述](kernel-standard-overview.md)
   - [OpenHarmony开发板Patch使用指导](kernel-standard-patch.md)

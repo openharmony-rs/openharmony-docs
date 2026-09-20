@@ -14,6 +14,9 @@
       - [特性配置规则](subsys-build-feature.md)
       - [系统能力配置规则](subsys-build-syscap.md)
       - [关于deps、external_deps的使用](subsys-build-reference.md)
+      - [开源软件Notice收集策略说明](subsys-build-reference.md)
+      - [加快本地编译的一些参数](subsys-build-reference.md)
+      - [查看NinjaTrace](subsys-build-reference.md)
       - [HAP编译构建指导](subsys-build-gn-hap-compilation-guide.md)
       - Rust编译构建指导
         - [Rust模块配置规则和指导](subsys-build-rust-compilation.md)

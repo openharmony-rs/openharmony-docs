@@ -1687,9 +1687,10 @@
     - [CliToolEvent(系统接口)](arkts-ability-clitoolevent-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [ToolEventType(系统接口)](arkts-ability-clitoolevent-tooleventtype-e-sys.md)<!--DelEnd-->
-  - [Context](arkts-ability-context-c.md)
-  <!--Del-->
-  - [Context(系统接口)](arkts-ability-context-c-sys.md)<!--DelEnd-->
+  - [Context(Stage模型的上下文基类)](arkts-ability-context.md)
+    - [Context](arkts-ability-context-c.md)
+    <!--Del-->
+    - [Context(系统接口)](arkts-ability-context-c-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ContinuableInfo](arkts-ability-continuableinfo.md)<!--DelEnd-->
     <!--Del-->
@@ -1730,6 +1731,7 @@
     - [FunctionInfo(系统接口)](arkts-ability-functioninfo-i-sys.md)<!--DelEnd-->
   - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor.md)
     - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor-i.md)
+    - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
   - [KioskStatus](arkts-ability-kioskstatus.md)
     - [KioskStatus](arkts-ability-kioskstatus-i.md)
   - [LoopObserver](arkts-ability-loopobserver.md)
@@ -1882,31 +1884,34 @@
     <!--Del-->
     - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md)<!--DelEnd-->
 - bundleManager<!--arkts-abilitykit-bundlemanager-->
-  - [AbilityInfo](arkts-ability-abilityinfo-i.md)
-  - [WindowSize](arkts-ability-abilityinfo-windowsize-i.md)
-  - [ApplicationInfo](arkts-ability-applicationinfo-i.md)
-  <!--Del-->
-  - [ApplicationInfo(系统接口)](arkts-ability-applicationinfo-i-sys.md)<!--DelEnd-->
-  - [ModuleMetadata](arkts-ability-applicationinfo-modulemetadata-i.md)
-  - [MultiAppMode](arkts-ability-applicationinfo-multiappmode-i.md)
-  <!--Del-->
-  - [PreinstalledApplicationInfo(系统接口)](arkts-ability-applicationinfo-preinstalledapplicationinfo-i-sys.md)<!--DelEnd-->
+  - [AbilityInfo](arkts-ability-abilityinfo.md)
+    - [AbilityInfo](arkts-ability-abilityinfo-i.md)
+    - [WindowSize](arkts-ability-abilityinfo-windowsize-i.md)
+  - [ApplicationInfo](arkts-ability-applicationinfo.md)
+    - [ApplicationInfo](arkts-ability-applicationinfo-i.md)
+    <!--Del-->
+    - [ApplicationInfo(系统接口)](arkts-ability-applicationinfo-i-sys.md)<!--DelEnd-->
+    - [ModuleMetadata](arkts-ability-applicationinfo-modulemetadata-i.md)
+    - [MultiAppMode](arkts-ability-applicationinfo-multiappmode-i.md)
+    <!--Del-->
+    - [PreinstalledApplicationInfo(系统接口)](arkts-ability-applicationinfo-preinstalledapplicationinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AppProvisionInfo](arkts-ability-appprovisioninfo.md)<!--DelEnd-->
     <!--Del-->
     - [AppProvisionInfo(系统接口)](arkts-ability-appprovisioninfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [Validity(系统接口)](arkts-ability-appprovisioninfo-validity-i-sys.md)<!--DelEnd-->
-  - [AlternateIconInfo](arkts-ability-bundleinfo-alternateiconinfo-i.md)
-  - [AppCloneIdentity](arkts-ability-bundleinfo-appcloneidentity-i.md)
-  - [BundleInfo](arkts-ability-bundleinfo-i.md)
-  <!--Del-->
-  - [BundleOptions(系统接口)](arkts-ability-bundleinfo-bundleoptions-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [DynamicIconInfo(系统接口)](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md)<!--DelEnd-->
-  - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-i.md)
-  - [SignatureInfo](arkts-ability-bundleinfo-signatureinfo-i.md)
-  - [UsedScene](arkts-ability-bundleinfo-usedscene-i.md)
+  - [BundleInfo](arkts-ability-bundleinfo.md)
+    - [AlternateIconInfo](arkts-ability-bundleinfo-alternateiconinfo-i.md)
+    - [AppCloneIdentity](arkts-ability-bundleinfo-appcloneidentity-i.md)
+    - [BundleInfo](arkts-ability-bundleinfo-i.md)
+    <!--Del-->
+    - [BundleOptions(系统接口)](arkts-ability-bundleinfo-bundleoptions-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [DynamicIconInfo(系统接口)](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md)<!--DelEnd-->
+    - [ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-i.md)
+    - [SignatureInfo](arkts-ability-bundleinfo-signatureinfo-i.md)
+    - [UsedScene](arkts-ability-bundleinfo-usedscene-i.md)
   <!--Del-->
   - [BundlePackInfo](arkts-ability-bundlepackinfo.md)<!--DelEnd-->
     <!--Del-->
@@ -1939,15 +1944,18 @@
   - [DispatchInfo](arkts-ability-dispatchinfo.md)<!--DelEnd-->
     <!--Del-->
     - [DispatchInfo(系统接口)](arkts-ability-dispatchinfo-i-sys.md)<!--DelEnd-->
-  - [ElementName](arkts-ability-elementname-i.md)
+  - [ElementName](arkts-ability-elementname.md)
+    - [ElementName](arkts-ability-elementname-i.md)
   - [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo.md)
     - [ExtensionAbilityInfo](arkts-ability-extensionabilityinfo-i.md)
-  - [DataItem](arkts-ability-hapmoduleinfo-dataitem-i.md)
-  - [Dependency](arkts-ability-hapmoduleinfo-dependency-i.md)
-  - [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
-  - [PreloadItem](arkts-ability-hapmoduleinfo-preloaditem-i.md)
-  - [RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)
-  - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)
+  - [HapModuleInfo](arkts-ability-hapmoduleinfo.md)
+    - [DataItem](arkts-ability-hapmoduleinfo-dataitem-i.md)
+    - [Dependency](arkts-ability-hapmoduleinfo-dependency-i.md)
+    - [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
+    - [PreloadItem](arkts-ability-hapmoduleinfo-preloaditem-i.md)
+    - [RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)
+  - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo.md)
+    - [LauncherAbilityInfo](arkts-ability-launcherabilityinfo-i.md)
   <!--Del-->
   - [LauncherAbilityResourceInfo](arkts-ability-launcherabilityresourceinfo.md)<!--DelEnd-->
     <!--Del-->
@@ -1957,7 +1965,9 @@
   - [OverlayModuleInfo](arkts-ability-overlaymoduleinfo.md)
     - [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)
   <!--Del-->
-  - [PermissionDef(系统接口)](arkts-ability-permissiondef-i-sys.md)<!--DelEnd-->
+  - [PermissionDef](arkts-ability-permissiondef.md)<!--DelEnd-->
+    <!--Del-->
+    - [PermissionDef(系统接口)](arkts-ability-permissiondef-i-sys.md)<!--DelEnd-->
   - [PluginBundleInfo](arkts-ability-pluginbundleinfo.md)
     - [PluginBundleInfo](arkts-ability-pluginbundleinfo-i.md)
     - [PluginModuleInfo](arkts-ability-pluginbundleinfo-pluginmoduleinfo-i.md)
@@ -1966,18 +1976,21 @@
     <!--Del-->
     - [RecoverableApplicationInfo(系统接口)](arkts-ability-recoverableapplicationinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [RemoteAbilityInfo(系统接口)](arkts-ability-remoteabilityinfo-i-sys.md)<!--DelEnd-->
+  - [RemoteAbilityInfo](arkts-ability-remoteabilityinfo.md)<!--DelEnd-->
+    <!--Del-->
+    - [RemoteAbilityInfo(系统接口)](arkts-ability-remoteabilityinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SharedBundleInfo](arkts-ability-sharedbundleinfo.md)<!--DelEnd-->
     <!--Del-->
     - [SharedBundleInfo(系统接口)](arkts-ability-sharedbundleinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [SharedModuleInfo(系统接口)](arkts-ability-sharedbundleinfo-sharedmoduleinfo-i-sys.md)<!--DelEnd-->
-  - [ParameterItem](arkts-ability-shortcutinfo-parameteritem-i.md)
-  - [ShortcutInfo](arkts-ability-shortcutinfo-i.md)
-  - [ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-i.md)
-  <!--Del-->
-  - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-i-sys.md)<!--DelEnd-->
+  - [ShortcutInfo](arkts-ability-shortcutinfo.md)
+    - [ParameterItem](arkts-ability-shortcutinfo-parameteritem-i.md)
+    - [ShortcutInfo](arkts-ability-shortcutinfo-i.md)
+    - [ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-i.md)
+    <!--Del-->
+    - [ShortcutWant(系统接口)](arkts-ability-shortcutinfo-shortcutwant-i-sys.md)<!--DelEnd-->
   - [Skill](arkts-ability-skill.md)
     - [Skill](arkts-ability-skill-i.md)
     - [SkillUri](arkts-ability-skill-skilluri-i.md)

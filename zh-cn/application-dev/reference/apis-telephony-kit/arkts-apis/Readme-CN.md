@@ -406,6 +406,8 @@
   - [getNetworkState](arkts-telephony-radio-getnetworkstate-f.md)
   <!--Del-->
   - [getNrOptionMode(系统接口)](arkts-telephony-radio-getnroptionmode-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getNROptionMode(系统接口)](arkts-telephony-radio-getnroptionmode-f-sys.md)<!--DelEnd-->
   - [getOperatorName](arkts-telephony-radio-getoperatorname-f.md)
   - [getOperatorNameSync](arkts-telephony-radio-getoperatornamesync-f.md)
   <!--Del-->
@@ -489,6 +491,8 @@
   - [NetworkType](arkts-telephony-radio-networktype-e.md)
   <!--Del-->
   - [NrOptionMode(系统接口)](arkts-telephony-radio-nroptionmode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [NROptionMode(系统接口)](arkts-telephony-radio-nroptionmode-e-sys.md)<!--DelEnd-->
   - [NsaState](arkts-telephony-radio-nsastate-e.md)
   <!--Del-->
   - [PreferredNetworkMode(系统接口)](arkts-telephony-radio-preferrednetworkmode-e-sys.md)<!--DelEnd-->
