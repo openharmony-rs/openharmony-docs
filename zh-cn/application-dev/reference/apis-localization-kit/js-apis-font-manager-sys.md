@@ -95,7 +95,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| fullName | string | 是    | 需要卸载的字体名称，可通过打开.ttf、.ttc或.otf字体文件获取。<br>字体名称区分大小写，请确保与实际字体名称完全一致。 |
+| fullName | string | 是    | 需要卸载的字体名称，可通过打开.ttf、.ttc和.otf字体文件获取。<br>字体名称区分大小写，请确保与实际字体名称完全一致。 |
 
 **返回值：**
 
