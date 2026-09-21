@@ -925,20 +925,34 @@ addService(service: Service): void
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 构造descriptor
-let descriptorsArray: ssap.PropertyDescriptor[] = [];
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
-descValue[0] = 11;
-descValue[1] = 22;
-let descriptor: ssap.PropertyDescriptor = {
+// 构造属性1的descriptor
+let descriptorsArray1: ssap.PropertyDescriptor[] = [];
+let arrayBuffer1 = new ArrayBuffer(8);
+let descValue1 = new Uint8Array(arrayBuffer1);
+descValue1[0] = 11;
+descValue1[1] = 22;
+let descriptor1: ssap.PropertyDescriptor = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer,
+  value: arrayBuffer1,
   descriptorType: ssap.PropertyDescriptorType.PROPERTY,
   isWriteable: true
 };
-descriptorsArray[0] = descriptor;
+descriptorsArray1[0] = descriptor1;
+// 构造属性2的descriptor
+let descriptorsArray2: ssap.PropertyDescriptor[] = [];
+let arrayBuffer2 = new ArrayBuffer(8);
+let descValue2 = new Uint8Array(arrayBuffer2);
+descValue2[0] = 33;
+descValue2[1] = 44;
+let descriptor2: ssap.PropertyDescriptor = {
+  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
+  value: arrayBuffer2,
+  descriptorType: ssap.PropertyDescriptorType.PROPERTY,
+  isWriteable: true
+};
+descriptorsArray2[0] = descriptor2;
 // 构造properties
 let propertiesArray: ssap.Property[] = [];
 let arrayBufferProperty = new ArrayBuffer(8);
@@ -948,13 +962,13 @@ let property1: ssap.Property = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
   value: arrayBufferProperty,
-  descriptors:descriptorsArray
+  descriptors:descriptorsArray1
 };
 let property2: ssap.Property = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
   value: arrayBufferProperty,
-  descriptors:descriptorsArray,
+  descriptors:descriptorsArray2,
   operation:12
 };
 propertiesArray[0] = property1;
