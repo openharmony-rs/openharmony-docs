@@ -203,7 +203,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 - 景深强度宜克制：纵深感并非越强越好。过大的视场角（yFov）、过近的相机距离或过强的空间位移，会让背景过度拉伸、子组件位移幅度过大，反而破坏画面协调并加剧不适感。建议从温和的参数起步，优先保证内容的可读性与画面稳定。
 
-- 兼顾渲染性能：景深渲染依赖GPU（图形处理器）对背景每个像素进行深度重建与投影计算，属于GPU密集型操作。深度图分辨率应与背景图保持一致，避免不必要的过大分辨率增加显存与算力开销；在动态调整相机或空间位置时，注意控制更新频率，避免每帧高频变更带来的性能压力。
+- 兼顾渲染性能：景深渲染依赖GPU（Graphics Processing Unit，图形处理器）对背景每个像素进行深度重建与投影计算，属于GPU密集型操作。深度图分辨率应与背景图保持一致，避免不必要的过大分辨率增加显存与算力开销；在动态调整相机或空间位置时，注意控制更新频率，避免每帧高频变更带来的性能压力。
 
 ## 场景示例
 
@@ -517,7 +517,7 @@ struct DepthComponent3DExample {
 
 打开应用页面，DepthComponent加载3D模型成功后，文字“Depth Component”呈现视觉倾斜效果，且部分内容被模型遮挡。
 
-   ![2D背景下的文字倾斜与遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-3D.png)
+   ![3D背景下的文字倾斜与遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-3D.png)
 
 ### 仅设置深度实现文字遮挡效果
 
@@ -661,9 +661,9 @@ struct DepthComponentNdcExample {
 
 **预期效果**
 
-打开应用页面，文字“NDC Mode”在屏幕上呈现上窄下宽（上小下大）的倾斜形态：四角X、Y直接映射到屏幕，顶边宽度（x从-0.2到0.2）约为底边宽度（x从-0.5到0.5）的40%；本例未设置遮挡权重，文字不会被背景物体遮挡。
+打开应用页面，文字“NDC Mode”在屏幕上呈现上窄下宽（上小下大）的倾斜形态：四角X、Y直接映射到屏幕，顶边宽度（x从-0.2到0.2）约为底边宽度（x从-0.5到0.5）的40%；本例遮挡权重设为0.5，文字的相应部分会被背景中距相机更近的物体遮挡。
 
-   ![仅设置深度的文字遮挡效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-NDC.png)
+   ![NDC坐标实现的文字倾斜效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-NDC.png)
 
 
 ### 使用移轴裁剪渲染背景局部
