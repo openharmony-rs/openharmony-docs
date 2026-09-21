@@ -1,12 +1,11 @@
 # Interacting with Web Pages Using the Drag-and-Drop Feature of the Web Component
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c48cc55c94537836cd0c6607c52e83530e5d401a translatedAt=2026-08-14T03:45:47.537Z pushedAt=2026-08-14T08:16:54.134Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:11:49.862Z pushedAt=2026-09-15T13:41:26.222Z -->
 
 The drag-and-drop feature of ArkWeb enables apps to drag and drop elements on web pages. You can press and hold a draggable element, drag it onto a droppable element, and then release it to complete the drop. The drag-and-drop feature of ArkWeb for web content complies with the H5 standard.
 
@@ -37,11 +36,8 @@ ArkWeb drag differs from ArkUI component-level drag in that it mainly targets dr
 ## Implementing Drag-and-Drop Logic on the ArkTS Side
 
 In most cases, the drag-and-drop functionality implemented on the H5 side meets your needs. If necessary, refer to the following example to implement operations such as reading drag data on the ArkTS side.
-
 1. [Establish a data channel between the app side and the frontend page](web-app-page-data-channel.md).
-
 2. In the onDrop method, implement simple logic, such as temporarily storing some key data.
-
 3. In the method that receives messages on the ArkTS side, add app processing logic, which can perform time-consuming tasks.
 
 Because the `onDrop` method on the ArkTS side is executed earlier than the drop event handler in H5 (the `droppable.addEventListener('drop')` in the H5 example), performing operations such as page navigation in the `onDrop` method will prevent the `drop` method in H5 from executing correctly and produce unexpected results. Therefore, you should establish a bidirectional communication mechanism so that, after the `drop` method in H5 finishes executing, it notifies the ArkTS side to execute the corresponding business logic, ensuring that the business logic runs as expected.
@@ -210,7 +206,6 @@ H5 example:
 </body>
 </html>
 ```
-
 ![web-drag-drop](figures/web-dragdrop.gif)
 
 Log output:
@@ -220,7 +215,6 @@ Log output:
 ## FAQs
 
 ### Why Are Drag Events Set in H5 Not Triggered
-
 Check whether the related CSS resources are configured correctly. Some web pages determine the User Agent (UA) and apply CSS styles only to specific device UAs. You can resolve this issue by setting a custom UA for the Web component, for example:
 
 <!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
@@ -248,13 +242,11 @@ struct Index {
 ```
 
 ### How to Disable the Drag Capability of the Web Component
-
 Without special configuration, the Web component supports drag and drop by default. If you do not need the drag capability, refer to the following example to disable it.
 
 There are two main ways to disable drag and drop:
 
 1. On the web page side, intercept or disable it through W3C CSS and JS.
-
 2. On the app side, inject JS through the Web component's runJavaScriptExt API to intercept or disable it.
 
 H5 example 1:

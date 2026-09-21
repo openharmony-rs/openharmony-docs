@@ -1,12 +1,11 @@
 # Using WebNativeMessagingExtensionAbility to Implement Communication Between Browser Extensions and Applications
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @libing23232323-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=1c0caa186b632b3769e4ce1bd28640fb83047e8d translatedAt=2026-08-14T03:47:59.052Z pushedAt=2026-08-14T09:08:24.635Z -->
+<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T04:02:08.059Z pushedAt=2026-09-16T08:46:09.208Z -->
 
 ## Overview
 
@@ -15,6 +14,7 @@ Browser extensions can communicate with applications to access services for impl
 Since API version 21, you can use the [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) component in applications to provide backend services for browser extensions.
 
 The browser extension connects to WebNativeMessagingExtensionAbility through the [WebExtensions runtime API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime). The two parties communicate with each other by calling the I/O API after sharing the pipe file descriptor.
+
 
 ![](figures/connect-native-overview.png)
 
@@ -49,19 +49,12 @@ For API versions 21 to 23, WebNativeMessagingExtensionAbility is supported only 
 ### Overall Process
 
 ![](figures/connect-native-detail.png)
-
 - **Process**:
-
 1. The browser extension calls the **runtime.connectNative** API to pass the application's bundle name to create a NativeMessaging connection.
-
 2. The browser application calls the [dataShare](../database/share-config.md) API to obtain the application's configuration information, including the name of the WebNativeMessagingExtension and the access restriction rule (whether to allow an extension to access the WebNativeMessagingExtension).
-
 3. The browser application creates two pipes as a bidirectional channel, calls the [WebNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative) API, starts the WebNativeMessagingExtension, creates a NativeMessaging connection, and transfers the pipe's file descriptors as parameters.
-
 4. The application's WebNativeMessagingExtensionAbility is started, the [WebNativeMessagingExtensionAbility.onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative) lifecycle callback is triggered, and the pipe's file descriptor is obtained.
-
 5. The application listens for the read-end file descriptor, obtains the message instructions sent by the browser extension, and sends the message instructions back through the write-end file descriptor.
-
 6. The application uses [WebNativeMessagingExtensionContext.startAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#startability) to start its UIAbility page.
 
 > **NOTE**
@@ -70,17 +63,13 @@ For API versions 21 to 23, WebNativeMessagingExtensionAbility is supported only 
 >
 
 ### Storing the Extension Configuration of Applications in dataShare
-
 When integrating WebNativeMessagingExtensionAbility, the application needs to provide extension configurations for the browser application through **dataShare**. The browser application uses this configuration to determine the accessible extension and specify the name of the WebNativeMessagingExtensionAbility to be started.
 
 The extension configuration is in JSON string format.
-
 - **abilityName**: string, the name of the WebNativeMessagingExtensionAbility, used to populate the **abilityName** field in **want**. An application can have only one WebNativeMessagingExtensionAbility.
-
 - **allowed_origins**: array of URLs of browser extensions that can access the WebNativeMessagingExtensionAbility. You can configure multiple URLs. Different browser extensions have different scheme protocols. For example, the HUAWEI Browser uses the chrome-extension header.
 
 Extension configuration format:
-
 ```json5
 {
   // Set the application bundle name.
@@ -100,27 +89,19 @@ Extension configuration format:
   ]
 }
 ```
-
 The extension configuration is exposed to browser applications through the [dataShare configuration in module.json5](../database/share-config.md#configuration-in-modulejson5). For the specific configuration method, refer to step 6 in [Implementing the WebNativeMessagingExtensionAbility (for Application Developers)](#implementing-the-webnativemessagingextensionability-for-application-developers). The URI uses a fixed format: `datashareproxy://[bundleName]/browserNativeMessagingHosts`. The **value** field contains the JSON string of the extension configuration described above, and the **allowList** field specifies the **appIdentifier** of the browser applications that are allowed to access this configuration.
 
 ### Lifecycle Management of WebNativeMessagingExtensionAbility
-
 - [onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative): Triggered when the browser extension calls **runtime.connectNative**. If **WebNativeMessagingExtensionAbility** is not running, calling **runtime.connectNative** will start **WebNativeMessagingExtensionAbility** and trigger this callback.
-
 - [onDisconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#ondisconnectnative): Triggered once when the browser extension destroys **runtime.port**. Each disconnection of a NativeMessaging connection triggers this callback once. When all connections are disconnected, the **onDestroy** callback is triggered and the WebNativeMessagingExtensionAbility is then closed.
-
 - [onDestroy](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#ondestroy): Triggered before the WebNativeMessagingExtensionAbility is destroyed. If all NativeMessaging connections are disconnected, the WebNativeMessagingExtensionAbility will be destroyed.
-
 - [stopNativeConnection](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#stopnativeconnection): Triggered to proactively disconnect a NativeMessaging connection. If the last connection is disconnected, the WebNativeMessagingExtensionAbility will be destroyed.
-
 - [terminateSelf](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md#terminateself): Triggered to proactively exit. If this callback is invoked, all NativeMessaging connections will be destroyed.
 
 ### Message Format and Restrictions
-
 Format of NativeMessaging connections: Each message is serialized using JSON, encoded in UTF-8, and prefixed with a 32-bit message length (in native byte order). To protect the browser from being affected by abnormal applications, the maximum size of a single message from WebNativeMessagingExtensionAbility is 1 MB. The maximum size of a message sent to the WebNativeMessagingExtensionAbility is 64 MB.
 
 ### Implementing the connectNative Extension (for Application Developers)
-
 > **NOTE**
 >
 > You need to configure **manifest.json** and **background.js** based on the W3C standard to implement communication.
@@ -155,7 +136,6 @@ Configure the **manifest.json** file.
 ```
 
 Implement the **main.js** file.
-
 ```js
 // Trigger the calling from HTML.
 function sendMessageToNative() {
@@ -166,11 +146,9 @@ function sendMessageToNative() {
   }, function (response) {});
 }
 ```
-
 Implement the **background.js** file.
 
 1. Use **chrome.runtime.connectNative** for connection.
-
    ``` ts	
    var port = null;	
    // Listen for messages from main.js.
@@ -201,7 +179,6 @@ Implement the **background.js** file.
    ```
 
 2. Use **chrome.runtime.sendNativeMessage** for connection.
-
    ``` ts
    function sendNativeMessage() {
      var bundleName = "com.example.app"; // bundleName of the app corresponding to the plugin
@@ -218,9 +195,7 @@ Implement the **background.js** file.
    ```
 
 ### Implementing the WebNativeMessagingExtensionAbility (for Application Developers)
-
 To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio project, perform the following steps:
-
 1. In the **ets** directory of a module in the project, right-click and choose **New > Directory** to create a directory named **MyWebNativeMessageExtAbility**.
 
 2. Right-click the **MyWebNativeMessageExtAbility** directory, and choose **New > ArkTS File** to create a file named **MyWebNativeMessageExtAbility.ets**.
@@ -233,9 +208,7 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
     │ │   ├── MyWebNativeMessageExtAbility.ets
     └
    ```
-
 3. In the **MyWebNativeMessageExtAbility.ets** file, import the [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) module. Customize a class that inherits from WebNativeMessagingExtensionAbility and implement the lifecycle callbacks.
-
    ```ts
    import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -293,7 +266,6 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
      }
    };
    ```
-
 4. Register the WebNativeMessagingExtensionAbility component in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **"webNativeMessaging"** and **srcEntry** to the code path of the component.
 
    ```json5
@@ -312,9 +284,7 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
      }
    }
    ```
-
 5. Configure **crossAppSharedConfig** in the [module.json5 file](../quick-start/module-configuration-file.md) of the module of the project. The shared configuration file must be stored in the **resources/base/profile** directory of the project and referenced using the **$** symbol.
-
    ```json
    {
      "module": {
@@ -342,13 +312,10 @@ To manually create a WebNativeMessagingExtensionAbility in the DevEco Studio pro
      ]
    }
    ```
-
 ### Implementing the WebNativeMessagingExtensionAbility (for Browser Developers)
-
 The browser is responsible for implementing the extension runtime API, starting the WebNativeMessagingExtensionAbility, and establishing and managing NativeMessaging connections. The following permission is required: **ohos.permission.WEB_NATIVE_MESSAGING**.
 
 1. When receiving a NativeMessaging connection creation request, the browser obtains the extension configuration of the target application through the [get20](../reference/apis-arkdata/js-apis-data-dataShare.md#get20) API, reads the name of WebNativeMessagingExtensionAbility and the list of extensions that can be accessed, and checks whether the access is allowed.
-
    ```ts
    import { dataShare } from '@kit.ArkData';
 
@@ -402,9 +369,7 @@ The browser is responsible for implementing the extension runtime API, starting 
      }
    }
    ```
-
 2. Call [webNativeMessagingExtensionManager.connectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerconnectnative) to create a NativeMessaging connection. If the WebNativeMessagingExtensionAbility is not yet running, this API starts the ExtensionAbility and triggers it.
-
    ```ts
    import { UIAbility, Want, common } from '@kit.AbilityKit';
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
@@ -446,7 +411,6 @@ The browser is responsible for implementing the extension runtime API, starting 
    ```
 
 3. Call [webNativeMessagingExtensionManager.disconnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md#webnativemessagingextensionmanagerdisconnectnative) to destroy the NativeMessaging connection.
-
    ```ts
    import { webNativeMessagingExtensionManager } from '@kit.ArkWeb'
 

@@ -9,8 +9,8 @@
 
 定义获取和使用NativeWindow的相关函数。
 
-<!--RP1-->
-**相关示例：** [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--RP1End-->
+<!--Del-->
+**相关示例：** [NDKNativeWindow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkNativeWindow)<!--DelEnd-->
 
 **引用文件：** <native_window/external_window.h>
 
@@ -29,7 +29,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [Region](capi-nativewindow-region.md) | Region | 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。 |
-| [Rect](capi-nativewindow-rect.md) | - | 如果rects是空指针nullptr，默认Buffer大小为脏区。 |
+| [Rect](capi-nativewindow-rect.md) | - | 定义矩形区域的结构体，包含矩形框的起始坐标和宽高信息。 |
 | [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | HDR元数据结构体定义。 |
 | [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | OHExtDataHandle | 扩展数据句柄结构体定义。 |
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供对IPC序列化对象的访问功能。 |

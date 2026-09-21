@@ -156,9 +156,7 @@ enum Pasteboard_NotifyType
 
 **描述：**
 
-剪贴板的数据变更类型。
-
-**使用场景**：用于区分剪贴板数据变更的来源，判断是本地设备还是远端设备的数据变更。
+剪贴板的数据变更类型。适用于区分剪贴板数据变更的来源，判断是本地设备还是远端设备的数据变更。
 
 **起始版本：** 13
 
@@ -175,9 +173,7 @@ enum Pasteboard_FileConflictOptions
 
 **描述：**
 
-定义文件拷贝冲突时的选项。
-
-**使用场景**：在获取剪贴板数据并拷贝文件时，目标路径已存在同名文件，需指定冲突处理策略。
+定义文件拷贝冲突时的选项。当应用粘贴的目标路径已存在同名文件时，剪贴板会基于指定的策略处理冲突。
 
 **起始版本：** 15
 
@@ -196,8 +192,6 @@ enum Pasteboard_ProgressIndicator
 
 定义进度条指示选项，可选择是否采用系统默认进度显示。
 
-**使用场景**：在获取剪贴板数据并拷贝文件时，控制是否显示进度提示。
-
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -215,9 +209,7 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 **描述：**
 
-用于在不使用系统默认进度显示时，通知应用拷贝粘贴任务进度。
-
-**使用场景**：当需要自定义进度显示UI时，设置此回调函数来获取进度信息。
+当不使用系统默认进度显示时，通过此回调函数通知应用复制粘贴任务的进度，以支持自定义进度 UI 的实现。
 
 **起始版本：** 15
 
@@ -235,9 +227,7 @@ typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 
 **描述：**
 
-定义剪贴板内容变更时触发的回调函数。
-
-**使用场景**：需要在剪贴板数据变更时执行特定逻辑时实现此回调函数。
+定义剪贴板内容变更时触发的回调函数。当剪贴板中保存的复制数据变更后，如果需要执行应用特定的逻辑，实现该回调函数。
 
 **起始版本：** 13
 
@@ -245,8 +235,8 @@ typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* context | 上下文信息，由函数[OH_PasteboardObserver_SetData](capi-oh-pasteboard-h.md#oh_pasteboardobserver_setdata)传入。 |
-| [Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype) type | 数据变更的类型。详见：[Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype)。 |
+| void* context | 上下文信息，由函数[OH_PasteboardObserver_SetData](#oh_pasteboardobserver_setdata)传入。 |
+| [Pasteboard_NotifyType](#pasteboard_notifytype) type | 数据变更的类型。详见：[Pasteboard_NotifyType](#pasteboard_notifytype)。 |
 
 ### Pasteboard_Finalize()
 
@@ -256,9 +246,7 @@ typedef void (*Pasteboard_Finalize)(void* context)
 
 **描述：**
 
-定义用于释放上下文的回调函数，剪贴板数据变更观察者对象销毁时触发。
-
-**使用场景**：当在Pasteboard_Notify回调中使用了动态分配的上下文数据时，需要实现此回调来释放资源。
+定义用于释放上下文的回调函数，剪贴板数据变更观察者对象销毁时触发。如果在Pasteboard_Notify回调中动态申请了资源，需要实现此回调来释放资源。
 
 **起始版本：** 13
 
@@ -278,8 +266,6 @@ OH_PasteboardObserver* OH_PasteboardObserver_Create()
 
 创建一个剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)指针及实例对象。典型使用场景包括：监听剪贴板内容变化以实现数据同步、在剪贴板内容更新时触发业务逻辑等。调用此函数后，系统会初始化一个剪贴板数据变更观察者对象，返回指向该对象的指针。创建成功后，开发者需要通过[OH_PasteboardObserver_SetData](#oh_pasteboardobserver_setdata)设置回调函数，然后通过[OH_Pasteboard_Subscribe](#oh_pasteboard_subscribe)订阅剪贴板变更事件。
 
-**约束和限制：**
-
 - 调用者应在不需要监听剪贴板数据变更时调用[OH_PasteboardObserver_Destroy](#oh_pasteboardobserver_destroy)释放资源，否则会导致内存泄漏。
 - 观察者对象不支持多线程并发访问，需要在同一线程中创建和销毁。
 
@@ -289,7 +275,7 @@ OH_PasteboardObserver* OH_PasteboardObserver_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* | 执行成功时返回一个指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](capi-oh-pasteboard-h.md#oh_pasteboardobserver_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* | 执行成功时返回一个指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](#oh_pasteboardobserver_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_PasteboardObserver_Destroy()
 
@@ -299,11 +285,7 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 **描述：**
 
-销毁剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)指针指向的实例对象。
-
-**使用场景**：不再需要监听剪贴板数据变更时，应先取消订阅，再销毁观察者对象。
-
-**开发建议**：销毁前请确保已调用[OH_Pasteboard_Unsubscribe](#oh_pasteboard_unsubscribe)取消订阅。
+销毁剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)指针指向的实例对象。当不再需要监听剪贴板数据变更时，调用此函数销毁观察者对象，使用前请确保已调用[OH_Pasteboard_Unsubscribe](#oh_pasteboard_unsubscribe)取消订阅。
 
 **起始版本：** 13
 
@@ -317,12 +299,7 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。 |
-
-**错误码说明:**
-
-- **ERR_OK**: 执行成功
-- **ERR_INVALID_PARAMETER**: 参数无效
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_PasteboardObserver_SetData()
 
@@ -341,9 +318,9 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* observer | 表示指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例的指针。 |
-| void* context | 表示指向上下文数据的指针，将作为第一个参数传入[Pasteboard_Notify](capi-oh-pasteboard-h.md#pasteboard_notify)。 |
-| const [Pasteboard_Notify](capi-oh-pasteboard-h.md#pasteboard_notify) callback | 表示数据变更回调函数，在剪贴板数据变更时触发。详见[Pasteboard_Notify](capi-oh-pasteboard-h.md#pasteboard_notify)。 |
-| const [Pasteboard_Finalize](capi-oh-pasteboard-h.md#pasteboard_finalize) finalize | 表示可选的回调函数，可以用于剪贴板数据变更观察者销毁时释放上下文数据。默认为nullptr，不执行释放操作。详见[Pasteboard_Finalize](capi-oh-pasteboard-h.md#pasteboard_finalize)。 |
+| void* context | 表示指向上下文数据的指针，将作为第一个参数传入[Pasteboard_Notify](#pasteboard_notify)。 |
+| const [Pasteboard_Notify](#pasteboard_notify) callback | 表示数据变更回调函数，在剪贴板数据变更时触发。详见[Pasteboard_Notify](#pasteboard_notify)。 |
+| const [Pasteboard_Finalize](#pasteboard_finalize) finalize | 表示可选的回调函数，可以用于剪贴板数据变更观察者销毁时释放上下文数据。默认为nullptr，不执行释放操作。详见[Pasteboard_Finalize](#pasteboard_finalize)。 |
 
 **返回：**
 
@@ -359,11 +336,7 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 **描述：**
 
-创建剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)指针及实例对象。
-
-**使用场景**：需要访问或操作系统剪贴板时，首先创建剪贴板对象实例。
-
-**开发建议**：创建成功后请及时使用，并在不需要时调用OH_Pasteboard_Destroy销毁。
+创建剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)指针及实例对象。当需要访问或操作系统剪贴板时，使用此函数创建剪贴板对象实例。创建成功后请及时使用。
 
 **起始版本：** 13
 
@@ -381,11 +354,7 @@ void OH_Pasteboard_Destroy(OH_Pasteboard* pasteboard)
 
 **描述：**
 
-销毁剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象。
-
-**使用场景**：不再需要访问剪贴板时，应销毁剪贴板对象释放资源。
-
-**开发建议**：销毁前请确保已取消所有订阅。
+销毁剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象。适用于不再需要访问剪贴板时，销毁剪贴板对象释放资源。销毁前请确保已取消所有订阅。
 
 **起始版本：** 13
 
@@ -405,14 +374,9 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 
 订阅剪贴板的数据变更事件。典型使用场景包括：监听剪贴板内容变化、实现跨设备剪贴板同步、剪贴板内容变化时更新UI等。调用此函数后，当剪贴板数据发生变化时，系统会通过观察者的回调函数[Pasteboard_Notify](#pasteboard_notify)通知应用。可以订阅本地设备或远端设备的数据变更事件，通过type参数指定需要订阅的事件类型。
 
-**配对调用：**
-
 - 调用此方法订阅剪贴板变更事件后，当不再需要监听时，必须调用[OH_Pasteboard_Unsubscribe](#oh_pasteboard_unsubscribe)取消订阅。
 - 取消订阅时需传入与订阅时相同的观察者对象和事件类型。
 - 未取消订阅可能导致持续监听和资源占用。
-
-**约束和限制：**
-
 - 同一观察者不能重复订阅同一类型的事件，否则会返回错误。
 - 订阅后的观察者对象在取消订阅前不能被销毁。
 - 回调函数在异步IPC线程中执行，需要注意线程安全。
@@ -424,7 +388,7 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| int type | 表示订阅的剪贴板数据变更类型，详见：[Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype)。 |
+| int type | 表示订阅的剪贴板数据变更类型，详见：[Pasteboard_NotifyType](#pasteboard_notifytype)。 |
 | const [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* observer | 表示指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例的指针。它指定了剪贴板数据变更时触发的回调函数，详见：[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)。 |
 
 **返回：**
@@ -441,9 +405,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 **描述：**
 
-取消对剪贴板数据变更事件的订阅。调用此方法前，必须先调用OH_Pasteboard_Subscribe订阅剪贴板数据变更事件。
-
-**使用场景**：不再需要监听剪贴板数据变更时，应取消订阅释放资源。
+取消对剪贴板数据变更事件的订阅。调用此方法前，必须先调用OH_Pasteboard_Subscribe订阅剪贴板数据变更事件。适用于不再需要监听剪贴板数据变更时，取消订阅释放资源。
 
 **起始版本：** 13
 
@@ -452,7 +414,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| int type | 表示订阅的剪贴板数据变更类型，需与订阅时传入的类型值一致，详见：[Pasteboard_NotifyType](capi-oh-pasteboard-h.md#pasteboard_notifytype)。 |
+| int type | 表示订阅的剪贴板数据变更类型，需与订阅时传入的类型值一致，详见：[Pasteboard_NotifyType](#pasteboard_notifytype)。 |
 | const [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)* observer | 表示指向剪贴板数据变更观察者[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)实例的指针。它指定了剪贴板数据变更时触发的回调函数，详见：[OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md)。 |
 
 **返回：**
@@ -493,9 +455,7 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 
 **描述：**
 
-获取剪贴板中数据的数据源。
-
-**使用场景**：适用于需要识别数据来源或进行权限控制的场景。
+获取剪贴板中数据的数据源。适用于需要识别数据来源或进行权限控制的场景。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 **起始版本：** 13
 
@@ -521,8 +481,7 @@ bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)
 
 **描述：**
 
-判断剪贴板中是否有指定类型的数据。典型使用场景包括：粘贴前检查剪贴板数据类型是否支持、根据数据类型选择不同的处理方式、验证剪贴板数据格式等。
-
+判断剪贴板中是否有指定类型的数据。典型使用场景包括：粘贴前检查剪贴板数据类型是否支持、根据数据类型选择不同的处理方式、验证剪贴板数据格式等。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 **起始版本：** 13
 
 **参数：**
@@ -546,9 +505,7 @@ bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 
 **描述：**
 
-判断剪贴板中是否有数据。
-
-**使用场景**：在读取剪贴板数据前，先判断是否有数据，避免空数据操作。
+判断剪贴板中是否有数据。适用于在读取剪贴板数据前，判断是否有数据，避免空数据操作。
 
 **起始版本：** 13
 
@@ -598,8 +555,6 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象[OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
-**约束和限制：**
-
 - 如果剪贴板为空或数据格式不支持，会返回nullptr。
 - 返回的OH_UdmfData对象需要开发者调用[OH_UdmfData_Destroy](../apis-arkdata/capi-udmf-h.md#oh_udmfdata_destroy)释放。
 - 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)接口以获取进度信息。
@@ -631,9 +586,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 **描述：**
 
-将统一数据对象数据写入剪贴板。写入成功后，其他应用可以使用系统剪贴板提供的数据读取接口访问该数据。统一数据对象的数据大小受系统剪贴板容量限制，在写入系统剪贴板后，数据的生命周期由系统剪贴板进行管理。调用此函数后，合法的数据内容会被写入系统剪贴板，覆盖之前的剪贴板数据内容。写入成功后，会触发所有订阅了剪贴板数据变更事件的观察者的回调函数。其他应用可以通过剪贴板API读取这些数据。
-
-**约束和限制：**
+将统一数据对象数据写入剪贴板。写入成功后，其他应用可以使用系统剪贴板提供的数据读取接口访问该数据。统一数据对象的数据大小受系统剪贴板容量限制，在写入系统剪贴板后，数据的生命周期由系统剪贴板进行管理。调用此函数后，合法的数据内容会被写入系统剪贴板，覆盖之前的剪贴板数据内容。写入成功后，会触发所有订阅了剪贴板数据变更事件的观察者的回调函数。其他应用可以通过剪贴板API读取这些数据。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 - 序列化后的数据大小不能超过系统容量限制（在不同设备上的容量存在差异，通常为128MB）。
 - 写入操作会清除之前剪贴板中的所有内容。
@@ -662,9 +615,7 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 **描述：**
 
-清空剪贴板中的数据。
-
-**使用场景**：需要清除剪贴板中的数据时使用，如退出应用时清除敏感数据。
+清空剪贴板中的数据。适用于需要清除剪贴板中的数据时使用，如退出应用时清除敏感数据。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 **起始版本：** 13
 
@@ -688,7 +639,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 **描述：**
 
-获取剪贴板中的MIME类型。典型使用场景包括：判断剪贴板数据类型以选择合适的处理方式、在粘贴前检查数据类型是否支持等。
+获取剪贴板中的MIME类型。典型使用场景包括：判断剪贴板数据类型以选择合适的处理方式、在粘贴前检查数据类型是否支持等。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 **起始版本：** 14
 
@@ -703,7 +654,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 | 类型 | 说明 |
 | -- | -- |
-| char ** | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
+| char ** | 执行成功时返回剪贴板所有内容的MIME类型数组的指针，否则返回nullptr。数组大小由count参数指示。 |
 
 ### OH_Pasteboard_GetDataParams_Create()
 
@@ -715,15 +666,13 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 创建剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)指针及实例对象。当应用需要获取剪贴板数据并监控进度（如大文件拷贝场景）时，应用按需调用[OH_Pasteboard_GetDataParams_SetProgressIndicator](#oh_pasteboard_getdataparams_setprogressindicator)、[OH_Pasteboard_GetDataParams_SetDestUri](#oh_pasteboard_getdataparams_setdesturi)、[OH_Pasteboard_GetDataParams_SetFileConflictOptions](#oh_pasteboard_getdataparams_setfileconflictoptions)接口配置进度条指示选项、拷贝文件时目标路径、文件冲突选项。
 
-**使用场景**：需要获取剪贴板数据并监控进度（如大文件拷贝、远端数据粘贴等场景），或需要自定义粘贴行为（如指定目标路径、处理文件冲突）时使用。
-
 **起始版本：** 15
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_GetDataParams_Destroy()
 
@@ -733,15 +682,11 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 
 **描述：**
 
-销毁剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)指针指向的实例对象。调用此函数后，Pasteboard_GetDataParams对象被释放，参数配置随之失效。如果在获取粘贴数据过程中销毁参数对象，可能导致进度回调无法正常触发。
-
-**配对调用：**
+销毁剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)指针指向的实例对象。调用此函数后，Pasteboard_GetDataParams对象被释放，参数配置随之失效。如果在获取粘贴数据过程中销毁参数对象，可能导致进度回调无法正常触发。适用于不再需要Pasteboard_GetDataParams对象时，销毁释放资源。
 
 - 此方法与[OH_Pasteboard_GetDataParams_Create](#oh_pasteboard_getdataparams_create)配对使用。
 - 必须在[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)调用完成后销毁参数对象。
 - 不能在进度回调函数中调用此方法销毁。
-
-**使用场景**：不再需要Pasteboard_GetDataParams对象时，应销毁释放资源。
 
 **起始版本：** 15
 
@@ -754,7 +699,7 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 ### OH_Pasteboard_GetDataParams_SetProgressIndicator()
 
 ```c
-void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params,Pasteboard_ProgressIndicator progressIndicator)
+void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params, Pasteboard_ProgressIndicator progressIndicator)
 ```
 
 **描述：**
@@ -778,9 +723,7 @@ void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, co
 
 **描述：**
 
-设置拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件复制处理。
-
-**使用场景**：需要将剪贴板中的文件拷贝到指定目标路径时设置。
+设置拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件复制处理。适用于需要将剪贴板中的文件拷贝到指定目标路径时设置。
 
 **起始版本：** 15
 
@@ -790,21 +733,17 @@ void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, co
 | -- | -- |
 | [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | const char* destUri | 定义拷贝文件目标路径。路径需为绝对路径格式，且应用需具有该路径的读写权限。 |
-| uint32_t destUriLen | 定义拷贝文件目标路径长度，单位：字节。 |
+| uint32_t destUriLen | 定义拷贝文件目标路径的长度（含字符串结束符），单位：字节。该值必须等于 destUri所指向字符串的实际长度。传入0或与实际长度不符时，接口调用失败。 |
 
 ### OH_Pasteboard_GetDataParams_SetFileConflictOptions()
 
 ```c
-void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params,Pasteboard_FileConflictOptions option)
+void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params, Pasteboard_FileConflictOptions option)
 ```
 
 **描述：**
 
-向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)设置文件冲突选项。调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)时，需将已设置文件冲突选项的[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)作为参数传入。
-
-**使用场景**：拷贝文件时，目标路径存在同名文件，需要设置冲突处理策略。
-
-**参数选取原则**：
+向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)设置文件冲突选项。调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)时，需将已设置文件冲突选项的[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)作为参数传入。适用于拷贝文件时，目标路径存在同名文件，需要设置冲突处理策略。
 
 - PASTEBOARD_OVERWRITE：需要确保使用最新文件内容时选择覆盖。
 - PASTEBOARD_SKIP：需要保留原有文件时选择跳过。
@@ -821,14 +760,12 @@ void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams
 ### OH_Pasteboard_GetDataParams_SetProgressListener()
 
 ```c
-void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params,const OH_Pasteboard_ProgressListener listener)
+void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params, const OH_Pasteboard_ProgressListener listener)
 ```
 
 **描述：**
 
-向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)设置进度上报回调函数。
-
-**使用场景**：需要自定义进度显示UI或后台静默处理粘贴任务时，通过设置此回调函数来接收进度更新。
+向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)设置进度上报回调函数。适用于需要自定义进度显示UI或后台静默处理粘贴任务时，通过设置此回调函数来接收进度更新。
 
 **起始版本：** 15
 
@@ -871,13 +808,8 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 
 **描述：**
 
-取消正在进行的粘贴操作。该函数用于中断[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)执行过程中的数据传输。调用后，当前粘贴操作将被终止，已传输的部分数据可能保留或清理，取决于具体操作状态。取消后如需再次获取剪贴板数据，需重新调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)。
+取消正在进行的粘贴操作。该函数用于中断[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)执行过程中的数据传输。调用后，当前粘贴操作将被终止，已传输的部分数据可能保留或清理，取决于具体操作状态。取消后如需再次获取剪贴板数据，需重新调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)。适用于用户主动取消、错误中断传输，或限制粘贴超时等情形。
 
-**使用场景**：适用于用户主动取消、错误中断传输，或限制粘贴超时等情形。
-
-**约束和限制：**
-
-- 仅在调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)且操作未完成时有效。
 - 取消操作是异步的，可能不会立即生效。
 - 取消操作不可逆，一旦取消，如需要获取剪贴板数据，需要重新开始粘贴流程。
 
@@ -892,7 +824,7 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 ### OH_Pasteboard_GetDataWithProgress()
 
 ```c
-OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)
+OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)
 ```
 
 **描述：**
@@ -941,13 +873,7 @@ uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 执行成功时返回剪贴板内容的变化次数，否则返回0。 |
-
-**返回值说明:**
-
-- 当剪贴板内容过期（如设备重启、剪贴板服务重启或数据生命周期结束）或调用OH_Pasteboard_ClearData等接口导致剪贴板内容为空时，内容变化次数不会因此改变。
-- 系统重启或剪贴板服务异常重启时，剪贴板内容变化次数重新从0开始计数。
-- 对同一内容连续多次复制会被视作多次更改，每次复制均会导致内容变化次数增加。
+| uint32_t | 执行成功时返回剪贴板内容的变化次数，否则返回0。<br> 当剪贴板内容过期或调用OH_Pasteboard_ClearData等接口导致剪贴板内容为空时，内容变化次数不会因此改变。<br> 系统重启或剪贴板服务异常重启时，剪贴板内容变化次数重新从0开始计数。对同一内容连续多次复制会被视作多次更改，每次复制均会导致内容变化次数增加。 |
 
 ### OH_Pasteboard_SyncDelayedDataAsync()
 

@@ -1,12 +1,11 @@
 # Working with Cleanup Hooks Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:38:56.776Z pushedAt=2026-08-12T11:06:06.565Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:28:59.279Z pushedAt=2026-09-16T08:21:09.089Z -->
 
 ## Introduction
 
@@ -17,7 +16,6 @@ Node-API provides APIs for adding and removing cleanup hooks, which are called t
 Before using Node-API to add or remove cleanup hooks, understand the following concepts:
 
 - Resource management<br>In ArkTS, you need to manage system resources, such as memory, file handles, and network connections. Properly creating, using, and releasing these resources during the lifecycle of the Node-API module can prevent resource leaks and application breakdown. Resource management usually includes initializing resources, clearing resources when required, and performing necessary operations when clearing resources, such as closing a file or disconnecting from the network.
-
 - Hook function<br>A hook function is a callback that is automatically executed at the specified time or upon a specific event. When an environment or a process exits, not all the resources can be automatically reclaimed immediately. In the context of a Node-API module, the cleanup hooks are a supplement that ensures release of all the resources occupied.
 
 So far, you've learnt resource management in ArkTS and cleanup hook functions. Read on to learn the Node-API interfaces that you can use to perform resource management with cleanup hooks.
@@ -157,7 +155,6 @@ wk.onmessage = (message) => {
   wk.terminate();
 };
 ```
-
 <!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
 ``` TypeScript
@@ -269,7 +266,6 @@ static napi_value NapiAsyncCleanUpHook(napi_env env, napi_callback_info info)
 ```
 
 Since the uv.h library is used, add the following configuration to the CMakeLists file:
-
 ```text
 // CMakeLists.txt
 target_link_libraries(entry PUBLIC libace_napi.z.so libuv.so)

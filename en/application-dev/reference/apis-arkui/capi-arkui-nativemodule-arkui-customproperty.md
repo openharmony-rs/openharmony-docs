@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=37c3eeefe7b688ea9a99b3085bbf86f97d566239 translatedAt=2026-09-18T11:31:20.138Z pushedAt=2026-09-20T08:29:58.685Z -->
 
 ```c
 typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
@@ -12,7 +13,7 @@ typedef struct ArkUI_CustomProperty ArkUI_CustomProperty
 
 ## Overview
 
-Defines custom property information.
+Defines custom property information, which is used to represent the custom property of a component. You can use related APIs to add, remove, and obtain custom properties for ArkUI components, and obtain the string values of custom properties.
 
 **Since**: 14
 
@@ -23,8 +24,8 @@ Defines custom property information.
 **Related APIs**
 | Name                                                                             | Description|
 |---------------------------------------------------------------------------------| -- |
-| [OH_ArkUI_NodeUtils_AddCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_addcustomproperty) | Sets a custom property for a component.|
+| [OH_ArkUI_NodeUtils_AddCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_addcustomproperty) | Adds a custom property for the specified component. |
 | [OH_ArkUI_NodeUtils_RemoveCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_removecustomproperty) | Removes a custom property that has been set for the specified component.|
-| [OH_ArkUI_NodeUtils_GetCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_getcustomproperty) | Obtains the value of a custom property of the specified component.|
-| [OH_ArkUI_CustomProperty_Destroy](capi-native-type-h.md#oh_arkui_customproperty_destroy) | Destroys a **CustomProperty** instance.|
-| [OH_ArkUI_CustomProperty_GetStringValue](capi-native-type-h.md#oh_arkui_customproperty_getstringvalue) | Obtains the value of a custom property.|
+| [OH_ArkUI_NodeUtils_GetCustomProperty](capi-native-node-h.md#oh_arkui_nodeutils_getcustomproperty) | Obtains the custom property of a component and returns an **ArkUI_CustomProperty** instance through a handle. |
+| [OH_ArkUI_CustomProperty_Destroy](capi-native-type-h.md#oh_arkui_customproperty_destroy) | Destroys an **ArkUI_CustomProperty** instance. |
+| [OH_ArkUI_CustomProperty_GetStringValue](capi-native-type-h.md#oh_arkui_customproperty_getstringvalue) | Obtains the string value of a custom property. |

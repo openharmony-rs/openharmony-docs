@@ -831,9 +831,9 @@ struct AlertDialogExample {
 
 ### 示例9（设置弹窗的沉浸光感效果）
 
-该示例通过[AlertDialogParam](#alertdialogparam对象说明)中的systemMaterial属性设置组件的系统材质，实现沉浸光感效果。
+该示例通过[AlertDialogParam](#alertdialogparam对象说明)中的systemMaterial属性设置组件的系统材质，实现沉浸光感效果。设置系统材质后，AlertDialog弹出过程中会有非线性形变和边缘流光。
 
-组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在AlertDialogParam中新增了systemMaterial属性。
 

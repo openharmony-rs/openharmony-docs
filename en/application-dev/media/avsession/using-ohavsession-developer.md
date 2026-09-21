@@ -1,12 +1,11 @@
 # AVSession Provider (C/C++)
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:05:43.337Z pushedAt=2026-08-22T06:45:15.026Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:54:16.544Z pushedAt=2026-09-15T13:38:23.467Z -->
 
 The OHAVSession module provides C APIs to implement an AVSession provider. An audio and video application needs to access the AVSession service as a provider in order to display media information in the controller (for example, Media Controller) and respond to playback control commands delivered by the controller.
 
@@ -33,7 +32,6 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 ## How to Develop
 
 To access a local session with the NDK, perform the following steps:
-
 1. Create and activate a session. Pass the session type `AVSession_Type`, a custom TAG, and the bundle name and Ability name of the application.
 
    <!-- @[create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
@@ -47,12 +45,10 @@ To access a local session with the NDK, perform the following steps:
    **AVSession_Type** can be set to any of the following types:
 
    - SESSION_TYPE_AUDIO
-
    - SESSION_TYPE_VIDEO
-
    - SESSION_TYPE_VOICE_CALL
-
    - SESSION_TYPE_VIDEO_CALL
+
 
 2. Set the metadata of the media asset to be played.
 
@@ -136,23 +132,14 @@ To access a local session with the NDK, perform the following steps:
    > - After calling a registration API, call the corresponding unregistration API when the service ends to avoid exceptions.
 
    Currently, the following playback control commands are supported:
-
    - Play
-
    - Pause
-
    - Stop
-
    - Play previous
-
    - Play next
-
    - Rewind
-
    - Fast forward
-
    - Seek
-
    - Favorite
 
    <!-- @[control_command](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
@@ -189,7 +176,6 @@ To access a local session with the NDK, perform the following steps:
    |OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnRewind   callback, void* userData) | Registers a callback for the rewind operation.    |
    |OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek   callback, void* userData) | Registers a callback for the seek operation. |
    |OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession,   OH_AVSessionCallback_OnToggleFavorite callback, void* userData) | Registers a callback for the favorite operation. |
-
 5. When the audio and video application exits and does not need to continue playback, cancel the listener and destroy the AVSession object. The example code is as follows:
 
    <!-- @[destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->

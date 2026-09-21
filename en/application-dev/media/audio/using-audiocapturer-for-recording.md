@@ -1,12 +1,11 @@
 # Using AudioCapturer for Audio Recording (ArkTS)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=65bb9604a921f234d3e9f4b6d8fc347f11f12a39 translatedAt=2026-08-06T01:52:28.390Z pushedAt=2026-08-06T09:03:22.441Z -->
+<!-- md-trans-meta sourceCommit=adc4147325c7a699cf993a4c3c77a45afc993b6d translatedAt=2026-09-14T09:44:34.392Z pushedAt=2026-09-15T13:37:34.401Z -->
 
 The AudioCapturer is used to record Pulse Code Modulation (PCM) audio data. It is suitable if you have extensive audio development experience and want to implement more flexible recording features.
 
@@ -71,12 +70,16 @@ The following examples are code snippets. You can obtain the [complete sample](h
    ```
 
 2. Call [on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11) to subscribe to the audio data read callback.
-
    > **NOTE**
    > 
-   > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
-   > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
-   > - **Callback registration**: You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks.
+   > - **Thread management**: Using multiple threads to process data reads is not recommended. If you must use multiple threads to read data, manage the threads properly.
+   > - **Time-consuming tasks in threads**: Do not perform time-consuming tasks in the thread where the `readData` method runs. Otherwise, the data processing thread may respond to callbacks with delay, causing audio issues such as missing recording data, stuttering, and noise.
+   > - **Callback registration**: Avoid registering callbacks on the main thread, because the callbacks may be blocked by other services and fail to respond in time, causing stuttering. Use a dedicated asynchronous thread pool to process callbacks.
+   > - **High-load blocking risk**: In high-load scenarios, the ArkTS execution context that hosts the callbacks may be continuously occupied by tasks of other services, delaying callback scheduling. Such scenarios cause issues similar to main-thread blocking, such as missing recording data, stuttering, or noise. When handling high load, reduce the execution frequency of non-essential tasks in the same execution context, avoid running multiple timer tasks simultaneously, and suspend other non-critical services if necessary.
+   > - **Recording overload confirmation**: During recording, the system audio module writes audio input data into the recording buffer shared with the application-side audio client, and the application-side audio client reads data from this buffer. When the rate at which the application side reads data is lower than the rate at which the system audio module writes data, unprocessed data keeps accumulating. When the remaining writable space in the shared buffer cannot hold a complete audio frame, the system audio module determines that an overload has occurred. In this case, the input data is not written to the shared buffer, and the application side cannot read the data. The overload count records the detected overloads. An ArkTS application can call [getOverflowCount()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcount12) or [getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcountsync12) to query the number of overloaded audio frames. From API version 26.0.0 onward, when you use [printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo) to output a recording snapshot, you can also view the `overflowCount` in it for problem locating after recording ends. During high load or task queue backlog, if the overload count keeps increasing, prioritize reducing task contention, limiting the queue length, or proactively stopping the recording stream.
+   > - **Service muting**: Currently, recording muting can be implemented in the following ways.
+   >   1. When the recording stream must remain running during muting: The application copies the captured data in the `readData` callback, sets all sample data in the copy to the mute value, and then saves or sends it. The mute value for signed PCM format is `0`; the mute value for the `SAMPLE_FORMAT_U8` format is `0x80`.
+   >   2. When the service allows stopping data capture during muting: The application proactively stops the recording stream and restarts it when recording is needed again, replacing muting with stopping capture.
 
    <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
 
@@ -153,7 +156,6 @@ The following examples are code snippets. You can obtain the [complete sample](h
    ```
 
 5. Call [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8) to destroy the instance and release resources.
-
    <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
 
    ``` TypeScript
@@ -523,6 +525,4 @@ try {
 
 Echo cancellation effectively eliminates echo interference during recording on supported devices, thereby improving audio capture quality. You can enable this feature by specifying particular microphone audio [source types](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) (**SOURCE_TYPE_VOICE_COMMUNICATION** or **SOURCE_TYPE_LIVE**). Once enabled, the system automatically processes the captured audio signal to cancel echoes.
 
-Before enabling this feature, you are advised to call [isAcousticEchoCancelerSupported](../../reference//apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20) to check whether the device supports echo cancellation for the audio input [source type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). (This API is available since API version 20.) If supported, you can activate the echo cancellation processing by setting the corresponding microphone audio source when creating the audio capturer.
-
-<!--no_check-->
+Before enabling this feature, you are advised to call [isAcousticEchoCancelerSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isacousticechocancelersupported20) to check whether the device supports echo cancellation for the audio input [source type](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8). (This API is available since API version 20.) If supported, you can activate the echo cancellation processing by setting the corresponding microphone audio source when creating the audio capturer.

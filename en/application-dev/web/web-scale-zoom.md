@@ -1,12 +1,11 @@
 # Zooming Web Pages
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=48c435b7d12dee891c0f5c79440e6921f900744d translatedAt=2026-08-14T03:50:40.622Z pushedAt=2026-08-14T09:42:38.121Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:18:26.815Z pushedAt=2026-09-15T13:41:47.338Z -->
 
 ArkWeb supports gesture zoom, mouse wheel zoom, and keyboard zoom, allowing users to adjust the display to a comfortable size. It also provides the capability of listening for and controlling the page zoom scale for applications to achieve personalized visual effects.
 
@@ -218,7 +217,6 @@ struct WebComponent {
   }
 }
 ```
-
 ![zoom-by-step](./figures/zoom-by-step.gif)
 
 ### Zooming to Target Scale
@@ -271,5 +269,4 @@ struct WebComponent {
   }
 }
 ```
-
 ![zoom-to-target](./figures/zoom-to-target.gif)

@@ -2,12 +2,13 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=81165a532e10b3d1517ed6f395ac6f3808130ce3 translatedAt=2026-09-15T10:52:54.818Z pushedAt=2026-09-16T07:50:15.684Z -->
 
 ```c
-typedef struct {...} Rdb_KeyInfo
+typedef struct Rdb_KeyInfo {...} Rdb_KeyInfo
 ```
 
 ## Overview
@@ -27,5 +28,6 @@ Defines a struct for the primary key or number of the row that changes.
 | Name                                    | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
 | int count                                | Number of the changed primary keys or row numbers.                          |
-| int type                                 | Type of the primary key. For details, see [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype).|
-| [Rdb_KeyData](capi-rdb-rdb-keydata.md)* data | Pointer to the changed data.                                          |
+| int type                                 | [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) of the primary key or row number. |
+| [Rdb_KeyData](capi-rdb-rdb-keydata.md)* data | Specific data that has changed.                                           |
+

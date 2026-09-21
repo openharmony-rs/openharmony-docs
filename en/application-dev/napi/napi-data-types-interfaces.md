@@ -1,12 +1,11 @@
 # Node-API Data Types and APIs
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=5c6e465f4cb7e5e44777311b9850301a734295d4 translatedAt=2026-08-12T06:28:16.922Z pushedAt=2026-08-12T12:00:35.772Z -->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:02:20.841Z pushedAt=2026-09-16T08:15:40.470Z -->
 
 ## Data Types
 
@@ -121,7 +120,7 @@ Node-API provides the following memory management types:
 
 **napi_handle_scope**
 
-Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management). For details about **napi_handle_scope**, see <!--RP1-->Precautions for Lifecycle Management.<!--RP1End-->
+Data used to manage the lifecycle of ArkTS/JS objects. It allows ArkTS/JS objects to remain active within a certain range for use in ArkTS/JS code. When **napi_handle_scope** is created, all ArkTS/JS objects created in this range remain active until the end. This minimizes their lifecycles and [prevents memory leaks](napi-guidelines.md#lifecycle-management).
 
 **napi_escapable_handle_scope**
 
@@ -482,7 +481,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_get_property | Obtains the requested property of an object.|
 | napi_has_property | Checks whether an object has the specified property.|
 | napi_delete_property | Deletes a property from an object.|
-| napi_has_own_property | Checks whether an object has the own property specified by **key**.|
+| napi_has_own_property | Behaves the same as **napi_has_property**. Checks whether the given object has the given property. |
 | napi_set_named_property | Sets a property with the specified name for an object.|
 | napi_get_named_property | Obtains the property with the specified name in an object.|
 | napi_has_named_property | Checks whether an object has the property with the specified name.|
@@ -605,7 +604,6 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-
 **Note**: For details about the restrictions, see [What should I observe when using napi_run_script_path() to execute the abc files in a package](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-65).
 **napi_load_module**
 
@@ -650,7 +648,6 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 ```c
 napi_status napi_create_ark_runtime(napi_env *env);
 ```
-
 [Creating an ArkTS Runtime Environment Using napi_create_ark_runtime and napi_destroy_ark_runtime](use-napi-ark-runtime.md)
 
 **napi_destroy_ark_runtime**
@@ -810,20 +807,17 @@ napi_status napi_wrap_enhance(napi_env env,
 ```
 
 **napi_create_ark_context**
-
 ```c
 napi_status napi_create_ark_context(napi_env env,
                                     napi_env* newEnv);
 ```
 
 **napi_switch_ark_context**
-
 ```c
 napi_status napi_switch_ark_context(napi_env env);
 ```
 
 **napi_destroy_ark_context**
-
 ```c
 napi_status napi_destroy_ark_context(napi_env env);
 ```

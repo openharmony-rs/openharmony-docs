@@ -1,14 +1,14 @@
 # Vibrator Overview
-
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d6ee2f8e5e4a35a47ab1c536d1d3a668f575f4ef translatedAt=2026-08-15T01:45:10.139Z pushedAt=2026-08-15T06:55:46.327Z -->
+<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:24:56.975Z pushedAt=2026-09-20T07:47:33.279Z -->
 
 The **vibrator** module extends the vibrator service via maximizing utilization of vibrator hardware capabilities. By innovatively integrating vibration and interaction, the module takes user interaction efficiency and usability to the next level.
+
 
 ## Working Principles
 
@@ -26,6 +26,10 @@ The vibrator is a Misc device that consists of four modules: Vibrator API, Vibra
 
 - HDF layer: adapts to different devices.
 
+
 ## Constraints
 
 When using a vibrator, you must declare the **ohos.permission.VIBRATE** permission before you can control the vibration effect.
+
+
+

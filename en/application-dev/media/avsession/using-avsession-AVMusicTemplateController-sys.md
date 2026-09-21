@@ -1,12 +1,11 @@
 # Audio Template Overview (for System Applications Only)
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ee34ce1eff50a8cf8b3b2ed4ccfabed4f0b661c translatedAt=2026-08-15T01:57:14.696Z pushedAt=2026-08-15T09:02:13.350Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:51:10.161Z pushedAt=2026-09-15T13:38:14.464Z -->
 
 Starting from API version 23, you can create an audio template controller to provide unified UI management (playlists, favorites, media details, etc.) and media playback control operations (play, pause, search, favorites, etc.) for other media apps that have connected to the audio template. This document describes the system API capabilities of the audio template and the basic development process, including listening for media apps connecting to the audio template, querying media app service data, and sending operation commands to media apps. For details about how a media app connects to the audio template, see [Using the Audio Template](using-avsession-AVMusicTemplate.md).
 
@@ -33,11 +32,8 @@ The basic development steps for the audio template system are as follows:
 1. Create an audio template controller (create one for each media app that accesses the audio template; do not create duplicates), listen for audio template creation and destruction states, and synchronously create and destroy the audio template controller. The following APIs are required:
 
    - [createAVMusicTemplateController](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplatecreateavmusictemplatecontroller): Creates an audio template controller. Requires the sessionId parameter.
-
    - [getAllAVMusicTemplateDescriptors](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplategetallavmusictemplatedescriptors): Obtains all audio template descriptors. Since a media app may create an audio template before the process starts, the sessionId cannot be obtained through the audio template creation event. You can obtain the sessionId through this method after the process starts.
-
    - [onAVMusicTemplateCreate](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatecreate): Listens for audio template creation events.
-
    - [onAVMusicTemplateDestroy](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatedestroy): Listens for audio template destruction events.
 
    ``` TypeScript

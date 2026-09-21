@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=12d1028fcf70199551e085d374373cd8377b8d7a translatedAt=2026-08-18T11:00:34.605Z pushedAt=2026-08-18T11:20:32.853Z -->
+<!-- md-trans-meta sourceCommit=bfe80bd4a10e257858de3dc03c61dac42e0178cf translatedAt=2026-09-14T08:28:55.745Z pushedAt=2026-09-14T11:21:13.878Z -->
 
 ## When to Use
 
@@ -15,15 +15,11 @@ The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) 
 An OE client application embeds external documents into its own application. By calling the APIs provided by [content_embed_proxy.h](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md) in the OE framework layer, it can embed external documents, display document snapshots, and launch an OE server application on demand to edit the documents.
 
 Typical use cases include:
-
 - Embedding an Excel spreadsheet into a CAD document and starting Excel to edit the spreadsheet by clicking the embedded object.
-
 - Embedding documents in various formats, such as images and tables, into a document editor.
-
 - Embedding documents from other applications into a note-taking application for cross-application collaboration.
 
 ## Constraints
-
 Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/syscap__ndk_8h.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
@@ -56,18 +52,15 @@ Common APIs are listed in the following table. For more API details, see [OH_Con
 The following example shows the complete process of developing an OE client application using Native APIs.
 
 ### Adding Dynamic Libraries
+Add the following link libraries to **src/main/cpp/CMakeLists.txt** of the Native project.
 
-Add the following libraries to `CMakeLists.txt`.
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# pixelmap
-libpixelmap.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+)
 ```
 
 ### Including Header Files
@@ -393,13 +386,9 @@ EXTERN_C_END
 ### Implementing Interaction Between the Client OE Object and the OE Extension
 
 1. Start the OE Extension component.
-
 2. Query the capabilities of the OE Extension component.
-
 3. Edit a document by notifying the OE server to start a UIAbility.
-
 4. Query the editing status of the OE document.
-
 5. Obtain the OE document snapshot.
 
 ```cpp

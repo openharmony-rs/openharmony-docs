@@ -6,7 +6,7 @@
 <!--Designer: @yzkp-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b33c416f2dabc1fc4149b71a7ef553e301b3c3cc translatedAt=2026-08-13T13:17:17.032Z pushedAt=2026-08-14T07:08:45.607Z -->
+<!-- md-trans-meta sourceCommit=ae81b3f2d0683c907db53658de27a11cdaac52ce translatedAt=2026-09-09T03:07:26.956Z pushedAt=2026-09-09T03:31:35.142Z -->
 
 ## Overview
 
@@ -52,6 +52,8 @@ Declares the APIs for managing ModularObjectExtensionAbility, including querying
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *allExtensionInfos)](#oh_abilityruntime_releaseallextensioninfos) | Releases the ModularObjectExtensionAbility information collection obtained by [OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos). When the ModularObjectExtensionAbility information collection is no longer needed, this API must be called to release the related resources to avoid memory leaks. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle allExtensionInfos, size_t *count)](#oh_abilityruntime_getcountfromallmodobjextensioninfos) | Obtains the number of ModularObjectExtensionAbility information items contained in the ModularObjectExtensionAbility information collection. The returned count can be used to determine the upper index limit when traversing the collection, and works with [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) to access each ModularObjectExtensionAbility information in the collection one by one. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_AbilityRuntime_AllModObjExtensionInfosHandle allExtensionInfos, size_t index, OH_AbilityRuntime_ModObjExtensionInfoHandle *extensionInfo)](#oh_abilityruntime_getmodobjextensioninfobyindex) | Obtains the specified ModularObjectExtensionAbility information from the ModularObjectExtensionAbility information collection by index. The valid index range is [0, count), where count can be obtained by [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos). The obtained ModularObjectExtensionAbility information handle can be used to query the startup mode, process mode, thread mode, and other attributes of the ModularObjectExtensionAbility. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(AbilityBase_Want *want, OH_AbilityRuntime_ConnectOptions *connectOptions, int64_t *connectionId)](#oh_abilityruntime_connectmodularobjectextensionability) | Connects to a ModularObjectExtensionAbility. |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbility(int64_t connectionId)](#oh_abilityruntime_disconnectmodularobjectextensionability) | Disconnects from a ModularObjectExtensionAbility. |
 
 ## Enum Description
 
@@ -107,6 +109,7 @@ Defines the thread mode of ModularObjectExtensionAbility.
 | OH_ABILITY_RUNTIME_THREAD_MODE_BUNDLE = 0 | Indicates that all ModularObjectExtensionAbility instances of the same app share a thread. All instances are executed sequentially in the same thread, minimizing resource overhead, but avoid blocking other instances due to a single instance. |
 | OH_ABILITY_RUNTIME_THREAD_MODE_TYPE = 1 | Indicates that ModularObjectExtensionAbility instances with the same Ability name share a thread. ModularObjectExtensionAbility instances with the same Ability name share a thread, while instances with different Ability names use different threads, balancing resource consumption and concurrency performance. |
 | OH_ABILITY_RUNTIME_THREAD_MODE_INSTANCE = 2 | Indicates that each ModularObjectExtensionAbility instance exclusively occupies a thread. Each ModularObjectExtensionAbility instance has an independent thread without interfering with each other, suitable for scenarios requiring high concurrency or strict response time. |
+
 
 ## Function Description
 
@@ -193,7 +196,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 **Description**
 
-Obtains the component name ([AbilityBase_Element](capi-abilitybase-element.md)) from the specified ModularObjectExtensionAbility information.
+Gets the component name ([AbilityBase_Element](capi-abilitybase-element.md)) from the specified ModularObjectExtensionAbility information. The bundleName, moduleName, and abilityName in element are non-owning pointers that point to the internal data of extensionInfo. Do not release them separately. They are available only while extensionInfo is valid.
 
 **Since**: 26.0.0
 
@@ -243,7 +246,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 
 **Description**
 
-Obtains the information about all registered ModularObjectExtensionAbility instances of the current app, and returns the handle to the ModularObjectExtensionAbility information collection. Use [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos) to obtain the number of elements in the collection, and use [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) to traverse each ModularObjectExtensionAbility information by index to obtain the startup mode, process mode, thread mode, and other attributes.
+Gets the information about all registered ModularObjectExtensionAbility instances of the current application and returns a handle to the ModularObjectExtensionAbility information set. Use [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos) to obtain the information count of the set, and use [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) to traverse each ModularObjectExtensionAbility information by index to obtain attributes such as the launch mode, process mode, and thread mode. After use, call [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos) to release the handle to avoid memory leaks.
 
 **Since**: 26.0.0
 
@@ -289,6 +292,7 @@ Releases the ModularObjectExtensionAbility information collection obtained by [O
 
 [OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos)
 
+
 ### OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos()
 
 ```c
@@ -322,7 +326,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 
 **Description**
 
-Obtains the specified ModularObjectExtensionAbility information from the ModularObjectExtensionAbility information collection by index. The valid index range is [0, count), where count can be obtained through [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos). The obtained ModularObjectExtensionAbility information handle can be used to query the startup mode, process mode, thread mode, and other attributes of the ModularObjectExtensionAbility.
+Obtains the specified ModularObjectExtensionAbility information from the ModularObjectExtensionAbility information collection by index. The valid index range is [0, count), where count can be obtained through [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos). The obtained ModularObjectExtensionAbility information handle can be used to query the startup mode, process mode, thread mode, and other attributes of the ModularObjectExtensionAbility. The returned extensionInfo is a non-owning handle that points to the internal storage of the allExtensionInfos collection. Do not release it separately. It is available only while allExtensionInfos is valid.
 
 **Since**: 26.0.0
 

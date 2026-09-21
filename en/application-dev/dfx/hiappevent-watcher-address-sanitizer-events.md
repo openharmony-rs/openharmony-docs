@@ -86,7 +86,7 @@ The **type** field in address sanitizer event information is described as follow
 
 | Value| Description|
 | -------- | -------- |
-| GWP-ASAN | Error type triggered by [GWP-ASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection).|
+| GWP-ASAN | Error type triggered by GWP-ASan.|
 | UBSAN | Error type triggered by [UBSan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ubsan-detection).|
 | TSAN | Error type triggered by TSan.|
 | FDSAN | Since API version 20, you can subscribe to error types triggered by [fdsan](../napi/fdsan.md).|

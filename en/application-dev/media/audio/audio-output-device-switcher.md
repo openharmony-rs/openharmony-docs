@@ -5,7 +5,7 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=033a67b0a75a80d42a891cac89b2daf9850f8c21 translatedAt=2026-09-01T02:33:11.403Z pushedAt=2026-09-02T02:55:30.808Z -->
+<!-- md-trans-meta sourceCommit=fe6cafc35b7c2ea1e5b32d816e822fcfb388d90d translatedAt=2026-09-14T09:40:57.292Z pushedAt=2026-09-15T13:36:46.512Z -->
 
 When an app outputs audio, the system automatically matches the corresponding output device based on the audio stream type. If the system output device does not meet the app's requirements, the app can implement audio output device routing switch through `AVCastPicker` or `setDefaultOutputDevice`. When an external audio device (such as a Bluetooth headset or a wired headset) is connected, the app can also force media output to switch to the speaker through `setMediaOutputDevice`.
 

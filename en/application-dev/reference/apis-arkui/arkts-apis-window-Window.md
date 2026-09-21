@@ -379,7 +379,7 @@ Moves this window. This API uses an asynchronous callback to return the result. 
 | Name| Type| Mandatory| Description|
 | -------- | ------------------------- | -- | --------------------------------------------- |
 | x        | number                    | Yes| X-coordinate to which the window moves, in px. A positive value indicates a position to the right of the origin, and a negative value indicates a position to the left of the origin. The value must be an integer. Non-integer values are rounded down.|
-| y        | number                    | Yes| Y-coordinate to which the window moves, in px. A positive value indicates a position above the origin, and a negative value indicates a position below the origin. The value must be an integer. Non-integer values are rounded down.|
+| y        | number                    | Yes| Y-coordinate to which the window moves, in px. A positive value indicates a position below the origin, and a negative value indicates a position above the origin. The value must be an integer. Non-integer values are rounded down.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -438,7 +438,7 @@ Moves this window. This API uses a promise to return the result. A value is retu
 | Name| Type| Mandatory| Description|
 | -- | ----- | -- | --------------------------------------------- |
 | x | number | Yes| X-coordinate to which the window moves, in px. A positive value indicates a position to the right of the origin, and a negative value indicates a position to the left of the origin. The value must be an integer. Non-integer values are rounded down.|
-| y | number | Yes| Y-coordinate to which the window moves, in px. A positive value indicates a position above the origin, and a negative value indicates a position below the origin. The value must be an integer. Non-integer values are rounded down.|
+| y | number | Yes| Y-coordinate to which the window moves, in px. A positive value indicates a position below the origin, and a negative value indicates a position above the origin. The value must be an integer. Non-integer values are rounded down.|
 
 **Return value**
 

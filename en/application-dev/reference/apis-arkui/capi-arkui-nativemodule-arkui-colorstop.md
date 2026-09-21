@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4d06e6d604d64a9b64c2360f42cbd3fd13c9290b translatedAt=2026-09-18T11:27:03.379Z pushedAt=2026-09-20T08:03:39.337Z -->
 
 ```c
 typedef struct {...} ArkUI_ColorStop
@@ -12,7 +13,7 @@ typedef struct {...} ArkUI_ColorStop
 
 ## Overview
 
-Defines a gradient color stop.
+Defines a gradient color stop, which is used to configure the gradient effect of a component. It supports defining various gradient styles by combining a color array with a stop array.
 
 **Since**: 12
 
@@ -26,6 +27,8 @@ Defines a gradient color stop.
 
 | Name| Description|
 | -- | -- |
-| const uint32_t* colors | Color array.|
-| float* stops | Position array.|
-| int size | Length of the array.|
+| const uint32_t* colors | Pointer to the color array. The elements in this array correspond to the elements in the **stops** array by index, that is, each color corresponds to the position of a gradient stop. The array length must be the same as the value of **size**. |
+| float* stops | Pointer to the stop array. The elements in this array correspond to the elements in the **colors** array in pairs. The value ranges from 0.0 to 1.0, indicating the position offset of the gradient color. The array length must be the same as the value of **size**. If a value less than 0 is set, it is automatically corrected to 0. |
+| int size | Array length, which must be the same as the actual number of elements in the **colors** and **stops** arrays. Before setting this value, determine the actual number of elements in the **colors** and **stops** arrays. |
+
+

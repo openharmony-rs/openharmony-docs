@@ -1,4 +1,4 @@
-# \@Entry：页面入口
+# @Entry：页面入口
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

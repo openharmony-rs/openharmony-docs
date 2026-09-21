@@ -1,19 +1,23 @@
 # Creating and Using Image Resources
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=160b5b2beee4bcc311002f3e8a787da3e22aeee3 translatedAt=2026-08-04T08:00:02.820Z pushedAt=2026-08-04T08:08:24.793Z -->
+<!-- md-trans-meta sourceCommit=a200f12b3c07f37fb080224a65f9be5397544a01 translatedAt=2026-09-20T06:45:58.912Z pushedAt=2026-09-20T08:15:49.839Z -->
 
-Image is essentially a two-dimensional buffer for storing information required for 3D rendering calculation, such as basic colors and normals.
+Image: a two-dimensional texture resource in 3D rendering, essentially a memory buffer that stores pixel data. It provides the data required for rendering object surfaces, including maps such as base color, normal, metallic, roughness, and ambient occlusion. It can also serve as the texture input of a material or a custom shader, ultimately determining the appearance of an object surface.
 
-ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, and KTX formats and customizing image resources.
+ArkGraphics 3D provides the capability of creating Image resources in JPEG, PNG, and KTX formats and supports customizing the Image resources you need. The support for each format is described in the following table:
+
+| Format | Description |
+|------|----------|
+| JPEG (.jpg/.jpeg) | Supports JPEG files with JFIF, Exif, or ICC Profile markers in the header.<br>On devices running OpenHarmony 7.0.0 or later, JPEG files with DQT, XMP, MPF, or Adobe markers in the header are also supported. |
+| PNG (.png) | Supports standard PNG files. |
+| KTX (.ktx) | Supports files in the KTX format. KTX (Khronos Texture) is a texture container format defined by the Khronos Group, used to store texture data that can be read directly by the GPU. |
 
 ## How to Develop
-
 1. Import the required modules.
 
    Import the core types provided by ArkGraphics 3D in the page script to create objects like scenes, cameras, materials, and images.
@@ -56,7 +60,7 @@ ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, 
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -146,11 +150,8 @@ ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, 
    ```
 
 <!--RP1-->
-
 ## Samples
 
 The following sample is provided to help you better understand how to efficiently use 3D resources:
-
 - [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
-
 <!--RP1End-->

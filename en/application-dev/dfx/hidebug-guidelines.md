@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6e728a6ae8365b95c031233aa4e6a63c3fee6545 translatedAt=2026-07-31T01:31:17.767Z pushedAt=2026-07-31T07:13:33.950Z -->
+<!-- md-trans-meta sourceCommit=d22176aef2aefeb271d9bd1f54001223b0683394 translatedAt=2026-09-20T06:39:18.986Z pushedAt=2026-09-20T08:10:01.082Z -->
 
 HiDebug can obtain the memory, CPU, and GPU data of the system or application processes, and enable process trace collection.
 
@@ -80,76 +80,76 @@ Monitoring the CPU usage is critical to performance analysis during application 
 
 The HiView process obtains and caches the running data of the current CPU every 10 seconds as the benchmark for calculating the CPU usage. The following data is included:
 
-1. System CPU usage data
+1. System CPU usage data:
 
-The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
+   The **/proc/stat** node contains the statistics of the CPU running data since the system is started. You can run the following command on the terminal to view the node information:
 
-``` text
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+   ``` text
+   cat  /proc/stat
+   cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+   ...
+   ```
 
-Fields in the CPU indicator:
+   Fields in the CPU indicator:
 
-The CPU statistics from left to right are as follows (**cpu** indicates the total running data of all CPUs, in jiffies):
+   The CPU statistics from left to right are as follows (**cpu** indicates the total running data of all CPUs, in jiffies):
 
-- **user**: user-mode time occupied by non-low-priority processes (**nice** ≤ 0).
+   - **user**: user-mode time occupied by non-low-priority processes (**nice** ≤ 0).
 
-- **nice**: user-mode time occupied by low-priority processes (**nice** > 0).
+   - **nice**: user-mode time occupied by low-priority processes (**nice** > 0).
 
-- **system**: kernel-mode time.
+   - **system**: kernel-mode time.
 
-- **idle**: idle time (excluding the I/O waiting time).
+   - **idle**: idle time (excluding the I/O waiting time).
 
-- **iowait**: I/O waiting time.
+   - **iowait**: I/O waiting time.
 
-- **irq**: hard interrupt time.
+   - **irq**: hard interrupt time.
 
-- **softirq**: soft interrupt time.
+   - **softirq**: soft interrupt time.
 
-- **steal**: time when a process that is not running on the VM is running in the virtualization environment.
+   - **steal**: time spent on processes not running inside the VM in the virtualization environment.
 
-- **guest**: time when non-low-priority processes (**nice** <= 0) are running on the VM (included in the **user** field).
+   - **guest**: time when non-low-priority processes (**nice** <= 0) are running on the VM (included in the **user** field).
 
-- **guest_nice**: time when low-priority processes (**nice** > 0) are running on the VM (included in the **nice** field).
+   - **guest_nice**: time when low-priority processes (**nice** > 0) are running on the VM (included in the **nice** field).
 
-2. Process/Thread CPU usage data
+2. Process/Thread CPU usage data:
 
-``` text
-// Process CPU running data collected by the kernel
-struct ucollection_process_cpu_item {
-    int pid;
-    unsigned int thread_total;
-    unsigned long long min_flt;
-    unsigned long long maj_flt;
-    unsigned long long cpu_usage_utime; // User-mode CPU running duration
-    unsigned long long cpu_usage_stime;// Kernel-mode CPU running duration
-    unsigned long long cpu_load_time;
-};
-// Thread CPU running data collected by the kernel
-struct ucollection_thread_cpu_item {
-    int tid;
-    char name[16]; // 16 : max length of thread name
-    unsigned long long cpu_usage_utime;// User-mode CPU running duration
-    unsigned long long cpu_usage_stime;// Kernel-mode CPU running duration
-    unsigned long long cpu_load_time;
-};
-```
+   ``` text
+   // Process CPU running data collected by the kernel.
+   struct ucollection_process_cpu_item {
+       int pid;
+       unsigned int thread_total;
+       unsigned long long min_flt;
+       unsigned long long maj_flt;
+       unsigned long long cpu_usage_utime; // CPU running duration in user mode.
+       unsigned long long cpu_usage_stime;// CPU running duration in kernel mode.
+       unsigned long long cpu_load_time;
+   };
+   // Thread CPU running data collected by the kernel.
+   struct ucollection_thread_cpu_item {
+       int tid;
+       char name[16]; // 16 : max length of thread name
+       unsigned long long cpu_usage_utime;// CPU running duration in user mode.
+       unsigned long long cpu_usage_stime;// CPU running duration in kernel mode.
+       unsigned long long cpu_load_time;
+   };
+   ```
 
-You can call the API to obtain the current data, calculate the increments based on the baseline data, and use the following formulas to obtain the CPU usages:
+   You can call the API to obtain the current data, calculate the increments based on the baseline data, and use the following formulas to obtain the CPU usages:
 
-System CPU usage:
+   System CPU usage:
 
-``` text
-(**systemUsage** increment + **niceUsage** increment + **userUsage** increment)/(**userTime** increment + **niceTime** increment + **systemTime** increment + **idleTime** increment + **ioWaitTime** increment + **irqTime** increment + **softIrqTime** increment)
-```
+   ``` text
+   (systemUsage increment + niceUsage increment + userUsage increment) /(userTime increment + niceTime increment + systemTime increment + idleTime increment + ioWaitTime increment + irqTime increment + softIrqTime increment)
+   ```
 
-Process/Thread CPU usage:
+   Process/Thread CPU usage:
 
-``` text
-(**cpu_usage_utime** increment + **cpu_usage_stime** increment)/(ms-level timestamp increment)
-```
+   ``` text
+   (cpu_usage_utime increment + cpu_usage_stime increment) / (ms-level timestamp increment)
+   ```
 
 ### APIs (ArkTS)
 
@@ -274,7 +274,6 @@ Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
                               41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               1 #15 pc 000000000000a21c /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+108)(94ed3a52d7ef751a94358709d11c99545960cdd4)
 ```
-
 The first line contains the thread ID, thread name, CPU time occupied by the target thread during API calling, and the number of samplings of the thread. (The CPU time occupied by the target thread is slightly greater than the actual CPU time during sampling because the API consumes performance.) The number of samplings per unit time may vary depending on the hardware capability and task scheduling uncertainty. Therefore, the sampling parameters of the next period should be dynamically adjusted based on the sampling time and number of samplings of the previous period, so that the actual number of samplings in the total time is as close as possible to the theoretical number of samplings (Sampling frequency (Hz) × Sampling time (ms) × Unit conversion (1s/1000 ms)).
 
 Except the first line, each line indicates a piece of stack information. The following describes the meaning of a line of stack frame information:
@@ -329,7 +328,7 @@ HiDebug provides APIs for setting the threshold of system resource leak detectio
 
 ## Managing GWP-ASan
 
-HiDebug provides the capabilities of enabling and disabling [GWP-ASan](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-gwpasan-detection) and querying the number of days when GWP-ASan is enabled.
+HiDebug provides the capabilities of enabling and disabling GWP-ASan and querying the number of days when GWP-ASan is enabled.
 
 ### APIs (ArkTS)
 
@@ -384,7 +383,7 @@ Starting from API version 26.0.0, HiDebug supports registering a memory dump lis
 
 ## Managing Asynchronous Contexts
 
-Starting from API version 26.0.0, HiDebug provides asynchronous context management APIs for establishing and releasing asynchronous call chain relationships in custom asynchronous task scenarios. With these APIs, you can push and pop an asynchronous context when submitting and completing an asynchronous task, enabling performance analysis tools such as the [hiperf command-line tool](hiperf.md) and the [OH_HiDebug_RequestThreadLiteSampling API](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_requestthreadlitesampling) to trace the complete asynchronous call stack.
+Starting from API version 26.0.0, HiDebug provides asynchronous context management APIs for establishing and releasing asynchronous call chain relationships in custom asynchronous task scenarios. With these APIs, you can push and pop asynchronous contexts when submitting and completing asynchronous tasks, respectively. Only the [hiprofiler](hiprofiler.md#async_type-parameter-details) tuning component supports tracing the complete asynchronous call stack.
 
 > **NOTE**
 >
@@ -393,11 +392,8 @@ Starting from API version 26.0.0, HiDebug provides asynchronous context manageme
 ### Procedure
 
 1. Before submitting an asynchronous task, call [OH_HiDebug_AcquireAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_acquireasynccontext) to obtain an asynchronous context.
-
 2. When submitting an asynchronous task, call [OH_HiDebug_PushAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_pushasynccontext) to push the asynchronous context into the running context of the current thread, establishing the asynchronous call chain.
-
 3. When the asynchronous task is completed, call [OH_HiDebug_PopAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_popasynccontext) to pop the asynchronous context, releasing the asynchronous call chain.
-
 4. After the asynchronous task ends, call [OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext) to release the asynchronous context resources and prevent resource leaks.
 
 ### APIs (C/C++)

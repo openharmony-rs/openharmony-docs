@@ -1,12 +1,11 @@
 # Lifecycle of the Web Component
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=46668cda9aaace36f4a919b8eb13e2e13e40b6ef translatedAt=2026-08-14T03:45:42.570Z pushedAt=2026-08-14T08:19:28.264Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:12:22.400Z pushedAt=2026-09-15T13:41:28.249Z -->
 
 ## Overview
 
@@ -41,7 +40,6 @@ When a custom component is destructed, the [aboutToDisappear](../reference/apis-
 - [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend): triggered only in the main frame when a web page is already loaded. Multi-frame pages may start to be loaded at the same time. Even if the main frame is already loaded, the sub-frames may start to be loaded or continue to be loaded. This callback will not be triggered for the navigation to the same page or the failed navigation. You are advised to execute the JavaScript script in this callback. Note that even if this callback function is received, the next frame may not reflect the DOM status.
 
 ## Statuses of the Abnormal Web Page Loading
-
 - [onOverrideUrlLoading](../reference/apis-arkweb/arkts-basic-components-web-events.md#onoverrideurlloading12): triggered for the host application to obtain control when a URL is about to be loaded to the current web page. The value **true** means to stop loading the URL, and the value **false** means to continue loading the URL. The behavior of **onLoadIntercept()** is different from that of the **onOverrideUrlLoading()** and they are triggered in different timing. Therefore, the two APIs are used in different scenarios. The **onLoadIntercept** event is triggered when **loadUrl** and iframe are loaded, but the **onOverrideUrlLoading** event is not triggered when **loadUrl** and specific iframe are loaded.
 
 - [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9): web callback event, which is triggered when the body of an HTTP response starts to be loaded and a new page is about to be displayed in the rendering process. In this case, the document loading is still in the early stage, so the linked resources such as online CSS and images may not be available.
@@ -172,6 +170,7 @@ When a custom component is destructed, the [aboutToDisappear](../reference/apis-
   }
   ```
 
+
 ## Performance Indicators of Web Component Page Loading
 
 Pay attention to some important performance indicators during web page loading. Such as First Contentful Paint (FCP), First Meaningful Paint (FMP), and Largest Contentful Paint (LCP). The **Web** component provides the following APIs for notifying you of these indicators of online non-PDF web pages. Local web pages and PDF web pages are not supported.
@@ -189,7 +188,6 @@ ArkWeb is a **Web** component platform designed to display web page content for 
 If the web page is suspended when the ArkWeb child process exits abnormally, the application can listen for the [onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9) event to obtain the specific exit cause [RenderExitReason](../reference/apis-arkweb/arkts-basic-components-web-e.md#renderexitreason9) and handle the exception in the callback correspondingly.
 
 **Development in Practice**
-
 ```ts
 import { webview } from '@kit.ArkWeb';
 

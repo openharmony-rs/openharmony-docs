@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-09-01T02:08:44.393Z pushedAt=2026-09-01T10:46:17.930Z -->
+<!-- md-trans-meta sourceCommit=c2b82fd2ac3c56b7fe6f5fc56e974fda85bda0ab translatedAt=2026-09-14T08:23:31.055Z pushedAt=2026-09-14T10:53:47.727Z -->
 
 ## Introduction
 This document guides you through implementing Bluetooth Low Energy (BLE) connection and data transmission between devices in accordance with the Generic Attribute Profile (GATT). When two devices communicate via GATT, they can be distinguished as client and server based on their respective functions. This guide describes the implementation methods for both the client and server.
@@ -34,7 +34,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ### Client
 
 **1. Creating a Client Instance**<br>
-After the client discovers the target device through the device discovery process, it can instantiate a client instance. All subsequent operations will be performed using this client instance.
+After the target device is found through the device discovery process, you can create a client instance. All subsequent operations are based on this client instance. To connect to multiple target devices, create multiple client instances to enable multi-device connections.
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';

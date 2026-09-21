@@ -3772,9 +3772,7 @@ try {
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 Synchronizes the KV store manually.
-> **NOTE**
->
-> **deviceIds** is <!--RP2-->**networkId** in [DeviceInfo](../apis-distributedservice-kit/js-apis-device-manager-sys.md#deviceinfo), which can be obtained by [deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync).<!--RP2End--> The APIs of the **deviceManager** module are system interfaces and available only to system applications.
+
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5250,9 +5248,6 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 Synchronizes the KV store manually.
 
-> **NOTE**
->
-> **deviceIds** is <!--RP2-->**networkId** in [DeviceInfo](../apis-distributedservice-kit/js-apis-device-manager-sys.md#deviceinfo), which can be obtained by [deviceManager.getTrustedDeviceListSync](../apis-distributedservice-kit/js-apis-device-manager-sys.md#gettrusteddevicelistsync).<!--RP2End--> The APIs of the **deviceManager** module are system interfaces and available only to system applications.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 

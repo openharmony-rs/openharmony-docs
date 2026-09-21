@@ -880,7 +880,7 @@ Starts data synchronization using the specified synchronization parameters.
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | Pointer to the target **ArkUI_DragEvent** object.|
 | [OH_UdmfGetDataParams](../apis-arkdata/capi-udmf-oh-udmfgetdataparams.md)* options | Pointer to the **OH_UdmfGetDataParams** object.|
-| char* key | Key value returned after successful data setting. The length of the string must be no less than [UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#udmf_key_buffer_len).|
+| char* key | Key value returned after successful data setting. The length of the string must be no less than [UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#macros).|
 | unsigned int keyLen | Length of the **key** string.|
 
 **Return value**

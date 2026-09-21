@@ -1,12 +1,11 @@
 # AVSession Provider (ArkTS)
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T07:46:18.648Z pushedAt=2026-08-22T07:50:30.254Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:53:04.565Z pushedAt=2026-09-15T13:38:19.820Z -->
 
 An audio and video application needs to access the AVSession service as a provider in order to display media information in the controller (for example, Media Controller) and respond to playback control commands delivered by the controller.
 
@@ -90,9 +89,7 @@ To enable an audio and video application to access the AVSession service as a pr
    ```
 
 2. Set AVSession information, which includes:
-
    - AVMetadata
-
    - AVPlaybackState
 
    The controller will call an API in the **AVSessionController** class to obtain the information and display or process the information.
@@ -197,6 +194,7 @@ To enable an audio and video application to access the AVSession service as a pr
      }
    }
    ```
+
 
 3. Set the UIAbility to be started by the controller. The UIAbility configured here is started when a user operates the UI of the controller, for example, clicking a widget in Media Controller.
 
@@ -451,11 +449,8 @@ To enable an audio and video application to access the AVSession service as a pr
    The following advanced playback control events can be listened for:
 
    - **skipToQueueItem**: triggered when an item in the playlist is selected.
-
    - **handleKeyEvent**: triggered when a key is pressed.
-
    - **outputDeviceChange**: triggered when the output device changes.
-
    - **commonCommand**: triggered when a custom playback control command changes.
 
    <!-- @[advancedPlayback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/AdvancedPlaybackControlEvents.ets) -->

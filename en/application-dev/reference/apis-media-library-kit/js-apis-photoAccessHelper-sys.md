@@ -3322,7 +3322,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 
 isCompatibleDuplicateSupported(bundleName: string): Promise&lt;boolean&gt;
 
-Check result for whether a temporary JPEG copy should be created for the application. This API uses a promise to return the result.
+Checks whether a temporary JPEG copy should be created for an application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -7150,8 +7150,8 @@ Describes the information about a shared media asset.
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | No| No| Media type of the media asset.|
 | displayName | string | No| No| Display name of the media asset.|
 | size | number  | No| No| Size of the media asset file, in bytes.|
-| dateAdded | number | No| No| Data of the added media asset, in seconds.|
-| dateModified | number | No| No| Data of the modified media asset, in seconds.|
+| dateAdded | number | No| No| Timestamp when the media asset is added, in seconds.|
+| dateModified | number | No| No| Timestamp when the media asset is modified, in seconds.|
 | duration | number | No| No| Duration of the video-type media asset, in milliseconds.|
 | width | number | No| No| Width of the media asset, in pixels.|
 | height | number | No| No| Height of the media asset, in pixels.|
@@ -10469,7 +10469,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## HighlightAlbum<sup>12+</sup>
 
-Provides APIs for managing the **Highlights** album.
+Provides APIs for managing the **Highlights** album, which is an automatically generated collection of memorable photos or videos.
 
 **System API**: This is a system API.
 
@@ -13364,7 +13364,7 @@ Defines the key information about an image or video file.
 
 | Name         | Value             | Description                                                      |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| DATE_TRASHED  | 'date_trashed'  | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API.                |
+| DATE_TRASHED  | 'date_trashed'  | Time when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API.                |
 | HIDDEN  | 'hidden'            | Whether the file is hidden. **System API**: This is a system API.                              |
 | CAMERA_SHOT_KEY  | 'camera_shot_key'  | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API.           |
 | USER_COMMENT  | 'user_comment'            | User comment information. **System API**: This is a system API.          |
@@ -13372,7 +13372,7 @@ Defines the key information about an image or video file.
 | DATE_MONTH<sup>11+</sup>  | 'date_month'            | Month when the file was created. **System API**: This is a system API.          |
 | DATE_DAY<sup>11+</sup>  | 'date_day'            | Date when the file was created. **System API**: This is a system API.          |
 | PENDING<sup>11+</sup>  | 'pending'            | Pending state. **System API**: This is a system API.          |
-| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field.|
+| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | Time when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field.|
 | MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | Effect of the moving photo. **System API**: This is a system API.|
 | CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | Cloud enhancement identifier. **System API**: This is a system API.|
 | THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | Whether a thumbnail is generated. **System API**: This is a system API.|

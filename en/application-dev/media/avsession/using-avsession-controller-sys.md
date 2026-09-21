@@ -1,12 +1,11 @@
 # AVSession Controller (for System Applications Only)
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:05:18.209Z pushedAt=2026-08-22T06:38:05.082Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:51:59.039Z pushedAt=2026-09-15T13:38:16.363Z -->
 
 Media Controller preset in OpenHarmony functions as the controller to interact with audio and video applications, for example, obtaining and displaying media information and delivering playback control commands.
 
@@ -23,7 +22,6 @@ You can develop a system application (for example, a new playback control center
 The key APIs used by the controller are classified into the following types:
 
 1. APIs called by the AVSessionManager object, which is obtained by means of import. An example API is **AVSessionManager.createController(sessionId)**.
-
 2. APIs called by the AVSessionController object. An example API is **controller.getAVPlaybackState()**.
 
 Asynchronous JavaScript APIs use either a callback or promise to return the result. The APIs listed below use a callback. They provide the same functions as their counterparts that use a promise.
@@ -116,9 +114,7 @@ To enable a system application to access the AVSession service as a controller, 
    The following session state events are available:
 
    - **sessionCreate**: triggered when a session is created.
-
    - **sessionDestroy**: triggered when a session is destroyed.
-
    - **topSessionChange**: triggered when the top session is changed.
 
    The service state event **sessionServiceDie** is reported when the AVSession service is abnormal.
@@ -172,23 +168,14 @@ To enable a system application to access the AVSession service as a controller, 
    The following media information change events are available:
 
    - **metadataChange**: triggered when the session metadata changes.
-
    - **playbackStateChange**: triggered when the playback state changes.
-
    - **activeStateChange**: triggered when the activation state of the session changes.
-
    - **validCommandChange**: triggered when the valid commands supported by the session changes.
-
    - **outputDeviceChange**: triggered when the output device changes.
-
    - **sessionDestroy**: triggered when a session is destroyed.
-
    - **sessionEvent**: triggered when the custom session event changes.
-
    - **extrasChange**: triggered when the custom media packet of the session changes.
-
    - **queueItemsChange**: triggered when one or more items in the custom playlist of the session changes.
-
    - **queueTitleChange**: triggered when the custom playlist name of the session changes.
 
    The controller can listen for events as required.

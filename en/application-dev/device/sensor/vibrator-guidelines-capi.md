@@ -1,18 +1,18 @@
 # Vibrator Development (C/C++)
-
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d6ee2f8e5e4a35a47ab1c536d1d3a668f575f4ef translatedAt=2026-08-15T01:45:03.717Z pushedAt=2026-08-15T06:54:43.625Z -->
+<!-- md-trans-meta sourceCommit=352fca6d2978ec6438d588ca2b739b6c08b60200 translatedAt=2026-09-20T06:23:36.895Z pushedAt=2026-09-20T07:47:15.994Z -->
 
 ## When to Use
 
 You can set different vibration effects as needed, for example, customizing the vibration intensity, frequency, and duration for button touches, alarm clocks, and incoming calls.
 
 For details about the APIs, see [Vibrator](../../reference/apis-sensor-service-kit/capi-vibrator.md).
+
 
 ## Function Description
 
@@ -33,6 +33,7 @@ Only a fixed duration is passed in, and the device vibrates based on the default
 ### Custom Vibration
 
 Custom vibration enables you to design desired vibration effects by customizing a vibration configuration file and orchestrating vibration forms based on the corresponding rules.
+
 
 ## How to Develop
 

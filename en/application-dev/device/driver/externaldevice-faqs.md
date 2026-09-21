@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=3ef7f69a75e36b1756789f3b838cf0a1fdcb6208 translatedAt=2026-09-01T02:12:45.029Z pushedAt=2026-09-01T11:57:34.168Z -->
+<!-- md-trans-meta sourceCommit=4672a80de73f4c73d2f9912987e31312f5fa3743 translatedAt=2026-09-20T06:19:14.559Z pushedAt=2026-09-20T07:45:41.309Z -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -50,6 +50,16 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 
 According to the solution provided in [What should I do if "code:9568347 error: install parse native so failed" is displayed during HAP installation or error message "TypeError: Cannot read property xxx of undefined" is displayed during HAP running?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5) in application debugging, manually set **abiFilters** in **buildOption/externalNativeOptions** in the **build-profile.json5** file.
 
+## HAP Installation Fails with Error 9568289 After the ohos.permission.ACCESS_DDK_DRIVERS Permission Is Granted
+
+### Symptom
+
+The ACL permission `ohos.permission.ACCESS_DDK_DRIVERS` has been granted and packaged into the HAP application package along with the project, but the error "9568289 grant request permissions failed" is reported during HAP installation.
+
+### Solution
+
+Currently, the application and operation process for the `ohos.permission.ACCESS_DDK_DRIVERS` permission in the application market is under maintenance. If your project uses the [bindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19) and [unbindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19) APIs, you can replace them with the [bindDeviceDriver](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddevicedriverdeprecated-1) and [unbindDevice](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddevicedeprecated-1) APIs. The service functions of these APIs are exactly the same.
+
 ## When Using a DDK API That Sends Data Based on a Buffer, Data Is Not Sent According to the Specified offset and bufferLength
 
 ### Symptom
@@ -92,7 +102,7 @@ Calling the Driver Development Kit C-APIs in a child process created by a driver
 
 The C-APIs provided by the Driver Development Kit can be used only in the DriverExtension process. To manage and communicate with peripherals in other processes, use the APIs provided by [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md), the libusb third-party library, and so on.
 
-## When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Starts Only One Driver Ability
+## When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Supports Starting Only One Driver Ability
 
 ### Symptom
 
@@ -100,4 +110,4 @@ A peripheral device of a certain model is configured in the "vids" and "pids" li
 
 ### Solution
 
-The driver Ability is designed to allow vendors to develop a single driver application for one or more peripheral device models. The specification does not support deploying multiple driver Abilities for the same peripheral device simultaneously. If such a requirement does exist (for example, an upstream party needs to encapsulate USB functionality and distribute it to multiple downstream applications), you can use the [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md) API provided by the USB system service, a third-party library such as libusb, or other similar solutions.
+The driver Ability is designed to allow vendors to develop a single driver application for one or more peripheral device models. The specification does not support deploying multiple driver Abilities for the same peripheral device at the same time. A peripheral with the same `VID/PID` is associated with only one driver Ability. For example, a Ukey vendor provides a driver for online banking applications. If multiple online banking Ukey devices have the same `VID/PID`, the driver Abilities of these online banking applications cannot be started at the same time, and the current binding API does not distinguish driver Abilities with the same `VID/PID`. To encapsulate the functions of peripherals with the same `VID/PID` and provide them to multiple upstream applications, use [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md) provided by the USB system service, or the libusb third-party library.

@@ -1,11 +1,11 @@
 # Switching Call Devices Using Components
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=37990a0e79a11e81d8d443f1722cab9e09a52db4 translatedAt=2026-09-01T02:35:27.140Z pushedAt=2026-09-02T03:34:47.816Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:54:49.405Z pushedAt=2026-09-15T13:38:25.345Z -->
 
 ## Switching Call Output Devices
 

@@ -6,7 +6,7 @@
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=fd21a16670d7ab2013b410804ba37cf2f24a5883 translatedAt=2026-09-01T02:22:33.480Z pushedAt=2026-09-01T13:19:49.981Z -->
+<!-- md-trans-meta sourceCommit=a3465ee9687286e8938442ad1767b0c844bac9c7 translatedAt=2026-09-20T06:26:57.241Z pushedAt=2026-09-20T07:48:02.498Z -->
 
 OpenHarmony Device Connector (hdc) is a command line tool used to interact with devices for debugging, data transfer, log viewing, and application installation. It can run on Windows, Linux, and MacOS to provide efficient and convenient device debugging capabilities.
 
@@ -34,7 +34,7 @@ You can obtain hdc in any of the following ways:
 
 1. Obtain the hdc tool through OpenHarmony SDK. OpenHarmony SDK is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/). No additional configuration is required. hdc is installed in **DevEco Studio/sdk/default/openharmony/toolchains** by default. On macOS, the SDK is installed in **DevEco Studio/Contents**.
 
-2. SDK directory of [Command Line Tools](https://developer.huawei.com/consumer/en/download/). hdc is installed in Command Line **Tools/sdk/default/openharmony/toolchains** by default.
+2. Obtain related tools through the SDK directory of [Command Line Tools](https://developer.huawei.com/consumer/en/download/). hdc is installed in **Command Line Tools/sdk/default/openharmony/toolchains** by default.
 
 hdc supports both USB and wireless connections. You can enable or disable debugging in **Settings** > **System** > **Developer options** on the device. The setting takes effect immediately without restarting the device. If **Developer options** is not enabled, enable it by referring to [Developer Options](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432). For details about the connection mode and procedure, see [USB Connection](#usb-connection) and [TCP Connection](#tcp-connection).
 
@@ -396,6 +396,10 @@ $ hdc -t connect-key1 wait # Use -t to specify the device to be connected when t
    ```
 
    If **Connect OK** is displayed, the connection is successful.
+
+   > **NOTE**
+   >
+   > A maximum of 16 connections are supported. If the number of connections exceeds 16, connection blocking occurs. Wait until an existing connection is released before connecting to a new device.
 
 4. Check the connection.
 
@@ -800,7 +804,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Path of the file to send.|
-| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, `"[Fail]Error opening file: ..."` is displayed.)<br>Path of the media library file: `/mnt/data/<uid>/media_fuse/Photo/` directory and its subdirectories. `<uid>` is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md#hdc-commands). |
+| DEST | Path of the target file.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, `"[Fail]Error opening file: ..."` is displayed.)<br>Path of the media library file: /mnt/data/\<uid\>/media_fuse/Photo/ directory and its subdirectories. \<uid\> is the ID of the current user.<br>For details about how to operate the media library through hdc, see [mediatool](../tools/mediatool.md).|
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|
@@ -845,7 +849,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | Name| Description|
 | -------- | -------- |
 | SOURCE | Destination path on the local device.|
-| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, `"[Fail]Error opening file: ..."` is displayed.)<br>Path of the media library file: `/mnt/data/<uid>/media_fuse/Photo/` directory and its subdirectories. `<uid>` is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md#hdc-commands). |
+| DEST | Path of the file to send.<br>Since API version 21, some operations on the media library file can be performed through hdc. (In earlier versions, `"[Fail]Error opening file: ..."` is displayed.)<br>Path of the media library file: /mnt/data/\<uid\>/media_fuse/Photo/ directory and its subdirectories. \<uid\> is the ID of the current user.<br>For details about media library operations, see [mediatool](../tools/mediatool.md).|
 | -a | Used to retain the file modification timestamp.|
 | -sync | Used to transfer only the files whose **mtime** is updated.<br>**mtime** (modified timestamp): timestamp after modification.|
 | -z | Used to compress and transmit files in LZ4 format. This parameter is unavailable.|

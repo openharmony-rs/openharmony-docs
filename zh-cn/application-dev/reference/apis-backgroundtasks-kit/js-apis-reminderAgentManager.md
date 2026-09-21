@@ -1094,10 +1094,10 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | snoozeContentResourceId<sup>18+</sup> | number | 否 | 是 | 指明延时提醒内容的资源ID，通过`$r(资源名称).id`方法获取。 |
 | notificationId | number | 否 | 是 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖，默认值为0。 |
 | groupId<sup>11+</sup> | string | 否 | 是 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不再提醒后，组内其他提醒也会被取消。 |
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通道渠道类型。 |
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通知渠道类型。 |
 | tapDismissed<sup>10+</sup> | boolean | 否 | 是 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。 |
 | autoDeletedTime<sup>10+</sup> | number | 否 | 是 | 自动清除的时间。<br> 数据格式：时间戳，单位：ms，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
-| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通道渠道类型（不适用于倒计时提醒类型）。 |
+| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通知渠道类型（不适用于倒计时提醒类型）。 |
 | customRingUri<sup>11+</sup> | string | 否 | 是 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。 |
 | ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | 否 | 是 | 指明自定义提示音的音频播放通道，默认为闹钟通道。|
 | fixedTimeZone | [TimeZoneType](#timezonetype) | 否 | 是 | 时区类型，默认为TimeZoneType.DEFAULT。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |

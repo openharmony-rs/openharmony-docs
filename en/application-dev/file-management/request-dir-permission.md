@@ -1,28 +1,24 @@
 # Obtaining and Accessing a User Directory
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a4ab7818ed885325c1c229f68951ad01a4b5d585 translatedAt=2026-08-01T07:27:45.381Z pushedAt=2026-08-01T11:06:17.229Z -->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:19:50.564Z pushedAt=2026-09-15T13:11:59.768Z -->
 
 ## Obtaining and Accessing a User Directory (ArkTS)
 
 You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file-environment.md) to allow a third-party application to access files in a user directory.
 
  **Constraints**
-
  - To use this method, ensure that the device has the following system capability: SystemCapability.FileManagement.File.Environment.FolderObtain. Currently, 2-in-1 devices are supported.<br>Starting from API version 26.0.0, tablet devices are supported.
-
    ```ts
    if (!canIUse('SystemCapability.FileManagement.File.Environment.FolderObtain')) {
        console.error('this api is not supported on this device');
        return;
    }
    ```
-
  - The public directory obtaining API is used only to obtain the public directory path and does not verify the public directory access permission. To access a public directory, you must apply for the corresponding public directory access permission. When a third-party app needs to access a public directory, it must request the user to grant the [Download directory permission](../security/AccessToken/permissions-for-all-user.md#ohospermissionread_write_download_directory), [Documents directory permission](../security/AccessToken/permissions-for-all-user.md#ohospermissionread_write_documents_directory), or [Desktop directory permission](../security/AccessToken/restricted-permissions.md#ohospermissionread_write_desktop_directory). For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 
 ### Example
@@ -34,7 +30,6 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
    import { Environment } from '@kit.CoreFileKit';
    
    ```
-
    <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
 
    ``` TypeScript
@@ -51,6 +46,8 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
    }
    ```
 
+
+
 2. Access files in the **Download** directory.
 
    ```ts
@@ -63,7 +60,6 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    
    ```
-
    <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
 
    ``` TypeScript
@@ -93,6 +89,7 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
    }
    ```
 
+
 3. Save a file to the **Download** directory.
 
    ```ts
@@ -101,7 +98,6 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
    import { fileIo } from '@kit.CoreFileKit';
    
    ```
-
    <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
 
    ``` TypeScript
@@ -122,14 +118,14 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
    }
    ```
 
+
+
 ## Obtaining and Accessing a User Directory (C/C++)
 
 In addition to accessing public directories through ArkTS, you can also access directories through C/C++ APIs. For details, see [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md).
 
  **Constraints**
-
  - The device must have SystemCapability.FileManagement.File.Environment.FolderObtain.
-
  - When a third-party app needs to access a public directory, it must request the user to grant the **Download** directory permission, **Documents** directory permission, or **Desktop** directory permission through a pop-up authorization. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 
 ### Available APIs
@@ -166,8 +162,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <cstdlib>
    
    ```
-
-   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
 
    ``` C++
    void GetUserDownloadDirExample()
@@ -176,12 +171,13 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, download path=%{public}s", downloadPath);
-           free(downloadPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
+       free(downloadPath);
    }
    ```
+
 
 2. Call **OH_Environment_GetUserDownloadDir** to obtain the sandbox path of the user **Download** directory and view the files in the **Download** directory. The sample code is as follows:
 
@@ -190,7 +186,6 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <dirent.h>
    
    ```
-
    <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
 
    ``` C++
@@ -225,13 +220,13 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    }
    ```
 
+
 3. Call **OH_Environment_GetUserDownloadDir** to obtain the sandbox path of the user **Download** directory and save **temp.txt** to the **Download** directory. The sample code is as follows:
 
    ```c++
    #include <fstream>
    
    ```
-
    <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
 
    ``` C++

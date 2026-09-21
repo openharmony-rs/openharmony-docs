@@ -14,7 +14,11 @@
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[select](./ts-basic-components-select.md)。
 
-## menuDistortionMode
+## 属性
+
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+
+### menuDistortionMode
 
 menuDistortionMode(mode: DistortionMode)
 
@@ -34,7 +38,7 @@ menuDistortionMode(mode: DistortionMode)
 | ------ | ------ | ---- | -------------- |
 | mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置系统材质下下拉菜单的扭曲动画模式。 |
 
-## menuEdgeLightMode
+### menuEdgeLightMode
 
 menuEdgeLightMode(mode: EdgeLightMode)
 

@@ -92,7 +92,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_PROXY_CERTIFICATE_INVALID | -136 | HTTPS 代理提供的证书无效。 |
 |ERR_NAME_RESOLUTION_FAILED | -137 | 域名解析时出错（DNS）。|
 |ERR_NETWORK_ACCESS_DENIED | -138 | 网络被禁用。 |
-|ERR_TEMPORARILY_THROTTLED | -139 | 因节流而取消了此请求以避免DDOS。|
+|ERR_TEMPORARILY_THROTTLED | -139 | 因节流而取消了此请求以避免DDoS。|
 |ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT | -140 | 通过HTTPS代理创建SSL隧道连接的请求收到302（响应正文可能包括请求失败原因的描述）。|
 |ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED | -141 | 无法使用客户端证书的私钥对SSL客户端身份验证握手的CertificateVerify数据进行签名。|
 |ERR_MSG_TOO_BIG | -142 | 消息太大，无法传输。（例如，超过大小阈值的UDP消息）。|

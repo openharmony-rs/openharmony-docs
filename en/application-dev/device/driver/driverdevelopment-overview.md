@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=3ef7f69a75e36b1756789f3b838cf0a1fdcb6208 translatedAt=2026-09-02T07:32:08.139Z pushedAt=2026-09-02T07:37:51.029Z -->
+<!-- md-trans-meta sourceCommit=5f9ae49f4b8e860dbba833c52ed50c83453102b4 translatedAt=2026-09-20T06:17:38.684Z pushedAt=2026-09-20T11:33:07.478Z -->
 
 Driver Development Kit (DDK) provides peripheral driver developers with efficient, secure, and feature-rich extended peripheral driver development solutions — ArkTS APIs and C APIs — enabling a seamless plug-and-play experience for end users.
 
@@ -97,27 +97,27 @@ The following table lists the associated modules you may use during development 
 
 ## Driver Application Specifications
 1. Driver application definition
-- A driver application is a user-mode driver for non-standard peripherals, developed using DDK.
-- Driver applications are based on **DriverExtensionAbility**. You must override its lifecycle callback APIs.
+    - A driver application is a user-mode driver for non-standard peripherals, developed using DDK.
+    - Driver applications are based on **DriverExtensionAbility**. You must override its lifecycle callback APIs.
 
 2. Driver application installation and uninstallation policies
-- Installation policy
-  - When a user installs a driver application, the system installs it in all existing user spaces.
-  - When a new user is created, the system installs all previously installed driver applications in that user's space.
-- Uninstallation policy: When a user uninstalls a driver application in any user space, the system uninstalls it from all user spaces.
+    - Installation policy
+      - When a user installs a driver application, the system installs it in all existing user spaces.
+      - When a new user is created, the system installs all previously installed driver applications in that user's space.
+    - Uninstallation policy: When a user uninstalls a driver application in any user space, the system uninstalls it from all user spaces.
 
 3. **DriverExtensionAbility** lifecycle management
-- **ExtensionAbility** is a collective term for scenario-based service extension capabilities (such as user-mode peripheral drivers, service widgets, and input methods), designed to address diverse usage scenarios.
-- The lifecycle of each **ExtensionAbility** is managed by its corresponding SA. The SA calls **connectAbility** to start the ExtensionAbility and drive the execution of its defined service APIs. When the service completes, the SA calls **disconnectAbility** to disconnect. The AMS then determines whether to destroy the ExtensionAbility and its associated process based on whether any SA connection remains active. In the user-mode driver development scenario, the system SA responsible for managing the **DriverExtensionAbility** lifecycle is the driver extension SA.
-- The lifecycle of DriverExtensionAbility depends on when a peripheral is connected, which is reflected in the following aspects:
-  - When a peripheral in the "VID + PID" device list configured for DriverExtensionAbility is connected, its lifecycle interval is the same as the connection period of that peripheral.
-  - When multiple peripherals in the "VID + PID" device list configured for DriverExtensionAbility are connected in sequence, its lifecycle interval lasts from the connection of the first peripheral to the removal of the last peripheral.
-  - When a connected peripheral appears in the "VID + PID" lists configured for multiple DriverExtensionAbility instances, the peripheral affects only the lifecycle of the driver ability installed first. For details, see [When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Starts Only One Driver Ability](./externaldevice-faqs.md#when-multiple-driver-abilities-are-configured-for-the-same-peripheral-device-model-inserting-the-device-starts-only-one-driver-ability).
+    - **ExtensionAbility** is a collective term for scenario-based service extension capabilities (such as user-mode peripheral drivers, service widgets, and input methods), designed to address diverse usage scenarios.
+    - The lifecycle of each **ExtensionAbility** is managed by its corresponding SA. The SA calls **connectAbility** to start the ExtensionAbility and drive the execution of its defined service APIs. When the service completes, the SA calls **disconnectAbility** to disconnect. The AMS then determines whether to destroy the ExtensionAbility and its associated process based on whether any SA connection remains active. In the user-mode driver development scenario, the system SA responsible for managing the **DriverExtensionAbility** lifecycle is the driver extension SA.
+    - The lifecycle of DriverExtensionAbility depends on when a peripheral is connected, which is reflected in the following aspects:
+      - When a peripheral in the "VID + PID" device list configured for DriverExtensionAbility is connected, its lifecycle interval is the same as the connection period of that peripheral.
+      - When multiple peripherals in the "VID + PID" device list configured for DriverExtensionAbility are connected in sequence, its lifecycle interval lasts from the connection of the first peripheral to the removal of the last peripheral.
+      - When a connected peripheral appears in the "VID + PID" lists configured for multiple DriverExtensionAbility instances, the peripheral affects only the lifecycle of the driver ability installed first. For details, see [When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Starts Only One Driver Ability](./externaldevice-faqs.md#when-multiple-driver-abilities-are-configured-for-the-same-peripheral-device-model-inserting-the-device-supports-starting-only-one-driver-ability).
 
 4. API access security control in **DriverExtensionAbility**
-- The system supports building scenario-specific extension abilities based on **ExtensionAbility**. **DriverExtensionAbility** is a type of ability designed for developing user-mode peripheral drivers.
-- Within **DriverExtensionAbility**, only DDK APIs can be accessed to perform access control and data communication for non-standard peripherals.
-- Based on the security constraints and service scenarios in driver development, access to other ArkTS APIs is not allowed within DriverExtensionAbility, which is intended to prevent malicious behavior and data leakage.
-- Restricted ArkTS API access in **DriverExtensionAbility** is implemented as follows:
-  - During initialization and creation of the **Extension** process, system modules are loaded according to the configured list of ArkTS APIs accessible to **DriverExtensionAbility**. At runtime, if a restricted ArkTS API is called within **DriverExtensionAbility**, the call fails because the corresponding system module was not loaded during initialization and creation.
-- For the specific list of ArkTS APIs restricted in **DriverExtensionAbility**, refer to the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).
+    - The system supports building scenario-specific extension abilities based on **ExtensionAbility**. **DriverExtensionAbility** is a type of ability designed for developing user-mode peripheral drivers.
+    - Within **DriverExtensionAbility**, only DDK APIs can be accessed to perform access control and data communication for non-standard peripherals.
+    - Based on the security constraints and service scenarios in driver development, access to other ArkTS APIs is not allowed within DriverExtensionAbility, which is intended to prevent malicious behavior and data leakage.
+    - Restricted ArkTS API access in **DriverExtensionAbility** is implemented as follows:
+      - During initialization and creation of the **Extension** process, system modules are loaded according to the configured list of ArkTS APIs restricted for **DriverExtensionAbility**. At runtime, if a restricted ArkTS API is called within **DriverExtensionAbility**, the call fails because the corresponding system module was not loaded during initialization and creation.
+    - For the specific list of ArkTS APIs restricted in **DriverExtensionAbility**, refer to the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).

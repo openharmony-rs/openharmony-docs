@@ -1,4 +1,4 @@
-# @ohos.hiTraceMeter (Performance Tracing)
+# @ohos.hiTraceMeter (HiTraceMeter)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -392,7 +392,7 @@ Defines a callback to listen for whether the trace capture is enabled.
 
 registerTraceListener(callback: TraceEventListener): number
 
-Registers a callback to notify whether the application trace capture is enabled. This API uses a synchronous callback to return the result.
+Registers a callback to notify whether the application trace capture is enabled. This API uses an asynchronous callback to return the result.
 
 After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes.
 

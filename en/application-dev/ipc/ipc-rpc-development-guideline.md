@@ -1,12 +1,11 @@
 # IPC and RPC Development (ArkTS)
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=a058faf9554a4e15f6e3d83e8300a629fbc557db translatedAt=2026-08-04T13:29:15.897Z pushedAt=2026-08-05T06:56:22.419Z -->
+<!-- md-trans-meta sourceCommit=f53f479c948b7d761add3f3c61f2e6504fc60aa9 translatedAt=2026-09-14T09:37:20.296Z pushedAt=2026-09-15T13:36:11.419Z -->
 
 ## When to Use
 
@@ -16,18 +15,17 @@ IPC/RPC is used to implement object communication across processes (one-to-one m
 
 > **NOTE**
 >
-> - Before performing IPC & RPC inter-process communication, you need to obtain the proxy object of the server through Ability Kit.
+> - Before performing IPC&RPC inter-process communication, obtain the proxy object of the server through Ability Kit.
 >
-> - Third-party applications do not support implementing inter-process communication on their own. A third-party application can only connect to the **ServiceExtensionAbility** provided by the system through [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), and communicate with the [ServiceExtensionAbility](../application-models/extensionability-overview.md) through the returned proxy, thereby achieving communication between the third-party application and the system service.
+> - Third-party applications cannot implement inter-process communication. A third-party application can only connect to the ServiceExtensionAbility provided by the system through [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), and communicate through the returned proxy object [ServiceExtensionAbility](../application-models/extensionability-overview.md), thereby achieving communication between the third-party application and system services.
 >
-> - Starting from API version 20, on 2-in-1 devices, you can use the **AppServiceExtensionAbility** component to provide background service capabilities for applications. Third-party applications can connect to **AppServiceExtensionAbility** through [connectAppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), and communicate with [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) through the returned proxy object, thereby achieving communication between two third-party applications. For detailed development steps, see [AppServiceExtensionAbility](../application-models/app-service-extension-ability.md#connecting-to-a-background-service).
+> - Starting from API version 20, on 2-in-1 devices, you can use the AppServiceExtensionAbility component to provide background service capabilities for applications. A third-party application can connect to AppServiceExtensionAbility through [connectAppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), and communicate with [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) through the returned proxy object, thereby achieving communication between third-party applications. For detailed development steps, see [AppServiceExtensionAbility](../application-models/app-service-extension-ability.md#connecting-to-a-background-service).
 >
-> - Third-party applications can also implement inter-process communication by [subscribing to common events in dynamic mode](../basic-services/common-event/common-event-subscription.md).
+> - Third-party applications can also perform inter-process communication by [dynamically subscribing to common events](../basic-services/common-event/common-event-subscription.md).
 >
-> - The complete IPC & RPC communication development process involves the implementation of the system **ServiceExtensionAbility**, so this guide only provides sample code for the client.
+> - The complete IPC&RPC communication development process involves the implementation of the system ServiceExtensionAbility. Therefore, this guide provides only the client-side sample code.
 
 <!--Del-->
-
 ### Server Implementation
 
 Create a ServiceExtensionAbility as follows:
@@ -102,7 +100,6 @@ Create a ServiceExtensionAbility as follows:
     }
   }
   ```
-
 <!--DelEnd-->
 
 ### Client Implementation
@@ -441,13 +438,11 @@ Obtain the [permission for multi-device collaboration](../security/AccessToken/p
   ```
 
 <!--Del-->
-
 In the FA model, the [connectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityconnectability7) API is used to connect to an ability.
 
 After IPC is complete, call [disconnectAbility](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitydisconnectability7) to disable the connection. The **connectId** is saved when the service is connected.
 
 <!--code_no_check_fa-->
-
 ``` TypeScript
 import { featureAbility } from '@kit.AbilityKit';
 
@@ -460,7 +455,6 @@ function disconnectCallback() {
 // Use the connectId saved when the service is successfully connected to disable the connection.
 featureAbility.disconnectAbility(connectId, disconnectCallback);
 ```
-
 <!--DelEnd-->
 
 ## Sample
@@ -472,7 +466,5 @@ featureAbility.disconnectAbility(connectId, disconnectCallback);
 For the end-to-end complete example of IPC and RPC development, see the following:
 
 - [Complete IPC Example - Using Parcelable/ArrayBuffer](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/IPC/ObjectTransfer)
-
 - [Complete IPC Example - Passing Strings and Using Death Listener](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/IPC_sendMessage)
-
 - [Complete RPC Example - Passing Strings and Using Death Listener](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/RPC_sendMessage)

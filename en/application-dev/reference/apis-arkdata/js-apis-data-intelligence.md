@@ -5,15 +5,14 @@
 <!--Designer: @cuile44; @fysun17; @AnruiWang-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7c57fe2e8c871d6c8a49dba383d3d523cb8ea605 translatedAt=2026-09-08T10:14:06.777Z pushedAt=2026-09-08T11:02:44.310Z -->
 
 ArkData Intelligence Platform (AIP) provides application data vectorization, which leverages embedding models to convert multi-modal data such as unstructured text and images into semantic vectors.
 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 15. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> Considering the significant computing workload and resources of data vectorization processing, the APIs are only available to 2-in-1 device applications.
+> The initial APIs of this module are supported since API version 15. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -30,7 +29,7 @@ Obtains a text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences:** Before API version 26.0.0, this API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801. Since API version 26.0.0, this API is supported on PCs/2-in-1 devices, phones, and tablets. On other devices, it returns error code 801.
 
 **Parameters**
 
@@ -46,7 +45,7 @@ Obtains a text embedding model. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,6 +75,35 @@ intelligence.getTextEmbeddingModel(textConfig)
   })
 ```
 
+## intelligence.getSupportedCloudModel
+
+getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
+
+Obtains the supported cloud-side model information. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices, phones, and tablets. On other devices, it returns error code 801.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                          | Description                                 |
+| ----------------------------- | ------------------------------------ |
+| Promise&lt;Array&lt;[CloudModelInfo](#cloudmodelinfo)&gt;&gt; | Promise used to return the supported cloud-side model information. |
+
+**Example**
+
+```ts
+intelligence.getSupportedCloudModel()
+  .then((info: Array<intelligence.CloudModelInfo>) => {
+    console.info("Succeeded in getting CloudModelInfo");
+  });
+```
+
 ## intelligence.getImageEmbeddingModel
 
 getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
@@ -84,7 +112,7 @@ Obtains an image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801.
 
 **Parameters**
 
@@ -100,7 +128,7 @@ Obtains an image embedding model. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -138,7 +166,7 @@ Splits text. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801.
 
 **Parameters**
 
@@ -155,7 +183,7 @@ Splits text. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -194,6 +222,8 @@ Represents the configuration an embedded model.
 | version    | [ModelVersion](#modelversion)           | No| No  |Version of the model.|
 | isNpuAvailable | boolean                | No| No  | Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.|
 | cachePath | string                | No | Yes | Local directory for model caching if the NPU is used. The value is in the /*xxx*/*xxx*/*xxx* format, for example, **/data**. The path cannot exceed 512 characters. <br>Default value: **""**|
+| modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | No | Yes   |Type and version information of the cloud-side model. It is configured when a text embedding model is used. Obtain the supported model information through the [getSupportedCloudModel](#intelligencegetsupportedcloudmodel) API. The default value is empty.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can only be used in the stage model. |
+| networkPolicy    | [NetworkPolicy](#networkpolicy)           | No | Yes   |Network policy for downloading the cloud-side model. It is configured when a text embedding model is used. The default value is WIFI_ONLY.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can only be used in the stage model. |
 
 ## ModelVersion
 
@@ -204,6 +234,36 @@ Enumerates the model versions.
 | Name      | Value                  | Description                  |
 | ---------- | ---------- | ---------------------- |
 | BASIC_MODEL     | 0     | Basic embedding model version.  |
+
+## CloudModelInfo
+
+Defines the configuration information of the cloud-side model. It is configured when a cloud-side text vector model is used. You can obtain the cloud-side model information supported by the current device by calling [getSupportedCloudModel](#intelligencegetsupportedcloudmodel).
+
+**Since**: 26.0.0
+
+**System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name     | Type              | Read-only | Optional | Description                                                         |
+| ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
+| modelType    |    string        | No | No   | Model type name, for example, "arkdata_text_embedding": cloud-side text vector model. |
+| modelVersionCode | string                | No | Yes   | Model version. The default value is empty. |
+
+## NetworkPolicy
+
+Enumerates the network policies for downloading cloud-side models.
+
+**Since**: 26.0.0
+
+**System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name       | Value         | Description      |
+|----------|-----------|---------|
+| WIFI_ONLY  | 0 | Downloads the model only over Wi-Fi.|
+| WIFI_AND_CELLULAR  | 1 | Downloads the model over Wi-Fi and cellular networks. |
 
 ## Image
 
@@ -237,6 +297,8 @@ Before calling any of the following APIs, you must obtain a **TextEmbedding** in
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**Device behavior differences**: This API is supported on phones, PCs/2-in-1 devices, and tablets. On other devices, it returns error code 801.
+
 ### loadModel
 
 loadModel(): Promise&lt;void&gt;
@@ -245,7 +307,7 @@ Loads this text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801. Since API version 26.0.0, this API is supported on PCs/2-in-1 devices, phones, and tablets. On other devices, it returns error code 801.
 
 **Return value**
 
@@ -255,7 +317,7 @@ Loads this text embedding model. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -284,7 +346,7 @@ Releases this text embedding model. This API uses a promise to return the result
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801. Since API version 26.0.0, this API is supported on PCs/2-in-1 devices, phones, and tablets. On other devices, it returns error code 801.
 
 **Return value**
 
@@ -294,7 +356,7 @@ Releases this text embedding model. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -325,7 +387,7 @@ Before calling this API, ensure that an embedding model is successfully loaded b
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801. Since API version 26.0.0, this API is supported on PCs/2-in-1 devices, phones, and tablets. On other devices, it returns error code 801.
 
 **Parameters**
 
@@ -341,7 +403,7 @@ Before calling this API, ensure that an embedding model is successfully loaded b
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -375,7 +437,7 @@ Before calling this API, ensure that an embedding model is successfully loaded b
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: Before API version 26.0.0, this API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801. Since API version 26.0.0, this API is supported on PCs/2-in-1 devices, phones, and tablets. On other devices, it returns error code 801.
 
 **Parameters**
 
@@ -391,7 +453,7 @@ Before calling this API, ensure that an embedding model is successfully loaded b
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -419,7 +481,7 @@ textEmbedding.getEmbedding(batchTexts)
 
 Provides APIs for manipulating image embedding models.
 
-Before calling any of the following APIs, you must obtain a **ImageEmbedding** instance by using [intelligence.getImageEmbeddingModel](#intelligencegetimageembeddingmodel).
+Before calling any of the following APIs, you must obtain an **ImageEmbedding** instance by using [intelligence.getImageEmbeddingModel](#intelligencegetimageembeddingmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -431,7 +493,7 @@ Loads this image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801.
 
 **Return value**
 
@@ -441,7 +503,7 @@ Loads this image embedding model. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -470,7 +532,7 @@ Releases this image embedding model. This API uses a promise to return the resul
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801.
 
 **Return value**
 
@@ -480,7 +542,7 @@ Releases this image embedding model. This API uses a promise to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -511,13 +573,13 @@ Before calling this API, ensure that an embedding model is successfully loaded b
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other devices, it returns error code 801.
 
 **Parameters**
 
 | Name      | Type                                   | Mandatory| Description                              |
 | ------------ | --------------------------------------- | ---- | :--------------------------------- |
-| image | [Image](#image) | Yes  | URI of the target image.|
+| image | [Image](#image) | Yes | URI of the input image of the embedding model. |
 
 **Return value**
 
@@ -527,7 +589,7 @@ Before calling this API, ensure that an embedding model is successfully loaded b
 
 **Error codes**
 
-For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AIP Error Codes](errorcode-intelligence.md).
 
 | **ID**| **Error Message**                                                                                                                                   |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
