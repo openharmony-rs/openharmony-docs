@@ -90,13 +90,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let addr: string = '00:11:22:33:AA:FF'; // 扫描获取到的远端设备地址
 let client: ssap.Client;
 try {
-  let arrayBufferProperty = new ArrayBuffer(1);
-  let propertyValue = new Uint8Array(arrayBufferProperty);
+  let valueBuffer = new ArrayBuffer(1);
+  let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
     serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-    value: arrayBufferProperty
+    value: valueBuffer
   };
   client = ssap.createClient(addr); // 同一应用针对同一远端设备只需创建一个实例
   client.setPropertyIndication(property, true).then(() => {

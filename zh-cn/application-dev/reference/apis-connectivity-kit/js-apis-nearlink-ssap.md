@@ -1186,14 +1186,14 @@ import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 订阅客户端的读写请求，收到请求后通过该接口回复
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
+let valueBuffer = new ArrayBuffer(8);
+let descValue = new Uint8Array(valueBuffer);
 descValue[0] = 11;
 descValue[1] = 22;
 let resp: ssap.ServerResponse = {
   address: '00:11:22:33:AA:FF', // 请求方的客户端地址
   requestId: 1, // 请求方传入
-  value: arrayBuffer // 回复的数据
+  value: valueBuffer // 回复的数据
 };
 let server: ssap.Server;
 try {
