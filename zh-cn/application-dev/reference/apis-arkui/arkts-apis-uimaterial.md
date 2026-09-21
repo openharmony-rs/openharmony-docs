@@ -624,6 +624,7 @@ struct NavigationTitleMaterialDemo {
     interactive: true,
     lightEffect: {},
   });
+  @State titleHeight: number = 100;
 
   @Builder
   CustomMenuBuilder() {
@@ -652,7 +653,7 @@ struct NavigationTitleMaterialDemo {
       .justifyContent(FlexAlign.End)
     }
     .width('100%')
-    .height(100)
+    .height(this.titleHeight)
   }
 
   build() {
@@ -662,7 +663,7 @@ struct NavigationTitleMaterialDemo {
       Navigation() {
         // 页面内容
       }
-      .title(this.CustomMenuBuilder())
+      .title({ builder: this.CustomMenuBuilder(), height: this.titleHeight })
     }
     .width('100%')
     .height('100%')
@@ -705,6 +706,7 @@ function systemMaterialStyle() {
 struct NavigationTitleMaterialDemo {
   private materialLevel: uiMaterial.MaterialLevel = uiMaterial.getGlobalMaterialLevel(); // 材质档位由设备决定，应用运行后不会改变
   private isSupported: boolean = uiMaterial.isImmersiveMaterialSupported(); // 是否支持沉浸式材质由设备决定，应用运行后不会改变
+  @State titleHeight: number = 100;
 
   @Builder
   CustomMenuBuilder() {
@@ -751,7 +753,7 @@ struct NavigationTitleMaterialDemo {
     }
     .backgroundColor('#99000000')
     .width('100%')
-    .height(100)
+    .height(this.titleHeight)
   }
 
   build() {
@@ -771,7 +773,7 @@ struct NavigationTitleMaterialDemo {
         .margin({ top: 100 })
         .padding(15)
       }
-      .title(this.CustomMenuBuilder())
+      .title({ builder: this.CustomMenuBuilder(), height: this.titleHeight })
     }
     .width('100%')
     .height('100%')
