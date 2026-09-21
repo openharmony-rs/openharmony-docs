@@ -78,7 +78,7 @@
     - [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md)
     - [MediaKeySession](capi-avplayer-mediakeysession.md)
     - [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md)
-    - [AVPlayerCallback](capi-avplayer-avplayercallback.md)
+    - [废弃的Struct (AVPlayerCallback, deprecated)](capi-avplayer-avplayercallback.md)
     - [OH_AVPlayer](capi-avplayer-oh-avplayer.md)
     - [OH_AVRecorder_Profile](capi-avrecorder-oh-avrecorder-profile.md)
     - [OH_AVRecorder_Location](capi-avrecorder-oh-avrecorder-location.md)
