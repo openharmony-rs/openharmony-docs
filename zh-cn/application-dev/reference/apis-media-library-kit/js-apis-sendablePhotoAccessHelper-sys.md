@@ -429,7 +429,7 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
-从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出通用错误码[201 API权限校验失败](../errorcode-universal.md#201-API权限校验失败)。
+从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出通用错误码[201 api权限校验失败](../errorcode-universal.md#201-api权限校验失败)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

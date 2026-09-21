@@ -350,7 +350,7 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-API功能在部分设备不支持)错误码。
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 **系统接口：** 此接口为系统接口。
 
@@ -409,7 +409,7 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-API功能在部分设备不支持)错误码。
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 **系统接口：** 此接口为系统接口。
 
