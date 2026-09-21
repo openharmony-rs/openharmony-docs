@@ -70,12 +70,11 @@
     
   ```ts
   function onDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
-    depthDataOutput.on('depthDataAvailable', (err: BusinessError, depthData: camera.DepthData) => {
+    depthDataOutput.on('depthDataAvailable', (err: BusinessError) => {
       if (err !== undefined && err.code !== 0) {
-        console.error('Depth data error = ', err.code);
         return;
       }
-      console.info(`Depth data available: ${depthData}`);
+      console.info('Depth data available');
     });
   }
   ```
