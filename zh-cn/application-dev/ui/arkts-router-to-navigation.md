@@ -46,7 +46,7 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button('router to pageOne', { stateEffect: true, type: ButtonType.Capsule })
+        Button('router to PageOne', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
@@ -75,8 +75,8 @@ struct Index {
 ``` TypeScript
 @Entry
 @Component
-struct pageOne {
-  @State message: string = 'This is pageOne';
+struct PageOne {
+  @State message: string = 'This is PageOne';
 
   build() {
     Row() {
@@ -120,7 +120,7 @@ struct Index1 {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pathStack.pushPathByName('navigation_pageOne', null);
+            this.pathStack.pushPathByName('navigation_PageOne', null);
           })
       }.width('100%').height('100%')
     }
@@ -191,13 +191,13 @@ Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UI
 
 ``` TypeScript
 // push page
-this.getUIContext().getRouter().pushUrl({ url:'pages/pageOne', params: null });
+this.getUIContext().getRouter().pushUrl({ url:'pages/PageOne', params: null });
 
 // pop page
-this.getUIContext().getRouter().back({ url: 'pages/pageOne' });
+this.getUIContext().getRouter().back({ url: 'pages/PageOne' });
 
 // replace page
-this.getUIContext().getRouter().replaceUrl({ url: 'pages/pageOne' });
+this.getUIContext().getRouter().replaceUrl({ url: 'pages/PageOne' });
 
 // clear all page
 this.getUIContext().getRouter().clear();
@@ -234,15 +234,15 @@ struct Index {
 ``` TypeScript
 this.pathStack.pop();
 // push page
-this.pathStack.pushPath({ name: 'pageOne' });
+this.pathStack.pushPath({ name: 'PageOne' });
 
 // pop page
 this.pathStack.pop();
 this.pathStack.popToIndex(1);
-this.pathStack.popToName('pageOne');
+this.pathStack.popToName('PageOne');
 
 // replace page
-this.pathStack.replacePath({ name: 'pageOne' });
+this.pathStack.replacePath({ name: 'PageOne' });
 
 // clear all page
 this.pathStack.clear();
@@ -250,8 +250,8 @@ this.pathStack.clear();
 // 获取路由栈大小
 let size: number = this.pathStack.size();
 
-// 删除栈中name为pageOne的所有页面
-this.pathStack.removeByName('pageOne');
+// 删除栈中name为PageOne的所有页面
+this.pathStack.removeByName('PageOne');
 
 // 删除指定索引的页面
 this.pathStack.removeByIndexes([1, 3, 5]);
@@ -262,11 +262,11 @@ this.pathStack.getAllPathName();
 // 获取索引为1的页面参数
 this.pathStack.getParamByIndex(1);
 
-// 获取pageOne页面的参数
-this.pathStack.getParamByName('pageOne');
+// 获取PageOne页面的参数
+this.pathStack.getParamByName('PageOne');
 
-// 获取pageOne页面的索引集合
-this.pathStack.getIndexByName('pageOne');
+// 获取PageOne页面的索引集合
+this.pathStack.getIndexByName('PageOne');
 // ...
 ```
 
@@ -390,7 +390,7 @@ struct CustomNode {
     Row() {
       Button('Method 4: queryNavigationInfo')
         .onClick(() => {
-          this.pathStack.pushPath({ name: 'pageTwo' });
+          this.pathStack.pushPath({ name: 'PageTwo' });
         })
     }
   }

@@ -217,7 +217,7 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
       const DOMAIN = 0x0000;
       this.pageStack.pushDestination({
         name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
@@ -229,7 +229,7 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
       ``` TypeScript
       const DOMAIN = 0x0000;
       this.pageStack.pushDestinationByName('pageTwo', 'PageTwo Param').catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestinationByName]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestinationByName]success.');
@@ -279,13 +279,13 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
    ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    const DOMAIN = 0x0000;
    // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
    this.pageStack.replaceDestination({ name: 'pageTwo', param: 'PageTwo Param' })
      .catch((error: BusinessError) => {
-       hilog.info(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
+       hilog.error(DOMAIN, 'testTag', '[replaceDestination]failed', 'error code = ', error.code,
          'error.message = ', error.message);
      }).then(() => {
      hilog.info(DOMAIN, 'testTag', '[replaceDestination]success.');
@@ -370,7 +370,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
-
+   
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
