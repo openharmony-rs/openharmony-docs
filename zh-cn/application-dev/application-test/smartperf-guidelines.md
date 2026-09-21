@@ -918,7 +918,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
    >
    >- 开始采集示例3（采整机和进程cpu负载、gpu、温度、fps、内存信息、DDR信息、网络速率、屏幕截图、线程数）：SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads。
    >
-   >- 开始采集示例4（采整机cpu、gpu、温度、fps、内存信息、DDR信息、网络速率、屏幕截图、线程数并且打印采集信息）：SP_daemon -start -c -g -t -r -d -net -snapshot -threads -print。
+   >- 开始采集示例4（采整机cpu、gpu、温度、内存信息、DDR信息、网络速率、屏幕截图、线程数并且打印采集信息）：SP_daemon -start -c -g -t -r -d -net -snapshot -threads -print。
    >
    >- 开始采集示例5（采整机和进程cpu负载、gpu、温度、fps、内存信息、DDR信息、网络速率、屏幕截图、线程数并且打印采集信息）：SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -print。
    >
@@ -956,8 +956,6 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
     | :-----| :--------------------- |:-----|
     | threadsNum              | 线程总数。              |-|
     | tids                    | 线程id。                |-|
-    | fdTotal                 | 文件描述符总数。         |-|
-    | fds                     | 文件描述符。             |单位：Hz|
     | cpuFrequency            | CPU大中小核频率。        |单位：Hz|
     | cpuUsage                | CPU各核使用率。          |%|
     | cpuidleUsage            | CPU空闲态使用率。        |%| 
@@ -975,7 +973,7 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
     | ProcCpuUsage            | 进程CPU使用率。          |%| 
     | ChildProcCpuUsage       | 子进程CPU使用率。          |%| 
     | ProcUCpuUsage           | 进程用户态CPU使用率。     |%|
-    | ChildProcCpuUsage       | 子进程用户态CPU使用率。          |%| 
+    | ChildProcUCpuUsage       | 子进程用户态CPU使用率。          |%| 
     | ProcSCpuUsage           | 进程内核态CPU使用率。     |%| 
     | ChildProcSCpuUsage      | 子进程内核态CPU使用率。     |%|
     | gpuFrequency            | 整机GPU的频率。          |单位：HZ|
@@ -999,33 +997,33 @@ SmartPerf Device是一款基于系统开发的性能功耗测试工具，操作�
     | pss                     | 进程实际使用内存。      |单位：KB|
     | childpss                | 子进程实际使用内存。      |单位：KB|
     | sharedClean             | 进程共享的未改写页面。      |单位：KB|
-    | childsharedClean        | 子进程共享的未改写页面。      |单位：KB|
+    | childSharedClean        | 子进程共享的未改写页面。      |单位：KB|
     | sharedDirty             | 进程共享的已改写页面。      |单位：KB|
-    | childscharedDirty        | 子进程共享的已改写页面。      |单位：KB|
+    | childSharedDirty        | 子进程共享的已改写页面。      |单位：KB|
     | privateClean           | 进程私有的未改写页面。      |单位：KB|
-    | childprivateClean      | 子进程私有的未改写页面。      |单位：KB|
+    | childPrivateClean      | 子进程私有的未改写页面。      |单位：KB|
     | privateDirty            | 进程私有的已改写页面。      |单位：KB|
-    | childprivateDirty       | 子进程私有的已改写页面。      |单位：KB|
-    | swapTotal               | 进程总的交换内存。          |单位：KB|
-    | childswapTotal          | 子进程总的交换内存。          |单位：KB|
+    | childPrivateDirty       | 子进程私有的已改写页面。      |单位：KB|
+    | swap               | 进程总的交换内存。          |单位：KB|
+    | childSwap          | 子进程总的交换内存。          |单位：KB|
     | swapPss                 | 进程交换的pss内存。        |单位：KB|
-    | childswapPss            | 子进程交换的pss内存。        |单位：KB|
-    | HeapSize                | 进程堆内存大小。           |单位：KB|
+    | childSwapPss            | 子进程交换的pss内存。        |单位：KB|
+    | heapSize                | 进程堆内存大小。           |单位：KB|
     | childHeapSize           | 子进程堆内存大小。           |单位：KB|
     | heapAlloc               | 进程可分配的堆内存大小。    |单位：KB|
-    | ChildHeapAlloc          | 子进程可分配的堆内存大小。    |单位：KB|
+    | childHeapAlloc          | 子进程可分配的堆内存大小。    |单位：KB|
     | heapFree                | 进程剩余的堆内存大小。      |单位：KB|
     | childHeapFree           | 子进程剩余的堆内存大小。      |单位：KB|
     | gpuPss                  | 进程使用的gpu内存大小。     |单位：KB|
-    | childgpuPss             | 子进程使用的gpu内存大小。     |单位：KB|
+    | childGpuPss             | 子进程使用的gpu内存大小。     |单位：KB|
     | graphicPss              | 进程使用的图形内存大小。     |单位：KB|
-    | childgraphicPss         | 子进程使用的图形内存大小。     |单位：KB|
+    | childGraphicPss         | 子进程使用的图形内存大小。     |单位：KB|
     | arktsHeapPss            | 进程使用的arkts内存大小。    |单位：KB|
     | childArktsHeapPss       | 子进程使用的arkts内存大小。    |单位：KB|
     | nativeHeapPss           | 进程使用的native内存大小。   |单位：KB|
-    | childnativeHeapPss      | 子进程使用的native内存大小。   |单位：KB|
+    | childNativeHeapPss      | 子进程使用的native内存大小。   |单位：KB|
     | stackPss                | 进程使用的栈内存大小。       |单位：KB|
-    | childstackPss           | 子进程使用的栈内存大小。       |单位：KB|
+    | childStackPss           | 子进程使用的栈内存大小。       |单位：KB|
     | timeStamp               | 当前时间戳。            |对应采集时间| 
 
 ### 场景化采集
