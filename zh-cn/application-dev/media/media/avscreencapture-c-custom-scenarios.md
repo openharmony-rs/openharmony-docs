@@ -1,4 +1,4 @@
-﻿# AVScreenCapture录屏自定义场景
+# AVScreenCapture录屏自定义场景
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
