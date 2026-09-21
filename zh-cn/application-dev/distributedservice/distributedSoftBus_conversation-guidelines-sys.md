@@ -24,7 +24,7 @@
 - 不同设备间只有相同`bundleName`的应用才能进行消息交互。
 - 目标设备必须是同账号可信设备。
 - 支持系统原生的快速设备唤醒能力，近距离打开蓝牙、Wi-Fi，且Wi-Fi连接同一局域网。
-- 该能力从API版本 26.1.0开始支持。
+- 该能力从API版本 26.0.1开始支持。
 
 ## 环境准备
 
@@ -35,7 +35,7 @@
 ### 搭建环境
 
 1. 在开发PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download)，版本要求在4.1及以上。
-2. 将public-SDK更新到API 26.1.0或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
+2. 将public-SDK更新到API 26.0.1或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到开发PC。
 4. 确保两台设备已开启网络连接，并登录相同账号。
 
