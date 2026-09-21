@@ -46,7 +46,7 @@
 | letter-spacing | &lt;length&gt; | 2px | 否 | 设置文本的字符间距。 |
 | text-align | string | left | 否 | 设置文本的文本对齐方式，可选值为：<br/>-&nbsp;left：文本左对齐；<br/>-&nbsp;center：文本居中对齐；<br/>-&nbsp;right：文本右对齐； |
 | text-overflow | string | clip | 否 | 可选值为：<br/>-&nbsp;clip：将文本根据父容器大小进行裁剪显示；<br/>-&nbsp;ellipsis：根据父容器大小显示，显示不下的文本用省略号代替。 |
-| font-family | string | SourceHanSansSC-Regular | 否 | 字体。 |
+| font-family | string | SourceHanSansSC-Regular | 否 | 字体。从API版本26.2.0开始，支持任意字体。API版本26.2.0之前，仅支持SourceHanSansSC-Regular&nbsp;字体。 |
 | width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0px | 否 | 设置组件自身的宽度。<br/>单位：px<br/>未设置时组件宽度默认为0。 |
 | height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0px | 否 | 设置组件自身的高度。<br/>单位：px<br/>未设置时组件高度默认为0。 |
 | padding | &lt;length&gt; | 0 | 否 | 使用简写属性设置所有的内边距属性。<br/>&nbsp;&nbsp;该属性可以有1到4个值：<br/>-&nbsp;指定一个值时，该值指定四个边的内边距。<br/>-&nbsp;指定两个值时，第一个值指定上下两边的内边距，第二个指定左右两边的内边距。<br/>-&nbsp;指定三个值时，第一个指定上边的内边距，第二个指定左右两边的内边距，第三个指定下边的内边距。<br/>-&nbsp;指定四个值时分别为上、右、下、左边的内边距（顺时针顺序）。 |
