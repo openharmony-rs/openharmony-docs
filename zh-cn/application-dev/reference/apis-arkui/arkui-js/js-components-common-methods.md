@@ -22,10 +22,10 @@ animate( keyframes: Keyframes, options: Options)：void
 
 | 参数名       | 类型      | 必填   | 说明                                   |
 | --------- | --------- | ---- | ------------------------------------ |
-| keyframes | keyframes | 是    | 设置动画样式。                               |
+| keyframes | Keyframes | 是    | 设置动画样式。                               |
 | options   | Options   | 是    | 用于设置动画属性的对象列表。具体参数说明请参见表3 Options说明。 |
 
-  **表1** keyframes
+  **表1** Keyframes
 
 | 属性     | 类型                 | 说明                                     |
 | ------ | ------------------ | -------------------------------------- |

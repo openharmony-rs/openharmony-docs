@@ -364,7 +364,7 @@ NODE_CLIP_SHAPE = 24
    | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
    | .value[1].f32 | 路径宽度，单位为vp。 |
    | .value[2].f32 | 路径高度，单位为vp。 |
-   | .string | 路径绘制的命令字符串。 |
+   | .string | 路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
    | .object | 参数类型为ArkUI_RenderNodeClipOption，路径绘制的命令，在仅传入.object参数时生效。 |
 
 **返回：**
@@ -412,7 +412,7 @@ NODE_CLIP_SHAPE = 24
    | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
    | .value[1].f32 | 路径宽度，单位为vp。 |
    | .value[2].f32 | 路径高度，单位为vp。 |
-   | .string | 路径绘制的命令字符串。 |
+   | .string | 路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
 
 
 ## NODE_TRANSFORM
@@ -882,20 +882,20 @@ NODE_MASK = 45
 
 | 参数项 | 描述 |
 | -- | -- |
-| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
-| 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
-| 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
-| 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串。 |
+| 1.rect类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
+| 2.circle类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
+| 3.ellipse类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
+| 4.path类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串。 |
 | 5.progress类型 | .value[0].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PROGRESS；<br>.value[1].f32：进度遮罩的当前值；<br>.value[2].f32：进度遮罩的最大值；<br>.value[3].u32：进度遮罩的颜色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
-| 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
-| 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
-| 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串。 |
+| 1.rect类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
+| 2.circle类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
+| 3.ellipse类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
+| 4.path类型 | .value[0].u32：填充颜色，0xARGB类型；<br>.value[1].u32：描边颜色，0xARGB类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串，格式遵循SVG path数据语法，如'M0,0 L100,100 Z'。 |
 | 5.progress类型 | .value[0].i32：遮罩类型；<br>.value[1].f32：进度遮罩的当前值；<br>.value[2].f32：进度遮罩的最大值；<br>.value[3].u32：进度遮罩的颜色。 |
 
 ## NODE_BLEND_MODE
@@ -1036,14 +1036,14 @@ NODE_FOREGROUND_COLOR = 53
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb类型，如0xFFFF0000表示红色，默认值为0xFF000000。 |
+| .value[0].u32 | 颜色数值，0xARGB类型，如0xFFFF0000表示红色，默认值为0xFF000000。 |
 | .value[0].i32 | 颜色数值枚举ArkUI_ColoringStrategy。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 颜色数值，0xargb类型。 |
+| .value[0].u32 | 颜色数值，0xARGB类型。 |
 
 ## NODE_OUTLINE_WIDTH
 
@@ -1140,20 +1140,20 @@ NODE_OUTLINE_COLOR = 78
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 统一设置四条边的边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[0].u32 | 设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[1].u32 | 设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[2].u32 | 设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[3].u32 | 设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
+| .value[0].u32 | 统一设置四条边的边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[0].u32 | 设置上侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[1].u32 | 设置右侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[2].u32 | 设置下侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[3].u32 | 设置左侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[1].u32 | 设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[2].u32 | 设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
-| .value[3].u32 | 设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
+| .value[0].u32 | 设置上侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[1].u32 | 设置右侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[2].u32 | 设置下侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
+| .value[3].u32 | 设置左侧边框颜色，使用0xARGB表示，如0xFFFF11FF。 |
 
 ## NODE_COLOR_BLEND
 
@@ -1171,13 +1171,13 @@ NODE_COLOR_BLEND = 81
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 叠加的颜色，使用0xargb表示，默认值为0x00000000。 |
+| .value[0].u32 | 叠加的颜色，使用0xARGB表示，默认值为0x00000000。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 叠加的颜色，使用0xargb表示，如0xFFFF11FF。 |
+| .value[0].u32 | 叠加的颜色，使用0xARGB表示，如0xFFFF11FF。 |
 
 ## NODE_FOREGROUND_BLUR_STYLE
 
