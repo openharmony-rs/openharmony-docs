@@ -182,3 +182,5 @@ filter.hdrBrightnessRatio(2.0)
 
 ## VisualEffect
 VisualEffect效果类，用于将相应的效果添加到指定的组件上。在调用VisualEffect的方法前，需要先通过[createEffect](#uieffectcreateeffect)创建一个VisualEffect实例。
+
+**系统能力：** SystemCapability.Graphics.Drawing
