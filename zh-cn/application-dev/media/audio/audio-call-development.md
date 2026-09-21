@@ -313,7 +313,7 @@ async function start() {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
-      console.error(`${TAG}: start failed`);
+      console.info(`${TAG}: start failed`);
       // ...
       return;
     }
