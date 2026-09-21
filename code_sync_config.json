@@ -27913,7 +27913,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":99,
 						"name":"ability_app_service_five",
 						"start_line":16
 					}
@@ -27923,7 +27923,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":67,
 						"name":"ability_app_service_four",
 						"start_line":16
 					}
@@ -58434,7 +58434,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":28,
 						"name":"dynamic_isolation_process",
 						"start_line":15
 					}
