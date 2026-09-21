@@ -30,7 +30,7 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
    ``` TypeScript
    function testHiDebugArk() {  // 按照需要调用的接口实现
      try {
-       hilog.error(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
+       hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
        hilog.error(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
          error msg: ${(error as BusinessError).message}`);
