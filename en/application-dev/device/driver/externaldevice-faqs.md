@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=212c062cf9929960ddfc3ef82147fe9a963da757 translatedAt=2026-09-16T02:34:30.289Z pushedAt=2026-09-16T03:29:40.414Z -->
+<!-- md-trans-meta sourceCommit=4672a80de73f4c73d2f9912987e31312f5fa3743 translatedAt=2026-09-20T06:19:14.559Z pushedAt=2026-09-20T07:45:41.309Z -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -102,7 +102,7 @@ Calling the Driver Development Kit C-APIs in a child process created by a driver
 
 The C-APIs provided by the Driver Development Kit can be used only in the DriverExtension process. To manage and communicate with peripherals in other processes, use the APIs provided by [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md), the libusb third-party library, and so on.
 
-## When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Starts Only One Driver Ability
+## When Multiple Driver Abilities Are Configured for the Same Peripheral Device Model, Inserting the Device Supports Starting Only One Driver Ability
 
 ### Symptom
 
@@ -110,4 +110,4 @@ A peripheral device of a certain model is configured in the "vids" and "pids" li
 
 ### Solution
 
-The driver Ability is designed to allow vendors to develop a single driver application for one or more peripheral device models. The specification does not support deploying multiple driver Abilities for the same peripheral device simultaneously. If such a requirement does exist (for example, an upstream party needs to encapsulate USB functionality and distribute it to multiple downstream applications), you can use the [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md) API provided by the USB system service, a third-party library such as libusb, or other similar solutions.
+The driver Ability is designed to allow vendors to develop a single driver application for one or more peripheral device models. The specification does not support deploying multiple driver Abilities for the same peripheral device at the same time. A peripheral with the same `VID/PID` is associated with only one driver Ability. For example, a Ukey vendor provides a driver for online banking applications. If multiple online banking Ukey devices have the same `VID/PID`, the driver Abilities of these online banking applications cannot be started at the same time, and the current binding API does not distinguish driver Abilities with the same `VID/PID`. To encapsulate the functions of peripherals with the same `VID/PID` and provide them to multiple upstream applications, use [@ohos.usbManager (USB Management)](../../reference/apis-basic-services-kit/js-apis-usbManager.md) provided by the USB system service, or the libusb third-party library.

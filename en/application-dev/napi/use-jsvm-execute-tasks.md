@@ -6,7 +6,6 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:35:14.921Z pushedAt=2026-08-12T11:02:39.277Z -->
 
 ## Introduction
 

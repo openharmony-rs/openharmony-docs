@@ -1,13 +1,13 @@
-# Controlling and Managing ArkGraphics 3D Scene Animations
+# Controlling and Managing Scene Animations
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:32:27.286Z pushedAt=2026-09-15T13:19:20.878Z -->
+<!-- md-trans-meta sourceCommit=a200f12b3c07f37fb080224a65f9be5397544a01 translatedAt=2026-09-20T06:42:08.756Z pushedAt=2026-09-20T08:12:33.617Z -->
 
-Animation is an important type of resource in a 3D scene and is used to control the movement of various elements in the scene. For example, if a character in a scene needs to perform a walking animation, it would be difficult to calculate and set the rotation angle of each joint for every frame manually. Therefore, to achieve such requirements, 3D scene resource creators usually create animations in advance and store the animation keyframe data and interpolation types between keyframes in the model file.
+Animation: An important resource type in a 3D scene, used to control the movement of various elements in the scene. For example, to make a character in the scene walk, it is difficult to calculate and set the rotation angle of each joint of the character frame by frame. Therefore, for such complex animation requirements, the creators of 3D scene resources prepare the animation in advance and save the keyframe data of the animation and the interpolator type between keyframes in the model file.
 
 ArkGraphics 3D provides APIs for you to play and control animations to achieve the expected rendering effect in the scene.
 

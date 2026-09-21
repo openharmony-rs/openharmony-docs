@@ -6,7 +6,6 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=9f5a4acc05add996b00274735ab728a6b18304d4 translatedAt=2026-08-18T11:04:08.527Z pushedAt=2026-08-18T11:48:32.447Z -->
 
 ArkWeb provides events for entering and exiting the full-screen mode. An application can listen for these events to enter and exit the immersive full-screen mode.
 
