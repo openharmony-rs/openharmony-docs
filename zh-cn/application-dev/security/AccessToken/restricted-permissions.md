@@ -1024,7 +1024,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.GET_AUDIO_ADAPTER_INFO
 
-允许应用获取音频声卡信息。
+允许企业类应用获取音频声卡信息。
 
 <!--RP99--><!--RP99End-->
 
