@@ -954,15 +954,15 @@ let property1: ssap.Property = {
   serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
   value: valueBuffer,
-  operation: ssap.Operation.READABLE | ssap.Operation.WRITE_NO_RESPONSE | ssap.Operation.NOTIFY,
-  descriptors: descriptorsArray1
+  descriptors: descriptorsArray1,
+  operation: ssap.Operation.READABLE | ssap.Operation.WRITE_NO_RESPONSE | ssap.Operation.NOTIFY
 };
 let property2: ssap.Property = {
   serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
   value: valueBuffer,
-  operation: ssap.Operation.WRITE_WITH_RESPONSE | ssap.Operation.NOTIFY,
-  descriptors: descriptorsArray2
+  descriptors: descriptorsArray2,
+  operation: ssap.Operation.WRITE_WITH_RESPONSE | ssap.Operation.NOTIFY
 };
 propertiesArray[0] = property1;
 propertiesArray[1] = property2;
