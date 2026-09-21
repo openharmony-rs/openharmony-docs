@@ -166,7 +166,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit;<br>2.The member parameter must be a string. |
-| 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid;<br>2.Cannnot modify displayName for burst photos;<br>3.Invalid displayName. |
+| 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid;<br>2.Cannot modify displayName for burst photos;<br>3.Invalid displayName. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: 1. Server internal error; 2. Database operation failed. Please retry and check logs;<br>2.Database update failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
@@ -239,7 +239,7 @@ commitModify(): Promise&lt;void&gt;
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit;<br>2.The member parameter must be a string. |
-| 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid;<br>2.Cannnot modify displayName for burst photos;<br>3.Invalid displayName. |
+| 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid;<br>2.Cannot modify displayName for burst photos;<br>3.Invalid displayName. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: 1. Server internal error; 2. Database operation failed. Please retry and check logs;<br>2.Database update failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**

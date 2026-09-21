@@ -436,7 +436,7 @@ title参数规格为：
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters is invalid, expected 1 parameter;<br>2. The title parameter must be a string;<br>3. The title contains unsupported characters or exceeds the length limit (max 255 characters);<br>4. The The ChangeRequest is not a valid object created through the constructor or static factory methods;<br>5. The The PhotoAsset is not a valid PhotoAsset object. |
+| 401 | Parameter error. Possible causes:<br>1. The number of parameters is invalid, expected 1 parameter;<br>2. The title parameter must be a string;<br>3. The title contains unsupported characters or exceeds the length limit (max 255 characters);<br>4. The The ChangeRequest is not a valid object created through the constructor or static factory methods;<br>5. The PhotoAsset is not a valid PhotoAsset object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object;<br>2. System memory insufficient, please retry;<br>3. IPC timeout, please retry. |
 
 **示例：**
@@ -779,7 +779,7 @@ setOrientation(orientation: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The orientation parameter must be a number;<br>2. The orientation value must be 0, 90, 180, or 270;<br>3. The number of parameters is invalid, expected 1 parameter;<br>4. The The ChangeRequest is not a valid object created through the constructor or static factory methods;<br>5. The The PhotoAsset is not a valid PhotoAsset object;<br>6. No pending change request to apply;<br>7. Cannot create or edit asset without data to write;<br>8. Cannot create and edit at the same time;<br>9. Invalid asset change request, the asset ID is invalid;<br>10. Invalid write operation for moving photo. |
+| 401 | Parameter error. Possible causes:<br>1. The orientation parameter must be a number;<br>2. The orientation value must be 0, 90, 180, or 270;<br>3. The number of parameters is invalid, expected 1 parameter;<br>4. The The ChangeRequest is not a valid object created through the constructor or static factory methods;<br>5. The PhotoAsset is not a valid PhotoAsset object;<br>6. No pending change request to apply;<br>7. Cannot create or edit asset without data to write;<br>8. Cannot create and edit at the same time;<br>9. Invalid asset change request, the asset ID is invalid;<br>10. Invalid write operation for moving photo. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例：**
