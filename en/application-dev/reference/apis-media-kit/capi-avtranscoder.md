@@ -1,16 +1,17 @@
 # AVTranscoder
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2bd16f80ccf4f458138e48abde8ec7594ff3ab98 translatedAt=2026-09-15T17:03:02.681Z pushedAt=2026-09-20T12:16:26.075Z -->
 
 ## Overview
 
 The module provides the APIs for requesting the transcoding capability.
 
-You can refer to the corresponding development guide and samples based on your development requirements: [Using AVTranscoder for Video Transcoding](../../media/media/using-ndk-avtranscoder-for-transcodering.md).
+You can refer to the corresponding development guide and samples based on your development requirements: [Using AVTranscoder to Transcode Videos (C/C++)](../../media/media/using-ndk-avtranscoder-for-transcodering.md).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
