@@ -70,6 +70,11 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  节点无法被接纳为附属节点。错误码的详细介绍请参见[106208 节点无法被接纳为附属节点](errorcode-adopt.md#106208-节点无法被接纳为附属节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  节点无法接纳其他节点。错误码的详细介绍请参见[106209 节点无法接纳其他节点](errorcode-adopt.md#106209-节点无法接纳其他节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  节点不是被目标节点接纳的附属节点。错误码的详细介绍请参见[106210 节点不是被父节点接纳的附属节点](errorcode-adopt.md#106210-节点不是被父节点接纳的附属节点)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | 无法获取属性，因为之前未设置该属性。错误码的详细介绍请参见[106211 无法获取属性](errorcode-animation.md#106211-无法获取属性)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | 子动画参数无效。错误码的详细介绍请参见[106212 子动画参数无效](errorcode-animation.md#106212-子动画参数无效)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)上未找到指定的动画组。错误码的详细介绍请参见[106213 在UIContext上未找到指定的动画组](errorcode-animation.md#106213-在uicontext上未找到指定的动画组)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | 检测到同一线程上对动画组接口的重入调用。错误码的详细介绍请参见[106214 检测到同一线程上对动画组接口的重入调用](errorcode-animation.md#106214-检测到同一线程上对动画组接口的重入调用)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | 动画组未处于操作所需的状态。错误码的详细介绍请参见[106215 动画组未处于操作所需的状态](errorcode-animation.md#106215-动画组未处于操作所需的状态)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父节点。错误码的详细介绍请参见[渲染节点错误码](errorcode-node-render.md)。<br>**起始版本：** 20 |
