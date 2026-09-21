@@ -5809,7 +5809,6 @@ rekey(): Promise&lt;void&gt;
 | ------------ | -------------------------------------- |
 | 15100003     | Database corrupted. |
 | 15100005     | Database or result set already closed. |
-| 15100006     | Failed to update the key. |
 
 **示例：**
 
