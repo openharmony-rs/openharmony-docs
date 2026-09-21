@@ -176,7 +176,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
