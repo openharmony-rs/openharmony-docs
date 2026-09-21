@@ -1,12 +1,12 @@
 # Text Display (Text/Span)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:48:31.832Z pushedAt=2026-07-31T01:54:21.493Z -->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-21T02:42:59.101Z pushedAt=2026-09-21T10:10:19.826Z -->
+
 
 Text is a component used to display content in the user view, such as the text of an article. This component supports binding custom text selection menus, allowing users to choose different functions as needed. In addition, you can extend custom menus to enrich available options and further improve the user experience. Span is used to display inline text.
 
@@ -18,6 +18,7 @@ For FAQs, see [Text Display (Text/Span) FAQs](./arkts-text-faq.md#faqs-about-tex
 
 Text can be created in the following two ways:
 
+
 - A string.
 
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
@@ -26,7 +27,9 @@ Text can be created in the following two ways:
   Text('I am a text segment.')
   ```
 
+
 ![text-basic](figures/text-basic.png)
+
 
 - Reference a Resource object.
 
@@ -242,7 +245,7 @@ The following examples illustrate the commonly used APIs.
     .lineHeight(20)
   ```
 
-![radio-default](figures/radio-default.png)
+  ![text-line-height](figures/text-line-height.png)
 
 - Set the text decoration line style, color, and thickness via the [decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration) attribute.
 
@@ -487,7 +490,7 @@ The following examples illustrate the commonly used APIs.
             .borderWidth(1)
             .fontSize(40)
             .contentTransition(this.numberTransition)
-          Button('chang number')
+          Button('change number')
             .onClick(() => {
               this.number++
             })
@@ -500,7 +503,6 @@ The following examples illustrate the commonly used APIs.
     }
   }
   ```
-
   ![Text_content_transition](figures/Text_content_transition.gif)
 
 - Starting from API version 20, you can set whether to optimize trailing spaces during text layout via the [optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20) attribute, which resolves the issue of trailing spaces affecting alignment display.
@@ -748,6 +750,7 @@ Via [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#text
 
 Since the Span component has no size information, it only supports adding the tap event [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) and the hover event [onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover).
 
+
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
 
   ``` TypeScript
@@ -794,17 +797,15 @@ Since the Span component has no size information, it only supports adding the ta
   ![span_event](figures/span_event.gif)
 
 ## Setting the Text Menu
-
 The text menu includes the system menu, AI menu, and custom menu.
 
 The system menu consists of preset menu items that appear automatically without configuration. It includes options such as cut, copy, paste, select all, translate, search, and share, and is suitable for most standard text interactions.
 
 The AI menu is an intelligent operation menu that appears after entities are dynamically recognized through AI-based text analysis. Its menu items include phone numbers, URLs, email addresses, and more (displayed only when the AI recognizes the corresponding entity; not displayed if no entity is detected). The key difference from the system menu is that the AI menu content is determined by AI detection results rather than being fixed, making it suitable for text content that contains entity information.
 
-The custom menu allows you to fully customize the menu content. It requires active API configuration and is suitable for text interactions with specific business requirements.
+A custom menu is a menu whose content is fully customized by the developer. It requires proactive API configuration and is suitable for text interactions with special business requirements.
 
 ### Using the System Menu
-
 When Text is selected, a menu containing **Copy**, **Translate**, and **Search** options appears.
 
 The Text component must have the [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) attribute set to be selectable.
@@ -867,7 +868,6 @@ You can tap an empty area within the Text component area to close the selection 
 ![close_selection_menu](figures/close_selection_menu.gif)
 
 ### Custom Menu Items in System Menu
-
 The Text component extends the custom selection menu via the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) attribute settings. You can set the text content, icon, and callback method for the extension items.
 
   <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
@@ -1271,7 +1271,6 @@ The Text component implements AI menu display via the [enableDataDetector](../re
 > When this feature is in effect, the selected range must contain a complete AI entity for the corresponding options to appear.
 
 - To enable the entity recognition options that pop up when tapping an AI entity, set [enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11) to `true`. The following example shows this:
-
   <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) --> 
 
   ``` TypeScript
@@ -1290,10 +1289,9 @@ The Text component implements AI menu display via the [enableDataDetector](../re
     })
   ```
 
+
 - If needed, to adjust the recognized styles, you can use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11). For details, see the [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11) configuration item.
-
 - If needed, to adjust the menu position, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12). For details, see [Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
-
 <!--RP2--><!--RP2End-->
 
 ### Setting a Custom Menu
@@ -1493,8 +1491,6 @@ This example demonstrates the trending searches list effect using the [maxLines]
   }
   ```
 
+
 ![text-hot-search](figures/text-hot-search.png)
-
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->
