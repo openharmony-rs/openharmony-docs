@@ -49,6 +49,22 @@
 
 当属性支持通知（NOTIFY）操作时，需要为其声明客户端属性值配置描述符：客户端通过[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)开启或关闭该属性的通知，服务端通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)向已开启通知的客户端推送属性变化。
 
+## 客户端如何接收属性变化通知
+
+客户端接收属性变化通知（即收到[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)回调）需同时满足以下条件：
+
+1. 服务端在创建该属性时声明了通知（NOTIFY）操作和客户端属性值配置描述符（CLIENT_PROPERTY_CONFIG）；
+2. 客户端已与服务端成功建立SSAP连接；
+3. 客户端已通过[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)获取到该属性；
+4. 客户端已调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用该属性的通知；
+5. 客户端已调用[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)注册属性变化回调。
+
+满足上述条件后，服务端调用[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)更新属性值时，会向客户端发送属性变化通知。若上述任一条件不满足，客户端将收不到通知。
+
+> **说明：**
+>
+> 连接断开后，已启用的通知会失效，重新连接后需重新调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用。
+
 ## 什么是星闪设备随机地址
 
 星闪设备地址为6字节的媒体接入层标识（MAC地址），字符串由12位十六进制字符与冒号分隔符组成（共17个字符），例如：11:22:33:AA:BB:FF。
