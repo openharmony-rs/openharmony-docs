@@ -1196,7 +1196,7 @@ ArkTS-Sta: getWidths(glyphs: Array\<int>): Array\<double> | undefined
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
@@ -1323,7 +1323,7 @@ ArkTS-Sta: getBounds(glyphs: Array\<int>): Array\<common2D.Rect> | undefined
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<int> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
