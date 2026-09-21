@@ -1,4 +1,4 @@
-# @ohos.screenLock (Screen Lock)
+# @ohos.screenLock (Screen Lock Management)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
@@ -34,16 +34,16 @@ isScreenLocked(callback: AsyncCallback&lt;boolean&gt;): void
 Checks whether the screen is locked. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
+> 
 > This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables. The substitute API is available only for system applications.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **Parameters**
 
-| Name     | Type                         | Mandatory | Description                                                  |
-| -------- | ---------------------------- | --------- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | Yes       | Callback used to return the result. The value **true** means that the screen is locked, and **false** means the opposite. |
+| Name  | Type                        | Mandatory| Description                                                       |
+| -------- | ---------------------------- | ---- | ----------------------------------------------------------- |
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means that the screen is locked, and **false** means the opposite.|
 
 **Example**
 
@@ -126,16 +126,16 @@ isScreenLocked(): Promise&lt;boolean&gt;
 Checks whether the screen is locked. This API uses a promise to return the result.
 
 > **NOTE**
->
+> 
 > This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **Return value**
 
-| Type                   | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the screen is locked, and **false** means the opposite. |
+| Type                  | Description                                        |
+| ---------------------- | ------------------------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the screen is locked, and **false** means the opposite.|
 
 **Example**
 
@@ -152,7 +152,7 @@ ArkTS Example:
   ```
 
 > **NOTE**
-> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API  instead.
+> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API ([isScreenLocked(callback)](#screenlockisscreenlockeddeprecated)) instead.
 
 ## screenLock.isSecureMode<sup>(deprecated)</sup>
 
@@ -161,16 +161,16 @@ isSecureMode(callback: AsyncCallback&lt;boolean&gt;): void
 Checks whether the device is in secure mode. When the device is in secure mode, its screen requires a password, unlock pattern, or other user credentials to unlock. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
+> 
 > This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **Parameters**
 
-| Name     | Type                         | Mandatory | Description                                                  |
-| -------- | ---------------------------- | --------- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | Yes       | Callback used to return the result. The value **true** means that the device is in secure mode, and **false** means the opposite. |
+| Name  | Type           | Mandatory| Description                             |
+| -------- | --------------------- | ---- | ------------------------ |
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means that the device is in secure mode, and **false** means the opposite.|
 
 **Example**
 
@@ -253,16 +253,16 @@ isSecureMode(): Promise&lt;boolean&gt;
 Checks whether the device is in secure mode. When the device is in secure mode, its screen requires a password, unlock pattern, or other user credentials to unlock. This API uses a promise to return the result.
 
 > **NOTE**
->
+> 
 > This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **Return value**
 
-| Type                   | Description                                                  |
+| Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the device is in secure mode, and **false** means the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the device is in secure mode, and **false** means the opposite.|
 
 **Example**
 
@@ -279,7 +279,7 @@ ArkTS Example:
   ```
 
 > **NOTE**
-> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API instead.
+> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API ([isSecureMode(callback)](#screenlockissecuremodedeprecated)) instead.
 
 ## screenLock.unlockScreen<sup>(deprecated)</sup>
 
@@ -288,16 +288,16 @@ unlockScreen(callback: AsyncCallback&lt;void&gt;): void
 Unlocks the screen. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
+> 
 > This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **Parameters**
 
-| Name     | Type                      | Mandatory | Description                                                  |
-| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result. If the screen is unlocked successfully, **err** is **undefined**; otherwise, **err** is an error object. |
+| Name  | Type             | Mandatory| Description            |
+| -------- | ------------- | ---- | --------------- |
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the screen is unlocked successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -380,16 +380,16 @@ unlockScreen(): Promise&lt;void&gt;
 Unlocks the screen. This API uses a promise to return the result.
 
 > **NOTE**
->
+> 
 > This API is supported since API version 7 and deprecated since API version 9 on devices, except for lite wearables.
 
 **System capability**: SystemCapability.MiscServices.ScreenLock
 
 **Return value**
 
-| Type                | Description                    |
-| ------------------- | ------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
 
@@ -406,4 +406,4 @@ ArkTS Example:
   ```
 
 > **NOTE**
-> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API ([unlockScreen(callback)](#screenLockunlockscreendeprecated)) instead.
+> Lite Wearable does not support ES6 syntax such as Promise/async/await. Use the callback form of the API ([unlockScreen(callback)](#screenlockunlockscreendeprecated)) instead.
