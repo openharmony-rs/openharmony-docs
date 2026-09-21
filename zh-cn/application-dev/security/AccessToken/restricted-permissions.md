@@ -1344,9 +1344,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.0.0
+
+**变更信息：** 从API版本26.0.0开始，增加支持在平板、PC/2in1、TV上申请。
 
 ## ohos.permission.KNOCK_COLLABORATION
 
