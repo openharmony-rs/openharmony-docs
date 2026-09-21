@@ -1,5 +1,4 @@
 # @ohos.screenLock (锁屏管理)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
@@ -35,7 +34,7 @@ isScreenLocked(callback: AsyncCallback&lt;boolean&gt;): void
 判断屏幕是否锁屏。使用callback异步回调。
 
 > **说明：**
->
+> 
 > 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。替代接口仅面向系统应用开放。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
@@ -127,15 +126,15 @@ isScreenLocked(): Promise&lt;boolean&gt;
 判断屏幕是否锁屏。使用Promise异步回调。
 
 > **说明：**
->
+> 
 > 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **返回值：** 
 
-| 类型                   | 说明                                                         |
-| ---------------------- | ------------------------------------------------------------ |
+| 类型                   | 说明                                         |
+| ---------------------- | ------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示屏幕已锁屏；返回false表示屏幕未锁屏。 |
 
 **示例：** 
@@ -153,7 +152,7 @@ ArkTS示例：
   ```
 
 > **说明：**
-> Lite Wearable 不支持 Promise/async/await 等 ES6 语法，请使用上述 callback 形式的接口（[isScreenLocked(callback)]#screenLockisscreenlockeddeprecated)）。
+> Lite Wearable 不支持 Promise/async/await 等 ES6 语法，请使用上述 callback 形式的接口（[isScreenLocked(callback)](#screenlockisscreenlockeddeprecated)）。
 
 ## screenLock.isSecureMode<sup>(deprecated)</sup>
 
@@ -162,15 +161,15 @@ isSecureMode(callback: AsyncCallback&lt;boolean&gt;): void
 判断当前设备的屏幕锁定是否安全（安全屏幕锁定意味着解锁屏幕需要密码、图案或其他用户身份识别）。使用callback异步回调。
 
 > **说明：**
->
+> 
 > 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **参数：** 
 
-| 参数名   | 类型                         | 必填 | 说明                                                         |
-| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
+| 参数名   | 类型            | 必填 | 说明                              |
+| -------- | --------------------- | ---- | ------------------------ |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前设备的屏幕锁定安全；返回false表示当前设备的屏幕锁定不安全。 |
 
 **示例：** 
@@ -254,7 +253,7 @@ isSecureMode(): Promise&lt;boolean&gt;
 判断当前设备的屏幕锁定是否安全（安全屏幕锁定意味着解锁屏幕需要密码、图案或其他用户身份识别）。使用Promise异步回调。
 
 > **说明：**
->
+> 
 > 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
@@ -280,7 +279,7 @@ ArkTS示例：
   ```
 
 > **说明：**
-> Lite Wearable 不支持 Promise/async/await 等 ES6 语法，请使用上述 callback 形式的接口（[isSecureMode(callback)]#screenlockissecuremodedeprecated)）。
+> Lite Wearable 不支持 Promise/async/await 等 ES6 语法，请使用上述 callback 形式的接口（[isSecureMode(callback)](#screenlockissecuremodedeprecated)）。
 
 ## screenLock.unlockScreen<sup>(deprecated)</sup>
 
@@ -289,16 +288,16 @@ unlockScreen(callback: AsyncCallback&lt;void&gt;): void
 解锁屏幕。使用callback异步回调。
 
 > **说明：**
->
+> 
 > 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **参数：** 
 
-| 参数名   | 类型                      | 必填 | 说明                                                     |
-| -------- | ------------------------- | ---- | -------------------------------------------------------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。解锁屏幕成功，err为undefined，否则为错误对象。 |
+| 参数名   | 类型              | 必填 | 说明             |
+| -------- | ------------- | ---- | --------------- |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。解锁屏幕成功，err为undefined，否则为错误对象。 |
 
 **示例：** 
 
@@ -381,15 +380,15 @@ unlockScreen(): Promise&lt;void&gt;
 解锁屏幕。使用Promise异步回调。
 
 > **说明：**
->
+> 
 > 从API version 7开始支持，除Lite Wearable外，从API version 9开始废弃。
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
 **返回值：** 
 
-| 类型                | 说明                                   |
-| ------------------- | -------------------------------------- |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例：** 
@@ -407,4 +406,4 @@ ArkTS示例：
   ```
 
 > **说明：**
-> Lite Wearable 不支持 Promise/async/await 等 ES6 语法，请使用上述 callback 形式的接口（[unlockScreen(callback)]#screenlockunlockscreendeprecated)）。
+> Lite Wearable 不支持 Promise/async/await 等 ES6 语法，请使用上述 callback 形式的接口（[unlockScreen(callback)](#screenlockunlockscreendeprecated)）。
