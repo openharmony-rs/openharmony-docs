@@ -74,7 +74,7 @@ onException?(errObject: Error): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| errObject | Error | 是 | 有关异常事件名字、消息和错误堆栈信息的对象。 |
+| errObject | Error | 是 | 有关异常事件名字、消息和错误堆栈信息的对象。当前仅支持默认的Error对象（包含name、message和stack），不支持自定义修改、继承或扩展。 | 
 
 **示例：**
 
