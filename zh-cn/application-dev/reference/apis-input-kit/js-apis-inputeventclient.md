@@ -47,7 +47,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 
 **示例：**
 
@@ -105,7 +105,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 
 **示例：**
 
@@ -163,7 +163,7 @@ createTouchController(): Promise&lt;TouchController&gt;
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 
 **示例：**
 
@@ -234,7 +234,7 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The key is already pressed and is not the most recently pressed key.  |
 
 **示例：**
@@ -305,7 +305,7 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The key is not pressed.  |
 
 **示例：**
@@ -358,7 +358,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300002  | The display does not exist.  |
 
 **示例：**
@@ -425,7 +425,7 @@ pressButton(button: Button): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The mouse button is already pressed.  |
 
 **示例：**
@@ -496,7 +496,7 @@ releaseButton(button: Button): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The mouse button is not pressed.  |
 
 **示例：**
@@ -539,7 +539,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The axis event is in progress.  |
 
 **示例：**
@@ -615,7 +615,7 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The axis event is not in progress.  |
 
 **示例：**
@@ -657,7 +657,7 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception.  |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 | 4300001  | The axis event is not in progress.  |
 
 **示例：**
@@ -725,7 +725,7 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 4300002 | The display does not exist. |
-| 3800001 | Input service exception. |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 
 **示例：**
 
@@ -816,7 +816,7 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
-| 3800001 | Input service exception. |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 
 **示例：**
 
@@ -858,7 +858,7 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
-| 3800001 | Input service exception. |
+| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
 
 **示例：**
 
