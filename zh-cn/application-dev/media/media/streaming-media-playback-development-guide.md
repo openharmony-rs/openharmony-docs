@@ -75,7 +75,7 @@
 
 ``` TypeScript
 this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
 })
 ```
 
@@ -152,7 +152,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
          }
        }
      } else {
-       console.error(`getTrackDescription fail, error:${error}`);
+       console.error(`getTrackDescription failed, error:${error}`);
      }
    });
    ```
