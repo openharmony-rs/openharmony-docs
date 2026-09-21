@@ -23,7 +23,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/js-apis-camera-sys.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/js-apis-camera-sys.md)。
 
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
 
