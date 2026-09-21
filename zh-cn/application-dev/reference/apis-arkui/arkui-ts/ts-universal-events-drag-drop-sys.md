@@ -18,7 +18,7 @@
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[拖拽事件](ts-universal-events-drag-drop.md)。
 
-## DragEvent<sup>7+</sup>
+## DragEvent
 
 拖拽事件信息。
 
@@ -151,8 +151,8 @@ ArkTS-Dyn示例：
 // xxx.ets
 // 动画参数类
 class AnimationOption {
-  CubicCurveEnable: boolean = false;
-  SpringEnable: boolean = false;
+  cubicCurveEnable: boolean = false;
+  springEnable: boolean = false;
   dropAnimationCurve: number[] = [];
   dropPosition: number[] = [];
   dropSize: number[] = [];
@@ -214,8 +214,8 @@ struct FollowHandMorphDemo {
 
           // 构建动画参数
           let animationOption = new AnimationOption();
-          animationOption.CubicCurveEnable = false;
-          animationOption.SpringEnable = true;
+          animationOption.cubicCurveEnable = false;
+          animationOption.springEnable = true;
           animationOption.dropAnimationCurve = [0.416, 0.99, 0];
           animationOption.dropPosition = [830, 600];
           animationOption.dropSize = [100, 100];
@@ -261,8 +261,8 @@ import { Column, Component, Entry, Row, Text, Button, State, DragEvent, DragItem
 
 // 动画参数类
 class AnimationOption {
-  CubicCurveEnable: boolean = false;
-  SpringEnable: boolean = false;
+  cubicCurveEnable: boolean = false;
+  springEnable: boolean = false;
   dropAnimationCurve: number[] = [];
   dropPosition: number[] = [];
   dropSize: number[] = [];
@@ -325,8 +325,8 @@ struct FollowHandMorphDemo {
 
           // 构建动画参数
           let animationOption = new AnimationOption();
-          animationOption.CubicCurveEnable = false;
-          animationOption.SpringEnable = true;
+          animationOption.cubicCurveEnable = false;
+          animationOption.springEnable = true;
           animationOption.dropAnimationCurve = [0.416, 0.99, 0];
           animationOption.dropPosition = [830, 600];
           animationOption.dropSize = [100, 100];
