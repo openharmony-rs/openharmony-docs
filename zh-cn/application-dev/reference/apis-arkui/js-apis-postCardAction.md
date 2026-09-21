@@ -44,9 +44,9 @@ action参数说明：
 | bundleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的包名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的包名，缺省时使用卡片提供方应用的包名。<!--DelEnd--> |
 | moduleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的模块名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的模块名，缺省时使用卡片提供方应用的模块名。<!--DelEnd--> |
 | abilityName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的UIAbility名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的UIAbility名，缺省时使用提供方应用[module.json5配置文件](../../quick-start/module-configuration-file.md)中入口UIAbility对应的名称。<!--DelEnd--> |
-| uri<sup>11+</sup> | string   | 否   | action为router&nbsp;类型时跳转的UIAbility的统一资源标识符。uri和abilityName同时存在时，abilityName优先。<!--Del-->enableRouteSecondPage为true时，uri可与abilityName同时生效，用于跳转到提供方应用的二级页面，仅系统应用支持。<!--DelEnd--><!--Del-->
+| uri<sup>11+</sup> | string   | 否   | action为router&nbsp;类型时跳转的UIAbility的统一资源标识符。uri和abilityName同时存在时，abilityName优先。<!--Del-->enableRouteSecondPage为true时，uri可与abilityName同时生效，用于跳转到提供方应用的二级页面，仅系统应用支持。<!--DelEnd--><!--Del--> |
 | enableRouteSecondPage | boolean | 否 | action为router&nbsp;类型时是否允许uri与abilityName同时生效，以跳转到提供方应用的二级页面，默认为false，仅系统应用支持。<br/>**起始版本：** 26.0.1 |
-| intentName | string | 否 | action为insightIntent&nbsp;类型时指定要执行的意图名称，action为insightIntent&nbsp;类型时必填，仅系统应用支持。<br/>**起始版本：** 26.0.1<!--DelEnd-->
+| intentName | string | 否 | action为insightIntent&nbsp;类型时指定要执行的意图名称，action为insightIntent&nbsp;类型时必填，仅系统应用支持。<br/>**起始版本：** 26.0.1<!--DelEnd--> |
 | params | Object | 否 | 当前action携带的额外参数，内容使用JSON格式的键值对形式。<!--Del-->action为insightIntent&nbsp;类型时，"params"中可填入参数'intentParams'和'executeMode'，详见下方说明。<!--DelEnd--> |
 
 >**说明：**
