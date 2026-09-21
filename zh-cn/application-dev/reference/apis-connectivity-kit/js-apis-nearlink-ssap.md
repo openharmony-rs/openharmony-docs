@@ -927,29 +927,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造属性1的descriptor
 let descriptorsArray1: ssap.PropertyDescriptor[] = [];
-let arrayBuffer1 = new ArrayBuffer(8);
-let descValue1 = new Uint8Array(arrayBuffer1);
-descValue1[0] = 11;
-descValue1[1] = 22;
 let descriptor1: ssap.PropertyDescriptor = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer1,
-  descriptorType: ssap.PropertyDescriptorType.PROPERTY,
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
   isWriteable: true
 };
 descriptorsArray1[0] = descriptor1;
 // 构造属性2的descriptor
 let descriptorsArray2: ssap.PropertyDescriptor[] = [];
-let arrayBuffer2 = new ArrayBuffer(8);
-let descValue2 = new Uint8Array(arrayBuffer2);
-descValue2[0] = 33;
-descValue2[1] = 44;
 let descriptor2: ssap.PropertyDescriptor = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
-  value: arrayBuffer2,
-  descriptorType: ssap.PropertyDescriptorType.PROPERTY,
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
   isWriteable: true
 };
 descriptorsArray2[0] = descriptor2;
@@ -962,14 +954,15 @@ let property1: ssap.Property = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
   value: arrayBufferProperty,
+  operation: ssap.Operation.READABLE | ssap.Operation.WRITE_NO_RESPONSE | ssap.Operation.NOTIFY,
   descriptors:descriptorsArray1
 };
 let property2: ssap.Property = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
   value: arrayBufferProperty,
-  descriptors:descriptorsArray2,
-  operation:12
+  operation: ssap.Operation.WRITE_WITH_RESPONSE | ssap.Operation.NOTIFY,
+  descriptors:descriptorsArray2
 };
 propertiesArray[0] = property1;
 propertiesArray[1] = property2;
@@ -1123,15 +1116,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 构造descriptor
 let descriptorsArray: ssap.PropertyDescriptor[] = [];
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
-descValue[0] = 11;
-descValue[1] = 22;
 let descriptor: ssap.PropertyDescriptor = {
   serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer,
-  descriptorType:ssap.PropertyDescriptorType.PROPERTY,
+  value: new ArrayBuffer(2),
+  descriptorType:ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
   isWriteable:true
 };
 descriptorsArray[0] = descriptor;
