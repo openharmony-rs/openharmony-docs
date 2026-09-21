@@ -411,7 +411,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -482,13 +482,13 @@ try {
   }).catch((err: BusinessError) => {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
   });
-  // 创建property,实际开发时需要通过getServices接口从服务端获取
+  // 创建property，实际开发时需要通过getServices接口从服务端获取
   let valueBuffer = new ArrayBuffer(8);
   // 期望写入的property值
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -564,7 +564,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -928,7 +928,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 构造属性1的descriptor
 let descriptorsArray1: ssap.PropertyDescriptor[] = [];
 let descriptor1: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
   value: new ArrayBuffer(2),
   descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
@@ -938,7 +938,7 @@ descriptorsArray1[0] = descriptor1;
 // 构造属性2的descriptor
 let descriptorsArray2: ssap.PropertyDescriptor[] = [];
 let descriptor2: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
   value: new ArrayBuffer(2),
   descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
@@ -947,29 +947,29 @@ let descriptor2: ssap.PropertyDescriptor = {
 descriptorsArray2[0] = descriptor2;
 // 构造properties
 let propertiesArray: ssap.Property[] = [];
-let arrayBufferProperty = new ArrayBuffer(8);
-let propertyValue = new Uint8Array(arrayBufferProperty);
+let valueBuffer = new ArrayBuffer(8);
+let propertyValue = new Uint8Array(valueBuffer);
 propertyValue[0] = 1;
 let property1: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBufferProperty,
+  value: valueBuffer,
   operation: ssap.Operation.READABLE | ssap.Operation.WRITE_NO_RESPONSE | ssap.Operation.NOTIFY,
-  descriptors:descriptorsArray1
+  descriptors: descriptorsArray1
 };
 let property2: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
-  value: arrayBufferProperty,
+  value: valueBuffer,
   operation: ssap.Operation.WRITE_WITH_RESPONSE | ssap.Operation.NOTIFY,
-  descriptors:descriptorsArray2
+  descriptors: descriptorsArray2
 };
 propertiesArray[0] = property1;
 propertiesArray[1] = property2;
 // 构造服务
 let service: ssap.Service = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
-  properties:propertiesArray
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+  properties: propertiesArray
 };
 let server: ssap.Server;
 try {
@@ -1117,22 +1117,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 构造descriptor
 let descriptorsArray: ssap.PropertyDescriptor[] = [];
 let descriptor: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
   value: new ArrayBuffer(2),
-  descriptorType:ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
-  isWriteable:true
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
+  isWriteable: true
 };
 descriptorsArray[0] = descriptor;
 // 构造properties
-let arrayBufferProperty = new ArrayBuffer(8);
-let propertyValue = new Uint8Array(arrayBufferProperty);
+let valueBuffer = new ArrayBuffer(8);
+let propertyValue = new Uint8Array(valueBuffer);
 propertyValue[0] = 123; // 本次更新后的值
 let property: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray
+  value: valueBuffer,
+  descriptors: descriptorsArray
 };
 let server: ssap.Server;
 try {
