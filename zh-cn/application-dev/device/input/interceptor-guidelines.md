@@ -13,14 +13,14 @@
 
 ## 接口说明
 
-创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[input](../../reference/apis-input-kit/capi-input.md)。
+创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md)。
 
-| 接口名称  | 描述 |
-| ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) |创建按键事件拦截。  |
-| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) |创建输入事件拦截，包含鼠标、触摸和轴事件。  |
-| Input_Result OH_Input_RemoveKeyEventInterceptor() |删除按键事件拦截。  |
-| Input_Result OH_Input_RemoveInputEventInterceptor() |删除输入事件拦截，包含鼠标、触摸和轴事件。  |
+| 接口名称 | 描述 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | 创建按键事件拦截。 |
+| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | 创建输入事件拦截，包含鼠标、触摸和轴事件。 |
+| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | 删除按键事件拦截。 |
+| Input_Result OH_Input_RemoveInputEventInterceptor(void) | 删除输入事件拦截，包含鼠标、触摸和轴事件。 |
 
 ## 开发步骤
 

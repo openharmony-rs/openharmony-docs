@@ -20,11 +20,11 @@ import { shortKey } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists common APIs for event injection. For details, see [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
+The following table lists common APIs for preset global hotkeys. For details, see [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
 
-| API | Description|
+| API | Description |
 | ------------------------------------------------------------ | -------------------------- |
-| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void |Sets the delay for starting an ability using the hotkey.|
+| setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void | Sets the delay for starting an ability using the hotkey. |
 
 ## How to Develop
 
@@ -42,7 +42,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("screenshot", 500, (error: BusinessError) => { // Set the delay to 5 seconds (500 ms).
+            shortKey.setKeyDownDuration('screenshot', 5000, (error: BusinessError) => { // Set the delay to 5 seconds (5000 ms).
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, ["code", "message"])}`);
                 return;
