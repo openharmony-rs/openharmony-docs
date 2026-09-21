@@ -38,9 +38,6 @@ import { radio } from '@kit.TelephonyKit';
 | [getSignalInformation](arkts-telephony-radio-getsignalinformation-f.md) | 获取指定SIM卡槽对应的注册网络信号强度信息列表。使用Promise异步回调。 |
 | [getSignalInformationSync](arkts-telephony-radio-getsignalinformationsync-f.md) | 获取指定SIM卡槽对应的注册网络信号强度信息列表。 |
 | [isNrSupported](arkts-telephony-radio-isnrsupported-f.md) | 判断当前设备是否支持NR(New Radio)。 |
-| [isNrSupported](arkts-telephony-radio-isnrsupported-f.md) | 判断当前设备是否支持NR(New Radio)。 |
-| [isNRSupported](arkts-telephony-radio-isnrsupported-f.md) | 判断当前设备是否支持NR(New Radio)。 |
-| [isNRSupported](arkts-telephony-radio-isnrsupported-f.md) | 判断当前设备是否支持NR(New Radio)。 |
 | [isRadioOn](arkts-telephony-radio-isradioon-f.md) | 判断指定卡槽位的Radio是否打开。使用callback异步回调。 |
 | [isRadioOn](arkts-telephony-radio-isradioon-f.md) | 判断Radio是否打开。使用Promise异步回调。 |
 | [isRadioOn](arkts-telephony-radio-isradioon-f.md) | 判断主卡的Radio是否打开。使用callback异步回调。 |
