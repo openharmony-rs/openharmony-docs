@@ -241,7 +241,7 @@ libnative_buffer.so
     ``` C++
     int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
         static_cast<int32_t>(width_), static_cast<int32_t>(height_));
-    if (result != SUCCESS) {
+    if (result != NATIVE_ERROR_OK) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to set buffer geometry.");
         return false;
     }
@@ -256,7 +256,7 @@ libnative_buffer.so
         OHNativeWindowBuffer *buffer = nullptr;
         int releaseFenceFd = INVALID_FD;
         int32_t result = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer, &releaseFenceFd);
-        if (result != SUCCESS || buffer == nullptr) {
+        if (result != NATIVE_ERROR_OK || buffer == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
                          "OHNativeRender", "Failed to request buffer, ret : %{public}d.", result);
             return;
@@ -269,25 +269,25 @@ libnative_buffer.so
         <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
         
         ``` C++
-        // 使用 mmap 获取虚拟地址
-        void *mappedAddr = mmap(nullptr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
-        if (mappedAddr == MAP_FAILED) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to mmap buffer.");
-            return;
-        }
-    
-        // 获取像素指针
-        uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
-    
-        // 调用封装的函数来绘制渐变
-        DrawGradient(pixel, handle->stride / BYTES_PER_PIXEL, height_);
-    
-        // 解除内存映射
-        result = munmap(mappedAddr, handle->size);
-        if (result == FAILURE) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to munmap buffer.");
-        }
-        // ...
+            // 使用 mmap 获取虚拟地址
+            void *mappedAddr = mmap(nullptr, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
+            if (mappedAddr == MAP_FAILED) {
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to mmap buffer.");
+                return;
+            }
+        
+            // 获取像素指针
+            uint32_t *pixel = static_cast<uint32_t *>(mappedAddr);
+        
+            // 调用封装的函数来绘制渐变
+            DrawGradient(pixel, handle->stride / BYTES_PER_PIXEL, height_);
+        
+            // 解除内存映射
+            result = munmap(mappedAddr, handle->size);
+            if (result == FAILURE) {
+                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to munmap buffer.");
+            }
+            // ...
         void OHNativeRender::DrawGradient(uint32_t* pixel, uint64_t width, uint64_t height)
         {
             static double time = 0.0;
@@ -347,7 +347,7 @@ libnative_buffer.so
         Region region{nullptr, 0};
         // 提交给消费者
         result = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer, NO_FENCE, region);
-        if (result != SUCCESS) {
+        if (result != NATIVE_ERROR_OK) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
                          "OHNativeRender", "Failed to flush buffer, result : %{public}d.", result);
         }
