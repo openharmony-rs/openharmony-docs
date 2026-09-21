@@ -8,6 +8,8 @@ typedef struct OH_SwapfsSwapInRequest {...} OH_SwapfsSwapInRequest
 
 Request parameters for swap-in operation.
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.

@@ -4,6 +4,8 @@
 
 CodecBase模块提供用于音视频封装、解封装、编解码基础功能的变量、属性以及函数。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 ## 文件汇总

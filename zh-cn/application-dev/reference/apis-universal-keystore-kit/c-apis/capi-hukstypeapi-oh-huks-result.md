@@ -8,6 +8,8 @@ typedef struct OH_Huks_Result {...} OH_Huks_Result
 
 表示状态返回数据，包括返回码和消息。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **相关模块：** [HuksTypeApi](capi-hukstypeapi.md)
@@ -20,7 +22,7 @@ typedef struct OH_Huks_Result {...} OH_Huks_Result
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t errorCode | 状态返回码，参考[OH_Huks_ErrCode](capi-native-huks-type-h.md#oh_huks_errcode)。 |
+| int32_t errorCode | 状态返回码，参考{@link OH_Huks_ErrCode}。 |
 | const char *errorMsg | 对状态返回码的说明信息。 |
 | uint8_t *data | 其他返回数据。 |
 

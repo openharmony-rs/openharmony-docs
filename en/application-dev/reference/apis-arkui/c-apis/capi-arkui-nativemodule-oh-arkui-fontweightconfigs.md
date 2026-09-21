@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_FontWeightConfigs OH_ArkUI_FontWeightConfigs
 
 Defines the font weight configuration of text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

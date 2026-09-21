@@ -8,6 +8,8 @@ typedef struct Camera_AutoDeviceSwitchStatusInfo {...} Camera_AutoDeviceSwitchSt
 
 Auto device switch status info.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

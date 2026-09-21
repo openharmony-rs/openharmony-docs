@@ -32,6 +32,8 @@ enum AbilityRuntime_ErrorCode
 
 AbilityRuntime模块的错误码的枚举。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |

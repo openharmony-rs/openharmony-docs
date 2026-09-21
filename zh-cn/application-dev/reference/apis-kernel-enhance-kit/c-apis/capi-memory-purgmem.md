@@ -8,6 +8,8 @@ typedef struct PurgMem OH_PurgeableMemory
 
 可清除的内存结构。
 
+**系统能力：** SystemCapability.Kernel.Memory
+
 **起始版本：** 10
 
 **相关模块：** [memory](capi-memory.md)

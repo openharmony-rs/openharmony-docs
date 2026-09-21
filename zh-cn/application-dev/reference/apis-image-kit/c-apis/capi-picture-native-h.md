@@ -20,9 +20,9 @@
 | -- | -- | -- |
 | [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | OH_PictureNative_AuxiliaryPictureCopyItem | 此结构体用于在创建PictureNative对象的深拷贝时指定辅助图的拷贝规则。描述如何将辅助图从一种类型拷贝到另一种类型。 |
 | [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | OH_PictureNative_MetadataCopyItem | 此结构体用于在创建PictureNative对象的深拷贝时指定元数据的拷贝规则。描述如何将元数据从一种类型拷贝到另一种类型。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | - | Picture结构体类型，用于执行picture相关操作。<br>Picture为多图对象结构体，包含主图、辅助图和元数据。<br>主图包含图像的大部分信息，主要用于显示图像内容。<br> 辅助图用于存储与主图相关但不同的数据，展示图像更丰富的信息。<br>元数据一般用来存储关于图像文件的信息。<br>有多种方式创建OH_PictureNative，具体如下：<br>使用 [OH_PictureNative_Release](capi-picture-native-h.md#oh_picturenative_release)函数释放OH_PictureNative对象。<br>使用约束：使用OH_PictureNative对象前，需先创建对象；使用完成后，应调用<br>[OH_PictureNative_Release](capi-picture-native-h.md#oh_picturenative_release)释放对象。通过{@link OH_ImageSourceNative_CreatePicture}或<br>{@link OH_ImageSourceNative_CreatePictureAtIndex}解码Picture时，图片源格式需支持Picture解码。通过<br>[OH_PictureNative_CreatePicture](capi-picture-native-h.md#oh_picturenative_createpicture)创建Picture时，mainPixelmap和picture均不能为空指针。<br>资源管理：<br>释放OH_ImageSourceNative对象不会自动释放已创建的OH_PictureNative对象。通过OH_PictureNative获取到的OH_PixelmapNative、<br>OH_AuxiliaryPictureNative和OH_PictureMetadata对象由调用方管理，使用完成后需分别调用{@link OH_PixelmapNative_Destroy}、<br>[OH_AuxiliaryPictureNative_Release](capi-picture-native-h.md#oh_auxiliarypicturenative_release)和{@link OH_PictureMetadata_Release}释放。获取PixelMap、辅助图或元数据的接口返回失败时， 输出参数的内容不能在后续流程中继续使用。<br>OH_PictureNative结构体内容和操作方式如下： |
-| [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | - | AuxiliaryPicture结构体类型，用于执行AuxiliaryPicture相关操作。<br>使用[OH_AuxiliaryPictureNative_Create](capi-picture-native-h.md#oh_auxiliarypicturenative_create)<br>函数创建OH_AuxiliaryPictureNative对象。<br>使用[OH_PictureNative_GetAuxiliaryPicture](capi-picture-native-h.md#oh_picturenative_getauxiliarypicture)<br>函数从OH_PictureNative对象中按辅助图类型获取OH_AuxiliaryPictureNative对象。<br>使用[OH_AuxiliaryPictureNative_Release](capi-picture-native-h.md#oh_auxiliarypicturenative_release)<br>函数释放OH_AuxiliaryPictureNative对象。<br>使用约束：使用OH_AuxiliaryPictureNative对象前，需先创建或获取对象；使用完成后，应调用<br>[OH_AuxiliaryPictureNative_Release](capi-picture-native-h.md#oh_auxiliarypicturenative_release)释放对象。通过[OH_AuxiliaryPictureNative_Create](capi-picture-native-h.md#oh_auxiliarypicturenative_create)创建对象时，data、<br>size和auxiliaryPicture均不能为空指针，dataLength必须大于0，type必须为当前支持的[Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype)。<br>资源管理：<br>释放OH_PictureNative对象不会自动释放已经获取出的OH_AuxiliaryPictureNative对象；<br>释放OH_AuxiliaryPictureNative对象也不会从OH_PictureNative对象中移除对应辅助图。通过[OH_AuxiliaryPictureNative_GetInfo](capi-picture-native-h.md#oh_auxiliarypicturenative_getinfo)<br>获取到的OH_AuxiliaryPictureInfo对象由调用方管理，使用完成后应调用[OH_AuxiliaryPictureInfo_Release](capi-picture-native-h.md#oh_auxiliarypictureinfo_release)释放。通过<br>[OH_AuxiliaryPictureNative_GetMetadata](capi-picture-native-h.md#oh_auxiliarypicturenative_getmetadata)获取到的OH_PictureMetadata对象由调用方管理，使用完成后应调用 {@link OH_PictureMetadata_Release}释放。接口返回失败时，输出参数的内容不能在后续流程中继续使用。<br>OH_AuxiliaryPictureNative结构体内容和操作方式如下： |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | - | AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。<br>使用[OH_AuxiliaryPictureInfo_Create](capi-picture-native-h.md#oh_auxiliarypictureinfo_create) 函数创建OH_AuxiliaryPictureInfo对象。<br>使用[OH_AuxiliaryPictureNative_GetInfo](capi-picture-native-h.md#oh_auxiliarypicturenative_getinfo) 函数从OH_AuxiliaryPictureNative对象中获取OH_AuxiliaryPictureInfo对象。<br>使用[OH_AuxiliaryPictureInfo_Release](capi-picture-native-h.md#oh_auxiliarypictureinfo_release) 函数释放OH_AuxiliaryPictureInfo对象。<br>使用约束：使用OH_AuxiliaryPictureInfo对象前，需先创建或获取对象；使用完成后，应调用 [OH_AuxiliaryPictureInfo_Release](capi-picture-native-h.md#oh_auxiliarypictureinfo_release)释放对象。调用[OH_AuxiliaryPictureInfo_GetType](capi-picture-native-h.md#oh_auxiliarypictureinfo_gettype)、 [OH_AuxiliaryPictureInfo_GetSize](capi-picture-native-h.md#oh_auxiliarypictureinfo_getsize)、[OH_AuxiliaryPictureInfo_GetRowStride](capi-picture-native-h.md#oh_auxiliarypictureinfo_getrowstride)或 [OH_AuxiliaryPictureInfo_GetPixelFormat](capi-picture-native-h.md#oh_auxiliarypictureinfo_getpixelformat)时，输出参数不允许传入nullptr；接口返回失败时，输出参数的内容不能在后续流程中继续使用。 只有在明确辅助图实际状态与OH_AuxiliaryPictureInfo对象信息不一致或有明确业务诉求时，才需要手动设置OH_AuxiliaryPictureInfo。<br>资源管理： [OH_AuxiliaryPictureNative_GetInfo](capi-picture-native-h.md#oh_auxiliarypicturenative_getinfo)成功返回的OH_AuxiliaryPictureInfo对象由调用方管理。通过 [OH_AuxiliaryPictureNative_SetInfo](capi-picture-native-h.md#oh_auxiliarypicturenative_setinfo)设置辅助图信息时，接口会读取并保存OH_AuxiliaryPictureInfo中的信息值， 接口返回后调用方仍需自行管理该OH_AuxiliaryPictureInfo对象的生命周期。<br>OH_AuxiliaryPictureInfo结构体内容和操作方式如下： |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | - | Picture结构体类型，用于执行picture相关操作。<br>Picture为多图对象结构体，包含主图、辅助图和元数据。<br>主图包含图像的大部分信息，主要用于显示图像内容。<br> 辅助图用于存储与主图相关但不同的数据，展示图像更丰富的信息。<br>元数据一般用来存储关于图像文件的信息。<br>有多种方式创建OH_PictureNative，具体如下：<br>使用 {@link OH_PictureNative_Release}函数释放OH_PictureNative对象。<br>使用约束：使用OH_PictureNative对象前，需先创建对象；使用完成后，应调用<br>{@link OH_PictureNative_Release}释放对象。通过{@link OH_ImageSourceNative_CreatePicture}或<br>{@link OH_ImageSourceNative_CreatePictureAtIndex}解码Picture时，图片源格式需支持Picture解码。通过<br>{@link OH_PictureNative_CreatePicture}创建Picture时，mainPixelmap和picture均不能为空指针。<br>资源管理：<br>释放OH_ImageSourceNative对象不会自动释放已创建的OH_PictureNative对象。通过OH_PictureNative获取到的OH_PixelmapNative、<br>OH_AuxiliaryPictureNative和OH_PictureMetadata对象由调用方管理，使用完成后需分别调用{@link OH_PixelmapNative_Destroy}、<br>{@link OH_AuxiliaryPictureNative_Release}和{@link OH_PictureMetadata_Release}释放。获取PixelMap、辅助图或元数据的接口返回失败时， 输出参数的内容不能在后续流程中继续使用。<br>OH_PictureNative结构体内容和操作方式如下： |
+| [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | - | AuxiliaryPicture结构体类型，用于执行AuxiliaryPicture相关操作。<br>使用{@link OH_AuxiliaryPictureNative_Create}<br>函数创建OH_AuxiliaryPictureNative对象。<br>使用{@link OH_PictureNative_GetAuxiliaryPicture}<br>函数从OH_PictureNative对象中按辅助图类型获取OH_AuxiliaryPictureNative对象。<br>使用{@link OH_AuxiliaryPictureNative_Release}<br>函数释放OH_AuxiliaryPictureNative对象。<br>使用约束：使用OH_AuxiliaryPictureNative对象前，需先创建或获取对象；使用完成后，应调用<br>{@link OH_AuxiliaryPictureNative_Release}释放对象。通过{@link OH_AuxiliaryPictureNative_Create}创建对象时，data、<br>size和auxiliaryPicture均不能为空指针，dataLength必须大于0，type必须为当前支持的{@link Image_AuxiliaryPictureType}。<br>资源管理：<br>释放OH_PictureNative对象不会自动释放已经获取出的OH_AuxiliaryPictureNative对象；<br>释放OH_AuxiliaryPictureNative对象也不会从OH_PictureNative对象中移除对应辅助图。通过{@link OH_AuxiliaryPictureNative_GetInfo}<br>获取到的OH_AuxiliaryPictureInfo对象由调用方管理，使用完成后应调用{@link OH_AuxiliaryPictureInfo_Release}释放。通过<br>{@link OH_AuxiliaryPictureNative_GetMetadata}获取到的OH_PictureMetadata对象由调用方管理，使用完成后应调用<br>{@link OH_PictureMetadata_Release}释放。接口返回失败时，输出参数的内容不能在后续流程中继续使用。<br>OH_AuxiliaryPictureNative结构体内容和操作方式如下： |
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | - | AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。<br>使用{@link OH_AuxiliaryPictureInfo_Create}<br>函数创建OH_AuxiliaryPictureInfo对象。<br>使用{@link OH_AuxiliaryPictureNative_GetInfo}<br>函数从OH_AuxiliaryPictureNative对象中获取OH_AuxiliaryPictureInfo对象。<br>使用{@link OH_AuxiliaryPictureInfo_Release}<br>函数释放OH_AuxiliaryPictureInfo对象。<br>使用约束：使用OH_AuxiliaryPictureInfo对象前，需先创建或获取对象；使用完成后，应调用<br>{@link OH_AuxiliaryPictureInfo_Release}释放对象。调用{@link OH_AuxiliaryPictureInfo_GetType}、<br>{@link OH_AuxiliaryPictureInfo_GetSize}、{@link OH_AuxiliaryPictureInfo_GetRowStride}或<br>{@link OH_AuxiliaryPictureInfo_GetPixelFormat}时，输出参数不允许传入nullptr；接口返回失败时，输出参数的内容不能在后续流程中继续使用。<br>只有在明确辅助图实际状态与OH_AuxiliaryPictureInfo对象信息不一致或有明确业务诉求时，才需要手动设置OH_AuxiliaryPictureInfo。<br>资源管理：<br>{@link OH_AuxiliaryPictureNative_GetInfo}成功返回的OH_AuxiliaryPictureInfo对象由调用方管理。通过<br>{@link OH_AuxiliaryPictureNative_SetInfo}设置辅助图信息时，接口会读取并保存OH_AuxiliaryPictureInfo中的信息值， 接口返回后调用方仍需自行管理该OH_AuxiliaryPictureInfo对象的生命周期。<br>OH_AuxiliaryPictureInfo结构体内容和操作方式如下： |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) | OH_ComposeOptions | OH_ComposeOptions是native层封装的合成HDR选项参数结构体，用于设置合成选项参数。用于指定合成HDR所用的参数，例如目标像素格式。 |
 
 ### 枚举
@@ -56,7 +56,7 @@
 | [Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image_MetadataType type)](#oh_picturenative_removemetadata) | 从Picture对象中移除元数据。 |
 | [Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, const OH_PictureNative_AuxiliaryPictureCopyItem *auxiliaryPictureCopyItems, uint32_t auxiliaryPictureCopyCount, const OH_PictureNative_MetadataCopyItem *metadataCopyItems, uint32_t metadataCopyCount, Image_AuxiliaryPictureType *sourceAuxPictureAsMainPixelMap, OH_PictureNative **picture)](#oh_picturenative_deepcopywithitems) | 创建PictureNative对象的深拷贝，并将指定的辅助图和元数据拷贝到指定的目标类型。 |
 | [Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)](#oh_picturenative_release) | 释放OH_PictureNative指针。 |
-| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | 创建OH_AuxiliaryPictureNative指针。该接口仅支持传入{@link PIXEL_FORMAT}为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。 |
+| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | 创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | 读取缓冲区的图像像素数据，并将结果写入辅助图中。 <br>使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | 读取辅助图的像素数据，结果写入缓冲区。 <br>使用约束：auxiliaryPicture、destination和bufferSize均不能为空指针，bufferSize需表示destination可写入的缓冲区大小；接口执行成功后， bufferSize会更新为实际读取的数据大小。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | 获取辅助图类型。 |
@@ -89,6 +89,8 @@ enum Image_AuxiliaryPictureType
 
 辅助图类型。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -111,6 +113,8 @@ Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)
 **描述：**
 
 创建OH_ComposeOptions实例。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 23
 
@@ -135,6 +139,8 @@ Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *optio
 **描述：**
 
 设置OH_ComposeOptions中的目标像素格式。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 23
 
@@ -161,6 +167,8 @@ Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *optio
 
 获取OH_ComposeOptions中的像素格式。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -186,6 +194,8 @@ Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)
 
 释放OH_ComposeOptions指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -209,6 +219,8 @@ Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, 
 **描述：**
 
 创建OH_PictureNative指针。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -235,6 +247,8 @@ Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_P
 
 获取主图的OH_PixelmapNative指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -260,6 +274,8 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *pictur
 
 获取hdr图的OH_PixelmapNative指针。 <br>使用约束：picture和hdrPixelmap均不能为空指针。Picture不支持HDR合成时，接口会返回IMAGE_UNSUPPORTED_OPERATION。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -284,6 +300,8 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNat
 **描述：**
 
 通过设置合成选项OH_ComposeOptions获取HDR图的OH_PixelmapNative指针。 <br>使用约束：picture、options和hdrPixelmap均不能为空指针。Picture不支持HDR合成时，接口会返回IMAGE_UNSUPPORTED_OPERATION。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 23
 
@@ -311,6 +329,8 @@ Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, O
 
 获取增益图的OH_PixelmapNative指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -335,6 +355,8 @@ Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, 
 **描述：**
 
 设置辅助图。 <br>使用约束：picture和auxiliaryPicture均不能为空指针，type必须为当前支持的辅助图类型，且必须与auxiliaryPicture对象自身的辅助图类型一致。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -362,6 +384,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, 
 
 根据类型获取辅助图。 <br>使用约束：picture和auxiliaryPicture均不能为空指针，type必须为当前支持的辅助图类型。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -387,6 +411,8 @@ Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_Me
 **描述：**
 
 获取主图的元数据。 <br>使用约束：picture和metadata均不能为空指针，metadataType必须为Picture允许的元数据类型；不支持的元数据类型会返回IMAGE_UNSUPPORTED_METADATA。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -414,6 +440,8 @@ Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_Me
 
 设置主图的元数据。 <br>使用约束：picture和metadata均不能为空指针，metadataType必须为Picture允许的元数据类型。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -440,6 +468,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureCount(OH_PictureNative *pict
 
 获取辅助图数量。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -464,6 +494,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureTypes(OH_PictureNative *pict
 **描述：**
 
 获取辅助图类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -491,6 +523,8 @@ Image_ErrorCode OH_PictureNative_GetMetadataCount(OH_PictureNative *picture, uin
 
 获取Picture对象中元数据的数量。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -515,6 +549,8 @@ Image_ErrorCode OH_PictureNative_GetMetadataTypes(OH_PictureNative *picture, Ima
 **描述：**
 
 获取Picture对象中元数据的类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -542,6 +578,8 @@ Image_ErrorCode OH_PictureNative_RemoveAuxiliaryPicture(OH_PictureNative *pictur
 
 从Picture对象中移除辅助图。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -567,6 +605,8 @@ Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image
 
 从Picture对象中移除元数据。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -591,6 +631,8 @@ Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, con
 **描述：**
 
 创建PictureNative对象的深拷贝，并将指定的辅助图和元数据拷贝到指定的目标类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 26.0.0
 
@@ -622,6 +664,8 @@ Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 
 释放OH_PictureNative指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -644,7 +688,9 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLengt
 
 **描述：**
 
-创建OH_AuxiliaryPictureNative指针。该接口仅支持传入{@link PIXEL_FORMAT}为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。
+创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -674,6 +720,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 
 读取缓冲区的图像像素数据，并将结果写入辅助图中。 <br>使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -699,6 +747,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *
 **描述：**
 
 读取辅助图的像素数据，结果写入缓冲区。 <br>使用约束：auxiliaryPicture、destination和bufferSize均不能为空指针，bufferSize需表示destination可写入的缓冲区大小；接口执行成功后， bufferSize会更新为实际读取的数据大小。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -726,6 +776,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *aux
 
 获取辅助图类型。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -750,6 +802,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *aux
 **描述：**
 
 获取辅助图信息。 <br>资源管理：接口成功返回的OH_AuxiliaryPictureInfo对象由调用方管理，使用完成后应调用OH_AuxiliaryPictureInfo_Release()释放。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -776,6 +830,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *aux
 
 设置辅助图信息。 <br>资源管理：接口会读取并保存OH_AuxiliaryPictureInfo中的信息值，接口返回后调用方仍需自行管理该OH_AuxiliaryPictureInfo对象的生命周期。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -800,6 +856,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative 
 **描述：**
 
 获取辅助图的元数据。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -827,6 +885,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative 
 
 设置辅助图的元数据。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -853,6 +913,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_AcquirePixelmap(OH_AuxiliaryPictureNat
 
 获取辅助图的OH_PixelmapNative对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -878,6 +940,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *pic
 
 释放OH_AuxiliaryPictureNative指针。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -902,6 +966,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 
 创建一个OH_AuxiliaryPictureInfo对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -925,6 +991,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, I
 **描述：**
 
 获取OH_AuxiliaryPictureInfo中的辅助图类型。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -951,6 +1019,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, I
 
 设置OH_AuxiliaryPictureInfo中的辅助图类型。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -975,6 +1045,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, I
 **描述：**
 
 获取OH_AuxiliaryPictureInfo中的图片尺寸。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -1001,6 +1073,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, I
 
 Sets the image size in **OH_AuxiliaryPictureInfo**.
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -1014,7 +1088,7 @@ Sets the image size in **OH_AuxiliaryPictureInfo**.
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} info is nullptr, or size is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) info is nullptr, or size is nullptr. |
 
 ### OH_AuxiliaryPictureInfo_GetRowStride()
 
@@ -1025,6 +1099,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *in
 **描述：**
 
 获取OH_AuxiliaryPictureInfo中的行跨距。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -1051,6 +1127,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *in
 
 设置OH_AuxiliaryPictureInfo中的行跨距。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -1075,6 +1153,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *
 **描述：**
 
 获取OH_AuxiliaryPictureInfo中的像素格式。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
@@ -1101,6 +1181,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *
 
 设置OH_AuxiliaryPictureInfo中的像素格式。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -1125,6 +1207,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 **描述：**
 
 释放OH_AuxiliaryPictureInfo指针。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 

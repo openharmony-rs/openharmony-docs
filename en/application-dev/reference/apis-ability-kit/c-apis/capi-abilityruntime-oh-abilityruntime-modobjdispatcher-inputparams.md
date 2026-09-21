@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_InputParams {...} OH_AbilityRu
 
 Defines a parameter structure for method invocation.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

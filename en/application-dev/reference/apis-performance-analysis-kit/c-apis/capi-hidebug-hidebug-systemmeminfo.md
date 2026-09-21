@@ -8,6 +8,8 @@ typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
 
 Defines a struct for the system memory information.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 **Related module**: [HiDebug](capi-hidebug.md)

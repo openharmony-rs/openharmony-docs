@@ -8,6 +8,8 @@ typedef struct ArkUI_Node* ArkUI_NodeHandle
 
 Defines the pointer to the ArkUI native component object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

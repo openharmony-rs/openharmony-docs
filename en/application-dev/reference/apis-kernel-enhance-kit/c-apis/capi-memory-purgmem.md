@@ -8,6 +8,8 @@ typedef struct PurgMem OH_PurgeableMemory
 
 Defines a purgeable memory struct.
 
+**System capability**: SystemCapability.Kernel.Memory
+
 **Since**: 10
 
 **Related module**: [memory](capi-memory.md)

@@ -8,6 +8,8 @@ typedef struct OH_Http_Interceptor_Headers {...} OH_Http_Interceptor_Headers
 
 Defines a struct for the request/response header information of the interceptor.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 24
 
 **Related module**: [netstack](capi-netstack.md)

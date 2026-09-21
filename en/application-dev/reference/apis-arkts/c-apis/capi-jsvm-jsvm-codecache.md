@@ -8,6 +8,8 @@ typedef struct JSVM_CodeCache {...} JSVM_CodeCache
 
 code cache passed with JSVM_COMPILE_CODE_CACHE
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 12
 
 **Related module**: [JSVM](capi-jsvm.md)

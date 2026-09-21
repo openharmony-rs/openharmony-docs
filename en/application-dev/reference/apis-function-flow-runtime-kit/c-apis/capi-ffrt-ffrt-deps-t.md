@@ -8,6 +8,8 @@ typedef struct ffrt_deps_t {...} ffrt_deps_t
 
 Defines the dependency structure, used to hold a list of dependencies for a task.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)

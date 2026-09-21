@@ -8,6 +8,8 @@ typedef struct Region {...} Region
 
 indicates a dirty region where content is updated.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 8
 
 **Related module**: [NativeWindow](capi-nativewindow.md)

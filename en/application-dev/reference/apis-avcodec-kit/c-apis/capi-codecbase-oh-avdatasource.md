@@ -8,6 +8,8 @@ typedef struct OH_AVDataSource {...} OH_AVDataSource
 
 The struct describes a user-defined data source.
 
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
 **Since**: 12
 
 **Related module**: [CodecBase](capi-codecbase.md)

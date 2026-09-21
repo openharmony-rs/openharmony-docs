@@ -8,6 +8,8 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 声明元能力Want结构。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **相关模块：** [AbilityBase](capi-abilitybase.md)

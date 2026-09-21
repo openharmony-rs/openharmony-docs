@@ -8,6 +8,8 @@ typedef struct JSVM_Deferred__* JSVM_Deferred
 
 To represent a JavaScript VM value deferred.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

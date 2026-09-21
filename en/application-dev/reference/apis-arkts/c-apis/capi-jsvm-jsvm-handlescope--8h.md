@@ -8,6 +8,8 @@ typedef struct JSVM_HandleScope__* JSVM_HandleScope
 
 To represent a JavaScript VM handle scope.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

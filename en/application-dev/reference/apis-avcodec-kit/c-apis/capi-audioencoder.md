@@ -4,6 +4,8 @@
 
 The AudioEncoder module provides functions for audio encoding.
 
+**System capability**: SystemCapability.Multimedia.Media.AudioEncoder
+
 **Since**: 9
 
 ## Files

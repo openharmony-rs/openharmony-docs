@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_SurfaceHolder OH_ArkUI_SurfaceHolder
 
 Provides an encapsulated <b>OH_ArkUI_SurfaceHolder</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

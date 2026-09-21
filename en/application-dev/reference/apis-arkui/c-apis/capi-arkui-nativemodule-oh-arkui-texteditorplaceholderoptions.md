@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_TextEditorPlaceholderOptions OH_ArkUI_TextEditorPlacehol
 
 Defines the hint text options when no content is entered in the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

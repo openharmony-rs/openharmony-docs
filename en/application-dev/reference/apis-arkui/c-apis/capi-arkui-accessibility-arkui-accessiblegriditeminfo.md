@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibleGridItemInfo {...} ArkUI_AccessibleGridItemInfo
 
 Defines a struct for the accessible grid item information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)

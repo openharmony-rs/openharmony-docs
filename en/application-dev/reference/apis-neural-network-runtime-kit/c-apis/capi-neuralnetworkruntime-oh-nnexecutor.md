@@ -8,6 +8,8 @@ typedef struct OH_NNExecutor OH_NNExecutor
 
 Defines the executor handle.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

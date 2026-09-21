@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeBorderColor ArkUI_NodeBorderColorOption
 
 Defines a node border color option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

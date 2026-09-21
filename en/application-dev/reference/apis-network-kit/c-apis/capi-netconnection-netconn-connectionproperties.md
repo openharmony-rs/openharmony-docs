@@ -8,6 +8,8 @@ typedef struct NetConn_ConnectionProperties {...} NetConn_ConnectionProperties
 
 Defines the network connection properties.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

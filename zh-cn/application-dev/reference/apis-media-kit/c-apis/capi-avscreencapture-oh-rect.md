@@ -8,6 +8,8 @@ typedef struct OH_Rect {...} OH_Rect
 
 定义录屏界面的位置和尺寸。包含位置坐标和尺寸信息。可用于精确控制录屏范围，支持自定义区域录制、局部录制等场景。<br> 适用于教学/演示录制中只录制重点操作区域、会议录制中只录制演示文稿区域和游戏录制中只录制游戏画面区域等场景。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
 **起始版本：** 10
 
 **相关模块：** [AVScreenCapture](capi-avscreencapture.md)

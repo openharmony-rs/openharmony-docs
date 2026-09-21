@@ -8,6 +8,8 @@ typedef struct AVSession_DeviceInfo AVSession_DeviceInfo
 
 设备信息的结构体声明。 该结构体用于存储设备信息及详细属性。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)

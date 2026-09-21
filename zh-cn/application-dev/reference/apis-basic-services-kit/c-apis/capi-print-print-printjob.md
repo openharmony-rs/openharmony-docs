@@ -8,6 +8,8 @@ typedef struct Print_PrintJob {...} Print_PrintJob
 
 表示打印机任务结构体。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [Print](capi-print.md)

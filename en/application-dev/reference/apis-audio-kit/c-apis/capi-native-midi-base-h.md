@@ -72,6 +72,8 @@ enum OH_MIDIStatusCode
 
 MIDI status code enumeration.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 | Enum item | Description |
@@ -103,6 +105,8 @@ enum OH_MIDIPortDirection
 
 Port direction enumeration.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 | Enum item | Description |
@@ -124,6 +128,8 @@ MIDI transport protocol semantics.
 >
 > CRITICAL**: The SDK always uses UMP (Universal MIDI Packet) format for data transfer, regardless of the selected protocol. This enum defines the "Behavior" and "Semantics" of the connection, not the data structure.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 | Enum item | Description |
@@ -141,6 +147,8 @@ enum OH_MIDIDeviceType
 
 MIDI Device type.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 | Enum item | Description |
@@ -157,6 +165,8 @@ enum OH_MIDIDeviceChangeAction
 **Description**
 
 Device connection state change action.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -178,6 +188,8 @@ typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChan
 
 Callback for monitoring device connection/disconnection.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -197,6 +209,8 @@ typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)
 **Description**
 
 Callback for handling client-level errors. Invoked when a critical error occurs in the MIDI service (e.g., service crash). Applications may need to recreate the client when this occurs.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -221,6 +235,8 @@ Callback for receiving MIDI data (Batch Processing).
 >
 > This callback is invoked on a high-priority system thread. Do **not** perform blocking operations, heavy computation, or I/O.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -240,6 +256,8 @@ typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MID
 **Description**
 
 Callback for the result of asynchronously opening a BLE device.<br> This callback is invoked when the BLE device open attempt finishes, either successfully or with a failure.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 

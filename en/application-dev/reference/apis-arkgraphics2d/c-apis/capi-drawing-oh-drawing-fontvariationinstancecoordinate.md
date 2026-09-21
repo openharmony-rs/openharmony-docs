@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 Variable font attribute key-value pair.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Related module**: [Drawing](capi-drawing.md)

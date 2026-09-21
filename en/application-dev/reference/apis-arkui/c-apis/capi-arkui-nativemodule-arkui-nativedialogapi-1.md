@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1
 
 Provides the custom dialog box APIs for the native side.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -424,7 +426,7 @@ Registers a callback for a custom dialog box so that the user can decide whether
 | Parameter | Description |
 | -- | -- |
 | ArkUI_NativeDialogHandle handle | Indicates the pointer to the custom dialog box controller. |
-|  [ArkUI_OnWillDismissEvent](capi-native-dialog-h.md#arkui_onwilldismissevent) eventHandler | Indicates the callback to register. The parameter type is [ArkUI_OnWillDismissEvent](capi-native-dialog-h.md#arkui_onwilldismissevent). |
+|  [ArkUI_OnWillDismissEvent](capi-native-dialog-h.md#arkui_onwilldismissevent) eventHandler | Indicates the callback to register. The parameter type is {@link ArkUI_OnWillDismissEvent}. |
 
 **Returns**:
 

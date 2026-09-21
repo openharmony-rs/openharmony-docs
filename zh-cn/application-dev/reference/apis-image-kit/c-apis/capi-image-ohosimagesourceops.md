@@ -6,7 +6,9 @@ struct OhosImageSourceOps {...}
 
 ## 概述
 
-定义图像源选项信息。此选项给[OH_ImageSource_CreateFromUri](capi-image-source-mdk-h.md#oh_imagesource_createfromuri)、[OH_ImageSource_CreateFromFd](capi-image-source-mdk-h.md#oh_imagesource_createfromfd)、 [OH_ImageSource_CreateFromData](capi-image-source-mdk-h.md#oh_imagesource_createfromdata)和[OH_ImageSource_CreateIncremental](capi-image-source-mdk-h.md#oh_imagesource_createincremental)接口使用。
+定义图像源选项信息。此选项给{@link OH_ImageSource_CreateFromUri}、{@link OH_ImageSource_CreateFromFd}、<br>{@link OH_ImageSource_CreateFromData}和{@link OH_ImageSource_CreateIncremental}接口使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
 

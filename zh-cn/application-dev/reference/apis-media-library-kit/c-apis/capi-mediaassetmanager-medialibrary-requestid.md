@@ -8,6 +8,8 @@ typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
 
 定义请求ID。<br>当请求媒体库资源时，会返回此类型。<br>请求ID可用于取消请求。<br>如果请求失败，值将全为零，如 "00000000-0000-0000-0000-000000000000"。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)

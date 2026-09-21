@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_ImageAttachment OH_ArkUI_ImageAttachment
 
 ## Overview
 
-Defines an image style object.<br> [OH_ArkUI_ImageAttachment_Create](capi-styled-string-h.md#oh_arkui_imageattachment_create) can be used to create an image style object.<br> [OH_ArkUI_ImageAttachment_Destroy](capi-styled-string-h.md#oh_arkui_imageattachment_destroy) can be used to destroy the image style object.<br> After the object is created, the **OH_ArkUI_ImageAttachment_SetXXX** series APIs can be used to set the styles that take effect. For example, you can use [OH_ArkUI_ImageAttachment_SetPixelMap](capi-styled-string-h.md#oh_arkui_imageattachment_setpixelmap) to set an image source.
+Defines an image style object.<br> {@link OH_ArkUI_ImageAttachment_Create} can be used to create an<br>image style object.<br> {@link OH_ArkUI_ImageAttachment_Destroy} can be used to destroy the image style<br>object.<br> After the object is created, the **OH_ArkUI_ImageAttachment_SetXXX** series APIs can be used to<br>set the styles that take effect. For example, you can use {@link OH_ArkUI_ImageAttachment_SetPixelMap} to set an image source.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

@@ -8,6 +8,8 @@ typedef struct ArkUI_AnimatorOnFrameEvent ArkUI_AnimatorOnFrameEvent
 
 定义animator动画播放过程中逐帧回调的事件数据对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

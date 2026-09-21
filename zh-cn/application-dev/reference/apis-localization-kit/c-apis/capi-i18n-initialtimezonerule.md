@@ -8,6 +8,8 @@ typedef struct InitialTimeZoneRule {...} InitialTimeZoneRule
 
 起始时区规则。
 
+**系统能力：** SystemCapability.Global.I18n
+
 **起始版本：** 22
 
 **相关模块：** [i18n](capi-i18n.md)

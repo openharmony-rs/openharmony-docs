@@ -38,6 +38,8 @@ OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 
 Creates an **OH_Drawing_RecordCmdUtils** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Returns**:
@@ -56,13 +58,15 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils*
 
 Destroys an **OH_Drawing_RecordCmdUtils** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_RecordCmdUtils* recordCmdUtils | Pointer to an {@link OH_Drawing_RecordCmdUtils} object. |
+| OH_Drawing_RecordCmdUtils* recordCmdUtils | Pointer to an [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md) object. |
 
 **Returns**:
 
@@ -80,16 +84,18 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCm
 
 Starts recording. This API must be used together with [OH_Drawing_RecordCmdUtilsFinishRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsfinishrecording). The **OH_Drawing_RecordCmdUtils** object generates a canvas object of the recording type and calls the interface of the drawing object to record all drawing commands.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_RecordCmdUtils* recordCmdUtils | Pointer to an {@link OH_Drawing_RecordCmdUtils} object. |
+| OH_Drawing_RecordCmdUtils* recordCmdUtils | Pointer to an [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md) object. |
 | int32_t width | Width of the canvas. |
 | int32_t height | Height of the canvas. |
-| OH_Drawing_Canvas** canvas | Double pointer to the {@link OH_Drawing_Canvas} object. You do not need to release this pointer.<br>This object does not support nested calling of {@link OH_Drawing_CanvasDrawRecordCmd}. |
+| OH_Drawing_Canvas** canvas | Double pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object. You do not need to release this pointer. This object does not support nested calling of [OH_Drawing_CanvasDrawRecordCmd](capi-drawing-canvas-h.md#oh_drawing_canvasdrawrecordcmd). |
 
 **Returns**:
 
@@ -107,14 +113,16 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordC
 
 Stops video recording. This function must be called after [OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording). The **OH_Drawing_RecordCmdUtils** object ends recording and stores the drawing commands recorded by the canvas object of the recording type into the generated [OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording) object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_RecordCmdUtils* recordCmdUtils | Pointer to an {@link OH_Drawing_RecordCmdUtils} object. |
-| OH_Drawing_RecordCmd** recordCmd | Double pointer to the  {@link OH_Drawing_RecordCmd}  object. You need to call<br>{@link OH_Drawing_CanvasDrawRecordCmd} to draw the object, and call [OH_Drawing_RecordCmdDestroy](capi-drawing-record-cmd-h.md#oh_drawing_recordcmddestroy) to release it. |
+| OH_Drawing_RecordCmdUtils* recordCmdUtils | Pointer to an [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md) object. |
+| OH_Drawing_RecordCmd** recordCmd | Double pointer to the  [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)  object. You need to call [OH_Drawing_CanvasDrawRecordCmd](capi-drawing-canvas-h.md#oh_drawing_canvasdrawrecordcmd) to draw the object, and call [OH_Drawing_RecordCmdDestroy](capi-drawing-record-cmd-h.md#oh_drawing_recordcmddestroy) to release it. |
 
 **Returns**:
 
@@ -132,7 +140,9 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordC
 
 Gets the height of recording canvas.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -145,7 +155,7 @@ Gets the height of recording canvas.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | <ul>         <li>{@link OH_DRAWING_SUCCESS} if the operation is successful.</li><br>        <li>{@link OH_DRAWING_ERROR_INCORRECT_PARAMETER} if recordCmdUtils or height is nullptr.</li>         </ul> |
+| OH_Drawing_ErrorCode | <ul>         <li>[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.</li>         <li>[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if recordCmdUtils or height is nullptr.</li>         </ul> |
 
 ### OH_Drawing_RecordCmdUtilsGetWidth()
 
@@ -157,7 +167,9 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCm
 
 Gets the width of recording canvas.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -170,7 +182,7 @@ Gets the width of recording canvas.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ErrorCode | <ul>         <li>{@link OH_DRAWING_SUCCESS} if the operation is successful.</li><br>        <li>{@link OH_DRAWING_ERROR_INCORRECT_PARAMETER} if recordCmdUtils or width is nullptr.</li>         </ul> |
+| OH_Drawing_ErrorCode | <ul>         <li>[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) if the operation is successful.</li>         <li>[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) if recordCmdUtils or width is nullptr.</li>         </ul> |
 
 ### OH_Drawing_RecordCmdDestroy()
 
@@ -182,13 +194,15 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd
 
 Destroys an **OH_Drawing_RecordCmd** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_RecordCmd* recordCmd | Pointer to an {@link OH_Drawing_RecordCmd} object. |
+| OH_Drawing_RecordCmd* recordCmd | Pointer to an [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md) object. |
 
 **Returns**:
 

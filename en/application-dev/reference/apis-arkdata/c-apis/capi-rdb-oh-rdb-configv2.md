@@ -8,6 +8,8 @@ typedef struct OH_Rdb_ConfigV2 OH_Rdb_ConfigV2
 
 Define OH_Rdb_ConfigV2 type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 14
 
 **Related module**: [RDB](capi-rdb.md)

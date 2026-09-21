@@ -8,6 +8,8 @@ typedef struct UsbEndpointDescriptor {...} __attribute__((packed)) UsbEndpointDe
 
 标准端点描述符，对应USB协议中Standard Endpoint Descriptor。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

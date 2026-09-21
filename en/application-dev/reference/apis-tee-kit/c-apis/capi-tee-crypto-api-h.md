@@ -107,6 +107,8 @@ enum __TEE_Operation_Constants
 
 Enumerates the cryptographic operation handles.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -129,6 +131,8 @@ enum __tee_crypto_algorithm_id
 **Description**
 
 Enumerates the cryptographic algorithms.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -246,6 +250,8 @@ enum TEE_ECC_CURVE
 
 Enumerates the Elliptic-Curve Cryptography (ECC) curves supported.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -268,6 +274,8 @@ enum TEE_DH_HASH_Mode
 
 Enumerates the Mask Generation Function (MGF1) modes.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -289,6 +297,8 @@ enum TEE_DH_OpMode_t
 
 Enumerates the Diffie-Hellman operation modes.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -306,6 +316,8 @@ enum TEE_DH_DerivFuncMode
 **Description**
 
 Defines an enum for TEE_DH_DerivFuncMode.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -329,6 +341,8 @@ enum __TEE_DK_ObjectAttribute
 
 Enumerates the object attributes for cryptographic operations.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -347,6 +361,8 @@ enum __TEE_OperationMode
 **Description**
 
 Enumerates the cryptographic operation modes.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -370,6 +386,8 @@ enum tee_operation_state
 
 Enumerates the cryptographic operation states.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -389,6 +407,8 @@ TEE_Result TEE_AllocateOperation(TEE_OperationHandle *operation, uint32_t algori
 **Description**
 
 Allocates an operation handle.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -417,6 +437,8 @@ void TEE_FreeOperation(TEE_OperationHandle operation)
 
 Releases an operation handle.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -434,6 +456,8 @@ void TEE_GetOperationInfo(const TEE_OperationHandle operation, TEE_OperationInfo
 **Description**
 
 Obtains operation information.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -454,6 +478,8 @@ void TEE_ResetOperation(TEE_OperationHandle operation)
 
 Resets an operation handle.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -471,6 +497,8 @@ TEE_Result TEE_SetOperationKey(TEE_OperationHandle operation, const TEE_ObjectHa
 **Description**
 
 Sets the key for an operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -496,6 +524,8 @@ TEE_Result TEE_SetOperationKey2(TEE_OperationHandle operation, const TEE_ObjectH
 **Description**
 
 Sets two keys for an operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -523,6 +553,8 @@ void TEE_CopyOperation(TEE_OperationHandle dstOperation, const TEE_OperationHand
 
 Copies an operation handle.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -541,6 +573,8 @@ void TEE_CipherInit(TEE_OperationHandle operation, const void *IV, size_t IVLen)
 **Description**
 
 Initializes the context to start a cipher operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -561,6 +595,8 @@ TEE_Result TEE_CipherUpdate(TEE_OperationHandle operation, const void *srcData, 
 **Description**
 
 Updates the data for a cipher operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -590,6 +626,8 @@ TEE_Result TEE_CipherDoFinal(TEE_OperationHandle operation, const void *srcData,
 
 Finalizes a cipher operation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -618,6 +656,8 @@ void TEE_DigestUpdate(TEE_OperationHandle operation, const void *chunk, size_t c
 
 Updates the digest.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -637,6 +677,8 @@ TEE_Result TEE_DigestDoFinal(TEE_OperationHandle operation, const void *chunk, s
 **Description**
 
 Finalizes the message digest operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -666,6 +708,8 @@ void TEE_MACInit(TEE_OperationHandle operation, void *IV, size_t IVLen)
 
 Initializes a MAC operation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -686,6 +730,8 @@ void TEE_MACUpdate(TEE_OperationHandle operation, const void *chunk, size_t chun
 
 Updates the MAC.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -705,6 +751,8 @@ TEE_Result TEE_MACComputeFinal(TEE_OperationHandle operation, const void *messag
 **Description**
 
 MAC Finalizes the MAC operation with a last chunk of message and computes the MAC.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -734,6 +782,8 @@ TEE_Result TEE_MACCompareFinal(TEE_OperationHandle operation, const void *messag
 
 Finalizes the MAC operation and compares the MAC with the one passed in.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -762,6 +812,8 @@ void TEE_DeriveKey(TEE_OperationHandle operation, const TEE_Attribute *params, u
 
 Derives a key.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -783,6 +835,8 @@ void TEE_GenerateRandom(void *randomBuffer, size_t randomBufferLen)
 
 Generates random data.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -801,6 +855,8 @@ TEE_Result TEE_AEInit(TEE_OperationHandle operation, void *nonce, size_t nonceLe
 **Description**
 
 Initializes an AE operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -831,6 +887,8 @@ void TEE_AEUpdateAAD(TEE_OperationHandle operation, const void *AADdata, size_t 
 
 Updates the AAD in an AE operation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -850,6 +908,8 @@ TEE_Result TEE_AEUpdate(TEE_OperationHandle operation, void *srcData, size_t src
 **Description**
 
 Updates data for an AE operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -878,6 +938,8 @@ TEE_Result TEE_AEEncryptFinal(TEE_OperationHandle operation, void *srcData, size
 **Description**
 
 Finalizes the AE encryption operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -909,6 +971,8 @@ TEE_Result TEE_AEDecryptFinal(TEE_OperationHandle operation, void *srcData, size
 
 Finalizes an AE decryption operation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -938,6 +1002,8 @@ TEE_Result TEE_AsymmetricEncrypt(TEE_OperationHandle operation, const TEE_Attrib
 **Description**
 
 Performs asymmetric encryption.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -969,6 +1035,8 @@ TEE_Result TEE_AsymmetricDecrypt(TEE_OperationHandle operation, const TEE_Attrib
 
 Performs asymmetric decryption.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -998,6 +1066,8 @@ TEE_Result TEE_AsymmetricSignDigest(TEE_OperationHandle operation, const TEE_Att
 **Description**
 
 Signs a message digest in an asymmetric operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -1029,6 +1099,8 @@ TEE_Result TEE_AsymmetricVerifyDigest(TEE_OperationHandle operation, const TEE_A
 
 Verifies a message digest signature in an asymmetric operation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -1059,6 +1131,8 @@ TEE_Result TEE_GetOperationInfoMultiple(TEE_OperationHandle operation, TEE_Opera
 
 Obtains information about the operation involving multiple keys.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -1084,6 +1158,8 @@ TEE_Result TEE_IsAlgorithmSupported(uint32_t algId, uint32_t element)
 **Description**
 
 Checks whether the algorithm is supported.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

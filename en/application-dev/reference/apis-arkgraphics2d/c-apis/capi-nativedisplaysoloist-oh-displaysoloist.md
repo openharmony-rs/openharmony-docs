@@ -8,6 +8,8 @@ typedef struct OH_DisplaySoloist OH_DisplaySoloist
 
 Provides the declaration of an **OH_DisplaySoloist** struct.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
+
 **Since**: 12
 
 **Related module**: [NativeDisplaySoloist](capi-nativedisplaysoloist.md)

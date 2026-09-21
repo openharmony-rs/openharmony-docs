@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
 
 不透明的SCSI设备结构体，用于表示与SCSI外设交互的设备句柄。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

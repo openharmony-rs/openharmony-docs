@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessoryManager OH_AudioAccessoryManager
 
 声明音频配件管理器。<br> 用于管理音频配件相关功能。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

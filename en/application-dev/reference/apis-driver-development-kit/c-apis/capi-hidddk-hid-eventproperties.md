@@ -8,6 +8,8 @@ typedef struct Hid_EventProperties {...} Hid_EventProperties
 
 Defines a struct for the event properties of a device.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

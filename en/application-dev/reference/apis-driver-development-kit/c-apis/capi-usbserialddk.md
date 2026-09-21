@@ -4,6 +4,8 @@
 
 Provides USB SERIAL DDK types and declares the macros, enumerated variables, and data structures required by the USB SERIAL DDK APIs.
 
+**System capability**: SystemCapability.Driver.UsbSerial.Extension
+
 **Since**: 18
 
 ## Files

@@ -62,6 +62,8 @@ enum ArkUI_Visibility
 
 Enumerates the visibility values.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -79,6 +81,8 @@ enum ArkUI_HoverEffect
 **Description**
 
 Enumerates the hover effects when a component is hovered over.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -99,6 +103,8 @@ enum ArkUI_FocusPriority
 
 Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 | Enum item | Description |
@@ -116,6 +122,8 @@ enum ArkUI_FocusMove
 **Description**
 
 Enumerates the focus movement directions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -138,6 +146,8 @@ enum ArkUI_ResponseRegionSupportedTool
 
 Enumerates the input tool types supported for response region configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 | Enum item | Description |
@@ -156,6 +166,8 @@ enum ArkUI_RawInputEventType
 **Description**
 
 Enumerates raw input event types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -177,6 +189,8 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions()) when no longer in use.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Returns**:
@@ -195,6 +209,8 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 Destroys a snapshot option object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Parameters**:
@@ -212,6 +228,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 **Description**
 
 Sets the scale property in the snapshot options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -237,6 +255,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 **Description**
 
 Sets the color space in the screenshot options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -264,6 +284,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 Sets the dynamic range mode in the screenshot options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Parameters**:
@@ -290,6 +312,8 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 Creates an instance of the parameters for visible area change events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Returns**:
@@ -308,6 +332,8 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 Disposes of the instance of the parameters for visible area change events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Parameters**:
@@ -325,6 +351,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 **Description**
 
 Sets the threshold ratios for visible area changes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -352,6 +380,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 Sets the expected update interval for visible area changes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Parameters**:
@@ -377,6 +407,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 Sets the visible area calculation mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -401,6 +433,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 **Description**
 
 Obtains the threshold ratios for visible area changes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -428,6 +462,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 
 Obtains the expected update interval for visible area changes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Parameters**:
@@ -451,6 +487,8 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 **Description**
 
 Obtains the visible area calculation mode.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 

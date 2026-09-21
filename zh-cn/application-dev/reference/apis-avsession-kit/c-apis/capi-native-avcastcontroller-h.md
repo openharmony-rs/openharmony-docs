@@ -80,6 +80,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 
 播放状态改变的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -87,7 +89,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlaybackStateChang
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
-| OH_AVSession_AVPlaybackState\* playbackState | the {@link OH_AVSession_AVPlaybackState} pointer variable which will be set the changed playback state. |
+| OH_AVSession_AVPlaybackState\* playbackState | the [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md) pointer variable which will be set the changed playback state. |
 | userdata | userdata which is passed by register. |
 
 ### OH_AVCastControllerCallback_MediaItemChange()
@@ -100,6 +102,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(O
 
 媒体项目变更的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -107,7 +111,7 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_MediaItemChange)(O
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)\* avcastcontroller | the OH_AVCastController instance pointer. |
-| OH_AVSession_AVQueueItem\* avQueueItem | the {@link OH_AVSession_AVQueueItem} pointer variable which will be set the changed media item info. |
+| OH_AVSession_AVQueueItem\* avQueueItem | the [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) pointer variable which will be set the changed media item info. |
 | userdata | userdata which is passed by register |
 
 ### OH_AVCastControllerCallback_PlayNext()
@@ -119,6 +123,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayNext)(OH_AVCas
 **描述：**
 
 播放下一首的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -139,6 +145,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_PlayPrevious)(OH_A
 
 播放上一首的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -157,6 +165,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_SeekDone)(OH_AVCas
 **描述：**
 
 跳转完成的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -178,6 +188,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_EndOfStream)(OH_AV
 
 播放流结束的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -196,6 +208,8 @@ typedef AVSessionCallback_Result(*OH_AVCastControllerCallback_Error)(OH_AVCastCo
 **描述：**
 
 播放错误的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -216,6 +230,8 @@ AVSession_ErrCode OH_AVCastController_Destroy(OH_AVCastController* avcastcontrol
 **描述：**
 
 请求销毁播控控制器对象。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -240,6 +256,8 @@ AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avca
 **描述：**
 
 获取当前播放器的播放状态。<br> 不要单独释放playbackState指针。 当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时，该指针将随播控控制器一同销毁。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -266,6 +284,8 @@ AVSession_ErrCode OH_AVCastController_RegisterPlaybackStateChangedCallback(OH_AV
 
 请求注册播放状态改变的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -273,7 +293,7 @@ AVSession_ErrCode OH_AVCastController_RegisterPlaybackStateChangedCallback(OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | 播控控制器的实例对象。 |
-| int32_t filter | 通过播放状态的过滤器{@link AVSession_PlaybackFilter}来决定需要包含在回调中的参数。 |
+| int32_t filter | 通过播放状态的过滤器[AVSession_PlaybackFilter](capi-native-avsession-base-h.md#avsession_playbackfilter)来决定需要包含在回调中的参数。 |
 | [OH_AVCastControllerCallback_PlaybackStateChanged](capi-native-avcastcontroller-h.md#oh_avcastcontrollercallback_playbackstatechanged) callback | 要注册的回调函数。 |
 | void* userData | 由用户传递的用户数据。 |
 
@@ -292,6 +312,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterPlaybackStateChangedCallback(OH_
 **描述：**
 
 请求取消注册播放状态改变的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -317,6 +339,8 @@ AVSession_ErrCode OH_AVCastController_RegisterMediaItemChangedCallback(OH_AVCast
 **描述：**
 
 请求注册当前播放的媒体资源发生改变的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -344,6 +368,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterMediaItemChangedCallback(OH_AVCa
 
 请求取消注册当前播放的媒体资源发生改变的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -368,6 +394,8 @@ AVSession_ErrCode OH_AVCastController_RegisterPlayNextCallback(OH_AVCastControll
 **描述：**
 
 请求注册由远程端或媒体中心发送的播放下一首的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -395,6 +423,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterPlayNextCallback(OH_AVCastContro
 
 请求取消注册由远程端或媒体中心发送的播放下一首的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -419,6 +449,8 @@ AVSession_ErrCode OH_AVCastController_RegisterPlayPreviousCallback(OH_AVCastCont
 **描述：**
 
 请求注册由远程端或媒体中心发送的播放上一首的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -446,6 +478,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterPlayPreviousCallback(OH_AVCastCo
 
 请求取消注册由远程端或媒体中心发送的播放上一首的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -470,6 +504,8 @@ AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastControll
 **描述：**
 
 请求注册跳转完成的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -497,6 +533,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastContro
 
 请求取消注册跳转完成的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -521,6 +559,8 @@ AVSession_ErrCode OH_AVCastController_RegisterEndOfStreamCallback(OH_AVCastContr
 **描述：**
 
 请求注册播放流结束的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -548,6 +588,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterEndOfStreamCallback(OH_AVCastCon
 
 请求取消注册播放流结束的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -572,6 +614,8 @@ AVSession_ErrCode OH_AVCastController_RegisterErrorCallback(OH_AVCastController*
 **描述：**
 
 请求注册监听播放错误事件的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -599,6 +643,8 @@ AVSession_ErrCode OH_AVCastController_UnregisterErrorCallback(OH_AVCastControlle
 
 请求取消注册监听播放错误事件的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -623,6 +669,8 @@ AVSession_ErrCode OH_AVCastController_SendCommonCommand(OH_AVCastController* avc
 **描述：**
 
 请求发送普通命令到远程端。 只支持发送播放、暂停、停止、播放下一首和播放上一首等命令。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -649,6 +697,8 @@ AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcas
 
 请求向远程端发送跳转命令。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -673,6 +723,8 @@ AVSession_ErrCode OH_AVCastController_SendFastForwardCommand(OH_AVCastController
 **描述：**
 
 请求向远程端发送快进命令。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -699,6 +751,8 @@ AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avc
 
 请求向远程端发送快退命令。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -723,6 +777,8 @@ AVSession_ErrCode OH_AVCastController_SendSetSpeedCommand(OH_AVCastController* a
 **描述：**
 
 请求向远程端发送设置倍速命令。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -749,6 +805,8 @@ AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avc
 
 请求向远程端发送音量控制命令。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -774,6 +832,8 @@ AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontrol
 
 准备启动投播资源
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -798,6 +858,8 @@ AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontrolle
 **描述：**
 
 开始启动投播资源
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 

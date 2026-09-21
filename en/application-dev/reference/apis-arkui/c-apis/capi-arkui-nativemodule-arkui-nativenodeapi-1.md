@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1
 
 Provides a collection of native-side Node type APIs provided by ArkUI. APIs related to the Node module must be called on the main thread.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -27,19 +29,19 @@ Provides a collection of native-side Node type APIs provided by ArkUI. APIs rela
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NodeHandle (\*createNode)(ArkUI_NodeType type)](#createnode) | Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) and returns the pointer to the component object. |
+| [ArkUI_NodeHandle (\*createNode)(ArkUI_NodeType type)](#createnode) | Creates a component based on {@link ArkUI_NodeType} and returns the pointer to the component object. |
 | [void (\*disposeNode)(ArkUI_NodeHandle node)](#disposenode) | Disposes of the component to which the specified pointer points. When calling this API on a non-main thread, special attention must be paid to the lifecycle of the component object to be destroyed. Improper lifecycle management may cause the application to crash; therefore, it is not recommended to call this API on non-main threads. |
 | [int32_t (\*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#addchild) | Attaches a component to a parent node. This API is used for node operations, and you are advised to call this API in the main thread. |
 | [int32_t (\*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#removechild) | Removes a component from its parent node. This API is used for node operations, and you are advised to call this API in the main thread. |
 | [int32_t (\*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildafter) | Attaches a component to a parent node, with the position after the **sibling** node. This API is used for node operations, and you are advised to call this API in the main thread. |
 | [int32_t (\*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildbefore) | Attaches a component to a parent node, with the position before the **sibling** node. This API is used for node operations, and you are advised to call this API in the main thread. |
 | [int32_t (\*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)](#insertchildat) | Attaches a component to a parent node, with the position specified by **position**. This API is used for node operations, and you are advised to call this API in the main thread. |
-| [int32_t (\*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)](#setattribute) | Sets attributes. You are advised to call this API in the main thread. In actual service scenarios, if the attributes set for a component contain the heap memory you apply for, ensure that the component is no longer used before calling the corresponding release API. For example, **NODE_TEXT_CONTENT_WITH_STYLED_STRING** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype). |
+| [int32_t (\*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)](#setattribute) | Sets attributes. You are advised to call this API in the main thread. In actual service scenarios, if the attributes set for a component contain the heap memory you apply for, ensure that the component is no longer used before calling the corresponding release API. For example, **NODE_TEXT_CONTENT_WITH_STYLED_STRING** in {@link ArkUI_NodeAttributeType}. |
 | [const ArkUI_AttributeItem* (\*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#getattribute) | Obtains attributes. The pointer returned by this API is an internal buffer pointer of the ArkUI framework. As such, you do not need to call **delete** to free the memory. However, the pointer must be used before this API is called next time. Otherwise, the pointer may be overwritten by other values. |
 | [int32_t (\*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#resetattribute) | Resets attributes. You are advised to call this API in the main thread. |
 | [int32_t (\*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType,int32_t targetId, void* userData)](#registernodeevent) | Registers an event for the specified node. |
 | [void (\*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)](#unregisternodeevent) | Unregisters an event for the specified node.<br> When the component is being displayed, this API must be called in the main thread. |
-| [void (\*registerNodeEventReceiver)(void (\*eventReceiver)(ArkUI_NodeEvent* event))](#registernodeeventreceiver) | Registers a unified entry point for event callbacks. The ArkUI framework collects component events generated during processing and returns them through the registered **eventReceiver** API. <br>Repeated calls will override the previously registered API. Do not directly save the pointer to the {@link ArkUI_NodeEvent} object. The data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the [addNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) API. |
+| [void (\*registerNodeEventReceiver)(void (\*eventReceiver)(ArkUI_NodeEvent* event))](#registernodeeventreceiver) | Registers a unified entry point for event callbacks. The ArkUI framework collects component events generated during processing and returns them through the registered **eventReceiver** API. <br>Repeated calls will override the previously registered API. Do not directly save the pointer to the {@link ArkUI_NodeEvent} object. The data will be destroyed after the callback is complete.<br><br>To bind with a component instance, you can use the {@link addNodeEventReceiver} API. |
 | [void (\*unregisterNodeEventReceiver)()](#unregisternodeeventreceiver) | Unregisters the unified entry point for event callbacks. |
 | [void (\*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)](#markdirty) | Forcibly marks the current node for re-measurement, re-layout, or re-drawing. Regarding updates to system attributes, the ArkUI framework automatically marks nodes and re-executes measurement, layout, or drawing; you do not need to call this API actively. |
 | [uint32_t (\*getTotalChildCount)(ArkUI_NodeHandle node)](#gettotalchildcount) | Obtains the number of subnodes. |
@@ -50,17 +52,17 @@ Provides a collection of native-side Node type APIs provided by ArkUI. APIs rela
 | [ArkUI_NodeHandle (\*getNextSibling)(ArkUI_NodeHandle node)](#getnextsibling) | Obtains the next sibling node. |
 | [int32_t (\*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)](#registernodecustomevent) | Registers a custom event for a node. Triggered events are returned through the custom event entry point function registered using **registerNodeCustomEventReceiver**. |
 | [void (\*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)](#unregisternodecustomevent) | Unregisters a custom event for a node. |
-| [void (\*registerNodeCustomEventReceiver)(void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#registernodecustomeventreceiver) | Registers a unified entry point for custom node event callbacks. The ArkUI framework collects custom component events generated during processing and returns them through the custom event entry point function registered using **registerNodeCustomEventReceiver**. <br>Repeated calls will override the previously registered API. <br>Do not directly save the pointer to the [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) object. The data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the **addNodeCustomEventReceiver** function. |
+| [void (\*registerNodeCustomEventReceiver)(void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#registernodecustomeventreceiver) | Registers a unified entry point for custom node event callbacks. The ArkUI framework collects custom component events generated during processing and returns them through the custom event entry point function registered using **registerNodeCustomEventReceiver**. <br>Repeated calls will override the previously registered API. <br>Do not directly save the pointer to the {@link ArkUI_NodeCustomEvent} object. The data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the **addNodeCustomEventReceiver** function. |
 | [void (\*unregisterNodeCustomEventReceiver)()](#unregisternodecustomeventreceiver) | Unregisters the unified entry point function for custom node event callbacks. |
 | [int32_t (\*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)](#setmeasuredsize) | Sets the width and height for a component after the measurement in the measurement callback function. |
-| [int32_t (\*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#setlayoutposition) | Sets the position of a component in the layout callback function. This API has a lower priority than [NODE_POSITION](capi-native-node-h.md#arkui_nodeattributetype) in **ArkUI_NodeAttributeType**. |
+| [int32_t (\*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#setlayoutposition) | Sets the position of a component in the layout callback function. This API has a lower priority than {@link NODE_POSITION} in **ArkUI_NodeAttributeType**. |
 | [ArkUI_IntSize (\*getMeasuredSize)(ArkUI_NodeHandle node)](#getmeasuredsize) | Obtains the width and height of a component after measurement. |
 | [ArkUI_IntOffset (\*getLayoutPosition)(ArkUI_NodeHandle node)](#getlayoutposition) | Obtains the offset of a node relative to its parent node after component layout is completed. The unit is px. The offset is the result after the parent container lays out the node. Therefore, the **offset** attribute that takes effect after the layout and the **position** attribute that does not participate in the layout do not affect the offset value. |
 | [int32_t (\*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)](#measurenode) | Measures a node. You can use the **getMeasuredSize** API to obtain the size after the measurement. |
 | [int32_t (\*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#layoutnode) | Lays outs a node and specifies the expected position of the node relative to its parent node. |
 | [int32_t (\*addNodeEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeEvent* event))](#addnodeeventreceiver) | Adds a component event callback function to a component to receive component events generated by it. Unlike the global registration function **registerNodeEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **<br>registerNodeEventReceiver**. <br>Do not directly save the pointer to the {@link ArkUI_NodeEvent} object. The data will be destroyed after the callback is complete. |
 | [int32_t (\*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeEvent* event))](#removenodeeventreceiver) | Removes a registered component event callback function from a component. |
-| [int32_t (\*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#addnodecustomeventreceiver) | Adds a custom event callback function to a component to receive custom events (such as layout and drawing events) generated by it. Unlike the global registration function **registerNodeCustomEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **<br>registerNodeCustomEventReceiver**. <br>Do not directly save the pointer to the [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) object. The data will be destroyed after the callback is complete. |
+| [int32_t (\*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#addnodecustomeventreceiver) | Adds a custom event callback function to a component to receive custom events (such as layout and drawing events) generated by it. Unlike the global registration function **registerNodeCustomEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **<br>registerNodeCustomEventReceiver**. <br>Do not directly save the pointer to the {@link ArkUI_NodeCustomEvent} object. The data will be destroyed after the callback is complete. |
 | [int32_t (\*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node,void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#removenodecustomeventreceiver) | Removes a registered custom event callback function from a component. |
 | [int32_t (\*setUserData)(ArkUI_NodeHandle node, void* userData)](#setuserdata) | Saves custom data on a component. |
 | [void* (\*getUserData)(ArkUI_NodeHandle node)](#getuserdata) | Obtains the custom data stored on a component. |
@@ -78,7 +80,7 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 **Description**
 
-Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) and returns the pointer to the component object.
+Creates a component based on {@link ArkUI_NodeType} and returns the pointer to the component object.
 
 **Since**: 12
 
@@ -248,7 +250,7 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 **Description**
 
-Sets attributes. You are advised to call this API in the main thread. In actual service scenarios, if the attributes set for a component contain the heap memory you apply for, ensure that the component is no longer used before calling the corresponding release API. For example, **NODE_TEXT_CONTENT_WITH_STYLED_STRING** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype).
+Sets attributes. You are advised to call this API in the main thread. In actual service scenarios, if the attributes set for a component contain the heap memory you apply for, ensure that the component is no longer used before calling the corresponding release API. For example, **NODE_TEXT_CONTENT_WITH_STYLED_STRING** in {@link ArkUI_NodeAttributeType}.
 
 **Since**: 12
 
@@ -370,7 +372,7 @@ void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 
 **Description**
 
-Registers a unified entry point for event callbacks. The ArkUI framework collects component events generated during processing and returns them through the registered **eventReceiver** API. <br>Repeated calls will override the previously registered API. Do not directly save the pointer to the {@link ArkUI_NodeEvent} object. The data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the [addNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) API.
+Registers a unified entry point for event callbacks. The ArkUI framework collects component events generated during processing and returns them through the registered **eventReceiver** API. <br>Repeated calls will override the previously registered API. Do not directly save the pointer to the {@link ArkUI_NodeEvent} object. The data will be destroyed after the callback is complete.<br><br>To bind with a component instance, you can use the {@link addNodeEventReceiver} API.
 
 **Since**: 12
 
@@ -574,8 +576,8 @@ Registers a custom event for a node. Triggered events are returned through the c
 | -- | -- |
 | ArkUI_NodeHandle node | Target node. |
 |  ArkUI_NodeCustomEventType eventType | Type of the event to register. |
-|  int32_t targetId | Custom event ID, which is passed in the callback of [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) when the event is triggered. |
-|  void* userData | Custom event parameter, which is passed in the callback of [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) when the event is triggered. |
+|  int32_t targetId | Custom event ID, which is passed in the callback of {@link ArkUI_NodeCustomEvent} when the event is triggered. |
+|  void* userData | Custom event parameter, which is passed in the callback of {@link ArkUI_NodeCustomEvent} when the event is triggered. |
 
 **Returns**:
 
@@ -610,7 +612,7 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 **Description**
 
-Registers a unified entry point for custom node event callbacks. The ArkUI framework collects custom component events generated during processing and returns them through the custom event entry point function registered using **registerNodeCustomEventReceiver**. <br>Repeated calls will override the previously registered API. <br>Do not directly save the pointer to the [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) object. The data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the **addNodeCustomEventReceiver** function.
+Registers a unified entry point for custom node event callbacks. The ArkUI framework collects custom component events generated during processing and returns them through the custom event entry point function registered using **registerNodeCustomEventReceiver**. <br>Repeated calls will override the previously registered API. <br>Do not directly save the pointer to the {@link ArkUI_NodeCustomEvent} object. The data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the **addNodeCustomEventReceiver** function.
 
 **Since**: 12
 
@@ -666,7 +668,7 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 **Description**
 
-Sets the position of a component in the layout callback function. This API has a lower priority than [NODE_POSITION](capi-native-node-h.md#arkui_nodeattributetype) in **ArkUI_NodeAttributeType**.
+Sets the position of a component in the layout callback function. This API has a lower priority than {@link NODE_POSITION} in **ArkUI_NodeAttributeType**.
 
 **Since**: 12
 
@@ -841,7 +843,7 @@ int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceive
 
 **Description**
 
-Adds a custom event callback function to a component to receive custom events (such as layout and drawing events) generated by it. Unlike the global registration function **registerNodeCustomEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **<br>registerNodeCustomEventReceiver**. <br>Do not directly save the pointer to the [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) object. The data will be destroyed after the callback is complete.
+Adds a custom event callback function to a component to receive custom events (such as layout and drawing events) generated by it. Unlike the global registration function **registerNodeCustomEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **<br>registerNodeCustomEventReceiver**. <br>Do not directly save the pointer to the {@link ArkUI_NodeCustomEvent} object. The data will be destroyed after the callback is complete.
 
 **Since**: 12
 

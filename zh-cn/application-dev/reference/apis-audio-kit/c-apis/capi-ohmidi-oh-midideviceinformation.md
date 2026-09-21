@@ -8,6 +8,8 @@ typedef struct OH_MIDIDeviceInformation {...} OH_MIDIDeviceInformation
 
 设备信息结构体。存储设备ID等相关信息。
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)

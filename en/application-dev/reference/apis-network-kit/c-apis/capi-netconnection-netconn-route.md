@@ -8,6 +8,8 @@ typedef struct NetConn_Route {...} NetConn_Route
 
 Defines the route configuration.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

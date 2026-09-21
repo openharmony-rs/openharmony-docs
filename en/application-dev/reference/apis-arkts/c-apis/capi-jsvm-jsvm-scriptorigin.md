@@ -8,6 +8,8 @@ typedef struct JSVM_ScriptOrigin {...} JSVM_ScriptOrigin
 
 Source code information.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 12
 
 **Related module**: [JSVM](capi-jsvm.md)

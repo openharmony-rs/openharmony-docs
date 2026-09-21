@@ -8,6 +8,8 @@ typedef void* ffrt_queue_t
 
 Queue handle, which identifies different queues.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)

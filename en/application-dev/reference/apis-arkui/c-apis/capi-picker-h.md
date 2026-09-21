@@ -62,6 +62,8 @@ enum ArkUI_DatePickerMode
 
 Enumerates the column display modes of the date picker.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 18
 
 | Enum item | Description |
@@ -79,6 +81,8 @@ enum ArkUI_TextPickerRangeType
 **Description**
 
 Enumerates the types of the text picker.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -99,6 +103,8 @@ enum ArkUI_CalendarAlignment
 
 Enumerates the alignment modes between the calendar picker and the entry component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -116,6 +122,8 @@ enum ArkUI_PickerIndicatorType
 **Description**
 
 Enumerates the indicator types of the selected item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -136,6 +144,8 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 **Description**
 
 Creates an object of the {@link TextPickerRangeContent} array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -165,6 +175,8 @@ Configures the icon data at a specified position in the **TextPickerRangeContent
 >
 > If an icon was already set at <b>index</b>, the previous buffer is released before assigning the new value.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -188,6 +200,8 @@ Configures the text data at a specified position in the **TextPickerRangeContent
 > **Note**:
 >
 > If text was already set at <b>index</b>, the previous buffer is released before assigning the new value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -213,6 +227,8 @@ Destroys a **TextPickerRangeContent** array object.
 >
 > After this call, <b>handle</b> must not be used. Do not pass pointers that were not returned by [OH_ArkUI_TextPickerRangeContentArray_Create](capi-picker-h.md#oh_arkui_textpickerrangecontentarray_create).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -230,6 +246,8 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 **Description**
 
 Creates an object of the {@link TextCascadePickerRangeContent} array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -259,6 +277,8 @@ Configures the text data at a specified position in the **TextCascadePickerRange
 >
 > If text was already set at <b>index</b>, the previous buffer is released before assigning the new value.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -278,6 +298,8 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCasca
 **Description**
 
 Configures the child data at a specified position in the **TextCascadePickerRangeContent** array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -303,6 +325,8 @@ Destroys a **TextCascadePickerRangeContent** array object.
 >
 > Do not call [OH_ArkUI_TextCascadePickerRangeContentArray_Destroy](capi-picker-h.md#oh_arkui_textcascadepickerrangecontentarray_destroy) on a <b>child</b> while it is still stored in a parent's {@code children}.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -320,6 +344,8 @@ ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerInd
 **Description**
 
 Creates a style instance of the selected item indicator.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -344,6 +370,8 @@ void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)
 **Description**
 
 Disposes of the style instance of the selected item indicator.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 

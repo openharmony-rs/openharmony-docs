@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_HistoricalPoint {...} OH_NativeXComponent_His
 
 Represents the historical point.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

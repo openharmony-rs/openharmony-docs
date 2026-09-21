@@ -18,8 +18,8 @@ Declare avsession interface.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | AVSession object<br> A pointer can be created using [OH_AVSession_Create](capi-native-avsession-h.md#oh_avsession_create) method. |
-| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | OH_AVCastController object<br> A pointer can be created using the [OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller) method. |
+| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | AVSession object<br> A pointer can be created using {@link OH_AVSession_Create} method. |
+| [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | OH_AVCastController object<br> A pointer can be created using the {@link OH_AVSession_CreateAVCastController} method. |
 
 ### Function
 
@@ -59,7 +59,7 @@ Declare avsession interface.
 | [AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)](#oh_avsession_registeroutputdevicechangecallback) | - | Request to register output device change callback. |
 | [AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)](#oh_avsession_unregisteroutputdevicechangecallback) | - | Request to unregister output device change callback. |
 | [AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)](#oh_avsession_acquiresession) | - | Request to acquire an AVSession instance if already created. Call [OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy) to release the OH_AVSession when it is not used anymore. |
-| [AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)](#oh_avsession_createavcastcontroller) | - | Create an AVCastController object. Call {@link OH_AVCastController_Destroy} to release the OH_AVCastController when it is not used anymore. |
+| [AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)](#oh_avsession_createavcastcontroller) | - | Create an AVCastController object. Call [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) to release the OH_AVCastController when it is not used anymore. |
 | [AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)](#oh_avsession_stopcasting) | - | Request to stop current cast and disconnect device connection. |
 | [AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)](#oh_avsession_acquireoutputdevice) | - | Acquire current output device. |
 | [AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo *outputDeviceInfo)](#oh_avsession_releaseoutputdevice) | - | Release outputDeviceInfo object. |
@@ -88,6 +88,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession*
 
 Declaring the callback struct for playback command
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -107,6 +109,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 **Description**
 
 Declaring the callback struct for forward command
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -128,6 +132,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 Declaring the callback struct for rewind command
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -147,6 +153,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 **Description**
 
 Declaring the callback struct for seek command
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -168,6 +176,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSess
 
 Declaring the callback struct for set loop mode command
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -187,6 +197,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVS
 **Description**
 
 Declaring the callback struct for toggle favorite command
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -208,6 +220,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 
 Declaring the callback struct for output device change
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -215,8 +229,8 @@ Declaring the callback struct for output device change
 | Parameter | Description |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)\* session | the OH_AVSession instance pointer. |
-| AVSession_ConnectionState state | the {@link AVSession_ConnectionState} of output device. |
-| outputDeviceInfothe | {@link AVSession_OutputDeviceInfo} pointer variable which will be set current output device info. Do not release the outputDeviceInfo pointer separately, instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
+| AVSession_ConnectionState state | the [AVSession_ConnectionState](capi-native-avsession-base-h.md#avsession_connectionstate) of output device. |
+| outputDeviceInfothe | [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) pointer variable which will be set current output device info. Do not release the outputDeviceInfo pointer separately, instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
 
 ### OH_AVSession_Create()
 
@@ -227,6 +241,8 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 **Description**
 
 Request to create the avsession.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -244,7 +260,7 @@ Request to create the avsession.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} If session already existed or internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}:                                                  1. The param of sessionType is invalid.                                                  2. The param of sessionTag is nullptr.                                                  3. The param of bundleName is nullptr.                                                  4. The param of abilityName is nullptr.                                                  5. The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) If session already existed or internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode):                                                  1. The param of sessionType is invalid.                                                  2. The param of sessionTag is nullptr.                                                  3. The param of bundleName is nullptr.                                                  4. The param of abilityName is nullptr.                                                  5. The param of avsession is nullptr. |
 
 ### OH_AVSession_Destroy()
 
@@ -256,6 +272,8 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 Request to destroy the avsession.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -268,7 +286,7 @@ Request to destroy the avsession.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER} The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) The param of avsession is nullptr. |
 
 ### OH_AVSession_Activate()
 
@@ -280,6 +298,8 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 
 Activate the avsession.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -292,7 +312,7 @@ Activate the avsession.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER} The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) The param of avsession is nullptr. |
 
 ### OH_AVSession_Deactivate()
 
@@ -304,6 +324,8 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 Deactivate the avsession.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -316,7 +338,7 @@ Deactivate the avsession.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER} The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) The param of avsession is nullptr. |
 
 ### OH_AVSession_GetSessionType()
 
@@ -327,6 +349,8 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 **Description**
 
 Get session type.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -341,7 +365,7 @@ Get session type.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is invalid.                                                  2. The param of sessionType is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is invalid.                                                  2. The param of sessionType is nullptr. |
 
 ### OH_AVSession_GetSessionId()
 
@@ -352,6 +376,8 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 **Description**
 
 Get session id.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -366,7 +392,7 @@ Get session id.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of sessionId is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of sessionId is nullptr. |
 
 ### OH_AVSession_SetAVMetadata()
 
@@ -377,6 +403,8 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 **Description**
 
 Request to set av metadata.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -391,7 +419,7 @@ Request to set av metadata.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of avmetadata is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of avmetadata is nullptr. |
 
 ### OH_AVSession_SetPlaybackState()
 
@@ -402,6 +430,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSessi
 **Description**
 
 Request to set av playbackstate.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -416,7 +446,7 @@ Request to set av playbackstate.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of playbackState is invalid. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of playbackState is invalid. |
 
 ### OH_AVSession_SetPlaybackPosition()
 
@@ -427,6 +457,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSe
 **Description**
 
 Request to set playback position.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -441,7 +473,7 @@ Request to set playback position.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of playbackPosition is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of playbackPosition is nullptr. |
 
 ### OH_AVSession_SetFavorite()
 
@@ -452,6 +484,8 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 **Description**
 
 Request to set favorite state.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -466,7 +500,7 @@ Request to set favorite state.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER} The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode) The param of avsession is nullptr. |
 
 ### OH_AVSession_SetLoopMode()
 
@@ -477,6 +511,8 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 **Description**
 
 Request to set loop mode.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -491,7 +527,7 @@ Request to set loop mode.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of loopMode is invalid. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of loopMode is invalid. |
 
 ### OH_AVSession_SetRemoteCastEnabled()
 
@@ -502,6 +538,8 @@ AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, boo
 **Description**
 
 Request to enable remote cast.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -516,7 +554,7 @@ Request to enable remote cast.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_CODE_SESSION_NOT_EXIST} session does not exist.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_CODE_SESSION_NOT_EXIST](capi-native-avsession-errors-h.md#avsession_errcode) session does not exist.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr. |
 
 ### OH_AVSession_RegisterCommandCallback()
 
@@ -527,6 +565,8 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 **Description**
 
 Request to register command callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -543,7 +583,7 @@ Request to register command callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_CODE_COMMAND_INVALID} The command is invalid.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_CODE_COMMAND_INVALID](capi-native-avsession-errors-h.md#avsession_errcode) The command is invalid.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterCommandCallback()
 
@@ -554,6 +594,8 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 **Description**
 
 Request to unregister command callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -569,7 +611,7 @@ Request to unregister command callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_CODE_COMMAND_INVALID} The command is invalid.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_CODE_COMMAND_INVALID](capi-native-avsession-errors-h.md#avsession_errcode) The command is invalid.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_RegisterForwardCallback()
 
@@ -580,6 +622,8 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, 
 **Description**
 
 Request to register fastforward callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -595,7 +639,7 @@ Request to register fastforward callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterForwardCallback()
 
@@ -606,6 +650,8 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 **Description**
 
 Request to unregister fastforward callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -620,7 +666,7 @@ Request to unregister fastforward callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_RegisterRewindCallback()
 
@@ -631,6 +677,8 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, O
 **Description**
 
 Request to register rewind callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -646,7 +694,7 @@ Request to register rewind callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterRewindCallback()
 
@@ -657,6 +705,8 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 **Description**
 
 Request to unregister rewind callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -671,7 +721,7 @@ Request to unregister rewind callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_RegisterSeekCallback()
 
@@ -682,6 +732,8 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_
 **Description**
 
 Request to register seek callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -697,7 +749,7 @@ Request to register seek callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterSeekCallback()
 
@@ -708,6 +760,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, O
 **Description**
 
 Request to unregister seek callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -722,7 +776,7 @@ Request to unregister seek callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_RegisterSetLoopModeCallback()
 
@@ -733,6 +787,8 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 **Description**
 
 Request to register set loopmode callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -748,7 +804,7 @@ Request to register set loopmode callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterSetLoopModeCallback()
 
@@ -759,6 +815,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 **Description**
 
 Request to unregister set loopmode callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -773,7 +831,7 @@ Request to unregister set loopmode callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_RegisterToggleFavoriteCallback()
 
@@ -784,6 +842,8 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 **Description**
 
 Request to register toggle favorite callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -799,7 +859,7 @@ Request to register toggle favorite callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterToggleFavoriteCallback()
 
@@ -810,6 +870,8 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 **Description**
 
 Request to unregister toggle favorite callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -824,7 +886,7 @@ Request to unregister toggle favorite callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code：          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code：          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_RegisterOutputDeviceChangeCallback()
 
@@ -835,6 +897,8 @@ AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* 
 **Description**
 
 Request to register output device change callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -849,7 +913,7 @@ Request to register output device change callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_UnregisterOutputDeviceChangeCallback()
 
@@ -860,6 +924,8 @@ AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession
 **Description**
 
 Request to unregister output device change callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -874,7 +940,7 @@ Request to unregister output device change callback.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of callback is nullptr. |
 
 ### OH_AVSession_AcquireSession()
 
@@ -885,6 +951,8 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 **Description**
 
 Request to acquire an AVSession instance if already created. Call [OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy) to release the OH_AVSession when it is not used anymore.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -901,7 +969,7 @@ Request to acquire an AVSession instance if already created. Call [OH_AVSession_
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_CODE_SESSION_NOT_EXIST} If session is not existed.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}:                                                  1. The param of sessionTag is invalid.                                                  2. The param of bundleName is nullptr.                                                  3. The param of abilityName is nullptr.                                                  4. The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_CODE_SESSION_NOT_EXIST](capi-native-avsession-errors-h.md#avsession_errcode) If session is not existed.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode):                                                  1. The param of sessionTag is invalid.                                                  2. The param of bundleName is nullptr.                                                  3. The param of abilityName is nullptr.                                                  4. The param of avsession is nullptr. |
 
 ### OH_AVSession_CreateAVCastController()
 
@@ -911,7 +979,9 @@ AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, O
 
 **Description**
 
-Create an AVCastController object. Call {@link OH_AVCastController_Destroy} to release the OH_AVCastController when it is not used anymore.
+Create an AVCastController object. Call [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) to release the OH_AVCastController when it is not used anymore.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -926,7 +996,7 @@ Create an AVCastController object. Call {@link OH_AVCastController_Destroy} to r
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_CODE_SESSION_NOT_EXIST} The session does not exist.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of avcastcontroller is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_CODE_SESSION_NOT_EXIST](capi-native-avsession-errors-h.md#avsession_errcode) The session does not exist.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of avcastcontroller is nullptr. |
 
 ### OH_AVSession_StopCasting()
 
@@ -938,6 +1008,8 @@ AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
 
 Request to stop current cast and disconnect device connection.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -950,7 +1022,7 @@ Request to stop current cast and disconnect device connection.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_CODE_SESSION_NOT_EXIST} The session does not exist.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_CODE_SESSION_NOT_EXIST](capi-native-avsession-errors-h.md#avsession_errcode) The session does not exist.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr. |
 
 ### OH_AVSession_AcquireOutputDevice()
 
@@ -962,6 +1034,8 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 
 Acquire current output device.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -969,13 +1043,13 @@ Acquire current output device.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | The avsession instance pointer |
-| AVSession_OutputDeviceInfo** outputDeviceInfo | Pointer {@link AVSession_OutputDeviceInfo} to a variable to receive the OutputDeviceInfo Do not release the outputDeviceInfo pointer separately, instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
+| AVSession_OutputDeviceInfo** outputDeviceInfo | Pointer [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) to a variable to receive the OutputDeviceInfo Do not release the outputDeviceInfo pointer separately, instead call [OH_AVSession_ReleaseOutputDevice](capi-native-avsession-h.md#oh_avsession_releaseoutputdevice) to release the outputDeviceInfo when it is not used anymore. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_SERVICE_EXCEPTION} Internal server error.<br>        {@link AV_SESSION_ERR_CODE_SESSION_NOT_EXIST} The session does not exist.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1. The param of avsession is nullptr.                                                  2. The param of outputDeviceInfo is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_SERVICE_EXCEPTION](capi-native-avsession-errors-h.md#avsession_errcode) Internal server error.          [AV_SESSION_ERR_CODE_SESSION_NOT_EXIST](capi-native-avsession-errors-h.md#avsession_errcode) The session does not exist.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1. The param of avsession is nullptr.                                                  2. The param of outputDeviceInfo is nullptr. |
 
 ### OH_AVSession_ReleaseOutputDevice()
 
@@ -986,6 +1060,8 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 **Description**
 
 Release outputDeviceInfo object.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -1000,6 +1076,6 @@ Release outputDeviceInfo object.
 
 | Type | Description |
 | -- | -- |
-| AVSession_ErrCode | Function result code:          {@link AV_SESSION_ERR_SUCCESS} If the execution is successful.<br>        {@link AV_SESSION_ERR_INVALID_PARAMETER}                                                  1.The param of avsession is nullptr;                                                  2.The param of outputDeviceInfo is nullptr. |
+| AVSession_ErrCode | Function result code:          [AV_SESSION_ERR_SUCCESS](capi-native-avsession-errors-h.md#avsession_errcode) If the execution is successful.          [AV_SESSION_ERR_INVALID_PARAMETER](capi-native-avsession-errors-h.md#avsession_errcode)                                                  1.The param of avsession is nullptr;                                                  2.The param of outputDeviceInfo is nullptr. |
 
 

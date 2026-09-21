@@ -8,6 +8,8 @@ typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
 
 Declaring the audio device descriptor array.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)

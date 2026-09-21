@@ -4,6 +4,8 @@
 
 Provide ScsiPeripheral DDK interface, including initializing DDK, releasing DDK, opening devices, reading and writing devices, etc.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 ## Files

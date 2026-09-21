@@ -8,7 +8,9 @@ typedef struct OH_TrafficFilter_MACMatch {...} OH_TrafficFilter_MACMatch
 
 MAC地址匹配条件<br> 基于MAC地址匹配报文 仅支持源MAC地址
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
+**起始版本：** 26.0.1
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)
 
@@ -20,8 +22,8 @@ MAC地址匹配条件<br> 基于MAC地址匹配报文 仅支持源MAC地址
 
 | 名称 | 描述 |
 | -- | -- |
-| bool enable | 启用MAC地址匹配<br>**起始版本：** 26.1.0 |
-| bool invert | 是否反转匹配结果<br>**起始版本：** 26.1.0 |
-| char srcMac[OH_TRAFFICFILTER_MAC_ADDRSTRLEN] | 源MAC地址，格式为"XX:XX:XX:XX:XX:XX"。 ASCII/UTF-8编码，必须以null结尾。 OH_TRAFFICFILTER_MAC_ADDRSTRLEN包含null终止符； 最大有效字符串长度为17个字符。 格式无效将导致规则设置接口返回OH_TRAFFICFILTER_ERROR_INVALID_PARAM。<br>**起始版本：** 26.1.0 |
+| bool enable | 启用MAC地址匹配<br>**起始版本：** 26.0.1 |
+| bool invert | 是否反转匹配结果<br>**起始版本：** 26.0.1 |
+| char srcMac[OH_TRAFFICFILTER_MAC_ADDRSTRLEN] | 源MAC地址，格式为"XX:XX:XX:XX:XX:XX"。 ASCII/UTF-8编码，必须以null结尾。 OH_TRAFFICFILTER_MAC_ADDRSTRLEN包含null终止符； 最大有效字符串长度为17个字符。 格式无效将导致规则设置接口返回OH_TRAFFICFILTER_ERROR_INVALID_PARAM。<br>**起始版本：** 26.0.1 |
 
 

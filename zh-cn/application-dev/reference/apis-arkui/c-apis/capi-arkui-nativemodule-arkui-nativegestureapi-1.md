@@ -6,7 +6,9 @@ typedef struct ArkUI_NativeGestureAPI_1 {...} ArkUI_NativeGestureAPI_1
 
 ## 概述
 
-提供创建敲击、长按、滑动、捏合、旋转、快滑手势及手势组的接口，并支持绑定手势、移除手势、设置手势打断回调和并行内部手势回调，用于配置和管理组件的触控交互识别与事件处理。<br>使用该模块配置手势时，推荐按以下流程操作： 调用[createTapGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createtapgesture)等接口创建手势识别器，调用[setGestureEventTarget](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureeventtarget)注册手势事件回调，再调用[addGestureToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#addgesturetonode) 将手势识别器绑定至组件节点；不再使用该手势时，调用[dispose](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#dispose)释放手势资源，如需先解除节点绑定，可在调用dispose()前调用[removeGestureFromNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#removegesturefromnode)。对于手势竞争场景， 可通过手势优先级、屏蔽模式或[setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureinterruptertonode)配置响应策略；对于组件内部手势与外部自定义手势需要并行识别的场景，可调用 [setInnerGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)设置并行内部手势事件回调。
+提供创建敲击、长按、滑动、捏合、旋转、快滑手势及手势组的接口，并支持绑定手势、移除手势、设置手势打断回调和并行内部手势回调，用于配置和管理组件的触控交互识别与事件处理。<br>使用该模块配置手势时，推荐按以下流程操作： 调用{@link createTapGesture}等接口创建手势识别器，调用{@link setGestureEventTarget}注册手势事件回调，再调用{@link addGestureToNode}<br>将手势识别器绑定至组件节点；不再使用该手势时，调用{@link dispose}释放手势资源，如需先解除节点绑定，可在调用dispose()前调用{@link removeGestureFromNode}。对于手势竞争场景，<br>可通过手势优先级、屏蔽模式或{@link setGestureInterrupterToNode}配置响应策略；对于组件内部手势与外部自定义手势需要并行识别的场景，可调用<br>{@link setInnerGestureParallelTo}设置并行内部手势事件回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -29,7 +31,7 @@ typedef struct ArkUI_NativeGestureAPI_1 {...} ArkUI_NativeGestureAPI_1
 | -- | -- |
 | [ArkUI_GestureRecognizer* (\*createTapGesture)(int32_t countNum, int32_t fingersNum)](#createtapgesture) | 创建敲击手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose() 前调用removeGestureFromNode()。 |
 | [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | 创建长按手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose() 前调用removeGestureFromNode()。 |
-| [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | 创建滑动手势。与[createSwipeGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createswipegesture)（快滑手势）不同，滑动手势基于最小拖动距离触发，快滑手势基于最小滑动速度触发。 创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。 如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 |
+| [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | 创建滑动手势。与{@link createSwipeGesture}（快滑手势）不同，滑动手势基于最小拖动距离触发，快滑手势基于最小滑动速度触发。 创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。 如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 |
 | [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | 创建捏合手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose() 前调用removeGestureFromNode()。 |
 | [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | 创建旋转手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose() 前调用removeGestureFromNode()。 |
 | [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | 创建快滑手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose() 前调用removeGestureFromNode()。 |
@@ -102,7 +104,7 @@ ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDi
 
 **描述：**
 
-创建滑动手势。与[createSwipeGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createswipegesture)（快滑手势）不同，滑动手势基于最小拖动距离触发，快滑手势基于最小滑动速度触发。 创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。 如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
+创建滑动手势。与{@link createSwipeGesture}（快滑手势）不同，滑动手势基于最小拖动距离触发，快滑手势基于最小滑动速度触发。 创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。 如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
 **参数：**
 

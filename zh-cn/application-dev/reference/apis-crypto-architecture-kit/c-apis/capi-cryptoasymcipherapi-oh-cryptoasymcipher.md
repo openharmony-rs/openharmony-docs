@@ -8,6 +8,8 @@ typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
 
 非对称加解密结构体，表示非对称加解密上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)

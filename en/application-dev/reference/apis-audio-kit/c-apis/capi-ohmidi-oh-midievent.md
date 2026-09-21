@@ -8,6 +8,8 @@ typedef struct OH_MIDIEvent {...} OH_MIDIEvent
 
 MIDI Event Structure (Universal). The event data is transferred in Universal MIDI Packets (UMP) format. MIDI 1.0 byte stream data should be converted to UMP format before filling this structure.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)

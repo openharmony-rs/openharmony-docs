@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextBox OH_Drawing_TextBox
 
 用于接收文本框的矩形大小、方向和数量大小。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

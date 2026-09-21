@@ -40,6 +40,8 @@ enum OH_Drawing_TextHighContrast
 
 文本渲染高对比度模式枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 20
 
 | 枚举项 | 描述 |

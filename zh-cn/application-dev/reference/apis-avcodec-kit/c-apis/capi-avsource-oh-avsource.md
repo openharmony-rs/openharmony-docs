@@ -8,6 +8,8 @@ typedef struct OH_AVSource OH_AVSource
 
 为媒体资源接口定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 10
 
 **相关模块：** [AVSource](capi-avsource.md)

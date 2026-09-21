@@ -8,6 +8,8 @@ typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 
 Defines a struct for an array of event types.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyMaterialDh {...} OH_Huks_KeyMaterialDh
 
 Defines the struct for a DH key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

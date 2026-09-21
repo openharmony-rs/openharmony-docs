@@ -48,13 +48,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetUri(OH_MediaAsset* mediaAsset, const cha
 
 Obtains the URI of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | const char** uri | Double pointer to the URI obtained. |
 
 **Returns**:
@@ -73,13 +75,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaType(OH_MediaAsset* mediaAsset, Med
 
 Obtains the type of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | MediaLibrary_MediaType* mediaType | Pointer to the media asset type obtained. |
 
 **Returns**:
@@ -98,13 +102,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetMediaSubType(OH_MediaAsset* mediaAsset, 
 
 Obtains the subtype of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | MediaLibrary_MediaSubType* mediaSubType | Pointer to the media asset subtype obtained. |
 
 **Returns**:
@@ -123,13 +129,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDisplayName(OH_MediaAsset* mediaAsset, c
 
 Obtains the display name of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | const char** displayName | Double pointer to the display name obtained. |
 
 **Returns**:
@@ -148,13 +156,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetSize(OH_MediaAsset* mediaAsset, uint32_t
 
 Obtains the size of a media asset file.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* size | Pointer to the file size obtained, in bytes. |
 
 **Returns**:
@@ -173,13 +183,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAdded(OH_MediaAsset* mediaAsset, uin
 
 Obtains the date when a media asset was added.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* dateAdded | Pointer to the date obtained. The value is the number of seconds elapsed since the Unix Epoch time ( 00:00:00 UTC on January 1, 1970). |
 
 **Returns**:
@@ -198,13 +210,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModified(OH_MediaAsset* mediaAsset, 
 
 Obtains the date when a media asset (content not the media asset name) was last modified.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* dateModified | Pointer to the date obtained. The value is the number of milliseconds elapsed since the Unix Epoch time. |
 
 **Returns**:
@@ -223,13 +237,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateTaken(OH_MediaAsset* mediaAsset, uin
 
 Obtains the date when a media asset was taken.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* dateTaken | Pointer to the date obtained. The value is the number of seconds elapsed since the Unix Epoch time. |
 
 **Returns**:
@@ -248,13 +264,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateAddedMs(OH_MediaAsset* mediaAsset, u
 
 Obtains the date when a media asset was added, in ms.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* dateAddedMs | Pointer to the date obtained, in ms. The value is the number of milliseconds elapsed since the Unix Epoch time. |
 
 **Returns**:
@@ -273,13 +291,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDateModifiedMs(OH_MediaAsset* mediaAsset
 
 Obtains the date when a media asset (content not the media asset name) was last modified, in ms.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* dateModifiedMs | Pointer to the date obtained, in ms. The value is the number of milliseconds elapsed since the Unix Epoch time. |
 
 **Returns**:
@@ -298,13 +318,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetDuration(OH_MediaAsset* mediaAsset, uint
 
 Obtains the duration of a media asset, in ms.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* duration | Pointer to the duration obtained, in ms. |
 
 **Returns**:
@@ -323,13 +345,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetWidth(OH_MediaAsset* mediaAsset, uint32_
 
 Obtains the image width (in pixels) of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* width | Pointer to the image width obtained, in pixels. |
 
 **Returns**:
@@ -348,13 +372,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetHeight(OH_MediaAsset* mediaAsset, uint32
 
 Obtains the image height (in pixels) of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* height | Pointer to the image height obtained, in pixels. |
 
 **Returns**:
@@ -373,13 +399,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 
 Obtains the orientation of a media asset, in degrees.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* orientation | Pointer to the orientation of the image obtained, in degrees. |
 
 **Returns**:
@@ -398,13 +426,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_IsFavorite(OH_MediaAsset* mediaAsset, uint3
 
 Checks whether a media asset is favorited.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | uint32_t* favorite | Pointer to the favorite status obtained. |
 
 **Returns**:
@@ -423,13 +453,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetTitle(OH_MediaAsset* mediaAsset, const c
 
 Obtains the title of a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 | const char** title | Pointer to the media asset title obtained. |
 
 **Returns**:
@@ -448,13 +480,15 @@ MediaLibrary_ErrorCode OH_MediaAsset_Release(OH_MediaAsset* mediaAsset)
 
 Releases a media asset.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_MediaAsset* mediaAsset | Pointer to an {@link OH_MediaAsset} instance. |
+| OH_MediaAsset* mediaAsset | Pointer to an [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance. |
 
 **Returns**:
 

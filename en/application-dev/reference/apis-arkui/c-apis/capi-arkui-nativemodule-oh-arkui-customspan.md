@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_CustomSpan OH_ArkUI_CustomSpan
 
 ## Overview
 
-Defines a custom drawing span.<br> [OH_ArkUI_CustomSpan_Create](capi-styled-string-h.md#oh_arkui_customspan_create) can be used to create a custom drawing span object.<br> [OH_ArkUI_CustomSpan_Destroy](capi-styled-string-h.md#oh_arkui_customspan_destroy) can be used to destroy the custom drawing span object.<br> After the object is created, [OH_ArkUI_CustomSpan_RegisterOnMeasureCallback](capi-styled-string-h.md#oh_arkui_customspan_registeronmeasurecallback) and [OH_ArkUI_CustomSpan_RegisterOnDrawCallback](capi-styled-string-h.md#oh_arkui_customspan_registerondrawcallback) can be used to register drawing callback functions.
+Defines a custom drawing span.<br> {@link OH_ArkUI_CustomSpan_Create} can be used to create a custom<br>drawing span object.<br> {@link OH_ArkUI_CustomSpan_Destroy} can be used to destroy the custom drawing span<br>object.<br> After the object is created, {@link OH_ArkUI_CustomSpan_RegisterOnMeasureCallback} and<br>{@link OH_ArkUI_CustomSpan_RegisterOnDrawCallback} can be used to register drawing callback functions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

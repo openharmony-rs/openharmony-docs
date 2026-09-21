@@ -8,6 +8,8 @@ typedef struct OH_Rdb_CryptoParam OH_Rdb_CryptoParam
 
 指定打开加密数据库时使用的加密参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **相关模块：** [RDB](capi-rdb.md)

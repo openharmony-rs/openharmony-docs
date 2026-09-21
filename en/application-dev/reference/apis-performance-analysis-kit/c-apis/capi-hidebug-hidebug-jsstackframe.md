@@ -8,6 +8,8 @@ typedef struct HiDebug_JsStackFrame {...} HiDebug_JsStackFrame
 
 Defines a struct for the JS stack frame content.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 20
 
 **Related module**: [HiDebug](capi-hidebug.md)

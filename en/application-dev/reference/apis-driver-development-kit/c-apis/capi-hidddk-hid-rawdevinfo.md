@@ -8,6 +8,8 @@ typedef struct Hid_RawDevInfo {...} Hid_RawDevInfo
 
 Defines the raw device information.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 18
 
 **Related module**: [HidDdk](capi-hidddk.md)

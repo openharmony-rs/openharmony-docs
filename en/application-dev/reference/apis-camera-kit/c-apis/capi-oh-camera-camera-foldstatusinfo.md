@@ -8,6 +8,8 @@ typedef struct Camera_FoldStatusInfo {...} Camera_FoldStatusInfo
 
 The struct describes the fold status information of the camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

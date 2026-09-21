@@ -8,6 +8,8 @@ typedef struct OH_ImageReceiverNative OH_ImageReceiverNative
 
 The OH_ImageReceiverNative struct describes the image receiver, which is encapsulated at the native layer. The struct cannot be directly operated. Instead, functions must be called to create and release the struct and operate the fields in the struct.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

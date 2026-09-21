@@ -4,6 +4,8 @@
 
 Provides abilities of windowManager on the native side, such as picture in picture window.
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 12
 
 ## 文件汇总

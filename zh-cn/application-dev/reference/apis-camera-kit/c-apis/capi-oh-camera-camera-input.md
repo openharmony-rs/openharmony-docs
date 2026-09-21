@@ -8,6 +8,8 @@ typedef struct Camera_Input Camera_Input
 
 相机输入对象。可以使用{@link OH_CameraManager_CreateCameraInput}方法创建指针。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

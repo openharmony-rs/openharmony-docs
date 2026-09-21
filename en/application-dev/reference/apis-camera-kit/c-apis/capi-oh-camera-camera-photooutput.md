@@ -8,6 +8,8 @@ typedef struct Camera_PhotoOutput Camera_PhotoOutput
 
 The struct describes the photo output object.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

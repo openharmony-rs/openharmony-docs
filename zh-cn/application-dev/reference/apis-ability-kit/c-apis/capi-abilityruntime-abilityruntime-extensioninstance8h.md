@@ -8,6 +8,8 @@ typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanc
 
 定义AbilityRuntime_ExtensionInstance对象指针。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 24
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)

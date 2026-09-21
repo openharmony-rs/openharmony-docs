@@ -8,6 +8,8 @@ struct OH_AbilityRuntime_ModObjDispatcher_TypeDescriptorHandle
 
 Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_TypeDescriptor.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0 /
 typedef struct OH_AbilityRuntime_ModularObjectDispatcher_TypeDescriptor
 

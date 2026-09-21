@@ -8,6 +8,8 @@ typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
 
 Compile Options
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 12
 
 **Related module**: [JSVM](capi-jsvm.md)

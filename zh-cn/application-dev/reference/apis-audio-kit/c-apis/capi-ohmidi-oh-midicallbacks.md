@@ -8,6 +8,8 @@ typedef struct OH_MIDICallbacks {...} OH_MIDICallbacks
 
 客户端回调结构体，包含设备变化和错误处理的回调函数指针。
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)

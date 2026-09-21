@@ -4,6 +4,8 @@
 
 Provides the capability to access the data loss prevention (DLP) files.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 ## Files

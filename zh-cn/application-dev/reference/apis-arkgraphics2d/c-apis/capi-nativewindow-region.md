@@ -8,6 +8,8 @@ typedef struct Region {...} Region
 
 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)

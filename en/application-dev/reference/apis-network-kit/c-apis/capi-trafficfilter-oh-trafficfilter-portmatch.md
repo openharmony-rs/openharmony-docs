@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_PortMatch {...} OH_TrafficFilter_PortMatch
 
 Port match condition
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)

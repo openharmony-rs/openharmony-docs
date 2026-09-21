@@ -8,6 +8,8 @@ typedef struct Camera_OcclusionDetectionResult {...} Camera_OcclusionDetectionRe
 
 Provides the check result for whether a camera lens is blocked or dirty.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

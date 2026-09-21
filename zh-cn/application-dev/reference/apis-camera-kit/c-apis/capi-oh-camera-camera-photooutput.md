@@ -8,6 +8,8 @@ typedef struct Camera_PhotoOutput Camera_PhotoOutput
 
 拍照输出对象。<br> 可以使用{@link OH_CameraManager_CreatePhotoOutput}方法创建指针。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

@@ -4,6 +4,8 @@
 
 为以太网网卡模块提供C接口。
 
+**系统能力：** SystemCapability.Communication.NetManager.Ethernet
+
 **起始版本：** 26.0.0
 
 ## 文件汇总

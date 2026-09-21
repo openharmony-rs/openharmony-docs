@@ -8,6 +8,8 @@ typedef struct ArkUI_TextMenuItemArray ArkUI_TextMenuItemArray
 
 定义文本菜单项数组结构体，用于在文本选择菜单或上下文菜单场景中承载多个文本菜单项数据。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

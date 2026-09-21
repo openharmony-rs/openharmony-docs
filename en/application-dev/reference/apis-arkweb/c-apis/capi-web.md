@@ -4,6 +4,8 @@
 
 Provides APIs to intercept the request from ArkWeb.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 ## Files

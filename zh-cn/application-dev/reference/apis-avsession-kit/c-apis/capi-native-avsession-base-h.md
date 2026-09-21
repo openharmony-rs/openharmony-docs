@@ -44,6 +44,8 @@ enum AVSession_Type
 
 会话类型枚举。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -63,6 +65,8 @@ enum AVSession_PlaybackState
 **描述：**
 
 媒体播放状态的相关属性枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -92,6 +96,8 @@ enum AVSession_LoopMode
 
 定义媒体播放循环模式。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -111,6 +117,8 @@ enum AVSession_ControlCommand
 **描述：**
 
 播控命令枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -133,6 +141,8 @@ enum AVMetadata_SkipIntervals
 
 定义快进或快退的时间间隔。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -151,6 +161,8 @@ enum AVMetadata_DisplayTag
 
 当前媒体资源的金标枚举，即应用媒体音源的特殊类型标识。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -166,6 +178,8 @@ enum AVSession_ConnectionState
 **描述：**
 
 设备连接状态枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -188,6 +202,8 @@ enum AVSession_AVCastCategory
 
 表示不同播放场景的投播类别枚举。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -204,6 +220,8 @@ enum AVSession_DeviceType
 **描述：**
 
 设备类型枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -228,6 +246,8 @@ enum AVSession_ProtocolType
 
 协议类型枚举。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -250,6 +270,8 @@ enum AVSession_AVCastControlCommandType
 **描述：**
 
 命令类型枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -286,6 +308,8 @@ enum AVSession_PlaybackSpeed
 
 播放倍速类型枚举。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -314,6 +338,8 @@ enum AVSession_PlaybackFilter
 **描述：**
 
 播放状态过滤器枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 

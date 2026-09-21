@@ -8,6 +8,8 @@ typedef struct MediaKeySession MediaKeySession
 
 为MediaKeySession定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
+
 **起始版本：** 11
 
 **相关模块：** [VideoDecoder](capi-videodecoder.md)

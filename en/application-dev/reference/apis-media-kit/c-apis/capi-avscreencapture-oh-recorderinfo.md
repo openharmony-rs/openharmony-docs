@@ -8,6 +8,8 @@ typedef struct OH_RecorderInfo {...} OH_RecorderInfo
 
 The struct describes the recording file information.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

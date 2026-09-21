@@ -8,6 +8,8 @@ typedef struct OH_PolarPosition {...} OH_PolarPosition
 
 Represents a position in polar (spherical) coordinates.<br> Polar coordinates use azimuth, elevation, and distance to define a position in three-dimensional space.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Related module**: [Core](capi-core.md)

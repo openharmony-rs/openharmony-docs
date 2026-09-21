@@ -8,6 +8,8 @@ typedef struct NN_TensorDesc NN_TensorDesc
 
 Defines the tensor descriptor handle.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 11
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

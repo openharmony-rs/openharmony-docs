@@ -8,6 +8,8 @@ struct AbilityRuntime_Context
 
 Define the AbilityRuntime_Context structure type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

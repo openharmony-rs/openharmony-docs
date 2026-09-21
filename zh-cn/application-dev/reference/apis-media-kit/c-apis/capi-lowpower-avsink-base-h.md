@@ -20,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | LowPowerAVSink输入数据的结构体。应用在收到DataNeeded回调后需要将数据打包装进OH_AVSamplesBuffer实例中送给对应的LowPowerAVSink。 |
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | LowPowerAVSink输入数据的结构体。应用在收到DataNeeded回调后需要将数据打包装进OH_AVSamplesBuffer实例中送给对应的lowpower_avsink。 |
 | [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsink-capability.md) | OH_LowPowerAVSink_Capability | OH_LowPowerAVSink_Capability的前向声明。 |
 
 ### 函数
@@ -42,6 +42,8 @@ OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffe
 **描述：**
 
 将一个OH_AVBuffer中的数据添加到OH_AVSamplesBuffer实例中。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
@@ -68,6 +70,8 @@ int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer
 
 获取OH_AVSamplesBuffer实例的剩余可使用容量。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -91,6 +95,8 @@ OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()
 **描述：**
 
 获取LPP播放器能力。该函数的主要作用是获取当前低功耗播放器所支持的功能和媒体格式。<br> 通过调用此函数，可以了解设备在音频或视频处理方面的支持能力，例如支持的编码格式、解码格式、码率范围等。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 21
 

@@ -8,6 +8,8 @@ typedef struct OH_AVMetadataExtractor OH_AVMetadataExtractor
 
 定义OH_AVMetadataExtractor类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 18
 
 **相关模块：** [AVMetadataExtractor](capi-avmetadataextractor.md)

@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 Defines the <b>OHNativeWindow</b> struct.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Related module**: [Vulkan](capi-vulkan.md)

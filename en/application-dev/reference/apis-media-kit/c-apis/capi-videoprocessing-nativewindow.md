@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 Forward declaration of NativeWindow.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 12
 
 **Related module**: [VideoProcessing](capi-videoprocessing.md)

@@ -8,6 +8,8 @@ typedef struct Rdb_DataObserver {...} Rdb_DataObserver
 
 Indicates the observer of data.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

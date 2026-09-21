@@ -8,6 +8,8 @@ typedef struct OH_EqualizerFrequencyBandGains {...} OH_EqualizerFrequencyBandGai
 
 Specify equalizer frequency band gains.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

@@ -67,6 +67,8 @@ enum OH_AVPixelFormat
 
 Enumerates the video pixel formats.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -91,6 +93,8 @@ struct OH_AVFormat *OH_AVFormat_Create(void)
 
 Create an OH_AVFormat handle pointer to read and write data
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Returns**:
@@ -108,6 +112,8 @@ struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t 
 **Description**
 
 Create an audio OH_AVFormat handle pointer to read and write data
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 10
 
@@ -135,6 +141,8 @@ struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t 
 
 Create a video OH_AVFormat handle pointer to read and write data
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -161,6 +169,8 @@ void OH_AVFormat_Destroy(struct OH_AVFormat *format)
 
 Destroys an OH_AVFormat instance. The instance cannot be destroyed repeatedly.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -178,6 +188,8 @@ bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
 **Description**
 
 Copies an OH_AVFormat instance.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -203,6 +215,8 @@ bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_
 **Description**
 
 Assigns a value of the int type to a {@link key} in an OH_AVFormat instance. This function can be used to set<br>only parameters of the int type. For details, see {@link native_avcodec_base.h}.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -230,6 +244,8 @@ bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 Assigns an unsigned int value to the key of an OH_AVFormat instance. This API can be used to set only parameters of the unsigned int type. For details, see {@link native_avcodec_base.h}.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -255,6 +271,8 @@ bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64
 **Description**
 
 Assigns a value of the long type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the long type. For details, see {@link native_avcodec_base.h}.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -282,6 +300,8 @@ bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, floa
 
 Assigns a value of the float type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the float type. For details, see {@link native_avcodec_base.h}.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -307,6 +327,8 @@ bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 **Description**
 
 Assigns a value of the double type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the double type. For details, see {@link native_avcodec_base.h}.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -334,6 +356,8 @@ bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, con
 
 Assigns a value of the string type to a {@link key} in an OH_AVFormat instance. This function can be used to<br>set only parameters of the string type. For details, see {@link native_avcodec_base.h}.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -359,6 +383,8 @@ bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const ui
 **Description**
 
 Writes data blocks of a specified length to an OH_AVFormat instance. This function can be used to set only parameters of the buffer type. For details, see {@link native_avcodec_base.h}.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -387,6 +413,8 @@ bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_
 
 Obtains the value of the int type of a {@link key} in an OH_AVFormat instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -412,6 +440,8 @@ bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint3
 **Description**
 
 Obtains the value of the unsigned int type from an OH_AVFormat instance using a key.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 23
 
@@ -439,6 +469,8 @@ bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64
 
 Obtains the value of the long type of a {@link key} in an OH_AVFormat instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -464,6 +496,8 @@ bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, floa
 **Description**
 
 Obtains the value of the float type of a {@link key} in an OH_AVFormat instance.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -491,6 +525,8 @@ bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 
 Obtains the value of the double type of a {@link key} in an OH_AVFormat instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -517,6 +553,8 @@ bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, con
 
 Obtains the value of the string type of a {@link key} in an OH_AVFormat instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -542,6 +580,8 @@ bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t 
 **Description**
 
 Reads data blocks of a specified length from an OH_AVFormat instance.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 
@@ -570,6 +610,8 @@ const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 
 Returns a string consisting of key-value pairs in an OH_AVFormat instance. A string of up to 1024 bytes can be returned. The string pointer is released when the OH_AVFormat instance is destroyed.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Parameters**:
@@ -593,6 +635,8 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 **Description**
 
 Reads an array of int32_t data from an OH_AVFormat instance.<br> Note that the buffer lifecycle is bound to the OH_AVFormat instance. The buffer becomes invalid automatically when the OH_AVFormat instance is destroyed.<br> To keep the data for an extended period, explicitly copy the data to newly allocated memory.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 20
 
@@ -621,6 +665,8 @@ bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const
 
 Writes data blocks of the int32_t type with a specified length to an OH_AVFormat instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -648,6 +694,8 @@ uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)
 
 Obtains the total number of keys in an OH_AVFormat instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -671,6 +719,8 @@ bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)
 **Description**
 
 Obtains the key name string from an OH_AVFormat instance by index.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 23
 

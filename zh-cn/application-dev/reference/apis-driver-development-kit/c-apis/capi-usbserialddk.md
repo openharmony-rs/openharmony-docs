@@ -4,6 +4,8 @@
 
 提供USB Serial DDK（USB串口驱动开发工具包）接口，包括枚举类型和USB Serial DDK API使用的数据结构。串口通信常见于工业用途及一些老旧设备，如：发卡机、身份证读卡器等。 开发者通过使用USB Serial DDK，可以开发USB串口外设扩展驱动。
 
+**系统能力：** SystemCapability.Driver.UsbSerial.Extension
+
 **起始版本：** 18
 
 ## 文件汇总

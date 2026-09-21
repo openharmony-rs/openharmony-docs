@@ -8,6 +8,8 @@ typedef struct Camera_SmoothZoomInfo {...} Camera_SmoothZoomInfo
 
 The struct describes the smooth zoom information.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

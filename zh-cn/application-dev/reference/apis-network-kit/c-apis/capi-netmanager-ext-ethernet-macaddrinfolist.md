@@ -8,6 +8,8 @@ typedef struct Ethernet_MacAddrInfoList {...} Ethernet_MacAddrInfoList
 
 以太网网卡MAC地址信息列表。
 
+**系统能力：** SystemCapability.Communication.NetManager.Ethernet
+
 **起始版本：** 26.0.0
 
 **相关模块：** [netmanager_ext](capi-netmanager-ext.md)

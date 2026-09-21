@@ -8,6 +8,8 @@ typedef struct TEE_OperationInfoKey {...} TEE_OperationInfoKey
 
 Defines the key information stored in the <b>OperationInfo</b>.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

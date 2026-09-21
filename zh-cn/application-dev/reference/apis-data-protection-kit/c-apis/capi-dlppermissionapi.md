@@ -4,6 +4,8 @@
 
 Provides the capability to access the data loss prevention (DLP) files.
 
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
 **起始版本：** 14
 
 ## 文件汇总

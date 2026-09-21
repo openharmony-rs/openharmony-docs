@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_ParagraphStyle OH_ArkUI_ParagraphStyle
 
 ## Overview
 
-Defines a paragraph style.<br> [OH_ArkUI_ParagraphStyle_Create](capi-styled-string-h.md#oh_arkui_paragraphstyle_create) can be used to create a paragraph style object.<br> [OH_ArkUI_ParagraphStyle_Destroy](capi-styled-string-h.md#oh_arkui_paragraphstyle_destroy) can be used to destroy the paragraph style object.<br> After the object is created, the **OH_ArkUI_ParagraphStyle_SetXXX** series APIs can be used to set the specific styles that take effect. For example, you can use [OH_ArkUI_ParagraphStyle_SetTextAlign](capi-styled-string-h.md#oh_arkui_paragraphstyle_settextalign) to set a text alignment method.
+Defines a paragraph style.<br> {@link OH_ArkUI_ParagraphStyle_Create} can be used to create a<br>paragraph style object.<br> {@link OH_ArkUI_ParagraphStyle_Destroy} can be used to destroy the paragraph<br>style object.<br> After the object is created, the **OH_ArkUI_ParagraphStyle_SetXXX** series APIs can be used<br>to set the specific styles that take effect. For example, you can use {@link OH_ArkUI_ParagraphStyle_SetTextAlign} to set a text alignment method.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

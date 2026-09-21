@@ -32,6 +32,8 @@ enum ArkUI_ImageSpanAlignment
 
 Enumerates the alignment mode of the image with the text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |

@@ -4,6 +4,8 @@
 
 Provides the capability to manage access token.
 
+**System capability**: SystemCapability.Security.AccessToken
+
 **Since**: 12
 
 ## Files

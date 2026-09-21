@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontCollection OH_Drawing_FontCollection
 
 Defines a struct used to load fonts.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)

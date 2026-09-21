@@ -8,6 +8,8 @@ typedef struct OH_Rdb_Store {...} OH_Rdb_Store
 
 Define OH_Rdb_Store type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)

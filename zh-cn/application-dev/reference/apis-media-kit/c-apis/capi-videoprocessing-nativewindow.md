@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 定义NativeWindow对象。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **相关模块：** [VideoProcessing](capi-videoprocessing.md)

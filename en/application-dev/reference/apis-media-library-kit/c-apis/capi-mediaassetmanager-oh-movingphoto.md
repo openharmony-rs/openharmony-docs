@@ -8,6 +8,8 @@ typedef struct OH_MovingPhoto OH_MovingPhoto
 
 The struct describes a moving photo.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)

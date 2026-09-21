@@ -40,6 +40,8 @@ FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 
 Initializes a mutex attribute.<br> After successful initialization, the mutex attribute is set to its default value. The mutex attribute must later be destroyed by [ffrt_mutexattr_destroy](capi-mutex-h.md#ffrt_mutexattr_destroy).
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -64,6 +66,8 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 
 Sets the type of a mutex attribute.<br> The type can be `ffrt_mutex_normal` (a regular mutex) or `ffrt_mutex_recursive` (a recursive mutex that allows the same task to acquire the lock multiple times).
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -81,7 +85,7 @@ Sets the type of a mutex attribute.<br> The type can be `ffrt_mutex_normal` (a r
 
 **Reference**:
 
-ffrt_mutex_type
+[ffrt_mutex_type](capi-type-def-h.md#ffrt_mutex_type)
 
 
 ### ffrt_mutexattr_gettype()
@@ -93,6 +97,8 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 **Description**
 
 Gets the type of a mutex attribute.<br> After a successful call, the type value is written to the out parameter `type`.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 12
 
@@ -119,6 +125,8 @@ FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 
 Destroys a mutex attribute.<br> The mutex attribute must have been initialized by [ffrt_mutexattr_init](capi-mutex-h.md#ffrt_mutexattr_init).
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -142,6 +150,8 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 **Description**
 
 Initializes a mutex.<br> The mutex must later be destroyed by [ffrt_mutex_destroy](capi-mutex-h.md#ffrt_mutex_destroy). Use `attr` to pass a configured mutex attribute, or a null pointer to use defaults.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
@@ -167,6 +177,8 @@ FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 **Description**
 
 Locks a mutex.<br> If the mutex is already held by another thread, blocks the calling thread until the mutex becomes available. On success, the calling thread holds the mutex until a matching call to [ffrt_mutex_unlock](capi-mutex-h.md#ffrt_mutex_unlock).
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
@@ -197,6 +209,8 @@ FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 
 Unlocks a mutex.<br> The mutex must be held by the calling thread, having been previously locked by [ffrt_mutex_lock](capi-mutex-h.md#ffrt_mutex_lock) or [ffrt_mutex_trylock](capi-mutex-h.md#ffrt_mutex_trylock).
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -220,6 +234,8 @@ FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 **Description**
 
 Attempts to lock a mutex.<br> This is a non-blocking operation: if the mutex is held by another thread, the function returns immediately with an error code. On success, the calling thread holds the mutex until a matching call to [ffrt_mutex_unlock](capi-mutex-h.md#ffrt_mutex_unlock).
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
@@ -249,6 +265,8 @@ FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 **Description**
 
 Destroys a mutex.<br> After a successful call, the resources occupied by the mutex are released and the mutex object can no longer be used. The mutex must have been initialized by [ffrt_mutex_init](capi-mutex-h.md#ffrt_mutex_init) and no thread may hold it on entry.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 

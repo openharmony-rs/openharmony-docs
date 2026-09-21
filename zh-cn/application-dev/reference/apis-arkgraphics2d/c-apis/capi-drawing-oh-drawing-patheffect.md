@@ -8,6 +8,8 @@ typedef struct OH_Drawing_PathEffect OH_Drawing_PathEffect
 
 定义一个路径效果，用于影响描边路径。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

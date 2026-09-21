@@ -63,6 +63,8 @@ enum DrmCencAlgorithm
 
 Drm CENC算法类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -84,6 +86,8 @@ enum DrmCencInfoMode
 
 枚举类型，表示cencInfo中keyId/iv/subsample信息是否设置。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -104,6 +108,8 @@ OH_AVCencInfo *OH_AVCencInfo_Create()
 
 创建用于设置cencInfo的OH_AVCencInfo实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 12
 
 **返回值：**
@@ -121,6 +127,8 @@ OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 **描述：**
 
 销毁OH_AVCencInfo实例并释放内部资源。<br> 同一个实例只能销毁一次。在再次创建实例之前，不应使用该实例。 建议在实例销毁成功后立即将实例指针设置为nullptr。
+
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
 
@@ -146,6 +154,8 @@ OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlg
 
 设置cencInfo加密算法。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 12
 
 **参数：**
@@ -170,6 +180,8 @@ OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId
 **描述：**
 
 设置cencInfo的keyId和iv。
+
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
 
@@ -198,6 +210,8 @@ OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t en
 **描述：**
 
 设置cencInfo的subsamples信息。
+
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
 
@@ -228,6 +242,8 @@ OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode
 
 设置cencInfo的模式。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 12
 
 **参数：**
@@ -252,6 +268,8 @@ OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buf
 **描述：**
 
 将cencInfo设置到AVBuffer。
+
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
 

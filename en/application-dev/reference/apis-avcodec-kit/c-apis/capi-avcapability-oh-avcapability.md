@@ -8,6 +8,8 @@ typedef struct OH_AVCapability OH_AVCapability
 
 Forward declaration of OH_AVCapability.
 
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
 **Since**: 10
 
 **Related module**: [AVCapability](capi-avcapability.md)

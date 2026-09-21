@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Document ContentEmbed_Document
 
 声明OE文档结构体类型。封装了被嵌入文档的元数据、内容和存储结构。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

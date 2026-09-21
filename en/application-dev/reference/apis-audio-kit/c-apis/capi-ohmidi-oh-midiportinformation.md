@@ -8,6 +8,8 @@ typedef struct OH_MIDIPortInformation {...} OH_MIDIPortInformation
 
 Port Information (detailed). Used for enumeration (contains display names).
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)

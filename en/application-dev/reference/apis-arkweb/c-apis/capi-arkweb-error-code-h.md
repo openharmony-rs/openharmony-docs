@@ -38,6 +38,8 @@ enum ArkWeb_ErrorCode
 
 Enumerates the error codes of ArkWeb NDK APIs.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 | Enum item | Description |

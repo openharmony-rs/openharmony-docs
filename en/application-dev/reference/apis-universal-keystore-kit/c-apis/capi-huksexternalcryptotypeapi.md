@@ -4,6 +4,8 @@
 
 Defines the macros, enumerated values, data structures, used by OpenHarmony Universal KeyStore (HUKS) APIs.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 ## Files

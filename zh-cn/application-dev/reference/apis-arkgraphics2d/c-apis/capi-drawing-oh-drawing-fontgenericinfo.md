@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontGenericInfo {...} OH_Drawing_FontGenericInfo
 
 系统所支持的通用字体集信息结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

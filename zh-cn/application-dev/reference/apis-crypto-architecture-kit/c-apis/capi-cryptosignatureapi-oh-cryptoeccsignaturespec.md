@@ -8,6 +8,8 @@ typedef struct OH_CryptoEccSignatureSpec OH_CryptoEccSignatureSpec
 
 ECC签名规格结构体，表示ECC签名规格。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoSignatureApi](capi-cryptosignatureapi.md)

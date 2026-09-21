@@ -4,6 +4,8 @@
 
 提供获取公共文件根目录路径的能力。
 
+**系统能力：** SystemCapability.FileManagement.File.Environment.FolderObtain
+
 **起始版本：** 12
 
 ## 文件汇总

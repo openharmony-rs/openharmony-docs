@@ -8,6 +8,8 @@ typedef struct ARKUI_TextPickerRangeContent {...} ARKUI_TextPickerRangeContent
 
 Defines the option content supported by the single-column text picker, including text and image resources.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -8,6 +8,8 @@ typedef struct ImageReceiverNative_ ImageReceiverNative
 
 Defines the data type name of a native image receiver.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

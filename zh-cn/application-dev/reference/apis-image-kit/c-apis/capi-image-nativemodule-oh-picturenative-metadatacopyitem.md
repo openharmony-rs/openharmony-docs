@@ -8,6 +8,8 @@ typedef struct OH_PictureNative_MetadataCopyItem {...} OH_PictureNative_Metadata
 
 此结构体用于在创建PictureNative对象的深拷贝时指定元数据的拷贝规则。描述如何将元数据从一种类型拷贝到另一种类型。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)

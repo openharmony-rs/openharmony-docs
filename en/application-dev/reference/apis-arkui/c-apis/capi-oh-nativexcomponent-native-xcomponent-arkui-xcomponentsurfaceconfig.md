@@ -8,6 +8,8 @@ typedef struct ArkUI_XComponentSurfaceConfig ArkUI_XComponentSurfaceConfig
 
 Declares the config for Surface held by XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

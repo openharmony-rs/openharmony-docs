@@ -8,6 +8,8 @@ typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
 
 Concurrency capability infos.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 18
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

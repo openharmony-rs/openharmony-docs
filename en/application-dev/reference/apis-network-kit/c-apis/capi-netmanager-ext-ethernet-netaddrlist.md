@@ -8,6 +8,8 @@ typedef struct Ethernet_NetAddrList {...} Ethernet_NetAddrList
 
 Defines the network address list of Ethernet NICs.
 
+**System capability**: SystemCapability.Communication.NetManager.Ethernet
+
 **Since**: 26.0.0
 
 **Related module**: [netmanager_ext](capi-netmanager-ext.md)

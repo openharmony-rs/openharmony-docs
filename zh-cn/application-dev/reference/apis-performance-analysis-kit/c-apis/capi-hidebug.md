@@ -4,6 +4,8 @@
 
 Provides debug code define.<br> For example, you can use these code for check result or parameter of HiDebug function.
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 ## 文件汇总

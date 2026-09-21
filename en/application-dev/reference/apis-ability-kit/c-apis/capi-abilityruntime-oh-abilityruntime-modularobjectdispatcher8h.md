@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectDispatcher* OH_AbilityRuntime_ModO
 
 Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

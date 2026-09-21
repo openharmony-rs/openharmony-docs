@@ -8,6 +8,8 @@ typedef struct ArkUI_PositionEdges ArkUI_PositionEdges
 
 相对容器内容区边界的位置参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

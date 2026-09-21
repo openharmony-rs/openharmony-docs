@@ -6,7 +6,9 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...} OH_AbilityRunti
 
 ## 概述
 
-定义参数或返回值的类型信息。<br>使用带标签的联合体u描述类型信息，通过vt字段决定联合体中哪个成员有效。<br>使用完毕后需调用 [OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_typeinfoclear)释放内部持有的堆资源。
+定义参数或返回值的类型信息。<br>使用带标签的联合体u描述类型信息，通过vt字段决定联合体中哪个成员有效。<br>使用完毕后需调用 {@link OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear}释放内部持有的堆资源。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 

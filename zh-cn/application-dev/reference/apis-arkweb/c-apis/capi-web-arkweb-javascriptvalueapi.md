@@ -8,6 +8,8 @@ typedef struct ArkWeb_JavaScriptValueAPI {...} ArkWeb_JavaScriptValueAPI
 
 ArkWeb_JavaScriptValueAPI是JavaScript相关Native API结构体。该结构体提供了创建JavaScript值的函数， 支持将Native数据转换为JavaScript可识别的格式并返回给HTML。该转换机制根据指定的JavaScript值类型对Native数据缓冲区进行解析和封装，生成对应的JavaScript值对象。 适用于需要从Native层向Web层传递数据的应用场景，能够实现Native与Web之间的双向数据交互，提升应用开发灵活性。<br>在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取JavaScript相关接口。 调用前建议通过{@link ARKWEB_MEMBER_MISSING}校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 18
 
 **相关模块：** [Web](capi-web.md)

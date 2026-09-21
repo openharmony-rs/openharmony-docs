@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_DisplaysInfo {...} NativeDisplayManager_Disp
 
 The struct describes the information about displays of a device with multiple screens.
 
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
 **起始版本：** 14
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)

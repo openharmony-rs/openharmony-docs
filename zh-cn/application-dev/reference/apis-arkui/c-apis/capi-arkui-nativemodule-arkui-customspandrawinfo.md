@@ -8,6 +8,8 @@ typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo
 
 自定义段落组件的绘制信息，用于在该组件的绘制回调中向开发者传递绘制信息，开发者可在自定义绘制流程中获取并使用该信息，实现定制化的段落组件绘制效果。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

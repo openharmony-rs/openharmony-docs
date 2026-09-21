@@ -4,6 +4,8 @@
 
 声明元能力基础框架的相关能力。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 ## 文件汇总

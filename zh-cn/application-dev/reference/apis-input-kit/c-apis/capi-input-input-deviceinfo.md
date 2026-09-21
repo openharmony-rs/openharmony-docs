@@ -8,6 +8,8 @@ typedef struct Input_DeviceInfo Input_DeviceInfo
 
 输入设备信息，用于描述输入设备的基本信息和能力特征，包括设备类型、设备ID等属性。开发者可以通过此结构体获取和管理输入设备的详细信息，便于设备识别和配置管理。
 
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
 **起始版本：** 13
 
 **相关模块：** [input](capi-input.md)

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_LineTypography OH_Drawing_LineTypography
 
 用于从一段文字中提取单行数据进行排版。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **相关模块：** [Drawing](capi-drawing.md)

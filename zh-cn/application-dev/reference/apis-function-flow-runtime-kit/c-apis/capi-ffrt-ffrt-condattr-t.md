@@ -8,6 +8,8 @@ typedef struct ffrt_condattr_t {...} ffrt_condattr_t
 
 条件变量属性结构体，用于存储条件变量的属性信息。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **相关模块：** [FFRT](capi-ffrt.md)

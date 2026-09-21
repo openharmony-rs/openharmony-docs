@@ -89,6 +89,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedContext(ContentE
 
 从OE Extension实例中获取其对应的OE Extension上下文对象。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -102,7 +104,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedContext(ContentE
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_GetContext()
 
@@ -113,6 +115,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContext(ContentEmbed_Extensi
 **描述：**
 
 从OE Extension上下文中获取AbilityRuntime上下文。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -127,7 +131,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContext(ContentEmbed_Extensi
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_GetExtensionInstance()
 
@@ -138,6 +142,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRun
 **描述：**
 
 从ExtensionAbility基类实例中获取对应的OE Extension实例。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -152,7 +158,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetExtensionInstance(AbilityRun
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_OnCreateFunc()
 
@@ -163,6 +169,8 @@ typedef void (*OH_ContentEmbed_Extension_OnCreateFunc)(ContentEmbed_ExtensionIns
 **描述：**
 
 OE Extension实例创建时的生命周期函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnCreateFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeroncreatefunc)注册到OE Extension实例。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -183,6 +191,8 @@ typedef void (*OH_ContentEmbed_Extension_OnDestroyFunc)(ContentEmbed_ExtensionIn
 
 OE Extension实例销毁时的生命周期函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnDestroyFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondestroyfunc)注册到OE Extension实例。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -200,6 +210,8 @@ typedef void (*OH_ContentEmbed_Extension_OnObjectAttachFunc)(ContentEmbed_Extens
 **描述：**
 
 当客户端OE对象连接到OE Extension实例时触发此回调函数，用于执行服务端OE对象关联后的初始化操作。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectattachfunc)注册到OE Extension实例。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -220,6 +232,8 @@ typedef void (*OH_ContentEmbed_Extension_OnObjectDetachFunc)(ContentEmbed_Extens
 
 当客户端OE对象从OE Extension实例断开连接时触发此回调函数，用于执行服务端OE对象断开连接后的清理操作。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronobjectdetachfunc)注册到OE Extension实例。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -239,6 +253,8 @@ typedef void (*OH_ContentEmbed_Extension_OnWriteToDataStreamFunc)(ContentEmbed_O
 
 当服务端OE对象写入OE文档数据流时的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registeronwritetodatastreamfunc)注册到服务端OE对象。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -256,6 +272,8 @@ typedef void (*OH_ContentEmbed_Extension_OnGetSnapshotFunc)(ContentEmbed_ObjectH
 **描述：**
 
 当客户端OE对象请求获取OE文档快照时的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetsnapshotfunc)注册到服务端OE对象。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -275,6 +293,8 @@ typedef void (*OH_ContentEmbed_Extension_OnDoEditFunc)(ContentEmbed_ObjectHandle
 
 当客户端OE对象请求编辑OE文档时的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnDoEditFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerondoeditfunc)注册到服务端OE对象。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -292,6 +312,8 @@ typedef void (*OH_ContentEmbed_Extension_OnGetEditStatusFunc)(ContentEmbed_Objec
 **描述：**
 
 当客户端OE对象请求OE文档编辑状态时的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongeteditstatusfunc)注册到服务端OE对象。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -313,6 +335,8 @@ typedef void (*OH_ContentEmbed_Extension_OnGetCapabilityFunc)(ContentEmbed_Objec
 
 当客户端OE对象查询OE Extension实例支持能力时的回调函数类型。 <br>开发者需要实现此函数并通过[OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_registerongetcapabilityfunc)注册到服务端OE对象。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -320,7 +344,7 @@ typedef void (*OH_ContentEmbed_Extension_OnGetCapabilityFunc)(ContentEmbed_Objec
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md) object | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md)实例。 |
-| uint32_t \*bitmask | 输出参数，表示OE Extension实例支持的能力，由{@link ContentEmbed_CapabilityCode}中的值组合而成。 |
+| uint32_t \*bitmask | 输出参数，表示OE Extension实例支持的能力，由[ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode)中的值组合而成。 |
 
 ### OH_ContentEmbed_Extension_RegisterOnCreateFunc()
 
@@ -331,6 +355,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnCreateFunc(ContentEmb
 **描述：**
 
 注册OE Extension实例创建时的生命周期函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -345,7 +371,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnCreateFunc(ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnDestroyFunc()
 
@@ -356,6 +382,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDestroyFunc(ContentEm
 **描述：**
 
 注册OE Extension实例销毁时的生命周期函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -370,7 +398,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDestroyFunc(ContentEm
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc()
 
@@ -381,6 +409,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc(Cont
 **描述：**
 
 注册客户端OE对象连接时的回调函数。 <br>可以通过调用[OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_unregisteronobjectattachfunc)取消注册。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -395,7 +425,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectAttachFunc(Cont
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc()
 
@@ -406,6 +436,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc(Co
 **描述：**
 
 取消注册客户端OE对象连接时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -419,7 +451,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_UnRegisterOnObjectAttachFunc(Co
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc()
 
@@ -430,6 +462,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc(Cont
 **描述：**
 
 注册客户端OE对象断开连接时的回调函数。 <br>可以通过调用[OH_ContentEmbed_Extension_UnRegisterOnObjectDetachFunc](capi-content-embed-extension-h.md#oh_contentembed_extension_unregisteronobjectdetachfunc)取消注册。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -444,7 +478,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnObjectDetachFunc(Cont
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_UnRegisterOnObjectDetachFunc()
 
@@ -455,6 +489,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_UnRegisterOnObjectDetachFunc(Co
 **描述：**
 
 取消注册客户端OE对象断开连接时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -468,7 +504,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_UnRegisterOnObjectDetachFunc(Co
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc()
 
@@ -479,6 +515,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc
 **描述：**
 
 注册服务端OE对象写入OE文档数据流时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -493,7 +531,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnWriteToDataStreamFunc
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc()
 
@@ -504,6 +542,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc(Conte
 **描述：**
 
 注册客户端OE对象请求获取OE文档快照时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -518,7 +558,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetSnapshotFunc(Conte
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnDoEditFunc()
 
@@ -529,6 +569,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDoEditFunc(ContentEmb
 **描述：**
 
 注册客户端OE对象请求编辑OE文档时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -543,7 +585,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnDoEditFunc(ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc()
 
@@ -554,6 +596,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc(Con
 **描述：**
 
 注册客户端OE对象请求OE文档编辑状态时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -568,7 +612,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetEditStatusFunc(Con
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc()
 
@@ -579,6 +623,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc(Con
 **描述：**
 
 注册客户端OE对象查询OE Extension实例支持能力时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -593,7 +639,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_RegisterOnGetCapabilityFunc(Con
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_GetContentEmbedDocument()
 
@@ -604,6 +650,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedDocument(Content
 **描述：**
 
 获取服务端OE对象关联的OE文档实例。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -618,7 +666,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_GetContentEmbedDocument(Content
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnUpdate()
 
@@ -630,6 +678,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnUpdate(ContentEmbed
 
 触发客户端OE对象注册的OE文档更新回调函数。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -642,7 +692,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnUpdate(ContentEmbed
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED}：表示客户端回调未注册。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_FAILED}：表示客户端回调执行失败。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnError()
 
@@ -654,6 +704,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnError(ContentEmbed_
 
 触发客户端OE对象注册的OE文档错误回调函数。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **参数：**
@@ -661,13 +713,13 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnError(ContentEmbed_
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md) object | [ContentEmbed_ObjectHandle](capi-contentembed-contentembed-object8h.md)实例。 |
-| ContentEmbed_ErrorCode code | 表示错误码，详细定义参见{@link ContentEmbed_ErrorCode}。 |
+| ContentEmbed_ErrorCode code | 表示错误码，详细定义参见[ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED}：表示客户端回调未注册。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_FAILED}：表示客户端回调执行失败。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnEditingFinished()
 
@@ -678,6 +730,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnEditingFinished(Con
 **描述：**
 
 触发客户端OE对象注册的OE文档编辑完成回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -692,7 +746,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnEditingFinished(Con
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED}：表示客户端回调未注册。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_FAILED}：表示客户端回调执行失败。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_CallbackToOnExtensionStopped()
 
@@ -703,6 +757,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnExtensionStopped(Co
 **描述：**
 
 触发OE Extension关联的所有客户端OE对象注册的OE Extension停止时的回调函数。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -716,7 +772,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_CallbackToOnExtensionStopped(Co
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED}：表示客户端回调未注册。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_FAILED}：表示客户端回调执行失败。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调未注册。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_CLIENT_CALLBACK_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示客户端回调执行失败。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_SetSnapshot()
 
@@ -727,6 +783,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_SetSnapshot(ContentEmbed_Object
 **描述：**
 
 设置客户端OE对象关联的OE文档快照图像。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -741,7 +799,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_SetSnapshot(ContentEmbed_Object
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li><br>    <li>{@link CE_ERR_IMAGE_PACKER_OPERATION_FAILED}：表示图像操作失败。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>      <li>[CE_ERR_IMAGE_PACKER_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)：表示图像操作失败。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_ContextStartSelfUIAbility()
 
@@ -752,6 +810,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbility(Conte
 **描述：**
 
 通过OE Extension上下文启动自身的{@link UIAbility}。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -766,7 +826,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbility(Conte
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL}：表示系统服务异常。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions()
 
@@ -777,6 +837,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithSt
 **描述：**
 
 使用启动选项启动OE Extension上下文自身的{@link UIAbility}。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -792,7 +854,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithSt
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL}：表示系统服务异常。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 ### OH_ContentEmbed_Extension_ContextTerminateAbility()
 
@@ -803,6 +865,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextTerminateAbility(Content
 **描述：**
 
 销毁OE Extension。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 
@@ -816,6 +880,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Extension_ContextTerminateAbility(Content
 
 | 类型 | 说明 |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK}：表示操作成功。</li><br>    <li>{@link CE_ERR_PARAM_INVALID}：表示参数检查失败。</li><br>    <li>{@link CE_ERR_NULL_POINTER}：表示返回空指针。</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL}：表示系统服务异常。</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED}：表示设备不支持。</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX}：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)：表示操作成功。</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)：表示参数检查失败。</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)：表示返回空指针。</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)：表示系统服务异常。</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)：表示设备不支持。</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)：表示应用在DLP沙箱中，不支持此操作。</li>          </ul> |
 
 

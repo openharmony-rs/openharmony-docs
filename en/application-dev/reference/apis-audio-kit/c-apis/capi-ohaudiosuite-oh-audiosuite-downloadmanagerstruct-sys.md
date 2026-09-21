@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_DownloadManagerStruct OH_AudioSuite_DownloadManager
 
 Declare the audio download manager. The handle of audio download manager is used for download related functions.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.

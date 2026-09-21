@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RoundRect OH_Drawing_RoundRect
 
 用于描述圆角矩形。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

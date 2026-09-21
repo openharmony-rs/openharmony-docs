@@ -8,6 +8,8 @@ typedef union TEEC_Parameter {...} TEEC_Parameter
 
 Defines a parameter of {@code TEEC_Operation}.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

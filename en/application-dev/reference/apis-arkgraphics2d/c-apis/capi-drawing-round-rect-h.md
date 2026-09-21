@@ -24,10 +24,10 @@ This file declares the functions related to the rounded rectangle in the drawing
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, float xRad, float yRad)](#oh_drawing_roundrectcreate) | Creates an **OH_Drawing_RoundRect** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet} . If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, float xRad, float yRad)](#oh_drawing_roundrectcreate) | Creates an **OH_Drawing_RoundRect** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget) . If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [OH_Drawing_RoundRect* OH_Drawing_RoundRectCopy(const OH_Drawing_RoundRect* roundRect)](#oh_drawing_roundrectcopy) | Creates a copy of a rounded rectangle. |
-| [void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_CornerPos pos, OH_Drawing_Corner_Radii radii)](#oh_drawing_roundrectsetcorner) | Sets the radii of the specified rounded corner in this rounded rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
-| [OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_CornerPos pos)](#oh_drawing_roundrectgetcorner) | Obtains the radii of the specified rounded corner in a rounded rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_CornerPos pos, OH_Drawing_Corner_Radii radii)](#oh_drawing_roundrectsetcorner) | Sets the radii of the specified rounded corner in this rounded rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_CornerPos pos)](#oh_drawing_roundrectgetcorner) | Obtains the radii of the specified rounded corner in a rounded rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [void OH_Drawing_RoundRectDestroy(OH_Drawing_RoundRect* roundRect)](#oh_drawing_roundrectdestroy) | Destroys an **OH_Drawing_RoundRect** object and reclaims the memory occupied by the object. |
 | [OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect, float dx, float dy)](#oh_drawing_roundrectoffset) | Translates a rounded rectangle by an offset along the X axis and Y axis. |
 
@@ -42,6 +42,8 @@ enum OH_Drawing_CornerPos
 **Description**
 
 Defines an enum for the corner positions of a rounded rectangle.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -63,7 +65,9 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, fl
 
 **Description**
 
-Creates an **OH_Drawing_RoundRect** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet} . If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Creates an **OH_Drawing_RoundRect** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget) . If **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -91,13 +95,15 @@ OH_Drawing_RoundRect* OH_Drawing_RoundRectCopy(const OH_Drawing_RoundRect* round
 
 Creates a copy of a rounded rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_RoundRect* roundRect | Pointer to an {@link OH_Drawing_RoundRect} object. |
+| const OH_Drawing_RoundRect* roundRect | Pointer to an [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md) object. |
 
 **Returns**:
 
@@ -113,7 +119,9 @@ void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_C
 
 **Description**
 
-Sets the radii of the specified rounded corner in this rounded rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Sets the radii of the specified rounded corner in this rounded rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -133,7 +141,9 @@ OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roun
 
 **Description**
 
-Obtains the radii of the specified rounded corner in a rounded rectangle. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Obtains the radii of the specified rounded corner in a rounded rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -160,6 +170,8 @@ void OH_Drawing_RoundRectDestroy(OH_Drawing_RoundRect* roundRect)
 
 Destroys an **OH_Drawing_RoundRect** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -178,13 +190,15 @@ OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect,
 
 Translates a rounded rectangle by an offset along the X axis and Y axis.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_RoundRect* roundRect | Pointer to an {@link OH_Drawing_Point2D} object. |
+| OH_Drawing_RoundRect* roundRect | Pointer to an [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) object. |
 | float dx | X offset. |
 | float dy | Y offset. |
 

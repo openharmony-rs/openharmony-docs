@@ -8,6 +8,8 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 
 Defines the USB serial port parameters for the USB Serial DDK.
 
+**System capability**: SystemCapability.Driver.UsbSerial.Extension
+
 **Since**: 18
 
 **Related module**: [USBSerialDDK](capi-usbserialddk.md)

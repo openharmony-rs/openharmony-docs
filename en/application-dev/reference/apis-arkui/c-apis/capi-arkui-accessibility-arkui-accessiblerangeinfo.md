@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibleRangeInfo {...} ArkUI_AccessibleRangeInfo
 
 Define a struct for the accessible range information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)

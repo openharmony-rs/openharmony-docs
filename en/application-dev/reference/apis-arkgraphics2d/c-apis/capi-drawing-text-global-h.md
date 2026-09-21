@@ -40,6 +40,8 @@ enum OH_Drawing_TextHighContrast
 
 Defines an enum of the high contrast modes for text rendering.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 | Enum item | Description |

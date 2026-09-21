@@ -77,6 +77,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 Obtains the Base64-encoded string of the media resource by the specified resource ID and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -87,7 +89,7 @@ Obtains the Base64-encoded string of the media resource by the specified resourc
 | uint32_t resId | Input parameter. Resource ID. |
 | char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
-| density | Input parameter, which is optional. Screen density. For details about the value range, see {@link ScreenDensity}. The default value is **0**, indicating that the current system screen density is used. |
+| density | Input parameter, which is optional. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density is used. |
 
 **Returns**:
 
@@ -105,6 +107,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 Obtains the Base64-encoded string of the media resource by the specified resource ID and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -115,7 +119,7 @@ Obtains the Base64-encoded string of the media resource by the specified resourc
 | uint32_t resId | Input parameter. Resource ID. |
 | char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
-| uint32_t density | Input parameter. Screen density. For details about the value range, see {@link ScreenDensity}. The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
+| uint32_t density | Input parameter. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
 
 **Returns**:
 
@@ -133,6 +137,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 Obtains the Base64-encoded string of the media resource by the specified resource name and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -143,7 +149,7 @@ Obtains the Base64-encoded string of the media resource by the specified resourc
 | const char *resName | Input parameter. Resource name. |
 | char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
-| density | Input parameter, which is optional. Screen density. For details about the value range, see {@link ScreenDensity}. The default value is **0**, indicating that the current system screen density is used. |
+| density | Input parameter, which is optional. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density is used. |
 
 **Returns**:
 
@@ -161,6 +167,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 Obtains the Base64-encoded string of the media resource by the specified resource name and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -171,7 +179,7 @@ Obtains the Base64-encoded string of the media resource by the specified resourc
 | const char *resName | Input parameter. Resource name. |
 | char **resultValue | Output parameter. Pointer to the Base64-encoded string, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Length of the Base64 string, in bytes. |
-| uint32_t density | Input parameter. Screen density. For details about the value range, see {@link ScreenDensity}. The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
+| uint32_t density | Input parameter. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
 
 **Returns**:
 
@@ -189,6 +197,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 Obtains the binary data of the media resource by the specified resource ID and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -199,7 +209,7 @@ Obtains the binary data of the media resource by the specified resource ID and s
 | uint32_t resId | Input parameter. Resource ID. |
 | uint8_t **resultValue | Output parameter. Pointer to the media data, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Data length, in bytes. |
-| density | Input parameter, which is optional. Screen density. For details about the value range, see {@link ScreenDensity}. The default value is **0**, indicating that the current system screen density is used. |
+| density | Input parameter, which is optional. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density is used. |
 
 **Returns**:
 
@@ -217,6 +227,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 Obtains the binary data of the media resource by the specified resource ID and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -227,7 +239,7 @@ Obtains the binary data of the media resource by the specified resource ID and s
 | uint32_t resId | Input parameter. Resource ID. |
 | uint8_t **resultValue | Output parameter. Pointer to the media data, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Data length, in bytes. |
-| uint32_t density | Input parameter. Screen density. For details about the value range, see {@link ScreenDensity}. The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
+| uint32_t density | Input parameter. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
 
 **Returns**:
 
@@ -245,6 +257,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 Obtains the binary data of the media resource by the specified resource name and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -255,7 +269,7 @@ Obtains the binary data of the media resource by the specified resource name and
 | const char *resName | Input parameter. Resource name. |
 | uint8_t **resultValue | Output parameter. Pointer to the media data, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Data length, in bytes. |
-| density | Input parameter, which is optional. Screen density. For details about the value range, see {@link ScreenDensity}. The default value is **0**, indicating that the current system screen density is used. |
+| density | Input parameter, which is optional. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density is used. |
 
 **Returns**:
 
@@ -273,6 +287,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 Obtains the binary data of the media resource by the specified resource name and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -283,7 +299,7 @@ Obtains the binary data of the media resource by the specified resource name and
 | const char *resName | Input parameter. Resource name. |
 | uint8_t **resultValue | Output parameter. Pointer to the media data, which is allocated by **malloc()** and must be released via **free()** after use. |
 | uint64_t *resultLen | Output parameter. Data length, in bytes. |
-| uint32_t density | Input parameter. Screen density. For details about the value range, see {@link ScreenDensity}. The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
+| uint32_t density | Input parameter. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
 
 **Returns**:
 
@@ -301,6 +317,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource ID, screen density, and icon type.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -310,7 +328,7 @@ Obtains the DrawableDescriptor object of the icon resource by the specified reso
 | const NativeResourceManager *mgr | Input parameter. Pointer to the NativeResourceManager object. The pointer is obtained through {@link OH_ResourceManager_InitNativeResourceManager}. |
 | uint32_t resId | Input parameter. Resource ID. |
 | ArkUI_DrawableDescriptor **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
-| density | Input parameter, which is optional. Screen density. For details about the value range, see {@link ScreenDensity}. The default value is **0**, indicating that the current system screen density is used. |
+| density | Input parameter, which is optional. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density is used. |
 | type | Input parameter, which is optional. Icon type. The default value is **0**. <br>**0**: application icon. <br>**1**: application theme icon. |
 
 **Returns**:
@@ -329,6 +347,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource ID, screen density, and icon type.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -338,7 +358,7 @@ Obtains the DrawableDescriptor object of the icon resource by the specified reso
 | const NativeResourceManager *mgr | Input parameter. Pointer to the NativeResourceManager object. The pointer is obtained through {@link OH_ResourceManager_InitNativeResourceManager}. |
 | uint32_t resId | Input parameter. Resource ID. |
 | ArkUI_DrawableDescriptor **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
-| uint32_t density | Input parameter. Screen density. For details about the value range, see {@link ScreenDensity}. The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
+| uint32_t density | Input parameter. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
 | uint32_t type | Input parameter. Icon type. If no specific icon type is required, set this parameter to **0**. <br>**0**: application icon. <br>**1**: application theme icon. |
 
 **Returns**:
@@ -357,6 +377,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource name, screen density, and icon type.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -366,7 +388,7 @@ Obtains the DrawableDescriptor object of the icon resource by the specified reso
 | const NativeResourceManager *mgr | Input parameter. Pointer to the NativeResourceManager object. The pointer is obtained through {@link OH_ResourceManager_InitNativeResourceManager}. |
 | const char *resName | Input parameter. Resource name. |
 | ArkUI_DrawableDescriptor **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
-| density | Input parameter, which is optional. Screen density. For details about the value range, see {@link ScreenDensity}. The default value is **0**, indicating that the current system screen density is used. |
+| density | Input parameter, which is optional. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The default value is **0**, indicating that the current system screen density is used. |
 | type | Input parameter, which is optional. Icon type. The default value is **0**. <br>**0**: application icon. <br>**1**: application theme icon. <br>**2**: dynamic icon. |
 
 **Returns**:
@@ -385,6 +407,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource name and screen density.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -394,7 +418,7 @@ Obtains the DrawableDescriptor object of the icon resource by the specified reso
 | const NativeResourceManager *mgr | Input parameter. Pointer to the NativeResourceManager object. The pointer is obtained through {@link OH_ResourceManager_InitNativeResourceManager}. |
 | const char *resName | Input parameter. Resource name. |
 | ArkUI_DrawableDescriptor **drawableDescriptor | Output parameter. Pointer to the DrawableDescriptor object. |
-| uint32_t density | Input parameter. Screen density. For details about the value range, see {@link ScreenDensity}. The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
+| uint32_t density | Input parameter. Screen density. For details about the value range, see [ScreenDensity](capi-resmgr-common-h.md#screendensity). The value **0** indicates that the current system screen density is used. If no specific density is required, set this parameter to **0**. |
 | uint32_t type | Input parameter. Icon type. If no specific icon type is required, set this parameter to **0**. <br>**0**: application icon. <br>**1**: application theme icon. <br>**2**: dynamic icon. |
 
 **Returns**:
@@ -412,6 +436,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 **Description**
 
 Obtains the Unicode encoding of the symbol icon corresponding to the specified resource ID.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -439,6 +465,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 Obtains the Unicode encoding of the symbol icon corresponding to the specified resource name.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -464,6 +492,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 **Description**
 
 Obtains the list of languages supported by an application.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -492,6 +522,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 Obtains the list of languages supported by an application.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -518,6 +550,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 **Description**
 
 Obtains the configuration information of a device, such as the screen orientation, language and region, device type, screen density, and color mode.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -548,6 +582,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 Obtains the configuration information of a device, such as the screen orientation, language and region, device type, screen density, and color mode.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 20
 
 **Parameters**:
@@ -573,13 +609,15 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 Releases the memory requested through the [OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration) or [OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration) function.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ResourceManager_Configuration *configuration | Input parameter. Pointer to the {@link ResourceManager_Configuration} object whose memory needs to be deallocated. |
+| ResourceManager_Configuration *configuration | Input parameter. Pointer to the [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) object whose memory needs to be deallocated. |
 
 **Returns**:
 
@@ -596,6 +634,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 **Description**
 
 Obtains a plain or formatted string based on the specified resource ID.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -624,6 +664,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 Obtains a plain or formatted string based on the specified resource name.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -650,6 +692,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 **Description**
 
 Obtains the string array based on the specified resource ID.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -678,6 +722,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 Obtains the string array based on the specified resource name.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -705,6 +751,8 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 
 Releases the memory of the string array.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -729,6 +777,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 **Description**
 
 Obtains the plural string based on the specified resource ID. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see {@link language plural rules}. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -761,6 +811,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 Obtains the plural string based on the specified resource name. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see {@link language plural rules}. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Deprecated**: 16
@@ -792,6 +844,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 Obtains the corresponding plural string and formats it based on the specified resource ID, integer quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see {@link language plural rules}. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 18
 
 **Parameters**:
@@ -819,6 +873,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 **Description**
 
 Obtains the corresponding plural string and formats it based on the specified resource name, integer quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see {@link language plural rules}. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 18
 
@@ -848,6 +904,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 Obtains the corresponding plural string and formats it based on the specified resource ID, floating-point quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see {@link language plural rules}. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 18
 
 **Parameters**:
@@ -875,6 +933,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 **Description**
 
 Obtains the corresponding plural string and formats it based on the specified resource name, floating-point quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see {@link language plural rules}. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 18
 
@@ -904,6 +964,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 Obtains the color resource value based on the specified resource ID.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -929,6 +991,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 **Description**
 
 Obtains the color resource value based on the specified resource name.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -956,6 +1020,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 Obtains the integer resource value based on the specified resource ID.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -981,6 +1047,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 **Description**
 
 Obtains the integer resource value based on the specified resource name.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -1008,6 +1076,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 Obtains the floating-point resource value based on the specified resource ID.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -1033,6 +1103,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 **Description**
 
 Obtains the floating-point resource value based on the specified resource name.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -1060,6 +1132,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 Obtains the Boolean resource value based on the specified resource ID.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -1085,6 +1159,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 **Description**
 
 Obtains the Boolean resource value based on the specified resource name.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 
@@ -1112,6 +1188,8 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 Dynamically loads overlay resources during application runtime to implement theme switching or resource overriding.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -1136,6 +1214,8 @@ ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResource
 **Description**
 
 Removes the specified overlay resource during application runtime and restores the original resource before the override.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 

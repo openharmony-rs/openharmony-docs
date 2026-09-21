@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontFallbackInfo {...} OH_Drawing_FontFallbackInfo
 
 备用字体信息结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

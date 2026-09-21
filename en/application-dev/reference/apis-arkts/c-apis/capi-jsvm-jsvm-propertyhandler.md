@@ -8,6 +8,8 @@ typedef struct JSVM_PropertyHandler {...} JSVM_PropertyHandler
 
 The property-handler used to define class.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 18
 
 **Related module**: [JSVM](capi-jsvm.md)

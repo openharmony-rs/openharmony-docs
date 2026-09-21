@@ -8,6 +8,8 @@ typedef struct Camera_Size {...} Camera_Size
 
 The struct describes the parameters related to the size.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

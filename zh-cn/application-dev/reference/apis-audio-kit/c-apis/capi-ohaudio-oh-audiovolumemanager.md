@@ -8,6 +8,8 @@ typedef struct OH_AudioVolumeManager OH_AudioVolumeManager
 
 声明音频音量管理器。音频音量管理器提供多种函数，供开发人员获取系统音量信息。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 20
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

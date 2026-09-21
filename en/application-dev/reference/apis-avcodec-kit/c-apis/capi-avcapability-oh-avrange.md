@@ -8,6 +8,8 @@ typedef struct OH_AVRange {...} OH_AVRange
 
 Range contain min and max value
 
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
 **Since**: 10
 
 **Related module**: [AVCapability](capi-avcapability.md)

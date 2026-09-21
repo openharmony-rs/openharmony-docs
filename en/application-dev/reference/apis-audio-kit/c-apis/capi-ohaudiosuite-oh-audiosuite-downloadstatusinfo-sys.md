@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_DownloadStatusInfo {...} OH_AudioSuite_DownloadStat
 
 Define download status information structure.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.

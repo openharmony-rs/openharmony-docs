@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeContent* ArkUI_NodeContentHandle
 
 Defines the pointer type of the ArkUI node content.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

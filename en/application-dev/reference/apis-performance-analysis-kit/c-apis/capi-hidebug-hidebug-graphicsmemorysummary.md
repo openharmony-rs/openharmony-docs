@@ -8,6 +8,8 @@ typedef struct HiDebug_GraphicsMemorySummary {...} HiDebug_GraphicsMemorySummary
 
 Defines a struct for the application graphics memory usage details.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 21
 
 **Related module**: [HiDebug](capi-hidebug.md)

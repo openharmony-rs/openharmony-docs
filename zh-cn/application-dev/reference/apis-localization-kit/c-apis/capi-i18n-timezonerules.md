@@ -8,6 +8,8 @@ typedef struct TimeZoneRules {...} TimeZoneRules
 
 完整的时区规则，包括起始时区规则、起始时间戳数组定义的时区规则和每年生效的时区规则，能够全面描述时区的历史和未来规则。
 
+**系统能力：** SystemCapability.Global.I18n
+
 **起始版本：** 22
 
 **相关模块：** [i18n](capi-i18n.md)

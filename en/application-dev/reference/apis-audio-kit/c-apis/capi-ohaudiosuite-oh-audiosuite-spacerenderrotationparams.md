@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_SpaceRenderRotationParams {...} OH_AudioSuite_Space
 
 Space rendering dynamic mode parameters.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 23
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

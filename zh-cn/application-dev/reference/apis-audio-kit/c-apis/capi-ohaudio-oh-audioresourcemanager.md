@@ -8,6 +8,8 @@ typedef struct OH_AudioResourceManager OH_AudioResourceManager
 
 声明音频资源管理器。用于管理音频资源相关功能。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 20
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

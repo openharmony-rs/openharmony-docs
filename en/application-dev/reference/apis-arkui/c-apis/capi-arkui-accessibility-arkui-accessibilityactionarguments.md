@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityActionArguments ArkUI_AccessibilityActionArgum
 
 Defines a struct for accessibility action arguments.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)

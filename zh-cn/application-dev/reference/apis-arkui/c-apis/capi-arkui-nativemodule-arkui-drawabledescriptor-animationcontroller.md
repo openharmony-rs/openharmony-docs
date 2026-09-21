@@ -8,6 +8,8 @@ typedef struct ArkUI_DrawableDescriptor_AnimationController ArkUI_DrawableDescri
 
 定义DrawableDescriptor动图控制器对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

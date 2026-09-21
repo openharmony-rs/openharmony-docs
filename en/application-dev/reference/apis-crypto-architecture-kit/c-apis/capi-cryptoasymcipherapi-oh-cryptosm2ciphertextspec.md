@@ -8,6 +8,8 @@ typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec
 
 SM2 ciphertext specification structure, representing an SM2 ciphertext specification.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)

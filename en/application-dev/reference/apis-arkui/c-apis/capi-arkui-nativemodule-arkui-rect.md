@@ -8,6 +8,8 @@ typedef struct ArkUI_Rect {...} ArkUI_Rect
 
 Defines a rectangular area.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

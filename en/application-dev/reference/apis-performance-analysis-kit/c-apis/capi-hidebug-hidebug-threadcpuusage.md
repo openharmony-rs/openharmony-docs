@@ -8,6 +8,8 @@ typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 
 Defines the struct for the CPU usage of all threads of an application.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 **Related module**: [HiDebug](capi-hidebug.md)

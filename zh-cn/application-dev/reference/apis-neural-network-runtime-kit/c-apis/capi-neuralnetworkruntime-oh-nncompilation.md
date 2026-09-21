@@ -8,6 +8,8 @@ typedef struct OH_NNCompilation OH_NNCompilation
 
 编译器句柄。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 **相关模块：** [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

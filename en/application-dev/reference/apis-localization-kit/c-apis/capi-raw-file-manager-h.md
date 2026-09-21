@@ -18,7 +18,7 @@ This module allows you to create and release `NativeResourceManager` objects, an
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager). |
+| [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through {@link OH_ResourceManager_InitNativeResourceManager}. |
 
 ### Macro
 
@@ -49,6 +49,8 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 Initializes a `NativeResourceManager` object.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -74,6 +76,8 @@ void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resM
 
 Releases a `NativeResourceManager` object and its associated resources.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -92,6 +96,8 @@ RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const ch
 
 Opens the `rawfile` directory.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -105,12 +111,12 @@ Opens the `rawfile` directory.
 
 | Type | Description |
 | -- | -- |
-| RawDir * | Pointer to the `RawDir` object. If the call fails or `mgr` is null, `NULL` is returned. After use, call      {@link OH_ResourceManager_CloseRawDir} to release it. |
+| RawDir * | Pointer to the `RawDir` object. If the call fails or `mgr` is null, `NULL` is returned. After use, call      [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) to release it. |
 
 **Reference**:
 
 [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)
-{@link OH_ResourceManager_CloseRawDir}
+[OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)
 
 
 ### OH_ResourceManager_OpenRawFile()
@@ -122,6 +128,8 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 **Description**
 
 Opens a rawfile and returns a `RawFile` object for reading the rawfile content.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -136,12 +144,12 @@ Opens a rawfile and returns a `RawFile` object for reading the rawfile content.
 
 | Type | Description |
 | -- | -- |
-| RawFile * | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After      use, call {@link OH_ResourceManager_CloseRawFile} to release it. |
+| RawFile * | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After      use, call [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) to release it. |
 
 **Reference**:
 
 [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)
-{@link OH_ResourceManager_CloseRawFile}
+[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)
 
 
 ### OH_ResourceManager_OpenRawFile64()
@@ -153,6 +161,8 @@ RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, co
 **Description**
 
 Opens a rawfile and returns a `RawFile` object for reading the rawfile content. Files larger than 2 GB are supported.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 
@@ -167,12 +177,12 @@ Opens a rawfile and returns a `RawFile` object for reading the rawfile content. 
 
 | Type | Description |
 | -- | -- |
-| RawFile64 * | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After      use, call {@link OH_ResourceManager_CloseRawFile64} to release it. |
+| RawFile64 * | Pointer to the `RawFile` object. If the call fails or the input parameter is null, `NULL` is returned. After      use, call [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) to release it. |
 
 **Reference**:
 
 [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)
-{@link OH_ResourceManager_CloseRawFile64}
+[OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64)
 
 
 ### OH_ResourceManager_IsRawDir()
@@ -184,6 +194,8 @@ bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *p
 **Description**
 
 Checks whether the specified path is a subdirectory of `rawfile`. It is used to determine whether the specified path is a directory before traversing it, or whether the specified path is a file before opening it.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
 

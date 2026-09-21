@@ -8,6 +8,8 @@ typedef struct Sensor_Info Sensor_Info
 
 Defines a struct for the sensor information.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)

@@ -8,6 +8,8 @@ typedef struct WindowManager_MainWindowInfo {...} WindowManager_MainWindowInfo
 
 The struct describes the main window information.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 21
 
 **Related module**: [WindowManager](capi-windowmanager.md)

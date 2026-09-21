@@ -8,6 +8,8 @@ typedef struct DDK_Ashmem {...} DDK_Ashmem
 
 Device memory map created by calling {@link OH_DDK_CreateAshmem}. A buffer using the device memory map can provide better performance.
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 **Related module**: [Ddk](capi-ddk.md)

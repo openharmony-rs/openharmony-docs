@@ -4,6 +4,8 @@
 
 Provides the native displaySoloist capability.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
+
 **Since**: 12
 
 ## Files

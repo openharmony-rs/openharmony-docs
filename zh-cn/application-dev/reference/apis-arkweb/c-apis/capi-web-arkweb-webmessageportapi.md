@@ -8,6 +8,8 @@ typedef struct ArkWeb_WebMessagePortAPI {...} ArkWeb_WebMessagePortAPI
 
 ArkWeb_WebMessagePortAPI是Web消息端口相关Native API结构体。该结构体提供了消息端口的创建、关闭、消息发送和消息接收回调注册等功能。此API是postMessage桥接的核心组件， 支持在Native代码和Web页面之间建立持久的双向通信通道。适用于需要在原生应用与Web页面之间进行数据交互的场景，解决了跨语言通信的难题，提升了应用的扩展能力和开发效率。<br> Web消息端口相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过{@link ARKWEB_MEMBER_MISSING}校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)

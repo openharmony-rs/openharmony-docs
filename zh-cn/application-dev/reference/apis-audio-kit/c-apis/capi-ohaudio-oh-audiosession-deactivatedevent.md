@@ -8,6 +8,8 @@ typedef struct OH_AudioSession_DeactivatedEvent {...} OH_AudioSession_Deactivate
 
 音频会话已停用事件。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

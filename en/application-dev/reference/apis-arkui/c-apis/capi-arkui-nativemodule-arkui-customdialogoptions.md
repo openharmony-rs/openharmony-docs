@@ -8,6 +8,8 @@ typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
 
 Defines a struct for the content object of a custom dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

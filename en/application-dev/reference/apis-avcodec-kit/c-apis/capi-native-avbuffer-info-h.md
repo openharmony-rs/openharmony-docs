@@ -38,6 +38,8 @@ enum OH_AVCodecBufferFlags
 
 Enumerates the flags for the buffer of an OH_AVCodec instance.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 | Enum item | Description |

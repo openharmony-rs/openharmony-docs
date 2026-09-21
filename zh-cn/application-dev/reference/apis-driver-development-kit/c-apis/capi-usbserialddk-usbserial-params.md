@@ -8,6 +8,8 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 
 定义USB Serial DDK使用的USB串口参数，用于USB转串口设备的通信参数配置，需与目标通信设备的配置保持一致，否则可能无法正常通信。常见于工业控制设备、调试工具、 传感器数据采集等需要通过USB串口与设备通信的场景。
 
+**系统能力：** SystemCapability.Driver.UsbSerial.Extension
+
 **起始版本：** 18
 
 **相关模块：** [USBSerialDDK](capi-usbserialddk.md)

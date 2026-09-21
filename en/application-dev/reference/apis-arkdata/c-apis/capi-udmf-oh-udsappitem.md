@@ -8,6 +8,8 @@ typedef struct OH_UdsAppItem OH_UdsAppItem
 
 Describes the unified data struct of open harmony application item.
 
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
+
 **Since**: 12
 
 **Related module**: [UDMF](capi-udmf.md)

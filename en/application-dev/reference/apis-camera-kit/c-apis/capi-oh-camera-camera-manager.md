@@ -8,6 +8,8 @@ typedef struct Camera_Manager Camera_Manager
 
 The struct describes the camera manager.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

@@ -8,6 +8,8 @@ typedef struct Http_CustomProxy {...} Http_CustomProxy
 
 用户自定义代理配置。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 20
 
 **相关模块：** [netstack](capi-netstack.md)

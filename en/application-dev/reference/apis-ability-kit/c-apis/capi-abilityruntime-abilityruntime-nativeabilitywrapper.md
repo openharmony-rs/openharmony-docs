@@ -8,6 +8,8 @@ typedef struct AbilityRuntime_NativeAbilityWrapper AbilityRuntime_NativeAbilityW
 
 Defines the AbilityRuntime_NativeAbilityWrapper structure type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

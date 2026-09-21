@@ -8,6 +8,8 @@ typedef struct ArkUI_TouchTestInfo ArkUI_TouchTestInfo
 
 Defines touch test information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)

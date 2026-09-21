@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_MetaFrame {...} OH_AudioSuite_MetaFrame
 
 Define the audio meta data frame structure. This structure is used to pass audio data and meta data together.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.

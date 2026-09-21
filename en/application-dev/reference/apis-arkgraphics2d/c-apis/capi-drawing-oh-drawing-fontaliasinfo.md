@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontAliasInfo {...} OH_Drawing_FontAliasInfo
 
 This struct describes the information about a font alias.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

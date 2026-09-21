@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectDispatcher_Array* OH_AbilityRuntim
 
 Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_Array.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

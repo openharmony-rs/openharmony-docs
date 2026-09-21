@@ -4,6 +4,8 @@
 
 Provides APIs for obtaining pixel map data and information.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 8
 
 ## Files

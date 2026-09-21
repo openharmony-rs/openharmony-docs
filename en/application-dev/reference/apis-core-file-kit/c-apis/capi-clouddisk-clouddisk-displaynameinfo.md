@@ -8,6 +8,8 @@ typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 
 A struct that encapsulates the display name of the sync root path.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)

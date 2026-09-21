@@ -8,6 +8,8 @@ typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 
 定义OH_HiCollie_SetTimer函数的输入参数。
 
+**系统能力：** SystemCapability.HiviewDFX.HiCollie
+
 **起始版本：** 18
 
 **相关模块：** [HiCollie](capi-hicollie.md)
@@ -24,6 +26,6 @@ typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 | unsigned int timeout | 任务超时时间阈值，单位：秒。 |
 | [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | 超时发生时执行的回调函数。 |
 | void *arg | 回调函数的参数。 |
-| [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | 超时发生时执行的动作，参考[HiCollie_Flag](capi-hicollie-h.md#hicollie_flag)。 |
+| [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | 超时发生时执行的动作，参考{@link HiCollie_Flag}。 |
 
 

@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntim
 
 Defines a variant structure using union + type tag for ABI compatibility.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

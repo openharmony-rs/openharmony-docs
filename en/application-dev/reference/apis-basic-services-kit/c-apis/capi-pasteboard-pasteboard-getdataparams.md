@@ -8,6 +8,8 @@ typedef struct Pasteboard_GetDataParams Pasteboard_GetDataParams
 
 Defines the parameters required for obtaining the pasteboard data and paste progress.
 
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
 **Since**: 15
 
 **Related module**: [Pasteboard](capi-pasteboard.md)

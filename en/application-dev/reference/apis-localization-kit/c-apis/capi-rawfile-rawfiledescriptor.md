@@ -6,7 +6,9 @@ typedef struct RawFileDescriptor {...} RawFileDescriptor
 
 ## Overview
 
-Provides rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length.<br>This information is obtained through [OH_ResourceManager_GetRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptordata), and must be released through [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata) after use.
+Provides rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length.<br>This information is obtained through {@link OH_ResourceManager_GetRawFileDescriptorData}, and<br>must be released through {@link OH_ResourceManager_ReleaseRawFileDescriptorData} after use.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 

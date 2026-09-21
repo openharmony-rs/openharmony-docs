@@ -8,6 +8,8 @@ typedef struct Sensor_SubscriptionAttribute Sensor_SubscriptionAttribute
 
 Defines a struct for the sensor subscription attribute.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)

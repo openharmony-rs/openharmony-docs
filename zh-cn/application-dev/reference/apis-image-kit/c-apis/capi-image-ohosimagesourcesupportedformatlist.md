@@ -6,7 +6,9 @@ struct OhosImageSourceSupportedFormatList {...}
 
 ## 概述
 
-定义图像源支持的格式字符串。此选项给[OhosImageSourceSupportedFormatList](capi-image-ohosimagesourcesupportedformatlist.md)和[OH_ImageSource_GetSupportedFormats](capi-image-source-mdk-h.md#oh_imagesource_getsupportedformats)接口使用。
+定义图像源支持的格式字符串。此选项给{@link OhosImageSourceSupportedFormatList}和{@link OH_ImageSource_GetSupportedFormats}接口使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
 

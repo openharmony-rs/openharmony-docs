@@ -8,6 +8,8 @@ typedef struct GamePad_AxisEvent GamePad_AxisEvent
 
 Defines gamepad axis events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)

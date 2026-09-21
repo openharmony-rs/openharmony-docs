@@ -8,6 +8,8 @@ typedef struct OH_Data_Value OH_Data_Value
 
 Define the OH_Data_Value structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)

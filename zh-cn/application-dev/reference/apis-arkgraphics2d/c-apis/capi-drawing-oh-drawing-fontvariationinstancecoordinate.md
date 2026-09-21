@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 可变字体属性键值对。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **相关模块：** [Drawing](capi-drawing.md)

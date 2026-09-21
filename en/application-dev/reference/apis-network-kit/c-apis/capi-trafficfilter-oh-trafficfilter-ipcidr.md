@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_IPCidr {...} OH_TrafficFilter_IPCidr
 
 IP match value for CIDR match
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)

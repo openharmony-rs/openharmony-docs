@@ -34,6 +34,8 @@ enum PASTEBOARD_ErrCode
 
 剪贴板错误码枚举，用于标识剪贴板操作的执行结果，开发者可通过错误码判断操作是否成功以及失败的具体原因。
 
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |

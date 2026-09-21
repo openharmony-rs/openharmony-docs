@@ -34,6 +34,8 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 控制马达在指定时间内持续振动。调用成功后，马达立即开始振动，持续指定时间后自动停止。适用于需要固定时长振动的场景，如闹钟、计时提醒、游戏反馈、消息提醒等。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **需要权限：** ohos.permission.VIBRATE
 
 **起始版本：** 11
@@ -43,13 +45,13 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t duration | 振动时长，单位：ms（毫秒）。用于控制马达振动的持续时间。取值范围[1, 60000]。 |
-| Vibrator_Attribute attribute | 振动属性，用于配置振动的强度、模式等特性。请参考{@link Vibrator_Attribute}。 |
+| Vibrator_Attribute attribute | 振动属性，用于配置振动的强度、模式等特性。请参考[Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回 {@link Vibrator_ErrorCode} 中的错误码。常见错误码：PERMISSION_DENIED（201，权限校验失败）、      PARAMETER_ERROR（401，参数检查失败）、UNSUPPORTED（801，设备不支持）。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码：PERMISSION_DENIED（201，权限校验失败）、      PARAMETER_ERROR（401，参数检查失败）、UNSUPPORTED（801，设备不支持）。 |
 
 **参考：**
 
@@ -67,6 +69,8 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 播放自定义振动序列。调用成功后，系统按照自定义振动序列的配置播放振动效果。适用于通知提醒、游戏、触觉反馈等需要复杂振动模式的场景，帮助实现个性化振动体验，增强用户沉浸感。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **需要权限：** ohos.permission.VIBRATE
 
 **起始版本：** 11
@@ -75,14 +79,14 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 | 参数项 | 描述 |
 | -- | -- |
-| Vibrator_FileDescription fileDescription | 自定义振动效果文件描述符，用于指定包含振动序列数据的文件位置和范围。通过设置文件句柄、偏移地址和长度，可以播放自定义的振动效果。详细信息请参阅 {@link Vibrator_FileDescription}。 |
-| Vibrator_Attribute vibrateAttribute | 振动属性，用于控制自定义振动效果的强度、频率等特性。请参阅 {@link Vibrator_Attribute}。 |
+| Vibrator_FileDescription fileDescription | 自定义振动效果文件描述符，用于指定包含振动序列数据的文件位置和范围。通过设置文件句柄、偏移地址和长度，可以播放自定义的振动效果。详细信息请参阅 [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md)。 |
+| Vibrator_Attribute vibrateAttribute | 振动属性，用于控制自定义振动效果的强度、频率等特性。请参阅 [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回 {@link Vibrator_ErrorCode} 中的错误码。常见错误码包括：参数错误时请检查fileDescription和vibrateAttribute参数是否合法；<br>    设备不支持振动功能时请检查设备能力。详细错误码说明请参考 {@link Vibrator_ErrorCode}。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。常见错误码包括：参数错误时请检查fileDescription和vibrateAttribute参数是否合法；      设备不支持振动功能时请检查设备能力。详细错误码说明请参考 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode)。 |
 
 **参考：**
 
@@ -99,6 +103,8 @@ int32_t OH_Vibrator_Cancel()
 
 停止马达振动。调用成功后，立即停止当前正在进行的持续振动或自定义振动序列播放。适用于需要立即结束振动的场景，如用户取消操作、应用切换或系统通知消除，帮助优化用户体验和设备功耗。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **需要权限：** ohos.permission.VIBRATE
 
 **起始版本：** 11
@@ -107,6 +113,6 @@ int32_t OH_Vibrator_Cancel()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 如果操作成功，则返回0；否则返回 {@link Vibrator_ErrorCode} 中的错误码。有关错误码的可能原因和解决措施，请参考下方错误码表。 |
+| int32_t | 如果操作成功，则返回0；否则返回 [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) 中的错误码。有关错误码的可能原因和解决措施，请参考下方错误码表。 |
 
 

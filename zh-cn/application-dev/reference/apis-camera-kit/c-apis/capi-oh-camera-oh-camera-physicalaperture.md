@@ -8,6 +8,8 @@ typedef struct OH_Camera_PhysicalAperture {...} OH_Camera_PhysicalAperture
 
 物理光圈配置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

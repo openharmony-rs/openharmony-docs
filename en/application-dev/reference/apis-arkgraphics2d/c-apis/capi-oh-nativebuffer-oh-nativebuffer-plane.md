@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_Plane {...} OH_NativeBuffer_Plane
 
 Holds info for a single image plane.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

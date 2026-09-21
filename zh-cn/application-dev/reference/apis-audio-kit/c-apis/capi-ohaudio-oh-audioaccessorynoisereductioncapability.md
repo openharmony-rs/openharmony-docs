@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessory
 
 定义音频配件的降噪能力。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

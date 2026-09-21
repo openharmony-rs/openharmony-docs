@@ -8,6 +8,8 @@ typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo
 
 Defines a struct for the drawing information of a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

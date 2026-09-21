@@ -6,7 +6,9 @@ typedef struct OH_TrafficFilter_ConnectionInfo {...} OH_TrafficFilter_Connection
 
 ## Overview
 
-Connection information structure<br> Describes five-tuple connection information used to query process information.<br> Initialization rule: Before calling {@link OH_TrafficFilter_QueryProcess}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_ConnectionInfo).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which fields can be safely read.<br>If {@link size} is smaller than the minimum size required by the current API, the function<br>returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If {@link size} is larger than the size known by the library, the extra fields are ignored. Newly added fields in future versions should remain zero-initialized when not used.
+Connection information structure<br> Describes five-tuple connection information used to query process information.<br> Initialization rule: Before calling {@link OH_TrafficFilter_QueryProcess}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_ConnectionInfo).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which fields can be safely read.<br>If {@link size} is smaller than the minimum size required by the current API, the function<br>returns {@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}. If {@link size} is larger than the size known by the library, the extra fields are ignored. Newly added fields in future versions should remain zero-initialized when not used.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 

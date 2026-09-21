@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_IPRange {...} OH_TrafficFilter_IPRange
 
 范围匹配的IP匹配值。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **起始版本：** 26.0.0
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)

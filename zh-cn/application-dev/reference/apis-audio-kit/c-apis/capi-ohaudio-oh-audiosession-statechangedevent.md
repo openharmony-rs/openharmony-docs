@@ -8,6 +8,8 @@ typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChan
 
 音频会话状态变更事件。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 20
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

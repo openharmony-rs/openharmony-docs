@@ -4,6 +4,8 @@
 
 Describe the functions of want.
 
+**System capability**: SystemCapability.Ability.AbilityBase
+
 **Since**: 15
 
 ## Files

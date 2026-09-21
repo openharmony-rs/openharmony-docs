@@ -4,6 +4,8 @@
 
 Provides the definition of the C interface for the BatteryInfo module.
 
+**System capability**: SystemCapability.PowerManager.BatteryManager.Core
+
 **Since**: 13
 
 ## Files

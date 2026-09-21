@@ -4,6 +4,8 @@
 
 InputMethod provides functions to use input methods.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 ## Files

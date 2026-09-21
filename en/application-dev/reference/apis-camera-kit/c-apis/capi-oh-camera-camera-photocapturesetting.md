@@ -8,6 +8,8 @@ typedef struct Camera_PhotoCaptureSetting {...} Camera_PhotoCaptureSetting
 
 The struct describes the parameters related to photo capture.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

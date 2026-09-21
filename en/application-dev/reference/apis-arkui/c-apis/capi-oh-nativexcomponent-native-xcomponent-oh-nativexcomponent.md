@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent OH_NativeXComponent
 
 Provides an encapsulated <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

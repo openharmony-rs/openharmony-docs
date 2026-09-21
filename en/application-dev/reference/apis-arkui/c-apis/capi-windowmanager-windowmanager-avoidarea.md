@@ -8,6 +8,8 @@ typedef struct WindowManager_AvoidArea {...} WindowManager_AvoidArea
 
 The struct describes the avoid area.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 15
 
 **Related module**: [WindowManager](capi-windowmanager.md)

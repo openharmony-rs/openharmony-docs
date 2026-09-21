@@ -8,6 +8,8 @@ typedef struct ImagePacker_Opts_ {...} ImagePacker_Opts
 
 Defines the image packing options.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 11
 
 **Related module**: [Image](capi-image.md)

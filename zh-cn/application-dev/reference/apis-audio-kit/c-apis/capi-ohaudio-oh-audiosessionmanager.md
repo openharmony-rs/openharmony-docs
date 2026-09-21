@@ -8,6 +8,8 @@ typedef struct OH_AudioSessionManager OH_AudioSessionManager
 
 音频会话管理器结构体。用于管理音频会话。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

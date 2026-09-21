@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Surface OH_Drawing_Surface
 
 Defines a struct for a surface, which is used to manage the content drawn on the canvas.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

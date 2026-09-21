@@ -8,6 +8,8 @@ typedef struct OH_Camera_ZoomRange {...} OH_Camera_ZoomRange
 
 变焦范围配置。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

@@ -8,6 +8,8 @@ typedef struct TEE_DH_OtherInfo {...} TEE_DH_OtherInfo
 
 Defines a struct for TEE_DH_OtherInfo.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

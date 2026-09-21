@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextShadow OH_Drawing_TextShadow
 
 用于管理文本阴影。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

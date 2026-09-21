@@ -8,6 +8,8 @@ typedef struct OH_Rdb_Config {...} OH_Rdb_Config
 
 管理关系型数据库配置。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -26,7 +28,7 @@ typedef struct OH_Rdb_Config {...} OH_Rdb_Config
 | const char *bundleName | 应用包名，不能为空。 |
 | const char *moduleName | 应用模块名，不能为空。 |
 | bool isEncrypt | 指定数据库是否加密。true表示加密，false表示不加密。 |
-| int securityLevel | 数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)。 |
+| int securityLevel | 数据库安全级别{@link OH_Rdb_SecurityLevel}。 |
 | int area |  |
 
 

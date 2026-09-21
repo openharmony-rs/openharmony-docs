@@ -8,6 +8,8 @@ typedef struct OH_Drawing_ColorFilter OH_Drawing_ColorFilter
 
 Defines a struct for a color filter, which is used to convert a color into a new one.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

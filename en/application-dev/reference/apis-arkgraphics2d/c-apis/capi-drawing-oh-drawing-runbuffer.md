@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RunBuffer {...} OH_Drawing_RunBuffer
 
 This struct describes a run, which provides storage for glyphs and positions.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

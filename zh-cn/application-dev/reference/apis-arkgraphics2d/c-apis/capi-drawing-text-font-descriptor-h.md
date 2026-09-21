@@ -33,8 +33,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescriptor* desc, size_t* num)](#oh_drawing_matchfontdescriptors) | 获取与指定字体描述符匹配的所有系统字体描述符，其中{@link OH_Drawing_FontDescriptor}的path字段不作为有效的匹配字段，其余字段不是默认值时生效。<br><br>如果参数desc的所有字段都是默认值，则获取所有系统字体描述符。<br><br>如果匹配失败，返回NULL。不再需要{@link OH_Drawing_FontDescriptor}时，请使用[OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors)接口释放该对象的指针。 |
-| [void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, size_t num)](#oh_drawing_destroyfontdescriptors) | 释放字体描述符{@link OH_Drawing_FontDescriptor}数组。 |
+| [OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescriptor* desc, size_t* num)](#oh_drawing_matchfontdescriptors) | 获取与指定字体描述符匹配的所有系统字体描述符，其中[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)的path字段不作为有效的匹配字段，其余字段不是默认值时生效。 <br>如果参数desc的所有字段都是默认值，则获取所有系统字体描述符。 <br>如果匹配失败，返回NULL。不再需要[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)时，请使用[OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors)接口释放该对象的指针。 |
+| [void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, size_t num)](#oh_drawing_destroyfontdescriptors) | 释放字体描述符[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)数组。 |
 | [OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawing_String* fullName, OH_Drawing_SystemFontType fontType)](#oh_drawing_getfontdescriptorbyfullname) | 根据字体名称和字体类型获取指定的字体描述符，支持系统字体、风格字体和用户已安装字体，如果获取失败则返回NULL。 <br>字体描述符是描述字体特征的一种数据结构，它包含了定义字体外观和属性的详细信息。 |
 | [OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontType fontType)](#oh_drawing_getsystemfontfullnamesbytype) | 根据字体类型获取对应字体的字体名称数组。 |
 | [const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Array* fullNameArray, size_t index)](#oh_drawing_getsystemfontfullnamebyindex) | 在字体名称数组中通过索引获取对应位置的字体名称，如果索引超出范围或数组无效，则返回NULL。 |
@@ -48,16 +48,16 @@
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromBuffer(uint8_t* fontBuffer, size_t length, uint32_t index, int32_t** unicodeArray, int32_t* arrayLength)](#oh_drawing_getfontunicodearrayfrombuffer) | 从字体字节流缓存中获取unicode码数组。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, int* value)](#oh_drawing_getfontfulldescriptorattributeint) | 获取int类型字体描述符的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, bool* value)](#oh_drawing_getfontfulldescriptorattributebool) | 获取bool类型字体描述符的属性。 |
-| [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontfulldescriptorattributestring) | 获取{@link OH_Drawing_String}类型字体描述符的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontfulldescriptorattributestring) | 获取[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型字体描述符的属性。 |
 | [OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorAttributeArray(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id)](#oh_drawing_getfontfulldescriptorattributearray) | 获取字体描述符的对象数组属性。 |
 | [OH_Drawing_FontVariationAxis* OH_Drawing_GetFontVariationAxisByIndex(OH_Drawing_Array* array, size_t index)](#oh_drawing_getfontvariationaxisbyindex) | 在字体可变轴数组中通过索引获取对应的字体可变轴。 |
 | [void OH_Drawing_DestroyFontVariationAxis(OH_Drawing_Array* fontVariaAxisArray)](#oh_drawing_destroyfontvariationaxis) | 释放字体可变轴数组占用的内存。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeDouble(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, double *value)](#oh_drawing_getfontvariationaxisattributedouble) | 获取double类型字体可变轴的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeInt(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, int *value)](#oh_drawing_getfontvariationaxisattributeint) | 获取int类型字体可变轴的属性。 |
-| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, OH_Drawing_String *str)](#oh_drawing_getfontvariationaxisattributestr) | 获取{@link OH_Drawing_String}类型字体可变轴的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, OH_Drawing_String *str)](#oh_drawing_getfontvariationaxisattributestr) | 获取[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型字体可变轴的属性。 |
 | [OH_Drawing_FontVariationInstance* OH_Drawing_GetFontVariationInstanceByIndex(OH_Drawing_Array* array, size_t index)](#oh_drawing_getfontvariationinstancebyindex) | 在字体可变实例数组中通过索引获取对应的字体可变实例。 |
 | [void OH_Drawing_DestroyFontVariationInstance(OH_Drawing_Array* fontVariaAxisInstance)](#oh_drawing_destroyfontvariationinstance) | 释放字体可变实例数组占用的内存。 |
-| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_FontVariationInstance* variationInstance, OH_Drawing_FontVariationInstanceAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontvariationinstanceattributestr) | 获取{@link OH_Drawing_String}类型字体可变实例的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_FontVariationInstance* variationInstance, OH_Drawing_FontVariationInstanceAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontvariationinstanceattributestr) | 获取[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型字体可变实例的属性。 |
 | [OH_Drawing_FontVariationInstanceCoordinate* OH_Drawing_GetFontVariationInstanceCoordinate(OH_Drawing_FontVariationInstance* variationInstance, size_t* arrayLength)](#oh_drawing_getfontvariationinstancecoordinate) | 获取字体可变实例的可变字体属性对象。 |
 | [const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByFullName(const OH_Drawing_String* fullName, OH_Drawing_SystemFontType fontType)](#oh_drawing_getfontfulldescriptorbyfullname) | 根据字体名称和字体类型获取字体完整描述符对象。 |
 | [uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)](#oh_drawing_getfontcountfromfile) | 获取字体文件中包含的字体数量。 |
@@ -75,6 +75,8 @@ enum OH_Drawing_SystemFontType
 **描述：**
 
 字体类型的枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 14
 
@@ -96,15 +98,17 @@ enum OH_Drawing_FontFullDescriptorAttributeId
 
 字体描述符属性的枚举。不同类型的字体描述符属性，请使用对应类型的接口获取属性。如字体描述符属性FULL_DESCRIPTOR_ATTR_I_WEIGHT为int类型，需使用 [OH_Drawing_GetFontFullDescriptorAttributeInt](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributeint)接口获取其属性值。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FULL_DESCRIPTOR_ATTR_S_PATH = 0 | 字体文件的路径，{@link OH_Drawing_String}类型。 |
-| FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1 | 唯一标识字体的名称，{@link OH_Drawing_String}类型。 |
-| FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2 | 字体的名称，{@link OH_Drawing_String}类型。 |
-| FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3 | 字体家族的名称，{@link OH_Drawing_String}类型。 |
-| FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4 | 子字体家族的名称，{@link OH_Drawing_String}类型。 |
+| FULL_DESCRIPTOR_ATTR_S_PATH = 0 | 字体文件的路径，[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型。 |
+| FULL_DESCRIPTOR_ATTR_S_POSTSCRIPT_NAME = 1 | 唯一标识字体的名称，[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型。 |
+| FULL_DESCRIPTOR_ATTR_S_FULL_NAME = 2 | 字体的名称，[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型。 |
+| FULL_DESCRIPTOR_ATTR_S_FAMILY_NAME = 3 | 字体家族的名称，[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型。 |
+| FULL_DESCRIPTOR_ATTR_S_SUB_FAMILY_NAME = 4 | 子字体家族的名称，[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型。 |
 | FULL_DESCRIPTOR_ATTR_I_WEIGHT = 5 | 字体的字重，int类型。 |
 | FULL_DESCRIPTOR_ATTR_I_WIDTH = 6 | 字体的宽窄风格属性，int类型。 |
 | FULL_DESCRIPTOR_ATTR_I_ITALIC = 7 | 字体是否倾斜，int类型。1表示字体倾斜，0表示字体非倾斜。 |
@@ -133,6 +137,8 @@ enum OH_Drawing_FontVariationAxisAttributeId
 
 字体可变轴属性的枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -155,6 +161,8 @@ enum OH_Drawing_FontVariationInstanceAttributeId
 
 字体可变实例属性的枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -173,7 +181,7 @@ OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescri
 
 **描述：**
 
-获取与指定字体描述符匹配的所有系统字体描述符，其中{@link OH_Drawing_FontDescriptor}的path字段不作为有效的匹配字段，其余字段不是默认值时生效。<br><br>如果参数desc的所有字段都是默认值，则获取所有系统字体描述符。<br><br>如果匹配失败，返回NULL。不再需要{@link OH_Drawing_FontDescriptor}时，请使用[OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors)接口释放该对象的指针。
+获取与指定字体描述符匹配的所有系统字体描述符，其中[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)的path字段不作为有效的匹配字段，其余字段不是默认值时生效。 <br>如果参数desc的所有字段都是默认值，则获取所有系统字体描述符。 <br>如果匹配失败，返回NULL。不再需要[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)时，请使用[OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors)接口释放该对象的指针。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -183,14 +191,14 @@ OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescri
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontDescriptor* desc | 指向字体描述符{@link OH_Drawing_FontDescriptor}对象的指针。<br>    <br>建议使用{@link OH_Drawing_CreateFontDescriptor}获得有效的{@link OH_Drawing_FontDescriptor}实例。<br>    <br>如果自己创建{@link OH_Drawing_FontDescriptor}实例，请确保不用于匹配的字段是默认值。 |
+| OH_Drawing_FontDescriptor* desc | 指向字体描述符[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)对象的指针。 <br>建议使用[OH_Drawing_CreateFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_createfontdescriptor)获得有效的[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)实例。 <br>如果自己创建[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)实例，请确保不用于匹配的字段是默认值。 |
 | size_t* num | 出参，用于接收返回值数组的成员个数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontDescriptor* | {@link OH_Drawing_FontDescriptor}数组，释放时请使用[OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors)。 |
+| OH_Drawing_FontDescriptor* | [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)数组，释放时请使用[OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors)。 |
 
 ### OH_Drawing_DestroyFontDescriptors()
 
@@ -200,7 +208,7 @@ void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, s
 
 **描述：**
 
-释放字体描述符{@link OH_Drawing_FontDescriptor}数组。
+释放字体描述符[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)数组。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -210,8 +218,8 @@ void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, s
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontDescriptor* descriptors | 需要释放的字体描述符{@link OH_Drawing_FontDescriptor}数组指针。 |
-| size_t num | {@link OH_Drawing_FontDescriptor}数组的成员个数。 |
+| OH_Drawing_FontDescriptor* descriptors | 需要释放的字体描述符[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)数组指针。 |
+| size_t num | [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)数组的成员个数。 |
 
 ### OH_Drawing_GetFontDescriptorByFullName()
 
@@ -231,14 +239,14 @@ OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_String* fullName | 表示指向字体名称字符串{@link OH_Drawing_String}的指针。 |
+| const OH_Drawing_String* fullName | 表示指向字体名称字符串[OH_Drawing_String](capi-drawing-oh-drawing-string.md)的指针。 |
 | [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype) fontType | 表示字体类型的枚举值[OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontDescriptor* | 指向字体描述符对象{@link OH_Drawing_FontDescriptor}的指针，不再需要{@link OH_Drawing_FontDescriptor}时，请使用<br>    {@link OH_Drawing_DestroyFontDescriptor}接口释放该对象的指针。 |
+| OH_Drawing_FontDescriptor* | 指向字体描述符对象[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)的指针，不再需要[OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md)时，请使用      [OH_Drawing_DestroyFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_destroyfontdescriptor)接口释放该对象的指针。 |
 
 ### OH_Drawing_GetSystemFontFullNamesByType()
 
@@ -264,7 +272,7 @@ OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontT
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_Array* | 返回对应字体类型的字体名称数组{@link OH_Drawing_Array}的指针，不再需要{@link OH_Drawing_Array}时，请使用      [OH_Drawing_DestroySystemFontFullNames](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroysystemfontfullnames)接口释放该对象的指针。 |
+| OH_Drawing_Array* | 返回对应字体类型的字体名称数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用      [OH_Drawing_DestroySystemFontFullNames](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroysystemfontfullnames)接口释放该对象的指针。 |
 
 ### OH_Drawing_GetSystemFontFullNameByIndex()
 
@@ -284,14 +292,14 @@ const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Arra
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* fullNameArray | 表示字体名称数组{@link OH_Drawing_Array}的指针。 |
+| OH_Drawing_Array* fullNameArray | 表示字体名称数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 | size_t index | 数组的索引。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const OH_Drawing_String* | 返回对应索引的字体名称{@link OH_Drawing_String}的指针。 |
+| const OH_Drawing_String* | 返回对应索引的字体名称[OH_Drawing_String](capi-drawing-oh-drawing-string.md)的指针。 |
 
 ### OH_Drawing_DestroySystemFontFullNames()
 
@@ -311,7 +319,7 @@ void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* fullNameArray | 表示字体名称数组{@link OH_Drawing_Array}的指针。 |
+| OH_Drawing_Array* fullNameArray | 表示字体名称数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 
 ### OH_Drawing_GetFontFullDescriptorsFromStream()
 
@@ -322,6 +330,8 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, 
 **描述：**
 
 根据原始二进制数据获取字体描述符数组。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 
@@ -336,7 +346,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_Array* | 返回指向对应字体文件的字体描述符数组{@link OH_Drawing_Array}的指针，不再需要OH_Drawing_Array时，请使用      [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。      <br>如果因数据格式无效或解析错误导致操作失败，返回NULL。 |
+| OH_Drawing_Array* | 返回指向对应字体文件的字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要OH_Drawing_Array时，请使用      [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。      <br>如果因数据格式无效或解析错误导致操作失败，返回NULL。 |
 
 ### OH_Drawing_GetFontFullDescriptorsFromPath()
 
@@ -347,6 +357,8 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 **描述：**
 
 根据字体文件路径获取字体描述符数组。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 
@@ -360,7 +372,7 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_Array* | 返回指向对应字体文件的字体描述符数组{@link OH_Drawing_Array}的指针，不再需要OH_Drawing_Array时，请使用      [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。      <br>如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回NULL。 |
+| OH_Drawing_Array* | 返回指向对应字体文件的字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，不再需要OH_Drawing_Array时，请使用      [OH_Drawing_DestroyFontFullDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptors)接口释放该对象的指针。      <br>如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回NULL。 |
 
 ### OH_Drawing_GetFontFullDescriptorByIndex()
 
@@ -372,20 +384,22 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_
 
 在字体描述符数组中通过索引获取对应的字体描述符。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* descriptorArray | 表示指向字体描述符数组{@link OH_Drawing_Array}的指针。 |
+| OH_Drawing_Array* descriptorArray | 表示指向字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 | size_t index | 数组的索引，索引值从0开始。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* | 返回指向指定索引处字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
+| const OH_Drawing_FontFullDescriptor* | 返回指向指定索引处字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontFullDescriptors()
 
@@ -397,13 +411,15 @@ void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)
 
 释放字体描述符数组占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* descriptorArray | 表示指向字体描述符数组{@link OH_Drawing_Array}的指针。 |
+| OH_Drawing_Array* descriptorArray | 表示指向字体描述符数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 
 ### OH_Drawing_DestroyFontFullDescriptor()
 
@@ -415,13 +431,15 @@ void OH_Drawing_DestroyFontFullDescriptor(const OH_Drawing_FontFullDescriptor* d
 
 释放字体描述符指针占用的内存。本函数可用于释放由[OH_Drawing_GetFontFullDescriptorByFullName](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorbyfullname)接口获取的字体描述符指针。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* descriptor | 表示指向字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。 |
+| const OH_Drawing_FontFullDescriptor* descriptor | 表示指向字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。 |
 
 ### OH_Drawing_GetFontUnicodeArrayFromFile()
 
@@ -432,6 +450,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromFile(const char* fontSrc,
 **描述：**
 
 从字体文件中获取unicode码数组。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -459,6 +479,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromBuffer(uint8_t* fontBuffe
 **描述：**
 
 从字体字节流缓存中获取unicode码数组。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -488,13 +510,15 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawi
 
 获取int类型字体描述符的属性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。 |
+| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。 |
 | [OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid) id | 字体描述符属性id。从[OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid)中可获取字体描述符属性。 |
 | int* value | 指向int类型属性的指针。作为出参使用。 |
 
@@ -514,13 +538,15 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Draw
 
 获取bool类型字体描述符的属性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 22
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。 |
+| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。 |
 | [OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid) id | 字体描述符属性id。从[OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid)中可获取字体描述符属性。 |
 | bool* value | 指向bool类型属性的指针。作为出参使用。 |
 
@@ -538,11 +564,13 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Dr
 
 **描述：**
 
-获取{@link OH_Drawing_String}类型字体描述符的属性。
+获取[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型字体描述符的属性。
 
 > **说明：**
 >
 > 如果不再需要OH_Drawing_String，调用方需要手动释放OH_Drawing_String结构体内部的strData成员。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 
@@ -550,7 +578,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Dr
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。 |
+| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。 |
 | [OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid) id | 字体描述符属性id。从[OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid)中可获取字体描述符属性。 |
 | OH_Drawing_String* str | 指向OH_Drawing_String类型属性的指针。作为出参使用。 |
 
@@ -570,13 +598,15 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorAttributeArray(const OH_Drawin
 
 获取字体描述符的对象数组属性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。 |
+| const OH_Drawing_FontFullDescriptor* descriptor | 指向字体描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。 |
 | [OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid) id | 字体描述符属性id。从[OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid)中可获取字体描述符属性。 |
 
 **返回值：**
@@ -595,20 +625,22 @@ OH_Drawing_FontVariationAxis* OH_Drawing_GetFontVariationAxisByIndex(OH_Drawing_
 
 在字体可变轴数组中通过索引获取对应的字体可变轴。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* array | 指向字体可变轴数组{@link OH_Drawing_Array}的指针，通过[OH_Drawing_GetFontFullDescriptorAttributeArray](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributearray)获取。 |
+| OH_Drawing_Array* array | 指向字体可变轴数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针，通过[OH_Drawing_GetFontFullDescriptorAttributeArray](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributearray)获取。 |
 | size_t index | 数组的索引，索引值从0开始。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontVariationAxis* | 返回指向指定索引处字体可变轴对象{@link OH_Drawing_FontVariationAxis}的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
+| OH_Drawing_FontVariationAxis* | 返回指向指定索引处字体可变轴对象[OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontVariationAxis()
 
@@ -620,13 +652,15 @@ void OH_Drawing_DestroyFontVariationAxis(OH_Drawing_Array* fontVariaAxisArray)
 
 释放字体可变轴数组占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* fontVariaAxisArray | 指向字体可变轴数组对象{@link OH_Drawing_Array}的指针。 |
+| OH_Drawing_Array* fontVariaAxisArray | 指向字体可变轴数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 
 ### OH_Drawing_GetFontVariationAxisAttributeDouble()
 
@@ -638,13 +672,15 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeDouble(OH_Drawing_F
 
 获取double类型字体可变轴的属性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontVariationAxis* variationAxis | 指向字体可变轴对象{@link OH_Drawing_FontVariationAxis}的指针。 |
+| OH_Drawing_FontVariationAxis* variationAxis | 指向字体可变轴对象[OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)的指针。 |
 | [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid) id | 字体可变轴属性id。从[OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid)中可获取字体可变轴的属性。 |
 | double *value | 指向double类型属性的指针。作为出参使用。 |
 
@@ -664,13 +700,15 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeInt(OH_Drawing_Font
 
 获取int类型字体可变轴的属性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontVariationAxis* variationAxis | 指向字体可变轴对象{@link OH_Drawing_FontVariationAxis}的指针。 |
+| OH_Drawing_FontVariationAxis* variationAxis | 指向字体可变轴对象[OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)的指针。 |
 | [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid) id | 字体可变轴属性id。从[OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid)中可获取字体可变轴的属性。 |
 | int *value | 指向int类型属性的指针。作为出参使用。 |
 
@@ -688,11 +726,13 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_Font
 
 **描述：**
 
-获取{@link OH_Drawing_String}类型字体可变轴的属性。
+获取[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型字体可变轴的属性。
 
 > **说明：**
 >
 > 如果不再需要OH_Drawing_String，调用方需要手动释放OH_Drawing_String结构体内部的strData成员。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 24
 
@@ -700,7 +740,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_Font
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontVariationAxis* variationAxis | 指向字体可变轴对象{@link OH_Drawing_FontVariationAxis}的指针。 |
+| OH_Drawing_FontVariationAxis* variationAxis | 指向字体可变轴对象[OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)的指针。 |
 | [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid) id | 字体可变轴属性id。从[OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid)中可获取字体可变轴的属性。 |
 | OH_Drawing_String *str | 指向OH_Drawing_String类型属性的指针。作为出参使用。 |
 
@@ -720,20 +760,22 @@ OH_Drawing_FontVariationInstance* OH_Drawing_GetFontVariationInstanceByIndex(OH_
 
 在字体可变实例数组中通过索引获取对应的字体可变实例。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* array | 指向字体可变实例数组{@link OH_Drawing_Array}的指针。通过[OH_Drawing_GetFontFullDescriptorAttributeArray](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributearray)获取。 |
+| OH_Drawing_Array* array | 指向字体可变实例数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。通过[OH_Drawing_GetFontFullDescriptorAttributeArray](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributearray)获取。 |
 | size_t index | 数组的索引，索引值从0开始。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_FontVariationInstance* | 返回指向指定索引处字体可变实例对象{@link OH_Drawing_FontVariationInstance}的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
+| OH_Drawing_FontVariationInstance* | 返回指向指定索引处字体可变实例对象[OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)的指针。      <br>如果索引超出范围或数组无效，则返回NULL。 |
 
 ### OH_Drawing_DestroyFontVariationInstance()
 
@@ -745,13 +787,15 @@ void OH_Drawing_DestroyFontVariationInstance(OH_Drawing_Array* fontVariaAxisInst
 
 释放字体可变实例数组占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Array* fontVariaAxisInstance | 指向字体可变实例数组对象{@link OH_Drawing_Array}的指针。 |
+| OH_Drawing_Array* fontVariaAxisInstance | 指向字体可变实例数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
 
 ### OH_Drawing_GetFontVariationInstanceAttributeStr()
 
@@ -761,11 +805,13 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_
 
 **描述：**
 
-获取{@link OH_Drawing_String}类型字体可变实例的属性。
+获取[OH_Drawing_String](capi-drawing-oh-drawing-string.md)类型字体可变实例的属性。
 
 > **说明：**
 >
 > 如果不再需要OH_Drawing_String，调用方需要手动释放OH_Drawing_String结构体内部的strData成员。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 24
 
@@ -773,7 +819,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_FontVariationInstance* variationInstance | 指向字体可变实例对象{@link OH_Drawing_FontVariationInstance}的指针。 |
+| OH_Drawing_FontVariationInstance* variationInstance | 指向字体可变实例对象[OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)的指针。 |
 | [OH_Drawing_FontVariationInstanceAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationinstanceattributeid) id | 字体可变实例属性id。从[OH_Drawing_FontVariationInstanceAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationinstanceattributeid)中可获取字体可变实例属性。 |
 | OH_Drawing_String* str | 指向OH_Drawing_String类型属性的指针。作为出参使用。 |
 
@@ -792,6 +838,8 @@ OH_Drawing_FontVariationInstanceCoordinate* OH_Drawing_GetFontVariationInstanceC
 **描述：**
 
 获取字体可变实例的可变字体属性对象。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 24
 
@@ -818,20 +866,22 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByFullName(
 
 根据字体名称和字体类型获取字体完整描述符对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 24
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_String* fullName | 指向字体名称对象{@link OH_Drawing_String}的指针。 |
+| const OH_Drawing_String* fullName | 指向字体名称对象[OH_Drawing_String](capi-drawing-oh-drawing-string.md)的指针。 |
 | [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype) fontType | 系统字体类型对象[OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype)的枚举值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const OH_Drawing_FontFullDescriptor* | 返回指向字体完整描述符对象{@link OH_Drawing_FontFullDescriptor}的指针。不再需要OH_Drawing_FontFullDescriptor时，请使用      [OH_Drawing_DestroyFontFullDescriptor](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptor)接口释放该对象的指针。 |
+| const OH_Drawing_FontFullDescriptor* | 返回指向字体完整描述符对象[OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)的指针。不再需要OH_Drawing_FontFullDescriptor时，请使用      [OH_Drawing_DestroyFontFullDescriptor](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptor)接口释放该对象的指针。 |
 
 ### OH_Drawing_GetFontCountFromFile()
 
@@ -842,6 +892,8 @@ uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)
 **描述：**
 
 获取字体文件中包含的字体数量。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -867,6 +919,8 @@ uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)
 
 获取字体缓存数据中包含的字体数量。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
@@ -891,6 +945,8 @@ OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontT
 **描述：**
 
 获取指定字体类型的所有字体文件路径。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 

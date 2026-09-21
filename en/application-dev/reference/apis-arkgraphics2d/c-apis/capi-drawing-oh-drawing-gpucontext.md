@@ -8,6 +8,8 @@ typedef struct OH_Drawing_GpuContext OH_Drawing_GpuContext
 
 Defines a struct for the GPU context, which is used to describe the GPU backend context.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

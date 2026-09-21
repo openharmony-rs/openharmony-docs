@@ -8,6 +8,8 @@ typedef struct OH_Drawing_String {...} OH_Drawing_String
 
 This struct describes a string of characters encoded in UTF-16.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 14
 
 **Related module**: [Drawing](capi-drawing.md)

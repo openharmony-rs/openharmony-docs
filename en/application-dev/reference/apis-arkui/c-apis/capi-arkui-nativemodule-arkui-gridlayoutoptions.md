@@ -8,6 +8,8 @@ typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
 
 Defines the **Grid** layout options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

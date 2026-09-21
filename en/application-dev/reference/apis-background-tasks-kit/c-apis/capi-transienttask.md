@@ -4,6 +4,8 @@
 
 Provide C interface for the Transient task management.
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 13
 
 ## Files

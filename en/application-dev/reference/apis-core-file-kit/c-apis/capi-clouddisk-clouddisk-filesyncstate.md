@@ -8,6 +8,8 @@ typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
 
 A struct that encapsulates the file sync state.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)

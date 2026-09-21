@@ -8,6 +8,8 @@ typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 
 事件类型编码数组，用于存储HID设备支持的事件类型信息。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)

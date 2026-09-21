@@ -8,6 +8,8 @@ typedef struct OHExtDataHandle {...} OHExtDataHandle
 
 Defines the ExtData Handle
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 9
 
 **Deprecated**: 10

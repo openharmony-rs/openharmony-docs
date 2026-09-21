@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Font OH_Drawing_Font
 
 Defines a struct for a font.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

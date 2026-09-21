@@ -8,6 +8,8 @@ typedef struct NativeChildProcess_Args {...} NativeChildProcess_Args
 
 传递给子进程的参数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 **相关模块：** [ChildProcess](capi-childprocess.md)

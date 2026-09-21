@@ -8,6 +8,8 @@ typedef struct ffrt_deps_t {...} ffrt_deps_t
 
 依赖结构体，用于保存任务的依赖列表。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **相关模块：** [FFRT](capi-ffrt.md)

@@ -8,6 +8,8 @@ typedef struct Crypto_DataBlob {...} Crypto_DataBlob
 
 Crypto data structure.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoCommonApi](capi-cryptocommonapi.md)

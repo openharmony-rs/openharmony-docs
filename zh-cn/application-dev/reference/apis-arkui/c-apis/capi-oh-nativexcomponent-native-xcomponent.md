@@ -4,6 +4,8 @@
 
 OH_NativeXComponent提供ArkUI XComponent持有的Surface和触摸事件能力。 支持将EGL/OpenGLES渲染输出、媒体数据等自绘内容上屏显示，并实现Native层与ArkUI之间的触摸等事件交互。 适用于游戏/图形渲染、视频播放、相机预览等需要在Native侧进行高性能绘制并与ArkUI联动交互的场景，具体使用请参考Native XComponent。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 ## 文件汇总

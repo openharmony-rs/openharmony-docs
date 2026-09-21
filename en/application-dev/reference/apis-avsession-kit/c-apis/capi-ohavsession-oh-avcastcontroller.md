@@ -6,7 +6,9 @@ typedef struct OH_AVCastController OH_AVCastController
 
 ## Overview
 
-OH_AVCastController object<br> A pointer can be created using the [OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller) method.
+OH_AVCastController object<br> A pointer can be created using the {@link OH_AVSession_CreateAVCastController} method.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

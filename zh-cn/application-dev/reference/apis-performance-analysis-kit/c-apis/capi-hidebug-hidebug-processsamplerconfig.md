@@ -8,6 +8,8 @@ typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
 
 采样配置的结构定义。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 22
 
 **相关模块：** [HiDebug](capi-hidebug.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_VisibleAreaEventOptions ArkUI_VisibleAreaEventOptions
 
 Defines the parameters for visible area change events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

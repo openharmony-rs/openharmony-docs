@@ -8,6 +8,8 @@ typedef struct Vibrator_Attribute {...} Vibrator_Attribute
 
 Defines the vibrator attribute.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Since**: 11
 
 **Related module**: [Vibrator](capi-vibrator.md)

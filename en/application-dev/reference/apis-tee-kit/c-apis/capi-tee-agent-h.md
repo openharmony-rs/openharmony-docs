@@ -35,6 +35,8 @@ TEE_Result tee_agent_lock(uint32_t agent_id)
 
 The TA sends a message to the gtask to lock the agent.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -58,6 +60,8 @@ TEE_Result tee_agent_unlock(uint32_t agent_id)
 **Description**
 
 Unlock the agent.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -83,6 +87,8 @@ TEE_Result tee_send_agent_cmd(uint32_t agent_id)
 
 Send agent cmd to gtask.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -106,6 +112,8 @@ TEE_Result tee_get_agent_buffer(uint32_t agent_id, void **buffer, uint32_t *leng
 **Description**
 
 Receive messgage in get agent buffer.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

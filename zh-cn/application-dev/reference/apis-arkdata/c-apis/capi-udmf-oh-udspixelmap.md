@@ -8,6 +8,8 @@ typedef struct OH_UdsPixelMap OH_UdsPixelMap
 
 描述像素图类型的统一数据结构。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 13
 
 **相关模块：** [UDMF](capi-udmf.md)

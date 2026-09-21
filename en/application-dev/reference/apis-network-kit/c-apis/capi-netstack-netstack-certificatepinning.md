@@ -8,6 +8,8 @@ typedef struct NetStack_CertificatePinning {...} NetStack_CertificatePinning
 
 Defines certificate pinning information.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 12
 
 **Related module**: [netstack](capi-netstack.md)

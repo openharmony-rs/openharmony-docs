@@ -47,6 +47,8 @@ void TEE_Panic(TEE_Result panicCode)
 
 Raises a panic in the TA instance.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -64,6 +66,8 @@ TEE_Result TEE_OpenTASession(const TEE_UUID *destination, uint32_t cancellationR
 **Description**
 
 Opens a new session with a TA.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -94,6 +98,8 @@ void TEE_CloseTASession(TEE_TASessionHandle session)
 
 Closes a client session.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -111,6 +117,8 @@ TEE_Result TEE_InvokeTACommand(TEE_TASessionHandle session, uint32_t cancellatio
 **Description**
 
 Invokes a command in a session opened between this client TA instance and a target TA instance.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

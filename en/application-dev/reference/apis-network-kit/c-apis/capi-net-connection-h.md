@@ -368,6 +368,8 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 Registers a custom DNS resolver.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 13
 
 **Deprecated**: 26.0.0
@@ -396,6 +398,8 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 
 Unregisters a custom DNS resolver.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 13
 
 **Deprecated**: 26.0.0
@@ -417,6 +421,8 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 **Description**
 
 Registers a custom DNS resolver to intercept and override DNS queries. Falls back to system DNS if no result is specified. Only a single resolver is allowed. You must unregister the existing one before registering a new one.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 26.0.0
 
@@ -441,6 +447,8 @@ int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 **Description**
 
 Unregisters the custom DNS resolver.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 26.0.0
 
@@ -560,6 +568,8 @@ int32_t OH_NetConn_RefreshGlobalHttpProxyWithCallback(OH_NetConn_GlobalHttpProxy
 
 Requests global HTTP proxy re-authentication and reports the result through a one-shot callback.<br> This function submits an asynchronous re-authentication request. A return value of 0 indicates that the request has been accepted. It does not indicate that re-authentication has succeeded. The final result is reported through the callback.<br><br> If this function returns 0, the callback will be invoked at most once. After the callback is invoked, it is automatically released by the system.<br><br> If this function returns a non-zero value, the callback will not be invoked.<br><br> The callback may be invoked on a system worker thread. The caller must ensure that the callback implementation is thread-safe and returns quickly.<br><br> The caller must ensure that the callback function and userData remain valid until the callback is invoked.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 26.0.0
@@ -675,6 +685,8 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/ PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Required permission**: ohos.permission.SET_PAC_URL
 
 **Since**: 15
@@ -689,7 +701,7 @@ Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **
 
 | Type | Description |
 | -- | -- |
-| NetConn_ErrorCode | Result code defined in {@link NetConn_ErrorCode}.<br>    <br>{@link NETCONN_SUCCESS}: success.<br>    <br>{@link NETCONN_PERMISSION_DENIED}: permission denied.<br>    <br>{@link NETCONN_PARAMETER_ERROR}: parameter error.<br>    <br>{@link NETCONN_OPERATION_FAILED}: unable to connect to the service.<br>    <br>{@link NETCONN_INTERNAL_ERROR}: internal error. |
+| NetConn_ErrorCode | Result code defined in [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode).      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode): success.      <br>[NETCONN_PERMISSION_DENIED](capi-net-connection-type-h.md#netconn_errorcode): permission denied.      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode): parameter error.      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode): unable to connect to the service.      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode): internal error. |
 
 ### OH_NetConn_GetPacUrl()
 
@@ -700,6 +712,8 @@ NetConn_ErrorCode OH_NetConn_GetPacUrl(char *pacUrl)
 **Description**
 
 Obtains the URL of the system-level PAC script.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 15
 
@@ -713,7 +727,7 @@ Obtains the URL of the system-level PAC script.
 
 | Type | Description |
 | -- | -- |
-| NetConn_ErrorCode | Result code defined in {@link NetConn_ErrorCode}.<br>    <br>{@link NETCONN_SUCCESS}: success.<br>    <br>{@link NETCONN_PARAMETER_ERROR}: parameter error.<br>    <br>{@link NETCONN_OPERATION_FAILED}: unable to connect to the service.<br>    <br>{@link NETCONN_INTERNAL_ERROR}: internal error. |
+| NetConn_ErrorCode | Result code defined in [NetConn_ErrorCode](capi-net-connection-type-h.md#netconn_errorcode).      <br>[NETCONN_SUCCESS](capi-net-connection-type-h.md#netconn_errorcode): success.      <br>[NETCONN_PARAMETER_ERROR](capi-net-connection-type-h.md#netconn_errorcode): parameter error.      <br>[NETCONN_OPERATION_FAILED](capi-net-connection-type-h.md#netconn_errorcode): unable to connect to the service.      <br>[NETCONN_INTERNAL_ERROR](capi-net-connection-type-h.md#netconn_errorcode): internal error. |
 
 ### OH_NetConn_QueryProbeResult()
 
@@ -724,6 +738,8 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 **Description**
 
 Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent detection. This API involves network operations. Do not call it in the main process. Otherwise, the UI may freeze.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -752,6 +768,8 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 **Description**
 
 Queries network trace route information.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
 
 **Required permission**: ohos.permission.INTERNET and ohos.permission.LOCATION and ohos.permission.ACCESS_NET_TRACE_INFO
 

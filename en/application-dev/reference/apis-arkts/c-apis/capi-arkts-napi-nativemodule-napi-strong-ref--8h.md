@@ -8,6 +8,8 @@ typedef struct napi_strong_ref__* napi_strong_ref
 
 Native strong reference of an ArkTS object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
 **Since**: 21
 
 **Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)

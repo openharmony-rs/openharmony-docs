@@ -8,6 +8,8 @@ typedef struct Http_HeaderValue {...} Http_HeaderValue
 
 Defines the type of a mapped value in a request or response header.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)

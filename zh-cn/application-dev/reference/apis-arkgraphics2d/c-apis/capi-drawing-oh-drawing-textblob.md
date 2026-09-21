@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextBlob OH_Drawing_TextBlob
 
 定义一个文本对象，表示将多个文本组合到一个不可变的容器中。每个文本行由字形和位置组成。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

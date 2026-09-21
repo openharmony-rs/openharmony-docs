@@ -6,7 +6,9 @@ struct OhosImageSourceUpdateData {...}
 
 ## Overview
 
-Defines the update data of the image source. It is obtained by calling [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata).
+Defines the update data of the image source. It is obtained by calling {@link OH_ImageSource_UpdateData}.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 

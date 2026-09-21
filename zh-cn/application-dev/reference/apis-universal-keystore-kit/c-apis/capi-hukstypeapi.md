@@ -4,6 +4,8 @@
 
 定义通用密钥库（HUKS）类型的头文件，声明各种宏、枚举、数据结构、错误码等。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 ## 文件汇总

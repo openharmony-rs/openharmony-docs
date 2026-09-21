@@ -8,6 +8,8 @@ typedef struct CloudDisk_ChangesResult {...} CloudDisk_ChangesResult
 
 A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)

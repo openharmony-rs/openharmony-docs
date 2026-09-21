@@ -8,6 +8,8 @@ typedef struct Camera_PreviewOutput Camera_PreviewOutput
 
 The struct describes the preview output object.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

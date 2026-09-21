@@ -8,6 +8,8 @@ typedef struct ArkWeb_ProxyObjectWithResult {...} ArkWeb_ProxyObjectWithResult
 
 ArkWeb_ProxyObjectWithResult是带返回值的JavaScript代理对象结构体，扩展了ArkWeb_ProxyObject的能力。 该结构体将多个ArkWeb_ProxyMethodWithResult组织成对象注入到Web页面中，支持JavaScript调用Native方法后获取返回值。解决了ArkWeb_ProxyObject无法返回执行结果的问题， 简化了开发流程，提升了开发效率。适用于需要向Web前端返回结构化执行结果的API场景。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 18
 
 **相关模块：** [Web](capi-web.md)

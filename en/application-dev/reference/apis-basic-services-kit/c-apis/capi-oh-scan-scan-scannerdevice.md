@@ -8,6 +8,8 @@ typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice
 
 Defines scanner information.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [OH_Scan](capi-oh-scan.md)

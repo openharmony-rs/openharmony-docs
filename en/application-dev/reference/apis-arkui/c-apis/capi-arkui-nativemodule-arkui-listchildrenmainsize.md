@@ -8,6 +8,8 @@ typedef struct ArkUI_ListChildrenMainSize ArkUI_ListChildrenMainSize
 
 Defines the **ChildrenMainSize** information of the **List** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

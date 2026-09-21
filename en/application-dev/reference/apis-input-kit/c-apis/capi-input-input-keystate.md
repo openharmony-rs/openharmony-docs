@@ -8,6 +8,8 @@ typedef struct Input_KeyState Input_KeyState
 
 Defines key information used to identify key behavior. For example, the "Ctrl" key information includes the key value and key state. It is applicable to scenarios such as hotkey processing, input event state management, and key state detection.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 **Related module**: [input](capi-input.md)

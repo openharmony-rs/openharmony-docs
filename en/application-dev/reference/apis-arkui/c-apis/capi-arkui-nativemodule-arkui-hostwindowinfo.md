@@ -8,6 +8,8 @@ typedef struct ArkUI_HostWindowInfo ArkUI_HostWindowInfo
 
 Defines host window information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

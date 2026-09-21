@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_ReadCapacityRequest {...} ScsiPeripheral_ReadCapac
 
 SCSI命令（READ CAPACITY）的请求结构体，用于发送读取存储容量的命令，可帮助获取设备的逻辑块大小和总块数。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

@@ -8,6 +8,8 @@ typedef struct DRM_PsshInfo {...} DRM_PsshInfo
 
 DRM内容保护系统专用头（Protection System Specific Header）信息。
 
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 **起始版本：** 11
 
 **相关模块：** [Drm](capi-drm.md)

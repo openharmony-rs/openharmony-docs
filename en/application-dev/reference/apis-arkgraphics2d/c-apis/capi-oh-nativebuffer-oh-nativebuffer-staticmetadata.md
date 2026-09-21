@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_StaticMetadata {...} OH_NativeBuffer_StaticMetada
 
 Indicates the HDR static metadata.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

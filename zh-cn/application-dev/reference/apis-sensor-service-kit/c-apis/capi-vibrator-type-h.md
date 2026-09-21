@@ -40,6 +40,8 @@ enum Vibrator_ErrorCode
 
 定义错误码，在使用振动相关API时，若发生异常情况会返回相应的错误码。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -58,6 +60,8 @@ enum Vibrator_Usage
 **描述：**
 
 振动优先级，用于定义不同场景下振动的优先级，高优先级的振动会打断低优先级的振动。使用时建议：根据应用场景选择合适的优先级；在需要连续振动的场景中保持一致优先级，避免频繁切换导致性能损耗； 物理反馈和触摸类振动建议使用较高优先级以确保及时响应。
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
 
 **起始版本：** 11
 

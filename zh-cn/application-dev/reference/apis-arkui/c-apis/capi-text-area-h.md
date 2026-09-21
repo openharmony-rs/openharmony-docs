@@ -32,6 +32,8 @@ enum ArkUI_TextAreaType
 
 定义多行文本输入法类型枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |

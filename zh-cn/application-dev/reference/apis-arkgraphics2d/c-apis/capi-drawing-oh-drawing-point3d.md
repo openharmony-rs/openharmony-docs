@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Point3D {...} OH_Drawing_Point3D
 
 定义一个三维的坐标点。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

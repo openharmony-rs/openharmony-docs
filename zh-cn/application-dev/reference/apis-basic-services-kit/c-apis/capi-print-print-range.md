@@ -8,6 +8,8 @@ typedef struct Print_Range {...} Print_Range
 
 表示打印范围结构体。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 13
 
 **相关模块：** [Print](capi-print.md)

@@ -8,6 +8,8 @@ typedef struct Camera_OcclusionDetectionResult {...} Camera_OcclusionDetectionRe
 
 相机镜头遮挡、脏污检测结果。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

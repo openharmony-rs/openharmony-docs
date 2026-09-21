@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer OH_NativeBuffer
 
 为图形内存接口定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 11
 
 **相关模块：** [Core](capi-core.md)

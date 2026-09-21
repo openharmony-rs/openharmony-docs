@@ -4,6 +4,8 @@
 
 提供后台子进程调度策略管控C接口。
 
+**系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
+
 **起始版本：** 17
 
 ## 文件汇总

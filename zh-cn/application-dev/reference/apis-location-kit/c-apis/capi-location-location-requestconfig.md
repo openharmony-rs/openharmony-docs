@@ -8,6 +8,8 @@ typedef struct Location_RequestConfig Location_RequestConfig
 
 定义位置请求参数的结构体。
 
+**系统能力：** SystemCapability.Location.Location.Core
+
 **起始版本：** 13
 
 **相关模块：** [Location](capi-location.md)

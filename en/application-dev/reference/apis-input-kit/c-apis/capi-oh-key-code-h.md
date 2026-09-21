@@ -32,6 +32,8 @@ enum Input_KeyCode
 
 Enumerates the key codes.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 | Enum item | Description |

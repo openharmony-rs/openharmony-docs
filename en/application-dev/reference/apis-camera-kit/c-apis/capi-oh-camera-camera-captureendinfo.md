@@ -8,6 +8,8 @@ typedef struct Camera_CaptureEndInfo {...} Camera_CaptureEndInfo
 
 The struct describes the capture end information.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

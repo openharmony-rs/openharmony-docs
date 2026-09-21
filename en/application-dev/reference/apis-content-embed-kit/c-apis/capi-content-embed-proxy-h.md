@@ -18,8 +18,8 @@ Provides the client application with the API for querying the OE Extension infor
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ContentEmbed_Info](capi-contentembed-contentembed-info.md) | ContentEmbed_Info | Declares the ContentEmbed_Info structure. Use [OH_ContentEmbed_GetContentEmbedInfo](capi-content-embed-proxy-h.md#oh_contentembed_getcontentembedinfo) to query the OE document information registered by all server-side applications for the current session. Then, use [OH_ContentEmbed_GetFormatCountFromInfo](capi-content-embed-proxy-h.md#oh_contentembed_getformatcountfrominfo) to obtain the count of [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instances in the current query result, and use [OH_ContentEmbed_GetFormatFromInfo](capi-content-embed-proxy-h.md#oh_contentembed_getformatfrominfo) to retrieve the instance object at the specified index. |
-| [ContentEmbed_Format](capi-contentembed-contentembed-format.md) | ContentEmbed_Format | Declares the ContentEmbed_Info structure. which contains OE document information registered by server-side applications for the OE Extension. Specifically, you can use [OH_ContentEmbed_GetOEidFromFormat](capi-content-embed-proxy-h.md#oh_contentembed_getoeidfromformat) to obtain the OEID, [OH_ContentEmbed_GetNameAndDescriptionFromFormat](capi-content-embed-proxy-h.md#oh_contentembed_getnameanddescriptionfromformat) to get the name and description, [OH_ContentEmbed_GetIconFromFormat](capi-content-embed-proxy-h.md#oh_contentembed_geticonfromformat) to retrieve the icon, and [OH_ContentEmbed_GetFileNameExtensionsFromFormat](capi-content-embed-proxy-h.md#oh_contentembed_getfilenameextensionsfromformat) to obtain the list of file extensions. |
+| [ContentEmbed_Info](capi-contentembed-contentembed-info.md) | ContentEmbed_Info | Declares the ContentEmbed_Info structure. Use {@link OH_ContentEmbed_GetContentEmbedInfo} to query the<br>OE document information registered by all server-side applications for the current session.<br>Then, use {@link OH_ContentEmbed_GetFormatCountFromInfo} to obtain the count of {@link ContentEmbed_Format}<br>instances in the current query result, and use {@link OH_ContentEmbed_GetFormatFromInfo} to retrieve the instance object at the specified index. |
+| [ContentEmbed_Format](capi-contentembed-contentembed-format.md) | ContentEmbed_Format | Declares the ContentEmbed_Info structure. which contains OE document information registered by server-side applications for the OE Extension. Specifically, you can use {@link OH_ContentEmbed_GetOEidFromFormat} to<br>obtain the OEID, {@link OH_ContentEmbed_GetNameAndDescriptionFromFormat} to get the name and description,<br>{@link OH_ContentEmbed_GetIconFromFormat} to retrieve the icon, and<br>{@link OH_ContentEmbed_GetFileNameExtensionsFromFormat} to obtain the list of file extensions. |
 | [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) | ContentEmbed_ExtensionProxy | Declares the ContentEmbed_ExtensionProxy structure. Points to the program object (client-side OE object for short) for embedding and editing the client-side encapsulated and encapsulation documents of the OE. |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) | ContentEmbed_Document | Declares the structure type of an OE document. Encapsulates the metadata, content, and storage structure of the embedded document. |
 | [ContentEmbed_Capability](capi-contentembed-contentembed-capability.md) | ContentEmbed_Capability | Declares the ContentEmbed_Capability structure. |
@@ -62,8 +62,8 @@ Provides the client application with the API for querying the OE Extension infor
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionProxy *proxy, OH_PixelmapNative **snapshot)](#oh_contentembed_proxy_getsnapshot) | - | Obtains the snapshot image of the current OE document from the client OE object for preview or thumbnail display. |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_DoEdit(ContentEmbed_ExtensionProxy *proxy)](#oh_contentembed_proxy_doedit) | - | Requests the OE Extension instance to enter the edit mode from the client's OE object. |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetEditStatus(ContentEmbed_ExtensionProxy *proxy, bool *isEditing, bool *isModified)](#oh_contentembed_proxy_geteditstatus) | - | Queries the current editing state and modification state of the OE document by the server-side OE Extension instance. |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_ExtensionProxy *proxy, uint32_t *bitmask)](#oh_contentembed_proxy_getcapability) | - | Obtains the capabilities of the server-side OE Extension instance. The capabilities are returned in the form of bit masks. For details about the meaning of each bit, see {@link ContentEmbed_CapabilityCode}. |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_Document **ceDocument)](#oh_contentembed_proxy_getdocument) | - | Obtains the associated OE document object from the client's OE object. <br>The OE document object is created in {@link OH_ContentEmbed_CreateDocumentByOEid},<br>{@link OH_ContentEmbed_CreateDocumentByFile}, or {@link OH_ContentEmbed_LoadDocumentFromFile} mode.<br><br>When the OE document is no longer needed, call {@link OH_ContentEmbed_DestroyDocument} to destroy it. |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_ExtensionProxy *proxy, uint32_t *bitmask)](#oh_contentembed_proxy_getcapability) | - | Obtains the capabilities of the server-side OE Extension instance. The capabilities are returned in the form of bit masks. For details about the meaning of each bit, see [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode). |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_Document **ceDocument)](#oh_contentembed_proxy_getdocument) | - | Obtains the associated OE document object from the client's OE object. <br>The OE document object is created in [OH_ContentEmbed_CreateDocumentByOEid](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyoeid), [OH_ContentEmbed_CreateDocumentByFile](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyfile), or [OH_ContentEmbed_LoadDocumentFromFile](capi-content-embed-document-h.md#oh_contentembed_loaddocumentfromfile) mode. <br>When the OE document is no longer needed, call [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to destroy it. |
 
 ### Variable
 
@@ -86,6 +86,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedInfo(ContentEmbed_Info 
 
 Creates an [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance. <br>You can destroy the instance by calling [OH_ContentEmbed_DestroyContentEmbedInfo](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedinfo) to avoid memory leaks.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -98,7 +100,7 @@ Creates an [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_NULL_POINTER} - A null pointer is returned.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode) - A null pointer is returned.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_DestroyContentEmbedInfo()
 
@@ -109,6 +111,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedInfo(ContentEmbed_Info
 **Description**
 
 Destroys a [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -122,7 +126,7 @@ Destroys a [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetContentEmbedInfo()
 
@@ -133,6 +137,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, C
 **Description**
 
 Obtains a [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance based on the region settings.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -149,7 +155,7 @@ Obtains a [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance b
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_PERMISSION_DENIED} - Permission verification failed.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL} - The system service is abnormal.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_PERMISSION_DENIED](capi-content-embed-common-h.md#contentembed_errorcode) - Permission verification failed.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode) - The system service is abnormal.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetFormatCountFromInfo()
 
@@ -160,6 +166,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatCountFromInfo(const ContentEmbed
 **Description**
 
 Obtains the number of [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instances in the [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -174,7 +182,7 @@ Obtains the number of [ContentEmbed_Format](capi-contentembed-contentembed-forma
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetFormatFromInfo()
 
@@ -185,6 +193,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatFromInfo(const ContentEmbed_Info
 **Description**
 
 Obtains the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance at the specified index from the [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -200,7 +210,7 @@ Obtains the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) inst
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - Operations are successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameters.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - Operations are successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameters.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_CreateContentEmbedFormat()
 
@@ -211,6 +221,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_For
 **Description**
 
 Creates a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance. <br>You can destroy the instance using [OH_ContentEmbed_DestroyContentEmbedFormat](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedformat) to avoid memory leaks.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -224,7 +236,7 @@ Creates a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instan
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - Operations are successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameters.</li><br>    <li>{@link CE_ERR_NULL_POINTER} - A null pointer is returned.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - Operations are successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameters.</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode) - A null pointer is returned.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_DestroyContentEmbedFormat()
 
@@ -235,6 +247,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Fo
 **Description**
 
 Destroys an [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -248,7 +262,7 @@ Destroys an [ContentEmbed_Format](capi-contentembed-contentembed-format.md) inst
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale()
 
@@ -259,6 +273,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(cons
 **Description**
 
 Obtains an [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance based on the OEID and region settings.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -276,7 +292,7 @@ Obtains an [ContentEmbed_Format](capi-contentembed-contentembed-format.md) insta
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_PERMISSION_DENIED} - Permission verification failed.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL} - The system service is abnormal.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_PERMISSION_DENIED](capi-content-embed-common-h.md#contentembed_errorcode) - Permission verification failed.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode) - The system service is abnormal.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetOEidFromFormat()
 
@@ -288,6 +304,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Form
 
 Obtains the OEID of the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -295,13 +313,13 @@ Obtains the OEID of the [ContentEmbed_Format](capi-contentembed-contentembed-for
 | Parameter | Description |
 | -- | -- |
 | [const ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | Pointer to the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) object. |
-| char *oeid | Output parameter. Character array for storing the identifier string of the OEID. The recommended array length is {@link MAX_OEID_LENGTH}. |
+| char *oeid | Output parameter. Character array for storing the identifier string of the OEID. The recommended array length is [MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - The parameter check fails.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - The parameter check fails.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetNameAndDescriptionFromFormat()
 
@@ -313,6 +331,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetNameAndDescriptionFromFormat(const Con
 
 Obtains the localized display name and description from a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -320,14 +340,14 @@ Obtains the localized display name and description from a [ContentEmbed_Format](
 | Parameter | Description |
 | -- | -- |
 | [const ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | Pointer to the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) object. |
-| char *name | Output parameter. Character array for storing the name. The recommended array length is {@link MAX_NAME_LENGTH}. |
-| char *description | Output parameter. Character array for storing the description. The recommended array length is {@link MAX_DESCRIPTION_LENGTH}. |
+| char *name | Output parameter. Character array for storing the name. The recommended array length is [MAX_NAME_LENGTH](capi-content-embed-proxy-h.md#宏定义). |
+| char *description | Output parameter. Character array for storing the description. The recommended array length is [MAX_DESCRIPTION_LENGTH](capi-content-embed-proxy-h.md#宏定义). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetIconFromFormat()
 
@@ -338,6 +358,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Form
 **Description**
 
 Obtains the icon of a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -352,7 +374,7 @@ Obtains the icon of a [ContentEmbed_Format](capi-contentembed-contentembed-forma
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - Operations are successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_NULL_POINTER} - A null pointer is returned.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - Operations are successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode) - A null pointer is returned.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>          </ul> |
 
 ### OH_ContentEmbed_GetFileNameExtensionsFromFormat()
 
@@ -363,6 +385,8 @@ char** OH_ContentEmbed_GetFileNameExtensionsFromFormat(const ContentEmbed_Format
 **Description**
 
 Obtains the list of file name extensions of a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -389,6 +413,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateExtensionProxy(ContentEmbed_Documen
 
 Creates a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) instance. <br>You can destroy the instance using [OH_ContentEmbed_DestroyExtensionProxy](capi-content-embed-proxy-h.md#oh_contentembed_destroyextensionproxy) to avoid memory leaks.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -403,7 +429,7 @@ Creates a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extension
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - The parameter check fails.</li><br>    <li>{@link CE_ERR_NULL_POINTER} - A null pointer is returned.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - The operation is not supported because the application is in the DLP sandbox.      </li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - The parameter check fails.</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode) - A null pointer is returned.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is not supported because the application is in the DLP sandbox.      </li>          </ul> |
 
 ### OH_ContentEmbed_DestroyExtensionProxy()
 
@@ -414,6 +440,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyExtensionProxy(ContentEmbed_Extens
 **Description**
 
 Destroys a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -427,7 +455,7 @@ Destroys a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensio
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_ClientCallbackOnUpdateFunc()
 
@@ -438,6 +466,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnUpdateFunc)(ContentEmbed_Extensio
 **Description**
 
 Callback function type for notifying the client when the OE document is updated. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnUpdateFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronupdatefunc).
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -457,6 +487,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnErrorFunc)(ContentEmbed_Extension
 
 Callback function type for notifying the client when an error occurs in the OE document. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnErrorFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronerrorfunc).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -464,7 +496,7 @@ Callback function type for notifying the client when an error occurs in the OE d
 | Parameter | Description |
 | -- | -- |
 | [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) \*proxy | Represents a pointer to an [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) instance which will be set in. |
-| ContentEmbed_ErrorCode error | Error code. For details, see {@link ContentEmbed_ErrorCode}. |
+| ContentEmbed_ErrorCode error | Error code. For details, see [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode). |
 
 ### OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc()
 
@@ -475,6 +507,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc)(ContentEmbed
 **Description**
 
 Callback function type for notifying the client when the OE document editing is complete. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeroneditingfinishedfunc).
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -495,6 +529,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc)(ContentEmbe
 
 Callback function type when the OE Extension stops. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronextensionstoppedfunc).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -513,6 +549,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(ContentEmbed_E
 
 Registers the callback function for updating an [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) document with the client.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -526,7 +564,7 @@ Registers the callback function for updating an [ContentEmbed_ExtensionProxy](ca
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_RegisterOnErrorFunc()
 
@@ -537,6 +575,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnErrorFunc(ContentEmbed_Ex
 **Description**
 
 Registers the callback function for triggering an error when an error occurs in the document of the client's object.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -551,7 +591,7 @@ Registers the callback function for triggering an error when an error occurs in 
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc()
 
@@ -562,6 +602,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(Conte
 **Description**
 
 Registers the callback function for the client to be invoked when an [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) document is edited.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -576,7 +618,7 @@ Registers the callback function for the client to be invoked when an [ContentEmb
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc()
 
@@ -587,6 +629,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(Cont
 **Description**
 
 Registers the callback function for stopping the OE Extension to the client's OE object.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -601,7 +645,7 @@ Registers the callback function for stopping the OE Extension to the client's OE
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - The parameter check fails.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - The parameter check fails.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_StartWork()
 
@@ -613,6 +657,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionPro
 
 Connects to the server-side OE Extension and establishes a communication channel with the OE Extension.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
 **Since**: 24
@@ -627,7 +673,7 @@ Connects to the server-side OE Extension and establishes a communication channel
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_PERMISSION_DENIED} - Permission verification failed.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED} - Necessary client callbacks are not registered.</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL} - The system service is abnormal.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - The operation is not supported because the application is in the DLP sandbox.<br>    </li><br>    <li>{@link CE_ERR_CONNECT_LIMIT_EXCEED} - The number of connected OE Extensions exceeds the upper limit.</li><br>    <li>{@link CE_ERR_FILE_NOT_GRANT} - The file is not granted.</li><br>    <li>{@link CE_ERR_DISK_FULL} - The disk is full.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_PERMISSION_DENIED](capi-content-embed-common-h.md#contentembed_errorcode) - Permission verification failed.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode) - Necessary client callbacks are not registered.</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode) - The system service is abnormal.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is not supported because the application is in the DLP sandbox.      </li>      <li>[CE_ERR_CONNECT_LIMIT_EXCEED](capi-content-embed-common-h.md#contentembed_errorcode) - The number of connected OE Extensions exceeds the upper limit.</li>      <li>[CE_ERR_FILE_NOT_GRANT](capi-content-embed-common-h.md#contentembed_errorcode) - The file is not granted.</li>      <li>[CE_ERR_DISK_FULL](capi-content-embed-common-h.md#contentembed_errorcode) - The disk is full.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_StopWork()
 
@@ -639,6 +685,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProx
 
 Disconnects the communication channel with the OE Extension.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
 **Since**: 24
@@ -653,7 +701,7 @@ Disconnects the communication channel with the OE Extension.
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_PERMISSION_DENIED} - Permission verification failed.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_SYSTEM_ABNORMAL} - The system service is abnormal.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_PERMISSION_DENIED](capi-content-embed-common-h.md#contentembed_errorcode) - Permission verification failed.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode) - The system service is abnormal.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_GetSnapshot()
 
@@ -664,6 +712,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionP
 **Description**
 
 Obtains the snapshot image of the current OE document from the client OE object for preview or thumbnail display.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -678,7 +728,7 @@ Obtains the snapshot image of the current OE document from the client OE object 
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_NULL_POINTER} - A null pointer is returned.</li><br>    <li>{@link CE_ERR_EXTENSION_ERROR} - An error occurs in the OE Extension.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in<br>    the DLP sandbox.</li><br>    <li>{@link CE_ERR_EXTENSION_NOT_SUPPORT} - The OE Extension does not support this capability.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode) - A null pointer is returned.</li>      <li>[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode) - An error occurs in the OE Extension.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>      <li>[CE_ERR_EXTENSION_NOT_SUPPORT](capi-content-embed-common-h.md#contentembed_errorcode) - The OE Extension does not support this capability.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_DoEdit()
 
@@ -689,6 +739,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_DoEdit(ContentEmbed_ExtensionProxy 
 **Description**
 
 Requests the OE Extension instance to enter the edit mode from the client's OE object.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -702,7 +754,7 @@ Requests the OE Extension instance to enter the edit mode from the client's OE o
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_EXTENSION_ERROR} - An error occurs in the OE Extension.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in<br>    the DLP sandbox.</li><br>    <li>{@link CE_ERR_EXTENSION_NOT_SUPPORT} - The OE Extension does not support this capability.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode) - An error occurs in the OE Extension.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>      <li>[CE_ERR_EXTENSION_NOT_SUPPORT](capi-content-embed-common-h.md#contentembed_errorcode) - The OE Extension does not support this capability.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_GetEditStatus()
 
@@ -713,6 +765,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetEditStatus(ContentEmbed_Extensio
 **Description**
 
 Queries the current editing state and modification state of the OE document by the server-side OE Extension instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -728,7 +782,7 @@ Queries the current editing state and modification state of the OE document by t
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - Operations are successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Parameter check failed.</li><br>    <li>{@link CE_ERR_EXTENSION_ERROR} - An error occurred in the OE Extension.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - Operations are successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Parameter check failed.</li>      <li>[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode) - An error occurred in the OE Extension.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_GetCapability()
 
@@ -738,7 +792,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_Extensio
 
 **Description**
 
-Obtains the capabilities of the server-side OE Extension instance. The capabilities are returned in the form of bit masks. For details about the meaning of each bit, see {@link ContentEmbed_CapabilityCode}.
+Obtains the capabilities of the server-side OE Extension instance. The capabilities are returned in the form of bit masks. For details about the meaning of each bit, see [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode).
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -747,13 +803,13 @@ Obtains the capabilities of the server-side OE Extension instance. The capabilit
 | Parameter | Description |
 | -- | -- |
 | [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) *proxy | Pointer to the [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) object. |
-| uint32_t *bitmask | Output parameter. Indicates the capabilities of the server-side OE Extension instance, which are composed of the values in {@link ContentEmbed_CapabilityCode}. |
+| uint32_t *bitmask | Output parameter. Indicates the capabilities of the server-side OE Extension instance, which are composed of the values in [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - Failed to check the parameter.</li><br>    <li>{@link CE_ERR_EXTENSION_ERROR} - An error occurs in the OE Extension.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - Failed to check the parameter.</li>      <li>[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode) - An error occurs in the OE Extension.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 ### OH_ContentEmbed_Proxy_GetDocument()
 
@@ -763,7 +819,9 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionP
 
 **Description**
 
-Obtains the associated OE document object from the client's OE object. <br>The OE document object is created in {@link OH_ContentEmbed_CreateDocumentByOEid},<br>{@link OH_ContentEmbed_CreateDocumentByFile}, or {@link OH_ContentEmbed_LoadDocumentFromFile} mode.<br><br>When the OE document is no longer needed, call {@link OH_ContentEmbed_DestroyDocument} to destroy it.
+Obtains the associated OE document object from the client's OE object. <br>The OE document object is created in [OH_ContentEmbed_CreateDocumentByOEid](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyoeid), [OH_ContentEmbed_CreateDocumentByFile](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyfile), or [OH_ContentEmbed_LoadDocumentFromFile](capi-content-embed-document-h.md#oh_contentembed_loaddocumentfromfile) mode. <br>When the OE document is no longer needed, call [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to destroy it.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -778,6 +836,6 @@ Obtains the associated OE document object from the client's OE object. <br>The O
 
 | Type | Description |
 | -- | -- |
-| ContentEmbed_ErrorCode | <ul>      <li>{@link CE_ERR_OK} - The operation is successful.</li><br>    <li>{@link CE_ERR_PARAM_INVALID} - The parameter check fails.</li><br>    <li>{@link CE_ERR_DEVICE_NOT_SUPPORTED} - The device is not supported.</li><br>    <li>{@link CE_ERR_IN_DLP_SANDBOX} - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
+| ContentEmbed_ErrorCode | <ul>      <li>[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode) - The operation is successful.</li>      <li>[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode) - The parameter check fails.</li>      <li>[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode) - The device is not supported.</li>      <li>[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode) - This operation is not supported because the application is in      the DLP sandbox.</li>          </ul> |
 
 

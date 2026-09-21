@@ -8,6 +8,8 @@ typedef struct OH_AVMetadataStruct OH_AVMetadata
 
 Declaring the avmetadata. The instance of avmetadata set by application for current resource.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

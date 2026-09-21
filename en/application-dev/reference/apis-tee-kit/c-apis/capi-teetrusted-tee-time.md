@@ -8,6 +8,8 @@ typedef struct TEE_Time {...} TEE_Time
 
 Definitions the TEE time.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

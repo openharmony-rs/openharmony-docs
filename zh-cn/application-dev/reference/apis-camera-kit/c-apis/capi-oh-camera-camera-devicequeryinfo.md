@@ -8,6 +8,8 @@ typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
 
 相机设备的查询信息。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

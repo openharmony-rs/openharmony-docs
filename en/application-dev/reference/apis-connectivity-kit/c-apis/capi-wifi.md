@@ -4,6 +4,8 @@
 
 Provide functions for querying the status of wifi switch.
 
+**System capability**: SystemCapability.Communication.WiFi.STA
+
 **Since**: 13
 
 ## Files

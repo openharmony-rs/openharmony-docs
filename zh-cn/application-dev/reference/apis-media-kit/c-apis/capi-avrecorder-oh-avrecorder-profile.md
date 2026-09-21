@@ -8,6 +8,8 @@ typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
 
 定义音视频录制的详细参数。通过配置音频/视频编码格式、比特率、采样率、帧率、分辨率、容器格式、HDR录制、是否启用时域可分层视频编码功能等参数，可以灵活控制录制质量和录制文件大小， 适用于需要自定义录制质量、选择录制内容类型（仅音频/仅视频/音视频同时录制）、启用HDR录制或时域可分层视频编码功能的场景。<br><br> 通过参数设置可以选择仅录制音频或视频，或者同时录制音视频：<br> 1. 当 audioBitrate 或 audioChannels 为 0 时，不录制音频。<br> 2. 当 videoFrameWidth 或 videoFrameHeight 为 0 时，不录制视频。<br><br> 各参数的范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
 **起始版本：** 18
 
 **相关模块：** [AVRecorder](capi-avrecorder.md)
@@ -22,11 +24,11 @@ typedef struct OH_AVRecorder_Profile {...} OH_AVRecorder_Profile
 | -- | -- |
 | int32_t audioBitrate | 音频编码比特率。单位为比特每秒（bit/s）。数值越大音频质量越好，但文件也越大。 取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，默认值为0，取值为0时不录制音频，超出有效范围时录制失败。 |
 | int32_t audioChannels | 音频声道数。声道数越多音频空间感越强，但文件也越大。 取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，默认值为0，取值为0时不录制音频，超出有效范围时录制失败。 |
-| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) audioCodec | 音频编码器MIME类型。选择不同的音频编码器将影响录制的音频质量、文件大小和兼容性，各编码器类型详见[OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype)。仅在录制音频时有效。 |
+| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) audioCodec | 音频编码器MIME类型。选择不同的音频编码器将影响录制的音频质量、文件大小和兼容性，各编码器类型详见{@link OH_AVRecorder_CodecMimeType}。仅在录制音频时有效。 |
 | int32_t audioSampleRate | 音频采样率。单位为赫兹（Hz）。 取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，采样率越高音频质量越好，但文件也越大，超出有效范围时录制失败。默认值为0。 仅在录制音频时有效。 |
-| [OH_AVRecorder_ContainerFormatType](capi-avrecorder-base-h.md#oh_avrecorder_containerformattype) fileFormat | 容器格式类型。选择不同的容器格式将决定录制文件的存储格式和支持的音视频编码类型，各格式类型详见[OH_AVRecorder_ContainerFormatType](capi-avrecorder-base-h.md#oh_avrecorder_containerformattype)。 |
+| [OH_AVRecorder_ContainerFormatType](capi-avrecorder-base-h.md#oh_avrecorder_containerformattype) fileFormat | 容器格式类型。选择不同的容器格式将决定录制文件的存储格式和支持的音视频编码类型，各格式类型详见{@link OH_AVRecorder_ContainerFormatType}。 |
 | int32_t videoBitrate | 视频编码比特率。单位为比特每秒（bit/s）。取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，数值越大视频质量越好，但文件也越大。 低比特率适合网络传输或存储受限场景，高比特率适合本地高质量存储场景。超出有效范围时录制失败。默认值为0。仅在录制视频时有效。 |
-| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) videoCodec | 视频编码器MIME类型。选择不同的视频编码器将影响录制的视频压缩效率、画质和兼容性，各编码器类型详见[OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype)。 当isHdr为true时，videoCodec必须为AVRECORDER_VIDEO_HEVC。仅在录制视频时有效。 |
+| [OH_AVRecorder_CodecMimeType](capi-avrecorder-base-h.md#oh_avrecorder_codecmimetype) videoCodec | 视频编码器MIME类型。选择不同的视频编码器将影响录制的视频压缩效率、画质和兼容性，各编码器类型详见{@link OH_AVRecorder_CodecMimeType}。 当isHdr为true时，videoCodec必须为AVRECORDER_VIDEO_HEVC。仅在录制视频时有效。 |
 | int32_t videoFrameWidth | 视频帧宽度。单位为像素（px）。取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，数值越大视频清晰度越高，但文件也越大。 默认值为0，取值为0时不录制视频。超出有效范围时录制失败。 |
 | int32_t videoFrameHeight | 视频帧高度。单位为像素（px）。取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，数值越大视频清晰度越高，但文件也越大。 默认值为0，取值为0时不录制视频。超出有效范围时录制失败。 |
 | int32_t videoFrameRate | 视频帧率。帧率越高视频越流畅，但文件也越大。单位为帧每秒（fps）。 取值范围请参见[AVRecorderProfile](arkts-apis-media-i.md#avrecorderprofile9)，超出有效范围时录制失败。默认值为0。仅在录制视频时有效。 |

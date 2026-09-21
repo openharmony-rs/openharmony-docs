@@ -28,8 +28,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | 用于细节增强的质量等级。参数{@link VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL}的具体取值，设置方法详见开发指南。 |
-| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | 视频元数据生成的风格模式。参数的具体取值请参考{@link VIDEO_METADATA_GENERATOR_STYLE_CONTROL}。 |
+| [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | 用于细节增强的质量等级。参数[VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量)的具体取值，设置方法详见开发指南。 |
+| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | 视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量)。 |
 | [VideoProcessing_ErrorCode](#videoprocessing_errorcode) | VideoProcessing_ErrorCode | 视频处理错误码。 |
 | [VideoProcessing_State](#videoprocessing_state) | VideoProcessing_State | 视频处理状态。视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)进行报告。 |
 
@@ -48,11 +48,11 @@
 | const int32_t VIDEO_PROCESSING_TYPE_COLOR_SPACE_CONVERSION | 表示创建颜色空间转换视频处理实例。 <br>调用{@link OH_VideoProcessing_Create}创建颜色空间转换视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode).<br>VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>可以调用{@link OH_VideoProcessing_IsColorSpaceConversionSupported} 来检查是否支持这种处理。<br>**起始版本：** 12 |
 | const int32_t VIDEO_PROCESSING_TYPE_METADATA_GENERATION | 表示创建元数据生成视频处理实例。 <br>调用{@link OH_VideoProcessing_Create}创建元数据生成视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode).<br>VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>可以调用{@link OH_VideoProcessing_IsMetadataGenerationSupported} 来检查是否支持这种处理。<br>**起始版本：** 12 |
 | const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | 表示创建细节增强视频处理实例。 <br>调用{@link OH_VideoProcessing_Create}创建细节增强视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode). VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>**起始版本：** 12 |
-| const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 指定视频细节增强的质量等级，参考[VideoDetailEnhancer_QualityLevel](capi-video-processing-types-h.md#videodetailenhancer_qualitylevel)查看具体取值。 <br>调用{@link OH_VideoProcessing_SetParameter}设置质量等级。<br><br>调用{@link OH_VideoProcessing_GetParameter}获取当前质量等级。<br>**起始版本：** 12 |
-| const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL | 指定视频元数据生成的风格模式。具体取值请参考[VideoMetadataGeneratorStyleControl](capi-video-processing-types-h.md#videometadatageneratorstylecontrol)。 <br>调用{@link OH_AVFormat_SetIntValue}设置视频元数据生成的风格模式到AVFormat参数。<br><br>调用{@link OH_VideoProcessing_SetParameter}设置当前视频元数据生成的风格模式。<br><br>调用{@link OH_VideoProcessing_GetParameter}获取当前视频元数据生成的风格模式。<br>**起始版本：** 22 |
-| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | Used to define video aisr autoeffect in XComponent.<br> Use {@link OH_VideoProcessing_IsAutoEffectSupported} to query if aisr autoeffect is supported.<br>**起始版本：** 26.1.0 |
-| const char *VIDEO_AUTOEFFECT_ENABLE | Sets the key value for enabling or disabling AutoEffect.<br> Use {@link OH_AVFormat_SetIntValue} to set the enable value (0 is false, 1 is true) to the AVFormat parameter.<br>Use {@link OH_VideoProcessing_SetAutoEffectParam} to set the parameters to the video processing instance.<br>**起始版本：** 26.1.0 |
-| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | Sets the AISR strength.<br> Use {@link OH_AVFormat_SetFloatValue} to set the strength value to the AVFormat parameter.<br>When the value is in the range [0.0, 1.0], the larger the value, the better the image quality,<br>If this parameter is set to a value less than 0, the image quality enhancement is adaptive.<br>Use {@link OH_VideoProcessing_SetAutoEffectParam} to set the parameters of the video processing instance.<br>**起始版本：** 26.1.0 |
+| const char *VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 指定视频细节增强的质量等级，参考[VideoDetailEnhancer_QualityLevel](capi-video-processing-types-h.md#videodetailenhancer_qualitylevel)查看具体取值。<br><br>调用{@link OH_VideoProcessing_SetParameter}设置质量等级。<br><br>调用{@link OH_VideoProcessing_GetParameter}获取当前质量等级。<br>**起始版本：** 12 |
+| const char *VIDEO_METADATA_GENERATOR_STYLE_CONTROL | 指定视频元数据生成的风格模式。具体取值请参考[VideoMetadataGeneratorStyleControl](capi-video-processing-types-h.md#videometadatageneratorstylecontrol)。<br><br>调用{@link OH_AVFormat_SetIntValue}设置视频元数据生成的风格模式到AVFormat参数。<br><br>调用{@link OH_VideoProcessing_SetParameter}设置当前视频元数据生成的风格模式。<br><br>调用{@link OH_VideoProcessing_GetParameter}获取当前视频元数据生成的风格模式。<br>**起始版本：** 22 |
+| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | Used to define video aisr autoeffect in XComponent.<br> Use {@link OH_VideoProcessing_IsAutoEffectSupported} to query if aisr autoeffect is supported.<br>**起始版本：** 26.0.1 |
+| const char *VIDEO_AUTOEFFECT_ENABLE | Sets the key value for enabling or disabling AutoEffect.<br> Use {@link OH_AVFormat_SetIntValue} to set the enable value (0 is false, 1 is true) to the AVFormat parameter.<br>Use {@link OH_VideoProcessing_SetAutoEffectParam} to set the parameters to the video processing instance.<br>**起始版本：** 26.0.1 |
+| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | Sets the AISR strength.<br> Use {@link OH_AVFormat_SetFloatValue} to set the strength value to the AVFormat parameter.<br>When the value is in the range [0.0, 1.0], the larger the value, the better the image quality,<br>If this parameter is set to a value less than 0, the image quality enhancement is adaptive.<br>Use {@link OH_VideoProcessing_SetAutoEffectParam} to set the parameters of the video processing instance.<br>**起始版本：** 26.0.1 |
 | void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData) | 视频处理过程中报告错误的回调函数指针。 <br>错误码[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode)： <br>VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING，不支持的处理，比如不支持输入输出的颜色空间类型转换。 <br>VIDEO_PROCESSING_ERROR_INVALID_VALUE，无效的视频属性，比如视频的颜色空间无效。 <br>VIDEO_PROCESSING_ERROR_NO_MEMORY，内存不足。 <br>VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。<br>**起始版本：** 12 |
 | void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData) | 报告视频处理状态的回调函数指针。 <br>{@link OH_VideoProcessing_Start}成功调用之后状态会变为[VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state).VIDEO_PROCESSING_STATE_RUNNING.<br>调用{@link OH_VideoProcessing_Stop}，所有的缓存buffer处理完成后，状态会变为 [VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state).VIDEO_PROCESSING_STATE_STOPPED。<br>**起始版本：** 12 |
 | void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData) | 报告输出buffer已填充好数据的回调函数指针。 <br>每个新输出buffer填充好数据之后该buffer的索引就会报告给用户。 调用{@link OH_VideoProcessing_RenderOutputBuffer}根据索引来处理渲染并输出该buffer。如果未注册该函数， 则输出buffer填充好数据后不会报告用户，而是直接进行处理渲染并输出。<br>**起始版本：** 12 |
@@ -67,7 +67,9 @@ enum VideoDetailEnhancer_QualityLevel
 
 **描述：**
 
-用于细节增强的质量等级。参数{@link VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL}的具体取值，设置方法详见开发指南。
+用于细节增强的质量等级。参数[VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量)的具体取值，设置方法详见开发指南。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -91,7 +93,9 @@ enum VideoMetadataGeneratorStyleControl
 
 **描述：**
 
-视频元数据生成的风格模式。参数的具体取值请参考{@link VIDEO_METADATA_GENERATOR_STYLE_CONTROL}。
+视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量)。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 22
 
@@ -114,6 +118,8 @@ enum VideoProcessing_ErrorCode
 **描述：**
 
 视频处理错误码。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -141,6 +147,8 @@ enum VideoProcessing_State
 
 视频处理状态。视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)进行报告。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -160,6 +168,8 @@ typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProc
 **描述：**
 
 视频处理过程中报告错误的回调函数指针。 <br>错误码[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode)： <br>VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING，不支持的处理，比如不支持输入输出的颜色空间类型转换。 <br>VIDEO_PROCESSING_ERROR_INVALID_VALUE，无效的视频属性，比如视频的颜色空间无效。 <br>VIDEO_PROCESSING_ERROR_NO_MEMORY，内存不足。 <br>VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -181,6 +191,8 @@ typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProc
 
 报告视频处理状态的回调函数指针。 <br>{@link OH_VideoProcessing_Start}成功调用之后状态会变为[VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state).VIDEO_PROCESSING_STATE_RUNNING.<br>调用{@link OH_VideoProcessing_Stop}，所有的缓存buffer处理完成后，状态会变为 [VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state).VIDEO_PROCESSING_STATE_STOPPED。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -200,6 +212,8 @@ typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing*
 **描述：**
 
 报告输出buffer已填充好数据的回调函数指针。 <br>每个新输出buffer填充好数据之后该buffer的索引就会报告给用户。 调用{@link OH_VideoProcessing_RenderOutputBuffer}根据索引来处理渲染并输出该buffer。如果未注册该函数， 则输出buffer填充好数据后不会报告用户，而是直接进行处理渲染并输出。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 

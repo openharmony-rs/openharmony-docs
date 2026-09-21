@@ -8,6 +8,8 @@ typedef struct Sensor_SubscriptionId Sensor_SubscriptionId
 
 Defines a struct for the sensor subscription ID, which uniquely identifies a sensor.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)

@@ -8,6 +8,8 @@ typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback
 
 表示打印文档状态回调结构体。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 13
 
 **相关模块：** [Print](capi-print.md)

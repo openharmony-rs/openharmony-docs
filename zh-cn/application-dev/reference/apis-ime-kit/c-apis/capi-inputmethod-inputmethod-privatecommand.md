@@ -28,6 +28,8 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 \| --- \| --- \|
 \| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h.md# inputmethod_commandvaluetype) \| PrivateCommand中value的数据类型枚举（NONE/STRING/BOOL/INT32）。 \|
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **相关模块：** [InputMethod](capi-inputmethod.md)

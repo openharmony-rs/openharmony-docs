@@ -58,6 +58,8 @@ enum Asset_TagType
 
 Enumerates the types of the tags of asset attributes.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 | Enum item | Description |
@@ -75,6 +77,8 @@ enum Asset_Tag
 **Description**
 
 Enumerates the tags of asset attributes.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
 
@@ -123,6 +127,8 @@ enum Asset_ResultCode
 
 Enumerates the result codes used in the ASSET APIs.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 | Enum item | Description |
@@ -159,6 +165,8 @@ enum Asset_Accessibility
 
 Enumerates the types of the access control based on the lock screen status.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 | Enum item | Description |
@@ -177,6 +185,8 @@ enum Asset_AuthType
 
 Enumerates the user authentication types supported by assets.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 | Enum item | Description |
@@ -193,6 +203,8 @@ enum Asset_SyncType
 **Description**
 
 Asset sync type.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
 
@@ -213,6 +225,8 @@ enum Asset_WrapType
 
 Encrypted import/export type supported by the asset.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 18
 
 | Enum item | Description |
@@ -229,6 +243,8 @@ enum Asset_ConflictResolution
 **Description**
 
 Policy for resolving the conflict (for example, a duplicate alias).
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
 
@@ -247,6 +263,8 @@ enum Asset_ReturnType
 
 Type of the asset query result to return.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 | Enum item | Description |
@@ -263,6 +281,8 @@ enum Asset_OperationType
 **Description**
 
 Enumerates the additional asset operation types.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 12
 

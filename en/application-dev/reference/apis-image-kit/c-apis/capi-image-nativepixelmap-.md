@@ -8,6 +8,8 @@ typedef struct NativePixelMap_ NativePixelMap
 
 Defines the data type name of the native pixel map.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

@@ -4,6 +4,8 @@
 
 提供BatteryInfo模块的C接口定义。
 
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
 **起始版本：** 13
 
 ## 文件汇总

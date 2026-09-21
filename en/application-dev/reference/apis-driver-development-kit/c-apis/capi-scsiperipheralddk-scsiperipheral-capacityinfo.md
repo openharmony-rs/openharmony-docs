@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
 
 Defines the SCSI read capacity.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

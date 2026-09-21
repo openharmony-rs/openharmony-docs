@@ -8,6 +8,8 @@ typedef struct OHIPCParcel OHIPCParcel
 
 提供OHIPCParcel结构体声明，用于进程间通信。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 23
 
 **相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)

@@ -51,6 +51,8 @@ enum FileShare_OperationMode
 
 URI操作模式枚举值。
 
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -67,6 +69,8 @@ enum FileShare_PolicyErrorCode
 **描述：**
 
 授予或激活权限策略失败的URI对应的错误码。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **起始版本：** 12
 
@@ -89,6 +93,8 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 **描述：**
 
 对所选择的多个文件或目录URI持久化授权。 完成持久化授权后，可调用OH_FileShare_ActivatePermission()激活权限。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -119,6 +125,8 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 对所选择的多个文件或目录URI取消持久化授权。 调用此接口前，需要先完成持久化授权。
 
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
@@ -147,6 +155,8 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 **描述：**
 
 激活多个已经持久化授权的文件或目录。 调用此接口前，需要先调用OH_FileShare_PersistPermission()完成持久化授权，激活后权限生效。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
@@ -177,6 +187,8 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 取消激活持久化授权过的多个文件或目录。 调用此接口前，需要先调用OH_FileShare_ActivatePermission()激活权限。 取消激活后，持久化授权仍保留。
 
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
@@ -206,6 +218,8 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 校验所选择的多个文件或目录URI的持久化授权。 可在激活权限前调用该接口，确认目标URI是否已经完成持久化授权。
 
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **需要权限：** ohos.permission.FILE_ACCESS_PERSIST
 
 **起始版本：** 12
@@ -234,6 +248,8 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 **描述：**
 
 释放FileShare_PolicyErrorResult指针指向的内存资源。 该资源由OH_FileShare_PersistPermission、OH_FileShare_RevokePermission、OH_FileShare_ActivatePermission 和OH_FileShare_DeactivatePermission通过result输出。
+
+**系统能力：** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **起始版本：** 12
 

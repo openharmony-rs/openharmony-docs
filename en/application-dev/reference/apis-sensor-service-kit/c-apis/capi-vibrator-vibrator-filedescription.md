@@ -8,6 +8,8 @@ typedef struct Vibrator_FileDescription {...} Vibrator_FileDescription
 
 Defines the vibration file description.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Since**: 11
 
 **Related module**: [Vibrator](capi-vibrator.md)

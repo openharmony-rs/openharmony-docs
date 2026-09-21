@@ -4,6 +4,8 @@
 
 Provides the copy and paste support for the system Pasteboard. You can use the APIs of this module to operate the Pasteboard content of the plain text, HTML, URI, Want, pixel map, and other types.
 
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
 **Since**: 13
 
 ## Files

@@ -8,6 +8,8 @@ typedef struct OH_AVSession_AVQueueItem {...} OH_AVSession_AVQueueItem
 
 音视频队列元素的定义。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)

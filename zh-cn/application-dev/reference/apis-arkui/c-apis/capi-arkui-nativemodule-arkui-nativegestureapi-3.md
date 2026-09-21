@@ -6,7 +6,9 @@ typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3
 
 ## 概述
 
-定义手势模块接口集合，包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口。<br> 该接口集合支持为ArkUI节点设置并行手势事件回调。回调可从响应链中的冲突手势识别器中选择需要与当前手势并行识别的对象。相关事件数据请参见[ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)。
+定义手势模块接口集合，包含{@link ArkUI_NativeGestureAPI_1}、{@link ArkUI_NativeGestureAPI_2}结构体中的手势接口及新增手势接口。<br><br>该接口集合支持为ArkUI节点设置并行手势事件回调。回调可从响应链中的冲突手势识别器中选择需要与当前手势并行识别的对象。相关事件数据请参见{@link ArkUI_ParallelGestureEvent}。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 

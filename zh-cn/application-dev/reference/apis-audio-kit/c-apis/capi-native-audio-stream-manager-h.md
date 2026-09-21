@@ -46,6 +46,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 
 获取音频流管理器句柄。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 19
 
 **参数：**
@@ -58,7 +60,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioStreamManager_GetDirectPlaybackSupport()
 
@@ -70,6 +72,8 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 
 获取当前音频流支持的direct通路播放模式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 19
 
 **参数：**
@@ -79,7 +83,7 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 | [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *audioStreamManager | 音频流管理器句柄。通过 [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
 | OH_AudioStreamInfo *streamInfo | 音频流信息指针。 |
 | OH_AudioStream_Usage usage | 音频流使用场景。 |
-| OH_AudioStream_DirectPlaybackMode *directPlaybackMode | 指向 {@link OH_AudioStream_DirectPlaybackMode}，用于获取当前音频流支持的direct通路播放模式。 |
+| OH_AudioStream_DirectPlaybackMode *directPlaybackMode | 指向 [OH_AudioStream_DirectPlaybackMode](capi-native-audiostream-base-h.md#oh_audiostream_directplaybackmode)，用于获取当前音频流支持的direct通路播放模式。 |
 
 **返回值：**
 
@@ -96,6 +100,8 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 **描述：**
 
 查询指定的录音流类型使用场景是否支持回声消除。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -123,6 +129,8 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 
 查询当前设备在特定音频流信息和使用场景下是否支持低时延播放。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -148,6 +156,8 @@ bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *strea
 **描述：**
 
 查询当前设备在特定音频流信息和使用场景下是否支持低时延录制。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
 
@@ -175,6 +185,8 @@ bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH
 
 查询指定录音流类型的智能降噪开关是否已开启。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 21
 
 **参数：**
@@ -199,6 +211,8 @@ bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager
 **描述：**
 
 查询当前设备在特定音频流信息和使用场景下是否支持多声道播放。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -226,6 +240,8 @@ bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *stre
 
 查询当前设备在特定音频流信息和使用场景下是否支持直通播放。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -251,6 +267,8 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 **描述：**
 
 查询当前设备在特定音频流信息和使用场景下是否支持低功耗播放。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 

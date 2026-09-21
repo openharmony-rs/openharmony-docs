@@ -8,6 +8,8 @@ typedef struct OH_AVMediaSource OH_AVMediaSource
 
 Defines a struct for the media source.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 **Related module**: [AVMediaSource](capi-avmediasource.md)

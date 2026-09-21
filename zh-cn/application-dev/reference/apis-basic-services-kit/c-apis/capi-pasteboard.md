@@ -4,6 +4,8 @@
 
 系统剪贴板支持复制和粘贴多种类型的数据。可以使用此模块接口操作纯文本、HTML、URI、PixelMap等多种类型的数据。
 
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
 **起始版本：** 13
 
 ## 文件汇总

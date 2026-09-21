@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Stream ContentEmbed_Stream
 
 Declares the stream structure type of an OE document. Similar to a file in the file system, a stream can be read or written. A stream object can exist only in the storage object.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)

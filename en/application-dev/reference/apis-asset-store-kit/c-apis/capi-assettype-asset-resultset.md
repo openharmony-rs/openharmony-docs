@@ -8,6 +8,8 @@ typedef struct Asset_ResultSet {...} Asset_ResultSet
 
 Represents the query result of multiple assets.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Related module**: [AssetType](capi-assettype.md)

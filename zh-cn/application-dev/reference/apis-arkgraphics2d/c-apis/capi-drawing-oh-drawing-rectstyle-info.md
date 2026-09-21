@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RectStyle_Info {...} OH_Drawing_RectStyle_Info
 
 定义矩形框样式结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

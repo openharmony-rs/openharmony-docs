@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3
 
 Provides the custom dialog box APIs for the native side.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -20,8 +22,8 @@ Provides the custom dialog box APIs for the native side.
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Provides the custom dialog box APIs for the native side. The API scope is [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)<br>**Since**: 19 |
-| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2 | Provides the custom dialog box APIs for the native side. The API scope is [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)<br>**Since**: 19 |
+| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | Provides the custom dialog box APIs for the native side. The API scope is {@link ArkUI_NativeDialogAPI_1}<br>**Since**: 19 |
+| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2 | Provides the custom dialog box APIs for the native side. The API scope is {@link ArkUI_NativeDialogAPI_2}<br>**Since**: 19 |
 
 
 ### Member functions

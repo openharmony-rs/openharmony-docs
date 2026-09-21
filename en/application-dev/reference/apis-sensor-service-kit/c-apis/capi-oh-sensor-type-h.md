@@ -80,6 +80,8 @@ enum Sensor_Type
 
 Enumerates the sensor types.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 | Enum item | Description |
@@ -110,6 +112,8 @@ enum Sensor_Result
 
 Enumerates the sensor result codes.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 | Enum item | Description |
@@ -128,6 +132,8 @@ enum Sensor_Accuracy
 **Description**
 
 Enumerates the accuracy levels of data reported by a sensor.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -150,6 +156,8 @@ Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 **Description**
 
 Creates an instance array using a given number. For details, see [Sensor_Info](capi-sensor-sensor-info.md).
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -175,6 +183,8 @@ int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 
 Destroys the sensor instance array and reclaims the memory. For details, see [Sensor_Info](capi-sensor-sensor-info.md).
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -199,6 +209,8 @@ int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *l
 **Description**
 
 Obtains the sensor name.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -226,6 +238,8 @@ int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint3
 
 Obtains the sensor's vendor name.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -252,6 +266,8 @@ int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 
 Obtains the sensor type.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -276,6 +292,8 @@ int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 **Description**
 
 Obtains the sensor resolution.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -302,6 +320,8 @@ int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSa
 
 Obtains the minimum data reporting interval of a sensor.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -326,6 +346,8 @@ int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSa
 **Description**
 
 Obtains the maximum data reporting interval of a sensor.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -352,6 +374,8 @@ int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorTyp
 
 Obtains the sensor type.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -376,6 +400,8 @@ int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestam
 **Description**
 
 Obtains the timestamp of sensor data.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -402,6 +428,8 @@ int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *a
 
 Obtains the accuracy of sensor data.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -426,6 +454,8 @@ int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t
 **Description**
 
 Obtains sensor data. The data length and content depend on the sensor type. The format of the sensor data reported is as follows: SENSOR_TYPE_ACCELEROMETER: data[0], data[1], and data[2], indicating the acceleration around the x, y, and z axes of the device, respectively, in m/s2. SENSOR_TYPE_GYROSCOPE: data[0], data[1], and data[2], indicating the angular velocity of rotation around the x, y, and z axes of the device, respectively, in rad/s. SENSOR_TYPE_AMBIENT_LIGHT: data[0], indicating the ambient light intensity, in lux. Since api version 12, two additional data will be returned, where data[1] indicating the color temperature, in kelvin; data[2] indicating the infrared luminance, in cd/m2. SENSOR_TYPE_MAGNETIC_FIELD: data[0], data[1], and data[2], indicating the magnetic field strength around the x, y, and z axes of the device, respectively, in μT. SENSOR_TYPE_BAROMETER: data[0], indicating the atmospheric pressure, in hPa. SENSOR_TYPE_HALL: data[0], indicating the opening/closing state of the flip cover. The value <b>0</b> means that the flip cover is opened, and a value greater than <b>0</b> means that the flip cover is closed. SENSOR_TYPE_PROXIMITY: data[0], indicates the approaching state. The value <b>0</b> means the two objects are close to each other, and a value greater than <b>0</b> means that they are far away from each other. SENSOR_TYPE_ORIENTATION: data[0], data[1], and data[2], indicating the rotation angles of a device around the z, x, and y axes, respectively, in degree. SENSOR_TYPE_GRAVITY: data[0], data[1], and data[2], indicating the gravitational acceleration around the x, y, and z axes of a device, respectively, in m/s2. SENSOR_TYPE_ROTATION_VECTOR: data[0], data[1] and data[2], indicating the rotation angles of a device around the x, y, and z axes, respectively, in degree. data[3] indicates the rotation vector. SENSOR_TYPE_PEDOMETER_DETECTION: data[0], indicating the pedometer detection status. The value <b>1</b> means that the number of detected steps changes. SENSOR_TYPE_PEDOMETER: data[0], indicating the number of steps a user has walked. SENSOR_TYPE_HEART_RATE: data[0], indicating the heart rate value. SENSOR_TYPE_LINEAR_ACCELERATION: Supported from api version 13. data[0], data[1], and data[2], indicating the linear acceleration around the x, y, and z axes of the device, respectively, in m/s2. SENSOR_TYPE_GAME_ROTATION_VECTOR: Supported from api version 13. data[0], data[1] and data[2], indicating the rotation angles of a device around the x, y, and z axes, respectively, in degree. data[3] indicates the rotation vector.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -453,6 +483,8 @@ Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 
 Creates a [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Returns**:
@@ -470,6 +502,8 @@ int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 **Description**
 
 Destroys a [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance and reclaims the memory.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -494,6 +528,8 @@ int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *
 **Description**
 
 Obtains the sensor type.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -520,6 +556,8 @@ int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_
 
 Sets the sensor type.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -545,6 +583,8 @@ Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 
 Creates a [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Returns**:
@@ -562,6 +602,8 @@ int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *att
 **Description**
 
 Destroys a [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance and reclaims the memory.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -586,6 +628,8 @@ int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAt
 **Description**
 
 Sets the sensor data reporting interval.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -612,6 +656,8 @@ int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAt
 
 Obtains the sensor data reporting interval.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -637,6 +683,8 @@ typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 
 Defines the callback function used to report sensor data.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -655,6 +703,8 @@ Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 
 Creates a [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Returns**:
@@ -672,6 +722,8 @@ int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 **Description**
 
 Destroys a [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance and reclaims the memory.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -697,6 +749,8 @@ int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sen
 
 Sets a callback function to report sensor data.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -721,6 +775,8 @@ int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_Ev
 **Description**
 
 Obtains the callback function used to report sensor data.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 

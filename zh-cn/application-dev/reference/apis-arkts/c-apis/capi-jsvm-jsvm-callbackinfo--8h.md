@@ -8,6 +8,8 @@ typedef struct JSVM_CallbackInfo__* JSVM_CallbackInfo
 
 表示传递给回调函数的不透明数据类型。可用于获取调用该函数的上下文的附加信息。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

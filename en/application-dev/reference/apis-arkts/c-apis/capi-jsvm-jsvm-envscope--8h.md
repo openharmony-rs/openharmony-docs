@@ -8,6 +8,8 @@ typedef struct JSVM_EnvScope__* JSVM_EnvScope
 
 To represent a JavaScript VM environment scope.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

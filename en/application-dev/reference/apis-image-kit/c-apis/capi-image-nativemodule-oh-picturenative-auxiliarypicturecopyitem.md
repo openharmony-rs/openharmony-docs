@@ -8,6 +8,8 @@ typedef struct OH_PictureNative_AuxiliaryPictureCopyItem {...} OH_PictureNative_
 
 This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

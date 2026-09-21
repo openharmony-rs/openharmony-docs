@@ -8,6 +8,8 @@ typedef struct Hid_EmitItem {...} Hid_EmitItem
 
 Represents the event information.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

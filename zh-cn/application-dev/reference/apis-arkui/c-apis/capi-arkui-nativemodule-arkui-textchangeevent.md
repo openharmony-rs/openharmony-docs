@@ -8,6 +8,8 @@ typedef struct ArkUI_TextChangeEvent {...} ArkUI_TextChangeEvent
 
 定义文本变化事件的数据结构，用于在文本输入场景中监听和处理文本变更事件。该结构体包含文本内容、扩展信息和数值参数，支持开发者实时获取文本变更数据，适用于输入框内容监听、实时搜索、字数统计等场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

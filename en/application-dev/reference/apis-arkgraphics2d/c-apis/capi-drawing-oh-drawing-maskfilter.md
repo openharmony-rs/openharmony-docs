@@ -8,6 +8,8 @@ typedef struct OH_Drawing_MaskFilter OH_Drawing_MaskFilter
 
 Defines a struct for a mask filter.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

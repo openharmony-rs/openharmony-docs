@@ -8,6 +8,8 @@ typedef struct OH_Drawing_PathEffect OH_Drawing_PathEffect
 
 Defines a struct for a path effect that affects the stroke.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

@@ -28,7 +28,7 @@
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbility(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want)](#oh_abilityruntime_modobjextensioncontext_startselfuiability) | 启动当前应用的UIAbility。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbilityWithStartOptions(OH_AbilityRuntime_ModObjExtensionContextHandle context, const AbilityBase_Want *want, const AbilityRuntime_StartOptions *options)](#oh_abilityruntime_modobjextensioncontext_startselfuiabilitywithstartoptions) | 通过StartOptions启动当前应用的UIAbility。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(OH_AbilityRuntime_ModObjExtensionContextHandle context)](#oh_abilityruntime_modobjextensioncontext_terminateself) | 销毁ModularObjectExtensionAbility自身。 |
-| [OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_abilityruntime_modobjextensioncontext_createipcremotestub) | 创建一个OHIPCRemoteStub对象，回调函数将在ExtensionAbility指定的线程上运行。requestCallback和destroyCallback将在由ExtensionAbility的 {@link OH_AbilityRuntime_ThreadMode}决定的线程上按顺序执行。调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)后，不会再有新的requestCallback回调，<br>且正在执行的requestCallback完成后才会回调destroyCallback。调用方需调用<br>[OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)销毁返回的对象，避免内存泄漏。 |
+| [OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)](#oh_abilityruntime_modobjextensioncontext_createipcremotestub) | 创建一个OHIPCRemoteStub对象，回调函数将在ExtensionAbility指定的线程上运行。requestCallback和destroyCallback将在由ExtensionAbility的 [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode)决定的线程上按顺序执行。调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)后，不会再有新的requestCallback回调， 且正在执行的requestCallback完成后才会回调destroyCallback。调用方需调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)销毁返回的对象，避免内存泄漏。 |
 | [void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRuntime_ModObjExtensionContextHandle context, OHIPCRemoteStub *stub)](#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) | 销毁OHIPCRemoteStub对象。 |
 
 ## 函数说明
@@ -43,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 
 从ModularObjectExtensionAbility上下文中获取基础上下文。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -50,13 +52,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AbilityRuntime_ModObjExtensionContextHandle](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) modObjExtensionContext | 指向ModularObjectExtensionAbility上下文的指针。 |
-| AbilityRuntime_ContextHandle* baseContext | 指向{@link AbilityRuntime_ContextHandle}的指针，用于接收结果。 |
+| AbilityRuntime_ContextHandle* baseContext | 指向[AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md)的指针，用于接收结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 参数校验失败。 |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbility()
 
@@ -67,6 +69,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **描述：**
 
 启动当前应用的UIAbility。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -83,7 +87,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED} 调用方无正确权限。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 传入参数无效。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED} 设备不支持启动当前应用的UIAbility。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY} 目标Ability不存在。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE} Ability类型不正确。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED} 众测应用已过期。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE} 无法在Wukong模式下启动Ability。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CONTROLLED} 应用被管控。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED} 应用被EDM管控。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CROSS_APP} 调用方尝试启动不同应用。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} 内部错误。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY} 调用方进程不在前台。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED} 不支持应用分身和多实例。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY} 应用实例Key无效。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED} 应用实例数量已达上限。<br>    <br>{@link ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED} 不支持应用多实例。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED} 不允许设置APP_INSTANCE_KEY。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方无正确权限。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 设备不支持启动当前应用的UIAbility。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 目标Ability不存在。      <br>[ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) Ability类型不正确。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 众测应用已过期。      <br>[ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 无法在Wukong模式下启动Ability。      <br>[ABILITY_RUNTIME_ERROR_CODE_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用被管控。      <br>[ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用被EDM管控。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROSS_APP](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方尝试启动不同应用。      <br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方进程不在前台。      <br>[ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不支持应用分身和多实例。      <br>[ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用实例Key无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用实例数量已达上限。      <br>[ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不支持应用多实例。      <br>[ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不允许设置APP_INSTANCE_KEY。 |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbilityWithStartOptions()
 
@@ -94,6 +98,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **描述：**
 
 通过StartOptions启动当前应用的UIAbility。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -111,7 +117,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED} 调用方无正确权限。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 传入参数无效。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED} 设备不支持启动当前应用的UIAbility。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY} 目标Ability不存在。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE} Ability类型不正确。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED} 众测应用已过期。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE} 无法在Wukong模式下启动Ability。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CONTROLLED} 应用被管控。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED} 应用被EDM管控。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CROSS_APP} 调用方尝试启动不同应用。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} 内部错误。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY} 调用方非前台进程。<br>    <br>{@link ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED} 可见性设置已禁用。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED} 不支持应用分身和多实例。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY} 应用实例Key无效。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED} 应用实例数量已达上限。<br>    <br>{@link ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED} 不支持应用多实例。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED} 不允许设置APP_INSTANCE_KEY。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方无正确权限。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 设备不支持启动当前应用的UIAbility。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 目标Ability不存在。      <br>[ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) Ability类型不正确。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 众测应用已过期。      <br>[ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 无法在Wukong模式下启动Ability。      <br>[ABILITY_RUNTIME_ERROR_CODE_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用被管控。      <br>[ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用被EDM管控。      <br>[ABILITY_RUNTIME_ERROR_CODE_CROSS_APP](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方尝试启动不同应用。      <br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。      <br>[ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 调用方非前台进程。      <br>[ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 可见性设置已禁用。      <br>[ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不支持应用分身和多实例。      <br>[ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用实例Key无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 应用实例数量已达上限。      <br>[ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不支持应用多实例。      <br>[ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 不允许设置APP_INSTANCE_KEY。 |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf()
 
@@ -122,6 +128,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(
 **描述：**
 
 销毁ModularObjectExtensionAbility自身。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -135,7 +143,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(
 
 | 类型 | 说明 |
 | -- | -- |
-| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 接口调用成功。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} 传入参数无效。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE} 无法在Wukong模式下销毁Ability。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST} 上下文不存在。<br>    <br>{@link ABILITY_RUNTIME_ERROR_CODE_INTERNAL} 内部错误。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 接口调用成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 传入参数无效。      <br>[ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 无法在Wukong模式下销毁Ability。      <br>[ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 上下文不存在。      <br>[ABILITY_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 内部错误。 |
 
 ### OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub()
 
@@ -145,7 +153,9 @@ OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH
 
 **描述：**
 
-创建一个OHIPCRemoteStub对象，回调函数将在ExtensionAbility指定的线程上运行。requestCallback和destroyCallback将在由ExtensionAbility的 {@link OH_AbilityRuntime_ThreadMode}决定的线程上按顺序执行。调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)后，不会再有新的requestCallback回调，<br>且正在执行的requestCallback完成后才会回调destroyCallback。调用方需调用<br>[OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)销毁返回的对象，避免内存泄漏。
+创建一个OHIPCRemoteStub对象，回调函数将在ExtensionAbility指定的线程上运行。requestCallback和destroyCallback将在由ExtensionAbility的 [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode)决定的线程上按顺序执行。调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)后，不会再有新的requestCallback回调， 且正在执行的requestCallback完成后才会回调destroyCallback。调用方需调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)销毁返回的对象，避免内存泄漏。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -174,6 +184,8 @@ void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRun
 **描述：**
 
 销毁OHIPCRemoteStub对象。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 

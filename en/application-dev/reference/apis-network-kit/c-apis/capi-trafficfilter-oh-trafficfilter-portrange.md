@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_PortRange {...} OH_TrafficFilter_PortRange
 
 Port match value for range match
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)

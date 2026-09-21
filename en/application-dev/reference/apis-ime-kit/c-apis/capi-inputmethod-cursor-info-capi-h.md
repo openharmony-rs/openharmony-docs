@@ -43,6 +43,8 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 Create a new [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -70,6 +72,8 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 
 Destroy a [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -88,6 +92,8 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 Set cursor info.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -104,7 +110,7 @@ Set cursor info.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_CursorInfo_GetRect()
 
@@ -115,6 +121,8 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 **Description**
 
 Get cursor info.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -132,6 +140,6 @@ Get cursor info.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 

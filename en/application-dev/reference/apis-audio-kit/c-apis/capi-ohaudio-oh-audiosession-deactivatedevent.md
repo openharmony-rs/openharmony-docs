@@ -8,6 +8,8 @@ typedef struct OH_AudioSession_DeactivatedEvent {...} OH_AudioSession_Deactivate
 
 declare the audio session deactivated event
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)

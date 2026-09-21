@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_DecorationStyleOptions OH_ArkUI_DecorationStyleOptions
 
 Defines decoration style options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_FontConfigs OH_ArkUI_FontConfigs
 
 Defines the font configuration of text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeySystemInfo {...} DRM_MediaKeySystemInfo
 
 The struct describes the DRM information for encrypted content.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)

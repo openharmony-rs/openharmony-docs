@@ -8,6 +8,8 @@ typedef struct JSVM_CallbackStruct {...} JSVM_CallbackStruct
 
 用户提供的native回调函数的指针和数据，这些函数通过JSVM-API接口暴露给JavaScript。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

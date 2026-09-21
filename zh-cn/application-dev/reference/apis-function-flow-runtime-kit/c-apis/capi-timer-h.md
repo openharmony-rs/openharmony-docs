@@ -33,6 +33,8 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 在FFRT工作线程上启动定时器。<br> 避免在`cb`中调用`exit`或[ffrt_timer_stop](capi-timer-h.md#ffrt_timer_stop)，以防止未定义行为或死锁。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -65,6 +67,8 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 **描述：**
 
 停止FFRT工作线程上的定时器。<br> 该接口为阻塞接口。请避免在回调函数内调用该接口，以防止死锁或同步问题。当`handle`对应的回调正在执行时， 该函数会等待回调完成后再返回。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
 

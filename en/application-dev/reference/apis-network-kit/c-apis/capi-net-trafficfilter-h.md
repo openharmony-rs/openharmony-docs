@@ -42,6 +42,8 @@ int32_t OH_TrafficFilter_CreateRedirector(uint32_t group_id, uint32_t priority, 
 
 Creates a traffic redirection instance for redirecting TCP traffic to a proxy server. [OH_TrafficFilter_DestroyRedirector](capi-net-trafficfilter-h.md#oh_trafficfilter_destroyredirector) must be called to release resources. If this function fails, no valid redirector is returned.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.0
@@ -50,15 +52,15 @@ Creates a traffic redirection instance for redirecting TCP traffic to a proxy se
 
 | Parameter | Description |
 | -- | -- |
-| uint32_t group_id | Redirection link ID, which is a logical group ID within an app. Different **group_id** values can be used for multiple redirectors within the same app. Redirectors with the same **group_id** in different apps are automatically isolated. The value range is [{@link OH_TRAFFICFILTER_MIN_GROUP_ID},<br>    {@link OH_TRAFFICFILTER_MAX_GROUP_ID}]. If the value is out of this range, the function returns {@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}. |
-| uint32_t priority | Priority, which determines the execution order among links with different **group_id** values. A smaller value indicates a higher priority. Note: The redirector priority is higher than the packet filter priority. The value range is [{@link OH_TRAFFICFILTER_MIN_PRIORITY}, {@link OH_TRAFFICFILTER_MAX_PRIORITY}]. If the value is out of range, the function returns {@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}. |
+| uint32_t group_id | Redirection link ID, which is a logical group ID within an app. Different **group_id** values can be used for multiple redirectors within the same app. Redirectors with the same **group_id** in different apps are automatically isolated. The value range is [[OH_TRAFFICFILTER_MIN_GROUP_ID](capi-net-trafficfilter-type-h.md#宏定义), [OH_TRAFFICFILTER_MAX_GROUP_ID](capi-net-trafficfilter-type-h.md#宏定义)]. If the value is out of this range, the function returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). |
+| uint32_t priority | Priority, which determines the execution order among links with different **group_id** values. A smaller value indicates a higher priority. Note: The redirector priority is higher than the packet filter priority. The value range is [[OH_TRAFFICFILTER_MIN_PRIORITY](capi-net-trafficfilter-type-h.md#宏定义), [OH_TRAFFICFILTER_MAX_PRIORITY](capi-net-trafficfilter-type-h.md#宏定义)]. If the value is out of range, the function returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). |
 | OH_TrafficFilter_Redirector** redirector | Output parameter, which is the redirection handle when the operation is successful. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link OH_TRAFFICFILTER_OK}: Success.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED}: Missing permissions.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE}: The group_id exists.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}: Parameter error. |
+| int32_t | [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Success.      <br>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Missing permissions.      <br>[OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): The group_id exists.      <br>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Parameter error. |
 
 ### OH_TrafficFilter_DestroyRedirector()
 
@@ -69,6 +71,8 @@ int32_t OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirect
 **Description**
 
 Destroys the redirection instance and releases related resources (including rules). The handle becomes invalid after the function is called.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -84,7 +88,7 @@ Destroys the redirection instance and releases related resources (including rule
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link OH_TRAFFICFILTER_OK}: Success.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED}: Missing permissions.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}: The redirector value is NULL.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_NOT_FOUND}: The specified redirector handle is not found. |
+| int32_t | [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Success.      <br>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Missing permissions.      <br>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): The redirector value is NULL.      <br>[OH_TRAFFICFILTER_ERROR_NOT_FOUND](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): The specified redirector handle is not found. |
 
 ### OH_TrafficFilter_AddRedirectRule()
 
@@ -95,6 +99,8 @@ int32_t OH_TrafficFilter_AddRedirectRule(OH_TrafficFilter_Redirector* redirector
 **Description**
 
 Adds a redirection rule Adds a TCP traffic redirection rule to redirect matched traffic to specified proxy server To clear redirect rules, you need to call [OH_TrafficFilter_ClearRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearredirectrule).
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -111,7 +117,7 @@ Adds a redirection rule Adds a TCP traffic redirection rule to redirect matched 
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if redirector or rule is NULL.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES} if too many rules added.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if redirector or rule is NULL.</li>      <li>[OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if too many rules added.</li></ul> |
 
 ### OH_TrafficFilter_ClearRedirectRule()
 
@@ -122,6 +128,8 @@ int32_t OH_TrafficFilter_ClearRedirectRule(OH_TrafficFilter_Redirector* redirect
 **Description**
 
 Clears all redirection rules.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -137,7 +145,7 @@ Clears all redirection rules.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link OH_TRAFFICFILTER_OK}: Success.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED}: Missing permissions.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}: The redirector value is NULL. |
+| int32_t | [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Success.      <br>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Missing permissions.      <br>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): The redirector value is NULL. |
 
 ### OH_TrafficFilter_QueryProcess()
 
@@ -148,6 +156,8 @@ int32_t OH_TrafficFilter_QueryProcess(const OH_TrafficFilter_ConnectionInfo* con
 **Description**
 
 Queries the process information based on network connection. This function queries the process that starts the connection using the five-tuple connection information, including the source IP address, destination IP address, source port number, destination port number, and protocol type.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -164,7 +174,7 @@ Queries the process information based on network connection. This function queri
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link OH_TRAFFICFILTER_OK}: Success.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED}: Missing permissions.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}: Invalid input parameter.<br>    <br>{@link OH_TRAFFICFILTER_ERROR_NOT_FOUND}: Process not found. |
+| int32_t | [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Success.      <br>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Missing permissions.      <br>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Invalid input parameter.      <br>[OH_TRAFFICFILTER_ERROR_NOT_FOUND](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode): Process not found. |
 
 ### OH_TrafficFilter_AddPacketRule()
 
@@ -180,9 +190,11 @@ Set packet filter rule Add a packet filter rule to controller chain. only packet
 >
 > Logical relationship: - Conditions within a single OH_TrafficFilter_FilterRule structure are combined with logical AND. - Multiple rules added to the same OH_TrafficFilter_PacketController are combined with logical OR. To clear filter rules, you need to call [OH_TrafficFilter_ClearPacketRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearpacketrule).
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -195,7 +207,7 @@ Set packet filter rule Add a packet filter rule to controller chain. only packet
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if controller or rule is NULL.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES} if too many rules added.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if controller or rule is NULL.</li>      <li>[OH_TRAFFICFILTER_ERROR_TOO_MANY_RULES](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if too many rules added.</li></ul> |
 
 ### OH_TrafficFilter_ClearPacketRule()
 
@@ -207,9 +219,11 @@ int32_t OH_TrafficFilter_ClearPacketRule(OH_TrafficFilter_PacketController* cont
 
 Clear packet filter rule Clear all packet filter rules in controller.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -221,7 +235,7 @@ Clear packet filter rule Clear all packet filter rules in controller.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if controller is NULL.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if controller is NULL.</li></ul> |
 
 ### OH_TrafficFilter_CreatePacketController()
 
@@ -233,9 +247,11 @@ int32_t OH_TrafficFilter_CreatePacketController(uint32_t groupId, uint32_t prior
 
 Creates a packet controller instance. Creates a packet controller for intercepting and filtering network packets Resource Management: This instance occupies system resources. You must call [OH_TrafficFilter_DestroyPacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller) to release resources. If this function fails, no valid controller is returned.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -250,7 +266,7 @@ Creates a packet controller instance. Creates a packet controller for intercepti
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE} when group_id already exists.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if priority is invalid.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR} if NFQueue initialization fails.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) when group_id already exists.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if priority is invalid.</li>      <li>[OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if NFQueue initialization fails.</li></ul> |
 
 ### OH_TrafficFilter_DestroyPacketController()
 
@@ -262,9 +278,11 @@ int32_t OH_TrafficFilter_DestroyPacketController(OH_TrafficFilter_PacketControll
 
 Destroys a packet controller instance. Destroys the controller and releases related resources, including rules and callbacks. After calling this function, the handle is invalid. Do not use it again.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -276,7 +294,7 @@ Destroys a packet controller instance. Destroys the controller and releases rela
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if controller is NULL.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_NOT_FOUND} if the specified controller handle is not found.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if controller is NULL.</li>      <li>[OH_TRAFFICFILTER_ERROR_NOT_FOUND](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if the specified controller handle is not found.</li></ul> |
 
 ### OH_TrafficFilter_RegisterPacketCallback()
 
@@ -292,9 +310,11 @@ Register a packet callback function. Register a callback function to handle inte
 >
 > <strong>Callback Model:</strong> <ul> <li><strong>Single Slot Model:</strong> A single <code>controller</code> instance supports only one active callback at a time.</li> <li><strong>Repeated Registration:</strong> If called again with a non-NULL callback, the new callback <strong>replaces</strong> the previously registered one. The previous callback is immediately unregistered. No error is returned for repeated registration.</li> <li><strong>Unregister/Destroy Semantics:</strong> <ul> <li>Calling [OH_TrafficFilter_UnregisterPacketCallback](capi-net-trafficfilter-h.md#oh_trafficfilter_unregisterpacketcallback) or destroying the <code>controller</code> immediately stops delivery of new packets to the callback.</li> <li><strong>No In-Flight Callbacks:</strong> Once unregistered or destroyed, the framework guarantees that no further callback invocations will occur for that registration, even if packet processing is in progress at the moment of unregistration.</li> </ul> </li> <li><strong>Callback Execution Constraints:</strong> <ul> <li><strong>User Data Lifetime:</strong> The <code>user_data</code> must remain valid from registration until after the callback is unregistered and all ongoing callback invocations have returned.</li> <li><strong>Thread Context:</strong> The callback may be invoked on any thread. Callers must ensure thread safety for shared resources.</li> <li><strong>Ordering and Concurrency:</strong> Callbacks are not guaranteed to be serialized or preserve packet order. Multiple callbacks may be invoked concurrently.</li> <li><strong>Reentrancy:</strong> The callback must not call any <code>OH_TrafficFilter_*</code> registration, unregistration, or controller destruction functions, as this may cause deadlock or undefined behavior.</li> </ul> </li> </ul>
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -308,7 +328,7 @@ Register a packet callback function. Register a callback function to handle inte
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if controller or callback is NULL.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if controller or callback is NULL.</li></ul> |
 
 ### OH_TrafficFilter_UnregisterPacketCallback()
 
@@ -320,9 +340,11 @@ int32_t OH_TrafficFilter_UnregisterPacketCallback(OH_TrafficFilter_PacketControl
 
 Unregister a packet callback function. Unregister the current packet callback function. After calling this, no more packets will be delivered to the callback.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -334,6 +356,6 @@ Unregister a packet callback function. Unregister the current packet callback fu
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link OH_TRAFFICFILTER_OK} on success.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED} if permission is denied.</li><br>    <li>{@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM} if controller is NULL.</li></ul> |
+| int32_t | <ul><li>[OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) on success.</li>      <li>[OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if permission is denied.</li>      <li>[OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) if controller is NULL.</li></ul> |
 
 

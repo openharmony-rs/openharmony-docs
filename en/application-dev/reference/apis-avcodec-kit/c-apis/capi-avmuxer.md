@@ -4,6 +4,8 @@
 
 The AVMuxer module provides functions for audio and video muxer.
 
+**System capability**: SystemCapability.Multimedia.Media.Muxer
+
 **Since**: 10
 
 ## Files

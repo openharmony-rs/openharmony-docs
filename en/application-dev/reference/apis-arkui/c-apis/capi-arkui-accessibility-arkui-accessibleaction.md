@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibleAction {...} ArkUI_AccessibleAction
 
 Defines a struct for the accessible action.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)

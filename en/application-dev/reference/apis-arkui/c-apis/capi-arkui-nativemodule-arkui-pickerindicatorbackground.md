@@ -8,6 +8,8 @@ typedef struct ArkUI_PickerIndicatorBackground {...} ArkUI_PickerIndicatorBackgr
 
 Defines the style parameter of the background-style indicator of the selected item.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

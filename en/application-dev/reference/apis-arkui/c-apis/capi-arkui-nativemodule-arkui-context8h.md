@@ -8,6 +8,8 @@ typedef struct ArkUI_Context* ArkUI_ContextHandle
 
 Defines the pointer to the context instance object of ArkUI on the native side.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

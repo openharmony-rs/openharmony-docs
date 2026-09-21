@@ -8,6 +8,8 @@ struct OH_PixelmapNative
 
 Define a Pixelmap struct type, used for pixelmap pointer controls.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

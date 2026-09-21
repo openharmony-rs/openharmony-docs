@@ -8,6 +8,8 @@ typedef struct ImageProcessing_ColorSpaceInfo {...} ImageProcessing_ColorSpaceIn
 
 色彩空间信息，用于色彩空间转换能力查询。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **相关模块：** [ImageProcessing](capi-imageprocessing.md)

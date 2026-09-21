@@ -234,6 +234,8 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, 
 
 请求完成时的回调函数。这将在IO线程上被调用。用于在请求完成时进行资源清理、状态更新或日志记录等操作。 <br>应该使用OH_ArkWebResourceRequest_Destroy销毁resourceRequest， 并使用OH_ArkWebResourceHandler_Destroy销毁在ArkWeb_OnRequestStart中接收到的ArkWeb_ResourceHandler。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -274,6 +276,8 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 **描述：**
 
 当OH_ArkWebHttpBodyStream_AsyncRead读取操作完成时的回调函数。该回调函数会在ArkWeb工作线程中运行。
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
 
@@ -648,6 +652,8 @@ int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* http
 
 为OH_ArkWebHttpBodyStream_AsyncRead设置回调函数。OH_ArkWebHttpBodyStream_AsyncRead的结果将通过readCallback通知给开发者。 <br>该回调函数会在ArkWeb工作线程中运行。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -721,6 +727,8 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 **描述：**
 
 将请求的上传数据读取至buffer，buffer的大小必须超过bufLen。数据将由工作线程读取至buffer，因此在回调函数返回前，不应在其他线程中使用缓冲区，以避免并发问题。
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
 
@@ -992,6 +1000,8 @@ bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceR
 
 判断这是否是一个由用户手势触发的请求。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1144,6 +1154,8 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 创建一个ArkWeb_SchemeHandler对象。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1288,6 +1300,8 @@ void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 **描述：**
 
 为被拦截的请求创建一个ArkWeb_Response对象。
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
 
@@ -1625,6 +1639,8 @@ int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response, const char*
 
 为ArkWeb_Response设置一个header。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1808,6 +1824,8 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler
 
 通知ArkWeb内核，被拦截的请求应该失败。对比[OH_ArkWebResourceHandler_DidFailWithError](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror)接口，新增参数completeIfNoResponse，值为true时， 若之前未调用过[OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)，则会自动生成一个response以完成此次网络请求，网络错误码为-104；值为false时，将等待应用调用 [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)并传入response，不会直接完成此次网络请求。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1834,7 +1852,9 @@ void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)
 
 创建一个ArkWeb_ErrorInfo对象。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1852,7 +1872,9 @@ void OH_ArkWeb_DestroyErrorInfo(ArkWeb_ErrorInfo* errorInfo)
 
 销毁ArkWeb_ErrorInfo。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1870,7 +1892,9 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 设置是否在未收到响应时自动生成响应。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1883,7 +1907,7 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br>{@link ARKWEB_INVALID_PARAM} 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetCompleteIfNoResponse()
 
@@ -1895,7 +1919,9 @@ bool OH_ArkWebErrorInfo_GetCompleteIfNoResponse(const ArkWeb_ErrorInfo* errorInf
 
 获取是否在未收到响应时自动生成响应。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1919,7 +1945,9 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 设置自定义错误码。Web引擎将通过以下方式将自定义错误代码直接传递给应用程序 onErrorReceive.
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1932,7 +1960,7 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br>{@link ARKWEB_INVALID_PARAM} 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetCustomErrorCode()
 
@@ -1944,7 +1972,9 @@ int32_t OH_ArkWebErrorInfo_GetCustomErrorCode(const ArkWeb_ErrorInfo* errorInfo)
 
 获取之前设置的自定义错误码。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1968,7 +1998,9 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 设置错误码。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1981,7 +2013,7 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br>{@link ARKWEB_INVALID_PARAM} 17100101 -参数无效，errorInfo为nullptr。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效，errorInfo为nullptr。 |
 
 ### OH_ArkWebErrorInfo_GetErrorCode()
 
@@ -1993,7 +2025,9 @@ ArkWeb_NetError OH_ArkWebErrorInfo_GetErrorCode(const ArkWeb_ErrorInfo* errorInf
 
 获取之前设置的错误码。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -2017,7 +2051,9 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 将错误信息设置为ArkWebRespons。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -2030,7 +2066,7 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | {@link ARKWEB_NET_OK} 0 -成功。<br>{@link ARKWEB_INVALID_PARAM} 17100101 -参数无效。 |
+| int32_t | {@link ARKWEB_NET_OK} 0 -成功。  [ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 17100101 -参数无效。 |
 
 ### OH_ArkWebResponse_GetErrorInfo()
 
@@ -2042,7 +2078,9 @@ ArkWeb_ErrorInfo* OH_ArkWebResponse_GetErrorInfo(const ArkWeb_Response* response
 
 获取先前设置的ArkWeb_ErrorInfo。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -2066,7 +2104,9 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandl
 
 通知ArkWeb此请求应该失败。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **参数：**
 

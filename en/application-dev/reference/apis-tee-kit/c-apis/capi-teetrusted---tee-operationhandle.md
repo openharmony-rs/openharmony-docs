@@ -8,6 +8,8 @@ typedef struct __TEE_OperationHandle {...} TEE_OperationHandleVar
 
 Defines the cryptographic operation handle.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

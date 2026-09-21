@@ -33,6 +33,8 @@ enum napi_event_mode
 
 Indicates the running mode of the native event loop in an asynchronous native thread.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
 **Since**: 12
 
 | Enum item | Description |
@@ -49,6 +51,8 @@ enum napi_task_priority
 **Description**
 
 Indicates the priority of a task dispatched from native thread to ArkTS thread.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 

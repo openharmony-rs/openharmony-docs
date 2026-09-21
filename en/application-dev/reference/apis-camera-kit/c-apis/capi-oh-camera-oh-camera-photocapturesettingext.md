@@ -8,6 +8,8 @@ typedef struct OH_Camera_PhotoCaptureSettingExt OH_Camera_PhotoCaptureSettingExt
 
 The struct describes the photo capture setting ext.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

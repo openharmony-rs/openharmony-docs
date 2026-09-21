@@ -8,6 +8,8 @@ typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
 
 定义OH_AVCodec的缓冲区描述信息。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 9
 
 **相关模块：** [Core](capi-core.md)
@@ -23,6 +25,6 @@ typedef struct OH_AVCodecBufferAttr {...} OH_AVCodecBufferAttr
 | int64_t pts | 此缓冲区的显示时间戳（以微秒为单位）。<br>**起始版本：** 9 |
 | int32_t size | 缓冲区中包含的数据的大小（以字节为单位）。<br>**起始版本：** 9 |
 | int32_t offset | 此缓冲区中有效数据的起始偏移量。<br>**起始版本：** 9 |
-| uint32_t flags | 此缓冲区具有的标志，请参阅[OH_AVCodecBufferFlags](capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。<br>**起始版本：** 9 |
+| uint32_t flags | 此缓冲区具有的标志，请参阅{@link OH_AVCodecBufferFlags}。<br>**起始版本：** 9 |
 
 

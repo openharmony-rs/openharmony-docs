@@ -36,6 +36,8 @@ void *tee_alloc_sharemem_aux(const struct tee_uuid *uuid, uint32_t size)
 
 Alloc shared memory in TEE.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -60,6 +62,8 @@ void *tee_alloc_coherent_sharemem_aux(const struct tee_uuid *uuid, uint32_t size
 **Description**
 
 Alloc continuous shared memory in TEE.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -86,6 +90,8 @@ uint32_t tee_free_sharemem(void *addr, uint32_t size)
 
 Free the shared memory in TEE.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -110,6 +116,8 @@ int32_t copy_from_sharemem(uint32_t src_task, uint64_t src, uint32_t src_size, u
 **Description**
 
 Copy shared memory from source task.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -138,6 +146,8 @@ int32_t copy_to_sharemem(uintptr_t src, uint32_t src_size, uint32_t dst_task, ui
 **Description**
 
 Copy shared memory to destination task.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

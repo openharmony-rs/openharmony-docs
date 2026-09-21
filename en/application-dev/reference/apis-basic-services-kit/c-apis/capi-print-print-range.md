@@ -8,6 +8,8 @@ typedef struct Print_Range {...} Print_Range
 
 Defines a struct for the page range to print.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 13
 
 **Related module**: [Print](capi-print.md)

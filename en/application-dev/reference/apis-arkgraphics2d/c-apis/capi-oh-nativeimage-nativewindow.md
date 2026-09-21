@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 Defines the native window.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 8
 
 **Related module**: [OH_NativeImage](capi-oh-nativeimage.md)

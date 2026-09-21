@@ -8,6 +8,8 @@ typedef struct Scan_ScannerOptions {...} Scan_ScannerOptions
 
 表示一个扫描仪的所有参数选项。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [OH_Scan](capi-oh-scan.md)

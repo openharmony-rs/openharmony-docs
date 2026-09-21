@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_Config {...} OH_NativeBuffer_Config
 
 OH_NativeBuffer的属性配置，用于申请新的OH_NativeBuffer实例或查询现有实例的相关属性。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)

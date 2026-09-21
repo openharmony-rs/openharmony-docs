@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
 
 SCSI命令（VERIFY）的请求结构体，该命令通常用于校验逻辑块的数据完整性。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

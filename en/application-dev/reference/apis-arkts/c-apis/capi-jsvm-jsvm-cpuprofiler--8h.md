@@ -8,6 +8,8 @@ typedef struct JSVM_CpuProfiler__* JSVM_CpuProfiler
 
 To represent a JavaScript profiler.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 12
 
 **Related module**: [JSVM](capi-jsvm.md)

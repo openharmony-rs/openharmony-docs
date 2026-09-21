@@ -4,6 +4,8 @@
 
 LowPowerAudioSink子模块为低功耗播放音频组件提供变量、属性和函数。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 ## 文件汇总

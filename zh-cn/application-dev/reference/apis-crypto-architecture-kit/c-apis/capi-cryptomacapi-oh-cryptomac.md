@@ -8,6 +8,8 @@ typedef struct OH_CryptoMac OH_CryptoMac
 
 MAC结构体，表示MAC上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoMacApi](capi-cryptomacapi.md)

@@ -4,6 +4,8 @@
 
 Provides APIs of request capability for Media Source.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 ## Files

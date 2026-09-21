@@ -8,6 +8,8 @@ typedef void* PictureInPicture_PipConfig
 
 Picture in picture config.
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 20
 
 **相关模块：** [WindowManager](capi-windowmanager.md)

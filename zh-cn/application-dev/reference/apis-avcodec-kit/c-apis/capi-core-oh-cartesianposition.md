@@ -8,6 +8,8 @@ typedef struct OH_CartesianPosition {...} OH_CartesianPosition
 
 表示对象声源在笛卡尔坐标系（Cartesian coordinate system）中的位置。<br> 笛卡尔坐标系使用x、y、z轴定义三维空间中的位置。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Core](capi-core.md)

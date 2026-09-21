@@ -8,6 +8,8 @@ typedef struct OH_AudioFormat {...} OH_AudioFormat
 
 Define the audio format info structure, used to describe basic audio format.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

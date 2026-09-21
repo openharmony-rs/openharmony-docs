@@ -8,6 +8,8 @@ typedef struct OH_AVCodec OH_AVCodec
 
 为音视频编解码接口定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 **相关模块：** [CodecBase](capi-codecbase.md)

@@ -8,6 +8,8 @@ typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
 
 文件的同步状态。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **相关模块：** [CloudDisk](capi-clouddisk.md)

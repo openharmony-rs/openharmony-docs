@@ -46,6 +46,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_ShowKeyboard(InputMethod_InputMethodPr
 
 Show keyboard.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -58,7 +60,7 @@ Show keyboard.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br>{@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_InputMethodProxy_ShowTextInput()
 
@@ -69,6 +71,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_ShowTextInput(InputMethod_InputMethodP
 **Description**
 
 Displays the text box.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 15
 
@@ -83,7 +87,7 @@ Displays the text box.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br>{@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer. If inputMethodProxy is NULL, or options is NULL.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer. If inputMethodProxy is NULL, or options is NULL.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_InputMethodProxy_HideKeyboard()
 
@@ -94,6 +98,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_HideKeyboard(InputMethod_InputMethodPr
 **Description**
 
 Hide keyboard.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -107,7 +113,7 @@ Hide keyboard.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br>{@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_InputMethodProxy_NotifySelectionChange()
 
@@ -118,6 +124,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_NotifySelectionChange(InputMethod_Inpu
 **Description**
 
 Notify selection change.<br> Notify selection change when text or cursor position or selected text changed.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -135,7 +143,7 @@ Notify selection change.<br> Notify selection change when text or cursor positio
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_PARAMCHECK} - parameter check failed.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br>{@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - parameter check failed.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_InputMethodProxy_NotifyConfigurationChange()
 
@@ -146,6 +154,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_NotifyConfigurationChange(InputMethod_
 **Description**
 
 Notify text editor configuration change.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -161,7 +171,7 @@ Notify text editor configuration change.
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_PARAMCHECK} - parameter check failed.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br> {@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - parameter check failed.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br> [IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_InputMethodProxy_NotifyCursorUpdate()
 
@@ -173,6 +183,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_NotifyCursorUpdate(InputMethod_InputMe
 
 Notify cursor update.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -180,13 +192,13 @@ Notify cursor update.
 | Parameter | Description |
 | -- | -- |
 | [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) *inputMethodProxy | Represents a pointer to an [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) instance. The inputMethodProxy is obtained from [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h. md#oh_inputmethodcontroller_attach). |
-| InputMethod_CursorInfo *cursorInfo | Represents a pointer to an {@link InputMethod_CursorInfo} instance. The cursor information. |
+| InputMethod_CursorInfo *cursorInfo | Represents a pointer to an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance. The cursor information. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_PARAMCHECK} - parameter check failed.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br>{@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - parameter check failed.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 ### OH_InputMethodProxy_SendPrivateCommand()
 
@@ -198,6 +210,8 @@ InputMethod_ErrorCode OH_InputMethodProxy_SendPrivateCommand(InputMethod_InputMe
 
 Send private command.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -205,13 +219,13 @@ Send private command.
 | Parameter | Description |
 | -- | -- |
 | [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) *inputMethodProxy | Represents a pointer to an [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) instance. The inputMethodProxy is obtained from [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h. md#oh_inputmethodcontroller_attach). |
-| InputMethod_PrivateCommand *privateCommand[] | The private commands, which is defined in {@link InputMethod_PrivateCommand}. Max size 32KB. |
+| InputMethod_PrivateCommand *privateCommand[] | The private commands, which is defined in [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md). Max size 32KB. |
 | size_t size | The size of privateCommand. Max is 5. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| InputMethod_ErrorCode | Returns a specific error code.      <br>{@link IME_ERR_OK} - success.<br>    <br>{@link IME_ERR_PARAMCHECK} - parameter check failed.<br>    <br>{@link IME_ERR_IMCLIENT} - input method client error.<br>    <br>{@link IME_ERR_IMMS} - input method manager service error.<br>    <br>{@link IME_ERR_DETACHED} - input method client detached.<br>    <br>{@link IME_ERR_NULL_POINTER} - unexpected null pointer.<br>    <br>Specific error codes can be referenced {@link InputMethod_ErrorCode}. |
+| InputMethod_ErrorCode | Returns a specific error code.      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - success.      <br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - parameter check failed.      <br>[IME_ERR_IMCLIENT](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client error.      <br>[IME_ERR_IMMS](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method manager service error.      <br>[IME_ERR_DETACHED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - input method client detached.      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - unexpected null pointer.      <br>Specific error codes can be referenced [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
 

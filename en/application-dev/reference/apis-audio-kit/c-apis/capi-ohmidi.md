@@ -4,6 +4,8 @@
 
 Provides the definition of the C interface for the MIDI module.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 ## Files

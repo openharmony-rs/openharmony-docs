@@ -8,6 +8,8 @@ typedef struct ContentEmbed_ExtensionInstance* ContentEmbed_ExtensionInstanceHan
 
 声明OE Extension实例对象指针类型。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

@@ -8,6 +8,8 @@ typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo
 
 流式压缩/解压缩信息结构体。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Archive](capi-archive.md)
@@ -22,6 +24,6 @@ typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo
 | -- | -- |
 | uint64_t totalInSize | 压缩/解压缩前输入数据大小，单位为bytes。<br>**起始版本：** 26.0.0 |
 | uint64_t totalOutSize | 压缩/解压缩后输出数据大小，单位为bytes。<br>**起始版本：** 26.0.0 |
-| uint32_t checksum | 未压缩数据的校验和。当[OH_Archive_StreamChecksumAlg](capi-oh-archive-h.md#oh_archive_streamchecksumalg)设置为OH_ARCHIVE_NO_CHECKSUM时，checksum为0。<br>**起始版本：** 26.0.0 |
+| uint32_t checksum | 未压缩数据的校验和。当{@link OH_Archive_StreamChecksumAlg}设置为OH_ARCHIVE_NO_CHECKSUM时，checksum为0。<br>**起始版本：** 26.0.0 |
 
 

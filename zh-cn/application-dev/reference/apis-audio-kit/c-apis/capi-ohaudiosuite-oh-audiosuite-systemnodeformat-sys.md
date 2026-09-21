@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_SystemNodeFormat {...} OH_AudioSuite_SystemNodeForm
 
 定义音频格式信息结构，用于描述系统节点的基本音频格式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。

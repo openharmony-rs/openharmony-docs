@@ -8,6 +8,8 @@ typedef struct Print_PropertyList {...} Print_PropertyList
 
 打印机属性列表。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [Print](capi-print.md)

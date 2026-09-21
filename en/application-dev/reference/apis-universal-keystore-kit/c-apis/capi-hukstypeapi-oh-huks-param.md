@@ -8,6 +8,8 @@ typedef struct OH_Huks_Param {...} OH_Huks_Param
 
 Defines the types of the parameters in a parameter set.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

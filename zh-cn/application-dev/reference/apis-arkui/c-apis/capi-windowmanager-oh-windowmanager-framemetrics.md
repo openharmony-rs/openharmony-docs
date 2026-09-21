@@ -8,6 +8,8 @@ typedef struct OH_WindowManager_FrameMetrics OH_WindowManager_FrameMetrics
 
 帧率指标数据对象。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 26.0.0
 
 **相关模块：** [WindowManager](capi-windowmanager.md)

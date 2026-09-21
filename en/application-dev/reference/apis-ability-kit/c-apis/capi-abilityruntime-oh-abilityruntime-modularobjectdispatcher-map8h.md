@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectDispatcher_Map* OH_AbilityRuntime_
 
 Defines a pointer to OH_AbilityRuntime_ModularObjectDispatcher_Map.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

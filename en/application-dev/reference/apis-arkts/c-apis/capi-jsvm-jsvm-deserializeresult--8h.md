@@ -8,6 +8,8 @@ typedef struct JSVM_DeserializeResult__* JSVM_DeserializeResult
 
 To represent a JavaScript background deserialize result.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 24
 
 **Related module**: [JSVM](capi-jsvm.md)

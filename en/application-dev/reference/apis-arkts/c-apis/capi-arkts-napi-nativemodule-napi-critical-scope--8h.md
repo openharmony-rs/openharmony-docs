@@ -8,6 +8,8 @@ typedef struct napi_critical_scope__* napi_critical_scope
 
 Native critical scope provides a scope within that an ArkTS string buffer cache can be obtained.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
 **Since**: 21
 
 **Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)

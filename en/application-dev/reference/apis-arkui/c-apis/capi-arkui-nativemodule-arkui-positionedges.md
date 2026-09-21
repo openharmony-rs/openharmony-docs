@@ -8,6 +8,8 @@ typedef struct ArkUI_PositionEdges ArkUI_PositionEdges
 
 Define the Edges describing the position of a component by distances to the container's four edges.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 21
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

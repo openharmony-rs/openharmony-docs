@@ -8,6 +8,8 @@ typedef struct OH_EffectFilterInfo OH_EffectFilterInfo
 
 定义滤镜信息结构体。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **相关模块：** [ImageEffect](capi-imageeffect.md)

@@ -8,6 +8,8 @@ typedef struct JSVM_VM__* JSVM_VM
 
 To represent a JavaScript VM instance.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

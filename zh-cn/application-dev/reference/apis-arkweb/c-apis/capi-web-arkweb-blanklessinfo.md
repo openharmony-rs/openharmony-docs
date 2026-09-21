@@ -8,6 +8,8 @@ typedef struct ArkWeb_BlanklessInfo {...} ArkWeb_BlanklessInfo
 
 页面首屏加载预测信息，主要包括首屏相似度预测值、首屏加载耗时预测值、错误码，应用需根据此信息来决策是否启用无白屏加载插帧方案（该方案通过在页面加载过程中插入预渲染帧来减少白屏时间）。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 20
 
 **相关模块：** [Web](capi-web.md)

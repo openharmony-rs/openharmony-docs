@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontParser OH_Drawing_FontParser
 
 Parses system font files.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

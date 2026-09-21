@@ -8,6 +8,8 @@ typedef struct OH_VBucket {...} OH_VBucket
 
 Define the OH_VBucket structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -28,13 +30,13 @@ Define the OH_VBucket structure type.
 
 | Name | Description |
 | -- | -- |
-| [int (\*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Put the const char * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | Put the int64 value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | Put the double value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | Put the const uint8_t * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | Put NULL to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*clear)(OH_VBucket *bucket)](#clear) | Clear the [OH_VBucket](capi-rdb-oh-vbucket.md) object's values. |
-| [int (\*destroy)(OH_VBucket *bucket)](#destroy) | Destroy the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaim the memory occupied by the object. |
+| [int (\*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Put the const char * value to this {@link OH_VBucket} object for the given column name. |
+| [int (\*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | Put the int64 value to this {@link OH_VBucket} object for the given column name. |
+| [int (\*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | Put the double value to this {@link OH_VBucket} object for the given column name. |
+| [int (\*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | Put the const uint8_t * value to this {@link OH_VBucket} object for the given column name. |
+| [int (\*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | Put NULL to this {@link OH_VBucket} object for the given column name. |
+| [int (\*clear)(OH_VBucket *bucket)](#clear) | Clear the {@link OH_VBucket} object's values. |
+| [int (\*destroy)(OH_VBucket *bucket)](#destroy) | Destroy the {@link OH_VBucket} object and reclaim the memory occupied by the object. |
 
 ## Member function description
 
@@ -46,7 +48,7 @@ int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 
 **Description**
 
-Put the const char * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
+Put the const char * value to this {@link OH_VBucket} object for the given column name.
 
 **Since**: 10
 
@@ -54,7 +56,7 @@ Put the const char * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object f
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 |  const char *field | Indicates the name of the column. |
 |  const char *value | Indicates the const char * value. |
 
@@ -77,7 +79,7 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 
 **Description**
 
-Put the int64 value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
+Put the int64 value to this {@link OH_VBucket} object for the given column name.
 
 **Since**: 10
 
@@ -85,7 +87,7 @@ Put the int64 value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 |  const char *field | Indicates the name of the column. |
 |  int64_t value | Indicates the int64 value. |
 
@@ -108,7 +110,7 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 
 **Description**
 
-Put the double value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
+Put the double value to this {@link OH_VBucket} object for the given column name.
 
 **Since**: 10
 
@@ -116,7 +118,7 @@ Put the double value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 |  const char *field | Indicates the name of the column. |
 |  double value | Indicates the double value. |
 
@@ -139,7 +141,7 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 
 **Description**
 
-Put the const uint8_t * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
+Put the const uint8_t * value to this {@link OH_VBucket} object for the given column name.
 
 **Since**: 10
 
@@ -147,7 +149,7 @@ Put the const uint8_t * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) objec
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 |  const char *field | Indicates the name of the column. |
 |  const uint8_t *value | Indicates the const uint8_t * value. |
 |  uint32_t size | Indicates the size of value. |
@@ -171,7 +173,7 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 
 **Description**
 
-Put NULL to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
+Put NULL to this {@link OH_VBucket} object for the given column name.
 
 **Since**: 10
 
@@ -179,7 +181,7 @@ Put NULL to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given colum
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 |  const char *field | Indicates the name of the column. |
 
 **Returns**:
@@ -201,7 +203,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **Description**
 
-Clear the [OH_VBucket](capi-rdb-oh-vbucket.md) object's values.
+Clear the {@link OH_VBucket} object's values.
 
 **Since**: 10
 
@@ -209,7 +211,7 @@ Clear the [OH_VBucket](capi-rdb-oh-vbucket.md) object's values.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 
 **Returns**:
 
@@ -230,7 +232,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **Description**
 
-Destroy the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaim the memory occupied by the object.
+Destroy the {@link OH_VBucket} object and reclaim the memory occupied by the object.
 
 **Since**: 10
 
@@ -238,7 +240,7 @@ Destroy the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaim the memory o
 
 | Parameter | Description |
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an [OH_VBucket](capi-rdb-oh-vbucket.md) instance. |
+| [OH_VBucket](capi-rdb-oh-vbucket.md) *bucket | Represents a pointer to an {@link OH_VBucket} instance. |
 
 **Returns**:
 

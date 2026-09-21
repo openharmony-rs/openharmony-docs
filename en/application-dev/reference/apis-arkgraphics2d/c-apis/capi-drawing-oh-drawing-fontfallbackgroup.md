@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontFallbackGroup {...} OH_Drawing_FontFallbackGroup
 
 This struct describes the information about a font fallback group.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

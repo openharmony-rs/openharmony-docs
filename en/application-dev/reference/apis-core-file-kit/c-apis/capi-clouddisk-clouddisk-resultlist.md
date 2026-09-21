@@ -8,6 +8,8 @@ typedef struct CloudDisk_ResultList {...} CloudDisk_ResultList
 
 A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)

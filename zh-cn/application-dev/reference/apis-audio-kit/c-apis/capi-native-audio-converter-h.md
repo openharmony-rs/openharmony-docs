@@ -56,6 +56,8 @@ enum OH_AudioConverter_Result
 
 定义函数执行的返回结果。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -80,6 +82,8 @@ enum OH_AudioConverter_InputStatus
 
 定义回调函数[OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback)提供的输入音频数据的状态。转换器使用此状态来确定如何处理后续的转换逻辑。例如，继续提取数据，暂停或清除缓存数据。 <br>注意：即使回调返回AUDIOCONVERTER_INPUT_DATA_FINISHED，也必须重复调用OH_AudioConverter_Process，直到[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) 返回AUDIOCONVERTER_SUCCESS，并且outputSize=0（表示所有缓存数据均已处理完成）。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -100,6 +104,8 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 **描述：**
 
 创建音频转换器。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
 
@@ -127,6 +133,8 @@ void OH_AudioConverter_Destroy(OH_AudioConverter* converter)
 
 请求释放转换器。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -144,6 +152,8 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 **描述：**
 
 请求数据的回调函数。转换器在[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)期间调用此回调函数以主动请求输入音频数据。 <br>调用者必须填充输出参数（outInputData，outStatus），并返回通过回调函数读取的数据大小。 <br>单个回调返回的最大数据大小为400KB。 <br>outInputData指向的内存必须保持有效，直到OH_AudioConverter_Process返回处理完成为止。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
 
@@ -171,6 +181,8 @@ OH_AudioConverter_Result OH_AudioConverter_SetInputCallback(OH_AudioConverter* c
 
 设置转换器请求数据回调函数。此函数绑定音频转换器的输入数据回调函数。回调函数由[OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process)调用，获取输入音频数据并进行处理。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -196,6 +208,8 @@ OH_AudioConverter_Result OH_AudioConverter_Process(OH_AudioConverter* converter,
 **描述：**
 
 执行音频格式转换处理函数。该函数执行音频转换过程，将输入音频转换为目标格式，需要注意：该函数必须在[OH_AudioConverter_SetInputCallback](capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback)之后调用， 并且最终转换结果写入的输出缓冲区必须由调用方分配和管理。
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 26.0.0
 

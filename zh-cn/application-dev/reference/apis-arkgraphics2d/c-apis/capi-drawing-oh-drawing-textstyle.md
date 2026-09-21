@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextStyle OH_Drawing_TextStyle
 
 用于管理字体颜色、装饰等。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)

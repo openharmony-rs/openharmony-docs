@@ -8,6 +8,8 @@ typedef struct OH_AVSession_AVMediaDescriptionBuilder OH_AVSession_AVMediaDescri
 
 Declaring the AVMediaDescription builder. The instance of builder is used for creating AVMediaDescription.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

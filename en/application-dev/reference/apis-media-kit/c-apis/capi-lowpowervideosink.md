@@ -4,6 +4,8 @@
 
 The LowPowerVideoSink submodule provides variables, properties, and functions for lowpower video sink.
 
+**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **Since**: 20
 
 ## Files

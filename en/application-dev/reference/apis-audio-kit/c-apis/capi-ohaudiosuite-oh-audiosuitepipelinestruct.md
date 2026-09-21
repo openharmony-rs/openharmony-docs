@@ -8,6 +8,8 @@ typedef struct OH_AudioSuitePipelineStruct OH_AudioSuitePipeline
 
 Declare the audio pipeline. The handle of audio suite pipeline is used for audio pipeline related functions.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

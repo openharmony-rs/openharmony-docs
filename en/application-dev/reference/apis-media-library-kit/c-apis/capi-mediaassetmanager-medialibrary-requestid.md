@@ -8,6 +8,8 @@ typedef struct MediaLibrary_RequestId {...} MediaLibrary_RequestId
 
 Defines a struct for the request ID.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)

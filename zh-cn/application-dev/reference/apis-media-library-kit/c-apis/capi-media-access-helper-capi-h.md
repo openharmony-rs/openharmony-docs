@@ -32,6 +32,8 @@ MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequ
 
 发起应用资产或相册的更改请求。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 
 **起始版本：** 12

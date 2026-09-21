@@ -6,7 +6,9 @@ typedef struct OH_UdsContentForm OH_UdsContentForm
 
 ## Overview
 
-Describes the unified data struct of content form.
+Defines a struct for the unified data of the content card type.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
 

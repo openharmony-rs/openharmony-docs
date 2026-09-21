@@ -8,6 +8,8 @@ typedef struct AbilityRuntime_Context* AbilityRuntime_ContextHandle
 
 Defines the pointer to AbilityRuntime_Context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

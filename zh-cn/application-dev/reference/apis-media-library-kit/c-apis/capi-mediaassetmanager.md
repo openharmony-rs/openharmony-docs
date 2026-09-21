@@ -4,6 +4,8 @@
 
 提供媒体库资源请求能力的API。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 13
 
 ## 文件汇总

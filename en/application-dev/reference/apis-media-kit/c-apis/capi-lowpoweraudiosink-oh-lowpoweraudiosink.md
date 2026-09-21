@@ -8,6 +8,8 @@ typedef struct OH_LowPowerAudioSink OH_LowPowerAudioSink
 
 The struct describes the declaration for the LowPowerAudioSink.
 
+**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **Since**: 20
 
 **Related module**: [LowPowerAudioSink](capi-lowpoweraudiosink.md)

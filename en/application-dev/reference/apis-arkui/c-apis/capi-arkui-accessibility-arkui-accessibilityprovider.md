@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityProvider ArkUI_AccessibilityProvider
 
 Defines a struct for the local provider of accessibility.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)

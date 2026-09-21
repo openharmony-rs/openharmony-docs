@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeCustomEvent ArkUI_NodeCustomEvent
 
 Defines the general structure of a custom component event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
 
 Defines a render node clipping option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

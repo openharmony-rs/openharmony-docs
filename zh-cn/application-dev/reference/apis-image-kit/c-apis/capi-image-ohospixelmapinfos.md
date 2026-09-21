@@ -8,6 +8,8 @@ typedef struct OhosPixelMapInfos {...} OhosPixelMapInfos
 
 用于描述PixelMap的基本属性信息，包括图片宽高、内存行字节数和像素格式。<br> 开发者在调用PixelMap属性查询相关接口时，可通过该结构体获取PixelMap的宽、高、行字节数及像素格式等信息， 便于统一读取和管理图片属性。适用于需要查询并使用PixelMap属性信息的场景。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)

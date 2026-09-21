@@ -8,6 +8,8 @@ typedef struct Camera_CaptureStartInfo {...} Camera_CaptureStartInfo
 
 拍照开始信息。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

@@ -8,6 +8,8 @@ typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 
 其他特殊事件属性数组，用于存储HID设备支持的特殊事件信息。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)

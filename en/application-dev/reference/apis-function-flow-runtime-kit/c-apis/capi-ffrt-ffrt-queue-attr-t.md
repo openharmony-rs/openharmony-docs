@@ -8,6 +8,8 @@ typedef struct ffrt_queue_attr_t {...} ffrt_queue_attr_t
 
 Defines the queue attribute structure used to store queue attribute information.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)
@@ -33,5 +35,7 @@ uint32_t storage[(ffrt_queue_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(
 **Description**
 
 Internal storage backing the queue attribute. Do not access directly; use the {@link ffrt_queue_attr_init} and `ffrt_queue_attr_set_*` APIs to manage contents.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 

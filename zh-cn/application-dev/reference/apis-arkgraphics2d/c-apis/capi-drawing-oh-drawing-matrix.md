@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Matrix OH_Drawing_Matrix
 
 定义一个矩阵，用于描述坐标变换。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

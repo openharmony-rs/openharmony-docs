@@ -8,6 +8,8 @@ typedef struct ArkUI_PickerIndicatorStyle ArkUI_PickerIndicatorStyle
 
 Defines the style of the selected item indicator.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

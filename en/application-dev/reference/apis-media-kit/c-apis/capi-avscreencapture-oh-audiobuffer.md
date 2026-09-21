@@ -8,6 +8,8 @@ typedef struct OH_AudioBuffer {...} OH_AudioBuffer
 
 The struct describes the configuration such as the size, type, and timestamp of audio data.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

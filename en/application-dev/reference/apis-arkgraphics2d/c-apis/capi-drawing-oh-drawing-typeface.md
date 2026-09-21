@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Typeface OH_Drawing_Typeface
 
 Defines a struct for a typeface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

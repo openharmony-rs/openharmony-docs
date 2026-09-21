@@ -4,6 +4,8 @@
 
 QoS provides APIs.
 
+**系统能力：** SystemCapability.Resourceschedule.QoS.Core
+
 **起始版本：** 12
 
 ## 文件汇总

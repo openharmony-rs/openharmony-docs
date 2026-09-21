@@ -8,6 +8,8 @@ typedef struct Image_Region Image_Region
 
 Declaration the image region.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

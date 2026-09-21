@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_InquiryRequest {...} ScsiPeripheral_InquiryRequest
 
 Defines the request structure of the **inquiry** command.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

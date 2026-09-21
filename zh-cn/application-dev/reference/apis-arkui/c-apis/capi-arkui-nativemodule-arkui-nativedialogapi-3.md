@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeDialogAPI_3 {...} ArkUI_NativeDialogAPI_3
 
 ArkUI提供的Native侧自定义弹窗接口集合，支持设置边框样式、尺寸、背景效果、键盘避让模式、焦点管理等能力，用于在Native层精细控制自定义弹窗的外观样式和交互行为，适用于需要高度定制化弹窗UI的场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -20,8 +22,8 @@ ArkUI提供的Native侧自定义弹窗接口集合，支持设置边框样式、
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | ArkUI提供的Native侧自定义弹窗接口集合，范围是[ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)。<br>**起始版本：** 19 |
-| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2 | ArkUI提供的Native侧自定义弹窗接口集合，范围是[ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)。<br>**起始版本：** 19 |
+| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | ArkUI提供的Native侧自定义弹窗接口集合，范围是{@link ArkUI_NativeDialogAPI_1}。<br>**起始版本：** 19 |
+| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) nativeDialogAPI2 | ArkUI提供的Native侧自定义弹窗接口集合，范围是{@link ArkUI_NativeDialogAPI_2}。<br>**起始版本：** 19 |
 
 
 ### 成员函数

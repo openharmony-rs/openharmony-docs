@@ -8,6 +8,8 @@ typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
 
 Defines the struct for the memory limit of the application process.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 **Related module**: [HiDebug](capi-hidebug.md)

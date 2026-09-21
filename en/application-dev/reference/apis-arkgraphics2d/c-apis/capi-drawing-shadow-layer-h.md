@@ -18,7 +18,7 @@ This file declares the functions related to the shadow in the drawing module.
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, float y, uint32_t color)](#oh_drawing_shadowlayercreate) | Creates an **OH_Drawing_ShadowLayer** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **blurRadius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned. |
+| [OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, float y, uint32_t color)](#oh_drawing_shadowlayercreate) | Creates an **OH_Drawing_ShadowLayer** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **blurRadius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned. |
 | [void OH_Drawing_ShadowLayerDestroy(OH_Drawing_ShadowLayer* shadowLayer)](#oh_drawing_shadowlayerdestroy) | Destroys an **OH_Drawing_ShadowLayer** object and reclaims the memory occupied by the object. |
 
 ## Function description
@@ -31,7 +31,9 @@ OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, 
 
 **Description**
 
-Creates an **OH_Drawing_ShadowLayer** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **blurRadius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+Creates an **OH_Drawing_ShadowLayer** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **blurRadius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -59,6 +61,8 @@ void OH_Drawing_ShadowLayerDestroy(OH_Drawing_ShadowLayer* shadowLayer)
 **Description**
 
 Destroys an **OH_Drawing_ShadowLayer** object and reclaims the memory occupied by the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 

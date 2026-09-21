@@ -8,6 +8,8 @@ typedef struct ArkUI_TextChangeEvent {...} ArkUI_TextChangeEvent
 
 Defines a hybrid data structure for component events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

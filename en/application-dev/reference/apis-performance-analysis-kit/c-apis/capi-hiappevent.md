@@ -4,6 +4,8 @@
 
 Provides application event logging functions.<br> Provides the event logging function for applications to log the fault, statistical, security, and user behavior events reported during running. Based on event information, you will be able to analyze the running status of applications.
 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
 **Since**: 8
 
 ## Files

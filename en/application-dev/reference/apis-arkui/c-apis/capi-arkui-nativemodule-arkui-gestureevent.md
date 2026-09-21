@@ -8,6 +8,8 @@ typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
 
 Defines a gesture event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

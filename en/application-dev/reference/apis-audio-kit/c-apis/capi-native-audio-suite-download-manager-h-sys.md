@@ -20,30 +20,30 @@ Declare audio download manager related interfaces.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | OH_AudioSuite_DownloadStatusInfo | Define download status information structure.**System API:** This is a system API. |
-| [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | OH_AudioSuite_DownloadStatusInfoArray | Define download status information array structure.**System API:** This is a system API. |
-| [OH_AudioSuite_DownloadManagerStruct(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | OH_AudioSuite_DownloadStatusInfo | Define download status information structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | OH_AudioSuite_DownloadStatusInfoArray | Define download status information array structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadManagerStruct(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
 
 ### Function
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [typedef void (\*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API)](#oh_audiosuite_downloadcallback) | OH_AudioSuite_DownloadCallback | Callback function for download status update.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloadManager)(System API)](#oh_audiosuite_getdownloadmanager) | - | Get the audio download manager handle.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)(System API)](#oh_audiosuite_registerdownloadcallback) | - | Register download status callback.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)(System API)](#oh_audiosuite_unregisterdownloadcallback) | - | Unregister download status callback.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_startdownload) | - | Start downloading a feature.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_pausedownload) | - | Pause downloading a feature.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_canceldownload) | - | Cancel downloading a feature.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_startbackgrounddownload) | - | Start background downloading a feature.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName, OH_AudioSuite_DownloadStatusInfo *status)(System API)](#oh_audiosuite_getdownloadstatus) | - | Get download status of a feature.**System API:** This is a system API. |
-| [int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_uninstallcloudrom) | - | Uninstall a downloaded feature.**System API:** This is a system API. |
+| [typedef void (\*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API)](#oh_audiosuite_downloadcallback) | OH_AudioSuite_DownloadCallback | Callback function for download status update.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloadManager)(System API)](#oh_audiosuite_getdownloadmanager) | - | Get the audio download manager handle.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)(System API)](#oh_audiosuite_registerdownloadcallback) | - | Register download status callback.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *downloadManager, const OH_AudioSuite_DownloadCallback *callback)(System API)](#oh_audiosuite_unregisterdownloadcallback) | - | Unregister download status callback.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_startdownload) | - | Start downloading a feature.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_pausedownload) | - | Pause downloading a feature.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_canceldownload) | - | Cancel downloading a feature.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_startbackgrounddownload) | - | Start background downloading a feature.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName, OH_AudioSuite_DownloadStatusInfo *status)(System API)](#oh_audiosuite_getdownloadstatus) | - | Get download status of a feature.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_uninstallcloudrom) | - | Uninstall a downloaded feature.<br>**System API:** This is a system API. |
 
 ### Variable
 
 | Name | Description |
 | -- | -- |
-| void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API) | Callback function for download status update.<br>**Since**: 26.0.0<br>**System API:** This is a system API.**System API:** This is a system API. |
+| void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoArray *downloadStatusInfoArray)(System API) | Callback function for download status update.<br>**Since**: 26.0.0<br>**System API:** This is a system API. |
 
 ## Function description
 
@@ -57,6 +57,8 @@ typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoA
 
 Callback function for download status update.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -65,7 +67,7 @@ Callback function for download status update.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadStatusInfoArray](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray.md) \*downloadStatusInfoArray | Pointer to array of download status information. |
+| [OH_AudioSuite_DownloadStatusInfoArray](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) \*downloadStatusInfoArray | Pointer to array of download status information. |
 
 ### OH_AudioSuite_GetDownloadManager()
 
@@ -77,6 +79,8 @@ int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloa
 
 Get the audio download manager handle.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -85,7 +89,7 @@ Get the audio download manager handle.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) **downloadManager | Pointer to receive the download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) **downloadManager | Pointer to receive the download manager handle. |
 
 **Returns**:
 
@@ -103,6 +107,8 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 
 Register download status callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -111,7 +117,7 @@ Register download status callback.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | Callback function to receive download status updates. |
 
 **Returns**:
@@ -130,6 +136,8 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 
 Unregister download status callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -138,7 +146,7 @@ Unregister download status callback.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | [const OH_AudioSuite_DownloadCallback](capi-native-audio-suite-download-manager-h.md#oh_audiosuite_downloadcallback) *callback | Callback function to unregister. |
 
 **Returns**:
@@ -157,6 +165,8 @@ int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 Start downloading a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -165,7 +175,7 @@ Start downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to download. |
 
 **Returns**:
@@ -184,6 +194,8 @@ int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 Pause downloading a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -192,7 +204,7 @@ Pause downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to pause. |
 
 **Returns**:
@@ -211,6 +223,8 @@ int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadMana
 
 Cancel downloading a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -219,7 +233,7 @@ Cancel downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to cancel. |
 
 **Returns**:
@@ -238,6 +252,8 @@ int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *dow
 
 Start background downloading a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -246,7 +262,7 @@ Start background downloading a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to download. |
 
 **Returns**:
@@ -265,6 +281,8 @@ int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadM
 
 Get download status of a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -273,9 +291,9 @@ Get download status of a feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature. |
-| [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo.md) *status | Pointer to receive download status information. |
+| [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *status | Pointer to receive download status information. |
 
 **Returns**:
 
@@ -293,6 +311,8 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 
 Uninstall a downloaded feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -301,7 +321,7 @@ Uninstall a downloaded feature.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct.md) *downloadManager | Download manager handle. |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) *downloadManager | Download manager handle. |
 | const char *featureName | Name of the feature to uninstall. |
 
 **Returns**:

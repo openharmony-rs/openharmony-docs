@@ -8,6 +8,8 @@ typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 
 Defines an array of miscellaneous events.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

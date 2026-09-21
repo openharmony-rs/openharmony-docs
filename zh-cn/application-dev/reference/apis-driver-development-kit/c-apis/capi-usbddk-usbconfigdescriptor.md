@@ -8,6 +8,8 @@ typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescri
 
 标准配置描述符，对应USB协议中Standard Configuration Descriptor。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

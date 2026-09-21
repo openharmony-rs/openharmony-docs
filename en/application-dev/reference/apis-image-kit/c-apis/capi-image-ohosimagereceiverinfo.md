@@ -8,6 +8,8 @@ struct OhosImageReceiverInfo {...}
 
 Defines the information about an image receiver.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

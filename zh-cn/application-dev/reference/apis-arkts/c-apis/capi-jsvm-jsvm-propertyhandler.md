@@ -8,6 +8,8 @@ typedef struct JSVM_PropertyHandler {...} JSVM_PropertyHandler
 
 包含将class作为函数进行调用时所触发的回调函数的函数指针和 访问实例对象属性时触发的回调函数的函数指针集。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 **相关模块：** [JSVM](capi-jsvm.md)

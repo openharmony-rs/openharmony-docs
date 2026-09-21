@@ -8,6 +8,8 @@ typedef struct OH_PolarPosition {...} OH_PolarPosition
 
 表示极坐标系（polar coordinate system，也叫球坐标系）中的位置。<br> 极坐标系使用方位角、俯仰角和距离定义对象声源在三维空间中的位置。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Core](capi-core.md)

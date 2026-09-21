@@ -8,6 +8,8 @@ typedef struct OH_AudioStreamInfo {...} OH_AudioStreamInfo
 
 定义音频流信息结构体，用于描述基本音频格式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 19
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Pen OH_Drawing_Pen
 
 定义为画笔，画笔用于描述绘制图形轮廓的样式和颜色。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)

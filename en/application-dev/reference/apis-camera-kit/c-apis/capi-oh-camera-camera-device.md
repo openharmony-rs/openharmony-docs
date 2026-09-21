@@ -8,6 +8,8 @@ typedef struct Camera_Device {...} Camera_Device
 
 The struct describes the camera device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan
 
 用于描述占位符跨度的结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

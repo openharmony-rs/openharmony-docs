@@ -8,6 +8,8 @@ typedef struct OH_VideoProcessing OH_VideoProcessing
 
 定义视频处理对象。 <br>定义一个OH_VideoProcessing空指针，调用{@link OH_VideoProcessing_Create}创建视频处理实例，该指针在创建实例之前必须为空。 用户可以对不同的处理类型创建不同的视频处理实例。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **相关模块：** [VideoProcessing](capi-videoprocessing.md)

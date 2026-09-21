@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderBlurStyleOption ArkUI_RenderBlurStyleOption
 
 Defines a blur style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

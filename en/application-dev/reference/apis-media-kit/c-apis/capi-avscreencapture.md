@@ -4,6 +4,8 @@
 
 Provides APIs of request capability for Screen Capture.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 ## Files

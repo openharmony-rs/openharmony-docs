@@ -46,6 +46,8 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 
 获取相机设备的传感器方向属性。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -70,6 +72,8 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 **描述：**
 
 获取远程设备名称。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 15
 
@@ -96,6 +100,8 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera
 
 获取远程设备类型。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 15
 
 **参数：**
@@ -120,6 +126,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 **描述：**
 
 获取相机设备的等效焦距。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 
@@ -147,6 +155,8 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 
 检查相机设备是否为逻辑摄像头（由一个或多个物理摄像头组成）。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -171,6 +181,8 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 **描述：**
 
 获取组成逻辑摄像头的所有物理摄像头。调用[OH_CameraDevice_DeleteConstituentCameraDevices](capi-camera-device-h.md#oh_cameradevice_deleteconstituentcameradevices)释放组成逻辑摄像头的所有物理摄像头。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 
@@ -198,6 +210,8 @@ Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Dev
 
 删除组成逻辑摄像头的所有物理摄像头。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -224,6 +238,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 
 获取相机镜头的焦距。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -249,6 +265,8 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 
 获取相机设备的最小对焦距离。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -273,6 +291,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 **描述：**
 
 获取相机设备的镜头畸变参数。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 
@@ -300,6 +320,8 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 
 获取相机设备的内参标定参数。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -325,6 +347,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 **描述：**
 
 获取相机传感器的物理尺寸。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 
@@ -352,6 +376,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 
 获取相机传感器的像素阵列大小。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -378,6 +404,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 
 获取相机传感器的滤色阵列排列方式。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 24
 
 **参数：**
@@ -402,6 +430,8 @@ Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device
 **描述：**
 
 获取Car设备相机摄像头的位置。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 

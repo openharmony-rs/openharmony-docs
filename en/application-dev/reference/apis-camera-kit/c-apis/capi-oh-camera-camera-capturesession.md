@@ -8,6 +8,8 @@ typedef struct Camera_CaptureSession Camera_CaptureSession
 
 The struct describes the capture session object.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

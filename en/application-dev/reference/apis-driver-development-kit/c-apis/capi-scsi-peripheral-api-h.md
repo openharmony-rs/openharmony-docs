@@ -46,6 +46,8 @@ int32_t OH_ScsiPeripheral_Init(void)
 
 Initializes the SCSI Peripheral DDK.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -54,7 +56,7 @@ Initializes the SCSI Peripheral DDK.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK initialization fails.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK initialization fails.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails. |
 
 ### OH_ScsiPeripheral_Release()
 
@@ -66,6 +68,8 @@ int32_t OH_ScsiPeripheral_Release(void)
 
 Releases the SCSI Peripheral DDK.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -74,7 +78,7 @@ Releases the SCSI Peripheral DDK.
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails. |
 
 ### OH_ScsiPeripheral_Open()
 
@@ -86,6 +90,8 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 
 Opens the SCSI device specified by **deviceId** and **interfaceIndex**. The **deviceId** can be obtained by shifting the bus number of the USB device left by 32 bits and then performing a bitwise OR operation with the device address. **interfaceIndex** refers to the index of the USB interface to be opened.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -96,13 +102,13 @@ Opens the SCSI device specified by **deviceId** and **interfaceIndex**. The **de
 | -- | -- |
 | uint64_t deviceId | Device ID. |
 | uint8_t interfaceIndex | Interface index for the API of the SCSI device. |
-| ScsiPeripheral_Device **dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
+| ScsiPeripheral_Device **dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev or dev is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND}: No device is found based on the specified deviceId and<br>    interfaceIndex.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev or dev is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_DEVICE_NOT_FOUND](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): No device is found based on the specified deviceId and      interfaceIndex.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_Close()
 
@@ -114,6 +120,8 @@ int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 
 Closes the SCSI device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -122,13 +130,13 @@ Closes the SCSI device.
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device **dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
+| ScsiPeripheral_Device **dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev or dev is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev or dev is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs. |
 
 ### OH_ScsiPeripheral_TestUnitReady()
 
@@ -140,6 +148,8 @@ int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripher
 
 Checks whether the logical unit is ready.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -148,15 +158,15 @@ Checks whether the logical unit is ready.
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_TestUnitReadyRequest *request | Request of the **test unit ready** command. For details, see {@link ScsiPeripheral_TestUnitReadyRequest}. |
-| ScsiPeripheral_Response *response | Response returned by the **test unit ready** command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_TestUnitReadyRequest *request | Request of the **test unit ready** command. For details, see [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md). |
+| ScsiPeripheral_Response *response | Response returned by the **test unit ready** command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, or response is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, or response is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_Inquiry()
 
@@ -168,6 +178,8 @@ int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_Inq
 
 Queries basic information about the SCSI device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -176,16 +188,16 @@ Queries basic information about the SCSI device.
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_InquiryRequest *request | Request of the **inquiry** command. For details, see {@link ScsiPeripheral_InquiryRequest}. |
-| ScsiPeripheral_InquiryInfo *inquiryInfo | Query result returned by the **inquiry** command. For details, see {@link ScsiPeripheral_InquiryInfo}. |
-| ScsiPeripheral_Response *response | Raw response returned by the inquiry command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_InquiryRequest *request | Request of the **inquiry** command. For details, see [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md). |
+| ScsiPeripheral_InquiryInfo *inquiryInfo | Query result returned by the **inquiry** command. For details, see [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md). |
+| ScsiPeripheral_Response *response | Raw response returned by the inquiry command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, inquiryInfo,<br>    inquiryInfo->data, or response is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, inquiryInfo,      inquiryInfo->data, or response is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_ReadCapacity10()
 
@@ -197,6 +209,8 @@ int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeriphe
 
 Obtains the capacity information about the SCSI device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -205,16 +219,16 @@ Obtains the capacity information about the SCSI device.
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_ReadCapacityRequest *request | Request of the **read capacity** command. For details, see {@link ScsiPeripheral_ReadCapacityRequest}. |
-| ScsiPeripheral_CapacityInfo *capacityInfo | Capacity information returned by the **read capacity** command. For details, see {@link ScsiPeripheral_CapacityInfo}. |
-| ScsiPeripheral_Response *response | Original response returned by the **read capacity** command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_ReadCapacityRequest *request | Request of the **read capacity** command. For details, see [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md). |
+| ScsiPeripheral_CapacityInfo *capacityInfo | Capacity information returned by the **read capacity** command. For details, see [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md). |
+| ScsiPeripheral_Response *response | Original response returned by the **read capacity** command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, capacityInfo, or response<br>    is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, capacityInfo, or response      is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_RequestSense()
 
@@ -226,6 +240,8 @@ int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeriphera
 
 Obtains sense data, that is, information returned by the SCSI device to the host to report the device status, error information, and diagnosis information.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -234,15 +250,15 @@ Obtains sense data, that is, information returned by the SCSI device to the host
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_RequestSenseRequest *request | Request of the **Request Sense** command. For details, see {@link ScsiPeripheral_RequestSenseRequest}. |
-| ScsiPeripheral_Response *response | Response returned by the **Request Sense** command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_RequestSenseRequest *request | Request of the **Request Sense** command. For details, see [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md). |
+| ScsiPeripheral_Response *response | Response returned by the **Request Sense** command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, or response is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, or response is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_Read10()
 
@@ -254,6 +270,8 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 
 Reads data from the specified logical block(s).
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -262,15 +280,15 @@ Reads data from the specified logical block(s).
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_IORequest *request | Request of the **read** command. For details, see {@link ScsiPeripheral_IORequest}. |
-| ScsiPeripheral_Response *response | Response returned by the **read** command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_IORequest *request | Request of the **read** command. For details, see [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md). |
+| ScsiPeripheral_Response *response | Response returned by the **read** command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, request->data, or response<br>    is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, request->data, or response      is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_Write10()
 
@@ -282,6 +300,8 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 Writes data to the specified logical block(s) of a device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -290,15 +310,15 @@ Writes data to the specified logical block(s) of a device.
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_IORequest *request | Request of the **write** command. For details, see {@link ScsiPeripheral_IORequest}. |
-| ScsiPeripheral_Response *response | Response returned by the **write** command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_IORequest *request | Request of the **write** command. For details, see [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md). |
+| ScsiPeripheral_Response *response | Response returned by the **write** command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, request->data, or response<br>    is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, request->data, or response      is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_Verify10()
 
@@ -310,6 +330,8 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 
 Verifies the specified logical block(s).
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -318,15 +340,15 @@ Verifies the specified logical block(s).
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_VerifyRequest *request | Request of the **verify** command. For details, see {@link ScsiPeripheral_VerifyRequest}. |
-| ScsiPeripheral_Response *response | Response returned by the **verify** command. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_VerifyRequest *request | Request of the **verify** command. For details, see [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md). |
+| ScsiPeripheral_Response *response | Response returned by the **verify** command. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, or response is null.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, or response is null.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_SendRequestByCdb()
 
@@ -338,6 +360,8 @@ int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPerip
 
 Sends SCSI commands in CDB mode.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -346,15 +370,15 @@ Sends SCSI commands in CDB mode.
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
-| ScsiPeripheral_Request *request | Request. For details, see {@link ScsiPeripheral_Request}. |
-| ScsiPeripheral_Response *response | Response. For details, see {@link ScsiPeripheral_Response}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
+| ScsiPeripheral_Request *request | Request. For details, see [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md). |
+| ScsiPeripheral_Response *response | Response. For details, see [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_NO_PERM}: The permission verification fails.<br>    {@link SCSIPERIPHERAL_DDK_INIT_ERROR}: The DDK is not initialized.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, request, request->data, or response<br>    is null, or request->cdbLength is 0.<br>    {@link SCSIPERIPHERAL_DDK_SERVICE_ERROR}: The communication with the DDK service fails.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails.<br>    {@link SCSIPERIPHERAL_DDK_IO_ERROR}: An I/O error occurs.<br>    {@link SCSIPERIPHERAL_DDK_TIMEOUT}: The transmission times out.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_OPERATION}: The operation is not supported. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_NO_PERM](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The permission verification fails.      [SCSIPERIPHERAL_DDK_INIT_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The DDK is not initialized.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, request, request->data, or response      is null, or request->cdbLength is 0.      [SCSIPERIPHERAL_DDK_SERVICE_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The communication with the DDK service fails.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails.      [SCSIPERIPHERAL_DDK_IO_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): An I/O error occurs.      [SCSIPERIPHERAL_DDK_TIMEOUT](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The transmission times out.      [SCSIPERIPHERAL_DDK_INVALID_OPERATION](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The operation is not supported. |
 
 ### OH_ScsiPeripheral_CreateDeviceMemMap()
 
@@ -366,21 +390,23 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 
 Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap) to destroy a buffer after use.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_Device *dev | Device handle. For details, see {@link ScsiPeripheral_Device}. |
+| ScsiPeripheral_Device *dev | Device handle. For details, see [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md). |
 | size_t size | Buffer size. |
-| ScsiPeripheral_DeviceMemMap **devMmap | Device memory mapping used to return the created buffer to the caller. For details, see {@link ScsiPeripheral_DeviceMemMap}. |
+| ScsiPeripheral_DeviceMemMap **devMmap | Device memory mapping used to return the created buffer to the caller. For details, see [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input dev, devMmap, or devMmap is null.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input dev, devMmap, or devMmap is null.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails. |
 
 ### OH_ScsiPeripheral_DestroyDeviceMemMap()
 
@@ -392,19 +418,21 @@ int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMm
 
 Destroys a buffer. To prevent resource leakage, destroy a buffer in time after use.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| ScsiPeripheral_DeviceMemMap *devMmap | Buffer to be destroyed, which is created by calling [OH_ScsiPeripheral_CreateDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_createdevicememmap). For details, see {@link ScsiPeripheral_DeviceMemMap}. |
+| ScsiPeripheral_DeviceMemMap *devMmap | Buffer to be destroyed, which is created by calling [OH_ScsiPeripheral_CreateDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_createdevicememmap). For details, see [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input devMmap is null.<br>    {@link SCSIPERIPHERAL_DDK_MEMORY_ERROR}: The memory operation fails. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input devMmap is null.      [SCSIPERIPHERAL_DDK_MEMORY_ERROR](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The memory operation fails. |
 
 ### OH_ScsiPeripheral_ParseBasicSenseInfo()
 
@@ -416,6 +444,8 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 
 Parses basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Parameters**:
@@ -424,12 +454,12 @@ Parses basic sense data, including the **Information**, **Command specific infor
 | -- | -- |
 | uint8_t *senseData | Sense data to be parsed. |
 | uint8_t senseDataLen | Length of sense data. |
-| ScsiPeripheral_BasicSenseInfo *senseInfo | Basic sense data after parsing. For details, see {@link ScsiPeripheral_BasicSenseInfo}. |
+| ScsiPeripheral_BasicSenseInfo *senseInfo | Basic sense data after parsing. For details, see [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | {@link SCSIPERIPHERAL_DDK_SUCCESS}: The API call is successful.<br>    {@link SCSIPERIPHERAL_DDK_INVALID_PARAMETER}: The input senseData is not a descriptor or is not of the fixed<br>    format, or senseDataLen is smaller than {@link SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE}<br>    or {@link SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE}. |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The API call is successful.      [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode): The input senseData is not a descriptor or is not of the fixed      format, or senseDataLen is smaller than [SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#宏定义)      or [SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#宏定义). |
 
 

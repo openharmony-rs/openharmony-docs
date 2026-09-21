@@ -51,7 +51,7 @@ Requests a transient task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link ERR_TRANSIENT_TASK_OK} 0 - Success.</li><br>    <li>{@link ERR_TRANSIENT_TASK_INVALID_PARAM} 401 - Invalid parameter.</li><br>    <li>{@link ERR_TRANSIENT_TASK_PARCEL_FAILED} 9800002 - Parcelable failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_TRANSACTION_FAILED} 9800003 - Transact failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SYS_NOT_READY} 9800004 - System service not ready.</li><br>    <li>{@link ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED} 9900001 - uid or pid info verify failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED} 9900002 - Transient task verification failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li>      <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li>      <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li>      <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li>      </ul> |
 
 ### OH_BackgroundTaskManager_GetRemainingDelayTime()
 
@@ -78,7 +78,7 @@ Obtains the remaining time of a transient task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link ERR_TRANSIENT_TASK_OK} 0 - Success.</li><br>    <li>{@link ERR_TRANSIENT_TASK_INVALID_PARAM} 401 - Invalid parameter.</li><br>    <li>{@link ERR_TRANSIENT_TASK_PARCEL_FAILED} 9800002 - Parcelable failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_TRANSACTION_FAILED} 9800003 - Transact failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SYS_NOT_READY} 9800004 - System service not ready.</li><br>    <li>{@link ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED} 9900001 - uid or pid info verify failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED} 9900002 - Transient task verification failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li>      <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li>      <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li>      <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li>      </ul> |
 
 ### OH_BackgroundTaskManager_CancelSuspendDelay()
 
@@ -104,7 +104,7 @@ Cancels a transient task.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link ERR_TRANSIENT_TASK_OK} 0 - Success.</li><br>    <li>{@link ERR_TRANSIENT_TASK_INVALID_PARAM} 401 - Invalid parameter.</li><br>    <li>{@link ERR_TRANSIENT_TASK_PARCEL_FAILED} 9800002 - Parcelable failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_TRANSACTION_FAILED} 9800003 - Transact failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SYS_NOT_READY} 9800004 - System service not ready.</li><br>    <li>{@link ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED} 9900001 - uid or pid info verify failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED} 9900002 - Transient task verification failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_INVALID_PARAM](capi-transient-task-type-h.md#transienttask_errorcode) 401 - Invalid parameter.</li>      <li>[ERR_TRANSIENT_TASK_PARCEL_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800002 - Parcelable failed.</li>      <li>[ERR_TRANSIENT_TASK_TRANSACTION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9800003 - Transact failed.</li>      <li>[ERR_TRANSIENT_TASK_SYS_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9800004 - System service not ready.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900002 - Transient task verification failed.</li>      </ul> |
 
 ### OH_BackgroundTaskManager_GetTransientTaskInfo()
 
@@ -116,18 +116,20 @@ int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTas
 
 Obtains all information about a transient task, including the remaining quota of the current day.
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| TransientTask_TransientTaskInfo *transientTaskInfo | All information about a transient task. For details, see {@link TransientTask_TransientTaskInfo}. |
+| TransientTask_TransientTaskInfo *transientTaskInfo | All information about a transient task. For details, see [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul><li>{@link ERR_TRANSIENT_TASK_OK} 0 - Success.</li><br>    <li>{@link ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED} 9900001 - uid or pid info verify failed.</li><br>    <li>{@link ERR_TRANSIENT_TASK_PARCELABLE_FAILED} 9900003 - Failed to write data into parcel.</li><br>    <li>{@link ERR_TRANSIENT_TASK_SERVICE_NOT_READY} 9900004 - System service operation failed.</li>      </ul> |
+| int32_t | <ul><li>[ERR_TRANSIENT_TASK_OK](capi-transient-task-type-h.md#transienttask_errorcode) 0 - Success.</li>      <li>[ERR_TRANSIENT_TASK_CLIENT_INFO_VERIFICATION_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900001 - uid or pid info verify failed.</li>      <li>[ERR_TRANSIENT_TASK_PARCELABLE_FAILED](capi-transient-task-type-h.md#transienttask_errorcode) 9900003 - Failed to write data into parcel.</li>      <li>[ERR_TRANSIENT_TASK_SERVICE_NOT_READY](capi-transient-task-type-h.md#transienttask_errorcode) 9900004 - System service operation failed.</li>      </ul> |
 
 

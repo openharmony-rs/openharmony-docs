@@ -10,7 +10,7 @@ Declares the C APIs for USB device management.
 
 **System capability**: SystemCapability.USB.USBManager
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Related module**: [UsbManager](capi-usbmanager.md)
 
@@ -20,9 +20,9 @@ Declares the C APIs for USB device management.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | OH_UsbManager_UsbEndpoint | Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md). |
-| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | OH_UsbManager_UsbInterface | Defines a USB interface. One [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) can contain <br>multiple OH_UsbManager_UsbInterface instances, each providing a specific function. |
-| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | OH_UsbManager_UsbConfig | Defines a USB configuration. One [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) can contain multiple <br>**OH_UsbManager_UsbConfig** instances. |
+| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | OH_UsbManager_UsbEndpoint | Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from {@link OH_UsbManager_UsbInterface}. |
+| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | OH_UsbManager_UsbInterface | Defines a USB interface. One {@link OH_UsbManager_UsbConfig} can contain <br>multiple OH_UsbManager_UsbInterface instances, each providing a specific function. |
+| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | OH_UsbManager_UsbConfig | Defines a USB configuration. One {@link OH_UsbManager_UsbDevice} can contain multiple <br>**OH_UsbManager_UsbConfig** instances. |
 | [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | OH_UsbManager_UsbDevice | Defines a flat representation of a USB device. |
 | [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | OH_UsbManager_UsbPipe | Defines the USB device pipe used to communicate with an opened device. |
 
@@ -50,7 +50,7 @@ Declares the C APIs for USB device management.
 
 | Name | Description |
 | -- | -- |
-| void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext) | Defines the callback type used to return the result of <br>[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission).<br>**Since**: 26.1.0 |
+| void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext) | Defines the callback type used to return the result of <br>[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission).<br>**Since**: 26.0.1 |
 
 ## Enum type description
 
@@ -64,17 +64,19 @@ enum OH_UsbManager_ErrorCode
 
 Enumerates the USB Manager error codes.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 | Enum item | Description |
 | -- | -- |
-| OH_USBMANAGER_SUCCESS = 0 | Operation successful.<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | Permission denied.<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | Service exception.<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | No such device (it may have been disconnected).<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | Insufficient memory.<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | Transmission I/O error.<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | Invalid parameter. A null pointer is passed for a parameter that must not be null.<br>**Since**: 26.1.0 |
+| OH_USBMANAGER_SUCCESS = 0 | Operation successful.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_ERROR_PERMISSION_DENIED = 14400001 | Permission denied.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_ERROR_SERVICE_EXCEPTION = 14400004 | Service exception.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_ERROR_NO_DEVICE = 14400008 | No such device (it may have been disconnected).<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_ERROR_NO_MEMORY = 14400009 | Insufficient memory.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_ERROR_IO_ERROR = 14400012 | Transmission I/O error.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_ERROR_INVALID_PARAMETER = 14400014 | Invalid parameter. A null pointer is passed for a parameter that must not be null.<br>**Since**: 26.0.1 |
 
 ### OH_UsbManager_RequestDirection
 
@@ -86,12 +88,14 @@ enum OH_UsbManager_RequestDirection
 
 Enumerates USB request directions.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 | Enum item | Description |
 | -- | -- |
-| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | Request for writing data from the host to the device.<br>**Since**: 26.1.0 |
-| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | Request for reading data from the device to the host.<br>**Since**: 26.1.0 |
+| OH_USBMANAGER_REQUEST_DIR_TO_DEVICE = 0 | Request for writing data from the host to the device.<br>**Since**: 26.0.1 |
+| OH_USBMANAGER_REQUEST_DIR_FROM_DEVICE = 0x80 | Request for reading data from the device to the host.<br>**Since**: 26.0.1 |
 
 
 ## Function description
@@ -106,7 +110,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 
 Obtains the list of all connected USB devices. The caller must release the <br>returned array by calling [OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist).
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -131,7 +137,9 @@ void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t 
 
 Frees a device array previously returned by [OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist).<br> <br>After this call, the pointer is invalid and must not be used. Passing null or a <br>count of 0 is a safe no-op.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -150,7 +158,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 
 Connects to a USB device and opens a pipe for communication. The returned pipe must be closed by calling <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe) to avoid resource leaks.<br> <br>Only the **busNum** and **devAddress** fields in the device structure are required. Other fields are ignored.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -175,7 +185,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 
 Checks whether the application has permission to access the specified device.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -200,7 +212,9 @@ typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCo
 
 Defines the callback type used to return the result of <br>[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission).
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -220,7 +234,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 
 Requests permission to access the specified USB device asynchronously. <br>This may trigger a system dialog asking the user for permission. The function <br>returns immediately and the result is delivered via the callback.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -246,7 +262,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 Obtains the file descriptor for the opened USB device pipe. The fd can be <br>used for low-level ioctl-based USB transfers.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -271,7 +289,9 @@ OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pip
 
 Closes the USB device pipe and releases the underlying resources. <br>The pipe must be obtained from [OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice).
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.USB.USBManager
+
+**Since**: 26.0.1
 
 **Parameters**:
 

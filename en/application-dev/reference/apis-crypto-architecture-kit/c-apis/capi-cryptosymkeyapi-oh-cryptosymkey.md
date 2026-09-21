@@ -8,6 +8,8 @@ typedef struct OH_CryptoSymKey OH_CryptoSymKey
 
 Symmetric key structure, representing a symmetric key.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoSymKeyApi](capi-cryptosymkeyapi.md)

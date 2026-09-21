@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo
 
 定义音频配件的基本信息。<br> <b>版本控制：</b>调用方在将此结构体传递给框架之前，必须将structSize设置为sizeof(OH_AudioAccessoryInfo)。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

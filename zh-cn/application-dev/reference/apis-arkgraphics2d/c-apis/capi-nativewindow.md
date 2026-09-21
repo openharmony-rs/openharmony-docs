@@ -4,6 +4,8 @@
 
 提供NativeWindow功能，作为数据生产者，可用来和egl对接。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 ## 文件汇总

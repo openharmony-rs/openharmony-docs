@@ -8,6 +8,8 @@ typedef struct Print_Margin {...} Print_Margin
 
 Defines a struct for the page margin to print.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

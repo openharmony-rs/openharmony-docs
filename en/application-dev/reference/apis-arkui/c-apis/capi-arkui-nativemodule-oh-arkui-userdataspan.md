@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_UserDataSpan OH_ArkUI_UserDataSpan
 
 ## Overview
 
-Defines a user data span style.<br> [OH_ArkUI_UserDataSpan_Create](capi-styled-string-h.md#oh_arkui_userdataspan_create) can be used to create a user data span style object.<br> [OH_ArkUI_UserDataSpan_Destroy](capi-styled-string-h.md#oh_arkui_userdataspan_destroy) can be used to destroy the user data span style object.<br> After the object is created, [OH_ArkUI_UserDataSpan_SetUserData](capi-styled-string-h.md#oh_arkui_userdataspan_setuserdata) can be used to bind user data.
+Defines a user data span style.<br> {@link OH_ArkUI_UserDataSpan_Create} can be used to create a user<br>data span style object.<br> {@link OH_ArkUI_UserDataSpan_Destroy} can be used to destroy the user data span<br>style object.<br> After the object is created, {@link OH_ArkUI_UserDataSpan_SetUserData} can be used to bind user data.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

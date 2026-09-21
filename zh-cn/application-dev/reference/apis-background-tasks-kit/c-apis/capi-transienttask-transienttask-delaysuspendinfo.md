@@ -8,6 +8,8 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 
 定义短时任务返回信息结构体。用于返回当前短时任务的任务ID和剩余时间。
 
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **起始版本：** 13
 
 **相关模块：** [TransientTask](capi-transienttask.md)

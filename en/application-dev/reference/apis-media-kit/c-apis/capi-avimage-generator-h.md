@@ -72,7 +72,7 @@ Sets a data source based on the media file descriptor.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Function result code.  {@link AV_ERR_OK}: the execution is successful.<br>{@link AV_ERR_INVALID_VAL}: input generator is nullptr or input param is invalid.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: operation not allowed.<br>{@link AV_ERR_NO_MEMORY}: internal memory allocation failed. |
+| OH_AVErrCode | Function result code.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input generator is nullptr or input param is invalid.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed.  [AV_ERR_NO_MEMORY](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. |
 
 ### OH_AVImageGenerator_FetchFrameByTime()
 
@@ -99,7 +99,7 @@ Extracts a video frame at a given time from a video.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Function result code.  {@link AV_ERR_OK}: the execution is successful.<br>{@link AV_ERR_INVALID_VAL}: input generator is nullptr or input param is invalid.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: operation not allowed.<br>{@link AV_ERR_UNSUPPORTED_FORMAT}: format is unsupported.<br>{@link AV_ERR_NO_MEMORY}: internal memory allocation failed. |
+| OH_AVErrCode | Function result code.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input generator is nullptr or input param is invalid.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): operation not allowed.  [AV_ERR_UNSUPPORTED_FORMAT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): format is unsupported.  [AV_ERR_NO_MEMORY](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): internal memory allocation failed. |
 
 ### OH_AVImageGenerator_Release()
 
@@ -123,6 +123,6 @@ Releases the resources used by the OH_AVImageGenerator instance and destroys the
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Function result code.  {@link AV_ERR_OK}: the execution is successful.<br>{@link AV_ERR_INVALID_VAL}: input generator is nullptr or input param is invalid. |
+| OH_AVErrCode | Function result code.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): the execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): input generator is nullptr or input param is invalid. |
 
 

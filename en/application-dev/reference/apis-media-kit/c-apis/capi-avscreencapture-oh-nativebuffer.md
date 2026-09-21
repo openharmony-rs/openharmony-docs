@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer OH_NativeBuffer
 
 The struct describes the native video stream class for screen capture.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

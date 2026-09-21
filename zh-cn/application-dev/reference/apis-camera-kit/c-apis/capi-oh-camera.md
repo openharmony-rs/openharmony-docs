@@ -4,6 +4,8 @@
 
 Provide the definition of the C interface for the camera module.
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 ## 文件汇总

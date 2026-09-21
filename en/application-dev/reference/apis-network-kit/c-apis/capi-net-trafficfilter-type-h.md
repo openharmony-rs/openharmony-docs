@@ -27,9 +27,9 @@ Declares the common types and error codes required for network traffic filtering
 | [OH_TrafficFilter_PortRange](capi-trafficfilter-oh-trafficfilter-portrange.md) | OH_TrafficFilter_PortRange | Port match value for range match |
 | [OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md) | OH_TrafficFilter_PortMulti | Port match value for multi-port match |
 | [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md) | OH_TrafficFilter_PortMatch | Port match condition |
-| [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) | OH_TrafficFilter_ConnectionInfo | Connection information structure<br> Describes five-tuple connection information used to query process information.<br> Initialization rule: Before calling {@link OH_TrafficFilter_QueryProcess}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_ConnectionInfo).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which fields can be safely read.<br>If {@link size} is smaller than the minimum size required by the current API, the function<br>returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If {@link size} is larger than the size known by the library, the extra fields are ignored. Newly added fields in future versions should remain zero-initialized when not used. |
-| [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | OH_TrafficFilter_ProcessInfo | Process information structure.<br> Stores process information returned by {@link OH_TrafficFilter_QueryProcess}.<br>Initialization rule:<br>Before calling {@link OH_TrafficFilter_QueryProcess}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_ProcessInfo).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which output fields can be safely written.<br>Only fields fully covered by {@link size} are written by the library. If {@link size} is<br>smaller than the minimum size required to read the {@link size} field itself, the function<br>returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If {@link size} is larger than the<br>size known by the library, the extra fields are ignored.<br>Output validity rule:<br>When {@link OH_TrafficFilter_QueryProcess} returns [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode), fields<br>covered by {@link size} contain valid output values. When the function returns an error,<br>the caller must not rely on the values of output fields other than {@link size}. |
-| [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | OH_TrafficFilter_RedirectRule | Traffic redirection rule.<br> Defines a TCP traffic redirection rule to redirect matched traffic to the specified proxy server.<br> Initialization rule: Before calling {@link OH_TrafficFilter_AddRedirectRule}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_RedirectRule).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which fields can be safely read.<br>If {@link size} is smaller than the minimum size required by the current API, the function<br>returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). If {@link size} is larger than the<br>size known by the library, the extra fields are ignored. Newly added fields in future<br>versions should remain zero-initialized when not used.<br>Failure rule:<br>If {@link OH_TrafficFilter_AddRedirectRule} returns an error, the rule is not guaranteed to be added or applied. The caller should check the return value before assuming that the rule takes effect. |
+| [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md) | OH_TrafficFilter_ConnectionInfo | Connection information structure<br> Describes five-tuple connection information used to query process information.<br> Initialization rule: Before calling {@link OH_TrafficFilter_QueryProcess}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_ConnectionInfo).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which fields can be safely read.<br>If {@link size} is smaller than the minimum size required by the current API, the function<br>returns {@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}. If {@link size} is larger than the size known by the library, the extra fields are ignored. Newly added fields in future versions should remain zero-initialized when not used. |
+| [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md) | OH_TrafficFilter_ProcessInfo | Process information structure.<br> Stores process information returned by {@link OH_TrafficFilter_QueryProcess}.<br>Initialization rule:<br>Before calling {@link OH_TrafficFilter_QueryProcess}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_ProcessInfo).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which output fields can be safely written.<br>Only fields fully covered by {@link size} are written by the library. If {@link size} is<br>smaller than the minimum size required to read the {@link size} field itself, the function<br>returns {@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}. If {@link size} is larger than the<br>size known by the library, the extra fields are ignored.<br>Output validity rule:<br>When {@link OH_TrafficFilter_QueryProcess} returns {@link OH_TRAFFICFILTER_OK}, fields<br>covered by {@link size} contain valid output values. When the function returns an error,<br>the caller must not rely on the values of output fields other than {@link size}. |
+| [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md) | OH_TrafficFilter_RedirectRule | Traffic redirection rule.<br> Defines a TCP traffic redirection rule to redirect matched traffic to the specified proxy server.<br> Initialization rule: Before calling {@link OH_TrafficFilter_AddRedirectRule}, the caller must clear this structure<br>to zero, for example by using memset, and then set {@link size} to the actual size of the<br>structure allocated by the caller, usually sizeof(OH_TrafficFilter_RedirectRule).<br>ABI compatibility rule:<br>The library uses {@link size} to determine which fields can be safely read.<br>If {@link size} is smaller than the minimum size required by the current API, the function<br>returns {@link OH_TRAFFICFILTER_ERROR_INVALID_PARAM}. If {@link size} is larger than the<br>size known by the library, the extra fields are ignored. Newly added fields in future<br>versions should remain zero-initialized when not used.<br>Failure rule:<br>If {@link OH_TrafficFilter_AddRedirectRule} returns an error, the rule is not guaranteed to be added or applied. The caller should check the return value before assuming that the rule takes effect. |
 | [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md) | OH_TrafficFilter_PacketDesc | Packet descriptor<br> Contains five-tuple information and packet data |
 | [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md) | OH_TrafficFilter_Config | NFQueue configuration structure - If `config` is **NULL**, the implementation applies the following default values: - `packetCopyLen` = 0xFFFF (copy entire packet) - `nfqueueMaxlen` = 0 (use system default, which is 1024) - `nfqueueFlags` = OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN - If `config` is **non-NULL**, the caller **must**: 1. Zero-initialize the entire structure (e.g., `memset(&cfg, 0, sizeof(cfg))`). 2. Set `size` = `sizeof(OH_TrafficFilter_Config)`. 3. Set all other fields to valid values within the defined ranges (see below). - **Failure** to follow this contract (e.g., incorrect `size`, out-of-range field values) will cause the API to return `OH_TRAFFICFILTER_ERROR_INVALID_PARAM`. |
 | [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md) | OH_TrafficFilter_MACMatch | MAC address match condition<br> Matches packets based on MAC address Only source MAC is supported |
@@ -63,7 +63,7 @@ Declares the common types and error codes required for network traffic filtering
 | OH_TRAFFICFILTER_DEFAULT_COPY_LEN    0xFFFF | Default length of the copied NFQueue packet, in bytes. If the value is **0xFFFF**, the entire packet is copied; if a smaller value, such as **128**, is used, only the packet header is copied.<br>**Since**: 26.0.0 |
 | OH_TRAFFICFILTER_DEFAULT_QUEUE_MAXLEN  1024 | Default maximum length of the NFQueue queue (number of packets).<br>**Since**: 26.0.0 |
 | OH_TRAFFICFILTER_NFQUEUE_FLAG_FAIL_OPEN  0x1 | NFQueue queue flag: FAIL-OPEN mode. When a user-mode process crashes, the kernel automatically allows packets to pass to avoid network interruption.<br>**Since**: 26.0.0 |
-| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | Maximum length of MAC address string (XX:XX:XX:XX:XX:XX)<br>**Since**: 26.1.0 |
+| OH_TRAFFICFILTER_MAC_ADDRSTRLEN       18 | Maximum length of MAC address string (XX:XX:XX:XX:XX:XX)<br>**Since**: 26.0.1 |
 | OH_TRAFFICFILTER_MIN_PRIORITY        1 | Minimum priority.<br>**Since**: 26.0.0 |
 | OH_TRAFFICFILTER_MAX_PRIORITY        10000 | Maximum priority.<br>**Since**: 26.0.0 |
 | OH_TRAFFICFILTER_MIN_GROUP_ID        1 | Minimum group ID value.<br>**Since**: 26.0.0 |
@@ -85,7 +85,7 @@ Declares the common types and error codes required for network traffic filtering
 
 | Name | Description |
 | -- | -- |
-| OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)( const OH_TrafficFilter_PacketDesc* packet, void* userData ) | Packet callback function type<br>**Since**: 26.1.0 |
+| OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)( const OH_TrafficFilter_PacketDesc* packet, void* userData ) | Packet callback function type<br>**Since**: 26.0.1 |
 
 ## Enum type description
 
@@ -98,6 +98,8 @@ enum OH_TrafficFilter_ErrCode
 **Description**
 
 Defines the error codes for traffic filtering and redirection.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 
@@ -122,6 +124,8 @@ enum OH_TrafficFilter_IPMatchType
 
 Defines an IP match type.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -142,6 +146,8 @@ enum OH_TrafficFilter_IPFamily
 
 Defines an IP address family.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -159,6 +165,8 @@ enum OH_TrafficFilter_PortMatchType
 **Description**
 
 Defines a port match type.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 
@@ -178,6 +186,8 @@ enum OH_TrafficFilter_HookPoint
 **Description**
 
 Enumerates the hook points, specifying where the rule takes effect in the network protocol stack. As packets pass through the kernel network protocol stack, hook points are triggered at different stages, and the rule intercepts packets at the corresponding hook points. For example, the INPUT chain processes packets entering the local device, and the OUTPUT chain processes packets sent from the local device.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 
@@ -199,12 +209,14 @@ enum OH_TrafficFilter_PacketDecision
 
 Packet decision type
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
+**Since**: 26.0.1
 
 | Enum item | Description |
 | -- | -- |
-| OH_TRAFFICFILTER_DECISION_ACCEPT = 0 | Accept packet<br>**Since**: 26.1.0 |
-| OH_TRAFFICFILTER_DECISION_DROP | Drop packet<br>**Since**: 26.1.0 |
+| OH_TRAFFICFILTER_DECISION_ACCEPT = 0 | Accept packet<br>**Since**: 26.0.1 |
+| OH_TRAFFICFILTER_DECISION_DROP | Drop packet<br>**Since**: 26.0.1 |
 
 ### OH_TrafficFilter_PacketCopyMode
 
@@ -216,14 +228,16 @@ enum OH_TrafficFilter_PacketCopyMode
 
 Packet copy mode enumeration
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
+**Since**: 26.0.1
 
 | Enum item | Description |
 | -- | -- |
-| OH_TRAFFICFILTER_COPY_MODE_META = 0 | Copy only metadata (no packet data)<br>**Since**: 26.1.0 |
-| OH_TRAFFICFILTER_COPY_MODE_HEADER = 1 | Copy packet header only (specified by packetCopyLen)<br>**Since**: 26.1.0 |
-| OH_TRAFFICFILTER_COPY_MODE_FULL = 2 | Copy entire packet<br>**Since**: 26.1.0 |
-| OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3 | Copy packet with specified maximum length<br>**Since**: 26.1.0 |
+| OH_TRAFFICFILTER_COPY_MODE_META = 0 | Copy only metadata (no packet data)<br>**Since**: 26.0.1 |
+| OH_TRAFFICFILTER_COPY_MODE_HEADER = 1 | Copy packet header only (specified by packetCopyLen)<br>**Since**: 26.0.1 |
+| OH_TRAFFICFILTER_COPY_MODE_FULL = 2 | Copy entire packet<br>**Since**: 26.0.1 |
+| OH_TRAFFICFILTER_COPY_MODE_MAXLEN = 3 | Copy packet with specified maximum length<br>**Since**: 26.0.1 |
 
 
 ## Function description
@@ -238,7 +252,9 @@ typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const
 
 Packet callback function type
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
+**Since**: 26.0.1
 
 **Parameters**:
 

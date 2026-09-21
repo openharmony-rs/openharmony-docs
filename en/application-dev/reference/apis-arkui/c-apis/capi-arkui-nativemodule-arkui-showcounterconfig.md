@@ -8,6 +8,8 @@ typedef struct ArkUI_ShowCounterConfig ArkUI_ShowCounterConfig
 
 Defines the textField's counter configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

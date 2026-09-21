@@ -8,6 +8,8 @@ typedef struct OH_CryptoAsymKeyGenerator OH_CryptoAsymKeyGenerator
 
 非对称密钥生成器结构体，表示非对称密钥生成器。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

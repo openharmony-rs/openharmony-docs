@@ -34,6 +34,8 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 
 Controls the vibrator to vibrate continuously for a given duration.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Required permission**: ohos.permission.VIBRATE
 
 **Since**: 11
@@ -49,7 +51,7 @@ Controls the vibrator to vibrate continuously for a given duration.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns a non-zero value otherwise.  For details, see {@link Vibrator_ErrorCode}. |
+| int32_t | Returns 0 if the operation is successful; returns a non-zero value otherwise.  For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode). |
 
 ### OH_Vibrator_PlayVibrationCustom()
 
@@ -61,6 +63,8 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 Configure the vibrator to vibrate with the custom sequence.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Required permission**: ohos.permission.VIBRATE
 
 **Since**: 11
@@ -69,14 +73,14 @@ Configure the vibrator to vibrate with the custom sequence.
 
 | Parameter | Description |
 | -- | -- |
-| Vibrator_FileDescription fileDescription | File descriptor of the custom vibration effect. For details, see {@link Vibrator_FileDescription}. |
-| Vibrator_Attribute vibrateAttribute | Vibration attribute. For details, see {@link Vibrator_Attribute}. |
+| Vibrator_FileDescription fileDescription | File descriptor of the custom vibration effect. For details, see [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md). |
+| Vibrator_Attribute vibrateAttribute | Vibration attribute. For details, see [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns a non-zero value otherwise.  For details, see {@link Vibrator_ErrorCode}. |
+| int32_t | Returns 0 if the operation is successful; returns a non-zero value otherwise.  For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode). |
 
 ### OH_Vibrator_Cancel()
 
@@ -88,6 +92,8 @@ int32_t OH_Vibrator_Cancel()
 
 Stops the vibration.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Required permission**: ohos.permission.VIBRATE
 
 **Since**: 11
@@ -96,6 +102,6 @@ Stops the vibration.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns 0 if the operation is successful; returns a non-zero value otherwise.  For details, see {@link Vibrator_ErrorCode}. |
+| int32_t | Returns 0 if the operation is successful; returns a non-zero value otherwise.  For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode). |
 
 

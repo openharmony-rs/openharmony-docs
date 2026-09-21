@@ -6,7 +6,9 @@ typedef struct OH_Drawing_TypographyCreate OH_Drawing_TypographyCreate
 
 ## 概述
 
-用于创建[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)。
+用于创建{@link OH_Drawing_Typography}。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 

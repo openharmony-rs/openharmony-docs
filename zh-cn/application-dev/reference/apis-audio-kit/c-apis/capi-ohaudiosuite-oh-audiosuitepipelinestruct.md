@@ -8,6 +8,8 @@ typedef struct OH_AudioSuitePipelineStruct OH_AudioSuitePipeline
 
 声明音频编创管线，用来管理音频编创节点。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

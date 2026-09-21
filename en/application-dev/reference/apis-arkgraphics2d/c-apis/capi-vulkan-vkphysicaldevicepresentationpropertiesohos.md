@@ -8,6 +8,8 @@ typedef struct VkPhysicalDevicePresentationPropertiesOHOS {...} VkPhysicalDevice
 
 move to vk_ohos_native_buffer.h
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 23

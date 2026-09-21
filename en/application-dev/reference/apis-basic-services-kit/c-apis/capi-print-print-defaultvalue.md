@@ -8,6 +8,8 @@ typedef struct Print_DefaultValue {...} Print_DefaultValue
 
 Defines a struct for the default property value.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

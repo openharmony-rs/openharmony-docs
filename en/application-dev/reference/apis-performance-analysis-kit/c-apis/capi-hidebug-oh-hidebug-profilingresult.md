@@ -8,6 +8,8 @@ typedef struct OH_HiDebug_ProfilingResult {...} OH_HiDebug_ProfilingResult
 
 Defines a struct for encapsulating the result of a single resource collection.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 24
 
 **Related module**: [HiDebug](capi-hidebug.md)

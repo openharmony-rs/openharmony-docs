@@ -4,6 +4,8 @@
 
 Provides abilities of windowManager on the native side, such as picture in picture window.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 12
 
 ## Files

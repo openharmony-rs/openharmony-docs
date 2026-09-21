@@ -4,6 +4,8 @@
 
 This module provides the archive operations.
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 26.0.0
 
 ## Files

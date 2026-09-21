@@ -8,6 +8,8 @@ typedef struct OHIPCRemoteStub OHIPCRemoteStub
 
 Defines an IPC remote service object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 **Since**: 12
 
 **Related module**: [OHIPCParcel](capi-ohipcparcel.md)

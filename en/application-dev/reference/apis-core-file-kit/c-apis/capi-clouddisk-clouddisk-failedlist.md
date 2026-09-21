@@ -8,6 +8,8 @@ typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
 
 A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)

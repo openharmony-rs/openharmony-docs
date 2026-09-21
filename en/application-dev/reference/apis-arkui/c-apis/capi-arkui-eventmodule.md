@@ -4,6 +4,8 @@
 
 Declares the UI input event capabilities provided by ArkUI on the native side.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 ## Files

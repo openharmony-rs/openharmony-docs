@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
 
 表示smpte2086静态元数据。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 **相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)

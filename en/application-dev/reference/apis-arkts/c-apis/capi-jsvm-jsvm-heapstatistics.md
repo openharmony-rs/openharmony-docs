@@ -8,6 +8,8 @@ typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics
 
 Heap statisics.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 12
 
 **Related module**: [JSVM](capi-jsvm.md)

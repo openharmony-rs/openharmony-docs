@@ -8,6 +8,8 @@ typedef struct OH_MIDIDeviceStruct OH_MIDIDevice
 
 声明MIDI设备。
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)

@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
 
 Indicates the smpte2086 metadata.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

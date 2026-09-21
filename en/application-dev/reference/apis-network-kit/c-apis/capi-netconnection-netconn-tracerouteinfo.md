@@ -8,6 +8,8 @@ typedef struct NetConn_TraceRouteInfo {...} NetConn_TraceRouteInfo
 
 Defines the trace route information.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 20
 
 **Related module**: [NetConnection](capi-netconnection.md)

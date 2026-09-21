@@ -8,6 +8,8 @@ typedef struct OH_AVMediaSourceLoadingRequest OH_AVMediaSourceLoadingRequest
 
 加载请求对象，用于表示媒体资源的加载请求，应用通过该对象获取所请求资源的位置。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **相关模块：** [AVMediaSource](capi-avmediasource.md)

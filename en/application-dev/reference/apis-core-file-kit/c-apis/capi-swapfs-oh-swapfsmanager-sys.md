@@ -8,6 +8,8 @@ typedef struct OH_SwapfsManager OH_SwapfsManager
 
 The struct is used to perform operations related to swapfs manager.
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.

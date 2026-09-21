@@ -8,6 +8,8 @@ typedef struct ArkUI_ExpectedFrameRateRange {...} ArkUI_ExpectedFrameRateRange
 
 Defines the expected frame rate range of the animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

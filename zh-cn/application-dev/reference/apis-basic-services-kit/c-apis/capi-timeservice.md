@@ -4,6 +4,8 @@
 
 描述TimeService向应用提供时间时区能力。 典型使用场景：应用获取当前系统时区ID，用于时间相关的业务处理。
 
+**系统能力：** SystemCapability.MiscServices.Time
+
 **起始版本：** 12
 
 ## 文件汇总

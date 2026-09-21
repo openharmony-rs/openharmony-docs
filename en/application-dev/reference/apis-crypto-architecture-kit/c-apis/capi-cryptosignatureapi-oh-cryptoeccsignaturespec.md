@@ -8,6 +8,8 @@ typedef struct OH_CryptoEccSignatureSpec OH_CryptoEccSignatureSpec
 
 ECC signature specification structure, representing an ECC signature specification.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoSignatureApi](capi-cryptosignatureapi.md)

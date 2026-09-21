@@ -8,6 +8,8 @@ typedef struct OH_Huks_Result {...} OH_Huks_Result
 
 Defines the returned data, including a status code and related description.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)
@@ -20,7 +22,7 @@ Defines the returned data, including a status code and related description.
 
 | Name | Description |
 | -- | -- |
-| int32_t errorCode | Status code. For details, see [OH_Huks_ErrCode](capi-native-huks-type-h.md#oh_huks_errcode). |
+| int32_t errorCode | Status code. For details, see {@link OH_Huks_ErrCode}. |
 | const char *errorMsg | Description of the status code. |
 | uint8_t *data | Other data. |
 

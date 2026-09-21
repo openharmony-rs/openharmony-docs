@@ -8,6 +8,8 @@ typedef struct OH_AVBuffer OH_AVBuffer
 
 The struct describes a native object for the media memory interface.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Related module**: [Multimedia_Drm](capi-multimedia-drm.md)

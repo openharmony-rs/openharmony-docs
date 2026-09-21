@@ -8,6 +8,8 @@ typedef struct TEE_Attribute {...} TEE_Attribute
 
 Defines an object attribute.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

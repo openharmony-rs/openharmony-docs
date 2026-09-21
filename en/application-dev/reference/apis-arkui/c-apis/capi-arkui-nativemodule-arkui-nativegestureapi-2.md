@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2
 
 Defines a collection of gesture APIs.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 18
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

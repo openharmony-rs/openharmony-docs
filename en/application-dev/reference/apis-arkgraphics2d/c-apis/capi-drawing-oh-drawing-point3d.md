@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Point3D {...} OH_Drawing_Point3D
 
 This struct describes a three-dimensional coordinate point.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

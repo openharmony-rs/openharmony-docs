@@ -8,6 +8,8 @@ typedef struct NetConn_ProbeResultInfo {...} NetConn_ProbeResultInfo
 
 Defines the probe result.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 20
 
 **Related module**: [NetConnection](capi-netconnection.md)

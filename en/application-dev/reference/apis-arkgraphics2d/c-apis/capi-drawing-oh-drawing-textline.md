@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextLine OH_Drawing_TextLine
 
 Defines a struct used to manage text lines.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)

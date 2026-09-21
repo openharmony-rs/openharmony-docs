@@ -20,6 +20,8 @@ typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 \| --- \| --- \|
 \| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) \| 文本输入框配置结构体，TextAvoidInfo作 为其子属性被包含 \|
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **相关模块：** [InputMethod](capi-inputmethod.md)

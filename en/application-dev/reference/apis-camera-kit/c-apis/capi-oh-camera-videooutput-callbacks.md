@@ -8,6 +8,8 @@ typedef struct VideoOutput_Callbacks {...} VideoOutput_Callbacks
 
 The struct describes the callbacks related to video output.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

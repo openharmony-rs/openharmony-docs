@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_GestureStyle OH_ArkUI_GestureStyle
 
 ## Overview
 
-Defines a gesture style. [OH_ArkUI_GestureStyle_Create](capi-styled-string-h.md#oh_arkui_gesturestyle_create) can be used to create a gesture style object. [OH_ArkUI_GestureStyle_Destroy](capi-styled-string-h.md#oh_arkui_gesturestyle_destroy) can be used to destroy the gesture style object.<br> After the object is created, the **OH_ArkUI_GestureStyle_RegisterOnXXXCallback** series APIs can be used to register specific event callbacks. For example, you can use [OH_ArkUI_GestureStyle_RegisterOnClickCallback](capi-styled-string-h.md#oh_arkui_gesturestyle_registeronclickcallback) to register a click event callback.
+Defines a gesture style. {@link OH_ArkUI_GestureStyle_Create} can be used to create a gesture style object.<br>{@link OH_ArkUI_GestureStyle_Destroy} can be used to destroy the gesture style object.<br><br>After the object is created, the **OH_ArkUI_GestureStyle_RegisterOnXXXCallback** series APIs can be used to<br>register specific event callbacks. For example, you can use {@link OH_ArkUI_GestureStyle_RegisterOnClickCallback} to register a click event callback.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

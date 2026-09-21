@@ -8,6 +8,8 @@ typedef struct ArkUI_Vector2AnimatableProperty* ArkUI_Vector2AnimatablePropertyH
 
 Defines an animatable 2D vector property pointer.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

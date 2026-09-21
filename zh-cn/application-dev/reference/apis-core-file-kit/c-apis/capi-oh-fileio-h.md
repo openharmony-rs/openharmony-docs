@@ -34,6 +34,8 @@ fileio模块接口定义，提供获取文件存储位置的native接口，帮�
 
 Obtains the location of a file.
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 12
 
 **参数：**

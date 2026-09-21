@@ -4,6 +4,8 @@
 
 Provides APIs for storing and managing short sensitive data of users, including adding, deleting, updating, and querying the data. The short sensitive data refers to sensitive data shorter than 1024 bytes, including the user passwords (accounts/passwords), token data (application credentials), and critical data in plaintext (bank card numbers).
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 11
 
 ## 文件汇总

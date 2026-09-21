@@ -18,10 +18,10 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) | RawFileDescriptor | 提供rawfile文件描述符信息，包含rawfile的文件描述符、在HAP包中的起始位置和文件长度。<br>通过[OH_ResourceManager_GetRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptordata)获取， 使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata)释放文件描述符资源。 |
-| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) | RawFileDescriptor64 | 提供rawfile文件描述符信息，包含rawfile的文件描述符、在HAP包中的起始位置和文件长度。支持2GB以上的大文件。<br>通过 [OH_ResourceManager_GetRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptor64)获取，使用完后须调用[OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) 释放文件描述符资源。 |
-| [RawFile64](capi-rawfile-rawfile64.md) | - | RawFile64表示一个已打开的rawfile对象，用于访问2GB及以上的大文件。通过{@link OH_ResourceManager_OpenRawFile64}函数获取，使用完后须调用 [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64)关闭并释放。 |
-| [RawFile](capi-rawfile-rawfile.md) | RawFile | RawFile表示一个已打开的rawfile对象。通过{@link OH_ResourceManager_OpenRawFile}函数获取，使用完后须调用 [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)关闭并释放。 |
+| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) | RawFileDescriptor | 提供rawfile文件描述符信息，包含rawfile的文件描述符、在HAP包中的起始位置和文件长度。<br>通过{@link OH_ResourceManager_GetRawFileDescriptorData}获取，<br>使用完后须调用{@link OH_ResourceManager_ReleaseRawFileDescriptorData}释放文件描述符资源。 |
+| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) | RawFileDescriptor64 | 提供rawfile文件描述符信息，包含rawfile的文件描述符、在HAP包中的起始位置和文件长度。支持2GB以上的大文件。<br>通过 {@link OH_ResourceManager_GetRawFileDescriptor64}获取，使用完后须调用{@link OH_ResourceManager_ReleaseRawFileDescriptor64} 释放文件描述符资源。 |
+| [RawFile64](capi-rawfile-rawfile64.md) | - | RawFile64表示一个已打开的rawfile对象，用于访问2GB及以上的大文件。通过{@link OH_ResourceManager_OpenRawFile64}函数获取，使用完后须调用<br>{@link OH_ResourceManager_CloseRawFile64}关闭并释放。 |
+| [RawFile](capi-rawfile-rawfile.md) | RawFile | RawFile表示一个已打开的rawfile对象。通过{@link OH_ResourceManager_OpenRawFile}函数获取，使用完后须调用<br>{@link OH_ResourceManager_CloseRawFile}关闭并释放。 |
 
 ### 宏定义
 
@@ -64,6 +64,8 @@ int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t len
 
 从rawfile文件当前偏移位置读取指定长度的数据，同时偏移位置会跟随指定长度向后移动。如当前偏移位置为[0]，指定长度为10，读取数据后迁移位置为[10]。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **参数：**
@@ -89,6 +91,8 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 **描述：**
 
 基于指定的偏移量和偏移方式，调整rawfile文件的偏移位置。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -116,6 +120,8 @@ long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 
 获取rawfile文件长度，单位为Byte。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **参数：**
@@ -139,6 +145,8 @@ long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 **描述：**
 
 获取rawfile文件从当前偏移位置到文件末尾的剩余长度，单位为Byte。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 11
 
@@ -164,6 +172,8 @@ void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 
 关闭已打开的RawFile对象并释放所有相关资源。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **参数：**
@@ -186,6 +196,8 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 **描述：**
 
 获取rawfile文件当前的偏移位置，单位为Byte。可用于在分段读取过程中跟踪进度，或在调整偏移位置后确认当前偏移位置。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -210,6 +222,8 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 **描述：**
 
 获取rawfile文件描述符信息。获取文件描述符信息后，开发者可调用pread等函数读取rawfile文件。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -240,6 +254,8 @@ bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFile
 
 获取rawfile文件描述符信息。获取文件描述符信息后，开发者可调用pread等函数读取rawfile文件。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -264,6 +280,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descri
 **描述：**
 
 释放rawfile文件描述符资源。释放成功后，descriptor中的fd失效，不可再使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -293,6 +311,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *de
 
 释放rawfile文件描述符资源。释放成功后，descriptor中的fd失效，不可再使用。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -316,6 +336,8 @@ int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, in
 **描述：**
 
 从rawfile文件当前偏移位置读取指定长度的数据，同时偏移位置会跟随指定长度向后移动。如当前偏移位置为[0]，指定长度为10，读取数据后迁移位置为[10]。 <br>支持2GB以上的大文件。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 11
 
@@ -343,6 +365,8 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 基于指定的偏移量和偏移方式，调整rawfile文件的偏移位置。支持2GB以上的大文件。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 11
 
 **参数：**
@@ -369,6 +393,8 @@ int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 
 获取rawfile文件长度，单位为Byte。支持2GB以上的大文件。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 11
 
 **参数：**
@@ -392,6 +418,8 @@ int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 **描述：**
 
 获取rawfile文件从当前偏移位置到文件末尾的剩余长度，单位为Byte。支持2GB以上的大文件。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 11
 
@@ -417,6 +445,8 @@ void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 
 关闭已打开的RawFile64对象并释放所有相关资源。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 11
 
 **参数：**
@@ -439,6 +469,8 @@ int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 **描述：**
 
 获取rawfile文件当前的偏移位置，单位为Byte。可用于在分段读取过程中跟踪进度，或在调整偏移位置后确认当前偏移位置。 <br>支持2GB以上的大文件。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 11
 
@@ -464,6 +496,8 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 
 获取rawfile文件描述符信息。获取文件描述符信息后，开发者可调用pread等函数读取rawfile文件。支持2GB以上的大文件。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 11
 
 **参数：**
@@ -488,6 +522,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *de
 **描述：**
 
 释放rawfile文件描述符资源。释放成功后，descriptor中的fd失效，不可再使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 11
 

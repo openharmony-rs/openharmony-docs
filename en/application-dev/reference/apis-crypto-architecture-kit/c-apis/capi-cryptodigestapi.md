@@ -4,6 +4,8 @@
 
 Describes the digest algorithm interfaces provided by OpenHarmony for applications.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 ## Files

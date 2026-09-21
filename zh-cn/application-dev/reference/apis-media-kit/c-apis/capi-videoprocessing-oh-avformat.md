@@ -8,6 +8,8 @@ typedef struct OH_AVFormat OH_AVFormat
 
 定义OH_AVFormat对象。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **相关模块：** [VideoProcessing](capi-videoprocessing.md)

@@ -8,6 +8,8 @@ typedef struct OH_NNExecutor OH_NNExecutor
 
 执行器句柄。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 **相关模块：** [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

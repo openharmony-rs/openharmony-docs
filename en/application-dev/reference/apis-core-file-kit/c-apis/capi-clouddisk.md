@@ -4,6 +4,8 @@
 
 Provides APIs and error code for managing cloud disks.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 ## Files

@@ -8,6 +8,8 @@ typedef struct ArchiveWriteCtx *OH_Archive_Writer_Ctx
 
 Archive Writer context structure.
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 26.0.0
 
 **Related module**: [Archive](capi-archive.md)

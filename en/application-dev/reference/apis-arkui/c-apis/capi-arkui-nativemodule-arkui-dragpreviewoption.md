@@ -8,6 +8,8 @@ typedef struct ArkUI_DragPreviewOption ArkUI_DragPreviewOption
 
 Defines a struct for custom drag preview options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

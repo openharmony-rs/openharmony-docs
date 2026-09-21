@@ -8,6 +8,8 @@ typedef struct ArkUI_TranslationOptions {...} ArkUI_TranslationOptions
 
 Defines the translation options for component transition.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

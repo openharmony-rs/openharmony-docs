@@ -8,6 +8,8 @@ typedef struct UsbControlRequestSetup {...} __attribute__((aligned(8))) UsbContr
 
 控制传输setup包，对应USB协议中的Setup Data。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

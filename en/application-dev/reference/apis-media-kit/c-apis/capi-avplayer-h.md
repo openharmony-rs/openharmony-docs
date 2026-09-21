@@ -43,7 +43,7 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTime(OH_AVPlayer *player, int32_t *currentTime)](#oh_avplayer_getcurrenttime) | - | Obtains the playback position, in milliseconds. |
 | [OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)](#oh_avplayer_getvideowidth) | - | Obtains the video width. |
 | [OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeight)](#oh_avplayer_getvideoheight) | - | Obtains the video height. |
-| [OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed speed)](#oh_avplayer_setplaybackspeed) | - | Sets the playback speed of the AVPlayer. For details about the playback speed, see {@link AVPlaybackSpeed}. |
+| [OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed speed)](#oh_avplayer_setplaybackspeed) | - | Sets the playback speed of the AVPlayer. For details about the playback speed, see [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed). |
 | [OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *speed)](#oh_avplayer_getplaybackspeed) | - | Obtains the playback speed of an AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_GetPlaybackRate(OH_AVPlayer *player, float *rate)](#oh_avplayer_getplaybackrate) | - | Obtains the playback rate of an AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStream_Usage streamUsage)](#oh_avplayer_setaudiorendererinfo) | - | Sets the audio stream type for an AVPlayer. |
@@ -56,7 +56,7 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)](#oh_avplayer_isplaying) | - | Checks whether an AVPlayer is playing. |
 | [bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)](#oh_avplayer_islooping) | - | Checks whether an AVPlayer is looping. |
 | [OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)](#oh_avplayer_setlooping) | - | Enables loop playback. |
-| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | Sets an AVPlayer callback. The callbacks {@link OH_AVPlayerOnInfo} and {@link OH_AVPlayerOnError} set by using this function can transfer<br>limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer<br>instances.<br>Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](capi-avplayer-h.md#oh_avplayer_setonerrorcallback) are provided to set the callbacks {@link OH_AVPlayerOnInfoCallback}<br>and {@link OH_AVPlayerOnErrorCallback}, respectively.(Deprecated in API12) |
+| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | Sets an AVPlayer callback. The callbacks [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) set by using this function can transfer limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer instances. Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](capi-avplayer-h.md#oh_avplayer_setonerrorcallback) are provided to set the callbacks [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively.(Deprecated in API12) |
 | [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | Selects an audio or subtitle track. By default, the first audio track with data is played, and the subtitle track is not played. After the setting takes effect, the original track becomes invalid. Set the subtitle track to the prepared, playing, paused, or completed state, and set the audio track to the prepared state. |
 | [OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_deselecttrack) | - | Deselects an audio or subtitle track. |
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | Obtains the currently valid track. You can set the track to the prepared, playing, paused, or completed state. |
@@ -68,20 +68,20 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_VolumeMode volumeMode)](#oh_avplayer_setvolumemode) | - | Sets the audio volume mode for an AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)](#oh_avplayer_setplaybackrate) | - | Sets the playback rate of an AVPlayer within the valid range. The supported states are prepared, playing, paused, and completed. |
 | [OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)](#oh_avplayer_setloudnessgain) | - | Sets the loudness of the AVPlayer. This function can be called when the AVPlayer is in the prepared, playing, paused, completed, or stopped state. The default loudness gain is 0.0 dB. The **usage** parameter of the AVPlayer stream must be {@link OH_AudioStream_Usage}.<br>AUDIOSTREAM_USAGE_MUSIC,<br>{@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MOVIE, or {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_AUDIOBOOK.<br>The latency mode of the audio renderer must be {@link OH_AudioStream_LatencyMode}.AUDIOSTREAM_LATENCY_MODE_NORMAL. If the audio is played through the high-resolution pipeline, this operation is not supported. |
-| [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state. Note that you need to manually release the lifecycle of the {@link OH_AVFormat} pointer object. |
+| [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state. Note that you need to manually release the lifecycle of the [OH_AVFormat](capi-core-oh-avformat.md) pointer object. |
 | [OH_AVErrCode OH_AVPlayer_AddFdSubtitleSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_addfdsubtitlesource) | - | Adds the subtitle resource represented by the file descriptor to the player. Currently, the external subtitle must be set after the **fdSrc** of the video resource is set in the AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_AddUrlSubtitleSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_addurlsubtitlesource) | - | Adds the subtitle resource represented by the URL to the player. The external subtitle must be set after the URL is set for the AVPlayer. |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackRange(OH_AVPlayer *player, int32_t mSecondsStart, int32_t mSecondsEnd, bool closestRange)](#oh_avplayer_setplaybackrange) | - | Sets the start and end positions of the playback. After the setting, only the content within the specified range of the audio and video file is played. This API can be called when the player is in the initialized, prepared, paused, stopped, or completed state. |
 | [OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaType, bool muted)](#oh_avplayer_setmediamuted) | - |  |
 | [int32_t OH_AVPlayer_GetPlaybackPosition(OH_AVPlayer *player)](#oh_avplayer_getplaybackposition) | - | Obtains the playback position, in milliseconds. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. |
-| [bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)](#oh_avplayer_isseekcontinuoussupported) | - | Checks whether the media source supports continuous seek. If this API is called when the AVPlayer is in the prepared, playing, paused, or completed state, the actual value is returned. Other, **false** is returned. For devices that do not support the {@link AV_SEEK_CONTINUOUS} mode, **false** is returned. |
+| [bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)](#oh_avplayer_isseekcontinuoussupported) | - | Checks whether the media source supports continuous seek. If this API is called when the AVPlayer is in the prepared, playing, paused, or completed state, the actual value is returned. Other, **false** is returned. For devices that do not support the [AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode) mode, **false** is returned. |
 | [OH_AVErrCode OH_AVPlayer_SelectTrackWithMode(OH_AVPlayer *player, int32_t index, AVPlayerTrackSwitchMode mode)](#oh_avplayer_selecttrackwithmode) | - | Selects a track in the specified switching mode when playing a resource that contains multiple audio and video tracks. |
 | [OH_AVErrCode OH_AVPlayer_SetAmplitudeUpdateCallback(OH_AVPlayer *player, OH_AVPlayerOnAmplitudeUpdateCallback callback, void *userData)](#oh_avplayer_setamplitudeupdatecallback) | - | Subscribes to the maximum audio amplitude update event, which is reported periodically when audio resources are played. |
 | [OH_AVErrCode OH_AVPlayer_SetSeiReceivedCallback(OH_AVPlayer *player, const int32_t *payloadTypes, uint32_t typeNum, OH_AVPlayerOnSeiMessageReceivedCallback callback, void *userData)](#oh_avplayer_setseireceivedcallback) | - | Subscribes to the SEI message reception event. This API applies only to HTTP-FLV live streams and is triggered when an SEI message exists in a video stream. This subscription must be initiated before **prepare** is called. |
 | [uint32_t OH_AVSeiMessage_GetSeiCount(OH_AVSeiMessageArray *message)](#oh_avseimessage_getseicount) | - | Obtains the number of items in the SEI message array. |
 | [OH_AVFormat *OH_AVSeiMessage_GetSei(OH_AVSeiMessageArray *message, uint32_t index)](#oh_avseimessage_getsei) | - | Obtains an SEI message form the SEI message array by index. |
 | [OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t width, int32_t height)](#oh_avplayer_settargetvideowindowsize) | - | Sets the video window size for super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. The input parameter value must be in the range of 320 × 320 to 1920 × 1080 (pixels). |
-| [OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool enabled)](#oh_avplayer_setvideosuperresolutionenable) | - | Dynamically enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. You must enable the super resolution feature in {@link OH_AVPlaybackStrategy} before calling **prepare**. |
+| [OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool enabled)](#oh_avplayer_setvideosuperresolutionenable) | - | Dynamically enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. You must enable the super resolution feature in [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) before calling **prepare**. |
 | [OH_AVPlaybackStrategy *OH_AVPlaybackStrategy_Create(void)](#oh_avplaybackstrategy_create) | - | Creates a playback strategy instance. |
 | [OH_AVErrCode OH_AVPlaybackStrategy_Destroy(OH_AVPlaybackStrategy *strategy)](#oh_avplaybackstrategy_destroy) | - | Releases a playback strategy instance. |
 | [OH_AVErrCode OH_AVPlaybackStrategy_SetPreferredWidth(OH_AVPlaybackStrategy *strategy, int32_t width)](#oh_avplaybackstrategy_setpreferredwidth) | - | Selects a stream with width close to the specified value. |
@@ -175,7 +175,7 @@ Sets the HTTP URL of a media source to be played by an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The setting is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, the input parameter url is null, or the  execution of player SetUrlSource fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, the input parameter url is null, or the  execution of player SetUrlSource fails. |
 
 ### OH_AVPlayer_SetFDSource()
 
@@ -202,7 +202,7 @@ Sets the file descriptor of a media source to be played by an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The file descriptor is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player SetFdSource fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The file descriptor is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player SetFdSource fails. |
 
 ### OH_AVPlayer_SetDataSource()
 
@@ -228,7 +228,7 @@ Sets the media source of the AVPlayer. The data of this media source is provided
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The setting is successful.<br>{@link AV_ERR_INVALID_VAL}: The player or datasrc parameter is nullptr. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The player or datasrc parameter is nullptr. |
 
 ### OH_AVPlayer_Prepare()
 
@@ -252,7 +252,7 @@ Prepares the playback environment and buffers media data. This function must be 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Prepare fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Prepare fails. |
 
 ### OH_AVPlayer_Play()
 
@@ -276,7 +276,7 @@ Starts playback. This function must be called after [OH_AVPlayer_Prepare](capi-a
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Play fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Play fails. |
 
 ### OH_AVPlayer_Pause()
 
@@ -300,7 +300,7 @@ Pauses playback.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Pause fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Pause fails. |
 
 ### OH_AVPlayer_Stop()
 
@@ -324,7 +324,7 @@ Stops playback.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Stop fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Stop fails. |
 
 ### OH_AVPlayer_Reset()
 
@@ -348,7 +348,7 @@ Restores the AVPlayer to the initial state. After the function is called, you ca
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Reset fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Reset fails. |
 
 ### OH_AVPlayer_Release()
 
@@ -372,7 +372,7 @@ Asynchronously releases an OH_AVPlayer instance. The asynchronous function impro
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Release fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Release fails. |
 
 ### OH_AVPlayer_ReleaseSync()
 
@@ -396,7 +396,7 @@ Synchronously releases an OH_AVPlayer instance. The synchronous function ensures
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player ReleaseSync fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player ReleaseSync fails. |
 
 ### OH_AVPlayer_GetMediaDescription()
 
@@ -471,7 +471,7 @@ Sets the volume for an AVPlayer. This function can be used when the AVPlayer is 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The volume is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player SetVolume fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The volume is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player SetVolume fails. |
 
 ### OH_AVPlayer_Seek()
 
@@ -497,7 +497,7 @@ Seeks to a playback position. This function can be used when the AVPlayer is in 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player Seek fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player Seek fails. |
 
 ### OH_AVPlayer_GetCurrentTime()
 
@@ -522,7 +522,7 @@ Obtains the playback position, in milliseconds.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The playback position is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player GetCurrentTime  fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The playback position is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player GetCurrentTime  fails. |
 
 ### OH_AVPlayer_GetVideoWidth()
 
@@ -547,7 +547,7 @@ Obtains the video width.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The video width is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The video width is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr. |
 
 ### OH_AVPlayer_GetVideoHeight()
 
@@ -572,7 +572,7 @@ Obtains the video height.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The video height is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The video height is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr. |
 
 ### OH_AVPlayer_SetPlaybackSpeed()
 
@@ -582,7 +582,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed s
 
 **Description**
 
-Sets the playback speed of the AVPlayer. For details about the playback speed, see {@link AVPlaybackSpeed}.
+Sets the playback speed of the AVPlayer. For details about the playback speed, see [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed).
 
 **Since**: 11
 
@@ -597,7 +597,7 @@ Sets the playback speed of the AVPlayer. For details about the playback speed, s
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The playback speed is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The playback speed is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr. |
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
@@ -622,7 +622,7 @@ Obtains the playback speed of an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The playback rate is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player GetPlaybackSpeed  fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The playback rate is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player GetPlaybackSpeed  fails. |
 
 ### OH_AVPlayer_GetPlaybackRate()
 
@@ -647,7 +647,7 @@ Obtains the playback rate of an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK} if the playback rate of the AVPlayer is successfully obtained.<br>Otherwise, an error code defined in {@link native_averrors.h} is returned. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if the playback rate of the AVPlayer is successfully obtained.  Otherwise, an error code defined in {@link native_averrors.h} is returned. |
 
 ### OH_AVPlayer_SetAudioRendererInfo()
 
@@ -672,7 +672,7 @@ Sets the audio stream type for an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The audio stream type is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr or streamUsage is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The audio stream type is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr or streamUsage is invalid. |
 
 ### OH_AVPlayer_SetAudioInterruptMode()
 
@@ -697,7 +697,7 @@ Sets the audio interruption mode for an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The audio interruption mode is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr or interruptMode is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The audio interruption mode is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr or interruptMode is invalid. |
 
 ### OH_AVPlayer_SetAudioEffectMode()
 
@@ -722,7 +722,7 @@ Sets the audio effect mode for an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The audio effect mode is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr or effectMode is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The audio effect mode is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr or effectMode is invalid. |
 
 ### OH_AVPlayer_SelectBitRate()
 
@@ -747,7 +747,7 @@ Sets the bit rate used by an HLS player. This function is valid only for HLS net
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The bit rate is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player SelectBitRate  fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The bit rate is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player SelectBitRate  fails. |
 
 ### OH_AVPlayer_SetVideoSurface()
 
@@ -772,7 +772,7 @@ Sets a playback window. This function must be called after **SetSource** and bef
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The playback window is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player or window is nullptr, or the execution of player  SetVideoSurface fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The playback window is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player or window is nullptr, or the execution of player  SetVideoSurface fails. |
 
 ### OH_AVPlayer_GetDuration()
 
@@ -797,7 +797,7 @@ Obtains the total duration of a media file, in milliseconds.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The total duration is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player GetDuration fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The total duration is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player GetDuration fails. |
 
 ### OH_AVPlayer_GetState()
 
@@ -822,7 +822,7 @@ Obtains the AVPlayer state.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The AVPlayer state is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player GetState fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The AVPlayer state is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player GetState fails. |
 
 ### OH_AVPlayer_IsPlaying()
 
@@ -895,7 +895,7 @@ Enables loop playback.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: Loop playback is enabled.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player SetLooping fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Loop playback is enabled.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player SetLooping fails. |
 
 ### OH_AVPlayer_SetPlayerCallback()
 
@@ -905,7 +905,7 @@ OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback
 
 **Description**
 
-Sets an AVPlayer callback. The callbacks {@link OH_AVPlayerOnInfo} and {@link OH_AVPlayerOnError} set by using this function can transfer<br>limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer<br>instances.<br>Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](capi-avplayer-h.md#oh_avplayer_setonerrorcallback) are provided to set the callbacks {@link OH_AVPlayerOnInfoCallback}<br>and {@link OH_AVPlayerOnErrorCallback}, respectively.
+Sets an AVPlayer callback. The callbacks [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) set by using this function can transfer limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer instances. Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](capi-avplayer-h.md#oh_avplayer_setonerrorcallback) are provided to set the callbacks [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively.
 
 **Since**: 11
 
@@ -924,7 +924,7 @@ Sets an AVPlayer callback. The callbacks {@link OH_AVPlayerOnInfo} and {@link OH
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The callback is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, the input parameter callback.onInfo or   onError is null, or the execution of player SetPlayerCallback fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The callback is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, the input parameter callback.onInfo or   onError is null, or the execution of player SetPlayerCallback fails. |
 
 ### OH_AVPlayer_SelectTrack()
 
@@ -949,7 +949,7 @@ Selects an audio or subtitle track. By default, the first audio track with data 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player SelectTrack fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player SelectTrack fails. |
 
 ### OH_AVPlayer_DeselectTrack()
 
@@ -974,7 +974,7 @@ Deselects an audio or subtitle track.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player DeselectTrack  fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player DeselectTrack  fails. |
 
 ### OH_AVPlayer_GetCurrentTrack()
 
@@ -1000,7 +1000,7 @@ Obtains the currently valid track. You can set the track to the prepared, playin
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The track is obtained.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of player GetCurrentTrack  fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The track is obtained.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of player GetCurrentTrack  fails. |
 
 ### OH_AVPlayer_SetMediaKeySystemInfoCallback()
 
@@ -1025,7 +1025,7 @@ Sets a callback to return the media key system information for an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player or callback is a null pointer, or the execution of   player SetDrmSystemInfoCallback  SetDrmSystemInfoCallback or SetDrmSystemInfoCallback fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player or callback is a null pointer, or the execution of   player SetDrmSystemInfoCallback  SetDrmSystemInfoCallback or SetDrmSystemInfoCallback fails. |
 
 ### OH_AVPlayer_GetMediaKeySystemInfo()
 
@@ -1050,7 +1050,7 @@ Obtains the media key system information to create a media key session.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the memory is insufficient. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the memory is insufficient. |
 
 ### OH_AVPlayer_SetDecryptionConfig()
 
@@ -1076,7 +1076,7 @@ Sets the decryption information.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or the execution of SetDecryptionConfig fails. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or the execution of SetDecryptionConfig fails. |
 
 ### OH_AVPlayer_SetOnInfoCallback()
 
@@ -1102,7 +1102,7 @@ Sets a callback for the event indicating that the AVPlayer receives a message.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>AV_ERR_NO_MEMORY: Memory allocation fails.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr or the function fails to be executed. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  AV_ERR_NO_MEMORY: Memory allocation fails.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr or the function fails to be executed. |
 
 ### OH_AVPlayer_SetOnErrorCallback()
 
@@ -1128,7 +1128,7 @@ Sets a callback for the event indicating that an error occurs in the AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>AV_ERR_NO_MEMORY: Memory allocation fails.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr or the function fails to be executed. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is successful.  AV_ERR_NO_MEMORY: Memory allocation fails.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr or the function fails to be executed. |
 
 ### OH_AVPlayer_SetVolumeMode()
 
@@ -1153,7 +1153,7 @@ Sets the audio volume mode for an AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The audio volume mode is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr or volumeMode is invalid.<br>AV_ERR_INVALID_STATE: The function is called in an invalid state. It must be in the prepared state.<br>{@link AV_ERR_SERVICE_DIED}: A system error occurs. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The audio volume mode is set successfully.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr or volumeMode is invalid.  AV_ERR_INVALID_STATE: The function is called in an invalid state. It must be in the prepared state.  [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): A system error occurs. |
 
 ### OH_AVPlayer_SetPlaybackRate()
 
@@ -1178,7 +1178,7 @@ Sets the playback rate of an AVPlayer within the valid range. The supported stat
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The playback speed is set successfully.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The function is called when the AVPlayer is not in the allowed state, or it is called<br>during live streaming.<br>{@link AV_ERR_INVALID_VAL}: The input parameter player is nullptr, or rate is out of range. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The playback speed is set successfully.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The function is called when the AVPlayer is not in the allowed state, or it is called  during live streaming.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter player is nullptr, or rate is out of range. |
 
 ### OH_AVPlayer_SetLoudnessGain()
 
@@ -1203,7 +1203,7 @@ Sets the loudness of the AVPlayer. This function can be called when the AVPlayer
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The loudness is set successfully.<br>{@link AV_ERR_INVALID_VAL}: The player parameter is nullptr, or the loudnessGain parameter is invalid.<br>AV_ERR_INVALID_STATE: The function is called in an abnormal state, or the usage parameter of <br>audioRendererInfo is not one of the following:<br>{@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MUSIC,<br>{@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MOVIE,<br>and {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_AUDIOBOOKs.<br>{@link AV_ERR_SERVICE_DIED}: A system error occurs. |
+| OH_AVErrCode | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The loudness is set successfully.<br>[AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The player parameter is nullptr, or the loudnessGain parameter is invalid.<br>AV_ERR_INVALID_STATE: The function is called in an abnormal state, or the usage parameter of <br>audioRendererInfo is not one of the following:<br>{@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MUSIC,<br>{@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_MOVIE,<br>and {@link OH_AudioStream_Usage}.AUDIOSTREAM_USAGE_AUDIOBOOKs.<br>[AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): A system error occurs. |
 
 ### OH_AVPlayer_GetPlaybackStatisticMetrics()
 
@@ -1213,7 +1213,7 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 
 **Description**
 
-Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state. Note that you need to manually release the lifecycle of the {@link OH_AVFormat} pointer object.
+Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state. Note that you need to manually release the lifecycle of the [OH_AVFormat](capi-core-oh-avformat.md) pointer object.
 
 **Since**: 23
 
@@ -1254,7 +1254,7 @@ Adds the subtitle resource represented by the file descriptor to the player. Cur
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer. |
 
 ### OH_AVPlayer_AddUrlSubtitleSource()
 
@@ -1279,7 +1279,7 @@ Adds the subtitle resource represented by the URL to the player. The external su
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer. |
 
 ### OH_AVPlayer_SetPlaybackRange()
 
@@ -1306,7 +1306,7 @@ Sets the start and end positions of the playback. After the setting, only the co
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The operation is not allowed. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. |
 
 ### OH_AVPlayer_SetMediaMuted()
 
@@ -1323,14 +1323,14 @@ OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaTy
 | Parameter | Description |
 | -- | -- |
 | OH_AVPlayer *player | Pointer to the OH_AVPlayer instance. |
-| OH_MediaType mediaType | Media type. For details, see {@link OH_MediaType} in {@link native_avcodec_base.h}. |
+| OH_MediaType mediaType | Media type. For details, see [OH_MediaType](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md#oh_mediatype) in {@link native_avcodec_base.h}. |
 | bool muted | **true** indicates that the audio is muted, and **false** indicates that the audio is unmuted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter is invalid.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The operation is not allowed. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter is invalid.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. |
 
 ### OH_AVPlayer_GetPlaybackPosition()
 
@@ -1364,7 +1364,7 @@ bool OH_AVPlayer_IsSeekContinuousSupported(OH_AVPlayer *player)
 
 **Description**
 
-Checks whether the media source supports continuous seek. If this API is called when the AVPlayer is in the prepared, playing, paused, or completed state, the actual value is returned. Other, **false** is returned. For devices that do not support the {@link AV_SEEK_CONTINUOUS} mode, **false** is returned.
+Checks whether the media source supports continuous seek. If this API is called when the AVPlayer is in the prepared, playing, paused, or completed state, the actual value is returned. Other, **false** is returned. For devices that do not support the [AV_SEEK_CONTINUOUS](capi-avplayer-base-h.md#avplayerseekmode) mode, **false** is returned.
 
 **Since**: 23
 
@@ -1404,7 +1404,7 @@ Selects a track in the specified switching mode when playing a resource that con
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input parameter is invalid.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The operation is not allowed. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter is invalid.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. |
 
 ### OH_AVPlayer_SetAmplitudeUpdateCallback()
 
@@ -1430,7 +1430,7 @@ Subscribes to the maximum audio amplitude update event, which is reported period
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer. |
 
 ### OH_AVPlayer_SetSeiReceivedCallback()
 
@@ -1458,7 +1458,7 @@ Subscribes to the SEI message reception event. This API applies only to HTTP-FLV
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer. |
 
 ### OH_AVSeiMessage_GetSeiCount()
 
@@ -1533,7 +1533,7 @@ Sets the video window size for super resolution. This API can be called when the
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer or the parameter is incorrect.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The operation is not allowed.<br>{@link AV_ERR_SUPER_RESOLUTION_UNSUPPORTED}: Super resolution is not supported.<br>{@link AV_ERR_SUPER_RESOLUTION_NOT_ENABLED}: Super resolution is not enabled in {@link OH_AVPlaybackStrategy}. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer or the parameter is incorrect.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed.  [AV_ERR_SUPER_RESOLUTION_UNSUPPORTED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Super resolution is not supported.  [AV_ERR_SUPER_RESOLUTION_NOT_ENABLED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Super resolution is not enabled in [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md). |
 
 ### OH_AVPlayer_SetVideoSuperResolutionEnable()
 
@@ -1543,7 +1543,7 @@ OH_AVErrCode OH_AVPlayer_SetVideoSuperResolutionEnable(OH_AVPlayer *player, bool
 
 **Description**
 
-Dynamically enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. You must enable the super resolution feature in {@link OH_AVPlaybackStrategy} before calling **prepare**.
+Dynamically enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. You must enable the super resolution feature in [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) before calling **prepare**.
 
 **Since**: 23
 
@@ -1558,7 +1558,7 @@ Dynamically enables or disables super resolution. This API can be called when th
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer or the parameter is incorrect.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The operation is not allowed.<br>{@link AV_ERR_SUPER_RESOLUTION_UNSUPPORTED}: Super resolution is not supported.<br>{@link AV_ERR_SUPER_RESOLUTION_NOT_ENABLED}: Super resolution is not enabled in {@link OH_AVPlaybackStrategy}. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer or the parameter is incorrect.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed.  [AV_ERR_SUPER_RESOLUTION_UNSUPPORTED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Super resolution is not supported.  [AV_ERR_SUPER_RESOLUTION_NOT_ENABLED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Super resolution is not enabled in [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md). |
 
 ### OH_AVPlaybackStrategy_Create()
 
@@ -1600,7 +1600,7 @@ Releases a playback strategy instance.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredWidth()
 
@@ -1625,7 +1625,7 @@ Selects a stream with width close to the specified value.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredHeight()
 
@@ -1650,7 +1650,7 @@ Selects a stream with height close to the specified value.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredBufferDuration()
 
@@ -1675,7 +1675,7 @@ Selects the preferred buffer duration that is close to the specified value.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredHdr()
 
@@ -1700,7 +1700,7 @@ Enables or disables the preferred HDR mode.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredSubtitleLanguage()
 
@@ -1725,7 +1725,7 @@ Sets the preferred subtitle language.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredAudioLanguage()
 
@@ -1750,7 +1750,7 @@ Sets the preferred audio language.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetMutedMediaType()
 
@@ -1775,7 +1775,7 @@ Sets the media type to be muted during playback.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetShowFirstFrameOnPrepare()
 
@@ -1800,7 +1800,7 @@ Sets whether to display the first frame during the **prepare** state.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay()
 
@@ -1825,7 +1825,7 @@ Sets the threshold for automatic quick playback.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetSuperResolutionEnable()
 
@@ -1850,7 +1850,7 @@ Sets whether to enable super resolution.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetPreferredBufferDurationForPlaying()
 
@@ -1875,7 +1875,7 @@ Sets the preferred buffer duration during playback (double type, in seconds).
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlaybackStrategy_SetKeepDecodingOnMute()
 
@@ -1900,7 +1900,7 @@ Sets whether to continue decoding when the audio is muted.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input strategy is a null pointer. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input strategy is a null pointer. |
 
 ### OH_AVPlayer_SetPlaybackStrategy()
 
@@ -1925,7 +1925,7 @@ Sets the playback strategy for the AVPlayer. This API can be called only when th
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player is a null pointer.<br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The operation is not allowed. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player is a null pointer.  [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. |
 
 ### OH_AVPlayer_GetPlaybackInfo()
 
@@ -1974,7 +1974,7 @@ Sets the **OH_AVMediaSource** to the AVPlayer.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Execution result of the function.  {@link AV_ERR_OK}: The execution is successful.<br>{@link AV_ERR_INVALID_VAL}: The input player or source is a null pointer, or the player fails to set the URL  source. |
+| OH_AVErrCode | Execution result of the function.  [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The execution is successful.  [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input player or source is a null pointer, or the player fails to set the URL  source. |
 
 ### OH_AVPlayer_GetTrackCount()
 
@@ -2049,7 +2049,7 @@ Method to set audio pcm data callback. This API can be called only when the avpl
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Function result code.          {@link AV_ERR_OK} if the execution is successful.<br>        {@link AV_ERR_INVALID_VAL} if input player is null or player SetPCMOutputCallback failed.<br>        {@link AV_ERR_OPERATE_NOT_PERMIT} if called in unsupported state. |
+| OH_AVErrCode | Function result code.          [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if the execution is successful.          [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if input player is null or player SetPCMOutputCallback failed.          [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if called in unsupported state. |
 
 ### OH_AVPlayer_SetVideoSideOutput()
 
@@ -2068,7 +2068,7 @@ Method to set video decoded frame output callback. This API can be called only w
 | Parameter | Description |
 | -- | -- |
 | OH_AVPlayer *player | Pointer to an OH_AVPlayer instance. |
-| OHNativeWindow *window | A pointer to a OHNativeWindow instance, see {@link OHNativeWindow} |
+| OHNativeWindow *window | A pointer to a OHNativeWindow instance, see [OHNativeWindow](../../apis-avcodec-kit/c-apis/capi-codecbase-nativewindow.md) |
 
 **Returns**:
 
@@ -2124,7 +2124,7 @@ Method to set audio pcm data process callback. This API can be called only when 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Function result code.          <br>{@link AV_ERR_OK} if the execution is successful.<br>        <br>{@link AV_ERR_INVALID_VAL} if input player is null or player SetPCMProcessorCallback failed.<br>        <br>{@link AV_ERR_OPERATE_NOT_PERMIT} if called in unsupported state. |
+| OH_AVErrCode | Function result code.          <br>[AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if the execution is successful.          <br>[AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if input player is null or player SetPCMProcessorCallback failed.          <br>[AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if called in unsupported state. |
 
 ### OH_AVPlayer_SetPCMProcessorMaxLen()
 
@@ -2149,6 +2149,6 @@ Sets the maximum amount of data that can be returned at a time during audio post
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | Function result code.          <br>{@link AV_ERR_OK} if the execution is successful.<br>        <br>{@link AV_ERR_INVALID_VAL} if input player is null or maxProcessedPCMLen is error.<br>        <br>{@link AV_ERR_OPERATE_NOT_PERMIT} if called in unsupported state. |
+| OH_AVErrCode | Function result code.          <br>[AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if the execution is successful.          <br>[AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if input player is null or maxProcessedPCMLen is error.          <br>[AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) if called in unsupported state. |
 
 

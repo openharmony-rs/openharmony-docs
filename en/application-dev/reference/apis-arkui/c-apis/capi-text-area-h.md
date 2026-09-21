@@ -32,6 +32,8 @@ enum ArkUI_TextAreaType
 
 Enumerates the text box types.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |

@@ -43,11 +43,13 @@ OH_AVMemory *OH_AVMemory_Create(int32_t size)
 
 创建OH_AVMemory实例的指针。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** {@link OH_AVBuffer_Create}
+**替代接口：** [OH_AVBuffer_Create](capi-native-avbuffer-h.md#oh_avbuffer_create)
 
 **参数：**
 
@@ -71,11 +73,13 @@ uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)
 
 获取内存虚拟地址。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** {@link OH_AVBuffer_GetAddr}
+**替代接口：** [OH_AVBuffer_GetAddr](capi-native-avbuffer-h.md#oh_avbuffer_getaddr)
 
 **参数：**
 
@@ -99,11 +103,13 @@ int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)
 
 获取内存长度。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** {@link OH_AVBuffer_GetCapacity}
+**替代接口：** [OH_AVBuffer_GetCapacity](capi-native-avbuffer-h.md#oh_avbuffer_getcapacity)
 
 **参数：**
 
@@ -127,11 +133,13 @@ OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)
 
 释放OH_AVMemory实例指针的资源。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** {@link OH_AVBuffer_Destroy}
+**替代接口：** [OH_AVBuffer_Destroy](capi-native-avbuffer-h.md#oh_avbuffer_destroy)
 
 **参数：**
 

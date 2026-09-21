@@ -8,6 +8,8 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 Defines active child node information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

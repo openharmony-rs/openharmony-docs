@@ -8,6 +8,8 @@ typedef struct Camera_MetadataOutput Camera_MetadataOutput
 
 元数据输出对象。<br> 可以使用{@link OH_CameraManager_CreateMetadataOutput} 方法与OH_CameraManager_CreateMetadataOutputWithObjectTypes方法（从API version 23开始支持）创建指针。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

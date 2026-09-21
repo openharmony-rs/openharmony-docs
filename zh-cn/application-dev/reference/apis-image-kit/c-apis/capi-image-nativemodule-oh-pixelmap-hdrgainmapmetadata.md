@@ -6,7 +6,9 @@ typedef struct OH_Pixelmap_HdrGainmapMetadata {...} OH_Pixelmap_HdrGainmapMetada
 
 ## 概述
 
-表示HDR_GAINMAP_METADATA关键字对应的增益图相关元数据值，参考ISO 21496-1。 用于描述HDR增益图的版本、通道数、提亮比、偏移量及各通道增益曲线等参数，在调用[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)和 [OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)时作为[OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md)的成员使用， 适用于HDR图像增益映射元数据的设置与获取场景。
+表示HDR_GAINMAP_METADATA关键字对应的增益图相关元数据值，参考ISO 21496-1。 用于描述HDR增益图的版本、通道数、提亮比、偏移量及各通道增益曲线等参数，在调用{@link OH_PixelmapNative_SetMetadata}和<br>{@link OH_PixelmapNative_GetMetadata}时作为{@link OH_Pixelmap_HdrMetadataValue}的成员使用， 适用于HDR图像增益映射元数据的设置与获取场景。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 

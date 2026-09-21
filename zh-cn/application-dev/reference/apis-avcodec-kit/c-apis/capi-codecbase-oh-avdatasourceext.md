@@ -8,6 +8,8 @@ typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
 
 用户自定义数据源，回调支持通过userData传递用户自定义数据。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 20
 
 **相关模块：** [CodecBase](capi-codecbase.md)

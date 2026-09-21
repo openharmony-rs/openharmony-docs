@@ -8,6 +8,8 @@ typedef struct OH_MediaAssetManager OH_MediaAssetManager
 
 定义媒体资产管理器。<br>此结构提供了请求媒体库资源的能力。<br>如果创建失败，则返回空指针。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)

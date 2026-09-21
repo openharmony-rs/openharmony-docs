@@ -8,6 +8,8 @@ struct OhosPixelMapInfo {...}
 
 用于定义PixelMap的相关信息。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 8
 
 **废弃版本：** 10

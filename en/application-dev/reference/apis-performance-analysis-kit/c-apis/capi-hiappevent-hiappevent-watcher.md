@@ -8,6 +8,8 @@ typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
 
 Defines the watcher for application events.
 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
 **Since**: 12
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)

@@ -8,6 +8,8 @@ typedef struct OH_AVSource OH_AVSource
 
 The struct describes a native object for the media resource interface.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 10
 
 **Related module**: [AVSource](capi-avsource.md)

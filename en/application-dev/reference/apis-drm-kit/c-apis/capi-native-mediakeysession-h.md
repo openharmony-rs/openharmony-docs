@@ -63,6 +63,8 @@ typedef Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, ui
 
 Defines the callback used to listen for media key session events, for example, key expiration events.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -90,6 +92,8 @@ typedef Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo,
 
 Call back will be invoked when key changes.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -114,6 +118,8 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 **Description**
 
 Defines the callback used to listen for media key session events.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 12
 
@@ -143,6 +149,8 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 Call back will be invoked when key changes.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -169,6 +177,8 @@ Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKey
 
 Generate media key request.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -183,7 +193,7 @@ Generate media key request.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_NO_MEMORY} 24700501 - Memory errors.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_ProcessMediaKeyResponse()
 
@@ -194,6 +204,8 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 **Description**
 
 Process media key response.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -211,7 +223,7 @@ Process media key response.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_NO_MEMORY} 24700501 - Memory errors.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
@@ -222,6 +234,8 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 **Description**
 
 Check media key status.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -236,7 +250,7 @@ Check media key status.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_NO_MEMORY} 24700501 - Memory errors.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_ClearMediaKeys()
 
@@ -247,6 +261,8 @@ Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 **Description**
 
 Clear media keys of the current session .
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -260,7 +276,7 @@ Clear media keys of the current session .
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_GenerateOfflineReleaseRequest()
 
@@ -271,6 +287,8 @@ Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *me
 **Description**
 
 Generate offline media key release request.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -288,7 +306,7 @@ Generate offline media key release request.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_NO_MEMORY} 24700501 - Memory errors.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_NO_MEMORY](capi-native-drm-err-h.md#drm_errcode) 24700501 - Memory errors.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
@@ -299,6 +317,8 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 **Description**
 
 Process offline media key release response.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -316,7 +336,7 @@ Process offline media key release response.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 
@@ -327,6 +347,8 @@ Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKey
 **Description**
 
 Restore offline media keys by ID.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -342,7 +364,7 @@ Restore offline media keys by ID.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_GetContentProtectionLevel()
 
@@ -353,6 +375,8 @@ Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaK
 **Description**
 
 Get content protection level of the session.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -367,7 +391,7 @@ Get content protection level of the session.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_RequireSecureDecoderModule()
 
@@ -378,6 +402,8 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 **Description**
 
 Whether the encrypted content require a secure decoder or not.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -393,7 +419,7 @@ Whether the encrypted content require a secure decoder or not.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 ### OH_MediaKeySession_SetMediaKeySessionCallback()
 
@@ -404,6 +430,8 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 **Description**
 
 Set media key session event callback.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -418,7 +446,7 @@ Set media key session event callback.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
 
 ### OH_MediaKeySession_SetCallback()
 
@@ -429,6 +457,8 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_
 **Description**
 
 Set media key session event callback.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 12
 
@@ -443,7 +473,7 @@ Set media key session event callback.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid. |
 
 ### OH_MediaKeySession_Destroy()
 
@@ -454,6 +484,8 @@ Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)
 **Description**
 
 Release the resource before the session going to be unused.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -467,6 +499,6 @@ Release the resource before the session going to be unused.
 
 | Type | Description |
 | -- | -- |
-| Drm_ErrCode | {@link DRM_ERR_OK} 0 - Success.<br>        {@link DRM_ERR_INVALID_VAL} 24700503 - The parameter passed in is a null pointer or invalid.<br>        {@link DRM_ERR_UNKNOWN} 24700506 - Internal error occurred, it is recommended to check the logs. |
+| Drm_ErrCode | [DRM_ERR_OK](capi-native-drm-err-h.md#drm_errcode) 0 - Success.          [DRM_ERR_INVALID_VAL](capi-native-drm-err-h.md#drm_errcode) 24700503 - The parameter passed in is a null pointer or invalid.          [DRM_ERR_UNKNOWN](capi-native-drm-err-h.md#drm_errcode) 24700506 - Internal error occurred, it is recommended to check the logs. |
 
 

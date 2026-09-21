@@ -49,6 +49,8 @@ enum OH_OrderType
 
 排序方式。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -69,6 +71,8 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。 <br>此方法类似于SQL语句中的“Not like”。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -83,7 +87,7 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅{@link OH_Rdb_ErrCode}。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Predicates_Glob()
 
@@ -94,6 +98,8 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 **描述：**
 
 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与like方法不同，此方法的输入参数区分大小写。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -109,7 +115,7 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅{@link OH_Rdb_ErrCode}。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Predicates_NotGlob()
 
@@ -120,6 +126,8 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 **描述：**
 
 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与Not Like方法不同，此方法的输入参数区分大小写。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -135,7 +143,7 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅{@link OH_Rdb_ErrCode}。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Predicates_Having()
 
@@ -147,6 +155,8 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 
 设置OH_Predicates以指定条件来过滤分组结果，这些结果将出现在最终结果中。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -155,12 +165,12 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
 | const char *conditions | 表示having子句中的过滤条件，不能为空且不能为空字符串。 |
-| const OH_Data_Values *values | 表示指向{@link OH_Data_Values}实例的指针。 |
+| const OH_Data_Values *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅{@link OH_Rdb_ErrCode}。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。      <br>RDB_OK 表示成功。      <br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 

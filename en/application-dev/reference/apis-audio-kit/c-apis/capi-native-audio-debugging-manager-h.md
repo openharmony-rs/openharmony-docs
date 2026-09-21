@@ -42,6 +42,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDebuggingManager(OH_AudioDebugging
 
 Gets the audio debugging manager handle, which is a singleton.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -54,7 +56,7 @@ Gets the audio debugging manager handle, which is a singleton.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} The param of manager is nullptr. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of manager is nullptr. |
 
 ### OH_AudioDebuggingManager_PrintAppInfo()
 
@@ -65,6 +67,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintAppInfo(OH_AudioDebuggingMan
 **Description**
 
 Prints full audio runtime snapshot for current app process. The snapshot will contain all audio renderers, capturers, audio session information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -79,7 +83,7 @@ Prints full audio runtime snapshot for current app process. The snapshot will co
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} The param of manager is nullptr. |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) The param of manager is nullptr. |
 
 ### OH_AudioDebuggingManager_PrintRendererInfo()
 
@@ -90,6 +94,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintRendererInfo(OH_AudioDebuggi
 **Description**
 
 Prints full audio runtime snapshot for target audio renderer instance. The snapshot will contain the stream, pipe, volume and device information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -105,7 +111,7 @@ Prints full audio runtime snapshot for target audio renderer instance. The snaps
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.The param of manager is nullptr;                                                     2.The param of renderer is nullptr; |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr;                                                     2.The param of renderer is nullptr; |
 
 ### OH_AudioDebuggingManager_PrintCapturerInfo()
 
@@ -116,6 +122,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintCapturerInfo(OH_AudioDebuggi
 **Description**
 
 Prints full audio runtime snapshot for target audio capturer instance. The snapshot will contain the stream, pipe, volume and device information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -131,7 +139,7 @@ Prints full audio runtime snapshot for target audio capturer instance. The snaps
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.The param of manager is nullptr;                                                     2.The param of capturer is nullptr; |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr;                                                     2.The param of capturer is nullptr; |
 
 ### OH_AudioDebuggingManager_PrintSessionInfo()
 
@@ -142,6 +150,8 @@ OH_AudioCommon_Result OH_AudioDebuggingManager_PrintSessionInfo(OH_AudioDebuggin
 **Description**
 
 Prints full audio runtime snapshot for target audio session manager instance. The snapshot will contain the session status, scene, strategy and device information. Note that the information details and format may vary from different version, it can only be used for manual debugging, user should not rely on the information for actual function realization or file content extraction.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -157,6 +167,6 @@ Prints full audio runtime snapshot for target audio session manager instance. Th
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | {@link AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds.<br>    {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} 1.The param of manager is nullptr;                                                     2.The param of session is nullptr; |
+| OH_AudioCommon_Result | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1.The param of manager is nullptr;                                                     2.The param of session is nullptr; |
 
 

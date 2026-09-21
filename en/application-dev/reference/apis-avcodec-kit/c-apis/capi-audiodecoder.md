@@ -4,6 +4,8 @@
 
 The AudioDecoder module provides functions for audio decoding.
 
+**System capability**: SystemCapability.Multimedia.Media.AudioDecoder
+
 **Since**: 9
 
 ## Files

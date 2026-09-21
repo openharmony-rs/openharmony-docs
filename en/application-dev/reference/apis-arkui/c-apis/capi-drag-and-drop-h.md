@@ -68,7 +68,7 @@ Declares the APIs of **NativeDrag**.
 | [ArkUI_ErrorCode OH_ArkUI_DragEvent_IsRemote(ArkUI_DragEvent* event, bool* isRemote)](#oh_arkui_dragevent_isremote) | Checks whether the current drag operation is a cross-device drag. |
 | [int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDataParams* options, char* key, unsigned int keyLen)](#oh_arkui_dragevent_startdataloading) | Starts data synchronization using the specified synchronization parameters. |
 | [int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* key)](#oh_arkui_canceldataloading) | Cancels the ongoing data synchronization. |
-| [int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disabled)](#oh_arkui_disabledropdataprefetchonnode) | Sets whether to disable the data prefetch process before executing {@link NODE_ON_DROP}. The system will retry data fetching until the maximum time limit (currently 2.4 seconds) is reached, which is useful for cross- device drag and drop operations as it helps stabilize system communication. However, this feature is redundant for the [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) API. Since this API uses an asynchronous mechanism to fetch data,<br>when [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) is used in **NODE_ON_DROP**, this field must be set to **true** to prevent accidental data fetching before **NODE_ON_DROP** is executed. |
+| [int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disabled)](#oh_arkui_disabledropdataprefetchonnode) | Sets whether to disable the data prefetch process before executing [NODE_ON_DROP](capi-native-node-h.md#arkui_nodeeventtype). The system will retry data fetching until the maximum time limit (currently 2.4 seconds) is reached, which is useful for cross- device drag and drop operations as it helps stabilize system communication. However, this feature is redundant for the [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) API. Since this API uses an asynchronous mechanism to fetch data, when [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) is used in **NODE_ON_DROP**, this field must be set to **true** to prevent accidental data fetching before **NODE_ON_DROP** is executed. |
 | [int32_t OH_ArkUI_SetDragEventStrictReportWithNode(ArkUI_NodeHandle node, bool enabled)](#oh_arkui_setdrageventstrictreportwithnode) | Sets whether to enable strict reporting on drag events. This feature is disabled by default, and you are advised to enable it. If this feature is disabled, the parent component is not notified when an item in it is dragged over its child component. If this feature is enabled, the component is notified of the dragged item's leaving, and the child component to which the dragged item is dropped is notified of the item's entering. This configuration is related to a specific UI instance. You can pass in a specific component node on the current UI instance for association. |
 | [int32_t OH_ArkUI_SetDragEventStrictReportWithContext(ArkUI_ContextHandle uiContext, bool enabled)](#oh_arkui_setdrageventstrictreportwithcontext) | Sets whether to enable strict reporting on drag events. This feature is disabled by default, and you are advised to enable it. If this feature is disabled, the parent component is not notified when an item in it is dragged over its child component. If this feature is enabled, the component is notified of the dragged item's leaving, and the child component to which the dragged item is dropped is notified of the item's entering. This configuration is related to a specific UI instance. You can pass in a specific UI instance for association. |
 | [int32_t OH_ArkUI_SetNodeAllowedDropDataTypes(ArkUI_NodeHandle node, const char* typesArray[], int32_t count)](#oh_arkui_setnodealloweddropdatatypes) | Sets the types of data that can be dropped to the specified component. This API resets the settings configured through [OH_ArkUI_DisallowNodeAnyDropDataTypes](capi-drag-and-drop-h.md#oh_arkui_disallownodeanydropdatatypes) or [OH_ArkUI_AllowNodeAllDropDataTypes](capi-drag-and-drop-h.md#oh_arkui_allownodealldropdatatypes). |
@@ -119,6 +119,8 @@ enum ArkUI_DragResult
 
 Enumerates drag results, which are set by the data receiver and transferred by the system to the drag source so that the drag source is aware of the data processing result of the receiver.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -137,6 +139,8 @@ enum ArkUI_DropOperation
 
 Enumerates data processing modes used when data is dropped, which affects the display of the badge. When the copy operation is set, the badge displays a plus sign (+). When the cut operation is set, the badge does not display a plus sign (+).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -153,6 +157,8 @@ enum ArkUI_PreDragStatus
 **Description**
 
 Enumerates interaction states prior to a drop and drop operation.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -177,6 +183,8 @@ enum ArkUI_DragPreviewScaleMode
 
 Enumerates drag preview scale modes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -193,6 +201,8 @@ enum ArkUI_DragStatus
 **Description**
 
 Enumerates drag operation states.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -214,6 +224,8 @@ ArkUI_DragEvent* OH_ArkUI_NodeEvent_GetDragEvent(ArkUI_NodeEvent* nodeEvent)
 **Description**
 
 Obtains a **DragEvent** object from the specified **NodeEvent** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -239,6 +251,8 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 
 Obtains the state prior to a drop and drop operation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -263,6 +277,8 @@ int32_t OH_ArkUI_DragEvent_DisableDefaultDropAnimation(ArkUI_DragEvent* event, b
 
 Sets whether to disable the default drop animation, which is enabled by default. Use this API to apply a custom drop animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -276,7 +292,7 @@ Sets whether to disable the default drop animation, which is enabled by default.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_SetSuggestedDropOperation()
 
@@ -287,6 +303,8 @@ int32_t OH_ArkUI_DragEvent_SetSuggestedDropOperation(ArkUI_DragEvent* event, Ark
 **Description**
 
 Sets the data processing mode.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -301,7 +319,7 @@ Sets the data processing mode.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_SetDragResult()
 
@@ -312,6 +330,8 @@ int32_t OH_ArkUI_DragEvent_SetDragResult(ArkUI_DragEvent* event, ArkUI_DragResul
 **Description**
 
 Sets the result for a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -326,7 +346,7 @@ Sets the result for a drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_SetData()
 
@@ -337,6 +357,8 @@ int32_t OH_ArkUI_DragEvent_SetData(ArkUI_DragEvent* event, OH_UdmfData* data)
 **Description**
 
 Set drag data for a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -351,7 +373,7 @@ Set drag data for a drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_SetDataLoadParams()
 
@@ -362,6 +384,8 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_SetDataLoadParams(ArkUI_DragEvent* event, OH_
 **Description**
 
 This API provides data loading parameters to the system instead of directly providing a complete data object. When the user drops data on the target application, the system will use **dataLoadParams** to request data. This can significantly improve the efficiency of dragging large volumes of data and the efficiency of processing the dropped data in the target application. This API must always be used in preference to [OH_ArkUI_DragEvent_SetData](capi-drag-and-drop-h.md#oh_arkui_dragevent_setdata).<br>For details about how to create and prepare data loading parameters, see {@link OH_UdmfDataLoadParams_Create} in **<br>udmf.h**. If this API conflicts with [OH_ArkUI_DragEvent_SetData](capi-drag-and-drop-h.md#oh_arkui_dragevent_setdata), the system always uses the last called API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -376,7 +400,7 @@ This API provides data loading parameters to the system instead of directly prov
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_GetUdmfData()
 
@@ -387,6 +411,8 @@ int32_t OH_ArkUI_DragEvent_GetUdmfData(ArkUI_DragEvent* event, OH_UdmfData *data
 **Description**
 
 Obtains the default drag data from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -401,7 +427,7 @@ Obtains the default drag data from a drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_GetDataTypeCount()
 
@@ -412,6 +438,8 @@ int32_t OH_ArkUI_DragEvent_GetDataTypeCount(ArkUI_DragEvent* event, int32_t* cou
 **Description**
 
 Obtains the number of drag data types from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -426,7 +454,7 @@ Obtains the number of drag data types from a drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_GetDataTypes()
 
@@ -437,6 +465,8 @@ int32_t OH_ArkUI_DragEvent_GetDataTypes(ArkUI_DragEvent *event, char *eventTypeA
 **Description**
 
 Obtains the list of drag data types from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -453,7 +483,7 @@ Obtains the list of drag data types from a drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the result code.          Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>        Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>        Returns {@link ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR} if the giving buffer is not enough for string copy. |
+| int32_t | Returns the result code.          Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.          Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.          Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the giving buffer is not enough for string copy. |
 
 ### OH_ArkUI_DragEvent_GetDragResult()
 
@@ -464,6 +494,8 @@ int32_t OH_ArkUI_DragEvent_GetDragResult(ArkUI_DragEvent* event, ArkUI_DragResul
 **Description**
 
 Obtains the drag and drop result from the drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -478,7 +510,7 @@ Obtains the drag and drop result from the drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_GetDropOperation()
 
@@ -489,6 +521,8 @@ int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOp
 **Description**
 
 Obtains the data handling method from the drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -503,7 +537,7 @@ Obtains the data handling method from the drag event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.      <br>Possible causes: 1. Parameters are null or the event is not a valid DragEvent. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Possible causes: 1. Parameters are null or the event is not a valid DragEvent. |
 
 ### OH_ArkUI_DragEvent_GetPreviewTouchPointX()
 
@@ -514,6 +548,8 @@ float OH_ArkUI_DragEvent_GetPreviewTouchPointX(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the x-coordinate of the touch point for a drag preview from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -539,6 +575,8 @@ float OH_ArkUI_DragEvent_GetPreviewTouchPointY(ArkUI_DragEvent* event)
 
 Obtains the y-coordinate of the touch point on the preview image from a drag event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -562,6 +600,8 @@ float OH_ArkUI_DragEvent_GetPreviewRectWidth(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the width of a drag preview from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -587,6 +627,8 @@ float OH_ArkUI_DragEvent_GetPreviewRectHeight(ArkUI_DragEvent* event)
 
 Obtains the height of a drag preview from a drag event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -610,6 +652,8 @@ float OH_ArkUI_DragEvent_GetTouchPointXToWindow(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the x-coordinate of the touch point relative to the window from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -635,6 +679,8 @@ float OH_ArkUI_DragEvent_GetTouchPointYToWindow(ArkUI_DragEvent* event)
 
 Obtains the y-coordinate of the touch point relative to the window from a drag event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -658,6 +704,8 @@ float OH_ArkUI_DragEvent_GetTouchPointXToDisplay(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the x-coordinate of the touch point relative to the display from a drag event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -683,6 +731,8 @@ float OH_ArkUI_DragEvent_GetTouchPointYToDisplay(ArkUI_DragEvent* event)
 
 Obtains the y-coordinate of the touch point relative to the display from a drag event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -706,6 +756,8 @@ float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the x-coordinate of the drag touch point relative to the global display from the specified **<br>ArkUI_DragEvent** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -731,6 +783,8 @@ float OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay(ArkUI_DragEvent* event)
 
 Obtains the y-coordinate of the drag touch point relative to the global display from the specified **<br>ArkUI_DragEvent** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -754,6 +808,8 @@ float OH_ArkUI_DragEvent_GetVelocityX(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the dragging velocity along the x-axis.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -779,6 +835,8 @@ float OH_ArkUI_DragEvent_GetVelocityY(ArkUI_DragEvent* event)
 
 Obtains the dragging velocity along the y-axis.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -802,6 +860,8 @@ float OH_ArkUI_DragEvent_GetVelocity(ArkUI_DragEvent* event)
 **Description**
 
 Obtains the dragging velocity along the main axis.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -827,6 +887,8 @@ int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t
 
 Obtains the pressed status of modifier keys.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -840,7 +902,7 @@ Obtains the pressed status of modifier keys.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_GetDisplayId()
 
@@ -851,6 +913,8 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent* event, int32_t*
 **Description**
 
 Obtains the ID of the screen where this drag event occurs. This API is not supported when **eventType** is **<br>NODE_ON_DRAG_END**.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -865,7 +929,7 @@ Obtains the ID of the screen where this drag event occurs. This API is not suppo
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_GetDragSource()
 
@@ -876,6 +940,8 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDragSource(ArkUI_DragEvent* event, char *b
 **Description**
 
 Obtains the bundle name of the drag source application. The caller must provide a character array with a minimum length of 128 characters to store the bundle name.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -891,7 +957,7 @@ Obtains the bundle name of the drag source application. The caller must provide 
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_IsRemote()
 
@@ -902,6 +968,8 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_IsRemote(ArkUI_DragEvent* event, bool* isRemo
 **Description**
 
 Checks whether the current drag operation is a cross-device drag.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -916,7 +984,7 @@ Checks whether the current drag operation is a cross-device drag.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_StartDataLoading()
 
@@ -927,6 +995,8 @@ int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDa
 **Description**
 
 Starts data synchronization using the specified synchronization parameters.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -943,7 +1013,7 @@ Starts data synchronization using the specified synchronization parameters.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_CancelDataLoading()
 
@@ -954,6 +1024,8 @@ int32_t OH_ArkUI_CancelDataLoading(ArkUI_ContextHandle uiContext, const char* ke
 **Description**
 
 Cancels the ongoing data synchronization.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -968,7 +1040,7 @@ Cancels the ongoing data synchronization.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DisableDropDataPrefetchOnNode()
 
@@ -978,7 +1050,9 @@ int32_t OH_ArkUI_DisableDropDataPrefetchOnNode(ArkUI_NodeHandle node, bool disab
 
 **Description**
 
-Sets whether to disable the data prefetch process before executing {@link NODE_ON_DROP}. The system will retry data fetching until the maximum time limit (currently 2.4 seconds) is reached, which is useful for cross- device drag and drop operations as it helps stabilize system communication. However, this feature is redundant for the [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) API. Since this API uses an asynchronous mechanism to fetch data,<br>when [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) is used in **NODE_ON_DROP**, this field must be set to **true** to prevent accidental data fetching before **NODE_ON_DROP** is executed.
+Sets whether to disable the data prefetch process before executing [NODE_ON_DROP](capi-native-node-h.md#arkui_nodeeventtype). The system will retry data fetching until the maximum time limit (currently 2.4 seconds) is reached, which is useful for cross- device drag and drop operations as it helps stabilize system communication. However, this feature is redundant for the [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) API. Since this API uses an asynchronous mechanism to fetch data, when [OH_ArkUI_DragEvent_StartDataLoading](capi-drag-and-drop-h.md#oh_arkui_dragevent_startdataloading) is used in **NODE_ON_DROP**, this field must be set to **true** to prevent accidental data fetching before **NODE_ON_DROP** is executed.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -993,7 +1067,7 @@ Sets whether to disable the data prefetch process before executing {@link NODE_O
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_SetDragEventStrictReportWithNode()
 
@@ -1004,6 +1078,8 @@ int32_t OH_ArkUI_SetDragEventStrictReportWithNode(ArkUI_NodeHandle node, bool en
 **Description**
 
 Sets whether to enable strict reporting on drag events. This feature is disabled by default, and you are advised to enable it. If this feature is disabled, the parent component is not notified when an item in it is dragged over its child component. If this feature is enabled, the component is notified of the dragged item's leaving, and the child component to which the dragged item is dropped is notified of the item's entering. This configuration is related to a specific UI instance. You can pass in a specific component node on the current UI instance for association.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1018,7 +1094,7 @@ Sets whether to enable strict reporting on drag events. This feature is disabled
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_SetDragEventStrictReportWithContext()
 
@@ -1029,6 +1105,8 @@ int32_t OH_ArkUI_SetDragEventStrictReportWithContext(ArkUI_ContextHandle uiConte
 **Description**
 
 Sets whether to enable strict reporting on drag events. This feature is disabled by default, and you are advised to enable it. If this feature is disabled, the parent component is not notified when an item in it is dragged over its child component. If this feature is enabled, the component is notified of the dragged item's leaving, and the child component to which the dragged item is dropped is notified of the item's entering. This configuration is related to a specific UI instance. You can pass in a specific UI instance for association.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1043,7 +1121,7 @@ Sets whether to enable strict reporting on drag events. This feature is disabled
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_SetNodeAllowedDropDataTypes()
 
@@ -1054,6 +1132,8 @@ int32_t OH_ArkUI_SetNodeAllowedDropDataTypes(ArkUI_NodeHandle node, const char* 
 **Description**
 
 Sets the types of data that can be dropped to the specified component. This API resets the settings configured through [OH_ArkUI_DisallowNodeAnyDropDataTypes](capi-drag-and-drop-h.md#oh_arkui_disallownodeanydropdatatypes) or [OH_ArkUI_AllowNodeAllDropDataTypes](capi-drag-and-drop-h.md#oh_arkui_allownodealldropdatatypes).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1069,7 +1149,7 @@ Sets the types of data that can be dropped to the specified component. This API 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DisallowNodeAnyDropDataTypes()
 
@@ -1081,6 +1161,8 @@ int32_t OH_ArkUI_DisallowNodeAnyDropDataTypes(ArkUI_NodeHandle node)
 
 Configures the specified component to disallow any data types. This API resets the settings configured through [OH_ArkUI_SetNodeAllowedDropDataTypes](capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1093,7 +1175,7 @@ Configures the specified component to disallow any data types. This API resets t
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_AllowNodeAllDropDataTypes()
 
@@ -1105,6 +1187,8 @@ int32_t OH_ArkUI_AllowNodeAllDropDataTypes(ArkUI_NodeHandle node)
 
 Configures the specified component to allow any data types. This API resets the settings configured through [OH_ArkUI_SetNodeAllowedDropDataTypes](capi-drag-and-drop-h.md#oh_arkui_setnodealloweddropdatatypes).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1117,7 +1201,7 @@ Configures the specified component to allow any data types. This API resets the 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_SetNodeDraggable()
 
@@ -1128,6 +1212,8 @@ int32_t OH_ArkUI_SetNodeDraggable(ArkUI_NodeHandle node, bool enabled)
 **Description**
 
 Sets whether the component is draggable.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1142,7 +1228,7 @@ Sets whether the component is draggable.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_SetNodeDragPreview()
 
@@ -1153,6 +1239,8 @@ int32_t OH_ArkUI_SetNodeDragPreview(ArkUI_NodeHandle node, OH_PixelmapNative* pr
 **Description**
 
 Sets a custom drag preview for the specified component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1167,7 +1255,7 @@ Sets a custom drag preview for the specified component.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_CreateDragPreviewOption()
 
@@ -1178,6 +1266,8 @@ ArkUI_DragPreviewOption* OH_ArkUI_CreateDragPreviewOption(void)
 **Description**
 
 Creates an **ArkUI_DragPreviewOption** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1197,6 +1287,8 @@ void OH_ArkUI_DragPreviewOption_Dispose(ArkUI_DragPreviewOption* option)
 
 Disposes of an **ArkUI_DragPreviewOption** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1215,6 +1307,8 @@ int32_t OH_ArkUI_DragPreviewOption_SetScaleMode(ArkUI_DragPreviewOption* option,
 
 Sets the scale mode for an **ArkUI_DragPreviewOption** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1228,7 +1322,7 @@ Sets the scale mode for an **ArkUI_DragPreviewOption** object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled()
 
@@ -1239,6 +1333,8 @@ int32_t OH_ArkUI_DragPreviewOption_SetDefaultShadowEnabled(ArkUI_DragPreviewOpti
 **Description**
 
 Sets whether to enable the default shadow effect for an **ArkUI_DragPreviewOption** object. The effect is disabled by default.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1253,7 +1349,7 @@ Sets whether to enable the default shadow effect for an **ArkUI_DragPreviewOptio
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled()
 
@@ -1264,6 +1360,8 @@ int32_t OH_ArkUI_DragPreviewOption_SetDefaultRadiusEnabled(ArkUI_DragPreviewOpti
 **Description**
 
 Sets whether to enable the default rounded corner effect for an **ArkUI_DragPreviewOption** object. The rounded corner radius is 12.0 vp by default. The effect is disabled by default.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1278,7 +1376,7 @@ Sets whether to enable the default rounded corner effect for an **ArkUI_DragPrev
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled()
 
@@ -1289,6 +1387,8 @@ int32_t OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled(ArkUI_DragPreviewOption
 **Description**
 
 Sets whether to enable the badge for an **ArkUI_DragPreviewOption** object. If this feature is enabled, a badge that contains the number of dragged items is displayed.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1303,7 +1403,7 @@ Sets whether to enable the badge for an **ArkUI_DragPreviewOption** object. If t
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragPreviewOption_SetBadgeNumber()
 
@@ -1314,6 +1414,8 @@ int32_t OH_ArkUI_DragPreviewOption_SetBadgeNumber(ArkUI_DragPreviewOption* optio
 **Description**
 
 Sets the count on the badge. The settings will overwrite the value in [OH_ArkUI_DragPreviewOption_SetNumberBadgeEnabled](capi-drag-and-drop-h.md#oh_arkui_dragpreviewoption_setnumberbadgeenabled).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1328,7 +1430,7 @@ Sets the count on the badge. The settings will overwrite the value in [OH_ArkUI_
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled()
 
@@ -1339,6 +1441,8 @@ int32_t OH_ArkUI_DragPreviewOption_SetDefaultAnimationBeforeLiftingEnabled(ArkUI
 **Description**
 
 Sets whether to enable the default animation on a click or touch.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1353,7 +1457,7 @@ Sets whether to enable the default animation on a click or touch.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_SetNodeDragPreviewOption()
 
@@ -1364,6 +1468,8 @@ int32_t OH_ArkUI_SetNodeDragPreviewOption(ArkUI_NodeHandle node, ArkUI_DragPrevi
 **Description**
 
 Sets an **ArkUI_DragPreviewOption** object for the specified component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1378,7 +1484,7 @@ Sets an **ArkUI_DragPreviewOption** object for the specified component.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_CreateDragActionWithNode()
 
@@ -1389,6 +1495,8 @@ ArkUI_DragAction* OH_ArkUI_CreateDragActionWithNode(ArkUI_NodeHandle node)
 **Description**
 
 Creates a drag action object. The object needs to be associated with a UI instance, which can be specified by passing in a component node of the current UI instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1414,6 +1522,8 @@ ArkUI_DragAction* OH_ArkUI_CreateDragActionWithContext(ArkUI_ContextHandle uiCon
 
 Creates a drag action object for the specified UI instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1438,6 +1548,8 @@ void OH_ArkUI_DragAction_Dispose(ArkUI_DragAction* dragAction)
 
 Disposes of an **ArkUI_DragAction** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1456,6 +1568,8 @@ int32_t OH_ArkUI_DragAction_SetPointerId(ArkUI_DragAction* dragAction, int32_t p
 
 Sets the pointer ID. If only one finger is used on the screen, the finger ID is 0. Generally, you can set this parameter to **0**.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1469,7 +1583,7 @@ Sets the pointer ID. If only one finger is used on the screen, the finger ID is 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_SetPixelMaps()
 
@@ -1480,6 +1594,8 @@ int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_Pixelm
 **Description**
 
 Sets the drag previews for a drag action. Only pixel map objects are supported.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1495,7 +1611,7 @@ Sets the drag previews for a drag action. Only pixel map objects are supported.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_SetTouchPointX()
 
@@ -1506,6 +1622,8 @@ int32_t OH_ArkUI_DragAction_SetTouchPointX(ArkUI_DragAction* dragAction, float x
 **Description**
 
 Sets the touch point relative to the upper left corner of the first drag preview (pixel map).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1520,7 +1638,7 @@ Sets the touch point relative to the upper left corner of the first drag preview
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_SetTouchPointY()
 
@@ -1531,6 +1649,8 @@ int32_t OH_ArkUI_DragAction_SetTouchPointY(ArkUI_DragAction* dragAction, float y
 **Description**
 
 Sets the touch point relative to the upper left corner of the first drag preview (pixel map).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1545,7 +1665,7 @@ Sets the touch point relative to the upper left corner of the first drag preview
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_SetData()
 
@@ -1556,6 +1676,8 @@ int32_t OH_ArkUI_DragAction_SetData(ArkUI_DragAction* dragAction, OH_UdmfData* d
 **Description**
 
 Sets the drag data.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1570,7 +1692,7 @@ Sets the drag data.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_SetDataLoadParams()
 
@@ -1581,6 +1703,8 @@ ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragActi
 **Description**
 
 This API provides data loading parameters to the system instead of directly providing a complete data object. When the user drops data on the target application, the system will use **dataLoadParams** to request data. This can significantly improve the efficiency of dragging large volumes of data and the efficiency of processing the dropped data in the target application. This API must always be used in preference to [OH_ArkUI_DragAction_SetData](capi-drag-and-drop-h.md#oh_arkui_dragaction_setdata).<br>For details about how to create and prepare data loading parameters, see {@link OH_UdmfDataLoadParams_Create} in **<br>udmf.h**. If this API conflicts with [OH_ArkUI_DragAction_SetData](capi-drag-and-drop-h.md#oh_arkui_dragaction_setdata), the system always uses the last called API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1595,7 +1719,7 @@ This API provides data loading parameters to the system instead of directly prov
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_SetDragPreviewOption()
 
@@ -1606,6 +1730,8 @@ int32_t OH_ArkUI_DragAction_SetDragPreviewOption(ArkUI_DragAction* dragAction, A
 **Description**
 
 Sets an **ArkUI_DragPreviewOption** object for the specified drag action object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1620,7 +1746,7 @@ Sets an **ArkUI_DragPreviewOption** object for the specified drag action object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_RegisterStatusListener()
 
@@ -1631,6 +1757,8 @@ int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction,
 **Description**
 
 Registers a drag status listener. This listener can be used to check whether the data is successfully received and processed.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1646,7 +1774,7 @@ Registers a drag status listener. This listener can be used to check whether the
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragAction_UnregisterStatusListener()
 
@@ -1657,6 +1785,8 @@ void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)
 **Description**
 
 Unregisters a drag status listener.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1675,6 +1805,8 @@ ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* d
 **Description**
 
 Obtains the drag status of the [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md). **ArkUI_DRAG_STATUS_UNKNOWN** is returned if the acquisition fails.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1700,6 +1832,8 @@ ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dr
 
 Obtains a drag event based on the specified drag and drop information. The drag event can then be used to obtain the drag result.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1724,6 +1858,8 @@ int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)
 
 Initiates a drag action through the specified **DragAction** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1736,7 +1872,7 @@ Initiates a drag action through the specified **DragAction** object.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_DragEvent_RequestDragEndPending()
 
@@ -1747,6 +1883,8 @@ int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t
 **Description**
 
 Requests deferred processing of the drag end event, allowing the application to asynchronously confirm the operation result. The application must pass the final result back to the system via the [OH_ArkUI_NotifyDragResult](capi-drag-and-drop-h.md#oh_arkui_notifydragresult) API, and call [OH_ArkUI_NotifyDragEndPendingDone](capi-drag-and-drop-h.md#oh_arkui_notifydragendpendingdone) after all processing is completed. The maximum waiting time is 2 seconds.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1761,7 +1899,7 @@ Requests deferred processing of the drag end event, allowing the application to 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>    <br>Returns {@link ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED} if the operation is not allowed at the      current stage. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is not allowed at the      current stage. |
 
 ### OH_ArkUI_NotifyDragResult()
 
@@ -1772,6 +1910,8 @@ int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult resu
 **Description**
 
 Notifies the system of the final drag result. The system will verify whether the request identifier matches that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they do not match, this call will be ignored.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1786,7 +1926,7 @@ Notifies the system of the final drag result. The system will verify whether the
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>    <br>Returns {@link ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED} if the operation is not allowed at the      current stage. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is not allowed at the      current stage. |
 
 ### OH_ArkUI_NotifySuggestedDropOperation()
 
@@ -1797,6 +1937,8 @@ int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentity, ArkUI_Dro
 **Description**
 
 Notifies the drag initiator of the operation type of the current drop. The drag initiator can call [OH_ArkUI_DragEvent_GetDropOperation](capi-drag-and-drop-h.md#oh_arkui_dragevent_getdropoperation) in the drag end callback to obtain the operation type of the current drop and perform custom processing. The drag initiator can also ignore the notification. If the drag operation fails, the action type of the current drop is unreliable. In this case, the action type obtained by calling [OH_ArkUI_DragEvent_GetDropOperation](capi-drag-and-drop-h.md#oh_arkui_dragevent_getdropoperation) is always **ARKUI_DROP_OPERATION_COPY**. The system will verify whether the value of **requestIdentity** is the same as that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they are different, this API call does not take effect.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1811,7 +1953,7 @@ Notifies the drag initiator of the operation type of the current drop. The drag 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>    <br>Returns {@link ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED} if the API is not called in the drop phase. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the API is not called in the drop phase. |
 
 ### OH_ArkUI_NotifyDisableDefaultDropAnimation()
 
@@ -1822,6 +1964,8 @@ int32_t OH_ArkUI_NotifyDisableDefaultDropAnimation(int32_t requestIdentity, bool
 **Description**
 
 Notifies the system whether to disable the default drop animation. If the drag fails, the default drop animation is diffusion. If the drag succeeds, the default drop animation is shrinking and fading. Calling this API can disable the default animation and implement a custom drop animation as required. The system will verify whether the value of **requestIdentity** is the same as that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they are different, this API call does not take effect.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1836,7 +1980,7 @@ Notifies the system whether to disable the default drop animation. If the drag f
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>    <br>Returns {@link ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED} if the API is not called in the drop phase. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the API is not called in the drop phase. |
 
 ### OH_ArkUI_NotifyDragEndPendingDone()
 
@@ -1847,6 +1991,8 @@ int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)
 **Description**
 
 Notifies the system that all asynchronous processing has been completed and the drag end pending state can be terminated.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1860,7 +2006,7 @@ Notifies the system that all asynchronous processing has been completed and the 
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs.<br>    <br>Returns {@link ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED} if the operation is not allowed at the      current stage. |
+| int32_t | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs.      <br>Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is not allowed at the      current stage. |
 
 ### OH_ArkUI_EnableDropDisallowedBadge()
 
@@ -1871,6 +2017,8 @@ ArkUI_ErrorCode OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext
 **Description**
 
 Sets whether the drop-disallowed badge can be displayed.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1885,6 +2033,6 @@ Sets whether the drop-disallowed badge can be displayed.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.       <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.       <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.       <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 

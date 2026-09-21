@@ -8,6 +8,8 @@ typedef void* PictureInPicture_PipConfig
 
 Picture in picture config.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 20
 
 **Related module**: [WindowManager](capi-windowmanager.md)

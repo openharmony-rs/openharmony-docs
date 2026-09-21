@@ -8,6 +8,8 @@ typedef struct CameraInput_Callbacks {...} CameraInput_Callbacks
 
 The struct describes the callbacks used to listen for camera input errors.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

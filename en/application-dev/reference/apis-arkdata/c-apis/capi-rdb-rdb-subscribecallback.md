@@ -8,6 +8,8 @@ typedef union Rdb_SubscribeCallback {...} Rdb_SubscribeCallback
 
 Indicates the callback functions.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

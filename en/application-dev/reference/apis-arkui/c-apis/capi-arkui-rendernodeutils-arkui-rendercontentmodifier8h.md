@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderContentModifier* ArkUI_RenderContentModifierHandle
 
 Defines a content modifier pointer.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

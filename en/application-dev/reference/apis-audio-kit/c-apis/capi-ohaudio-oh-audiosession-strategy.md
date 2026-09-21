@@ -8,6 +8,8 @@ typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
 
 Declares the audio session strategy.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)

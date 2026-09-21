@@ -8,6 +8,8 @@ typedef struct OH_AudioStreamInfo {...} OH_AudioStreamInfo
 
 Define the audio stream info structure, used to describe basic audio format.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 19
 
 **Related module**: [OHAudio](capi-ohaudio.md)

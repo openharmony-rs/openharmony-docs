@@ -8,6 +8,8 @@ struct ListNode {...}
 
 Defines the linked list type.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

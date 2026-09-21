@@ -8,6 +8,8 @@ struct AbilityRuntime_ExtensionInstance
 
 Define the AbilityRuntime_ExtensionInstance structure type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

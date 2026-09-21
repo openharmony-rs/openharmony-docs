@@ -4,6 +4,8 @@
 
 The ContentEmbed module provides the Object Editor (OE) framework and technologies to support document embedding and collaborative editing between applications. An embedded document (OE document for short) implemented by using the OE technology may be presented as a thumbnail or a snapshot on a client UI, or may be serialized into a segment of binary data in a standard format and stored in a memory or a file (referred to as an OE format file).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 ## Files

@@ -4,6 +4,8 @@
 
 声明网络流量过滤与重定向功能的C接口。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **起始版本：** 26.0.0
 
 ## 文件汇总

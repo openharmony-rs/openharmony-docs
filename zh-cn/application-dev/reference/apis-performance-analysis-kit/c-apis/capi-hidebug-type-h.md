@@ -105,6 +105,8 @@ enum OH_HiDebug_ResourceType
 
 定义资源采集类型的枚举。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -114,9 +116,9 @@ enum OH_HiDebug_ResourceType
 | OH_RES_TYPE_NATIVE |  |
 | OH_RES_TYPE_GPU |  |
 | OH_RES_TYPE_GLOBAL_HANDLE |  |
-| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.1.0 |
-| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.1.0 |
-| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.1.0 |
+| OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.0.1 |
+| OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.0.1 |
+| OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.0.1 |
 
 ### OH_HiDebug_MemListenerType
 
@@ -127,6 +129,8 @@ enum OH_HiDebug_MemListenerType
 **描述：**
 
 内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.0
 
@@ -149,6 +153,8 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 请求trace采集的回调类型定义。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 24
 
 **参数：**
@@ -167,6 +173,8 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 **描述：**
 
 定义资源采集回调函数。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 

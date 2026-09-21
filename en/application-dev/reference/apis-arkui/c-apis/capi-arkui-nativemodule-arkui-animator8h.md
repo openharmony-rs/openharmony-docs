@@ -8,6 +8,8 @@ typedef struct ArkUI_Animator* ArkUI_AnimatorHandle
 
 Defines the pointer to an animator object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

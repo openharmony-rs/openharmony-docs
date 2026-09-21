@@ -4,6 +4,8 @@
 
 提供HTTP客户端模块的C接口。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 20
 
 ## 文件汇总

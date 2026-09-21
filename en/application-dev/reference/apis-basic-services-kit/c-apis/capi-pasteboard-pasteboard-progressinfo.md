@@ -8,6 +8,8 @@ typedef struct Pasteboard_ProgressInfo Pasteboard_ProgressInfo
 
 Defines a struct for the progress information.
 
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
 **Since**: 15
 
 **Related module**: [Pasteboard](capi-pasteboard.md)

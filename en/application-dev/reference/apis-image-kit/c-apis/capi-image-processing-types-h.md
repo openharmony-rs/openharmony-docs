@@ -27,7 +27,7 @@ Type definitions for image processing.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ImageDetailEnhancer_QualityLevel](#imagedetailenhancer_qualitylevel) | ImageDetailEnhancer_QualityLevel | The quality level is used for detail enhancement.<br> It is the value of the key parameter {@link IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL}. |
+| [ImageDetailEnhancer_QualityLevel](#imagedetailenhancer_qualitylevel) | ImageDetailEnhancer_QualityLevel | The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#变量). |
 | [ImageProcessing_ErrorCode](#imageprocessing_errorcode) | ImageProcessing_ErrorCode | Image processing error code. |
 
 ### Variable
@@ -39,7 +39,7 @@ Type definitions for image processing.
 | const int32_t IMAGE_PROCESSING_TYPE_DECOMPOSITION | Used to create an image processing instance for HDR image decomposition.<br> HDR image decompose includes the conversion from single-layer HDR images to dual-layer HDR images. Some capabilities are supported by vendor. Use {@link OH_ImageProcessing_IsDecompositionSupported} to query if the decomposition is supported from single-layer image to dual-layer HDR image.<br>**Since**: 13 |
 | const int32_t IMAGE_PROCESSING_TYPE_METADATA_GENERATION | Used to create an image processing instance for metadata generation.<br> Generate HDR Vivid metadata for single-layer image. The capability is supported by vendor. If the capability is not supported, {@link OH_ImageProcessing_Create} returns [IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-image-processing-types-h.md#imageprocessing_errorcode).<br>**Since**: 13 |
 | const int32_t IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER | Used to create an image processing instance for detail enhancement.<br> Scale or resize images with the specified quality or just enhance details for rendering an image without changing its resolution.<br>**Since**: 13 |
-| const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | The key is used to specify the quality level for image detail enhancement.<br> See [ImageDetailEnhancer_QualityLevel](capi-image-processing-types-h.md#imagedetailenhancer_qualitylevel) for its value. Use {@link OH_ImageProcessing_SetParameter} to set the quality level.<br>Use {@link OH_ImageProcessing_GetParameter} to get the current quality level.<br>**Since**: 13 |
+| const char *IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | The key is used to specify the quality level for image detail enhancement.<br> See [ImageDetailEnhancer_QualityLevel](capi-image-processing-types-h.md#imagedetailenhancer_qualitylevel) for its value.<br>Use {@link OH_ImageProcessing_SetParameter} to set the quality level.<br>Use {@link OH_ImageProcessing_GetParameter} to get the current quality level.<br>**Since**: 13 |
 
 ## Enum type description
 
@@ -51,7 +51,9 @@ enum ImageDetailEnhancer_QualityLevel
 
 **Description**
 
-The quality level is used for detail enhancement.<br> It is the value of the key parameter {@link IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL}.
+The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#变量).
+
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 13
 
@@ -77,6 +79,8 @@ enum ImageProcessing_ErrorCode
 **Description**
 
 Image processing error code.
+
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 13
 

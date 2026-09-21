@@ -8,6 +8,8 @@ typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 
 The struct describes a list of file descriptors passed to the child process. The list can contain a maximum of 16 entries.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Related module**: [ChildProcess](capi-childprocess.md)

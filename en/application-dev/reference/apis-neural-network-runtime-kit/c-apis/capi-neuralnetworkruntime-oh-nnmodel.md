@@ -8,6 +8,8 @@ typedef struct OH_NNModel OH_NNModel
 
 Defines the handles of models.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

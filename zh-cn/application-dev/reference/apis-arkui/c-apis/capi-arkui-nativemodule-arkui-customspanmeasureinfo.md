@@ -8,6 +8,8 @@ typedef struct ArkUI_CustomSpanMeasureInfo ArkUI_CustomSpanMeasureInfo
 
 自定义Span组件的测量信息。该结构体用于在自定义Span组件的测量回调中提供组件的测量数据，帮助开发者实现自定义文本组件的精确尺寸测量与布局排版。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

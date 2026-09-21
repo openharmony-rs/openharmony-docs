@@ -8,6 +8,8 @@ typedef struct TimeZoneRuleQuery {...} TimeZoneRuleQuery
 
 Used to input the query information and receive the query result.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Related module**: [i18n](capi-i18n.md)

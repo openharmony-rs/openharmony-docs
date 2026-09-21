@@ -8,6 +8,8 @@ typedef struct AbilityBase_Element {...} AbilityBase_Element
 
 声明{@link Want}中Element结构体。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 **相关模块：** [AbilityBase](capi-abilitybase.md)

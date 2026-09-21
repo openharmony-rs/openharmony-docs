@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_ColorXY {...} OH_NativeBuffer_ColorXY
 
 Indicates the color x and y.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

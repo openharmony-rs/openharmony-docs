@@ -19,10 +19,10 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateDefault(void)](#oh_drawing_typefacecreatedefault) | 用于创建一个默认的字形对象。 |
-| [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int index)](#oh_drawing_typefacecreatefromfile) | 通过文件创建一个字形对象。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int index)](#oh_drawing_typefacecreatefromfile) | 通过文件创建一个字形对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* path, const OH_Drawing_FontArguments* fontArguments)](#oh_drawing_typefacecreatefromfilewitharguments) | 从指定文件路径创建带有字型参数的字体对象。 <br>如果字体对象不支持字型参数中描述的可变维度，此函数将会创建默认字型参数的字体对象。 <br>在这种情况下，此函数将提供与[OH_Drawing_TypefaceCreateFromFile](capi-drawing-typeface-h.md#oh_drawing_typefacecreatefromfile)相同的功能。 |
 | [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typeface* current, const OH_Drawing_FontArguments* fontArguments)](#oh_drawing_typefacecreatefromcurrent) | 通过已存在的字体对象创建带有字型参数的字体对象。 |
-| [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream* memoryStream, int32_t index)](#oh_drawing_typefacecreatefromstream) | 通过内存流创建一个字形对象。如果内存流是无效的字体文件，返回空指针。内存流传入后，所有权转移，开发者不能再释放它。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>memoryStream为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream* memoryStream, int32_t index)](#oh_drawing_typefacecreatefromstream) | 通过内存流创建一个字形对象。如果内存流是无效的字体文件，返回空指针。内存流传入后，所有权转移，开发者不能再释放它。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>memoryStream为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)](#oh_drawing_typefacedestroy) | 用于销毁字形对象并回收该对象占用的内存。 |
 | [OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)](#oh_drawing_fontargumentscreate) | 用于创建一个字型参数对象。字型参数用于创建带有自定义属性的字体对象。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArguments* fontArguments, const char* axis, float value)](#oh_drawing_fontargumentsaddvariation) | 给字型参数对象添加可变维度。 |
@@ -42,6 +42,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateDefault(void)
 
 用于创建一个默认的字形对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **返回值：**
@@ -58,7 +60,9 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int ind
 
 **描述：**
 
-通过文件创建一个字形对象。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+通过文件创建一个字形对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -85,6 +89,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* 
 
 从指定文件路径创建带有字型参数的字体对象。 <br>如果字体对象不支持字型参数中描述的可变维度，此函数将会创建默认字型参数的字体对象。 <br>在这种情况下，此函数将提供与[OH_Drawing_TypefaceCreateFromFile](capi-drawing-typeface-h.md#oh_drawing_typefacecreatefromfile)相同的功能。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
@@ -110,6 +116,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typef
 
 通过已存在的字体对象创建带有字型参数的字体对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
@@ -133,7 +141,9 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream
 
 **描述：**
 
-通过内存流创建一个字形对象。如果内存流是无效的字体文件，返回空指针。内存流传入后，所有权转移，开发者不能再释放它。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>memoryStream为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+通过内存流创建一个字形对象。如果内存流是无效的字体文件，返回空指针。内存流传入后，所有权转移，开发者不能再释放它。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>memoryStream为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -160,6 +170,8 @@ void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)
 
 用于销毁字形对象并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -178,6 +190,8 @@ OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)
 
 用于创建一个字型参数对象。字型参数用于创建带有自定义属性的字体对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **返回值：**
@@ -195,6 +209,8 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArgumen
 **描述：**
 
 给字型参数对象添加可变维度。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 13
 
@@ -222,6 +238,8 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* f
 
 用于销毁一个字型参数对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
@@ -245,6 +263,8 @@ OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typefa
 **描述：**
 
 检查字形是否为粗体。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -270,6 +290,8 @@ OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* type
 **描述：**
 
 检查字形是否为斜体。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 

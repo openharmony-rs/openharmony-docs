@@ -8,6 +8,8 @@ typedef struct ImageNative_ ImageNative
 
 为图像接口定义native层图像对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)

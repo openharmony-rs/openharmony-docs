@@ -8,6 +8,8 @@ typedef struct ffrt_condattr_t {...} ffrt_condattr_t
 
 Defines the condition variable attribute structure used to store condition variable attribute information.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)

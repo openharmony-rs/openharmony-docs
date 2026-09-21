@@ -38,6 +38,8 @@ OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 
 创建一个指令录制工具对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **返回值：**
@@ -56,13 +58,15 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils*
 
 销毁一个指令录制工具对象，并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RecordCmdUtils* recordCmdUtils | 指向指令录制工具对象{@link OH_Drawing_RecordCmdUtils}的指针。 |
+| OH_Drawing_RecordCmdUtils* recordCmdUtils | 指向指令录制工具对象[OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)的指针。 |
 
 **返回值：**
 
@@ -80,16 +84,18 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCm
 
 开始录制。此接口需要与[OH_Drawing_RecordCmdUtilsFinishRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsfinishrecording)接口成对使用。 <br>指令录制工具生成录制类型的画布对象，可调用drawing的绘制接口，记录接下来所有的绘制指令。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RecordCmdUtils* recordCmdUtils | 指向指令录制工具对象{@link OH_Drawing_RecordCmdUtils}的指针。 |
+| OH_Drawing_RecordCmdUtils* recordCmdUtils | 指向指令录制工具对象[OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)的指针。 |
 | int32_t width | 画布的宽度，必须大于0。 |
 | int32_t height | 画布的高度，必须大于0。 |
-| OH_Drawing_Canvas** canvas | 指向画布对象{@link OH_Drawing_Canvas}的二级指针，作为出参，开发者无需释放。<br>    <br>该画布对象不支持嵌套调用{@link OH_Drawing_CanvasDrawRecordCmd}接口。 |
+| OH_Drawing_Canvas** canvas | 指向画布对象[OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)的二级指针，作为出参，开发者无需释放。 <br>该画布对象不支持嵌套调用[OH_Drawing_CanvasDrawRecordCmd](capi-drawing-canvas-h.md#oh_drawing_canvasdrawrecordcmd)接口。 |
 
 **返回值：**
 
@@ -107,14 +113,16 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordC
 
 结束录制。在调用此接口前，需要先调用[OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording)接口。 <br>指令录制工具结束录制指令，将录制类型画布对象记录的绘制指令存入生成的录制指令对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RecordCmdUtils* recordCmdUtils | 指向指令录制工具对象{@link OH_Drawing_RecordCmdUtils}的指针，不能为空。 |
-| OH_Drawing_RecordCmd** recordCmd | 指向录制指令对象{@link OH_Drawing_RecordCmd}的二级指针，作为出参，<br>开发者调用{@link OH_Drawing_CanvasDrawRecordCmd}接口绘制该对象。 需要调用[OH_Drawing_RecordCmdDestroy](capi-drawing-record-cmd-h.md#oh_drawing_recordcmddestroy)接口释放。 |
+| OH_Drawing_RecordCmdUtils* recordCmdUtils | 指向指令录制工具对象[OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)的指针，不能为空。 |
+| OH_Drawing_RecordCmd** recordCmd | 指向录制指令对象[OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)的二级指针，作为出参， 开发者调用[OH_Drawing_CanvasDrawRecordCmd](capi-drawing-canvas-h.md#oh_drawing_canvasdrawrecordcmd)接口绘制该对象。 需要调用[OH_Drawing_RecordCmdDestroy](capi-drawing-record-cmd-h.md#oh_drawing_recordcmddestroy)接口释放。 |
 
 **返回值：**
 
@@ -132,20 +140,22 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordC
 
 获取录制画布的高度。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_RecordCmdUtils *recordCmdUtils | [入参] 指向指令录制工具对象{@link OH_Drawing_RecordCmdUtils}的指针，不能为空。 |
+| const OH_Drawing_RecordCmdUtils *recordCmdUtils | [入参] 指向指令录制工具对象[OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)的指针，不能为空。 |
 | int32_t *height | [出参] 用于接收录制画布的高度，单位为物理像素px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ErrorCode | <ul>         <li>返回{@link OH_DRAWING_SUCCESS} 表示执行成功。</li><br>        <li>返回{@link OH_DRAWING_ERROR_INCORRECT_PARAMETER} 表示参数recordCmdUtils或height为nullptr。</li>         </ul> |
+| OH_Drawing_ErrorCode | <ul>         <li>返回[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) 表示执行成功。</li>         <li>返回[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) 表示参数recordCmdUtils或height为nullptr。</li>         </ul> |
 
 ### OH_Drawing_RecordCmdUtilsGetWidth()
 
@@ -157,20 +167,22 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCm
 
 获取录制画布的宽度。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| const OH_Drawing_RecordCmdUtils *recordCmdUtils | [入参] 指向指令录制工具对象{@link OH_Drawing_RecordCmdUtils}的指针，不能为空。 |
+| const OH_Drawing_RecordCmdUtils *recordCmdUtils | [入参] 指向指令录制工具对象[OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)的指针，不能为空。 |
 | int32_t *width | [出参] 用于接收录制画布的宽度，单位为物理像素px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ErrorCode | <ul>         <li>返回{@link OH_DRAWING_SUCCESS} 表示执行成功。</li><br>        <li>返回{@link OH_DRAWING_ERROR_INCORRECT_PARAMETER} 表示参数recordCmdUtils或width为nullptr。</li>         </ul> |
+| OH_Drawing_ErrorCode | <ul>         <li>返回[OH_DRAWING_SUCCESS](capi-drawing-error-code-h.md#oh_drawing_errorcode) 表示执行成功。</li>         <li>返回[OH_DRAWING_ERROR_INCORRECT_PARAMETER](capi-drawing-error-code-h.md#oh_drawing_errorcode) 表示参数recordCmdUtils或width为nullptr。</li>         </ul> |
 
 ### OH_Drawing_RecordCmdDestroy()
 
@@ -182,13 +194,15 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd
 
 销毁录制指令对象，并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_RecordCmd* recordCmd | 指向录制指令对象{@link OH_Drawing_RecordCmd}的指针。 |
+| OH_Drawing_RecordCmd* recordCmd | 指向录制指令对象[OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)的指针。 |
 
 **返回值：**
 

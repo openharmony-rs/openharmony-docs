@@ -8,6 +8,8 @@ typedef struct ArkUI_WaterFlowSectionOption ArkUI_WaterFlowSectionOption
 
 Defines the water flow section configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

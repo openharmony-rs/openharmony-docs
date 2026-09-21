@@ -8,6 +8,8 @@ typedef struct OH_NativeBuffer_Cta861 {...} OH_NativeBuffer_Cta861
 
 Indicates the cta861.3 metadata.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

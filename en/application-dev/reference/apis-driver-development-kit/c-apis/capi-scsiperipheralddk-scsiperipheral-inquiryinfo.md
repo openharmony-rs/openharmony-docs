@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
 
 Defines the SCSI inquiry data.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityProviderCallbacks {...} ArkUI_AccessibilityPro
 
 第三方{@link provider}回调函数结构定义，需要第三方平台实现的相关函数，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册到系统侧。 适用于读屏软件、语音控制、开关控制等无障碍辅助场景，第三方平台通过实现这些回调响应系统的无障碍查询和操作请求。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 13
 
 **相关模块：** [ArkUI_Accessibility](capi-arkui-accessibility.md)
