@@ -1354,6 +1354,8 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Since**: 26.0.0
 
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets, PCs/2-in-1 devices and TVs.
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 Allows an application to connect to a specific device using Tap-to-Transfer for information exchange and cross-device interaction.
