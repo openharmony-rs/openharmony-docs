@@ -1064,7 +1064,7 @@ getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->Openharmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
