@@ -54,7 +54,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The options parameter must be of type FetchOptions;<br>2.The callback parameter must be of type AsyncCallback<FetchResult&lt;PhotoAsset&gt;>. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900012     | Permission denied. <br> 适用版本：10-11         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The predicate contains invalid statements, the key must be a valid PhotoKeys value;<br>2.The fetchColumns contain invalid column names, the column must be a valid PhotoKeys value;<br>3.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum();<br>4.The album instance is invalid;<br>5.The album ID is invalid;<br>6.The album type or subtype is not a valid enum value;<br>7.The combination of album type and subtype is invalid. |
@@ -120,7 +120,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The options parameter must be of type FetchOptions. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900012     | Permission denied. <br> 适用版本：10-19         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum();<br>2.The album instance is invalid;<br>3.The album type is invalid, must be a valid AlbumType enum value;<br>4.The object is not a valid instance. |

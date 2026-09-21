@@ -55,7 +55,7 @@ constructor(asset: PhotoAsset)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The asset parameter must be of type PhotoAsset;<br>2. The PhotoAsset object is not a valid PhotoAsset;<br>3. The object is not a PhotoAccessHelper type;<br>4. The photoType is invalid;<br>5. The asset subtype is invalid, please check the parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The constructor was not called with the new keyword;<br>2. Parameter parsing failed, please check the number and types of parameters;<br>3. The asset parameter is not a valid PhotoAsset object;<br>4. System memory insufficient, please retry;<br>5. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例：**
@@ -109,7 +109,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters must be 2;<br>2. The fileUri parameter must be a string;<br>3. The fileUri length exceeds PATH_MAX;<br>4. The fileUri is undefined;<br>5. The file type is not IMAGE;<br>6. The file name is invalid (contains "..", empty title, or exceeds 255 characters). |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2. IPC communication error, please retry;<br>3. System memory insufficient, please retry;<br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
@@ -161,7 +161,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters must be 2;<br>2. The fileUri parameter must be a string;<br>3. The fileUri length exceeds PATH_MAX;<br>4. The fileUri is undefined;<br>5. The file type is not VIDEO;<br>6. The file name is invalid. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2. IPC communication error, please retry;<br>3. System memory insufficient, please retry;<br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
@@ -215,7 +215,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters must be between 2 and 4;<br>2. The photoType parameter must be a number;<br>3. The photoType must be IMAGE(1) or VIDEO(2);<br>4. The extension parameter must be a string and within 255 limit;<br>5. The extension does not match the photoType;<br>6. The options parameter must be an object;<br>7. Invalid subtype value;<br>8. The subtype is MOVING_PHOTO but mediaType is not IMAGE;<br>9. The subtype is MOVING_PHOTO but extension is not a supported moving photo format;<br>10. The cameraShotKey length must be at least 30;<br>11. The cameraShotKey is set but subtype is SCREENSHOT;<br>12. The generated file name is invalid or too long. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2. User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry;<br>3. System memory insufficient, please retry;<br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例：**
@@ -273,7 +273,7 @@ static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters is invalid, expected 2 parameters (context, assets);<br>2. The assets parameter must be an array;<br>3. The assets array is empty;<br>4. The array element type must be string (URI) or PhotoAsset object;<br>5. The assets parameter is undefined;<br>6. No more than 300 assets can be deleted at one time;<br>7. The context parameter is invalid;<br>8. The PhotoAsset object in the array is not a valid object. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2. User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry;<br>3. The assets array contains elements that are not valid PhotoAsset objects;<br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>5. System memory insufficient, please retry. |
 
 **示例：**
@@ -331,7 +331,7 @@ static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters is invalid, expected 2 parameters (context, assets);<br>2. The assets parameter must be an array;<br>3. The assets array is empty;<br>4. The array element type must be string (URI) or PhotoAsset object;<br>5. The assets parameter is undefined;<br>6. No more than 300 assets can be deleted at one time;<br>7. The context parameter is invalid;<br>8. The PhotoAsset object in the array is not a valid object. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000002 | The URI format is incorrect or the URI does not exist. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2. User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry;<br>3. The uriList array contains elements that are not valid string URIs, each element must be a valid file URI string;<br>4. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>5. System memory insufficient, please retry. |
 
@@ -386,7 +386,7 @@ getAsset(): PhotoAsset
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The object is not a valid instance;<br>2. The current object is not a MediaAssetChangeRequest instance. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object;<br>2. System memory insufficient, please retry;<br>3. IPC timeout, please retry. |
 
 **示例：**
@@ -436,7 +436,7 @@ title参数规格为：
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The number of parameters is invalid, expected 1 parameter;<br>2. The title parameter must be a string;<br>3. The title contains unsupported characters or exceeds the length limit (max 255 characters);<br>4. The ChangeRequest is not a valid object created through the constructor or static factory methods;<br>5. The PhotoAsset is not a valid PhotoAsset object. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object;<br>2. System memory insufficient, please retry;<br>3. IPC timeout, please retry. |
 
 **示例：**
@@ -494,7 +494,7 @@ getWriteCacheHandler(): Promise&lt;number&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes:<br>1. The object is not a valid instance. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object;<br>2. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes:<br>1. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>2. A previous asset creation or modification request has not been applied yet. |
 
@@ -550,7 +550,7 @@ addResource(type: ResourceType, fileUri: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The object is not a valid instance;<br>2. The type parameter must be a valid ResourceType enum value;<br>3. The resourceType does not match the media type of the asset;<br>4. The fileUri parameter must be a string;<br>5. The fileUri length exceeds 4096 characters;<br>6. The file extension does not match the resource media type;<br>7. The fileUri does not point to a valid moving photo video resource;<br>8. The moving photo video duration must be > 0 and <= 10 seconds;<br>9. The resourceType is ORIGINAL_IMAGE_RESOURCE but the caller is not a system app;<br>10. The resourceType is invalid, the resource has already been added, or ADD_RESOURCE operation exceeds 1 time;<br>11. The ChangeRequest is not a valid object created through the constructor or static factory methods. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002 | The file corresponding to the URI is not in the app sandbox. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object;<br>2. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes:<br>1. A previous asset creation or modification request has not been applied yet. |
@@ -604,7 +604,7 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The object is not a valid instance;<br>2. The type parameter must be a valid ResourceType enum value;<br>3. The resourceType does not match the media type of the asset;<br>4. The data parameter must be of type ArrayBuffer;<br>5. The ArrayBuffer length is 0, please provide valid data;<br>6. The data in ArrayBuffer is not a valid moving photo video resource;<br>7. The moving photo video duration must be > 0 and <= 10 seconds;<br>8. The resourceType is invalid, the resource has already been added, or ADD_RESOURCE operation exceeds 1 time;<br>9. The ChangeRequest is not a valid object created through the constructor or static factory methods. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object;<br>2. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 | 14000016 | Operation type not support. Possible causes:<br>1. A previous asset creation or modification request has not been applied yet. |
 
@@ -779,7 +779,7 @@ setOrientation(orientation: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1. The orientation parameter must be a number;<br>2. The orientation value must be 0, 90, 180, or 270;<br>3. The number of parameters is invalid, expected 1 parameter;<br>4. The ChangeRequest is not a valid object created through the constructor or static factory methods;<br>5. The PhotoAsset is not a valid PhotoAsset object;<br>6. No pending change request to apply;<br>7. Cannot create or edit asset without data to write;<br>8. Cannot create and edit at the same time;<br>9. Invalid asset change request, the asset ID is invalid;<br>10. Invalid write operation for moving photo. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例：**

@@ -52,7 +52,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum();<br>2.The album is not a user album, only user albums support this operation;<br>3.The album name exceeds the length limit or contains invalid characters;<br>4.The number of parameters is invalid;<br>5.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2.The server returned an error during commitModify, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
@@ -115,7 +115,7 @@ commitModify(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.Unexpected extra parameters, this API takes 0 parameters. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.System out of memory, please retry;<br>2.The object is not a valid instance;<br>3.The album is not a user album, only user albums support this operation;<br>4.The album name exceeds the length limit or contains invalid characters;<br>5.The number of parameters is invalid. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context;<br>2.The server returned an error during commitModify, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
@@ -183,7 +183,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The assets parameter must be of type Array&lt;PhotoAsset&gt;;<br>2.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.System out of memory, please retry;<br>2.The object is not a valid instance;<br>3.The album is not a user album, only user albums support this operation;<br>4.The assets parameter must be an array;<br>5.The assets array is empty;<br>6.The array element must be a valid PhotoAsset object;<br>7.The number of parameters is invalid;<br>8.The array element is not a valid object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System memory insufficient, please retry;<br>2.The assets array contains elements with invalid file type, each element must be IMAGE or VIDEO type;<br>3.IPC call failed, please retry and check logs;<br>4.The assets array contains elements that are not valid PhotoAsset objects;<br>5.Server returned a non-permission error code;<br>6.Failed to update album count, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>7.The assets parameter must be an array;<br>8.The assets array is empty;<br>9.The array element must be a valid PhotoAsset object. |
@@ -257,7 +257,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The assets parameter must be of type Array&lt;PhotoAsset&gt;. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum();<br>2.The album instance is invalid;<br>3.The album is not a user album, only user albums support addAssets;<br>4.The assets parameter must be an array;<br>5.The assets array is empty;<br>6.The array element must be a valid PhotoAsset object;<br>7.The number of parameters is invalid, expected at least 1 parameter;<br>8.The array element is not a valid PhotoAsset object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The assets array contains no valid photo or video resources;<br>2.IPC call returned a non-permission error code;<br>3.Batch insert failed, database operation error, please retry;<br>4.Failed to update album count, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>5.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>6.The assets parameter must be an array;<br>7.The assets array is empty;<br>8.The array element must be a valid PhotoAsset object. |
@@ -326,7 +326,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The assets parameter must be of type Array&lt;PhotoAsset&gt;;<br>2.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum();<br>2.The album instance is invalid;<br>3.The album is not a user album, only user albums support removeAssets;<br>4.The assets parameter must be an array;<br>5.The assets array is empty;<br>6.The array element must be a valid PhotoAsset object;<br>7.The object is not a valid instance;<br>8.The array element is invalid. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The assets array is empty or contains no valid PhotoAsset elements;<br>2.IPC call returned a non-permission error code;<br>3.The assets array contains elements that are not valid PhotoAsset objects;<br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>5.The assets parameter must be an array;<br>6.The assets array is empty;<br>7.The array element must be a valid PhotoAsset object. |
@@ -400,7 +400,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The assets parameter must be of type Array&lt;PhotoAsset&gt;. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum();<br>2.The album instance is invalid;<br>3.The album is not a user album, only user albums support removeAssets;<br>4.The assets parameter must be an array;<br>5.The assets array is empty;<br>6.The array element must be a valid PhotoAsset object;<br>7.The object is not a valid instance;<br>8.The array element is invalid. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The assets array is empty or contains no valid PhotoAsset elements;<br>2.IPC call returned a non-permission error code;<br>3.The assets array contains elements that are not valid PhotoAsset objects;<br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs;<br>5.The assets parameter must be an array;<br>6.The assets array is empty;<br>7.The array element must be a valid PhotoAsset object. |
