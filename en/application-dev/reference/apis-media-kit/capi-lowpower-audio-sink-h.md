@@ -41,7 +41,7 @@ The file declares the native APIs provided by the **LowPowerAudioSink** instance
 | [OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const float volume)](#oh_lowpoweraudiosink_setvolume) | Sets the rendering volume for an **OH_LowPowerAudioSink** instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
 | [OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, float loudnessGain)](#oh_lowpoweraudiosink_setloudnessgain) | Sets the loudness gain for an **OH_LowPowerAudioSink** instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
 | [OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, const float speed)](#oh_lowpoweraudiosink_setplaybackspeed) | Sets the audio rendering speed for an **OH_LowPowerAudioSink** instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
-| [OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_AVSamplesBuffer* samples)](#oh_lowpoweraudiosink_returnsamples) | Provides a buffer to an **OH_LowPowerAudioSink** instance for procesing.|
+| [OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_AVSamplesBuffer* samples)](#oh_lowpoweraudiosink_returnsamples) | Provides a buffer to an **OH_LowPowerAudioSink** instance for processing.|
 | [OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, OH_LowPowerAudioSinkCallback* callback)](#oh_lowpoweraudiosink_registercallback) | Registers a callback for an **OH_LowPowerAudioSink** instance. This function must be called before [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) to ensure that the event callback can be received properly.|
 | [OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)](#oh_lowpoweraudiosinkcallback_create) | Creates an **OH_LowPowerAudioSinkCallback** instance.|
 | [OH_AVErrCode OH_LowPowerAudioSinkCallback_Destroy(OH_LowPowerAudioSinkCallback* callback)](#oh_lowpoweraudiosinkcallback_destroy) | Destroys an **OH_LowPowerAudioSinkCallback** instance.|
@@ -428,7 +428,7 @@ OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_A
 
 **Description**
 
-Provides a buffer to an **OH_LowPowerAudioSink** instance for procesing.
+Provides a buffer to an **OH_LowPowerAudioSink** instance for processing.
 
 **Since**: 20
 
