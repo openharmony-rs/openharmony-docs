@@ -2302,7 +2302,7 @@ setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityNa
 **示例：**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -2366,7 +2366,7 @@ isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityNam
 **示例：**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -2431,7 +2431,7 @@ isAbilityDisabled(admin: Want | null, bundleName: string, accountId: number, abi
 **示例：**
 
 ```ts
-import { applicationManager, common } from '@kit.MDMKit';
+import { applicationManager } from '@kit.MDMKit';
 
 try {
   // 需根据实际情况进行替换
