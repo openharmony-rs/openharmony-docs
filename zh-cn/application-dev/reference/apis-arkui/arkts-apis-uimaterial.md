@@ -380,6 +380,7 @@ struct SystemMaterialPage {
           .iconStyle({ selectedColor: $r('sys.color.brand'), unselectedColor: $r('sys.color.font_primary') })
         )
       }
+      .animationDuration(400)
       .barFloatingStyle({
         systemMaterial: new uiMaterial.ImmersiveMaterial({
           style: this.currentStyle,
