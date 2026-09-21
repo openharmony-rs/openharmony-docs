@@ -27,9 +27,9 @@ Permission verification failed. The application does not have the permission req
 
 **处理步骤**
 
-1. 在配置文件中补充接口依赖的权限。具体请[参考](../security/AccessToken/declare-permissions.md)。
+1. 在配置文件中补充接口依赖的权限。具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
-2. 针对敏感权限增加动态申请逻辑。具体请[参考](../security/AccessToken/request-user-authorization.md)。
+2. 针对敏感权限增加动态申请逻辑。具体请参考[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 3. 确保调用方应用身份符合接口权限要求。
 
