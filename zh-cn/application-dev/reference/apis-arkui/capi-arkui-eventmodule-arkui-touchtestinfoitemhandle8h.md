@@ -1,4 +1,4 @@
-# ArkUI_TouchTestInfoItemHandle\*
+# ArkUI_TouchTestInfoItemHandle*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
