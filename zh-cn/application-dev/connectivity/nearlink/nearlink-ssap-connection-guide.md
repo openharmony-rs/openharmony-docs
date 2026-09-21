@@ -301,6 +301,19 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 8. 设置属性变化通知。仅当服务端对应属性支持通知（NOTIFY）操作并声明了客户端属性值配置描述符时，通知才能生效，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。
 
+    > **说明：**
+    >
+    > 客户端收到属性变化通知需同时满足以下条件：
+    >
+    > 1. 服务端在创建该属性时声明了通知（NOTIFY）操作和客户端属性值配置描述符（CLIENT_PROPERTY_CONFIG）；
+    > 2. 客户端已与服务端成功建立SSAP连接；
+    > 3. 客户端已通过[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)获取到该属性；
+    > 4. 客户端已调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用该属性的通知；
+    > 5. 客户端已调用[onPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#onpropertychange)注册属性变化回调。
+    >
+    > 满足上述条件后，服务端调用[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)更新属性值时，会向客户端发送属性变化通知。若上述任一条件不满足，客户端将收不到通知。
+    > 连接断开后，已启用的通知会失效，重新连接后需重新调用[setPropertyNotification()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#setpropertynotification)启用。
+
     <!-- @[ssap_client_set_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
     
     ``` TypeScript
