@@ -48,6 +48,23 @@
 | --- | --- | --- | --- | --- |
 | enableFreeze | boolean | 否 | 是 | 设置模糊快照是否开启冻结优化。开启后，在模糊快照时应用冻结优化以降低渲染开销；未设置或设置为false时，冻结优化关闭，采用常规渲染方式。<br>拉起半模态后支持动态切换该参数值。<br>默认值：false<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
 
+## SheetTitleBarBackgroundBlur
+
+标题栏背景模糊样式枚举。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称      | 值 | 说明           |
+| ------- | ---- | -------- |
+| NONE | 0 | 无模糊效果。  |
+| GRADIENT    | 1 | 渐变模糊，从标题栏顶部向下渐变至透明。 |
+
 ## SheetTitleBarBackgroundBlurOptions
 
 标题栏背景模糊效果层的自定义参数，所有子属性均为可选，未设置的属性使用系统默认值。
@@ -62,7 +79,7 @@
 
 | 名称              | 类型                                       | 只读   | 可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
-| blurStyle | [SheetTitleBarBackgroundBlur](ts-universal-attributes-sheet-transition.md#sheettitlebarbackgroundblur) | 否    | 是    | 模糊效果层的模糊样式，设置为GRADIENT启用渐变模糊效果。<br>默认值：SheetTitleBarBackgroundBlur.NONE。 |
+| blurStyle | [SheetTitleBarBackgroundBlur](#sheettitlebarbackgroundblur) | 否    | 是    | 模糊效果层的模糊样式，设置为GRADIENT启用渐变模糊效果。<br>默认值：SheetTitleBarBackgroundBlur.NONE。 |
 | maskExtraHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果层的额外高度，以标题栏高度为基础的额外效果高度。<br>默认值：32vp。<br>当取值为0vp时，模糊效果层下边沿与标题栏等高。<br>**起始版本：** 26.2.0 |
 | maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是    | 模糊效果层的渐变基色，作为渐变顶部的最大颜色值，系统应用内置透明度曲线从顶部到底部逐渐将其淡化。<br>未设置时：浅色模式使用半透明白色效果，深色模式使用半透明黑色效果。<br>**起始版本：** 26.2.0 |
 | effectiveDistance | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果从完全隐藏到完全可见所需的滑动距离。<br>取值范围：大于等于0，小于0的值按0处理。<br>默认值：8vp。<br>**起始版本：** 26.2.0 |
