@@ -5706,7 +5706,7 @@ onWindowFocusStateChange(callback: Callback&lt;[WindowFocusState](arkts-apis-win
 
 开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5746,7 +5746,7 @@ offWindowFocusStateChange(callback?: Callback&lt;[WindowFocusState](arkts-apis-w
 
 关闭窗口焦点状态变化事件的监听。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
