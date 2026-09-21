@@ -1023,7 +1023,7 @@ Allows an application to customize the BLE advertiser name.
 
 ## ohos.permission.GET_AUDIO_ADAPTER_INFO
 
-Allows an application to obtain sound card information.
+Allows an enterprise application to obtain audio sound card information.
 
 <!--RP99--><!--RP99End-->
 
