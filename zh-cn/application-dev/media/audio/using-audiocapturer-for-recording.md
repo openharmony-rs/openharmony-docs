@@ -26,6 +26,8 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
+完整示例展示了使用AudioCapturer完成录音，并在录音完成后播放所录制音频的实现，可供需要实现该功能的开发者参考。
+
 1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)。
 
    > **说明：**
