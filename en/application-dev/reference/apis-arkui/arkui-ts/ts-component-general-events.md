@@ -22,6 +22,6 @@
 - [Component Keyboard Shortcut Event](ts-universal-events-keyboardshortcut.md)
 - [Custom Event Dispatch](ts-universal-attributes-on-child-touch-test.md)
 - [Custom Event Interception](ts-universal-attributes-on-touch-intercept.md)
-- [Focus Axis Event](ts-universal-events-focus_axis.md)
+- [Focus Axis Event](ts-universal-events-focus-axis.md)
 - [Axis Event](ts-universal-events-axis.md)
 <!--DelEnd-->
