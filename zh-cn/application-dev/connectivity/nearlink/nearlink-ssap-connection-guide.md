@@ -212,6 +212,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     import { ssap } from '@kit.ConnectivityKit';
     ```
 
