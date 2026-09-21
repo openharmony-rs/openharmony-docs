@@ -477,7 +477,7 @@ getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit;<br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes:. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
