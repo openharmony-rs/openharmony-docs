@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-用于卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件，仅在卡片中可以调用。<!--Del-->此外，系统应用的卡片还支持insightIntent类型的事件，用于通过意图框架执行意图跳转。<!--DelEnd-->
+用于卡片内部和提供方应用间的交互，当前支持router、message、call<!--Del-->、insightIntent<!--DelEnd-->类型的事件，仅在卡片中可以调用。<!--Del-->其中，insightIntent类型的事件仅系统应用支持，用于通过意图框架执行意图跳转。<!--DelEnd-->
 
 > **说明：** 
 >
@@ -40,7 +40,7 @@ action参数说明：
 
 | **参数名** | **类型** |  **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| action | string | 是 |action的类型，支持三种<!--Del-->（系统应用还支持insightIntent类型）<!--DelEnd-->预定义的类型：<br/>-&nbsp;router：跳转到提供方应用的指定UIAbility，只允许在点击事件中触发。<br/>-&nbsp;message：自定义消息，触发后会调用提供方FormExtensionAbility的[onFormEvent()](../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)生命周期回调。<br/>-&nbsp;call：后台启动提供方应用。触发后会拉起提供方应用的指定UIAbility（仅支持launchType为singleton的[UIAbility](../../application-models/uiability-launch-type.md)，即启动模式为单实例的UIAbility），但不会调度到前台。提供方应用需要具备后台运行权限([ohos.permission.KEEP_BACKGROUND_RUNNING](../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running))。<!--Del--><br/>-&nbsp;insightIntent<sup>26+</sup>：通过[意图框架](../apis-ability-kit/js-apis-app-ability-insightIntent.md)执行意图跳转到提供方应用，只允许在点击事件中触发，仅系统应用支持。<!--DelEnd--> |
+| action | string | 是 |action的类型，支持以下预定义的类型：<br/>-&nbsp;router：跳转到提供方应用的指定UIAbility，只允许在点击事件中触发。<br/>-&nbsp;message：自定义消息，触发后会调用提供方FormExtensionAbility的[onFormEvent()](../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)生命周期回调。<br/>-&nbsp;call：后台启动提供方应用。触发后会拉起提供方应用的指定UIAbility（仅支持launchType为singleton的[UIAbility](../../application-models/uiability-launch-type.md)，即启动模式为单实例的UIAbility），但不会调度到前台。提供方应用需要具备后台运行权限([ohos.permission.KEEP_BACKGROUND_RUNNING](../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running))。<!--Del--><br/>-&nbsp;insightIntent<sup>26+</sup>：通过[意图框架](../apis-ability-kit/js-apis-app-ability-insightIntent.md)执行意图跳转到提供方应用，只允许在点击事件中触发，仅系统应用支持。<!--DelEnd--> |
 | bundleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的包名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的包名，缺省时使用卡片提供方应用的包名。<!--DelEnd--> |
 | moduleName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的模块名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的模块名，缺省时使用卡片提供方应用的模块名。<!--DelEnd--> |
 | abilityName | string | 否 | action为router&nbsp;/&nbsp;call&nbsp;类型时跳转的UIAbility名。<!--Del-->action为insightIntent&nbsp;类型时可指定意图跳转目标的UIAbility名，缺省时使用提供方应用[module.json5配置文件](../../quick-start/module-configuration-file.md)中入口UIAbility对应的名称。<!--DelEnd--> |
