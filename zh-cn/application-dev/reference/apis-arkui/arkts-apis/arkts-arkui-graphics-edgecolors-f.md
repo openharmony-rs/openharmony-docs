@@ -1,5 +1,11 @@
 # edgeColors
 
+## 导入模块
+
+```TypeScript
+import { edgeColors } from '@kit.ArkUI';
+```
+
 ## edgeColors
 
 ```TypeScript

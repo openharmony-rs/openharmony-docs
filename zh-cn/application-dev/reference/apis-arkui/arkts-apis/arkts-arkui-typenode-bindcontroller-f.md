@@ -1,5 +1,11 @@
 # bindController
 
+## 导入模块
+
+```TypeScript
+import { typeNode } from '@kit.ArkUI';
+```
+
 ## bindController
 
 ```TypeScript
