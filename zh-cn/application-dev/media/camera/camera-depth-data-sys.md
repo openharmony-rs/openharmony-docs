@@ -71,7 +71,7 @@
   ```ts
   function onDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
     depthDataOutput.on('depthDataAvailable', (err: BusinessError, depthData: camera.DepthData) => {
-      if (err == undefined && err.code !== 0) {
+      if (err == undefined || err.code !== 0) {
         console.error(`Depth data callback error: ${err.code}`);
         return;
       }
