@@ -80,7 +80,7 @@ struct TestDemo14 {
   // Check whether the device supports KEYCODE_FINGERPRINT_SLIDE_UP and KEYCODE_FINGERPRINT_SLIDE_DOWN.
   private isFingerprintSlideKeySupported(): Promise<boolean> {
     return new Promise<boolean>((resolve) => {
-      inputDevice.getDeviceList((error: BusinessError, ids: Array<number>) => {
+      inputDevice.getDeviceList((error: BusinessError, ids: Array<Number>) => {
         if (error) {
           console.error(`keyPressed Failed to get device id list, error: ${
             JSON.stringify(error, ['code', 'message'])}`);
@@ -89,7 +89,7 @@ struct TestDemo14 {
         }
         console.info(`keyPressed Device id list: ${JSON.stringify(ids)}`);
         for (let idTemp of ids) {
-          let res = inputDevice.supportKeysSync(idTemp, [KeyCode.KEYCODE_FINGERPRINT_SLIDE_UP,
+          let res = inputDevice.supportKeysSync(Number(idTemp), [KeyCode.KEYCODE_FINGERPRINT_SLIDE_UP,
             KeyCode.KEYCODE_FINGERPRINT_SLIDE_DOWN]);
           if (res[0] && res[1]) {
             console.info(`keyPressed ${idTemp} Device id list supportKeysSync : ${JSON.stringify(res)}`);
