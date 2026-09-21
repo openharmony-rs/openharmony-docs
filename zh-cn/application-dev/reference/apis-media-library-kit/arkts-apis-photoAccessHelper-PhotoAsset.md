@@ -162,7 +162,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The callback parameter must be of type AsyncCallback<void>. |
+| 401 | Parameter error. Possible causes:<br>1.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 13900012     | Permission denied. <br> 适用版本：10         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit;<br>2.The member parameter must be a string. |

@@ -677,7 +677,7 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback&lt;ChangeD
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The uri parameter must be of type string;<br>2.The forChildUris parameter must be of type boolean;<br>3.The callback parameter must be of type Callback<ChangeData>. |
+| 401 | Parameter error. Possible causes:<br>1.The uri parameter must be of type string;<br>2.The forChildUris parameter must be of type boolean;<br>3.The callback parameter must be of type Callback&lt;ChangeData&gt;. |
 | 13900012     | Permission denied.         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 3 parameters;<br>2.The uri parameter must be a string;<br>3.The forChildUris parameter must be a boolean;<br>4.The callback parameter must be a function;<br>5.The uri string extraction failed;<br>6.The forChildUris boolean value extraction failed;<br>7.The callback is already registered for this uri, duplicate registration is not allowed;<br>8.The object is not a valid instance. |
 
@@ -744,7 +744,7 @@ unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The uri parameter must be of type string;<br>2.The callback parameter must be of type Callback<ChangeData>. |
+| 401 | Parameter error. Possible causes:<br>1.The uri parameter must be of type string;<br>2.The callback parameter must be of type Callback&lt;ChangeData&gt;. |
 | 13900012     | Permission denied.         |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 1 or 2 parameters;<br>2.The uri parameter must be a string;<br>3.The uri string extraction failed;<br>4.The callback parameter must be a function;<br>5.The object is not a valid instance. |
 
@@ -848,7 +848,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes:<br>1.The callback parameter must be of type AsyncCallback<void>. |
+| 401 | Parameter error. Possible causes:<br>1.The callback parameter must be of type AsyncCallback&lt;void&gt;. |
 | 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit;<br>2.The current object is invalid;<br>3.The PhotoAccessHelper object is not a valid object. |
 | 14000011 | MediaLibrary inner fail. Possible causes:<br>1.PhotoAccessHelper has been released, no need to release again;<br>2.System internal error, possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
