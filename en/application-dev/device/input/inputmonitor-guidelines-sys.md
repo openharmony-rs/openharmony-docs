@@ -24,28 +24,27 @@ The following table lists common APIs for input monitor. For details, see [@ohos
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
-| on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void |Listens for mouse events.|
-| on(type: 'touch', receiver: TouchEventReceiver): void | Enables listening for touchscreen events.|
-| on(type: 'pinch', receiver: TouchEventReceiver): void | Listens for pinch events.|
-| on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Listens for three-finger swipe-up events.|
-| on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Listens for three-finger tap events.|
-| on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void | Listens for four-finger swipe events.|
-| on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void | Listens for rotation events.|
-| off(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void |Cancels listening for mouse events.|
-| off(type: 'touch', receiver: TouchEventReceiver): void | Disables listening for touchscreen events.|
-| off(type: 'pinch', receiver: TouchEventReceiver): void | Cancels listening for pinch events.|
-| off(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Cancels listening for three-finger swipe-up events.|
-| off(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Cancels listening for three-finger tap events.|
-| off(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void | Cancels listening for four-finger swipe events.|
-| off(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void | Cancels listening for rotation events.|
+| on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void | Listens for mouse events. |
+| on(type: 'touch', receiver: TouchEventReceiver): void | Enables listening for touchscreen events. |
+| on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void | Listens for pinch events. |
+| on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void | Listens for three-finger swipe events. |
+| on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void | Listens for three-finger tap events. |
+| on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void | Listens for four-finger swipe events. |
+| on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void | Listens for rotation events. |
+| off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void | Cancels listening for mouse events. |
+| off(type: 'touch', receiver?: TouchEventReceiver): void | Disables listening for touchscreen events. |
+| off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void | Cancels listening for pinch events. |
+| off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void | Cancels listening for three-finger swipe events. |
+| off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void | Cancels listening for three-finger tap events. |
+| off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void | Cancels listening for four-finger swipe events. |
+| off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void | Cancels listening for rotation events. |
 
 ## How to Develop
 
 This example assumes that the application needs to change the style based on the mouse button pressing status. Specifically, listen for mouse button events by calling [on](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md#inputmonitoronmouse9), and cancel listening for mouse button events by calling [off](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md#inputmonitoroffmouse9).
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 
 @Entry
 @Component
@@ -57,21 +56,18 @@ struct Index {
           let BUTTON_DOWN = 2;
           let callback = (mouseEvent: MouseEvent) => {
             console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
-            if (mouseEvent.action = BUTTON_DOWN) {
+            if (mouseEvent.action === BUTTON_DOWN) {
               return true; // Callback triggered when the mouse button is pressed.
             }
             return false;
           };
 
           try {
-            inputMonitor.on('mouse', (mouseEvent: MouseEvent) => { // Enable listening for mouse events.
-              console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
-              return false;
-            });
+            // Monitor mouse press events. The callback returns true when pressed.
+            inputMonitor.on('mouse', callback); // Enable listening for mouse events.
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          // Monitor mouse press events. The callback returns true when pressed.
           try {
             inputMonitor.off('mouse', callback); // Cancel listening for mouse events.
             console.info(`Monitor off success`);

@@ -24,15 +24,15 @@ import { inputConsumer } from '@kit.InputKit';
 
 The following table lists common APIs for global shortcut key management. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md) and [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
 
-| API | Description|
+| API | Description |
 | ------------------------------------------------------------ | -------------------------- |
-| on(type: 'key', keyOptions: KeyOptions, callback: Callback\<KeyOptions>): void | Subscribes to system hotkey change events.|
-| off(type: 'key', keyOptions: KeyOptions, callback?: Callback\<KeyOptions>): void | Unsubscribes from system hotkey change events.|
-| setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the key shielding status.|
-| getShieldStatus(shieldMode: ShieldMode): boolean | Checks whether key shielding is enabled.|
-| getAllSystemHotkeys(): Promise\<Array\<HotkeyOptions>> | Obtains all system hotkeys.|
-| on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback\<HotkeyOptions>): void | Subscribes to application hotkey change events.|
-| off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback\<HotkeyOptions>): void | Unsubscribes from application hotkey change events.|
+| on(type: 'key', keyOptions: KeyOptions, callback: Callback\<KeyOptions>): void | Subscribes to system hotkeys. |
+| off(type: 'key', keyOptions: KeyOptions, callback?: Callback\<KeyOptions>): void | Unsubscribes from system hotkeys. |
+| setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the system hotkey shield status. |
+| getShieldStatus(shieldMode: ShieldMode): boolean | Obtains the system hotkey shield status. |
+| getAllSystemHotkeys(): Promise\<Array\<HotkeyOptions>> | Obtains all system hotkeys. |
+| on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback\<HotkeyOptions>): void | Subscribes to application hotkey change events. |
+| off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback\<HotkeyOptions>): void | Unsubscribes from application hotkey change events. |
 
 ## How to Develop
 
