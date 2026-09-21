@@ -804,6 +804,37 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 .......
 ```
 
+**Promise异步嵌套调用场景日志规格**
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生AppFreeze故障时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的卡死问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。故障线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`APPFREEZE()`触发主线程阻塞，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+AppFreeze日志文件路径为`/data/log/faultlog/freeze_ext`，以下是一份AppFreeze故障日志中`SubmitterStacktrace`字段的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000008513b8 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#01 pc 000000000038e950 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#02 pc 000000000038dabc /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#03 pc 0000000000e74e78 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d49c18 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:111:5)  <- 发生故障的调用帧
+#06 at multiAsync8 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:106:5)
+#07 pc 0000000000363568 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#08 pc 0000000000363204 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#09 pc 0000000000362b54 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#10 pc 0000000000362554 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+...
+```
+
+日志中JS帧的`.ts`路径为编译产物，需通过SourceMap映射还原到`.ets`源码位置，编译产物路径的解析方法详见[异常堆栈解析原理 sourcemap结构：key字段介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713)
+
 ## AppFreeze聚类
 
 ### 聚类简介
