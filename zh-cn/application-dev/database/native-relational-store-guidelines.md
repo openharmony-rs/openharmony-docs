@@ -123,7 +123,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 1. 获取OH_Rdb_Store实例，创建数据库文件。其中dataBaseDir变量为应用沙箱路径，Stage模式下建议使用数据库目录，参考[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)的databaseDir属性。FA模式下，由于没有接口获取数据库沙箱路径，可使用应用程序的文件目录，可参考[Context](../reference/apis-ability-kit/js-apis-inner-app-context.md)的getFilesDir接口。area为数据库文件存放的安全区域，详见[contextConstant](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md)，开发时需要实现由AreaMode枚举值对Rdb_SecurityArea枚举值的转换。示例代码如下所示：
     <!--@[rdb_OH_Rdb_CreateOrOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    
     ``` C++
     // 创建OH_Rdb_ConfigV2对象
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
@@ -142,8 +142,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
     // 数据库是否加密
     OH_Rdb_SetEncrypted(config, false);
-    // ···
-
+    // ...
+        
     int errCode = 0;
     // 获取OH_Rdb_Store实例
     OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
@@ -153,7 +153,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         return;
     }
     if (errCode != OH_Rdb_ErrCode::RDB_OK) {
-        OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode);
+        OH_LOG_ERROR(LOG_APP, "Create store failed, errCode: %{public}d", errCode);
         OH_Rdb_DestroyConfig(config);
         OH_Rdb_CloseStore(store_);
         return;
