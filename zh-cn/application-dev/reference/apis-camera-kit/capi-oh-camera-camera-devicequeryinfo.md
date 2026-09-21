@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} Camera_DeviceQueryInfo
+typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
 ```
 
 ## 概述
