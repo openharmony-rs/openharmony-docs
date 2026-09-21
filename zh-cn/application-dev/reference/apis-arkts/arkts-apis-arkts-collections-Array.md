@@ -1731,13 +1731,9 @@ console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // t
 
 ## containsAll
 
-containsAll(elements: BuiltinArray\<T>): boolean
+containsAll(elements: readonly T[]): boolean
 
 检查指定JavaScript原生容器Array中的所有元素是否均包含在此ArkTS Array中。
-
-> **说明：**
->
-> BuiltinArray即JavaScript原生容器Array，并非ArkTS Array（collections.Array）。
 
 **起始版本：** 26.0.1
 
@@ -1751,7 +1747,7 @@ containsAll(elements: BuiltinArray\<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | ------ | ---- | ---- | ------------------------------- |
-| elements  | BuiltinArray\<T>  | 是   | 要检查的JavaScript原生容器Array。 |
+| elements  | readonly T[]  | 是   | 要检查的JavaScript原生容器Array。 |
 
 **返回值：**
 
@@ -1830,13 +1826,9 @@ console.info("arr = " + arr.toString()); // a
 
 ## retainAll
 
-retainAll(elements: BuiltinArray\<T>): boolean
+retainAll(elements: readonly T[]): boolean
 
 仅保留此ArkTS Array中同时存在于指定JavaScript原生容器Array中的元素。
-
-> **说明：**
->
-> BuiltinArray即JavaScript原生容器Array，并非ArkTS Array（collections.Array）。
 
 **起始版本：** 26.0.1
 
@@ -1850,7 +1842,7 @@ retainAll(elements: BuiltinArray\<T>): boolean
 
 | 参数名 | 类型 | 必填 | 说明                            |
 | ------ | ---- | ---- | ------------------------------- |
-| elements  | BuiltinArray\<T>  | 是   | 允许保留元素的JavaScript原生容器Array。如果集合为空，则会清空当前ArkTS Array。 |
+| elements  | readonly T[]  | 是   | 允许保留元素的JavaScript原生容器Array。如果集合为空，则会清空当前ArkTS Array。 |
 
 **返回值：**
 
