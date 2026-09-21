@@ -2170,11 +2170,11 @@ try {
 
 setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 
-设置设备安全级别策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全级别。
+设置设备安全等级策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全等级。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.DEVICE_SECURITY_LEVEL）查询设备是否支持设备安全等级特性。
 
 > **说明：**
 >
-> 1. 设备安全级别是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
+> 1. 设备安全等级是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
 >
 > 2. DSL0：出厂默认安全，设备保持出厂时的默认安全配置，未对系统安全能力做降级，安全性最高。
 >
@@ -2182,7 +2182,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 >
 > 4. DSL2：宽松安全性，在DSL1的基础上进一步放宽系统安全管控，安全性最低。
 >
-> 5. 本接口用于设置用户可选择的设备安全级别范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
+> 5. 本接口用于设置用户可选择的设备安全等级范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
 
 **起始版本：** 26.0.1
 
@@ -2198,7 +2198,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全级别策略。 |
+| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全等级策略。 |
 
 **错误码：**
 
@@ -2215,13 +2215,19 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 **示例：**
 
 ```ts
-import { securityManager } from '@kit.MDMKit';
+import { common, securityManager } from '@kit.MDMKit';
 
-try {
+// 调用本接口前，先查询设备是否支持设备安全等级特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.DEVICE_SECURITY_LEVEL);
+if (isSupported) {
+  try {
     securityManager.setDeviceSecurityLevelPolicy(securityManager.DeviceSecurityLevelPolicy.ALLOW_BALANCED);
     console.info('setDeviceSecurityLevelPolicy success');
-} catch (err) {
+  } catch (err) {
     console.error('setDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+  }
+} else {
+  console.info('The device security level feature is not supported.');
 }
 ```
 
@@ -2229,11 +2235,11 @@ try {
 
 getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 
-获取设备安全级别策略。
+获取设备安全等级策略。
 
 > **说明：**
 >
-> 1. 本接口返回的设备安全级别策略为用户可选择的设备安全级别范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
+> 1. 本接口返回的设备安全等级策略为用户可选择的设备安全等级范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
 >
 > 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
 
@@ -2249,7 +2255,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全级别策略。 |
+| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全等级策略。 |
 
 **错误码：**
 
@@ -2267,10 +2273,10 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 import { securityManager } from '@kit.MDMKit';
 
 try {
-    let policy = securityManager.getDeviceSecurityLevelPolicy();
-    console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
+  let policy = securityManager.getDeviceSecurityLevelPolicy();
+  console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
 } catch (err) {
-    console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+  console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
 }
 ```
 
@@ -2377,7 +2383,7 @@ try {
 
 ## DeviceSecurityLevelPolicy
 
-设备安全级别策略枚举。
+设备安全等级策略枚举。
 
 **起始版本：** 26.0.1
 
