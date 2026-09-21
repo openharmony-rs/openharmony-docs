@@ -107,25 +107,6 @@ Write data congestion.
 控制数据写入流量，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
-## 36100030 连接未建立
-
-**错误信息**
-
-The connection is not established.
-
-**错误描述**
-
-与远端设备的连接未建立，无法执行本次操作。
-
-**可能原因**
-
-调用接口前未与远端设备成功建立连接。
-
-**处理步骤**
-
-调用[connect()](js-apis-nearlink-ssap.md#connect)成功建立连接后重试，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
-
-
 ## 36100040 整数超出范围
 
 **错误信息**
@@ -229,44 +210,6 @@ NearLink standard UUID not allowed.
 将接口参数中的标准服务UUID更换为自定义服务UUID，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 标准服务UUID由星闪联盟官方定义的基础标识（Base UUID，37BEA880-FC70-11EA-B720-000000000000）的前112比特与16比特标准标识拼接而成。自定义服务UUID不能以基础标识的前112比特为前缀。
-
-
-## 36100045 配对通行码必须为六位数字
-
-**错误信息**
-
-Passcode must be a 6-digit number.
-
-**错误描述**
-
-配对通行码必须为六位数字。
-
-**可能原因**
-
-传入的配对通行码不是六位数字。
-
-**处理步骤**
-
-将配对通行码修改为六位数字后重试，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
-
-
-## 36100046 字符串超过最大长度
-
-**错误信息**
-
-String exceeds maximum length.
-
-**错误描述**
-
-传入的字符串超过最大长度限制。
-
-**可能原因**
-
-传入的远端设备别名超过最大长度限制（64个字符）。
-
-**处理步骤**
-
-将远端设备别名长度缩短至64个字符以内后重试，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100050 不支持合作设备集合管理功能
