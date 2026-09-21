@@ -500,7 +500,7 @@ With this permission, the application can detect information such as the user's 
 
 Allows an application to capture USB data packets.
 
-With this permission, the application can capture capture USB packets only after being authenticated by the user.
+With this permission, the application can capture USB packets only after being authenticated by the user.
 
 **Permission level**: normal
 
