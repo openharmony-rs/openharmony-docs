@@ -1,4 +1,4 @@
-# @ohos.screenLock (Screen Lock Management)
+# @ohos.screenLock (Screen Lock)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
