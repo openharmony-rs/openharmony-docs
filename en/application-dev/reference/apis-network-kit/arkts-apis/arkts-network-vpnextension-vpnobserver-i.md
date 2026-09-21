@@ -1,5 +1,9 @@
 # VpnObserver
 
+```TypeScript
+export interface VpnObserver
+```
+
 Defines a VPN observer object. It is used to listen for VPN-related events. Before calling **VpnObserver** APIs, you need to create a VPN connection object by calling [vpnExtension.createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md).
 
 **Since:** 26.0.0

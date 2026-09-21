@@ -1,5 +1,9 @@
 # MergeTypeMode
 
+```TypeScript
+export enum MergeTypeMode
+```
+
 Enumerates file aggregation types.
 
 **Since:** 15

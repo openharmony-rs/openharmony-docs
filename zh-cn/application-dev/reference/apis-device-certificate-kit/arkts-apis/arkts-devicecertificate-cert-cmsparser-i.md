@@ -1,5 +1,9 @@
 # CmsParser
 
+```TypeScript
+interface CmsParser
+```
+
 提供解析、验签和解封装CMS消息的API。
 
 > **说明：** 

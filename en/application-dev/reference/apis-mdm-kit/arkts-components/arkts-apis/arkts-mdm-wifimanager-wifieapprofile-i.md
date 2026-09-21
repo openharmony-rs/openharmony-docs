@@ -1,5 +1,9 @@
 # WifiEapProfile
 
+```TypeScript
+interface WifiEapProfile
+```
+
 Represents EAP profile (configuration) information.
 
 **Since:** 12

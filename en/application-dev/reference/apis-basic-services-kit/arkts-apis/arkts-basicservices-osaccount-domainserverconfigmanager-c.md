@@ -1,5 +1,9 @@
 # DomainServerConfigManager
 
+```TypeScript
+class DomainServerConfigManager
+```
+
 Provides APIs for domain server configuration and management.
 
 **Since:** 18

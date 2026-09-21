@@ -1,5 +1,9 @@
 # PhotoSource
 
+```TypeScript
+export enum PhotoSource
+```
+
 枚举，图片或者视频数据的来源类型。
 
 **起始版本：** 20

@@ -59,17 +59,8 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
-    console.info(`getSimAccountInfo success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimaccountinfo-1"></a>
 
 ## getSimAccountInfo
 
@@ -116,4 +107,13 @@ function getSimAccountInfo(slotId: number): Promise<IccAccountInfo>
 
 **示例**
 
-参见 [getSimAccountInfo](#getsimaccountinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimAccountInfo(0).then((data: sim.IccAccountInfo) => {
+    console.info(`getSimAccountInfo success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
+});
+```

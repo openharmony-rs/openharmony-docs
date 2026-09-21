@@ -1,5 +1,9 @@
 # BarometerResponse
 
+```TypeScript
+export interface BarometerResponse
+```
+
 Defines a **BarometerResponse** object.
 
 **Since:** 3

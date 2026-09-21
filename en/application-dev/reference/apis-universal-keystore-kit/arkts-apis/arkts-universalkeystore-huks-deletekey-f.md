@@ -44,22 +44,8 @@ huks.deleteKey(keyAlias, emptyOptions, (err, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
 
-/* Set options to emptyOptions. */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
-  console.info('delete key success');
-}).catch((err: BusinessError) => {
-  console.error("Failed to delete the key. Error code: " + err.code + " Error message: " + err.message);
-});
-```
-
+<a id="deletekey-1"></a>
 
 ## deleteKey
 
@@ -73,7 +59,7 @@ Deletes a key. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md)(keyAlias: string, options: HuksOptions)
+**Substitutes:** [deleteKeyItem](arkts-universalkeystore-huks-deletekeyitem-f.md#deletekeyitem-1)(keyAlias: string, options: HuksOptions)
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -92,4 +78,18 @@ Deletes a key. This API uses a promise to return the result.
 
 **Examples**
 
-See [deleteKey](#deletekey)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
+
+/* Set options to emptyOptions. */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+let result = huks.deleteKey(keyAlias, emptyOptions).then((data) => {
+  console.info('delete key success');
+}).catch((err: BusinessError) => {
+  console.error("Failed to delete the key. Error code: " + err.code + " Error message: " + err.message);
+});
+```

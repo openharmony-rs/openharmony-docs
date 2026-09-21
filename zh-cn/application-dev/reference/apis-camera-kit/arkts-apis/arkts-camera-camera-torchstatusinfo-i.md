@@ -1,5 +1,9 @@
 # TorchStatusInfo
 
+```TypeScript
+interface TorchStatusInfo
+```
+
 手电筒回调返回的接口实例，表示手电筒状态信息。
 
 **起始版本：** 11

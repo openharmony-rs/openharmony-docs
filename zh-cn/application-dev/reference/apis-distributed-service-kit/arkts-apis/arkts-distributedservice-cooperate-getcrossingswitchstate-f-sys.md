@@ -57,21 +57,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceDescriptor = "networkId";
-try {
-  cooperate.getCrossingSwitchState(deviceDescriptor).then((data: boolean) => {
-    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
-  }, (error: BusinessError) => {
-    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-  });
-} catch (error) {
-  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
+<a id="getcrossingswitchstate-1"></a>
 
 ## getCrossingSwitchState
 
@@ -85,7 +72,7 @@ function getCrossingSwitchState(networkId: string): Promise<boolean>
 
 **废弃版本：** 11
 
-**替代接口：** [getCooperateSwitchState](arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md)(networkId: string)
+**替代接口：** [getCooperateSwitchState](arkts-distributedservice-cooperate-getcooperateswitchstate-f-sys.md#getcooperateswitchstate-1)(networkId: string)
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -112,4 +99,17 @@ function getCrossingSwitchState(networkId: string): Promise<boolean>
 
 **示例**
 
-参见 [getCrossingSwitchState](#getcrossingswitchstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor = "networkId";
+try {
+  cooperate.getCrossingSwitchState(deviceDescriptor).then((data: boolean) => {
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+  }, (error: BusinessError) => {
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```

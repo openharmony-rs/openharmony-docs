@@ -1,5 +1,9 @@
 # TextSelectionClearPolicy
 
+```TypeScript
+export const enum TextSelectionClearPolicy
+```
+
 Enum of TextSelectionClearPolicy
 
 **Since:** 26.0.0

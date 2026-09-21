@@ -1,5 +1,9 @@
 # CellInfo（系统接口）
 
+```TypeScript
+export interface CellInfo
+```
+
 蜂窝小区信息。
 
 **起始版本：** 23

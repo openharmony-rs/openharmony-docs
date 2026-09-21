@@ -1,5 +1,9 @@
 # LoadingRequestError
 
+```TypeScript
+enum LoadingRequestError
+```
+
 Enumerates the reasons for data loading status changes.
 
 **Since:** 18

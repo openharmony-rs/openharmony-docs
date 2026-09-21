@@ -1,5 +1,9 @@
 # AccelerometerUncalibratedResponse
 
+```TypeScript
+interface AccelerometerUncalibratedResponse extends Response
+```
+
 Describes the uncalibrated acceleration sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** AccelerometerUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

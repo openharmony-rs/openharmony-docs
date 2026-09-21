@@ -1,5 +1,9 @@
 # WatchEventListener
 
+```TypeScript
+export interface WatchEventListener
+```
+
 事件监听接口，当监听的文件或目录发生变动事件时触发回调。
 
 **起始版本：** 10

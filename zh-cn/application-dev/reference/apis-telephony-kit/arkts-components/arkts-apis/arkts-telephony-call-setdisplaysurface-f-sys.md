@@ -27,7 +27,7 @@ function setDisplaySurface(callId: number, surfaceId: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callId | number | 是 | 呼叫Id。可以通过订阅callDetailsChange事件获得。 |
-| surfaceId | string | 是 | 画面窗口Id。surfaceId获取方式可参考[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid)。 |
+| surfaceId | string | 是 | 画面窗口Id。surfaceId获取方式可参考[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid)。 |
 
 **返回值：**
 

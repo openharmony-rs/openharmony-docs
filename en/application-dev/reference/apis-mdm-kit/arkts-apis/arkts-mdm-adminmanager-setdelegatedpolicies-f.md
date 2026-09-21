@@ -27,7 +27,7 @@ Delegates other applications to set device management policies. The applications
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| bundleName | string | Yes | Bundle name of the delegated application. The distribution type of the delegated application must be **enterprise_normal** or **enterprise_mdm**. You can call the [getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md) API to query the BundleInfo of the application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type. |
+| bundleName | string | Yes | Bundle name of the delegated application. The distribution type of the delegated application must be **enterprise_normal** or **enterprise_mdm**. You can call the [getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md) API to query the [BundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-i.md) of the application, where **BundleInfo.appInfo.appDistributionType** indicates the distribution type. |
 | policies | Array&lt;string&gt; | Yes | [Delegable policy list](../../../mdm/mdm-kit-appendix.md#delegable-policy-list). |
 
 **Error codes:**
@@ -58,23 +58,6 @@ try {
   // Replace parameters with actual values.
   adminManager.setDelegatedPolicies(admin, "com.example.enterprise.xxx", policies);
   console.info('Succeeded in setting delegated policies.');
-} catch (err) {
-  console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { common, Want } from '@kit.AbilityKit';
-
-// Replace with actual values.
-let bundleName = 'com.example.myapplication';
-let userId = 100;
-let policies: Array<string> = ["disabled_hdc"];
-
-try {
-  adminManager.setDelegatedPolicies(bundleName, userId, policies);
-  console.info(`Succeeded in setting delegated policies.`);
 } catch (err) {
   console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
 }

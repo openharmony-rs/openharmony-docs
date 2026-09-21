@@ -1,5 +1,9 @@
 # SubscribeLightOptions
 
+```TypeScript
+export interface SubscribeLightOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the ambient light sensor.
 
 **Since:** 3

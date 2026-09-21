@@ -1,5 +1,9 @@
 # OperatorId（系统接口）
 
+```TypeScript
+export interface OperatorId
+```
+
 获取eUICC芯片/设备的相关信息。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # UninstallDisposedRule（系统接口）
 
+```TypeScript
+export interface UninstallDisposedRule
+```
+
 标识卸载处置规则。
 
 **起始版本：** 15

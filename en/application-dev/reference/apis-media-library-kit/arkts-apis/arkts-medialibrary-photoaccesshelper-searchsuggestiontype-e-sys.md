@@ -1,5 +1,9 @@
 # SearchSuggestionType (System API)
 
+```TypeScript
+enum SearchSuggestionType
+```
+
 Search Suggestion Type.
 
 **Since:** 26.0.0

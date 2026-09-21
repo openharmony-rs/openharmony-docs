@@ -1,5 +1,9 @@
 # PopupV2InitInfo
 
+```TypeScript
+export interface PopupV2InitInfo
+```
+
 定义PopupV2的具体样式参数。
 
 **起始版本：** 26.0.0
@@ -76,7 +80,7 @@ iconModifier?: ImageModifier
 
 默认值：undefined，使用系统图标属性。
 
-**类型：** ImageModifier
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
@@ -97,7 +101,7 @@ maxWidth?: Dimension
 **说明：** 
 
 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。
-2. maxWidth是数字类型，支持float和整型，例如`&#36;r('app.float.maxWidth')`、`&#36;r('app.integer.maxWidth')`。
+2. maxWidth是数字类型，支持float和整型，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。
 3. 当类型为Resource时，如果未设置单位，默认单位为px。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
@@ -136,7 +140,7 @@ messageModifier?: TextModifier
 
 默认值：undefined，使用系统内容文本属性。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
@@ -208,7 +212,7 @@ titleModifier?: TextModifier
 
 默认值：undefined，使用系统标题文本属性。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 

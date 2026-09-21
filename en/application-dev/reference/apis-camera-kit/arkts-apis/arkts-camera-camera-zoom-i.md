@@ -1,5 +1,9 @@
 # Zoom
 
+```TypeScript
+interface Zoom extends ZoomQuery
+```
+
 **Zoom** inherits from [ZoomQuery](arkts-camera-camera-zoomquery-i.md).
 
 It provides APIs related to zoom operations.
@@ -43,6 +47,25 @@ Obtains the zoom ratio in use.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error.<br>**Applicable version:** 12 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getZoomRatio(photoSession: camera.PhotoSession): number {
+  const invalidValue: number = -1;
+  let zoomRatio: number = invalidValue;
+  try {
+    zoomRatio = photoSession.getZoomRatio();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getZoomRatio call failed. error code: ${err.code}`);
+  }
+  return zoomRatio;
+}
+```
+
 ## setSmoothZoom
 
 ```TypeScript
@@ -70,6 +93,14 @@ Sets smooth zoom.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config.<br>**Applicable version:** 11 - 17 |
 
+**Examples**
+
+```TypeScript
+function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
+  sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+}
+```
+
 ## setZoomRatio
 
 ```TypeScript
@@ -95,3 +126,23 @@ Sets a zoom ratio, with a maximum precision of two decimal places.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<number>): void {
+  if (zoomRatioRange === undefined || zoomRatioRange.length <= 0) {
+    return;
+  }
+  let zoomRatio = zoomRatioRange[0];
+  try {
+    photoSession.setZoomRatio(zoomRatio);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setZoomRatio call failed. error code: ${err.code}`);
+  }
+}
+```

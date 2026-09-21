@@ -67,6 +67,88 @@ Obtains an anonymous key certificate in offline mode for a specified user. This 
 
 **Examples**
 
-```TypeScript
 Prerequisites: see Example of generateKeyItemAsUser.
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+const keyAliasString = "key anon local attest as user";
+
+const challenge = StringToUint8Array('challenge_data');
+
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItemAsUser(userId, alias, options);
+}
+
+async function anonAttestKeyItemOfflineAsUser() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = StringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
+    console.info('anonAttestationOffline ok!')
+    console.debug(`'CERT:${JSON.stringify(data)}`)
+    for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
+      console.info(`CERT${i} is ${data.certChains[i]}`)
+    }
+    console.info("anonAttestationOffline Success")
+  }).catch((err: BusinessError) => {
+    console.error("anonAttestationOffline fail, erroCode: " + err.code + " erroInfo: " + err.message)
+  })
+}
 ```

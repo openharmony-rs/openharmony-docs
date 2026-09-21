@@ -1,5 +1,9 @@
 # ScrollbarMode
 
+```TypeScript
+enum ScrollbarMode
+```
+
 Web页面场景下，全局滚动条模式。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # KeyEvent
 
+```TypeScript
+interface KeyEvent
+```
+
 按键属性值。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # FusionFenceRequestParams (System API)
 
+```TypeScript
+export interface FusionFenceRequestParams
+```
+
 Indicates fusion fence request params.
 
 **Since:** 26.0.0

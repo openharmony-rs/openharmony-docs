@@ -1,5 +1,9 @@
 # GattPermissions
 
+```TypeScript
+interface GattPermissions
+```
+
 描述读写GATT特征值或描述符需具备的权限。
 
 **起始版本：** 20

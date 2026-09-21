@@ -1,5 +1,9 @@
 # DisposedType (System API)
 
+```TypeScript
+export enum DisposedType
+```
+
 Enumerates the types of application disposals.
 
 **Since:** 11

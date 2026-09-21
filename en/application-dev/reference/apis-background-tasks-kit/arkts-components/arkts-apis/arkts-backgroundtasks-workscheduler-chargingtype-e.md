@@ -1,5 +1,9 @@
 # ChargingType
 
+```TypeScript
+export enum ChargingType
+```
+
 Enumerates the charging types that trigger deferred task callback.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # ContinuousTaskCancelInfo
 
+```TypeScript
+interface ContinuousTaskCancelInfo
+```
+
 Describes the information about the cancellation of a continuous task.
 
 **Since:** 15

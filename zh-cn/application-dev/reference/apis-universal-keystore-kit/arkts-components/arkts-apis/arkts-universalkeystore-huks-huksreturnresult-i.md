@@ -1,5 +1,9 @@
 # HuksReturnResult
 
+```TypeScript
+export interface HuksReturnResult
+```
+
 调用接口返回的result。
 
 **起始版本：** 9
@@ -24,6 +28,8 @@ certChains?: Array<string>
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -39,6 +45,8 @@ outData?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -56,6 +64,8 @@ properties?: Array<HuksParam>
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -71,6 +81,8 @@ sharedSecret?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

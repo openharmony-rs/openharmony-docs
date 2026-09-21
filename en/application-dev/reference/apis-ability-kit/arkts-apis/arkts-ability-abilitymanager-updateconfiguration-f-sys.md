@@ -39,6 +39,8 @@ Updates the configuration. This API uses an asynchronous callback to return the 
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 
+<a id="updateconfiguration-1"></a>
+
 ## updateConfiguration
 
 ```TypeScript

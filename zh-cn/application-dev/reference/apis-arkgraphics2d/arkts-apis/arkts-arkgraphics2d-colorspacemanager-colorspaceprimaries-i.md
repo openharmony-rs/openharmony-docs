@@ -1,5 +1,9 @@
 # ColorSpacePrimaries
 
+```TypeScript
+interface ColorSpacePrimaries
+```
+
 色域标准三原色（红、绿、蓝）和白色，基于现实世界的色度，使用(x, y)表示其在色彩空间中的位置。
 
 **起始版本：** 9

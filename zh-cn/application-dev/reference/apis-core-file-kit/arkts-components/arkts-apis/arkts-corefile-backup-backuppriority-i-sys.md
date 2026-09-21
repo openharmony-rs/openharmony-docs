@@ -1,5 +1,9 @@
 # BackupPriority（系统接口）
 
+```TypeScript
+interface BackupPriority
+```
+
 控制备份和恢复的优先级顺序。
 
 @interface BackupPriority

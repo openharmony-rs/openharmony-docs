@@ -1,5 +1,9 @@
 # MediaAssetPermissionState
 
+```TypeScript
+enum MediaAssetPermissionState
+```
+
 Enumeration of permission level for an application to access asset.
 
 **Since:** 26.0.0

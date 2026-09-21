@@ -1,5 +1,9 @@
 # IconStyle
 
+```TypeScript
+export declare enum IconStyle
+```
+
 设置关闭按钮的色调样式，默认为亮色调。
 
 | 名称 | 值 | 说明 |  

@@ -1,5 +1,9 @@
 # SyncResult
 
+```TypeScript
+interface SyncResult
+```
+
 关键资产同步的结果。
 
 **起始版本：** 20

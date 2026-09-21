@@ -1,5 +1,9 @@
 # AuthResult (System API)
 
+```TypeScript
+interface AuthResult
+```
+
 Defines the authentication result information.
 
 **Since:** 8

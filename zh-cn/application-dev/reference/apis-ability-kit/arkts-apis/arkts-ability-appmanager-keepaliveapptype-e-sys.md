@@ -1,5 +1,9 @@
 # KeepAliveAppType（系统接口）
 
+```TypeScript
+export enum KeepAliveAppType
+```
+
 表示被保活应用的应用类型。
 
 **起始版本：** 14

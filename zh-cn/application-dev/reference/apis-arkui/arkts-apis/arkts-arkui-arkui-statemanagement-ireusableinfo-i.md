@@ -1,5 +1,9 @@
 # IReusableInfo
 
+```TypeScript
+export declare interface IReusableInfo
+```
+
 `IReusableInfo`接口提供有关复用池管理的可复用组件的当前数量和数量上限的信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # TransitionType
 
+```TypeScript
+declare enum TransitionType
+```
+
 指定该转场样式生效的场景。
 
 **起始版本：** 7

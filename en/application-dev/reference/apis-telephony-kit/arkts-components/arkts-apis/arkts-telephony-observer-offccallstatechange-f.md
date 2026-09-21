@@ -18,6 +18,8 @@ Cancels the listening on the carrier call status and obtaining of the call numbe
 
 **Required permissions:** ohos.permission.MANAGE_CALL_FOR_DEVICES
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

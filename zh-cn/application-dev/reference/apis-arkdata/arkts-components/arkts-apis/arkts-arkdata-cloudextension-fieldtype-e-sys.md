@@ -1,5 +1,9 @@
 # FieldType（系统接口）
 
+```TypeScript
+export enum FieldType
+```
+
 描述数据库表中字段类型的枚举。请使用枚举名而非枚举值。
 
 **起始版本：** 11

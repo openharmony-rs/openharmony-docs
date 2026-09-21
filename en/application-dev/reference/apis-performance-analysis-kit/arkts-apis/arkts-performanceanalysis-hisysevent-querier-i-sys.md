@@ -1,5 +1,9 @@
 # Querier (System API)
 
+```TypeScript
+interface Querier
+```
+
 Defines an event query instance.
 
 **Since:** 9

@@ -20,9 +20,7 @@ function getSubscribeInfo(): Promise<NotificationExtensionSubscriptionInfo[]>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) 订阅通知扩展。
+**参见：** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) 订阅通知扩展。
 
 **返回值：**
 

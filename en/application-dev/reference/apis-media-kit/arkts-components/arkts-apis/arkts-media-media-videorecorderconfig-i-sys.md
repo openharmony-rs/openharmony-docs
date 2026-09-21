@@ -1,5 +1,9 @@
 # VideoRecorderConfig (System API)
 
+```TypeScript
+interface VideoRecorderConfig
+```
+
 Provides the video recorder configuration definitions.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # DistributedOptions
 
+```TypeScript
+export interface DistributedOptions
+```
+
 Describes options for cross-device notifications. Not supported currently.
 
 **Since:** 8

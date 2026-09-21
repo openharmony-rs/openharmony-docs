@@ -72,53 +72,8 @@ screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-// 调用save方法获取屏幕截图
-screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
-  if (err) {
-    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
-  pixelMap.release(); // PixelMap使用完后及时释放内存
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
-
-let screenshotOptions: screenshot.ScreenshotOptions = {
-  screenRect: {
-    left: 200,
-    top: 100,
-    width: 200,
-    height: 200 },
-  imageSize: {
-    width: 300,
-    height: 300 },
-  rotation: 0,
-  displayId: 0,
-  isNotificationNeeded: true,
-  isCaptureFullOfScreen: true
-};
-try {
-  let promise = screenshot.save(screenshotOptions);
-  promise.then((pixelMap: image.PixelMap) => {
-    let pixelBytesNumber = pixelMap.getPixelBytesNumber();
-    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelBytesNumber}`);
-    pixelMap.release(); // PixelMap使用完后及时释放内存
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
+<a id="save-1"></a>
 
 ## save
 
@@ -155,8 +110,23 @@ function save(callback: AsyncCallback<image.PixelMap>): void
 
 **示例**
 
-参见 [save](#save)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
 
+// 调用save方法获取屏幕截图
+screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
+  if (err) {
+    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
+  pixelMap.release(); // PixelMap使用完后及时释放内存
+});
+```
+
+
+<a id="save-2"></a>
 
 ## save
 
@@ -200,4 +170,34 @@ function save(options?: ScreenshotOptions): Promise<image.PixelMap>
 
 **示例**
 
-参见 [save](#save)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+let screenshotOptions: screenshot.ScreenshotOptions = {
+  screenRect: {
+    left: 200,
+    top: 100,
+    width: 200,
+    height: 200 },
+  imageSize: {
+    width: 300,
+    height: 300 },
+  rotation: 0,
+  displayId: 0,
+  isNotificationNeeded: true,
+  isCaptureFullOfScreen: true
+};
+try {
+  let promise = screenshot.save(screenshotOptions);
+  promise.then((pixelMap: image.PixelMap) => {
+    let pixelBytesNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelBytesNumber}`);
+    pixelMap.release(); // PixelMap使用完后及时释放内存
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
+}
+```

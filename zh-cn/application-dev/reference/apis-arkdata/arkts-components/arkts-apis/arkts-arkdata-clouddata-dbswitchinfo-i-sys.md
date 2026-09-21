@@ -1,5 +1,9 @@
 # DBSwitchInfo（系统接口）
 
+```TypeScript
+interface DBSwitchInfo
+```
+
 端云协同数据库开关配置信息。
 
 **起始版本：** 23

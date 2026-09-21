@@ -1,5 +1,9 @@
 # TargetedGestureProposal
 
+```TypeScript
+export abstract class TargetedGestureProposal extends BaseGestureHandlingProposal
+```
+
 Base class for smart gesture handling with a target node.
 
 **Inheritance/Implementation:** TargetedGestureProposal extends [BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md)

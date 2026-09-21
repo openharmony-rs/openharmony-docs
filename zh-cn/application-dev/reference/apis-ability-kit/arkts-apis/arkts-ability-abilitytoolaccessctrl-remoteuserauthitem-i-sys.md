@@ -1,8 +1,12 @@
 # RemoteUserAuthItem（系统接口）
 
+```TypeScript
+interface RemoteUserAuthItem
+```
+
 远程用户授权项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -23,7 +27,9 @@ authResult: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -39,7 +45,9 @@ permission: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

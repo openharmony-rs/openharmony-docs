@@ -1,5 +1,9 @@
 # ToneHapticsAttrs（系统接口）
 
+```TypeScript
+interface ToneHapticsAttrs
+```
+
 系统铃音的振动属性。在调用ToneHapticsAttrs&lt;sup&gt;14+&lt;/sup&gt;的接口前，需要先通过[getToneHapticsList](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#gettonehapticslist)或[getHapticsAttrsSyncedWithTone](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md#gethapticsattrssyncedwithtone)方法获取实例。
 
 **起始版本：** 14
@@ -64,7 +68,7 @@ getGentleFileName(): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string &#124; null | 柔和振动文件名，振动文件为Json格式。如果不存在柔和振动，则振动文件名为空。 |
+| string &#124; null | 柔和振动文件名，振动文件为JSON格式。如果不存在柔和振动，则振动文件名为空。 |
 
 **错误码：**
 
@@ -130,7 +134,7 @@ getGentleUri(): string | null
 
 | 类型 | 说明 |
 | --- | --- |
-| string &#124; null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。 |
+| string &#124; null | 柔和振动的URI（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则URI为空。柔和振动是指马达振动强度较标准振动弱。 |
 
 **错误码：**
 

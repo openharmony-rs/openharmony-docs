@@ -1,5 +1,9 @@
 # Type
 
+```TypeScript
+enum Type
+```
+
 Base64 编码格式枚举。
 
 **起始版本：** 10

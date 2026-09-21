@@ -1,5 +1,9 @@
 # AnimationOptions
 
+```TypeScript
+interface AnimationOptions
+```
+
 拖拽相关的动效参数。
 
 **起始版本：** 11

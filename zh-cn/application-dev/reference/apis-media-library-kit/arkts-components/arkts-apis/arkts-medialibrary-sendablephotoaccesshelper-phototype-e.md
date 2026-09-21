@@ -1,5 +1,9 @@
 # PhotoType
 
+```TypeScript
+const enum PhotoType
+```
+
 枚举，媒体文件类型。
 
 **起始版本：** 12

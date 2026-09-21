@@ -1,5 +1,9 @@
 # ScrollSource
 
+```TypeScript
+declare enum ScrollSource
+```
+
 The possible source of scroll event @enum { number } ScrollSource
 
 **Since:** 12

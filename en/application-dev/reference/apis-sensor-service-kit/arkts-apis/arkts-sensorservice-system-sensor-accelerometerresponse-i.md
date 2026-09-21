@@ -1,5 +1,9 @@
 # AccelerometerResponse
 
+```TypeScript
+export interface AccelerometerResponse
+```
+
 Defines the callback invoked when the acceleration sensor data changes.
 
 **Since:** 3

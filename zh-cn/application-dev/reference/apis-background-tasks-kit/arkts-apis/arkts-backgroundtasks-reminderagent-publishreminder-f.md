@@ -12,13 +12,13 @@ import { reminderAgent } from '@kit.BackgroundTasksKit';
 function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void
 ```
 
-发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限Notification.requestEnableNotification后才能调用。
+发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification)后才能调用。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** publishReminder
+**替代接口：** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -47,19 +47,8 @@ reminderAgent.publishReminder(timer, (err: BusinessError, reminderId: number) =>
 });
 ```
 
-```TypeScript
-import reminderAgent from '@ohos.reminderAgent';
 
-let timer:reminderAgent.ReminderRequestTimer = {
-  reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-  triggerTimeInSeconds: 10
-}
-
-reminderAgent.publishReminder(timer).then((reminderId: number) => {
-  console.info("promise, reminderId = " + reminderId);
-});
-```
-
+<a id="publishreminder-1"></a>
 
 ## publishReminder
 
@@ -67,13 +56,13 @@ reminderAgent.publishReminder(timer).then((reminderId: number) => {
 function publishReminder(reminderReq: ReminderRequest): Promise<number>
 ```
 
-发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限Notification.requestEnableNotification后才能调用。
+发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification)后才能调用。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** publishReminder
+**替代接口：** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -93,4 +82,15 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 **示例**
 
-参见 publishReminder
+```TypeScript
+import reminderAgent from '@ohos.reminderAgent';
+
+let timer:reminderAgent.ReminderRequestTimer = {
+  reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+reminderAgent.publishReminder(timer).then((reminderId: number) => {
+  console.info("promise, reminderId = " + reminderId);
+});
+```

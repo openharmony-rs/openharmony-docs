@@ -1,5 +1,9 @@
 # GesturePoint
 
+```TypeScript
+export declare class GesturePoint
+```
+
 Represents a gesture touch point, which is the basic unit that constitutes a GesturePath node and is used to define the touch position in the gesture trajectory for accessibility gesture injection. For details about how to use it, see [GesturePath](arkts-accessibility-accessibility-gesturepath-gesturepath-c.md).
 
 **Since:** 9

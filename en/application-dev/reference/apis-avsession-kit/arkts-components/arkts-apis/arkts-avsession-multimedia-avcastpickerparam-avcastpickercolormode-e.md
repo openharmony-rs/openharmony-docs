@@ -1,5 +1,9 @@
 # AVCastPickerColorMode
 
+```TypeScript
+export declare enum AVCastPickerColorMode
+```
+
 Definition of color mode of picker @enum { int }
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # ContinuousLocationRequest
 
+```TypeScript
+export interface ContinuousLocationRequest
+```
+
 持续定位的请求参数。
 
 **起始版本：** 12

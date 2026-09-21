@@ -1,5 +1,9 @@
 # OperatorId (System API)
 
+```TypeScript
+export interface OperatorId
+```
+
 Obtains information about the eUICC chip or device.
 
 **Since:** 18

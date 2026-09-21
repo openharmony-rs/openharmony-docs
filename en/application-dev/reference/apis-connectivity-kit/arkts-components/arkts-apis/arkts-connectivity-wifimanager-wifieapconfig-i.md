@@ -1,5 +1,9 @@
 # WifiEapConfig
 
+```TypeScript
+interface WifiEapConfig
+```
+
 Wi-Fi EAP config. @typedef WifiEapConfig
 
 **Since:** 10

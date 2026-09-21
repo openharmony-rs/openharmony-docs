@@ -1,5 +1,9 @@
 # HighlightAlbumInfoType (System API)
 
+```TypeScript
+enum HighlightAlbumInfoType
+```
+
 Enumerates the types of the highlights album information.
 
 **Since:** 12

@@ -35,6 +35,41 @@ function on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callba
 | [4200002](../errorcode-inputconsumer.md#4200002-快捷键被系统注册) | The hotkey has been used by the system. |
 | [4200003](../errorcode-inputconsumer.md#4200003-快捷键已经被其他应用注册) | The hotkey has been subscribed to by another. |
 
+**示例**
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftCtrlKey = 2072;
+          let zKey = 2042;
+          let hotkeyOptions: inputConsumer.HotkeyOptions = {
+            preKeys: [leftCtrlKey],
+            finalKey: zKey,
+            isRepeat: true
+          };
+          let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
+          };
+          try {
+            // 订阅热键变更事件
+            inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
+          } catch (error) {
+            console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## on('keyPressed')
 
@@ -64,3 +99,35 @@ function on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback<Ke
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+
+**示例**
+
+```TypeScript
+import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            // 订阅按键按下事件
+            inputConsumer.on('keyPressed', options, (event: KeyEvent) => {
+              console.info(`Succeeded in subscribing ${JSON.stringify(event)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to subscribe , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

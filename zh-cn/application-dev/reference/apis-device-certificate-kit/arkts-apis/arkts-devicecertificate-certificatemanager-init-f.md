@@ -62,28 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务使用凭据进行签名、验签的初始化操作，需要使用凭据的唯一标识符，此处省略 */
-const req: certificateManager.CMSignatureSpec = {
-  purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
-  padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
-  digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
-};
-try {
-  certificateManager.init(uri, req).then((handle) => {
-    console.info('Succeeded in initiating.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="init-1"></a>
 
 ## init
 
@@ -124,4 +104,24 @@ function init(authUri: string, spec: CMSignatureSpec): Promise<CMHandle>
 
 **示例**
 
-参见 init
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri: string = 'test'; /* 业务使用凭据进行签名、验签的初始化操作，需要使用凭据的唯一标识符，此处省略 */
+const req: certificateManager.CMSignatureSpec = {
+  purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
+  padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
+  digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
+};
+try {
+  certificateManager.init(uri, req).then((handle) => {
+    console.info('Succeeded in initiating.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
+}
+```

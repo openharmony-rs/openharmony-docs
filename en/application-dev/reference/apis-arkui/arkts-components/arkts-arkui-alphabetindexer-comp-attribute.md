@@ -1,10 +1,14 @@
 # AlphabetIndexer properties/events
 
-When the width attribute is set to **"auto"**, the width is adaptive. This means that the width will adjust according to the maximum width of the index items.
+```TypeScript
+declare class AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
+```
 
-The default value of the padding attribute is 4 vp.
+When the [width](arkts-arkui-common-comp-commonmethod-c.md#width) attribute is set to **"auto"**, the width is adaptive. This means that the width will adjust according to the maximum width of the index items.
 
-The maxFontScale and minFontScale attributes are both set to a constant value of 1, which means that they do not change with the system font size.
+The default value of the [padding](arkts-arkui-common-comp-commonmethod-c.md#padding) attribute is 4 vp.
+
+The [maxFontScale](arkts-arkui-text-comp-attribute.md#maxfontscale) and [minFontScale](arkts-arkui-text-comp-attribute.md#minfontscale) attributes are both set to a constant value of 1, which means that they do not change with the system font size.
 
 In addition to the universal attributes, the following attributes are supported.
 
@@ -34,7 +38,7 @@ Sets the alignment style of the indexer pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [IndexerAlign](arkts-arkui-indexeralign-e.md) | Yes | Alignment style of the indexer pop-up window. The pop-up window can be displayed on the right or left of the indexer.<br>Default value: **IndexerAlign.END** |
+| value | [IndexerAlign](arkts-arkui-alphabetindexer-comp-indexeralign-e.md) | Yes | Alignment style of the indexer pop-up window. The pop-up window can be displayed on the right or left of the indexer.<br>Default value: **IndexerAlign.END** |
 | offset | [Length](../arkts-apis/arkts-arkui-length-t.md) | No | Spacing between the pop-up window and the alphabetic index bar. A value greater than or equal to **0** is valid. If this parameter is set to a value less than **0** or is not set, the spacing is the same as **popupPosition**. When this parameter and [popupPosition](#popupposition) are set at the same time, **offset** takes effect in the horizontal direction, and **popupPosition.y** takes effect in the vertical direction.<br>**Since:** 10 |
 
 ## autoCollapse
@@ -51,7 +55,7 @@ When the first index item is not **"#"**: All items ≤ 9: Full display mode; 9 
 
 > **NOTE:** 
 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -169,7 +173,7 @@ Sets the size of the index item area.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; number | Yes | Size of the index item area, which is a square, meaning the side length of the square. This attribute cannot be set in percentage.<br>The actual value is restricted by the component size. The maximum width of an index item is the component width minus the left and right padding, and the maximum height of an index item is (component height minus the top and bottom padding)/number of index items. If the input value is less than or equal to 0, the default value is used.<br>Default value: **16.0**<br>Unit: vp |
+| value | string &#124; number | Yes | Size of the index item area, which is a square, meaning the side length of the square. This attribute cannot be set in percentage.<br>The actual value is restricted by the component size. The maximum width of an index item is the component width minus the left and right [padding](arkts-arkui-common-comp-commonmethod-c.md#padding), and the maximum height of an index item is (component height minus the top and bottom [padding](arkts-arkui-common-comp-commonmethod-c.md#padding))/number of index items. If the input value is less than or equal to 0, the default value is used.<br>Default value: **16.0**<br>Unit: vp |
 
 ## onPopupSelect
 
@@ -189,7 +193,7 @@ Triggered when a secondary index item in the pop-up window is selected. The call
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-onalphabetindexerpopupselectcallback-t.md) | Yes | Event triggered when a secondary index item in the pop- up window is selected.<br>**Since:** 18 |
+| callback | [OnAlphabetIndexerPopupSelectCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerpopupselectcallback-t.md) | Yes | Event triggered when a secondary index item in the pop- up window is selected.<br>**Since:** 18 |
 
 ## onRequestPopupData
 
@@ -209,7 +213,7 @@ Triggered for a secondary index item content event in the pop-up window. The cal
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-onalphabetindexerrequestpopupdatacallback-t.md) | Yes | Callback for setting the secondary index item content event in the pop-up window.<br>**Since:** 18 |
+| callback | [OnAlphabetIndexerRequestPopupDataCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerrequestpopupdatacallback-t.md) | Yes | Callback for setting the secondary index item content event in the pop-up window.<br>**Since:** 18 |
 
 ## onSelect
 
@@ -229,7 +233,7 @@ Triggered when an index item is selected, with the callback parameter being the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAlphabetIndexerSelectCallback](arkts-arkui-onalphabetindexerselectcallback-t.md) | Yes | Event triggered when an index item is selected.<br>**Since:** 18 |
+| callback | [OnAlphabetIndexerSelectCallback](arkts-arkui-alphabetindexer-comp-onalphabetindexerselectcallback-t.md) | Yes | Event triggered when an index item is selected.<br>**Since:** 18 |
 
 ## onSelected
 
@@ -303,7 +307,7 @@ Sets the background blur style of the pop-up window. In versions earlier than AP
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [BlurStyle](arkts-arkui-blurstyle-e.md) | Yes | Background blur style of the pop-up window.<br>The background blur effect can affect [popupBackground](#popupbackground). You can disable the effect by setting it to **NONE**. |
+| value | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | Yes | Background blur style of the pop-up window.<br>The background blur effect can affect [popupBackground](#popupbackground). You can disable the effect by setting it to **NONE**. |
 
 ## popupColor
 
@@ -505,7 +509,7 @@ selected(index: number)
 
 Sets the index of the selected item.
 
-Since API version 10, this parameter supports two-way binding through [&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md).
+Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
 **Since:** 8
 
@@ -517,7 +521,7 @@ Since API version 10, this parameter supports two-way binding through [&#36;&#36
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the selected item.<br>Value range: [0, [arrayValue](arkts-arkui-alphabetindexeroptions-i.md).length – 1]<br>Default value: **0** |
+| index | number | Yes | Index of the selected item.<br>Value range: [0, [arrayValue](arkts-arkui-alphabetindexer-comp-alphabetindexeroptions-i.md).length – 1]<br>Default value: **0** |
 
 ## selectedBackgroundColor
 

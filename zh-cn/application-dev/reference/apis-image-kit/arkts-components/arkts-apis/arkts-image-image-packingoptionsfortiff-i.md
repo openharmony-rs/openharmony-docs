@@ -1,5 +1,9 @@
 # PackingOptionsForTiff
 
+```TypeScript
+interface PackingOptionsForTiff
+```
+
 描述TIFF图像编码参数的选项。
 
 **起始版本：** 26.0.0

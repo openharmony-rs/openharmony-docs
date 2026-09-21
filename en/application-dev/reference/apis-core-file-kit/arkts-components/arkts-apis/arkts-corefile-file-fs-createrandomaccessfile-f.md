@@ -66,6 +66,8 @@ Creates a **RandomAccessFile** instance based on the specified file path or file
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
+<a id="createrandomaccessfile-1"></a>
+
 ## createRandomAccessFile
 
 ```TypeScript
@@ -116,6 +118,8 @@ Creates a **RandomAccessFile** object in read-only mode based on a file path or 
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="createrandomaccessfile-2"></a>
 
 ## createRandomAccessFile
 

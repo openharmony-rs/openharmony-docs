@@ -1,5 +1,9 @@
 # SyncResultCode
 
+```TypeScript
+enum SyncResultCode
+```
+
 描述设备同步状态的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 26.0.0

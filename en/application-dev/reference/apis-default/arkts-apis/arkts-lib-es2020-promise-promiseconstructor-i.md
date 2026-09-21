@@ -1,5 +1,9 @@
 # PromiseConstructor
 
+```TypeScript
+interface PromiseConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -24,6 +28,8 @@ Creates a Promise that is resolved with an array of results when all of the prov
 | Type | Description |
 | --- | --- |
 | Promise&lt;{ -readonly [P in keyof T]: PromiseSettledResult&lt;Awaited&lt;T[P]&gt;&gt; }&gt; | A new Promise. |
+
+<a id="allsettled-1"></a>
 
 ## allSettled
 

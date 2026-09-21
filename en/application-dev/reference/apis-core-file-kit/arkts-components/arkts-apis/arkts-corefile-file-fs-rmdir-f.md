@@ -54,6 +54,8 @@ Removes a directory and all its subdirectories and files. This API uses a promis
 | 13900042 | Unknown error |
 
 
+<a id="rmdir-1"></a>
+
 ## rmdir
 
 ```TypeScript

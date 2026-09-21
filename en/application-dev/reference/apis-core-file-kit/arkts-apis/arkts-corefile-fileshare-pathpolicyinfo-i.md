@@ -1,5 +1,9 @@
 # PathPolicyInfo
 
+```TypeScript
+export interface PathPolicyInfo
+```
+
 Policy information to manager permissions on a path.
 
 @interface PathPolicyInfo

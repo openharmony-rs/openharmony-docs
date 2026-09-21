@@ -1,5 +1,9 @@
 # AppServiceExtensionAbility
 
+```TypeScript
+declare class AppServiceExtensionAbility extends ExtensionAbility
+```
+
 AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后台服务的创建、销毁、连接、断开等生命周期回调。
 
 **继承/实现关系：** AppServiceExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)

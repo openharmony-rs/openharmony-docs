@@ -1,5 +1,9 @@
 # CalendarType
 
+```TypeScript
+enum CalendarType
+```
+
 账户类型枚举。
 
 **起始版本：** 10

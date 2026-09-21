@@ -1,5 +1,9 @@
 # GnssFence（系统接口）
 
+```TypeScript
+export interface GnssFence
+```
+
 GNSS围栏信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # FileReadTextOption
 
+```TypeScript
+export interface FileReadTextOption
+```
+
 Defines the options used in readText().
 
 **Since:** 3

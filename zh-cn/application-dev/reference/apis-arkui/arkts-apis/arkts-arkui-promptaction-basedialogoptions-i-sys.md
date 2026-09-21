@@ -1,5 +1,9 @@
 # BaseDialogOptions
 
+```TypeScript
+interface BaseDialogOptions
+```
+
 弹窗的选项。
 
 **起始版本：** 11
@@ -20,7 +24,7 @@ distortionMode?: DistortionMode
 
 Sets the distortion animation Mode of the dialog.
 
-**类型：** [DistortionMode](../arkts-components/arkts-arkui-distortionmode-e-sys.md)
+**类型：** [DistortionMode](../arkts-components/arkts-arkui-common-comp-distortionmode-e-sys.md)
 
 **默认值：** DistortionMode.DISTORTION_AUTO
 
@@ -40,7 +44,7 @@ edgeLightMode?: EdgeLightMode
 
 Sets the edgeLight animation Mode of the dialog.
 
-**类型：** [EdgeLightMode](../arkts-components/arkts-arkui-edgelightmode-e-sys.md)
+**类型：** [EdgeLightMode](../arkts-components/arkts-arkui-common-comp-edgelightmode-e-sys.md)
 
 **默认值：** EdgeLightMode.EDGELIGHT_AUTO
 

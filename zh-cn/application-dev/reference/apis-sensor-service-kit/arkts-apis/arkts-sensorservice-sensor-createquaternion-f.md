@@ -53,21 +53,8 @@ sensor.createQuaternion([0.20046076, 0.21907, 0.73978853, 0.60376877],
 })
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const promise = sensor.createQuaternion([0.20046076, 0.21907, 0.73978853, 0.60376877]);
-promise.then((data: Array<number>) => {
-  console.info('Succeeded in getting createQuaternion_promise');
-  for (let i = 0; i < data.length; i++) {
-    console.info('data[' + i + ']: ' + data[i]);
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get promise.`);
-})
-```
-
+<a id="createquaternion-1"></a>
 
 ## createQuaternion
 
@@ -104,4 +91,17 @@ function createQuaternion(rotationVector: Array<number>): Promise<Array<number>>
 
 **示例**
 
-参见 createQuaternion
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const promise = sensor.createQuaternion([0.20046076, 0.21907, 0.73978853, 0.60376877]);
+promise.then((data: Array<number>) => {
+  console.info('Succeeded in getting createQuaternion_promise');
+  for (let i = 0; i < data.length; i++) {
+    console.info('data[' + i + ']: ' + data[i]);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get promise.`);
+})
+```

@@ -63,30 +63,8 @@ featureAbility.startAbility(
 );
 ```
 
-```TypeScript
-import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
-// Start a new Ability.
-featureAbility.startAbility(
-  {
-    want:
-    {
-      action: 'ohos.want.action.home',
-      entities: ['entity.system.home'],
-      type: 'MIMETYPE',
-      flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
-      deviceId: '',
-      bundleName: 'com.example.myapplication',
-      /* In the FA model, abilityName consists of package and ability names. */
-      abilityName: 'com.example.myapplication.secondAbility',
-      uri: ''
-    },
-  }
-).then((data) => {
-  console.info(`startAbility data: ${JSON.stringify(data)}`);
-});
-```
-
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -121,4 +99,26 @@ Starts an ability. This API uses a promise to return the result.
 
 **Examples**
 
-See [startAbility](#startability)
+```TypeScript
+import { featureAbility, wantConstant } from '@kit.AbilityKit';
+
+// Start a new Ability.
+featureAbility.startAbility(
+  {
+    want:
+    {
+      action: 'ohos.want.action.home',
+      entities: ['entity.system.home'],
+      type: 'MIMETYPE',
+      flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      /* In the FA model, abilityName consists of package and ability names. */
+      abilityName: 'com.example.myapplication.secondAbility',
+      uri: ''
+    },
+  }
+).then((data) => {
+  console.info(`startAbility data: ${JSON.stringify(data)}`);
+});
+```

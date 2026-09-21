@@ -1,5 +1,9 @@
 # UIFontFallbackInfo
 
+```TypeScript
+interface UIFontFallbackInfo
+```
+
 UI font configuration of the system.
 
 **Since:** 11

@@ -42,6 +42,26 @@
   - [CooperateMsg(system api)](arkts-distributedservice-cooperate-cooperatemsg-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [CooperateState(system api)](arkts-distributedservice-cooperate-cooperatestate-e-sys.md)<!--DelEnd-->
+<!--Del-->
+- [@ohos.distributed.softbusBase(This module provides the capabilities for device perception.)](arkts-distributedservice-distributed-softbusbase.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPerceptionDeviceList(system api)](arkts-distributedservice-softbusbase-getperceptiondevicelist-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [setPerceptionAdvHighFreq(system api)](arkts-distributedservice-softbusbase-setperceptionadvhighfreq-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [startPerceptionAdv(system api)](arkts-distributedservice-softbusbase-startperceptionadv-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [startPerceptionScan(system api)](arkts-distributedservice-softbusbase-startperceptionscan-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [stopPerceptionAdv(system api)](arkts-distributedservice-softbusbase-stopperceptionadv-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [stopPerceptionScan(system api)](arkts-distributedservice-softbusbase-stopperceptionscan-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PerceptionDeviceInfo(system api)](arkts-distributedservice-softbusbase-perceptiondeviceinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PerceptionCycle(system api)](arkts-distributedservice-softbusbase-perceptioncycle-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PerceptionType(system api)](arkts-distributedservice-softbusbase-perceptiontype-e-sys.md)<!--DelEnd-->
 - [@ohos.distributedDeviceManager(Device Management)](arkts-distributedservice-distributeddevicemanager.md)
   - [createDeviceManager](arkts-distributedservice-distributeddevicemanager-createdevicemanager-f.md)
   - [releaseDeviceManager](arkts-distributedservice-distributeddevicemanager-releasedevicemanager-f.md)

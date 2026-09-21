@@ -1,4 +1,4 @@
-# @ohos.app.form.formInfo
+# @ohos.app.form.formInfo(formInfo)
 
 The **formInfo** module provides types and enums related to the widget information and state.
 

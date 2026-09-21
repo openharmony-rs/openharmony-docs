@@ -66,6 +66,8 @@ try {
 ```
 
 
+<a id="isosaccountadditiondisallowed-1"></a>
+
 ## isOsAccountAdditionDisallowed
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # RangingStoppedCause
 
+```TypeScript
+enum RangingStoppedCause
+```
+
 The enum of ranging stopped causes.
 
 **Since:** 26.0.0

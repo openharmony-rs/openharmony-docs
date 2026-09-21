@@ -1,5 +1,9 @@
 # TrainCfg
 
+```TypeScript
+interface TrainCfg
+```
+
 Provides the train configuration
 
 **Since:** 12

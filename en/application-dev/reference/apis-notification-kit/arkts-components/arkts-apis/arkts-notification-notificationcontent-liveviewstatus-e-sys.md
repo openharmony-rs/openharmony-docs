@@ -1,5 +1,9 @@
 # LiveViewStatus (System API)
 
+```TypeScript
+export enum LiveViewStatus
+```
+
 Enumerates the statuses of the common live view.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # Animation
 
+```TypeScript
+export interface Animation extends SceneResource
+```
+
 动画类型，继承自SceneResource。
 
 @extends SceneResource @interface Animation

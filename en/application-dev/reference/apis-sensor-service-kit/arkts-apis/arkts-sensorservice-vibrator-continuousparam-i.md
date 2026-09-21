@@ -1,5 +1,9 @@
 # ContinuousParam
 
+```TypeScript
+interface ContinuousParam
+```
+
 Defines the parameters for continuous vibration.
 
 **Since:** 18

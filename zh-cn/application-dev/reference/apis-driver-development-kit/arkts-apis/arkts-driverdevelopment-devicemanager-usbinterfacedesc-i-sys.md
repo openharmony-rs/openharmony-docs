@@ -1,5 +1,9 @@
 # USBInterfaceDesc（系统接口）
 
+```TypeScript
+interface USBInterfaceDesc
+```
+
 USB设备接口描述符。
 
 **起始版本：** 12

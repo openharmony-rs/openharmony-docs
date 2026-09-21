@@ -1,5 +1,9 @@
 # CurrentInputDeviceChangedEvent
 
+```TypeScript
+interface CurrentInputDeviceChangedEvent
+```
+
 Describes the event indicating that the input device changes.
 
 **Since:** 21

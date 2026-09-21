@@ -1,5 +1,9 @@
 # CallTransferResult
 
+```TypeScript
+export interface CallTransferResult
+```
+
 Defines the call transfer result.
 
 **Since:** 26.0.0

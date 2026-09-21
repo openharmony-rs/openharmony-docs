@@ -1,5 +1,9 @@
 # VoiceContent (System API)
 
+```TypeScript
+export interface VoiceContent
+```
+
 Returns the notification voice broadcast content.
 
 **Since:** 26.0.0

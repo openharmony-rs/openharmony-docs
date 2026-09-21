@@ -1,5 +1,9 @@
 # HdrType
 
+```TypeScript
+enum HdrType
+```
+
 Enumerates the HDR types.
 
 **Since:** 12

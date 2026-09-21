@@ -1,5 +1,9 @@
 # RouterOptions
 
+```TypeScript
+interface RouterOptions
+```
+
 路由跳转选项。
 
 **起始版本：** 8

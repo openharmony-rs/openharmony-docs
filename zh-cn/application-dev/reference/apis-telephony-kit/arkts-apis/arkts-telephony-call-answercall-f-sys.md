@@ -46,18 +46,6 @@ function answerCall(callId: number, callback: AsyncCallback<void>): void
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-call.answerCall((err: BusinessError) => {
-    if (err) {
-        console.error(`answerCall fail, err->Code${err.code}, message:${err.message}`);
-    } else {
-        console.info(`answerCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 call.answerCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
@@ -67,26 +55,8 @@ call.answerCall(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.answerCall(1).then(() => {
-    console.info(`answerCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall(0, 1).then(() => {
-    console.info(`answerCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="answercall-1"></a>
 
 ## answerCall
 
@@ -130,8 +100,18 @@ function answerCall(callId?: number): Promise<void>
 
 **示例**
 
-参见 [answerCall](#answercall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+call.answerCall(1).then(() => {
+    console.info(`answerCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="answercall-3"></a>
 
 ## answerCall
 
@@ -176,8 +156,18 @@ function answerCall(videoState: VideoStateType, callId: number): Promise<void>
 
 **示例**
 
-参见 [answerCall](#answercall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+call.answerCall(0, 1).then(() => {
+    console.info(`answerCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="answercall-4"></a>
 
 ## answerCall
 
@@ -190,6 +180,8 @@ function answerCall(videoState: VideoStateType, callId: number, isRtt: boolean):
 **起始版本：** 22
 
 **需要权限：** ohos.permission.ANSWER_CALL
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -222,4 +214,46 @@ function answerCall(videoState: VideoStateType, callId: number, isRtt: boolean):
 
 **示例**
 
-参见 [answerCall](#answercall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall((err: BusinessError) => {
+    if (err) {
+        console.error(`answerCall fail, err->Code${err.code}, message:${err.message}`);
+    } else {
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall(1, (err: BusinessError) => {
+    if (err) {
+        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall(1).then(() => {
+    console.info(`answerCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall(0, 1).then(() => {
+    console.info(`answerCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```

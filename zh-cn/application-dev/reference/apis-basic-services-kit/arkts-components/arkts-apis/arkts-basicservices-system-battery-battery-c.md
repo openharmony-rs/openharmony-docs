@@ -1,5 +1,9 @@
 # Battery
 
+```TypeScript
+export default class Battery
+```
+
 该模块提供充电状态及剩余电量的查询功能。
 
 **起始版本：** 3
@@ -26,6 +30,8 @@ static getStatus(options?: GetStatusOptions): void
 
 **废弃版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
 **参数：**
@@ -36,12 +42,28 @@ static getStatus(options?: GetStatusOptions): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+Battery.getStatus({
+    success: (data: BatteryResponse) => {
+        console.info('success get battery level:' + data.level);
+    },
+    fail: (data: string, code: number) => {
+        console.error('fail to get battery level code:' + code + ', data: ' + data);
+    }
+});
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Data" style="width: 240px; height: 50px; margin: 5px;" onclick="getBatteryInfo"></input>
+    <text class="title">level: {{ capacity }}</text>
+    <text class="title">charging: {{ charging }}</text>
+</div>
 ```
 
 ```TypeScript

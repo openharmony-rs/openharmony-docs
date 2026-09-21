@@ -1,5 +1,9 @@
 # CompletionHandler
 
+```TypeScript
+declare class CompletionHandler
+```
+
 CompletionHandler provides two callback functions, [onRequestSuccess](#onrequestsuccess) and [onRequestFailure](#onrequestfailure), to handle the results of successful and failed application launch requests, respectively.
 
 **Since:** 20
@@ -37,9 +41,7 @@ Called when the application fails to be launched.
 
 **Examples**
 
-```TypeScript
 See Usage of CompletionHandler.
-```
 
 ## onRequestSuccess
 
@@ -66,6 +68,4 @@ Called when the application is successfully launched.
 
 **Examples**
 
-```TypeScript
 See Usage of CompletionHandler.
-```

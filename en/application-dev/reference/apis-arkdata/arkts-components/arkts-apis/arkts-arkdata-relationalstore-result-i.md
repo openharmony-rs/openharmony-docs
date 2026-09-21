@@ -1,5 +1,9 @@
 # Result
 
+```TypeScript
+interface Result
+```
+
 Records the number of affected data rows and the result set.
 
 **Since:** 23

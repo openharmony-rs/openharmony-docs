@@ -1,5 +1,9 @@
 # ActivityResponse
 
+```TypeScript
+interface ActivityResponse
+```
+
 Defines the response interface to receive the device status.
 
 **Since:** 9

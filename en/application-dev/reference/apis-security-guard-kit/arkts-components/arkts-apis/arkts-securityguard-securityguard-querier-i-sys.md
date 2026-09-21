@@ -1,5 +1,9 @@
 # Querier (System API)
 
+```TypeScript
+interface Querier
+```
+
 Definition callback of receiving the query data.
 
 @interface Querier

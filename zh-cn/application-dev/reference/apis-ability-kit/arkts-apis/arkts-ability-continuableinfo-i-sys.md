@@ -1,5 +1,9 @@
 # ContinuableInfo（系统接口）
 
+```TypeScript
+export interface ContinuableInfo
+```
+
 当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息，注册详见：[on('continueStateChange')接口](arkts-ability-distributedmissionmanager-on-f-sys.md#oncontinuestatechange)。
 
 **起始版本：** 10

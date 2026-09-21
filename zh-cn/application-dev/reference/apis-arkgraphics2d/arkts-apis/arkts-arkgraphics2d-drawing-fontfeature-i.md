@@ -1,5 +1,9 @@
 # FontFeature
 
+```TypeScript
+interface FontFeature
+```
+
 表示字体特征。字体特征是字体内置的排版规则，用于控制字形的显示效果，具体包括连字、替代字形、上下标等功能。
 
 **起始版本：** 20

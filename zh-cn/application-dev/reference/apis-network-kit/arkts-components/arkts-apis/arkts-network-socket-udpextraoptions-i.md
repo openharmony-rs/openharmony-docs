@@ -1,5 +1,9 @@
 # UDPExtraOptions
 
+```TypeScript
+export interface UDPExtraOptions extends ExtraOptionsBase
+```
+
 UDPSocket连接的其他属性。继承自[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)。
 
 **继承/实现关系：** UDPExtraOptions extends [ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)

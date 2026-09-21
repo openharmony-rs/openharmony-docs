@@ -1,5 +1,9 @@
 # StreamRole（系统接口）
 
+```TypeScript
+export enum StreamRole
+```
+
 流传输角色。
 
 **起始版本：** 18

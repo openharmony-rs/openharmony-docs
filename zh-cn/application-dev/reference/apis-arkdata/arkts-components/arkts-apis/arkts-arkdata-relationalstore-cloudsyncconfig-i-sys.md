@@ -1,5 +1,9 @@
 # CloudSyncConfig
 
+```TypeScript
+interface CloudSyncConfig
+```
+
 云同步配置信息。
 
 **起始版本：** 26.0.0

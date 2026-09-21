@@ -1,5 +1,9 @@
 # TabBarOptions
 
+```TypeScript
+export declare class TabBarOptions
+```
+
 页签选项。
 
 **起始版本：** 12
@@ -31,7 +35,7 @@ TabBarOptions的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| icon | [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [TabBarSymbol](../arkts-components/arkts-arkui-tabbarsymbol-c.md) | 是 | 页签内的图标内容。 |
+| icon | [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [TabBarSymbol](../arkts-components/arkts-arkui-tabcontent-comp-tabbarsymbol-c.md) | 是 | 页签内的图标内容。 |
 | text | [ResourceStr](arkts-arkui-resourcestr-t.md) | 是 | 页签内的文字内容。 |
 | unselectedColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 否 | 未选择时的页签颜色，默认值为#99182431。 |
 | selectedColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 否 | 已选择时的页签颜色，默认值为#FF007DFF。 |

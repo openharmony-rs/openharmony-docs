@@ -1,5 +1,9 @@
 # SettingsItem
 
+```TypeScript
+enum SettingsItem
+```
+
 设置的策略类型。
 
 **起始版本：** 24

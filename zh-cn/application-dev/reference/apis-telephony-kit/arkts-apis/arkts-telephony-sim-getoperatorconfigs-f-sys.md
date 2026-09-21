@@ -52,17 +52,8 @@ sim.getOperatorConfigs(0, (err: BusinessError, data: Array<sim.OperatorConfig>) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getOperatorConfigs(0).then((data: Array<sim.OperatorConfig>) => {
-    console.info(`getOperatorConfigs success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getOperatorConfigs failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getoperatorconfigs-1"></a>
 
 ## getOperatorConfigs
 
@@ -106,4 +97,13 @@ Obtains the operatorconfigs of the SIM card in a specified slot.
 
 **示例**
 
-参见 [getOperatorConfigs](#getoperatorconfigs)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getOperatorConfigs(0).then((data: Array<sim.OperatorConfig>) => {
+    console.info(`getOperatorConfigs success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getOperatorConfigs failed, promise: err->${JSON.stringify(err)}`);
+});
+```

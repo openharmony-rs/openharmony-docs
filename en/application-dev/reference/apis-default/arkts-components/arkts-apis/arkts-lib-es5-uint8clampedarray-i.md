@@ -1,5 +1,9 @@
 # Uint8ClampedArray
 
+```TypeScript
+interface Uint8ClampedArray
+```
+
 A typed array of 8-bit unsigned integer (clamped) values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.
 
 ## Modules to Import
@@ -189,6 +193,8 @@ Calls the specified callback function for all the elements in an array. The retu
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint8ClampedArray) =&gt; number | Yes |  |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -201,6 +207,8 @@ reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: n
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint8ClampedArray) =&gt; number | Yes |  |
 | initialValue | number | Yes |  |
+
+<a id="reduce-2"></a>
 
 ## reduce
 
@@ -231,6 +239,8 @@ Calls the specified callback function for all the elements in an array, in desce
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint8ClampedArray) =&gt; number | Yes |  |
 
+<a id="reduceright-1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -243,6 +253,8 @@ reduceRight(callbackfn: (previousValue: number, currentValue: number, currentInd
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: number, currentValue: number, currentIndex: number, array: Uint8ClampedArray) =&gt; number | Yes |  |
 | initialValue | number | Yes |  |
+
+<a id="reduceright-2"></a>
 
 ## reduceRight
 

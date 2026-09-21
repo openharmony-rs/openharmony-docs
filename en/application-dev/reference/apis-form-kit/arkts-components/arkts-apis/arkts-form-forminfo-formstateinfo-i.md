@@ -1,5 +1,9 @@
 # FormStateInfo
 
+```TypeScript
+interface FormStateInfo
+```
+
 Provides state information about a form.
 
 @typedef FormStateInfo

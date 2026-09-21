@@ -56,30 +56,6 @@ let eventParams: Record<string, number | string> = {
   "str_data": "strValue",
 };
 
-// Application event logging. This API uses an asynchronous callback to return the result.
-hiAppEvent.write({
-  domain: "test_domain",
-  name: "test_event",
-  eventType: hiAppEvent.EventType.FAULT,
-  params: eventParams,
-}, (err: BusinessError) => {
-  if (err) {
-    hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let eventParams: Record<string, number | string> = {
-  "int_data": 100,
-  "str_data": "strValue",
-};
-
 // Application event logging. This API uses a promise to return the result.
 hiAppEvent.write({
   domain: "test_domain",
@@ -93,6 +69,8 @@ hiAppEvent.write({
 });
 ```
 
+
+<a id="write-1"></a>
 
 ## write
 
@@ -130,4 +108,26 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 **Examples**
 
-See [write](#write)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let eventParams: Record<string, number | string> = {
+  "int_data": 100,
+  "str_data": "strValue",
+};
+
+// Application event logging. This API uses an asynchronous callback to return the result.
+hiAppEvent.write({
+  domain: "test_domain",
+  name: "test_event",
+  eventType: hiAppEvent.EventType.FAULT,
+  params: eventParams,
+}, (err: BusinessError) => {
+  if (err) {
+    hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
+});
+```

@@ -1,5 +1,9 @@
 # MmsRespInd（系统接口）
 
+```TypeScript
+export interface MmsRespInd
+```
+
 彩信回复标志。
 
 **起始版本：** 8

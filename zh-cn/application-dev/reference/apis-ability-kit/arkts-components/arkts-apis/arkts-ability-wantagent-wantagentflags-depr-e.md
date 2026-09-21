@@ -1,5 +1,9 @@
 # WantAgentFlags
 
+```TypeScript
+export enum WantAgentFlags
+```
+
 表示WantAgent行为控制标志，用于配置WantAgent的创建和触发行为。
 
 **起始版本：** 7

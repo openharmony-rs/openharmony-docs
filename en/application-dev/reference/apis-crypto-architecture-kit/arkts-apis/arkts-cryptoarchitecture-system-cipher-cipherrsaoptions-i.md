@@ -1,5 +1,9 @@
 # CipherRsaOptions
 
+```TypeScript
+export interface CipherRsaOptions
+```
+
 Defines the input parameters of **cipher.rsa()**.
 
 **Since:** 3

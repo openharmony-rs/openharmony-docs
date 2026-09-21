@@ -1,5 +1,9 @@
 # ImmersiveEffect
 
+```TypeScript
+interface ImmersiveEffect
+```
+
 沉浸效果。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # ClickResult
 
+```TypeScript
+export declare class ClickResult
+```
+
 Sets whether the asset with the specified URI is selected.
 
 **Since:** 23

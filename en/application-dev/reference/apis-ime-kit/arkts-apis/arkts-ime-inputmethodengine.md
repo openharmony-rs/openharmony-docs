@@ -131,6 +131,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [PATTERN_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_number) | Number edit box. |
 | [PATTERN_NUMBER_DECIMAL](arkts-ime-inputmethodengine-con.md#pattern_number_decimal) | Edit box for numbers with decimal points. |
 | [PATTERN_ONE_TIME_CODE](arkts-ime-inputmethodengine-con.md#pattern_one_time_code) | Verification code edit box. |
+| [PATTERN_ONE_TIME_CODE_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_one_time_code_number) | The numeric verification code edit box. The value is fixed at 15. The value should be an integer. |
 | [PATTERN_PASSWORD](arkts-ime-inputmethodengine-con.md#pattern_password) | Password edit box. |
 | [PATTERN_PASSWORD_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_password_number) | Numeric password edit box. |
 | [PATTERN_PASSWORD_SCREEN_LOCK](arkts-ime-inputmethodengine-con.md#pattern_password_screen_lock) | Screen lock password edit box. |

@@ -1,5 +1,9 @@
 # WifiDeviceConfig
 
+```TypeScript
+interface WifiDeviceConfig
+```
+
 Wi-Fi device configuration information. @typedef WifiDeviceConfig
 
 **Since:** 12

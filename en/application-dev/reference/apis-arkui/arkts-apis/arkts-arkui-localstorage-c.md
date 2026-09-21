@@ -1,5 +1,9 @@
 # LocalStorage
 
+```TypeScript
+declare class LocalStorage
+```
+
 For details about how to use LocalStorage on the UI, see [LocalStorage: UI State Storage](../../../ui/state-management/arkts-localstorage.md).
 
 **Since:** 9
@@ -17,6 +21,8 @@ Deletes all properties from [LocalStorage](../../../ui/state-management/arkts-lo
 For details about the subscriber, see [delete](#delete).
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -47,6 +53,8 @@ constructor(initializingProperties?: Object)
 Creates a [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instance and initializes it using the properties and values returned by **Object.keys(initializingProperties)**.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -93,6 +101,8 @@ of **SubscribedAbstractProperty** returned by **link**, **prop**, **setAndLink**
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -132,6 +142,8 @@ get<T>(propName: string): T | undefined
 Obtains the value of the property corresponding to **propName** from [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -235,6 +247,8 @@ Checks whether the property corresponding to **propName** exists in [LocalStorag
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -271,6 +285,8 @@ Obtains all property names in [LocalStorage](../../../ui/state-management/arkts-
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -304,6 +320,8 @@ Any update of the data is synchronized back to LocalStorage, which then synchron
 If the given property does not exist in LocalStorage, **undefined** is returned.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -342,6 +360,8 @@ prop<S>(propName: string): SubscribedAbstractProperty<S>
 Establishes a one-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the one-way bound data for the property. If the given property does not exist in LocalStorage, **undefined** is returned. Updates of the one-way bound data are not synchronized back to LocalStorage.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -428,6 +448,8 @@ Sets the value of the property corresponding to **propName** in [LocalStorage](.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -475,6 +497,8 @@ Similar to the [link](#link) API, establishes a two-way data binding with the pr
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -521,6 +545,8 @@ Similar to the [prop](#prop) API, establishes a one-way data binding with the pr
 > types.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -617,6 +643,8 @@ If the property does not exist, this API creates it with the value of **newValue
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -655,6 +683,8 @@ size(): number
 Obtains the number of properties in [LocalStorage](../../../ui/state-management/arkts-localstorage.md).
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

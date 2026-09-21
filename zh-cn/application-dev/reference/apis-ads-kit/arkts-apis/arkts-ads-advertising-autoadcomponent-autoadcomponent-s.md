@@ -1,5 +1,9 @@
 # AutoAdComponent
 
+```TypeScript
+declare struct AutoAdComponent
+```
+
 本模块提供展示轮播广告的能力。
 
 **起始版本：** 11

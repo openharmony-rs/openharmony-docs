@@ -1,5 +1,9 @@
 # ChipSuffixSymbolGlyphOptions
 
+```TypeScript
+export interface ChipSuffixSymbolGlyphOptions
+```
+
 symbol类型后缀图标的无障碍朗读功能属性及点击事件回调。
 
 **起始版本：** 14

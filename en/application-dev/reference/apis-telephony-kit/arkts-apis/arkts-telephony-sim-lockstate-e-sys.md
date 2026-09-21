@@ -1,5 +1,9 @@
 # LockState (System API)
 
+```TypeScript
+export enum LockState
+```
+
 Indicates the lock states.
 
 **Since:** 8

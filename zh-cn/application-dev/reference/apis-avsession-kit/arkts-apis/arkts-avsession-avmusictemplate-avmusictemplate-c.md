@@ -1,5 +1,9 @@
 # AVMusicTemplate
 
+```TypeScript
+class AVMusicTemplate
+```
+
 调用[avMusicTemplate.createAVMusicTemplate](arkts-avsession-avmusictemplate-createavmusictemplate-f.md)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
 
 > **说明：** 

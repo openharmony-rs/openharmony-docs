@@ -1,5 +1,9 @@
 # GenericsTask
 
+```TypeScript
+class GenericsTask<A extends Array<Object>, R> extends Task
+```
+
 Implements a generic task. **GenericsTask** inherits from [Task](arkts-arkts-taskpool-task-c.md). During the creation of a generic task, the passed-in parameter types and return value types of concurrent functions are verified in the compilation phase. Other behaviors are the same as those during the creation of a task.
 
 **Inheritance/Implementation:** GenericsTask extends [Task](arkts-arkts-taskpool-task-c.md)
@@ -67,17 +71,7 @@ let task2: taskpool.Task = new taskpool.GenericsTask<[number, string, number], s
 let task3: taskpool.Task = new taskpool.GenericsTask<[[number, string]], string>(testWithArray, [100, "test"]);
 ```
 
-```TypeScript
-@Concurrent
-function printArgs(args: string): string {
-  console.info("printArgs: " + args);
-  return args;
-}
-
-let taskName: string = "taskName";
-let task: taskpool.Task = new taskpool.GenericsTask<[string], string>(taskName, printArgs, "this is my first Task");
-let name: string = task.name;
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -108,30 +102,6 @@ A constructor used to create a **GenericsTask** instance, with the task name spe
 | [10200014](../errorcode-utils.md#10200014-non-concurrent-function-error) | The function is not marked as concurrent. |
 
 **Examples**
-
-```TypeScript
-@Concurrent
-function printArgs(args: string): string {
-  console.info("printArgs: " + args);
-  return args;
-}
-
-@Concurrent
-function testWithThreeParams(a: number, b: string, c: number): string {
-  return b;
-}
-
-@Concurrent
-function testWithArray(args: [number, string]): string {
-  return "success";
-}
-
-let task1: taskpool.Task = new taskpool.GenericsTask<[string], string>(printArgs, "this is my first LongTask");
-
-let task2: taskpool.Task = new taskpool.GenericsTask<[number, string, number], string>(testWithThreeParams, 100, "test", 100);
-
-let task3: taskpool.Task = new taskpool.GenericsTask<[[number, string]], string>(testWithArray, [100, "test"]);
-```
 
 ```TypeScript
 @Concurrent

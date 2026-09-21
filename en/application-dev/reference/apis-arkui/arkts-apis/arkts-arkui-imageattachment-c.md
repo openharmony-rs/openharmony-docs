@@ -1,5 +1,9 @@
 # ImageAttachment
 
+```TypeScript
+declare class ImageAttachment
+```
+
 Describes the image attachment.
 
 **Since:** 12
@@ -28,6 +32,8 @@ A constructor used to create an image object.
 | --- | --- | --- | --- |
 | value | [ImageAttachmentInterface](arkts-arkui-imageattachmentinterface-i.md) | Yes | Image attachment options. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -48,7 +54,7 @@ A constructor used to create an image object. Compared to the constructor with a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| attachment | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[AttachmentType](arkts-arkui-attachmenttype-t.md)&gt; | Yes | Image attachment, which can be of type PixelMap or [ResourceStr](arkts-arkui-resourcestr-t.md). |
+| attachment | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[AttachmentType](arkts-arkui-attachmenttype-t.md)&gt; | Yes | Image attachment, which can be of type PixelMap or [ResourceStr](arkts-arkui-resourcestr-t.md). |
 
 ## colorFilter
 
@@ -112,13 +118,13 @@ readonly resizable?: ResizableOptions
 
 Resizable image options of the styled string.
 
-**Type:** [ResizableOptions](../arkts-components/arkts-arkui-resizableoptions-i.md)
+**Type:** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,7 +200,7 @@ readonly value: PixelMap
 
 Image data source of the styled string.
 
-**Type:** [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
+**Type:** [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md)
 
 **Since:** 12
 

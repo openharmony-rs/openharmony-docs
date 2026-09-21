@@ -1,5 +1,9 @@
 # UnbondCause
 
+```TypeScript
+enum UnbondCause
+```
+
 枚举，配对失败原因。
 
 **起始版本：** 12

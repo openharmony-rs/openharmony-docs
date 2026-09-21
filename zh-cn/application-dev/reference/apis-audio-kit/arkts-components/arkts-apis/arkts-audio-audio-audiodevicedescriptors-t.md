@@ -4,7 +4,7 @@
 type AudioDeviceDescriptors = Array<Readonly<AudioDeviceDescriptor>>
 ```
 
-设备属性数组类型，为[AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)的数组，只读。
+设备属性数组类型，[AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)数组，只读。
 
 **起始版本：** 7
 

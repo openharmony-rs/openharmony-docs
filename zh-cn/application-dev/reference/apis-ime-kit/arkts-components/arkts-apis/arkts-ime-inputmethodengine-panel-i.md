@@ -1,5 +1,9 @@
 # Panel
 
+```TypeScript
+interface Panel
+```
+
 Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)接口获取，使用完毕后需调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel)销毁以释放资源。createPanel与destroyPanel必须配对调用。<br> <br>核心功能概述：<br> <br>- 页面加载：通过[setUiContent](#setuicontent)为面板加载键盘页面内容，支持加载普通页面和与LocalStorage关联的页面。<br>- 显示与隐藏：通过[show](#show)显示面板，通过[hide](#hide)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件监听状态变化。<br>- 尺寸与位置调整：通过[resize](#resize)调整面板尺寸，通过[moveTo](#moveto)移动面板位置，通过[startMoving](#startmoving)拖拽移动面板，通过[adjustPanelRect](#adjustpanelrect)/ [updatePanelRect](#updatepanelrect)/ [updateRegion](#updateregion)调整面板区域。<br>- 模式设置：通过[changeFlag](#changeflag)切换面板固定态/浮动态，通过[setPrivacyMode](#setprivacymode)设置隐私模式，通过[setImmersiveMode](#setimmersivemode)/ [getImmersiveMode](#getimmersivemode)设置/获取沉浸模式。<br>- 事件监听：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。<br> <br>面板生命周期：<br> <br>1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)中创建Panel实例并指定面板类型和标志位。<br>2. 调用[setUiContent](#setuicontent)加载键盘页面内容。<br>3. 调用[show](#show)显示面板，用户可交互。<br>4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。<br>5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel)销毁面板，释放资源。<br> <br>下列API均需使用[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)获取到Panel实例后，通过实例调用。
 
 **起始版本：** 10
@@ -79,36 +83,7 @@ let panelRect: inputMethodEngine.PanelRect = {
 panel.adjustPanelRect(panelFlag, panelRect);
 ```
 
-```TypeScript
-import { window } from '@kit.ArkUI';
-
-let landscapeRect1: window.Rect = {
-  left: 300,
-  top: 650,
-  width: 2000,
-  height: 500
-};
-let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
-
-let portraitRect1: window.Rect = {
-  left: 0,
-  top: 1800,
-  width: 1200,
-  height: 800
-}
-let portraitInputRegion: Array<window.Rect> = [portraitRect1];
-// 目标面板状态类型。
-let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
-// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
-let panelRect: inputMethodEngine.EnhancedPanelRect = {
-  landscapeAvoidY: 650,
-  landscapeInputRegion: landscapeInputRegion,
-  portraitAvoidY: 1800,
-  portraitInputRegion: portraitInputRegion,
-  fullScreenMode: true
-};
-panel.adjustPanelRect(panelFlag, panelRect);
-```
+<a id="adjustpanelrect-1"></a>
 
 ## adjustPanelRect
 
@@ -154,7 +129,36 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 **示例**
 
-参见 [adjustPanelRect](#adjustpanelrect)
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+let landscapeRect1: window.Rect = {
+  left: 300,
+  top: 650,
+  width: 2000,
+  height: 500
+};
+let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
+
+let portraitRect1: window.Rect = {
+  left: 0,
+  top: 1800,
+  width: 1200,
+  height: 800
+}
+let portraitInputRegion: Array<window.Rect> = [portraitRect1];
+// 目标面板状态类型。
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
+let panelRect: inputMethodEngine.EnhancedPanelRect = {
+  landscapeAvoidY: 650,
+  landscapeInputRegion: landscapeInputRegion,
+  portraitAvoidY: 1800,
+  portraitInputRegion: portraitInputRegion,
+  fullScreenMode: true
+};
+panel.adjustPanelRect(panelFlag, panelRect);
+```
 
 ## changeFlag
 
@@ -340,15 +344,7 @@ panel.hide((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-panel.hide().then(() => {
-  console.info('Succeeded in hiding the panel.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="hide-1"></a>
 
 ## hide
 
@@ -369,18 +365,6 @@ hide(): Promise<void>
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-panel.hide((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to hide panel. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in hiding the panel.');
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -433,16 +417,7 @@ panel.moveTo(300, 300, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 移动输入法面板位置
-panel.moveTo(300, 300).then(() => {
-  console.info('Succeeded in moving the panel.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to move panel. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="moveto-1"></a>
 
 ## moveTo
 
@@ -477,7 +452,16 @@ moveTo(x: number, y: number): Promise<void>
 
 **示例**
 
-参见 [moveTo](#moveto)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 移动输入法面板位置
+panel.moveTo(300, 300).then(() => {
+  console.info('Succeeded in moving the panel.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to move panel. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## off('show')
 
@@ -504,6 +488,12 @@ off(type: 'show', callback?: () => void): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+panel.off('show');
+```
+
 ## off('hide')
 
 ```TypeScript
@@ -528,6 +518,12 @@ off(type: 'hide', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+panel.off('hide');
+```
 
 ## off('sizeChange')
 
@@ -555,6 +551,16 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 | type | 'sizeChange' | 是 | 监听当前面板的大小是否产生变化，固定取值为'sizeChange'。 |
 | callback | [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | 否 | 回调函数。返回当前软键盘面板的大小，包含宽度和高度值。参数不填写时，取消订阅type对应的所有回调事件。<br>**适用版本：** 15 |
 
+**示例**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+panel.off('sizeChange', (windowSize: window.Size) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
+```
+
 ## on('show')
 
 ```TypeScript
@@ -574,6 +580,14 @@ on(type: 'show', callback: () => void): void
 | type | 'show' | 是 | 监听当前面板的状态类型，固定取值为'show'。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
 
+**示例**
+
+```TypeScript
+panel.on('show', () => {
+  console.info('Panel is showing.');
+});
+```
+
 ## on('hide')
 
 ```TypeScript
@@ -592,6 +606,14 @@ on(type: 'hide', callback: () => void): void
 | --- | --- | --- | --- |
 | type | 'hide' | 是 | 监听当前面板的状态类型，固定取值为'hide'。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
+
+**示例**
+
+```TypeScript
+panel.on('hide', () => {
+  console.info('Panel is hiding.');
+});
+```
 
 ## on('sizeChange')
 
@@ -618,6 +640,23 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 | --- | --- | --- | --- |
 | type | 'sizeChange' | 是 | 监听当前面板的大小是否产生变化，固定值为'sizeChange'。 |
 | callback | [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | 是 | 回调函数。返回当前软键盘面板的大小，包含宽度和高度值。<br>**适用版本：** 15 |
+
+**示例**
+
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+// 监听面板大小变化事件
+panel.on('sizeChange', (windowSize: window.Size) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
+
+// 监听面板大小变化事件（带键盘区域参数）
+panel.on('sizeChange', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize.width}, ${windowSize.height}, ` +
+    `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
+});
+```
 
 ## resize
 
@@ -665,16 +704,7 @@ panel.resize(500, 1000, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 改变输入法面板大小
-panel.resize(500, 1000).then(() => {
-  console.info('Succeeded in changing the panel size.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to resize panel. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="resize-1"></a>
 
 ## resize
 
@@ -714,7 +744,16 @@ resize(width: number, height: number): Promise<void>
 
 **示例**
 
-参见 [resize](#resize)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 改变输入法面板大小
+panel.resize(500, 1000).then(() => {
+  console.info('Succeeded in changing the panel size.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to resize panel. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## setImmersiveEffect
 
@@ -952,43 +991,7 @@ panel.setUiContent('pages/page2/page2', (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-panel.setUiContent('pages/page2/page2').then(() => {
-  console.info('Succeeded in setting the content.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to setUiContent. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建并初始化LocalStorage对象
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-panel.setUiContent('pages/page2/page2', storage, (err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to setUiContent. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in setting the content.');
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建并初始化LocalStorage对象
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-panel.setUiContent('pages/page2/page2', storage).then(() => {
-  console.info('Succeeded in setting the content.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to setUiContent. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="setuicontent-1"></a>
 
 ## setUiContent
 
@@ -1022,7 +1025,17 @@ setUiContent(path: string): Promise<void>
 
 **示例**
 
-参见 [setUiContent](#setuicontent)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+panel.setUiContent('pages/page2/page2').then(() => {
+  console.info('Succeeded in setting the content.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setUiContent. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<a id="setuicontent-2"></a>
 
 ## setUiContent
 
@@ -1052,7 +1065,22 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback<void>)
 
 **示例**
 
-参见 [setUiContent](#setuicontent)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建并初始化LocalStorage对象
+let storage: LocalStorage = new LocalStorage();
+storage.setOrCreate('storageSimpleProp', 121);
+panel.setUiContent('pages/page2/page2', storage, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to setUiContent. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting the content.');
+});
+```
+
+<a id="setuicontent-3"></a>
 
 ## setUiContent
 
@@ -1087,7 +1115,18 @@ setUiContent(path: string, storage: LocalStorage): Promise<void>
 
 **示例**
 
-参见 [setUiContent](#setuicontent)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建并初始化LocalStorage对象
+let storage: LocalStorage = new LocalStorage();
+storage.setOrCreate('storageSimpleProp', 121);
+panel.setUiContent('pages/page2/page2', storage).then(() => {
+  console.info('Succeeded in setting the content.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setUiContent. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## show
 
@@ -1121,15 +1160,7 @@ panel.show((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-panel.show().then(() => {
-  console.info('Succeeded in showing the panel.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to show panel. Code is ${err.code}, message is ${err.message}`);
-});
-```
+<a id="show-1"></a>
 
 ## show
 
@@ -1151,7 +1182,15 @@ show(): Promise<void>
 
 **示例**
 
-参见 [show](#show)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+panel.show().then(() => {
+  console.info('Succeeded in showing the panel.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show panel. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## startMoving
 
@@ -1249,36 +1288,7 @@ let panelRect: inputMethodEngine.PanelRect = {
 panel.updatePanelRect(panelFlag, panelRect);
 ```
 
-```TypeScript
-import { window } from '@kit.ArkUI';
-
-let landscapeRect1: window.Rect = {
-  left: 300,
-  top: 650,
-  width: 2000,
-  height: 500
-};
-let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
-
-let portraitRect1: window.Rect = {
-  left: 0,
-  top: 1800,
-  width: 1200,
-  height: 800
-}
-let portraitInputRegion: Array<window.Rect> = [portraitRect1];
-// 目标面板状态类型。
-let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
-// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
-let panelRect: inputMethodEngine.EnhancedPanelRect = {
-  landscapeAvoidY: 650,
-  landscapeInputRegion: landscapeInputRegion,
-  portraitAvoidY: 1800,
-  portraitInputRegion: portraitInputRegion,
-  fullScreenMode: true
-};
-panel.updatePanelRect(panelFlag, panelRect);
-```
+<a id="updatepanelrect-1"></a>
 
 ## updatePanelRect
 
@@ -1328,7 +1338,36 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise<void>
 
 **示例**
 
-参见 [updatePanelRect](#updatepanelrect)
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+let landscapeRect1: window.Rect = {
+  left: 300,
+  top: 650,
+  width: 2000,
+  height: 500
+};
+let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
+
+let portraitRect1: window.Rect = {
+  left: 0,
+  top: 1800,
+  width: 1200,
+  height: 800
+}
+let portraitInputRegion: Array<window.Rect> = [portraitRect1];
+// 目标面板状态类型。
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
+let panelRect: inputMethodEngine.EnhancedPanelRect = {
+  landscapeAvoidY: 650,
+  landscapeInputRegion: landscapeInputRegion,
+  portraitAvoidY: 1800,
+  portraitInputRegion: portraitInputRegion,
+  fullScreenMode: true
+};
+panel.updatePanelRect(panelFlag, panelRect);
+```
 
 ## updatePanelRectSync
 
@@ -1396,36 +1435,7 @@ let panelRect: inputMethodEngine.PanelRect = {
 panel.updatePanelRectSync(panelFlag, panelRect);
 ```
 
-```TypeScript
-import { window } from '@kit.ArkUI';
-
-let landscapeRect1: window.Rect = {
-  left: 300,
-  top: 650,
-  width: 2000,
-  height: 500
-};
-let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
-
-let portraitRect1: window.Rect = {
-  left: 0,
-  top: 1800,
-  width: 1200,
-  height: 800
-}
-let portraitInputRegion: Array<window.Rect> = [portraitRect1];
-// 目标面板状态类型。
-let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
-// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
-let panelRect: inputMethodEngine.EnhancedPanelRect = {
-  landscapeAvoidY: 650,
-  landscapeInputRegion: landscapeInputRegion,
-  portraitAvoidY: 1800,
-  portraitInputRegion: portraitInputRegion,
-  fullScreenMode: true
-};
-panel.updatePanelRectSync(panelFlag, panelRect);
-```
+<a id="updatepanelrectsync-1"></a>
 
 ## updatePanelRectSync
 
@@ -1472,7 +1482,36 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 **示例**
 
-参见 [updatePanelRectSync](#updatepanelrectsync)
+```TypeScript
+import { window } from '@kit.ArkUI';
+
+let landscapeRect1: window.Rect = {
+  left: 300,
+  top: 650,
+  width: 2000,
+  height: 500
+};
+let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
+
+let portraitRect1: window.Rect = {
+  left: 0,
+  top: 1800,
+  width: 1200,
+  height: 800
+}
+let portraitInputRegion: Array<window.Rect> = [portraitRect1];
+// 目标面板状态类型。
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
+let panelRect: inputMethodEngine.EnhancedPanelRect = {
+  landscapeAvoidY: 650,
+  landscapeInputRegion: landscapeInputRegion,
+  portraitAvoidY: 1800,
+  portraitInputRegion: portraitInputRegion,
+  fullScreenMode: true
+};
+panel.updatePanelRectSync(panelFlag, panelRect);
+```
 
 ## updateRegion
 

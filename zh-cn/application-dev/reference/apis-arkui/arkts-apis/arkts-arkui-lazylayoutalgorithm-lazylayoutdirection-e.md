@@ -1,5 +1,9 @@
 # LazyLayoutDirection
 
+```TypeScript
+export enum LazyLayoutDirection
+```
+
 懒加载布局方向枚举。
 
 **起始版本：** 26.0.0

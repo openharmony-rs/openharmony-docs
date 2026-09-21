@@ -50,17 +50,8 @@ radio.getNetworkSelectionMode(slotId, (err: BusinessError, data: radio.NetworkSe
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
-    console.info(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getnetworkselectionmode-1"></a>
 
 ## getNetworkSelectionMode
 
@@ -98,4 +89,13 @@ Obtains the network selection mode of the SIM card in the specified slot. This A
 
 **Examples**
 
-See [getNetworkSelectionMode](#getnetworkselectionmode)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getNetworkSelectionMode(slotId).then((data: radio.NetworkSelectionMode) => {
+    console.info(`getNetworkSelectionMode success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
+});
+```

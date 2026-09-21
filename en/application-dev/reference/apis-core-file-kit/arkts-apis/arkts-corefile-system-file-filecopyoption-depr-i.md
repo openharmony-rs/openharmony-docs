@@ -1,5 +1,9 @@
 # FileCopyOption
 
+```TypeScript
+export interface FileCopyOption
+```
+
 Defines the options used in copy().
 
 **Since:** 3

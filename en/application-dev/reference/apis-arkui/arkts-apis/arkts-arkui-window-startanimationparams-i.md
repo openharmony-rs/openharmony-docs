@@ -1,5 +1,9 @@
 # StartAnimationParams
 
+```TypeScript
+interface StartAnimationParams
+```
+
 Describes the parameters for the startup animation.
 
 The configuration is valid only for transitions between different abilities within the same application.

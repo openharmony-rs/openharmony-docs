@@ -1,5 +1,9 @@
 # DragEventParam
 
+```TypeScript
+interface DragEventParam
+```
+
 Callback used to return the result.
 
 **Since:** 12
@@ -20,7 +24,7 @@ event: DragEvent
 
 Drag event information that includes only the drag result.
 
-**Type:** [DragEvent](../arkts-components/arkts-arkui-dragevent-i.md)
+**Type:** [DragEvent](../arkts-components/arkts-arkui-common-comp-dragevent-i.md)
 
 **Since:** 10
 

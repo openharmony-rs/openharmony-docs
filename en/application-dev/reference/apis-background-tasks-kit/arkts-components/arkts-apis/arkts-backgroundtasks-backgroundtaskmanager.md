@@ -29,12 +29,12 @@ If an application has a service that can be intuitively perceived by users and n
 | --- | --- |
 | [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md#cancelsuspenddelay) | Cancels the suspension delay. |
 | [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime) | Obtains the remaining duration before the application is suspended. This API uses an asynchronous callback to return the result. |
-| [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime) | Obtains the remaining duration before the application is suspended. This API uses a promise to return the result. |
+| [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime-1) | Obtains the remaining duration before the application is suspended. This API uses a promise to return the result. |
 | [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay) | Requests delayed suspension after the application switches to the background. |
 | [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning) | Requests a continuous task from the system. This API uses an asynchronous callback to return the result. |
-| [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning) | Requests a continuous task from the system. This API uses a promise to return the result. |
+| [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning-1) | Requests a continuous task from the system. This API uses a promise to return the result. |
 | [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning) | Requests to cancel a continuous task. This API uses an asynchronous callback to return the result. |
-| [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning) | Requests to cancel a continuous task. This API uses a promise to return the result. |
+| [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning-1) | Requests to cancel a continuous task. This API uses a promise to return the result. |
 
 ### Interfaces
 

@@ -55,24 +55,8 @@ appManager.killProcessWithAccount(bundleName, accountId)
   });
 ```
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
 
-let bundleName = 'bundleName';
-let accountId = 0;
-
-function killProcessWithAccountCallback(err: BusinessError, data: void) {
-  if (err) {
-    console.error(`KillProcessWithAccountCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
-  } else {
-    console.info(`KillProcessWithAccountCallback success, data: ${JSON.stringify(data)}`);
-  }
-}
-
-appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
-```
-
+<a id="killprocesswithaccount-1"></a>
 
 ## killProcessWithAccount
 
@@ -104,4 +88,20 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 
 **示例**
 
-参见 [killProcessWithAccount](#killprocesswithaccount)
+```TypeScript
+import appManager from '@ohos.application.appManager';
+import { BusinessError } from '@ohos.base';
+
+let bundleName = 'bundleName';
+let accountId = 0;
+
+function killProcessWithAccountCallback(err: BusinessError, data: void) {
+  if (err) {
+    console.error(`KillProcessWithAccountCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`KillProcessWithAccountCallback success, data: ${JSON.stringify(data)}`);
+  }
+}
+
+appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
+```

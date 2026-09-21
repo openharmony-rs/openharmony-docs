@@ -52,16 +52,8 @@ call.isImsSwitchEnabled(0, (err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.isImsSwitchEnabled(0).then((data: boolean) => {
-    console.info(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`isImsSwitchEnabled fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="isimsswitchenabled-1"></a>
 
 ## isImsSwitchEnabled
 
@@ -102,4 +94,12 @@ Checks whether the IMS service is enabled. This API uses a promise to return the
 
 **Examples**
 
-See [isImsSwitchEnabled](#isimsswitchenabled)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.isImsSwitchEnabled(0).then((data: boolean) => {
+    console.info(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isImsSwitchEnabled fail, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -1,6 +1,10 @@
 # NavPushPathHelper
 
-当跳转的目标NavDestination在不同的hsp分包且未被主包依赖时，首次运行原子化服务只会下载安装主包。此时需要使用NavPushPathHelper先下载安装相应hsp分包，再将指定的NavDestination页面信息入栈或替换当前栈顶页面，从而使Navigation支持动态加载hsp分包后再跳转。
+```TypeScript
+export declare class NavPushPathHelper
+```
+
+当跳转的目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)在不同的hsp分包且未被主包依赖时，首次运行原子化服务只会下载安装主包。此时需要使用NavPushPathHelper先下载安装相应hsp分包，再将指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈或替换当前栈顶页面，从而使[Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)支持动态加载hsp分包后再跳转。
 
 > **说明：** 
 > 
@@ -34,7 +38,7 @@ NavPushPathHelper的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| navPathStack | [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md) | 是 | Navigation路由栈。 |
+| navPathStack | [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md) | 是 | [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation)路由栈。 |
 
 ## pushDestination
 
@@ -42,7 +46,7 @@ NavPushPathHelper的构造函数。
 pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的NavDestination页面信息入栈，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -54,8 +58,8 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -74,13 +78,15 @@ pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Prom
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="pushdestination-1"></a>
+
 ## pushDestination
 
 ```TypeScript
 pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的NavDestination页面信息入栈，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，使用Promise异步回调。
 
 具体根据options中指定不同的LaunchMode，有不同的行为。
 
@@ -94,9 +100,9 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面的信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
 
 **返回值：**
 
@@ -120,7 +126,7 @@ pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptio
 pushDestinationByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的NavDestination页面信息入栈，传递的数据为param，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，传递的数据为param，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -132,9 +138,9 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 是 | NavDestination页面详细参数。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面名称。 |
+| param | Object | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面详细参数。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -153,6 +159,8 @@ pushDestinationByName(moduleName: string, name: string, param: Object, animated?
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="pushdestinationbyname-1"></a>
+
 ## pushDestinationByName
 
 ```TypeScript
@@ -160,7 +168,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object,
     onPop: Callback<PopInfo>, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的NavDestination页面信息入栈，传递的数据为param，添加用于页面出栈时处理返回结果的onPop回调，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，传递的数据为param，添加用于页面出栈时处理返回结果的onPop回调，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -172,10 +180,10 @@ pushDestinationByName(moduleName: string, name: string, param: Object,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 是 | NavDestination页面的参数对象，用于向目标页面传递数据。 |
-| onPop | Callback&lt;[PopInfo](../arkts-components/arkts-arkui-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面名称。 |
+| param | Object | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面的参数对象，用于向目标页面传递数据。 |
+| onPop | Callback&lt;[PopInfo](../arkts-components/arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -200,7 +208,7 @@ pushDestinationByName(moduleName: string, name: string, param: Object,
 pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的NavDestination页面信息入栈，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -212,8 +220,8 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -228,13 +236,15 @@ pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<voi
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="pushpath-1"></a>
+
 ## pushPath
 
 ```TypeScript
 pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的NavDestination页面信息入栈，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将info指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，使用Promise异步回调。
 
 具体根据options中指定的LaunchMode不同，执行不同的跳转行为。
 
@@ -248,9 +258,9 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面的信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
 
 **返回值：**
 
@@ -270,7 +280,7 @@ pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Pr
 pushPathByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的NavDestination页面信息入栈，传递的数据为param，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，传递的数据为param，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -282,9 +292,9 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 是 | NavDestination页面详细参数。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面名称。 |
+| param | Object | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面详细参数。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -299,6 +309,8 @@ pushPathByName(moduleName: string, name: string, param: Object, animated?: boole
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="pushpathbyname-1"></a>
+
 ## pushPathByName
 
 ```TypeScript
@@ -306,7 +318,7 @@ pushPathByName(moduleName: string, name: string, param: Object,
     onPop: Callback<PopInfo>, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的NavDestination页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将name指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，传递的数据为param，添加onPop回调接收入栈页面出栈时的返回结果，并进行处理，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -318,10 +330,10 @@ pushPathByName(moduleName: string, name: string, param: Object,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 是 | NavDestination页面详细参数。 |
-| onPop | Callback&lt;[PopInfo](../arkts-components/arkts-arkui-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面名称。 |
+| param | Object | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面详细参数。 |
+| onPop | Callback&lt;[PopInfo](../arkts-components/arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -342,7 +354,7 @@ pushPathByName(moduleName: string, name: string, param: Object,
 replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将info指定的NavDestination页面信息入栈，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将info指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -354,8 +366,8 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | 新栈顶页面参数信息。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | 新栈顶页面参数信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**
@@ -370,13 +382,15 @@ replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise<
 | --- | --- |
 | [300001](../errorcode-router.md#300001-navigation跳转前静默安装hsp分包失败) | hsp silent install fail. |
 
+<a id="replacepath-1"></a>
+
 ## replacePath
 
 ```TypeScript
 replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将info指定的NavDestination页面信息入栈，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将info指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，使用Promise异步回调。
 
 具体根据options中指定不同的LaunchMode，有不同的行为。
 
@@ -390,9 +404,9 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| info | [NavPathInfo](../arkts-components/arkts-arkui-navpathinfo-c.md) | 是 | 新栈顶页面参数信息。 |
-| options | [NavigationOptions](../arkts-components/arkts-arkui-navigationoptions-i.md) | 否 | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | 新栈顶页面参数信息。 |
+| options | [NavigationOptions](../arkts-components/arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 页面栈操作选项。默认值为{ launchMode: LaunchMode.STANDARD, animated: true }。 |
 
 **返回值：**
 
@@ -412,7 +426,7 @@ replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions):
 replacePathByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise<void>
 ```
 
-先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将name指定的NavDestination页面信息入栈，传递的数据为param，使用Promise异步回调。
+先判断分包是否存在，若不存在，则通过moduleName下载分包，再将当前页面栈栈顶退出，将name指定的[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面信息入栈，传递的数据为param，使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -424,9 +438,9 @@ replacePathByName(moduleName: string, name: string, param: Object, animated?: bo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | 目标NavDestination所在分包的moduleName。 |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 是 | NavDestination页面详细参数。 |
+| moduleName | string | 是 | 目标[NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)所在分包的moduleName。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面名称。 |
+| param | Object | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面详细参数。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>默认值：true。<br>true：支持转场动画。<br>false：不支持转场动画。 |
 
 **返回值：**

@@ -1,5 +1,9 @@
 # UploadFileType (System API)
 
+```TypeScript
+enum UploadFileType
+```
+
 Enumerates upload file type. @enum {number}
 
 **Since:** 12

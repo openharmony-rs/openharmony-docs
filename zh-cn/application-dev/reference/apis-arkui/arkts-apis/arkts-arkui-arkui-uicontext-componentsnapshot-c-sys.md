@@ -1,5 +1,9 @@
 # ComponentSnapshot
 
+```TypeScript
+export class ComponentSnapshot
+```
+
 提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。
 
 > **说明：** 

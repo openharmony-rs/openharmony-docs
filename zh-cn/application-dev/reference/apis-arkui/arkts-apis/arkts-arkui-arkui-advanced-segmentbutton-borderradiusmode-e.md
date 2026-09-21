@@ -1,5 +1,9 @@
 # BorderRadiusMode
 
+```TypeScript
+declare enum BorderRadiusMode
+```
+
 边框圆角模式枚举，用于控制分段按钮的圆角计算方式。
 
 **起始版本：** 20

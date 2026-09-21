@@ -1,5 +1,9 @@
 # AxisAction
 
+```TypeScript
+declare enum AxisAction
+```
+
 Enumerates the types of axis actions for axis events.
 
 **Since:** 17

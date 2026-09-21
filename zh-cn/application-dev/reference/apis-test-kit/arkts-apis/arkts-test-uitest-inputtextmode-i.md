@@ -1,5 +1,9 @@
 # InputTextMode
 
+```TypeScript
+declare interface InputTextMode
+```
+
 输入文本的方式。
 
 **起始版本：** 20

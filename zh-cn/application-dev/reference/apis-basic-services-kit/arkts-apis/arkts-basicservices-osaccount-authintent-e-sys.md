@@ -1,5 +1,9 @@
 # AuthIntent（系统接口）
 
+```TypeScript
+enum AuthIntent
+```
+
 表示认证意图的枚举。
 
 **起始版本：** 12

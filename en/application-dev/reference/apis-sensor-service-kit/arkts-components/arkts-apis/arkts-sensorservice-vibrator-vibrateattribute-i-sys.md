@@ -1,5 +1,9 @@
 # VibrateAttribute
 
+```TypeScript
+interface VibrateAttribute
+```
+
 Describes the vibration attribute.
 
 **Since:** 9

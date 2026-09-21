@@ -1,12 +1,16 @@
 # Span属性/事件
 
-属性继承自[BaseSpan](arkts-arkui-basespan-c.md)。
+```TypeScript
+declare class SpanAttribute extends BaseSpan<SpanAttribute>
+```
 
-通用事件支持点击事件onClick、悬浮事件onHover。
+属性继承自[BaseSpan](arkts-arkui-span-comp-basespan-c.md)。
+
+通用事件支持[点击事件onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick)、[悬浮事件onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover)。
 
 @extends CommonMethod&lt;SpanAttribute&gt; [since 7 - 10] @extends BaseSpan&lt;SpanAttribute&gt; [since 11]
 
-**继承/实现关系：** SpanAttribute extends BaseSpan&lt;SpanAttribute&gt;
+**继承/实现关系：** SpanAttribute extends BaseSpan<SpanAttribute>
 
 **起始版本：** 7
 
@@ -59,6 +63,8 @@ font(value: Font)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | Font | 是 | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 |
+
+<a id="font-1"></a>
 
 ## font
 
@@ -147,7 +153,7 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 字体大小。fontSize为number类型时，使用fp单位。string类型支持number类型取值的字符串形式，可以附带单位，例如"1 0"、"10fp"，不支持设置百分比字符串。<br>从API version 20开始，支持Resource类型。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 字体大小。fontSize为number类型时，使用fp单位。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"，不支持设置百分比字符串。<br>从API version 20开始，支持Resource类型。 |
 
 ## fontStyle
 
@@ -185,7 +191,7 @@ fontVariations(fontVariations: Array<FontVariation>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -220,6 +226,8 @@ fontWeight(value: number | FontWeight | ResourceStr)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 文本的字体粗细。<br>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“ regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br>从API version 20开始，支持Resource类型。<br>**适用版本：** 20 |
+
+<a id="fontweight-1"></a>
 
 ## fontWeight
 
@@ -336,4 +344,4 @@ textShadow(value: ShadowOptions | Array<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。可设置阴影的模糊半径(radius)、颜色(color)、偏移距离(offsetX/offsetY)等参数，支持数组形式实现多重阴影。 |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | 文字阴影效果。可设置阴影的模糊半径(radius)、颜色(color)、偏移距离(offsetX/offsetY)等参数，支持数组形式实现多重阴影。 |

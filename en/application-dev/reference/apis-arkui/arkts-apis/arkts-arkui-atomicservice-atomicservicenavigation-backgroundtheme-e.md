@@ -1,5 +1,9 @@
 # BackgroundTheme
 
+```TypeScript
+export declare enum BackgroundTheme
+```
+
 Enumerates the navigation bar background themes.
 
 **Since:** 18

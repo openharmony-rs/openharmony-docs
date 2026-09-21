@@ -1,5 +1,9 @@
 # CertRevocationFlag
 
+```TypeScript
+enum CertRevocationFlag
+```
+
 表示证书吊销检查标志的枚举。
 
 **起始版本：** 26.0.0

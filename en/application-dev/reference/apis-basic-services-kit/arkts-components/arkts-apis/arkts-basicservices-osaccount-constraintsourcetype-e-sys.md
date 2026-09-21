@@ -1,5 +1,9 @@
 # ConstraintSourceType (System API)
 
+```TypeScript
+enum ConstraintSourceType
+```
+
 Enumerates the constraint sources.
 
 **Since:** 9

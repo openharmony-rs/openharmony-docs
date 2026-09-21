@@ -1,5 +1,9 @@
 # SubscribeOnBodyStateOptions
 
+```TypeScript
+export interface SubscribeOnBodyStateOptions
+```
+
 用于设置设备佩戴状态订阅的参数，包括回调函数。佩戴状态分为已佩戴和未佩戴两种。
 
 **起始版本：** 3

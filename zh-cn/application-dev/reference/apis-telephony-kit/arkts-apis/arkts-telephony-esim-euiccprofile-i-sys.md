@@ -1,5 +1,9 @@
 # EuiccProfile（系统接口）
 
+```TypeScript
+export interface EuiccProfile
+```
+
 配置文件信息。
 
 **起始版本：** 18

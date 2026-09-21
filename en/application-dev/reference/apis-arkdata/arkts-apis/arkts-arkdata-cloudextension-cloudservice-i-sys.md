@@ -1,5 +1,9 @@
 # CloudService (System API)
 
+```TypeScript
+export interface CloudService
+```
+
 Provides APIs for interacting with the cloud sync service. You need to inherit this class and implement APIs of this class. The system calls these APIs to connect to the cloud and use the cloud sync service.
 
 **Since:** 11

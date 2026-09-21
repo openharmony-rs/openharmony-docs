@@ -85,6 +85,43 @@ function taskpoolTest() {
 taskpoolTest();
 ```
 
+
+<a id="executeperiodically-1"></a>
+
+## executePeriodically
+
+```TypeScript
+function executePeriodically<A extends Array<Object>, R>(period: number, task: GenericsTask<A, R>, priority?: Priority): void
+```
+
+周期执行泛型任务，使用Promise异步回调。executePeriodically任务的类型校验与GenericsTask的构造类型相关联，参数类型和返回值类型需与new GenericsTask时指定的类型保持一致。
+
+**起始版本：** 13
+
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| period | number | 是 | 周期时长。单位：ms。period值必须要大于等于0。 |
+| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | 是 | 需要周期执行的泛型任务。 |
+| priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 周期执行的任务的优先级，该参数默认值为**taskpool.Priority.MEDIUM**。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
+| [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
+| [10200028](../errorcode-utils.md#10200028-延时时间小于零) | The period is less than zero. |
+| [10200050](../errorcode-utils.md#10200050-并发任务已执行无法周期执行) | The concurrent task has been executed and cannot be executed periodically. |
+| [10200057](../errorcode-utils.md#10200057-任务无法被两种api执行) | The task cannot be executed by two APIs.<br>**适用版本：** 18+ |
+
+**示例**
+
 ```TypeScript
 @Concurrent
 function printArgs(args: number): void {
@@ -123,40 +160,3 @@ function taskpoolTest() {
 
 taskpoolTest();
 ```
-
-
-## executePeriodically
-
-```TypeScript
-function executePeriodically<A extends Array<Object>, R>(period: number, task: GenericsTask<A, R>, priority?: Priority): void
-```
-
-周期执行泛型任务，使用Promise异步回调。executePeriodically任务的类型校验与GenericsTask的构造类型相关联，参数类型和返回值类型需与new GenericsTask时指定的类型保持一致。
-
-**起始版本：** 13
-
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| period | number | 是 | 周期时长。单位：ms。period值必须要大于等于0。 |
-| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | 是 | 需要周期执行的泛型任务。 |
-| priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 周期执行的任务的优先级，该参数默认值为**taskpool.Priority.MEDIUM**。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker传输信息序列化异常) | An exception occurred during serialization. |
-| [10200014](../errorcode-utils.md#10200014-非concurrent函数错误) | The function is not marked as concurrent. |
-| [10200028](../errorcode-utils.md#10200028-延时时间小于零) | The period is less than zero. |
-| [10200050](../errorcode-utils.md#10200050-并发任务已执行无法周期执行) | The concurrent task has been executed and cannot be executed periodically. |
-| [10200057](../errorcode-utils.md#10200057-任务无法被两种api执行) | The task cannot be executed by two APIs.<br>**适用版本：** 18+ |
-
-**示例**
-
-参见 executePeriodically

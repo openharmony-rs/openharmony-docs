@@ -1,5 +1,9 @@
 # ServiceExtensionAbility (System API)
 
+```TypeScript
+declare class ServiceExtensionAbility
+```
+
 The ServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
 
 **Since:** 9
@@ -97,8 +101,30 @@ class ServiceExt extends ServiceExtensionAbility {
 }
 ```
 
-```TypeScript
 If the returned RemoteObject depends on an asynchronous API, you can use the asynchronous lifecycle.
+
+```TypeScript
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+
+class StubTest extends rpc.RemoteObject{
+  constructor(des: string) {
+    super(des);
+  }
+  onConnect(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+  }
+}
+async function getDescriptor() {
+  // Call the asynchronous function.
+  return "asyncTest"
+}
+class ServiceExt extends ServiceExtensionAbility {
+  async onConnect(want: Want) {
+    console.info(`onConnect , want: ${want.abilityName}`);
+    let descriptor = await getDescriptor();
+    return new StubTest(descriptor);
+  }
+}
 ```
 
 ## onCreate
@@ -187,12 +213,29 @@ Called when a client is disconnected from this ServiceExtensionAbility. This API
 
 **Examples**
 
-```TypeScript
 A synchronous callback example is as follows:
-```
 
 ```TypeScript
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+
+class ServiceExt extends ServiceExtensionAbility {
+  onDisconnect(want: Want) {
+    console.info(`onDisconnect, want: ${want.abilityName}`);
+  }
+}
+```
+
 A promise asynchronous callback example is as follows:
+
+```TypeScript
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+
+class ServiceExt extends ServiceExtensionAbility {
+  async onDisconnect(want: Want) {
+    console.info(`onDisconnect, want: ${want.abilityName}`);
+    // Call the asynchronous function.
+  }
+}
 ```
 
 ## onDump

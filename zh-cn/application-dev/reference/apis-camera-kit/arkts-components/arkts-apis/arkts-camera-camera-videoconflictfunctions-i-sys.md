@@ -1,5 +1,9 @@
 # VideoConflictFunctions（系统接口）
 
+```TypeScript
+interface VideoConflictFunctions extends ZoomQuery, MacroQuery
+```
+
 Video Conflict Functions object.
 
 **继承/实现关系：** VideoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md)

@@ -1,5 +1,9 @@
 # SelectDialog
 
+```TypeScript
+export declare struct SelectDialog
+```
+
 选择类弹出框，弹框中以列表或网格的形式提供可选的内容。
 
 **起始版本：** 10
@@ -140,7 +144,7 @@ themeColorMode?: ThemeColorMode
 
 默认值：ThemeColorMode.SYSTEM
 
-**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **起始版本：** 12
 

@@ -1,8 +1,7 @@
 # CaptionsFontFamily
 
 ```TypeScript
-type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' |
-     'monospacedSansSerif' | 'sansSerif' | 'casual' | 'cursive' | 'smallCapitals'
+type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif''monospacedSansSerif' | 'sansSerif' | 'casual' | 'cursive' | 'smallCapitals'
 ```
 
 字幕字体。

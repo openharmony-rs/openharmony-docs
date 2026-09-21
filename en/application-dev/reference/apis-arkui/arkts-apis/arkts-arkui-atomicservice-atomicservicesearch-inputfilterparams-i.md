@@ -1,5 +1,9 @@
 # InputFilterParams
 
+```TypeScript
+export interface InputFilterParams
+```
+
 Sets regular expression for input filtering.
 
 **Since:** 18

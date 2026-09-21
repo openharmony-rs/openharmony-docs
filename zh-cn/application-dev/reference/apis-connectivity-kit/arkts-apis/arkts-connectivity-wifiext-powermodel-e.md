@@ -1,5 +1,9 @@
 # PowerModel
 
+```TypeScript
+export enum PowerModel
+```
+
 表示功率模式的枚举。
 
 **起始版本：** 8

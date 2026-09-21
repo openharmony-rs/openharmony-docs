@@ -1,5 +1,9 @@
 # PrintResolution
 
+```TypeScript
+interface PrintResolution
+```
+
 定义打印分辨率的接口。
 
 **起始版本：** 24

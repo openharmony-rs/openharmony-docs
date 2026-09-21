@@ -1,5 +1,9 @@
 # OpenMode(File Management)
 
+```TypeScript
+namespace OpenMode
+```
+
 Mode Indicates the open flags.
 
 **Since:** 9

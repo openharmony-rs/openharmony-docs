@@ -1,5 +1,9 @@
 # ProcessPriority
 
+```TypeScript
+export enum ProcessPriority
+```
+
 子进程压制档位。
 
 **起始版本：** 17

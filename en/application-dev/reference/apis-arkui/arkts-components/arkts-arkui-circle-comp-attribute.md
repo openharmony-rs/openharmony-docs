@@ -1,6 +1,10 @@
 # Circle properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class CircleAttribute extends CommonShapeMethod<CircleAttribute>
+```
+
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
 **Inheritance/Implementation:** CircleAttribute extends CommonShapeMethod<CircleAttribute>
 
@@ -14,9 +18,11 @@ In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the fo
 fill(value: ResourceColor | ColorMetrics)
 ```
 
-Sets the color of the fill area. An invalid value is handled as the default value. If this attribute and the universal attribute foregroundColor are both set, whichever is set later takes effect.
+Sets the color of the fill area. [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) can be used to describe the color for HDR brightening. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). If this attribute is not set, the default fill color is Color.Black. Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value. When this attribute is set together with the universal attribute **foregroundColor**, the one set later takes effect.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -28,7 +34,7 @@ Sets the color of the fill area. An invalid value is handled as the default valu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Color of the fill area<br>Default value : Color.Black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Color of the area to fill.<br>Default value: Color.Black <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value. |
 
 ## stroke
 
@@ -36,9 +42,11 @@ Sets the color of the fill area. An invalid value is handled as the default valu
 stroke(value: ResourceColor | ColorMetrics)
 ```
 
-Sets the stroke color. This attribute can be dynamically set using attributeModifier. If this attribute is not set, the default stroke opacity is 0, meaning no stroke is displayed.
+Sets the stroke color. [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) can be used to describe the color for HDR brightening. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). If this attribute is not set, the default stroke color is Color.Transparent, that is, no stroke is drawn. Abnormal values undefined and null are treated as the default value, and NaN and Infinity are treated as Color.Black.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
@@ -50,4 +58,4 @@ Sets the stroke color. This attribute can be dynamically set using attributeModi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Stroke color.<br>Default value: Color.Transparent.<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as Color.Black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Stroke color.<br>Default value: Color.Transparent <br>The abnormal values **undefined** and **null** are handled as the default value, and **NaN** and **Infinity** are handled as Color.Black. |

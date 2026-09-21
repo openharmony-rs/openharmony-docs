@@ -1,7 +1,7 @@
 # CloudType（系统接口）
 
 ```TypeScript
-type CloudType = null | number | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
+type CloudType = null | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
 ```
 
 表示云数据字段可使用的类型。各接口参数的实际类型视其功能而定。

@@ -1,5 +1,9 @@
 # AudioLoopbackMode
 
+```TypeScript
+enum AudioLoopbackMode
+```
+
 表示返听模式的枚举。
 
 **起始版本：** 20

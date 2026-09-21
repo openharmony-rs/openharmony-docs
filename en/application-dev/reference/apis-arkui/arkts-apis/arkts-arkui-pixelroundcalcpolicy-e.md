@@ -1,5 +1,9 @@
 # PixelRoundCalcPolicy
 
+```TypeScript
+declare enum PixelRoundCalcPolicy
+```
+
 Pixel Round Direction
 
 @enum { number }

@@ -1,5 +1,9 @@
 # ArcSliderPosition
 
+```TypeScript
+export declare enum ArcSliderPosition
+```
+
 配置弧形Slider的屏幕显示位置。
 
 **起始版本：** 18

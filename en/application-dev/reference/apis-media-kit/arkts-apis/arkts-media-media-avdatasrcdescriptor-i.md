@@ -1,5 +1,9 @@
 # AVDataSrcDescriptor
 
+```TypeScript
+interface AVDataSrcDescriptor
+```
+
 Defines the descriptor of an audio and video file, which is used in DataSource playback mode. Use scenario: An application can create a playback instance and start playback before it finishes downloading the audio and video resources.
 
 **Since:** 10

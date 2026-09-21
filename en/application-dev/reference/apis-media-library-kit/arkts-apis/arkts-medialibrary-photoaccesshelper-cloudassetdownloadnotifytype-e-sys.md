@@ -1,5 +1,9 @@
 # CloudAssetDownloadNotifyType (System API)
 
+```TypeScript
+enum CloudAssetDownloadNotifyType
+```
+
 Enumerates the types of events reported during a cloud asset download.
 
 **Since:** 21

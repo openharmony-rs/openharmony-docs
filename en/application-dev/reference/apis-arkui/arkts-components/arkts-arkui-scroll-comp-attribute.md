@@ -1,5 +1,9 @@
 # Scroll properties/events
 
+```TypeScript
+declare class ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
+```
+
 Defines the scroll attribute functions.
 
 **Inheritance/Implementation:** ScrollAttribute extends ScrollableCommonMethod<ScrollAttribute>
@@ -18,6 +22,8 @@ Sets the effect used when the scroll boundary is reached.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -27,7 +33,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | edgeEffect | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: &lt;em&gt;EdgeEffect.None&lt;/em&gt; |
-| options | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | No | Whether to enable the scroll effect when the component content is smaller than the component itself. The value &lt;em&gt;{ alwaysEnabled: true }&lt;/em&gt; means to enable the scroll effect, and &lt;em&gt;{ alwaysEnabled: false } &lt;/em&gt; means the opposite.<br>Default value: &lt;em&gt;{ alwaysEnabled: true }&lt;/em&gt;<br>**Since:** 11 |
+| options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | No | Whether to enable the scroll effect when the component content is smaller than the component itself. The value &lt;em&gt;{ alwaysEnabled: true }&lt;/em&gt; means to enable the scroll effect, and &lt;em&gt;{ alwaysEnabled: false } &lt;/em&gt; means the opposite.<br>Default value: &lt;em&gt;{ alwaysEnabled: true }&lt;/em&gt;<br>**Since:** 11 |
 
 ## enableBouncesZoom
 
@@ -137,7 +143,7 @@ Sets the initial scrolling offset. This attribute takes effect only during the i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [OffsetOptions](arkts-arkui-offsetoptions-i.md) | Yes | Initial scrolling offset. When the value specified is a percentage, the initial scrolling offset is calculated as the product of the &lt;em&gt;Scroll&lt;/em&gt; component's size in the main axis direction and the percentage value. |
+| value | [OffsetOptions](arkts-arkui-scroll-comp-offsetoptions-i.md) | Yes | Initial scrolling offset. When the value specified is a percentage, the initial scrolling offset is calculated as the product of the &lt;em&gt;Scroll&lt;/em&gt; component's size in the main axis direction and the percentage value. |
 
 ## maxZoomScale
 
@@ -203,7 +209,7 @@ Sets the nested scrolling options. You can set the nested scrolling mode in the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | Yes | Nested scrolling options.<br>Default value: &lt;em&gt;{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY}&lt;/em&gt; |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options.<br>Default value: &lt;em&gt;{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY}&lt;/em&gt; |
 
 ## onDidScroll
 
@@ -227,7 +233,7 @@ Triggered when the Scroll component scrolls.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| handler | [ScrollOnScrollCallback](arkts-arkui-scrollonscrollcallback-t.md) | Yes | Callback triggered when the &lt;em&gt;Scroll&lt;/em&gt; component scrolls. |
+| handler | [ScrollOnScrollCallback](arkts-arkui-scroll-comp-scrollonscrollcallback-t.md) | Yes | Callback triggered when the &lt;em&gt;Scroll&lt;/em&gt; component scrolls. |
 
 ## onDidZoom
 
@@ -249,7 +255,7 @@ Called when the Scroll did zoom.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [ScrollOnDidZoomCallback](arkts-arkui-scrollondidzoomcallback-t.md) | Yes | callback of zoom. |
+| event | [ScrollOnDidZoomCallback](arkts-arkui-scroll-comp-scrollondidzoomcallback-t.md) | Yes | callback of zoom. |
 
 ## onScroll
 
@@ -266,6 +272,8 @@ Triggered to return the horizontal and vertical offsets, in vp, during scrolling
 **Deprecated since:** 12
 
 **Substitutes:** onWillScroll
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -289,6 +297,8 @@ Triggered when scrolling reaches the edge. Anonymous Object Rectification.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -297,7 +307,7 @@ Triggered when scrolling reaches the edge. Anonymous Object Rectification.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnScrollEdgeCallback](arkts-arkui-onscrolledgecallback-t.md) | Yes | Edge position to scroll to.<br>**Since:** 18 |
+| event | [OnScrollEdgeCallback](arkts-arkui-scroll-comp-onscrolledgecallback-t.md) | Yes | Edge position to scroll to.<br>**Since:** 18 |
 
 ## onScrollEnd
 
@@ -314,6 +324,8 @@ Triggered when scrolling stops.
 **Deprecated since:** 9
 
 **Substitutes:** onScrollStop
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,6 +347,8 @@ Triggered when each frame scrolling starts. Anonymous Object Rectification.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -343,7 +357,7 @@ Triggered when each frame scrolling starts. Anonymous Object Rectification.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 18 |
+| event | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 18 |
 
 ## onScrollStart
 
@@ -356,6 +370,8 @@ Called when scrolling start. Anonymous Object Rectification.
 <p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. This event is triggered when scrolling is started by the &lt;em&gt;Scroll&lt;/em&gt; component or other input settings, such as keyboard and mouse operations. <br>2. This event is triggered when the controller API is called, accompanied by a transition animation. </p>
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -378,6 +394,8 @@ Called when scrolling has stopped. Anonymous Object Rectification.
 <p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. This event is triggered when scrolling is stopped by the &lt;em&gt;Scroll&lt;/em&gt; component or other input settings, such as keyboard and mouse operations. <br>2. This event is triggered when the controller API is called, accompanied by a transition animation. </p>
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -411,7 +429,7 @@ Triggered before scrolling.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| handler | [ScrollOnWillScrollCallback](arkts-arkui-scrollonwillscrollcallback-t.md) | Yes | Callback triggered before scrolling. |
+| handler | [ScrollOnWillScrollCallback](arkts-arkui-scroll-comp-scrollonwillscrollcallback-t.md) | Yes | Callback triggered before scrolling. |
 
 ## onZoomStart
 
@@ -467,6 +485,8 @@ Sets the scrolling direction. The scroll offset is reset when this value is chan
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -475,7 +495,7 @@ Sets the scrolling direction. The scroll offset is reset when this value is chan
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScrollDirection](arkts-arkui-scrolldirection-e.md) | Yes | Scrolling direction.<br>Default value: &lt;em&gt;ScrollDirection.Vertical&lt;/em&gt; |
+| value | [ScrollDirection](arkts-arkui-scroll-comp-scrolldirection-e.md) | Yes | Scrolling direction.<br>Default value: &lt;em&gt;ScrollDirection.Vertical&lt;/em&gt; |
 
 ## scrollBar
 
@@ -486,6 +506,8 @@ scrollBar(barState: BarState)
 Sets the scrollbar state. If the container component cannot be scrolled, the scrollbar is not displayed. If the size of a child component of a container component is infinite, the scrollbar cannot be dragged or scrolled with the child component. Since API version 10, when the scrollable component has rounded corners, to prevent the scrollbar from being cut off by the corners, the scrollbar will automatically calculate the clearance distance from the top and bottom.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -507,6 +529,8 @@ Sets the scrollbar color.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -516,6 +540,8 @@ Sets the scrollbar color.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color.<br>Default value: &lt;em&gt;'\#182431'&lt;/em&gt; (40% opacity) |
+
+<a id="scrollbarcolor-1"></a>
 
 ## scrollBarColor
 
@@ -549,6 +575,8 @@ Sets the scrollbar width.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -558,6 +586,8 @@ Sets the scrollbar width.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes | Scrollbar width.<br>Default value: &lt;em&gt;4&lt;/em&gt; <br>Unit: vp <br>Values less than 0 are treated as the default value. The value &lt;em&gt;0&lt;/em&gt; means not to show the scrollbar. |
+
+<a id="scrollbarwidth-1"></a>
 
 ## scrollBarWidth
 
@@ -601,7 +631,7 @@ Sets the scroll snapping mode. During the snap animation, the scroll operation s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScrollSnapOptions](arkts-arkui-scrollsnapoptions-i.md) | Yes | Scroll snapping mode. |
+| value | [ScrollSnapOptions](arkts-arkui-scroll-comp-scrollsnapoptions-i.md) | Yes | Scroll snapping mode. |
 
 ## zoomScale
 

@@ -1,8 +1,10 @@
 # SystemToneOptions（系统接口）
 
-提示音参数选项。
+```TypeScript
+export interface SystemToneOptions
+```
 
-@typedef SystemToneOptions
+提示音参数选项。
 
 **起始版本：** 11
 

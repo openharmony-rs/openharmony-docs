@@ -1,5 +1,9 @@
 # AsyncRunner
 
+```TypeScript
+export class AsyncRunner
+```
+
 Implements an asynchronous queue, for which you can specify the task execution concurrency and queuing policy.
 
 **Since:** 18
@@ -39,9 +43,7 @@ A constructor used to create an **AsyncRunner** instance. It constructs a non-gl
 let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 ```
 
-```TypeScript
-let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -72,10 +74,6 @@ A constructor used to create an **AsyncRunner** instance. It constructs a global
 | waitingCapacity | number | No | Maximum number of tasks that can be queued. The value must be greater than or equal to 0. If a negative number is passed, an error is reported. If a non-integer is passed, the value is rounded down. The default value is **0**, indicating that there is no limit to the number of tasks that can wait. If a value greater than 0 is passed, tasks will be discarded from the front of the queue once the queue size exceeds this limit, implementing a discard policy. |
 
 **Examples**
-
-```TypeScript
-let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
-```
 
 ```TypeScript
 let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);

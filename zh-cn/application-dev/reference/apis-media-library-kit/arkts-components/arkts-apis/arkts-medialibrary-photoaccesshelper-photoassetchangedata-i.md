@@ -1,5 +1,9 @@
 # PhotoAssetChangeData
 
+```TypeScript
+interface PhotoAssetChangeData
+```
+
 媒体资产（图片/视频）的具体变更数据。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # RemoteAbilityInfo (System API)
 
+```TypeScript
+export interface RemoteAbilityInfo
+```
+
 The module provides information about a remote ability.
 
 > **NOTE:** 

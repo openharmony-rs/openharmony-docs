@@ -1,5 +1,9 @@
 # RevocationCheckParameter
 
+```TypeScript
+interface RevocationCheckParameter
+```
+
 Represents the parameters for checking the certificate revocation status for a certificate chain.
 
 **Since:** 12

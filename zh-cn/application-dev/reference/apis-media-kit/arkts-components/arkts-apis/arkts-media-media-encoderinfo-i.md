@@ -1,5 +1,9 @@
 # EncoderInfo
 
+```TypeScript
+interface EncoderInfo
+```
+
 编码器信息描述。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # PowerPolicyAction（系统接口）
 
+```TypeScript
+enum PowerPolicyAction
+```
+
 执行电源策略的动作。
 
 **起始版本：** 11

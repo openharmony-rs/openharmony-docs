@@ -1,5 +1,9 @@
 # AudioRendererFilter（系统接口）
 
+```TypeScript
+interface AudioRendererFilter
+```
+
 音频渲染器过滤条件。
 
 **起始版本：** 9
@@ -22,8 +26,6 @@ rendererId?: number
 
 音频流唯一id。
 
-SystemCapability.Multimedia.Audio.Renderer
-
 **类型：** number
 
 **起始版本：** 9
@@ -40,8 +42,6 @@ rendererInfo?: AudioRendererInfo
 
 表示渲染器信息。
 
-SystemCapability.Multimedia.Audio.Renderer
-
 **类型：** [AudioRendererInfo](arkts-audio-audio-audiorendererinfo-i.md)
 
 **起始版本：** 9
@@ -57,8 +57,6 @@ uid?: number
 ```
 
 表示应用ID。
-
-SystemCapability.Multimedia.Audio.Core
 
 **类型：** number
 

@@ -1,5 +1,9 @@
 # AudioSessionDeactivatedReason
 
+```TypeScript
+enum AudioSessionDeactivatedReason
+```
+
 表示音频会话停用原因的枚举。
 
 **起始版本：** 12

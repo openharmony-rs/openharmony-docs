@@ -1,6 +1,10 @@
 # ScrollBar properties/events
 
-In addition to the universal attributes, the following attributes are supported.
+```TypeScript
+declare class ScrollBarAttribute extends CommonMethod<ScrollBarAttribute>
+```
+
+In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
 
 **Inheritance/Implementation:** ScrollBarAttribute extends CommonMethod<ScrollBarAttribute>
 
@@ -43,7 +47,7 @@ Sets whether nested scrolling is enabled.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | Yes | Whether nested scrolling is enabled. The value **true** means that nested scrolling is enabled, and **false** means the opposite.<br>Default value: **false** |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether nested scrolling is enabled. The value **true** means that nested scrolling is enabled, and **false** means the opposite.<br>Default value: **false** |
 
 ## scrollBarColor
 
@@ -65,4 +69,4 @@ Sets the color of the scrollbar slider. This parameter is valid only when the sc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-optional-t.md)&lt;ColorMetrics&gt; | Yes | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)** |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)** |

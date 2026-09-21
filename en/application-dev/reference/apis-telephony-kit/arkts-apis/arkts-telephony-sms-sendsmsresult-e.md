@@ -1,5 +1,9 @@
 # SendSmsResult
 
+```TypeScript
+export enum SendSmsResult
+```
+
 Enumerates SMS message sending results.
 
 **Since:** 6

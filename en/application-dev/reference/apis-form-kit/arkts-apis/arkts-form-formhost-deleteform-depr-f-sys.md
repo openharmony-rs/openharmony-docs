@@ -33,6 +33,8 @@ Deletes a widget. After this API is called, the application can no longer use th
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the widget is deleted, **error** is undefined; otherwise, **error** is an error object. |
 
 
+<a id="deleteform-1"></a>
+
 ## deleteForm
 
 ```TypeScript

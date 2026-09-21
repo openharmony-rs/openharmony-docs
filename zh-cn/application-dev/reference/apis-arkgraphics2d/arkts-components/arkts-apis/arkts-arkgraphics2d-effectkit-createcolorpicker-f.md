@@ -70,90 +70,8 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 创建用于图像效果的buffer
-const colorBuffer = new ArrayBuffer(96);
-// 设置图像初始化选项
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-
-// 创建PixelMap实例
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // 创建指定取色区域的ColorPicker实例
-  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
-    console.info('Succeeded in creating colorPicker.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
-  });
-});
-```
-
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-// 创建用于图像效果的buffer
-const colorBuffer = new ArrayBuffer(96);
-// 设置图像初始化选项
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-// 创建PixelMap实例
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // 创建ColorPicker实例
-  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
-    if (error) {
-      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info('Succeeded in creating color picker.');
-    }
-  });
-});
-```
-
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-// 创建用于图像效果的buffer
-const colorBuffer = new ArrayBuffer(96);
-// 设置图像初始化选项
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-// 创建PixelMap实例
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // 创建指定取色区域的ColorPicker实例
-  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1], (error, colorPicker) => {
-    if (error) {
-      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info('Succeeded in creating color picker.');
-    }
-  });
-});
-```
-
+<a id="createcolorpicker-1"></a>
 
 ## createColorPicker
 
@@ -192,8 +110,36 @@ function createColorPicker(source: image.PixelMap, region: Array<number>): Promi
 
 **示例**
 
-参见 [createColorPicker](#createcolorpicker)
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 创建用于图像效果的buffer
+const colorBuffer = new ArrayBuffer(96);
+// 设置图像初始化选项
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+
+// 创建PixelMap实例
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // 创建指定取色区域的ColorPicker实例
+  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
+    console.info('Succeeded in creating colorPicker.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
+  });
+});
+```
+
+
+<a id="createcolorpicker-2"></a>
 
 ## createColorPicker
 
@@ -226,8 +172,36 @@ function createColorPicker(source: image.PixelMap, callback: AsyncCallback<Color
 
 **示例**
 
-参见 [createColorPicker](#createcolorpicker)
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
+// 创建用于图像效果的buffer
+const colorBuffer = new ArrayBuffer(96);
+// 设置图像初始化选项
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+// 创建PixelMap实例
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // 创建ColorPicker实例
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('Succeeded in creating color picker.');
+    }
+  });
+});
+```
+
+
+<a id="createcolorpicker-3"></a>
 
 ## createColorPicker
 
@@ -261,4 +235,30 @@ function createColorPicker(source: image.PixelMap, region: Array<number>, callba
 
 **示例**
 
-参见 [createColorPicker](#createcolorpicker)
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+// 创建用于图像效果的buffer
+const colorBuffer = new ArrayBuffer(96);
+// 设置图像初始化选项
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+// 创建PixelMap实例
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // 创建指定取色区域的ColorPicker实例
+  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1], (error, colorPicker) => {
+    if (error) {
+      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('Succeeded in creating color picker.');
+    }
+  });
+});
+```

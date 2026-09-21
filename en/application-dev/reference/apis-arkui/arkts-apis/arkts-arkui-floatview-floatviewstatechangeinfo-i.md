@@ -1,5 +1,9 @@
 # FloatViewStateChangeInfo
 
+```TypeScript
+interface FloatViewStateChangeInfo
+```
+
 Provides the state change information of the float view.
 
 **Since:** 26.0.0

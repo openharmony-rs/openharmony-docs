@@ -1,5 +1,9 @@
 # ExtensionAbility（系统接口）
 
+```TypeScript
+export interface ExtensionAbility
+```
+
 描述extensionAbilities的配置信息。
 
 **起始版本：** 9

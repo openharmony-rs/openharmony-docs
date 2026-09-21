@@ -14,9 +14,11 @@ function getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtoc
 
 获取隐私搜索结果和最终搜索结果。解密搜索结果密文privateSearch返回，获取最终匹配结果和可选的附加值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Asset
 

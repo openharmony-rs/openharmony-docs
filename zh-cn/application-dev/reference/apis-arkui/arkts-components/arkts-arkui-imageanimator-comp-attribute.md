@@ -1,10 +1,14 @@
 # ImageAnimator属性/事件
 
-除支持通用属性外，还支持以下属性：
+```TypeScript
+declare class ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
+```
 
-除支持通用事件外，还支持以下事件：
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** ImageAnimatorAttribute extends CommonMethod&lt;ImageAnimatorAttribute&gt;
+除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持以下事件：
+
+**继承/实现关系：** ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
 
 **起始版本：** 7
 
@@ -19,6 +23,8 @@ duration(value: number)
 设置播放时长。当[images](#images)中任意一帧图片设置了单独的duration后，该属性设置无效。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -42,6 +48,8 @@ fillMode(value: FillMode)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -63,6 +71,8 @@ fixedSize(value: boolean)
 设置图片大小是否固定为组件大小。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -86,6 +96,8 @@ images(value: Array<ImageFrameInfo>)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -96,7 +108,7 @@ images(value: Array<ImageFrameInfo>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;[ImageFrameInfo](arkts-arkui-imageframeinfo-i.md)&gt; | 是 | 设置图片帧信息集合。每一帧的帧信息(ImageFrameInfo)包含图片路径、图片大小、图片位置和图片播放时长信息，详见[ImageFrameInfo](arkts-arkui-imageframeinfo-i.md) 。<br>默认值：[] <br> **说明：** 传入数组的内容过大时，内存占用会随之升高。此内存由开发者自行控制。因此，开发者在传入数据前，请充分评估内存消耗情况，以避免内存不足等问题。 |
+| value | Array&lt;[ImageFrameInfo](arkts-arkui-imageanimator-comp-imageframeinfo-i.md)&gt; | 是 | 设置图片帧信息集合。每一帧的帧信息(ImageFrameInfo)包含图片路径、图片大小、图片位置和图片播放时长信息，详见[ImageFrameInfo](arkts-arkui-imageanimator-comp-imageframeinfo-i.md) 。<br>默认值：[] <br> **说明：** 传入数组的内容过大时，内存占用会随之升高。此内存由开发者自行控制。因此，开发者在传入数据前，请充分评估内存消耗情况，以避免内存不足等问题。 |
 
 ## iterations
 
@@ -107,6 +119,8 @@ iterations(value: number)
 设置播放次数。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -124,7 +138,7 @@ iterations(value: number)
 monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 ```
 
-设置组件是否通过系统[onVisibleAreaChange](arkts-arkui-commonmethod-c.md#onvisibleareachange)的可见性判定，控制组件的暂停和播放。
+设置组件是否通过系统[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)的可见性判定，控制组件的暂停和播放。
 
 **起始版本：** 17
 
@@ -138,7 +152,7 @@ monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| monitorInvisibleArea | boolean | 是 | true时，组件基于系统的[onVisibleAreaChange](arkts-arkui-commonmethod-c.md#onvisibleareachange)可见性判定控制暂停和播放；当组件的运行状态为[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)的Running时，若判定不可见则自动暂停，若判定可见则自动恢复播放。false时，组件的暂停和播放不受onVisibleAreaChange影响。<br>默认值：false <br> **说明：** <br>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)状态进行处理。<br> 例如，若当前状态为Running且因[onVisibleAreaChange](arkts-arkui-commonmethod-c.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](#state)值。 |
+| monitorInvisibleArea | boolean | 是 | true时，组件基于系统的[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)可见性判定控制暂停和播放；当组件的运行状态为[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)的Running时，若判定不可见则自动暂停，若判定可见则自动恢复播放。false时，组件的暂停和播放不受onVisibleAreaChange影响。<br>默认值：false <br> **说明：** <br>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md)状态进行处理。<br> 例如，若当前状态为Running且因[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](#state)值。 |
 
 ## onCancel
 
@@ -149,6 +163,8 @@ onCancel(event: () => void)
 状态回调，动画取消时触发。当state被设置为[AnimationStatus.Initial](../arkts-apis/arkts-arkui-animationstatus-e.md)时触发；触发后图片显示回到第一帧（正播）或最后一帧（逆播）。与[onFinish](#onfinish)的区别在于：onCancel对应回到Initial初始状态，onFinish对应动画自然结束或停止（Stopped）状态。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -172,6 +188,8 @@ onFinish(event: () => void)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
@@ -193,6 +211,8 @@ onPause(event: () => void)
 状态回调，动画暂停播放时触发。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -216,6 +236,8 @@ onRepeat(event: () => void)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -235,6 +257,8 @@ onStart(event: () => void)
 状态回调，动画开始播放时触发。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -264,6 +288,8 @@ preDecode(value: number)
 
 **废弃版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -281,6 +307,8 @@ reverse(value: boolean)
 设置播放方向。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -303,6 +331,8 @@ state(value: AnimationStatus)
 控制播放状态。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # MediaControlExtensionAbility (System API)
 
+```TypeScript
+export default class MediaControlExtensionAbility extends UIExtensionAbility
+```
+
 The class of media control extension ability.
 
 @extends UIExtensionAbility

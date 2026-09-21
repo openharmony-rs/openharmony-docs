@@ -1,6 +1,10 @@
 # AudioEffectManager（系统接口）
 
-音频效果管理。在使用AudioEffectManager的接口前，需要使用[getEffectManager](arkts-audio-audio-audiomanager-i-sys.md#geteffectmanager)获取AudioEffectManager实例。
+```TypeScript
+interface AudioEffectManager
+```
+
+音频效果管理，支持查询和设置系统音效模式、管理音频分离效果。适用于需要定制音频播放效果、实现人声分离、管理设备音效的场景。在使用AudioEffectManager的接口前，需要使用[getEffectManager](arkts-audio-audio-audiomanager-i-sys.md#geteffectmanager)获取AudioEffectManager实例。
 
 @typedef AudioEffectManager
 
@@ -22,7 +26,7 @@ import { audio } from '@kit.AudioKit';
 getAudioEffectProperty(): Array<AudioEffectProperty>
 ```
 
-获取当前音效模式，同步返回结果。
+获取系统当前音效模式，同步返回结果。
 
 **起始版本：** 18
 
@@ -60,52 +64,13 @@ try {
 }
 ```
 
-## getNoiseReductionMode
-
-```TypeScript
-getNoiseReductionMode(clientUid: number, device: AudioDeviceDescriptor): NoiseReductionMode
-```
-
-获取当前设备的降噪模式设置信息。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| clientUid | number | 是 | 当前使用实时录制类型的客户端应用的UID。 |
-| device | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 通过录制选择的设备描述符。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | 当前设备的降噪模式。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
 ## getSupportedAudioEffectProperty
 
 ```TypeScript
 getSupportedAudioEffectProperty(): Array<AudioEffectProperty>
 ```
 
-获取支持的下行音效模式，同步返回结果。
+获取支持的音效模式，同步返回结果。
 
 **起始版本：** 18
 
@@ -142,44 +107,6 @@ try {
   console.error(`getSupportedAudioEffectProperty ERROR: ${error}`);
 }
 ```
-
-## getSupportedNoiseReductionModes
-
-```TypeScript
-getSupportedNoiseReductionModes(device: AudioDeviceDescriptor): Array<NoiseReductionMode>
-```
-
-获取当前设备上所有支持的降噪模式。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| device | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 已连接输入设备的设备描述符。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Array&lt;[NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md)&gt; | 输入设备支持的降噪模式列表。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## isAudioSeparationEffectSupported
 
@@ -259,37 +186,6 @@ import { audio } from '@kit.AudioKit';
 audioEffectManager.offAudioSeparationEffectEnabledChange();
 ```
 
-## offNoiseReductionSettingChange
-
-```TypeScript
-offNoiseReductionSettingChange(device: AudioDeviceDescriptor,
-      callback?: Callback<NoiseReductionConfigAction>): void
-```
-
-取消订阅降噪模式设置事件回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| device | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 外部连接设备的描述符。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NoiseReductionConfigAction](arkts-audio-audio-noisereductionconfigaction-i-sys.md)&gt; | 否 | 降噪模式回调，设备需要进行设置。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
 ## onAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -328,43 +224,13 @@ audioEffectManager.onAudioSeparationEffectEnabledChange((isEnabled: boolean) => 
 });
 ```
 
-## onNoiseReductionSettingChange
-
-```TypeScript
-onNoiseReductionSettingChange(device: AudioDeviceDescriptor, callback: Callback<NoiseReductionConfigAction>): void
-```
-
-订阅降噪模式设置事件回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| device | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 外部连接设备的描述符，用于设置降噪模式。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NoiseReductionConfigAction](arkts-audio-audio-noisereductionconfigaction-i-sys.md)&gt; | 是 | 降噪模式需要设备设置。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
 ## setAudioEffectProperty
 
 ```TypeScript
 setAudioEffectProperty(propertyArray: Array<AudioEffectProperty>): void
 ```
 
-设置当前音效模式，同步返回结果。
+设置系统全局的音效模式，同步返回结果。调用此接口前，应先调用[getSupportedAudioEffectProperty](#getsupportedaudioeffectproperty)确认当前设备支持的音效模式。
 
 **起始版本：** 18
 
@@ -518,70 +384,3 @@ audioEffectManager.setAudioSeparationEffectVolume(audio.AudioSeparationVolumeTyp
   console.error(`Failed to set audio separation effect volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-## setNoiseReductionMode
-
-```TypeScript
-setNoiseReductionMode(clientUid: number, device: AudioDeviceDescriptor, noiseReductionMode: NoiseReductionMode): void
-```
-
-设置当前设备的降噪模式。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| clientUid | number | 是 | 当前使用实时录音类型的客户端应用的Uid。该值应为整数。 |
-| device | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | 是 | 通过录制选择的设备描述符。 |
-| noiseReductionMode | [NoiseReductionMode](arkts-audio-audio-noisereductionmode-e.md) | 是 | 降噪模式需要在当前设备上进行设置。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Live audio capture service exception. Indicates an internal failure in the audio service during live stream creation, start, read, stop, release, or noise reduction handling. |
-
-## updateDeviceNoiseReductionCapability
-
-```TypeScript
-updateDeviceNoiseReductionCapability(capability: NoiseReductionCapability): void
-```
-
-在连接外部设备时，将降噪模式能力更新到音频框架。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| capability | [NoiseReductionCapability](arkts-audio-audio-noisereductioncapability-i-sys.md) | 是 | 外部设备的降噪能力，包括设备描述符和设备支持的模式。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |

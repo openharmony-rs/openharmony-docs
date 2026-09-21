@@ -1,5 +1,9 @@
 # InterruptData
 
+```TypeScript
+interface InterruptData
+```
+
 Describe the interrupt data is received from remote host.
 
 **Since:** 23

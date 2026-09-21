@@ -1,5 +1,9 @@
 # ImsCallModeInfo (System API)
 
+```TypeScript
+export interface ImsCallModeInfo
+```
+
 Defines the video call mode information.
 
 **Since:** 11

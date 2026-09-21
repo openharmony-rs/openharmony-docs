@@ -1,5 +1,9 @@
 # Set
 
+```TypeScript
+interface Set<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

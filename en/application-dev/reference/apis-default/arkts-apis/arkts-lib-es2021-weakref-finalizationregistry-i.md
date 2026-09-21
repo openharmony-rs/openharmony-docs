@@ -1,5 +1,9 @@
 # FinalizationRegistry
 
+```TypeScript
+interface FinalizationRegistry<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

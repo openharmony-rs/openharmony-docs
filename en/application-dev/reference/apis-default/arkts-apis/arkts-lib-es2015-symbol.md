@@ -17,4 +17,4 @@
 
 | Name | Description |
 | --- | --- |
-| [Symbol](arkts-libes2015symbol-p.md) |  |
+| [Symbol](arkts-lib-es2015-symbol-p.md) |  |

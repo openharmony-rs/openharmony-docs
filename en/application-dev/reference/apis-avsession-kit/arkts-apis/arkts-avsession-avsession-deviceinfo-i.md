@@ -1,5 +1,9 @@
 # DeviceInfo
 
+```TypeScript
+interface DeviceInfo
+```
+
 Device Information Definition
 
 **Since:** 10

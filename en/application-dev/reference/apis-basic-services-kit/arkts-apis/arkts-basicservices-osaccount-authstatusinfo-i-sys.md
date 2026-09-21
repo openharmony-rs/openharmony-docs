@@ -1,5 +1,9 @@
 # AuthStatusInfo (System API)
 
+```TypeScript
+interface AuthStatusInfo
+```
+
 Presents the authentication status information.
 
 **Since:** 10

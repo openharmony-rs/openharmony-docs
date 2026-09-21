@@ -1,5 +1,9 @@
 # DlpFileQueryOptions
 
+```TypeScript
+export interface DlpFileQueryOptions
+```
+
 Represents the query options about an enterprise DLP file.
 
 **Since:** 26.0.0

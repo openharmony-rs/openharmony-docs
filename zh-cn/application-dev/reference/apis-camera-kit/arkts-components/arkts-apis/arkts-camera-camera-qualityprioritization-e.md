@@ -1,5 +1,9 @@
 # QualityPrioritization
 
+```TypeScript
+enum QualityPrioritization
+```
+
 枚举，录像质量优先级。
 
 **起始版本：** 14

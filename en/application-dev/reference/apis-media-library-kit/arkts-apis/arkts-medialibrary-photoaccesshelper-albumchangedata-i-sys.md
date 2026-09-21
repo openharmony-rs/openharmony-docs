@@ -1,5 +1,9 @@
 # AlbumChangeData
 
+```TypeScript
+interface AlbumChangeData
+```
+
 Describes the change data of an album.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # UpgradeStatus (System API)
 
+```TypeScript
+export enum UpgradeStatus
+```
+
 Enumerates update states.
 
 **Since:** 9

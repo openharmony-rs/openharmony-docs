@@ -37,8 +37,8 @@ function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Ar
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | permission denied. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: The device type does not support the capability. |
 | [19110001](../errorcode-dlp.md#19110001-参数错误) | Parameter error. Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | [19110002](../errorcode-dlp.md#19110002-文件敏感信息识别超时) | Sensitive file content identification timed out. |
 | [19110003](../errorcode-dlp.md#19110003-文件不支持) | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |

@@ -1,5 +1,9 @@
 # AdvertisingStateChangeInfo
 
+```TypeScript
+interface AdvertisingStateChangeInfo
+```
+
 描述BLE广播启动、停止的状态信息。
 
 **起始版本：** 11

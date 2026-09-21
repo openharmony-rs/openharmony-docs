@@ -1,5 +1,9 @@
 # KeyEncodingConfig
 
+```TypeScript
+interface KeyEncodingConfig
+```
+
 Represents the RSA private key encoding parameters. You can use it to generate an encoded private key string with the specified algorithm and password.
 
 > **NOTE:** 

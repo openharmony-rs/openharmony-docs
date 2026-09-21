@@ -1,5 +1,9 @@
 # PhoneNumberFormatOptions
 
+```TypeScript
+export interface PhoneNumberFormatOptions
+```
+
 电话号码格式化时可设置的配置项。
 
 **起始版本：** 8

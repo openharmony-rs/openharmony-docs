@@ -53,17 +53,8 @@ sim.getShowName(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getShowName(0).then((data: string) => {
-    console.info(`getShowName success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getShowName failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getshowname-1"></a>
 
 ## getShowName
 
@@ -108,4 +99,13 @@ Gets the name of the SIM card in the specified slot.
 
 **示例**
 
-参见 [getShowName](#getshowname)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getShowName(0).then((data: string) => {
+    console.info(`getShowName success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getShowName failed, promise: err->${JSON.stringify(err)}`);
+});
+```

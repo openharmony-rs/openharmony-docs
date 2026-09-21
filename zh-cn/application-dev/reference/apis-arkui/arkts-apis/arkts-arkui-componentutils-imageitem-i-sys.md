@@ -1,5 +1,9 @@
 # ImageItem（系统接口）
 
+```TypeScript
+interface ImageItem
+```
+
 带有布局信息的图像对象。
 
 @interface ImageItem

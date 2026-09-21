@@ -1,8 +1,12 @@
 # SaveButton属性/事件
 
-不支持通用属性，除了继承安全控件通用属性，还支持以下属性。不支持通用事件，仅支持以下事件。
+```TypeScript
+declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
+```
 
-**继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod&lt;SaveButtonAttribute&gt;
+不支持通用属性，除了继承[安全控件通用属性](../arkts-apis/arkts-arkui-security_component.md)，还支持以下属性。不支持通用事件，仅支持以下事件。
+
+**继承/实现关系：** SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 
 **起始版本：** 10
 
@@ -60,7 +64,7 @@ iconSize(size: Dimension | SizeOptions)
 onClick(event: SaveButtonCallback)
 ```
 
-点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见SaveButton构造函数说明）；点击拒绝或关闭弹窗则授权失败。
+点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](arkts-arkui-savebutton-comp.md#savebutton)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
 
 **起始版本：** 10
 
@@ -74,7 +78,7 @@ onClick(event: SaveButtonCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [SaveButtonCallback](arkts-arkui-savebuttoncallback-t.md) | 是 | 点击事件的回调对象，包含点击事件信息、授权结果和错误信息。<br>从APIversion 18开始，统一使用SaveButtonCallback，可额外获取error信息。<br>**适用版本：** 18 |
+| event | [SaveButtonCallback](arkts-arkui-savebutton-comp-savebuttoncallback-t.md) | 是 | 点击事件的回调对象，包含点击事件信息、授权结果和错误信息。<br>从APIversion 18开始，统一使用SaveButtonCallback，可额外获取error信息。<br>**适用版本：** 18 |
 
 ## setIcon
 
@@ -156,7 +160,7 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 设置保存控件Symbol图标粗细。
 
-- 调用本方法前，需先调用[setIcon](#seticon)设置Symbol格式的图标资源（如&#36;r('sys.symbol.xxx')），本方法才会生效。  
+- 调用本方法前，需先调用[setIcon](#seticon)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），本方法才会生效。  
 - 若未设置Symbol图标，该方法设置的粗细不会生效。
 
 **起始版本：** 26.0.0
@@ -183,7 +187,7 @@ symbolIconColor(color: Array<ResourceColor>)
 
 设置保存控件Symbol图标颜色。
 
-- 调用本方法前，需先调用[setIcon](#seticon)设置Symbol格式的图标资源（如&#36;r('sys.symbol.xxx')），本方法才会生效。  
+- 调用本方法前，需先调用[setIcon](#seticon)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），本方法才会生效。  
 - 若未设置Symbol图标，该方法设置的颜色不会生效。  
 - 建议与[symbolRenderingStrategy](#symbolrenderingstrategy)配合使用，以实现不同的渲染效果。
 
@@ -211,7 +215,7 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 设置保存控件Symbol图标渲染策略。
 
-- 调用本方法前，需先调用[setIcon](#seticon)设置Symbol格式的图标资源（如&#36;r('sys.symbol.xxx')），本方法才会生效。  
+- 调用本方法前，需先调用[setIcon](#seticon)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），本方法才会生效。  
 - 若未设置Symbol图标，该方法设置的渲染策略不会生效。  
 - 与[symbolIconColor](#symboliconcolor)配合使用时，渲染策略会影响颜色数组的作用方式。
 
@@ -229,7 +233,7 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| strategy | [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md) | 是 | 保存控件Symbol图标渲染策略，用于控制Symbol图标的渲染方式。<br>默认值：SymbolRenderingStrategy.SINGLE。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效。 |
+| strategy | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | 是 | 保存控件Symbol图标渲染策略，用于控制Symbol图标的渲染方式。<br>默认值：SymbolRenderingStrategy.SINGLE。<br>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则该设置不生效。 |
 
 ## userCancelEvent
 

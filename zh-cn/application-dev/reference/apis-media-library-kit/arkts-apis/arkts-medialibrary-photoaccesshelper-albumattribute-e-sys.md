@@ -1,5 +1,9 @@
 # AlbumAttribute（系统接口）
 
+```TypeScript
+enum AlbumAttribute
+```
+
 枚举，相册的属性类型。
 
 **起始版本：** 26.0.0
@@ -64,7 +68,7 @@ FRIEND_ID_ATTR = 'friend_id'
 
 相册friend_id操作属性。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

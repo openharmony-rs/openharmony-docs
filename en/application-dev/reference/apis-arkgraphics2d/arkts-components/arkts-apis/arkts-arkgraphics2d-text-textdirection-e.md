@@ -1,5 +1,9 @@
 # TextDirection
 
+```TypeScript
+enum TextDirection
+```
+
 Enumerates the text directions.
 
 **Since:** 12

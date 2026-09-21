@@ -1,5 +1,9 @@
 # CdsmConnectionState
 
+```TypeScript
+enum CdsmConnectionState
+```
+
 Enumerates the connection states of member devices in a coordinated device set.
 
 **Since:** 26.0.0

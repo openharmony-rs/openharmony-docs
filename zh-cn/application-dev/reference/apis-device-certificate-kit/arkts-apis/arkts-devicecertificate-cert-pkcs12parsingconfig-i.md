@@ -1,5 +1,9 @@
 # Pkcs12ParsingConfig
 
+```TypeScript
+interface Pkcs12ParsingConfig
+```
+
 表示解析P12的配置。
 
 **起始版本：** 18

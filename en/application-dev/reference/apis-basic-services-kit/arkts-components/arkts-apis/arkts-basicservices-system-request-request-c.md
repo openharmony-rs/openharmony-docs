@@ -1,5 +1,9 @@
 # Request
 
+```TypeScript
+export default class Request
+```
+
 **Since:** 3
 
 **Deprecated since:** 9
@@ -26,7 +30,7 @@ Downloads a file. This API returns no value.
 
 **Deprecated since:** 9
 
-**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md)(context: BaseContext, config: DownloadConfig)
+**Substitutes:** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig)
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -70,7 +74,7 @@ Uploads a file. This API returns no value.
 
 **Deprecated since:** 9
 
-**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md)(context: BaseContext, config: UploadConfig)
+**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1)(context: BaseContext, config: UploadConfig)
 
 **System capability:** SystemCapability.MiscServices.Upload
 

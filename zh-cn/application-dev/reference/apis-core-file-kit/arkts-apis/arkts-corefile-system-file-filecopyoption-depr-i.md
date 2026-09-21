@@ -1,5 +1,9 @@
 # FileCopyOption
 
+```TypeScript
+export interface FileCopyOption
+```
+
 可选项类型，支持copy接口使用。
 
 **起始版本：** 3

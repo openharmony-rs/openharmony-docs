@@ -55,6 +55,8 @@ declare function symlink(target: string, srcPath: string): Promise<void>
 | 13900042 | Unknown error |
 
 
+<a id="symlink-1"></a>
+
 ## symlink
 
 ```TypeScript

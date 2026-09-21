@@ -1,5 +1,9 @@
 # AccessibilitySpan (System API)
 
+```TypeScript
+export interface AccessibilitySpan
+```
+
 Hyperlink text information for accessibility. For details, see the attribute spans in [AccessibilityElement](arkts-accessibility-accessibilityextensioncontext-accessibilityelement-i.md).
 
 **Since:** 20

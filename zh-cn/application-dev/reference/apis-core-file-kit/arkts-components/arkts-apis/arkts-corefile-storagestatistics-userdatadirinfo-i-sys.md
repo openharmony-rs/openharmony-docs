@@ -1,5 +1,9 @@
 # UserdataDirInfo（系统接口）
 
+```TypeScript
+export interface UserdataDirInfo
+```
+
 用户设备中/data目录下的空间占用详情。
 
 **起始版本：** 23

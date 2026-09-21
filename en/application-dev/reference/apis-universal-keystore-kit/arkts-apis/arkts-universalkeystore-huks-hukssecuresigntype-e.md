@@ -1,5 +1,9 @@
 # HuksSecureSignType
 
+```TypeScript
+export enum HuksSecureSignType
+```
+
 Enumerates the signature types of the key generated or imported.
 
 **Since:** 9

@@ -69,26 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  // 参数需根据实际情况进行替换
-  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp,
-    restrictions.FeatureForAccount.SUPER_HUB, 100);
-  console.info(`Succeeded in querying whether the super hub is disabled: ${result}`);
-} catch (err) {
-  console.error(`Failed to get whether super hub is disabled. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getdisallowedpolicyforaccount-1"></a>
 
 ## getDisallowedPolicyForAccount
 
@@ -132,4 +114,22 @@ function getDisallowedPolicyForAccount(admin: Want | null, feature: FeatureForAc
 
 **示例**
 
-参见 [getDisallowedPolicyForAccount](#getdisallowedpolicyforaccount)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp,
+    restrictions.FeatureForAccount.SUPER_HUB, 100);
+  console.info(`Succeeded in querying whether the super hub is disabled: ${result}`);
+} catch (err) {
+  console.error(`Failed to get whether super hub is disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```

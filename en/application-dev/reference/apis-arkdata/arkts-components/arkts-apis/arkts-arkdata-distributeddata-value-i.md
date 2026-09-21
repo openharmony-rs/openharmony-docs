@@ -1,5 +1,9 @@
 # Value
 
+```TypeScript
+interface Value
+```
+
 Defines the **value** object in a KV store.
 
 **Since:** 7

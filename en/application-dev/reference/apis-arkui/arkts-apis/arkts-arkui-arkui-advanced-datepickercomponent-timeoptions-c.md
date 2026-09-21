@@ -1,5 +1,9 @@
 # TimeOptions
 
+```TypeScript
+export declare class TimeOptions extends CommonOptions
+```
+
 TimeOptions defines options for the time picker.
 
 Inherits from [CommonOptions](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md).

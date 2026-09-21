@@ -1,5 +1,9 @@
 # ContentFormCard
 
+```TypeScript
+declare struct ContentFormCard
+```
+
 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。适用于内容分发、社交动态、消息通知等场景。
 
 **起始版本：** 20

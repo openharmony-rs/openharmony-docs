@@ -1,5 +1,9 @@
 # Entity (System API)
 
+```TypeScript
+interface Entity
+```
+
 Provides APIs for output Entity.
 
 **Since:** 23

@@ -1,7 +1,7 @@
 # LocalesArgument
 
 ```TypeScript
-type LocalesArgument = UnicodeBCP47LocaleIdentifier | Locale | readonly (UnicodeBCP47LocaleIdentifier | Locale)[] | undefined
+type LocalesArgument = UnicodeBCP47LocaleIdentifier | Locale | readonly(UnicodeBCP47LocaleIdentifier | Locale)[] | undefined
 ```
 
 The locale(s) to use

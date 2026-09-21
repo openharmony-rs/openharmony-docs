@@ -1,5 +1,9 @@
 # FloatingBallConfiguration
 
+```TypeScript
+interface FloatingBallConfiguration
+```
+
 创建闪控球控制器时需要提供的参数配置。
 
 **起始版本：** 20

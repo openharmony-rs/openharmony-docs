@@ -1,5 +1,9 @@
 # InterceptedRecordPage（系统接口）
 
+```TypeScript
+interface InterceptedRecordPage
+```
+
 拦截记录分页信息。
 
 **起始版本：** 14

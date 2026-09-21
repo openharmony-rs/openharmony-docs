@@ -1,5 +1,9 @@
 # SettingType
 
+```TypeScript
+enum SettingType
+```
+
 Enumeration of setting type.
 
 @enum { int }

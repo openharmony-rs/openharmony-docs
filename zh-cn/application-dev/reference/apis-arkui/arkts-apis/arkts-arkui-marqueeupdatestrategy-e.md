@@ -1,5 +1,9 @@
 # MarqueeUpdateStrategy
 
+```TypeScript
+declare enum MarqueeUpdateStrategy
+```
+
 Marquee scrolling strategy after text update
 
 @enum { number }

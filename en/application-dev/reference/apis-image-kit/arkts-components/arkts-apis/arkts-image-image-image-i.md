@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+interface Image
+```
+
 The **Image** class is used to obtain image content.
 
 An Image instance is returned when [readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage) and [readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage) are called.
@@ -41,6 +45,19 @@ Obtains ImageBufferData from an image.
 | --- | --- |
 | [ImageBufferData](arkts-image-image-imagebufferdata-i.md) &#124; null | Struct that encapsulates the image data buffer. If no struct is obtained, **null** is returned. |
 
+**Examples**
+
+```TypeScript
+function GetBufferData(img: image.Image) {
+  const bufferData = img.getBufferData();
+  if (bufferData == null) {
+    console.error('Failed to get the bufferData: bufferData is null.');
+    return;
+  }
+  console.info('Succeeded in getting bufferData.');
+}
+```
+
 ## getComponent
 
 ```TypeScript
@@ -59,6 +76,24 @@ Obtains the component buffer from the Image instance based on the color componen
 | --- | --- | --- | --- |
 | componentType | [ComponentType](arkts-image-image-componenttype-e.md) | Yes | Component type. (Currently, only **ComponentType:JPEG** is supported. The actual format is determined by the producer, for example, camera.) |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Component](arkts-image-image-component-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the component buffer obtained; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetComponent(img : image.Image) {
+  img.getComponent(image.ComponentType.JPEG, (err: BusinessError, component: image.Component) => {
+    if (err) {
+      console.error(`Failed to get the component.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in getting component.');
+    }
+  })
+}
+```
+
+<a id="getcomponent-1"></a>
 
 ## getComponent
 
@@ -83,6 +118,20 @@ Obtains the component buffer from the Image instance based on the color componen
 | Type | Description |
 | --- | --- |
 | Promise&lt;[Component](arkts-image-image-component-i.md)&gt; | Promise used to return the component buffer. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetComponent(img : image.Image) {
+  img.getComponent(image.ComponentType.JPEG).then((component: image.Component) => {
+    console.info('Succeeded in getting component.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get the component.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## getMetadata
 
@@ -117,6 +166,19 @@ Obtains the HDR metadata from an image based on the HDR metadata type.
 | [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. |
 | [7600302](../errorcode-image.md#7600302-memory-copy-failure) | Memory copy failed. |
 
+**Examples**
+
+```TypeScript
+async function GetMetadata(img : image.Image) {
+  try {
+    let staticMetadata = img.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
+    console.info(`getMetadata:${staticMetadata}`);
+  } catch (err) {
+    console.error('Failed to getMetadata.' + err);
+  }
+}
+```
+
 ## release
 
 ```TypeScript
@@ -141,6 +203,24 @@ Before releasing the instance, ensure that all asynchronous operations associate
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release(img : image.Image) {
+  img.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the image instance.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in releasing the image instance.');
+    }
+  })
+}
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -164,6 +244,20 @@ Before releasing the instance, ensure that all asynchronous operations associate
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release(img : image.Image) {
+  img.release().then(() => {
+    console.info('Succeeded in releasing the image instance.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the image instance.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## clipRect
 

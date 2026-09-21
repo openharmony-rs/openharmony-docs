@@ -1,5 +1,9 @@
 # SimState
 
+```TypeScript
+export enum SimState
+```
+
 SIM卡状态。
 
 **起始版本：** 6

@@ -1,5 +1,9 @@
 # Button properties/events
 
+```TypeScript
+declare class ButtonAttribute extends CommonMethod<ButtonAttribute>
+```
+
 In addition to the universal attributes, the following attributes are supported.
 
 The universal events are supported.
@@ -16,11 +20,11 @@ The universal events are supported.
 buttonStyle(value: ButtonStyleMode)
 ```
 
-Sets the style and primacy for the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the backgroundColor, [fontColor](#fontcolor), and [role](#role) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
+Sets the style and primacy for the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [fontColor](#fontcolor), and [role](#role) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -36,7 +40,7 @@ Sets the style and primacy for the button. The system automatically adjusts the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ButtonStyleMode](arkts-arkui-buttonstylemode-e.md) | Yes | Style and primacy of the button<br>Default value: **ButtonStyleMode.EMPHASIZED** |
+| value | [ButtonStyleMode](arkts-arkui-button-comp-buttonstylemode-e.md) | Yes | Style and primacy of the button<br>Default value: **ButtonStyleMode.EMPHASIZED** |
 
 ## contentModifier
 
@@ -58,7 +62,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[ButtonConfiguration](arkts-arkui-buttonconfiguration-i.md)&gt; | Yes | Content modifier to apply to the button.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[ButtonConfiguration](arkts-arkui-button-comp-buttonconfiguration-i.md)&gt; | Yes | Content modifier to apply to the button.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
 ## controlSize
 
@@ -70,7 +74,7 @@ Sets the size for the button.
 
 > **NOTE:** 
 > 
-> This API can be called within attributeModifier since API version 12.
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -86,7 +90,7 @@ Sets the size for the button.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ControlSize](arkts-arkui-controlsize-e.md) | Yes | Size of the button.<br>Default value: **ControlSize.NORMAL** |
+| value | [ControlSize](arkts-arkui-button-comp-controlsize-e.md) | Yes | Size of the button.<br>Default value: **ControlSize.NORMAL** |
 
 ## fontColor
 
@@ -98,6 +102,8 @@ Sets the font color for the button.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -108,7 +114,7 @@ Sets the font color for the button.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the button.<br>Default value: **&#36;r('sys.color.font_on_primary')**, which means white |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the button.<br>Default value: **$r('sys.color.font_on_primary')**, which means white |
 
 ## fontFamily
 
@@ -119,6 +125,8 @@ fontFamily(value: string | Resource)
 Sets the font family.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -142,6 +150,8 @@ Sets the font size for the button.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -152,7 +162,7 @@ Sets the font size for the button.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Font size of the button.<br>Default value:<br>**&#36;r('sys.float.Body_L')** when **controlSize** is set to **ControlSize.NORMAL**<br>**&#36;r('sys.float.Body_S')** when **controlSize** is set to **ControlSize.SMALL**<br>Note: For the string type, percentage values are not supported. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Font size of the button.<br>Default value:<br>**$r('sys.float.Body_L')** when **controlSize** is set to **ControlSize.NORMAL**<br>**$r('sys.float.Body_S')** when **controlSize** is set to **ControlSize.SMALL**<br>Note: For the string type, percentage values are not supported. |
 
 ## fontStyle
 
@@ -163,6 +173,8 @@ fontStyle(value: FontStyle)
 Sets the font style for the button.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -185,6 +197,8 @@ fontWeight(value: number | FontWeight | string)
 Sets the font weight for the button.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -218,7 +232,7 @@ Sets the label style for the button.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LabelStyle](arkts-arkui-labelstyle-i.md) | Yes | Label style of the button. |
+| value | [LabelStyle](arkts-arkui-button-comp-labelstyle-i.md) | Yes | Label style of the button. |
 
 ## maxFontScale
 
@@ -270,7 +284,7 @@ Sets the minimum font scale factor for text.
 role(value: ButtonRole)
 ```
 
-Sets the role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the backgroundColor, [fontColor](#fontcolor), and [buttonStyle](#buttonstyle) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
+Sets the role of the button. The system automatically adjusts the button background color and text color based on the enumerated value. You can also use the [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [fontColor](#fontcolor), and [buttonStyle](#buttonstyle) APIs to set the background color and text color. The actual displayed effect will be determined by the last setting.
 
 **Since:** 12
 
@@ -286,7 +300,7 @@ Sets the role of the button. The system automatically adjusts the button backgro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ButtonRole](arkts-arkui-buttonrole-e.md) | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL** |
+| value | [ButtonRole](arkts-arkui-button-comp-buttonrole-e.md) | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL** |
 
 ## stateEffect
 
@@ -297,6 +311,8 @@ stateEffect(value: boolean)
 Specifies whether to enable the pressed state effect when the button is clicked.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -320,6 +336,8 @@ Sets the button type.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -330,4 +348,4 @@ Sets the button type.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ButtonType](arkts-arkui-buttontype-e.md) | Yes | Button type.<br>API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**. |
+| value | [ButtonType](arkts-arkui-button-comp-buttontype-e.md) | Yes | Button type.<br>API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**. |

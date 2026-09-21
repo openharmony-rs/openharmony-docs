@@ -1,5 +1,9 @@
 # PluginComponentTemplate
 
+```TypeScript
+interface PluginComponentTemplate
+```
+
 Describes the **PluginComponent** template parameters.
 
 **Since:** 8

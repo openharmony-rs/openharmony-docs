@@ -52,17 +52,8 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimLabel(0).then((data: sim.SimLabel) => {
-  console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getSimLabel failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimlabel-1"></a>
 
 ## getSimLabel
 
@@ -99,4 +90,13 @@ function getSimLabel(slotId: number): Promise<SimLabel>
 
 **示例**
 
-参见 getSimLabel
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimLabel(0).then((data: sim.SimLabel) => {
+  console.info(`getSimLabel success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`getSimLabel failed, promise: err->${JSON.stringify(err)}`);
+});
+```

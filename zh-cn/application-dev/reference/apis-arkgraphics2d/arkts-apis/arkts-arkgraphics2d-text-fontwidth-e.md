@@ -1,5 +1,9 @@
 # FontWidth
 
+```TypeScript
+enum FontWidth
+```
+
 字体宽度的枚举。
 
 **起始版本：** 12

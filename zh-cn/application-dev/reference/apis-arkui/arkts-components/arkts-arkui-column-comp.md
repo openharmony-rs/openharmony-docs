@@ -32,7 +32,7 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [ColumnOptions](arkts-arkui-columnoptions-i.md) | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。<br> |
+| options | [ColumnOptions](arkts-arkui-column-comp-columnoptions-i.md) | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。<br> |
 
 ## Column
 
@@ -60,7 +60,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [ColumnOptions](arkts-arkui-columnoptions-i.md) &#124; [ColumnOptionsV2](arkts-arkui-columnoptionsv2-i.md) | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距，space支持设置number、string或Resource类型。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。 |
+| options | [ColumnOptions](arkts-arkui-column-comp-columnoptions-i.md) &#124; [ColumnOptionsV2](arkts-arkui-column-comp-columnoptionsv2-i.md) | 否 | Column组件的间距配置选项。通过space属性设置纵向布局元素垂直方向间距，space支持设置number、string或Resource类型。当需要为子组件设置固定垂直间距时传入此参数；省略时不设置子组件间距。 |
 
 ## 汇总
 
@@ -68,29 +68,90 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ColumnOptions](arkts-arkui-columnoptions-i.md) | 设置Column组件的子组件间距属性。 |
-| [ColumnOptionsV2](arkts-arkui-columnoptionsv2-i.md) | 设置Column组件的子组件间距属性。间距类型SpaceType支持number、string或Resource类型。 |
+| [ColumnOptions](arkts-arkui-column-comp-columnoptions-i.md) | 设置Column组件的子组件间距属性。 |
+| [ColumnOptionsV2](arkts-arkui-column-comp-columnoptionsv2-i.md) | 设置Column组件的子组件间距属性。间距类型SpaceType支持number、string或Resource类型。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [SpaceType](arkts-arkui-spacetype-t.md) | Column组件构造函数中space支持的数据类型，取值类型为下表类型中的并集。 |
+| [SpaceType](arkts-arkui-column-comp-spacetype-t.md) | Column组件构造函数中space支持的数据类型，取值类型为下表类型中的并集。 |
 
 ## 示例
 
-```TypeScript
 ### 示例1（设置Column组件的布局属性）
 
 本示例展示设置Column组件的布局属性，如间距、对齐方式等属性后的效果。
-```
 
 ```TypeScript
-
+// resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "stringSpace",
+      "value": "5"
+    }
+  ]
+}
 ```
 
-```TypeScript
-### 示例2（设置反转属性）
 
-本示例展示设置Column组件的reverse属性后的效果。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ColumnExample {
+  build() {
+    Scroll() {
+      Column({ space: 5 }) {
+        // 设置子元素垂直方向间距为5
+        Text('space').width('90%')
+        Column({ space: 5 }) {
+          Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('100%').height(30).backgroundColor(0x00FFFF)
+        }.width('90%').height(100).border({ width: 1 })
+
+        // 通过资源引用方式设置子元素垂直方向间距
+        Text('Resource space').width('90%')
+        Column({ space: $r('app.string.stringSpace') }) {
+          Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('100%').height(30).backgroundColor(0x00FFFF)
+        }.width('90%').height(100).border({ width: 1 })
+
+        // 设置子元素水平方向对齐方式
+        Text('alignItems(Start)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
+
+        Text('alignItems(End)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
+
+        Text('alignItems(Center)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
+
+        // 设置子元素垂直方向的对齐方式
+        Text('justifyContent(Center)').width('90%')
+        Column() {
+          Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('90%').height(30).backgroundColor(0x00FFFF)
+        }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
+
+        Text('justifyContent(End)').width('90%')
+        Column() {
+          Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('90%').height(30).backgroundColor(0x00FFFF)
+        }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
+      }.width('100%').padding({ top: 5 })
+    }.width('100%').height('100%')
+  }
+}
 ```

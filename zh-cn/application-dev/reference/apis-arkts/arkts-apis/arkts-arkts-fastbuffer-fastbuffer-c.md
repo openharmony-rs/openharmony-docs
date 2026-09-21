@@ -1,5 +1,9 @@
 # FastBuffer
 
+```TypeScript
+class FastBuffer
+```
+
 FastBuffer对象是比Buffer性能更优的Buffer容器，用于表示固定长度的字节序列，是专门存放二进制数据的缓冲区。
 
 **起始版本：** 20

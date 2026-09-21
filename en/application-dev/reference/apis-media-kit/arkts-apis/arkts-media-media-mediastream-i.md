@@ -1,5 +1,9 @@
 # MediaStream
 
+```TypeScript
+interface MediaStream
+```
+
 Media Stream. AVPlayer use this for mediaData access, current version only support live stream.
 
 **Since:** 19

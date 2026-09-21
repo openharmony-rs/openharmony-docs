@@ -1,5 +1,9 @@
 # QueryEntityParam
 
+```TypeScript
+interface QueryEntityParam
+```
+
 查询实体的参数。
 
 **起始版本：** 26.0.0

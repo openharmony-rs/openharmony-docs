@@ -46,6 +46,10 @@ Creates a key derivation function instance.
 
 **Examples**
 
-```TypeScript
 PBKDF2
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
 ```

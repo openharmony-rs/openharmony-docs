@@ -1,5 +1,9 @@
 # ShadowFlag
 
+```TypeScript
+enum ShadowFlag
+```
+
 Enumerates the shadow drawing behaviors.
 
 **Since:** 12

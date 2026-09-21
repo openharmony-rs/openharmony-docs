@@ -1,5 +1,9 @@
 # UploadProgress (System API)
 
+```TypeScript
+interface UploadProgress
+```
+
 The UploadProgress data structure.
 
 **Since:** 26.0.0

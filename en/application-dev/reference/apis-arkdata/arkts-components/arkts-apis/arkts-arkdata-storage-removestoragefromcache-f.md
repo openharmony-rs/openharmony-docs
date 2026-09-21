@@ -27,6 +27,8 @@ Removes the singleton **Storage** instance of a file from the cache. The removed
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="removestoragefromcache-1"></a>
+
 ## removeStorageFromCache
 
 ```TypeScript

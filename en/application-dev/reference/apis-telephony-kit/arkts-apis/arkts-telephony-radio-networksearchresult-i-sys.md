@@ -1,5 +1,9 @@
 # NetworkSearchResult (System API)
 
+```TypeScript
+export interface NetworkSearchResult
+```
+
 Obtains the network search results.
 
 **Since:** 6

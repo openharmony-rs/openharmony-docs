@@ -1,5 +1,9 @@
 # CompositeDisplayMode (System API)
 
+```TypeScript
+enum CompositeDisplayMode
+```
+
 Enumerates the display modes available for a composite image.
 
 **Since:** 23

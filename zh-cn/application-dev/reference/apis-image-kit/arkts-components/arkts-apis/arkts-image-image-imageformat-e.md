@@ -1,5 +1,9 @@
 # ImageFormat
 
+```TypeScript
+enum ImageFormat
+```
+
 表示图片格式的枚举。
 
 **起始版本：** 9

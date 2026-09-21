@@ -1,5 +1,9 @@
 # SoundCardInfo (System API)
 
+```TypeScript
+interface SoundCardInfo
+```
+
 Describes sound card information.
 
 **Since:** 26.0.0

@@ -1,6 +1,10 @@
 # SecurityUIExtensionComponent properties/events
 
-The universal attributes are supported.
+```TypeScript
+declare class SecurityUIExtensionComponentAttribute extends CommonMethod<SecurityUIExtensionComponentAttribute>
+```
+
+The [universal attributes](arkts-arkui-common-comp.md#common) are supported.
 
 The following events are supported:
 

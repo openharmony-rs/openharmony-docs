@@ -1,5 +1,9 @@
 # Policy
 
+```TypeScript
+export enum Policy
+```
+
 Defines the policy type for the trustlist or blocklist.
 
 **Since:** 20

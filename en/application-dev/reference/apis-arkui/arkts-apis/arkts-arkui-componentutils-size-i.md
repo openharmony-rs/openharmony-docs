@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+interface Size
+```
+
 Defines the size property.
 
 **Since:** 10

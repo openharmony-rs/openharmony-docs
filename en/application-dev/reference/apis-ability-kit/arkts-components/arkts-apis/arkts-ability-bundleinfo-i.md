@@ -1,5 +1,9 @@
 # BundleInfo
 
+```TypeScript
+export interface BundleInfo
+```
+
 The module defines the bundle information.
 
 **Since:** 9

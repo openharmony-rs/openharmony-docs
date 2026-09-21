@@ -1,5 +1,9 @@
 # VCardBuilderOptions
 
+```TypeScript
+export interface VCardBuilderOptions
+```
+
 VCard版本和编码信息。
 
 **起始版本：** 23

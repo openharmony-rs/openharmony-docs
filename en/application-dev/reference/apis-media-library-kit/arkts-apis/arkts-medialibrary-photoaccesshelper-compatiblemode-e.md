@@ -1,5 +1,9 @@
 # CompatibleMode
 
+```TypeScript
+enum CompatibleMode
+```
+
 Enumerates the compatible modes.
 
 **Since:** 15

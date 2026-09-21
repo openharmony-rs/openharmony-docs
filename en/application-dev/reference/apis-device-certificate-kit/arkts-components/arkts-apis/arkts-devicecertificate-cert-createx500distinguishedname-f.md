@@ -79,30 +79,8 @@ async function createX500DistinguishedName() {
 }
 ```
 
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let nameDer =
-  new Uint8Array([48, 41, 49, 11, 48, 9, 6, 3, 85, 4, 3, 12, 2, 67, 65, 49, 13, 48, 11, 6, 3, 85, 4, 10, 12, 4, 116,
-    101, 115, 116, 49, 11, 48, 9, 6, 3, 85, 4, 6, 19, 2, 67, 78]);
-
-async function createX500DistinguishedName() {
-  try {
-    cert.createX500DistinguishedName(nameDer)
-      .then((_data) => {
-        console.info('createX500DistinguishedName result: success.');
-      })
-      .catch((err: BusinessError) => {
-        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      });
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
-}
-```
-
+<a id="createx500distinguishedname-1"></a>
 
 ## createX500DistinguishedName
 
@@ -147,4 +125,26 @@ Creates an **X500DistinguishedName** object with a name in DER format. This API 
 
 **Examples**
 
-See [createX500DistinguishedName](#createx500distinguishedname)
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let nameDer =
+  new Uint8Array([48, 41, 49, 11, 48, 9, 6, 3, 85, 4, 3, 12, 2, 67, 65, 49, 13, 48, 11, 6, 3, 85, 4, 10, 12, 4, 116,
+    101, 115, 116, 49, 11, 48, 9, 6, 3, 85, 4, 6, 19, 2, 67, 78]);
+
+async function createX500DistinguishedName() {
+  try {
+    cert.createX500DistinguishedName(nameDer)
+      .then((_data) => {
+        console.info('createX500DistinguishedName result: success.');
+      })
+      .catch((err: BusinessError) => {
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      });
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```

@@ -1,5 +1,9 @@
 # ActivityResponse
 
+```TypeScript
+interface ActivityResponse
+```
+
 服务响应抽象接口。
 
 **起始版本：** 9

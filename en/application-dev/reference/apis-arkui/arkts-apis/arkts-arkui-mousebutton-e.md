@@ -1,5 +1,9 @@
 # MouseButton
 
+```TypeScript
+declare enum MouseButton
+```
+
 Enumerates the mouse button types.
 
 **Since:** 8

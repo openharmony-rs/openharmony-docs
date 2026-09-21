@@ -30,7 +30,7 @@ FormLink(options: FormLinkOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [FormLinkOptions](arkts-arkui-formlinkoptions-i.md) | 是 | 定义卡片信息 |
+| options | [FormLinkOptions](arkts-arkui-formlink-comp-formlinkoptions-i.md) | 是 | 定义卡片信息 |
 
 ## 汇总
 
@@ -38,7 +38,7 @@ FormLink(options: FormLinkOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [FormLinkOptions](arkts-arkui-formlinkoptions-i.md) |  |
+| [FormLinkOptions](arkts-arkui-formlink-comp-formlinkoptions-i.md) |  |
 
 ## 示例
 
@@ -103,8 +103,24 @@ struct FormLinkDemo {
 }
 ```
 
-```TypeScript
 
 
 待跳转应用 [module.json5](../../../quick-start/module-configuration-file.md#skills标签) uris 配置示例：
+
+```TypeScript
+"abilities": [
+  {
+    "skills": [
+      {
+        "uris": [
+          {
+            "scheme": "example",
+            "host": "uri.ohos.com",
+            "path": "link_page"
+          },
+        ]
+      }
+    ],
+  }
+]
 ```

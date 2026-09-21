@@ -1,5 +1,9 @@
 # AbilityLifecycleState
 
+```TypeScript
+export enum AbilityLifecycleState
+```
+
 Ability生命周期状态。
 
 **起始版本：** 8

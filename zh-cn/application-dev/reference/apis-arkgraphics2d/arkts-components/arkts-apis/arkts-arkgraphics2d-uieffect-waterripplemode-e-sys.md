@@ -1,5 +1,9 @@
 # WaterRippleMode（系统接口）
 
+```TypeScript
+enum WaterRippleMode
+```
+
 水波纹场景模式枚举。
 
 **起始版本：** 12

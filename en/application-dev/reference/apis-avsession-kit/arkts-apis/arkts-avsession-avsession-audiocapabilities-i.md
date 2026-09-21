@@ -1,5 +1,9 @@
 # AudioCapabilities
 
+```TypeScript
+interface AudioCapabilities
+```
+
 Audio capabilities.
 
 **Since:** 20

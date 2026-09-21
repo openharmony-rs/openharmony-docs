@@ -1,5 +1,9 @@
 # CompassResponse
 
+```TypeScript
+export interface CompassResponse
+```
+
 罗盘数据改变后的回调函数的响应对象，包含设备面对的方向度数。
 
 **起始版本：** 3

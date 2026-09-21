@@ -1,5 +1,9 @@
 # BlanklessInfo
 
+```TypeScript
+interface BlanklessInfo
+```
+
 页面首屏加载预测信息，主要包括首屏相似度预测值、首屏加载耗时预测值、预测错误码，应用需根据此信息来决策是否启用无白屏加载插帧方案。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # AudioChannel
 
+```TypeScript
+enum AudioChannel
+```
+
 表示音频声道的枚举。
 
 **起始版本：** 8

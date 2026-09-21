@@ -1,5 +1,9 @@
 # BundleType
 
+```TypeScript
+export enum BundleType
+```
+
 Enumerates the bundle types.
 
 **Since:** 9

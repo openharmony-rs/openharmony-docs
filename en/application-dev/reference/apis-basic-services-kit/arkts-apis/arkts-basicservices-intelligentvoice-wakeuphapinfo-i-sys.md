@@ -1,5 +1,9 @@
 # WakeupHapInfo (System API)
 
+```TypeScript
+interface WakeupHapInfo
+```
+
 Describes wakeup hap information. @typedef WakeupHapInfo
 
 **Since:** 10

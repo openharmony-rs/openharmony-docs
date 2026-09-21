@@ -1,5 +1,9 @@
 # Color4f
 
+```TypeScript
+interface Color4f
+```
+
 ARGB格式的颜色描述，颜色分量值为0.0~1.0的浮点数。
 
 **起始版本：** 20

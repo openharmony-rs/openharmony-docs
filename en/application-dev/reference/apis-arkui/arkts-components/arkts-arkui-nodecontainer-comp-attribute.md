@@ -1,8 +1,12 @@
 # NodeContainer properties/events
 
-The universal attributes are supported.
+```TypeScript
+declare class NodeContainerAttribute extends CommonMethod<NodeContainerAttribute>
+```
 
-The universal events are supported.
+The [universal attributes](arkts-arkui-common-comp.md#common) are supported.
+
+The [universal events](arkts-arkui-common-comp.md#common) are supported.
 
 **Inheritance/Implementation:** NodeContainerAttribute extends CommonMethod<NodeContainerAttribute>
 

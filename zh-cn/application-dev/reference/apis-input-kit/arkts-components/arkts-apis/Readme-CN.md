@@ -238,7 +238,8 @@
   - [RightClickType](arkts-input-pointer-rightclicktype-e.md)
 <!--Del-->
 - [@ohos.multimodalInput.shortKey(系统预置全局快捷键)](arkts-input-multimodalinput-shortkey.md)<!--DelEnd-->
-  - [shortKey](arkts-input-shortkey-n.md)
+  <!--Del-->
+  - [shortKey(系统接口)](arkts-input-shortkey-n.md)<!--DelEnd-->
     <!--Del-->
     - [setKeyDownDuration(系统接口)](arkts-input-shortkey-setkeydownduration-f-sys.md)<!--DelEnd-->
   <!--Del-->

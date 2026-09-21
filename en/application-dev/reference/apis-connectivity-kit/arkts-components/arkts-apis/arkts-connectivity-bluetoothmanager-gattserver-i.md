@@ -1,5 +1,9 @@
 # GattServer
 
+```TypeScript
+interface GattServer
+```
+
 Manages GATT server. Before calling an Gatt server method, you must use [createGattServer](arkts-connectivity-ble-creategattserver-f.md) to create an GattServer instance.
 
 **Since:** 9
@@ -234,6 +238,18 @@ Unsubscribe characteristic read event. On API 10 and above, the permission requi
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+try {
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.off("characteristicRead");
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
+
 ## off('characteristicWrite')
 
 ```TypeScript
@@ -268,6 +284,18 @@ Unsubscribe characteristic write event. On API 10 and above, the permission requ
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+try {
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.off("characteristicWrite");
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
 
 ## off('descriptorRead')
 
@@ -304,6 +332,18 @@ Unsubscribe descriptor read event. On API 10 and above, the permission required 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+try {
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.off("descriptorRead");
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
+
 ## off('descriptorWrite')
 
 ```TypeScript
@@ -338,6 +378,18 @@ Unsubscribe descriptor write event. On API 10 and above, the permission required
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+try {
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.off("descriptorWrite");
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
 
 ## off('connectStateChange')
 
@@ -374,6 +426,18 @@ Unsubscribe server connection state changed event. On API 10 and above, the perm
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+try {
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.off("connectStateChange");
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
+
 ## on('characteristicRead')
 
 ```TypeScript
@@ -408,6 +472,32 @@ Subscribe characteristic read event. On API 10 and above, the permission require
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let arrayBufferCCC = new ArrayBuffer(8);
+let cccValue = new Uint8Array(arrayBufferCCC);
+cccValue[0] = 1;
+function ReadCharacteristicReq(characteristicReadRequest: bluetoothManager.CharacteristicReadRequest) {
+    let deviceId: string = characteristicReadRequest.deviceId;
+    let transId: number = characteristicReadRequest.transId;
+    let offset: number = characteristicReadRequest.offset;
+    let characteristicUuid: string = characteristicReadRequest.characteristicUuid;
+
+    let serverResponse: bluetoothManager.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferCCC};
+
+    try {
+        gattServer.sendResponse(serverResponse);
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    }
+}
+
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.on("characteristicRead", ReadCharacteristicReq);
+```
 
 ## on('characteristicWrite')
 
@@ -444,6 +534,35 @@ Subscribe characteristic write event. On API 10 and above, the permission requir
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let arrayBufferCCC = new ArrayBuffer(8);
+let cccValue = new Uint8Array(arrayBufferCCC);
+function WriteCharacteristicReq(characteristicWriteRequest: bluetoothManager.CharacteristicWriteRequest) {
+    let deviceId: string = characteristicWriteRequest.deviceId;
+    let transId: number = characteristicWriteRequest.transId;
+    let offset: number = characteristicWriteRequest.offset;
+    let isPrep: boolean = characteristicWriteRequest.isPrep;
+    let needRsp: boolean = characteristicWriteRequest.needRsp;
+    let value: Uint8Array =  new Uint8Array(characteristicWriteRequest.value);
+    let characteristicUuid: string = characteristicWriteRequest.characteristicUuid;
+
+    cccValue[0] = value[0];
+    let serverResponse: bluetoothManager.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferCCC};
+
+    try {
+        gattServer.sendResponse(serverResponse);
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    }
+}
+
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.on("characteristicWrite", WriteCharacteristicReq);
+```
+
 ## on('descriptorRead')
 
 ```TypeScript
@@ -478,6 +597,32 @@ Subscribe descriptor read event. On API 10 and above, the permission required by
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let arrayBufferDesc = new ArrayBuffer(8);
+let descValue = new Uint8Array(arrayBufferDesc);
+descValue[0] = 1;
+function ReadDescriptorReq(descriptorReadRequest: bluetoothManager.DescriptorReadRequest) {
+    let deviceId: string = descriptorReadRequest.deviceId;
+    let transId: number = descriptorReadRequest.transId;
+    let offset: number = descriptorReadRequest.offset;
+    let descriptorUuid: string = descriptorReadRequest.descriptorUuid;
+
+    let serverResponse: bluetoothManager.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferDesc};
+
+    try {
+        gattServer.sendResponse(serverResponse);
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    }
+}
+
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.on("descriptorRead", ReadDescriptorReq);
+```
 
 ## on('descriptorWrite')
 
@@ -514,6 +659,35 @@ Subscribe descriptor write event. On API 10 and above, the permission required b
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let arrayBufferDesc = new ArrayBuffer(8);
+let descValue = new Uint8Array(arrayBufferDesc);
+function WriteDescriptorReq(descriptorWriteRequest: bluetoothManager.DescriptorWriteRequest) {
+    let deviceId: string = descriptorWriteRequest.deviceId;
+    let transId: number = descriptorWriteRequest.transId;
+    let offset: number = descriptorWriteRequest.offset;
+    let isPrep: boolean = descriptorWriteRequest.isPrep;
+    let needRsp: boolean = descriptorWriteRequest.needRsp;
+    let value: Uint8Array = new Uint8Array(descriptorWriteRequest.value);
+    let descriptorUuid: string = descriptorWriteRequest.descriptorUuid;
+
+    descValue[0] = value[0];
+    let serverResponse: bluetoothManager.ServerResponse = {deviceId: deviceId, transId: transId, status: 0, offset: offset, value:arrayBufferDesc};
+
+    try {
+        gattServer.sendResponse(serverResponse);
+    } catch (err) {
+        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    }
+}
+
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.on("descriptorWrite", WriteDescriptorReq);
+```
+
 ## on('connectStateChange')
 
 ```TypeScript
@@ -548,6 +722,22 @@ Subscribe server connection state changed event. On API 10 and above, the permis
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@ohos.base';
+function Connected(BLEConnectChangedState: bluetoothManager.BLEConnectChangedState) {
+  let deviceId: string = BLEConnectChangedState.deviceId;
+  let status: bluetoothManager.ProfileConnectionState  = BLEConnectChangedState.state;
+}
+try {
+let gattServer = bluetoothManager.BLE.createGattServer();
+gattServer.on("connectStateChange", Connected);
+} catch (err) {
+    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+}
+```
 
 ## removeService
 

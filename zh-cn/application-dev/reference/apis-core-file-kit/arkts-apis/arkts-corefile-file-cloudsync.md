@@ -27,9 +27,9 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 异步方法获取文件同步状态。使用Promise异步回调。 |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 异步方法获取文件同步状态。使用callback异步回调。 |
-| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md) | 获取文件同步状态。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate) | 异步方法获取文件同步状态。使用Promise异步回调。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate-1) | 异步方法获取文件同步状态。使用callback异步回调。 |
+| [getFileSyncState](arkts-corefile-cloudsync-getfilesyncstate-f-sys.md#getfilesyncstate-2) | 获取文件同步状态。 |
 | [optimizeStorage](arkts-corefile-cloudsync-optimizestorage-f-sys.md) | 优化图库已同步云空间的本地资源，按照本地剩余空间执行自动老化策略。使用Promise异步回调。 |
 | [startOptimizeSpace](arkts-corefile-cloudsync-startoptimizespace-f-sys.md) | 优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。 |
 | [stopOptimizeSpace](arkts-corefile-cloudsync-stopoptimizespace-f-sys.md) | 同步方法停止图库云图资源空间优化，和startOptimizeSpace配对使用。 |

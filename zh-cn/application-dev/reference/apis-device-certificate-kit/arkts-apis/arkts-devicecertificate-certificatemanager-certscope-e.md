@@ -1,5 +1,9 @@
 # CertScope
 
+```TypeScript
+export enum CertScope
+```
+
 表示证书的位置。
 
 **起始版本：** 18

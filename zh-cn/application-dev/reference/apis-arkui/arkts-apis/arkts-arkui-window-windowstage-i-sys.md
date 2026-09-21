@@ -1,5 +1,9 @@
 # WindowStage
 
+```TypeScript
+interface WindowStage
+```
+
 窗口管理器。管理各个基本窗口单元，即[Window](arkts-arkui-window-n.md)实例。
 
 下列API示例中都需在[onWindowStageCreate()](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)函数中使用WindowStage的实例调用对应方法。
@@ -84,7 +88,7 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| imageResource | number &#124; [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 应用自定义的图片资源，可传入资源id或PixelMap位图。传入资源id时，图片资源需放在resources/base/media目录下，通过&#36;r资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：&#36;r("app.media.startIcon").id。 |
+| imageResource | number &#124; [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 应用自定义的图片资源，可传入资源id或PixelMap位图。传入资源id时，图片资源需放在resources/base/media目录下，通过$r资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：$r("app.media.startIcon").id。 |
 | value | ImageFit | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
@@ -110,25 +114,61 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
 
 export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let imgResourceId = $r("app.media.startIcon").id;
-    try {
-      let promise = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
-      promise.then(() => {
-        console.info(`Succeeded in setting image for recent`);
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      console.error(`Failed to set image for recent.`);
-    }
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let pixelMap: image.PixelMap;
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i + 1] = 0;
+        bufferArr[i + 2] = 122;
+        bufferArr[i + 3] = 255;
+      }
+      image.createPixelMap(color, {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      }).then((data) => {
+        pixelMap = data;
+        console.info(`Succeeded in creating pixelMap`);
+        try {
+          let promise = windowStage.setImageForRecent(pixelMap, ImageFit.Fill);
+          promise.then(() => {
+            console.info(`Succeeded in setting image for recent`);
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set image for recent. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+      })
+
+      let imgResourceId = $r("app.media.startIcon").id;
+      try {
+        let imgResourcePromise = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
+        imgResourcePromise.then(() => {
+          console.info(`Succeeded in setting image for recent`);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to set image for recent. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
   }
 };
 ```
+
+<a id="setimageforrecent-1"></a>
 
 ## setImageForRecent
 
@@ -154,7 +194,7 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| imgResourceId | number | 是 | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`&#36;r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`&#36;r("app.media.startIcon").id`。 |
+| imgResourceId | number | 是 | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。 |
 | value | ImageFit | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**

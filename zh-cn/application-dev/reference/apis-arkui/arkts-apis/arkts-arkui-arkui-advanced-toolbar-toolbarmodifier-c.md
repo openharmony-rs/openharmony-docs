@@ -1,5 +1,9 @@
 # ToolBarModifier
 
+```TypeScript
+export declare class ToolBarModifier
+```
+
 ToolBarModifier提供设置工具栏高度(height)、背景色(backgroundColor)、左右内边距（padding，仅在子项数量小于5个时生效）、是否显示按压态（stateEffect）的方法。
 
 **起始版本：** 13
@@ -32,7 +36,7 @@ backgroundColor(backgroundColor: ResourceColor): ToolBarModifier
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| backgroundColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 工具栏背景色。<br>默认背景色为&#36;r('sys.color.ohos_id_color_toolbar_bg')。 |
+| backgroundColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | 是 | 工具栏背景色。<br>默认背景色为$r('sys.color.ohos_id_color_toolbar_bg')。 |
 
 **返回值：**
 

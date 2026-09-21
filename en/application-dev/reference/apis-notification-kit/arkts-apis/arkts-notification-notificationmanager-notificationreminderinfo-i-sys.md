@@ -1,5 +1,9 @@
 # NotificationReminderInfo (System API)
 
+```TypeScript
+export interface NotificationReminderInfo
+```
+
 Describes the information about the application reminder.
 
 **Since:** 21

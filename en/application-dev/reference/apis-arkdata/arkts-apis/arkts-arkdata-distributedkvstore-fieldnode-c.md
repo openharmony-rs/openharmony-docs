@@ -1,5 +1,9 @@
 # FieldNode
 
+```TypeScript
+class FieldNode
+```
+
 Represents a **Schema** instance, which provides the methods for defining the values stored in a KV store.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # MediaAssetEditData（系统接口）
 
+```TypeScript
+class MediaAssetEditData
+```
+
 资产编辑数据。
 
 **起始版本：** 11

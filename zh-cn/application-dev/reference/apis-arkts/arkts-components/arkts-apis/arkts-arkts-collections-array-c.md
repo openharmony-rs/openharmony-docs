@@ -1,5 +1,9 @@
 # Array
 
+```TypeScript
+class Array<T> implements ConcatArray<T>
+```
+
 一种线性数据结构，底层基于数组实现，可以在ArkTS上并发实例间传递。
 
 当需要在ArkTS上并发实例间传递Array时，可以通过传递Array引用提升传递性能。
@@ -136,6 +140,8 @@ constructor()
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -162,6 +168,8 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Array's constructor cannot be directly invoked. |
+
+<a id="constructor-2"></a>
 
 ## constructor
 
@@ -197,11 +205,11 @@ containsAll(elements: Array<T>): boolean
 
 检查指定ArkTS Array中的所有元素是否均包含在此ArkTS Array中。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -224,6 +232,8 @@ containsAll(elements: Array<T>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The containsAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
+<a id="containsall-1"></a>
+
 ## containsAll
 
 ```TypeScript
@@ -232,11 +242,11 @@ containsAll(elements: readonly T[]): boolean
 
 检查指定JavaScript内建Array中的所有元素是否均包含在此ArkTS Array中。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -608,6 +618,8 @@ static from<T>(arrayLike: ArrayLike<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
+<a id="from-1"></a>
+
 ## from
 
 ```TypeScript
@@ -640,6 +652,8 @@ static from<T>(iterable: Iterable<T>): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The from method cannot be bound.<br>**适用版本：** 12 - 17 |
 
+<a id="from-2"></a>
+
 ## from
 
 ```TypeScript
@@ -666,6 +680,8 @@ static from<T>(arrayLike: ArrayLike<T> | Iterable<T>, mapFn: ArrayFromMapFn<T, T
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;T&gt; | 新创建的ArkTS Array实例。 |
+
+<a id="from-3"></a>
 
 ## from
 
@@ -1034,6 +1050,8 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -1105,6 +1123,8 @@ reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
+<a id="reduceright-1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -1146,11 +1166,11 @@ retainAll(elements: Array<T>): boolean
 
 仅保留此ArkTS Array中包含在指定ArkTS Array中的元素。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1173,6 +1193,8 @@ retainAll(elements: Array<T>): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
+<a id="retainall-1"></a>
+
 ## retainAll
 
 ```TypeScript
@@ -1181,11 +1203,11 @@ retainAll(elements: readonly T[]): boolean
 
 仅保留此ArkTS Array中包含在指定JavaScript内建Array中的元素。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1208,6 +1230,8 @@ retainAll(elements: readonly T[]): boolean
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification exception |
 
+<a id="retainall-2"></a>
+
 ## retainAll
 
 ```TypeScript
@@ -1216,11 +1240,11 @@ retainAll(predicate: ArrayElementPredicateFn<T>): boolean
 
 仅保留此ArkTS Array中满足指定断言函数的元素。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1456,6 +1480,8 @@ splice(start: number): Array<T>
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
+
+<a id="splice-1"></a>
 
 ## splice
 

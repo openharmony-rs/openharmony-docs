@@ -1,5 +1,9 @@
 # PrinterCapabilities
 
+```TypeScript
+interface PrinterCapabilities
+```
+
 Defines the printer capabilities.
 
 **Since:** 14

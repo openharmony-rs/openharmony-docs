@@ -1,5 +1,9 @@
 # CapStyle
 
+```TypeScript
+enum CapStyle
+```
+
 定义线帽样式的枚举，即画笔在绘制线段时，在线段头尾端点的样式。
 
 **起始版本：** 12

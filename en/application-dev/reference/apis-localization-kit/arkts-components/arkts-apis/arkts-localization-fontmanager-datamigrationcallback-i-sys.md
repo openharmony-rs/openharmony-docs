@@ -1,5 +1,9 @@
 # DataMigrationCallback (System API)
 
+```TypeScript
+interface DataMigrationCallback
+```
+
 Callback API type used during data migration, defining the callback methods for the data migration process. You must implement all methods of this API to receive heartbeat notifications, progress updates, and the final result during migration.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # NetWorkStrategy
 
+```TypeScript
+enum NetWorkStrategy
+```
+
 网络策略参数枚举。
 
 **起始版本：** 12

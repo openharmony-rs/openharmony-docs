@@ -74,6 +74,8 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 ```
 
 
+<a id="setvalue-1"></a>
+
 ## setValue
 
 ```TypeScript

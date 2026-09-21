@@ -1,5 +1,9 @@
 # TextStyle
 
+```TypeScript
+declare class TextStyle
+```
+
 Describes the text style.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # DeviceDirection（系统接口）
 
+```TypeScript
+export enum DeviceDirection
+```
+
 视频通话画面方向类型。
 
 **起始版本：** 11

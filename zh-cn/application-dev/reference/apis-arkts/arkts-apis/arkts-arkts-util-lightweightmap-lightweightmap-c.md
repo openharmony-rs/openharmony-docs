@@ -1,5 +1,9 @@
 # LightWeightMap
 
+```TypeScript
+declare class LightWeightMap<K, V>
+```
+
 LightWeightMap可用于存储具有关联关系的key-value键值对，其中key值唯一，每个key对应一个value。
 
 **起始版本：** 8

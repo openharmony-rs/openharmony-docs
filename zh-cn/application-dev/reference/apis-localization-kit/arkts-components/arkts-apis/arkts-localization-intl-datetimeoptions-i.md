@@ -1,5 +1,9 @@
 # DateTimeOptions
 
+```TypeScript
+export interface DateTimeOptions
+```
+
 时间日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。
 
 **起始版本：** 6

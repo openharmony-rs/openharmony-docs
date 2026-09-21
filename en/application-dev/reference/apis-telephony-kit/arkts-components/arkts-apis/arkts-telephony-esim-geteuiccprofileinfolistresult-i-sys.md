@@ -1,5 +1,9 @@
 # GetEuiccProfileInfoListResult (System API)
 
+```TypeScript
+export interface GetEuiccProfileInfoListResult
+```
+
 Obtains the profile information list.
 
 **Since:** 18

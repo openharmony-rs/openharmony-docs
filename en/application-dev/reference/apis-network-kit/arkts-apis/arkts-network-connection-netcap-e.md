@@ -1,5 +1,9 @@
 # NetCap
 
+```TypeScript
+export enum NetCap
+```
+
 Defines the network capability.
 
 **Since:** 8

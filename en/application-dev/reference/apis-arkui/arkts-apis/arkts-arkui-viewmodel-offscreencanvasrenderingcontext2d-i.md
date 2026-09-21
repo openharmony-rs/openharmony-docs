@@ -1,5 +1,9 @@
 # OffscreenCanvasRenderingContext2D
 
+```TypeScript
+export interface OffscreenCanvasRenderingContext2D
+```
+
 Provides a 2D rendering context for the drawing surface of the &lt; Canvas &gt; element. It is used to draw shapes, text, images and other objects.
 
 @interface OffscreenCanvasRenderingContext2D
@@ -174,6 +178,8 @@ Create an ImageData object.
 | --- | --- |
 | ImageData | ImageData New ImageData object with width and height specified. |
 
+<a id="createimagedata-1"></a>
+
 ## createImageData
 
 ```TypeScript
@@ -254,6 +260,8 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 | Type | Description |
 | --- | --- |
 | [Path2D](arkts-arkui-viewmodel-path2d-i.md) | the object of Path2D. |
+
+<a id="createpath2d-1"></a>
 
 ## createPath2D
 
@@ -363,6 +371,8 @@ Draw an Image object.
 | dw | number | Yes | Image The width drawn on the target canvas. |
 | dh | number | Yes | Image The height drawn on the target canvas. |
 
+<a id="drawimage-1"></a>
+
 ## drawImage
 
 ```TypeScript
@@ -401,6 +411,8 @@ Draw an Image object.
 | dw | number | Yes | Image The width drawn on the target canvas. |
 | dh | number | Yes | Image The height drawn on the target canvas. |
 
+<a id="drawimage-2"></a>
+
 ## drawImage
 
 ```TypeScript
@@ -424,6 +436,8 @@ Draw an Image object.
 | dy | number | Yes | The top left corner of the image is the Y-axis coordinates on the target canvas. |
 | dw | number | Yes | Image The width drawn on the target canvas. |
 | dh | number | Yes | Image The height drawn on the target canvas. |
+
+<a id="drawimage-3"></a>
 
 ## drawImage
 
@@ -643,6 +657,8 @@ Check whether the specified coordinate point is on the Path.
 | --- | --- |
 | boolean | boolean Return true if the detection point is contained within the current or specified path Otherwise return false. |
 
+<a id="ispointinpath-1"></a>
+
 ## isPointInPath
 
 ```TypeScript
@@ -697,6 +713,8 @@ Checks whether the specified coordinate point is on the stroke edge.
 | Type | Description |
 | --- | --- |
 | boolean | boolean A Boolean value that returns true when the point is on the line of the path, false otherwise. |
+
+<a id="ispointinstroke-1"></a>
 
 ## isPointInStroke
 
@@ -815,6 +833,8 @@ Draws the specified ImageData object to the canvas.
 | imageData | ImageData | Yes | An array object containing pixel values. |
 | dx | number | Yes | The offset of the position of the source image data in the target canvas (the offset in the X-axis direction). |
 | dy | number | Yes | The offset of the position of the source image data in the target canvas (the Y-axis offset). |
+
+<a id="putimagedata-1"></a>
 
 ## putImageData
 
@@ -1037,6 +1057,8 @@ Stroke draws the current path.
 **Model restriction:** This API can be used only in the FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="stroke-1"></a>
 
 ## stroke
 

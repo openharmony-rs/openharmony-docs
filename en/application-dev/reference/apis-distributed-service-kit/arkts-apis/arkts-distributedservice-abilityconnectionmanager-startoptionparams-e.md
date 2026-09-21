@@ -1,5 +1,9 @@
 # StartOptionParams
 
+```TypeScript
+export enum StartOptionParams
+```
+
 Enumerates application start options.
 
 **Since:** 18

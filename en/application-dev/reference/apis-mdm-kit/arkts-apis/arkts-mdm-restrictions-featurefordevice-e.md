@@ -1,5 +1,9 @@
 # FeatureForDevice
 
+```TypeScript
+enum FeatureForDevice
+```
+
 Enumerates device features.
 
 **Since:** 24
@@ -28,7 +32,7 @@ X_KEY = 1
 
 X key.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -56,7 +60,7 @@ PACKET_FILTERING = 3
 
 Network packet filtering.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +74,7 @@ SUDO = 4
 
 Super user do.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -750,7 +754,7 @@ SYSTEM_ROLLBACK = 51
 
 System rollback capability.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

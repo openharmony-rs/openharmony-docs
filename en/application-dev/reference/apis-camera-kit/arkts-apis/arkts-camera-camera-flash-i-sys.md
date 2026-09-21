@@ -1,5 +1,9 @@
 # Flash
 
+```TypeScript
+interface Flash extends FlashQuery
+```
+
 **Flash** inherits from [FlashQuery](arkts-camera-camera-flashquery-i.md).
 
 It provides APIs related to the flash.

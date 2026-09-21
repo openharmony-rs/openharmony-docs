@@ -1,5 +1,9 @@
 # MmsReadRecInd（系统接口）
 
+```TypeScript
+export interface MmsReadRecInd
+```
+
 彩信读取记录索引。
 
 **起始版本：** 8

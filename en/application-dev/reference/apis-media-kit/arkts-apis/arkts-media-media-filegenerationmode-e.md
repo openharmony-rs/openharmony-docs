@@ -1,5 +1,9 @@
 # FileGenerationMode
 
+```TypeScript
+enum FileGenerationMode
+```
+
 Enumerates the modes for creating media files.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # CameraTrackingLayout
 
+```TypeScript
+export enum CameraTrackingLayout
+```
+
 相机跟踪布局
 
 @enum { int }

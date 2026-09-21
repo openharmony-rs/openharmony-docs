@@ -1,5 +1,9 @@
 # ResolvedUIContext
 
+```TypeScript
+export class ResolvedUIContext extends UIContext
+```
+
 ResolvedUIContext实例对象。
 
 > **说明：** 

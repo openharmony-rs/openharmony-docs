@@ -1,5 +1,9 @@
 # FusionFenceType (System API)
 
+```TypeScript
+export enum FusionFenceType
+```
+
 Enum for fusion fence type.
 
 **Since:** 26.0.0

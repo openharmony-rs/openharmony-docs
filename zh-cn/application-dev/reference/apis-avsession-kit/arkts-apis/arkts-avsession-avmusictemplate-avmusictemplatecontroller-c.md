@@ -1,5 +1,9 @@
 # AVMusicTemplateController
 
+```TypeScript
+class AVMusicTemplateController
+```
+
 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。
 
 > **说明：** 

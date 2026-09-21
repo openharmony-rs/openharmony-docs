@@ -1,5 +1,9 @@
 # InterstitialDialogAction
 
+```TypeScript
+export declare class InterstitialDialogAction
+```
+
 The **InterstitialDialogAction** component is a dialog box used in atomic services to temporarily display information that requires user attention or actions to be taken while maintaining the current context. Users can trigger corresponding actions by clicking different areas of the dialog box.
 
 **Since:** 12

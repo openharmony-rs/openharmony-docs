@@ -1,5 +1,9 @@
 # DataShareResultSet (System API)
 
+```TypeScript
+export default interface DataShareResultSet
+```
+
 Provides APIs for accessing the result sets returned.
 
 The column or key names are returned as a string array, in which the strings are in the same order as the columns or keys in the result set.

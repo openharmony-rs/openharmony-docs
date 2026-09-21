@@ -1,8 +1,10 @@
 # RingtoneOptions（系统接口）
 
-铃声参数选项。
+```TypeScript
+export interface RingtoneOptions
+```
 
-@typedef RingtoneOptions
+铃声参数选项。
 
 **起始版本：** 10
 

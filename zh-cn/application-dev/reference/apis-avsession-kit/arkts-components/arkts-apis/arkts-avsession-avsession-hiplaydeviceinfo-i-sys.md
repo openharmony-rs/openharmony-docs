@@ -1,5 +1,9 @@
 # HiPlayDeviceInfo（系统接口）
 
+```TypeScript
+interface HiPlayDeviceInfo
+```
+
 HiPlay 设备类型定义
 
 **起始版本：** 24
@@ -84,11 +88,11 @@ supportMultiDeviceMode?: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

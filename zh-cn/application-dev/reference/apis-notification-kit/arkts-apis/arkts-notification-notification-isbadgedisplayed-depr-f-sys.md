@@ -33,6 +33,8 @@ function isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback<boolean>
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取角标使能状态回调函数。 |
 
 
+<a id="isbadgedisplayed-1"></a>
+
 ## isBadgeDisplayed
 
 ```TypeScript

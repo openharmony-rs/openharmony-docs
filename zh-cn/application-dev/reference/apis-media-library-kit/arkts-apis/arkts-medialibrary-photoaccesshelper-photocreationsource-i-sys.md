@@ -1,5 +1,9 @@
 # PhotoCreationSource（系统接口）
 
+```TypeScript
+interface PhotoCreationSource
+```
+
 代替应用创建资产传入的应用信息。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # SearchDirection（系统接口）
 
+```TypeScript
+export enum SearchDirection
+```
+
 Search direction.
 
 @enum { int }

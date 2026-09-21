@@ -6,6 +6,8 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="getsysteminputmethodconfigability-1"></a>
+
 ## getSystemInputMethodConfigAbility
 
 ```TypeScript
@@ -45,12 +47,6 @@ Get the system input method config ability of a specified user.
 | [12800025](../errorcode-inputmethod-framework.md#12800025-cross-user-operation-denied) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
 **Examples**
-
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-
-let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility();
-```
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';

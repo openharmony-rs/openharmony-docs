@@ -1,5 +1,9 @@
 # PanProfile
 
+```TypeScript
+interface PanProfile extends BaseProfile
+```
+
 表示蓝牙PAN通信的实例，提供查询本端PAN支持状态、网络共享状态等能力，适用于蓝牙个人局域网共享网络场景。
 
 使用PanProfile方法之前需要创建该类的实例进行操作，通过[createPanProfile](arkts-connectivity-pan-createpanprofile-f.md)方法构造此实例。该类继承于[BaseProfile](arkts-connectivity-pan-baseprofile-t.md)，因此可以使用其父类中的方法。

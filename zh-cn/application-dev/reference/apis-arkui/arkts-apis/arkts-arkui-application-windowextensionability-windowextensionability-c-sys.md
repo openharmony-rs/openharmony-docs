@@ -1,5 +1,9 @@
 # WindowExtensionAbility（系统接口）
 
+```TypeScript
+declare class WindowExtensionAbility
+```
+
 WindowExtensionAbility类。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # InputAttribute
 
+```TypeScript
+export interface InputAttribute
+```
+
 Describes the attributes of the edit box, including the text input type and Enter key function type.
 
 **Since:** 10

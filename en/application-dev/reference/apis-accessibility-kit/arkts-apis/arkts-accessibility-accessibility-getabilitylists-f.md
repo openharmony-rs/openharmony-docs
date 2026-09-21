@@ -23,7 +23,7 @@ Obtains the accessibility application list. This API uses an asynchronous callba
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md)(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;)
+**Substitutes:** [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist-1)(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;)
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -44,20 +44,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let abilityType: accessibility.AbilityType = 'spoken';
 let abilityState: accessibility.AbilityState = 'enable';
 
-accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let abilityType: accessibility.AbilityType = 'spoken';
-let abilityState: accessibility.AbilityState = 'enable';
-
 accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
   if (err) {
     console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
@@ -67,6 +53,8 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
 });
 ```
 
+
+<a id="getabilitylists-1"></a>
 
 ## getAbilityLists
 
@@ -99,4 +87,16 @@ Obtains the accessibility application list. This API uses a promise to return th
 
 **Examples**
 
-See [getAbilityLists](#getabilitylists)
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken';
+let abilityState: accessibility.AbilityState = 'enable';
+
+accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+});
+```

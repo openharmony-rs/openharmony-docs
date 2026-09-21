@@ -1,10 +1,14 @@
 # RemoteWindow属性/事件
 
+```TypeScript
+declare class RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
+```
+
 支持通用属性。
 
 支持通用事件。
 
-**继承/实现关系：** RemoteWindowAttribute extends CommonMethod&lt;RemoteWindowAttribute&gt;
+**继承/实现关系：** RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
 
 **起始版本：** 9
 

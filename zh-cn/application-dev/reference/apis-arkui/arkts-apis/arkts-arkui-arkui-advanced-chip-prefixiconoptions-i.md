@@ -1,5 +1,9 @@
 # PrefixIconOptions
 
+```TypeScript
+export interface PrefixIconOptions extends IconCommonOptions
+```
+
 PrefixIconOptions定义前缀图标的属性。
 
 继承于[IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)。

@@ -1,5 +1,9 @@
 # IconItemOptions
 
+```TypeScript
+export interface IconItemOptions
+```
+
 定义了尾部builder接口，用于配置尾部图标及其背景区域的显示属性。
 
 **起始版本：** 12

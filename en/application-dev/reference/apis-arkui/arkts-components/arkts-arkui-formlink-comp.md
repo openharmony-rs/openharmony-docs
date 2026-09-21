@@ -24,7 +24,7 @@ Init FormLink component with options.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [FormLinkOptions](arkts-arkui-formlinkoptions-i.md) | Yes | Widget information. |
+| options | [FormLinkOptions](arkts-arkui-formlink-comp-formlinkoptions-i.md) | Yes | Widget information. |
 
 ## Summary
 
@@ -32,7 +32,7 @@ Init FormLink component with options.
 
 | Name | Description |
 | --- | --- |
-| [FormLinkOptions](arkts-arkui-formlinkoptions-i.md) | Defines the FormLink options. |
+| [FormLinkOptions](arkts-arkui-formlink-comp-formlinkoptions-i.md) | Defines the FormLink options. |
 
 ## Examples
 
@@ -97,8 +97,24 @@ struct FormLinkDemo {
 }
 ```
 
-```TypeScript
 
 
 The following is an example of uris configuration in the [module.json5](../../../quick-start/module-configuration-file.md#skills) file of the target application:
+
+```TypeScript
+"abilities": [
+  {
+    "skills": [
+      {
+        "uris": [
+          {
+            "scheme": "example",
+            "host": "uri.ohos.com",
+            "path": "link_page"
+          },
+        ]
+      }
+    ],
+  }
+]
 ```

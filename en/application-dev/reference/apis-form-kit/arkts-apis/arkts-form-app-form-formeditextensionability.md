@@ -1,4 +1,4 @@
-# @ohos.app.form.FormEditExtensionAbility
+# @ohos.app.form.FormEditExtensionAbility(FormEditExtensionAbility)
 
 ## Modules to Import
 

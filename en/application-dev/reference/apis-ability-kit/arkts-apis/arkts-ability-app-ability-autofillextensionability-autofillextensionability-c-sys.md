@@ -1,6 +1,10 @@
 # AutoFillExtensionAbility (System API)
 
-The AutoFillExtensionAbility module provides APIs for automatically filling in and saving accounts and passwords. It inherits from [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md).
+```TypeScript
+declare class AutoFillExtensionAbility extends ExtensionAbility
+```
+
+The AutoFillExtensionAbility module supports auto-fill and save for multiple data types such as accounts, passwords, and addresses. It inherits from [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md).
 
 **Inheritance/Implementation:** AutoFillExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)
 
@@ -51,7 +55,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 onCreate(): void
 ```
 
-Called when an AutoFillExtensionAbility is created.
+Called when an AutoFillExtensionAbility is created. In this method, you can perform initialization operations, such as registering listeners and loading necessary resources.
 
 **Since:** 11
 
@@ -200,7 +204,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback: SaveRequestCallback): void
 ```
 
-Called when automatic or manual saving is initiated.
+This callback is triggered when automatic or manual saving is initiated.
 
 **Since:** 11
 
@@ -260,7 +264,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 onSessionDestroy(session: UIExtensionContentSession): void
 ```
 
-Called when a UIExtensionContentSession instance is destroyed for this AutoFillExtensionAbility.
+Called when the session of this AutoFillExtensionAbility is destroyed. The session is usually destroyed when the user cancels the fill operation or the fill task is completed.
 
 **Since:** 11
 
@@ -295,7 +299,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 onUpdateRequest(request: UpdateRequest): void
 ```
 
-Called when an update request is received.
+Called when the application UI data changes and the filled content needs to be updated. The system triggers this callback. The request parameter contains the updated viewData and other information.
 
 **Since:** 12
 

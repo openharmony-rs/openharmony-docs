@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+export enum Direction
+```
+
 表示屏幕方向的枚举，用于[Configuration.direction](arkts-ability-app-ability-configuration-configuration-i.md)字段。开发者可以使用这些预置枚举设置或获取系统/应用的显示方向。
 
 **起始版本：** 9

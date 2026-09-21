@@ -1,8 +1,12 @@
 # Capability
 
+```TypeScript
+enum Capability
+```
+
 车辆感知功能。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -14,7 +18,7 @@ SPATIAL_MOTION = 'SpatialMotion'
 
 隔空手势能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +32,7 @@ REALTIME_WEATHER = 'RealTimeWeather'
 
 实时天气能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,7 @@ REFUELING = 'Refueling'
 
 加油识别能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

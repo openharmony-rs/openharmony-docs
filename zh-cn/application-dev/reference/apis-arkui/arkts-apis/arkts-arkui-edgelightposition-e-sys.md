@@ -1,5 +1,9 @@
 # EdgeLightPosition（系统接口）
 
+```TypeScript
+declare enum EdgeLightPosition
+```
+
 边缘流光位置。
 
 **起始版本：** 26.0.0

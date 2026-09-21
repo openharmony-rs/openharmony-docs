@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+interface Size
+```
+
 表示图片尺寸。
 
 **起始版本：** 6

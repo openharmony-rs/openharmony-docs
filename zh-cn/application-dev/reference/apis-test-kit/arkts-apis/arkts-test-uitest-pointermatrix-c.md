@@ -1,5 +1,9 @@
 # PointerMatrix
 
+```TypeScript
+declare class PointerMatrix
+```
+
 存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
 
 **起始版本：** 9

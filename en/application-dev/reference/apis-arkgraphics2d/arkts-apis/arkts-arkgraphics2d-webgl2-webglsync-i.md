@@ -1,5 +1,9 @@
 # WebGLSync
 
+```TypeScript
+interface WebGLSync
+```
+
 WebGL 2.0
 
 **Since:** 7

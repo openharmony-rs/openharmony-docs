@@ -1,5 +1,9 @@
 # GnssFence (System API)
 
+```TypeScript
+export interface GnssFence
+```
+
 Indicates GNSS fence information.
 
 **Since:** 26.0.0

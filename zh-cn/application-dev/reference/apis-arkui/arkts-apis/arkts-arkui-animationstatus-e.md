@@ -1,5 +1,9 @@
 # AnimationStatus
 
+```TypeScript
+declare enum AnimationStatus
+```
+
 Animation status.
 
 **起始版本：** 7

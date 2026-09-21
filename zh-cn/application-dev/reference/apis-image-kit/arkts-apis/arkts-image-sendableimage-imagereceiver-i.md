@@ -1,5 +1,9 @@
 # ImageReceiver
 
+```TypeScript
+interface ImageReceiver
+```
+
 图像接收类，用于获取组件Surface ID，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
 
 在调用以下方法前需要先创建ImageReceiver实例。

@@ -1,5 +1,9 @@
 # VolumeFlag（系统接口）
 
+```TypeScript
+enum VolumeFlag
+```
+
 枚举，音量相关操作。
 
 **起始版本：** 12

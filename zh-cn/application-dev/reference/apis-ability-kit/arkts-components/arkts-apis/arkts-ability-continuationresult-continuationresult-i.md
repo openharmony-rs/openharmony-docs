@@ -1,5 +1,9 @@
 # ContinuationResult
 
+```TypeScript
+export interface ContinuationResult
+```
+
 流转管理入口返回的设备信息。
 
 **起始版本：** 8

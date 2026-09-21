@@ -1,5 +1,9 @@
 # ArcSliderValueOptionsConstructorOptions
 
+```TypeScript
+interface ArcSliderValueOptionsConstructorOptions
+```
+
 ArcSliderValueOptions的构造信息。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # AnimateOptions
 
+```TypeScript
+export interface AnimateOptions
+```
+
 AnimateOptions
 
 @interface AnimateOptions

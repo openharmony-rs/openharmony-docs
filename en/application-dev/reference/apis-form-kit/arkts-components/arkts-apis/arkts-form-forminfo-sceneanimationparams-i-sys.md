@@ -1,5 +1,9 @@
 # SceneAnimationParams (System API)
 
+```TypeScript
+interface SceneAnimationParams
+```
+
 The scene animation form params.
 
 @typedef { SceneAnimationParams }

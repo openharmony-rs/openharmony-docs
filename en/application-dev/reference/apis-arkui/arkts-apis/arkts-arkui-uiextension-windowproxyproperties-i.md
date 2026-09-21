@@ -1,5 +1,9 @@
 # WindowProxyProperties
 
+```TypeScript
+interface WindowProxyProperties
+```
+
 Provides information about a component.
 
 **Since:** 14

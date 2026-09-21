@@ -73,6 +73,45 @@ huks.generateKey(keyAlias, options, (err, data) => {
 });
 ```
 
+
+<a id="generatekey-1"></a>
+
+## generateKey
+
+```TypeScript
+function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
+```
+
+生成密钥。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用
+> [huks.generateKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1)替代。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md#generatekeyitem-1)(keyAlias: string, options: HuksOptions)
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyAlias | string | 是 | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于存放生成key所需TAG。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Promise对象，返回HuksResult。 |
+
+**示例**
+
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -102,42 +141,3 @@ let options: huks.HuksOptions = {
 };
 let result = huks.generateKey(keyAlias, options);
 ```
-
-
-## generateKey
-
-```TypeScript
-function generateKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
-```
-
-生成密钥。使用Promise异步回调。
-
-> **说明：** 
-> 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.generateKeyItem&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-generatekeyitem-f.md)替代。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [generateKeyItem](arkts-universalkeystore-huks-generatekeyitem-f.md)(keyAlias: string, options: HuksOptions)
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| keyAlias | string | 是 | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。 |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | 用于存放生成key所需TAG。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Promise对象，返回HuksResult。 |
-
-**示例**
-
-参见 generateKey

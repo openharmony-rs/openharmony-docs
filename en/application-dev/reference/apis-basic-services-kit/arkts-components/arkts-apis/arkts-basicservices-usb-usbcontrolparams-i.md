@@ -1,5 +1,9 @@
 # USBControlParams
 
+```TypeScript
+interface USBControlParams
+```
+
 Represents control transfer parameters.
 
 **Since:** 8

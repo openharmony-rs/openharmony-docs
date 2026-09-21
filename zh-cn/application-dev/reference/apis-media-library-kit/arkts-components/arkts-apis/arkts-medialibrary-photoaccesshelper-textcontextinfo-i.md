@@ -1,5 +1,9 @@
 # TextContextInfo
 
+```TypeScript
+interface TextContextInfo
+```
+
 文本信息，用于推荐图片的文本信息。
 
 **起始版本：** 12

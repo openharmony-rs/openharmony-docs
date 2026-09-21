@@ -1,5 +1,9 @@
 # AddFilterRule (System API)
 
+```TypeScript
+interface AddFilterRule
+```
+
 Defines the network packet filtering rule to add.
 
 **Since:** 10

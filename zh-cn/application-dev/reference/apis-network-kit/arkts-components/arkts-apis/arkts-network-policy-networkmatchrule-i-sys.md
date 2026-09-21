@@ -1,5 +1,9 @@
 # NetworkMatchRule（系统接口）
 
+```TypeScript
+export interface NetworkMatchRule
+```
+
 网络标识，用来确定设置哪一个网络
 
 **起始版本：** 10

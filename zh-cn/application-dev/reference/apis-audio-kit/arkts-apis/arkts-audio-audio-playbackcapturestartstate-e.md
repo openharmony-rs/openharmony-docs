@@ -1,5 +1,9 @@
 # PlaybackCaptureStartState
 
+```TypeScript
+enum PlaybackCaptureStartState
+```
+
 表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。
 
 **起始版本：** 26.0.0

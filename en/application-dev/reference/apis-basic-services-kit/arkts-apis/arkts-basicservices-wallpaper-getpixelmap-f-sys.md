@@ -46,17 +46,8 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: Business
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
-}).catch((error: BusinessError) => {
-  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
-});
-```
-
+<a id="getpixelmap-1"></a>
 
 ## getPixelMap
 
@@ -90,4 +81,13 @@ Obtains the default pixel map of a wallpaper of the specified type. Returns the 
 
 **Examples**
 
-See [getPixelMap](#getpixelmap)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
+  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+}).catch((error: BusinessError) => {
+  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+});
+```

@@ -25,7 +25,7 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key to be queried. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the system parameter value asynchronously. If the operation is successful, **err** is **undefined** and **data** is the system parameter value. If the operation fails, **err** is an error object and **data** is **undefined**. |
 
 **Error codes:**
 
@@ -54,37 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemParameterEnhance.get('const.ohos.apiversion', 'default', (err: BusinessError, data: string) => {
-    if (err) {
-      console.error(`Failed to get const.ohos.apiversion value. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`get const.ohos.apiversion value success: ${data}`);
-    }
-  });
-} catch (e) {
-  console.error('get unexpected error: ' + e);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let promise: Promise<string> = systemParameterEnhance.get('const.ohos.apiversion');
-  promise.then((value: string) => {
-    console.info('get const.ohos.apiversion success: ' + value);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get const.ohos.apiversion. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (e) {
-  console.error('get unexpected error: ' + e);
-}
-```
-
+<a id="get-1"></a>
 
 ## get
 
@@ -105,8 +76,8 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key to be queried. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
-| def | string | Yes | Default value. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. |
+| def | string | Yes | Default value of the system parameter. It works only when the system parameter does not exist.<br> Its value can be a random character string. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the system parameter value asynchronously. If the operation is successful, **err** is **undefined** and **data** is the system parameter value. If the operation fails, **err** is an error object and **data** is **undefined**. |
 
 **Error codes:**
 
@@ -119,8 +90,24 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 
 **Examples**
 
-See [get](#get)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  systemParameterEnhance.get('const.ohos.apiversion', 'default', (err: BusinessError, data: string) => {
+    if (err) {
+      console.error(`Failed to get const.ohos.apiversion value. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info(`get const.ohos.apiversion value success: ${data}`);
+    }
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
+}
+```
+
+
+<a id="get-2"></a>
 
 ## get
 
@@ -141,13 +128,13 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key to be queried. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
-| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist.<br> The value can be **undefined** or any custom value. |
+| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist. <br> Its value can be **undefined** or a random character string. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the execution result. |
+| Promise&lt;string&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -160,4 +147,17 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 
 **Examples**
 
-See [get](#get)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise: Promise<string> = systemParameterEnhance.get('const.ohos.apiversion');
+  promise.then((value: string) => {
+    console.info('get const.ohos.apiversion success: ' + value);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get const.ohos.apiversion. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
+}
+```

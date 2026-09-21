@@ -1,5 +1,9 @@
 # ThreadInfo
 
+```TypeScript
+class ThreadInfo
+```
+
 Describes the internal information about a worker thread.
 
 **Since:** 10

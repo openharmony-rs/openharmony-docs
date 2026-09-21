@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+enum OperationType
+```
+
 Enumerates the types of additional operation to perform.
 
 **Since:** 12

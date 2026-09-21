@@ -1,5 +1,9 @@
 # Macro
 
+```TypeScript
+interface Macro extends MacroQuery
+```
+
 Macro继承自[MacroQuery](arkts-camera-camera-macroquery-i.md)。
 
 提供使能微距能力的接口。
@@ -47,3 +51,14 @@ enableMacro(enabled: boolean): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 11 - 18 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+function enableMacro(photoSession: camera.PhotoSession): void {
+  let isSupported: boolean = photoSession.isMacroSupported();
+  if (isSupported) {
+    photoSession.enableMacro(true);
+  }
+}
+```

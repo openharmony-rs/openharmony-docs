@@ -1,5 +1,9 @@
 # BoidsSimRepulsionParameters (System API)
 
+```TypeScript
+export interface BoidsSimRepulsionParameters
+```
+
 Repulsion field parameters, used to configure the repulsion field in the scene.
 
 **Since:** 26.0.0

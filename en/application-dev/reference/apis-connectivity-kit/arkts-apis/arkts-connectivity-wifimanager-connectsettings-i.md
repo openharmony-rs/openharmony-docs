@@ -1,5 +1,9 @@
 # ConnectSettings
 
+```TypeScript
+interface ConnectSettings
+```
+
 Describes the settings for Wi-Fi connection.
 
 **Since:** 26.0.0

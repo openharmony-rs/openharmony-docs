@@ -1,5 +1,9 @@
 # VideoSize
 
+```TypeScript
+interface VideoSize
+```
+
 Describes the video Dimensions.
 
 **起始版本：** 26.0.0

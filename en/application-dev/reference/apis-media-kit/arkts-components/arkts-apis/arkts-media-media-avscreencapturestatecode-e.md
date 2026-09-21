@@ -1,5 +1,9 @@
 # AVScreenCaptureStateCode
 
+```TypeScript
+enum AVScreenCaptureStateCode
+```
+
 Enumerates the screen capture states used in callbacks.
 
 **Since:** 12

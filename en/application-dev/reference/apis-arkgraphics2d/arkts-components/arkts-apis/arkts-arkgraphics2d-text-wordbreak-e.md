@@ -1,5 +1,9 @@
 # WordBreak
 
+```TypeScript
+enum WordBreak
+```
+
 Enumerates the word break types.
 
 **Since:** 12

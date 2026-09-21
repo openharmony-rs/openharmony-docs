@@ -1,5 +1,9 @@
 # PropertyDescriptorType
 
+```TypeScript
+enum PropertyDescriptorType
+```
+
 Enumerates the property descriptor types.
 
 **Since:** 26.0.0

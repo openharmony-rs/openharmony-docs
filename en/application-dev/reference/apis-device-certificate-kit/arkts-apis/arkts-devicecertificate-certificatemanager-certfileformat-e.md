@@ -1,5 +1,9 @@
 # CertFileFormat
 
+```TypeScript
+export enum CertFileFormat
+```
+
 Represents the certificate file format.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # CertInfo
 
+```TypeScript
+export interface CertInfo
+```
+
 表示证书详细信息。
 
 **起始版本：** 11

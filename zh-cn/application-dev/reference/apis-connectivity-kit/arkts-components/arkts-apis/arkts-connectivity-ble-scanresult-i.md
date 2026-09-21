@@ -1,5 +1,9 @@
 # ScanResult
 
+```TypeScript
+interface ScanResult
+```
+
 扫描到符合过滤条件的广播报文后，上报的扫描数据。
 
 **起始版本：** 10

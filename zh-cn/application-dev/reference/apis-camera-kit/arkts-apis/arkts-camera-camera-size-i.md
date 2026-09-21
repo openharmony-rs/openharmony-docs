@@ -1,5 +1,9 @@
 # Size
 
+```TypeScript
+interface Size
+```
+
 尺寸参数。
 
 **起始版本：** 10

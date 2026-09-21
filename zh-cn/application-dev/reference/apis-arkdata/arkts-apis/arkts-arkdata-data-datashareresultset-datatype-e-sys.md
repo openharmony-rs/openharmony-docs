@@ -1,5 +1,9 @@
 # DataType（系统接口）
 
+```TypeScript
+export enum DataType
+```
+
 数据类型枚举。
 
 **起始版本：** 9

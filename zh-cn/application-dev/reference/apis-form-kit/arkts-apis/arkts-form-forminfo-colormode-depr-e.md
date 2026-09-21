@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+enum ColorMode
+```
+
 卡片支持的颜色模式枚举。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # OnBodyStateResponse
 
+```TypeScript
+export interface OnBodyStateResponse
+```
+
 设备佩戴状态的响应对象，包含设备是否已佩戴的状态数据。
 
 **起始版本：** 3

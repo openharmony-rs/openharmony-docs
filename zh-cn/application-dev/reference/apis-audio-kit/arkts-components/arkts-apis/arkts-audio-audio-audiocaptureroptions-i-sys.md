@@ -1,5 +1,9 @@
 # AudioCapturerOptions
 
+```TypeScript
+interface AudioCapturerOptions
+```
+
 音频采集器选项信息。
 
 **起始版本：** 8
@@ -11,6 +15,28 @@
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+## playbackCaptureUid
+
+```TypeScript
+playbackCaptureUid?: number
+```
+
+应用UID，用于音视频通话播放采集。
+
+此参数仅在[AudioCapturerOptions](./arkts-apis-audio-i.md#audiocaptureroptions).playbackCaptureMode设置为[AudioPlaybackCaptureMode](arkts-audio-audio-audioplaybackcapturemode-e.md).MODE_ONLY_VOIP时生效。在其他模式下，此参数将被忽略。
+
+SystemCapability.Multimedia.Audio.PlaybackCapture
+
+**类型：** number
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+**系统接口：** 此接口为系统接口。
 
 ## preferredInputDevice
 

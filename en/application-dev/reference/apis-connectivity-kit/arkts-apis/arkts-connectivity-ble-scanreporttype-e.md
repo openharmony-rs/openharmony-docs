@@ -1,5 +1,9 @@
 # ScanReportType
 
+```TypeScript
+enum ScanReportType
+```
+
 Scan report type used during scan.
 
 **Since:** 15

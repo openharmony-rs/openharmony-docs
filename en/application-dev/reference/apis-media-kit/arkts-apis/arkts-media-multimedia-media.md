@@ -1,4 +1,4 @@
-# @ohos.multimedia.media
+# @ohos.multimedia.media((Media))
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
@@ -24,13 +24,13 @@ import { media } from '@kit.MediaKit';
 | [createAVAdsController](arkts-media-media-createavadscontroller-f.md) | Create an ad playback controller associated with the player instance. |
 | [createAVDownloaderManager](arkts-media-media-createavdownloadermanager-f.md) | Creating a Streaming Resource Download Task Manager |
 | [createAVImageGenerator](arkts-media-media-createavimagegenerator-f.md) | Creates an AVImageGenerator instance. This API uses a promise to return the result. |
-| [createAVImageGenerator](arkts-media-media-createavimagegenerator-f.md) | Creates an AVImageGenerator instance. This API uses an asynchronous callback to return the result. |
+| [createAVImageGenerator](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator-2) | Creates an AVImageGenerator instance. This API uses an asynchronous callback to return the result. |
 | [createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md) | Creates an AVMetadataExtractor instance. This API uses a promise to return the result. |
-| [createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md) | Creates an AVMetadataExtractor instance. This API uses an asynchronous callback to return the result. |
+| [createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-2) | Creates an AVMetadataExtractor instance. This API uses an asynchronous callback to return the result. |
 | [createAVPlayer](arkts-media-media-createavplayer-f.md) | Creates an AVPlayer instance. This API uses an asynchronous callback to return the result. |
-| [createAVPlayer](arkts-media-media-createavplayer-f.md) | Creates an AVPlayer instance. This API uses a promise to return the result. |
+| [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer-2) | Creates an AVPlayer instance. This API uses a promise to return the result. |
 | [createAVRecorder](arkts-media-media-createavrecorder-f.md) | Creates an AVRecorder instance. This API uses an asynchronous callback to return the result. |
-| [createAVRecorder](arkts-media-media-createavrecorder-f.md) | Creates an AVRecorder instance. This API uses a promise to return the result. |
+| [createAVRecorder](arkts-media-media-createavrecorder-f.md#createavrecorder-2) | Creates an AVRecorder instance. This API uses a promise to return the result. |
 | [createAVScreenCaptureRecorder](arkts-media-media-createavscreencapturerecorder-f.md) | Creates an AVScreenCaptureRecorder instance. This API uses a promise to return the result. |
 | [createAVTranscoder](arkts-media-media-createavtranscoder-f.md) | Creates an AVTranscoder instance. This API uses a promise to return the result. |
 | [createMediaSourceWithDataSource](arkts-media-media-createmediasourcewithdatasource-f.md) | Creates a media source from a custom data source. |
@@ -39,9 +39,9 @@ import { media } from '@kit.MediaKit';
 | [createMediaSourceWithStreamData](arkts-media-media-createmediasourcewithstreamdata-f.md) | Creates a multi-bitrate media source for streaming media. Currently, only the HTTP-FLV multi-bitrate media source is supported. |
 | [createMediaSourceWithUrl](arkts-media-media-createmediasourcewithurl-f.md) | Creates a media source for streaming media to be pre-downloaded. |
 | [createSoundPool](arkts-media-media-createsoundpool-f.md) | Creates a SoundPool instance. This API uses an asynchronous callback to return the result. |
-| [createSoundPool](arkts-media-media-createsoundpool-f.md) | Creates a SoundPool instance. This API uses a promise to return the result. |
-| [createVideoPlayer](arkts-media-media-createvideoplayer-f.md) | Creates a **VideoPlayer** instance. This API uses an asynchronous callback to return the result. |
-| [createVideoPlayer](arkts-media-media-createvideoplayer-f.md) | Creates a VideoPlayer instance. This API uses a promise to return the result. |
+| [createSoundPool](arkts-media-media-createsoundpool-f.md#createsoundpool-2) | Creates a SoundPool instance. This API uses a promise to return the result. |
+| [createVideoPlayer](arkts-media-media-createvideoplayer-f.md#createvideoplayer) | Creates a **VideoPlayer** instance. This API uses an asynchronous callback to return the result. |
+| [createVideoPlayer](arkts-media-media-createvideoplayer-f.md#createvideoplayer-1) | Creates a VideoPlayer instance. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
@@ -50,7 +50,7 @@ import { media } from '@kit.MediaKit';
 | --- | --- |
 | [createParallelSoundPool](arkts-media-media-createparallelsoundpool-f-sys.md) | Creates a **SoundPool** instance. This API uses a promise to return the result. |
 | [createVideoRecorder](arkts-media-media-createvideorecorder-f-sys.md) | The maintenance of this interface has been stopped since version api 9. Please use AVRecorder Creates an VideoRecorder instance. |
-| [createVideoRecorder](arkts-media-media-createvideorecorder-f-sys.md) | The maintenance of this interface has been stopped since version api 9. Please use AVRecorder Creates an VideoRecorder instance. |
+| [createVideoRecorder](arkts-media-media-createvideorecorder-f-sys.md#createvideorecorder-2) | The maintenance of this interface has been stopped since version api 9. Please use AVRecorder Creates an VideoRecorder instance. |
 | [getAVScreenCaptureConfigurableParameters](arkts-media-media-getavscreencaptureconfigurableparameters-f-sys.md) | get Configurations which user can changes from AVScreenCapture server |
 | [getScreenCaptureMonitor](arkts-media-media-getscreencapturemonitor-f-sys.md) | Obtains a **ScreenCaptureMonitor** instance. This API uses a promise to return the result. |
 | [reportAVScreenCaptureUserChoice](arkts-media-media-reportavscreencaptureuserchoice-f-sys.md) | Reports the user selection result in the screen capture privacy dialog box to the AVScreenCapture server to determine whether to start screen capture. Screen capture starts only when the user touches a button to continue the operation. This API is called by the system application that creates the dialog box. |
@@ -67,9 +67,9 @@ import { media } from '@kit.MediaKit';
 | [AVDataSrcDescriptor](arkts-media-media-avdatasrcdescriptor-i.md) | Defines the descriptor of an audio and video file, which is used in DataSource playback mode. Use scenario: An application can create a playback instance and start playback before it finishes downloading the audio and video resources. |
 | [AVDownloaderManager](arkts-media-media-avdownloadermanager-i.md) | Definition of the Offline Download Management Interface |
 | [AVFileDescriptor](arkts-media-media-avfiledescriptor-i.md) | Media file descriptor. The caller needs to ensure that the fd is valid and the offset and length are correct. |
-| [AVImageGenerator](arkts-media-media-avimagegenerator-i.md) | AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md) to create an AVImageGenerator instance. |
+| [AVImageGenerator](arkts-media-media-avimagegenerator-i.md) | AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator-2) to create an AVImageGenerator instance. |
 | [AVMetadata](arkts-media-media-avmetadata-i.md) | Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) can be used as input parameters for recording of [AVRecorder](arkts-media-media-avrecorder-i.md). |
-| [AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md) | AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md) to create an AVMetadataExtractor instance. |
+| [AVMetadataExtractor](arkts-media-media-avmetadataextractor-i.md) | AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-2) to create an AVMetadataExtractor instance. |
 | [AVMetricsEvent](arkts-media-media-avmetricsevent-i.md) | Describes the information of an Metrics Event. |
 | [AVPlayer](arkts-media-media-avplayer-i.md) | AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md) to create an AVPlayer instance. |
 | [AVRecorder](arkts-media-media-avrecorder-i.md) | AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md) to create an AVRecorder instance. |
@@ -107,11 +107,10 @@ import { media } from '@kit.MediaKit';
 | Name | Description |
 | --- | --- |
 | [AVMetadata](arkts-media-media-avmetadata-i-sys.md) | Defines the audio and video metadata. Parameters that are not declared as read-only in [AVRecorderConfig](arkts-media-media-avrecorderconfig-i.md) can be used as input parameters for recording of [AVRecorder](arkts-media-media-avrecorder-i.md). |
-| [AVMetadataExtractor](arkts-media-media-avmetadataextractor-i-sys.md) | AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md) to create an AVMetadataExtractor instance. |
+| [AVMetadataExtractor](arkts-media-media-avmetadataextractor-i-sys.md) | AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-2) to create an AVMetadataExtractor instance. |
 | [AVPlayer](arkts-media-media-avplayer-i-sys.md) | AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md) to create an AVPlayer instance. |
 | [AVRecorder](arkts-media-media-avrecorder-i-sys.md) | AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md) to create an AVRecorder instance. |
 | [AVRecorderConfig](arkts-media-media-avrecorderconfig-i-sys.md) | Describes the audio and video recording parameters. |
-| [AVRecorderProfile](arkts-media-media-avrecorderprofile-i-sys.md) | Describes the audio and video recording profile. |
 | [AVScreenCaptureStrategy](arkts-media-media-avscreencapturestrategy-i-sys.md) | Provides the media AVScreenCaptureStrategy definition. |
 | [PixelMapParams](arkts-media-media-pixelmapparams-i-sys.md) | Defines the format parameters of the video thumbnail to be obtained. |
 | [PlaybackStrategy](arkts-media-media-playbackstrategy-i-sys.md) | Provides preferred playback settings for player. |

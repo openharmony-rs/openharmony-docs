@@ -1,5 +1,9 @@
 # Color (System API)
 
+```TypeScript
+interface Color
+```
+
 RGBA color description.
 
 **Since:** 20

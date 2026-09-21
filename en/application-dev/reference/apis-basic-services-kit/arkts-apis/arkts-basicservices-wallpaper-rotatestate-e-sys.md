@@ -1,5 +1,9 @@
 # RotateState (System API)
 
+```TypeScript
+enum RotateState
+```
+
 Define the rotation state of wallpaper
 
 @enum { int } RotateState

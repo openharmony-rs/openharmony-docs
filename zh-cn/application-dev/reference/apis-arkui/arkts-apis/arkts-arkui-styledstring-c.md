@@ -1,5 +1,9 @@
 # StyledString
 
+```TypeScript
+declare class StyledString
+```
+
 属性字符串。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ExtensionValue (System API)
 
+```TypeScript
+export interface ExtensionValue
+```
+
 Represents additional information about a data record.
 
 **Since:** 11

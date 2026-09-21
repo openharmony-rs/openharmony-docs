@@ -1,5 +1,9 @@
 # Event (System API)
 
+```TypeScript
+interface Event
+```
+
 Represents a service event.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ScrollOffset
 
+```TypeScript
+interface ScrollOffset
+```
+
 Represents the current scrolling offset of a web page.
 
 **Since:** 13

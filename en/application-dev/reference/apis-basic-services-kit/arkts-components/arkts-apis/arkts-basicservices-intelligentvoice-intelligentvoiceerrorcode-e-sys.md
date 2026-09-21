@@ -1,5 +1,9 @@
 # IntelligentVoiceErrorCode (System API)
 
+```TypeScript
+enum IntelligentVoiceErrorCode
+```
+
 Enumerates intelligent voice error code. @enum {number}
 
 **Since:** 10

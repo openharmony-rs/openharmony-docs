@@ -54,7 +54,7 @@ EmbeddedComponent(
 | --- | --- | --- | --- |
 | loader | import('../api/@ohos.app.ability.Want').default | 是 | 要加载的EmbeddedUIExtensionAbility。 |
 | type | [EmbeddedType](../arkts-apis/arkts-arkui-embeddedtype-e.md) | 是 | 提供方的类型。 |
-| options | [EmbeddedOptions](arkts-arkui-embeddedoptions-i.md) | 否 | 嵌入式组件的可选配置项，用于设置占位符、DPI跟随策略、窗口模式跟随策略等。 |
+| options | [EmbeddedOptions](arkts-arkui-embeddedcomponent-comp-embeddedoptions-i.md) | 否 | 嵌入式组件的可选配置项，用于设置占位符、DPI跟随策略、窗口模式跟随策略等。 |
 
 ## 汇总
 
@@ -62,12 +62,12 @@ EmbeddedComponent(
 
 | 名称 | 说明 |
 | --- | --- |
-| [EmbeddedOptions](arkts-arkui-embeddedoptions-i.md) | 用于在EmbeddedComponent创建时传递可选的构造参数。 |
-| [TerminationInfo](arkts-arkui-terminationinfo-i.md) | 用于表示被拉起的EmbeddedUIExtensionAbility的返回结果。 |
+| [EmbeddedOptions](arkts-arkui-embeddedcomponent-comp-embeddedoptions-i.md) | 用于在EmbeddedComponent创建时传递可选的构造参数。 |
+| [TerminationInfo](arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md) | 用于表示被拉起的EmbeddedUIExtensionAbility的返回结果。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [EmbeddedDpiFollowStrategy](arkts-arkui-embeddeddpifollowstrategy-e.md) | DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensionAbility。例如，当EmbeddedUIExtensionAbility需要与宿主应用保持视觉一致性时，可选择跟随宿主DPI；当EmbeddedUIExtensionAbility需要独立适配自身资源的DPI配置时，可选择跟随EmbeddedUIExtensionAbility DPI。 |
-| [EmbeddedWindowModeFollowStrategy](arkts-arkui-embeddedwindowmodefollowstrategy-e.md) | 窗口模式跟随策略，用于设置窗口模式跟随宿主或EmbeddedUIExtensionAbility。例如，当EmbeddedUIExtensionAbility需要与宿主应用保持一致的窗口模式（如全屏、分屏）时，可选择跟随宿主；当EmbeddedUIExtensionAbility需要独立控制窗口模式时，可选择跟随EmbeddedUIExtensionAbility。 |
+| [EmbeddedDpiFollowStrategy](arkts-arkui-embeddedcomponent-comp-embeddeddpifollowstrategy-e.md) | DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensionAbility。例如，当EmbeddedUIExtensionAbility需要与宿主应用保持视觉一致性时，可选择跟随宿主DPI；当EmbeddedUIExtensionAbility需要独立适配自身资源的DPI配置时，可选择跟随EmbeddedUIExtensionAbility DPI。 |
+| [EmbeddedWindowModeFollowStrategy](arkts-arkui-embeddedcomponent-comp-embeddedwindowmodefollowstrategy-e.md) | 窗口模式跟随策略，用于设置窗口模式跟随宿主或EmbeddedUIExtensionAbility。例如，当EmbeddedUIExtensionAbility需要与宿主应用保持一致的窗口模式（如全屏、分屏）时，可选择跟随宿主；当EmbeddedUIExtensionAbility需要独立控制窗口模式时，可选择跟随EmbeddedUIExtensionAbility。 |

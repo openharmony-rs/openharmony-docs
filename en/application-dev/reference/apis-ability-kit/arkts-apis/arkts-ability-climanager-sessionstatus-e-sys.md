@@ -1,5 +1,9 @@
 # SessionStatus (System API)
 
+```TypeScript
+enum SessionStatus
+```
+
 Enum for session status.
 
 **Since:** 26.0.0

@@ -14,6 +14,10 @@ function createMac(algName: string): Mac
 
 创建消息认证码实例。
 
+> **说明：** 
+> 
+> 此接口仅支持HMAC。推荐使用[createMac()](#createmac-1)接口。
+
 <br>支持的规格详见[HMAC消息认证码算法规格](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
 **起始版本：** 9
@@ -41,6 +45,7 @@ function createMac(algName: string): Mac
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 26.2.0+ |
 | [17620001](../errorcode-crypto-framework.md#17620001-内存操作失败) | Memory operation failed. |
 
 **示例**
@@ -58,23 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // Set algName based on the algorithm supported.
-  let spec: cryptoFramework.HmacSpec = {
-    algName: 'HMAC',
-    mdName: 'SHA256',
-  };
-  let mac = cryptoFramework.createMac(spec);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
-}
-```
-
+<a id="createmac-1"></a>
 
 ## createMac
 
@@ -115,4 +105,19 @@ function createMac(macSpec: MacSpec): Mac
 
 **示例**
 
-参见 createMac
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Set algName based on the algorithm supported.
+  let spec: cryptoFramework.HmacSpec = {
+    algName: 'HMAC',
+    mdName: 'SHA256',
+  };
+  let mac = cryptoFramework.createMac(spec);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+}
+```

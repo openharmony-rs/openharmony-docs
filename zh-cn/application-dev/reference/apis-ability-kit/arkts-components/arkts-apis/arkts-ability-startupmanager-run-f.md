@@ -79,44 +79,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { AbilityStage, startupManager, StartupListener, StartupConfig } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class MyAbilityStage extends AbilityStage {
-  onCreate(): void {
-    hilog.info(0x0000, 'testTag', 'AbilityStage onCreate');
-    let onCompletedCallback = (error: BusinessError) => {
-      if (error) {
-        hilog.error(0x0000, 'testTag', `onCompletedCallback error code: ${error.code}, error msg: ${error.message}`);
-      } else {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: success.');
-      }
-    };
-    let startupListener: StartupListener = {
-      'onCompleted': onCompletedCallback
-    };
-    let config: StartupConfig = {
-      'timeoutMs': 10000,
-      'startupListener': startupListener
-    };
-
-    try {
-      // 手动调用run方法
-      startupManager.run(['StartupTask_001', 'libentry_001'], this.context, config).then(() => {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
-      }).catch((error: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `startupManager.run promise catch error code: ${error.code}, error msg: ${error.message}`);
-      });
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', `startupManager.run catch error code: ${error.code}, error msg: ${error.message}`);
-    }
-  }
-  // ...
-}
-```
-
+<a id="run-1"></a>
 
 ## run
 
@@ -163,4 +127,40 @@ function run(startupTasks: Array<string>, context: common.AbilityStageContext, c
 
 **示例**
 
-参见 [run](#run)
+```TypeScript
+import { AbilityStage, startupManager, StartupListener, StartupConfig } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onCreate(): void {
+    hilog.info(0x0000, 'testTag', 'AbilityStage onCreate');
+    let onCompletedCallback = (error: BusinessError) => {
+      if (error) {
+        hilog.error(0x0000, 'testTag', `onCompletedCallback error code: ${error.code}, error msg: ${error.message}`);
+      } else {
+        hilog.info(0x0000, 'testTag', 'onCompletedCallback: success.');
+      }
+    };
+    let startupListener: StartupListener = {
+      'onCompleted': onCompletedCallback
+    };
+    let config: StartupConfig = {
+      'timeoutMs': 10000,
+      'startupListener': startupListener
+    };
+
+    try {
+      // 手动调用run方法
+      startupManager.run(['StartupTask_001', 'libentry_001'], this.context, config).then(() => {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'startupManager.run success');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `startupManager.run promise catch error code: ${error.code}, error msg: ${error.message}`);
+      });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `startupManager.run catch error code: ${error.code}, error msg: ${error.message}`);
+    }
+  }
+  // ...
+}
+```

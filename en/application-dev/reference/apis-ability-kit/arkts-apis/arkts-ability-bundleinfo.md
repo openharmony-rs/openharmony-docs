@@ -30,4 +30,5 @@ The module defines the bundle information. An application can obtain its own bun
 | [BundleInfo](arkts-ability-bundleinfo-i-sys.md) | The module defines the bundle information. |
 | [BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md) | The bundle options of bundle manager |
 | [DynamicIconInfo](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md) | Obtains dynamic icon information about a bundle |
+| [SignatureInfo](arkts-ability-bundleinfo-signatureinfo-i-sys.md) | Describes the signature information of the app package,which can identifythe app source, ensure app integrity, and be used for app security verification and identification. |
 <!--DelEnd-->

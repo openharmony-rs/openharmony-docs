@@ -1,5 +1,9 @@
 # HistoryItem
 
+```TypeScript
+interface HistoryItem
+```
+
 页面历史记录项。
 
 @interface HistoryItem [since 9 - 11]

@@ -1,5 +1,9 @@
 # FileSpec
 
+```TypeScript
+interface FileSpec
+```
+
 表单项的文件信息。
 
 **起始版本：** 10

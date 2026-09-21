@@ -1,5 +1,9 @@
 # Intl
 
+```TypeScript
+declare namespace Intl
+```
+
 ## Modules to Import
 
 ```TypeScript

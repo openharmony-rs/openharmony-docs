@@ -1,6 +1,15 @@
 # BorderRadiusMode
 
+```TypeScript
+declare enum BorderRadiusMode
+```
+
 Enumerates the border radius modes for the **SegmentButton** component, which are used to control the border radius calculation method.
+
+| Name |Value| Description |  
+| ------- | - |-------------------------------- |  
+| [DEFAULT](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md) | 0 |Default mode, where the framework automatically calculates the border radius.|
+| [CUSTOM](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md) | 1 |Custom mode, where the border radius is set by the developer.|
 
 **Since:** 20
 

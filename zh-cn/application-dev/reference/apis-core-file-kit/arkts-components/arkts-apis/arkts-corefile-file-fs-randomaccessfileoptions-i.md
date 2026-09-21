@@ -1,5 +1,9 @@
 # RandomAccessFileOptions
 
+```TypeScript
+export interface RandomAccessFileOptions
+```
+
 可选项类型，支持 createRandomAccessFile 接口使用。
 
 **起始版本：** 12

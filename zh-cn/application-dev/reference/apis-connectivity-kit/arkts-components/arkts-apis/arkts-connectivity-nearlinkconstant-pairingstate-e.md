@@ -1,5 +1,9 @@
 # PairingState
 
+```TypeScript
+export enum PairingState
+```
+
 表示和远端设备的配对状态，为枚举值。
 
 **起始版本：** 26.0.0

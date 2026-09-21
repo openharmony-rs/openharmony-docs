@@ -1,5 +1,9 @@
 # GroupType（系统接口）
 
+```TypeScript
+export enum GroupType
+```
+
 应用分组的设置类型。
 
 **起始版本：** 9

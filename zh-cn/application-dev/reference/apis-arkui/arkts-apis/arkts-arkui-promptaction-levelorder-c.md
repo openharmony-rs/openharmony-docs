@@ -1,5 +1,9 @@
 # LevelOrder
 
+```TypeScript
+export class LevelOrder
+```
+
 弹窗层级，可以控制弹窗显示的顺序。
 
 **起始版本：** 18

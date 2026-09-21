@@ -1,5 +1,9 @@
 # AccessModeType
 
+```TypeScript
+declare enum AccessModeType
+```
+
 Enumerates the access modes to verify. If this parameter is left blank, the system checks whether the file exists.
 
 **Since:** 12

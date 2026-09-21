@@ -1,5 +1,9 @@
 # GetDomainAccountInfoOptions（系统接口）
 
+```TypeScript
+interface GetDomainAccountInfoOptions
+```
+
 表示查询域账号信息的选项。
 
 **起始版本：** 10

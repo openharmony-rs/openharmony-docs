@@ -1,5 +1,9 @@
 # OpenHarmonyAppItem
 
+```TypeScript
+interface OpenHarmonyAppItem
+```
+
 系统定义的桌面图标类型数据，用于跨应用共享桌面图标信息。典型使用场景包括：桌面启动器拖拽图标、应用商店分享应用图标或创建快捷方式等。
 
 **起始版本：** 12
@@ -111,12 +115,12 @@ bundleName: string
 ## details
 
 ```TypeScript
-details?: Record<string, number | number | number | string | Uint8Array>
+details?: Record<string, number | string | Uint8Array>
 ```
 
 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record&lt;string, number &#124; number &#124; number &#124; string &#124; Uint8Array&gt;
+**类型：** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 
 **起始版本：** 12
 

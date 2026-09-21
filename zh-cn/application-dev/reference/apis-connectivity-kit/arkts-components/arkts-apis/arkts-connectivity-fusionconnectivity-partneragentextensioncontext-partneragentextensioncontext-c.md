@@ -1,5 +1,9 @@
 # PartnerAgentExtensionContext
 
+```TypeScript
+export default class PartnerAgentExtensionContext extends ExtensionContext
+```
+
 PartnerAgentExtensionContext模块是三方外设的发现和连接管理功能的上下文，提供外设发现、配对连接、状态通知等能力，适用于应用需要接入和管理第三方外设并获取其状态信息的场景，帮助开发者统一管理外设的连接生命周期。
 
 - 本模块接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。

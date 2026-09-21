@@ -1,5 +1,9 @@
 # PairingType
 
+```TypeScript
+enum PairingType
+```
+
 Enumerates the NearLink pairing types.
 
 **Since:** 26.0.0

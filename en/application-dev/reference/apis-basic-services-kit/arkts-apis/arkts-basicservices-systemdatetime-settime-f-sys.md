@@ -59,23 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Set the system time to 2021-01-20 02:36:25.
-let time: number = 1611081385000;
-try {
-  systemDateTime.setTime(time).then(() => {
-    console.info(`Succeeded in setting time.`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="settime-1"></a>
 
 ## setTime
 
@@ -116,4 +101,19 @@ Sets the system time. This API uses a promise to return the result.
 
 **Examples**
 
-See [setTime](#settime)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Set the system time to 2021-01-20 02:36:25.
+let time: number = 1611081385000;
+try {
+  systemDateTime.setTime(time).then(() => {
+    console.info(`Succeeded in setting time.`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+}
+```

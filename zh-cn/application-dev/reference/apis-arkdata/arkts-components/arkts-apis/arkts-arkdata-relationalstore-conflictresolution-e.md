@@ -1,5 +1,9 @@
 # ConflictResolution
 
+```TypeScript
+enum ConflictResolution
+```
+
 插入和修改接口的冲突解决模式。请使用枚举名称而非枚举值。
 
 **起始版本：** 10

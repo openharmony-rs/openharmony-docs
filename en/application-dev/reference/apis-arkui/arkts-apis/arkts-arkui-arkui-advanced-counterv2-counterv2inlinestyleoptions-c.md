@@ -1,6 +1,14 @@
 # CounterV2InlineStyleOptions
 
-Defines the inline style options.
+```TypeScript
+declare class CounterV2InlineStyleOptions extends CounterV2CommonOptions
+```
+
+Defines the attributes and events of the inline number **CounterV2**.
+
+> **NOTE:** 
+> 
+> **min** must be less than or equal to **max**. If **min** is greater than **max**, **max** is used.
 
 **Inheritance/Implementation:** CounterV2InlineStyleOptions extends [CounterV2CommonOptions](arkts-arkui-arkui-advanced-counterv2-counterv2commonoptions-c.md)
 
@@ -20,7 +28,13 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 onChange?: OnInlineCounterV2Change
 ```
 
-Trigger an event when the value of the counter has been changed.
+Callback triggered when the value changes. The callback parameter **value** indicates the currently displayed value.
+
+Use scenario: Pass in this callback when you need to perform custom operations upon value changes (such as updating associated data, triggering service logic, or logging).
+
+Default value: **undefined**, indicating that the callback is not triggered when the value changes.
+
+If the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -36,7 +50,15 @@ Trigger an event when the value of the counter has been changed.
 max?: number
 ```
 
-Set maximum value of the counter component
+Maximum value of **CounterV2**.
+
+Default value: **999**
+
+Value range: [min, +∞)
+
+If the value exceeds the range (that is, the set value is less than **min**), **min** is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** number
 
@@ -56,7 +78,15 @@ Set maximum value of the counter component
 min?: number
 ```
 
-Set minimum value of the counter component
+Minimum value of **CounterV2**.
+
+Default value: **0**
+
+Value range: (-∞, max]
+
+If the value exceeds the range (that is, the set value is greater than **max**), **max** is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** number
 
@@ -76,7 +106,17 @@ Set minimum value of the counter component
 textWidth?: number
 ```
 
-Set text width of the counter component, ranges greater than or equal to 0. If undefined is passed, the text width will adapt to the text content.
+Width of the number text.
+
+Default value: adaptive text width.
+
+Value range: [0, +∞)
+
+Unit: vp
+
+If the value exceeds the range (that is, the set value is less than 0), **0** is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** number
 
@@ -96,7 +136,15 @@ Set text width of the counter component, ranges greater than or equal to 0. If u
 value?: number
 ```
 
-Set initial value of the counter component, ranges from min to max.
+Initial value of **CounterV2**.
+
+Default value: **0**
+
+Valid value range: [min, max], where **min** and **max** correspond to the minimum and maximum values of **CounterV2**, respectively.
+
+If the value is **undefined**, the default value is used.
+
+Boundary handling: If value is less than **min**, **min** is used. If value is greater than **max**, **max** is used.
 
 **Type:** number
 

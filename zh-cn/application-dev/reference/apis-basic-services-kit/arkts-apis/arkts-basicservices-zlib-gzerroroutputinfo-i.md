@@ -1,5 +1,9 @@
 # GzErrorOutputInfo
 
+```TypeScript
+interface GzErrorOutputInfo
+```
+
 GzError返回信息。
 
 **起始版本：** 12

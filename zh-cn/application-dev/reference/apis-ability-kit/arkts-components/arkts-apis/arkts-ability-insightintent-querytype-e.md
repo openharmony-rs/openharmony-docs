@@ -1,5 +1,9 @@
 # QueryType
 
+```TypeScript
+enum QueryType
+```
+
 查询实体模式的枚举。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # MifareClassicTag
 
+```TypeScript
+export interface MifareClassicTag extends TagSession
+```
+
 Provides APIs to access MIFARE Classic properties and perform I/O operations on a tag. This class inherits from [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
@@ -84,36 +88,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // Set a correct key. The value must contain six bytes. 
-        mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
-            if (err) {
-                console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareClassic authenticateSector AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="authenticatesector-1"></a>
 
 ## authenticateSector
 
@@ -151,7 +126,36 @@ Authenticates a sector using a key. The sector can be accessed only after the au
 
 **Examples**
 
-See [authenticateSector](#authenticatesector)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let sectorIndex = 1; // Set a correct index.
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // Set a correct key. The value must contain six bytes. 
+        mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
+            if (err) {
+                console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareClassic authenticateSector AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## decrementBlock
 
@@ -222,37 +226,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let blockIndex = 1; // Set a correct index.
-        let value = 0x20; // Set the correct data.
-        mifareClassic.decrementBlock(blockIndex, value, (err : BusinessError)=> {
-            if (err) {
-                console.error("mifareClassic decrementBlock AsyncCallback errCode:" + 
-                  "${err.code}, message: ${err.message}");
-            } else {
-                console.info("mifareClassic decrementBlock AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="decrementblock-1"></a>
 
 ## decrementBlock
 
@@ -289,7 +263,37 @@ Decrements a block with the specified value. This API uses an asynchronous callb
 
 **Examples**
 
-See [decrementBlock](#decrementblock)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1; // Set a correct index.
+        let value = 0x20; // Set the correct data.
+        mifareClassic.decrementBlock(blockIndex, value, (err : BusinessError)=> {
+            if (err) {
+                console.error("mifareClassic decrementBlock AsyncCallback errCode:" + 
+                  "${err.code}, message: ${err.message}");
+            } else {
+                console.info("mifareClassic decrementBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## getBlockCountInSector
 
@@ -599,36 +603,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let blockIndex = 1; // Set a correct index.
-        let value = 0x20; // Set the correct data.
-        mifareClassic.incrementBlock(blockIndex, value, (err : BusinessError)=> {
-            if (err) {
-                console.error(`mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareClassic incrementBlock AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="incrementblock-1"></a>
 
 ## incrementBlock
 
@@ -665,7 +640,36 @@ Increments a block with the specified value and saves the result in a buffer for
 
 **Examples**
 
-See [incrementBlock](#incrementblock)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1; // Set a correct index.
+        let value = 0x20; // Set the correct data.
+        mifareClassic.incrementBlock(blockIndex, value, (err : BusinessError)=> {
+            if (err) {
+                console.error(`mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareClassic incrementBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## isEmulatedTag
 
@@ -765,35 +769,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let blockIndex = 1;  // Set a correct index.
-        mifareClassic.readSingleBlock(blockIndex, (err : BusinessError, data : number[])=> {
-            if (err) {
-                console.error("mifareClassic readSingleBlock AsyncCallback err: " + err);
-            } else {
-                console.info("mifareClassic readSingleBlock AsyncCallback data: " + data);
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic readSingleBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="readsingleblock-1"></a>
 
 ## readSingleBlock
 
@@ -829,7 +805,35 @@ Reads a block (16 bytes) on this tag. This API uses an asynchronous callback to 
 
 **Examples**
 
-See [readSingleBlock](#readsingleblock)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1;  // Set a correct index.
+        mifareClassic.readSingleBlock(blockIndex, (err : BusinessError, data : number[])=> {
+            if (err) {
+                console.error("mifareClassic readSingleBlock AsyncCallback err: " + err);
+            } else {
+                console.info("mifareClassic readSingleBlock AsyncCallback data: " + data);
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic readSingleBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## restoreFromBlock
 
@@ -898,35 +902,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let blockIndex = 1; // Set a correct index.
-        mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
-            if (err) {
-                console.error(`mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareClassic restoreFromBlock AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="restorefromblock-1"></a>
 
 ## restoreFromBlock
 
@@ -962,7 +938,35 @@ Restores data in the temporary register from a block. This API uses an asynchron
 
 **Examples**
 
-See [restoreFromBlock](#restorefromblock)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1; // Set a correct index.
+        mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
+            if (err) {
+                console.error(`mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareClassic restoreFromBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## transferToBlock
 
@@ -1031,35 +1035,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let blockIndex = 1; // Set a correct index.
-        mifareClassic.transferToBlock(blockIndex, (err : BusinessError)=> {
-            if (err) {
-                console.error(`mifareClassic transferToBlock AsyncCallback errCode: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareClassic transferToBlock AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="transfertoblock-1"></a>
 
 ## transferToBlock
 
@@ -1095,7 +1071,35 @@ Transfers data from the temporary register to a block. This API uses an asynchro
 
 **Examples**
 
-See [transferToBlock](#transfertoblock)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1; // Set a correct index.
+        mifareClassic.transferToBlock(blockIndex, (err : BusinessError)=> {
+            if (err) {
+                console.error(`mifareClassic transferToBlock AsyncCallback errCode: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareClassic transferToBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## writeSingleBlock
 
@@ -1167,37 +1171,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
-
-function nfcTechDemo() {
-    // Connect the tag if it has not been connected.
-    if (!mifareClassic.isTagConnected()) {
-        if (!mifareClassic.connectTag()) {
-            console.error("mifareClassic connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let blockIndex = 1; // Set a correct index.
-        let rawData = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
-            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // Set the correct data. The value must contain 16 bytes.
-        mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
-            if (err) {
-                console.error(`mifareClassic writeSingleBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareClassic writeSingleBlock AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="writesingleblock-1"></a>
 
 ## writeSingleBlock
 
@@ -1234,4 +1208,34 @@ Writes data to a block on this tag. This API uses an asynchronous callback to re
 
 **Examples**
 
-See [writeSingleBlock](#writesingleblock)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the correct MIFARE Classic tag by using the tag.TagInfo API in @ohos.nfc.tag.
+
+function nfcTechDemo() {
+    // Connect the tag if it has not been connected.
+    if (!mifareClassic.isTagConnected()) {
+        if (!mifareClassic.connectTag()) {
+            console.error("mifareClassic connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let blockIndex = 1; // Set a correct index.
+        let rawData = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
+            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // Set the correct data. The value must contain 16 bytes.
+        mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
+            if (err) {
+                console.error(`mifareClassic writeSingleBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareClassic writeSingleBlock AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```

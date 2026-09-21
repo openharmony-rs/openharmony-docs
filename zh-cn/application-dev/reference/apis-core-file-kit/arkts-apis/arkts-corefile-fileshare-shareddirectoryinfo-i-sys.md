@@ -1,5 +1,9 @@
 # SharedDirectoryInfo（系统接口）
 
+```TypeScript
+export interface SharedDirectoryInfo
+```
+
 应用程序向系统捐献的目录信息。
 
 **起始版本：** 26.0.0

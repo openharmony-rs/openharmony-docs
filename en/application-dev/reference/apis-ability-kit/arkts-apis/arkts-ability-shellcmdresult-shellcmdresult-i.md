@@ -1,5 +1,9 @@
 # ShellCmdResult
 
+```TypeScript
+export interface ShellCmdResult
+```
+
 The **ShellCmdResult** module provides the shell command execution result.
 
 > **NOTE:** 

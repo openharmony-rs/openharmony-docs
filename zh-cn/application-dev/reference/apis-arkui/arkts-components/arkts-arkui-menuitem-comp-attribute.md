@@ -1,8 +1,12 @@
 # MenuItem属性/事件
 
+```TypeScript
+declare class MenuItemAttribute extends CommonMethod<MenuItemAttribute>
+```
+
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** MenuItemAttribute extends CommonMethod&lt;MenuItemAttribute&gt;
+**继承/实现关系：** MenuItemAttribute extends CommonMethod<MenuItemAttribute>
 
 **起始版本：** 9
 
@@ -106,6 +110,8 @@ onChange(callback: (selected: boolean) => void)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -124,11 +130,13 @@ selected(value: boolean)
 
 设置菜单项是否选中。
 
-从API version 10开始，该参数支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -150,6 +158,8 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -158,7 +168,7 @@ selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md) | 是 | 菜单项被选中时的图标显示方式。<br>true：显示默认的对勾图标；false：不显示图标。<br>ResourceStr：显示指定的图标。<br>SymbolGlyphModifier：显示指定的HMSymbol图标。<br>默认值：false<br>**适用版本：** 12 |
+| value | boolean &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 菜单项被选中时的图标显示方式。<br>true：显示默认的对勾图标；false：不显示图标。<br>ResourceStr：显示指定的图标。<br>SymbolGlyphModifier：显示指定的HMSymbol图标。<br>默认值：false<br>**适用版本：** 12 |
 
 ## subMenuBuilder
 
@@ -180,4 +190,4 @@ Create the submenu for custom menu item.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | Indicates the builder function for submenu. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | Indicates the builder function for submenu. |

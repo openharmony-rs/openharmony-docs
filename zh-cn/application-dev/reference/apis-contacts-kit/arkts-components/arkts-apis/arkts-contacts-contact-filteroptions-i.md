@@ -1,5 +1,9 @@
 # FilterOptions
 
+```TypeScript
+interface FilterOptions
+```
+
 联系人过滤参数。
 
 **起始版本：** 15

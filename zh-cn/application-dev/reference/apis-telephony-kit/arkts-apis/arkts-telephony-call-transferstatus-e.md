@@ -1,5 +1,9 @@
 # TransferStatus
 
+```TypeScript
+export enum TransferStatus
+```
+
 转移状态。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # CloudAssetDownloadStatus (System API)
 
+```TypeScript
+interface CloudAssetDownloadStatus
+```
+
 Describes the status information about a batch download.
 
 **Since:** 21

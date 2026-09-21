@@ -1,5 +1,9 @@
 # TypeConstructor
 
+```TypeScript
+export interface TypeConstructor<T>
+```
+
 类构造函数。
 
 **起始版本：** 12

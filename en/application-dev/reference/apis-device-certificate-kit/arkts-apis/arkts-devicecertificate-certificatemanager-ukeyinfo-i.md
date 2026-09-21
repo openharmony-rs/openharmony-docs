@@ -1,5 +1,9 @@
 # UkeyInfo
 
+```TypeScript
+export interface UkeyInfo
+```
+
 Provides USB Key certificate credential attribute information.
 
 **Since:** 22

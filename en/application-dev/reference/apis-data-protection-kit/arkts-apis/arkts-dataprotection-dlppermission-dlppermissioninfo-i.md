@@ -1,5 +1,9 @@
 # DLPPermissionInfo
 
+```TypeScript
+export interface DLPPermissionInfo
+```
+
 Represents the permission information about a DLP file.
 
 **Since:** 10

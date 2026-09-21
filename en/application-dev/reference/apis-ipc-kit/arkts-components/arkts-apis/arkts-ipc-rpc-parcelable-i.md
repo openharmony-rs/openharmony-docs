@@ -1,5 +1,9 @@
 # Parcelable
 
+```TypeScript
+interface Parcelable
+```
+
 Writes an object to a **MessageSequence** and reads it from the **MessageSequence** during IPC.
 
 **Since:** 9

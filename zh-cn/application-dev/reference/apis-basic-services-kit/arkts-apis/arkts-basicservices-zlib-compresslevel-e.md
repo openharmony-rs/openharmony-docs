@@ -1,5 +1,9 @@
 # CompressLevel
 
+```TypeScript
+export enum CompressLevel
+```
+
 压缩等级。
 
 **起始版本：** 7

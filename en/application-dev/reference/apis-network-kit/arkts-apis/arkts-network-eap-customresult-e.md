@@ -1,5 +1,9 @@
 # CustomResult
 
+```TypeScript
+enum CustomResult
+```
+
 Enumerates the EAP authentication results.
 
 ​

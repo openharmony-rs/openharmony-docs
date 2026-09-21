@@ -1,5 +1,9 @@
 # DetailedCallState (System API)
 
+```TypeScript
+export enum DetailedCallState
+```
+
 Enumerates detailed call states.
 
 **Since:** 7

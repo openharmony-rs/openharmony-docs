@@ -1,5 +1,9 @@
 # ServerResponse
 
+```TypeScript
+interface ServerResponse
+```
+
 Describes the parameters of a response send by the server to a specified read or write request.
 
 **Since:** 7

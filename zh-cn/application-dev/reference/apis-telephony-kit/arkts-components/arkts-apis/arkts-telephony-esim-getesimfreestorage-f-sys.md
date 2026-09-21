@@ -18,6 +18,8 @@ function getEsimFreeStorage(): Promise<number>
 
 **需要权限：** ohos.permission.GET_TELEPHONY_ESIM_STATE
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。

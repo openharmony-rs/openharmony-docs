@@ -50,6 +50,8 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 ```
 
 
+<a id="getlinkedinfo-1"></a>
+
 ## getLinkedInfo
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # TouchEvent
 
+```TypeScript
+export declare interface TouchEvent extends InputEvent
+```
+
 触屏输入事件。
 
 **继承/实现关系：** TouchEvent extends [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)

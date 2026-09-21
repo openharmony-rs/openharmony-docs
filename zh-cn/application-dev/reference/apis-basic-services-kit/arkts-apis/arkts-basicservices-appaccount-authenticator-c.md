@@ -1,5 +1,9 @@
 # Authenticator
 
+```TypeScript
+class Authenticator
+```
+
 认证器基类。
 
 **起始版本：** 8
@@ -125,9 +129,7 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 
 **示例**
 
-```TypeScript
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
-```
 
 ## checkAccountRemovable
 
@@ -150,9 +152,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 **示例**
 
-```TypeScript
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
-```
 
 ## createAccountImplicitly
 
@@ -193,8 +193,75 @@ getRemoteObject(): rpc.RemoteObject
 
 **示例**
 
-```TypeScript
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { Want } from '@kit.AbilityKit';
+
+class MyAuthenticator extends appAccount.Authenticator {
+  createAccountImplicitly(
+    options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
+    let want: Want = {
+      bundleName: 'com.example.accountjsdemo',
+      abilityName: 'com.example.accountjsdemo.loginAbility',
+    };
+    callback.onRequestRedirected(want);
+  }
+
+  auth(name: string, authType: string,
+    options: Record<string, Object>, callback: appAccount.AuthCallback) {
+    let result: appAccount.AuthResult = {
+      account: {
+        name: 'Lisi',
+        owner: 'com.example.accountjsdemo',
+      },
+      tokenInfo: {
+        token: 'xxxxxx',
+        authType: 'getSocialData',
+      }
+    };
+    callback.onResult(0, result);
+  }
+
+  verifyCredential(name: string,
+    options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.VerifyAbility',
+        parameters: {
+          name: name
+        }
+      };
+      callback.onRequestRedirected(want);
+  }
+
+  setProperties(options: appAccount.SetPropertiesOptions, callback: appAccount.AuthCallback) {
+    let want: Want = {
+      bundleName: 'com.example.accountjsdemo',
+      abilityName: 'com.example.accountjsdemo.SetPropertiesAbility',
+      parameters: {
+        options: options
+      }
+    };
+    callback.onRequestRedirected(want);
+  }
+
+  checkAccountLabels(name: string, labels: string[], callback: appAccount.AuthCallback) {
+    callback.onResult(0);
+  }
+
+  checkAccountRemovable(name: string, callback: appAccount.AuthCallback) {
+    callback.onResult(0);
+  }
+}
+
+export default {
+  onConnect(want: Want): rpc.RemoteObject { // serviceAbility 生命周期函数，需要放在serviceAbility中
+    let authenticator = new MyAuthenticator();
+    return authenticator.getRemoteObject();
+  }
+}
 ```
 
 ## setProperties
@@ -218,9 +285,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 **示例**
 
-```TypeScript
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
-```
 
 ## verifyCredential
 
@@ -244,6 +309,4 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 **示例**
 
-```TypeScript
 接口需组合使用，请查看[getRemoteObject](#getremoteobject)中的示例。
-```

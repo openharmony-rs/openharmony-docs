@@ -18,13 +18,13 @@ import { mdns } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [addLocalService](arkts-network-mdns-addlocalservice-f.md) | Adds an MDNS service. This API uses an asynchronous callback to return the result. |
-| [addLocalService](arkts-network-mdns-addlocalservice-f.md) | Adds an MDNS service. This API uses a promise to return the result. |
+| [addLocalService](arkts-network-mdns-addlocalservice-f.md#addlocalservice) | Adds an MDNS service. This API uses an asynchronous callback to return the result. |
+| [addLocalService](arkts-network-mdns-addlocalservice-f.md#addlocalservice-1) | Adds an MDNS service. This API uses a promise to return the result. |
 | [createDiscoveryService](arkts-network-mdns-creatediscoveryservice-f.md) | Creates a **DiscoveryService** object, which is used to discover MDNS services of the specified type. |
-| [removeLocalService](arkts-network-mdns-removelocalservice-f.md) | Removes an MDNS service. This API uses an asynchronous callback to return the result. |
-| [removeLocalService](arkts-network-mdns-removelocalservice-f.md) | Removes an MDNS service. This API uses a promise to return the result. |
-| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md) | Resolves an MDNS service. This API uses an asynchronous callback to return the result. |
-| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md) | Resolves an MDNS service. This API uses a promise to return the result. |
+| [removeLocalService](arkts-network-mdns-removelocalservice-f.md#removelocalservice) | Removes an MDNS service. This API uses an asynchronous callback to return the result. |
+| [removeLocalService](arkts-network-mdns-removelocalservice-f.md#removelocalservice-1) | Removes an MDNS service. This API uses a promise to return the result. |
+| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md#resolvelocalservice) | Resolves an MDNS service. This API uses an asynchronous callback to return the result. |
+| [resolveLocalService](arkts-network-mdns-resolvelocalservice-f.md#resolvelocalservice-1) | Resolves an MDNS service. This API uses a promise to return the result. |
 
 ### Interfaces
 

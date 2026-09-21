@@ -1,5 +1,9 @@
 # WindowType
 
+```TypeScript
+enum WindowType
+```
+
 Enumerates the window types.
 
 **Since:** 7

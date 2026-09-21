@@ -1,5 +1,9 @@
 # CmsContentDataFormat
 
+```TypeScript
+enum CmsContentDataFormat
+```
+
 表示Cms内容数据格式的枚举。
 
 **起始版本：** 18

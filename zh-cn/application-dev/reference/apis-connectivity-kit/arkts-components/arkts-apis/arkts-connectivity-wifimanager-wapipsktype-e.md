@@ -1,5 +1,9 @@
 # WapiPskType
 
+```TypeScript
+enum WapiPskType
+```
+
 WAPI认证方式的枚举。
 
 **起始版本：** 12

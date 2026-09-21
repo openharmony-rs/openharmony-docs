@@ -1,5 +1,9 @@
 # Atomics
 
+```TypeScript
+interface Atomics
+```
+
 ## Modules to Import
 
 ```TypeScript

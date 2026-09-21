@@ -1,12 +1,16 @@
 # LocationPrivacyType
 
+```TypeScript
+export enum LocationPrivacyType
+```
+
 定位服务隐私协议类型。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** LocationPrivacyType
+**替代接口：** [LocationPrivacyType](arkts-location-geolocationmanager-locationprivacytype-e-sys.md)
 
 **需要权限：** ohos.permission.LOCATION @enum { number }
 
@@ -24,7 +28,7 @@ OTHERS = 0
 
 **废弃版本：** 9
 
-**替代接口：** OTHERS
+**替代接口：** [OTHERS](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#others)
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -40,7 +44,7 @@ STARTUP
 
 **废弃版本：** 9
 
-**替代接口：** STARTUP
+**替代接口：** [STARTUP](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#startup)
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -56,6 +60,6 @@ CORE_LOCATION
 
 **废弃版本：** 9
 
-**替代接口：** CORE_LOCATION
+**替代接口：** [CORE_LOCATION](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#core_location)
 
 **系统能力：** SystemCapability.Location.Location.Core

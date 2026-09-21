@@ -1,5 +1,9 @@
 # HdrComposeOptions
 
+```TypeScript
+interface HdrComposeOptions
+```
+
 Picture合成HDR时可配置的参数选项。
 
 **起始版本：** 23

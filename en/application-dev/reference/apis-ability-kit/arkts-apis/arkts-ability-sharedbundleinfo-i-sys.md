@@ -1,5 +1,9 @@
 # SharedBundleInfo (System API)
 
+```TypeScript
+export interface SharedBundleInfo
+```
+
 Defines the shared bundle information.
 
 **Since:** 10

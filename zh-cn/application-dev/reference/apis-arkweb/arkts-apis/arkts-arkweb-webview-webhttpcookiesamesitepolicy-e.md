@@ -1,5 +1,9 @@
 # WebHttpCookieSameSitePolicy
 
+```TypeScript
+enum WebHttpCookieSameSitePolicy
+```
+
 控制cookie在跨站请求中的发送行为。
 
 **起始版本：** 23

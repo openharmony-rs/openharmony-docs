@@ -1,5 +1,9 @@
 # MultiAppModeType
 
+```TypeScript
+export enum MultiAppModeType
+```
+
 标识应用多开的模式类型。
 
 **起始版本：** 12

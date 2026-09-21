@@ -1,5 +1,9 @@
 # CmsVerificationConfig
 
+```TypeScript
+interface CmsVerificationConfig
+```
+
 CMS验签的配置。
 
 **起始版本：** 22

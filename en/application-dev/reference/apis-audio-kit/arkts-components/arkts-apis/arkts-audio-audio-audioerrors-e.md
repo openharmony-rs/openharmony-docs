@@ -1,5 +1,9 @@
 # AudioErrors
 
+```TypeScript
+enum AudioErrors
+```
+
 Enumerates the error codes available for audio management.
 
 **Since:** 9

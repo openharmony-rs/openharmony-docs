@@ -1,5 +1,9 @@
 # KeyboardAvoidMode
 
+```TypeScript
+export const enum KeyboardAvoidMode
+```
+
 配置键盘弹出时页面的避让模式。
 
 **起始版本：** 11

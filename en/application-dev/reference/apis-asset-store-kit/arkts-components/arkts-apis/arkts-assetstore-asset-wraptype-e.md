@@ -1,5 +1,9 @@
 # WrapType
 
+```TypeScript
+enum WrapType
+```
+
 Enumerates the encrypted import/export types supported by the asset.
 
 **Since:** 18

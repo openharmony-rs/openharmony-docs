@@ -31,6 +31,8 @@ function getRdbStore(context: Context, config: StoreConfig, version: number, cal
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbStore](arkts-arkdata-rdb-rdbstore-i.md)&gt; | 是 | 回调函数。当操作成功，err为undefined，data为RdbStore对象；否则为错误对象。 |
 
 
+<a id="getrdbstore-1"></a>
+
 ## getRdbStore
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # RectStyle
 
+```TypeScript
+interface RectStyle
+```
+
 Describes the style of a rectangle.
 
 **Since:** 12

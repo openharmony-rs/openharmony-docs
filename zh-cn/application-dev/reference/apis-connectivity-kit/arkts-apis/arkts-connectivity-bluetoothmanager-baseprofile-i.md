@@ -1,5 +1,9 @@
 # BaseProfile
 
+```TypeScript
+interface BaseProfile
+```
+
 profile基类。
 
 **起始版本：** 9

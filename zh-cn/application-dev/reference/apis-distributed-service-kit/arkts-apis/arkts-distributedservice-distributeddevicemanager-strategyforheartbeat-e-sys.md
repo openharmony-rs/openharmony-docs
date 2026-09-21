@@ -1,5 +1,9 @@
 # StrategyForHeartbeat（系统接口）
 
+```TypeScript
+enum StrategyForHeartbeat
+```
+
 表示心跳广播策略。
 
 **起始版本：** 15

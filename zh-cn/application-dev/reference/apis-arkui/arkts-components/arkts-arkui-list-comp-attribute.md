@@ -1,10 +1,14 @@
 # List属性/事件
 
-除支持通用属性和[滚动组件通用属性](arkts-arkui-scrollablecommonmethod-c.md)外，还支持以下属性：
+```TypeScript
+declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
+```
 
-除支持通用事件和滚动组件通用事件外，还支持以下事件：
+除支持[通用属性](arkts-arkui-common-comp.md#common)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** ListAttribute extends ScrollableCommonMethod&lt;ListAttribute&gt;
+除支持[通用事件](arkts-arkui-common-comp.md#common)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
+
+**继承/实现关系：** ListAttribute extends ScrollableCommonMethod<ListAttribute>
 
 **起始版本：** 7
 
@@ -20,6 +24,8 @@ alignListItem(value: ListItemAlign)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -30,7 +36,7 @@ alignListItem(value: ListItemAlign)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ListItemAlign](arkts-arkui-listitemalign-e.md) | 是 | 交叉轴方向的布局方式。<br>默认值：ListItemAlign.Start |
+| value | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | 是 | 交叉轴方向的布局方式。<br>默认值：ListItemAlign.Start |
 
 ## backPressBehavior
 
@@ -52,7 +58,7 @@ backPressBehavior(behavior: ListBackPressBehavior | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| behavior | [ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md) &#124; undefined | 是 | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](arkts-arkui-listbackpressbehavior-i.md)参数，配置系统返回键生效时，是否收起已展开的ListItem的划出组件。<br>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的划出组件。 |
+| behavior | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) &#124; undefined | 是 | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md)参数，配置系统返回键生效时，是否收起已展开的ListItem的划出组件。<br>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的划出组件。 |
 
 ## cachedCount
 
@@ -68,6 +74,8 @@ List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup�
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -78,7 +86,9 @@ List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | ListItem/ListItemGroup的预加载数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：0, +∞)，设置为小于0的值时，按1处理。 |
+| value | number | 是 | ListItem/ListItemGroup的预加载数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+
+<a id="cachedcount-1"></a>
 
 ## cachedCount
 
@@ -88,7 +98,7 @@ cachedCount(count: number, show: boolean)
 
 设置列表的预加载行数，并配置是否显示预加载节点。懒加载场景才会预加载List显示区域外上下各cachedCount行，非懒加载场景会全量加载。
 
-List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip或内容裁剪[clipContent](arkts-arkui-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 > **说明：** 
 > 
@@ -109,8 +119,10 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | number | 是 | 列表的预加载行数。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br>取值范围：0, +∞)，设置为小于0的值时，按1处理。 |
+| count | number | 是 | 列表的预加载行数。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
 | show | boolean | 是 | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。<br> 默认值：false |
+
+<a id="cachedcount-2"></a>
 
 ## cachedCount
 
@@ -124,7 +136,7 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 若cachedCount属性的第一个参数为CacheCountInfo类型，当已缓存行数小于CacheCountInfo.minCount时，会在帧间空闲时隙预加载和布局。当已缓存行数大于CacheCountInfo.maxCount时，会将超出范围的节点销毁或回收复用。UI空闲时（无动画或用户操作），会在显示区域外上下各预加载CacheCountInfo.maxCount行。
 
-计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip或[clipContent](arkts-arkui-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 默认行为：count参数默认为number类型，数值根据屏幕内显示的节点个数设置，最大值为16。预加载的ListItem默认不参与绘制。
 
@@ -171,6 +183,8 @@ chainAnimation(value: boolean)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -193,11 +207,11 @@ childrenMainSize(value: ChildrenMainSize)
 
 > **说明：** 
 > 
-> - 该属性通过向List组件提供所有子组件在主轴方向的大小信息，确保在面对子组件主轴大小不一致、增删子组件、使用[scrollToIndex](arkts-arkui-scroller-c.md#scrolltoindex)等场景时，List组件能够维护其滑动位置准确性。这样，scrollTo可以准确地跳转到指定位置，currentOffset可以获取到当前准确的滑动位置，内置滚动条可以实现平滑移动无跳变。
+> - 该属性通过向List组件提供所有子组件在主轴方向的大小信息，确保在面对子组件主轴大小不一致、增删子组件、使用[scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex)等场景时，List组件能够维护其滑动位置准确性。这样，[scrollTo](arkts-arkui-scroll-comp-scroller-c.md#scrollto)可以准确地跳转到指定位置，[currentOffset](arkts-arkui-scroll-comp-scroller-c.md#currentoffset)可以获取到当前准确的滑动位置，内置滚动条可以实现平滑移动无跳变。
 > 
 > - 当子组件是ListItemGroup时，需要根据ListItemGroup的列数、ListItemGroup中ListItem在主轴方向的间距以及ListItemGroup中header、footer和ListItem的大小，来准确计算出ListItemGroup在主轴方向的整体大小，并传递给List组件。
 > 
-> - 如果子组件有ListItemGroup，必须为每一个ListItemGroup设置childrenMainSize属性。List组件和每一个ListItemGroup组件都要通过childrenMainSize属性接口一对一绑定一个ChildrenMainSize对象。
+> - 如果子组件有ListItemGroup，必须为每一个ListItemGroup设置[childrenMainSize](arkts-arkui-listitemgroup-comp-attribute.md#childrenmainsize)属性。List组件和每一个ListItemGroup组件都要通过childrenMainSize属性接口一对一绑定一个ChildrenMainSize对象。
 > 
 > - 多列场景使用LazyForEach生成子组件时，需确保LazyForEach全部生成ListItemGroup组件或者全部生成ListItem组件。
 
@@ -213,7 +227,7 @@ childrenMainSize(value: ChildrenMainSize)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ChildrenMainSize](arkts-arkui-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
+| value | [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
 
 ## contentEndOffset
 
@@ -238,6 +252,8 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 内容区末尾偏移量。<br>默认值：0<br>单位：vp <br>**说明：** <br>设置为负数时，按默认值处理。<br>取值范围：[0, +∞) |
+
+<a id="contentendoffset-1"></a>
 
 ## contentEndOffset
 
@@ -287,6 +303,8 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 | --- | --- | --- | --- |
 | value | number | 是 | 内容区域起始偏移量。<br>默认值：0<br>单位：vp <br>**说明：** <br>设置为负数时，按默认值处理。<br>取值范围：[0, +∞) |
 
+<a id="contentstartoffset-1"></a>
+
 ## contentStartOffset
 
 ```TypeScript
@@ -329,6 +347,8 @@ ListItem设置[多态样式时，被按压的子组件上下的分割线不绘�
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -339,7 +359,7 @@ ListItem设置[多态样式时，被按压的子组件上下的分割线不绘�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ListDividerOptions](arkts-arkui-listdivideroptions-i.md) &#124; null | 是 | ListItem分割线样式。<br>默认值：null<br>**适用版本：** 18 |
+| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | 是 | ListItem分割线样式。<br>默认值：null<br>**适用版本：** 18 |
 
 ## edgeEffect
 
@@ -355,6 +375,8 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -366,7 +388,7 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | 是 | List组件的边缘滑动效果，支持弹簧效果和阴影效果。<br>默认值：EdgeEffect.Spring |
-| options | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | 否 | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br>默认值：{ alwaysEnabled: false }<br><br>**适用版本：** 11 |
+| options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | 否 | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br>默认值：{ alwaysEnabled: false }<br><br>**适用版本：** 11 |
 
 ## editMode
 
@@ -379,11 +401,13 @@ editMode(value: boolean)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体
-> 实现方式请参考示例3。
+> 实现方式请参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
 
 **起始版本：** 7
 
 **废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -413,7 +437,7 @@ editModeOptions(options?: EditModeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [EditModeOptions](arkts-arkui-editmodeoptions-i.md) | 否 | 编辑模式选项，用于自定义List编辑模式的特性行为。当需要自定义编辑模式行为时传入此参数，不传入时使用默认配置。 |
+| options | [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md) | 否 | 编辑模式选项，用于自定义List编辑模式的特性行为。当需要自定义编辑模式行为时传入此参数，不传入时使用默认配置。 |
 
 ## enableEditMode
 
@@ -421,7 +445,7 @@ editModeOptions(options?: EditModeOptions)
 enableEditMode(enabled: boolean | undefined)
 ```
 
-设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选ListItem。未通过该接口设置时，不启用编辑模式。
+设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选[ListItem](arkts-arkui-listitem-comp.md#list_item)。未通过该接口设置时，不启用编辑模式。
 
 **起始版本：** 26.0.0
 
@@ -457,7 +481,7 @@ enableScrollInteraction(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](arkts-arkui-scroller-c.md)的滚动接口。<br>默认值：true |
+| value | boolean | 是 | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](arkts-arkui-scroll-comp-scroller-c.md)的滚动接口。<br>默认值：true |
 
 ## focusWrapMode
 
@@ -479,7 +503,7 @@ focusWrapMode(mode: Optional<FocusWrapMode>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | 是 | 交叉轴方向键走焦模式。<br>默认值：FocusWrapMode.DEFAULT<br>**说明：** <br>异常值按默认值处理，即交叉轴方向键不能换行。 |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | 是 | 交叉轴方向键走焦模式。<br>默认值：FocusWrapMode.DEFAULT<br>**说明：** <br>异常值按默认值处理，即交叉轴方向键不能换行。 |
 
 ## friction
 
@@ -522,6 +546,8 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -534,6 +560,8 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 | --- | --- | --- | --- |
 | value | number &#124; LengthConstrain | 是 | List组件的布局列数或行数。<br>默认值：1 <br>取值范围：[1, +∞)，传入小于1的值时按默认值处理。 |
 | gutter | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 否 | 列间距或行间距。<br>默认值：0<br>参数类型为number时单位为vp。<br>取值范围：[0, +∞)，传入负值时按默认值处理。<br>**说明：** <br>gutter为列间距或行间距，当列数或行数大于1时生效。<br><br>**适用版本：** 10 |
+
+<a id="lanes-1"></a>
 
 ## lanes
 
@@ -569,6 +597,8 @@ listDirection(value: Axis)
 设置List组件排列方向。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -614,6 +644,8 @@ multiSelectable(value: boolean)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -646,7 +678,7 @@ nestedScroll(value: NestedScrollOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | 是 | 嵌套滚动选项。<br>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY } |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | 是 | 嵌套滚动选项。<br>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY } |
 
 ## onEditModeChange
 
@@ -681,11 +713,13 @@ onItemDelete(event: (index: number) => boolean)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考
-> 示例3。
+> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
 
 **起始版本：** 7
 
 **废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -701,9 +735,11 @@ onItemDelete(event: (index: number) => boolean)
 onItemDragEnter(event: (event: ItemDragInfo) => void)
 ```
 
-拖拽List的子组件ListItem进入列表范围内时触发。
+拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)进入列表范围内时触发。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -721,9 +757,11 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 ```
 
-拖拽List的子组件ListItem离开列表范围时触发。
+拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)离开列表范围时触发。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -741,9 +779,11 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void)
 ```
 
-拖拽List的子组件ListItem在列表范围内移动时触发。
+拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)在列表范围内移动时触发。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -761,15 +801,17 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 onItemDragStart(event: OnItemDragStartCallback)
 ```
 
-开始拖拽List的子组件ListItem时触发。
+开始拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)时触发。
 
-不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](arkts-arkui-dynamicnode-c.md#onmove)接口实现该效果，参考示例12（使用onMove进行拖拽）。但需注意[onMove](arkts-arkui-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup拖拽。
+不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考[示例12（使用onMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例12使用onmove进行拖拽)。但需注意[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup拖拽。
 
 > **说明：** 
 > 
-> 从API version 14开始，该接口支持在attributeModifier中调用。
+> 从API version 14开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -779,7 +821,7 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md) | 是 | List的子组件ListItem拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md)。<br>**适用版本：** 23 |
+| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | 是 | List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md)。<br>**适用版本：** 23 |
 
 ## onItemDrop
 
@@ -792,6 +834,8 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 跨List拖拽时，当拖拽释放的位置绑定了onItemDrop时isSuccess为true，否则为false。List内部拖拽时，isSuccess为onItemMove事件的返回值。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -809,9 +853,11 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 onItemMove(event: (from: number, to: number) => boolean)
 ```
 
-List的子组件ListItem发生移动时触发。
+List的子组件[ListItem](arkts-arkui-listitem-comp.md#list_item)发生移动时触发。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -837,6 +883,8 @@ List边缘效果为弹簧效果时，划动经过末尾位置时触发一次，�
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -860,6 +908,8 @@ onReachStart(event: () => void)
 List初始化时如果initialIndex为0会触发一次，List滚动到起始位置时触发一次。List边缘效果为弹簧效果时，划动经过起始位置时触发一次，回弹回起始位置时再触发一次。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -892,6 +942,8 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
 
 **替代接口：** onDidScroll
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -918,15 +970,17 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 1. 用户交互（如手指滑动、键鼠操作等）触发滚动。
 2. List惯性滚动。
-3. 调用fling接口触发滚动。
+3. 调用[fling](arkts-arkui-scroll-comp-scroller-c.md#fling)接口触发滚动。
 
 不触发该事件的条件：
 
-1. 调用除fling接口外的其他滚动控制接口。
+1. 调用除[fling](arkts-arkui-scroll-comp-scroller-c.md#fling)接口外的其他滚动控制接口。
 2. 越界回弹。
 3. 拖动滚动条。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -938,7 +992,7 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | 是 | 每帧滚动开始回调函数。<br>**适用版本：** 20 |
+| event | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) | 是 | 每帧滚动开始回调函数。<br>**适用版本：** 20 |
 
 ## onScrollIndex
 
@@ -960,6 +1014,8 @@ onScrollIndex(event: (start: number, end: number, center: number) => void)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -978,9 +1034,11 @@ onScrollIndex(event: (start: number, end: number, center: number) => void)
 onScrollStart(event: () => void)
 ```
 
-列表滑动开始时触发。手指拖动列表或列表的滚动条触发的滑动开始时，会触发该事件。使用[Scroller](arkts-arkui-scroller-c.md)滑动控制器触发的带动画的滑动，动画开始时会触发该事件。
+列表滑动开始时触发。手指拖动列表或列表的滚动条触发的滑动开始时，会触发该事件。使用[Scroller](arkts-arkui-scroll-comp-scroller-c.md)滑动控制器触发的带动画的滑动，动画开始时会触发该事件。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1000,9 +1058,11 @@ onScrollStart(event: () => void)
 onScrollStop(event: () => void)
 ```
 
-列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](arkts-arkui-scroller-c.md)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](arkts-arkui-scroll-comp-scroller-c.md)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1040,7 +1100,7 @@ List的边缘效果为弹簧效果时，在List划动到边缘继续划动和松
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [OnScrollVisibleContentChangeCallback](arkts-arkui-onscrollvisiblecontentchangecallback-t.md) | 是 | 当前显示内容发生改变的时候触发回调。 |
+| handler | [OnScrollVisibleContentChangeCallback](arkts-arkui-list-comp-onscrollvisiblecontentchangecallback-t.md) | 是 | 当前显示内容发生改变的时候触发回调。 |
 
 ## scrollBar
 
@@ -1051,6 +1111,8 @@ scrollBar(value: BarState)
 设置滚动条状态。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1086,7 +1148,7 @@ scrollSnapAlign(value: ScrollSnapAlign)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ScrollSnapAlign](arkts-arkui-scrollsnapalign-e.md) | 是 | 列表项滚动结束对齐效果。<br>默认值：ScrollSnapAlign.NONE |
+| value | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | 是 | 列表项滚动结束对齐效果。<br>默认值：ScrollSnapAlign.NONE |
 
 ## scrollSnapAnimationSpeed
 
@@ -1108,7 +1170,7 @@ scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| speed | [ScrollSnapAnimationSpeed](arkts-arkui-scrollsnapanimationspeed-e.md) | 是 | 列表滚动限位动画速度。<br>默认值：ScrollSnapAnimationSpeed.NORMAL |
+| speed | [ScrollSnapAnimationSpeed](arkts-arkui-list-comp-scrollsnapanimationspeed-e.md) | 是 | 列表滚动限位动画速度。<br>默认值：ScrollSnapAnimationSpeed.NORMAL |
 
 ## stackFromEnd
 
@@ -1138,13 +1200,15 @@ stackFromEnd(enabled: boolean)
 sticky(value: StickyStyle)
 ```
 
-配合ListItemGroup组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
+配合[ListItemGroup](arkts-arkui-listitemgroup-comp.md#list_item_group)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
 
 > **说明：** 
 > 
-> 由于浮点数计算精度，设置sticky后，在List滑动过程中小概率产生缝隙，可以通过[pixelRound](arkts-arkui-commonmethod-c.md#pixelround)指定当前组件向下像素取整解决该问题。
+> 由于浮点数计算精度，设置sticky后，在List滑动过程中小概率产生缝隙，可以通过[pixelRound](arkts-arkui-common-comp-commonmethod-c.md#pixelround)指定当前组件向下像素取整解决该问题。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -1156,7 +1220,7 @@ sticky(value: StickyStyle)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [StickyStyle](arkts-arkui-stickystyle-e.md) | 是 | ListItemGroup吸顶或吸底效果。<br>默认值：StickyStyle.None |
+| value | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) | 是 | ListItemGroup吸顶或吸底效果。<br>默认值：StickyStyle.None |
 
 ## supportEmptyBranchInLazyLoading
 

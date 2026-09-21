@@ -1,5 +1,9 @@
 # Response
 
+```TypeScript
+interface Response
+```
+
 Describes the timestamp of the sensor data.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # EventInfo
 
+```TypeScript
+interface EventInfo
+```
+
 Defines the DRM event information.
 
 **Since:** 11

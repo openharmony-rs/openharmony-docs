@@ -1,5 +1,9 @@
 # BackupConfig
 
+```TypeScript
+interface BackupConfig
+```
+
 Provides backup config to backup or restore KVStore.
 
 **Since:** 24

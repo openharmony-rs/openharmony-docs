@@ -1,5 +1,9 @@
 # PartnerAgentExtensionContext
 
+```TypeScript
+export default class PartnerAgentExtensionContext extends ExtensionContext
+```
+
 Class for the context of the PartnerAgentExtensionAbility.
 
 @extends ExtensionContext

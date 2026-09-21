@@ -1,5 +1,9 @@
 # FormatParams (System API)
 
+```TypeScript
+export interface FormatParams
+```
+
 Format options for partition formatting.
 
 **Since:** 26.0.0

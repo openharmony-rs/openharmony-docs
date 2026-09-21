@@ -1,5 +1,9 @@
 # WindowLayoutMode (System API)
 
+```TypeScript
+enum WindowLayoutMode
+```
+
 Enumerates the window layout modes.
 
 **Since:** 9

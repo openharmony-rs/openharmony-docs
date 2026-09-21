@@ -220,6 +220,48 @@ function doTestParsePkcs12() {
 }
 ```
 
+
+<a id="parsepkcs12-1"></a>
+
+## parsePkcs12
+
+```TypeScript
+function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
+```
+
+Parses P12. This API uses a promise to return the result.
+
+**Since:** 21
+
+**Atomic service API:** This API can be used in atomic services since API version 21.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| data | Uint8Array | Yes | Raw data of P12 file, in DER format. |
+| password | string | Yes | Password. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[Pkcs12Data](arkts-devicecertificate-cert-pkcs12data-i.md)&gt; | Promise used to return the parsed P12 data. The private key in the returned **Pkcs12Data** is encoded in PEM format. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The length of the data is zero or too large; <br>2. The length of the password is too large. |
+| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
+| [19030008](../errorcode-cert.md#19030008-incorrect-private-key-password) | Maybe wrong password. |
+
+**Examples**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 
@@ -398,45 +440,3 @@ async function doTestParsePkcs12() {
   }
 }
 ```
-
-
-## parsePkcs12
-
-```TypeScript
-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>
-```
-
-Parses P12. This API uses a promise to return the result.
-
-**Since:** 21
-
-**Atomic service API:** This API can be used in atomic services since API version 21.
-
-**System capability:** SystemCapability.Security.Cert
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| data | Uint8Array | Yes | Raw data of P12 file, in DER format. |
-| password | string | Yes | Password. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[Pkcs12Data](arkts-devicecertificate-cert-pkcs12data-i.md)&gt; | Promise used to return the parsed P12 data. The private key in the returned **Pkcs12Data** is encoded in PEM format. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The length of the data is zero or too large; <br>2. The length of the password is too large. |
-| [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
-| [19030008](../errorcode-cert.md#19030008-incorrect-private-key-password) | Maybe wrong password. |
-
-**Examples**
-
-See [parsePkcs12](#parsepkcs12)

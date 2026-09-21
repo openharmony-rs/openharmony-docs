@@ -1,5 +1,9 @@
 # CaptureStartInfo
 
+```TypeScript
+interface CaptureStartInfo
+```
+
 Describes the capture start information.
 
 **Since:** 11

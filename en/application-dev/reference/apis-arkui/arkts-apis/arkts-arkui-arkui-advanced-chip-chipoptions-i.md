@@ -1,27 +1,35 @@
 # ChipOptions
 
-Defines the type and style parameters of the chip.
+```TypeScript
+export interface ChipOptions
+```
+
+Defines the style and specific style parameters of the **Chip** component.
 
 > **NOTE:** 
 > 
 > 1. When **suffixSymbol** is provided with an argument, **suffixIcon** and **allowClose** will not take effect. If
-> **suffixSymbol** is not provided, but **suffixIcon** is, **allowClose** still will not take effect. When neither
-> **suffixSymbol** nor **suffixIcon** is provided with arguments, **allowClose** determines whether the deletion icon
-> is displayed.
+> **suffixSymbol** is not provided, but **suffixIcon** is, **allowClose** will not take effect. If neither
+> **suffixSymbol** nor **suffixIcon** is provided, **allowClose** determines whether to display the close icon.
 > 
-> 2. If **undefined** is assigned to **backgroundColor** or **activatedBackgroundColor**, the default background color is used. If an invalid value is specified, the background color is transparent.
+> 2. When **backgroundColor** and **activatedBackgroundColor** are set to **undefined**, the default background color is displayed. When they are set to invalid values, the background color is transparent.
 > 
-> 3. Default font colors for **prefixSymbol** and **suffixSymbol**: **normalFontColor**:
-> **[&#36;r('sys.color.ohos_id_color_primary')]**; **activatedFontColor**:
-> **[&#36;r('sys.color.ohos_id_color_text_primary_contrary')]**. The default value of **fontColor** is **16**.
+> 3. When an icon is set for **prefixSymbol** or **suffixSymbol**, if the chip is in the inactive state, the icon color **fontColor** is `[$r('sys.color.ohos_id_color_secondary')]`; if the chip is in the activated state, the icon color **fontColor** is `[$r('sys.color.ohos_id_color_text_primary_contrary')]`. In addition, when **size** is
+> **ChipSize.SMALL**, the default font size of the icon is `$r('sys.float.chip_small_icon_size')`; when **size** is
+> **ChipSize.NORMAL** or a custom size, the default font size of the icon is `$r('sys.float.chip_normal_icon_size')`.
 > 
-> 4. The default value of **fillColor** is **&#36;r('sys.color.ohos_id_color_secondary')** for **prefixIcon** and
-> **&#36;r('sys.color.ohos_id_color_primary')** for **suffixIcon**. The color parsing of **fillColor** is the same as
-> that of the **Image** component.
+> 4. When icons are set for **prefixIcon** and **suffixIcon**, the default value of **fillColor** is `$r('sys.color.chip_usually_icon_color')`. The color parsing of **fillColor** is consistent with that of the
+> **Image** component.
 > 
-> 5. The default value of **activatedFillColor** in **prefixIcon** and **suffixIcon** is
-> **&#36;r('sys.color.ohos_id_color_text_primary_contrary')**. The color parsing of **activatedFillColor** is the same as
-> that of the **Image** component.
+> 5. When icons are set for **prefixIcon** and **suffixIcon**, the default value of **activatedFillColor** is `$r('sys.color.chip_active_icon_color')`. The color parsing of **activatedFillColor** is consistent with that of the **Image** component.
+> 
+> 6. Starting from API version 26.0.0, when **backgroundSystemMaterial** is configured as an auto-invert material,the fill color of **prefixIcon** and **suffixIcon**, as well as the text color of **prefixSymbol** and
+> **suffixSymbol** in the inactive state, will use system resources that support color inversion. These colors will
+> automatically match the inversion effect based on the background material. When
+> **activatedBackgroundSystemMaterial** is configured as an auto-invert material, the activated fill color of
+> **prefixIcon** and **suffixIcon**, as well as the text color of **prefixSymbol** and **suffixSymbol** in the
+> activated state, will also use system resources that support color inversion, achieving automatic adaptation to the
+> background material inversion.
 
 **Since:** 11
 
@@ -39,9 +47,11 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 onClose?: () => void
 ```
 
-Event triggered when the close icon is clicked.
+Default close icon tap event callback. It has no parameters or return value. This callback is triggered when the user taps the default close icon.
 
-If the value is **undefined**, clicking the close icon will not trigger any event.
+If the value is **undefined**, the close icon tap event is not triggered.
+
+**Note:** This takes effect only when the close icon is displayed, that is, when neither **suffixSymbol** nor **suffixIcon** has a value passed in and **allowClose** is **true**.
 
 **Since:** 11
 
@@ -57,9 +67,9 @@ If the value is **undefined**, clicking the close icon will not trigger any even
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description of the chip. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+Accessibility description of the Chip component. This is used to explain the current component to users in detail. Developers should provide detailed text descriptions to help users understand the operations to be performed and their results, especially when these results cannot be directly learned from the component attributes and accessibility text alone. If a component has both a text attribute and an accessibility description attribute, when the component is selected, the system first reads out the text attribute of the component, followed by the content of the accessibility description attribute.
 
-The default value is an empty string.
+Default value: empty string
 
 If the value is **undefined**, the default value is used.
 
@@ -79,17 +89,17 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level of the chip. It determines whether the component can be recognized by accessibility services.
+Accessibility level of the Chip component. This parameter controls whether the Chip component can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: It is treated as "yes" by the system.
+**"auto"**: The attribute value of the component is converted to **"yes"**.
 
 **"yes"**: The component can be recognized by accessibility services.
 
 **"no"**: The component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.
 
 Default value: **"auto"**
 
@@ -137,15 +147,15 @@ If the value is **undefined**, the default value is used.
 activated?: boolean
 ```
 
-Whether the chip is activated.
+Whether the Chip is in the activated state.
 
 Default value: **false**
 
-**true**: The chip is activated.
-
-**false**: The chip is not activated.
+**true**: The Chip is in the activated state; **false**: The Chip is in the non-activated state.
 
 If the value is **undefined**, the default value is used.
+
+**Usage scenario**: Commonly used in tag selection scenarios to indicate the currently selected item.
 
 **Type:** boolean
 
@@ -163,11 +173,11 @@ If the value is **undefined**, the default value is used.
 activatedBackgroundColor?: ResourceColor
 ```
 
-Background color of the chip when it is activated.
+Background color of the Chip in the activated state.
 
-Default value: **&#36;r('sys.color.ohos_id_color_emphasize')**
+Default value: **$r('sys.color.ohos_id_color_emphasize')**
 
-If the value is **undefined**, the default value is used.
+If the value is **undefined**, the default value is used. If an invalid value is assigned, the background color is transparent.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -185,7 +195,13 @@ If the value is **undefined**, the default value is used.
 activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component which is activated. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material style of the component in the activated state. It is suitable for interactive scenarios where the material effect needs to be maintained or switched in the activated state, such as tag selection and state switching. Different materials have different effects and can affect visual attributes such as [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border), and [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) of the component.
+
+Default value: **undefined**
+
+If the value is **undefined**, no material style is applied.
+
+**Note:** When **activatedBackgroundSystemMaterial** is set, **activatedBackgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material. When **activatedBackgroundSystemMaterial** is **undefined**, the **activatedBackgroundColor** attribute takes effect.
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -203,13 +219,15 @@ Set system-styled materials for the component which is activated. Different mate
 allowClose?: boolean
 ```
 
-Whether to display the close icon.
+Whether the close icon is displayed.
 
 Default value: **true**
 
-The value **true** means to show the delete icon, and **false** means the opposite.
+**true**: The close icon is displayed; **false**: The close icon is not displayed.
 
 If the value is **undefined**, the default value is used.
+
+**Note:** When **suffixSymbol** has a value passed in, **allowClose** does not take effect. When **suffixSymbol** has no value passed in but **suffixIcon** does, **allowClose** does not take effect. When neither **suffixSymbol** nor **suffixIcon** has a value passed in, **allowClose** determines whether the close icon is displayed.
 
 **Type:** boolean
 
@@ -227,11 +245,11 @@ If the value is **undefined**, the default value is used.
 backgroundColor?: ResourceColor
 ```
 
-Chip background color.
+Background color of the Chip.
 
-Default value: **&#36;r('sys.color.ohos_id_color_button_normal')**
+Default value: **$r('sys.color.ohos_id_color_button_normal')**
 
-If the value is **undefined**, the default value is used.
+If the value is **undefined**, the default value is used. If an invalid value is assigned, the background color is transparent.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -249,7 +267,13 @@ If the value is **undefined**, the default value is used.
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-Set system-styled materials for the component. Different materials have different effects, which can influence the backgroundColor, border, shadow, and other visual attributes of the component.
+System material style of the component. It is suitable for scenarios such as immersive background effects and semi- transparent frosted glass effects. Different materials have different effects and can affect visual attributes such as [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border), and [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) of the component.
+
+Default value: **undefined**
+
+If the value is **undefined**, no material style is applied.
+
+**Note:** When **backgroundSystemMaterial** is set, **backgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material. When **backgroundSystemMaterial** is **undefined**, the **backgroundColor** attribute takes effect.
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -267,9 +291,13 @@ Set system-styled materials for the component. Different materials have differen
 borderRadius?: Dimension
 ```
 
-Radius of the rounded corner of the chip background. Percentage is not supported.
+Corner radius of the Chip background. Percentage is not supported. If a percentage is passed in, the default value is used.
 
-Default value: **&#36;r('sys.float.ohos_id_corner_radius_button')**
+Value range: [0, +∞)
+
+Default value: **$r('sys.float.ohos_id_corner_radius_button')**
+
+Unit: vp
 
 If the value is **undefined**, the default value is used.
 
@@ -289,7 +317,7 @@ If the value is **undefined**, the default value is used.
 closeOptions?: CloseOptions
 ```
 
-Accessibility settings of the default close icon.
+Functional attributes of the default close icon, including accessibility reading and font size attributes. This takes effect only when the default close icon is displayed, that is, when **allowClose** is **true** and neither **suffixSymbol** nor **suffixIcon** has a value passed in.
 
 If the value is **undefined**, the default value is used.
 
@@ -315,6 +343,8 @@ Default value: **Direction.Auto**
 
 If the value is **undefined**, the default value is used.
 
+**Usage scenario**: Commonly used in internationalization scenarios to adapt to right-to-left (RTL) reading habits, such as Arabic, achieving a mirrored interface effect.
+
 **Type:** [Direction](arkts-arkui-direction-e.md)
 
 **Since:** 12
@@ -331,13 +361,13 @@ If the value is **undefined**, the default value is used.
 enabled?: boolean
 ```
 
-Whether the chip can be selected.
+Whether the Chip is available.
 
 Default value: **true**
 
-**true**: The chip can be selected.
+**true**: The Chip is available; **false**: The Chip is unavailable.
 
-**false**: The chip cannot be selected.
+**Usage scenario**: Set to **false** to disable the Chip. This is suitable for scenarios where user operations need to be prohibited, such as restricted permissions, incomplete data loading, or unmet conditions.
 
 If the value is **undefined**, the default value is used.
 
@@ -357,16 +387,17 @@ If the value is **undefined**, the default value is used.
 fontSize?: Dimension
 ```
 
-Uniform font size for both text and icons in the chip. Percentage values are not supported.
+Uniform font size for the text and icons of the **Chip** component. Percentage is not supported. If a percentage is passed in, the default value is used.
 
-The priority of **fontSize** is lower than the **fontSize** property in **prefixSymbol**, **label**, **suffixSymbol**, and **closeOptions**.
+The priority of this **fontSize** is lower than the **fontSize** attributes in **prefixSymbol**, **label**, **suffixSymbol**, and **closeOptions**.
 
-Default value:
+Default values:
 
-- When **size** is **ChipSize.SMALL**: **&#36;r('sys.float.chip_small_font_size')** for text and  
-**&#36;r('sys.float.chip_small_icon_size')** for icons.  
-- Other cases: **&#36;r('sys.float.chip_normal_font_size')** for text and **&#36;r('sys.float.chip_normal_icon_size')** for  
-icons.
+- When **size** is **ChipSize.SMALL**, text: `$r('sys.float.chip_small_font_size')`; icon:  
+`$r('sys.float.chip_small_icon_size')`  
+- In other cases, text: `$r('sys.float.chip_normal_font_size')`; icon: `$r('sys.float.chip_normal_icon_size')`
+
+Unit: fp
 
 If the value is **undefined**, the default value is used.
 
@@ -386,7 +417,7 @@ If the value is **undefined**, the default value is used.
 label: LabelOptions
 ```
 
-Text of the chip.
+Text content and style displayed on the Chip component.
 
 **Type:** [LabelOptions](arkts-arkui-arkui-advanced-chip-labeloptions-i.md)
 
@@ -404,7 +435,17 @@ Text of the chip.
 maxFontScale?: number | Resource
 ```
 
-Maximum font scale factor for the text and icon of the chip. Value range: [1, +∞).
+Maximum font scale factor for the text and icons of the **Chip** component.
+
+Value range: [1, +∞)
+
+If the set value is less than 1, the value 1 is used. Abnormal values do not take effect by default.
+
+Default value: **1**
+
+If the value is **undefined**, the default value is used.
+
+**Usage scenario**: Suitable for accessibility scenarios where the upper limit of font scaling needs to be restricted, preventing layout overflow caused by excessively large fonts.
 
 **Type:** number &#124; [Resource](arkts-arkui-resource-t.md)
 
@@ -422,7 +463,17 @@ Maximum font scale factor for the text and icon of the chip. Value range: [1, +�
 minFontScale?: number | Resource
 ```
 
-Minimum font scale factor for the text and icon of the chip. Value range: [0, 1].
+Minimum font scale factor for the text and icons of the **Chip** component.
+
+**Value range:** [0, 1]
+
+If the set value is less than 0, the value 0 is used. If the set value is greater than 1, the value 1 is used. Abnormal values do not take effect by default.
+
+Default value: **1**
+
+If the value is **undefined**, the default value is used.
+
+**Usage scenario**: Suitable for scenarios where the lower limit of font scaling needs to be restricted, ensuring text readability.
 
 **Type:** number &#124; [Resource](arkts-arkui-resource-t.md)
 
@@ -440,9 +491,9 @@ Minimum font scale factor for the text and icon of the chip. Value range: [0, 1]
 onClicked?: Callback<void>
 ```
 
-Chip click event.
+Tap event callback of the **Chip** component. It has no parameters or return value. This callback is triggered when the user taps the **Chip** component.
 
-If the value is **undefined**, the chip cannot be clicked.
+If the value is **undefined**, the **Chip** cannot be tapped.
 
 **Type:** Callback&lt;void&gt;
 
@@ -460,18 +511,18 @@ If the value is **undefined**, the chip cannot be clicked.
 padding?: LocalizedPadding
 ```
 
-Padding of the chip.
+Padding of the Chip component.
 
-Default value:
+Default values:
 
-- When **size** is **ChipSize.SMALL** and **activated** is **true**:  
-**{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.  
-- When **size** is **ChipSize.SMALL** and **activated** is **false**:  
-**{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.  
-- When **size** is not **ChipSize.SMALL** and **activated** is **true**:  
-**{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.  
-- When **size** is not **ChipSize.SMALL** and **activated** is **false**:  
-**{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}**.
+- When **size** is **ChipSize.SMALL** and **activated** is **true**, the default value is:  
+`{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`  
+- When **size** is **ChipSize.SMALL** and **activated** is **false**, the default value is:  
+`{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`  
+- When **size** is not **ChipSize.SMALL** and **activated** is **true**, the default value is:  
+`{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`  
+- When **size** is not **ChipSize.SMALL** and **activated** is **false**, the default value is:  
+`{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`
 
 If the value is **undefined**, the default value is used.
 
@@ -491,13 +542,13 @@ If the value is **undefined**, the default value is used.
 prefixIcon?: PrefixIconOptions
 ```
 
-Prefix icon of the chip.
+Prefix icon of the Chip component, displayed on the left side of the component.
 
-Default value: The prefix icon is not displayed.
+Default value: No prefix icon is displayed
 
 If the value is **undefined**, the default value is used.
 
-If both **prefixIcon** and **prefixSymbol** are set, the effect specified by **prefixSymbol** will be displayed, and **prefixIcon** will be ignored.
+When both **prefixIcon** and **prefixSymbol** are set, **prefixSymbol** takes effect and **prefixIcon** is ignored.
 
 **Type:** [PrefixIconOptions](arkts-arkui-arkui-advanced-chip-prefixiconoptions-i.md)
 
@@ -515,13 +566,13 @@ If both **prefixIcon** and **prefixSymbol** are set, the effect specified by **p
 prefixSymbol?: ChipSymbolGlyphOptions
 ```
 
-Symbol-type prefix icon of the chip.
+Prefix icon attribute, of the symbol type. Commonly used in scenarios requiring system standard icons or dynamic icon effects.
 
-Default value: The prefix icon is not displayed.
+Default value: No prefix icon is displayed
 
 If the value is **undefined**, the default value is used.
 
-If both **prefixIcon** and **prefixSymbol** are set, the effect specified by **prefixSymbol** will be displayed, and **prefixIcon** will be ignored.
+When both **prefixIcon** and **prefixSymbol** are set, **prefixSymbol** takes effect and **prefixIcon** is ignored.
 
 **Type:** [ChipSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsymbolglyphoptions-i.md)
 
@@ -539,13 +590,15 @@ If both **prefixIcon** and **prefixSymbol** are set, the effect specified by **p
 size?: ChipSize | SizeOptions
 ```
 
-Chip size.
+Size of the **Chip**.
 
 Default value: **ChipSize.NORMAL**
 
-The SizeOptions type parameter does not support percentage values. If an invalid value is provided, the system will use the default value instead.
+**Usage scenario**: **ChipSize.NORMAL** is suitable for common scenarios; **ChipSize.SMALL** is suitable for compact layout scenarios, such as tag lists and filter bars; custom **SizeOptions** is suitable for scenarios requiring specific sizes.
 
-Note: [Aging-friendly design implementation](../../../ui/arkui-support-for-aging-adaptation.md) does not take effect when size specifies specific width and height, except when size is set to { height: 0, width: 0 }.
+The **SizeOptions** type does not support percentage settings. Abnormal values are processed as the default value.
+
+**Note:** [Aging adaptation](../../../ui/arkui-support-for-aging-adaptation.md) does not take effect when **size** specifies specific width and height, except when **size** is set to **{ height: 0, width: 0 }**.
 
 **Type:** [ChipSize](arkts-arkui-arkui-advanced-chip-chipsize-e.md) &#124; [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -563,13 +616,13 @@ Note: [Aging-friendly design implementation](../../../ui/arkui-support-for-aging
 suffixIcon?: SuffixIconOptions
 ```
 
-Suffix icon of the chip.
+Suffix icon of the Chip component, displayed on the right side of the component.
 
-Default value: The suffix icon is not displayed.
+Default value: No suffix icon is displayed
 
 If the value is **undefined**, the default value is used.
 
-If both **suffixIcon** and **suffixSymbol** are set, the effect specified by **suffixSymbol** will be displayed, and **suffixIcon** will be ignored.
+When both **suffixIcon** and **suffixSymbol** are set, **suffixSymbol** takes effect and **suffixIcon** is ignored.
 
 **Type:** [SuffixIconOptions](arkts-arkui-arkui-advanced-chip-suffixiconoptions-i.md)
 
@@ -587,13 +640,13 @@ If both **suffixIcon** and **suffixSymbol** are set, the effect specified by **s
 suffixSymbol?: ChipSymbolGlyphOptions
 ```
 
-Symbol-type suffix icon of the chip.
+Suffix icon attribute, of the symbol type. Commonly used in scenarios requiring system standard icons or dynamic icon effects.
 
-Default value: The suffix icon is not displayed.
+Default value: No suffix icon is displayed
 
 If the value is **undefined**, the default value is used.
 
-If both **suffixIcon** and **suffixSymbol** are set, the effect specified by **suffixSymbol** will be displayed, and **suffixIcon** will be ignored.
+When both **suffixIcon** and **suffixSymbol** are set, **suffixSymbol** takes effect and **suffixIcon** is ignored.
 
 **Type:** [ChipSymbolGlyphOptions](arkts-arkui-arkui-advanced-chip-chipsymbolglyphoptions-i.md)
 
@@ -611,9 +664,9 @@ If both **suffixIcon** and **suffixSymbol** are set, the effect specified by **s
 suffixSymbolOptions?: ChipSuffixSymbolGlyphOptions
 ```
 
-Accessibility settings of the symbol-type suffix icon.
+Accessibility reading function attributes and tap event callback of the symbol-type suffix icon.
 
-Default value: The suffix icon is not displayed.
+Default value: No corresponding attribute is set
 
 If the value is **undefined**, the default value is used.
 

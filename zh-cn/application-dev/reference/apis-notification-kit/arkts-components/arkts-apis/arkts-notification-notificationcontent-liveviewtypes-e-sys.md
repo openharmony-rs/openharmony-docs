@@ -1,5 +1,9 @@
 # LiveViewTypes（系统接口）
 
+```TypeScript
+export enum LiveViewTypes
+```
+
 描述实况通知的类型。
 
 **起始版本：** 18

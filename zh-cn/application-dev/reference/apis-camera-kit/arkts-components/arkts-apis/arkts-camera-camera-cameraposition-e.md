@@ -1,5 +1,9 @@
 # CameraPosition
 
+```TypeScript
+enum CameraPosition
+```
+
 枚举，相机位置。
 
 **起始版本：** 10
@@ -62,7 +66,7 @@ CAMERA_POSITION_FOLD_INNER = 3
 
 **废弃版本：** 12
 
-**替代接口：** null
+**替代接口：** null、null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 

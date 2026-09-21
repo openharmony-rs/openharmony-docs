@@ -22,6 +22,31 @@ import { AVVolumePanel, AVVolumePanelParameter } from '@kit.AudioKit';
 
 ## Examples
 
-```TypeScript
 To see how the volume panel works, refer to the sample code below. To experience the volume adjustment, you'll need to change the volume value or press the volume buttons.
+
+```TypeScript
+import { AVVolumePanel } from '@kit.AudioKit';
+
+@Entry
+@Component
+struct Index {
+
+  @State volume: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        AVVolumePanel({
+          volumeLevel: this.volume,
+          volumeParameter: {
+            position: {
+              x: 100,
+              y: 200
+            }
+          }
+        })
+      }
+    }.width('50%').height('50%')
+  }
+}
 ```

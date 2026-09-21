@@ -1,5 +1,9 @@
 # SnapshotRegion
 
+```TypeScript
+interface SnapshotRegion
+```
+
 定义组件截图的矩形区域。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # RecentPhotoInfo
 
+```TypeScript
+export class RecentPhotoInfo
+```
+
 Recent photo info
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # AutoStartupCallback（系统接口）
 
+```TypeScript
+export interface AutoStartupCallback
+```
+
 应用设置为开机自启动时的回调函数。
 
 **起始版本：** 11

@@ -1,8 +1,12 @@
 # AnalysisToolType (System API)
 
+```TypeScript
+export enum AnalysisToolType
+```
+
 Enumerates the smart analysis tool types.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -16,7 +20,7 @@ ANALYSIS_BASE_TOOL_TYPE = 0
 
 Base analysis tool type for triggering all analysis algorithms.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -32,7 +36,7 @@ IMAGE_RETRIEVAL_TOOL_TYPE = 1
 
 Image retrieval tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -48,7 +52,7 @@ NEGATIVE_FILTER_TOOL_TYPE = 2
 
 Negative filter tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +68,7 @@ FACE_RECOGNITION_TOOL_TYPE = 3
 
 Face recognition tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -80,7 +84,7 @@ BATCH_SIMILARITY_SELECTION_TOOL_TYPE = 4
 
 Batch similarity selection tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -96,7 +100,7 @@ BALANCED_SELECTION_TOOL_TYPE = 5
 
 Balanced selection tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -112,7 +116,7 @@ COVER_GRID_SELECTION_TOOL_TYPE = 6
 
 Cover grid selection tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -128,7 +132,7 @@ HIGHLIGHT_TOOL_TYPE = 7
 
 Highlight tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -144,7 +148,7 @@ SEARCH_TOOL_TYPE = 8
 
 Search tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -160,7 +164,7 @@ SELECTION_TOOL_TYPE = 9
 
 Selection tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -176,7 +180,7 @@ PORTRAIT_ALBUM_TOOL_TYPE = 10
 
 Portrait album tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -192,7 +196,7 @@ CLASSIFY_ALBUM_TOOL_TYPE = 11
 
 Classify album tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -208,7 +212,7 @@ SIMILARITY_CLEANING_TOOL_TYPE = 12
 
 Similarity cleaning tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -224,7 +228,7 @@ EDIT_RECOMMENDATION_TOOL_TYPE = 13
 
 Edit recommendation tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -240,7 +244,7 @@ AI_SEARCH_TOOL_TYPE = 14
 
 AI search tool type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

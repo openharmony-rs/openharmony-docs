@@ -1,5 +1,9 @@
 # DownloadError
 
+```TypeScript
+interface DownloadError
+```
+
 Describes the error message returned when a pre-download error occurs.
 
 **Since:** 23

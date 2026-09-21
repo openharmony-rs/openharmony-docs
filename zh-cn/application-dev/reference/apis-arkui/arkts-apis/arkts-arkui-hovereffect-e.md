@@ -1,5 +1,9 @@
 # HoverEffect
 
+```TypeScript
+declare enum HoverEffect
+```
+
 定义组件悬浮效果的类型。
 
 **起始版本：** 8

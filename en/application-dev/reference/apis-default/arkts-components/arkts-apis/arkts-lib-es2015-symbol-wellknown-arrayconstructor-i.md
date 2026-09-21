@@ -1,5 +1,9 @@
 # ArrayConstructor
 
+```TypeScript
+interface ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

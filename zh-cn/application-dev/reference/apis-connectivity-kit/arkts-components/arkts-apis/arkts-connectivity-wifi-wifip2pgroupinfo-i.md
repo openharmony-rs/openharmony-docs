@@ -1,5 +1,9 @@
 # WifiP2pGroupInfo
 
+```TypeScript
+interface WifiP2pGroupInfo
+```
+
 表示P2P群组相关信息。
 
 > **说明：** 

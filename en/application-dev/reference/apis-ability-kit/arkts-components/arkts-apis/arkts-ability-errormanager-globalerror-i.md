@@ -1,5 +1,9 @@
 # GlobalError
 
+```TypeScript
+export interface GlobalError extends Error
+```
+
 Describes the object related to the exception event name, message, error stack information, exception thread name, and exception thread type.
 
 **Inheritance/Implementation:** GlobalError extends Error

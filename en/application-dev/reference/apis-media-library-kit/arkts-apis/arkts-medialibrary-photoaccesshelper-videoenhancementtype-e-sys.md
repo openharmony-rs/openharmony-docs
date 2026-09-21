@@ -1,5 +1,9 @@
 # VideoEnhancementType (System API)
 
+```TypeScript
+enum VideoEnhancementType
+```
+
 Enumerates the types of segmented video enhancement.
 
 **Since:** 13

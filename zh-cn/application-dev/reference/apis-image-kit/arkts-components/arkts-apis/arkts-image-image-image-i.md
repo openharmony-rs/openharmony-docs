@@ -1,5 +1,9 @@
 # Image
 
+```TypeScript
+interface Image
+```
+
 Image类，供ImageReceiver和ImageCreator使用，用于传输图片对象，其实际内容由生产者决定。如相机预览流提供的Image对象存储了YUV数据、相机拍照提供的Image对象存储了JPEG文件。
 
 调用[readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage)和[readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage)接口时会返回Image实例。
@@ -46,6 +50,19 @@ getBufferData(): ImageBufferData | null
 | --- | --- |
 | [ImageBufferData](arkts-image-image-imagebufferdata-i.md) &#124; null | 获取封装图像数据缓冲区的结构体，获取不到时返回空值。 |
 
+**示例**
+
+```TypeScript
+function GetBufferData(img: image.Image) {
+  const bufferData = img.getBufferData();
+  if (bufferData == null) {
+    console.error('Failed to get the bufferData: bufferData is null.');
+    return;
+  }
+  console.info('Succeeded in getting bufferData.');
+}
+```
+
 ## getComponent
 
 ```TypeScript
@@ -64,6 +81,24 @@ getComponent(componentType: ComponentType, callback: AsyncCallback<Component>): 
 | --- | --- | --- | --- |
 | componentType | [ComponentType](arkts-image-image-componenttype-e.md) | 是 | 图像的组件类型（目前仅支持ComponentType:JPEG，实际返回格式由生产者决定，如相机）。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Component](arkts-image-image-component-i.md)&gt; | 是 | 回调函数，当返回组件缓冲区成功，err为undefined，data为获取到的组件缓冲区；否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetComponent(img : image.Image) {
+  img.getComponent(image.ComponentType.JPEG, (err: BusinessError, component: image.Component) => {
+    if (err) {
+      console.error(`Failed to get the component.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in getting component.');
+    }
+  })
+}
+```
+
+<a id="getcomponent-1"></a>
 
 ## getComponent
 
@@ -88,6 +123,20 @@ getComponent(componentType: ComponentType): Promise<Component>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[Component](arkts-image-image-component-i.md)&gt; | Promise对象，返回组件缓冲区。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetComponent(img : image.Image) {
+  img.getComponent(image.ComponentType.JPEG).then((component: image.Component) => {
+    console.info('Succeeded in getting component.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get the component.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## getMetadata
 
@@ -122,6 +171,19 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue | null
 | [7600206](../errorcode-image.md#7600206-无效参数) | Invalid parameter. |
 | [7600302](../errorcode-image.md#7600302-内存拷贝失败) | Memory copy failed. |
 
+**示例**
+
+```TypeScript
+async function GetMetadata(img : image.Image) {
+  try {
+    let staticMetadata = img.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
+    console.info(`getMetadata:${staticMetadata}`);
+  } catch (err) {
+    console.error('Failed to getMetadata.' + err);
+  }
+}
+```
+
 ## release
 
 ```TypeScript
@@ -146,6 +208,24 @@ release(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当图像释放成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release(img : image.Image) {
+  img.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the image instance.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in releasing the image instance.');
+    }
+  })
+}
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -169,6 +249,20 @@ release(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release(img : image.Image) {
+  img.release().then(() => {
+    console.info('Succeeded in releasing the image instance.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the image instance.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## clipRect
 

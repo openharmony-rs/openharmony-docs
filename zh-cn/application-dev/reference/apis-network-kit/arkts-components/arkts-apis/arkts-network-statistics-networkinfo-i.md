@@ -1,5 +1,9 @@
 # NetworkInfo
 
+```TypeScript
+export interface NetworkInfo
+```
+
 网络信息。
 
 **起始版本：** 22

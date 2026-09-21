@@ -1,5 +1,9 @@
 # ConnectOptions
 
+```TypeScript
+interface ConnectOptions
+```
+
 Connection options for the application.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # VibratorStatusEvent
 
+```TypeScript
+interface VibratorStatusEvent
+```
+
 振动设备上线、下线状态事件信息。当马达设备上线或下线时，通过[vibrator.on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange)回调传递此对象。
 
 **起始版本：** 19
@@ -18,7 +22,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 deviceId: number
 ```
 
-设备的ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md)等接口指定目标设备。
+设备的ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-4)等接口指定目标设备。
 
 **类型：** number
 

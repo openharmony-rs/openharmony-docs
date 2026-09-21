@@ -1,5 +1,9 @@
 # AmbientTemperatureResponse
 
+```TypeScript
+interface AmbientTemperatureResponse extends Response
+```
+
 Describes the ambient temperature sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** AmbientTemperatureResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

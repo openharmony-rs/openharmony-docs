@@ -1,5 +1,9 @@
 # EventType
 
+```TypeScript
+export enum EventType
+```
+
 Enumerates the control event types.
 
 **Since:** 20

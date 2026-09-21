@@ -1,5 +1,9 @@
 # GzHeader
 
+```TypeScript
+interface GzHeader
+```
+
 Gzip header information passed to and from zlib routines.
 
 **Since:** 12

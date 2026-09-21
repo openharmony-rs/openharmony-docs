@@ -1,5 +1,9 @@
 # AdsorbState（系统接口）
 
+```TypeScript
+export enum AdsorbState
+```
+
 手机吸附状态
 
 **起始版本：** 26.2.0

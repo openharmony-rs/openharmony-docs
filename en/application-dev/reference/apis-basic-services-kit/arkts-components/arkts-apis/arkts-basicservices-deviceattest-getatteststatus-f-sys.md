@@ -59,27 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-    deviceAttest.getAttestStatus().then((value: deviceAttest.AttestResultInfo) => {
-    console.info("auth:" + value.authResult + " software:" + value.softwareResult + " ticket:" + value.ticket);
-    console.info("versionIdResult:" + value.softwareResultDetail[0],
-        " patchLevelResult:" + value.softwareResultDetail[1],
-        " rootHashResult:" + value.softwareResultDetail[2],
-        " PCIDResult:" + value.softwareResultDetail[3],
-        " reserved:" + value.softwareResultDetail[4]);
-    }).catch((error: BusinessError) => {
-        console.error("error code:" + error.code + " message:" + error.message);
-    });
-} catch (error) {
-    let code: number = (error as BusinessError).code;
-    let message: string = (error as BusinessError).message;
-    console.error("error code:" + code + " message:" + message);
-}
-```
-
+<a id="getatteststatus-1"></a>
 
 ## getAttestStatus
 
@@ -111,4 +92,23 @@ Obtains the AttestResultInfo object.
 
 **Examples**
 
-See [getAttestStatus](#getatteststatus)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    deviceAttest.getAttestStatus().then((value: deviceAttest.AttestResultInfo) => {
+    console.info("auth:" + value.authResult + " software:" + value.softwareResult + " ticket:" + value.ticket);
+    console.info("versionIdResult:" + value.softwareResultDetail[0],
+        " patchLevelResult:" + value.softwareResultDetail[1],
+        " rootHashResult:" + value.softwareResultDetail[2],
+        " PCIDResult:" + value.softwareResultDetail[3],
+        " reserved:" + value.softwareResultDetail[4]);
+    }).catch((error: BusinessError) => {
+        console.error("error code:" + error.code + " message:" + error.message);
+    });
+} catch (error) {
+    let code: number = (error as BusinessError).code;
+    let message: string = (error as BusinessError).message;
+    console.error("error code:" + code + " message:" + message);
+}
+```

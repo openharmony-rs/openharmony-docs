@@ -1,5 +1,9 @@
 # RunningLockType
 
+```TypeScript
+export enum RunningLockType
+```
+
 Enumerates the types of **RunningLock** objects.
 
 **Since:** 7

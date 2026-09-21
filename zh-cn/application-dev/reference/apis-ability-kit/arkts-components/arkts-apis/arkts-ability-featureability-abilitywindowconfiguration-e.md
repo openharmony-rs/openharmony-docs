@@ -1,5 +1,9 @@
 # AbilityWindowConfiguration
 
+```TypeScript
+export enum AbilityWindowConfiguration
+```
+
 表示当前Ability对应的窗口配置项，使用时通过featureAbility.AbilityWindowConfiguration获取。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # RouteInfo
 
+```TypeScript
+export interface RouteInfo
+```
+
 Defines network route information.
 
 **Since:** 8

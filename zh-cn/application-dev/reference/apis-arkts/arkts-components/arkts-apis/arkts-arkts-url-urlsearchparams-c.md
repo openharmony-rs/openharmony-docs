@@ -1,5 +1,9 @@
 # URLSearchParams
 
+```TypeScript
+class URLSearchParams
+```
+
 URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams](arkts-arkts-url-urlparams-c.md)。
 
 **起始版本：** 7
@@ -84,7 +88,7 @@ paramsObject.append('fod', '3');
 ## constructor
 
 ```TypeScript
-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)
+constructor(init?: string[][] | Record<string, string>  | string | URLSearchParams)
 ```
 
 URLSearchParams的构造函数。

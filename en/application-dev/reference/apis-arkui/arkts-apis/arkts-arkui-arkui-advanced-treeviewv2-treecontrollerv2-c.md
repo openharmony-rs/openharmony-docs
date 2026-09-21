@@ -1,5 +1,9 @@
 # TreeControllerV2
 
+```TypeScript
+export declare class TreeControllerV2
+```
+
 Declare TreeControllerV2
 
 **Since:** 26.0.0

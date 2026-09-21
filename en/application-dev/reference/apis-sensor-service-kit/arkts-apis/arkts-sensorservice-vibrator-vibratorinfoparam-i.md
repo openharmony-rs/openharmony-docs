@@ -1,5 +1,9 @@
 # VibratorInfoParam
 
+```TypeScript
+interface VibratorInfoParam
+```
+
 Defines the vibrator parameters. If **VibratorInfoParam** is left unspecified, an API applies to all vibrators of the local device by default.
 
 **Since:** 19

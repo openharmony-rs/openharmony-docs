@@ -1,5 +1,9 @@
 # ProxyOptions
 
+```TypeScript
+export interface ProxyOptions
+```
+
 Defines the socket proxy information.
 
 **Since:** 18

@@ -17,4 +17,4 @@ SubHeaderV2OperationItemType
 | Type | Description |
 | --- | --- |
 | [ResourceStr](arkts-arkui-resourcestr-t.md) |  |
-| [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md) |  |
+| [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md) |  |

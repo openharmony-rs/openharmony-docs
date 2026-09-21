@@ -1,6 +1,10 @@
 # ChipV2Icon
 
-Defines chipV2 icon.
+```TypeScript
+export abstract class ChipV2Icon
+```
+
+Defines the base class of icons.
 
 **Since:** 26.0.0
 
@@ -20,7 +24,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor()
 ```
 
-The constructor of ChipV2Icon
+A constructor used to create a **ChipV2Icon** object.
 
 **Since:** 26.0.0
 

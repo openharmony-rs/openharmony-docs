@@ -1,5 +1,9 @@
 # AxisRange
 
+```TypeScript
+interface AxisRange
+```
+
 输入设备的轴信息。
 
 **起始版本：** 8

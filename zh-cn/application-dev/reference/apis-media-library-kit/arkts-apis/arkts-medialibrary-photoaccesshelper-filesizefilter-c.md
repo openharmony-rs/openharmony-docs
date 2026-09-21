@@ -1,5 +1,9 @@
 # FileSizeFilter
 
+```TypeScript
+class FileSizeFilter
+```
+
 可选择媒体文件大小的过滤配置。
 
 **起始版本：** 19

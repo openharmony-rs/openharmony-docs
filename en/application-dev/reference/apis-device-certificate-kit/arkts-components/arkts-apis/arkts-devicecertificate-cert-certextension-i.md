@@ -1,5 +1,9 @@
 # CertExtension
 
+```TypeScript
+interface CertExtension
+```
+
 Provides APIs for operating on certificate extensions.
 
 **Since:** 10

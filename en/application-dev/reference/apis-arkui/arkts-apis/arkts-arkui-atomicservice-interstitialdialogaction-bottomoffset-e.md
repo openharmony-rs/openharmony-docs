@@ -1,5 +1,9 @@
 # BottomOffset
 
+```TypeScript
+export declare enum BottomOffset
+```
+
 Defines the distance between the popup and the bottom in different scenario modes, based on the presence or absence of a menu bar, with the default being the distance when there is no menu bar.
 
 | Name| Value| Description|  

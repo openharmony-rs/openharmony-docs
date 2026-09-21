@@ -1,5 +1,9 @@
 # MouseEvent
 
+```TypeScript
+export declare interface MouseEvent extends InputEvent
+```
+
 Defines the mouse event.
 
 **Inheritance/Implementation:** MouseEvent extends [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)

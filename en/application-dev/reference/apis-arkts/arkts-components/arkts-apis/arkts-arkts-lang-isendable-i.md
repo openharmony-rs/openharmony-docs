@@ -1,5 +1,9 @@
 # ISendable
 
+```TypeScript
+interface ISendable
+```
+
 Base interface for all Sendable classes/interfaces.
 
 **Since:** 12

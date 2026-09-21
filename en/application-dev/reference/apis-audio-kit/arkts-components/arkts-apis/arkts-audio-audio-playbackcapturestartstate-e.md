@@ -1,5 +1,9 @@
 # PlaybackCaptureStartState
 
+```TypeScript
+enum PlaybackCaptureStartState
+```
+
 Defines the playback capture start state, which is returned asynchronously after calling [requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart) function.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ReminderLevel (System API)
 
+```TypeScript
+export enum ReminderLevel
+```
+
 Enumerates comfort reminder levels required for triggering specific alert ringtones.
 
 **Since:** 26.0.0

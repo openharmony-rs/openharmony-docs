@@ -1,5 +1,9 @@
 # TouchEvent
 
+```TypeScript
+export declare interface TouchEvent extends InputEvent
+```
+
 Defines a touch event.
 
 **Inheritance/Implementation:** TouchEvent extends [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)

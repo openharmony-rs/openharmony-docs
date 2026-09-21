@@ -1,5 +1,9 @@
 # KeyItem
 
+```TypeScript
+interface KeyItem
+```
+
 其他按键信息。当前[KeyCode](arkts-mdm-systemmanager-keycode-e.md)事件发生时，其他已被按下的按键信息。
 
 **起始版本：** 23

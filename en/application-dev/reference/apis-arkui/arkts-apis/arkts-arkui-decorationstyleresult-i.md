@@ -1,5 +1,9 @@
 # DecorationStyleResult
 
+```TypeScript
+interface DecorationStyleResult
+```
+
 Provides the text decoration information returned by the backend.
 
 **Since:** 12

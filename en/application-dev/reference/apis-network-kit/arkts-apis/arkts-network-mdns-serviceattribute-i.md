@@ -1,5 +1,9 @@
 # ServiceAttribute
 
+```TypeScript
+export interface ServiceAttribute
+```
+
 MDNS service attribute information.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # State
 
+```TypeScript
+enum State
+```
+
 Enumerates the download states of a cloud file.
 
 **Since:** 11

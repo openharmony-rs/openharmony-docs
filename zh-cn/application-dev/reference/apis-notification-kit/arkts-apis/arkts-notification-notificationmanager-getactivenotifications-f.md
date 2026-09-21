@@ -20,9 +20,7 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设置角标个数。
 
 **参数：**
 
@@ -54,16 +52,8 @@ let getActiveNotificationsCallback = (err: BusinessError, data: Array<notificati
 notificationManager.getActiveNotifications(getActiveNotificationsCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
-  console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getactivenotifications-1"></a>
 
 ## getActiveNotifications
 
@@ -79,9 +69,7 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-1) 设置角标个数。
 
 **返回值：**
 
@@ -99,4 +87,12 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 
 **示例**
 
-参见 getActiveNotifications
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
+  console.info(`Succeeded in getting active notifications, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get active notifications. Code is ${err.code}, message is ${err.message}`);
+});
+```

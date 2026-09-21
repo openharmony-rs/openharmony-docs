@@ -1,5 +1,9 @@
 # AuthSubType（系统接口）
 
+```TypeScript
+enum AuthSubType
+```
+
 表示用于认证的凭据子类型的枚举。
 
 **起始版本：** 8

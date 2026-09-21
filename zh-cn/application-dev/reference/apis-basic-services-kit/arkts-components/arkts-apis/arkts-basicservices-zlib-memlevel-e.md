@@ -1,5 +1,9 @@
 # MemLevel
 
+```TypeScript
+export enum MemLevel
+```
+
 内存等级。
 
 **起始版本：** 7

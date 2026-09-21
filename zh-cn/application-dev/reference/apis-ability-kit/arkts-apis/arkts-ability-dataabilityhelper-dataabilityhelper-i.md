@@ -1,5 +1,9 @@
 # DataAbilityHelper
 
+```TypeScript
+export interface DataAbilityHelper
+```
+
 可以通过[acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md)接口获取DataAbilityHelper对象。
 
 **起始版本：** 7
@@ -50,21 +54,7 @@ DAHelper.batchInsert('dataability:///com.example.DataAbility', cars, (error, dat
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import rdb from '@ohos.data.rdb';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-let cars = new Array({'name': 'roe11', 'age': 21, 'salary': 20.5, 'blobType': 'u8',} as rdb.ValuesBucket,
-                     {'name': 'roe12', 'age': 21, 'salary': 20.5, 'blobType': 'u8',} as rdb.ValuesBucket,
-                     {'name': 'roe13', 'age': 21, 'salary': 20.5, 'blobType': 'u8',} as rdb.ValuesBucket);
-DAHelper.batchInsert('dataability:///com.example.DataAbility', cars).then((data) => {
-    console.info(`batchInsert data: ${JSON.stringify(data)}`);
-});
-```
+<a id="batchinsert-1"></a>
 
 ## batchInsert
 
@@ -95,7 +85,21 @@ batchInsert(uri: string, valuesBuckets: Array<rdb.ValuesBucket>): Promise<number
 
 **示例**
 
-参见 [batchInsert](#batchinsert)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import rdb from '@ohos.data.rdb';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+let cars = new Array({'name': 'roe11', 'age': 21, 'salary': 20.5, 'blobType': 'u8',} as rdb.ValuesBucket,
+                     {'name': 'roe12', 'age': 21, 'salary': 20.5, 'blobType': 'u8',} as rdb.ValuesBucket,
+                     {'name': 'roe13', 'age': 21, 'salary': 20.5, 'blobType': 'u8',} as rdb.ValuesBucket);
+DAHelper.batchInsert('dataability:///com.example.DataAbility', cars).then((data) => {
+    console.info(`batchInsert data: ${JSON.stringify(data)}`);
+});
+```
 
 ## call
 
@@ -140,21 +144,7 @@ dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import { BusinessError } from '@ohos.base';
-
-let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.jsapidemo.UserDataAbility'
-);
-dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
-    'method', 'arg', {'key1':'value1'}).then((data) => {
-    console.info(`call success, data: ${data}`);
-}).catch((error: BusinessError) => {
-    console.error(`call failed, error: ${error}`);
-});
-```
+<a id="call-1"></a>
 
 ## call
 
@@ -187,7 +177,21 @@ call(uri: string, method: string, arg: string, extras: PacMap): Promise<PacMap>
 
 **示例**
 
-参见 [call](#call)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import { BusinessError } from '@ohos.base';
+
+let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.jsapidemo.UserDataAbility'
+);
+dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
+    'method', 'arg', {'key1':'value1'}).then((data) => {
+    console.info(`call success, data: ${data}`);
+}).catch((error: BusinessError) => {
+    console.error(`call failed, error: ${error}`);
+});
+```
 
 ## delete
 
@@ -231,35 +235,7 @@ DAHelper.delete('dataability:///com.example.DataAbility', da, (error, data) => {
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import ohos_data_ability from '@ohos.data.dataAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-let da = new ohos_data_ability.DataAbilityPredicates();
-DAHelper.delete('dataability:///com.example.DataAbility', da).then((data) => {
-    console.info(`delete data: ${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
-    if (error && error.code !== 0) {
-        console.error(`delete fail, error: ${JSON.stringify(error)}`);
-    } else {
-        console.info(`delete success, data: ${JSON.stringify(data)}`);
-    }
-});
-```
+<a id="delete-1"></a>
 
 ## delete
 
@@ -290,7 +266,21 @@ delete(uri: string, predicates?: dataAbility.DataAbilityPredicates): Promise<num
 
 **示例**
 
-参见 [delete](#delete)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import ohos_data_ability from '@ohos.data.dataAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+let da = new ohos_data_ability.DataAbilityPredicates();
+DAHelper.delete('dataability:///com.example.DataAbility', da).then((data) => {
+    console.info(`delete data: ${JSON.stringify(data)}`);
+});
+```
+
+<a id="delete-2"></a>
 
 ## delete
 
@@ -315,7 +305,21 @@ predicates筛选条件为空，自定义数据库删除数据记录的处理逻�
 
 **示例**
 
-参见 [delete](#delete)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
+    if (error && error.code !== 0) {
+        console.error(`delete fail, error: ${JSON.stringify(error)}`);
+    } else {
+        console.info(`delete success, data: ${JSON.stringify(data)}`);
+    }
+});
+```
 
 ## denormalizeUri
 
@@ -356,17 +360,7 @@ DAHelper.denormalizeUri('dataability:///com.example.DataAbility', (error, data) 
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.denormalizeUri('dataability:///com.example.DataAbility').then((data) => {
-    console.info(`denormalizeUri data: ${JSON.stringify(data)}`);
-});
-```
+<a id="denormalizeuri-1"></a>
 
 ## denormalizeUri
 
@@ -396,7 +390,17 @@ denormalizeUri(uri: string): Promise<string>
 
 **示例**
 
-参见 [denormalizeUri](#denormalizeuri)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.denormalizeUri('dataability:///com.example.DataAbility').then((data) => {
+    console.info(`denormalizeUri data: ${JSON.stringify(data)}`);
+});
+```
 
 ## executeBatch
 
@@ -444,22 +448,7 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import { BusinessError } from '@ohos.base';
-
-// 根据DataAbilityOperation列表选择要对数据库做的操作
-let op: Array<ability.DataAbilityOperation> = new Array();
-let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.jsapidemo.UserDataAbility'
-);
-dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbility', op).then((data) => {
-    console.info(`executeBatch success, data: ${data}`);
-}).catch((error: BusinessError) => {
-    console.error(`executeBatch failed, error: ${error}`);
-});
-```
+<a id="executebatch-1"></a>
 
 ## executeBatch
 
@@ -490,7 +479,22 @@ executeBatch(uri: string, operations: Array<DataAbilityOperation>): Promise<Arra
 
 **示例**
 
-参见 [executeBatch](#executebatch)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import { BusinessError } from '@ohos.base';
+
+// 根据DataAbilityOperation列表选择要对数据库做的操作
+let op: Array<ability.DataAbilityOperation> = new Array();
+let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.jsapidemo.UserDataAbility'
+);
+dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbility', op).then((data) => {
+    console.info(`executeBatch success, data: ${data}`);
+}).catch((error: BusinessError) => {
+    console.error(`executeBatch failed, error: ${error}`);
+});
+```
 
 ## getFileTypes
 
@@ -532,17 +536,7 @@ DAHelper.getFileTypes( 'dataability:///com.example.DataAbility', 'image/*', (err
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.getFileTypes('dataability:///com.example.DataAbility', 'image/*').then((data) => {
-    console.info(`getFileTypes data: ${JSON.stringify(data)}`);
-});
-```
+<a id="getfiletypes-1"></a>
 
 ## getFileTypes
 
@@ -573,7 +567,17 @@ getFileTypes(uri: string, mimeTypeFilter: string): Promise<Array<string>>
 
 **示例**
 
-参见 [getFileTypes](#getfiletypes)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.getFileTypes('dataability:///com.example.DataAbility', 'image/*').then((data) => {
+    console.info(`getFileTypes data: ${JSON.stringify(data)}`);
+});
+```
 
 ## getType
 
@@ -614,17 +618,7 @@ DAHelper.getType('dataability:///com.example.DataAbility', (error, data) => {
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.getType('dataability:///com.example.DataAbility').then((data) => {
-    console.info(`getType data: ${JSON.stringify(data)}`);
-});
-```
+<a id="gettype-1"></a>
 
 ## getType
 
@@ -654,7 +648,17 @@ getType(uri: string): Promise<string>
 
 **示例**
 
-参见 [getType](#gettype)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.getType('dataability:///com.example.DataAbility').then((data) => {
+    console.info(`getType data: ${JSON.stringify(data)}`);
+});
+```
 
 ## insert
 
@@ -721,6 +725,8 @@ DAHelper.insert('dataability:///com.example.DataAbility', valueBucket).then((dat
     console.info(`insert data: ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="insert-1"></a>
 
 ## insert
 
@@ -792,17 +798,7 @@ DAHelper.normalizeUri('dataability:///com.example.DataAbility', (error, data) =>
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.normalizeUri('dataability:///com.example.DataAbility').then((data) => {
-    console.info(`normalizeUri data: ${JSON.stringify(data)}`);
-});
-```
+<a id="normalizeuri-1"></a>
 
 ## normalizeUri
 
@@ -832,7 +828,17 @@ normalizeUri(uri: string): Promise<string>
 
 **示例**
 
-参见 [normalizeUri](#normalizeuri)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.normalizeUri('dataability:///com.example.DataAbility').then((data) => {
+    console.info(`normalizeUri data: ${JSON.stringify(data)}`);
+});
+```
 
 ## notifyChange
 
@@ -873,17 +879,7 @@ DAHelper.notifyChange('dataability:///com.example.DataAbility', (error) => {
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.notifyChange('dataability:///com.example.DataAbility').then(() => {
-    console.info('================>notifyChangeCallback================>');
-});
-```
+<a id="notifychange-1"></a>
 
 ## notifyChange
 
@@ -913,7 +909,17 @@ notifyChange(uri: string): Promise<void>
 
 **示例**
 
-参见 [notifyChange](#notifychange)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.notifyChange('dataability:///com.example.DataAbility').then(() => {
+    console.info('================>notifyChangeCallback================>');
+});
+```
 
 ## off('dataChange')
 
@@ -937,6 +943,29 @@ off(type: 'dataChange', uri: string, callback?: AsyncCallback<void>): void
 | uri | string | 是 | 表示待取消监听数据变化的uri。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 否 | 回调函数。当注销观察者以停止监听uri指定数据的数据变化通知成功，err为undefined，否则为错误对象。 |
 
+**示例**
+
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+function onChangeNotify() {
+    console.info('onChangeNotify call back');
+};
+DAHelper.off(
+    'dataChange',
+    'dataability:///com.example.DataAbility',
+    onChangeNotify
+);
+DAHelper.off(
+    'dataChange',
+    'dataability:///com.example.DataAbility',
+);
+```
+
 ## on('dataChange')
 
 ```TypeScript
@@ -958,6 +987,25 @@ on(type: 'dataChange', uri: string, callback: AsyncCallback<void>): void
 | type | 'dataChange' | 是 | 表示监听操作类型，'dataChange'表示数据变化操作。 |
 | uri | string | 是 | 表示待监听数据变化的uri。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当注册观察者以监听uri指定数据的数据变化通知成功，err为undefined，否则为错误对象。 |
+
+**示例**
+
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+function onChangeNotify() {
+    console.info('onChangeNotify call back');
+};
+DAHelper.on(
+    'dataChange',
+    'dataability:///com.example.DataAbility',
+    onChangeNotify
+);
+```
 
 ## openFile
 
@@ -1000,18 +1048,7 @@ DAHelper.openFile('dataability:///com.example.DataAbility', mode, (error, data) 
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-let mode = 'rw';
-DAHelper.openFile('dataability:///com.example.DataAbility', mode).then((data) => {
-    console.info(`openFile data: ${JSON.stringify(data)}`);
-});
-```
+<a id="openfile-1"></a>
 
 ## openFile
 
@@ -1042,7 +1079,18 @@ openFile(uri: string, mode: string): Promise<number>
 
 **示例**
 
-参见 [openFile](#openfile)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+let mode = 'rw';
+DAHelper.openFile('dataability:///com.example.DataAbility', mode).then((data) => {
+    console.info(`openFile data: ${JSON.stringify(data)}`);
+});
+```
 
 ## query
 
@@ -1093,71 +1141,7 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, da, (error, data)
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-DAHelper.query('dataability:///com.example.DataAbility', (error, data) => {
-    if (error && error.code !== 0) {
-        console.error(`query fail, error: ${JSON.stringify(error)}`);
-    } else {
-        console.info(`query success, data: ${JSON.stringify(data)}`);
-    }
-});
-```
-
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-let cars = new Array('value1', 'value2', 'value3', 'value4');
-DAHelper.query('dataability:///com.example.DataAbility', cars, (error, data) => {
-    if (error && error.code !== 0) {
-        console.error(`query fail, error: ${JSON.stringify(error)}`);
-    } else {
-        console.info(`query success, data: ${JSON.stringify(data)}`);
-    }
-});
-```
-
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import ohos_data_ability from '@ohos.data.dataAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-let da = new ohos_data_ability.DataAbilityPredicates();
-DAHelper.query('dataability:///com.example.DataAbility', da, (error, data) => {
-    if (error && error.code !== 0) {
-        console.error(`query fail, error: ${JSON.stringify(error)}`);
-    } else {
-        console.info(`query success, data: ${JSON.stringify(data)}`);
-    }
-});
-```
-
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import ohos_data_ability from '@ohos.data.dataAbility';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-let cars = new Array('value1', 'value2', 'value3', 'value4');
-let da = new ohos_data_ability.DataAbilityPredicates();
-DAHelper.query('dataability:///com.example.DataAbility', cars, da).then((data) => {
-    console.info(`query data: ${JSON.stringify(data)}`);
-});
-```
+<a id="query-1"></a>
 
 ## query
 
@@ -1182,7 +1166,23 @@ query(uri: string, callback: AsyncCallback<ResultSet>): void
 
 **示例**
 
-参见 [query](#query)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+DAHelper.query('dataability:///com.example.DataAbility', (error, data) => {
+    if (error && error.code !== 0) {
+        console.error(`query fail, error: ${JSON.stringify(error)}`);
+    } else {
+        console.info(`query success, data: ${JSON.stringify(data)}`);
+    }
+});
+```
+
+<a id="query-2"></a>
 
 ## query
 
@@ -1208,7 +1208,24 @@ query(uri: string, columns: Array<string>, callback: AsyncCallback<ResultSet>): 
 
 **示例**
 
-参见 [query](#query)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+let cars = new Array('value1', 'value2', 'value3', 'value4');
+DAHelper.query('dataability:///com.example.DataAbility', cars, (error, data) => {
+    if (error && error.code !== 0) {
+        console.error(`query fail, error: ${JSON.stringify(error)}`);
+    } else {
+        console.info(`query success, data: ${JSON.stringify(data)}`);
+    }
+});
+```
+
+<a id="query-3"></a>
 
 ## query
 
@@ -1234,7 +1251,25 @@ query(uri: string, predicates: dataAbility.DataAbilityPredicates, callback: Asyn
 
 **示例**
 
-参见 [query](#query)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import ohos_data_ability from '@ohos.data.dataAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+let da = new ohos_data_ability.DataAbilityPredicates();
+DAHelper.query('dataability:///com.example.DataAbility', da, (error, data) => {
+    if (error && error.code !== 0) {
+        console.error(`query fail, error: ${JSON.stringify(error)}`);
+    } else {
+        console.info(`query success, data: ${JSON.stringify(data)}`);
+    }
+});
+```
+
+<a id="query-4"></a>
 
 ## query
 
@@ -1266,7 +1301,20 @@ query(uri: string, columns?: Array<string>, predicates?: dataAbility.DataAbility
 
 **示例**
 
-参见 [query](#query)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import ohos_data_ability from '@ohos.data.dataAbility';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+let cars = new Array('value1', 'value2', 'value3', 'value4');
+let da = new ohos_data_ability.DataAbilityPredicates();
+DAHelper.query('dataability:///com.example.DataAbility', cars, da).then((data) => {
+    console.info(`query data: ${JSON.stringify(data)}`);
+});
+```
 
 ## update
 
@@ -1323,49 +1371,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da, (error, data) 
 });
 ```
 
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import ohos_data_ability from '@ohos.data.dataAbility';
-import rdb from '@ohos.data.rdb';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-const va: rdb.ValuesBucket = {
-    'name': 'roe1',
-    'age': 21,
-    'salary': 20.5,
-    'blobType': 'u8',
-};
-let da = new ohos_data_ability.DataAbilityPredicates();
-DAHelper.update('dataability:///com.example.DataAbility', va, da).then((data) => {
-    console.info(`update data: ${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import ability from '@ohos.ability.ability';
-import featureAbility from '@ohos.ability.featureAbility';
-import rdb from '@ohos.data.rdb';
-
-let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
-    'dataability:///com.example.DataAbility'
-);
-const va: rdb.ValuesBucket = {
-    'name': 'roe1',
-    'age': 21,
-    'salary': 20.5,
-    'blobType': 'u8',
-};
-DAHelper.update('dataability:///com.example.DataAbility', va, (error, data) => {
-    if (error && error.code !== 0) {
-        console.error(`update fail, error: ${JSON.stringify(error)}`);
-    } else {
-        console.info(`update success, data: ${JSON.stringify(data)}`);
-    }
-});
-```
+<a id="update-1"></a>
 
 ## update
 
@@ -1397,7 +1403,28 @@ update(uri: string, valuesBucket: rdb.ValuesBucket, predicates?: dataAbility.Dat
 
 **示例**
 
-参见 [update](#update)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import ohos_data_ability from '@ohos.data.dataAbility';
+import rdb from '@ohos.data.rdb';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+const va: rdb.ValuesBucket = {
+    'name': 'roe1',
+    'age': 21,
+    'salary': 20.5,
+    'blobType': 'u8',
+};
+let da = new ohos_data_ability.DataAbilityPredicates();
+DAHelper.update('dataability:///com.example.DataAbility', va, da).then((data) => {
+    console.info(`update data: ${JSON.stringify(data)}`);
+});
+```
+
+<a id="update-2"></a>
 
 ## update
 
@@ -1423,4 +1450,25 @@ predicates筛选条件为空，自定义更新数据库的处理逻辑。使用c
 
 **示例**
 
-参见 [update](#update)
+```TypeScript
+import ability from '@ohos.ability.ability';
+import featureAbility from '@ohos.ability.featureAbility';
+import rdb from '@ohos.data.rdb';
+
+let DAHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbilityHelper(
+    'dataability:///com.example.DataAbility'
+);
+const va: rdb.ValuesBucket = {
+    'name': 'roe1',
+    'age': 21,
+    'salary': 20.5,
+    'blobType': 'u8',
+};
+DAHelper.update('dataability:///com.example.DataAbility', va, (error, data) => {
+    if (error && error.code !== 0) {
+        console.error(`update fail, error: ${JSON.stringify(error)}`);
+    } else {
+        console.info(`update success, data: ${JSON.stringify(data)}`);
+    }
+});
+```

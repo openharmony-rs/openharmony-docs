@@ -1,5 +1,9 @@
 # DatePickerComponentResult
 
+```TypeScript
+export declare class DatePickerComponentResult
+```
+
 DatePickerComponentResult defines the selection result of the date time picker.
 
 **Since:** 26.0.0

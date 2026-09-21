@@ -1,5 +1,9 @@
 # SeiMessage
 
+```TypeScript
+interface SeiMessage
+```
+
 描述 SEI 消息的信息。
 
 **起始版本：** 18

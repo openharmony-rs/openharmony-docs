@@ -1,5 +1,9 @@
 # CylinderGeometry
 
+```TypeScript
+export declare class CylinderGeometry extends GeometryDefinition
+```
+
 圆柱体几何类型，继承自GeometryDefinition。
 
 > **说明：** 

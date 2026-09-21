@@ -1,5 +1,9 @@
 # HolidayInfoItem
 
+```TypeScript
+export interface HolidayInfoItem
+```
+
 Represents the holiday information.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # ScaleToFit
 
+```TypeScript
+enum ScaleToFit
+```
+
 源矩形到目标矩形的缩放方式枚举。
 
 **起始版本：** 12

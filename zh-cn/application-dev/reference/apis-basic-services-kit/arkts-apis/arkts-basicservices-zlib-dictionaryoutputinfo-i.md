@@ -1,5 +1,9 @@
 # DictionaryOutputInfo
 
+```TypeScript
+interface DictionaryOutputInfo
+```
+
 InflateGetDictionary和deflateGetDictionary这两个函数会返回值的相关信息。
 
 **起始版本：** 12

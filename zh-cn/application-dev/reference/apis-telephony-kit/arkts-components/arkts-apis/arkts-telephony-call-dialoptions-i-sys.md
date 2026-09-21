@@ -1,5 +1,9 @@
 # DialOptions
 
+```TypeScript
+export interface DialOptions
+```
+
 拨打电话的可选参数。
 
 **起始版本：** 6

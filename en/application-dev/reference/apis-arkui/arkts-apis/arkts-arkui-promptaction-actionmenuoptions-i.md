@@ -1,5 +1,9 @@
 # ActionMenuOptions
 
+```TypeScript
+interface ActionMenuOptions
+```
+
 Describes the options for showing the action menu.
 
 **Since:** 9
@@ -30,6 +34,8 @@ Array of menu item buttons. The array structure is **{text:'button', color: '\#6
 **Type:** [             Button,             Button?,             Button?,             Button?,             Button?,             Button?         ]
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -213,7 +219,7 @@ systemMaterial?: SystemUiMaterial
 
 System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.
 
-**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **Since:** 26.0.0
 
@@ -234,6 +240,8 @@ Title of the dialog box.<br>Default value: **undefined**, which indicates that n
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

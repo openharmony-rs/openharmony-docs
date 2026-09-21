@@ -14,7 +14,7 @@ function getSessionDescriptorsForAudioZone(userId: number): Promise<Array<Readon
 
 Get session descriptors for a unique audio zone across different session category.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 

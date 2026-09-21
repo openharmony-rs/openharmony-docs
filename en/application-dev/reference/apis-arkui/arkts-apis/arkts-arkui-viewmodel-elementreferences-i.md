@@ -1,5 +1,9 @@
 # ElementReferences
 
+```TypeScript
+export interface ElementReferences
+```
+
 Element References @interface ElementReferences
 
 **Since:** 4

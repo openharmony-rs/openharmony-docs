@@ -1,5 +1,9 @@
 # ContinueCallback（系统接口）
 
+```TypeScript
+export interface ContinueCallback
+```
+
 表示跨设备迁移Mission完成后，返回迁移结果的回调函数。
 
 @interface ContinueCallback

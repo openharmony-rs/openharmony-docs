@@ -1,5 +1,9 @@
 # BaseProfile
 
+```TypeScript
+export interface BaseProfile
+```
+
 基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)、[HandsFreeAudioGatewayProfile](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md)等Profile类型都继承于该类。
 
 **起始版本：** 10
@@ -49,6 +53,8 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback<ConnectionStrate
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="getconnectionstrategy-1"></a>
 
 ## getConnectionStrategy
 
@@ -136,6 +142,8 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise<v
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900004](../errorcode-bluetoothManager.md#2900004-配置文件不支持) | Profile not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="setconnectionstrategy-1"></a>
 
 ## setConnectionStrategy
 

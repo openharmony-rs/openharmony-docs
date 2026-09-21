@@ -1,5 +1,9 @@
 # HDRFormat
 
+```TypeScript
+enum HDRFormat
+```
+
 Enumerates the HDR formats.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # EffectiveMode（系统接口）
 
+```TypeScript
+export enum EffectiveMode
+```
+
 生效模式。
 
 **起始版本：** 9

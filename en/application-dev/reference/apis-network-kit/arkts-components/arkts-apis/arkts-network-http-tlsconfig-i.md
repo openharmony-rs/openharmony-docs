@@ -1,5 +1,9 @@
 # TlsConfig
 
+```TypeScript
+export interface TlsConfig
+```
+
 Defines the TLS configuration, including the version and cipher suite.
 
 **Since:** 18

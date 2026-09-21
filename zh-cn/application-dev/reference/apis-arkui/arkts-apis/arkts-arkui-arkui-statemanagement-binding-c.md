@@ -1,5 +1,9 @@
 # Binding
 
+```TypeScript
+export declare class Binding<T>
+```
+
 只读数据绑定的泛型类，可以绑定任意类型的数据。
 
 **起始版本：** 20

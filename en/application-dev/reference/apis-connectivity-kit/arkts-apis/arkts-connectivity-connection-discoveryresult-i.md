@@ -1,5 +1,9 @@
 # DiscoveryResult
 
+```TypeScript
+interface DiscoveryResult
+```
+
 Describes the contents of the discovery results
 
 **Since:** 18

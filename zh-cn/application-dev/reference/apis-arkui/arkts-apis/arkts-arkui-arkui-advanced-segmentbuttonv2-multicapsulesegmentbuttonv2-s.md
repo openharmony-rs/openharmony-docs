@@ -1,5 +1,9 @@
 # MultiCapsuleSegmentButtonV2
 
+```TypeScript
+export declare struct MultiCapsuleSegmentButtonV2
+```
+
 分段按钮组件用于创建页签型、单选或多选的胶囊型分段按钮，支持文本、图标、Symbol等多种选项类型及图文混合配置，可自定义字体、颜色、圆角等样式。页签型分段按钮适用于页签切换场景，单选胶囊型分段按钮适用于单选切换场景，多选胶囊型分段按钮适用于多选筛选场景。
 
 **起始版本：** 18
@@ -62,7 +66,7 @@ readonly itemBackgroundBlurStyle?: BlurStyle
 
 该成员只读，不支持更改。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **起始版本：** 18
 
@@ -84,7 +88,7 @@ readonly itemBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 该成员只读，不支持更改。
 
-**类型：** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-backgroundblurstyleoptions-i.md)
+**类型：** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)
 
 **起始版本：** 18
 
@@ -102,7 +106,7 @@ readonly itemBackgroundColor?: ColorMetrics
 
 配置分段按钮非选中的选项背板颜色。
 
-默认值：`&#36;r('sys.color.segment_button_v2_multi_capsule_button_background')`
+默认值：`$r('sys.color.segment_button_v2_multi_capsule_button_background')`
 
 值为undefined时，按默认值处理。
 
@@ -130,7 +134,7 @@ readonly itemBackgroundEffect?: BackgroundEffectOptions
 
 该成员只读，不支持更改。
 
-**类型：** [BackgroundEffectOptions](../arkts-components/arkts-arkui-backgroundeffectoptions-i.md)
+**类型：** [BackgroundEffectOptions](../arkts-components/arkts-arkui-common-comp-backgroundeffectoptions-i.md)
 
 **起始版本：** 18
 
@@ -150,7 +154,7 @@ readonly itemBorderRadius?: LengthMetrics
 
 取值范围：[0, +∞)
 
-默认值：`&#36;r('sys.float.segment_button_v2_selected_corner_radius')`
+默认值：`$r('sys.float.segment_button_v2_selected_corner_radius')`
 
 超出取值范围按默认值处理。
 
@@ -174,7 +178,7 @@ readonly itemFontColor?: ColorMetrics
 
 配置分段按钮非选中的选项字体颜色。
 
-默认值：`&#36;r('sys.color.font_secondary')`
+默认值：`$r('sys.color.font_secondary')`
 
 值为undefined时，按默认值处理。
 
@@ -260,7 +264,7 @@ readonly itemIconFillColor?: ColorMetrics
 
 配置分段按钮非选中的选项图标颜色。
 
-默认值：`&#36;r('sys.color.font_secondary')`
+默认值：`$r('sys.color.font_secondary')`
 
 值为undefined时，按默认值处理。
 
@@ -380,7 +384,7 @@ readonly itemMinHeight?: LengthMetrics
 
 默认值：
 
-只有纯文本或者纯图标选项时：`&#36;r('sys.float.segment_button_v2_singleline_selected_height')`；有图文混合的选项时：`&#36;r('sys.float.segment_button_v2_doubleline_selected_height')`
+只有纯文本或者纯图标选项时：`$r('sys.float.segment_button_v2_singleline_selected_height')`；有图文混合的选项时：`$r('sys.float.segment_button_v2_doubleline_selected_height')`
 
 超出取值范围按默认值处理。
 
@@ -404,7 +408,7 @@ readonly itemPadding?: LocalizedPadding
 
 配置分段按钮选项内边距。
 
-默认值：`{ top: LengthMetrics.resource(&#36;r('sys.float.padding_level2')), bottom: LengthMetrics.resource(&#36;r('sys.float.padding_level2')), start: LengthMetrics.resource(&#36;r('sys.float.padding_level4')), end: LengthMetrics.resource(&#36;r('sys.float.padding_level4')) }`
+默认值：`{ top: LengthMetrics.resource($r('sys.float.padding_level2')), bottom: LengthMetrics.resource($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4')) }`
 
 值为undefined时，按默认值处理。
 
@@ -452,7 +456,7 @@ readonly itemSelectedBackgroundColor?: ColorMetrics
 
 配置分段按钮选中的选项背景颜色。
 
-默认值：`&#36;r('sys.color.segment_button_v2_tab_selected_item_background')`
+默认值：`$r('sys.color.segment_button_v2_tab_selected_item_background')`
 
 值为undefined时，按默认值处理。
 
@@ -476,7 +480,7 @@ readonly itemSelectedFontColor?: ColorMetrics
 
 配置分段按钮非选中选项的字体颜色。
 
-默认值：`&#36;r('sys.color.font_secondary')`
+默认值：`$r('sys.color.font_secondary')`
 
 值为undefined时，按默认值处理。
 
@@ -564,7 +568,7 @@ readonly itemSelectedIconFillColor?: ColorMetrics
 
 配置分段按钮选中的选项图标颜色。
 
-默认值：`&#36;r('sys.color.font_primary')`
+默认值：`$r('sys.color.font_primary')`
 
 值为undefined时，按默认值处理。
 
@@ -594,7 +598,7 @@ readonly itemSelectedSymbolFontColor?: ColorMetrics
 
 配置分段按钮选中选项的HM Symbol类型图标颜色。
 
-默认值：`&#36;r('sys.color.font_primary')`
+默认值：`$r('sys.color.font_primary')`
 
 值为undefined时，按默认值处理。
 
@@ -652,7 +656,7 @@ readonly itemSymbolFontColor?: ColorMetrics
 
 配置分段按钮非选中选项HM Symbol类型图标的颜色。
 
-默认值：`&#36;r('sys.color.font_secondary')`
+默认值：`$r('sys.color.font_secondary')`
 
 值为undefined时，按默认值处理。
 

@@ -1,5 +1,9 @@
 # AssetCompatibleCapability
 
+```TypeScript
+interface AssetCompatibleCapability
+```
+
 资产兼容能力。
 
 **起始版本：** 24

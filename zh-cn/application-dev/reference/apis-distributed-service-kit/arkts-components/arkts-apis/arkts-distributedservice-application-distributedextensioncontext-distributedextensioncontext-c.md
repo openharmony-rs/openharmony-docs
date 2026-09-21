@@ -1,5 +1,9 @@
 # DistributedExtensionContext
 
+```TypeScript
+declare class DistributedExtensionContext extends ExtensionContext
+```
+
 用于分布式扩展功能的实现。
 
 **继承/实现关系：** DistributedExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)

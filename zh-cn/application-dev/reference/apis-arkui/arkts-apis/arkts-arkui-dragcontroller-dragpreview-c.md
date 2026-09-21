@@ -1,5 +1,9 @@
 # DragPreview
 
+```TypeScript
+export class DragPreview
+```
+
 拖拽背板的对象，在OnDrop和OnDragEnd回调中使用不生效。
 
 **起始版本：** 11
@@ -37,16 +41,144 @@ animate(options: AnimationOptions, handler: () =>void): void
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI上下文关联的DragController对象。
 
 在EntryAbility.ets中获取UI上下文并保存至LocalStorage中。
-```
 
 ```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window, UIContext } from '@kit.ArkUI';
+
+let uiContext: UIContext;
+let localStorage: LocalStorage = new LocalStorage('uiContext');
+
+export default class EntryAbility extends UIAbility {
+  storage: LocalStorage = localStorage;
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
+        `Code is ${err.code}, message is ${err.message}`);
+      windowStage.getMainWindow((err, data) => {
+        if (err.code) {
+          console.error(`Failed to obtain the main window. Code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        uiContext = data.getUIContext();
+        this.storage.setOrCreate<UIContext>('uiContext', uiContext);
+      })
+    });
+  }
+}
+```
+
 在Index.ets中通过this.getUIContext().getSharedLocalStorage()获取UI上下文，进而获取DragController对象实施后续操作。
+
+```TypeScript
+import { unifiedDataChannel } from '@kit.ArkData';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { dragController, curves, UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DragInfo {
+  event: DragEvent | undefined = undefined;
+  extraParams: string = '';
+}
+
+@Entry()
+@Component
+struct DragControllerPage {
+  storages = this.getUIContext().getSharedLocalStorage();
+
+  @Builder
+  draggingBuilder() {
+    Column() {
+      Text('DraggingBuilder')
+        .fontColor(Color.White)
+        .fontSize(12)
+    }
+    .width(100)
+    .height(100)
+    .backgroundColor(Color.Blue)
+  }
+
+  build() {
+    Column() {
+      Button('拖拽至此处')
+        .margin(10)
+        .onDragEnter(() => {
+          try {
+            let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+            let dragPreview: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+            let foregroundColor: ResourceColor = Color.Green;
+
+            let previewAnimation: dragController.AnimationOptions = {
+              curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
+            }
+            dragPreview.animate(previewAnimation, () => {
+              dragPreview.setForegroundColor(foregroundColor);
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`Failed to animate drag preview. Code: ${code}, message: ${message}`);
+          }
+        })
+        .onDrop(() => {
+          this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success', bottom: 400 })
+        })
+      Button('拖起').onTouch((event?: TouchEvent) => {
+        if (event) {
+          if (event.type == TouchType.Down) {
+            let text = new unifiedDataChannel.Text()
+            let unifiedData = new unifiedDataChannel.UnifiedData(text)
+            let dragInfo: dragController.DragInfo = {
+              pointerId: 0,
+              data: unifiedData,
+              extraParams: ''
+            }
+            this.getUIContext()
+              .getDragController()
+              .executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                this.draggingBuilder()
+              }, dragInfo, (err, dragEventParam) => {
+                if (err) {
+                  console.error(`Failed to execute drag. Code: ${err.code}, message: ${err.message}`);
+                  return;
+                }
+                if (dragEventParam && dragEventParam.event) {
+                  if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                    hilog.info(0x0000, 'success', '');
+                  } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
+                    hilog.info(0x0000, 'failed', '');
+                   }
+                 }
+               })
+          }
+        }
+      }).margin({ top: 100 })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## setForegroundColor
@@ -73,6 +205,4 @@ setForegroundColor(color: ResourceColor): void
 
 **示例**
 
-```TypeScript
 请参考[animate](#animate)。
-```

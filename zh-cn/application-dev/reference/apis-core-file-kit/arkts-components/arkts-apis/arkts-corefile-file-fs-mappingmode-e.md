@@ -1,5 +1,9 @@
 # MappingMode
 
+```TypeScript
+declare enum MappingMode
+```
+
 文件内存映射模式类型的枚举。
 
 **起始版本：** 26.0.0

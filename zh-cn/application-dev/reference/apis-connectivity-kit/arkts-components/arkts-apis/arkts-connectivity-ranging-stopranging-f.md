@@ -20,7 +20,7 @@ function stopRanging(callback: Callback<RangingResult>, params?: RangingParams):
 
 测距状态的变化通过[onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md)回调进行通知。
 
-如果未调用过[startRanging](arkts-connectivity-ranging-startranging-f.md)直接调用[stopRanging](arkts-connectivity-ranging-stopranging-f.md)将抛出设备未发起测距错误34900 050。
+如果未调用过[startRanging](arkts-connectivity-ranging-startranging-f.md)直接调用[stopRanging](arkts-connectivity-ranging-stopranging-f.md)将抛出设备未发起测距错误34900050。
 
 **起始版本：** 26.0.0
 

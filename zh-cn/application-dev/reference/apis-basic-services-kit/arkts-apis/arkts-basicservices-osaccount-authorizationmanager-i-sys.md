@@ -1,5 +1,9 @@
 # AuthorizationManager（系统接口）
 
+```TypeScript
+interface AuthorizationManager
+```
+
 系统账号授权管理类，用于管理系统账号授权。
 
 **起始版本：** 24

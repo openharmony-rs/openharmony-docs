@@ -1,5 +1,9 @@
 # CoordinateSystemType (System API)
 
+```TypeScript
+export enum CoordinateSystemType
+```
+
 Enumerates the coordinate systems of a geofence.
 
 **Since:** 23

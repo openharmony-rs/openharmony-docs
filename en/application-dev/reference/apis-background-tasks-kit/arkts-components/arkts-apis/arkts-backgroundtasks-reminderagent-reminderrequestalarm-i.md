@@ -1,5 +1,9 @@
 # ReminderRequestAlarm
 
+```TypeScript
+interface ReminderRequestAlarm extends ReminderRequest
+```
+
 Defines a reminder for an alarm.
 
 **Inheritance/Implementation:** ReminderRequestAlarm extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
@@ -32,7 +36,7 @@ Days of a week when the reminder repeats. The value ranges from 1 to 7, correspo
 
 **Deprecated since:** 9
 
-**Substitutes:** daysOfWeek
+**Substitutes:** [daysOfWeek](arkts-backgroundtasks-reminderagentmanager-reminderrequestalarm-i.md#daysofweek)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -50,7 +54,7 @@ Hour portion of the reminder time.
 
 **Deprecated since:** 9
 
-**Substitutes:** hour
+**Substitutes:** [hour](arkts-backgroundtasks-reminderagentmanager-reminderrequestalarm-i.md#hour)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -68,6 +72,6 @@ Minute portion of the reminder time.
 
 **Deprecated since:** 9
 
-**Substitutes:** minute
+**Substitutes:** [minute](arkts-backgroundtasks-reminderagentmanager-reminderrequestalarm-i.md#minute)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

@@ -1,5 +1,9 @@
 # CloudModelInfo
 
+```TypeScript
+interface CloudModelInfo
+```
+
 Indicates cloud embedding model information.
 
 **Since:** 26.0.0

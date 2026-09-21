@@ -1,5 +1,9 @@
 # ShapeClip
 
+```TypeScript
+export declare class ShapeClip
+```
+
 用于设置图形裁剪，支持矩形、圆角矩形、圆形、椭圆及自定义路径等多种形状，可对RenderNode进行形状裁剪，仅显示裁剪区域内的内容。
 
 **起始版本：** 12

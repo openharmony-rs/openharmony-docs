@@ -1,5 +1,9 @@
 # DevicePowerMode
 
+```TypeScript
+export enum DevicePowerMode
+```
+
 表示电源模式的枚举值。
 
 **起始版本：** 9

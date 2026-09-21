@@ -1,6 +1,10 @@
 # ToolEventCallback (System API)
 
-This interface is used to receive cli event when the cli tool process is running.
+```TypeScript
+export interface ToolEventCallback
+```
+
+ToolEventCallback is used to receive session events generated during the running of the CLI tool process.
 
 @interface ToolEventCallback
 
@@ -16,7 +20,9 @@ This interface is used to receive cli event when the cli tool process is running
 onEvent: OnEventFn
 ```
 
-Callback when a CLI event is triggered.
+Callback invoked when a CLI tool event is triggered.
+
+The [CliToolEvent](arkts-ability-clitoolevent-i-sys.md) parameter contains the event type ([ToolEventType](arkts-ability-clitoolevent-tooleventtype-e-sys.md)) and the associated data. The caller can inspect the event type to determine how to handle the data — for example, displaying stdout output to the user, logging stderr for diagnostics, or checking the exit code when an exit event is received.
 
 @typedef { OnEventFn }
 

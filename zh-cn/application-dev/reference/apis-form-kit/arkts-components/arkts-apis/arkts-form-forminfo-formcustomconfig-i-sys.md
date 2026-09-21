@@ -1,5 +1,9 @@
 # FormCustomConfig（系统接口）
 
+```TypeScript
+interface FormCustomConfig
+```
+
 卡片自定义配置信息。
 
 **起始版本：** 26.0.0

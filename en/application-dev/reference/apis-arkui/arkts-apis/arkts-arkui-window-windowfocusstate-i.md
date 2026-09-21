@@ -1,8 +1,12 @@
 # WindowFocusState
 
+```TypeScript
+interface WindowFocusState
+```
+
 Describes the focus state change information of the window.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -22,7 +26,7 @@ Reason for the focus state change.
 
 **Type:** [FocusChangeReason](arkts-arkui-window-focuschangereason-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -38,7 +42,7 @@ Whether the window gains focus. **true** if the window gains focus, **false** ot
 
 **Type:** boolean
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -54,7 +58,7 @@ ID of the next focused window. This field is valid only when the window is unfoc
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -70,7 +74,7 @@ ID of the previous focused window. This field is valid only when the window is f
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

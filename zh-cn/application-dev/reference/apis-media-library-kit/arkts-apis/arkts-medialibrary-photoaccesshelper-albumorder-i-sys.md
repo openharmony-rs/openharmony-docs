@@ -1,5 +1,9 @@
 # AlbumOrder（系统接口）
 
+```TypeScript
+interface AlbumOrder
+```
+
 相册排序信息。
 
 **起始版本：** 20

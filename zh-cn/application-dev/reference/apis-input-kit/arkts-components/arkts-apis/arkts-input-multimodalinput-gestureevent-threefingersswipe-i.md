@@ -1,5 +1,9 @@
 # ThreeFingersSwipe
 
+```TypeScript
+export declare interface ThreeFingersSwipe
+```
+
 三指滑动手势事件。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # ServiceType
 
+```TypeScript
+enum ServiceType
+```
+
 枚举，描述HID设备与主机之间连接的服务类型。
 
 **起始版本：** 23

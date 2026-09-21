@@ -1,5 +1,9 @@
 # PanProfile
 
+```TypeScript
+interface PanProfile extends BaseProfile
+```
+
 Manager pan profile.
 
 **Inheritance/Implementation:** PanProfile extends [BaseProfile](arkts-connectivity-bluetoothmanager-baseprofile-i.md)

@@ -1,5 +1,9 @@
 # TextDecorationType
 
+```TypeScript
+enum TextDecorationType
+```
+
 Enumerates the text decoration types.
 
 **Since:** 12

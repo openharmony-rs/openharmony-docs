@@ -1,5 +1,9 @@
 # SubscribeOnBodyStateOptions
 
+```TypeScript
+export interface SubscribeOnBodyStateOptions
+```
+
 Defines the callback invoked upon change in the wearing state of the device that houses the sensor.
 
 **Since:** 3

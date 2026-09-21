@@ -66,29 +66,8 @@ try {
 }
 ```
 
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { bluetoothManager } from '@kit.MDMKit';
 
-// Create an EnterpriseAdminExtensionAbility component.
-let wantTemp: Want = {
-  // Replace it as required.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-// Define the user ID.
-let accountId: number = 100;
-
-try {
-  // Obtain the list of disallowed Bluetooth protocols for a specified user under a specified transfer policy.
-  let result: Array<bluetoothManager.Protocol> = bluetoothManager.getDisallowedBluetoothProtocols(wantTemp, accountId, bluetoothManager.TransferPolicy.RECEIVE_SEND);
-  console.info(`Succeeded in getting disallowed bluetooth protocols, result : ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get disallowed bluetooth protocols. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getdisallowedbluetoothprotocols-1"></a>
 
 ## getDisallowedBluetoothProtocols
 
@@ -135,4 +114,25 @@ Obtains the list of disallowed Bluetooth protocols for a specified user under a 
 
 **Examples**
 
-See [getDisallowedBluetoothProtocols](#getdisallowedbluetoothprotocols)
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { bluetoothManager } from '@kit.MDMKit';
+
+// Create an EnterpriseAdminExtensionAbility component.
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Define the user ID.
+let accountId: number = 100;
+
+try {
+  // Obtain the list of disallowed Bluetooth protocols for a specified user under a specified transfer policy.
+  let result: Array<bluetoothManager.Protocol> = bluetoothManager.getDisallowedBluetoothProtocols(wantTemp, accountId, bluetoothManager.TransferPolicy.RECEIVE_SEND);
+  console.info(`Succeeded in getting disallowed bluetooth protocols, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed bluetooth protocols. Code is ${err.code}, message is ${err.message}`);
+}
+```

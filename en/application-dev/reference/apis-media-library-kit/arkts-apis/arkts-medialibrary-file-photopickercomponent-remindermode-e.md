@@ -1,5 +1,9 @@
 # ReminderMode
 
+```TypeScript
+export declare enum ReminderMode
+```
+
 Enumerates the types of the reminder when the number of selected items reaches the maximum.
 
 **Since:** 12

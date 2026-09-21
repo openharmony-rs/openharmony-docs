@@ -1,5 +1,9 @@
 # Contact
 
+```TypeScript
+class Contact
+```
+
 Defines a contact.
 
 **Since:** 7

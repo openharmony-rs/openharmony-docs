@@ -1,5 +1,9 @@
 # Event
 
+```TypeScript
+export interface Event
+```
+
 事件类。
 
 **起始版本：** 7

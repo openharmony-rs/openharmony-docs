@@ -1,5 +1,9 @@
 # DynamicIconInfo (System API)
 
+```TypeScript
+export interface DynamicIconInfo
+```
+
 Obtains dynamic icon information about a bundle
 
 **Since:** 20

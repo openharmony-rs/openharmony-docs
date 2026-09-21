@@ -14,7 +14,7 @@ function publishFormToDesktop(formInfo: FormInfo): string
 
 Publishes the form to the desktop.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
 

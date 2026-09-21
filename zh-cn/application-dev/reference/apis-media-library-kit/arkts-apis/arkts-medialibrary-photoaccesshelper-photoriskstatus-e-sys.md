@@ -1,5 +1,9 @@
 # PhotoRiskStatus（系统接口）
 
+```TypeScript
+enum PhotoRiskStatus
+```
+
 枚举，用于标识图片是否存在风险的类型。
 
 **起始版本：** 23

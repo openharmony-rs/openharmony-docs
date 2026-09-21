@@ -1,5 +1,9 @@
 # GroupConfig
 
+```TypeScript
+interface GroupConfig
+```
+
 下载任务分组配置选项。
 
 **起始版本：** 15

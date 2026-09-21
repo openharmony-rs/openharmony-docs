@@ -1,5 +1,9 @@
 # BorderStyle
 
+```TypeScript
+declare enum BorderStyle
+```
+
 Border Style
 
 @enum { number }

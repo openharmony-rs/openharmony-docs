@@ -1,5 +1,9 @@
 # BadgeEnabledChangedCallback
 
+```TypeScript
+export interface BadgeEnabledChangedCallback
+```
+
 注册应用角标使能状态变化的回调函数类型。
 
 **起始版本：** 12

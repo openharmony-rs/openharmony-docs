@@ -1,5 +1,9 @@
 # AuthInfo (System API)
 
+```TypeScript
+interface AuthInfo
+```
+
 Defines authentication information.
 
 **Since:** 7

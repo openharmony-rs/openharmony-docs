@@ -1,5 +1,9 @@
 # AntiAliasingLevel
 
+```TypeScript
+enum AntiAliasingLevel
+```
+
 Enumerates the anti-aliasing levels.
 
 **Since:** 12

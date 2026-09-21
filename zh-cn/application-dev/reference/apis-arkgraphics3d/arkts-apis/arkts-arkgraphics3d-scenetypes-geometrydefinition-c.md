@@ -1,5 +1,9 @@
 # GeometryDefinition
 
+```TypeScript
+export declare abstract class GeometryDefinition
+```
+
 几何类型定义抽象类，用于解释特定几何类型的属性。
 
 **起始版本：** 18

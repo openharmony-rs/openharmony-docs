@@ -1,5 +1,9 @@
 # AdvertisingData
 
+```TypeScript
+interface AdvertisingData
+```
+
 Represents an advertising data packet.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ChannelState
 
+```TypeScript
+enum ChannelState
+```
+
 通道状态发生变化时，代理通道上报的通道连接状态。
 
 **起始版本：** 20

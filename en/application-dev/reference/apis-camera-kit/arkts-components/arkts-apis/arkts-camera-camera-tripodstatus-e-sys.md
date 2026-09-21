@@ -1,5 +1,9 @@
 # TripodStatus (System API)
 
+```TypeScript
+enum TripodStatus
+```
+
 Enumerates the tripod statuses.
 
 **Since:** 13

@@ -1,5 +1,9 @@
 # EuiccInfo（系统接口）
 
+```TypeScript
+export interface EuiccInfo
+```
+
 euicc信息。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # State
 
+```TypeScript
+enum State
+```
+
 Defines the current task status.
 
 **Since:** 10

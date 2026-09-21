@@ -43,16 +43,8 @@ wallpaper.isChangePermitted((error: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.isChangePermitted().then((data: boolean) => {
-    console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-    console.error(`Failed to isChangePermitted. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="ischangepermitted-1"></a>
 
 ## isChangePermitted
 
@@ -79,4 +71,12 @@ function isChangePermitted(): Promise<boolean>
 
 **示例**
 
-参见 [isChangePermitted](#ischangepermitted)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.isChangePermitted().then((data: boolean) => {
+    console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+    console.error(`Failed to isChangePermitted. Code: ${error.code}, message: ${error.message}`);
+});
+```

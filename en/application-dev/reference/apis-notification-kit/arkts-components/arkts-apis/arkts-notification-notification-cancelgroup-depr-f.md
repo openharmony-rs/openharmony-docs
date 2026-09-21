@@ -29,6 +29,8 @@ Cancels notifications under a notification group of this application. This API u
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="cancelgroup-1"></a>
+
 ## cancelGroup
 
 ```TypeScript

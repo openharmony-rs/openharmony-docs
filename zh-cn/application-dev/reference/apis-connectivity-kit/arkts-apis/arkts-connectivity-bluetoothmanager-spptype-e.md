@@ -1,5 +1,9 @@
 # SppType
 
+```TypeScript
+enum SppType
+```
+
 枚举，Spp链路类型。
 
 从API version 9开始支持，从API version 10开始废弃。

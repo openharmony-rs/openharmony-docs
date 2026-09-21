@@ -1,5 +1,9 @@
 # CertChainValidationResult
 
+```TypeScript
+interface CertChainValidationResult
+```
+
 Represents the return value of certificate chain validation.
 
 **Since:** 11

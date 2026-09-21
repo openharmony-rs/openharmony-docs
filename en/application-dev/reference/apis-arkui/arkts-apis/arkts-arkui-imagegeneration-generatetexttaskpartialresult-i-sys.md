@@ -1,5 +1,9 @@
 # GenerateTextTaskPartialResult (System API)
 
+```TypeScript
+interface GenerateTextTaskPartialResult
+```
+
 Configuration stream result for AI-generated text tasks.
 
 @interface GenerateTextTaskPartialResult

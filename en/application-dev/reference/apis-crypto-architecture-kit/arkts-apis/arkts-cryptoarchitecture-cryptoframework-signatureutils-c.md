@@ -1,5 +1,9 @@
 # SignatureUtils
 
+```TypeScript
+class SignatureUtils
+```
+
 Provides utilities for converting ECC/SM2 signature data.
 
 **Since:** 20

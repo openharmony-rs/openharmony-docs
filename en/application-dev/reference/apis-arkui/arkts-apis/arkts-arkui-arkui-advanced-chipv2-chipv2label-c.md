@@ -1,6 +1,10 @@
 # ChipV2Label
 
-Defines chip label class.
+```TypeScript
+export declare class ChipV2Label
+```
+
+Defines the text attribute class.
 
 **Since:** 26.0.0
 
@@ -20,7 +24,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 constructor(config: ChipV2LabelConfig)
 ```
 
-The constructor of ChipLabel
+A constructor used to create a **ChipV2Label** object.
 
 **Since:** 26.0.0
 
@@ -34,7 +38,7 @@ The constructor of ChipLabel
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipV2LabelConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelconfig-i.md) | Yes | config of the chip label |
+| config | [ChipV2LabelConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelconfig-i.md) | Yes | Text attribute configuration, which is used to set the text display attributes of **ChipV2**, including configuration options such as **text**, **fontSize**, **fontColor**, **activatedFontColor**, and **fontFamily**. |
 
 ## activatedFontColor
 
@@ -42,7 +46,15 @@ The constructor of ChipLabel
 public activatedFontColor?: ColorMetrics
 ```
 
-Text font color when chip is activated.
+Font color when **ChipV2** is activated.
+
+Default value: **$r('sys.color.chip_activated_fontcolor')**
+
+When the value is **undefined**, the default value is used.
+
+When the value is invalid, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -62,7 +74,15 @@ Text font color when chip is activated.
 public fontColor?: ColorMetrics
 ```
 
-Text font color.
+Font color.
+
+Default value: **$r('sys.color.chip_font_color')**
+
+When the value is **undefined**, the default value is used.
+
+When the value is invalid, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -82,7 +102,13 @@ Text font color.
 public fontFamily?: string
 ```
 
-Text font family.
+Font family.
+
+Default value: **"HarmonyOS Sans"**
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** string
 
@@ -102,7 +128,19 @@ Text font family.
 public fontSize?: LengthMetrics
 ```
 
-Text font size.
+Font size. Percentage values are not supported. When a percentage value is passed, the default value is used.
+
+Default values:
+
+When **size** is **ChipV2Size.SMALL**, the default value is **$r('sys.float.chip_small_font_size')**.
+
+In other cases, the default value is **$r('sys.float.chip_normal_font_size')**
+
+Unit: fp
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -122,7 +160,17 @@ Text font size.
 public labelMargin?: ChipV2LabelMarginConfig
 ```
 
-Label margin.
+Spacing between the text and the left/right icons.
+
+Default values:
+
+When **size** is **ChipV2Size.SMALL**, the default value is **{ left: 4, right: 4 }**.
+
+When **size** is **ChipV2Size.NORMAL**, the default value is **{ left: 6, right: 6 }**.
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [ChipV2LabelMarginConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelmarginconfig-i.md)
 
@@ -142,7 +190,19 @@ Label margin.
 public localizedLabelMargin?: ChipV2LocalizedLabelMarginConfig
 ```
 
-Localized label margin.
+Spacing between the localized text and the left/right icons.
+
+Default values:
+
+When **size** is **ChipV2Size.SMALL**, default value: `{ start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`.
+
+When **size** is **ChipV2Size.NORMAL**, default value:
+
+`{ start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')), end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`.
+
+When the value is **undefined**, the default value is used.
+
+**Decorator:** @Trace
 
 **Type:** [ChipV2LocalizedLabelMarginConfig](arkts-arkui-arkui-advanced-chipv2-chipv2localizedlabelmarginconfig-i.md)
 
@@ -162,7 +222,11 @@ Localized label margin.
 public modifier?: TextModifier
 ```
 
-Modifier for the label text.
+Text modifier, which is used to set common text attributes. Pass this parameter when you need to dynamically modify text attributes (such as **fontWeight** and **fontStyle**) through the modifier. When no value or **undefined** is passed in, the modifier is not applied and the text uses default attribute settings.
+
+Default value: **undefined**, meaning that the modifier is not applied.
+
+**Decorator:** @Trace
 
 **Type:** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -183,6 +247,8 @@ public text: string
 ```
 
 Text content.
+
+**Decorator:** @Trace
 
 **Type:** string
 

@@ -1,5 +1,9 @@
 # AuthorizationResultCode（系统接口）
 
+```TypeScript
+enum AuthorizationResultCode
+```
+
 表示授权结果码的枚举。
 
 **起始版本：** 24

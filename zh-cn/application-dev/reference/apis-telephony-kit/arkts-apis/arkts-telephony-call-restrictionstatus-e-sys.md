@@ -1,5 +1,9 @@
 # RestrictionStatus（系统接口）
 
+```TypeScript
+export enum RestrictionStatus
+```
+
 限制状态。
 
 **起始版本：** 8

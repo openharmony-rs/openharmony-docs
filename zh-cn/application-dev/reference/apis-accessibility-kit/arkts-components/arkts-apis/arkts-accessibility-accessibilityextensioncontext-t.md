@@ -11,3 +11,15 @@ export type AccessibilityExtensionContext = _AccessibilityExtensionContext.defau
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **类型：** _AccessibilityExtensionContext.default
+
+**示例**
+
+```TypeScript
+import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
+
+class EntryAbility extends AccessibilityExtensionAbility {
+  onConnect(): void {
+    let accessibilityContext = this.context;
+  } 
+}
+```

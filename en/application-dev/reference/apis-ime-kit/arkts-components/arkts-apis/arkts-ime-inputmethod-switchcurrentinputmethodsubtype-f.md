@@ -73,32 +73,8 @@ inputMethod.switchCurrentInputMethodSubtype({
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let extra: Record<string, string> = {}
-// Refer to the InputMethodSubtype parameter description.
-inputMethod.switchCurrentInputMethodSubtype({
-  id: "ServiceExtAbility",
-  label: "",
-  name: "com.example.keyboard",
-  mode: "upper",
-  locale: "",
-  language: "",
-  icon: "",
-  iconId: 0,
-  extra: extra
-}).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in switching currentInputMethodSubtype.');
-  } else {
-    console.error('Failed to switchCurrentInputMethodSubtype.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="switchcurrentinputmethodsubtype-1"></a>
 
 ## switchCurrentInputMethodSubtype
 
@@ -144,4 +120,28 @@ Switches to another subtype of this input method. This API uses a promise to ret
 
 **Examples**
 
-See [switchCurrentInputMethodSubtype](#switchcurrentinputmethodsubtype)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let extra: Record<string, string> = {}
+// Refer to the InputMethodSubtype parameter description.
+inputMethod.switchCurrentInputMethodSubtype({
+  id: "ServiceExtAbility",
+  label: "",
+  name: "com.example.keyboard",
+  mode: "upper",
+  locale: "",
+  language: "",
+  icon: "",
+  iconId: 0,
+  extra: extra
+}).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching currentInputMethodSubtype.');
+  } else {
+    console.error('Failed to switchCurrentInputMethodSubtype.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+});
+```

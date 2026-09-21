@@ -1,5 +1,9 @@
 # PowerPolicy（系统接口）
 
+```TypeScript
+export interface PowerPolicy
+```
+
 电源策略。
 
 **起始版本：** 11

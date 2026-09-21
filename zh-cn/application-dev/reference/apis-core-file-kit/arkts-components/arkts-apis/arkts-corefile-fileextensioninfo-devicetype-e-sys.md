@@ -1,5 +1,9 @@
 # DeviceType（系统接口）
 
+```TypeScript
+enum DeviceType
+```
+
 组成RootInfo中的deviceType字段，表明此设备的类型。
 
 **起始版本：** 9

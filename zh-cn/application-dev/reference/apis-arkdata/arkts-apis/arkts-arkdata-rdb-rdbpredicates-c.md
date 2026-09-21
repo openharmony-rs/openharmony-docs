@@ -1,5 +1,9 @@
 # RdbPredicates
 
+```TypeScript
+class RdbPredicates
+```
+
 表示关系型数据库（RDB）的谓词。该类确定RDB中条件表达式的值是true还是false。
 
 **起始版本：** 7
@@ -571,7 +575,7 @@ inDevices(devices: Array<string>): RdbPredicates
 > **说明：** 
 > 
 > 其中devices通过调用&lt;!--RP2--&gt;
-> deviceManager.getTrustedDeviceListSync
+> [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
 > 方法得到。&lt;!--RP2End--&gt;deviceManager模块的接口均为系统接口，仅系统应用可用。
 
 **起始版本：** 8

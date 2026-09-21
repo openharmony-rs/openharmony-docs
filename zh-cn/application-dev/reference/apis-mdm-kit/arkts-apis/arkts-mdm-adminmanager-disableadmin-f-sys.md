@@ -45,22 +45,6 @@ function disableAdmin(admin: Want, callback: AsyncCallback<void>): void
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-adminManager.disableAdmin(wantTemp, 100).catch((err: BusinessError) => {
-  console.error(`Failed to disable admin. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -77,25 +61,8 @@ adminManager.disableAdmin(wantTemp, (err) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-adminManager.disableAdmin(wantTemp, 100, (err) => {
-  if (err) {
-    console.error(`Failed to disable admin. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in disabling admin');
-});
-```
-
+<a id="disableadmin-1"></a>
 
 ## disableAdmin
 
@@ -134,4 +101,21 @@ function disableAdmin(admin: Want, userId: number, callback: AsyncCallback<void>
 
 **示例**
 
-参见 [disableAdmin](#disableadmin)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+adminManager.disableAdmin(wantTemp, 100, (err) => {
+  if (err) {
+    console.error(`Failed to disable admin. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in disabling admin');
+});
+```

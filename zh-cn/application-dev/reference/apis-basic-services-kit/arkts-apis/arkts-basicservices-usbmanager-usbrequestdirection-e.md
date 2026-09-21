@@ -1,5 +1,9 @@
 # USBRequestDirection
 
+```TypeScript
+export enum USBRequestDirection
+```
+
 请求方向。
 
 **起始版本：** 9

@@ -66,6 +66,8 @@ try {
 ```
 
 
+<a id="getdisalloweduninstallbundlessync-1"></a>
+
 ## getDisallowedUninstallBundlesSync
 
 ```TypeScript

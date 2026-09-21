@@ -1,5 +1,9 @@
 # MediaKeyStatus
 
+```TypeScript
+interface MediaKeyStatus
+```
+
 媒体密钥状态。
 
 **起始版本：** 11

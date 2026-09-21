@@ -53,17 +53,8 @@ sim.getShowNumber(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getShowNumber(0).then((data: string) => {
-    console.info(`getShowNumber success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getShowNumber failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getshownumber-1"></a>
 
 ## getShowNumber
 
@@ -108,4 +99,13 @@ Get the SIM card number of the specified card slot.
 
 **Examples**
 
-See [getShowNumber](#getshownumber)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getShowNumber(0).then((data: string) => {
+    console.info(`getShowNumber success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getShowNumber failed, promise: err->${JSON.stringify(err)}`);
+});
+```

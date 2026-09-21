@@ -1,5 +1,9 @@
 # IteratorReturnResult
 
+```TypeScript
+interface IteratorReturnResult<TReturn>
+```
+
 ## Modules to Import
 
 ```TypeScript

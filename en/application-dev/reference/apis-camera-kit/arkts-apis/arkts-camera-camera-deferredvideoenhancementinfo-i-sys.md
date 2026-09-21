@@ -1,5 +1,9 @@
 # DeferredVideoEnhancementInfo (System API)
 
+```TypeScript
+interface DeferredVideoEnhancementInfo
+```
+
 Deferred video enhancement info.
 
 **Since:** 13

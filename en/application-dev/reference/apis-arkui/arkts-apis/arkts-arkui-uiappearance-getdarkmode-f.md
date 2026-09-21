@@ -42,7 +42,7 @@ Obtains the current system dark mode configuration.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 10 - 19 |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 10 - 19 |
 | [500001](../errorcode-uiappearance.md#500001-internal-error) | Internal error. |
 
 **Examples**

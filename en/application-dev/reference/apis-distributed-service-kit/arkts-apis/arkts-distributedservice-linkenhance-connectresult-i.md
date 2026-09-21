@@ -1,5 +1,9 @@
 # ConnectResult
 
+```TypeScript
+interface ConnectResult
+```
+
 Represents the connection result, which is returned after the client calls **connect()**.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # DownloadOptions (System API)
 
+```TypeScript
+export interface DownloadOptions
+```
+
 Defines the download options, including the **allowNetwork** and **order** fields, which are used to control the download behavior.
 
 **Since:** 9

@@ -43,16 +43,6 @@ function queryParticipantsByInvitation(
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').then((result) => {
-  console.info(`query participants by invitation succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
@@ -62,6 +52,8 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
 });
 ```
 
+
+<a id="queryparticipantsbyinvitation-1"></a>
 
 ## queryParticipantsByInvitation
 
@@ -99,4 +91,12 @@ function queryParticipantsByInvitation(invitationCode: string): Promise<Result<A
 
 **示例**
 
-参见 [queryParticipantsByInvitation](#queryparticipantsbyinvitation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').then((result) => {
+  console.info(`query participants by invitation succeeded, result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
+});
+```

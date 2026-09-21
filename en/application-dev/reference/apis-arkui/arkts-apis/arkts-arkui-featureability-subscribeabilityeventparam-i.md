@@ -1,5 +1,9 @@
 # SubscribeAbilityEventParam
 
+```TypeScript
+export interface SubscribeAbilityEventParam
+```
+
 @typedef SubscribeAbilityEventParam
 
 **Since:** 5

@@ -1,5 +1,9 @@
 # ExtraOptionsBase
 
+```TypeScript
+export interface ExtraOptionsBase
+```
+
 Defines base properties of the **LocalSocket** object.
 
 **Since:** 7

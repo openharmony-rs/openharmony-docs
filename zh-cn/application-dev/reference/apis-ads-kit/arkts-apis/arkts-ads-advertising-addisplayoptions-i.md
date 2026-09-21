@@ -1,5 +1,9 @@
 # AdDisplayOptions
 
+```TypeScript
+export interface AdDisplayOptions
+```
+
 广告展示参数。
 
 **起始版本：** 11

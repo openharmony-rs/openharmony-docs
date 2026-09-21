@@ -1,8 +1,12 @@
 # PrivacyProtocol
 
+```TypeScript
+interface PrivacyProtocol
+```
+
 定义隐私协议配置，包括数据集大小、协议类型等。用于隐私保护计算。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -21,9 +25,11 @@ dataSetSize: DataSetSize
 
 **类型：** [DataSetSize](arkts-dataprotection-privacycomputation-datasetsize-e.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -37,8 +43,10 @@ protocolType: ProtocolType
 
 **类型：** [ProtocolType](arkts-dataprotection-privacycomputation-protocoltype-e.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Asset

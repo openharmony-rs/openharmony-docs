@@ -1,5 +1,9 @@
 # BaseProfile
 
+```TypeScript
+export interface BaseProfile
+```
+
 Base interface of profile.
 
 **Since:** 10
@@ -49,6 +53,8 @@ Get connection strategy of this profile.
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 | 2900099 | Operation failed. |
+
+<a id="getconnectionstrategy-1"></a>
 
 ## getConnectionStrategy
 
@@ -136,6 +142,8 @@ Set connection strategy of this profile.
 | 2900003 | Bluetooth disabled. |
 | 2900004 | Profile not supported. |
 | 2900099 | Operation failed. |
+
+<a id="setconnectionstrategy-1"></a>
 
 ## setConnectionStrategy
 

@@ -1,5 +1,9 @@
 # ProgressDetails
 
+```TypeScript
+interface ProgressDetails
+```
+
 描述数据库整体执行端云同步任务上传和下载的统计信息。
 
 **起始版本：** 10

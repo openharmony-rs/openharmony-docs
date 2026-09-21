@@ -1,5 +1,9 @@
 # WeakMapConstructor
 
+```TypeScript
+interface WeakMapConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

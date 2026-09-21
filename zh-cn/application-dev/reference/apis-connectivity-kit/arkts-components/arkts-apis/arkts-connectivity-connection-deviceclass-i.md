@@ -1,5 +1,9 @@
 # DeviceClass
 
+```TypeScript
+interface DeviceClass
+```
+
 描述蓝牙设备的类型。
 
 **起始版本：** 10

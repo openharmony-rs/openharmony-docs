@@ -1,5 +1,9 @@
 # WebBlanklessErrorCode
 
+```TypeScript
+enum WebBlanklessErrorCode
+```
+
 Enumerates the error codes of the blankless loading.
 
 **Since:** 20

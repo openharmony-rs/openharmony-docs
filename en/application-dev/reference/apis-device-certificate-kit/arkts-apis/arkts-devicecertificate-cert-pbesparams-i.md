@@ -1,5 +1,9 @@
 # PbesParams
 
+```TypeScript
+interface PbesParams
+```
+
 Represents PBES algorithm parameters. Currently, only PBES2 is supported.
 
 **Since:** 21

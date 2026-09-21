@@ -1,5 +1,9 @@
 # WebCustomScheme
 
+```TypeScript
+interface WebCustomScheme
+```
+
 Defines a custom URL scheme.
 
 @interface WebCustomScheme [since 9 - 11]

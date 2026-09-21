@@ -1,5 +1,9 @@
 # CameraManager
 
+```TypeScript
+interface CameraManager
+```
+
 **CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-camera-camera-getcameramanager-f.md) to obtain a **CameraManager** instance.
 
 **Since:** 10
@@ -101,7 +105,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | Yes | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability). |
+| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | Yes | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability-1). |
 
 **Return value:**
 
@@ -347,6 +351,20 @@ Unsubscribes from camera mute status events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 13 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, curMuted: boolean): void {
+  let isMuted: boolean = curMuted;
+}
+
+function unregisterCameraMute(cameraManager: camera.CameraManager): void {
+  cameraManager.off('cameraMute', callback);
+}
+```
+
 ## off('controlCenterStatusChange')
 
 ```TypeScript
@@ -382,7 +400,7 @@ offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void
 
 Unsubscribes from camera shared status change event callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -429,6 +447,25 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 13 and later |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, curMuted: boolean): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  let isMuted: boolean = curMuted;
+  console.info(`cameraMute status: ${isMuted}`);
+}
+
+function registerCameraMute(cameraManager: camera.CameraManager): void {
+  cameraManager.on('cameraMute', callback);
+}
+```
+
 ## on('controlCenterStatusChange')
 
 ```TypeScript
@@ -464,7 +501,7 @@ onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void
 
 Subscribes camera shared status change event callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -30,6 +30,8 @@ Marks the end of a user scene. Call this API when the scene ends.
 
 **Examples**
 
-```TypeScript
 End point of the user scene where the user taps an icon to launch an application.
+
+```TypeScript
+performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
 ```

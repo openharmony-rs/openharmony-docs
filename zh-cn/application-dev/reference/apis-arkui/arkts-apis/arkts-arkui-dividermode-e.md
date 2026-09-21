@@ -1,5 +1,9 @@
 # DividerMode
 
+```TypeScript
+declare enum DividerMode
+```
+
 Menu divider mode.
 
 @enum { number }

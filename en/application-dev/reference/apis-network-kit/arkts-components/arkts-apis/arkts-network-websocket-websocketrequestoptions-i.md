@@ -1,5 +1,9 @@
 # WebSocketRequestOptions
 
+```TypeScript
+export interface WebSocketRequestOptions
+```
+
 Defines the optional parameters carried in the request for establishing a WebSocket connection.
 
 **Since:** 6
@@ -92,7 +96,7 @@ Custom [heartbeat detection interval](../../../network/websocket-connection.md).
 pongTimeout?: number
 ```
 
-Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30 000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.
+Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.
 
 **Type:** number
 

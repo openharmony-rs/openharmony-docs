@@ -1,5 +1,9 @@
 # LocationOptions
 
+```TypeScript
+interface LocationOptions
+```
+
 指示地理位置，用于传入经纬度和海拔信息以计算地磁场。
 
 **起始版本：** 8

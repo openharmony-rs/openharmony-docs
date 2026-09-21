@@ -1,5 +1,9 @@
 # TouchPoint
 
+```TypeScript
+interface TouchPoint
+```
+
 表示屏幕上的单个触点信息。
 
 **起始版本：** 26.0.0

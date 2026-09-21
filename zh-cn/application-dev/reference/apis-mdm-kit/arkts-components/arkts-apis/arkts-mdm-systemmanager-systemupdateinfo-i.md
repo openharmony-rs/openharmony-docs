@@ -1,5 +1,9 @@
 # SystemUpdateInfo
 
+```TypeScript
+export interface SystemUpdateInfo
+```
+
 待更新的系统版本信息。
 
 **起始版本：** 12

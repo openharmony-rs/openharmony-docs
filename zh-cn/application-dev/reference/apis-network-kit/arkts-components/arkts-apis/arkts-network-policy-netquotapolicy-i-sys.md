@@ -1,5 +1,9 @@
 # NetQuotaPolicy（系统接口）
 
+```TypeScript
+export interface NetQuotaPolicy
+```
+
 计量网络策略。
 
 **起始版本：** 10

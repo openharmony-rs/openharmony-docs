@@ -1,5 +1,9 @@
 # Collator
 
+```TypeScript
+export class Collator
+```
+
 Provides the string collation capability.
 
 **Since:** 8
@@ -73,12 +77,7 @@ import { intl } from '@kit.LocalizationKit';
 let collator = new intl.Collator();
 ```
 
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a Collator object with the locale ID being zh-CN, localeMatcher being lookup, and usage being sort.
-let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort'});
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -102,13 +101,6 @@ Creates a **Collator** object based on the specified locale and options.
 | options | [CollatorOptions](arkts-localization-intl-collatoroptions-i.md) | No | Options for creating a **Collator** object. |
 
 **Examples**
-
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a Collator object using the current system locale ID.
-let collator = new intl.Collator();
-```
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

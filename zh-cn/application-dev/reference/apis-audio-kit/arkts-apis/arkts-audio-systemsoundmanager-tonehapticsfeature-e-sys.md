@@ -1,13 +1,10 @@
 # ToneHapticsFeature（系统接口）
 
+```TypeScript
+enum ToneHapticsFeature
+```
+
 枚举，系统振动风格定义。
-
-| 名称 | 值 | 说明 |  
-| ----------------------------- | -- | -------------------- |  
-| [STANDARD](arkts-audio-audio-noisereductionmode-e.md) | 0 | 标准振动风格。 |
-| [GENTLE](arkts-audio-systemsoundmanager-tonehapticsfeature-e-sys.md) | 1 | 轻柔振动风格。 |
-
-@enum { int }
 
 **起始版本：** 13
 
@@ -21,7 +18,7 @@
 STANDARD = 0
 ```
 
-Standard haptics feature.
+标准振动风格。
 
 **起始版本：** 13
 
@@ -35,7 +32,7 @@ Standard haptics feature.
 GENTLE = 1
 ```
 
-Gentle haptics feature.
+轻柔振动风格。
 
 **起始版本：** 13
 

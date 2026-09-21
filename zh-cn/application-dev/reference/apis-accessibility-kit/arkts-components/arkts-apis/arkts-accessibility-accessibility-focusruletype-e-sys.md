@@ -1,5 +1,9 @@
 # FocusRuleType（系统接口）
 
+```TypeScript
+export enum FocusRuleType
+```
+
 表示聚焦规则类型的枚举。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # AppDistributionType (System API)
 
+```TypeScript
+export enum AppDistributionType
+```
+
 Enumerates the application [distribution types](../../../security/app-provision-structure.md).
 
 **Since:** 12

@@ -47,30 +47,6 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-call.rejectCall((err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.rejectCall(1, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let rejectMessageOptions : call.RejectMessageOptions = {
     messageContent: "Unknown number blocked"
 }
@@ -83,34 +59,8 @@ call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let rejectMessageOptions: call.RejectMessageOptions = {
-    messageContent: "Unknown number blocked"
-}
-call.rejectCall(1, rejectMessageOptions).then(() => {
-    console.info(`rejectCall success.`);
-}).catch((err: BusinessError) => {
-    console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let rejectMessageOptions: call.RejectMessageOptions = {
-    messageContent: "Unknown number blocked"
-}
-call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
-});
-```
-
+<a id="rejectcall-1"></a>
 
 ## rejectCall
 
@@ -155,8 +105,21 @@ Rejects a call. This API uses a promise to return the result.
 
 **Examples**
 
-See [rejectCall](#rejectcall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let rejectMessageOptions: call.RejectMessageOptions = {
+    messageContent: "Unknown number blocked"
+}
+call.rejectCall(1, rejectMessageOptions).then(() => {
+    console.info(`rejectCall success.`);
+}).catch((err: BusinessError) => {
+    console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="rejectcall-2"></a>
 
 ## rejectCall
 
@@ -195,8 +158,20 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Examples**
 
-See [rejectCall](#rejectcall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+call.rejectCall(1, (err: BusinessError) => {
+    if (err) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
+
+<a id="rejectcall-4"></a>
 
 ## rejectCall
 
@@ -235,4 +210,17 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Examples**
 
-See [rejectCall](#rejectcall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rejectMessageOptions: call.RejectMessageOptions = {
+    messageContent: "Unknown number blocked"
+}
+call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
+    if (err) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
+    }
+});
+```

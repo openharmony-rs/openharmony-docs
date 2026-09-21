@@ -1,5 +1,9 @@
 # SplitPolicy
 
+```TypeScript
+export declare enum SplitPolicy
+```
+
 Enumerates the types of pages in **MultiNavigation**.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # USBDevice
 
+```TypeScript
+interface USBDevice extends Device
+```
+
 USB device information, which is inherited from [Device](arkts-driverdevelopment-devicemanager-querydevices-f.md).
 
 **Inheritance/Implementation:** USBDevice extends [Device](arkts-driverdevelopment-devicemanager-device-i.md)

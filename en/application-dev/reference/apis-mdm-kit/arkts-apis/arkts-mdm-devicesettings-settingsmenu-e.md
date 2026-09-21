@@ -1,5 +1,9 @@
 # SettingsMenu
 
+```TypeScript
+enum SettingsMenu
+```
+
 Describes the setting item list.
 
 **Since:** 24

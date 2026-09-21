@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+export declare struct Filter
+```
+
 **起始版本：** 10
 
 **装饰器类型：** @Component

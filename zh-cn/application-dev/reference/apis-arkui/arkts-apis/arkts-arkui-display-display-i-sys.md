@@ -1,5 +1,9 @@
 # Display
 
+```TypeScript
+interface Display
+```
+
 屏幕实例。描述Display对象的属性和方法。
 
 下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
@@ -63,21 +67,7 @@ displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { display } from '@kit.ArkUI';
-
-let displayClass: display.Display | null = null;
-// 获取默认Display对象
-displayClass = display.getDefaultDisplaySync();
-// 查询是否包含沉浸式窗口
-let promise = displayClass.hasImmersiveWindow();
-promise.then((data) => {
-  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="hasimmersivewindow-1"></a>
 
 ## hasImmersiveWindow
 
@@ -110,4 +100,18 @@ hasImmersiveWindow(): Promise<boolean>
 
 **示例**
 
-参见 [hasImmersiveWindow](#hasimmersivewindow)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+let displayClass: display.Display | null = null;
+// 获取默认Display对象
+displayClass = display.getDefaultDisplaySync();
+// 查询是否包含沉浸式窗口
+let promise = displayClass.hasImmersiveWindow();
+promise.then((data) => {
+  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
+});
+```

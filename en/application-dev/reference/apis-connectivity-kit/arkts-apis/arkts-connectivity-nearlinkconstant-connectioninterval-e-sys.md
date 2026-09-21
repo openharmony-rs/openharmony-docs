@@ -1,5 +1,9 @@
 # ConnectionInterval (System API)
 
+```TypeScript
+export enum ConnectionInterval
+```
+
 Enumerates the connection intervals. A smaller interval indicates a lower latency, higher throughput, but higher power consumption. A larger interval indicates lower power consumption but higher latency. The high-speed mode is suitable for scenarios that require high throughput and low latency, while the low-speed mode is suitable for scenarios that are sensitive to power consumption.
 
 **Since:** 26.0.0

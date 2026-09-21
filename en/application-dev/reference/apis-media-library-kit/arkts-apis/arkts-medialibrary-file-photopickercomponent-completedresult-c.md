@@ -1,5 +1,9 @@
 # CompletedResult
 
+```TypeScript
+export declare class CompletedResult
+```
+
 Defines the information about the Picker's state from the last exit.
 
 **Since:** 26.0.0

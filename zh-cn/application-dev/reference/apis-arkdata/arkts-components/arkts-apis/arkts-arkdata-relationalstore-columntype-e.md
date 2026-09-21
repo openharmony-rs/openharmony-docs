@@ -1,5 +1,9 @@
 # ColumnType
 
+```TypeScript
+enum ColumnType
+```
+
 描述数据库列存储类型的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # StepperItem properties/events
 
+```TypeScript
+declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>
+```
+
 Defines StepperItem Component instance.
 
 **Inheritance/Implementation:** StepperItemAttribute extends CommonMethod<StepperItemAttribute>
@@ -88,4 +92,4 @@ Sets the display status of **nextLabel** in the stepper.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ItemState](arkts-arkui-itemstate-e.md) | No | Display status of **nextLabel** in the stepper.<br>Default value: **ItemState.Normal** |
+| value | [ItemState](arkts-arkui-stepperitem-comp-itemstate-e.md) | No | Display status of **nextLabel** in the stepper.<br>Default value: **ItemState.Normal** |

@@ -1,5 +1,9 @@
 # AVQueueInfo（系统接口）
 
+```TypeScript
+interface AVQueueInfo
+```
+
 歌单（歌曲列表）的相关属性。
 
 @interface AVQueueInfo

@@ -73,6 +73,8 @@ try {
 ```
 
 
+<a id="getabilityicon-1"></a>
+
 ## getAbilityIcon
 
 ```TypeScript

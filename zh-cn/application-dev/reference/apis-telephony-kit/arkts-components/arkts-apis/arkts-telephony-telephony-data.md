@@ -19,19 +19,19 @@ import { data } from '@kit.TelephonyKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getActiveApnName](arkts-telephony-data-getactiveapnname-f.md) | 异步获取默认移动数据SIM卡对应的处于激活状态的数据业务APN（access point name，接入点名称）name信息，若不处于激活状态，返回为空字符串。 |
-| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md) | 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。 |
-| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md) | 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。 |
-| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md) | 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。 |
-| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md) | 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。 |
+| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md#getcellulardataflowtype) | 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。 |
+| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md#getcellulardataflowtype-1) | 获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。 |
+| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md#getcellulardatastate) | 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。 |
+| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md#getcellulardatastate-1) | 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。 |
 | [getDefaultCellularDataSimId](arkts-telephony-data-getdefaultcellulardatasimid-f.md) | 获取默认移动数据的SIM卡ID。 |
-| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md) | 获取默认移动数据的SIM卡，使用callback方式作为异步方法。 |
-| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md) | 获取默认移动数据的SIM卡，使用Promise方式作为异步方法。 |
+| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md#getdefaultcellulardataslotid) | 获取默认移动数据的SIM卡，使用callback方式作为异步方法。 |
+| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md#getdefaultcellulardataslotid-1) | 获取默认移动数据的SIM卡，使用Promise方式作为异步方法。 |
 | [getDefaultCellularDataSlotIdSync](arkts-telephony-data-getdefaultcellulardataslotidsync-f.md) | 获取默认移动数据的SIM卡。 |
-| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md) | 检查蜂窝数据业务是否启用，使用callback方式作为异步方法。 |
-| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md) | 检查蜂窝数据业务是否启用，使用Promise方式作为异步方法。 |
+| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md#iscellulardataenabled) | 检查蜂窝数据业务是否启用，使用callback方式作为异步方法。 |
+| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md#iscellulardataenabled-1) | 检查蜂窝数据业务是否启用，使用Promise方式作为异步方法。 |
 | [isCellularDataEnabledSync](arkts-telephony-data-iscellulardataenabledsync-f.md) | 检查蜂窝数据业务是否启用，调用此API返回结果。 |
-| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md) | 检查蜂窝数据业务是否启用漫游，使用callback方式作为异步方法。 |
-| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md) | 检查蜂窝数据业务是否启用漫游，使用Promise方式作为异步方法。 |
+| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md#iscellulardataroamingenabled) | 检查蜂窝数据业务是否启用漫游，使用callback方式作为异步方法。 |
+| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md#iscellulardataroamingenabled-1) | 检查蜂窝数据业务是否启用漫游，使用Promise方式作为异步方法。 |
 | [isCellularDataRoamingEnabledSync](arkts-telephony-data-iscellulardataroamingenabledsync-f.md) | 检查蜂窝数据业务是否启用漫游，调用此API返回结果。 |
 | [queryAllApns](arkts-telephony-data-queryallapns-f.md) | 异步获取默认移动数据的SIM卡的APN（access point name，接入点名称）信息。 |
 | [queryApnIds](arkts-telephony-data-queryapnids-f.md) | 异步获取传入的ApnInfo对应的ApnId信息。 |
@@ -43,16 +43,16 @@ import { data } from '@kit.TelephonyKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md) | 禁用蜂窝数据服务，使用callback方式作为异步方法。 |
-| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md) | 禁用蜂窝数据服务，使用Promise方式作为异步方法。 |
-| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md) | 禁用蜂窝数据漫游，使用callback方式作为异步方法。 |
-| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md) | 禁用蜂窝数据漫游，使用Promise方式作为异步方法。 |
-| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md) | 启用蜂窝数据服务，使用callback方式作为异步方法。 |
-| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md) | 启用蜂窝数据服务，使用Promise方式作为异步方法。 |
-| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md) | 启用蜂窝数据漫游，使用callback方式作为异步方法。 |
-| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md) | 启用蜂窝数据漫游，使用Promise方式作为异步方法。 |
-| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md) | 设置默认移动数据的SIM卡，使用callback方式作为异步方法。 |
-| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md) | 设置默认移动数据的SIM卡，使用Promise方式作为异步方法。 |
+| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md#disablecellulardata) | 禁用蜂窝数据服务，使用callback方式作为异步方法。 |
+| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md#disablecellulardata-1) | 禁用蜂窝数据服务，使用Promise方式作为异步方法。 |
+| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md#disablecellulardataroaming) | 禁用蜂窝数据漫游，使用callback方式作为异步方法。 |
+| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md#disablecellulardataroaming-1) | 禁用蜂窝数据漫游，使用Promise方式作为异步方法。 |
+| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md#enablecellulardata) | 启用蜂窝数据服务，使用callback方式作为异步方法。 |
+| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md#enablecellulardata-1) | 启用蜂窝数据服务，使用Promise方式作为异步方法。 |
+| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md#enablecellulardataroaming) | 启用蜂窝数据漫游，使用callback方式作为异步方法。 |
+| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md#enablecellulardataroaming-1) | 启用蜂窝数据漫游，使用Promise方式作为异步方法。 |
+| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md#setdefaultcellulardataslotid) | 设置默认移动数据的SIM卡，使用callback方式作为异步方法。 |
+| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md#setdefaultcellulardataslotid-1) | 设置默认移动数据的SIM卡，使用Promise方式作为异步方法。 |
 <!--DelEnd-->
 
 ### 接口

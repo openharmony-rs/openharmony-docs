@@ -1,5 +1,9 @@
 # UninstallParam (System API)
 
+```TypeScript
+export interface UninstallParam
+```
+
 Defines the parameters required for the uninstall of a shared bundle.
 
 **Since:** 10

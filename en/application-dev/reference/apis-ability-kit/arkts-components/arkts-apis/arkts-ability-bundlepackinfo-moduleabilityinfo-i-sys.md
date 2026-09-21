@@ -1,5 +1,9 @@
 # ModuleAbilityInfo (System API)
 
+```TypeScript
+export interface ModuleAbilityInfo
+```
+
 ModuleAbilityInfo: the ability info of a module.
 
 **Since:** 9

@@ -56,19 +56,8 @@ call.joinConference(1, callNumberList, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let callNumberList: Array<string> = [
-    "138XXXXXXXX"
-];
-call.joinConference(1, callNumberList).then(() => {
-    console.info(`joinConference success.`);
-}).catch((err: BusinessError) => {
-    console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="joinconference-1"></a>
 
 ## joinConference
 
@@ -110,4 +99,15 @@ function joinConference(mainCallId: number, callNumberList: Array<string>): Prom
 
 **示例**
 
-参见 [joinConference](#joinconference)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callNumberList: Array<string> = [
+    "138XXXXXXXX"
+];
+call.joinConference(1, callNumberList).then(() => {
+    console.info(`joinConference success.`);
+}).catch((err: BusinessError) => {
+    console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -1,5 +1,9 @@
 # EventType（系统接口）
 
+```TypeScript
+enum EventType
+```
+
 系统事件类型枚举。
 
 **起始版本：** 9

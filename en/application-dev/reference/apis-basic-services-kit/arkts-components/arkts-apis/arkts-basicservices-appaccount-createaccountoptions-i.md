@@ -1,5 +1,9 @@
 # CreateAccountOptions
 
+```TypeScript
+interface CreateAccountOptions
+```
+
 Defines the options for creating an application account.
 
 **Since:** 9

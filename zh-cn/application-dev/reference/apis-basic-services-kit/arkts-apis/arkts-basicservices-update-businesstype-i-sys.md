@@ -1,5 +1,9 @@
 # BusinessType（系统接口）
 
+```TypeScript
+export interface BusinessType
+```
+
 升级业务类型。
 
 **起始版本：** 9

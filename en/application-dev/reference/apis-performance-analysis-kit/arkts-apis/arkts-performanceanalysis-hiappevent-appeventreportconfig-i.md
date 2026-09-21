@@ -1,5 +1,9 @@
 # AppEventReportConfig
 
+```TypeScript
+interface AppEventReportConfig
+```
+
 Defines the event configuration for the data processor to report.
 
 **Since:** 11
@@ -50,7 +54,7 @@ Whether to report events in real time. The value **true** indicates that events 
 name?: string
 ```
 
-Event name. The value is string that contains a maximum of 48 characters, including digits (0 to 9), letters (a to z)(A to Z), underscore (_), and dollar sign (&#36;). It must start with a letter or dollar sign (&#36;) and end with a digit or letter. The default value is an empty string.
+Event name. The value is string that contains a maximum of 48 characters, including digits (0 to 9), letters (a to z)(A to Z), underscore (_), and dollar sign ($). It must start with a letter or dollar sign ($) and end with a digit or letter. The default value is an empty string.
 
 **Type:** string
 

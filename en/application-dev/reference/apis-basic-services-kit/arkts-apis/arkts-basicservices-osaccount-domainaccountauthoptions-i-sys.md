@@ -1,5 +1,9 @@
 # DomainAccountAuthOptions (System API)
 
+```TypeScript
+interface DomainAccountAuthOptions
+```
+
 Defines the options for domain account authentication.
 
 **Since:** 24

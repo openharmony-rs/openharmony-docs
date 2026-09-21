@@ -16,6 +16,8 @@ function addExcludeDate(reminderId: number, date: Date): Promise<void>
 
 **起始版本：** 12
 
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **参数：**
@@ -35,8 +37,8 @@ function addExcludeDate(reminderId: number, date: Date): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied |
-| [401](../../errorcode-universal.md#401-参数检查失败) | If the input parameter is not valid parameter. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700003](../errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
 
 **示例**

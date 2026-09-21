@@ -56,31 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 公共事件相关信息，以发布有序公共事件为例
-let options: commonEventManager.CommonEventPublishData = {
-  code: 0,
-  data: 'initial data',
-  isOrdered: true // 有序公共事件
-};
-
-// 发布公共事件
-try {
-  commonEventManager.publish('event', options, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info(`Succeeded in publishing common event.`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="publish-1"></a>
 
 ## publish
 
@@ -115,4 +92,27 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **示例**
 
-参见 [publish](#publish)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 公共事件相关信息，以发布有序公共事件为例
+let options: commonEventManager.CommonEventPublishData = {
+  code: 0,
+  data: 'initial data',
+  isOrdered: true // 有序公共事件
+};
+
+// 发布公共事件
+try {
+  commonEventManager.publish('event', options, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in publishing common event.`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+}
+```

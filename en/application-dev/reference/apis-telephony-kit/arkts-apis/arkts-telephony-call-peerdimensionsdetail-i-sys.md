@@ -1,5 +1,9 @@
 # PeerDimensionsDetail (System API)
 
+```TypeScript
+export interface PeerDimensionsDetail
+```
+
 Defines the peer image resolution in a video call.
 
 **Since:** 11

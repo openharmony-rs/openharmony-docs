@@ -1,5 +1,9 @@
 # FontMetricsFlags
 
+```TypeScript
+enum FontMetricsFlags
+```
+
 字体度量标志枚举，指示字体度量中的各字段数据是否有效。常用于精确文本布局、自定义文本渲染等需要获取字体详细度量信息的场景。
 
 **起始版本：** 12

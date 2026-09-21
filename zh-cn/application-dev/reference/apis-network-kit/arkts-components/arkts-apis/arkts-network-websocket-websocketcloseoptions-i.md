@@ -1,5 +1,9 @@
 # WebSocketCloseOptions
 
+```TypeScript
+export interface WebSocketCloseOptions
+```
+
 关闭WebSocket连接时，可选参数的类型和说明。
 
 **起始版本：** 6

@@ -1,5 +1,9 @@
 # SwitchState（系统接口）
 
+```TypeScript
+export enum SwitchState
+```
+
 描述通知相关开关的设置状态。
 
 **起始版本：** 20

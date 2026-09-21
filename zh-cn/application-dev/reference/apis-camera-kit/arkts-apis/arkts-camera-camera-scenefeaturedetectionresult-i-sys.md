@@ -1,5 +1,9 @@
 # SceneFeatureDetectionResult（系统接口）
 
+```TypeScript
+interface SceneFeatureDetectionResult
+```
+
 Describes the scene feature detection result.
 
 **起始版本：** 12

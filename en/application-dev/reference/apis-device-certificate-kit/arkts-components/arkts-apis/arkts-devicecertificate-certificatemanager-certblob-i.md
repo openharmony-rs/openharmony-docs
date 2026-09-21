@@ -1,5 +1,9 @@
 # CertBlob
 
+```TypeScript
+export interface CertBlob
+```
+
 Indicates the certificate file data.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # GattPermissions
 
+```TypeScript
+interface GattPermissions
+```
+
 Describes the permission of a att attribute item.
 
 **Since:** 20

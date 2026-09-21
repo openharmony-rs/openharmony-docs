@@ -1,5 +1,9 @@
 # PixelMapParams
 
+```TypeScript
+interface PixelMapParams
+```
+
 获取视频缩略图时，输出缩略图的格式参数。
 
 **起始版本：** 12
@@ -20,7 +24,7 @@ autoFlip?: boolean
 
 当视频具有镜像属性（垂直翻转或水平翻转）时，自动翻转缩略图。如果该值为false，则返回的缩略图将不会翻转。
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
 **类型：** boolean
 
@@ -38,7 +42,7 @@ colorFormat?: PixelFormat
 
 输出的缩略图颜色格式。
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
 **类型：** [PixelFormat](arkts-media-media-pixelformat-e-sys.md)
 

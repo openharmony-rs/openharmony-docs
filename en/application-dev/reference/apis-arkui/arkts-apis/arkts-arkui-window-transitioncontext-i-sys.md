@@ -1,5 +1,9 @@
 # TransitionContext (System API)
 
+```TypeScript
+interface TransitionContext
+```
+
 Provides the context for the transition animation.
 
 **Since:** 9

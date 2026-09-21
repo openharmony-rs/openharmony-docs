@@ -1,5 +1,9 @@
 # SwitchStatus
 
+```TypeScript
+enum SwitchStatus
+```
+
 开关状态的枚举。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # SystemSoundManager（系统接口）
 
+```TypeScript
+interface SystemSoundManager
+```
+
 管理系统声音。在调用SystemSoundManager的接口前，需要先通过[getSystemSoundManager](arkts-audio-systemsoundmanager-getsystemsoundmanager-f-sys.md)创建实例。
 
 **起始版本：** 10
@@ -84,6 +88,56 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 });
 ```
 
+<a id="addcustomizedtone-1"></a>
+
+## addCustomizedTone
+
+```TypeScript
+addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?: number, length?: number)
+      : Promise<string>
+```
+
+通过文件描述符fd将自定义铃音添加到铃音库。使用Promise异步回调。
+
+**起始版本：** 12
+
+**需要权限：** ohos.permission.WRITE_RINGTONE
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
+| toneAttr | [ToneAttrs](arkts-audio-systemsoundmanager-toneattrs-i-sys.md) | 是 | 铃音属性。 |
+| fd | number | 是 | 文件描述符，可通过[fileIo.open](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopen)获取。 |
+| offset | number | 否 | 读取数据的偏移量（以字节为单位）。默认情况下为0。 |
+| length | number | 否 | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation is not allowed, e.g. ringtone to add is not customized. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error. |
+| [20700004](../errorcode-audio-ringtone-sys.md#20700004-数据大小超过限制) | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>**适用版本：** 20+ |
+| [20700005](../errorcode-audio-ringtone-sys.md#20700005-文件个数超过限制) | The number of files exceeds the limit.<br>**适用版本：** 20+ |
+| [20700006](../errorcode-audio-ringtone-sys.md#20700006-rom空间不足) | Insufficient ROM space.<br>**适用版本：** 20+ |
+
+**示例**
+
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -110,56 +164,6 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, len
   console.error(`Failed to addCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-## addCustomizedTone
-
-```TypeScript
-addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?: number, length?: number)
-      : Promise<string>
-```
-
-通过文件描述符fd将自定义铃音添加到铃音库。使用Promise异步回调。
-
-**起始版本：** 12
-
-**需要权限：** ohos.permission.WRITE_RINGTONE
-
-**系统能力：** SystemCapability.Multimedia.SystemSound.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| toneAttr | [ToneAttrs](arkts-audio-systemsoundmanager-toneattrs-i-sys.md) | 是 | 铃音属性。 |
-| fd | number | 是 | 文件描述符，可通过[fileIo.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md)获取。 |
-| offset | number | 否 | 读取数据的偏移量（以字节为单位）。默认情况下为0。 |
-| length | number | 否 | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | Promise对象，返回铃音在铃音库中的uri。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-当前状态不支持此操作) | Operation is not allowed, e.g. ringtone to add is not customized. |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-出现io错误) | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error. |
-| [20700004](../errorcode-audio-ringtone-sys.md#20700004-数据大小超过限制) | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>**适用版本：** 20+ |
-| [20700005](../errorcode-audio-ringtone-sys.md#20700005-文件个数超过限制) | The number of files exceeds the limit.<br>**适用版本：** 20+ |
-| [20700006](../errorcode-audio-ringtone-sys.md#20700006-rom空间不足) | Insufficient ROM space.<br>**适用版本：** 20+ |
-
-**示例**
-
-参见 [addCustomizedTone](#addcustomizedtone)
 
 ## close
 
@@ -628,26 +632,6 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
-let hapticUri = 'file://data/test.json'; // 需更改为目标触觉文件URI。
-
-let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
-  if (value != null) {
-    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
-    systemRingtonePlayer = value;
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
 let ringtoneUri = 'file://data/test.json'; // 需更改为目标铃音文件URI。
@@ -662,6 +646,8 @@ systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUr
   console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getmockhapticringtoneplayer-1"></a>
 
 ## getMockHapticRingtonePlayer
 
@@ -708,7 +694,25 @@ getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<Ri
 
 **示例**
 
-参见 [getMockHapticRingtonePlayer](#getmockhapticringtoneplayer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
+let hapticUri = 'file://data/test.json'; // 需更改为目标触觉文件URI。
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+  if (value != null) {
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
+    systemRingtonePlayer = value;
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getRingtoneAttrList
 
@@ -836,7 +840,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
+| type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 待获取的系统铃声的类型。 |
 
 **返回值：**
 
@@ -878,6 +882,12 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 
 获取系统铃声播放器。使用callback异步回调。
 
+> **说明：** 
+> 
+> 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用
+> [getRingtonePlayer](#getringtoneplayer)
+> 替代。
+
 **起始版本：** 10
 
 **废弃版本：** 11
@@ -894,7 +904,7 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 待获取播放器的系统铃声的类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md)&gt; | 是 | 回调函数。当获取系统铃声播放器成功，err为undefined data为获取到的系统铃声播放器；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md)&gt; | 是 | 回调函数。当获取系统铃声播放器成功，err为undefined，data为获取到的系统铃声播放器；否则为错误对象。 |
 
 **示例**
 
@@ -918,23 +928,7 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type, (err: Business
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
-let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefined;
-
-let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
-  console.info('Succeeded in doing getSystemRingtonePlayer.');
-  systemRingtonePlayer = value;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getSystemRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="getsystemringtoneplayer-1"></a>
 
 ## getSystemRingtonePlayer
 
@@ -943,6 +937,12 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 ```
 
 获取系统铃声播放器。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用
+> [getRingtonePlayer](#getringtoneplayer)
+> 替代。
 
 **起始版本：** 10
 
@@ -969,7 +969,23 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise<RingtoneP
 
 **示例**
 
-参见 [getSystemRingtonePlayer](#getsystemringtoneplayer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefined;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
+  console.info('Succeeded in doing getSystemRingtonePlayer.');
+  systemRingtonePlayer = value;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getSystemRingtoneUri
 
@@ -978,6 +994,11 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 ```
 
 获取系统铃声uri。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用
+> [getRingtoneUri](#getringtoneuri)替代。
 
 **起始版本：** 10
 
@@ -1017,21 +1038,7 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type, (err: BusinessErr
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
-
-let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: string) => {
-  console.info('Succeeded in doing getSystemRingtoneUri.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="getsystemringtoneuri-1"></a>
 
 ## getSystemRingtoneUri
 
@@ -1040,6 +1047,11 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 ```
 
 获取系统铃声uri。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用
+> [getRingtoneUri](#getringtoneuri)替代。
 
 **起始版本：** 10
 
@@ -1066,7 +1078,21 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise<string>
 
 **示例**
 
-参见 [getSystemRingtoneUri](#getsystemringtoneuri)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: string) => {
+  console.info('Succeeded in doing getSystemRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getSystemToneAttrList
 
@@ -1450,7 +1476,7 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: num
 openToneList(uriList: Array<string>): Promise<Array<[string, number, SystemSoundError]>>
 ```
 
-获取系统铃声的属性列表。使用Promise异步回调。
+批量打开铃声文件。使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -1683,7 +1709,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
+| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
 
 **返回值：**
@@ -1727,6 +1753,11 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 
 设置系统铃声uri。使用callback异步回调。
 
+> **说明：** 
+> 
+> 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用
+> [setRingtoneUri](#setringtoneuri)替代。
+
 **起始版本：** 10
 
 **废弃版本：** 11
@@ -1742,7 +1773,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
+| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置系统铃声uri成功，err为undefined，否则为错误对象。 |
 
@@ -1767,22 +1798,7 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type, (err: Busine
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
-let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
-
-let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
-  console.info('Succeeded in doing setSystemRingtoneUri.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to setSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="setsystemringtoneuri-1"></a>
 
 ## setSystemRingtoneUri
 
@@ -1791,6 +1807,11 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 ```
 
 设置系统铃声uri。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从 API version 10 开始支持，从 API version 11 开始废弃，建议使用
+> [setRingtoneUri](#setringtoneuri)替代。
 
 **起始版本：** 10
 
@@ -1807,7 +1828,7 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
+| uri | string | 是 | 被设置的系统铃声的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | 是 | 被设置的系统铃声的类型。 |
 
 **返回值：**
@@ -1818,7 +1839,22 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 
 **示例**
 
-参见 [setSystemRingtoneUri](#setsystemringtoneuri)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
+  console.info('Succeeded in doing setSystemRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## setSystemToneUri
 
@@ -1839,8 +1875,8 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [BaseContext](../../apis-ability-kit/arkts-apis/arkts-ability-basecontext-c.md) | 是 | 当前应用的上下文。 |
-| uri | string | 是 | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)。 |
-| type | [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md) | 是 | 被设置的系统提示音的类型。 |
+| uri | string | 是 | 被设置的系统提示音的uri，资源支持可参考[media.AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-multimedia-media.md)。 |
+| type | [SystemToneType](arkts-audio-systemsoundmanager-systemtonetype-e-sys.md) | 是 | 待获取的系统提示音的类型。 |
 
 **返回值：**
 

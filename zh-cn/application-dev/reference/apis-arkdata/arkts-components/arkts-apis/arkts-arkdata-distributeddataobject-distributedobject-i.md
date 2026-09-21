@@ -1,5 +1,9 @@
 # DistributedObject
 
+```TypeScript
+interface DistributedObject
+```
+
 表示一个分布式数据对象。在使用以下接口前，需调用[createDistributedObject()](arkts-arkdata-distributeddataobject-createdistributedobject-f.md)获取DistributedObject对象。<br>  
 > **说明：** 
 > 
@@ -42,12 +46,42 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 否 | 需要删除的数据变更回调，若不设置则删除该对象所有的数据变更回调。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
 
+**示例**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+// 删除数据变更回调
+g_object.off('change', (sessionId: string, fields: Array<string>) => {
+    console.info('change' + sessionId);
+    if (fields != null && fields != undefined) {
+        for (let index: number = 0; index < fields.length; index++) {
+            console.info('changed !' + fields[index] + ' ' + g_object[fields[index]]);
+        }
+    }
+});
+// 删除所有的数据变更回调
+g_object.off('change');
+```
+
 ## off('status')
 
 ```TypeScript
 off(
       type: 'status',
-      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
+      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline') => void
     ): void
 ```
 
@@ -57,7 +91,7 @@ off(
 
 **废弃版本：** 9
 
-**替代接口：** [off](arkts-arkdata-distributeddataobject-dataobject-i.md#offstatus)( type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) =&gt; void )
+**替代接口：** [off](arkts-arkdata-distributeddataobject-dataobject-i.md#offstatus)( type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' | 'offline') =&gt; void )
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -66,7 +100,32 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline' ) =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline') =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+
+**示例**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+// 删除上下线回调
+g_object.off('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
+    console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
+});
+// 删除所有的上下线回调
+g_object.off('status');
+```
 
 ## on('change')
 
@@ -91,12 +150,39 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void)
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | 是 | 变更回调对象实例。<br>sessionId：标识变更对象的sessionId；<br>fields：标识对象变更的属性名。 |
 
+**示例**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+g_object.on('change', (sessionId: string, fields: Array<string>) => {
+    console.info('change' + sessionId);
+    if (fields != null && fields != undefined) {
+        for (let index: number = 0; index < fields.length; index++) {
+            console.info('changed !' + fields[index] + ' ' + g_object[fields[index]]);
+        }
+    }
+});
+```
+
 ## on('status')
 
 ```TypeScript
 on(
       type: 'status',
-      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
+      callback: (sessionId: string, networkId: string, status: 'online' | 'offline') => void
     ): void
 ```
 
@@ -106,7 +192,7 @@ on(
 
 **废弃版本：** 9
 
-**替代接口：** [on](arkts-arkdata-distributeddataobject-dataobject-i.md#onstatus)( type: 'status', callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) =&gt; void )
+**替代接口：** [on](arkts-arkdata-distributeddataobject-dataobject-i.md#onstatus)( type: 'status', callback: (sessionId: string, networkId: string, status: 'online' | 'offline') =&gt; void )
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -115,7 +201,30 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline' ) =&gt; void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline') =&gt; void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+
+**示例**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+
+g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
+    console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
+});
+```
 
 ## setSessionId
 

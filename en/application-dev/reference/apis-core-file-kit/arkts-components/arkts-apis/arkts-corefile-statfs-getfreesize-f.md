@@ -64,22 +64,8 @@ statfs.getFreeSize(path).then((number: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
 
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let path = context.filesDir;
-statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-  if (err) {
-    console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("getFreeSize succeed, Size: " + number);
-  }
-});
-```
-
+<a id="getfreesize-1"></a>
 
 ## getFreeSize
 
@@ -120,4 +106,18 @@ Obtains the free size of the specified file system, in bytes. This API uses an a
 
 **Examples**
 
-See [getFreeSize](#getfreesize)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.filesDir;
+statfs.getFreeSize(path, (err: BusinessError, number: number) => {
+  if (err) {
+    console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("getFreeSize succeed, Size: " + number);
+  }
+});
+```

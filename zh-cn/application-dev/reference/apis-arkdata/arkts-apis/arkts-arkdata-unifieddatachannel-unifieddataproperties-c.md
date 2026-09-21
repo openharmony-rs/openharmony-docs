@@ -1,5 +1,9 @@
 # UnifiedDataProperties
 
+```TypeScript
+class UnifiedDataProperties
+```
+
 定义统一数据对象中所有数据记录的属性，包含时间戳、标签、粘贴范围以及一些附加数据等。
 
 **起始版本：** 12

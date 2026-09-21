@@ -1,5 +1,9 @@
 # ArkTSScriptInfo
 
+```TypeScript
+interface ArkTSScriptInfo
+```
+
 应用的ArkTS脚本入口函数的第一个参数，用于接收系统传递的脚本上下文信息。
 
 **起始版本：** 26.0.0

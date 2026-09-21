@@ -1,5 +1,9 @@
 # pluginComponentManager(PluginComponentManager)
 
+```TypeScript
+declare namespace pluginComponentManager
+```
+
 插件组件管理器，提供插件组件的请求、推送和事件监听等管理能力。
 
 **起始版本：** 8
@@ -27,8 +31,8 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md) | 组件提供方向组件使用方主动发送组件与数据。适用于需要主动推送插件组件模板的场景，例如跨应用内容分享、应用内嵌入的外部插件组件内容动态更新等。push 由组件提供方主动发起推送，request 由组件使用方主动发起请求；注意两者参数结构相近但 owner/target 含义相反，请勿混用。组件使用方需通过onPush事件监听接收数据，事件监听接口请参见@ohos.pluginComponent (PluginComponentManager)。 |
-| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md) | 组件使用方向组件提供方主动请求组件。适用于使用方需要按需动态获取插件组件模板的场景，例如动态加载其他应用提供的插件内容、按需展示跨应用组件等。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息，事件监听接口请参见@ohos.pluginComponent (PluginComponentManager)。 |
+| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md#push-1) | 组件提供方向组件使用方主动发送组件与数据。适用于需要主动推送插件组件模板的场景，例如跨应用内容分享、应用内嵌入的外部插件组件内容动态更新等。push 由组件提供方主动发起推送，request 由组件使用方主动发起请求；注意两者参数结构相近但 owner/target 含义相反，请勿混用。组件使用方需通过onPush事件监听接收数据，事件监听接口请参见@ohos.pluginComponent (PluginComponentManager)。 |
+| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md#request-1) | 组件使用方向组件提供方主动请求组件。适用于使用方需要按需动态获取插件组件模板的场景，例如动态加载其他应用提供的插件内容、按需展示跨应用组件等。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息，事件监听接口请参见@ohos.pluginComponent (PluginComponentManager)。 |
 <!--DelEnd-->
 
 ### 接口

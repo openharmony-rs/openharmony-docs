@@ -1,5 +1,9 @@
 # AcquireAuthorizationOptions（系统接口）
 
+```TypeScript
+interface AcquireAuthorizationOptions
+```
+
 表示获取授权的选项。
 
 **起始版本：** 24

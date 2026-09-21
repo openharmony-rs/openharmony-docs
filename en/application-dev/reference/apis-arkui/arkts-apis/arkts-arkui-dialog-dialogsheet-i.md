@@ -1,8 +1,12 @@
 # DialogSheet
 
+```TypeScript
+declare interface DialogSheet
+```
+
 The information of sheet item for action sheet style.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,11 +24,11 @@ action: VoidCallback
 
 Callback executed when the sheet item is clicked.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,11 +42,11 @@ Icon of the sheet item.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,10 +60,10 @@ Title of the sheet item.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

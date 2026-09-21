@@ -1,5 +1,9 @@
 # LivePhoto4dStatus（系统接口）
 
+```TypeScript
+enum LivePhoto4dStatus
+```
+
 子弹时间状态枚举
 
 **起始版本：** 24

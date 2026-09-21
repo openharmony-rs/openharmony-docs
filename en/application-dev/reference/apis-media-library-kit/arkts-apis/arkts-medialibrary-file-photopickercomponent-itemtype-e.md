@@ -1,5 +1,9 @@
 # ItemType
 
+```TypeScript
+export declare enum ItemType
+```
+
 Enumerates the types of the item clicked.
 
 **Since:** 12

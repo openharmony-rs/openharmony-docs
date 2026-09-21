@@ -1,5 +1,9 @@
 # WorkInfo
 
+```TypeScript
+export interface WorkInfo
+```
+
 延迟任务的具体信息, 用于设置延迟任务的触发条件等。
 
 **起始版本：** 9
@@ -221,12 +225,12 @@ networkType?: NetworkType
 ## parameters
 
 ```TypeScript
-parameters?: Record<string, number | number | string | boolean>
+parameters?: Record<string, number | string | boolean>
 ```
 
 携带参数信息。
 
-**类型：** Record&lt;string, number &#124; number &#124; string &#124; boolean&gt;
+**类型：** Record&lt;string, number &#124; string &#124; boolean&gt;
 
 **起始版本：** 9
 

@@ -1,5 +1,9 @@
 # TextContentStyle
 
+```TypeScript
+declare enum TextContentStyle
+```
+
 The polymorphic style of the text box.
 
 **Since:** 10

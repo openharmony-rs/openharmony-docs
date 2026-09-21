@@ -1,5 +1,9 @@
 # IncrementalBackupData（系统接口）
 
+```TypeScript
+interface IncrementalBackupData extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority
+```
+
 一次增量备份对象，包含最后一次增量备份时间和增量清单。
 
 @extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority @interface IncrementalBackupData

@@ -1,5 +1,9 @@
 # BackgroundMode
 
+```TypeScript
+export enum BackgroundMode
+```
+
 Defines the type of a continuous task.
 
 **Since:** 9
@@ -18,7 +22,7 @@ Use scenario: upload and download in non-hosting mode, for example, uploading or
 
 Note: During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.
 
-The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md).
+The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-2).
 
 **Since:** 9
 

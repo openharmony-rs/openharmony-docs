@@ -1,5 +1,9 @@
 # SharedBundleInfo（系统接口）
 
+```TypeScript
+export interface SharedBundleInfo
+```
+
 共享包信息。
 
 **起始版本：** 10

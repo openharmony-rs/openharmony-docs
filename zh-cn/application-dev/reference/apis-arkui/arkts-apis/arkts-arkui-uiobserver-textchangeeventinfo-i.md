@@ -1,5 +1,9 @@
 # TextChangeEventInfo
 
+```TypeScript
+export interface TextChangeEventInfo
+```
+
 Text change event info
 
 @interface TextChangeEventInfo

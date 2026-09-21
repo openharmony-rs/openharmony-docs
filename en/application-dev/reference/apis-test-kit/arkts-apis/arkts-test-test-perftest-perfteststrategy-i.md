@@ -1,5 +1,9 @@
 # PerfTestStrategy
 
+```TypeScript
+declare interface PerfTestStrategy
+```
+
 Represents the performance test strategy.
 
 > **NOTE:** 

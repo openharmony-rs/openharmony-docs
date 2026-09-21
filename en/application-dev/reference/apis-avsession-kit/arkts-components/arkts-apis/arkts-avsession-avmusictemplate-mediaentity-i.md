@@ -1,5 +1,9 @@
 # MediaEntity
 
+```TypeScript
+interface MediaEntity
+```
+
 The definition of MediaEntity.
 
 @interface MediaEntity

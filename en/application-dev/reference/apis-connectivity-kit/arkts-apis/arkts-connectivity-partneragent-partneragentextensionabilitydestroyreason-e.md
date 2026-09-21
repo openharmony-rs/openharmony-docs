@@ -1,5 +1,9 @@
 # PartnerAgentExtensionAbilityDestroyReason
 
+```TypeScript
+export enum PartnerAgentExtensionAbilityDestroyReason
+```
+
 The enum of reasons for destroying partner agent extension ability.
 
 @enum { int }

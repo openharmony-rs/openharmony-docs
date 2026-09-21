@@ -1,5 +1,9 @@
 # ObjectConstructor
 
+```TypeScript
+interface ObjectConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,6 +22,8 @@ Returns an array of key/values of the enumerable properties of an object
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | o | { [s: string]: T } &#124; ArrayLike&lt;T&gt; | Yes |  |
+
+<a id="entries-1"></a>
 
 ## entries
 
@@ -60,6 +66,8 @@ Returns an array of values of the enumerable properties of an object
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | o | { [s: string]: T } &#124; ArrayLike&lt;T&gt; | Yes |  |
+
+<a id="values-1"></a>
 
 ## values
 

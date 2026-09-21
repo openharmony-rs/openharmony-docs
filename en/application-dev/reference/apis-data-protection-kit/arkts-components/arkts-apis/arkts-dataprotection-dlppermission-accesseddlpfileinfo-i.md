@@ -1,5 +1,9 @@
 # AccessedDLPFileInfo
 
+```TypeScript
+export interface AccessedDLPFileInfo
+```
+
 Represents the information about a DLP file opened.
 
 **Since:** 10

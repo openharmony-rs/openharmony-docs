@@ -1,5 +1,9 @@
 # Database (System API)
 
+```TypeScript
+export interface Database
+```
+
 Represents the database information.
 
 **Since:** 11

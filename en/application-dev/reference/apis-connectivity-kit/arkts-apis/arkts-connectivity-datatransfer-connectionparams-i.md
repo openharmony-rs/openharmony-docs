@@ -1,5 +1,9 @@
 # ConnectionParams
 
+```TypeScript
+interface ConnectionParams
+```
+
 Defines the parameters for initiating a port connection.
 
 **Since:** 26.0.0

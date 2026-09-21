@@ -1,5 +1,9 @@
 # EntityInfo（系统接口）
 
+```TypeScript
+export interface EntityInfo
+```
+
 提供感知到的实体信息，包括内容、链接、图像和其他类型的实体。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # ApertureQuery
 
+```TypeScript
+interface ApertureQuery
+```
+
 物理光圈查询对象。
 
 **起始版本：** 24

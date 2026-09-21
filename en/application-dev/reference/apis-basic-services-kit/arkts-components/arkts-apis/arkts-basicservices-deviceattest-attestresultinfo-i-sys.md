@@ -1,5 +1,9 @@
 # AttestResultInfo (System API)
 
+```TypeScript
+export interface AttestResultInfo
+```
+
 Device attest result information.
 
 @interface AttestResultInfo

@@ -1,5 +1,9 @@
 # Phase2Method
 
+```TypeScript
+enum Phase2Method
+```
+
 表示第二阶段认证方式的枚举。
 
 **起始版本：** 10

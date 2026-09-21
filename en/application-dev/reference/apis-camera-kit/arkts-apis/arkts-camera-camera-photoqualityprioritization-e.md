@@ -1,5 +1,9 @@
 # PhotoQualityPrioritization
 
+```TypeScript
+enum PhotoQualityPrioritization
+```
+
 Enumerates the photo quality prioritization strategies.
 
 **Since:** 21

@@ -20,6 +20,8 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 
 **替代接口：** showDialog
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -30,30 +32,6 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | 是 | 对话框响应结果回调。 |
 
 **示例**
-
-```TypeScript
-import prompt from '@ohos.prompt'
-prompt.showDialog({
-  title: 'Title Info',
-  message: 'Message Info',
-  buttons: [
-    {
-      text: 'button1',
-      color: '#000000'
-    },
-    {
-      text: 'button2',
-      color: '#000000'
-    }
-  ],
-})
-  .then(data => {
-    console.info('showDialog success, click button: ' + data.index);
-  })
-  .catch((err:Error) => {
-    console.info('showDialog error: ' + err);
-  })
-```
 
 ```TypeScript
 import prompt from '@ohos.prompt'
@@ -80,6 +58,8 @@ prompt.showDialog({
 ```
 
 
+<a id="showdialog-1"></a>
+
 ## showDialog
 
 ```TypeScript
@@ -93,6 +73,8 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 **废弃版本：** 9
 
 **替代接口：** showDialog
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,4 +92,26 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 **示例**
 
-参见 showDialog
+```TypeScript
+import prompt from '@ohos.prompt'
+prompt.showDialog({
+  title: 'Title Info',
+  message: 'Message Info',
+  buttons: [
+    {
+      text: 'button1',
+      color: '#000000'
+    },
+    {
+      text: 'button2',
+      color: '#000000'
+    }
+  ],
+})
+  .then(data => {
+    console.info('showDialog success, click button: ' + data.index);
+  })
+  .catch((err:Error) => {
+    console.info('showDialog error: ' + err);
+  })
+```

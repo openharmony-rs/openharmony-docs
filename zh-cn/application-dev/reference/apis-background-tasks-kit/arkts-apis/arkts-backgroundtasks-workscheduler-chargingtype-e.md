@@ -1,5 +1,9 @@
 # ChargingType
 
+```TypeScript
+export enum ChargingType
+```
+
 触发延迟任务回调的充电类型。
 
 **起始版本：** 9

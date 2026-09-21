@@ -1,5 +1,9 @@
 # FlashState
 
+```TypeScript
+enum FlashState
+```
+
 枚举，闪光灯状态。
 
 **起始版本：** 24

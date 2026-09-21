@@ -38,16 +38,8 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getCallState().then((data: call.CallState) => {
-    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallState fail, promise: err->Code${err.code}, message:${err.message}`);
-});
-```
-
+<a id="getcallstate-1"></a>
 
 ## getCallState
 
@@ -69,4 +61,12 @@ function getCallState(): Promise<CallState>
 
 **示例**
 
-参见 getCallState
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getCallState().then((data: call.CallState) => {
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCallState fail, promise: err->Code${err.code}, message:${err.message}`);
+});
+```

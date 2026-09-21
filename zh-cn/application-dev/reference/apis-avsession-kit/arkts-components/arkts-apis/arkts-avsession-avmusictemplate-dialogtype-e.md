@@ -1,5 +1,9 @@
 # DialogType
 
+```TypeScript
+enum DialogType
+```
+
 表示对话框类型的枚举。
 
 @enum { int }

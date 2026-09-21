@@ -1,5 +1,9 @@
 # PinType (System API)
 
+```TypeScript
+enum PinType
+```
+
 Enum for the type of pairing to a remote device
 
 **Since:** 10

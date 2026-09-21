@@ -1,5 +1,9 @@
 # DeviceCapability
 
+```TypeScript
+interface DeviceCapability
+```
+
 描述设备支持的被发现能力。
 
 **起始版本：** 23

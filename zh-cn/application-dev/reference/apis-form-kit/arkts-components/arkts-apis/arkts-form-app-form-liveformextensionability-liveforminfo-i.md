@@ -1,5 +1,9 @@
 # LiveFormInfo
 
+```TypeScript
+export interface LiveFormInfo
+```
+
 互动卡片信息。
 
 **起始版本：** 20

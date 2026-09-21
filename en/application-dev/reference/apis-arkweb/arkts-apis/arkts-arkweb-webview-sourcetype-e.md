@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+enum SourceType
+```
+
 Enumerates the media source types.
 
 **Since:** 12

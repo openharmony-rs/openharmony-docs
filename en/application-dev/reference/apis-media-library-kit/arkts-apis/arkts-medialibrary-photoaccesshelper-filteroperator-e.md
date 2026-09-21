@@ -1,5 +1,9 @@
 # FilterOperator
 
+```TypeScript
+export enum FilterOperator
+```
+
 Enumeration type of filter operator.
 
 @enum { int } FilterOperator

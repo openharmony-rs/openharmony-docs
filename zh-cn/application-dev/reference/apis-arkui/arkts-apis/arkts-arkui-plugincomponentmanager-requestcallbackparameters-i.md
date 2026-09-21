@@ -1,5 +1,9 @@
 # RequestCallbackParameters
 
+```TypeScript
+interface RequestCallbackParameters
+```
+
 pluginComponentManager.request方法接收到的回调结果。
 
 **起始版本：** 8

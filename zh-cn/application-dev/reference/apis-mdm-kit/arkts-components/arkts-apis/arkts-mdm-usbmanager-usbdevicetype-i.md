@@ -1,5 +1,9 @@
 # UsbDeviceType
 
+```TypeScript
+export interface UsbDeviceType
+```
+
 USB设备类型信息。
 
 可通过[getDevices](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-usbmanager-getdevices-f.md)接口获取已接入主设备的USB设备列表，并从返回值列表中查找当前设备的类型信息。

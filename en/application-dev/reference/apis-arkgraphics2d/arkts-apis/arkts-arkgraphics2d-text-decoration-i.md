@@ -1,5 +1,9 @@
 # Decoration
 
+```TypeScript
+interface Decoration
+```
+
 Describes a text decoration.
 
 **Since:** 12

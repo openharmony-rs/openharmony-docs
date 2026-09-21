@@ -1,5 +1,9 @@
 # KdfSpec
 
+```TypeScript
+interface KdfSpec
+```
+
 密钥派生函数参数，使用密钥派生函数进行密钥派生时，需要构建其子类对象并作为输入。
 
 **起始版本：** 11

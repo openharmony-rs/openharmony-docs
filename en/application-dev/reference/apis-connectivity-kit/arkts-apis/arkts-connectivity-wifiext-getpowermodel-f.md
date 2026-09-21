@@ -31,6 +31,8 @@ Obtains the current Wi-Fi power mode.
 | Promise&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt; | Returns the current Wi-Fi power mode. If a value less than zero is returned, it indicates a failure. |
 
 
+<a id="getpowermodel-1"></a>
+
 ## getPowerModel
 
 ```TypeScript

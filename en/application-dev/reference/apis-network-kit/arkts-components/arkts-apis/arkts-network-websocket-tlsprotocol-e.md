@@ -1,5 +1,9 @@
 # TlsProtocol
 
+```TypeScript
+export enum TlsProtocol
+```
+
 Enumerates the TLS protocol types.
 
 **Since:** 26.0.0

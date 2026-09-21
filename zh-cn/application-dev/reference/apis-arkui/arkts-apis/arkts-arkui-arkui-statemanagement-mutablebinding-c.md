@@ -1,5 +1,9 @@
 # MutableBinding
 
+```TypeScript
+export declare class MutableBinding<T>
+```
+
 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器。
 
 **起始版本：** 20

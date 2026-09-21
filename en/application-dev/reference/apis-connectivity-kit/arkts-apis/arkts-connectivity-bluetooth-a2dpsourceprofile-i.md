@@ -1,5 +1,9 @@
 # A2dpSourceProfile
 
+```TypeScript
+interface A2dpSourceProfile extends BaseProfile
+```
+
 Manager a2dp source profile.
 
 **Inheritance/Implementation:** A2dpSourceProfile extends [BaseProfile](arkts-connectivity-bluetooth-baseprofile-i.md)

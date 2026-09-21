@@ -1,5 +1,9 @@
 # DataMigrationProgress (System API)
 
+```TypeScript
+interface DataMigrationProgress
+```
+
 Describes the progress information of data migration, including the progress percentage and estimated remaining time. This API is the parameter type of the `onProgress` API in the data migration callback.
 
 **Since:** 23

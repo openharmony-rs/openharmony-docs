@@ -1,5 +1,9 @@
 # VideoProfile
 
+```TypeScript
+interface VideoProfile extends Profile
+```
+
 Describes the video configuration information. It inherits from [Profile](arkts-camera-camera-profile-i.md).
 
 **Inheritance/Implementation:** VideoProfile extends [Profile](arkts-camera-camera-profile-i.md)

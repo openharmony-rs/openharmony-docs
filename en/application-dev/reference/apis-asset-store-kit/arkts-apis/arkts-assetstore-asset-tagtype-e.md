@@ -1,5 +1,9 @@
 # TagType
 
+```TypeScript
+enum TagType
+```
+
 Enumerates the asset attribute types.
 
 **Since:** 11

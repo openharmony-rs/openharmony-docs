@@ -1,5 +1,9 @@
 # UserInfo
 
+```TypeScript
+interface UserInfo
+```
+
 用户信息的定义。
 
 @interface MediaElement

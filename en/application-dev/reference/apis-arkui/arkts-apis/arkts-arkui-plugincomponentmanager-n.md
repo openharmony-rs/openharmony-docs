@@ -1,5 +1,9 @@
 # pluginComponentManager(PluginComponentManager)
 
+```TypeScript
+declare namespace pluginComponentManager
+```
+
 Implements a plugin component manager.
 
 **Since:** 8
@@ -27,8 +31,8 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md) | Plugin component push method used to send the information of the template it provides. |
-| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md) | Plugin component request method used to send a request for the information of the template it wants. |
+| [push](arkts-arkui-plugincomponentmanager-push-f-sys.md#push-1) | Plugin component push method used to send the information of the template it provides. |
+| [request](arkts-arkui-plugincomponentmanager-request-f-sys.md#request-1) | Plugin component request method used to send a request for the information of the template it wants. |
 <!--DelEnd-->
 
 ### Interfaces

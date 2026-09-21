@@ -41,25 +41,6 @@ function createPixelMap() {
     pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the new PixelMap.
     editable: true
   };
-  image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating the PixelMap.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function createPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96 indicates the size of the pixel buffer to create. The value is calculated as follows: width × height × 4.
-  let opts: image.InitializationOptions = {
-    size: { height: 4, width: 6 },
-    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
-    pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the new PixelMap.
-    editable: true
-  };
   image.createPixelMap(color, opts, (err: BusinessError, pixelMap: image.PixelMap) => {
     if (err) {
       console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
@@ -70,6 +51,8 @@ function createPixelMap() {
 }
 ```
 
+
+<a id="createpixelmap-1"></a>
 
 ## createPixelMap
 
@@ -115,27 +98,6 @@ function createPixelMap() {
     console.info('Succeeded in creating the PixelMap.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function createPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96 indicates the size of the pixel buffer to create. The value is calculated as follows: width × height × 4.
-  let opts: image.InitializationOptions = {
-    size: { height: 4, width: 6 },
-    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
-    pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the new PixelMap.
-    editable: true
-  };
-  image.createPixelMap(color, opts, (err: BusinessError, pixelMap: image.PixelMap) => {
-    if (err) {
-      console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in creating the PixelMap.');
   });
 }
 ```

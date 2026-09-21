@@ -1,5 +1,9 @@
 # WordBreak
 
+```TypeScript
+declare enum WordBreak
+```
+
 Enum of word break
 
 @enum { number }

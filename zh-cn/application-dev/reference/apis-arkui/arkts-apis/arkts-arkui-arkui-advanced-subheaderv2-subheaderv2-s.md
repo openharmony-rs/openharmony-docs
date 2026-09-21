@@ -1,5 +1,9 @@
 # SubHeaderV2
 
+```TypeScript
+export declare struct SubHeaderV2
+```
+
 子标题，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。
 
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制子标题的数据和状态，实现更高效的用户界面刷新。
@@ -8,7 +12,7 @@
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果SubHeaderV2设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeaderV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeaderV2设置通用属性和通用事件。
+> - 如果SubHeaderV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeaderV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeaderV2设置通用属性和通用事件。
 
 ## 子组件
 
@@ -46,6 +50,24 @@ titleBuilder?: SubHeaderV2TitleBuilder
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## endIcon
+
+```TypeScript
+readonly endIcon?: SubHeaderV2IconType
+```
+
+标题尾部图标设置项，用于为标题添加尾部图标标识。当title使用primaryTitle或secondaryTitle属性时，设置endIcon属性才会生效。默认值：undefined。
+
+**类型：** [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## icon
 
 ```TypeScript
@@ -74,7 +96,7 @@ readonly icon?: SubHeaderV2IconType
 readonly operationItems?: SubHeaderV2OperationItem[]
 ```
 
-操作区的设置项，用于配置子标题右侧的操作按钮。
+操作区的设置项，用于配置子标题尾部的操作按钮。
 
 默认值：undefined
 
@@ -96,7 +118,7 @@ readonly operationItems?: SubHeaderV2OperationItem[]
 readonly operationType?: SubHeaderV2OperationType
 ```
 
-操作区元素样式，用于定义子标题右侧操作按钮的显示形式。
+操作区元素样式，用于定义子标题尾部操作按钮的显示形式。
 
 默认值：SubHeaderV2OperationType.BUTTON
 

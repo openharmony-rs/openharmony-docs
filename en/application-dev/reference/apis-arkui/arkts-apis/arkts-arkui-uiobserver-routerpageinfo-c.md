@@ -1,5 +1,9 @@
 # RouterPageInfo
 
+```TypeScript
+export class RouterPageInfo
+```
+
 Provides the information contained in **RouterPageInfo**, returned by the system to developers.
 
 **Since:** 11

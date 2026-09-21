@@ -1,5 +1,9 @@
 # PrintPageSize
 
+```TypeScript
+interface PrintPageSize
+```
+
 定义打印页面尺寸的接口。
 
 **起始版本：** 11

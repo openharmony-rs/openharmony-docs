@@ -1,5 +1,9 @@
 # SaveRequest
 
+```TypeScript
+export interface SaveRequest
+```
+
 Defines the information about an auto-saving request.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # NetworkType
 
+```TypeScript
+export enum NetworkType
+```
+
 Enumerates the network types that trigger deferred task callback.
 
 **Since:** 9

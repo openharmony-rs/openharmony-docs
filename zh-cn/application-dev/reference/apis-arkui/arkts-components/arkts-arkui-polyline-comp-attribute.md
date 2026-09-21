@@ -1,8 +1,12 @@
 # Polyline属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+```TypeScript
+declare class PolylineAttribute extends CommonShapeMethod<PolylineAttribute>
+```
 
-**继承/实现关系：** PolylineAttribute extends CommonShapeMethod&lt;PolylineAttribute&gt;
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+
+**继承/实现关系：** PolylineAttribute extends CommonShapeMethod<PolylineAttribute>
 
 **起始版本：** 7
 
@@ -14,9 +18,11 @@
 points(value: Array<any>)
 ```
 
-设置折线经过坐标点列表，支持通过attributeModifier动态设置属性。
+设置折线经过坐标点列表，支持通过[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

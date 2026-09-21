@@ -1,5 +1,9 @@
 # PrinterStatus
 
+```TypeScript
+enum PrinterStatus
+```
+
 打印机状态的枚举。
 
 **起始版本：** 14

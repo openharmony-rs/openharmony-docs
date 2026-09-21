@@ -1,5 +1,9 @@
 # ConflictFiles
 
+```TypeScript
+export interface ConflictFiles
+```
+
 冲突文件信息，支持copyDir及moveDir接口使用。
 
 **起始版本：** 10

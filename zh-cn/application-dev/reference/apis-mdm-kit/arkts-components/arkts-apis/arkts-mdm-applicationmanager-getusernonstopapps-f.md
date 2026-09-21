@@ -62,18 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager, common } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(null);
-  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getusernonstopapps-1"></a>
 
 ## getUserNonStopApps
 
@@ -113,4 +103,14 @@ function getUserNonStopApps(admin: Want | null): Array<common.ApplicationInstanc
 
 **示例**
 
-参见 [getUserNonStopApps](#getusernonstopapps)
+```TypeScript
+import { applicationManager, common } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(null);
+  console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

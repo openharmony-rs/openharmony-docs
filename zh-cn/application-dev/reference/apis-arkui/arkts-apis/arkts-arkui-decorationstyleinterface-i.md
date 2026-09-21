@@ -1,5 +1,9 @@
 # DecorationStyleInterface
 
+```TypeScript
+declare interface DecorationStyleInterface
+```
+
 文本装饰线样式接口对象说明。
 
 > **说明：** 

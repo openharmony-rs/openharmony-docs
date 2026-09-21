@@ -1,5 +1,9 @@
 # SetConstructor
 
+```TypeScript
+interface SetConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

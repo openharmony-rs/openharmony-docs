@@ -1,5 +1,9 @@
 # CopyOptions
 
+```TypeScript
+declare enum CopyOptions
+```
+
 Indicates the share option.
 
 **起始版本：** 9
@@ -15,6 +19,8 @@ None = 0
 Not allow share.
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -32,6 +38,8 @@ Share in app.
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -47,6 +55,8 @@ LocalDevice = 2
 Share in local device.
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

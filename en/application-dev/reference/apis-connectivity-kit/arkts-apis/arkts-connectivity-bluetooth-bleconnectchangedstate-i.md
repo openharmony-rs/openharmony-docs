@@ -1,5 +1,9 @@
 # BLEConnectChangedState
 
+```TypeScript
+interface BLEConnectChangedState
+```
+
 Describes the Gatt profile connection state.
 
 **Since:** 7

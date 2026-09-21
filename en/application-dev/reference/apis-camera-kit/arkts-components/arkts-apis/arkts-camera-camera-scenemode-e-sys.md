@@ -1,5 +1,9 @@
 # SceneMode
 
+```TypeScript
+enum SceneMode
+```
+
 Enumerates the camera scene modes.
 
 **Since:** 11

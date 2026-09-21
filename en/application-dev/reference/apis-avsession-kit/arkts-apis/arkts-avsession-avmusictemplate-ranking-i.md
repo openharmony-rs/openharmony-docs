@@ -1,5 +1,9 @@
 # Ranking
 
+```TypeScript
+interface Ranking extends MediaEntity
+```
+
 The definition of Ranking.
 
 @extends MediaEntity @interface Ranking

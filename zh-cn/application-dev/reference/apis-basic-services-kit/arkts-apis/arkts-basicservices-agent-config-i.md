@@ -1,5 +1,9 @@
 # Config
 
+```TypeScript
+interface Config
+```
+
 上传/下载任务的配置信息。
 
 **起始版本：** 10

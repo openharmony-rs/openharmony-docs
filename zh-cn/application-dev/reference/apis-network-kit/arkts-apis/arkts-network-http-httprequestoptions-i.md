@@ -1,5 +1,9 @@
 # HttpRequestOptions
 
+```TypeScript
+export interface HttpRequestOptions
+```
+
 发起HTTP请求时，可选配置信息。
 
 **起始版本：** 6
@@ -52,7 +56,7 @@ HTTP请求体内容。设置该字段后，框架会优先将该字段作为请�
 caData?: string
 ```
 
-如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8 000字节。仅支持传入单证书，不支持证书链传入。
+如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8000字节。仅支持传入单证书，不支持证书链传入。
 
 系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。
 
@@ -85,12 +89,12 @@ caPath?: string
 ## certificatePinning
 
 ```TypeScript
-certificatePinning?: CertificatePinning | CertificatePinning[]
+certificatePinning?: CertificatePinning[]
 ```
 
 支持动态设置证书锁定配置，可以传入单个或多个证书PIN码。
 
-**类型：** [CertificatePinning](arkts-network-http-certificatepinning-i.md) &#124; [CertificatePinning](arkts-network-http-certificatepinning-i.md)[]
+**类型：** [CertificatePinning](arkts-network-http-certificatepinning-i.md)[]
 
 **起始版本：** 12
 

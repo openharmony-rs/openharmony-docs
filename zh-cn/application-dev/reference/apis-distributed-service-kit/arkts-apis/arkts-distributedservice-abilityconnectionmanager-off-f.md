@@ -35,6 +35,16 @@ function off(type: 'connect', sessionId: number,
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.off("connect", sessionId);
+```
+
 
 ## off('disconnect')
 
@@ -64,6 +74,17 @@ function off(type: 'disconnect', sessionId: number,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.off("disconnect", sessionId);
+```
 
 
 ## off('receiveMessage')
@@ -95,6 +116,17 @@ function off(type: 'receiveMessage', sessionId: number,
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.off("receiveMessage", sessionId);
+```
+
 
 ## off('receiveData')
 
@@ -124,3 +156,14 @@ function off(type: 'receiveData', sessionId: number,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+let sessionId = 100;
+abilityConnectionManager.off("receiveData", sessionId);
+```

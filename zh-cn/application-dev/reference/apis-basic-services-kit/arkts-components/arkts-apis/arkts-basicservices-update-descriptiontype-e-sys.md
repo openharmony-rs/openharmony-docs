@@ -1,5 +1,9 @@
 # DescriptionType（系统接口）
 
+```TypeScript
+export enum DescriptionType
+```
+
 描述文件类型。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # AdvancedDialogV2ButtonOptions
 
+```TypeScript
+export declare interface AdvancedDialogV2ButtonOptions
+```
+
 Declare the options of AdvancedDialogV2Button
 
 @interface AdvancedDialogV2ButtonOptions
@@ -56,7 +60,7 @@ buttonStyle?: ButtonStyleMode
 
 Describes the Button style.
 
-**Type:** [ButtonStyleMode](../arkts-components/arkts-arkui-buttonstylemode-e.md)
+**Type:** [ButtonStyleMode](../arkts-components/arkts-arkui-button-comp-buttonstylemode-e.md)
 
 **Default:** ButtonStyleMode.TEXTUAL
 
@@ -152,7 +156,7 @@ role?: ButtonRole
 
 Describes the Button role.
 
-**Type:** [ButtonRole](../arkts-components/arkts-arkui-buttonrole-e.md)
+**Type:** [ButtonRole](../arkts-components/arkts-arkui-button-comp-buttonrole-e.md)
 
 **Default:** ButtonRole.NORMAL
 

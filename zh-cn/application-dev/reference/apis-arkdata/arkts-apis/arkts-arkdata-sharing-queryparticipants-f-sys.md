@@ -40,16 +40,6 @@ function queryParticipants(sharingResource: string, callback: AsyncCallback<Resu
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
-  console.info(`query participants succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 cloudData.sharing.queryParticipants('sharing_resource_test', (err: BusinessError, result) => {
   if (err) {
     console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
@@ -59,6 +49,8 @@ cloudData.sharing.queryParticipants('sharing_resource_test', (err: BusinessError
 });
 ```
 
+
+<a id="queryparticipants-1"></a>
 
 ## queryParticipants
 
@@ -96,4 +88,12 @@ function queryParticipants(sharingResource: string): Promise<Result<Array<Partic
 
 **示例**
 
-参见 [queryParticipants](#queryparticipants)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
+  console.info(`query participants succeeded, result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # CompetitionStrategy
 
+```TypeScript
+declare enum CompetitionStrategy
+```
+
 定义分发的事件是否为竞争手势，竞争场景手势原始节点和目标节点只有一个节点会响应手势，非竞争场景可以同时响应。
 
 **起始版本：** 24

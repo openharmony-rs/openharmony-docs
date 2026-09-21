@@ -1,5 +1,9 @@
 # WifiP2pGroupInfo
 
+```TypeScript
+interface WifiP2pGroupInfo
+```
+
 P2P group information. @interface WifiP2pGroupInfo
 
 **Since:** 8

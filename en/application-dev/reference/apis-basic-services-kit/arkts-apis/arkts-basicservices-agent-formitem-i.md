@@ -1,5 +1,9 @@
 # FormItem
 
+```TypeScript
+interface FormItem
+```
+
 Describes the form item of a task.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # SocketRemoteInfo
 
+```TypeScript
+export interface SocketRemoteInfo
+```
+
 Defines information about the socket connection.
 
 **Since:** 7

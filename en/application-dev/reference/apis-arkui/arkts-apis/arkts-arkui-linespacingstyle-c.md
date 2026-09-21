@@ -1,5 +1,9 @@
 # LineSpacingStyle
 
+```TypeScript
+declare class LineSpacingStyle
+```
+
 Describes the text line spacing style.
 
 **Since:** 26.0.0

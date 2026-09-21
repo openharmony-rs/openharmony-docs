@@ -55,18 +55,8 @@ sim.setShowNumber(0, number, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-let number: string = '+861xxxxxxxxxx';
-sim.setShowNumber(0, number).then(() => {
-    console.info(`setShowNumber success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setShowNumber failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setshownumber-1"></a>
 
 ## setShowNumber
 
@@ -112,4 +102,14 @@ Set the SIM card number in the specified slot.
 
 **Examples**
 
-See [setShowNumber](#setshownumber)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+let number: string = '+861xxxxxxxxxx';
+sim.setShowNumber(0, number).then(() => {
+    console.info(`setShowNumber success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setShowNumber failed, promise: err->${JSON.stringify(err)}`);
+});
+```

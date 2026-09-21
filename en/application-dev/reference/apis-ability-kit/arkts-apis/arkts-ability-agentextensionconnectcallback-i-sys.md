@@ -1,5 +1,9 @@
 # AgentExtensionConnectCallback (System API)
 
+```TypeScript
+export interface AgentExtensionConnectCallback
+```
+
 Agent extension connect callback.
 
 @interface AgentExtensionConnectCallback

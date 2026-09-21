@@ -1,5 +1,9 @@
 # InteropAbilityLifecycleCallback
 
+```TypeScript
+declare interface InteropAbilityLifecycleCallback
+```
+
 The interop ability lifecycle callback.
 
 @typedef InteropAbilityLifecycleCallback

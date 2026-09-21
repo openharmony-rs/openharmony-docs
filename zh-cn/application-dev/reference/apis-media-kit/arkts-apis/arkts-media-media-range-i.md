@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+interface Range
+```
+
 包含上下限的范围。
 
 **起始版本：** 11

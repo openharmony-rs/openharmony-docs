@@ -1,5 +1,9 @@
 # DownloadIconStyle
 
+```TypeScript
+export declare enum DownloadIconStyle
+```
+
 Enum for DownloadIconStyle
 
 @enum { number }

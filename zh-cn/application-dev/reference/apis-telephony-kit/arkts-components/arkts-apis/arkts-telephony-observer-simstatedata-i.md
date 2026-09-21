@@ -1,5 +1,9 @@
 # SimStateData
 
+```TypeScript
+export interface SimStateData
+```
+
 SIM卡类型和状态。
 
 **起始版本：** 7

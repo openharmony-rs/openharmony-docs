@@ -1,5 +1,9 @@
 # FormInfo
 
+```TypeScript
+interface FormInfo
+```
+
 Provides information about a form.
 
 @typedef FormInfo

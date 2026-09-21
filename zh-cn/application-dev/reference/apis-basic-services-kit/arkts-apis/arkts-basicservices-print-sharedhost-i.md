@@ -1,5 +1,9 @@
 # SharedHost
 
+```TypeScript
+interface SharedHost
+```
+
 定义共享设备信息的接口。
 
 **起始版本：** 24

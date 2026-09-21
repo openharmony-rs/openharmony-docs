@@ -1,5 +1,9 @@
 # AlbumOperationType (System API)
 
+```TypeScript
+enum AlbumOperationType
+```
+
 Album operation type.
 
 **Since:** 26.0.0

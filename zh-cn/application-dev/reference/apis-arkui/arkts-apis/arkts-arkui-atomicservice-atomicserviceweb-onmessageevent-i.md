@@ -1,5 +1,9 @@
 # OnMessageEvent
 
+```TypeScript
+export declare interface OnMessageEvent
+```
+
 定义页面返回或销毁时触发该回调。
 
 **起始版本：** 12

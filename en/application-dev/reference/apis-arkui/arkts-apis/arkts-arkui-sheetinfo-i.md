@@ -1,5 +1,9 @@
 # SheetInfo
 
+```TypeScript
+interface SheetInfo
+```
+
 Defines the option content in the dialog box. You can configure the text, icon, and callback for each option.
 
 **Since:** 8
@@ -15,6 +19,8 @@ action: VoidCallback
 Callback when the sheet is selected.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -33,6 +39,8 @@ The string type can be used to load local images and, more frequently, online im
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -53,6 +61,8 @@ If the text is too long to display, a scrollbar is displayed.
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

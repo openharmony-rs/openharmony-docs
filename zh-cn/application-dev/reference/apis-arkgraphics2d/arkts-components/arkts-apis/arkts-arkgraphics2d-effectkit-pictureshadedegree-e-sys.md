@@ -1,5 +1,9 @@
 # PictureShadeDegree（系统接口）
 
+```TypeScript
+enum PictureShadeDegree
+```
+
 图片颜色深浅度的枚举。
 
 **起始版本：** 22

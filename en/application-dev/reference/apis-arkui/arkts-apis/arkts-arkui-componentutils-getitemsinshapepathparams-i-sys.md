@@ -1,5 +1,9 @@
 # GetItemsInShapePathParams (System API)
 
+```TypeScript
+interface GetItemsInShapePathParams
+```
+
 Image options setted when need to get the image objects.
 
 @interface GetItemsInShapePathParams

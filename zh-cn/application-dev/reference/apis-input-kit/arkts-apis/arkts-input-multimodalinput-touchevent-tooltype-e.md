@@ -1,5 +1,9 @@
 # ToolType
 
+```TypeScript
+export declare enum ToolType
+```
+
 操作触屏的工具类型。
 
 **起始版本：** 9

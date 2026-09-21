@@ -1,12 +1,16 @@
 # SubHeader
 
+```TypeScript
+export declare struct SubHeader
+```
+
 子标题组件，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。支持多种样式配置，包括图标、主副标题、下拉选择器和操作按钮等，可满足不同场景下的内容分区和导航需求，提升界面的信息层次感和用户体验。适用于列表分组、内容分类展示、表单分区等场景。
 
 > **说明：** 
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果SubHeader设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
+> - 如果SubHeader设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
 
 ## 子组件
 
@@ -64,11 +68,11 @@ contentMargin?: LocalizedMargin
 
 `{start: LengthMetrics.resource(`
 
-`&#36;r('sys.float.margin_left'))`,
+`$r('sys.float.margin_left'))`,
 
 `end: LengthMetrics.resource(`
 
-`&#36;r('sys.float.margin_right'))}`
+`$r('sys.float.margin_right'))}`
 
 **类型：** [LocalizedMargin](arkts-arkui-localizedmargin-t.md)
 
@@ -112,6 +116,46 @@ contentPadding?: LocalizedPadding
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## endIcon
+
+```TypeScript
+endIcon?: ResourceStr
+```
+
+标题尾部图标资源。当使用primaryTitle或secondaryTitle属性时，设置endIcon属性才会生效。默认值：undefined，表示不显示标题尾部图标。
+
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
+
+**起始版本：** 26.0.1
+
+**装饰器类型：** @Prop
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## endIconSymbolOptions
+
+```TypeScript
+endIconSymbolOptions?: SymbolOptions
+```
+
+endIcon为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)时的设置项。
+
+默认值：undefined，表示不设置标题尾部Symbol图标样式。
+
+**类型：** [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## icon
 
 ```TypeScript
@@ -142,7 +186,7 @@ icon?: ResourceStr
 iconSymbolOptions?: SymbolOptions
 ```
 
-icon为SymbolGlyph时的设置项。
+icon为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)时的设置项。
 
 默认值：undefined，表示不显示图标。
 
@@ -184,7 +228,7 @@ operationSymbolOptions?: Array<SymbolOptions>
 
 operationType为OperationType.ICON_GROUP，
 
-operationItem设置多个图标，图标为SymbolGlyph时的设置项。
+operationItem设置多个图标，图标为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph)时的设置项。
 
 默认值：undefined，表示不设置Symbol图标。
 
@@ -256,7 +300,7 @@ primaryTitleModifier?: TextModifier
 
 **说明：** 只有primaryTitle生效时，该参数才会生效。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 12
 
@@ -298,7 +342,7 @@ secondaryTitleModifier?: TextModifier
 
 默认值：undefined，表示使用系统默认样式。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 12
 

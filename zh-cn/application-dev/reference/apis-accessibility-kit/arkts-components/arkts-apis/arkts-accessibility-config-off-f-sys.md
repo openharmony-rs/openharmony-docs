@@ -37,6 +37,18 @@ function off(type: 'enabledAccessibilityExtensionListChange', callback?: Callbac
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+
+let callback = () => {
+  console.info('subscribe enabled accessibility extension list change state success');
+};
+config.on('enabledAccessibilityExtensionListChange', callback);
+config.off('enabledAccessibilityExtensionListChange', callback);
+```
+
 
 ## off('installedAccessibilityListChange')
 
@@ -68,3 +80,15 @@ function off(type: 'installedAccessibilityListChange', callback?: Callback<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { config } from '@kit.AccessibilityKit';
+
+let callback = () => {
+  console.info('subscribe installed accessibility extension list change state success');
+};
+config.on('installedAccessibilityListChange', callback);
+config.off('installedAccessibilityListChange', callback);
+```

@@ -1,5 +1,9 @@
 # CursorConfig
 
+```TypeScript
+interface CursorConfig
+```
+
 Defines custom cursor configuration.
 
 **Since:** 15

@@ -24,9 +24,9 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Target key. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
+| key | string | Yes | Key to be set. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
 | value | string | Yes | Value to set. The value can contain a maximum of 96 bytes (including the end character). |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the system parameter value asynchronously. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -55,21 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let promise: Promise<void> = systemParameterEnhance.set('test.parameter.key', 'testValue');
-  promise.then((value: void) => {
-    console.info('set test.parameter.key success: ' + value);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set test.parameter.key. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (e) {
-  console.error('set unexpected error: ' + e);
-}
-```
-
+<a id="set-1"></a>
 
 ## set
 
@@ -89,14 +76,14 @@ Sets a value of the specified key. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Target key. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
+| key | string | Yes | Key to be set. The value can contain a maximum of 128 bytes. Only letters, digits, periods (.), hyphens (-), at signs (@), colons (:), and underscores (_) are allowed. |
 | value | string | Yes | Value to set. The value can contain a maximum of 96 bytes (including the end character). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the execution result. |
+| Promise&lt;void&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -109,4 +96,17 @@ Sets a value of the specified key. This API uses a promise to return the result.
 
 **Examples**
 
-See [set](#set)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let promise: Promise<void> = systemParameterEnhance.set('test.parameter.key', 'testValue');
+  promise.then((value: void) => {
+    console.info('set test.parameter.key success: ' + value);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set test.parameter.key. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
+}
+```

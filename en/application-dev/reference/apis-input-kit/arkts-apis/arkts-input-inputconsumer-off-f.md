@@ -33,6 +33,74 @@ Unsubscribes from application shortcut key change events. This API uses an async
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
+**Examples**
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftCtrlKey = 2072;
+          let zKey = 2042;
+          // Disable listening for a single callback.
+          let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
+          };
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
+          try {
+            // Subscribe to hotkey change events.
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
+            // Unsubscribe from hotkey change events.
+            inputConsumer.off('hotkeyChange', hotkeyOption, hotkeyCallback);
+            console.info(`Succeeded in unsubscribing.`);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftCtrlKey = 2072;
+          let zKey = 2042;
+          // Disable listening for all callbacks.
+          let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
+          };
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
+          try {
+            // Subscribe to hotkey change events.
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
+            // Unsubscribe from hotkey change events.
+            inputConsumer.off('hotkeyChange', hotkeyOption);
+            console.info(`Succeeded in unsubscribing.`);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('keyPressed')
 
@@ -59,3 +127,41 @@ Unsubscribes from key press events. This API uses an asynchronous callback to re
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Disable listening for a single callback.
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
+              console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
+            };
+            // Subscribe to key press events.
+            inputConsumer.on('keyPressed', options, callback);
+            // Unsubscribe from key press events.
+            inputConsumer.off('keyPressed', callback);
+            // Disable listening for all callbacks.
+            inputConsumer.off('keyPressed');
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

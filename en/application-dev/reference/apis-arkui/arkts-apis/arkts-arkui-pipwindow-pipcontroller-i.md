@@ -1,5 +1,9 @@
 # PiPController
 
+```TypeScript
+interface PiPController
+```
+
 Implements a PiP controller that starts, stops, or updates a PiP window and registers callbacks.
 
 Before calling any of the following APIs, you must use [PiPWindow.create()](arkts-arkui-pipwindow-create-f.md) to create a PiPController instance.
@@ -171,6 +175,13 @@ Unsubscribes from PiP state events.
 | --- | --- | --- | --- |
 | type | 'stateChange' | Yes | Event type. The value is fixed at **'stateChange'**, indicating that the PiP state changes. |
 
+**Examples**
+
+```TypeScript
+// Unsubscribe from PiP state events.
+this.pipController.off('stateChange');
+```
+
 ## off('controlPanelActionEvent')
 
 ```TypeScript
@@ -190,6 +201,13 @@ Unsubscribes from PiP action events. The **[off('controlEvent')](#offcontroleven
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'controlPanelActionEvent' | Yes | Event type. The value is fixed at **'controlPanelActionEvent'**, indicating the action event of the PiP controller. |
+
+**Examples**
+
+```TypeScript
+// Unsubscribe from PiP controller action events.
+this.pipController.off('controlPanelActionEvent');
+```
 
 ## off('controlEvent')
 
@@ -211,6 +229,16 @@ Unsubscribes from PiP action events.
 | --- | --- | --- | --- |
 | type | 'controlEvent' | Yes | Event type. The value is fixed at **'controlEvent'**, indicating the action event of the PiP controller. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ControlEventParam](arkts-arkui-pipwindow-controleventparam-i.md)&gt; | No | Describes the action event callback of the PiP controller. If no value is passed in, all subscriptions to the specified event are canceled. |
+
+**Examples**
+
+```TypeScript
+let callbackFunc = (event: PiPWindow.ControlEventParam) => {
+  console.info(`receive control event: ${event.controlType}, ${event.status}`);
+}
+// Unsubscribe from PiP controller action events.
+this.pipController.off('controlEvent', callbackFunc);
+```
 
 ## off('pipWindowSizeChange')
 
@@ -240,6 +268,29 @@ Unsubscribes from the PiP window size change event.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
+**Examples**
+
+```TypeScript
+const callback = (size: PiPWindow.PiPWindowSize) => {
+  // ...
+}
+try {
+  // Enable listening through the on API.
+  this.pipController.on('pipWindowSizeChange', callback);
+} catch (exception) {
+  console.error(`Failed to enable the listener for pip window size changes. Code: ${exception.code}, message: ${exception.message}`);
+}
+
+try {
+  // Disable the listening of a specified callback.
+  this.pipController.off('pipWindowSizeChange', callback);
+  // Unregister all the callbacks that have been registered through on().
+  this.pipController.off('pipWindowSizeChange');
+} catch (exception) {
+  console.error(`Failed to disable the listener for pip window size changes. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## off('activeStatusChange')
 
 ```TypeScript
@@ -260,6 +311,16 @@ Unsubscribes from PiP window active status change events.
 | --- | --- | --- | --- |
 | type | 'activeStatusChange' | Yes | Event type. The value is fixed at **'activeStatusChange'**, indicating that the PiP window active status changes. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If no value is passed in, all subscriptions to the specified event are canceled. |
+
+**Examples**
+
+```TypeScript
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+// Unsubscribe from PiP window active status change events.
+this.pipController.off('activeStatusChange', callback);
+```
 
 ## on('stateChange')
 
@@ -282,6 +343,38 @@ Subscribes to PiP state events. To avoid potential memory leaks, you are advised
 | type | 'stateChange' | Yes | Event type. The value is fixed at **'stateChange'**, indicating that the PiP state changes. |
 | callback | (state: PiPState, reason: string) =&gt; void | Yes | Callback used to return the result, which includes the following information:<br>- **state**: [PiPState](arkts-arkui-pipwindow-pipstate-e.md), indicating the new PiP state. <br>- **reason**: a string indicating the reason for the state change. <br>Before &lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;, the value of **reason** is always **0**, which can be ignored.<br>Since &lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;, **reason** indicates the reason for switching the current lifecycle. The options are as follows: <br>**"requestStart"**: An application calls the **startPip** API. <br>**"autoStart"**: The application is automatically started in PiP mode when it is switched to the background. <br>**"requestDelete"**: The application calls the **stopPip** API. <br>**"panelActionDelete"**: The user taps the close button in the PiP window. <br>**"dragDelete"**: The user drags the PiP window to delete. <br>**"panelActionRestore"**: The user taps the restore button in the PiP window (or taps the PiP window if there is no restore button) to restore the PiP window. <br>**"other"**: Other reasons, such as the current window or application's main window being closed due to the startup of a new PiP window. |
 
+**Examples**
+
+```TypeScript
+// Subscribe to PiP state events.
+this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string) => {
+  let curState: string = '';
+  switch (state) {
+    case PiPWindow.PiPState.ABOUT_TO_START:
+      curState = 'ABOUT_TO_START';
+      break;
+    case PiPWindow.PiPState.STARTED:
+      curState = 'STARTED';
+      break;
+    case PiPWindow.PiPState.ABOUT_TO_STOP:
+      curState = 'ABOUT_TO_STOP';
+      break;
+    case PiPWindow.PiPState.STOPPED:
+      curState = 'STOPPED';
+      break;
+    case PiPWindow.PiPState.ABOUT_TO_RESTORE:
+      curState = 'ABOUT_TO_RESTORE';
+      break;
+    case PiPWindow.PiPState.ERROR:
+      curState = 'ERROR';
+      break;
+    default:
+      break;
+  }
+  console.info('stateChange:' + curState + ' reason:' + reason);
+});
+```
+
 ## on('controlPanelActionEvent')
 
 ```TypeScript
@@ -303,6 +396,38 @@ Subscribes to PiP action events. To avoid potential memory leaks, you are advise
 | type | 'controlPanelActionEvent' | Yes | Event type. The value is fixed at **'controlPanelActionEvent'**, indicating the action event of the PiP controller. |
 | callback | [ControlPanelActionEventCallback](arkts-arkui-pipwindow-controlpanelactioneventcallback-t.md) | Yes | Action event callback of the PiP controller.<br>**Since:** 12 |
 
+**Examples**
+
+```TypeScript
+// Subscribe to PiP controller action events.
+this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEventType, status?: number) => {
+  switch (event) {
+    case 'playbackStateChanged':
+      if (status === 0) {
+        // Stop the video.
+      } else if (status === 1) {
+        // Play the video.
+      }
+      break;
+    case 'nextVideo':
+      // Switch to the next video.
+      break;
+    case 'previousVideo':
+      // Switch to the previous video.
+      break;
+    case 'fastForward':
+      // Fast forward the video.
+      break;
+    case 'fastBackward':
+      // Rewind the video.
+      break;
+    default:
+      break;
+  }
+  console.info('registerActionEventCallback, event:' + event);
+});
+```
+
 ## on('controlEvent')
 
 ```TypeScript
@@ -323,6 +448,38 @@ Subscribes to PiP action events. To avoid potential memory leaks, you are advise
 | --- | --- | --- | --- |
 | type | 'controlEvent' | Yes | Event type. The value is fixed at **'controlEvent'**, indicating the action event of the PiP controller. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ControlEventParam](arkts-arkui-pipwindow-controleventparam-i.md)&gt; | Yes | Action event callback of the PiP controller. |
+
+**Examples**
+
+```TypeScript
+// Subscribe to PiP controller action events.
+this.pipController.on('controlEvent', (control) => {
+  switch (control.controlType) {
+    case PiPWindow.PiPControlType.VIDEO_PLAY_PAUSE:
+      if (control.status === PiPWindow.PiPControlStatus.PAUSE) {
+        // Stop the video.
+      } else if (control.status === PiPWindow.PiPControlStatus.PLAY) {
+        // Play the video.
+      }
+      break;
+    case PiPWindow.PiPControlType.VIDEO_NEXT:
+      // Switch to the next video.
+      break;
+    case PiPWindow.PiPControlType.VIDEO_PREVIOUS:
+      // Switch to the previous video.
+      break;
+    case PiPWindow.PiPControlType.FAST_FORWARD:
+      // Fast forward the video.
+      break;
+    case PiPWindow.PiPControlType.FAST_BACKWARD:
+      // Rewind the video.
+      break;
+    default:
+      break;
+  }
+  console.info('registerControlEventCallback, controlType:' + control.controlType + ', status' + control.status);
+});
+```
 
 ## on('pipWindowSizeChange')
 
@@ -353,6 +510,19 @@ Subscribes to PiP window size change events. To avoid potential memory leaks, yo
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300014](../errorcode-window.md#1300014-pip-internal-error) | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
+**Examples**
+
+```TypeScript
+try {
+  // Subscribe to PiP window size change events.
+  this.pipController.on('pipWindowSizeChange', (size: PiPWindow.PiPWindowSize) => {
+    console.info('Succeeded in enabling the listener for pip window size changes. size: ' + JSON.stringify(size));
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for pip window size changes. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('activeStatusChange')
 
 ```TypeScript
@@ -373,6 +543,16 @@ Subscribes to PiP window active status change events. To avoid potential memory 
 | --- | --- | --- | --- |
 | type | 'activeStatusChange' | Yes | Event type. The value is fixed at **'activeStatusChange'**, indicating that the PiP window active status changes. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | Yes | PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). |
+
+**Examples**
+
+```TypeScript
+let callback = (activeStatus: boolean) => {
+  console.info(`pip window is visible: ${activeStatus}`);
+}
+// Subscribe to PiP window active status change events.
+this.pipController.on('activeStatusChange', callback);
+```
 
 ## setAutoStartEnabled
 

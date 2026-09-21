@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 UDMF提供的数据操作接口包含三个可选参数：intention、key和visibility。如果接口不需要这些参数，可以不填，具体要求请参阅该接口的参数说明。
 
 **起始版本：** 10

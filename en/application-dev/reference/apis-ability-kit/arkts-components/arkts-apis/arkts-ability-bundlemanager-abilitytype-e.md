@@ -1,5 +1,9 @@
 # AbilityType
 
+```TypeScript
+export enum AbilityType
+```
+
 Enumerates the types of ability components.
 
 **Since:** 9

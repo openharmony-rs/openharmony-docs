@@ -60,23 +60,8 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let accountId: string = "testAccount";
-let switches: Record<string, boolean> = {
-  'com.example.bundleName1': true,
-  'com.example.bundleName2': false
-}
-cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
-  if (err) {
-    console.error(`enableCloud failed with error message: ${err.message}, error code: ${err.code}`);
-  } else {
-    console.info("enableCloud successfully");
-  }
-});
-```
-
+<a id="enablecloud-1"></a>
 
 ## enableCloud
 
@@ -116,4 +101,19 @@ function enableCloud(
 
 **示例**
 
-参见 [enableCloud](#enablecloud)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
+  if (err) {
+    console.error(`enableCloud failed with error message: ${err.message}, error code: ${err.code}`);
+  } else {
+    console.info("enableCloud successfully");
+  }
+});
+```

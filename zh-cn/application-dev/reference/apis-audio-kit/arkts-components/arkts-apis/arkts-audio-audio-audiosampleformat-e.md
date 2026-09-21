@@ -1,5 +1,9 @@
 # AudioSampleFormat
 
+```TypeScript
+enum AudioSampleFormat
+```
+
 表示音频采样格式的枚举。
 
 **起始版本：** 8

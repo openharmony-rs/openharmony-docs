@@ -1,5 +1,9 @@
 # ReminderRequest
 
+```TypeScript
+interface ReminderRequest
+```
+
 Defines the reminder to publish.
 
 **Since:** 7
@@ -30,7 +34,7 @@ Button displayed in the reminder notification. (The parameter is optional. Up to
 
 **Deprecated since:** 9
 
-**Substitutes:** actionButton
+**Substitutes:** [actionButton](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#actionbutton)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -48,7 +52,7 @@ Reminder content.
 
 **Deprecated since:** 9
 
-**Substitutes:** content
+**Substitutes:** [content](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#content)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -66,7 +70,7 @@ Content to be displayed after the reminder expires.
 
 **Deprecated since:** 9
 
-**Substitutes:** expiredContent
+**Substitutes:** [expiredContent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#expiredcontent)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -84,7 +88,7 @@ Information about the ability that is automatically started when the reminder ar
 
 **Deprecated since:** 9
 
-**Substitutes:** maxScreenWantAgent
+**Substitutes:** [maxScreenWantAgent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#maxscreenwantagent)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -102,7 +106,7 @@ Notification ID used by the reminder. If there are reminders with the same notif
 
 **Deprecated since:** 9
 
-**Substitutes:** notificationId
+**Substitutes:** [notificationId](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#notificationid)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -120,7 +124,7 @@ Type of the reminder.
 
 **Deprecated since:** 9
 
-**Substitutes:** reminderType
+**Substitutes:** [reminderType](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#remindertype)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -138,7 +142,7 @@ Ringing duration, in seconds. The default value is **1**. Unit: s.
 
 **Deprecated since:** 9
 
-**Substitutes:** ringDuration
+**Substitutes:** [ringDuration](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#ringduration)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -156,7 +160,7 @@ Type of the slot used by the reminder.
 
 **Deprecated since:** 9
 
-**Substitutes:** slotType
+**Substitutes:** [slotType](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#slottype)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -174,7 +178,7 @@ Content to be displayed when the reminder is snoozing.
 
 **Deprecated since:** 9
 
-**Substitutes:** snoozeContent
+**Substitutes:** [snoozeContent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#snoozecontent)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -192,7 +196,7 @@ Number of reminder snooze times. The default value is **0**.
 
 **Deprecated since:** 9
 
-**Substitutes:** snoozeTimes
+**Substitutes:** [snoozeTimes](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#snoozetimes)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -210,7 +214,7 @@ Reminder snooze interval, in seconds. The default value is **0**. Unit: s.
 
 **Deprecated since:** 9
 
-**Substitutes:** timeInterval
+**Substitutes:** [timeInterval](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#timeinterval)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -228,7 +232,7 @@ Reminder title.
 
 **Deprecated since:** 9
 
-**Substitutes:** title
+**Substitutes:** [title](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#title)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -246,6 +250,6 @@ Information about the ability that is redirected to when the notification is cli
 
 **Deprecated since:** 9
 
-**Substitutes:** wantAgent
+**Substitutes:** [wantAgent](arkts-backgroundtasks-reminderagentmanager-reminderrequest-i.md#wantagent)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

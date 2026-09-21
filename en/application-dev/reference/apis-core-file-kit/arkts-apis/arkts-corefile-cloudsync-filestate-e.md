@@ -1,5 +1,9 @@
 # FileState
 
+```TypeScript
+enum FileState
+```
+
 Enumerates the device-cloud file sync states.
 
 **Since:** 20

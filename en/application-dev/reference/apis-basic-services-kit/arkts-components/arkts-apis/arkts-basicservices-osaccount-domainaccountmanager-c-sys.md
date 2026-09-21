@@ -1,5 +1,9 @@
 # DomainAccountManager
 
+```TypeScript
+class DomainAccountManager
+```
+
 Provides APIs for domain account management.
 
 **Since:** 18
@@ -80,33 +84,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-let credential = new Uint8Array([0]);
-try {
-  let serverParams: Record<string, Object> = {
-    "uri": "test.example.com",
-    "port": 100
-  }
-  let authOptions: osAccount.DomainAccountAuthOptions = {
-    serverParams: serverParams
-  }
-  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('auth resultCode = ' + resultCode);
-      console.info('auth authResult = ' + JSON.stringify(authResult));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="auth-1"></a>
 
 ## auth
 
@@ -158,27 +136,6 @@ Authenticates a specified domain account. You can specify authentication options
 | 12300211 | Server unreachable. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-let credential = new Uint8Array([0])
-try {
-  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, {
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('auth resultCode = ' + resultCode);
-      console.info('auth authResult = ' + JSON.stringify(authResult));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -269,21 +226,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  osAccount.DomainAccountManager.authWithPopup(100, {
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('authWithPopup resultCode = ' + resultCode);
-      console.info('authWithPopup authResult = ' + JSON.stringify(authResult));
-    }
-  })
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`authWithPopup exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="authwithpopup-1"></a>
 
 ## authWithPopup
 
@@ -331,22 +274,6 @@ Authenticates a domain account in a pop-up window.
 | 12300211 | Server unreachable.<br>**Applicable version:** 11 and later |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  osAccount.DomainAccountManager.authWithPopup({
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('auth resultCode = ' + resultCode);
-      console.info('auth authResult = ' + JSON.stringify(authResult));
-    }
-  })
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -425,25 +352,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let businessParams: Record<string, Object> = {
-  'clientId': 'xxx',
-  'secretId': 'yyy'
-};  // depends on the implementation of the domain plugin
-try {
-  osAccount.DomainAccountManager.getAccessToken(businessParams)
-    .then((result: Uint8Array) => {
-    console.info('getAccessToken result: ' + result);
-  }).catch((err: BusinessError) => {
-    console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getaccesstoken-2"></a>
 
 ## getAccessToken
 
@@ -488,28 +397,6 @@ Obtains the business access token of a domain account. This API uses a promise t
 | 12300211 | Server unreachable. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let businessParams: Record<string, Object> = {
-  'clientId': 'xxx',
-  'secretId': 'yyy'
-};  // depends on the implementation of the domain plugin
-try {
-  osAccount.DomainAccountManager.getAccessToken(businessParams,
-    (err: BusinessError, result: Uint8Array) => {
-    if (err) {
-      console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAccessToken result: ' + result);
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -594,25 +481,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-try {
-  osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo)
-    .then((result: osAccount.DomainAccountInfo) => {
-    console.info('getAccountInfo result: ' + result);
-  }).catch((err: BusinessError) => {
-    console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getaccountinfo-1"></a>
 
 ## getAccountInfo
 
@@ -659,28 +528,6 @@ Obtains information about a specified domain account. This API uses a promise to
 | 12300211 | Server unreachable. |
 
 **Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-try {
-  osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo,
-    (err: BusinessError, result: osAccount.DomainAccountInfo) => {
-    if (err) {
-      console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAccountInfo result: ' + result);
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -764,24 +611,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-try {
-  osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((result: boolean) => {
-    console.info('hasAccount result: ' + result);
-  }).catch((err: BusinessError) => {
-      console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="hasaccount-1"></a>
 
 ## hasAccount
 
@@ -829,7 +659,24 @@ Checks whether a domain account exists. This API uses a promise to return the re
 
 **Examples**
 
-See [hasAccount](#hasaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+try {
+  osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((result: boolean) => {
+    console.info('hasAccount result: ' + result);
+  }).catch((err: BusinessError) => {
+      console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## isAuthenticationExpired
 
@@ -1054,26 +901,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan',
-  accountId: '123456'
-}
-let token = new Uint8Array([0])
-try {
-  osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
-    console.info('updateAccountToken successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="updateaccounttoken-1"></a>
 
 ## updateAccountToken
 
@@ -1117,4 +945,23 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 
 **Examples**
 
-See [updateAccountToken](#updateaccounttoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan',
+  accountId: '123456'
+}
+let token = new Uint8Array([0])
+try {
+  osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
+    console.info('updateAccountToken successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # Network
 
+```TypeScript
+enum Network
+```
+
 Defines network options.
 
 If the network does not meet the preset conditions, the tasks that have not been executed will await for execution, and the tasks that are being executed will fail or pause.

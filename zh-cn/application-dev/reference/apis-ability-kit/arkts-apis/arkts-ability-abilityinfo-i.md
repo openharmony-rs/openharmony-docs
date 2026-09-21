@@ -1,5 +1,9 @@
 # AbilityInfo
 
+```TypeScript
+export interface AbilityInfo
+```
+
 Ability信息。
 
 **起始版本：** 9

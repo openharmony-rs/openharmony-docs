@@ -1,5 +1,9 @@
 # TaskResult
 
+```TypeScript
+interface TaskResult
+```
+
 对处于等待或执行过程中的任务执行取消操作后，在catch分支里捕获到BusinessError里的补充信息。其他场景下该信息为undefined。
 
 > **说明：** 

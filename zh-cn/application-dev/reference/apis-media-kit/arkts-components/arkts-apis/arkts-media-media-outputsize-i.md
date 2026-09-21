@@ -1,5 +1,9 @@
 # OutputSize
 
+```TypeScript
+interface OutputSize
+```
+
 用于获取视频缩略图时，来定义输出图像大小。
 
 **起始版本：** 20

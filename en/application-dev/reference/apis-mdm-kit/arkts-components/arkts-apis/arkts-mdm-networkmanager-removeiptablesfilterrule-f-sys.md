@@ -74,35 +74,8 @@ networkManager.removeIptablesFilterRule(wantTemp, filterRule, (err) => {
 });
 ```
 
-```TypeScript
-import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let filterRule: networkManager.RemoveFilterRule = {
-  // Replace with actual values.
-  "srcAddr": "192.168.1.1-192.168.255.255",
-  "destAddr": "10.1.1.1",
-  "srcPort": "8080",
-  "destPort": "8080",
-  "uid": "9696",
-  "direction": networkManager.Direction.OUTPUT,
-  "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP
-};
-
-networkManager.removeIptablesFilterRule(wantTemp, filterRule).then(() => {
-  console.info(`Succeeded in removing iptables filter rule`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to remove iptables filter rule. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="removeiptablesfilterrule-1"></a>
 
 ## removeIptablesFilterRule
 
@@ -147,4 +120,31 @@ Removes the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **Examples**
 
-See [removeIptablesFilterRule](#removeiptablesfilterrule)
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let filterRule: networkManager.RemoveFilterRule = {
+  // Replace with actual values.
+  "srcAddr": "192.168.1.1-192.168.255.255",
+  "destAddr": "10.1.1.1",
+  "srcPort": "8080",
+  "destPort": "8080",
+  "uid": "9696",
+  "direction": networkManager.Direction.OUTPUT,
+  "action": networkManager.Action.DENY,
+  "protocol": networkManager.Protocol.UDP
+};
+
+networkManager.removeIptablesFilterRule(wantTemp, filterRule).then(() => {
+  console.info(`Succeeded in removing iptables filter rule`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove iptables filter rule. Code: ${err.code}, message: ${err.message}`);
+});
+```

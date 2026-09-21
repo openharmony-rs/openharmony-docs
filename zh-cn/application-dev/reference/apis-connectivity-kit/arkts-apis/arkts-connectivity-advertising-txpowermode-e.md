@@ -1,5 +1,9 @@
 # TxPowerMode
 
+```TypeScript
+enum TxPowerMode
+```
+
 表示广播发送模式，为枚举值。
 
 **起始版本：** 26.0.0

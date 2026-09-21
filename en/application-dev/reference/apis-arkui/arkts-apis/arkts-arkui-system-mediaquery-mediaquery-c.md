@@ -1,5 +1,9 @@
 # MediaQuery
 
+```TypeScript
+export default class MediaQuery
+```
+
 Defines the MediaQuery API.
 
 **Since:** 3

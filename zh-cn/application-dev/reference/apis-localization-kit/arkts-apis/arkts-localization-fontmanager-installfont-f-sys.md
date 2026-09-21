@@ -12,7 +12,11 @@ import { fontManager } from '@kit.LocalizationKit';
 function installFont(path: string): Promise<number>
 ```
 
-将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。安装成功后，应用可以通过字体名称使用该字体。
+将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。
+
+> **说明：** 
+> - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
+> - 支持安装的字体文件个数最大数量为200。从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
 
 **起始版本：** 19
 
@@ -26,7 +30,7 @@ function installFont(path: string): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 待安装的字体文件路径，仅支持.ttf和.ttc格式的字体文件。 |
+| path | string | 是 | 待安装的字体文件路径，仅支持.ttf、.ttc和.otf格式的字体文件。 |
 
 **返回值：**
 

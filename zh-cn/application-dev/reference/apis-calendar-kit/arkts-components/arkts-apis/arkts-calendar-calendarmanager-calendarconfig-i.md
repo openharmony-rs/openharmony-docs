@@ -1,5 +1,9 @@
 # CalendarConfig
 
+```TypeScript
+interface CalendarConfig
+```
+
 日历配置信息。
 
 **起始版本：** 10

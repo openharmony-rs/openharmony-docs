@@ -20,9 +20,7 @@ This API is used to query the badge number displayed on the current application'
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
 
 **Return value:**
 

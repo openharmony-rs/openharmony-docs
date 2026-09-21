@@ -1,5 +1,9 @@
 # PictureLightDegree (System API)
 
+```TypeScript
+enum PictureLightDegree
+```
+
 Enum for the brightness of image colors.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # NotifyDialogResultParams（系统接口）
 
+```TypeScript
+interface NotifyDialogResultParams
+```
+
 用户操作对话框的行为。
 
 **起始版本：** 20

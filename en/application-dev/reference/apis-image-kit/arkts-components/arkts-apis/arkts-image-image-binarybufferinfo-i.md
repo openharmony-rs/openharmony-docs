@@ -1,5 +1,9 @@
 # BinaryBufferInfo
 
+```TypeScript
+interface BinaryBufferInfo
+```
+
 Describes binary buffer info.
 
 **Since:** 26.0.0

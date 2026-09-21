@@ -1,5 +1,9 @@
 # SystemLocaleManager（系统接口）
 
+```TypeScript
+export class SystemLocaleManager
+```
+
 提供语言、地区和时区信息排序的能力。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # TransferProgress (System API)
 
+```TypeScript
+interface TransferProgress
+```
+
 Defines the TransferProgress data structure.
 
 **Since:** 26.0.0

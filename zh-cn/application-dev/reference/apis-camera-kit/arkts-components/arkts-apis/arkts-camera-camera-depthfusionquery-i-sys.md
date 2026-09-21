@@ -1,5 +1,9 @@
 # DepthFusionQuery（系统接口）
 
+```TypeScript
+interface DepthFusionQuery
+```
+
 A class for querying depth fusion capabilities.
 
 **起始版本：** 14

@@ -1,5 +1,9 @@
 # BarometerResponse
 
+```TypeScript
+interface BarometerResponse extends Response
+```
+
 Describes the barometer sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** BarometerResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

@@ -1,5 +1,9 @@
 # NetFirewallIpParams
 
+```TypeScript
+interface NetFirewallIpParams
+```
+
 防火墙规则的IP参数，IP类型包括IPv4、IPv6，支持单个IP或IP段。
 
 **起始版本：** 15

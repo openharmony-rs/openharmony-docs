@@ -1,5 +1,9 @@
 # InvokeOptions（系统接口）
 
+```TypeScript
+interface InvokeOptions
+```
+
 Function调用的可选参数。包含Function调用时的应用上下文信息。
 
 **起始版本：** 26.0.0
@@ -11,7 +15,7 @@ Function调用的可选参数。包含Function调用时的应用上下文信息�
 ## 导入模块
 
 ```TypeScript
-import { functionManager } from '@kit.AbilityKit';
+import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap } from '@kit.AbilityKit';
 ```
 
 ## context

@@ -1,5 +1,9 @@
 # DownloadProgress
 
+```TypeScript
+interface DownloadProgress
+```
+
 Represents information about the download progress of a cloud file.
 
 **Since:** 11

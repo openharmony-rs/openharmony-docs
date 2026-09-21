@@ -1,5 +1,9 @@
 # LockInfo（系统接口）
 
+```TypeScript
+export interface LockInfo
+```
+
 云数据库锁信息。
 
 **起始版本：** 11

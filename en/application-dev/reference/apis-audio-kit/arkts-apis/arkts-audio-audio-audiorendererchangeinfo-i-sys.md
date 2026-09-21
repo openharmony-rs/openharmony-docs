@@ -1,5 +1,9 @@
 # AudioRendererChangeInfo
 
+```TypeScript
+interface AudioRendererChangeInfo
+```
+
 Describes the audio renderer change event.
 
 **Since:** 9

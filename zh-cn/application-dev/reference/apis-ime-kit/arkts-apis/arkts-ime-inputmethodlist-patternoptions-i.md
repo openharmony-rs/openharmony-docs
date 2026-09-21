@@ -1,5 +1,9 @@
 # PatternOptions
 
+```TypeScript
+export interface PatternOptions
+```
+
 输入法模式选项配置，用于定义键盘模式的切换选项。
 
 **起始版本：** 11

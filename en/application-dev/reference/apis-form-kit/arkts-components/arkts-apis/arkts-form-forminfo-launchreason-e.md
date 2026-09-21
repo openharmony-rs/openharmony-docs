@@ -1,5 +1,9 @@
 # LaunchReason
 
+```TypeScript
+enum LaunchReason
+```
+
 Indicates the launch reason of a form.
 
 **Since:** 10

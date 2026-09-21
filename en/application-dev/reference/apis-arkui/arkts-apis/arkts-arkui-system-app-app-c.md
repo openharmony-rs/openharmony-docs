@@ -1,5 +1,9 @@
 # App
 
+```TypeScript
+export default class App
+```
+
 Defines static functions of App class
 
 **Since:** 3
@@ -24,6 +28,8 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 
 **Since:** 3
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
@@ -36,12 +42,40 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 
 **Examples**
 
-```TypeScript
 ArkTS example:
-```
 
 ```TypeScript
+import app, { AppResponse } from '@system.app';
+export default class Info {
+  getInfo() {
+    let info:AppResponse = app.getInfo();
+    console.info(JSON.stringify(info));
+  }
+}
+```
+
 JS example:
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.getInfo example
+    </text>
+    <div class="info-item">
+        <text class="label">appName:</text>
+        <text class="value">{{appName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionName:</text>
+        <text class="value">{{versionName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionCode:</text>
+        <text class="value">{{versionCode}}</text>
+    </div>
+    <input type="button" value="getAppInfo" style="width: 240px; height: 50px; margin: 5px;" onclick="getAppInfo"></input>
+</div>
 ```
 
 ```TypeScript
@@ -188,6 +222,8 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -237,6 +273,8 @@ Set image file cache size in bytes on disk before decode. if not set, the applic
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -274,6 +312,8 @@ static setImageRawDataCacheSize(value: number): void
 Set image cache capacity of raw image data size in bytes before decode. if not set, the application will not cache any raw image data.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -326,18 +366,38 @@ This API is deprecated since API version 7. You are advised to use [@ohos.abilit
 
 **Since:** 3
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Examples**
 
-```TypeScript
 ArkTS example:
-```
 
 ```TypeScript
+import app, { AppResponse } from '@system.app';
+export default class TerM {
+  terminate() {
+    app.terminate();
+  }
+}
+```
+
 JS example:
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.terminate example
+    </text>
+    <text class="desc">
+        Click the button below to exit the app
+    </text>
+    <input type="button" value="exit app" style="width: 240px; height: 50px; margin: 5px;" onclick="terminateApp"></input>
+</div>
 ```
 
 ```TypeScript

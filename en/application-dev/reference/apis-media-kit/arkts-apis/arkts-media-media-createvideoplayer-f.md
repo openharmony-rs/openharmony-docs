@@ -44,22 +44,8 @@ media.createVideoPlayer((error: BusinessError, video: media.VideoPlayer) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let videoPlayer: media.VideoPlayer;
-media.createVideoPlayer().then((video: media.VideoPlayer) => {
-  if (video) {
-    videoPlayer = video;
-    console.info('Succeeded in creating VideoPlayer');
-  } else {
-    console.error('Failed to create VideoPlayer');
-  }
-}).catch((error: BusinessError) => {
-  console.error(`Failed to create VideoPlayer, error:${error}`);
-});
-```
-
+<a id="createvideoplayer-1"></a>
 
 ## createVideoPlayer
 
@@ -85,4 +71,18 @@ Creates a VideoPlayer instance. This API uses a promise to return the result.
 
 **Examples**
 
-See [createVideoPlayer](#createvideoplayer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let videoPlayer: media.VideoPlayer;
+media.createVideoPlayer().then((video: media.VideoPlayer) => {
+  if (video) {
+    videoPlayer = video;
+    console.info('Succeeded in creating VideoPlayer');
+  } else {
+    console.error('Failed to create VideoPlayer');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create VideoPlayer, error:${error}`);
+});
+```

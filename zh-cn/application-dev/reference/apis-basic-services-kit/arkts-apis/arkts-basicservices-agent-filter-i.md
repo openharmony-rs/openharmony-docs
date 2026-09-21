@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 过滤条件。
 
 **起始版本：** 10

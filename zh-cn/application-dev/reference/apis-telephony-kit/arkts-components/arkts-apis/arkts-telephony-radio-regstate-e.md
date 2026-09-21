@@ -1,5 +1,9 @@
 # RegState
 
+```TypeScript
+export enum RegState
+```
+
 网络注册状态。
 
 **起始版本：** 6

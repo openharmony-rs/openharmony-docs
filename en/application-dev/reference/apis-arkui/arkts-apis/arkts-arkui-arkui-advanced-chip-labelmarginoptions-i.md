@@ -1,5 +1,9 @@
 # LabelMarginOptions
 
+```TypeScript
+export interface LabelMarginOptions
+```
+
 Defines the spacing between the text and the left and right icons.
 
 **Since:** 11
@@ -18,17 +22,17 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 left?: Dimension
 ```
 
-Spacing between the text and the left icon. This parameter cannot be set in percentage.
+Spacing between the text and the left icon. Percentage is not supported.
 
 Default value:
 
-When **size** is set to **ChipSize.SMALL**, the default value of **left** is **4**.
+When **size** is **ChipSize.SMALL**, the default value of **left** is **4**
 
-When **size** is set to **ChipSize.NORMAL**, the default value of **left** is **6**.
+When **size** is **ChipSize.NORMAL**, the default value of left is **6**
 
-Unit: vp.
+Unit: vp
 
-If the value is out of the range, the default value is used.
+If the value is out of the value range, the default value is used.
 
 Value range: [0, +∞)
 

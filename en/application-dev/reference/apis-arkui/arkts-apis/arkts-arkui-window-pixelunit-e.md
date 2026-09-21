@@ -1,5 +1,9 @@
 # PixelUnit
 
+```TypeScript
+enum PixelUnit
+```
+
 Enumerates the pixel units.
 
 You can use px2vp and vp2px to convert between physical pixels and virtual pixels.

@@ -1,5 +1,9 @@
 # NavigationInfo
 
+```TypeScript
+export interface NavigationInfo
+```
+
 Provides information about the **Navigation** component.
 
 **Since:** 12
@@ -38,7 +42,7 @@ pathStack: NavPathStack
 
 Navigation controller of the **Navigation** component.
 
-**Type:** [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md)
+**Type:** [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md)
 
 **Since:** 12
 
@@ -54,7 +58,7 @@ Navigation controller of the **Navigation** component.
 uniqueId?: number
 ```
 
-Unique ID of the **Navigation** component, which can be obtained through [queryNavigationInfo](../arkts-components/arkts-arkui-basecustomcomponent-c.md#querynavigationinfo).
+Unique ID of the **Navigation** component, which can be obtained through [queryNavigationInfo](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#querynavigationinfo).
 
 **Type:** number
 

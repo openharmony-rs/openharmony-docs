@@ -1,5 +1,9 @@
 # Event
 
+```TypeScript
+class Event
+```
+
 Defines a contact's event.
 
 **Since:** 7

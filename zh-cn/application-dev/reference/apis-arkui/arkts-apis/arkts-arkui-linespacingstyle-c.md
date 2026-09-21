@@ -1,5 +1,9 @@
 # LineSpacingStyle
 
+```TypeScript
+declare class LineSpacingStyle
+```
+
 文本行间距对象说明。适用于需要调整段落内各行间距的场景，例如提升文本阅读舒适度、调整文档排版密度等。
 
 **起始版本：** 26.0.0

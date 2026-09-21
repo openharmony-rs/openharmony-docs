@@ -1,5 +1,9 @@
 # PropertyReadRequest
 
+```TypeScript
+interface PropertyReadRequest
+```
+
 Represents the Property read request parameter of the client.
 
 **Since:** 26.0.0

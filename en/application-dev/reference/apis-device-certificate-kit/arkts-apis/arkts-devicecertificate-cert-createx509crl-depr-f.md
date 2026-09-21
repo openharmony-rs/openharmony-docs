@@ -81,6 +81,52 @@ cert.createX509Crl(encodingBlob, (error, _x509Crl) => {
 });
 ```
 
+
+<a id="createx509crl-1"></a>
+
+## createX509Crl
+
+```TypeScript
+function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
+```
+
+Creates an **X509Crl** instance. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 9 and deprecated since API version 11. Use
+> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl-1) instead.
+
+**Since:** 9
+
+**Deprecated since:** 11
+
+**Substitutes:** [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md)
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | Serialized CRL data. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md)&gt; | Promise used to return the **X509Crl** instance created. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
+| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
+
+**Examples**
+
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -116,49 +162,3 @@ cert.createX509Crl(encodingBlob).then(_x509Crl => {
   console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
-
-
-## createX509Crl
-
-```TypeScript
-function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
-```
-
-Creates an **X509Crl** instance. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 9 and deprecated since API version 11. Use
-> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md) instead.
-
-**Since:** 9
-
-**Deprecated since:** 11
-
-**Substitutes:** [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md)
-
-**System capability:** SystemCapability.Security.Cert
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| inStream | [EncodingBlob](arkts-devicecertificate-cert-encodingblob-i.md) | Yes | Serialized CRL data. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[X509Crl](arkts-devicecertificate-cert-x509crl-depr-i.md)&gt; | Promise used to return the **X509Crl** instance created. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
-| [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-
-**Examples**
-
-See [createX509Crl](#createx509crl)

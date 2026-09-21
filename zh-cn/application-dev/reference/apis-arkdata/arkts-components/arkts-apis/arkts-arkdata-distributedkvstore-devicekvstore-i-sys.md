@@ -1,5 +1,9 @@
 # DeviceKVStore
 
+```TypeScript
+interface DeviceKVStore extends SingleKVStore
+```
+
 设备协同数据库，继承自SingleKVStore，提供查询数据和端端同步数据的方法，可以使用SingleKVStore的方法例如：put、putBatch等。
 
 设备协同数据库，以设备维度对数据进行区分，每台设备仅能写入和修改本设备的数据，其它设备的数据对其是只读的，无法修改其它设备的数据。
@@ -19,6 +23,8 @@
 ```TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 ```
+
+<a id="getresultset-8"></a>
 
 ## getResultSet
 
@@ -382,6 +388,8 @@ try {
   console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultset-9"></a>
 
 ## getResultSet
 
@@ -751,6 +759,8 @@ try {
 }
 ```
 
+<a id="getresultset-10"></a>
+
 ## getResultSet
 
 ```TypeScript
@@ -1114,6 +1124,8 @@ try {
   console.error(`Failed to get resultSet. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultset-11"></a>
 
 ## getResultSet
 

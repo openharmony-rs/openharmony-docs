@@ -1,5 +1,9 @@
 # BluetoothAddressType
 
+```TypeScript
+export enum BluetoothAddressType
+```
+
 Enum for the type of Bluetooth address.
 
 **Since:** 21

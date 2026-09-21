@@ -1,5 +1,9 @@
 # MmsCharSets (System API)
 
+```TypeScript
+export enum MmsCharSets
+```
+
 Enumerates MMS character sets.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # KVStore
 
+```TypeScript
+interface KVStore
+```
+
 Provides APIs to manage data in a KV store, for example, adding or deleting data and subscribing to data changes or completion of data sync. Before calling any method in **KVStore**, you must use getKVStore to obtain a **KVStore** object.
 
 **Since:** 7
@@ -54,18 +58,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-try {
-    kvStore.commit().then(async (err) => {
-        console.info('commit success');
-    }).catch((err) => {
-        console.error('commit fail ' + JSON.stringify(err));
-    });
-}catch(e) {
-    console.error('Commit e ' + e);
-}
-```
+<a id="commit-1"></a>
 
 ## commit
 
@@ -91,7 +84,18 @@ Commits the transaction in this KV store. This API uses a promise to return the 
 
 **Examples**
 
-See [commit](#commit)
+```TypeScript
+let kvStore;
+try {
+    kvStore.commit().then(async (err) => {
+        console.info('commit success');
+    }).catch((err) => {
+        console.error('commit fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.error('Commit e ' + e);
+}
+```
 
 ## delete
 
@@ -142,25 +146,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
-try {
-    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
-        console.info("put success: " + JSON.stringify(data));
-        kvStore.delete(KEY_TEST_STRING_ELEMENT).then((data) => {
-            console.info("delete success");
-        }).catch((err) => {
-            console.error("delete err: " + JSON.stringify(err));
-        });
-    }).catch((err) => {
-        console.error("put err: " + JSON.stringify(err));
-    });
-}catch (e) {
-    console.error("An unexpected error occurred. Error:" + e);
-}
-```
+<a id="delete-1"></a>
 
 ## delete
 
@@ -192,7 +178,25 @@ Deletes a KV pair from this KV store. This API uses a promise to return the resu
 
 **Examples**
 
-See [delete](#delete)
+```TypeScript
+let kvStore;
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
+        console.info("put success: " + JSON.stringify(data));
+        kvStore.delete(KEY_TEST_STRING_ELEMENT).then((data) => {
+            console.info("delete success");
+        }).catch((err) => {
+            console.error("delete err: " + JSON.stringify(err));
+        });
+    }).catch((err) => {
+        console.error("put err: " + JSON.stringify(err));
+    });
+}catch (e) {
+    console.error("An unexpected error occurred. Error:" + e);
+}
+```
 
 ## deleteBatch
 
@@ -248,6 +252,38 @@ try {
 }
 ```
 
+<a id="deletebatch-1"></a>
+
+## deleteBatch
+
+```TypeScript
+deleteBatch(keys: string[]): Promise<void>
+```
+
+Deletes KV pairs in batches from this KV store. This API uses a promise to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** deleteBatch
+
+**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| keys | string[] | Yes | KV pairs to delete in batches. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
 ```TypeScript
 let kvStore;
 try {
@@ -280,38 +316,6 @@ try {
     console.error('DeleteBatch e ' + e);
 }
 ```
-
-## deleteBatch
-
-```TypeScript
-deleteBatch(keys: string[]): Promise<void>
-```
-
-Deletes KV pairs in batches from this KV store. This API uses a promise to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** deleteBatch
-
-**System capability:** SystemCapability.DistributedDataManager.KVStore.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| keys | string[] | Yes | KV pairs to delete in batches. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-See [deleteBatch](#deletebatch)
 
 ## enableSync
 
@@ -353,18 +357,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-try {
-    kvStore.enableSync(true).then((err) => {
-        console.info('enableSync success');
-    }).catch((err) => {
-        console.error('enableSync fail ' + JSON.stringify(err));
-    });
-}catch(e) {
-    console.error('EnableSync e ' + e);
-}
-```
+<a id="enablesync-1"></a>
 
 ## enableSync
 
@@ -396,7 +389,18 @@ Sets data sync, which can be enabled or disabled. This API uses a promise to ret
 
 **Examples**
 
-See [enableSync](#enablesync)
+```TypeScript
+let kvStore;
+try {
+    kvStore.enableSync(true).then((err) => {
+        console.info('enableSync success');
+    }).catch((err) => {
+        console.error('enableSync fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.error('EnableSync e ' + e);
+}
+```
 
 ## off
 
@@ -421,6 +425,29 @@ Unsubscribes from data changes.
 | event | 'dataChange' | Yes | Event type. The value is **dataChange**, which indicates data changes. |
 | listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeNotification](arkts-arkdata-distributeddata-changenotification-i.md)&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for data changes will be unregistered. |
 
+**Examples**
+
+```TypeScript
+let kvStore;
+class KvstoreModel {
+    call(data) {
+        console.info("dataChange: " + data);
+    }
+    subscribeDataChange() {
+        if (kvStore != null) {
+            kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_REMOTE, this.call);
+        }
+    }
+    unsubscribeDataChange() {
+        if (kvStore != null) {
+            kvStore.off('dataChange', this.call);
+        }
+    }
+}
+```
+
+<a id="off-1"></a>
+
 ## off
 
 ```TypeScript
@@ -443,6 +470,27 @@ Unsubscribes from sync completion events.
 | --- | --- | --- | --- |
 | event | 'syncComplete' | Yes | Event type. The value is **syncComplete**, which indicates a sync completion event. |
 | syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | No | Callback to unregister. If this parameter is not specified, all callbacks for data changes will be unregistered. |
+
+**Examples**
+
+```TypeScript
+let kvStore;
+class KvstoreModel {
+    call(data) {
+        console.info("syncComplete: " + data);
+    }
+    subscribeSyncComplete() {
+        if (kvStore != null) {
+            kvStore.on('syncComplete', this.call);
+        }
+    }
+    unsubscribeSyncComplete() {
+        if (kvStore != null) {
+            kvStore.off('syncComplete', this.call);
+        }
+    }
+}
+```
 
 ## on
 
@@ -468,6 +516,17 @@ Subscribes to data changes of the specified type.
 | type | [SubscribeType](arkts-arkdata-distributeddata-subscribetype-e.md) | Yes | Type of data change. |
 | listener | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeNotification](arkts-arkdata-distributeddata-changenotification-i.md)&gt; | Yes | Callback used to return the result. |
 
+**Examples**
+
+```TypeScript
+let kvStore;
+kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, function (data) {
+    console.info("dataChange callback call data: " + JSON.stringify(data));
+});
+```
+
+<a id="on-1"></a>
+
 ## on
 
 ```TypeScript
@@ -490,6 +549,15 @@ Subscribes to sync completion events.
 | --- | --- | --- | --- |
 | event | 'syncComplete' | Yes | Event type. The value is **syncComplete**, which indicates a sync completion event. |
 | syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | Yes | Callback used to return a sync completion event. |
+
+**Examples**
+
+```TypeScript
+let kvStore;
+kvStore.on('syncComplete', function (data) {
+    console.info("callback call data: " + data);
+});
+```
 
 ## put
 
@@ -534,20 +602,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-const KEY_TEST_STRING_ELEMENT = 'key_test_string';
-const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
-try {
-    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
-        console.info("put success: " + JSON.stringify(data));
-    }).catch((err) => {
-        console.error("put err: " + JSON.stringify(err));
-    });
-}catch (e) {
-    console.error("An unexpected error occurred. Error:" + e);
-}
-```
+<a id="put-1"></a>
 
 ## put
 
@@ -580,7 +635,20 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 **Examples**
 
-See [put](#put)
+```TypeScript
+let kvStore;
+const KEY_TEST_STRING_ELEMENT = 'key_test_string';
+const VALUE_TEST_STRING_ELEMENT = 'value-test-string';
+try {
+    kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then((data) => {
+        console.info("put success: " + JSON.stringify(data));
+    }).catch((err) => {
+        console.error("put err: " + JSON.stringify(err));
+    });
+}catch (e) {
+    console.error("An unexpected error occurred. Error:" + e);
+}
+```
 
 ## putBatch
 
@@ -636,37 +704,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-try {
-    let entries = [];
-    for (var i = 0; i < 10; i++) {
-        var key = 'batch_test_string_key';
-        var entry = {
-            key : key + i,
-            value : {
-                type : distributedData.ValueType.STRING,
-                value : 'batch_test_string_value'
-            }
-        }
-        entries.push(entry);
-    }
-    console.info('entries: ' + JSON.stringify(entries));
-    kvStore.putBatch(entries).then(async (err) => {
-        console.info('putBatch success');
-        kvStore.getEntries('batch_test_string_key').then((entries) => {
-            console.info('getEntries success');
-            console.info('PutBatch ' + JSON.stringify(entries));
-        }).catch((err) => {
-            console.error('getEntries fail ' + JSON.stringify(err));
-        });
-    }).catch((err) => {
-        console.error('putBatch fail ' + JSON.stringify(err));
-    });
-}catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
-}
-```
+<a id="putbatch-1"></a>
 
 ## putBatch
 
@@ -698,7 +736,37 @@ Inserts KV pairs in batches to this KV store. This API uses a promise to return 
 
 **Examples**
 
-See [putBatch](#putbatch)
+```TypeScript
+let kvStore;
+try {
+    let entries = [];
+    for (var i = 0; i < 10; i++) {
+        var key = 'batch_test_string_key';
+        var entry = {
+            key : key + i,
+            value : {
+                type : distributedData.ValueType.STRING,
+                value : 'batch_test_string_value'
+            }
+        }
+        entries.push(entry);
+    }
+    console.info('entries: ' + JSON.stringify(entries));
+    kvStore.putBatch(entries).then(async (err) => {
+        console.info('putBatch success');
+        kvStore.getEntries('batch_test_string_key').then((entries) => {
+            console.info('getEntries success');
+            console.info('PutBatch ' + JSON.stringify(entries));
+        }).catch((err) => {
+            console.error('getEntries fail ' + JSON.stringify(err));
+        });
+    }).catch((err) => {
+        console.error('putBatch fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.info('PutBatch e ' + JSON.stringify(e));
+}
+```
 
 ## rollback
 
@@ -739,18 +807,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-try {
-    kvStore.rollback().then(async (err) => {
-        console.info('rollback success');
-    }).catch((err) => {
-        console.error('rollback fail ' + JSON.stringify(err));
-    });
-}catch(e) {
-    console.error('Rollback e ' + e);
-}
-```
+<a id="rollback-1"></a>
 
 ## rollback
 
@@ -776,7 +833,18 @@ Rolls back the transaction in this KV store. This API uses a promise to return t
 
 **Examples**
 
-See [rollback](#rollback)
+```TypeScript
+let kvStore;
+try {
+    kvStore.rollback().then(async (err) => {
+        console.info('rollback success');
+    }).catch((err) => {
+        console.error('rollback fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.error('Rollback e ' + e);
+}
+```
 
 ## setSyncRange
 
@@ -817,20 +885,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-try {
-    const localLabels = ['A', 'B'];
-    const remoteSupportLabels = ['C', 'D'];
-    kvStore.setSyncRange(localLabels, remoteSupportLabels).then((err) => {
-        console.info('setSyncRange success');
-    }).catch((err) => {
-        console.error('delete fail ' + err);
-    });
-}catch(e) {
-    console.error('SetSyncRange e ' + e);
-}
-```
+<a id="setsyncrange-1"></a>
 
 ## setSyncRange
 
@@ -863,7 +918,20 @@ Sets the data sync range. This API uses a promise to return the result.
 
 **Examples**
 
-See [setSyncRange](#setsyncrange)
+```TypeScript
+let kvStore;
+try {
+    const localLabels = ['A', 'B'];
+    const remoteSupportLabels = ['C', 'D'];
+    kvStore.setSyncRange(localLabels, remoteSupportLabels).then((err) => {
+        console.info('setSyncRange success');
+    }).catch((err) => {
+        console.error('delete fail ' + err);
+    });
+}catch(e) {
+    console.error('SetSyncRange e ' + e);
+}
+```
 
 ## startTransaction
 
@@ -924,23 +992,7 @@ try {
 }
 ```
 
-```TypeScript
-let kvStore;
-try {
-    var count = 0;
-    kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_ALL, function (data) {
-        console.info('startTransaction ' + JSON.stringify(data));
-        count++;
-    });
-    kvStore.startTransaction().then(async (err) => {
-        console.info('startTransaction success');
-    }).catch((err) => {
-        console.error('startTransaction fail ' + JSON.stringify(err));
-    });
-}catch(e) {
-    console.error('startTransaction e ' + e);
-}
-```
+<a id="starttransaction-1"></a>
 
 ## startTransaction
 
@@ -966,4 +1018,20 @@ Starts the transaction in this KV store. This API uses a promise to return the r
 
 **Examples**
 
-See [startTransaction](#starttransaction)
+```TypeScript
+let kvStore;
+try {
+    var count = 0;
+    kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_ALL, function (data) {
+        console.info('startTransaction ' + JSON.stringify(data));
+        count++;
+    });
+    kvStore.startTransaction().then(async (err) => {
+        console.info('startTransaction success');
+    }).catch((err) => {
+        console.error('startTransaction fail ' + JSON.stringify(err));
+    });
+}catch(e) {
+    console.error('startTransaction e ' + e);
+}
+```

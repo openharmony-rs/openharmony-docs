@@ -1,5 +1,9 @@
 # UDPSendOptions
 
+```TypeScript
+export interface UDPSendOptions
+```
+
 Defines the parameters for sending data over a UDP socket connection.
 
 **Since:** 7

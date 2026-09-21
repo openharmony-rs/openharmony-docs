@@ -1,5 +1,9 @@
 # KemEncapResult
 
+```TypeScript
+interface KemEncapResult
+```
+
 Represents the encapsulation result of the KEM.
 
 **Since:** 26.0.0

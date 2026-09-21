@@ -1,5 +1,9 @@
 # ShowNotificationOptions
 
+```TypeScript
+export interface ShowNotificationOptions
+```
+
 **Since:** 3
 
 **Deprecated since:** 7

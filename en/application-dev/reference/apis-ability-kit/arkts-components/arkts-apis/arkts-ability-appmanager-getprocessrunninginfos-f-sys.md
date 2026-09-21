@@ -53,18 +53,8 @@ appManager.getProcessRunningInfos().then((data) => {
 });
 ```
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
 
-appManager.getProcessRunningInfos((error, data) => {
-  if (error && error.code !== 0) {
-    console.error(`getProcessRunningInfos fail, error: ${JSON.stringify(error)}`);
-  } else {
-    console.info(`getProcessRunningInfos success, data: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="getprocessrunninginfos-1"></a>
 
 ## getProcessRunningInfos
 
@@ -103,4 +93,14 @@ Obtains information about the running processes of the current application. This
 
 **Examples**
 
-See [getProcessRunningInfos](#getprocessrunninginfos)
+```TypeScript
+import appManager from '@ohos.application.appManager';
+
+appManager.getProcessRunningInfos((error, data) => {
+  if (error && error.code !== 0) {
+    console.error(`getProcessRunningInfos fail, error: ${JSON.stringify(error)}`);
+  } else {
+    console.info(`getProcessRunningInfos success, data: ${JSON.stringify(data)}`);
+  }
+});
+```

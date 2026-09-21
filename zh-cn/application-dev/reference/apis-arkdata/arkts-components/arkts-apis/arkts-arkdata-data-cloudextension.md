@@ -20,7 +20,7 @@
  class MyCloudDB implements cloudExtension.CloudDB {
  async generateId(count: number): Promise&lt;cloudExtension.Result&lt;Array&lt;string&gt;>
 > {
- console.info(`generate id, count: &#36;{count}`);
+ console.info(`generate id, count: ${count}`);
  let result = new Array&lt;string&gt;();
  // ...
  // 返回创建Id的结果
@@ -34,7 +34,7 @@
  cloudExtension.CloudType>&gt;, extensions: Array&lt;Record<string, cloudExtension.CloudType>&gt;):
  　　Promise&lt;Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>>
 > {
- console.info(`update, table: &#36;{table}`);
+ console.info(`update, table: ${table}`);
  let updateRes: Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>
 > = [];
  // ...
@@ -44,7 +44,7 @@
  async insert(table: string, values: Array&lt;Record<string, cloudExtension.CloudType>&gt;,
  extensions: Array&lt;Record<string, cloudExtension.CloudType>&gt;): Promise&lt;Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>>
 > {
- console.info(`insert, table: &#36;{table}`);
+ console.info(`insert, table: ${table}`);
  let insertRes: Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>
 > = [];
  // ...
@@ -54,7 +54,7 @@
  async delete(table: string, extensions: Array&lt;Record<string, cloudExtension.CloudType>&gt;):
  　　Promise&lt;Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>>
 > {
- console.info(`delete, table: &#36;{table}`);
+ console.info(`delete, table: ${table}`);
  let deleteRes: Array&lt;cloudExtension.Result&lt;Record&lt;string, cloudExtension.CloudType&gt;>
 > = [];
  // ...
@@ -63,7 +63,7 @@
  }
  async query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;cloudExtension.Result&lt;cloudExtension.CloudData&gt;
 > {
- console.info(`query, table: &#36;{table}`);
+ console.info(`query, table: ${table}`);
  // ...
  // 返回查询数据的结果
  return {
@@ -120,14 +120,14 @@
  async download(table: string, gid: string, prefix: string,
  assets: Array&lt;cloudExtension.CloudAsset&gt;): Promise&lt;Array&lt;cloudExtension.Result&lt;cloudExtension.CloudAsset&gt;>
 > {
- console.info(`download asset loader, table: &#36;{table}, gid: &#36;{gid}, prefix: &#36;{prefix}`);
+ console.info(`download asset loader, table: ${table}, gid: ${gid}, prefix: ${prefix}`);
  let downloadRes = Array&lt;cloudExtension.Result<cloudExtension.CloudAsset>&gt;();
  // ...
  return downloadRes;
  }
  async upload(table: string, gid: string, assets: Array&lt;cloudExtension.CloudAsset&gt;): Promise&lt;Array&lt;cloudExtension.Result&lt;cloudExtension.CloudAsset&gt;>
 > {
- console.info(`upload asset loader, table: &#36;{table}, gid: &#36;{gid}`);
+ console.info(`upload asset loader, table: ${table}, gid: ${gid}`);
  let uploadRes = Array&lt;cloudExtension.Result<cloudExtension.CloudAsset>&gt;();
  // ...
  return uploadRes;
@@ -139,7 +139,7 @@
  async share(userId: number, bundleName: string, sharingResource: string, participants: Array&lt;Participant&gt;):
  Promise&lt;cloudExtension.Result&lt;Array&lt;cloudExtension.Result&lt;Participant&gt;>>
 > {
- console.info(`share, bundle: &#36;{bundleName}`);
+ console.info(`share, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得共享的返回值
  // ...
  // 返回服务端发起共享的返回结果
@@ -161,7 +161,7 @@
  async unshare(userId: number, bundleName: string, sharingResource: string, participants: Array&lt;Participant&gt;):
  Promise&lt;cloudExtension.Result&lt;Array&lt;cloudExtension.Result&lt;Participant&gt;>>
 > {
- console.info(`unshare, bundle: &#36;{bundleName}`);
+ console.info(`unshare, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得取消共享的返回值
  // ...
  // 返回服务端取消共享的返回结果
@@ -183,7 +183,7 @@
  async exit(userId: number, bundleName: string, sharingResource: string):
  Promise&lt;cloudExtension.Result&lt;void&gt;
 > {
- console.info(`exit share, bundle: &#36;{bundleName}`);
+ console.info(`exit share, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得退出共享的返回值
  // ...
  // 返回服务端退出共享的返回结果
@@ -195,7 +195,7 @@
  async changePrivilege(userId: number, bundleName: string, sharingResource: string, participants: Array&lt;Participant&gt;):
  Promise&lt;cloudExtension.Result&lt;Array&lt;cloudExtension.Result&lt;Participant&gt;>>
 > {
- console.info(`change privilege, bundle: &#36;{bundleName}`);
+ console.info(`change privilege, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得更改权限的返回值
  // ...
  // 返回服务端更改权限的返回结果
@@ -217,7 +217,7 @@
  async queryParticipants(userId: number, bundleName: string, sharingResource: string):
  Promise&lt;cloudExtension.Result&lt;Array&lt;Participant&gt;>
 > {
- console.info(`query participants, bundle: &#36;{bundleName}`);
+ console.info(`query participants, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得查询参与者的返回值
  // ...
  // 返回服务端查询参与者的返回结果
@@ -257,7 +257,7 @@
  async queryParticipantsByInvitation(userId: number, bundleName: string, invitationCode: string):
  Promise&lt;cloudExtension.Result&lt;Array&lt;Participant&gt;>
 > {
- console.info(`query participants by invitation, bundle: &#36;{bundleName}`);
+ console.info(`query participants by invitation, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得查询参与者的返回值
  // ...
  // 返回服务端查询参与者的返回结果
@@ -297,7 +297,7 @@
  async confirmInvitation(userId: number, bundleName: string, invitationCode: string, state: cloudData.sharing.State):
  Promise&lt;cloudExtension.Result&lt;string&gt;
 > {
- console.info(`confirm invitation, bundle: &#36;{bundleName}`);
+ console.info(`confirm invitation, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得确认共享邀请的返回值
  // ...
  // 返回服务端确认共享邀请的返回结果
@@ -310,7 +310,7 @@
  async changeConfirmation(userId: number, bundleName: string, sharingResource: string, state: cloudData.sharing.State):
  Promise&lt;cloudExtension.Result&lt;void&gt;
 > {
- console.info(`change confirm, bundle: &#36;{bundleName}`);
+ console.info(`change confirm, bundle: ${bundleName}`);
  // 对接云共享服务端，并获得更改共享邀请的返回值
  // ...
  // 返回服务端更改共享邀请的返回结果
@@ -350,7 +350,7 @@
  }
  async getAppSchema(bundleName: string): Promise&lt;cloudExtension.Result&lt;cloudExtension.AppSchema&gt;
 > {
- console.info(`get app schema, bundleName:&#36;{bundleName}`);
+ console.info(`get app schema, bundleName:${bundleName}`);
  // ...
  return {
  code: cloudExtension.ErrorCode.SUCCESS,
@@ -365,7 +365,7 @@
  async subscribe(subInfo: Record&lt;string, Array<cloudExtension.Database>&gt;,
  expirationTime: number): Promise&lt;cloudExtension.Result&lt;cloudExtension.SubscribeInfo&gt;
 > {
- console.info(`subscribe expirationTime: &#36;{expirationTime}`);
+ console.info(`subscribe expirationTime: ${expirationTime}`);
  // ...
  return {
  code: cloudExtension.ErrorCode.SUCCESS,
@@ -382,31 +382,31 @@
  return cloudExtension.ErrorCode.SUCCESS;
  }
  async connectDB(bundleName: string, database: cloudExtension.Database): Promise&lt;rpc.RemoteObject&gt; {
- console.info(`connect DB, bundleName: &#36;{bundleName}`);
+ console.info(`connect DB, bundleName: ${bundleName}`);
  return cloudExtension.createCloudDBStub(new MyCloudDB());
  }
  async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise&lt;rpc.RemoteObject&gt; {
  return cloudExtension.createAssetLoaderStub(new MyAssetLoader());
  }
  async connectShareCenter(userId: number, bundleName: string): Promise&lt;rpc.RemoteObject&gt; {
- console.info(`connect share center, bundle: &#36;{bundleName}`);
+ console.info(`connect share center, bundle: ${bundleName}`);
  // ...
  return cloudExtension.createShareServiceStub(new MyShareCenter());
  }
  }
  export default class MyServiceExtension extends ServiceExtensionAbility {
  onCreate(want: Want) {
- console.info(`onCreate: &#36;{want}`);
+ console.info(`onCreate: ${want}`);
  }
  onRequest(want: Want, startId: number) {
- console.info(`onRequest: &#36;{want} &#36;{startId}`);
+ console.info(`onRequest: ${want} ${startId}`);
  }
  onConnect(want: Want): rpc.RemoteObject | Promise&lt;rpc.RemoteObject&gt; {
- console.info(`onConnect: &#36;{want}`);
+ console.info(`onConnect: ${want}`);
  return cloudExtension.createCloudServiceStub(new MyCloudService());
  }
  onDisconnect(want: Want) {
- console.info(`onDisconnect: &#36;{want}`);
+ console.info(`onDisconnect: ${want}`);
  }
  onDestroy() {
  console.info('onDestroy');

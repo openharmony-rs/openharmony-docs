@@ -1,5 +1,9 @@
 # WebMessageExt
 
+```TypeScript
+class WebMessageExt
+```
+
 Implements a **WebMessageExt** object that received and sent by the [WebMessagePort](arkts-arkweb-webview-webmessageport-i.md) API.
 
 **Since:** 10

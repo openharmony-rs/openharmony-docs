@@ -1,5 +1,9 @@
 # PreselectedInfo
 
+```TypeScript
+export declare class PreselectedInfo
+```
+
 Describes the information about the preselected files and their corresponding **PhotoPickerComponent** index.
 
 **Since:** 21

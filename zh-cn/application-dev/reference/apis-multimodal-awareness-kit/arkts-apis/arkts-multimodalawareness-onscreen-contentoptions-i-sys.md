@@ -1,5 +1,9 @@
 # ContentOptions（系统接口）
 
+```TypeScript
+export interface ContentOptions
+```
+
 屏上内容的获取选项。
 
 **起始版本：** 20

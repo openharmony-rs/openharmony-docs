@@ -1,5 +1,9 @@
 # OperateButtonV2Options
 
+```TypeScript
+export interface OperateButtonV2Options
+```
+
 Declare interface OperateButtonV2Options
 
 **Since:** 26.0.0

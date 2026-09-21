@@ -32,7 +32,7 @@ function getDLPPermissionInfo(): Promise<DLPPermissionInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100006](../errorcode-dlp.md#19100006-非dlp沙箱应用) | No permission to call this API, which is available only for DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -53,22 +53,8 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // 是否在沙箱内。
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
-  if (inSandbox) {
-    dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
-      if (err) {
-        console.error(`Failed to get DLP permission info. Code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('permissionInfo', JSON.stringify(permissionInfo));
-      }
-    }); // 获取当前权限信息。
-  }
-});
-```
-
+<a id="getdlppermissioninfo-1"></a>
 
 ## getDLPPermissionInfo
 
@@ -95,11 +81,25 @@ function getDLPPermissionInfo(callback: AsyncCallback<DLPPermissionInfo>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100006](../errorcode-dlp.md#19100006-非dlp沙箱应用) | No permission to call this API, which is available only for DLP sandbox applications. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 getDLPPermissionInfo
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
+  if (inSandbox) {
+    dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
+      if (err) {
+        console.error(`Failed to get DLP permission info. Code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('permissionInfo', JSON.stringify(permissionInfo));
+      }
+    }); // 获取当前权限信息。
+  }
+});
+```

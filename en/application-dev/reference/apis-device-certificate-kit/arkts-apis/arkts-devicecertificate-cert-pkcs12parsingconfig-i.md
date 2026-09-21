@@ -1,5 +1,9 @@
 # Pkcs12ParsingConfig
 
+```TypeScript
+interface Pkcs12ParsingConfig
+```
+
 Represents the configuration for parsing P12.
 
 **Since:** 18

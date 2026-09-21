@@ -1,5 +1,9 @@
 # DistributedHardwareErrorCode（系统接口）
 
+```TypeScript
+enum DistributedHardwareErrorCode
+```
+
 分布式硬件错误码的枚举。
 
 **起始版本：** 11

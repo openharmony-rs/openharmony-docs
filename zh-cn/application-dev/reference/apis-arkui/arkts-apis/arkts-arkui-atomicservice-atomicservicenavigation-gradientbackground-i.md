@@ -1,5 +1,9 @@
 # GradientBackground
 
+```TypeScript
+export interface GradientBackground
+```
+
 品牌渐变色选项。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # SerialConfigs
 
+```TypeScript
+interface SerialConfigs
+```
+
 串口通信配置参数。
 
 **起始版本：** 26.0.0

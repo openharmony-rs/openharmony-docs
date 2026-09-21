@@ -1,5 +1,9 @@
 # CustomProperty
 
+```TypeScript
+export interface CustomProperty
+```
+
 表示自定义策略。
 
 **起始版本：** 21

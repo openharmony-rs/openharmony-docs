@@ -1,5 +1,9 @@
 # PluginParam（系统接口）
 
+```TypeScript
+export interface PluginParam
+```
+
 插件应用安装、卸载的参数信息。
 
 **起始版本：** 19

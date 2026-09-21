@@ -1,5 +1,9 @@
 # SettingContent
 
+```TypeScript
+interface SettingContent
+```
+
 设置内容的定义（音频模板里有定义设置页面，设置内容用于设置页的填充）。
 
 @interface SettingContent

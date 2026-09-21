@@ -1,5 +1,9 @@
 # PackingOptionsForTiff
 
+```TypeScript
+interface PackingOptionsForTiff
+```
+
 Describes the options for tiff image packing.
 
 **Since:** 26.0.0

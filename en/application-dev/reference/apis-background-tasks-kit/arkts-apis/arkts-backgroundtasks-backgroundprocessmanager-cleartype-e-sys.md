@@ -1,8 +1,12 @@
 # ClearType (System API)
 
+```TypeScript
+export enum ClearType
+```
+
 The type of clearing background apps.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -16,7 +20,7 @@ CLEAR_RECENT_CARDS = 1
 
 clear recent cards.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

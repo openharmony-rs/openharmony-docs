@@ -30,26 +30,26 @@ import { policy } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBackgroundPolicyByUid](arkts-network-policy-getbackgroundpolicybyuid-f-sys.md) | 获取指定 uid 是否能访问后台网络，使用 callback 异步回调。 |
-| [getBackgroundPolicyByUid](arkts-network-policy-getbackgroundpolicybyuid-f-sys.md) | 获取指定 uid 能否访问后台网络，使用 Promise 异步回调。 |
-| [getDeviceIdleTrustlist](arkts-network-policy-getdeviceidletrustlist-f-sys.md) | 获取休眠模式白名单所包含的 uid，使用 callback 异步回调。 |
-| [getDeviceIdleTrustlist](arkts-network-policy-getdeviceidletrustlist-f-sys.md) | 获取休眠模式白名单所包含的 uid，使用 Promise 异步回调。 |
-| [getNetQuotaPolicies](arkts-network-policy-getnetquotapolicies-f-sys.md) | 获取计量网络策略，使用 callback 异步回调。 |
-| [getNetQuotaPolicies](arkts-network-policy-getnetquotapolicies-f-sys.md) | 获取计量网络策略，使用 Promise 异步回调。 |
-| [getNetworkAccessPolicy](arkts-network-policy-getnetworkaccesspolicy-f-sys.md) | 获取指定 uid 能否访问网络策略，使用 Promise 异步回调。 |
-| [getNetworkAccessPolicy](arkts-network-policy-getnetworkaccesspolicy-f-sys.md) | 获取当前用户下所有应用 app 能否访问网络策略信息，使用 Promise 异步回调。 |
-| [getPolicyByUid](arkts-network-policy-getpolicybyuid-f-sys.md) | 通过应用 uid 获取对应访问网络策略，使用 callback 异步回调。 |
-| [getPolicyByUid](arkts-network-policy-getpolicybyuid-f-sys.md) | 通过应用 uid 获取对应访问网络策略，使用 Promise 异步回调。 |
-| [getPowerSaveTrustlist](arkts-network-policy-getpowersavetrustlist-f-sys.md) | 获取省电模式白名单所包含的 uid 数组，使用 callback 异步回调。 |
-| [getPowerSaveTrustlist](arkts-network-policy-getpowersavetrustlist-f-sys.md) | 获取休眠模式白名单所包含的 uid 数组，使用 Promise 异步回调。 |
-| [getUidsByPolicy](arkts-network-policy-getuidsbypolicy-f-sys.md) | 通过策略获取跟策略匹配的所有 uid，使用 callback 异步回调。 |
-| [getUidsByPolicy](arkts-network-policy-getuidsbypolicy-f-sys.md) | 通过策略获取跟策略匹配的所有 uid，使用 Promise 异步回调。 |
-| [isBackgroundAllowed](arkts-network-policy-isbackgroundallowed-f-sys.md) | 获取当前应用是否允许后台访问网络，使用 callback 异步回调。 |
-| [isBackgroundAllowed](arkts-network-policy-isbackgroundallowed-f-sys.md) | 获取当前应用是否允许后台访问网络，使用 Promise 异步回调。 |
-| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md) | 判断对应 uid 能否访问计量或非计量网络，使用 callback 异步回调。 |
-| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md) | 判断对应 uid 能否访问计量或非计量网络，使用 Promise 异步回调。 |
-| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md) | 获取对应 uid 能否访问指定的 iface 的网络，使用 callback 异步回调。 |
-| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md) | 获取对应 uid 能否访问指定的 iface 的网络，使用 Promise 异步回调。 |
+| [getBackgroundPolicyByUid](arkts-network-policy-getbackgroundpolicybyuid-f-sys.md#getbackgroundpolicybyuid) | 获取指定 uid 是否能访问后台网络，使用 callback 异步回调。 |
+| [getBackgroundPolicyByUid](arkts-network-policy-getbackgroundpolicybyuid-f-sys.md#getbackgroundpolicybyuid-1) | 获取指定 uid 能否访问后台网络，使用 Promise 异步回调。 |
+| [getDeviceIdleTrustlist](arkts-network-policy-getdeviceidletrustlist-f-sys.md#getdeviceidletrustlist) | 获取休眠模式白名单所包含的 uid，使用 callback 异步回调。 |
+| [getDeviceIdleTrustlist](arkts-network-policy-getdeviceidletrustlist-f-sys.md#getdeviceidletrustlist-1) | 获取休眠模式白名单所包含的 uid，使用 Promise 异步回调。 |
+| [getNetQuotaPolicies](arkts-network-policy-getnetquotapolicies-f-sys.md#getnetquotapolicies) | 获取计量网络策略，使用 callback 异步回调。 |
+| [getNetQuotaPolicies](arkts-network-policy-getnetquotapolicies-f-sys.md#getnetquotapolicies-1) | 获取计量网络策略，使用 Promise 异步回调。 |
+| [getNetworkAccessPolicy](arkts-network-policy-getnetworkaccesspolicy-f-sys.md#getnetworkaccesspolicy) | 获取指定 uid 能否访问网络策略，使用 Promise 异步回调。 |
+| [getNetworkAccessPolicy](arkts-network-policy-getnetworkaccesspolicy-f-sys.md#getnetworkaccesspolicy-1) | 获取当前用户下所有应用 app 能否访问网络策略信息，使用 Promise 异步回调。 |
+| [getPolicyByUid](arkts-network-policy-getpolicybyuid-f-sys.md#getpolicybyuid) | 通过应用 uid 获取对应访问网络策略，使用 callback 异步回调。 |
+| [getPolicyByUid](arkts-network-policy-getpolicybyuid-f-sys.md#getpolicybyuid-1) | 通过应用 uid 获取对应访问网络策略，使用 Promise 异步回调。 |
+| [getPowerSaveTrustlist](arkts-network-policy-getpowersavetrustlist-f-sys.md#getpowersavetrustlist) | 获取省电模式白名单所包含的 uid 数组，使用 callback 异步回调。 |
+| [getPowerSaveTrustlist](arkts-network-policy-getpowersavetrustlist-f-sys.md#getpowersavetrustlist-1) | 获取休眠模式白名单所包含的 uid 数组，使用 Promise 异步回调。 |
+| [getUidsByPolicy](arkts-network-policy-getuidsbypolicy-f-sys.md#getuidsbypolicy) | 通过策略获取跟策略匹配的所有 uid，使用 callback 异步回调。 |
+| [getUidsByPolicy](arkts-network-policy-getuidsbypolicy-f-sys.md#getuidsbypolicy-1) | 通过策略获取跟策略匹配的所有 uid，使用 Promise 异步回调。 |
+| [isBackgroundAllowed](arkts-network-policy-isbackgroundallowed-f-sys.md#isbackgroundallowed) | 获取当前应用是否允许后台访问网络，使用 callback 异步回调。 |
+| [isBackgroundAllowed](arkts-network-policy-isbackgroundallowed-f-sys.md#isbackgroundallowed-1) | 获取当前应用是否允许后台访问网络，使用 Promise 异步回调。 |
+| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md#isuidnetallowed) | 判断对应 uid 能否访问计量或非计量网络，使用 callback 异步回调。 |
+| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md#isuidnetallowed-1) | 判断对应 uid 能否访问计量或非计量网络，使用 Promise 异步回调。 |
+| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md#isuidnetallowed-2) | 获取对应 uid 能否访问指定的 iface 的网络，使用 callback 异步回调。 |
+| [isUidNetAllowed](arkts-network-policy-isuidnetallowed-f-sys.md#isuidnetallowed-3) | 获取对应 uid 能否访问指定的 iface 的网络，使用 Promise 异步回调。 |
 | [off](arkts-network-policy-off-f-sys.md#offnetuidpolicychange) | 注销 policy 发生改变时的回调，使用 callback 异步回调。 |
 | [off](arkts-network-policy-off-f-sys.md#offnetuidrulechange) | 注销 rule 发生改变时的回调，使用 callback 异步回调。 |
 | [off](arkts-network-policy-off-f-sys.md#offnetmeteredifaceschange) | 注销计量 iface 发生改变时的回调，使用 callback 异步回调。 |
@@ -60,22 +60,22 @@ import { policy } from '@kit.NetworkKit';
 | [on](arkts-network-policy-on-f-sys.md#onnetmeteredifaceschange) | 注册计量 iface 发生改变时的回调，使用 callback 异步回调。 |
 | [on](arkts-network-policy-on-f-sys.md#onnetquotapolicychange) | 注册计量网络策略发生改变时的回调，使用 callback 异步回调。 |
 | [on](arkts-network-policy-on-f-sys.md#onnetbackgroundpolicychange) | 注册后台网络策略发生改变时的回调，使用 callback 异步回调。 |
-| [resetPolicies](arkts-network-policy-resetpolicies-f-sys.md) | 重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 callback 异步回调。 |
-| [resetPolicies](arkts-network-policy-resetpolicies-f-sys.md) | 重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 Promise 异步回调。 |
+| [resetPolicies](arkts-network-policy-resetpolicies-f-sys.md#resetpolicies) | 重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 callback 异步回调。 |
+| [resetPolicies](arkts-network-policy-resetpolicies-f-sys.md#resetpolicies-1) | 重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 Promise 异步回调。 |
 | [restoreAllPolicies](arkts-network-policy-restoreallpolicies-f-sys.md) | 根据指定的SIM卡识别码，恢复所有网络管理相关的策略配置，如UID策略、配额策略、防火墙规则等。 |
-| [setBackgroundAllowed](arkts-network-policy-setbackgroundallowed-f-sys.md) | 设置是否允许后台应用访问网络，使用 callback 异步回调。 |
-| [setBackgroundAllowed](arkts-network-policy-setbackgroundallowed-f-sys.md) | 设置是否允许后台应用访问网络，使用 Promise 异步回调。 |
-| [setDeviceIdleTrustlist](arkts-network-policy-setdeviceidletrustlist-f-sys.md) | 设置多个 uid 是否在休眠防火墙的白名单，使用 callback 异步回调。 |
-| [setDeviceIdleTrustlist](arkts-network-policy-setdeviceidletrustlist-f-sys.md) | 设置多个 uid 是否在休眠防火墙的白名单，使用 Promise 异步回调。 |
-| [setNetQuotaPolicies](arkts-network-policy-setnetquotapolicies-f-sys.md) | 设置计量网络策略，使用 callback 异步回调。 |
-| [setNetQuotaPolicies](arkts-network-policy-setnetquotapolicies-f-sys.md) | 设置计量网络策略，使用 Promise 异步回调。 |
+| [setBackgroundAllowed](arkts-network-policy-setbackgroundallowed-f-sys.md#setbackgroundallowed) | 设置是否允许后台应用访问网络，使用 callback 异步回调。 |
+| [setBackgroundAllowed](arkts-network-policy-setbackgroundallowed-f-sys.md#setbackgroundallowed-1) | 设置是否允许后台应用访问网络，使用 Promise 异步回调。 |
+| [setDeviceIdleTrustlist](arkts-network-policy-setdeviceidletrustlist-f-sys.md#setdeviceidletrustlist) | 设置多个 uid 是否在休眠防火墙的白名单，使用 callback 异步回调。 |
+| [setDeviceIdleTrustlist](arkts-network-policy-setdeviceidletrustlist-f-sys.md#setdeviceidletrustlist-1) | 设置多个 uid 是否在休眠防火墙的白名单，使用 Promise 异步回调。 |
+| [setNetQuotaPolicies](arkts-network-policy-setnetquotapolicies-f-sys.md#setnetquotapolicies) | 设置计量网络策略，使用 callback 异步回调。 |
+| [setNetQuotaPolicies](arkts-network-policy-setnetquotapolicies-f-sys.md#setnetquotapolicies-1) | 设置计量网络策略，使用 Promise 异步回调。 |
 | [setNetworkAccessPolicy](arkts-network-policy-setnetworkaccesspolicy-f-sys.md) | 设置指定 uid 应用能否能访问网络的策略，使用 Promise 异步回调。 |
-| [setPolicyByUid](arkts-network-policy-setpolicybyuid-f-sys.md) | 设置对应 uid 应用是否能够访问计量网络的策略，使用 callback 异步回调。 |
-| [setPolicyByUid](arkts-network-policy-setpolicybyuid-f-sys.md) | 设置对应 uid 应用是否能够访问计量网络的策略，使用 Promise 异步回调。 |
-| [setPowerSaveTrustlist](arkts-network-policy-setpowersavetrustlist-f-sys.md) | 设置指定 uid 应用是否在省电防火墙的白名单，使用 callback 异步回调。 |
-| [setPowerSaveTrustlist](arkts-network-policy-setpowersavetrustlist-f-sys.md) | 设置指定 uid 应用是否在省电防火墙的白名单，使用 Promise 异步回调。 |
-| [updateRemindPolicy](arkts-network-policy-updateremindpolicy-f-sys.md) | 更新提醒策略，使用 callback 异步回调。 |
-| [updateRemindPolicy](arkts-network-policy-updateremindpolicy-f-sys.md) | 更新提醒策略，使用 Promise 异步回调。 |
+| [setPolicyByUid](arkts-network-policy-setpolicybyuid-f-sys.md#setpolicybyuid) | 设置对应 uid 应用是否能够访问计量网络的策略，使用 callback 异步回调。 |
+| [setPolicyByUid](arkts-network-policy-setpolicybyuid-f-sys.md#setpolicybyuid-1) | 设置对应 uid 应用是否能够访问计量网络的策略，使用 Promise 异步回调。 |
+| [setPowerSaveTrustlist](arkts-network-policy-setpowersavetrustlist-f-sys.md#setpowersavetrustlist) | 设置指定 uid 应用是否在省电防火墙的白名单，使用 callback 异步回调。 |
+| [setPowerSaveTrustlist](arkts-network-policy-setpowersavetrustlist-f-sys.md#setpowersavetrustlist-1) | 设置指定 uid 应用是否在省电防火墙的白名单，使用 Promise 异步回调。 |
+| [updateRemindPolicy](arkts-network-policy-updateremindpolicy-f-sys.md#updateremindpolicy) | 更新提醒策略，使用 callback 异步回调。 |
+| [updateRemindPolicy](arkts-network-policy-updateremindpolicy-f-sys.md#updateremindpolicy-1) | 更新提醒策略，使用 Promise 异步回调。 |
 <!--DelEnd-->
 
 ### 接口

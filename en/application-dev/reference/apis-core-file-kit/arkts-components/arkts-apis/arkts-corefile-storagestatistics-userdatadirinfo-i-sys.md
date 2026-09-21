@@ -1,5 +1,9 @@
 # UserdataDirInfo (System API)
 
+```TypeScript
+export interface UserdataDirInfo
+```
+
 Details the space usage of the **\/data** directory on the user device.
 
 **Since:** 23

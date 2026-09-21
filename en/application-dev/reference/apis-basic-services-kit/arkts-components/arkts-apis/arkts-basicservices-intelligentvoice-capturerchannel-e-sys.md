@@ -1,5 +1,9 @@
 # CapturerChannel (System API)
 
+```TypeScript
+enum CapturerChannel
+```
+
 Enumerates capturer channel. @enum {number}
 
 **Since:** 12

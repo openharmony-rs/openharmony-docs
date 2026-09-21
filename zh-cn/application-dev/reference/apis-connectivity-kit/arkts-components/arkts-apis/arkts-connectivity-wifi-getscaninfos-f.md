@@ -57,6 +57,8 @@ wifi.getScanInfos().then(result => {
 ```
 
 
+<a id="getscaninfos-1"></a>
+
 ## getScanInfos
 
 ```TypeScript

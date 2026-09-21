@@ -1,5 +1,9 @@
 # BlurStyle (System API)
 
+```TypeScript
+enum BlurStyle
+```
+
 Enumerates the window blur styles.
 
 **Since:** 9

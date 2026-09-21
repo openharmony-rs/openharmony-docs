@@ -33,6 +33,8 @@ declare function fchmod(fd: number, mode: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
+<a id="fchmod-1"></a>
+
 ## fchmod
 
 ```TypeScript

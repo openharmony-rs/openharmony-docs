@@ -1,5 +1,9 @@
 # DataShareExtensionAbility（系统接口）
 
+```TypeScript
+declare class DataShareExtensionAbility
+```
+
 **起始版本：** 9
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider

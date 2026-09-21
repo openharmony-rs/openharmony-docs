@@ -1,5 +1,9 @@
 # OffsetReferencePoint
 
+```TypeScript
+export enum OffsetReferencePoint
+```
+
 偏移参考点。
 
 **起始版本：** 12

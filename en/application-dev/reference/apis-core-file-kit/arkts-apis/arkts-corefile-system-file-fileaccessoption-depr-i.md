@@ -1,5 +1,9 @@
 # FileAccessOption
 
+```TypeScript
+export interface FileAccessOption
+```
+
 Defines the options used in access().
 
 **Since:** 3

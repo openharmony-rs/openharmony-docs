@@ -1,5 +1,9 @@
 # X509CRLMatchParameters
 
+```TypeScript
+interface X509CRLMatchParameters
+```
+
 用于匹配证书吊销列表的过滤参数。如果参数中任一项都未指定，则匹配所有证书吊销列表。
 
 **起始版本：** 11

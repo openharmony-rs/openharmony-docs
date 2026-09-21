@@ -1,5 +1,9 @@
 # RectEvent
 
+```TypeScript
+interface RectEvent
+```
+
 矩形定义。
 
 **起始版本：** 12

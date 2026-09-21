@@ -1,5 +1,9 @@
 # PlaybackInfoKey
 
+```TypeScript
+enum PlaybackInfoKey
+```
+
 播放信息描述枚举。
 
 **起始版本：** 12

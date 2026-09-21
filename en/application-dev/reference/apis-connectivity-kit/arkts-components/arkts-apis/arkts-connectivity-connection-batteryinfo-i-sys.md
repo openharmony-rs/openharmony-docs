@@ -1,5 +1,9 @@
 # BatteryInfo
 
+```TypeScript
+interface BatteryInfo
+```
+
 Describes the contents of the battery information.
 
 **Since:** 12

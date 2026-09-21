@@ -1,5 +1,9 @@
 # ResponseRegionSupportedTool
 
+```TypeScript
+declare enum ResponseRegionSupportedTool
+```
+
 触摸热区适用的输入工具类型。
 
 **起始版本：** 22

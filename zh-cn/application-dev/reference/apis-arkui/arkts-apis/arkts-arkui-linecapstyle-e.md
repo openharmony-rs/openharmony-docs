@@ -1,5 +1,9 @@
 # LineCapStyle
 
+```TypeScript
+declare enum LineCapStyle
+```
+
 LineCapStyle enumeration description
 
 @enum { number }

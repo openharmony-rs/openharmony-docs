@@ -1,5 +1,9 @@
 # TransferResult (System API)
 
+```TypeScript
+enum TransferResult
+```
+
 Enum for the file transfer result.
 
 **Since:** 16

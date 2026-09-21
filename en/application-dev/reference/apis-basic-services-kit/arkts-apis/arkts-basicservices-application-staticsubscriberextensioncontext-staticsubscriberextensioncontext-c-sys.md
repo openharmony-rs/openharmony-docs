@@ -1,5 +1,9 @@
 # StaticSubscriberExtensionContext (System API)
 
+```TypeScript
+declare class StaticSubscriberExtensionContext extends ExtensionContext
+```
+
 The **StaticSubscriberExtensionContext** module, inherited from **ExtensionContext**, provides context for **StaticSubscriberExtensionAbility**.
 
 You can use the APIs of this module to start **StaticSubscriberExtensionAbility**.
@@ -99,37 +103,7 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 }
 ```
 
-```TypeScript
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-
-let want: Want = {
-  bundleName: 'com.example.myapp',
-  abilityName: 'MyAbility'
-};
-
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // Carry out normal service processing.
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // Process service logic errors.
-          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
-        });
-    } catch (paramError) {
-      // Process input parameter errors.
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
-    }
-  }
-}
-```
+<a id="startability-1"></a>
 
 ## startAbility
 
@@ -184,4 +158,34 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 
 **Examples**
 
-See [startAbility](#startability)
+```TypeScript
+import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let want: Want = {
+  bundleName: 'com.example.myapp',
+  abilityName: 'MyAbility'
+};
+
+class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+  onReceiveEvent(event: commonEventManager.CommonEventData) {
+    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+    try {
+      this.context.startAbility(want)
+        .then(() => {
+          // Carry out normal service processing.
+          console.info('startAbility succeed');
+        })
+        .catch((error: BusinessError) => {
+          // Process service logic errors.
+          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
+        });
+    } catch (paramError) {
+      // Process input parameter errors.
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+    }
+  }
+}
+```

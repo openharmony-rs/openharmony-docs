@@ -1,5 +1,9 @@
 # Response
 
+```TypeScript
+interface Response
+```
+
 传感器数据的时间戳与精度信息基类，所有传感器Response类型均继承于此。
 
 **起始版本：** 8

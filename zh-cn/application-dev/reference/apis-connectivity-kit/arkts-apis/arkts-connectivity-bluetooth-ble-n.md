@@ -1,5 +1,9 @@
 # BLE(蓝牙)
 
+```TypeScript
+namespace BLE
+```
+
 **起始版本：** 7
 
 **废弃版本：** 9

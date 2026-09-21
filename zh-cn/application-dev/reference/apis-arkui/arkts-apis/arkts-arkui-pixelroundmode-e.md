@@ -1,5 +1,9 @@
 # PixelRoundMode
 
+```TypeScript
+declare enum PixelRoundMode
+```
+
 像素取整模式
 
 @enum { number }

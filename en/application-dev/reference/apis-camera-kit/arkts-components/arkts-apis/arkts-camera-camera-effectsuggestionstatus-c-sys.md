@@ -1,5 +1,9 @@
 # EffectSuggestionStatus (System API)
 
+```TypeScript
+class EffectSuggestionStatus
+```
+
 Effect suggestion status
 
 **Since:** 12

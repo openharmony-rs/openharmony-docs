@@ -1,5 +1,9 @@
 # KeyProcessingMode
 
+```TypeScript
+declare enum KeyProcessingMode
+```
+
 设置按键事件处理的优先级。
 
 **起始版本：** 15

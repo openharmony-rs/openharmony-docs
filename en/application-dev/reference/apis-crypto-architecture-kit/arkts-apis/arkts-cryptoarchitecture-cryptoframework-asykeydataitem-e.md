@@ -1,5 +1,9 @@
 # AsyKeyDataItem
 
+```TypeScript
+enum AsyKeyDataItem
+```
+
 Enumerates the asymmetric key data types.
 
 **Since:** 26.0.0

@@ -18,6 +18,8 @@ function getCallTransferInfo(type: CallTransferType, number: string): Promise<Ca
 
 **需要权限：** ohos.permission.GET_CALL_TRANSFER_INFO
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -61,26 +63,4 @@ call.getCallTransferInfo(type, number)
     .catch((err:BusinessError) => {
         console.error(`getCallTransferInfo fail, err->Code${err.code}, message:${err.message}`);
     });
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: BusinessError, data: call.CallTransferResult) => {
-    if (err) {
-        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
-    }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
-    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
-});
 ```

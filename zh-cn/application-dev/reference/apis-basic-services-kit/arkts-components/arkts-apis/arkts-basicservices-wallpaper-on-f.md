@@ -29,3 +29,19 @@ function on(type: 'colorChange', callback: (colors: Array<RgbaColor>, wallpaperT
 | --- | --- | --- | --- |
 | type | 'colorChange' | 是 | 取值为'colorChange'，表示壁纸颜色变化结果上报事件。 |
 | callback | (colors: Array&lt;[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)&gt;, wallpaperType: WallpaperType) =&gt; void | 是 | 壁纸颜色变化触发该回调方法，返回壁纸类型和壁纸的主要颜色信息。<br>- colors<br> 壁纸的主要颜色信息，其类型见[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)。<br>- wallpaperType<br> 壁纸类型。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let listener = (colors: Array<wallpaper.RgbaColor>, wallpaperType: wallpaper.WallpaperType): void => {
+        console.info(`wallpaper color changed.`);
+    };
+    wallpaper.on('colorChange', listener);
+} catch (error) {
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
+}
+```

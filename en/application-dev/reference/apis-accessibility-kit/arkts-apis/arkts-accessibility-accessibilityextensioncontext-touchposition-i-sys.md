@@ -1,5 +1,9 @@
 # TouchPosition (System API)
 
+```TypeScript
+export declare interface TouchPosition
+```
+
 Touch tap position.
 
 **Since:** 26.0.0

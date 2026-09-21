@@ -1,5 +1,9 @@
 # SendMessageOptions
 
+```TypeScript
+export interface SendMessageOptions
+```
+
 @typedef SendMessageOptions
 
 **Since:** 5

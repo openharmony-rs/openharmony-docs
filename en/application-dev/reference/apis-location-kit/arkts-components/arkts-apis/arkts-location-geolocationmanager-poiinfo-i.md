@@ -1,5 +1,9 @@
 # PoiInfo
 
+```TypeScript
+export interface PoiInfo
+```
+
 Describes the POI information struct.
 
 **Since:** 19

@@ -1,5 +1,9 @@
 # QueryOptions
 
+```TypeScript
+export interface QueryOptions
+```
+
 需要查询的IP类型。
 
 **起始版本：** 23

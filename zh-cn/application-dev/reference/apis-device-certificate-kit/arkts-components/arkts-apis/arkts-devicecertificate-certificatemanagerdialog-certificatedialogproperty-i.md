@@ -1,5 +1,9 @@
 # CertificateDialogProperty
 
+```TypeScript
+export interface CertificateDialogProperty
+```
+
 表示证书管理对话框的属性。
 
 **起始版本：** 18

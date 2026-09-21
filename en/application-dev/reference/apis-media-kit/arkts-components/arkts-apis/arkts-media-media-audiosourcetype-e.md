@@ -1,5 +1,9 @@
 # AudioSourceType
 
+```TypeScript
+enum AudioSourceType
+```
+
 Enumerates the audio source types for video recording.
 
 **Since:** 9

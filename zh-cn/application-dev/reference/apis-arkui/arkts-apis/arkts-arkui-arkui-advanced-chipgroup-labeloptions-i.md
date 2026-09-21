@@ -1,5 +1,9 @@
 # LabelOptions
 
+```TypeScript
+export interface LabelOptions
+```
+
 LabelOptions定义文本属性。
 
 **起始版本：** 12

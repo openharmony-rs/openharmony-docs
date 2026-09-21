@@ -1,5 +1,9 @@
 # TextBaseController
 
+```TypeScript
+declare interface TextBaseController
+```
+
 文本选择控制器。
 
 **起始版本：** 12
@@ -78,4 +82,4 @@ selectionStart和selectionEnd均为-1时表示全选。
 | --- | --- | --- | --- |
 | selectionStart | number | 是 | 选中开始位置。<br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。<br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
 | selectionEnd | number | 是 | 选中结束位置。<br>取值小于0时，按0处理。取值大于文本长度时，按当前文本长度处理。<br>特殊取值效果：当selectionStart和selectionEnd均为-1时，表示全选。 |
-| options | [SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承[SelectionOptions](../arkts-components/arkts-arkui-selectionoptions-i.md)。 |
+| options | [SelectionOptions](../arkts-components/arkts-arkui-common-comp-selectionoptions-i.md) | 否 | 选择项配置。 默认值继承[SelectionOptions](../arkts-components/arkts-arkui-common-comp-selectionoptions-i.md)。 |

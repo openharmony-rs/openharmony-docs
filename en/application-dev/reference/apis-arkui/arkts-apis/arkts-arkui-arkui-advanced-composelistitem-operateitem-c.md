@@ -1,5 +1,9 @@
 # OperateItem
 
+```TypeScript
+export declare class OperateItem
+```
+
 Defines the type of the element on the right of the **ComposeListItem** component.
 
 **Since:** 10
@@ -182,7 +186,7 @@ Symbol icon with a size of 48 x 48 vp.
 
 If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

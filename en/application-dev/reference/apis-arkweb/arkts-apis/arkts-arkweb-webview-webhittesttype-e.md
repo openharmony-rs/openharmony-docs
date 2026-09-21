@@ -1,5 +1,9 @@
 # WebHitTestType
 
+```TypeScript
+enum WebHitTestType
+```
+
 Enumerates the node types that the cursor hits.
 
 **Since:** 9

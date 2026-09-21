@@ -1,5 +1,9 @@
 # PrintDocumentAdapterState
 
+```TypeScript
+enum PrintDocumentAdapterState
+```
+
 打印任务状态的枚举。
 
 **起始版本：** 11

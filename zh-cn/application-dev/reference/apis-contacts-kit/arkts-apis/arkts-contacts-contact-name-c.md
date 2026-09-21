@@ -1,5 +1,9 @@
 # Name
 
+```TypeScript
+class Name
+```
+
 联系人的名字类。
 
 **起始版本：** 7

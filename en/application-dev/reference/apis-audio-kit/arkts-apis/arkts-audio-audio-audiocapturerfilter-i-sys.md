@@ -1,5 +1,9 @@
 # AudioCapturerFilter (System API)
 
+```TypeScript
+interface AudioCapturerFilter
+```
+
 Describe audio capturer filter.
 
 **Since:** 18

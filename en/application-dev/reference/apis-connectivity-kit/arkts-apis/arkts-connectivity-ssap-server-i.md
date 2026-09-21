@@ -1,5 +1,9 @@
 # Server
 
+```TypeScript
+interface Server
+```
+
 Represents a SSAP server class, which provides APIs for connecting to and exchanging data with the client.
 
 Before using the methods of this class, you need to call [ssap.createServer](arkts-connectivity-ssap-createserver-f.md) to create an instance of this class.

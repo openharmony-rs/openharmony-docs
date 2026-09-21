@@ -1,5 +1,9 @@
 # NickName
 
+```TypeScript
+class NickName
+```
+
 Defines a contact's nickname.
 
 **Since:** 7

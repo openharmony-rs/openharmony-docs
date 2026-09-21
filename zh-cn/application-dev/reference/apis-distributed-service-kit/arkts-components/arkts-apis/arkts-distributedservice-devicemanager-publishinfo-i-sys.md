@@ -1,5 +1,9 @@
 # PublishInfo（系统接口）
 
+```TypeScript
+interface PublishInfo
+```
+
 发布设备参数
 
 **起始版本：** 9

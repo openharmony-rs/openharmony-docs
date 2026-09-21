@@ -1,5 +1,9 @@
 # Restorer (System API)
 
+```TypeScript
+export interface Restorer
+```
+
 Defines a tool class for restoring factory settings, such as clearing data in the user partition, deeply clearing data in the user and OS partitions, and synchronously clearing file keys.
 
 > **Factory reset**
@@ -184,22 +188,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // Obtain a Restorer object for restoring factory settings.
-  let factoryRestorer = update.getRestorer();
-  // Restore factory settings.
-  factoryRestorer.factoryReset().then(() => {
-    console.info(`factoryReset success`);
-  }).catch((resetError: BusinessError) => {
-    console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get factoryRestorer: ${error}`);
-}
-```
+<a id="factoryreset-1"></a>
 
 ## factoryReset
 
@@ -247,7 +236,22 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 
 **Examples**
 
-See [factoryReset](#factoryreset)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Obtain a Restorer object for restoring factory settings.
+  let factoryRestorer = update.getRestorer();
+  // Restore factory settings.
+  factoryRestorer.factoryReset().then(() => {
+    console.info(`factoryReset success`);
+  }).catch((resetError: BusinessError) => {
+    console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get factoryRestorer: ${error}`);
+}
+```
 
 ## forceFactoryReset
 

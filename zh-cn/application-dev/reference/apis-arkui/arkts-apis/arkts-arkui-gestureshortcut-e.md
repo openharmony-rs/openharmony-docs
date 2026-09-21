@@ -1,5 +1,9 @@
 # GestureShortcut
 
+```TypeScript
+declare enum GestureShortcut
+```
+
 组件的智慧手势响应优先级枚举。
 
 **起始版本：** 26.0.0

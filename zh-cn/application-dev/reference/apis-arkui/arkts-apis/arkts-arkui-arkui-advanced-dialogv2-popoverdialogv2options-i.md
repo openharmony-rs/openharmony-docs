@@ -1,14 +1,18 @@
 # PopoverDialogV2Options
 
+```TypeScript
+export declare interface PopoverDialogV2Options extends CustomPopupOptions
+```
+
 跟手弹出框参数，用于设置弹出框内容、位置属性等。
 
-继承自[CustomPopupOptions](../arkts-components/arkts-arkui-custompopupoptions-i.md)。
+继承自[CustomPopupOptions](../arkts-components/arkts-arkui-common-comp-custompopupoptions-i.md)。
 
 > **说明：** 
 > 
 > radius默认值为32vp。
 
-**继承/实现关系：** PopoverDialogV2Options extends [CustomPopupOptions](../arkts-components/arkts-arkui-custompopupoptions-i.md)
+**继承/实现关系：** PopoverDialogV2Options extends [CustomPopupOptions](../arkts-components/arkts-arkui-common-comp-custompopupoptions-i.md)
 
 **起始版本：** 18
 

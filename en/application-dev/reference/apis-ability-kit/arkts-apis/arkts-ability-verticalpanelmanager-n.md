@@ -1,5 +1,9 @@
 # verticalPanelManager
 
+```TypeScript
+declare namespace verticalPanelManager
+```
+
 Defines a vertical domain panel manager.
 
 @namespace verticalPanelManager

@@ -1,5 +1,9 @@
 # ContactType（系统接口）
 
+```TypeScript
+export enum ContactType
+```
+
 Indicates the contact types.
 
 **起始版本：** 8
@@ -45,6 +49,8 @@ SDN_DIALING = 3
 业务拨号号码。
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

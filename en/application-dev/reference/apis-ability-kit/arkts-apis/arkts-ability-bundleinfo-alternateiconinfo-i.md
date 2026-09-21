@@ -1,5 +1,9 @@
 # AlternateIconInfo
 
+```TypeScript
+export interface AlternateIconInfo
+```
+
 Describes the app backup icon information.
 
 **Since:** 26.0.0

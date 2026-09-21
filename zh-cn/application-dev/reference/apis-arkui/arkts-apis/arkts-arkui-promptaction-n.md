@@ -1,5 +1,9 @@
 # promptAction
 
+```TypeScript
+declare namespace promptAction
+```
+
 创建并显示即时反馈、对话框和操作菜单，适用于系统通知、交互确认、菜单选择等场景。
 
 > **说明：** 
@@ -9,6 +13,8 @@
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)说明。建议<!--Del-->在除[ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,12 +33,12 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 | [showToast](arkts-arkui-promptaction-showtoast-f.md) | Creates and displays a toast. |
 | [openToast](arkts-arkui-promptaction-opentoast-f.md) | 显示即时反馈并通过Promise返回其id。 |
 | [closeToast](arkts-arkui-promptaction-closetoast-f.md) | 关闭即时反馈。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md) | 创建并显示对话框，对话框通过Promise返回结果。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框通过Promise返回结果。 |
 | [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md) | 打开自定义弹窗。通过Promise返回结果。 |
 | [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md) | 关闭自定义弹窗。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
 
 ### 类
 
@@ -92,6 +98,105 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 ## 示例
 
-```TypeScript
 从API version 20开始，该示例实现了在promptAction.DialogController中调用getState获取弹窗当前状态。
+
+```TypeScript
+// xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+
+@Component
+struct CustomDialogExample {
+  build() {
+    Column() {
+      Text('Hello')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.getDialogController()) {
+            this.getDialogController().close();
+          }
+        })
+      Button('点我获取状态')
+        .onClick(() => {
+          if (this.getDialogController()) {
+            let state: promptAction.CommonState = this.getDialogController().getState();
+            switch (state) {
+              case promptAction.CommonState.UNINITIALIZED: {
+                console.info('The dialog state is uninitialized.');
+                break;
+              }
+              case promptAction.CommonState.INITIALIZED: {
+                console.info('The dialog state is initialized.');
+                break;
+              }
+              case promptAction.CommonState.APPEARING: {
+                console.info('The dialog state is appearing.');
+                break;
+              }
+              case promptAction.CommonState.APPEARED: {
+                console.info('The dialog state is appeared.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARING: {
+                console.info('The dialog state is disappearing.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARED: {
+                console.info('The dialog state is disappeared.');
+                break;
+              }
+              default: {
+                console.info('The dialog state is unknown.');
+                break;
+              }
+            }
+          }
+        })
+
+    }.backgroundColor('#FFF0F0F0')
+  }
+}
+
+@Builder
+function buildText() {
+   CustomDialogExample()
+}
+
+@Entry
+@Component
+struct Index {
+
+  private dialogController: promptAction.DialogController = new promptAction.DialogController()
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText),
+            );
+
+            promptAction.openCustomDialogWithController(contentNode, this.dialogController, {
+
+              transition: TransitionEffect.OPACITY.animation({
+                duration: 3000
+              })
+            }).then(() => {
+              console.info('succeeded')
+            }).catch((error: BusinessError) => {
+              console.error(`OpenCustomDialogWithController args error code is ${error.code}, message is ${error.message}`);
+            })
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
 ```

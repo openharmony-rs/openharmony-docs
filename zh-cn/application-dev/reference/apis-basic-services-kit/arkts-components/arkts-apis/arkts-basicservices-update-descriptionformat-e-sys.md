@@ -1,5 +1,9 @@
 # DescriptionFormat（系统接口）
 
+```TypeScript
+export enum DescriptionFormat
+```
+
 描述文件格式。
 
 **起始版本：** 9

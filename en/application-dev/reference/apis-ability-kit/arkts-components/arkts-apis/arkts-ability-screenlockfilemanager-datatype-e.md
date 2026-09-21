@@ -1,5 +1,9 @@
 # DataType
 
+```TypeScript
+export enum DataType
+```
+
 Enumerates the types of sensitive data that can be accessed under the lock screen.
 
 **Since:** 12

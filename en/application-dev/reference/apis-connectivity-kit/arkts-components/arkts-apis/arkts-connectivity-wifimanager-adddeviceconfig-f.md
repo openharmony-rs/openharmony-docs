@@ -63,23 +63,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-```TypeScript
-import { wifiManager } from '@kit.ConnectivityKit';
-  
-    try {
-      let config:wifiManager.WifiDeviceConfig = {
-        ssid : "****",
-        preSharedKey : "****",
-        securityType : 0
-      }
-      wifiManager.addDeviceConfig(config,(error,result) => {
-        console.info("result:" + JSON.stringify(result));
-      });
-    }catch(error){
-      console.error("failed:" + JSON.stringify(error));
-    }
-```
 
+<a id="adddeviceconfig-1"></a>
 
 ## addDeviceConfig
 
@@ -114,4 +99,19 @@ Add Wi-Fi connection configuration to the device. The configuration will be upda
 
 **Examples**
 
-See [addDeviceConfig](#adddeviceconfig)
+```TypeScript
+import { wifiManager } from '@kit.ConnectivityKit';
+  
+    try {
+      let config:wifiManager.WifiDeviceConfig = {
+        ssid : "****",
+        preSharedKey : "****",
+        securityType : 0
+      }
+      wifiManager.addDeviceConfig(config,(error,result) => {
+        console.info("result:" + JSON.stringify(result));
+      });
+    }catch(error){
+      console.error("failed:" + JSON.stringify(error));
+    }
+```

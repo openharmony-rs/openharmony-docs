@@ -35,6 +35,8 @@ Calculates the hash value of a file. This API uses a promise to return the resul
 | Promise&lt;string&gt; | Promise that returns the hash value. The hash value is a hexadecimal string consisting of digits and uppercase letters. |
 
 
+<a id="hash-1"></a>
+
 ## hash
 
 ```TypeScript

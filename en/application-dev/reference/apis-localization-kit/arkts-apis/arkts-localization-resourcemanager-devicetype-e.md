@@ -1,5 +1,9 @@
 # DeviceType
 
+```TypeScript
+export enum DeviceType
+```
+
 Enumerates the device types.
 
 &lt;!--RP1--&gt;

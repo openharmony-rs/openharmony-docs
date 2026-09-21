@@ -1,5 +1,9 @@
 # SlowMotionStatus（系统接口）
 
+```TypeScript
+enum SlowMotionStatus
+```
+
 Enumerates the slow-motion states.
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ImageGenerationModel (System API)
 
+```TypeScript
+interface ImageGenerationModel
+```
+
 AI Image Model Abstract Interface.
 
 @interface ImageGenerationModel

@@ -1,5 +1,9 @@
 # MimeTypeFilter
 
+```TypeScript
+class MimeTypeFilter
+```
+
 Describes the configuration for file type filtering.
 
 **Since:** 19

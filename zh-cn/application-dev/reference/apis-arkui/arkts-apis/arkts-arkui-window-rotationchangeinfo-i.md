@@ -1,5 +1,9 @@
 # RotationChangeInfo
 
+```TypeScript
+interface RotationChangeInfo
+```
+
 窗口旋转变化时的窗口信息。
 
 **起始版本：** 19

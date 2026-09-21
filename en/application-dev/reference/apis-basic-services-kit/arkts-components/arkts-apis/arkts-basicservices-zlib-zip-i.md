@@ -1,5 +1,9 @@
 # Zip
 
+```TypeScript
+interface Zip
+```
+
 Defines the **Zip** instance. It provides APIs to zip or unzip data in Zlib, Deflate, or Gzip format.
 
 **Since:** 12
@@ -1522,9 +1526,7 @@ Releases all memory allocated by the **inflateBackInit()** function. This API us
 
 **Examples**
 
-```TypeScript
 For details about the sample code, see [inflateBack](#inflateback).
-```
 
 ## inflateBackInit
 
@@ -1563,9 +1565,7 @@ Initializes the internal stream state for decompression before using the **infla
 
 **Examples**
 
-```TypeScript
 For details about the sample code, see [inflateBack](#inflateback).
-```
 
 ## inflateCodesUsed
 

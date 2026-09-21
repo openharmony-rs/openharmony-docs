@@ -1,5 +1,9 @@
 # AnimationStopMode
 
+```TypeScript
+export enum AnimationStopMode
+```
+
 动图停止模式。
 
 **起始版本：** 24

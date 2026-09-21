@@ -1,5 +1,9 @@
 # Note
 
+```TypeScript
+class Note
+```
+
 联系人的备注类。
 
 **起始版本：** 7

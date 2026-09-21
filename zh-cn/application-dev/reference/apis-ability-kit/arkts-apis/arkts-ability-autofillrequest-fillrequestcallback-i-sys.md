@@ -1,5 +1,9 @@
 # FillRequestCallback（系统接口）
 
+```TypeScript
+export interface FillRequestCallback
+```
+
 自动填充或者生成密码时的回调对象，可以通过此回调通知客户端成功或者失败。
 
 **起始版本：** 11

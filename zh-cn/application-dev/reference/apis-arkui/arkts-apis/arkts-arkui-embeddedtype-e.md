@@ -1,5 +1,9 @@
 # EmbeddedType
 
+```TypeScript
+declare enum EmbeddedType
+```
+
 Enum of EmbeddedType
 
 @enum { number }

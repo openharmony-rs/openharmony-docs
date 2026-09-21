@@ -1,5 +1,9 @@
 # PowerSaveMode
 
+```TypeScript
+export enum PowerSaveMode
+```
+
 能效模式。
 
 **起始版本：** 20

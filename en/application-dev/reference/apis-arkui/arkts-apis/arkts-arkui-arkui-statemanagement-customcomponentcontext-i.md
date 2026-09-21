@@ -1,5 +1,9 @@
 # CustomComponentContext
 
+```TypeScript
+export declare interface CustomComponentContext
+```
+
 The **CustomComponentContext** class provides access to component-level services, including the reuse pool. You can obtain an instance through [UIUtils.getCustomComponentContext](arkts-arkui-arkui-statemanagement-uiutils-c.md#getcustomcomponentcontext).
 
 **Since:** 26.0.0

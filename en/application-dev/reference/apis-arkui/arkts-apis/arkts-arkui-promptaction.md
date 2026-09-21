@@ -45,6 +45,105 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 ## Examples
 
-```TypeScript
 This example demonstrates how to call the getState API of promptAction.DialogController to obtain the current state of a dialog box, supported since API version 20.
+
+```TypeScript
+// xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+
+@Component
+struct CustomDialogExample {
+  build() {
+    Column() {
+      Text('Hello')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 36 })
+      Button('Close Dialog Box')
+        .onClick(() => {
+          if (this.getDialogController()) {
+            this.getDialogController().close();
+          }
+        })
+      Button('Obtain State')
+        .onClick(() => {
+          if (this.getDialogController()) {
+            let state: promptAction.CommonState = this.getDialogController().getState();
+            switch (state) {
+              case promptAction.CommonState.UNINITIALIZED: {
+                console.info('The dialog state is uninitialized.');
+                break;
+              }
+              case promptAction.CommonState.INITIALIZED: {
+                console.info('The dialog state is initialized.');
+                break;
+              }
+              case promptAction.CommonState.APPEARING: {
+                console.info('The dialog state is appearing.');
+                break;
+              }
+              case promptAction.CommonState.APPEARED: {
+                console.info('The dialog state is appeared.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARING: {
+                console.info('The dialog state is disappearing.');
+                break;
+              }
+              case promptAction.CommonState.DISAPPEARED: {
+                console.info('The dialog state is disappeared.');
+                break;
+              }
+              default: {
+                console.info('The dialog state is unknown.');
+                break;
+              }
+            }
+          }
+        })
+
+    }.backgroundColor('#FFF0F0F0')
+  }
+}
+
+@Builder
+function buildText() {
+   CustomDialogExample()
+}
+
+@Entry
+@Component
+struct Index {
+
+  private dialogController: promptAction.DialogController = new promptAction.DialogController()
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText),
+            );
+
+            promptAction.openCustomDialogWithController(contentNode, this.dialogController, {
+
+              transition: TransitionEffect.OPACITY.animation({
+                duration: 3000
+              })
+            }).then(() => {
+              console.info('succeeded')
+            }).catch((error: BusinessError) => {
+              console.error(`OpenCustomDialogWithController args error code is ${error.code}, message is ${error.message}`);
+            })
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
 ```

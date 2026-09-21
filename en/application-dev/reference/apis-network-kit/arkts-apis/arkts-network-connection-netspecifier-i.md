@@ -1,5 +1,9 @@
 # NetSpecifier
 
+```TypeScript
+export interface NetSpecifier
+```
+
 Provides an instance that bears data network capabilities.
 
 **Since:** 8

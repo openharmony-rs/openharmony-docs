@@ -1,5 +1,9 @@
 # SceneFeatureType（系统接口）
 
+```TypeScript
+enum SceneFeatureType
+```
+
 Enumerates the scene features.
 
 **起始版本：** 12

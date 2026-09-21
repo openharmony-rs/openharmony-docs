@@ -84,6 +84,41 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
+
+<a id="getbundlename-1"></a>
+
+## getBundleName
+
+```TypeScript
+function getBundleName(agent: WantAgent): Promise<string>
+```
+
+获取WantAgent实例的Bundle名称。使用Promise异步回调。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getBundleName](arkts-ability-wantagent-getbundlename-f.md)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | 以Promise形式返回获取WantAgent实例的Bundle名称。 |
+
+**示例**
+
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
@@ -125,38 +160,3 @@ wantAgent.getWantAgent({
     }
 });
 ```
-
-
-## getBundleName
-
-```TypeScript
-function getBundleName(agent: WantAgent): Promise<string>
-```
-
-获取WantAgent实例的Bundle名称。使用Promise异步回调。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getBundleName](arkts-ability-wantagent-getbundlename-f.md)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | 是 | WantAgent对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回获取WantAgent实例的Bundle名称。 |
-
-**示例**
-
-参见 getBundleName

@@ -18,6 +18,8 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -55,6 +57,8 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
 | [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
+
+<a id="updatesession-1"></a>
 
 ## updateSession
 
@@ -105,6 +109,8 @@ Updates the key operation by segment. This API uses an asynchronous callback to 
 | [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
 | [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
 
+
+<a id="updatesession-2"></a>
 
 ## updateSession
 

@@ -1,5 +1,9 @@
 # GravityResponse
 
+```TypeScript
+interface GravityResponse extends Response
+```
+
 Describes the gravity sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** GravityResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

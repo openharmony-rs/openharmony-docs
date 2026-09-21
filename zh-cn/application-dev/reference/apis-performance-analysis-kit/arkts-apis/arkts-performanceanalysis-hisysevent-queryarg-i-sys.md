@@ -1,5 +1,9 @@
 # QueryArg（系统接口）
 
+```TypeScript
+interface QueryArg
+```
+
 系统事件查询参数对象接口。
 
 **起始版本：** 9

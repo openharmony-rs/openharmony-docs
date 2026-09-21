@@ -1,5 +1,9 @@
 # UIState
 
+```TypeScript
+export enum UIState
+```
+
 Enumerates polymorphic style states, which are used to process polymorphic styles.
 
 **Since:** 20

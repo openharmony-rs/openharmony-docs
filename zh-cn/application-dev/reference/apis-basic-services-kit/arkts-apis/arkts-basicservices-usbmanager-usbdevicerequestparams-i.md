@@ -1,5 +1,9 @@
 # USBDeviceRequestParams
 
+```TypeScript
+interface USBDeviceRequestParams
+```
+
 控制传输参数。
 
 **起始版本：** 12

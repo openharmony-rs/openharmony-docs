@@ -1,5 +1,9 @@
 # SharedHost
 
+```TypeScript
+interface SharedHost
+```
+
 Interface defining shared device information
 
 **Since:** 24

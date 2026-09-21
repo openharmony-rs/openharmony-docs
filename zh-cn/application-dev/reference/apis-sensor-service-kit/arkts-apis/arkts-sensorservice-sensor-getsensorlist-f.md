@@ -54,25 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  sensor.getSensorList().then((data: Array<sensor.Sensor>) => {
-    for (let i = 0; i < data.length; i++) {
-      console.info('Succeeded in getting data[' + i + ']: ' + JSON.stringify(data[i]));
-    }
-  }, (err: BusinessError) => {
-    console.error(`Failed to get sensorList. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getsensorlist-1"></a>
 
 ## getSensorList
 
@@ -101,4 +84,21 @@ function getSensorList(): Promise<Array<Sensor>>
 
 **示例**
 
-参见 getSensorList
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.getSensorList().then((data: Array<sensor.Sensor>) => {
+    for (let i = 0; i < data.length; i++) {
+      console.info('Succeeded in getting data[' + i + ']: ' + JSON.stringify(data[i]));
+    }
+  }, (err: BusinessError) => {
+    console.error(`Failed to get sensorList. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
+}
+```

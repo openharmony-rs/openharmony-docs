@@ -1,5 +1,9 @@
 # RequestParameterForStage（系统接口）
 
+```TypeScript
+interface RequestParameterForStage
+```
+
 用于设置Stage模型下使用pluginComponentManager.request方法时需要传递的参数。
 
 **起始版本：** 9

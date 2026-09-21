@@ -1,5 +1,9 @@
 # CloudEnhancementState（系统接口）
 
+```TypeScript
+enum CloudEnhancementState
+```
+
 枚举，表示云增强状态。
 
 **起始版本：** 13

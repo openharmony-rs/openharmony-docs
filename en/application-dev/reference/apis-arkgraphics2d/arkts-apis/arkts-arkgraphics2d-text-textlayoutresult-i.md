@@ -1,5 +1,9 @@
 # TextLayoutResult
 
+```TypeScript
+interface TextLayoutResult
+```
+
 Represents the text layout result.
 
 **Since:** 24

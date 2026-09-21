@@ -1,5 +1,9 @@
 # DLPSandboxInfo（系统接口）
 
+```TypeScript
+export interface DLPSandboxInfo
+```
+
 表示DLP沙箱的信息。
 
 **起始版本：** 10

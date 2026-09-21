@@ -1,5 +1,9 @@
 # WebBlanklessErrorCode
 
+```TypeScript
+enum WebBlanklessErrorCode
+```
+
 无白屏加载的异常错误码。
 
 **起始版本：** 20

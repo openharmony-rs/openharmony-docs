@@ -1,5 +1,9 @@
 # KeyPair
 
+```TypeScript
+interface KeyPair
+```
+
 非对称密钥对包含公钥和私钥。
 
 <br>可以通过非对称密钥生成器[AsyKeyGenerator](arkts-cryptoarchitecture-cryptoframework-asykeygenerator-i.md)、[AsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md)来生成。

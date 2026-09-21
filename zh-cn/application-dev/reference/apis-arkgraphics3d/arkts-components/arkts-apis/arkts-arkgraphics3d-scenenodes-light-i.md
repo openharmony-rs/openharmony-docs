@@ -1,5 +1,9 @@
 # Light
 
+```TypeScript
+export interface Light extends Node
+```
+
 光源，继承自Node。
 
 @extends Node @interface Light

@@ -1,5 +1,9 @@
 # RegState
 
+```TypeScript
+export enum RegState
+```
+
 Defines the network registration status of the device.
 
 **Since:** 6

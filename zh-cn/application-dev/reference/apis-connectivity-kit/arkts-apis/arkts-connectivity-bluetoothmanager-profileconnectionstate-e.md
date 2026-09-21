@@ -1,5 +1,9 @@
 # ProfileConnectionState
 
+```TypeScript
+enum ProfileConnectionState
+```
+
 枚举，蓝牙设备的profile连接状态。
 
 从API version 9开始支持，从API version 10开始废弃。

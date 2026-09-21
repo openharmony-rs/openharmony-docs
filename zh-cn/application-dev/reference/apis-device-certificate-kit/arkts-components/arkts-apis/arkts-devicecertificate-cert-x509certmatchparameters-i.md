@@ -1,5 +1,9 @@
 # X509CertMatchParameters
 
+```TypeScript
+interface X509CertMatchParameters
+```
+
 用于匹配证书的过滤参数。如果参数中任一项都未指定，则匹配所有证书。
 
 **起始版本：** 11

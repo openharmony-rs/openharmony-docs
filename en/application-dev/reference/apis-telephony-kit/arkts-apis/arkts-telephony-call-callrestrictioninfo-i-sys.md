@@ -1,5 +1,9 @@
 # CallRestrictionInfo (System API)
 
+```TypeScript
+export interface CallRestrictionInfo
+```
+
 Defines the call restriction information.
 
 **Since:** 8

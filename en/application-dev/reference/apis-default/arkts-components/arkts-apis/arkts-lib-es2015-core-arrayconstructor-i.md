@@ -1,5 +1,9 @@
 # ArrayConstructor
 
+```TypeScript
+interface ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,6 +22,8 @@ Creates an array from an array-like object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;T&gt; | Yes |  |
+
+<a id="from-1"></a>
 
 ## from
 

@@ -1,5 +1,9 @@
 # Focus
 
+```TypeScript
+interface Focus extends FocusQuery
+```
+
 Focus继承自[FocusQuery](arkts-camera-camera-focusquery-i.md)。
 
 对焦类，对设备对焦操作。
@@ -42,6 +46,25 @@ getFocalLength(): number
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFocalLength(photoSession: camera.PhotoSession): number {
+  const invalidValue: number = -1;
+  let focalLength: number = invalidValue;
+  try {
+    focalLength = photoSession.getFocalLength();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getFocalLength call failed. error code: ${err.code}`);
+  }
+  return focalLength;
+}
+```
+
 ## getFocusMode
 
 ```TypeScript
@@ -68,6 +91,24 @@ getFocusMode(): FocusMode
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFocusMode(photoSession: camera.PhotoSession): camera.FocusMode | undefined {
+  let afMode: camera.FocusMode | undefined = undefined;
+  try {
+    afMode = photoSession.getFocusMode();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getFocusMode call failed. error code: ${err.code}`);
+  }
+  return afMode;
+}
+```
+
 ## getFocusPoint
 
 ```TypeScript
@@ -93,6 +134,24 @@ getFocusPoint(): Point
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFocusPoint(photoSession: camera.PhotoSession): camera.Point | undefined {
+  let point: camera.Point | undefined = undefined;
+  try {
+    point = photoSession.getFocusPoint();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getFocusPoint call failed. error code: ${err.code}`);
+  }
+  return point;
+}
+```
 
 ## lockFocusTracking
 
@@ -123,6 +182,23 @@ lockFocusTracking(focusPoint: Point): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function lockFocusTracking(photoSession: camera.PhotoSession): void {
+  try {
+    const focusPoint: camera.Point = {x: 0, y: 0};
+    photoSession.lockFocusTracking(focusPoint);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The lockFocusTrack call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## setFocusMode
 
 ```TypeScript
@@ -150,6 +226,22 @@ setFocusMode(afMode: FocusMode): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setFocusMode(photoSession: camera.PhotoSession): void {
+  try {
+    photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_AUTO);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setFocusMode call failed. error code: ${err.code}`);
+  }
+}
+```
 
 ## setFocusPoint
 
@@ -179,6 +271,23 @@ setFocusPoint(point: Point): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setFocusPoint(photoSession: camera.PhotoSession): void {
+  const focusPoint: camera.Point = {x: 1, y: 1};
+  try {
+    photoSession.setFocusPoint(focusPoint);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setFocusPoint call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## unlockFocusTracking
 
 ```TypeScript
@@ -201,3 +310,19 @@ unlockFocusTracking(): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function unlockFocusTracking(photoSession: camera.PhotoSession): void {
+  try {
+    photoSession.unlockFocusTracking();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The unlockFocusTrack call failed. error code: ${err.code}`);
+  }
+}
+```

@@ -1,8 +1,12 @@
 # FocusChangeReason
 
+```TypeScript
+enum FocusChangeReason
+```
+
 Enumerates the reasons for the window focus state change.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -14,7 +18,7 @@ DEFAULT = 0
 
 The focus state changes due to a default reason other than a user click.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -28,7 +32,7 @@ CLICK = 1
 
 The focus state changes because the user clicks the window.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

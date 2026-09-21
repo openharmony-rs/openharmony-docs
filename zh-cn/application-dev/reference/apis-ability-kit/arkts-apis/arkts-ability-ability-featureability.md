@@ -22,23 +22,23 @@ import { featureAbility } from '@kit.AbilityKit';
 | --- | --- |
 | [acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md) | 获取dataAbilityHelper对象。 |
 | [connectAbility](arkts-ability-featureability-connectability-f.md) | 将当前Ability与指定的ServiceAbility进行连接。 |
-| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md) | 断开与指定ServiceAbility的连接。使用callback异步回调。 |
-| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md) | 断开与指定ServiceAbility的连接。使用Promise异步回调。 |
+| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md#disconnectability) | 断开与指定ServiceAbility的连接。使用callback异步回调。 |
+| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md#disconnectability-1) | 断开与指定ServiceAbility的连接。使用Promise异步回调。 |
 | [getContext](arkts-ability-featureability-getcontext-f.md) | 获取应用上下文。 |
-| [getWant](arkts-ability-featureability-getwant-f.md) | 获取要拉起的Ability对应的Want。使用callback异步回调。 |
-| [getWant](arkts-ability-featureability-getwant-f.md) | 获取要拉起的Ability对应的Want。使用Promise异步回调。 |
-| [getWindow](arkts-ability-featureability-getwindow-f.md) | 获取当前Ability对应的窗口。使用callback异步回调。 |
-| [getWindow](arkts-ability-featureability-getwindow-f.md) | 获取当前Ability对应的窗口。使用Promise异步回调。 |
-| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md) | 检查Ability的主窗口是否具有窗口焦点。使用callback异步回调。 |
-| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md) | 检查Ability的主窗口是否具有窗口焦点。使用Promise异步回调。 |
-| [startAbility](arkts-ability-featureability-startability-f.md) | 启动新的Ability。使用callback异步回调。 |
-| [startAbility](arkts-ability-featureability-startability-f.md) | 启动新的Ability。使用Promise异步回调。 |
-| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md) | 启动一个Ability。使用callback异步回调。启动Ability后，存在如下几种情况： |
-| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md) | 启动一个Ability。使用Promise异步回调。启动Ability后，存在如下几种情况： |
-| [terminateSelf](arkts-ability-featureability-terminateself-f.md) | 停止当前的Ability。使用callback异步回调。 |
-| [terminateSelf](arkts-ability-featureability-terminateself-f.md) | 停止当前的Ability。使用Promise异步回调。 |
-| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) | 停止当前的Ability。使用callback异步回调。如果该Ability是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。 |
-| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) | 停止当前的Ability。使用Promise异步回调。如果该Ability是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。 |
+| [getWant](arkts-ability-featureability-getwant-f.md#getwant) | 获取要拉起的Ability对应的Want。使用callback异步回调。 |
+| [getWant](arkts-ability-featureability-getwant-f.md#getwant-1) | 获取要拉起的Ability对应的Want。使用Promise异步回调。 |
+| [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow) | 获取当前Ability对应的窗口。使用callback异步回调。 |
+| [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow-1) | 获取当前Ability对应的窗口。使用Promise异步回调。 |
+| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus) | 检查Ability的主窗口是否具有窗口焦点。使用callback异步回调。 |
+| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus-1) | 检查Ability的主窗口是否具有窗口焦点。使用Promise异步回调。 |
+| [startAbility](arkts-ability-featureability-startability-f.md#startability) | 启动新的Ability。使用callback异步回调。 |
+| [startAbility](arkts-ability-featureability-startability-f.md#startability-1) | 启动新的Ability。使用Promise异步回调。 |
+| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult) | 启动一个Ability。使用callback异步回调。启动Ability后，存在如下几种情况： |
+| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult-1) | 启动一个Ability。使用Promise异步回调。启动Ability后，存在如下几种情况： |
+| [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself) | 停止当前的Ability。使用callback异步回调。 |
+| [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself-1) | 停止当前的Ability。使用Promise异步回调。 |
+| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult) | 停止当前的Ability。使用callback异步回调。如果该Ability是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。 |
+| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult-1) | 停止当前的Ability。使用Promise异步回调。如果该Ability是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。 |
 
 ### 枚举
 

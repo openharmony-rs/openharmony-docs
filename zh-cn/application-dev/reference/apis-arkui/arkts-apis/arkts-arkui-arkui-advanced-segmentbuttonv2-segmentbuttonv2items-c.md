@@ -1,5 +1,9 @@
 # SegmentButtonV2Items
 
+```TypeScript
+export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>
+```
+
 分段按钮选项集合。
 
 继承自 Array\&lt;[SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md)&gt;

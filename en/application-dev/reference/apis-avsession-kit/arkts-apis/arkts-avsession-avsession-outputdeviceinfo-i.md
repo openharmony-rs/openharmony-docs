@@ -1,5 +1,9 @@
 # OutputDeviceInfo
 
+```TypeScript
+interface OutputDeviceInfo
+```
+
 Target Device Information Definition
 
 **Since:** 10

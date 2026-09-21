@@ -1,5 +1,9 @@
 # AuthTokenType (System API)
 
+```TypeScript
+enum AuthTokenType
+```
+
 Enumerates the authentication token types. They are used to identify the source of the token.
 
 **Since:** 18

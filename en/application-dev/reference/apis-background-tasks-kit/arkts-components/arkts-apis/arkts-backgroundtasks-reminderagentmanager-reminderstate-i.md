@@ -1,5 +1,9 @@
 # ReminderState
 
+```TypeScript
+interface ReminderState
+```
+
 Defines the agent-powered reminder state information, for which notifications are triggered in the following scenarios:
 
 1. When a user taps a button on an agent-powered reminder notification,

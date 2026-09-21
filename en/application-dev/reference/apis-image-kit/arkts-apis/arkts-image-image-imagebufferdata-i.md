@@ -1,5 +1,9 @@
 # ImageBufferData
 
+```TypeScript
+interface ImageBufferData
+```
+
 Describes the image buffer data.
 
 **Since:** 23

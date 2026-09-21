@@ -1,5 +1,9 @@
 # MajorClass
 
+```TypeScript
+export enum MajorClass
+```
+
 The enum of major class of a bluetooth device.
 
 **Since:** 10

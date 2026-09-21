@@ -1,5 +1,9 @@
 # FingerprintEvent (System API)
 
+```TypeScript
+export declare interface FingerprintEvent
+```
+
 Provides fingerprint gesture event types and the offset of the fingerprint sensor relative to the side edge.
 
 **Since:** 12

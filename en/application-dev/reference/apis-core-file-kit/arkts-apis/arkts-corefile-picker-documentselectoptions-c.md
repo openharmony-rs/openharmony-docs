@@ -1,5 +1,9 @@
 # DocumentSelectOptions
 
+```TypeScript
+class DocumentSelectOptions
+```
+
 Defines the options for selecting documents.
 
 **Since:** 9

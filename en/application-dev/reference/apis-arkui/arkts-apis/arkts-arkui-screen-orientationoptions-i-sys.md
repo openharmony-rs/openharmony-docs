@@ -1,5 +1,9 @@
 # OrientationOptions (System API)
 
+```TypeScript
+interface OrientationOptions
+```
+
 The parameters for setting orientation
 
 **Since:** 26.0.0

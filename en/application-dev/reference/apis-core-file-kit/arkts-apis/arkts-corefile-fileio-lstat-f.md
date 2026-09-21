@@ -34,6 +34,8 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 | Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | Promise that returns the symbolic link information obtained. For details, see **stat**. |
 
 
+<a id="lstat-1"></a>
+
 ## lstat
 
 ```TypeScript

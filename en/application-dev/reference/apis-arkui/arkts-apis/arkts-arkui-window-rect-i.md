@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 Describes the rectangular area of the window.
 
 **Since:** 7

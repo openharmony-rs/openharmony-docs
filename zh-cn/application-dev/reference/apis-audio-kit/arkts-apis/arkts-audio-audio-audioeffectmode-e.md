@@ -1,5 +1,9 @@
 # AudioEffectMode
 
+```TypeScript
+enum AudioEffectMode
+```
+
 表示音效模式的枚举。
 
 **起始版本：** 10

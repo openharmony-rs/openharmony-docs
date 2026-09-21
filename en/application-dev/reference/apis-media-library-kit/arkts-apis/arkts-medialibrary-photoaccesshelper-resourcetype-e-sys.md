@@ -1,5 +1,9 @@
 # ResourceType
 
+```TypeScript
+enum ResourceType
+```
+
 Enumerates the types of the resources to write.
 
 **Since:** 11

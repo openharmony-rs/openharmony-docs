@@ -1,5 +1,9 @@
 # SharedAlbumAsset (System API)
 
+```TypeScript
+interface SharedAlbumAsset
+```
+
 Defines the shared album asset
 
 **Since:** 14

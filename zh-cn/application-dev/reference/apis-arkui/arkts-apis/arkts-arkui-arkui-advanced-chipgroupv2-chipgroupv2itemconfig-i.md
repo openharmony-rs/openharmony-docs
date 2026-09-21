@@ -1,5 +1,9 @@
 # ChipGroupV2ItemConfig
 
+```TypeScript
+export interface ChipGroupV2ItemConfig
+```
+
 ChipGroupV2ItemConfig定义每个ChipV2的非通用属性配置。
 
 **起始版本：** 26.0.0
@@ -104,8 +108,8 @@ closeIcon?: ChipV2CloseConfig
 
 默认值：
 
-- fontSize默认值：size为ChipV2Size.SMALL时，默认值为`&#36;r('sys.float.chip_small_font_size')`；其他情况默认值为  
-`&#36;r('sys.float.chip_normal_font_size')`。  
+- fontSize默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为  
+`$r('sys.float.chip_normal_font_size')`。  
 - 无障碍默认值：无无障碍描述。
 
 值为undefined时，按默认值处理。

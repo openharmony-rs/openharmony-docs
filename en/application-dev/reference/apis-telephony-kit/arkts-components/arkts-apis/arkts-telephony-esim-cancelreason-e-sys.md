@@ -1,5 +1,9 @@
 # CancelReason (System API)
 
+```TypeScript
+export enum CancelReason
+```
+
 Reason for canceling the session.
 
 **Since:** 18

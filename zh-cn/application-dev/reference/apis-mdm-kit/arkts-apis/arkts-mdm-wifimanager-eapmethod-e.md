@@ -1,5 +1,9 @@
 # EapMethod
 
+```TypeScript
+enum EapMethod
+```
+
 表示EAP认证方式的枚举。
 
 > **说明：** 

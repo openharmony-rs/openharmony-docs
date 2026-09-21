@@ -1,5 +1,9 @@
 # CloudFileInfo
 
+```TypeScript
+interface CloudFileInfo
+```
+
 应用本地和云端文件个数以及大小信息。
 
 **起始版本：** 20

@@ -1,14 +1,10 @@
 # ToneHapticsMode（系统接口）
 
+```TypeScript
+enum ToneHapticsMode
+```
+
 枚举，系统铃音场景的振动模式。
-
-| 名称 | 值 | 说明 |  
-| ----------------------------- | -- | -------------------- |  
-| [NONE](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | 0 | 无振动模式。 |
-| [SYNC](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | 1 | 与铃音同步模式。 |
-| [NON_SYNC](arkts-audio-systemsoundmanager-tonehapticsmode-e-sys.md) | 2 | 非同步模式。 |
-
-@enum {int}
 
 **起始版本：** 14
 

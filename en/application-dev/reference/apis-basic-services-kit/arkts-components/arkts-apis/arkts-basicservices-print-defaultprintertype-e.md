@@ -1,5 +1,9 @@
 # DefaultPrinterType
 
+```TypeScript
+enum DefaultPrinterType
+```
+
 Enumerates default printer types.
 
 **Since:** 18

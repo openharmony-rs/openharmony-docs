@@ -1,5 +1,9 @@
 # SimAuthenticationResponse（系统接口）
 
+```TypeScript
+export interface SimAuthenticationResponse
+```
+
 **起始版本：** 14
 
 **系统能力：** SystemCapability.Telephony.CoreService

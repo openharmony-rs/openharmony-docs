@@ -1,5 +1,9 @@
 # BatteryPluggedType
 
+```TypeScript
+export enum BatteryPluggedType
+```
+
 Enumerates charger types.
 
 **Since:** 6

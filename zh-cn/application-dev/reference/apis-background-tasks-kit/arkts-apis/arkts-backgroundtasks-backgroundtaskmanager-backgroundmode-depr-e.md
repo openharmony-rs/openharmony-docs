@@ -1,5 +1,9 @@
 # BackgroundMode
 
+```TypeScript
+export enum BackgroundMode
+```
+
 长时任务类型。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # QueryEntityParam
 
+```TypeScript
+interface QueryEntityParam
+```
+
 Parameter for query entity.
 
 **Since:** 26.0.0

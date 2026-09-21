@@ -1,5 +1,9 @@
 # AVInputCastPicker
 
+```TypeScript
+export declare struct AVInputCastPicker
+```
+
 Picker used to show available input devices. @struct { AVInputCastPicker }
 
 **Since:** 20
@@ -36,7 +40,7 @@ customPicker?: CustomBuilder
 
 Custom picker.
 
-**Type:** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-custombuilder-t.md)
+**Type:** [CustomBuilder](../../apis-arkui/arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **Since:** 20
 

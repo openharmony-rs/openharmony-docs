@@ -1,5 +1,9 @@
 # CertType
 
+```TypeScript
+export enum CertType
+```
+
 Enumerates certificate types.
 
 **Since:** 11

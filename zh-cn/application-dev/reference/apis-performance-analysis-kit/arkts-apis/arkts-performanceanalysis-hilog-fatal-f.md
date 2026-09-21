@@ -31,10 +31,14 @@ function fatal(domain: number, tag: string, format: string, ...args: any[]): voi
 
 **示例**
 
-```TypeScript
 输出一条FATAL信息，格式字符串为。其中变参为明文显示的字符串；为隐私的整型数。
-```
 
 ```TypeScript
+hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
+```
+
 字符串填入，整型数填入，输出日志：
+
+```TypeScript
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```

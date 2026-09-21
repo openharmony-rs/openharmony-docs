@@ -1,5 +1,9 @@
 # ColorManagementQuery
 
+```TypeScript
+interface ColorManagementQuery
+```
+
 ColorManagementQuery provides the APIs for color space query.
 
 **Since:** 12
@@ -37,3 +41,5 @@ Obtains the supported color spaces.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage.<br>**Applicable version:** 12 - 17 |
+
+**Examples**

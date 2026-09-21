@@ -66,6 +66,8 @@ Opens a file or directory. This API uses a promise to return the result. This AP
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
+<a id="open-1"></a>
+
 ## open
 
 ```TypeScript
@@ -118,6 +120,8 @@ Opens a file or directory. This API uses an asynchronous callback to return the 
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="open-2"></a>
 
 ## open
 

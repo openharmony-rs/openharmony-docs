@@ -1,5 +1,9 @@
 # AudioCapturerOptions
 
+```TypeScript
+interface AudioCapturerOptions
+```
+
 音频采集器选项信息。
 
 **起始版本：** 8
@@ -56,11 +60,7 @@ SystemCapability.Multimedia.Audio.PlaybackCapture
 playbackCaptureMode?: AudioPlaybackCaptureMode
 ```
 
-内录模式。可设置为AudioPlaybackCaptureMode中的枚举值或其按位或组合，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。
-
-26.0.0
-
-此接口仅可在Stage模型下使用。
+内录模式。可设置为AudioPlaybackCaptureMode中的枚举值或其按位或组合，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。。
 
 SystemCapability.Multimedia.Audio.PlaybackCapture
 

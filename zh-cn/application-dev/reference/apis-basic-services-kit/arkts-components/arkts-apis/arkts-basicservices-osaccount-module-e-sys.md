@@ -1,5 +1,9 @@
 # Module（系统接口）
 
+```TypeScript
+enum Module
+```
+
 表示获取信息的模块的枚举。
 
 **起始版本：** 8

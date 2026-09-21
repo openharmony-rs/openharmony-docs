@@ -1,5 +1,9 @@
 # PositionWithAffinity
 
+```TypeScript
+interface PositionWithAffinity
+```
+
 Describes the position and affinity of a glyph.
 
 **Since:** 12

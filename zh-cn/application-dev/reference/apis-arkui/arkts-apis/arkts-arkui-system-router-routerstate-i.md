@@ -1,5 +1,9 @@
 # RouterState
 
+```TypeScript
+export interface RouterState
+```
+
 定义路由器的状态。
 
 **起始版本：** 3

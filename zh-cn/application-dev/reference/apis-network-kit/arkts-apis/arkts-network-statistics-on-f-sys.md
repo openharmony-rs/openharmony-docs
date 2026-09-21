@@ -38,3 +38,17 @@ function on(type: 'netStatsChange', callback: Callback<NetStatsChangeInfo>): voi
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
+
+**示例**
+
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+class IFace {
+  iface: string = ""
+  uid?: number = 0
+}
+statistics.on('netStatsChange', (data: IFace) => {
+  console.info('on netStatsChange' + JSON.stringify(data));
+});
+```

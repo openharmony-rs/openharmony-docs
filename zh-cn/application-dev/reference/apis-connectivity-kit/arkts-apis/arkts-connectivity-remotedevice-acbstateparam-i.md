@@ -1,5 +1,9 @@
 # AcbStateParam
 
+```TypeScript
+interface AcbStateParam
+```
+
 订阅的逻辑链路连接状态变化事件上报结果。
 
 **起始版本：** 26.0.0

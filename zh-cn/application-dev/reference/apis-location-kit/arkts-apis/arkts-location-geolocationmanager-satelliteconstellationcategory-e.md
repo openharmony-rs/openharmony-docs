@@ -1,5 +1,9 @@
 # SatelliteConstellationCategory
 
+```TypeScript
+export enum SatelliteConstellationCategory
+```
+
 卫星星座类型。
 
 **起始版本：** 12

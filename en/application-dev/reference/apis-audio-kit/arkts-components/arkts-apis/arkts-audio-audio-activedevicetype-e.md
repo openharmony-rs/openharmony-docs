@@ -1,5 +1,9 @@
 # ActiveDeviceType
 
+```TypeScript
+enum ActiveDeviceType
+```
+
 Enumerates the active device types.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # AVSessionDescriptor
 
+```TypeScript
+interface AVSessionDescriptor
+```
+
 会话的相关描述信息。
 
 **起始版本：** 23

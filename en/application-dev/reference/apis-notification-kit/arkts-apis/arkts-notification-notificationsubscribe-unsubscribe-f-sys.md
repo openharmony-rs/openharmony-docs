@@ -63,22 +63,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let onDisconnectCallback = () => {
-  console.info("subscribe disconnect");
-}
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onDisconnect: onDisconnectCallback
-};
-notificationSubscribe.unsubscribe(subscriber).then(() => {
-  console.info("unsubscribe success");
-}).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="unsubscribe-1"></a>
 
 ## unsubscribe
 
@@ -123,4 +109,18 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **Examples**
 
-See [unsubscribe](#unsubscribe)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onDisconnectCallback = () => {
+  console.info("subscribe disconnect");
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDisconnect: onDisconnectCallback
+};
+notificationSubscribe.unsubscribe(subscriber).then(() => {
+  console.info("unsubscribe success");
+}).catch((err: BusinessError) => {
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
+});
+```

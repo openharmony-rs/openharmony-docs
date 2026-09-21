@@ -46,6 +46,8 @@ function notifySaveAsResult(parameter: AbilityResult, requestCode: number, callb
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="notifysaveasresult-1"></a>
+
 ## notifySaveAsResult
 
 ```TypeScript

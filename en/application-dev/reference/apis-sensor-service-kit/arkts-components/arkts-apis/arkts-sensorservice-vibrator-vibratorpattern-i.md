@@ -1,5 +1,9 @@
 # VibratorPattern
 
+```TypeScript
+interface VibratorPattern
+```
+
 Defines the vibration sequence.
 
 **Since:** 18

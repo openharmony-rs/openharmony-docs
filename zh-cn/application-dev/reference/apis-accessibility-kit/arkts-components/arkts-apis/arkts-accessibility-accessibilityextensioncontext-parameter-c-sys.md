@@ -1,5 +1,9 @@
 # Parameter（系统接口）
 
+```TypeScript
+export declare class Parameter
+```
+
 无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。不同操作类型需设置不同的参数字段，各操作类型与参数字段的对应关系，详见[AccessibilityAction](arkts-accessibility-accessibility-accessibilityaction-e-sys.md)（无障碍节点元素可执行的操作）。
 
 **起始版本：** 20
@@ -173,3 +177,13 @@ spanId?: string
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
+
+**示例**
+
+选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下：
+
+```TypeScript
+import { Parameter } from '@kit.AccessibilityKit';
+
+let parameter : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true };
+```

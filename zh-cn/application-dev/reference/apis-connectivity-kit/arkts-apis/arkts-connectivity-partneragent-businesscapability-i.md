@@ -1,5 +1,9 @@
 # BusinessCapability
 
+```TypeScript
+interface BusinessCapability
+```
+
 描述设备支持的业务功能。
 
 **起始版本：** 23

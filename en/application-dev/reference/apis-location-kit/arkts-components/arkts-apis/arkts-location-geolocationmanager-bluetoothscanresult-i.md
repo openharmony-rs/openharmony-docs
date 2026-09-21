@@ -1,5 +1,9 @@
 # BluetoothScanResult
 
+```TypeScript
+export interface BluetoothScanResult
+```
+
 Describes the contents of the bluetooth scan results.
 
 **Since:** 16

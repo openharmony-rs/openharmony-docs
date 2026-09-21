@@ -1,5 +1,9 @@
 # TranslateOptions（系统接口）
 
+```TypeScript
+interface TranslateOptions
+```
+
 平移参数。
 
 **起始版本：** 9

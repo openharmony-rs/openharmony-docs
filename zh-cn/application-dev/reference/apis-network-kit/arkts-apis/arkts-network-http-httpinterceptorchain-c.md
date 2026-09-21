@@ -1,5 +1,9 @@
 # HttpInterceptorChain
 
+```TypeScript
+export class HttpInterceptorChain
+```
+
 HTTP拦截器链。
 
 **起始版本：** 22

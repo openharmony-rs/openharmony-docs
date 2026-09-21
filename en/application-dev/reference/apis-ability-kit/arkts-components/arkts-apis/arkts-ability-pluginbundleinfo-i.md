@@ -1,5 +1,9 @@
 # PluginBundleInfo
 
+```TypeScript
+export interface PluginBundleInfo
+```
+
 Defines the plugin information.
 
 **Since:** 26.0.0

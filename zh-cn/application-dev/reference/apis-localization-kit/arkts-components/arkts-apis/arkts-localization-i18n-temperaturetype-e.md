@@ -1,5 +1,9 @@
 # TemperatureType
 
+```TypeScript
+export enum TemperatureType
+```
+
 温度单位的枚举。
 
 **起始版本：** 18

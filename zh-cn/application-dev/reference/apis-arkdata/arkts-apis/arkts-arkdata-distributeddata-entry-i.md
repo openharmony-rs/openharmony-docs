@@ -1,5 +1,9 @@
 # Entry
 
+```TypeScript
+interface Entry
+```
+
 存储在数据库中的键值对。
 
 **起始版本：** 7

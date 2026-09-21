@@ -1,7 +1,7 @@
 # ParamType
 
 ```TypeScript
-type ParamType = number | number | number | string | boolean | Array<string>
+type ParamType = number | number | string | boolean | Array<string>
 ```
 
 事件自定义参数值的类型。

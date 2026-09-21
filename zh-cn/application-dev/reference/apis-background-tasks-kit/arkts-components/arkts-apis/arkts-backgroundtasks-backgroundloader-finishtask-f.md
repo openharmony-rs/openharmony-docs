@@ -14,7 +14,7 @@ function finishTask(taskInfo: TaskInfo): void
 
 结束后台加载任务。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

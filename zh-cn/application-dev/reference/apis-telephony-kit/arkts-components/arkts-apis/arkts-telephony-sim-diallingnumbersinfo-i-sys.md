@@ -1,5 +1,9 @@
 # DiallingNumbersInfo（系统接口）
 
+```TypeScript
+export interface DiallingNumbersInfo
+```
+
 **起始版本：** 8
 
 **系统能力：** SystemCapability.Telephony.CoreService

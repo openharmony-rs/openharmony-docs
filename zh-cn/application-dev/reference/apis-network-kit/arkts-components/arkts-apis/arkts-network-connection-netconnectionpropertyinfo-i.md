@@ -1,5 +1,9 @@
 # NetConnectionPropertyInfo
 
+```TypeScript
+export interface NetConnectionPropertyInfo
+```
+
 网络连接信息。
 
 **起始版本：** 11

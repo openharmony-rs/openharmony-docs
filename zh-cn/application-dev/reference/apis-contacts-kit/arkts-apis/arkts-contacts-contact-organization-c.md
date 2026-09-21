@@ -1,5 +1,9 @@
 # Organization
 
+```TypeScript
+class Organization
+```
+
 联系人的组织类。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # SingleSelectionMode
 
+```TypeScript
+export enum SingleSelectionMode
+```
+
 Enumeration type of single selection mode
 
 @enum { number } SingleSelectionMode

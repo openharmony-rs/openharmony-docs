@@ -1,5 +1,9 @@
 # SaveModeFlag
 
+```TypeScript
+enum SaveModeFlag
+```
+
 Enumerates the application state saving modes. This enum is used as an input parameter of [enableAppRecovery](arkts-ability-apprecovery-enableapprecovery-f.md).
 
 **Since:** 9

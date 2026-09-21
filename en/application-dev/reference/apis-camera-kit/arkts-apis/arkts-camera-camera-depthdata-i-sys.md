@@ -1,5 +1,9 @@
 # DepthData (System API)
 
+```TypeScript
+interface DepthData
+```
+
 Describes a depth data object.
 
 **Since:** 13

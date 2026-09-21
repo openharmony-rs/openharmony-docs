@@ -1,5 +1,9 @@
 # AnalysisType (System API)
 
+```TypeScript
+enum AnalysisType
+```
+
 Enumerates the smart analysis types.
 
 **Since:** 11

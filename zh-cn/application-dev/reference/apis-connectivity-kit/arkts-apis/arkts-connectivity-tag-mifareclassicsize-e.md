@@ -1,5 +1,9 @@
 # MifareClassicSize
 
+```TypeScript
+enum MifareClassicSize
+```
+
 MIFARE Classic标签存储大小的定义。
 
 **起始版本：** 9

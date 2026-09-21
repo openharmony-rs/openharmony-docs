@@ -1,5 +1,9 @@
 # DeviceRole
 
+```TypeScript
+enum DeviceRole
+```
+
 Enumerates the device roles.
 
 **Since:** 7

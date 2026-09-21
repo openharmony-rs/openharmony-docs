@@ -68,25 +68,8 @@ networkManager.getMac(wantTemp, 'eth0', (err, result) => {
 });
 ```
 
-```TypeScript
-import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-// Replace parameters with actual values.
-networkManager.getMac(wantTemp, 'eth0').then((result) => {
-  console.info(`Succeeded in getting mac, result : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get mac. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getmac-1"></a>
 
 ## getMac
 
@@ -135,4 +118,21 @@ Obtains the MAC address of a device based on the network interface. This API use
 
 **Examples**
 
-See [getMac](#getmac)
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Replace parameters with actual values.
+networkManager.getMac(wantTemp, 'eth0').then((result) => {
+  console.info(`Succeeded in getting mac, result : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get mac. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # document(文件交互)
 
+```TypeScript
+declare namespace document
+```
+
 document
 
 **起始版本：** 6

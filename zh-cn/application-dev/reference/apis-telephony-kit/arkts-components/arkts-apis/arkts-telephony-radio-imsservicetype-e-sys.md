@@ -1,5 +1,9 @@
 # ImsServiceType（系统接口）
 
+```TypeScript
+export enum ImsServiceType
+```
+
 Indicates the type of IMS service.
 
 **起始版本：** 9

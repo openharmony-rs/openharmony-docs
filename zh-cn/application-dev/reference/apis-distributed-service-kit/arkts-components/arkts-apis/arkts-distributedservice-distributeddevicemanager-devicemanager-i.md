@@ -1,5 +1,9 @@
 # DeviceManager
 
+```TypeScript
+interface DeviceManager
+```
+
 设备管理实例，是分布式设备管理方法的调用入口，提供设备发现、设备认证、状态监听和信息查询等能力。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
 
 **起始版本：** 10
@@ -130,24 +134,7 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 创建设备管理实例
-  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-  // 获取所有在线可信设备
-  dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
-    console.info('get available device info: ' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get available device list. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  let error: BusinessError = err as BusinessError;
-  console.error(`Failed to get available device list. Code: ${error.code}, message: ${error.message}`);
-}
-```
+<a id="getavailabledevicelist-1"></a>
 
 ## getAvailableDeviceList
 
@@ -178,7 +165,24 @@ getAvailableDeviceList(): Promise<Array<DeviceBasicInfo>>
 
 **示例**
 
-参见 [getAvailableDeviceList](#getavailabledevicelist)
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 获取所有在线可信设备
+  dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
+    console.info('get available device info: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get available device list. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get available device list. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## getAvailableDeviceListSync
 
@@ -540,6 +544,35 @@ off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChange; 
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DeviceStateChangeData {
+  action: distributedDeviceManager.DeviceStateChange = 0;
+  device: distributedDeviceManager.DeviceBasicInfo = {
+    deviceId: '',
+    deviceName: '',
+    deviceType: '',
+    networkId: ''
+  };
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 取消注册设备状态变化回调
+  dmInstance.off('deviceStateChange', (data: DeviceStateChangeData) => {
+    console.info('deviceStateChange' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to unregister device state change. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('discoverSuccess')
 
 ```TypeScript
@@ -567,6 +600,34 @@ off(type: 'discoverSuccess', callback?: Callback<{ device: DeviceBasicInfo; }>):
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DiscoverSuccessData {
+  device: distributedDeviceManager.DeviceBasicInfo = {
+    deviceId: '',
+    deviceName: '',
+    deviceType: '',
+    networkId: ''
+  };
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 取消注册设备发现成功回调
+  dmInstance.off('discoverSuccess', (data: DiscoverSuccessData) => {
+    console.info('discoverSuccess' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to unregister discover success callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## off('deviceNameChange')
 
@@ -596,6 +657,29 @@ off(type: 'deviceNameChange', callback?: Callback<{ deviceName: string; }>): voi
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DeviceNameChangeData {
+  deviceName: string = '';
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 取消注册设备名称变更回调
+  dmInstance.off('deviceNameChange', (data: DeviceNameChangeData) => {
+    console.info('deviceNameChange' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to unregister device name change callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('discoverFailure')
 
 ```TypeScript
@@ -623,6 +707,29 @@ off(type: 'discoverFailure', callback?: Callback<{ reason: number; }>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DiscoverFailureData {
+  reason: number = 0;
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 取消注册设备发现失败回调
+  dmInstance.off('discoverFailure', (data: DiscoverFailureData) => {
+    console.info('discoverFailure' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to unregister discover failure callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## off('serviceDie')
 
@@ -652,6 +759,25 @@ off(type: 'serviceDie', callback?: Callback<{}>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 取消注册设备管理服务死亡回调
+  dmInstance.off('serviceDie', () => {
+    console.info('serviceDie off');
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to unregister service die callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('deviceStateChange')
 
 ```TypeScript
@@ -679,6 +805,35 @@ on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChange; de
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DeviceStateChangeData {
+  action: distributedDeviceManager.DeviceStateChange = 0;
+  device: distributedDeviceManager.DeviceBasicInfo = {
+    deviceId: '',
+    deviceName: '',
+    deviceType: '',
+    networkId: ''
+  };
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 注册设备状态变化回调
+  dmInstance.on('deviceStateChange', (data: DeviceStateChangeData) => {
+    console.info('deviceStateChange on:' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to register device state change. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## on('discoverSuccess')
 
@@ -708,6 +863,34 @@ on(type: 'discoverSuccess', callback: Callback<{ device: DeviceBasicInfo; }>): v
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DiscoverSuccessData {
+  device: distributedDeviceManager.DeviceBasicInfo = {
+    deviceId: '',
+    deviceName: '',
+    deviceType: '',
+    networkId: ''
+  };
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 注册设备发现成功回调
+  dmInstance.on('discoverSuccess', (data: DiscoverSuccessData) => {
+    console.info('discoverSuccess:' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to register discover success callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('deviceNameChange')
 
 ```TypeScript
@@ -735,6 +918,29 @@ on(type: 'deviceNameChange', callback: Callback<{ deviceName: string; }>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DeviceNameChangeData {
+  deviceName: string = '';
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 注册设备名称变更回调
+  dmInstance.on('deviceNameChange', (data: DeviceNameChangeData) => {
+    console.info('deviceNameChange on:' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to register device name change callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## on('discoverFailure')
 
@@ -764,6 +970,29 @@ on(type: 'discoverFailure', callback: Callback<{ reason: number; }>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class DiscoverFailureData {
+  reason: number = 0;
+}
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 注册设备发现失败回调
+  dmInstance.on('discoverFailure', (data: DiscoverFailureData) => {
+    console.info('discoverFailure on:' + JSON.stringify(data));
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to register discover failure callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('serviceDie')
 
 ```TypeScript
@@ -791,6 +1020,25 @@ on(type: 'serviceDie', callback: Callback<{}>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+
+**示例**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 创建设备管理实例
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  // 注册设备管理服务死亡回调
+  dmInstance.on('serviceDie', () => {
+    console.info('serviceDie on');
+  });
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to register service die callback. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## startDiscovering
 

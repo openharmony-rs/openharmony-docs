@@ -1,5 +1,9 @@
 # Poi
 
+```TypeScript
+export interface Poi
+```
+
 Describes the information about a single POI.
 
 **Since:** 19

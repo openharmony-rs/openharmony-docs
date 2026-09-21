@@ -1,5 +1,9 @@
 # OptionsData
 
+```TypeScript
+interface OptionsData
+```
+
 Defines optional parameters for a device certificate request.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # BundleStatusCallback (System API)
 
+```TypeScript
+export interface BundleStatusCallback
+```
+
 
 > **NOTE:** 
 > 

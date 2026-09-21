@@ -1,10 +1,15 @@
 # Progress属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。
+```TypeScript
+declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof ProgressStyleMap,
+  Style extends ProgressStyleMap[Type] = ProgressStyleMap[Type]> extends CommonMethod<ProgressAttribute<Type>>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
 
-**继承/实现关系：** ProgressAttribute extends CommonMethod&lt;ProgressAttribute&lt;Type&gt;&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** ProgressAttribute extends CommonMethod<ProgressAttribute<Type>>
 
 **起始版本：** 7
 
@@ -18,7 +23,7 @@ color(value: ResourceColor | LinearGradient)
 
 设置进度条前景色。
 
-从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用DataPanel。
+从API version 10开始支持利用LinearGradient设置Ring样式的渐变色。Ring类型不建议设置透明度，如需设置透明度，建议使用[DataPanel](arkts-arkui-datapanel-comp.md#data_panel)。
 
 从API version 23开始支持利用LinearGradient设置Linear样式和Capsule样式的渐变色。API version 22及之前版本使用该方式设置时，会以默认主题色显示。
 
@@ -56,7 +61,7 @@ contentModifier(modifier: ContentModifier<ProgressConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[ProgressConfiguration](arkts-arkui-progressconfiguration-i.md)&gt; | 是 | The contentModifier of progress. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[ProgressConfiguration](arkts-arkui-progress-comp-progressconfiguration-i.md)&gt; | 是 | The contentModifier of progress. |
 
 ## privacySensitive
 
@@ -68,7 +73,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 > **说明：** 
 > 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -84,7 +89,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用FormComponent组件设置[隐私遮罩](arkts-arkui-commonmethod-c.md#obscured)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br> 默认值：false <br>**说明：** <br>设置null表示不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件设置[隐私遮罩](arkts-arkui-common-comp-commonmethod-c.md#obscured)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## style
 
@@ -106,7 +111,7 @@ style(value: Style)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Style | 是 | 组件的样式。<br>**说明：** 不同的type需分别对应相应的style属性设置，详细映射关系参考[ProgressStyleMap](arkts-arkui-progressstylemap-i.md)。<br>- CapsuleStyleOptions：设置Capsule的样式。<br>- RingStyleOptions：设置Ring的样式。<br>- LinearStyleOptions：设置Linear的样式。<br>- ScaleRingStyleOptions：设置ScaleRing的样式。<br>- EclipseStyleOptions：设置Eclipse的样式。<br>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
+| value | Style | 是 | 组件的样式。<br>**说明：** 不同的type需分别对应相应的style属性设置，详细映射关系参考[ProgressStyleMap](arkts-arkui-progress-comp-progressstylemap-i.md)。<br>- CapsuleStyleOptions：设置Capsule的样式。<br>- RingStyleOptions：设置Ring的样式。<br>- LinearStyleOptions：设置Linear的样式。<br>- ScaleRingStyleOptions：设置ScaleRing的样式。<br>- EclipseStyleOptions：设置Eclipse的样式。<br>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
 
 ## value
 

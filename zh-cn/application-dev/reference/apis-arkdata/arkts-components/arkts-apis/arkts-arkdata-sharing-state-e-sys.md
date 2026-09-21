@@ -1,5 +1,9 @@
 # State（系统接口）
 
+```TypeScript
+enum State
+```
+
 端云共享状态。
 
 **起始版本：** 11

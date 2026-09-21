@@ -1,5 +1,9 @@
 # RingtoneType（系统接口）
 
+```TypeScript
+export enum RingtoneType
+```
+
 描述自定义铃声类型。
 
 **起始版本：** 21

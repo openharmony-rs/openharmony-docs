@@ -20,6 +20,8 @@ Deletes a key. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Security.Huks.Core
@@ -48,16 +50,36 @@ Deletes a key. This API uses an asynchronous callback to return the result.
 
 **Examples**
 
-```TypeScript
 ArkTS sample code:
-```
 
 ```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* Set options to emptyOptions. */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+huks.deleteKeyItem(keyAlias, emptyOptions, (error) => {
+  if (error) {
+    console.error(`callback: deleteKeyItem failed`);
+  } else {
+    console.info(`callback: deleteKeyItem key success`);
+  }
+});
+```
+
 JS sample code:
 
 > NOTE
 > 
 > The JS sample code is used only for the lightweight devices.
+
+```TypeScript
+<stack class="container">
+    <input type="button" class="deleteBtn" @click="deleteKey">Delete Key</input>
+    <text class="result">{{result}}</text>
+</stack>
 ```
 
 ```TypeScript
@@ -122,20 +144,8 @@ export default {
 };
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* Set options to emptyOptions. */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-huks.deleteKeyItem(keyAlias, emptyOptions)
-  .then(() => {
-    console.info(`promise: deleteKeyItem key success`);
-  });
-```
-
+<a id="deletekeyitem-1"></a>
 
 ## deleteKeyItem
 
@@ -185,4 +195,16 @@ Deletes a key. This API uses a promise to return the result.
 
 **Examples**
 
-See [deleteKeyItem](#deletekeyitem)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* Set options to emptyOptions. */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+huks.deleteKeyItem(keyAlias, emptyOptions)
+  .then(() => {
+    console.info(`promise: deleteKeyItem key success`);
+  });
+```

@@ -1,5 +1,9 @@
 # WifiSecurityType
 
+```TypeScript
+enum WifiSecurityType
+```
+
 表示加密类型的枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # RouteInfo
 
+```TypeScript
+export interface RouteInfo
+```
+
 网络路由信息。
 
 **起始版本：** 8

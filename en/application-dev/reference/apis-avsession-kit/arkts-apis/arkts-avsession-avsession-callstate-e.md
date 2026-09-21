@@ -1,5 +1,9 @@
 # CallState
 
+```TypeScript
+enum CallState
+```
+
 Enumeration of current call state
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # BackgroundTaskSubscriber（系统接口）
 
+```TypeScript
+export interface BackgroundTaskSubscriber
+```
+
 后台任务监听。
 
 **起始版本：** 23

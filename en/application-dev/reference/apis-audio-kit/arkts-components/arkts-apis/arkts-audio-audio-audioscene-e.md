@@ -1,5 +1,9 @@
 # AudioScene
 
+```TypeScript
+enum AudioScene
+```
+
 Enumerates the audio scenes.
 
 **Since:** 8

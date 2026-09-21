@@ -1,8 +1,7 @@
 # FocusRule（系统接口）
 
 ```TypeScript
-export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' |
-'checkSelf' | 'checkSelfBypassDescendants'
+export type FocusRule = 'bypassSelf' | 'bypassSelfDescendants''checkSelf' | 'checkSelfBypassDescendants'
 ```
 
 表示查找可聚焦节点时，如何判断起始节点及其子节点的聚焦能力。

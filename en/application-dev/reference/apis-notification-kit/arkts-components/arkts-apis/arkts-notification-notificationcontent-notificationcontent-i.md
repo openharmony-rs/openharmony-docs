@@ -1,5 +1,9 @@
 # NotificationContent
 
+```TypeScript
+export interface NotificationContent
+```
+
 Describes the notification contents.
 
 **Since:** 7

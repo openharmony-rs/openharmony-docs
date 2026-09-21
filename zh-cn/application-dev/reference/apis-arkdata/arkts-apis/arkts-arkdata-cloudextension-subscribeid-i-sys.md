@@ -1,5 +1,9 @@
 # SubscribeId（系统接口）
 
+```TypeScript
+export interface SubscribeId
+```
+
 订阅ID。
 
 **起始版本：** 11

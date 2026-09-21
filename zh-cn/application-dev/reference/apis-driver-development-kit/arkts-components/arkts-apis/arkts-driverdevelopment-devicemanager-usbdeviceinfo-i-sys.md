@@ -1,5 +1,9 @@
 # USBDeviceInfo（系统接口）
 
+```TypeScript
+interface USBDeviceInfo extends DeviceInfo
+```
+
 USB设备详细信息，继承自[DeviceInfo](arkts-driverdevelopment-devicemanager-deviceinfo-i-sys.md)。
 
 **继承/实现关系：** USBDeviceInfo extends [DeviceInfo](arkts-driverdevelopment-devicemanager-deviceinfo-i-sys.md)

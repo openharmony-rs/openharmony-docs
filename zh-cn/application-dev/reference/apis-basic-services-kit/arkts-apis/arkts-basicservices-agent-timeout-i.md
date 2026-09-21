@@ -1,5 +1,9 @@
 # Timeout
 
+```TypeScript
+interface Timeout
+```
+
 任务的超时配置。任务处于等待状态的时间不参与计算，上传下载任务会存在以下任务等待的原因: [WaitingReason&lt;sup&gt;20+&lt;/sup&gt;](arkts-basicservices-agent-waitingreason-e.md)。
 
 **起始版本：** 20

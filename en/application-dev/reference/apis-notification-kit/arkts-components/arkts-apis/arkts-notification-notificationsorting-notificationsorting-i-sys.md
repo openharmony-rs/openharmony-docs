@@ -1,5 +1,9 @@
 # NotificationSorting (System API)
 
+```TypeScript
+export interface NotificationSorting
+```
+
 The **NotificationSorting** module provides APIs for defining the sorting information of active notifications.
 
 **Since:** 7

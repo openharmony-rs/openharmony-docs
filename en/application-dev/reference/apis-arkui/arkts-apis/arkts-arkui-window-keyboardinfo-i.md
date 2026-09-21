@@ -1,5 +1,9 @@
 # KeyboardInfo
 
+```TypeScript
+interface KeyboardInfo
+```
+
 Describes the information about the soft keyboard window.
 
 **Since:** 18

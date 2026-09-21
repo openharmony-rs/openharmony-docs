@@ -1,5 +1,9 @@
 # MatchingWlanInfo
 
+```TypeScript
+export interface MatchingWlanInfo
+```
+
 匹配的WLAN信息结构体。
 
 **起始版本：** 26.0.0

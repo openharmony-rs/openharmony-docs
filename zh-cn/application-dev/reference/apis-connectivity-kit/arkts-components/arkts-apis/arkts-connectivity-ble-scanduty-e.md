@@ -1,5 +1,9 @@
 # ScanDuty
 
+```TypeScript
+enum ScanDuty
+```
+
 枚举，扫描模式，表示不同的扫描性能和功耗情况。
 
 **起始版本：** 10

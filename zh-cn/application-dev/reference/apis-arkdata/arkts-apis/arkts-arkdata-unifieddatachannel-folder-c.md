@@ -1,5 +1,9 @@
 # Folder
 
+```TypeScript
+class Folder extends File
+```
+
 文件夹类型数据，是[File](arkts-arkdata-unifieddatachannel-file-c.md)的子类，用于描述文件夹。
 
 **继承/实现关系：** Folder extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

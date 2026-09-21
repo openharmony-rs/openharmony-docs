@@ -1,5 +1,9 @@
 # ThreadAffinityMode
 
+```TypeScript
+export enum ThreadAffinityMode
+```
+
 Enum for provides CPU thread affinity mode
 
 **Since:** 10

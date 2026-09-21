@@ -1,5 +1,9 @@
 # PrintDocumentAdapter
 
+```TypeScript
+interface PrintDocumentAdapter
+```
+
 第三方应用程序实现此接口来渲染要打印的文件。
 
 **起始版本：** 11

@@ -33,6 +33,8 @@ function getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback<Array<No
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)&gt;&gt; | 是 | 获取通知通道回调函数。 |
 
 
+<a id="getslotsbybundle-1"></a>
+
 ## getSlotsByBundle
 
 ```TypeScript

@@ -64,6 +64,8 @@ try {
 ```
 
 
+<a id="getlocationpolicy-1"></a>
+
 ## getLocationPolicy
 
 ```TypeScript

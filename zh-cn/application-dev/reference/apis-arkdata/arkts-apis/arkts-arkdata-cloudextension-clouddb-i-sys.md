@@ -1,5 +1,9 @@
 # CloudDB（系统接口）
 
+```TypeScript
+export interface CloudDB
+```
+
 提供云数据库操作接口的类。
 
 **起始版本：** 11

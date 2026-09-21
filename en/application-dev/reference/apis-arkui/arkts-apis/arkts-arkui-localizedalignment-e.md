@@ -1,5 +1,9 @@
 # LocalizedAlignment
 
+```TypeScript
+declare enum LocalizedAlignment
+```
+
 LocalizedAlignment enumeration description.
 
 @enum { string }

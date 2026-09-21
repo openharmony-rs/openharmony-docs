@@ -1,5 +1,9 @@
 # Array
 
+```TypeScript
+interface Array<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

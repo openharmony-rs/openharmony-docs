@@ -1,5 +1,9 @@
 # CaptureOption
 
+```TypeScript
+interface CaptureOption
+```
+
 设置截取图像的信息。
 
 **起始版本：** 14

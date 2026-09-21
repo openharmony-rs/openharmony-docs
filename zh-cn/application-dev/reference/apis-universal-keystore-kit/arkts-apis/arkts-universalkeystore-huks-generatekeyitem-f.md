@@ -22,6 +22,8 @@ function generateKeyItem(keyAlias: string, options: HuksOptions, callback: Async
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -62,16 +64,55 @@ function generateKeyItem(keyAlias: string, options: HuksOptions, callback: Async
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+/* 以生成ECC密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias: string = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
+];
+let options: huks.HuksOptions = {
+  properties: properties
+};
+/* 生成密钥 */
+huks.generateKeyItem(keyAlias, options, (error) => {
+  if (error) {
+    console.error(`callback: generateKeyItem failed`);
+  } else {
+    console.info(`callback: generateKeyItem key success`);
+  }
+});
+```
+
 JS示例：
 
 > 说明
 > 
 > JS示例代码仅供轻量级设备使用。
+
+```TypeScript
+<stack class="container">
+    <input type="button" class="generateBtn" @click="generateKey">生成密钥</input>
+    <text class="result">{{result}}</text>
+</stack>
 ```
 
 ```TypeScript
@@ -148,39 +189,8 @@ export default {
 };
 ```
 
-```TypeScript
-/* 以生成ECC密钥为例 */
-import { huks } from '@kit.UniversalKeystoreKit';
 
-let keyAlias = 'keyAlias';
-let properties: Array<huks.HuksParam> = [
-  {
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_ECC
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-  },
-  {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-  },
-];
-let options: huks.HuksOptions = {
-  properties: properties
-};
-/* 生成密钥 */
-huks.generateKeyItem(keyAlias, options)
-  .then((data) => {
-    console.info(`promise: generateKeyItem success`);
-  });
-```
-
+<a id="generatekeyitem-1"></a>
 
 ## generateKeyItem
 
@@ -243,4 +253,35 @@ function generateKeyItem(keyAlias: string, options: HuksOptions): Promise<void>
 
 **示例**
 
-参见 generateKeyItem
+```TypeScript
+/* 以生成ECC密钥为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+
+let keyAlias = 'keyAlias';
+let properties: Array<huks.HuksParam> = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_ECC
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  },
+];
+let options: huks.HuksOptions = {
+  properties: properties
+};
+/* 生成密钥 */
+huks.generateKeyItem(keyAlias, options)
+  .then((data) => {
+    console.info(`promise: generateKeyItem success`);
+  });
+```

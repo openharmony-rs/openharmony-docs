@@ -1,5 +1,9 @@
 # CalendarManager
 
+```TypeScript
+export interface CalendarManager
+```
+
 下列API示例中需先通过[getCalendarManager()](arkts-calendar-calendarmanager-getcalendarmanager-f.md)方法获取CalendarManager对象，再通过此对象调用对应方法，进行Calendar的创建、删除、修改、查询等操作。
 
 **起始版本：** 10
@@ -56,30 +60,6 @@ import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
 
 const calendarAccount: calendarManager.CalendarAccount = {
-  name: 'CreateMyCalendarByCallBack',
-  type: calendarManager.CalendarType.LOCAL
-};
-try {
-  calendarMgr?.createCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
-    if (err) {
-      console.error(`Failed to create calendar. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
-    }
-  });
-} catch (error) {
-  // 检查权限是否已成功申请或者参数是否正确。
-  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-const calendarAccount: calendarManager.CalendarAccount = {
   name: 'CreateMyCalendarByPromise',
   type: calendarManager.CalendarType.LOCAL,
   displayName : 'MyApplication'
@@ -91,6 +71,8 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<a id="createcalendar-1"></a>
 
 ## createCalendar
 
@@ -124,7 +106,29 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calenda
 
 **示例**
 
-参见 [createCalendar](#createcalendar)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+const calendarAccount: calendarManager.CalendarAccount = {
+  name: 'CreateMyCalendarByCallBack',
+  type: calendarManager.CalendarType.LOCAL
+};
+try {
+  calendarMgr?.createCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
+    if (err) {
+      console.error(`Failed to create calendar. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
+    }
+  });
+} catch (error) {
+  // 检查权限是否已成功申请或者参数是否正确。
+  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ## deleteCalendar
 
@@ -170,39 +174,6 @@ import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
 
 const calendarAccount: calendarManager.CalendarAccount = {
-  name: 'DeleteMyCalendarByCallBack',
-  type: calendarManager.CalendarType.LOCAL
-};
-calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
-  calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
-    if (err) {
-      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
-      calendarMgr?.deleteCalendar(data, (err1: BusinessError) => {
-        if (err1) {
-          // 检查参数是否正确。
-          console.error(`Failed to delete calendar. Code: ${err1.code}, message: ${err1.message}`);
-        } else {
-          console.info('Succeeded in deleting calendar');
-        }
-      });
-    }
-  });
-}).catch((error: BusinessError) => {
-  // 检查权限是否已成功申请或者参数是否正确。
-  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-const calendarAccount: calendarManager.CalendarAccount = {
   name: 'DeleteMyCalendarByPromise',
   type: calendarManager.CalendarType.LOCAL
 };
@@ -225,6 +196,8 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 })
 ```
+
+<a id="deletecalendar-1"></a>
 
 ## deleteCalendar
 
@@ -258,7 +231,38 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [deleteCalendar](#deletecalendar)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+const calendarAccount: calendarManager.CalendarAccount = {
+  name: 'DeleteMyCalendarByCallBack',
+  type: calendarManager.CalendarType.LOCAL
+};
+calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
+  calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
+    if (err) {
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+      calendarMgr?.deleteCalendar(data, (err1: BusinessError) => {
+        if (err1) {
+          // 检查参数是否正确。
+          console.error(`Failed to delete calendar. Code: ${err1.code}, message: ${err1.message}`);
+        } else {
+          console.info('Succeeded in deleting calendar');
+        }
+      });
+    }
+  });
+}).catch((error: BusinessError) => {
+  // 检查权限是否已成功申请或者参数是否正确。
+  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+})
+```
 
 ## editEvent
 
@@ -342,25 +346,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
 
-calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar[]) => {
-  if (err) {
-    console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
-    data.forEach((calendar) => {
-      const account = calendar.getAccount();
-      console.info(`account -> ${JSON.stringify(account)}`);
-    })
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
 calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
   console.info(`Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
   data.forEach((calendar) => {
@@ -373,6 +358,8 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
   
 });
 ```
+
+<a id="getallcalendars-1"></a>
 
 ## getAllCalendars
 
@@ -405,7 +392,24 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 
 **示例**
 
-参见 [getAllCalendars](#getallcalendars)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar[]) => {
+  if (err) {
+    console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
+    data.forEach((calendar) => {
+      const account = calendar.getAccount();
+      console.info(`account -> ${JSON.stringify(account)}`);
+    })
+  }
+});
+```
 
 ## getCalendar
 
@@ -453,48 +457,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
 
-calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
-  if (err) {
-    // 检查权限是否已成功申请或者参数是否正确。
-    console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
-  }
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
-const calendarAccount: calendarManager.CalendarAccount = {
-  name: 'MyCalendar',
-  type: calendarManager.CalendarType.LOCAL
-};
-calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
-  calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
-    if (err) {
-      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-      // 检查权限是否已成功申请或者参数是否正确。
-    } else {
-      console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
-    }
-  });
-}).catch((error: BusinessError) => {
-  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-  // 检查权限是否已成功申请或者参数是否正确。
-})
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
-import { calendarMgr } from '../entryability/EntryAbility';
-import { calendarManager } from '@kit.CalendarKit';
-
 calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -502,6 +464,8 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getcalendar-1"></a>
 
 ## getCalendar
 
@@ -538,7 +502,33 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 
 **示例**
 
-参见 [getCalendar](#getcalendar)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+const calendarAccount: calendarManager.CalendarAccount = {
+  name: 'MyCalendar',
+  type: calendarManager.CalendarType.LOCAL
+};
+calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
+  console.info(`Succeeded in creating calendar, data -> ${JSON.stringify(data)}`);
+  calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
+    if (err) {
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      // 检查权限是否已成功申请或者参数是否正确。
+    } else {
+      console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
+    }
+  });
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+  // 检查权限是否已成功申请或者参数是否正确。
+})
+```
+
+<a id="getcalendar-2"></a>
 
 ## getCalendar
 
@@ -573,4 +563,18 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 
 **示例**
 
-参见 [getCalendar](#getcalendar)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
+import { calendarMgr } from '../entryability/EntryAbility';
+import { calendarManager } from '@kit.CalendarKit';
+
+calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
+  if (err) {
+    // 检查权限是否已成功申请或者参数是否正确。
+    console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+  }
+});
+```

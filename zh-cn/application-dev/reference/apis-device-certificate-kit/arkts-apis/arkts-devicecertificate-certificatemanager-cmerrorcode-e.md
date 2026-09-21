@@ -1,5 +1,9 @@
 # CMErrorCode
 
+```TypeScript
+export enum CMErrorCode
+```
+
 表示调用证书管理相关API的错误码。
 
 **起始版本：** 11

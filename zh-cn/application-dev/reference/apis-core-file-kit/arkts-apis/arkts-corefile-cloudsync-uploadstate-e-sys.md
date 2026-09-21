@@ -1,5 +1,9 @@
 # UploadState（系统接口）
 
+```TypeScript
+enum UploadState
+```
+
 文件上传状态的枚举。
 
 **起始版本：** 26.0.0

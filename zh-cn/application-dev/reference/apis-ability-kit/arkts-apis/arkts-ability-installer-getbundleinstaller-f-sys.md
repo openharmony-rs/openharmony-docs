@@ -34,6 +34,8 @@ function getBundleInstaller(callback: AsyncCallback<BundleInstaller>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 
+<a id="getbundleinstaller-1"></a>
+
 ## getBundleInstaller
 
 ```TypeScript

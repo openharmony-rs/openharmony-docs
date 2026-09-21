@@ -1,5 +1,9 @@
 # DlpFeatureStatus（系统接口）
 
+```TypeScript
+export enum DlpFeatureStatus
+```
+
 DLP特性开关状态的枚举。
 
 **起始版本：** 26.0.0

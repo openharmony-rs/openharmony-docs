@@ -14,7 +14,7 @@ function getTrustedDevices(): DeviceNodeInfo[]
 
 获取历史可信设备列表。典型使用场景包括：跨设备数据发送前查询可用目标设备。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.sec.ACCESS_UDID
 

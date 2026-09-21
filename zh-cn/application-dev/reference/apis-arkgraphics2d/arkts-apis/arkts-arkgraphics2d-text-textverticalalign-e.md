@@ -1,5 +1,9 @@
 # TextVerticalAlign
 
+```TypeScript
+enum TextVerticalAlign
+```
+
 文本垂直对齐方式枚举。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # DlpFileQueryOptions
 
+```TypeScript
+export interface DlpFileQueryOptions
+```
+
 表示企业DLP文件的查询选项。
 
 **起始版本：** 26.0.0

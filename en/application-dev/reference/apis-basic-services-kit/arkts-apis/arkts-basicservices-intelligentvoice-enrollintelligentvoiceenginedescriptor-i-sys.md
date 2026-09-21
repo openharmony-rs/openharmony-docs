@@ -1,5 +1,9 @@
 # EnrollIntelligentVoiceEngineDescriptor (System API)
 
+```TypeScript
+interface EnrollIntelligentVoiceEngineDescriptor
+```
+
 Describes enroll intelligent voice engine. @typedef EnrollIntelligentVoiceEngineDescriptor
 
 **Since:** 10

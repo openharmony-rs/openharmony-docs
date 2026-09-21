@@ -1,5 +1,9 @@
 # LaunchMode
 
+```TypeScript
+export enum LaunchMode
+```
+
 
 > **说明：** 
 > 

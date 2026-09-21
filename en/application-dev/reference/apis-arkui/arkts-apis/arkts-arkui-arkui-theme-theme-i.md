@@ -1,5 +1,9 @@
 # Theme
 
+```TypeScript
+export declare interface Theme
+```
+
 Defines the struct of Theme.
 
 **Since:** 12

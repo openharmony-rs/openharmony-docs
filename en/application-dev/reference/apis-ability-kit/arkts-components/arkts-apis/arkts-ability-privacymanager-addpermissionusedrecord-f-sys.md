@@ -29,6 +29,8 @@ The permission usage record includes the application identity of the caller, the
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -88,21 +90,8 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
-// Add permission usage record
-privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('addPermissionUsedRecord success');
-  }
-});
-```
-
+<a id="addpermissionusedrecord-1"></a>
 
 ## addPermissionUsedRecord
 
@@ -125,6 +114,8 @@ The permission usage record is controlled by the toggle status set by [setPermis
 **Since:** 9
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -156,4 +147,17 @@ The permission usage record is controlled by the toggle status set by [setPermis
 
 **Examples**
 
-See [addPermissionUsedRecord](#addpermissionusedrecord)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Add permission usage record
+privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('addPermissionUsedRecord success');
+  }
+});
+```

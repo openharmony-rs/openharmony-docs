@@ -1,5 +1,9 @@
 # Type
 
+```TypeScript
+enum Type
+```
+
 Enumerates the Base64 encoding formats.
 
 **Since:** 10

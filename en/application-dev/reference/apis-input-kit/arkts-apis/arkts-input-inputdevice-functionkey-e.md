@@ -1,5 +1,9 @@
 # FunctionKey
 
+```TypeScript
+enum FunctionKey
+```
+
 Enumerates function key types.
 
 **Since:** 15

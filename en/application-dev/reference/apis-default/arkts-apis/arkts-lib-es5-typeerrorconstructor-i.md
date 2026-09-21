@@ -1,5 +1,9 @@
 # TypeErrorConstructor
 
+```TypeScript
+interface TypeErrorConstructor extends ErrorConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

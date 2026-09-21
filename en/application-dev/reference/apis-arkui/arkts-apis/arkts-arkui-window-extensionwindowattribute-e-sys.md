@@ -1,5 +1,9 @@
 # ExtensionWindowAttribute (System API)
 
+```TypeScript
+enum ExtensionWindowAttribute
+```
+
 Enumerates the attributes of a window for a UI ServiceExtensionAbility.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # TreeSet
 
+```TypeScript
+declare class TreeSet<T>
+```
+
 TreeSet基于[TreeMap](arkts-arkts-util-treemap-treemap-c.md)实现，在TreeSet中，仅处理元素的值（value），不单独处理键（key）。TreeSet的每个元素在底层TreeMap中同时作为key和value存储，因此元素中value唯一且有序。
 
 **起始版本：** 8

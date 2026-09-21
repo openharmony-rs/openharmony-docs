@@ -1,5 +1,9 @@
 # HighlightAlbum（系统接口）
 
+```TypeScript
+class HighlightAlbum
+```
+
 时刻相册。
 
 **起始版本：** 12

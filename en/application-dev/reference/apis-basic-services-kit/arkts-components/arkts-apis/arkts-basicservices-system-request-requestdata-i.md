@@ -1,5 +1,9 @@
 # RequestData
 
+```TypeScript
+export interface RequestData
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

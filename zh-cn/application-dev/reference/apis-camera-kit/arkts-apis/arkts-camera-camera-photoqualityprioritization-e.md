@@ -1,5 +1,9 @@
 # PhotoQualityPrioritization
 
+```TypeScript
+enum PhotoQualityPrioritization
+```
+
 枚举，拍照画质优先策略。
 
 **起始版本：** 21

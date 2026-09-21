@@ -1,5 +1,9 @@
 # BundleInfoGetFlag
 
+```TypeScript
+export enum BundleInfoGetFlag
+```
+
 Enumerates the bundle flags, which indicate the type of bundle information to obtain.
 
 **Since:** 23

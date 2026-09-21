@@ -1,5 +1,9 @@
 # ErrorCode
 
+```TypeScript
+enum ErrorCode
+```
+
 从API version 9起，IPC支持异常返回功能。错误码对应数值及含义如下，详细说明请参见[ohos.rpc错误码](../../../reference/apis-ipc-kit/errorcode-rpc.md)。
 
 **起始版本：** 9

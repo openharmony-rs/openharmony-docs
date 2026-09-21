@@ -1,5 +1,9 @@
 # ReminderRequestAlarm
 
+```TypeScript
+interface ReminderRequestAlarm extends ReminderRequest
+```
+
 闹钟实例对象，用于设置提醒的时间。
 
 **继承/实现关系：** ReminderRequestAlarm extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
@@ -32,7 +36,7 @@ daysOfWeek?: Array<number>
 
 **废弃版本：** 9
 
-**替代接口：** daysOfWeek
+**替代接口：** [daysOfWeek](arkts-backgroundtasks-reminderagentmanager-reminderrequestalarm-i.md#daysofweek)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -50,7 +54,7 @@ hour: number
 
 **废弃版本：** 9
 
-**替代接口：** hour
+**替代接口：** [hour](arkts-backgroundtasks-reminderagentmanager-reminderrequestalarm-i.md#hour)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -68,6 +72,6 @@ minute: number
 
 **废弃版本：** 9
 
-**替代接口：** minute
+**替代接口：** [minute](arkts-backgroundtasks-reminderagentmanager-reminderrequestalarm-i.md#minute)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent

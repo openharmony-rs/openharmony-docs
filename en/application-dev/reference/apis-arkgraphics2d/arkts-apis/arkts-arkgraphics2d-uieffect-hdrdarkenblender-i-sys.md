@@ -1,5 +1,9 @@
 # HdrDarkenBlender (System API)
 
+```TypeScript
+interface HdrDarkenBlender
+```
+
 HDR-adaptive darken blender, used to add a darken effect to a specified component. Before calling HdrDarkenBlender, you need to first create an HdrDarkenBlender instance through createHdrDarkenBlender.
 
 **Since:** 26.0.0

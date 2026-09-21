@@ -1,5 +1,9 @@
 # ControlTypeValue（系统接口）
 
+```TypeScript
+enum ControlTypeValue
+```
+
 枚举，控制动作。
 
 **起始版本：** 15

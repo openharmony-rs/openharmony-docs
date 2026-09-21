@@ -1,5 +1,9 @@
 # PositionType (System API)
 
+```TypeScript
+enum PositionType
+```
+
 Photo asset position
 
 **Since:** 14

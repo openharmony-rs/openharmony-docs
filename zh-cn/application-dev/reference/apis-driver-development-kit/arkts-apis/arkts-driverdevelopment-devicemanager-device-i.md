@@ -1,5 +1,9 @@
 # Device
 
+```TypeScript
+interface Device
+```
+
 外设信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # DownloadProfileResult (System API)
 
+```TypeScript
+export interface DownloadProfileResult
+```
+
 Defines the profile download result.
 
 **Since:** 18

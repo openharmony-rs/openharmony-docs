@@ -1,8 +1,12 @@
 # UserRecognitionMgr
 
+```TypeScript
+interface UserRecognitionMgr
+```
+
 Provides APIs for querying and subscribing to user recognition results. Use [getUserRecognitionMgr](arkts-userauthentication-userauth-getuserrecognitionmgr-f.md) to obtain a **UserRecognitionMgr** instance.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -20,11 +24,11 @@ getUserRecognitionResult(): Promise<UserRecognitionResult>
 
 Obtains the latest user recognition result. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -48,11 +52,11 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 
 Unsubscribes from user recognition change events.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -76,11 +80,11 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 Subscribes to user recognition change events.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

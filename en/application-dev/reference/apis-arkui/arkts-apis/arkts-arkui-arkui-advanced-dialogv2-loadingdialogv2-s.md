@@ -1,5 +1,9 @@
 # LoadingDialogV2
 
+```TypeScript
+export declare struct LoadingDialogV2
+```
+
 Declare CustomDialog LoadingDialogV2
 
 @struct { LoadingDialogV2 }

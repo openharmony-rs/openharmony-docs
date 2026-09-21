@@ -48,28 +48,8 @@ try {
 }
 ```
 
-```TypeScript
-try {
-  // Define the color space criterion primary colors parameter.
-  let primaries: colorSpaceManager.ColorSpacePrimaries = {
-    redX: 0.1,
-    redY: 0.1,
-    greenX: 0.2,
-    greenY: 0.2,
-    blueX: 0.3,
-    blueY: 0.3,
-    whitePointX: 0.4,
-    whitePointY: 0.4
-  };
-  // Define the color space gamma value.
-  let gamma = 2.2;
-  // Create a custom color space object.
-  let colorSpace = colorSpaceManager.create(primaries, gamma);
-} catch (err) {
-  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
-}
-```
 
+<a id="create-1"></a>
 
 ## create
 
@@ -105,4 +85,24 @@ Creates a custom color space object.
 
 **Examples**
 
-See [create](#create)
+```TypeScript
+try {
+  // Define the color space criterion primary colors parameter.
+  let primaries: colorSpaceManager.ColorSpacePrimaries = {
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+  };
+  // Define the color space gamma value.
+  let gamma = 2.2;
+  // Create a custom color space object.
+  let colorSpace = colorSpaceManager.create(primaries, gamma);
+} catch (err) {
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
+}
+```

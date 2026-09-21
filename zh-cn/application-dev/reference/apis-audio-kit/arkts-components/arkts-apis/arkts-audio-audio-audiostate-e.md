@@ -1,5 +1,9 @@
 # AudioState
 
+```TypeScript
+enum AudioState
+```
+
 表示音频状态的枚举。
 
 **起始版本：** 8

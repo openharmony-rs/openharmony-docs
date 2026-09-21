@@ -1,5 +1,9 @@
 # WatermarkConfig（系统接口）
 
+```TypeScript
+interface WatermarkConfig
+```
+
 设置给AVRecorder的水印相关配置，该位置以画面的左上角为开始点。
 
 **起始版本：** 13

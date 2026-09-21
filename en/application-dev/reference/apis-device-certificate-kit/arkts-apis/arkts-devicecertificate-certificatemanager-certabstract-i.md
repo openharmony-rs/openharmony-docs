@@ -1,5 +1,9 @@
 # CertAbstract
 
+```TypeScript
+export interface CertAbstract
+```
+
 Represents brief information about a certificate.
 
 **Since:** 11

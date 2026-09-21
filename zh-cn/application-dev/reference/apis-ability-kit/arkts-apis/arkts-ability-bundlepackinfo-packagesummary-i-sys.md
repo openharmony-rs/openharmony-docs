@@ -1,5 +1,9 @@
 # PackageSummary（系统接口）
 
+```TypeScript
+export interface PackageSummary
+```
+
 pack.info中的包摘要信息。
 
 **起始版本：** 9

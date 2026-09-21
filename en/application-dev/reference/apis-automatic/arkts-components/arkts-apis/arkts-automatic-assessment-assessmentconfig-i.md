@@ -1,8 +1,12 @@
 # AssessmentConfig
 
+```TypeScript
+interface AssessmentConfig
+```
+
 Assessment scenario configuration information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
@@ -21,7 +25,7 @@ List of application bundle names allowed to run during the assessment (whitelist
 
 **Type:** Array&lt;string&gt;
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -37,7 +41,7 @@ Maximum assessment duration (in milliseconds). The value 0 indicates no time lim
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

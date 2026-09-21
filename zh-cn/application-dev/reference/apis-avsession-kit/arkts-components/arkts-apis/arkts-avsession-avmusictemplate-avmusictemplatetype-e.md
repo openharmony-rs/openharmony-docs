@@ -1,5 +1,9 @@
 # AVMusicTemplateType
 
+```TypeScript
+enum AVMusicTemplateType
+```
+
 表示音频模板类型的枚举。
 
 @enum { string }

@@ -1,5 +1,9 @@
 # PhotoSubType (System API)
 
+```TypeScript
+enum PhotoSubType
+```
+
 Enumerates the [FileAsset](arkts-corefile-userfilemanager-fileasset-i-sys.md) types.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # ServiceState
 
+```TypeScript
+enum ServiceState
+```
+
 定义不同的SE服务状态值。
 
 **起始版本：** 10

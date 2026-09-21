@@ -1,5 +1,9 @@
 # ColorFilter
 
+```TypeScript
+class ColorFilter
+```
+
 颜色滤波器，用于对图像或图形的颜色进行变换和处理，支持创建混合模式颜色滤波器、组合颜色滤波器、矩阵颜色滤波器、伽马颜色空间转换滤波器、亮度颜色滤波器和光照颜色滤波器等多种类型。
 
 > **说明：** 
@@ -49,6 +53,17 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.SRC);
+```
+
+<a id="createblendmodecolorfilter-2"></a>
+
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -79,6 +94,14 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(0xffff0000, drawing.BlendMode.SRC);
+```
 
 ## createComposeColorFilter
 
@@ -111,6 +134,17 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+let colorFilter1 = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.SRC);
+let colorFilter2 = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.DST);
+let colorFilter = drawing.ColorFilter.createComposeColorFilter(colorFilter1, colorFilter2);
+```
+
 ## createLightingColorFilter
 
 ```TypeScript
@@ -136,6 +170,15 @@ static createLightingColorFilter(mutColor: common2D.Color | number, addColor: co
 | --- | --- |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | 返回创建的光照颜色滤波器。 |
 
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+let mulColor : common2D.Color = { alpha: 0, red: 0, green: 0, blue: 20 };
+let addColor : common2D.Color = { alpha: 0, red: 0, green: 0, blue: 125 };
+let colorFilter = drawing.ColorFilter.createLightingColorFilter(mulColor, addColor);
+```
+
 ## createLinearToSRGBGamma
 
 ```TypeScript
@@ -154,6 +197,14 @@ static createLinearToSRGBGamma(): ColorFilter
 | --- | --- |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | 返回创建的颜色滤波器。 |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let colorFilter = drawing.ColorFilter.createLinearToSRGBGamma();
+```
+
 ## createLumaColorFilter
 
 ```TypeScript
@@ -171,6 +222,14 @@ static createLumaColorFilter(): ColorFilter
 | 类型 | 说明 |
 | --- | --- |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | 返回创建的颜色滤波器。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let colorFilter = drawing.ColorFilter.createLumaColorFilter();
+```
 
 ## createMatrixColorFilter
 
@@ -202,6 +261,20 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let matrix: Array<number> = [
+  1, 0, 0, 0, 0,
+  0, 1, 0, 0, 0,
+  0, 0, 100, 0, 0,
+  0, 0, 0, 1, 0
+];
+let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
+```
+
 ## createSRGBGammaToLinear
 
 ```TypeScript
@@ -219,3 +292,11 @@ static createSRGBGammaToLinear(): ColorFilter
 | 类型 | 说明 |
 | --- | --- |
 | [ColorFilter](arkts-arkgraphics2d-drawing-colorfilter-c.md) | 返回创建的颜色滤波器。 |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
+```

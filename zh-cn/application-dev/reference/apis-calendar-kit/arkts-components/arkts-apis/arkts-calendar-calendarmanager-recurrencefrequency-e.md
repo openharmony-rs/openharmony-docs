@@ -1,5 +1,9 @@
 # RecurrenceFrequency
 
+```TypeScript
+export enum RecurrenceFrequency
+```
+
 日程重复规则类型枚举。
 
 **起始版本：** 10

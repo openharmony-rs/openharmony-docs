@@ -53,6 +53,8 @@ declare function unlink(path: string): Promise<void>
 | 13900042 | Unknown error |
 
 
+<a id="unlink-1"></a>
+
 ## unlink
 
 ```TypeScript

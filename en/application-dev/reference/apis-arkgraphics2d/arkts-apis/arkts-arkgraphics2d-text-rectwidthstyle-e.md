@@ -1,5 +1,9 @@
 # RectWidthStyle
 
+```TypeScript
+enum RectWidthStyle
+```
+
 Enumerates the rectangle width styles.
 
 **Since:** 12

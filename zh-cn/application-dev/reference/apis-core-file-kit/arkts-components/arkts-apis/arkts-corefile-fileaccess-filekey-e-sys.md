@@ -1,5 +1,9 @@
 # FileKey（系统接口）
 
+```TypeScript
+enum FileKey
+```
+
 Property elements that support the file queries.
 
 **起始版本：** 10

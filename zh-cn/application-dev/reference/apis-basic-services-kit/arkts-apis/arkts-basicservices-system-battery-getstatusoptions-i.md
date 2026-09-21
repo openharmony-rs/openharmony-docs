@@ -1,5 +1,9 @@
 # GetStatusOptions
 
+```TypeScript
+export interface GetStatusOptions
+```
+
 包含接口调用选项的对象，包括成功、失败和完成回调函数。
 
 **起始版本：** 3
@@ -26,6 +30,8 @@ complete?: () => void
 
 **废弃版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## fail
@@ -39,6 +45,8 @@ fail?: (data: string, code: number) => void
 **起始版本：** 3
 
 **废弃版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
@@ -60,6 +68,8 @@ success?: (data: BatteryResponse) => void
 **起始版本：** 3
 
 **废弃版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 

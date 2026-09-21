@@ -1,5 +1,9 @@
 # UserFacesData（系统接口）
 
+```TypeScript
+export interface UserFacesData extends UserStatusData
+```
+
 表示用户朝向屏幕相关的数据。
 
 **继承/实现关系：** UserFacesData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

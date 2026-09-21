@@ -1,5 +1,9 @@
 # A2dpSourceProfile
 
+```TypeScript
+interface A2dpSourceProfile extends BaseProfile
+```
+
 该实例表示蓝牙媒体音频中的A2DP Source角色。
 
 该类继承于[BaseProfile](arkts-connectivity-a2dp-baseprofile-t.md)，因此可以使用其父类中的方法。使用该类的方法前，需通过[createA2dpSrcProfile](arkts-connectivity-a2dp-createa2dpsrcprofile-f.md)方法构造该类的实例。和该实例角色相对应的是A2DP Sink。
@@ -90,6 +94,8 @@ disableAbsoluteVolume(deviceId: string): Promise<void>
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="disableabsolutevolume-1"></a>
 
 ## disableAbsoluteVolume
 
@@ -241,6 +247,8 @@ enableAbsoluteVolume(deviceId: string): Promise<void>
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="enableabsolutevolume-1"></a>
 
 ## enableAbsoluteVolume
 
@@ -477,6 +485,8 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+<a id="isabsolutevolumeenabled-1"></a>
+
 ## isAbsoluteVolumeEnabled
 
 ```TypeScript
@@ -551,6 +561,8 @@ isAbsoluteVolumeSupported(deviceId: string): Promise<boolean>
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+<a id="isabsolutevolumesupported-1"></a>
 
 ## isAbsoluteVolumeSupported
 

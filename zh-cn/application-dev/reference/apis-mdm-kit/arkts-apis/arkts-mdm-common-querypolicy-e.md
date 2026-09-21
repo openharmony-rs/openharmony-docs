@@ -1,8 +1,12 @@
 # QueryPolicy
 
+```TypeScript
+export enum QueryPolicy
+```
+
 查询企业设备管理策略
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -14,7 +18,7 @@ SELF = 0
 
 自己设置的策略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -28,7 +32,7 @@ ALL = 1
 
 所有管理员设置的策略。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

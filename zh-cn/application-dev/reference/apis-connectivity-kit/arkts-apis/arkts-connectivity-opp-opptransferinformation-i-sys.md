@@ -1,5 +1,9 @@
 # OppTransferInformation（系统接口）
 
+```TypeScript
+interface OppTransferInformation
+```
+
 描述文件的传输信息。
 
 **起始版本：** 16

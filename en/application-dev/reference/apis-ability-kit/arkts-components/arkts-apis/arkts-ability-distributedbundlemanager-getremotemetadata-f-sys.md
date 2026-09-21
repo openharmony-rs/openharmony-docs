@@ -14,7 +14,7 @@ function getRemoteMetadata(deviceId: string, bundleName: string): Promise<Array<
 
 Obtains the metadata of an app with a specified bundle name on a specified remote device. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

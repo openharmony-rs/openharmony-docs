@@ -58,29 +58,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          // 获取输入设备ID为1的设备信息。
-          inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
-            console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          })
-        })
-    }
-  }
-}
-```
-
+<a id="getdevice-1"></a>
 
 ## getDevice
 
@@ -114,4 +93,25 @@ function getDevice(deviceId: number): Promise<InputDeviceData>
 
 **示例**
 
-参见 getDevice
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 获取输入设备ID为1的设备信息。
+          inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
+            console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          })
+        })
+    }
+  }
+}
+```

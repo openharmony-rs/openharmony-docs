@@ -1,5 +1,9 @@
 # OsAccountSubProfileEvent (System API)
 
+```TypeScript
+enum OsAccountSubProfileEvent
+```
+
 Enumerates OS account sub-profile events.
 
 **Since:** 26.0.0

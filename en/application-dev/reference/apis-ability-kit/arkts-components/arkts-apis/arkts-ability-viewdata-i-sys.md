@@ -1,5 +1,9 @@
 # ViewData
 
+```TypeScript
+export default interface ViewData
+```
+
 The module defines the view data used for auto-fill.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ The module defines the view data used for auto-fill.
 abilityName: string
 ```
 
-Ability name.
+Ability name, used to specify the Ability to which the auto-fill data belongs.
 
 **Type:** string
 
@@ -66,7 +70,7 @@ Whether the content to be filled is selected by the user. **true** if the conten
 moduleName: string
 ```
 
-Module name.
+Module name, used to specify the module to which the auto-fill data belongs.
 
 **Type:** string
 

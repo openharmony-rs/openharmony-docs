@@ -66,41 +66,8 @@ featureAbility.startAbilityForResult(
 );
 ```
 
-```TypeScript
-import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
-// 启动一个Ability并获取返回结果
-featureAbility.startAbilityForResult(
-  {
-    want:
-    {
-      action: 'ohos.want.action.home',
-      entities: ['entity.system.home'],
-      type: 'MIMETYPE',
-      flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
-      deviceId: '',
-      bundleName: 'com.example.myapplication',
-      /* FA模型中abilityName由package + Ability name组成 */
-      abilityName: 'com.example.myapplication.secondAbility',
-      uri: '',
-      parameters:
-      {
-        mykey0: 1111,
-        mykey1: [1, 2, 3],
-        mykey2: '[1, 2, 3]',
-        mykey3: 'xxxxxxxxxxxxxxxxxxxxxx',
-        mykey4: [1, 15],
-        mykey5: [false, true, false],
-        mykey6: ['aaaaaa', 'bbbbb', 'ccccccccccc'],
-        mykey7: true,
-      },
-    },
-  },
-).then((data) => {
-  console.info(`startAbilityForResult data: ${JSON.stringify(data)}`);
-});
-```
-
+<a id="startabilityforresult-1"></a>
 
 ## startAbilityForResult
 
@@ -138,4 +105,37 @@ function startAbilityForResult(parameter: StartAbilityParameter): Promise<Abilit
 
 **示例**
 
-参见 [startAbilityForResult](#startabilityforresult)
+```TypeScript
+import { featureAbility, wantConstant } from '@kit.AbilityKit';
+
+// 启动一个Ability并获取返回结果
+featureAbility.startAbilityForResult(
+  {
+    want:
+    {
+      action: 'ohos.want.action.home',
+      entities: ['entity.system.home'],
+      type: 'MIMETYPE',
+      flags: wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      /* FA模型中abilityName由package + Ability name组成 */
+      abilityName: 'com.example.myapplication.secondAbility',
+      uri: '',
+      parameters:
+      {
+        mykey0: 1111,
+        mykey1: [1, 2, 3],
+        mykey2: '[1, 2, 3]',
+        mykey3: 'xxxxxxxxxxxxxxxxxxxxxx',
+        mykey4: [1, 15],
+        mykey5: [false, true, false],
+        mykey6: ['aaaaaa', 'bbbbb', 'ccccccccccc'],
+        mykey7: true,
+      },
+    },
+  },
+).then((data) => {
+  console.info(`startAbilityForResult data: ${JSON.stringify(data)}`);
+});
+```

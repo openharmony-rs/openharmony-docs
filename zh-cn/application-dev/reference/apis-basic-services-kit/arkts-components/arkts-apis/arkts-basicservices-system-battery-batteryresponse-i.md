@@ -1,5 +1,9 @@
 # BatteryResponse
 
+```TypeScript
+export interface BatteryResponse
+```
+
 包含充电状态及剩余电量的对象。
 
 **起始版本：** 3
@@ -32,6 +36,8 @@ charging: boolean
 
 **替代接口：** [chargingStatus](arkts-basicservices-batteryinfo-con.md#chargingstatus)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## level
@@ -51,5 +57,7 @@ level: number
 **废弃版本：** 6
 
 **替代接口：** [batterySOC](arkts-basicservices-batteryinfo-con.md#batterysoc)
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Lite

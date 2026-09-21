@@ -1,5 +1,9 @@
 # SnapshotResult
 
+```TypeScript
+interface SnapshotResult
+```
+
 全量绘制回调结果。
 
 **起始版本：** 12

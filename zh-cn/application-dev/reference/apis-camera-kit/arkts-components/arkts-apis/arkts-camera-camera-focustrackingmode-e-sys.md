@@ -1,5 +1,9 @@
 # FocusTrackingMode（系统接口）
 
+```TypeScript
+enum FocusTrackingMode
+```
+
 Enumerates the focus tracking modes.
 
 **起始版本：** 15

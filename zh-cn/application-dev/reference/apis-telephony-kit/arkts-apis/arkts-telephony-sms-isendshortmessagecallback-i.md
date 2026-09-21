@@ -1,5 +1,9 @@
 # ISendShortMessageCallback
 
+```TypeScript
+export interface ISendShortMessageCallback
+```
+
 回调实例。返回短信发送结果、存储已发送短信的URI和是否为长短信的最后一部分。
 
 **起始版本：** 6

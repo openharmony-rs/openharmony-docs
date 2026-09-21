@@ -1,5 +1,9 @@
 # DoNotDisturbDate (System API)
 
+```TypeScript
+export interface DoNotDisturbDate
+```
+
 Defines the DND time.
 
 **Since:** 8

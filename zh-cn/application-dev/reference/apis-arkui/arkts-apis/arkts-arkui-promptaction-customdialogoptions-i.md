@@ -1,5 +1,9 @@
 # CustomDialogOptions
 
+```TypeScript
+interface CustomDialogOptions extends BaseDialogOptions
+```
+
 自定义弹窗的内容，继承自[BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)。
 
 **继承/实现关系：** CustomDialogOptions extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)
@@ -22,7 +26,7 @@ backgroundBlurStyle?: BlurStyle
 
 弹窗背板模糊材质。<br>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。<br>**说明：** <br>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。
 
-**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **默认值：** BlurStyle.COMPONENT_ULTRA_THICK
 
@@ -114,7 +118,7 @@ builder: CustomBuilder
 
 设置自定义弹窗的内容。<br>**说明：** <br>builder需要赋值为箭头函数，格式如下：() =&gt; { this.XXX() }，其中XXX是内部builder名。<br>全局builder需要在组件内部创建，并在内部builder中调用。<br>builder根节点宽高百分比相对弹窗容器大小。<br>builder非根节点宽高百分比相对父节点大小。
 
-**类型：** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
+**类型：** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **起始版本：** 11
 
@@ -168,7 +172,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 设置弹窗背板的阴影。<br>当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
 
-**类型：** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**类型：** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **起始版本：** 12
 

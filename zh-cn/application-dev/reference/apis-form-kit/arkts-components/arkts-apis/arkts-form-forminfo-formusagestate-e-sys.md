@@ -1,5 +1,9 @@
 # FormUsageState（系统接口）
 
+```TypeScript
+enum FormUsageState
+```
+
 卡片当前使用状态枚举。
 
 **起始版本：** 11

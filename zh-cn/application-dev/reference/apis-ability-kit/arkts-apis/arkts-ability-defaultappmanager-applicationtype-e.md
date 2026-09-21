@@ -1,5 +1,9 @@
 # ApplicationType
 
+```TypeScript
+export enum ApplicationType
+```
+
 默认应用的应用类型。
 
 **起始版本：** 9

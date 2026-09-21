@@ -67,6 +67,21 @@ Subscribes to the interactive widget animation request event. This API uses an a
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 
+**Examples**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('formOverflow', (request: formInfo.OverflowRequest) => {
+    console.info(`formHost on formOverflow, formId is ${request.formId}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
 
 ## on('changeSceneAnimationState')
 
@@ -96,6 +111,21 @@ Subscribes to the event of switching the interactive widget state. An interactiv
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 
+**Examples**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
+    console.info(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
 
 ## on('getFormRect')
 
@@ -123,6 +153,31 @@ Subscribes to the event of requesting widget position and dimension. This API us
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
+
+**Examples**
+
+```TypeScript
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
+    // The widget host needs to process the request, and calculate and return the widget dimension and position information.
+    return new Promise<formInfo.Rect>((resolve: Function) => {
+      console.info(`formHost on getFormRect, formId is ${formId}`);
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
+      resolve(formRect);
+    })
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
 
 
 ## on('getLiveFormStatus')

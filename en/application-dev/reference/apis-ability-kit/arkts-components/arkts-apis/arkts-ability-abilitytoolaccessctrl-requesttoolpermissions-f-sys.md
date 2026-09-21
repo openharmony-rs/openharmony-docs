@@ -17,6 +17,8 @@ Queries tool permissions based on the specified operations. This function checks
 
 **Required permissions:** ohos.permission.QUERY_TOOL_PERMISSIONS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,7 +33,7 @@ Queries tool permissions based on the specified operations. This function checks
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[PermissionQueryResult](arkts-ability-abilitytoolaccessctrl-permissionqueryresult-i-sys.md)&gt; | Promise used to return &#36;{PermissionQueryResult}. |
+| Promise&lt;[PermissionQueryResult](arkts-ability-abilitytoolaccessctrl-permissionqueryresult-i-sys.md)&gt; | Promise used to return ${PermissionQueryResult}. |
 
 **Error codes:**
 

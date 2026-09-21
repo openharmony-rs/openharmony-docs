@@ -1,5 +1,9 @@
 # GeofenceTransition
 
+```TypeScript
+export interface GeofenceTransition
+```
+
 Geofence transition status.
 
 **Since:** 12

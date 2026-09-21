@@ -1,5 +1,9 @@
 # AVMetricsEventType
 
+```TypeScript
+enum AVMetricsEventType
+```
+
 Enumerates the metric events supported by the media service.
 
 **Since:** 23

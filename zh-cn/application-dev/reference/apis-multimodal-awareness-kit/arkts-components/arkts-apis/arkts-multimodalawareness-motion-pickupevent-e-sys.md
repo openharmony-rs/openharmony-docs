@@ -1,5 +1,9 @@
 # PickupEvent（系统接口）
 
+```TypeScript
+export enum PickupEvent
+```
+
 拾取事件枚举。
 
 **起始版本：** 26.0.0

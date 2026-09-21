@@ -1,5 +1,9 @@
 # PlaybackState
 
+```TypeScript
+enum PlaybackState
+```
+
 Definition of current playback state
 
 **Since:** 10

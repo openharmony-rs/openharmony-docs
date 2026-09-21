@@ -1,5 +1,9 @@
 # BLE(蓝牙)
 
+```TypeScript
+namespace BLE
+```
+
 BLE模块提供了对蓝牙操作和管理的方法。
 
 **起始版本：** 9

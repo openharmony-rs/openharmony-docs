@@ -1,5 +1,9 @@
 # MaxScreenWantAgent
 
+```TypeScript
+interface MaxScreenWantAgent
+```
+
 通知中心弹出提醒时，全屏显示自动拉起目标的ability信息。该接口为预留接口，暂不支持使用。
 
 **起始版本：** 9

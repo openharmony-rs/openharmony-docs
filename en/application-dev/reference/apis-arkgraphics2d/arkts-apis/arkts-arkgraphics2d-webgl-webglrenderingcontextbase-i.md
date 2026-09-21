@@ -1,5 +1,9 @@
 # WebGLRenderingContextBase
 
+```TypeScript
+interface WebGLRenderingContextBase
+```
+
 WebGL 1.0
 
 **Since:** 7

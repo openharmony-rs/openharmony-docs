@@ -1,5 +1,9 @@
 # AudioSpatialEnabledStateForDevice (System API)
 
+```TypeScript
+interface AudioSpatialEnabledStateForDevice
+```
+
 This interface is used to notify the listener of any device Spatialization or Head Tracking enable or Adaptive Spatial Rendering state change.
 
 **Since:** 12

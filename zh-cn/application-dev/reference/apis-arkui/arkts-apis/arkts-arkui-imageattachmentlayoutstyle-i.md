@@ -1,5 +1,9 @@
 # ImageAttachmentLayoutStyle
 
+```TypeScript
+declare interface ImageAttachmentLayoutStyle
+```
+
 定义图片布局样式。
 
 **起始版本：** 12

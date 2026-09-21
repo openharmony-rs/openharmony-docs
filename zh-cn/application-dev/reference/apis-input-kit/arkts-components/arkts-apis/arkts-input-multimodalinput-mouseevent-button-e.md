@@ -1,5 +1,9 @@
 # Button
 
+```TypeScript
+export declare enum Button
+```
+
 鼠标按键。
 
 **起始版本：** 9

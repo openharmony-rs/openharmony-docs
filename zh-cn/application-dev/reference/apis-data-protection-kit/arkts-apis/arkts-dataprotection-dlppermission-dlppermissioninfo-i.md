@@ -1,5 +1,9 @@
 # DLPPermissionInfo
 
+```TypeScript
+export interface DLPPermissionInfo
+```
+
 表示DLP文件的权限信息。
 
 **起始版本：** 10

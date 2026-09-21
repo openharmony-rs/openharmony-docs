@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+enum SourceType
+```
+
 表示媒体源的类型。
 
 **起始版本：** 12

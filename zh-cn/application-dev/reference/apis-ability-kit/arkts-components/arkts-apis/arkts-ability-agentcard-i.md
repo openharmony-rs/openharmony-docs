@@ -1,5 +1,9 @@
 # AgentCard
 
+```TypeScript
+export interface AgentCard
+```
+
 AgentCard相当于Agent(智能体)的"名片"，用于描述Agent的能力和技能，由开发者在Agent的配置文件agent_config.json中配置。
 
 一个Agent就是一个AgentExtensionAbility实例。开发者可以通过AgentExtensionContext中的agentCard属性获取到当前AgentExtensionAbility的AgentCard。

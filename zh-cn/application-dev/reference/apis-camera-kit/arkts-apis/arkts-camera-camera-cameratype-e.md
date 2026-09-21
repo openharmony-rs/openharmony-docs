@@ -1,5 +1,9 @@
 # CameraType
 
+```TypeScript
+enum CameraType
+```
+
 枚举，相机类型。
 
 **起始版本：** 10

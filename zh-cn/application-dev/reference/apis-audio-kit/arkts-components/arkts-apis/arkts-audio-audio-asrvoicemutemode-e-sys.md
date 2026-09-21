@@ -1,6 +1,10 @@
 # AsrVoiceMuteMode（系统接口）
 
-枚举，自动语音识别（ASR）的静音模式。
+```TypeScript
+enum AsrVoiceMuteMode
+```
+
+枚举，自动语音识别（ASR）场景下，音频通路的静音模式。
 
 **起始版本：** 12
 

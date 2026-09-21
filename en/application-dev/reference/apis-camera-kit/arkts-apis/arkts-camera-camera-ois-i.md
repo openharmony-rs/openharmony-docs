@@ -1,5 +1,9 @@
 # OIS
 
+```TypeScript
+interface OIS extends OISQuery
+```
+
 OIS (Optical Image Stabilization) interface.
 
 **Inheritance/Implementation:** OIS extends [OISQuery](arkts-camera-camera-oisquery-i.md)

@@ -38,16 +38,8 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getCallState().then((data: call.CallState) => {
-    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getcallstate-1"></a>
 
 ## getCallState
 
@@ -69,4 +61,12 @@ Obtains the call status. This API uses a promise to return the result.
 
 **Examples**
 
-See [getCallState](#getcallstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getCallState().then((data: call.CallState) => {
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
+});
+```

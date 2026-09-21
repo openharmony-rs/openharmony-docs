@@ -1,5 +1,9 @@
 # QuickImageDataHandler
 
+```TypeScript
+interface QuickImageDataHandler<T>
+```
+
 QuickImageDataHandler is a media asset handler used to customize the media asset processing logic in **onDataPrepared**.
 
 **Since:** 13
@@ -37,3 +41,15 @@ Information returned by **map**:
 | data | T | Yes | Data of the image asset that is ready. It is of the generic type and supports the [Picture](../../apis-image-kit/arkts-apis/arkts-image-image-picture-i.md) type. |
 | imageSource | [image.ImageSource](../../apis-image-kit/arkts-apis/arkts-image-image-imagesource-i.md) | Yes | Data of the image asset that is ready. |
 | map | Map&lt;string, string&gt; | Yes | Additional information about the image asset, such as the image quality. Currently, only **quality** is supported. |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
+  onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
+    console.info('on image data prepared');
+  }
+}
+```

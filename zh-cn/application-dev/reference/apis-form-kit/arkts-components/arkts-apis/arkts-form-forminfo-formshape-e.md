@@ -1,5 +1,9 @@
 # FormShape
 
+```TypeScript
+enum FormShape
+```
+
 定义卡片形状枚举。
 
 **起始版本：** 12

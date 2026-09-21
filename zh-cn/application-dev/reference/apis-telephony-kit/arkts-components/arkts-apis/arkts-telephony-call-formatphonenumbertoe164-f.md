@@ -52,16 +52,8 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: str
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`formatPhoneNumberToE164 fail, promise: err->Code${err.code}, message:${err.message}`);
-});
-```
-
+<a id="formatphonenumbertoe164-1"></a>
 
 ## formatPhoneNumberToE164
 
@@ -104,4 +96,12 @@ function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Prom
 
 **示例**
 
-参见 [formatPhoneNumberToE164](#formatphonenumbertoe164)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`formatPhoneNumberToE164 fail, promise: err->Code${err.code}, message:${err.message}`);
+});
+```

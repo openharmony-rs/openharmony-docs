@@ -1,5 +1,9 @@
 # TreeListenerV2
 
+```TypeScript
+export declare class TreeListenerV2
+```
+
 Declare class TreeListenerV2
 
 **Since:** 26.0.0

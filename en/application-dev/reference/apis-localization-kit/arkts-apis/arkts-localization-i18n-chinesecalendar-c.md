@@ -1,5 +1,9 @@
 # ChineseCalendar
 
+```TypeScript
+export class ChineseCalendar extends Calendar
+```
+
 Provide a ChineseCalendar interface which could handle unique characteristics of the chinese calendar, such as leap month.
 
 **Inheritance/Implementation:** ChineseCalendar extends [Calendar](arkts-localization-i18n-calendar-c.md)

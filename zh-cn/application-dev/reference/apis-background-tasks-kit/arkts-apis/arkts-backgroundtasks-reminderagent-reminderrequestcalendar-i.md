@@ -1,5 +1,9 @@
 # ReminderRequestCalendar
 
+```TypeScript
+interface ReminderRequestCalendar extends ReminderRequest
+```
+
 日历实例对象，用于设置提醒的时间。
 
 **继承/实现关系：** ReminderRequestCalendar extends [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
@@ -32,7 +36,7 @@ dateTime: LocalDateTime
 
 **废弃版本：** 9
 
-**替代接口：** dateTime
+**替代接口：** [dateTime](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#datetime)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -50,7 +54,7 @@ repeatDays?: Array<number>
 
 **废弃版本：** 9
 
-**替代接口：** repeatDays
+**替代接口：** [repeatDays](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#repeatdays)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -68,6 +72,6 @@ repeatMonths?: Array<number>
 
 **废弃版本：** 9
 
-**替代接口：** repeatMonths
+**替代接口：** [repeatMonths](arkts-backgroundtasks-reminderagentmanager-reminderrequestcalendar-i.md#repeatmonths)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent

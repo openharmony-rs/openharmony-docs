@@ -1,5 +1,9 @@
 # FloatViewController
 
+```TypeScript
+interface FloatViewController
+```
+
 标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。
 
 下列API示例中都需先使用[floatView.create()](arkts-arkui-floatview-create-f.md)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。

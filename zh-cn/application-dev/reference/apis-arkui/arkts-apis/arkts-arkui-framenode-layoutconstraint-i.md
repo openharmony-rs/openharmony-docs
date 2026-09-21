@@ -1,5 +1,9 @@
 # LayoutConstraint
 
+```TypeScript
+declare interface LayoutConstraint
+```
+
 描述组件的布局约束。
 
 **起始版本：** 12

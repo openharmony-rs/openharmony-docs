@@ -1,5 +1,9 @@
 # Single
 
+```TypeScript
+interface Single extends MediaEntity
+```
+
 The definition of Single song.
 
 @extends MediaEntity @interface Single

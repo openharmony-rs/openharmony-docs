@@ -1,5 +1,9 @@
 # NotificationCheckResult (System API)
 
+```TypeScript
+export interface NotificationCheckResult
+```
+
 Describes the result of check notifications.
 
 **Since:** 10

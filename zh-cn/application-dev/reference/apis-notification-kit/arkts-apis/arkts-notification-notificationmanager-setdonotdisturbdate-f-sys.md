@@ -64,63 +64,8 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, setDoNotDisturbDateCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
-    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
-    begin: new Date(),
-    end: new Date(2021, 11, 15, 18, 0)
-};
-notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-    console.info('setDoNotDisturbDate success');
-}).catch((err: BusinessError) => {
-    console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let setDoNotDisturbDateCallback = (err: BusinessError): void => {
-    if (err) {
-        console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info('setDoNotDisturbDate success');
-    }
-}
-
-let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
-    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
-    begin: new Date(),
-    end: new Date(2021, 11, 15, 18, 0)
-};
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId, setDoNotDisturbDateCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
-    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
-    begin: new Date(),
-    end: new Date(2021, 11, 15, 18, 0)
-};
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
-    console.info('setDoNotDisturbDate success');
-}).catch((err: BusinessError) => {
-    console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="setdonotdisturbdate-1"></a>
 
 ## setDoNotDisturbDate
 
@@ -165,8 +110,23 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 
 **示例**
 
-参见 [setDoNotDisturbDate](#setdonotdisturbdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
+    console.info('setDoNotDisturbDate success');
+}).catch((err: BusinessError) => {
+    console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="setdonotdisturbdate-2"></a>
 
 ## setDoNotDisturbDate
 
@@ -208,8 +168,31 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: A
 
 **示例**
 
-参见 [setDoNotDisturbDate](#setdonotdisturbdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let setDoNotDisturbDateCallback = (err: BusinessError): void => {
+    if (err) {
+        console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info('setDoNotDisturbDate success');
+    }
+}
+
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId, setDoNotDisturbDateCallback);
+```
+
+
+<a id="setdonotdisturbdate-3"></a>
 
 ## setDoNotDisturbDate
 
@@ -256,4 +239,21 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise<vo
 
 **示例**
 
-参见 [setDoNotDisturbDate](#setdonotdisturbdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
+    console.info('setDoNotDisturbDate success');
+}).catch((err: BusinessError) => {
+    console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+});
+```

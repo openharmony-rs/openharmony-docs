@@ -1,5 +1,9 @@
 # PauseDownloadOptions（系统接口）
 
+```TypeScript
+export interface PauseDownloadOptions
+```
+
 暂停下载选项，用于控制暂停行为。对象包含isAllowAutoResume字段，true表示允许自动恢复，false表示需手动恢复。
 
 **起始版本：** 9

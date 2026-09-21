@@ -1,5 +1,9 @@
 # PriorityNotificationType
 
+```TypeScript
+export enum PriorityNotificationType
+```
+
 Describes the priority type of a notification.
 
 **Since:** 23

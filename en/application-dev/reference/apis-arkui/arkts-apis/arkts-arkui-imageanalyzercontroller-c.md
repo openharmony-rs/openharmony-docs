@@ -1,5 +1,9 @@
 # ImageAnalyzerController
 
+```TypeScript
+declare class ImageAnalyzerController
+```
+
 Implements an AI image analysis controller, which provides control for image analysis features when bound to supported components.
 
 **Since:** 12

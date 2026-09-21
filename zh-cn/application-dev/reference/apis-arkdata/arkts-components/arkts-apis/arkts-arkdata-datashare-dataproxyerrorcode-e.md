@@ -1,5 +1,9 @@
 # DataProxyErrorCode
 
+```TypeScript
+enum DataProxyErrorCode
+```
+
 配置共享批量操作返回值的状态码枚举。
 
 **起始版本：** 20

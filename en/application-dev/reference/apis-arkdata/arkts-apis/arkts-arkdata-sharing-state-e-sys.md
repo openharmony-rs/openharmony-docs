@@ -1,5 +1,9 @@
 # State (System API)
 
+```TypeScript
+enum State
+```
+
 Enumerates the device-cloud sharing states.
 
 **Since:** 11

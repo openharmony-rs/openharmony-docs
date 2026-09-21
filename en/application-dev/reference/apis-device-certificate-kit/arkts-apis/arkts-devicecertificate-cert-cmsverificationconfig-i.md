@@ -1,5 +1,9 @@
 # CmsVerificationConfig
 
+```TypeScript
+interface CmsVerificationConfig
+```
+
 Represents CMS verification configuration.
 
 **Since:** 22

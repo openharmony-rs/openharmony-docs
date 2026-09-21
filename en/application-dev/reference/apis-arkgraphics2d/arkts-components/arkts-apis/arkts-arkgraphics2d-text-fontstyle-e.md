@@ -1,5 +1,9 @@
 # FontStyle
 
+```TypeScript
+enum FontStyle
+```
+
 Enumerates the font styles.
 
 **Since:** 12

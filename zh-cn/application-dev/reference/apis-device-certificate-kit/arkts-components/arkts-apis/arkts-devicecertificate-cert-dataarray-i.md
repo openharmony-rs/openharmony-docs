@@ -1,5 +1,9 @@
 # DataArray
 
+```TypeScript
+interface DataArray
+```
+
 数据数组的列表。
 
 **起始版本：** 9

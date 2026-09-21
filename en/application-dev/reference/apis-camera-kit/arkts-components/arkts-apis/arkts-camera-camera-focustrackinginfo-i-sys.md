@@ -1,5 +1,9 @@
 # FocusTrackingInfo (System API)
 
+```TypeScript
+interface FocusTrackingInfo
+```
+
 Describes the focus tracking information, which is obtained by calling VideoSessionForSys. [on('focusTrackingInfoAvailable')](arkts-camera-camera-videosession-i-sys.md#onfocustrackinginfoavailable).
 
 **Since:** 15

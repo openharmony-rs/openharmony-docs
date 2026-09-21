@@ -1,5 +1,9 @@
 # EnterKeyType
 
+```TypeScript
+export enum EnterKeyType
+```
+
 Enumerates the function types represented by the Enter key of the input method.
 
 **Since:** 10

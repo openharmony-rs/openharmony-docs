@@ -1,5 +1,9 @@
 # AtomicServiceMenuBar（系统接口）
 
+```TypeScript
+export declare class AtomicServiceMenuBar
+```
+
 依赖当前原子化服务的UI上下文，创建AtomicServiceMenuBar对象，用于操控右上角菜单功能胶囊的显隐状态。
 
 > **说明：** 

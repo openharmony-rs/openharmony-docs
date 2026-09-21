@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+enum Action
+```
+
 定义操作选项。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # UpdateRequest (System API)
 
+```TypeScript
+export interface UpdateRequest
+```
+
 Defines the information about an auto-update request.
 
 **Since:** 12

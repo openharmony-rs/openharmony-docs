@@ -1,5 +1,9 @@
 # TextRange
 
+```TypeScript
+declare interface TextRange
+```
+
 文本范围。
 
 **起始版本：** 12

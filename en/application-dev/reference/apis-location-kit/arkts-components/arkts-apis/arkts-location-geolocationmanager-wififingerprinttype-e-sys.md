@@ -1,5 +1,9 @@
 # WifiFingerprintType (System API)
 
+```TypeScript
+export enum WifiFingerprintType
+```
+
 Enum for Wi-Fi fingerprint type.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # DynamicRangeType
 
+```TypeScript
+export enum DynamicRangeType
+```
+
 枚举，媒体文件的动态范围类型。
 
 **起始版本：** 12

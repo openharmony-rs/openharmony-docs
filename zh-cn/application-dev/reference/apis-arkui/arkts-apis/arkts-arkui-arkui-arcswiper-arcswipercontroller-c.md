@@ -1,5 +1,9 @@
 # ArcSwiperController
 
+```TypeScript
+export class ArcSwiperController
+```
+
 ArcSwiper容器组件的控制器，可以将此对象绑定至ArcSwiper组件，可以通过它控制翻页。
 
 **起始版本：** 18

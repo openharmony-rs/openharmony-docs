@@ -11,3 +11,11 @@ export type AccessibilityElement = _AccessibilityElement
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **类型：** _AccessibilityElement
+
+**示例**
+
+```TypeScript
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+
+let accessibilityElement: AccessibilityElement;
+```

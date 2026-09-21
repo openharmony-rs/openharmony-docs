@@ -1,5 +1,9 @@
 # FingerprintTips
 
+```TypeScript
+enum FingerprintTips
+```
+
 表示指纹认证过程中提示码的枚举。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # CdmaCellInformation（系统接口）
 
+```TypeScript
+export interface CdmaCellInformation
+```
+
 Obtains CDMA cell information.
 
 **起始版本：** 8

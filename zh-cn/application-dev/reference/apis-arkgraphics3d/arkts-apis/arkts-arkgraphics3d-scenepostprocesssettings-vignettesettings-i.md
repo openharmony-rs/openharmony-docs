@@ -1,5 +1,9 @@
 # VignetteSettings
 
+```TypeScript
+export interface VignetteSettings
+```
+
 边缘暗角设置。
 
 @typedef VignetteSettings

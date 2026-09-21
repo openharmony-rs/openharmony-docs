@@ -1,5 +1,9 @@
 # NetFirewallRule
 
+```TypeScript
+interface NetFirewallRule
+```
+
 防火墙规则信息结构。
 
 **起始版本：** 15

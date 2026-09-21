@@ -1,5 +1,9 @@
 # AbilityType
 
+```TypeScript
+export enum AbilityType
+```
+
 标识Ability组件的类型。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ComponentUtils
 
+```TypeScript
+export class ComponentUtils
+```
+
 Provides API for obtaining the coordinates and size of the drawing area of a component.
 
 > **NOTE:** 
@@ -33,7 +37,7 @@ Obtains the size, position, translation, scaling, rotation, and affine matrix in
 > **NOTE:** 
 > 
 > This API should be called after the target component's layout is complete to obtain its size information. It is
-> recommended that you use this API within onAppear.
+> recommended that you use this API within [onAppear](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onappear).
 
 **Since:** 10
 
@@ -60,3 +64,40 @@ Obtains the size, position, translation, scaling, rotation, and affine matrix in
 | Error Code ID | Error Message |
 | --- | --- |
 | [100001](../errorcode-internal.md#100001-internal-error) | UI execution context not found. |
+
+**Examples**
+
+```TypeScript
+import { ComponentUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.message = 'Welcome';
+          let componentUtils: ComponentUtils = this.getUIContext().getComponentUtils();
+          let componentInfo = componentUtils.getRectangleById("HelloWorld");
+          let width = componentInfo.size.width; // Obtain the component width.
+          let height = componentInfo.size.height; // Obtain the component height.
+          let localOffsetX = componentInfo.localOffset.x; // Obtain the x-axis offset of the component relative to its parent component.
+          let localOffsetY = componentInfo.localOffset.y; // Obtain the y-axis offset of the component relative to its parent component.
+          console.info(`width: ${width}, height: ${height}, localOffsetX: ${localOffsetX}, localOffsetY: ${localOffsetY}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

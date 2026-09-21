@@ -1,5 +1,9 @@
 # CallAbilityEventId（系统接口）
 
+```TypeScript
+export enum CallAbilityEventId
+```
+
 呼叫能力事件Id。
 
 **起始版本：** 8

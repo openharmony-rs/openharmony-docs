@@ -1,5 +1,9 @@
 # Blob
 
+```TypeScript
+class Blob
+```
+
 将数据处理为blob类型。
 
 **起始版本：** 9

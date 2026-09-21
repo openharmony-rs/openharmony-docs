@@ -34,6 +34,8 @@ declare function rmdir(path: string): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
+<a id="rmdir-1"></a>
+
 ## rmdir
 
 ```TypeScript

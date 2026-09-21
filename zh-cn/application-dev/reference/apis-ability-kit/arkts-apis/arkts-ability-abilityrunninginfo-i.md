@@ -1,5 +1,9 @@
 # AbilityRunningInfo
 
+```TypeScript
+export interface AbilityRunningInfo
+```
+
 AbilityRunningInfo是记录Ability运行信息和状态的数据结构，通过[getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md)方法获取。
 
 **起始版本：** 14

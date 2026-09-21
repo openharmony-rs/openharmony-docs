@@ -1,5 +1,9 @@
 # NearlinkState
 
+```TypeScript
+enum NearlinkState
+```
+
 星闪的开关状态，为枚举值。
 
 **起始版本：** 26.0.0

@@ -35,6 +35,22 @@ function off(type: 'wifiStateChange', callback?: Callback<number>): void
 | type | 'wifiStateChange' | 是 | 固定填"wifiStateChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvPowerNotifyFunc = (result:number) => {
+    console.info("Receive power state change event: " + result);
+}
+
+// Register event
+wifi.on("wifiStateChange", recvPowerNotifyFunc);
+
+// Unregister event
+wifi.off("wifiStateChange", recvPowerNotifyFunc);
+```
+
 
 ## off('wifiConnectionChange')
 
@@ -64,6 +80,22 @@ function off(type: 'wifiConnectionChange', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'wifiConnectionChange' | 是 | 固定填"wifiConnectionChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 连接状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvWifiConnectionChangeFunc = (result:number) => {
+    console.info("Receive wifi connection change event: " + result);
+}
+
+// Register event
+wifi.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
+
+// Unregister event
+wifi.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
+```
 
 
 ## off('wifiScanStateChange')
@@ -95,6 +127,22 @@ function off(type: 'wifiScanStateChange', callback?: Callback<number>): void
 | type | 'wifiScanStateChange' | 是 | 固定填"wifiScanStateChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvWifiScanStateChangeFunc = (result:number) => {
+    console.info("Receive Wifi scan state change event: " + result);
+}
+
+// Register event
+wifi.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
+
+// Unregister event
+wifi.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
+```
+
 
 ## off('wifiRssiChange')
 
@@ -124,6 +172,22 @@ function off(type: 'wifiRssiChange', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'wifiRssiChange' | 是 | 固定填"wifiRssiChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvWifiRssiChangeFunc = (result:number) => {
+    console.info("Receive wifi rssi change event: " + result);
+}
+
+// Register event
+wifi.on("wifiRssiChange", recvWifiRssiChangeFunc);
+
+// Unregister event
+wifi.off("wifiRssiChange", recvWifiRssiChangeFunc);
+```
 
 
 ## off('hotspotStateChange')
@@ -185,6 +249,22 @@ function off(type: 'p2pStateChange', callback?: Callback<number>): void
 | type | 'p2pStateChange' | 是 | 固定填"p2pStateChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvP2pStateChangeFunc = (result:number) => {
+    console.info("Receive p2p state change event: " + result);
+}
+
+// Register event
+wifi.on("p2pStateChange", recvP2pStateChangeFunc);
+
+// Unregister event
+wifi.off("p2pStateChange", recvP2pStateChangeFunc);
+```
+
 
 ## off('p2pConnectionChange')
 
@@ -214,6 +294,22 @@ function off(type: 'p2pConnectionChange', callback?: Callback<WifiP2pLinkedInfo>
 | --- | --- | --- | --- |
 | type | 'p2pConnectionChange' | 是 | 固定填"p2pConnectionChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvP2pConnectionChangeFunc = (result:wifi.WifiP2pLinkedInfo) => {
+    console.info("Receive p2p connection change event: " + result);
+}
+
+// Register event
+wifi.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
+
+// Unregister event
+wifi.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
+```
 
 
 ## off('p2pDeviceChange')
@@ -245,6 +341,22 @@ function off(type: 'p2pDeviceChange', callback?: Callback<WifiP2pDevice>): void
 | type | 'p2pDeviceChange' | 是 | 固定填"p2pDeviceChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvP2pDeviceChangeFunc = (result:wifi.WifiP2pDevice) => {
+    console.info("Receive p2p device change event: " + result);
+}
+
+// Register event
+wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
+
+// Unregister event
+wifi.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
+```
+
 
 ## off('p2pPeerDeviceChange')
 
@@ -274,6 +386,22 @@ function off(type: 'p2pPeerDeviceChange', callback?: Callback<WifiP2pDevice[]>):
 | --- | --- | --- | --- |
 | type | 'p2pPeerDeviceChange' | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvP2pPeerDeviceChangeFunc = (result:wifi.WifiP2pDevice[]) => {
+    console.info("Receive p2p peer device change event: " + result);
+}
+
+// Register event
+wifi.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
+
+// Unregister event
+wifi.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
+```
 
 
 ## off('p2pPersistentGroupChange')
@@ -305,6 +433,22 @@ function off(type: 'p2pPersistentGroupChange', callback?: Callback<void>): void
 | type | 'p2pPersistentGroupChange' | 是 | 固定填"p2pPersistentGroupChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvP2pPersistentGroupChangeFunc = (result:void) => {
+    console.info("Receive p2p persistent group change event: " + result);
+}
+
+// Register event
+wifi.on("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
+
+// Unregister event
+wifi.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
+```
+
 
 ## off('p2pDiscoveryChange')
 
@@ -334,3 +478,19 @@ function off(type: 'p2pDiscoveryChange', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'p2pDiscoveryChange' | 是 | 固定填"p2pDiscoveryChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvP2pDiscoveryChangeFunc = (result:number) => {
+    console.info("Receive p2p discovery change event: " + result);
+}
+
+// Register event
+wifi.on("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
+
+// Unregister event
+wifi.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
+```

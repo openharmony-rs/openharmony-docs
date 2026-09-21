@@ -1,5 +1,9 @@
 # ApertureQuery
 
+```TypeScript
+interface ApertureQuery
+```
+
 Provides the aperture query capability.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # CounterV2NumberStyleOptions
 
+```TypeScript
+declare class CounterV2NumberStyleOptions extends CounterV2InlineStyleOptions
+```
+
 CounterV2NumberStyleOptions定义了列表型和紧凑型CounterV2的属性和事件。
 
 继承于[CounterV2InlineStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2inlinestyleoptions-c.md)，包含该接口及[CounterV2CommonOptions](arkts-arkui-arkui-advanced-counterv2-counterv2commonoptions-c.md)所有属性。本节仅展示新增属性，继承属性请参见父接口。

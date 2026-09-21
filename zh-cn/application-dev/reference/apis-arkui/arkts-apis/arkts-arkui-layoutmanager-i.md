@@ -1,5 +1,9 @@
 # LayoutManager
 
+```TypeScript
+declare interface LayoutManager
+```
+
 布局管理器对象。
 
 > **说明：** 
@@ -8,7 +12,7 @@
 
 ## 导入对象
 
-以Text组件为例，完整示例请参考Text组件的示例10（获取文本信息）。
+以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](../arkts-components/arkts-arkui-text-comp.md#text)。
 
 ```ts
 controller: TextController = new TextController();
@@ -53,6 +57,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 | 类型 | 说明 |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | 字符的位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
+
+<a id="getcharacterpositionatcoordinate-1"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -124,6 +130,8 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
+
+<a id="getcharacterrangeforglyphrange-1"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -228,6 +236,8 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
+
+<a id="getglyphrangeforcharacterrange-1"></a>
 
 ## getGlyphRangeForCharacterRange
 

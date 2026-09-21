@@ -1,5 +1,9 @@
 # PhotoAssetCustomRecordManager (System API)
 
+```TypeScript
+class PhotoAssetCustomRecordManager
+```
+
 Provides APIs for custom user behavior recording for Gallery.
 
 **Since:** 20

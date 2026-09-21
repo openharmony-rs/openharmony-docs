@@ -18,7 +18,7 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteContact](#deletecontact-1)(context: Context, key: string, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -28,16 +28,10 @@ function deleteContact(key: string, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-1)获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **示例**
-
-```TypeScript
-> 说明：
-> 
-> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,19 +52,8 @@ contact.selectContacts().then((data) => {
 });
 ```
 
-```TypeScript
-import { contact } from '@kit.ContactsKit';
 
-// 通过selectContacts接口选择联系人。
-contact.selectContacts().then((data) => {
-  // 第一个参数传入选择联系人的key
-  let promise = contact.deleteContact(data[0].key);
-  promise.then(() => {
-    console.info(`Succeeded in deleting Contact.`);
-  });
-});
-```
-
+<a id="deletecontact-1"></a>
 
 ## deleteContact
 
@@ -91,7 +74,7 @@ function deleteContact(context: Context, key: string, callback: AsyncCallback<vo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-1)获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **错误码：**
@@ -103,8 +86,32 @@ function deleteContact(context: Context, key: string, callback: AsyncCallback<vo
 
 **示例**
 
-参见 deleteContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
+  import { common } from '@kit.AbilityKit';
+
+ // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 请在组件内获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 第二个参数传入选择联系人的key
+    contact.deleteContact(context, data[0].key, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in deleting Contact.');
+    });
+  });
+```
+
+
+<a id="deletecontact-2"></a>
 
 ## deleteContact
 
@@ -118,7 +125,7 @@ function deleteContact(key: string): Promise<void>
 
 **废弃版本：** 10
 
-**替代接口：** deleteContact(context: Context, key: string)
+**替代接口：** [deleteContact](#deletecontact-3)(context: Context, key: string)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -128,7 +135,7 @@ function deleteContact(key: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-1)获取。 |
 
 **返回值：**
 
@@ -138,8 +145,21 @@ function deleteContact(key: string): Promise<void>
 
 **示例**
 
-参见 deleteContact
+```TypeScript
+import { contact } from '@kit.ContactsKit';
 
+// 通过selectContacts接口选择联系人。
+contact.selectContacts().then((data) => {
+  // 第一个参数传入选择联系人的key
+  let promise = contact.deleteContact(data[0].key);
+  promise.then(() => {
+    console.info(`Succeeded in deleting Contact.`);
+  });
+});
+```
+
+
+<a id="deletecontact-3"></a>
 
 ## deleteContact
 
@@ -160,7 +180,7 @@ function deleteContact(context: Context, key: string): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | Context | 是 | 应用上下文Context。 |
-| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md)获取。 |
+| key | string | 是 | 联系人的唯一查询键key，一个联系人对应一个key，可以通过[queryKey](arkts-contacts-contact-querykey-f.md#querykey-1)获取。 |
 
 **返回值：**
 
@@ -177,4 +197,22 @@ function deleteContact(context: Context, key: string): Promise<void>
 
 **示例**
 
-参见 deleteContact
+> 说明：
+> 
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { contact } from '@kit.ContactsKit';
+
+// 通过selectContacts接口选择联系人。
+contact.selectContacts().then((data) => {
+  // 请在组件内获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // 第二个参数传入选择联系人的key
+  let promise = contact.deleteContact(context, data[0].key);
+  promise.then(() => {
+    console.info(`Succeeded in deleting Contact.`);
+  });
+});
+```

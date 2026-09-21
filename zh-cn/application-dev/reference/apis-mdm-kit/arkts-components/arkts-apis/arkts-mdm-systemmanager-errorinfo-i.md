@@ -1,5 +1,9 @@
 # ErrorInfo
 
+```TypeScript
+interface ErrorInfo
+```
+
 系统更新错误信息。
 
 **起始版本：** 12

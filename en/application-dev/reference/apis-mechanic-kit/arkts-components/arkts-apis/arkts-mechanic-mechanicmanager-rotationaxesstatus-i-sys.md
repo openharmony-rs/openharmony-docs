@@ -1,5 +1,9 @@
 # RotationAxesStatus (System API)
 
+```TypeScript
+export interface RotationAxesStatus
+```
+
 Rotation axes status
 
 @typedef RotationAxesStatus

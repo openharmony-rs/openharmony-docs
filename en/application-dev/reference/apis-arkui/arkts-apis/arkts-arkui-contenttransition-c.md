@@ -1,5 +1,9 @@
 # ContentTransition
 
+```TypeScript
+declare class ContentTransition
+```
+
 Defines the base class for text transitions.
 
 **Since:** 20

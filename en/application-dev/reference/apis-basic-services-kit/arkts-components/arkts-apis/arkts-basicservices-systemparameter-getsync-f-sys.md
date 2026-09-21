@@ -14,6 +14,14 @@ function getSync(key: string, def?: string): string
 
 Obtains a value of the specified key.
 
+> **NOTE:** 
+> 
+> Both **getSync** and **get** can be used to obtain system parameter values.
+> - **getSync**: synchronous method, which directly returns the system parameter value. This method is suitable for simple synchronization scenarios.
+> - **get**: asynchronous method, which uses a callback or promise to return the result asynchronously. This method is suitable for scenarios that require asynchronous processing.
+> 
+> You should select a proper method based on the specific scenario.
+
 **Since:** 6
 
 **Deprecated since:** 9
@@ -29,7 +37,7 @@ Obtains a value of the specified key.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key to be queried. |
-| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist.<br>The value can be **undefined** or any custom value. |
+| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist. <br> Its value can be **undefined** or a random character string. |
 
 **Return value:**
 

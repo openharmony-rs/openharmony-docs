@@ -1,5 +1,9 @@
 # DeviceBasicInfo
 
+```TypeScript
+interface DeviceBasicInfo
+```
+
 分布式设备基本信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # Watcher（系统接口）
 
+```TypeScript
+interface Watcher
+```
+
 系统事件订阅者对象接口。
 
 **起始版本：** 9

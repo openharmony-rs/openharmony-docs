@@ -1,5 +1,9 @@
 # ShowToastOptions
 
+```TypeScript
+interface ShowToastOptions
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -36,7 +40,7 @@ backgroundBlurStyle?: BlurStyle
 
 Background blur style of the toast.<br> Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br> **NOTE:** <br> Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 12
 
@@ -76,6 +80,8 @@ Distance from the bottom of the toast to the navigation bar. If the soft keyboar
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -91,6 +97,8 @@ Duration that the toast will remain on the screen.<br>Default value: 1500 ms.<br
 **Type:** number
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -124,7 +132,7 @@ hoverModeArea?: HoverModeAreaType
 
 Display area of the toast in the hover state.<br> Default value: **HoverModeAreaType.BOTTOM_SCREEN**, indicating that the toast is displayed in the lower half screen
 
-**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
+**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-common-comp-hovermodeareatype-e.md)
 
 **Default:** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -147,6 +155,8 @@ Text to display. <br>**NOTE:** <br>The default font is **'Harmony Sans'**. Other
 **Type:** string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -178,7 +188,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 Shadow of the toast background.<br> Default value: **ShadowStyle.OUTER_DEFAULT_MD**
 
-**Type:** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**Type:** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **Since:** 12
 
@@ -216,7 +226,7 @@ systemMaterial?: SystemUiMaterial
 
 Set system-styled materials for toast. Different materials have different effects, which can influence backgroundColor, border, shadow, and other visual attributes of toast.
 
-**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **Since:** 26.0.0
 

@@ -1,5 +1,9 @@
 # VpnConfig（系统接口）
 
+```TypeScript
+export interface VpnConfig
+```
+
 VPN 配置参数。
 
 **起始版本：** 10

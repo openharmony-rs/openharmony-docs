@@ -1,5 +1,9 @@
 # PhotoBrowserRange
 
+```TypeScript
+export declare enum PhotoBrowserRange
+```
+
 Enumerates the view range on the photo browser page.
 
 **Since:** 12

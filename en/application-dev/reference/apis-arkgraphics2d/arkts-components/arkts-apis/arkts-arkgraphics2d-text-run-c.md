@@ -1,5 +1,9 @@
 # Run
 
+```TypeScript
+class Run
+```
+
 Represents a text typesetting unit, which is a continuous text segment with the same style attributes. Run is obtained through the [getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns) API of the [TextLine](arkts-arkgraphics2d-text-textline-c.md) class.
 
 Before calling any of the following APIs, you must use [getGlyphRuns()](arkts-arkgraphics2d-text-textline-c.md#getglyphruns) of the [TextLine](arkts-arkgraphics2d-text-textline-c.md) class to create a **Run** object.
@@ -127,31 +131,7 @@ Obtains the index of each glyph in this run.
 let glyph = runs[0].getGlyphs();
 ```
 
-```TypeScript
-import { text } from '@kit.ArkGraphics2D'
-
-function textFunc() {
-  let glyphs = runs[0].getGlyphs(); // Obtain the index of all glyphs of the run.
-  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // Obtain the glyph indices within the range starting at position 1 with a length of 2 from the rendered block.
-  glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1 is an invalid value, and undefined is returned.
-  glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10 is an invalid value, and undefined is returned.
-  let glyphsNull = runs[0].getGlyphs(null); // null is an invalid value, and undefined is returned.
-  let glyphsUndefined = runs[0].getGlyphs(undefined); // undefined is an invalid value, and undefined is returned.
-}
-
-@Entry
-@Component
-struct Index {
-  fun: Function = textFunc;
-  build() {
-    Column() {
-      Button().onClick(() => {
-        this.fun();
-      })
-    }
-  }
-}
-```
+<a id="getglyphs-1"></a>
 
 ## getGlyphs
 
@@ -181,7 +161,31 @@ Obtains the index of each glyph in the specified range of this run.
 
 **Examples**
 
-See [getGlyphs](#getglyphs)
+```TypeScript
+import { text } from '@kit.ArkGraphics2D'
+
+function textFunc() {
+  let glyphs = runs[0].getGlyphs(); // Obtain the index of all glyphs of the run.
+  let glyphsRange = runs[0].getGlyphs({start:1, end:2}); // Obtain the glyph indices within the range starting at position 1 with a length of 2 from the rendered block.
+  glyphsRange = runs[0].getGlyphs({start:-1, end:2}); // -1 is an invalid value, and undefined is returned.
+  glyphsRange = runs[0].getGlyphs({start:0, end:-10}); // -10 is an invalid value, and undefined is returned.
+  let glyphsNull = runs[0].getGlyphs(null); // null is an invalid value, and undefined is returned.
+  let glyphsUndefined = runs[0].getGlyphs(undefined); // undefined is an invalid value, and undefined is returned.
+}
+
+@Entry
+@Component
+struct Index {
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Button().onClick(() => {
+        this.fun();
+      })
+    }
+  }
+}
+```
 
 ## getImageBounds
 
@@ -271,31 +275,7 @@ Obtains the position of each glyph relative to the respective line in this run.
 let positions = runs[0].getPositions();
 ```
 
-```TypeScript
-import { text } from '@kit.ArkGraphics2D'
-
-function textFunc() {
-  let positions = runs[0].getPositions(); // Obtain the positions of all glyphs in the run.
-  let positionsRange = runs[0].getPositions({start:1, end:2}); // Obtain the positions of glyphs in the range starting from position 1, with a length of 2.
-  positionsRange = runs[0].getPositions({start:-1, end:2}); // -1 is an invalid value, and undefined is returned.
-  positionsRange = runs[0].getPositions({start:0, end:-10}); // -10 is an invalid value, and undefined is returned.
-  let positionsNull = runs[0].getPositions(null); // null is an invalid value, and undefined is returned.
-  let positionsUndefined = runs[0].getPositions(undefined); // undefined is an invalid value, and undefined is returned.
-}
-
-@Entry
-@Component
-struct Index {
-  fun: Function = textFunc;
-  build() {
-    Column() {
-      Button().onClick(() => {
-        this.fun();
-      })
-    }
-  }
-}
-```
+<a id="getpositions-1"></a>
 
 ## getPositions
 
@@ -325,7 +305,31 @@ Obtains the position array of each glyph relative to the respective line within 
 
 **Examples**
 
-See [getPositions](#getpositions)
+```TypeScript
+import { text } from '@kit.ArkGraphics2D'
+
+function textFunc() {
+  let positions = runs[0].getPositions(); // Obtain the positions of all glyphs in the run.
+  let positionsRange = runs[0].getPositions({start:1, end:2}); // Obtain the positions of glyphs in the range starting from position 1, with a length of 2.
+  positionsRange = runs[0].getPositions({start:-1, end:2}); // -1 is an invalid value, and undefined is returned.
+  positionsRange = runs[0].getPositions({start:0, end:-10}); // -10 is an invalid value, and undefined is returned.
+  let positionsNull = runs[0].getPositions(null); // null is an invalid value, and undefined is returned.
+  let positionsUndefined = runs[0].getPositions(undefined); // undefined is an invalid value, and undefined is returned.
+}
+
+@Entry
+@Component
+struct Index {
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Button().onClick(() => {
+        this.fun();
+      })
+    }
+  }
+}
+```
 
 ## getStringIndices
 

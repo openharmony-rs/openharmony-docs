@@ -1,5 +1,9 @@
 # DeleteValue
 
+```TypeScript
+declare interface DeleteValue
+```
+
 提供从文本中删除值的接口。
 
 **起始版本：** 12

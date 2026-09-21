@@ -1,5 +1,9 @@
 # subscribeAccelerometerOptions
 
+```TypeScript
+export interface subscribeAccelerometerOptions
+```
+
 用于设置加速度传感器订阅的参数，包括回调频率和回调函数。
 
 **起始版本：** 3

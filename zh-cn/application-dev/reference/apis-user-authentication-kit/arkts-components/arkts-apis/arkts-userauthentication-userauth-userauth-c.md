@@ -1,5 +1,9 @@
 # UserAuth
 
+```TypeScript
+class UserAuth
+```
+
 认证器对象。
 
 **起始版本：** 8

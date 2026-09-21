@@ -1,5 +1,9 @@
 # SyncFolder（系统接口）
 
+```TypeScript
+interface SyncFolder
+```
+
 表示同步根信息。
 
 **起始版本：** 21
@@ -72,7 +76,7 @@ isSupportPlaceHolder?: boolean
 
 **类型：** boolean
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

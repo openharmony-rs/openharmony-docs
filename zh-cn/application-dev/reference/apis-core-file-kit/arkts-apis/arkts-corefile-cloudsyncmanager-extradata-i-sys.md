@@ -1,5 +1,9 @@
 # ExtraData（系统接口）
 
+```TypeScript
+interface ExtraData
+```
+
 云端数据变更信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # Map
 
+```TypeScript
+interface Map<K, V>
+```
+
 ## Modules to Import
 
 ```TypeScript

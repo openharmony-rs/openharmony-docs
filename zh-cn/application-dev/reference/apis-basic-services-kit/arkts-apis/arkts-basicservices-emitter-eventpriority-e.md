@@ -1,5 +1,9 @@
 # EventPriority
 
+```TypeScript
+export enum EventPriority
+```
+
 表示事件的优先级。
 
 **起始版本：** 7

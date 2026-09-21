@@ -1,5 +1,9 @@
 # GyroscopeUncalibratedResponse
 
+```TypeScript
+interface GyroscopeUncalibratedResponse extends Response
+```
+
 Describes the uncalibrated gyroscope sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** GyroscopeUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

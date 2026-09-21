@@ -1,5 +1,9 @@
 # ResultSet（系统接口）
 
+```TypeScript
+class ResultSet
+```
+
 提供通过查询数据库生成的数据库结果集的访问方法。
 
 下列API示例中，需先使用[query](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#query)方法获取ResultSet实例，再调用对应方法。

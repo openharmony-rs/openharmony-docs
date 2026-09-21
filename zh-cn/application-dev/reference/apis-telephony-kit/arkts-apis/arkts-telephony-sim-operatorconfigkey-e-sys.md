@@ -1,5 +1,9 @@
 # OperatorConfigKey（系统接口）
 
+```TypeScript
+export enum OperatorConfigKey
+```
+
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Telephony.CoreService

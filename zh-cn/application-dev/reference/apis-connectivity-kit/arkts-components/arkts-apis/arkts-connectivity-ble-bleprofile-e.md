@@ -1,5 +1,9 @@
 # BleProfile
 
+```TypeScript
+enum BleProfile
+```
+
 枚举，指定当前设备的Profile协议类型。
 
 **起始版本：** 21

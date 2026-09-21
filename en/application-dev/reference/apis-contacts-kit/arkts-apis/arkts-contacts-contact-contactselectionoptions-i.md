@@ -1,5 +1,9 @@
 # ContactSelectionOptions
 
+```TypeScript
+interface ContactSelectionOptions
+```
+
 Defines the Contact selection options, which specifies whether one contact or multiple contacts can be selected.
 
 **Since:** 10

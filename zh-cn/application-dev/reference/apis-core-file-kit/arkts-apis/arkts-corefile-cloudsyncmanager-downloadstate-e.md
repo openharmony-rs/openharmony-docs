@@ -1,5 +1,9 @@
 # DownloadState
 
+```TypeScript
+enum DownloadState
+```
+
 全量下载任务状态的枚举。
 
 **起始版本：** 20

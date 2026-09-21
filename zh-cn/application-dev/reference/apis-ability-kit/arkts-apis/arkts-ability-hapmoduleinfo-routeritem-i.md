@@ -1,5 +1,9 @@
 # RouterItem
 
+```TypeScript
+export interface RouterItem
+```
+
 描述模块配置的路由表信息。
 
 **起始版本：** 12

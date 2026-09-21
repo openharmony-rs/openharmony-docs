@@ -1,5 +1,9 @@
 # NotificationSetting
 
+```TypeScript
+export interface NotificationSetting
+```
+
 Describes the setting status of the notification mode switch.
 
 **Since:** 20

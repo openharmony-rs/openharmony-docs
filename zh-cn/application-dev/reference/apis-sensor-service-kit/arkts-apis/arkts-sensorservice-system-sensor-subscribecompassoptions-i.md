@@ -1,5 +1,9 @@
 # SubscribeCompassOptions
 
+```TypeScript
+export interface SubscribeCompassOptions
+```
+
 用于设置罗盘传感器订阅的参数，包括回调函数。
 
 **起始版本：** 3

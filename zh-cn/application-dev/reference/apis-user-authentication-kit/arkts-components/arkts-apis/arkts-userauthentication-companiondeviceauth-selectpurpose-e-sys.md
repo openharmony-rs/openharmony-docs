@@ -1,5 +1,9 @@
 # SelectPurpose（系统接口）
 
+```TypeScript
+enum SelectPurpose
+```
+
 选择伴随设备的目的。
 
 **起始版本：** 23

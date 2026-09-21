@@ -1,5 +1,9 @@
 # MediaKeySystemInfo
 
+```TypeScript
+interface MediaKeySystemInfo
+```
+
 加密媒体内容的DRM信息。
 
 **起始版本：** 11

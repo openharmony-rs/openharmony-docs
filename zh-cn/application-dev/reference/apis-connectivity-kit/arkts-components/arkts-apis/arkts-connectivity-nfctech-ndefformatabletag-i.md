@@ -1,5 +1,9 @@
 # NdefFormatableTag
 
+```TypeScript
+export interface NdefFormatableTag extends TagSession
+```
+
 NdefFormatableTag为NDEF Formattable的标签提供格式化操作，继承自TagSession。
 
 TagSession是所有NFC Tag 技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
@@ -117,6 +121,8 @@ function nfcTechDemo() {
     }
 }
 ```
+
+<a id="format-1"></a>
 
 ## format
 
@@ -258,6 +264,8 @@ function nfcTechDemo() {
     }
 }
 ```
+
+<a id="formatreadonly-1"></a>
 
 ## formatReadOnly
 

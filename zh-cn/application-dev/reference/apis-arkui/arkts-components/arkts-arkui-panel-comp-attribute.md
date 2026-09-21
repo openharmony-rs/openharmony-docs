@@ -1,10 +1,14 @@
 # Panel属性/事件
 
-除支持通用属性外，还支持以下属性：
+```TypeScript
+declare class PanelAttribute extends CommonMethod<PanelAttribute>
+```
 
-除支持通用事件外，还支持以下事件：
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** PanelAttribute extends CommonMethod&lt;PanelAttribute&gt;
+除支持[通用事件](arkts-arkui-common-comp.md#common)外，还支持以下事件：
+
+**继承/实现关系：** PanelAttribute extends CommonMethod<PanelAttribute>
 
 **起始版本：** 7
 
@@ -27,6 +31,8 @@ backgroundMask(color: ResourceColor)
 **起始版本：** 9
 
 **废弃版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -54,6 +60,8 @@ customHeight(value: Dimension | PanelHeight)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -62,7 +70,7 @@ customHeight(value: Dimension | PanelHeight)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [PanelHeight](arkts-arkui-panelheight-e.md) | 是 | 指定PanelType.CUSTOM状态下的高度。<br>默认值：0 <br>**说明：** <br>不支持设置百分比，传入百分比时不生效。传入负数时不生效。 |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [PanelHeight](arkts-arkui-panel-comp-panelheight-e.md) | 是 | 指定PanelType.CUSTOM状态下的高度。<br>默认值：0 <br>**说明：** <br>不支持设置百分比，传入百分比时不生效。传入负数时不生效。 |
 
 ## dragBar
 
@@ -79,6 +87,8 @@ dragBar(value: boolean)
 **起始版本：** 7
 
 **废弃版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -105,6 +115,8 @@ fullHeight(value: number | string)
 **起始版本：** 7
 
 **废弃版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -134,6 +146,8 @@ halfHeight(value: number | string)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -162,6 +176,8 @@ miniHeight(value: number | string)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -188,6 +204,8 @@ mode(value: PanelMode)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -196,7 +214,7 @@ mode(value: PanelMode)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [PanelMode](arkts-arkui-panelmode-e.md) | 是 | 设置可滑动面板的初始状态。<br>Minibar类型默认值：PanelMode.Mini；其余类型默认值：PanelMode.Half <br>从API version 10开始，该属性支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
+| value | [PanelMode](arkts-arkui-panel-comp-panelmode-e.md) | 是 | 设置可滑动面板的初始状态。<br>Minibar类型默认值：PanelMode.Mini；其余类型默认值：PanelMode.Half <br>从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
 
 ## onChange
 
@@ -247,6 +265,8 @@ onChange(
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -272,6 +292,8 @@ onHeightChange(callback: (value: number) => void)
 **起始版本：** 9
 
 **废弃版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -299,6 +321,8 @@ show(value: boolean)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -324,6 +348,8 @@ showCloseIcon(value: boolean)
 **起始版本：** 10
 
 **废弃版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -351,6 +377,8 @@ type(value: PanelType)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -359,4 +387,4 @@ type(value: PanelType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [PanelType](arkts-arkui-paneltype-e.md) | 是 | 设置可滑动面板的类型。<br>默认值：PanelType.Foldable |
+| value | [PanelType](arkts-arkui-panel-comp-paneltype-e.md) | 是 | 设置可滑动面板的类型。<br>默认值：PanelType.Foldable |

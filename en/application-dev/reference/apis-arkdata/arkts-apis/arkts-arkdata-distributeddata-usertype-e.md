@@ -1,5 +1,9 @@
 # UserType
 
+```TypeScript
+enum UserType
+```
+
 Enumerates the user types.
 
 **Since:** 7

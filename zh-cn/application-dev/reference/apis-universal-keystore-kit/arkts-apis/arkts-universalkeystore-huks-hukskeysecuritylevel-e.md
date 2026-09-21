@@ -1,5 +1,9 @@
 # HuksKeySecurityLevel
 
+```TypeScript
+export enum HuksKeySecurityLevel
+```
+
 表示密钥安全级别的枚举。
 
 **起始版本：** 26.0.0
@@ -16,6 +20,8 @@ HUKS_KEY_SECURITY_LEVEL_TEE = 0
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -31,6 +37,8 @@ HUKS_KEY_SECURITY_LEVEL_SE = 1
 **起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ACCESS_SE_KEY
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 

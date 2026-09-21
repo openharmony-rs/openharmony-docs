@@ -1,5 +1,9 @@
 # BundlePackFlag (System API)
 
+```TypeScript
+export enum BundlePackFlag
+```
+
 Flag of the bundle package.
 
 **Since:** 9

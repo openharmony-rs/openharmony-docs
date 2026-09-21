@@ -1,5 +1,9 @@
 # NetPortStatesInfo
 
+```TypeScript
+export interface NetPortStatesInfo
+```
+
 系统当前监听的TCP、UDP端口信息。
 
 **起始版本：** 24

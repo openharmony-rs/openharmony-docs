@@ -1,5 +1,9 @@
 # FontFeature
 
+```TypeScript
+interface FontFeature
+```
+
 Describes a font feature.
 
 **Since:** 12

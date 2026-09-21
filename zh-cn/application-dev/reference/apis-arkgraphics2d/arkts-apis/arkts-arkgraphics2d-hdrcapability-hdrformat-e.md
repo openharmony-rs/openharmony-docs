@@ -1,5 +1,9 @@
 # HDRFormat
 
+```TypeScript
+enum HDRFormat
+```
+
 HDR格式枚举。
 
 **起始版本：** 11

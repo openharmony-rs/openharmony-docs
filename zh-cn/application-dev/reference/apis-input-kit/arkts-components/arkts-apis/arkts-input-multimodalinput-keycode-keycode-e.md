@@ -1,5 +1,9 @@
 # KeyCode
 
+```TypeScript
+export declare enum KeyCode
+```
+
 键值。
 
 **起始版本：** 9

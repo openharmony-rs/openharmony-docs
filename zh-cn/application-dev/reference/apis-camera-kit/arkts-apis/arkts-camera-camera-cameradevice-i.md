@@ -1,5 +1,9 @@
 # CameraDevice
 
+```TypeScript
+interface CameraDevice
+```
+
 相机设备信息。
 
 **起始版本：** 10

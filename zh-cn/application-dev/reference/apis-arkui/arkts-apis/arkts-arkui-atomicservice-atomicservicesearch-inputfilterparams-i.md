@@ -1,5 +1,9 @@
 # InputFilterParams
 
+```TypeScript
+export interface InputFilterParams
+```
+
 搜索框过滤设置项。
 
 **起始版本：** 18

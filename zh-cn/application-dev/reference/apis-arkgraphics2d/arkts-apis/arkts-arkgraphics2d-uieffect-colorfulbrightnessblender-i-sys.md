@@ -1,5 +1,9 @@
 # ColorfulBrightnessBlender（系统接口）
 
+```TypeScript
+interface ColorfulBrightnessBlender
+```
+
 基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度。在调用ColorfulBrightnessBlender前，需要先通过createColorfulBrightnessBlender创建一个ColorfulBrightnessBlender实例。
 
 **起始版本：** 26.2.0

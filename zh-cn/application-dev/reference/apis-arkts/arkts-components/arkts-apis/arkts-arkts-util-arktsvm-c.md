@@ -1,5 +1,9 @@
 # ArkTSVM
 
+```TypeScript
+class ArkTSVM
+```
+
 为开发者提供虚拟机维测能力的类。
 
 **起始版本：** 23
@@ -62,8 +66,10 @@ static napi_value CreateObject(napi_env env, napi_callback_info info)
 }
 ```
 
-```TypeScript
 在CMakeLists.txt中添加以下动态链接库：
+
+```TypeScript
+libuv.so
 ```
 
 ```TypeScript
@@ -87,10 +93,18 @@ try {
 }
 ```
 
-```TypeScript
 可能出现的问题：
 
 如果之前内存泄漏的对象被继续使用，使用enableLocalHandleDetection接口后，系统会回收内存泄漏对象。继续使用该对象会导致内存泄漏问题转变为稳定性问题。
+
+```TypeScript
+napi_value global_js_object;
+napi_value dangerous_function(napi_env env, napi_callback_info info) {
+    napi_value js_obj;
+    napi_create_object(env, &js_obj);
+    global_js_object = js_obj; // 直接存储到全局变量，开启LocalHandle内存泄漏兜底机制后被释放
+    return nullptr;
+}
 ```
 
 ## getAllVMHeapMemoryInfo
@@ -133,6 +147,37 @@ util.ArkTSVM.getAllVMHeapMemoryInfo().then(
   }
 );
 ```
+
+## getGlobalHandleCount
+
+```TypeScript
+static getGlobalHandleCount(): number
+```
+
+获取当前调用线程所属 ArkTS 虚拟机正在使用的全局 handle 数量。可用于维测场景，例如根据全局 handle 数量决定是否生成内存快照。
+
+> **说明：** 
+> 
+> 该计数是在调用线程所属的虚拟机上查询的。在 worker 中调用此接口返回的是该 worker 自身虚拟机的计数，而非主
+> 虚拟机的计数。
+> 
+> 仅统计强引用（global handle）的数量，不包含弱引用（WeakRef）和 Sendable 引用（SendableRef）。弱引用存储在
+> 独立的弱引用链表中，Sendable 引用存储在独立的 Sendable 全局存储中，均不在本接口的遍历范围内。
+> 
+> 返回值受强引用创建/删除操作的影响。例如，napi_create_strong_reference、napi_delete_strong_reference 会相应
+> 增减计数，而 napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference 不会影响计数结果。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回当前虚拟机正在使用的全局 handle 数量，该值大于等于 0。 |
 
 ## offVMHeapMemoryPressure
 

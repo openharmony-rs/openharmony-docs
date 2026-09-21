@@ -1,5 +1,9 @@
 # PhyValue
 
+```TypeScript
+interface PhyValue
+```
+
 Describes the parameters of the Ble phy.
 
 **Since:** 23

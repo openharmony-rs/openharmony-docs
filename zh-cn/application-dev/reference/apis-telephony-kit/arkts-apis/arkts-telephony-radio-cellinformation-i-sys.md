@@ -1,5 +1,9 @@
 # CellInformation
 
+```TypeScript
+export interface CellInformation
+```
+
 小区信息。
 
 **起始版本：** 8
@@ -15,8 +19,7 @@ import { radio } from '@kit.TelephonyKit';
 ## data
 
 ```TypeScript
-data: CdmaCellInformation | GsmCellInformation | LteCellInformation | NrCellInformation | TdscdmaCellInformation
-      | WcdmaCellInformation
+data: CdmaCellInformation | GsmCellInformation | LteCellInformation | NrCellInformation | TdscdmaCellInformation | WcdmaCellInformation
 ```
 
 Obtains signal strength under different network formats.

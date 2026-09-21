@@ -1,5 +1,9 @@
 # settings
 
+```TypeScript
+declare namespace settings
+```
+
 This module provides settings data access abilities.
 
 @namespace settings
@@ -35,27 +39,27 @@ import { settings } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getURI](arkts-basicservices-settings-geturi-f.md) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
-| [getURI](arkts-basicservices-settings-geturi-f.md) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
-| [getValue](arkts-basicservices-settings-getvalue-f.md) | Obtains the value of a specified character string in the database. |
-| [getValue](arkts-basicservices-settings-getvalue-f.md) | Obtains the value of a specified character string in the database. |
-| [getValue](arkts-basicservices-settings-getvalue-f.md) | Get value from settingsdata |
-| [getValue](arkts-basicservices-settings-getvalue-f.md) | Get value from settingsdata |
-| [getValue](arkts-basicservices-settings-getvalue-f.md) | Get value from settingsdata [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [setValue](arkts-basicservices-settings-setvalue-f.md) | Set settingsdata value. |
-| [setValue](arkts-basicservices-settings-setvalue-f.md) | Set settingsdata value. |
-| [setValue](arkts-basicservices-settings-setvalue-f.md) | Set settingsdata value. [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md) | Enables or disables airplane mode. |
-| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md) | Enables or disables airplane mode. |
-| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md) | Checks whether a specified application can show as a floating window. |
-| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md) | Checks whether a specified application can show as a floating window. |
+| [getURI](arkts-basicservices-settings-geturi-f.md#geturi) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
+| [getURI](arkts-basicservices-settings-geturi-f.md#geturi-1) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue) | Obtains the value of a specified character string in the database. |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue-1) | Obtains the value of a specified character string in the database. |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue-2) | Get value from settingsdata |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue-3) | Get value from settingsdata |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue-4) | Get value from settingsdata [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue-2) | Set settingsdata value. |
+| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue-3) | Set settingsdata value. |
+| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue-4) | Set settingsdata value. [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md#enableairplanemode) | Enables or disables airplane mode. |
+| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md#enableairplanemode-1) | Enables or disables airplane mode. |
+| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md#canshowfloating) | Checks whether a specified application can show as a floating window. |
+| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md#canshowfloating-1) | Checks whether a specified application can show as a floating window. |
 | [getUriSync](arkts-basicservices-settings-geturisync-f.md) | Get settingsdata uri (synchronous method) |
-| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md) | Get value from settingsdata(synchronous method) |
-| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md) | Get value from settingsdata(synchronous method) |
-| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md) | Get value from settingsdata(synchronous method). [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md) | Set settingsdata value(synchronous method) |
-| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md) | Set settingsdata value(synchronous method) |
-| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md) | Set settingsdata value(synchronous method). [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync) | Get value from settingsdata(synchronous method) |
+| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync-1) | Get value from settingsdata(synchronous method) |
+| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync-2) | Get value from settingsdata(synchronous method). [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync) | Set settingsdata value(synchronous method) |
+| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync-1) | Set settingsdata value(synchronous method) |
+| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync-2) | Set settingsdata value(synchronous method). [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
 | [registerKeyObserver](arkts-basicservices-settings-registerkeyobserver-f.md) | Monitor registration key(synchronous method) [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
 | [unregisterKeyObserver](arkts-basicservices-settings-unregisterkeyobserver-f.md) | Monitor unregister key(synchronous method) [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
 | [openNetworkManagerSettings](arkts-basicservices-settings-opennetworkmanagersettings-f.md) | Open the network manager settings page. |
@@ -77,6 +81,6 @@ import { settings } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [setValue](arkts-basicservices-settings-setvalue-f-sys.md) | Saves a character string name and its value to the database. |
-| [setValue](arkts-basicservices-settings-setvalue-f-sys.md) | Saves a character string name and its value to the database. |
+| [setValue](arkts-basicservices-settings-setvalue-f-sys.md#setvalue) | Saves a character string name and its value to the database. |
+| [setValue](arkts-basicservices-settings-setvalue-f-sys.md#setvalue-1) | Saves a character string name and its value to the database. |
 <!--DelEnd-->

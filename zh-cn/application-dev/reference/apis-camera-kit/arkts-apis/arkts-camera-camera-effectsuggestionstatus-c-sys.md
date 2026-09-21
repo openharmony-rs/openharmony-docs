@@ -1,5 +1,9 @@
 # EffectSuggestionStatus（系统接口）
 
+```TypeScript
+class EffectSuggestionStatus
+```
+
 Effect suggestion status
 
 **起始版本：** 12

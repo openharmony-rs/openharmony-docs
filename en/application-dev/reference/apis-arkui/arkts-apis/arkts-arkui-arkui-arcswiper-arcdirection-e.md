@@ -1,5 +1,9 @@
 # ArcDirection
 
+```TypeScript
+export enum ArcDirection
+```
+
 Declare the direction of arc indicator.
 
 **Since:** 18

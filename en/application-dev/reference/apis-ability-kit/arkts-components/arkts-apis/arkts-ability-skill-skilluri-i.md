@@ -1,5 +1,9 @@
 # SkillUri
 
+```TypeScript
+export interface SkillUri
+```
+
 Indicates the uris of the skill
 
 **Since:** 12

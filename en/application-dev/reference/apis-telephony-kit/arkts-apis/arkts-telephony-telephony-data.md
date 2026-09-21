@@ -19,19 +19,19 @@ import { data } from '@kit.TelephonyKit';
 | Name | Description |
 | --- | --- |
 | [getActiveApnName](arkts-telephony-data-getactiveapnname-f.md) | Obtains the access point name (APN) of the default SIM card used for mobile data. This API returns the result asynchronously. |
-| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md) | Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses an asynchronous callback to return the result. |
-| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md) | Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses a promise to return the result. |
-| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md) | Obtains the cellular data connection status. This API uses an asynchronous callback to return the result. |
-| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md) | Obtains the cellular data connection status. This API uses a promise to return the result. |
+| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md#getcellulardataflowtype) | Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses an asynchronous callback to return the result. |
+| [getCellularDataFlowType](arkts-telephony-data-getcellulardataflowtype-f.md#getcellulardataflowtype-1) | Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses a promise to return the result. |
+| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md#getcellulardatastate) | Obtains the cellular data connection status. This API uses an asynchronous callback to return the result. |
+| [getCellularDataState](arkts-telephony-data-getcellulardatastate-f.md#getcellulardatastate-1) | Obtains the cellular data connection status. This API uses a promise to return the result. |
 | [getDefaultCellularDataSimId](arkts-telephony-data-getdefaultcellulardatasimid-f.md) | Obtains the default ID of the SIM card used for mobile data. |
-| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md) | Obtains the default slot of the SIM card used for mobile data. This API uses an asynchronous callback to return the result. |
-| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md) | Obtains the default slot of the SIM card used for mobile data. This API uses a promise to return the result. |
+| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md#getdefaultcellulardataslotid) | Obtains the default slot of the SIM card used for mobile data. This API uses an asynchronous callback to return the result. |
+| [getDefaultCellularDataSlotId](arkts-telephony-data-getdefaultcellulardataslotid-f.md#getdefaultcellulardataslotid-1) | Obtains the default slot of the SIM card used for mobile data. This API uses a promise to return the result. |
 | [getDefaultCellularDataSlotIdSync](arkts-telephony-data-getdefaultcellulardataslotidsync-f.md) | Obtains the default SIM card used for mobile data synchronously. |
-| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md) | Checks whether the cellular data service is enabled. This API uses an asynchronous callback to return the result. |
-| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md) | Checks whether the cellular data service is enabled. This API uses a promise to return the result. |
+| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md#iscellulardataenabled) | Checks whether the cellular data service is enabled. This API uses an asynchronous callback to return the result. |
+| [isCellularDataEnabled](arkts-telephony-data-iscellulardataenabled-f.md#iscellulardataenabled-1) | Checks whether the cellular data service is enabled. This API uses a promise to return the result. |
 | [isCellularDataEnabledSync](arkts-telephony-data-iscellulardataenabledsync-f.md) | Checks whether the cellular data service is enabled. This API returns the result synchronously. |
-| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md) | Checks whether roaming is enabled for the cellular data service. This API uses an asynchronous callback to return the result. |
-| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md) | Checks whether roaming is enabled for the cellular data service. This API uses a promise to return the result. |
+| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md#iscellulardataroamingenabled) | Checks whether roaming is enabled for the cellular data service. This API uses an asynchronous callback to return the result. |
+| [isCellularDataRoamingEnabled](arkts-telephony-data-iscellulardataroamingenabled-f.md#iscellulardataroamingenabled-1) | Checks whether roaming is enabled for the cellular data service. This API uses a promise to return the result. |
 | [isCellularDataRoamingEnabledSync](arkts-telephony-data-iscellulardataroamingenabledsync-f.md) | Checks whether roaming is enabled for the cellular data service. This API returns the result synchronously. |
 | [queryAllApns](arkts-telephony-data-queryallapns-f.md) | Obtains the access point name (APN) of the default SIM card used for mobile data. This API returns the result asynchronously. |
 | [queryApnIds](arkts-telephony-data-queryapnids-f.md) | Obtains the APN ID corresponding to the specified **ApnInfo**. This API returns the result asynchronously. |
@@ -43,16 +43,16 @@ import { data } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
-| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md) | Disables the cellular data service. This API uses an asynchronous callback to return the result. |
-| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md) | Disables the cellular data service. This API uses a promise to return the result. |
-| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md) | Disables the cellular data roaming service. This API uses an asynchronous callback to return the result. |
-| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md) | Disables the cellular data roaming service. This API uses a promise to return the result. |
-| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md) | Enables the cellular data service. This API uses an asynchronous callback to return the result. |
-| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md) | Enables the cellular data service. This API uses a promise to return the result. |
-| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md) | Enables the cellular data roaming service. This API uses an asynchronous callback to return the result. |
-| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md) | Enables the cellular data roaming service. This API uses a promise to return the result. |
-| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md) | Sets the default slot of the SIM card used for mobile data. This API uses an asynchronous callback to return the result. |
-| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md) | Sets the default slot of the SIM card used for mobile data. This API uses a promise to return the result. |
+| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md#disablecellulardata) | Disables the cellular data service. This API uses an asynchronous callback to return the result. |
+| [disableCellularData](arkts-telephony-data-disablecellulardata-f-sys.md#disablecellulardata-1) | Disables the cellular data service. This API uses a promise to return the result. |
+| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md#disablecellulardataroaming) | Disables the cellular data roaming service. This API uses an asynchronous callback to return the result. |
+| [disableCellularDataRoaming](arkts-telephony-data-disablecellulardataroaming-f-sys.md#disablecellulardataroaming-1) | Disables the cellular data roaming service. This API uses a promise to return the result. |
+| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md#enablecellulardata) | Enables the cellular data service. This API uses an asynchronous callback to return the result. |
+| [enableCellularData](arkts-telephony-data-enablecellulardata-f-sys.md#enablecellulardata-1) | Enables the cellular data service. This API uses a promise to return the result. |
+| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md#enablecellulardataroaming) | Enables the cellular data roaming service. This API uses an asynchronous callback to return the result. |
+| [enableCellularDataRoaming](arkts-telephony-data-enablecellulardataroaming-f-sys.md#enablecellulardataroaming-1) | Enables the cellular data roaming service. This API uses a promise to return the result. |
+| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md#setdefaultcellulardataslotid) | Sets the default slot of the SIM card used for mobile data. This API uses an asynchronous callback to return the result. |
+| [setDefaultCellularDataSlotId](arkts-telephony-data-setdefaultcellulardataslotid-f-sys.md#setdefaultcellulardataslotid-1) | Sets the default slot of the SIM card used for mobile data. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

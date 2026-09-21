@@ -1,5 +1,9 @@
 # CalleeCallback
 
+```TypeScript
+export interface CalleeCallback
+```
+
 Defines the callback of the registration message notification of the UIAbility.
 
 **Since:** 9

@@ -53,19 +53,8 @@ print.connectPrinter(printerId, (error: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// printerId可通过on('printerChange')回调获取
-let printerId: string = 'printerId_32';
-print.connectPrinter(printerId).then(() => {
-    console.info('start connect Printer success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to connectPrinter. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
+<a id="connectprinter-1"></a>
 
 ## connectPrinter
 
@@ -104,4 +93,15 @@ function connectPrinter(printerId: string): Promise<void>
 
 **示例**
 
-参见 [connectPrinter](#connectprinter)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// printerId可通过on('printerChange')回调获取
+let printerId: string = 'printerId_32';
+print.connectPrinter(printerId).then(() => {
+    console.info('start connect Printer success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to connectPrinter. Code: ${error.code}, message: ${error.message}`);
+})
+```

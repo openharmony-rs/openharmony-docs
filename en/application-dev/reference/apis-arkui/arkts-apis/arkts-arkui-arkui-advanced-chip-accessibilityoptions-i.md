@@ -1,5 +1,9 @@
 # AccessibilityOptions
 
+```TypeScript
+export interface AccessibilityOptions
+```
+
 Defines the accessibility options of the suffix icon.
 
 **Since:** 14
@@ -40,21 +44,21 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level. It determines whether the component can be recognized by accessibility services.
+Accessibility level. This attribute controls whether the component can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: It is treated as "yes" by the system.
+**"auto"**: The attribute value of the current component is converted to **"yes"**.
 
-**"yes"**: The component can be recognized by accessibility services.
+**"yes"**: The current component can be recognized by accessibility services.
 
-**"no"**: The component cannot be recognized by accessibility services.
+**"no"**: The current component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.
 
 Default value: **"auto"**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** string
 

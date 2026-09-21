@@ -1,5 +1,9 @@
 # FaultLogInfo
 
+```TypeScript
+interface FaultLogInfo
+```
+
 故障信息数据结构，获取到的故障信息的数据结构。
 
 **起始版本：** 8

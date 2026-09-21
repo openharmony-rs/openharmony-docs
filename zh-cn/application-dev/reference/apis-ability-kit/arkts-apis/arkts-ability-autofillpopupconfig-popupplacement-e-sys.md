@@ -1,5 +1,9 @@
 # PopupPlacement（系统接口）
 
+```TypeScript
+export declare enum PopupPlacement
+```
+
 表示气泡弹窗位置的枚举。
 
 **起始版本：** 12

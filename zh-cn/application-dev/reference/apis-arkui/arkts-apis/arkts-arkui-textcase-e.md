@@ -1,5 +1,9 @@
 # TextCase
 
+```TypeScript
+declare enum TextCase
+```
+
 Letter type in text
 
 **起始版本：** 7

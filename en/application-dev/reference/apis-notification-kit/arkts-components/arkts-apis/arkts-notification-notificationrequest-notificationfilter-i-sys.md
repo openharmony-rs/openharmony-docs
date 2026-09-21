@@ -1,5 +1,9 @@
 # NotificationFilter (System API)
 
+```TypeScript
+export interface NotificationFilter
+```
+
 Describes the filter criteria for querying the live view.
 
 **Since:** 11

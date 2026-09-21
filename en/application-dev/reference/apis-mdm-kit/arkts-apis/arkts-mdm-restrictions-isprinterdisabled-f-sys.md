@@ -18,7 +18,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -66,24 +66,8 @@ restrictions.isPrinterDisabled(wantTemp, (err, result) => {
 })
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-restrictions.isPrinterDisabled(wantTemp).then((result) => {
-  console.info(`Succeeded in querying is the printing function disabled : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query is the printing function disabled or not. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="isprinterdisabled-1"></a>
 
 ## isPrinterDisabled
 
@@ -97,7 +81,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -131,4 +115,20 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 **Examples**
 
-See [isPrinterDisabled](#isprinterdisabled)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+restrictions.isPrinterDisabled(wantTemp).then((result) => {
+  console.info(`Succeeded in querying is the printing function disabled : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query is the printing function disabled or not. Code is ${err.code}, message is ${err.message}`);
+})
+```

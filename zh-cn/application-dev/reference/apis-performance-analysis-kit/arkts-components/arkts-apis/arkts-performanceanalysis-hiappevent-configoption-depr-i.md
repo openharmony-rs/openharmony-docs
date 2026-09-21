@@ -1,5 +1,9 @@
 # ConfigOption
 
+```TypeScript
+interface ConfigOption
+```
+
 此接口提供了应用打点的配置选项。
 
 **起始版本：** 7

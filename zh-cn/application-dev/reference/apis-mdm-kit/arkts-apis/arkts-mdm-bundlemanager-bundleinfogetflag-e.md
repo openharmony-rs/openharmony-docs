@@ -1,5 +1,9 @@
 # BundleInfoGetFlag
 
+```TypeScript
+export enum BundleInfoGetFlag
+```
+
 包信息获取标志，指示需要获取的包信息的内容。
 
 **起始版本：** 23

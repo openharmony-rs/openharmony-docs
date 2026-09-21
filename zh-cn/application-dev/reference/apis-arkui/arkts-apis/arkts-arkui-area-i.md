@@ -1,5 +1,9 @@
 # Area
 
+```TypeScript
+declare interface Area
+```
+
 区域类型，用于存储元素所占的区域信息。
 
 **起始版本：** 8

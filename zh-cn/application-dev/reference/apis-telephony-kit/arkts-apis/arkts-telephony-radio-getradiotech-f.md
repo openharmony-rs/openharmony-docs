@@ -67,6 +67,8 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 ```
 
 
+<a id="getradiotech-1"></a>
+
 ## getRadioTech
 
 ```TypeScript
@@ -107,4 +109,4 @@ function getRadioTech(slotId: number): Promise<NetworkRadioTech>
 
 **示例**
 
-参见 getRadioTech
+参见 [getRadioTech](#getradiotech)

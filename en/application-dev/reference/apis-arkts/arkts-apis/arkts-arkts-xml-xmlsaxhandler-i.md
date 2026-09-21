@@ -1,5 +1,9 @@
 # XmlSAXHandler
 
+```TypeScript
+interface XmlSAXHandler
+```
+
 A simple API for XML handling
 
 **Since:** 24

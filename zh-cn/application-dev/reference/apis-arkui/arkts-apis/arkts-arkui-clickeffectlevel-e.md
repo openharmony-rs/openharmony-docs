@@ -1,5 +1,9 @@
 # ClickEffectLevel
 
+```TypeScript
+declare enum ClickEffectLevel
+```
+
 定义点击效果的级别及对应动效参数。
 
 **起始版本：** 10

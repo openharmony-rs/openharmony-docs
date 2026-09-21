@@ -1,5 +1,9 @@
 # HeartRateResponse
 
+```TypeScript
+export interface HeartRateResponse
+```
+
 心率传感器数据改变后的回调函数的响应对象，包含心率值数据。
 
 **起始版本：** 3

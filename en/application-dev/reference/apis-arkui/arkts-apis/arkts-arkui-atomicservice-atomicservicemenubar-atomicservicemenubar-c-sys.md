@@ -1,5 +1,9 @@
 # AtomicServiceMenuBar (System API)
 
+```TypeScript
+export declare class AtomicServiceMenuBar
+```
+
 Creates an **AtomicServiceMenuBar** object based on the context of the current atomic service. The object is used to control the display of the menu function capsule in the upper right corner.
 
 **Since:** 23

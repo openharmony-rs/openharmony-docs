@@ -1,5 +1,9 @@
 # IconType
 
+```TypeScript
+export declare enum IconType
+```
+
 列表左侧图标类型。
 
 **起始版本：** 10

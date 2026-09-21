@@ -1,5 +1,9 @@
 # PathIterator
 
+```TypeScript
+class PathIterator
+```
+
 Implements a path operation iterator. You can read path operation instructions by traversing the iterator.
 
 > **NOTE:** 
@@ -38,6 +42,16 @@ Creates an iterator and binds it with a path.
 | --- | --- | --- | --- |
 | path | [Path](arkts-arkgraphics2d-drawing-path-c.md) | Yes | **Path** object bound to the iterator. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+console.info('PathIterator created successfully');
+```
+
 ## hasNext
 
 ```TypeScript
@@ -55,6 +69,16 @@ Checks whether there is any next operation in the path operation iterator.
 | Type | Description |
 | --- | --- |
 | boolean | Check result. **true** means yes; **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let res = iter.hasNext();
+```
 
 ## next
 
@@ -87,6 +111,27 @@ Retrieves the next operation in this path and moves the iterator to that operati
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(10, 20);
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let verbStr: Array<string> = ['MOVE', 'LINE', 'QUAD', 'CONIC', 'CUBIC', 'CLOSE', 'DONE'];
+let pointCount: Array<number> = [1, 2, 3, 4, 4, 0, 0];
+let points: Array<common2D.Point> = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
+let offset = 0;
+let verb = iter.next(points, offset);
+let outputMessage: string = 'pathIteratorNext: ';
+outputMessage += 'verb =' + verbStr[verb] + '; has ' + pointCount[verb] + ' pairs: ';
+for (let j = 0; j < pointCount[verb] + offset; j++) {
+  outputMessage += '[' + points[j].x + ', ' + points[j].y + ']';
+}
+console.info(outputMessage);
+```
+
 ## peek
 
 ```TypeScript
@@ -104,3 +149,13 @@ Retrieves the next operation in this path, without moving the iterator.
 | Type | Description |
 | --- | --- |
 | [PathIteratorVerb](arkts-arkgraphics2d-drawing-pathiteratorverb-e.md) | Path operation type contained in the iterator. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+let iter: drawing.PathIterator = new drawing.PathIterator(path);
+let res = iter.peek();
+```

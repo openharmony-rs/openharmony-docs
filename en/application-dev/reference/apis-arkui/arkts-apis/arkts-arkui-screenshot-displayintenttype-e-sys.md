@@ -1,5 +1,9 @@
 # DisplayIntentType (System API)
 
+```TypeScript
+enum DisplayIntentType
+```
+
 Enumerates the screenshot display intent type.
 
 @enum { int }

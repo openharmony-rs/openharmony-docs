@@ -1,5 +1,9 @@
 # DisplaySync
 
+```TypeScript
+interface DisplaySync
+```
+
 期望帧率和回调函数设置实例。用于设置期望帧率范围、注册帧回调函数，以及启动和停止帧回调。下列API示例中都需先使用displaySync.create()方法获取到DisplaySync实例，再通过此实例调用对应方法。
 
 **起始版本：** 11
@@ -33,6 +37,21 @@ off(type: 'frame', callback?: Callback<IntervalInfo>): void
 | type | 'frame' | 是 | 设置回调的类型（只能是'frame'类型）。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[IntervalInfo](arkts-arkgraphics2d-displaysync-intervalinfo-i.md)&gt; | 否 | 传入调用on('frame')时注册的回调函数，用于取消订阅该回调函数。必须在已通过on('frame')注册回调后使用。 |
 
+**示例**
+
+```TypeScript
+// 定义回调函数
+let callback = (frameInfo: displaySync.IntervalInfo) => {
+    console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
+}
+
+// 注册回调函数
+backDisplaySync?.on("frame", callback)
+
+// 取消回调函数
+backDisplaySync?.off("frame", callback)
+```
+
 ## on('frame')
 
 ```TypeScript
@@ -53,6 +72,21 @@ on(type: 'frame', callback: Callback<IntervalInfo>): void
 | --- | --- | --- | --- |
 | type | 'frame' | 是 | 设置回调的类型（只能是'frame'类型）。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[IntervalInfo](arkts-arkgraphics2d-displaysync-intervalinfo-i.md)&gt; | 是 | 订阅帧变化的回调函数。IntervalInfo包含timestamp（当前帧到达时间）和targetTimestamp（下一帧预期到达时间）两个属性，单位均为纳秒。 |
+
+**示例**
+
+```TypeScript
+// 定义回调函数
+let callback = (frameInfo: displaySync.IntervalInfo) => {
+    console.info("DisplaySync", 'TimeStamp:' + frameInfo.timestamp + ' TargetTimeStamp: ' + frameInfo.targetTimestamp);
+}
+
+// 注册回调函数
+backDisplaySync?.on("frame", callback)
+
+// 生效回调函数
+backDisplaySync?.start()
+```
 
 ## setExpectedFrameRateRange
 
@@ -135,10 +169,34 @@ backDisplaySync?.on("frame", callback)
 backDisplaySync?.start()
 ```
 
-```TypeScript
 > 说明：
 > 
 > start接口会将DisplaySync关联到UI上下文和窗口。若在非UI页面或异步回调中调用[start](#start)，可能获取到错误的UI上下文，导致[start](#start)功能异常，进而导致回调函数无法执行以及期望帧率范围无法生效。此时可使用[runScopedTask](../apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)接口指定UI上下文，确保[start](#start)在正确的上下文中执行。
+
+```TypeScript
+import { displaySync } from '@kit.ArkGraphics2D';
+import { UIContext } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  // 创建DisplaySync实例
+  backDisplaySync: displaySync.DisplaySync = displaySync.create();
+
+  aboutToAppear() {
+    // 获取UIContext实例
+    let uiContext: UIContext = this.getUIContext();
+    // 在当前UI上下文中执行DisplaySync的start接口
+    uiContext?.runScopedTask(() => {
+      this.backDisplaySync?.start();
+    })
+  }
+
+  build() {
+    // ...
+  }
+}
 ```
 
 ## stop

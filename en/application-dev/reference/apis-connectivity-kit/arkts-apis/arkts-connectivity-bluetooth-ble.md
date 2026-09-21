@@ -24,23 +24,23 @@ import { ble } from '@kit.ConnectivityKit';
 | [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md) | create a Gatt client device instance. |
 | [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md) | create a Gatt client device instance with custom setting. |
 | [createGattServer](arkts-connectivity-ble-creategattserver-f.md) | create a Gatt server instance. |
-| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md) | Disable the advertising with a specific ID temporarily. |
-| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md) | Disable the advertising with a specific ID temporarily. |
-| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) | Enable the advertising with a specific ID temporarily. |
-| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) | Enable the advertising with a specific ID temporarily. |
+| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising) | Disable the advertising with a specific ID temporarily. |
+| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising-1) | Disable the advertising with a specific ID temporarily. |
+| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising) | Enable the advertising with a specific ID temporarily. |
+| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising-1) | Enable the advertising with a specific ID temporarily. |
 | [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md) | Obtains the list of devices in the connected status. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual. |
 | [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md) | Obtains the list of devices in the connected status. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual. |
 | [off](arkts-connectivity-ble-off-f.md#offadvertisingstatechange) | Unsubscribe from advertising state change event. |
 | [off](arkts-connectivity-ble-off-f.md#offbledevicefind) | Unsubscribe BLE scan result. |
 | [on](arkts-connectivity-ble-on-f.md#onadvertisingstatechange) | Subscribing to advertising state change event. |
 | [on](arkts-connectivity-ble-on-f.md#onbledevicefind) | Subscribe BLE scan result. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual. |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md) | Starts BLE advertising. |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | Starts BLE advertising. |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising-1) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising-2) | Starts BLE advertising. The API returns a advertising ID. The ID can be used to temporarily enable or disable this advertising using the API [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md) or [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md). To completely stop the advertising corresponding to the ID, invoke the API [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) with ID. |
 | [startBLEScan](arkts-connectivity-ble-startblescan-f.md) | Starts scanning for specified BLE devices with filters. |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) | Stops BLE advertising. |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | Stops BLE advertising. |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising-1) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising-2) | Stops BLE advertising. Completely stop the advertising corresponding to the ID. |
 | [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md) | Stops BLE scanning. |
 
 ### Interfaces

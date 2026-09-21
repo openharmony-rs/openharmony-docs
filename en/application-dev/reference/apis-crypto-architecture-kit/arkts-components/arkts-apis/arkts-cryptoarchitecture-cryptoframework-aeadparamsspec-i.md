@@ -1,6 +1,10 @@
 # AeadParamsSpec
 
-Describes parameters in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init) for symmetric encryption and decryption using authenticated encryption with associated data (AEAD). It inherits from [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md).
+```TypeScript
+interface AeadParamsSpec extends ParamsSpec
+```
+
+Describes parameters in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-3) for symmetric encryption and decryption using authenticated encryption with associated data (AEAD). It inherits from [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md).
 
 <br>It is applicable to the CCM and GCM modes of [AES](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes). <br>It is applicable to the GCM mode of [SM4](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#sm4). <br>It is applicable to [ChaCha20-Poly1305](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20).
 

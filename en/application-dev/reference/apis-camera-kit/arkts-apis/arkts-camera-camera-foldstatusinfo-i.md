@@ -1,5 +1,9 @@
 # FoldStatusInfo
 
+```TypeScript
+interface FoldStatusInfo
+```
+
 Describes the fold state information about a foldable device.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # DoNotDisturbProfile (System API)
 
+```TypeScript
+export interface DoNotDisturbProfile
+```
+
 Do Not Disturb profile.
 
 **Since:** 12

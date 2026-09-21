@@ -1,5 +1,9 @@
 # AudioStreamDeviceChangeInfo
 
+```TypeScript
+interface AudioStreamDeviceChangeInfo
+```
+
 Describes the event received by the application when the audio stream device is changed.
 
 **Since:** 11

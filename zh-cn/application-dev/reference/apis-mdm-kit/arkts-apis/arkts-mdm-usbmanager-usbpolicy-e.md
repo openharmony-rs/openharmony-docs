@@ -1,5 +1,9 @@
 # UsbPolicy
 
+```TypeScript
+export enum UsbPolicy
+```
+
 USB存储设备访问策略的枚举。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # CoordinatesOptions
 
+```TypeScript
+interface CoordinatesOptions
+```
+
 设置坐标选项对象，用于指定坐标系的变换方向。
 
 **起始版本：** 8

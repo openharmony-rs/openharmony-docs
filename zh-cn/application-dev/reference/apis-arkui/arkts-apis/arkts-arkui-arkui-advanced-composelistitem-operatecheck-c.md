@@ -1,5 +1,9 @@
 # OperateCheck
 
+```TypeScript
+export declare class OperateCheck
+```
+
 列表右侧元素为Switch、CheckBox、Radio的类型。
 
 **起始版本：** 10

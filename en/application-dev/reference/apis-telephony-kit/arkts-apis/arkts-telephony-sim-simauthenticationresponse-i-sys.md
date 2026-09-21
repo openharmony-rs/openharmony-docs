@@ -1,5 +1,9 @@
 # SimAuthenticationResponse (System API)
 
+```TypeScript
+export interface SimAuthenticationResponse
+```
+
 Defines the SIM card authentication response.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # GeoLocationErrorCode
 
+```TypeScript
+export enum GeoLocationErrorCode
+```
+
 Enum for error code
 
 **Since:** 7

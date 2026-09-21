@@ -1,5 +1,9 @@
 # ExecResult（系统接口）
 
+```TypeScript
+interface ExecResult
+```
+
 CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准错误输出、终止信号、是否超时及执行时长。
 
 **起始版本：** 26.0.0
@@ -11,7 +15,7 @@ CLI工具执行的结果。包含CLI工具的退出码、标准输出、标准�
 ## 导入模块
 
 ```TypeScript
-import { cliManager } from '@kit.AbilityKit';
+import { cliManager, CliHook, ExecToolParam, ExecCmdParam, ExecResultWrap } from '@kit.AbilityKit';
 ```
 
 ## errorText

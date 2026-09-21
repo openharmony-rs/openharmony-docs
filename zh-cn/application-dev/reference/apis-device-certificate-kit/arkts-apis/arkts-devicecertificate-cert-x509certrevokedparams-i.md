@@ -1,5 +1,9 @@
 # X509CertRevokedParams
 
+```TypeScript
+interface X509CertRevokedParams
+```
+
 表示证书吊销检查参数。
 
 **起始版本：** 26.0.0

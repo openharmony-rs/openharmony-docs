@@ -1,5 +1,9 @@
 # FormLocation
 
+```TypeScript
+enum FormLocation
+```
+
 卡片当前位置枚举。
 
 **起始版本：** 20

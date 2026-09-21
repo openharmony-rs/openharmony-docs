@@ -1,5 +1,9 @@
 # IPCSkeleton
 
+```TypeScript
+class IPCSkeleton
+```
+
 用于获取IPC上下文信息，包括获取UID和PID、获取本端和对端设备ID、检查接口调用是否在同一设备上。
 
 **起始版本：** 7

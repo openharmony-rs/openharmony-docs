@@ -1,5 +1,9 @@
 # SendMessageOptions
 
+```TypeScript
+export interface SendMessageOptions
+```
+
 Provides the options (including callbacks) for sending SMS messages. For example, you can specify the SMS message type by the optional parameter **content**.
 
 **Since:** 6

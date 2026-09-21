@@ -1,5 +1,9 @@
 # DfsListeners
 
+```TypeScript
+export interface DfsListeners
+```
+
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
 **起始版本：** 12

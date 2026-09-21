@@ -1,5 +1,9 @@
 # NetCapabilityInfo
 
+```TypeScript
+export interface NetCapabilityInfo
+```
+
 Provides an instance that bears data network capabilities.
 
 **Since:** 10

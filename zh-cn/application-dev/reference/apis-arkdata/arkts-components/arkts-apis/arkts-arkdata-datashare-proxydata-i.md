@@ -1,5 +1,9 @@
 # ProxyData
 
+```TypeScript
+interface ProxyData
+```
+
 共享配置的数据结构。
 
 **起始版本：** 20

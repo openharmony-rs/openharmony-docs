@@ -1,5 +1,9 @@
 # PiPState
 
+```TypeScript
+enum PiPState
+```
+
 Enumerates the PiP states.
 
 **Since:** 11

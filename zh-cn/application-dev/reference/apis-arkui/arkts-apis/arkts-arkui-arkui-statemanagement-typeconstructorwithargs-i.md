@@ -1,5 +1,9 @@
 # TypeConstructorWithArgs
 
+```TypeScript
+export interface TypeConstructorWithArgs<T>
+```
+
 含有任意入参的类构造器。
 
 **起始版本：** 12

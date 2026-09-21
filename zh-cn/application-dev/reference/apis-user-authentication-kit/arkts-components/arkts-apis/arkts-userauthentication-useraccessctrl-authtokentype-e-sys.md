@@ -1,5 +1,9 @@
 # AuthTokenType（系统接口）
 
+```TypeScript
+enum AuthTokenType
+```
+
 认证令牌类型枚举。该枚举定义了认证令牌的类型，用于标识令牌的签发来源。
 
 **起始版本：** 18

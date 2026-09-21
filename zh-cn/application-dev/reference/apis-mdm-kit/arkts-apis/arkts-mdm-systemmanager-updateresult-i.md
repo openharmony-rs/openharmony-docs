@@ -1,5 +1,9 @@
 # UpdateResult
 
+```TypeScript
+interface UpdateResult
+```
+
 系统更新结果信息。
 
 **起始版本：** 12

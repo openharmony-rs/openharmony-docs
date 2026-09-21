@@ -1,5 +1,9 @@
 # PlainText
 
+```TypeScript
+class PlainText extends Text
+```
+
 [Text](arkts-arkdata-unifieddatachannel-text-c.md)的子类，用于描述纯文本类数据。
 
 **继承/实现关系：** PlainText extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)

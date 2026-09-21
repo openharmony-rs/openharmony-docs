@@ -1,5 +1,9 @@
 # ChildProcess（系统接口）
 
+```TypeScript
+export interface ChildProcess
+```
+
 childprocess 对象可用于创建新的进程。
 
 **起始版本：** 7

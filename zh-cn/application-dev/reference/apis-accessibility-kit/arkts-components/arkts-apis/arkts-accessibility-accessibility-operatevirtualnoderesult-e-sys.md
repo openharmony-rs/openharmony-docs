@@ -1,5 +1,9 @@
 # OperateVirtualNodeResult（系统接口）
 
+```TypeScript
+export enum OperateVirtualNodeResult
+```
+
 表示无障碍操作虚拟节点返回结果类型的枚举。
 
 **起始版本：** 26.0.0

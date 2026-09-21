@@ -1,5 +1,9 @@
 # ExtensionAbility (System API)
 
+```TypeScript
+export interface ExtensionAbility
+```
+
 ExtensionAbility: the extension ability forms class.
 
 **Since:** 9

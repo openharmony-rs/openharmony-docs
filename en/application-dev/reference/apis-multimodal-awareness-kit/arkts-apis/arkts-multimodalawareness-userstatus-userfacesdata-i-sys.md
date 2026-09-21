@@ -1,5 +1,9 @@
 # UserFacesData (System API)
 
+```TypeScript
+export interface UserFacesData extends UserStatusData
+```
+
 Defines user face data.
 
 **Inheritance/Implementation:** UserFacesData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

@@ -1,5 +1,9 @@
 # EuiccProfile (System API)
 
+```TypeScript
+export interface EuiccProfile
+```
+
 Profile information.
 
 **Since:** 18

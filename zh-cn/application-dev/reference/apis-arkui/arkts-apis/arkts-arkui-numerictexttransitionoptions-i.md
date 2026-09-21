@@ -1,5 +1,9 @@
 # NumericTextTransitionOptions
 
+```TypeScript
+declare interface NumericTextTransitionOptions
+```
+
 数字翻牌的参数。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # CountryCodeType
 
+```TypeScript
+export enum CountryCodeType
+```
+
 Enum for country code type.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # FactoryResetStrategy（系统接口）
 
+```TypeScript
+export interface FactoryResetStrategy
+```
+
 恢复出厂设置策略，包含scope(重置范围)和strategy(重置策略描述)字段。
 
 **起始版本：** 26.0.0

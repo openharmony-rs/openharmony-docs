@@ -1,5 +1,9 @@
 # GestureStyle
 
+```TypeScript
+declare class GestureStyle
+```
+
 Describes the event gesture style.
 
 **Since:** 12

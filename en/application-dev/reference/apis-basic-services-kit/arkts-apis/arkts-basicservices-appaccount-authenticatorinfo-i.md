@@ -1,5 +1,9 @@
 # AuthenticatorInfo
 
+```TypeScript
+interface AuthenticatorInfo
+```
+
 Defines OAuth authenticator information.
 
 **Since:** 8

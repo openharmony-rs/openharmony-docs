@@ -1,5 +1,9 @@
 # AbilityFlag
 
+```TypeScript
+enum AbilityFlag
+```
+
 Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **起始版本：** 20
@@ -12,7 +16,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 GET_ABILITY_INFO_DEFAULT = 0x00000000
 ```
 
-获取默认AbilityInfo，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled接口](arkts-ability-bundlemanager-setabilityenabled-f-sys.md)可设置Ability禁用状态、通过[isAbilityEnabled接口](arkts-ability-bundlemanager-isabilityenabled-f-sys.md)可获取Ability禁用状态。<!--DelEnd-->
+获取默认AbilityInfo，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled接口](arkts-ability-bundlemanager-setabilityenabled-f-sys.md#setabilityenabled-1)可设置Ability禁用状态、通过[isAbilityEnabled接口](arkts-ability-bundlemanager-isabilityenabled-f-sys.md#isabilityenabled-2)可获取Ability禁用状态。<!--DelEnd-->
 
 **起始版本：** 20
 

@@ -1,5 +1,9 @@
 # GraphicsMemorySummary
 
+```TypeScript
+interface GraphicsMemorySummary
+```
+
 描述应用显存数据，包括gl和graph部分。
 
 **起始版本：** 21

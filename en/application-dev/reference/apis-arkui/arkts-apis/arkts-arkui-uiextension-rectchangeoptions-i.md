@@ -1,5 +1,9 @@
 # RectChangeOptions
 
+```TypeScript
+interface RectChangeOptions
+```
+
 Provides the values and reasons returned when the rectangle (position and size) of the component (**EmbeddedComponent** or **UIExtensionComponent**) changes.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # GeofenceRequest
 
+```TypeScript
+export interface GeofenceRequest
+```
+
 Configuring parameters in geo fence requests
 
 @interface GeofenceRequest

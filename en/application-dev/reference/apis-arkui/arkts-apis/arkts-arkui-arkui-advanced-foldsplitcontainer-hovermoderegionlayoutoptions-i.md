@@ -1,11 +1,16 @@
 # HoverModeRegionLayoutOptions
 
-Layout information for the semi-folded state.
+```TypeScript
+export interface HoverModeRegionLayoutOptions
+```
+
+Defines layout information for the hover state.
 
 > **NOTE:** 
 > 
-> 1. In semi-folded state, the device contains an avoidance area, and layout calculations must account for the impact of this avoidance area on the overall layout.
-> 2. In semi-folded mode, the upper screen is dedicated to content display, and the lower screen is reserved for interaction.
+> 1. In the hover state, the device has an avoidance area (the area near the crease where content may be invisible or restricted), and the impact of this area must be considered during layout calculation.
+> 
+> 2. In hover mode, the upper half of the screen is the display area, and the lower half is the operation area.
 
 **Since:** 12
 
@@ -23,9 +28,9 @@ import { ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayout
 extraRegionPosition?: ExtraRegionPosition
 ```
 
-Position information of the extra region. This setting takes effect only when **showExtraRegion** is set to **true**.
+Position information of the expanded area. The value can be **TOP** (upper area) or **BOTTOM** (lower area). This field takes effect when **extra** is valid and **showExtraRegion** is set to **true**. "extra is valid" means that the **extra** parameter is passed to the **FoldSplitContainer** component.
 
-Default value: **ExtraRegionPosition.top**.
+Default value: `ExtraRegionPosition.TOP`
 
 **Type:** [ExtraRegionPosition](arkts-arkui-arkui-advanced-foldsplitcontainer-extraregionposition-e.md)
 
@@ -43,7 +48,9 @@ Default value: **ExtraRegionPosition.top**.
 horizontalSplitRatio?: number
 ```
 
-Width ratio between the primary and extra regions. This setting takes effect only when **extra** is effective. The value range is all integers. Default value: {@link.PresetSplitRatio}.LAYOUT_3V2.
+Ratio of the primary area width to the expanded area width. The value can be a preset value from **PresetSplitRatio** or a custom value, with a value range of (0, +∞). If a value less than or equal to 0 is passed, the default value is used. This field takes effect when **extra** is valid and **showExtraRegion** is set to **true**. "extra is valid" means that the **extra** parameter is passed to the **FoldSplitContainer** component.
+
+Default value: [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md).LAYOUT_3V2
 
 **Type:** number
 
@@ -61,9 +68,9 @@ Width ratio between the primary and extra regions. This setting takes effect onl
 showExtraRegion?: boolean
 ```
 
-Whether to display the extra region in the half-folded state. The value **true** means to display the extra region in the half-folded state, and **false** means the opposite.
+Whether to display the expanded area when the foldable screen is in the hover state. The value **true** means to display the expanded area, and **false** means not to display it.
 
-Default value: **false**.
+Default value: **false**
 
 **Type:** boolean
 

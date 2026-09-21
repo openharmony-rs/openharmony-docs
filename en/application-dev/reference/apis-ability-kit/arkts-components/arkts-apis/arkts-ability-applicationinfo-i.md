@@ -1,5 +1,9 @@
 # ApplicationInfo
 
+```TypeScript
+export interface ApplicationInfo
+```
+
 The module defines the application information.
 
 **Since:** 9

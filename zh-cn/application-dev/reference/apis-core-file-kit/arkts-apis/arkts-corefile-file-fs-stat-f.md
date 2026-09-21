@@ -51,6 +51,8 @@ declare function stat(file: string | number): Promise<Stat>
 | 13900042 | Unknown error |
 
 
+<a id="stat-1"></a>
+
 ## stat
 
 ```TypeScript

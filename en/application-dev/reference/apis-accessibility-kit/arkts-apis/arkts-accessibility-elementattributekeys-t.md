@@ -11,3 +11,11 @@ Describes the attribute name of [ElementAttributeValues](arkts-accessibility-acc
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Type:** keyof ElementAttributeValues
+
+**Examples**
+
+```TypeScript
+import { ElementAttributeKeys } from '@kit.AccessibilityKit';
+
+let elementAttributeKeys: ElementAttributeKeys;
+```

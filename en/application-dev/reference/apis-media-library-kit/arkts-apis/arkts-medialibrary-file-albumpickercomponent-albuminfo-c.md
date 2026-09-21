@@ -1,5 +1,9 @@
 # AlbumInfo
 
+```TypeScript
+export declare class AlbumInfo
+```
+
 Represents album information.
 
 **Since:** 12

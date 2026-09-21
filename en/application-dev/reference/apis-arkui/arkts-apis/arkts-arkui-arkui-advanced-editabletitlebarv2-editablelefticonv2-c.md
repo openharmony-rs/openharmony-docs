@@ -1,5 +1,9 @@
 # EditableLeftIconV2
 
+```TypeScript
+export declare class EditableLeftIconV2
+```
+
 Declaration of the left icon configuration.
 
 **Since:** 26.0.0

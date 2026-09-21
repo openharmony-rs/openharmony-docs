@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+export interface Options
+```
+
 Defines the options used in **readLines()**.
 
 **Since:** 11

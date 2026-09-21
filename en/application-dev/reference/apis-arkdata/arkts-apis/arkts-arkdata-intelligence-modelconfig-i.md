@@ -1,5 +1,9 @@
 # ModelConfig
 
+```TypeScript
+interface ModelConfig
+```
+
 Manages configurations of the embedding model.
 
 @interface ModelConfig

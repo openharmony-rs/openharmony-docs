@@ -1,5 +1,9 @@
 # ListFileOptions
 
+```TypeScript
+export interface ListFileOptions
+```
+
 可选项类型，支持listFile接口使用。
 
 **起始版本：** 11

@@ -17,11 +17,11 @@ The **inputMethodList** module is oriented to system applications and input meth
 
 ## Attributes
 
-<br><br>The universal attributes are not supported.<br><br>
+<br><br>The [universal attributes](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common) are not supported.<br><br>
 
 ## Events
 
-<br><br>The universal events are not supported.<br><br>## Example<br><br>```ts
+<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common) are not supported.<br><br>## Example<br><br>```ts
  <br>import { Pattern, PatternOptions } from '@kit.IMEKit';
  <br>
  <br>@Entry
@@ -34,21 +34,21 @@ The **inputMethodList** module is oriented to system applications and input meth
  <br>    patterns: [ // Icons in patterns can be used only after the corresponding icon resources have been added to
  the resource directory of the project.
  <br>      {
- <br>        icon: &#36;r('app.media.hand_icon'), // Icon resource for the input method mode option, for example,
+ <br>        icon: $r('app.media.hand_icon'), // Icon resource for the input method mode option, for example,
  the icon for the one-handed mode.
- <br>        selectedIcon: &#36;r('app.media.hand_icon_selected') // Icon resource for the input method mode option in
+ <br>        selectedIcon: $r('app.media.hand_icon_selected') // Icon resource for the input method mode option in
  the selected state, for example, the icon for the one-handed mode in the selected state.
  <br>      },
  <br>      {
- <br>        icon: &#36;r('app.media.hand_icon1'),
- <br>        selectedIcon: &#36;r('app.media.hand_icon_selected1')
+ <br>        icon: $r('app.media.hand_icon1'),
+ <br>        selectedIcon: $r('app.media.hand_icon_selected1')
  <br>      },
  <br>      {
- <br>        icon: &#36;r('app.media.hand_icon2'),
- <br>        selectedIcon: &#36;r('app.media.hand_icon_selected2'),
+ <br>        icon: $r('app.media.hand_icon2'),
+ <br>        selectedIcon: $r('app.media.hand_icon_selected2'),
  <br>      }],
  <br>    action:(index: number)=&gt;{
- <br>      console.info(`pattern is changed, current is &#36;{index}`);
+ <br>      console.info(`pattern is changed, current is ${index}`);
  <br>      this.defaultPattern = index;
  <br>    }
  <br>  };

@@ -1,5 +1,9 @@
 # AutoFillType
 
+```TypeScript
+export enum AutoFillType
+```
+
 表示提供自动填充类型的枚举。
 
 **起始版本：** 11

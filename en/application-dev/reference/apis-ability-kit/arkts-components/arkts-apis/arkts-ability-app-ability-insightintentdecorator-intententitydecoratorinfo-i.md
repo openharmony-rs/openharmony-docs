@@ -1,5 +1,9 @@
 # IntentEntityDecoratorInfo
 
+```TypeScript
+declare interface IntentEntityDecoratorInfo
+```
+
 Describes the parameters supported by the [@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator.
 
 **Since:** 20

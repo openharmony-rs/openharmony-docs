@@ -1,5 +1,9 @@
 # TextAlign
 
+```TypeScript
+enum TextAlign
+```
+
 Enumerates the text alignment modes.
 
 **Since:** 12

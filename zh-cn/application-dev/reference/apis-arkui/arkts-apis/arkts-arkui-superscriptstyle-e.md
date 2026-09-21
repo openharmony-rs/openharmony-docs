@@ -1,5 +1,9 @@
 # SuperscriptStyle
 
+```TypeScript
+declare enum SuperscriptStyle
+```
+
 定义文本上下角标样式。
 
 **起始版本：** 20

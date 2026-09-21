@@ -14,7 +14,7 @@ function getAllAppProvisionInfoInDevice(userId: number): Promise<Array<AppProvis
 
 Obtains the provision configuration file information of all applications based in the device on the given user ID. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_INSTALLED_BUNDLE_LIST or (ohos.permission.GET_INSTALLED_BUNDLE_LIST and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 

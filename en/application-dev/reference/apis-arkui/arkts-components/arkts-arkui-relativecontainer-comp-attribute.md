@@ -1,8 +1,17 @@
 # RelativeContainer properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>
+```
 
-The [universal events](arkts-arkui-commonmethod-c.md) are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
+
+> **NOTE:** 
+> 
+> The **margin** attribute of a child component in **RelativeContainer** has special effective conditions. For
+> details, see the description above.
+
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>
 
@@ -16,7 +25,7 @@ The [universal events](arkts-arkui-commonmethod-c.md) are supported.
 barrier(value: Array<BarrierStyle>)
 ```
 
-Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#setting-barriers-for-multiple-components) in the **RelativeContainer** component. The value is an array, each element of which is a barrier.
+Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#setting-barriers-for-multiple-components) in the **RelativeContainer** component. Child components can use barriers as anchors for alignment and positioning. Each element in the array represents a barrier. Typical usage scenarios: preventing child components from overlapping, creating virtual boundaries based on component edges, and implementing automatic spacing between components.
 
 **Since:** 12
 
@@ -30,7 +39,9 @@ Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#sett
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[BarrierStyle](arkts-arkui-barrierstyle-i.md)&gt; | Yes | Barriers in the **RelativeContainer** component. |
+| value | Array&lt;[BarrierStyle](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)&gt; | Yes | Barrier in the **RelativeContainer** container, used to define the ID, direction, and dependent components of the barrier. Child components can use the barrier as an anchor for alignment and positioning. |
+
+<a id="barrier-1"></a>
 
 ## barrier
 
@@ -38,7 +49,7 @@ Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#sett
 barrier(barrierStyle: Array<LocalizedBarrierStyle>)
 ```
 
-Sets barriers in the **RelativeContainer** component. Each array element defines a barrier. Barriers can be defined in mirrored layout mode.
+Sets barriers in the **RelativeContainer**. Child components can use a barrier as an anchor for alignment and positioning, and barrier lines in mirror mode are supported. Each element in the array represents a barrier. Typical usage: RTL language layout adaptation, mirrored UI design, and automatic adjustment of barrier positions based on the reading direction.
 
 **Since:** 12
 
@@ -52,7 +63,7 @@ Sets barriers in the **RelativeContainer** component. Each array element defines
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| barrierStyle | Array&lt;[LocalizedBarrierStyle](arkts-arkui-localizedbarrierstyle-i.md)&gt; | Yes | Barriers in the **RelativeContainer** component. |
+| barrierStyle | Array&lt;[LocalizedBarrierStyle](arkts-arkui-relativecontainer-comp-localizedbarrierstyle-i.md)&gt; | Yes | Barrier in the **RelativeContainer** container, which supports defining barrier lines in mirror mode. |
 
 ## guideLine
 
@@ -60,7 +71,7 @@ Sets barriers in the **RelativeContainer** component. Each array element defines
 guideLine(value: Array<GuideLineStyle>)
 ```
 
-Sets the [guidelines](../../../ui/arkts-layout-development-relative-layout.md#positioning-child-components-using-guidelines) in the **RelativeContainer** component. The value is an array, each element of which is a guideline.
+Sets the [guidelines](../../../ui/arkts-layout-development-relative-layout.md#positioning-child-components-using-guidelines) in the **RelativeContainer** component. Each element in the array represents a guideline. Typical usage aligning child components based on virtual reference lines, creating flexibly adjustable reference lines for positioning, and laying out multiple child components based on the same baseline.
 
 **Since:** 12
 
@@ -74,4 +85,4 @@ Sets the [guidelines](../../../ui/arkts-layout-development-relative-layout.md#po
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[GuideLineStyle](arkts-arkui-guidelinestyle-i.md)&gt; | Yes | Guidelines in the **RelativeContainer** component. |
+| value | Array&lt;[GuideLineStyle](arkts-arkui-relativecontainer-comp-guidelinestyle-i.md)&gt; | Yes | Guideline inside the **RelativeContainer**, which defines the ID, direction, and position of the **guideLine** and is used to assist in positioning child components. |

@@ -1,5 +1,9 @@
 # PanelInfo
 
+```TypeScript
+export interface PanelInfo
+```
+
 Defines attributes of the word selection panel, including its type, position, and size. You can specify the panel type (menu panel or main panel) using **panelType**, set the coordinates of the upper left corner of the panel using **x** and **y**, and set the panel size using **width** and **height**. These attributes collectively define the display form of the panel.
 
 **Since:** 24

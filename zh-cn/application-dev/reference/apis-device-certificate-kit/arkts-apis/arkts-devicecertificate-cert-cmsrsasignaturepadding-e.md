@@ -1,5 +1,9 @@
 # CmsRsaSignaturePadding
 
+```TypeScript
+enum CmsRsaSignaturePadding
+```
+
 表示RSA类型CMS签名填充方式的枚举。
 
 **起始版本：** 22

@@ -1,5 +1,9 @@
 # Method (System API)
 
+```TypeScript
+interface Method
+```
+
 Represents a method of the service.
 
 **Since:** 26.0.0

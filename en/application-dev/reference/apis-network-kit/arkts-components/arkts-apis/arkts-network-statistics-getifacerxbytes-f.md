@@ -51,17 +51,8 @@ statistics.getIfaceRxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
-  console.info(JSON.stringify(stats));
-}).catch((err: BusinessError) => {
-  console.error(JSON.stringify(err));
-});
-```
-
+<a id="getifacerxbytes-1"></a>
 
 ## getIfaceRxBytes
 
@@ -100,4 +91,13 @@ Obtains the total downlink traffic (in bytes) of the specified NIC from the last
 
 **Examples**
 
-See [getIfaceRxBytes](#getifacerxbytes)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
+  console.info(JSON.stringify(stats));
+}).catch((err: BusinessError) => {
+  console.error(JSON.stringify(err));
+});
+```

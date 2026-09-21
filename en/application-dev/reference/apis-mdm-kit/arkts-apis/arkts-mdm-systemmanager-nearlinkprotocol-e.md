@@ -1,5 +1,9 @@
 # NearLinkProtocol
 
+```TypeScript
+enum NearLinkProtocol
+```
+
 Enumerates NearLink protocols.
 
 **Since:** 20

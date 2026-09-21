@@ -1,5 +1,9 @@
 # SmartGestureAction
 
+```TypeScript
+declare enum SmartGestureAction
+```
+
 Define the actions for smart gesture shortcut.
 
 **Since:** 26.0.0

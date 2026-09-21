@@ -1,5 +1,9 @@
 # NotificationSubscriberExtensionContext
 
+```TypeScript
+export default class NotificationSubscriberExtensionContext extends ExtensionContext
+```
+
 NotificationSubscriberExtensionContext模块提供通知订阅者扩展能力。
 
 NotificationSubscriberExtensionContext继承自ExtensionContext类，是NotificationSubscriberExtensionAbility的上下文。

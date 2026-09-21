@@ -20,7 +20,7 @@ Called when the remote window interface is used.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| target | [WindowAnimationTarget](arkts-arkui-windowanimationtarget-i-sys.md) | Yes |  |
+| target | [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | Yes |  |
 
 ## Summary
 
@@ -28,15 +28,87 @@ Called when the remote window interface is used.
 
 | Name | Description |
 | --- | --- |
-| [RRect](arkts-arkui-rrect-i-sys.md) | Round rect. |
-| [WindowAnimationTarget](arkts-arkui-windowanimationtarget-i-sys.md) | Window animation target. |
+| [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md) | Round rect. |
+| [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | Window animation target. |
 
 ## Examples
 
-```TypeScript
 The RemoteWindow component needs to receive the WindowAnimationTarget object from the WindowAnimationController object set by windowAnimationManager. You can create a RemoteWindowExample.ets file as an example to encapsulate the RemoteWindow component and the passed WindowAnimationTarget object.
 
 Since RemoteWindow can be used only in the system application Launcher, you can place the RemoteWindowExample component in the build function of the EntryView.ets page of Launcher, compile Launcher, and then push the Launcher installation package to the device system for running.
+
+```TypeScript
+// WindowAnimationControllerImpl.ets file
+import { windowAnimationManager } from '@kit.ArkUI';
+
+export default class WindowAnimationControllerImpl implements windowAnimationManager.WindowAnimationController {
+  private callback: (target: windowAnimationManager.WindowAnimationTarget) => void = () => {}
+
+  OnTargetUpdate(callback: (target: windowAnimationManager.WindowAnimationTarget) => void)
+  {
+    this.callback = callback;
+  }
+
+  private NotifyTargetUpdate(target: windowAnimationManager.WindowAnimationTarget)
+  {
+    this.callback(target);
+  }
+
+  onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                         finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void
+  {
+    console.info(`remote window animation onStartAppFromLauncher`);
+    this.NotifyTargetUpdate(startingWindowTarget);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                       finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    console.info(`remote window animation onStartAppFromRecent`);
+    this.NotifyTargetUpdate(startingWindowTarget);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onStartAppFromOther(startingWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                      finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    console.info(`remote window animation onStartAppFromOther`);
+    this.NotifyTargetUpdate(startingWindowTarget);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                  toWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                  finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void{
+    console.info(`remote window animation onAppTransition`);
+    this.NotifyTargetUpdate(fromWindowTarget);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onMinimizeWindow(minimizingWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                   finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    console.info(`remote window animation onMinimizeWindow`);
+    this.NotifyTargetUpdate(minimizingWindowTarget);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onCloseWindow(closingWindowTarget: windowAnimationManager.WindowAnimationTarget,
+                finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    console.info(`remote window animation onCloseWindow`);
+    this.NotifyTargetUpdate(closingWindowTarget);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onScreenUnlock(finishedCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
+    console.info(`remote window animation onScreenUnlock`);
+    finishedCallback.onAnimationFinish();
+  }
+
+  onWindowAnimationTargetsUpdate(fullScreenWindowTarget: windowAnimationManager.WindowAnimationTarget, 
+                              floatingWindowTargets: Array<windowAnimationManager.WindowAnimationTarget>): void {
+    console.info('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
+    console.info('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
+  }
+}
 ```
 
 ```TypeScript

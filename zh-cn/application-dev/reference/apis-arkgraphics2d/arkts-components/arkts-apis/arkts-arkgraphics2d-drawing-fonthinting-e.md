@@ -1,5 +1,9 @@
 # FontHinting
 
+```TypeScript
+enum FontHinting
+```
+
 字型轮廓效果类型枚举。
 
 **起始版本：** 12

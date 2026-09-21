@@ -1,5 +1,9 @@
 # PreferredCompatibleMode
 
+```TypeScript
+enum PreferredCompatibleMode
+```
+
 枚举，根据配置的资产兼容性执行转码。
 
 **起始版本：** 26.0.0

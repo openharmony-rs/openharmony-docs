@@ -1,5 +1,9 @@
 # CallEventOptions（系统接口）
 
+```TypeScript
+export interface CallEventOptions
+```
+
 呼叫事件的可选参数。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # Rotation2D（系统接口）
 
+```TypeScript
+interface Rotation2D
+```
+
 描述二维空间中的旋转，可以通过旋转角度和旋转中心来定义。
 
 @typedef Rotation2D

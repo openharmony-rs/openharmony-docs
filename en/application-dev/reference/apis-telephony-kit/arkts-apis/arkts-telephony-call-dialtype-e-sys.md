@@ -1,5 +1,9 @@
 # DialType (System API)
 
+```TypeScript
+export enum DialType
+```
+
 Enumerates dialup types.
 
 **Since:** 8
@@ -59,6 +63,8 @@ DIAL_XCALL_TYPE = 3
 X-Call.
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CallManager
 

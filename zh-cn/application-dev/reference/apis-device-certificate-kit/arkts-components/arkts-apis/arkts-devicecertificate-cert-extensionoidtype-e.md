@@ -1,5 +1,9 @@
 # ExtensionOidType
 
+```TypeScript
+enum ExtensionOidType
+```
+
 证书扩展OID类型的枚举。
 
 **起始版本：** 10

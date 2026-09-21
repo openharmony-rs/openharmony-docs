@@ -1,5 +1,9 @@
 # SubHeaderV2Select
 
+```TypeScript
+export declare class SubHeaderV2Select
+```
+
 下拉选择器配置项，包含下拉选项内容、选中状态及回调事件。
 
 **起始版本：** 18
@@ -112,7 +116,7 @@ options: SelectOption[]
 
 Sets the options of the SubHeaderV2SelectOptions.
 
-**类型：** [SelectOption](../arkts-components/arkts-arkui-selectoption-i.md)[]
+**类型：** [SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)[]
 
 **起始版本：** 18
 

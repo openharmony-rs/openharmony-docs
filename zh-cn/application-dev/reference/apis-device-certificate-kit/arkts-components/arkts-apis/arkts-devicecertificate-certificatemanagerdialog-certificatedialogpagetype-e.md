@@ -1,5 +1,9 @@
 # CertificateDialogPageType
 
+```TypeScript
+export enum CertificateDialogPageType
+```
+
 表示证书管理对话框的页面类型。
 
 **起始版本：** 13

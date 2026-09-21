@@ -1,5 +1,9 @@
 # AbsAlbum
 
+```TypeScript
+interface AbsAlbum
+```
+
 Defines the abstract interface of albums.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # SwiperDynamicSyncSceneType
 
+```TypeScript
+export const enum SwiperDynamicSyncSceneType
+```
+
 枚举值，表示动态帧率场景的类型。
 
 **起始版本：** 12

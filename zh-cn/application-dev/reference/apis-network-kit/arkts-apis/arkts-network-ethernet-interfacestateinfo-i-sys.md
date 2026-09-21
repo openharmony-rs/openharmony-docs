@@ -1,5 +1,9 @@
 # InterfaceStateInfo（系统接口）
 
+```TypeScript
+export interface InterfaceStateInfo
+```
+
 监听以太网卡状态变化。
 
 **起始版本：** 11

@@ -20,6 +20,8 @@ status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addper
 
 **需要权限：** ohos.permission.PERMISSION_RECORD_TOGGLE
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -43,7 +45,7 @@ status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addper
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. Interface caller is not a system app. |
-| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**适用版本：** 26.1.0+ |
+| [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](arkts-ability-privacymanager-setpermissionusedrecordtogglestatus-f-sys.md).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
@@ -61,18 +63,8 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
-privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() => {
-  console.info('setPermissionUsedRecordToggleStatus success');
-}).catch((err: BusinessError): void => {
-  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setpermissionusedrecordtogglestatus-1"></a>
 
 ## setPermissionUsedRecordToggleStatus
 
@@ -84,7 +76,7 @@ function setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: numb
 
 status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)接口可以正常添加使用记录；status为false时，addPermissionUsedRecord][addPermissionUsedRecord](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)接口不产生权限使用记录，并且删除指定子身份资料的历史记录。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.PERMISSION_RECORD_TOGGLE
 
@@ -121,4 +113,14 @@ status为true时，[addPermissionUsedRecord](arkts-ability-privacymanager-addper
 
 **示例**
 
-参见 [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() => {
+  console.info('setPermissionUsedRecordToggleStatus success');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```

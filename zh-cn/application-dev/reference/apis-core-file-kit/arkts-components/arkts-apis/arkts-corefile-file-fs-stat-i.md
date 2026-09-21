@@ -1,5 +1,9 @@
 # Stat
 
+```TypeScript
+declare interface Stat
+```
+
 文件具体信息，包含文件大小、权限模式、访问时间、修改时间等属性。在调用Stat的方法前，需要先通过[stat()](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat)方法（同步或异步）构建一个Stat实例。
 
 **起始版本：** 9

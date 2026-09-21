@@ -1,5 +1,9 @@
 # ChargeType（系统接口）
 
+```TypeScript
+export enum ChargeType
+```
+
 表示充电类型的枚举。
 
 **起始版本：** 10

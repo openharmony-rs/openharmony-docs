@@ -40,28 +40,186 @@ Configures Wi-Fi for the current device to connect to a specified network.
 
 **Examples**
 
-```TypeScript
 Scenario 1: public Wi-Fi development
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'guest-Wi-Fi',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 Scenario 2: Multiple Wi-Fi networks with the same name but different BSSIDs
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'guest-Wi-Fi',
+  'bssid': 'AA:BB:CC:DD:EE:FF',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_OPEN
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 Scenario 3: old industrial devices with low security
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'Legacy-Office-Wi-Fi',
+  'bssid': 'AA:BB:CC:DD:EE:FF',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_WEP
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 Scenario 4: home networks, small offices, and consumer routers
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'home_Wi-Fi',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 Scenario 5: modern IoT device networks
-```
 
 ```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'iot_Wi-Fi',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_SAE
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 Scenario 6: company networks and university campus networks
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+// EAP-PEAP configuration example
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'company_Wi-Fi',
+  'preSharedKey': '',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_EAP,
+  'eapProfile': {
+    eapMethod: wifiManager.EapMethod.EAP_PEAP,
+    phase2Method: wifiManager.Phase2Method.PHASE2_MSCHAPV2,
+    identity: 'zhangsan@company.com',
+    password: 'passwd',
+    anonymousIdentity: '',
+    caPath: '/system/etc/security/caCerts/company-ca.pem',
+    caCertAliases:  '',
+    clientCertAliases: '',
+    certEntry: new Uint8Array(),
+    certPassword: '',
+    altSubjectMatch: 'CN=radius.company.com,OU=IT Department,O=Company Inc.,C=US',
+    domainSuffixMatch: 'company.com',
+    realm: '',
+    eapSubId: 0,
+    plmn: ''
+  }
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ```TypeScript
@@ -193,6 +351,37 @@ try {
 }
 ```
 
-```TypeScript
 Scenario 7: fixed IP address for client access
+
+```TypeScript
+import { wifiManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility',
+};
+
+let profile: wifiManager.WifiProfile = {
+  // Replace with actual values.
+  'ssid': 'static_ip_Wi-Fi',
+  'preSharedKey': 'passwd',
+  'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK,
+  'ipType': wifiManager.IpType.STATIC,
+  'staticIp': {
+    ipAddress: 3232235778, // 192.168.1.2
+    gateway: 3232235777, // 192.168.1.1
+    prefixLength: 24,
+    dnsServers: [3232235777, 3232235777],
+    domains: []
+  }
+};
+
+try {
+  wifiManager.setWifiProfileSync(wantTemp, profile);
+  console.info(`Succeeded in setting Wi-Fi profile.`);
+} catch (err) {
+  console.error(`Failed to set Wi-Fi profile. Code: ${err.code}, message: ${err.message}`);
+}
 ```

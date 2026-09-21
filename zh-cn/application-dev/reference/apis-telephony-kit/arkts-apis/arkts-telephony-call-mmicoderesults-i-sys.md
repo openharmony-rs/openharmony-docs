@@ -1,5 +1,9 @@
 # MmiCodeResults（系统接口）
 
+```TypeScript
+export interface MmiCodeResults
+```
+
 MMI码结果。
 
 **起始版本：** 9

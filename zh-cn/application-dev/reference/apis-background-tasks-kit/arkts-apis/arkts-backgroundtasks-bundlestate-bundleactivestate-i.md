@@ -1,5 +1,9 @@
 # BundleActiveState
 
+```TypeScript
+interface BundleActiveState
+```
+
 **起始版本：** 7
 
 **废弃版本：** 9

@@ -1,5 +1,9 @@
 # UserAgeGroup
 
+```TypeScript
+export enum UserAgeGroup
+```
+
 Enumerates the user age groups, for example, child or adult.
 
 **Since:** 20

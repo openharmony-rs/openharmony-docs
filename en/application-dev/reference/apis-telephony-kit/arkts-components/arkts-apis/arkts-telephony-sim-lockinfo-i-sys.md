@@ -1,5 +1,9 @@
 # LockInfo (System API)
 
+```TypeScript
+export interface LockInfo
+```
+
 Defines the personalized lock information.
 
 **Since:** 8

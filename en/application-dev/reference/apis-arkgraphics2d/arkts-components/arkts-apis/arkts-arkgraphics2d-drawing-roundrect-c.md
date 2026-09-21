@@ -1,5 +1,9 @@
 # RoundRect
 
+```TypeScript
+class RoundRect
+```
+
 Rounded rectangle.
 
 > **NOTE:** 
@@ -38,6 +42,18 @@ Copies a rounded rectangle.
 | --- | --- | --- | --- |
 | roundRect | [RoundRect](arkts-arkgraphics2d-drawing-roundrect-c.md) | Yes | Rounded rectangle to be copied. |
 
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
+let roundRect = new drawing.RoundRect(rect, 50, 50);
+let roundRect2 = new drawing.RoundRect(roundRect);
+```
+
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -63,6 +79,15 @@ A constructor used to create a **RoundRect** object. A rounded rectangle is crea
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
+let roundRect = new drawing.RoundRect(rect, 50, 50);
+```
 
 ## getCorner
 
@@ -94,6 +119,17 @@ Obtains the radii of the specified rounded corner in this rounded rectangle.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+let cornerRadius = roundRect.getCorner(drawing.CornerPos.BOTTOM_LEFT_POS);
+console.info("getCorner---" + cornerRadius.x);
+console.info("getCorner---" + cornerRadius.y);
+```
+
 ## offset
 
 ```TypeScript
@@ -118,6 +154,15 @@ Translates this rounded rectangle by an offset along the X axis and Y axis.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+roundRect.offset(100, 100);
+```
 
 ## setCorner
 
@@ -144,3 +189,12 @@ Sets the radii of the specified rounded corner in this rounded rectangle.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 150, 150);
+```

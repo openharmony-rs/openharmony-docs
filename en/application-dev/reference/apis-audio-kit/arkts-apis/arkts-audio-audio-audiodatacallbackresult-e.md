@@ -1,5 +1,9 @@
 # AudioDataCallbackResult
 
+```TypeScript
+enum AudioDataCallbackResult
+```
+
 Enumerates the audio data callback results.
 
 **Since:** 12

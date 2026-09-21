@@ -1,5 +1,9 @@
 # DarkMode
 
+```TypeScript
+enum DarkMode
+```
+
 深浅色模式枚举，用于配置系统的深色或浅色模式。
 
 | 名称 | 值 | 说明 |  

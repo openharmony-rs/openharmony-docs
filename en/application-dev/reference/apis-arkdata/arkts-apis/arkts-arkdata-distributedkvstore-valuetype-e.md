@@ -1,5 +1,9 @@
 # ValueType
 
+```TypeScript
+enum ValueType
+```
+
 Indicates the `ValueType`.
 
 <p>`ValueType` is obtained based on the value.

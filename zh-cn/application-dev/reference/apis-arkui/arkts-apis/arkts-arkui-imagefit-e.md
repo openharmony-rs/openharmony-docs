@@ -1,5 +1,9 @@
 # ImageFit
 
+```TypeScript
+declare enum ImageFit
+```
+
 Image display mode.
 
 @enum { number }
@@ -18,6 +22,8 @@ Keep the aspect ratio to zoom out or zoom in so that the image is completely dis
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -33,6 +39,8 @@ Cover
 Keep the aspect ratio to zoom out or zoom in so that both sides of the image are greater than or equal to the display boundary.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -50,6 +58,8 @@ Adaptive display
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -65,6 +75,8 @@ Fill
 Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -82,6 +94,8 @@ Keep the aspect ratio displayed, and the image zooms out or remains unchanged.
 
 **起始版本：** 11
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
@@ -97,6 +111,8 @@ None
 Keep the original size and display it in the center.
 
 **起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

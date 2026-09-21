@@ -1,5 +1,9 @@
 # PathDirection
 
+```TypeScript
+enum PathDirection
+```
+
 添加闭合轮廓方向的枚举。
 
 **起始版本：** 12

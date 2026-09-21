@@ -1,5 +1,9 @@
 # TitlePosition
 
+```TypeScript
+export declare enum TitlePosition
+```
+
 设置主副标题之间的上下相对位置，默认设置为主标题在副标题之上。
 
 | 名称 | 值 | 说明 |  

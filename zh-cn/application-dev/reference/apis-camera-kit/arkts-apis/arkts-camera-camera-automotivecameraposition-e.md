@@ -1,5 +1,9 @@
 # AutomotiveCameraPosition
 
+```TypeScript
+enum AutomotiveCameraPosition
+```
+
 表示Car设备摄像头位置的枚举。
 
 **起始版本：** 26.0.0

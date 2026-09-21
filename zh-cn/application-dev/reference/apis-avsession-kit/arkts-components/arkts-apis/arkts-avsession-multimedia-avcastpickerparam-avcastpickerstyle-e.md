@@ -1,5 +1,9 @@
 # AVCastPickerStyle
 
+```TypeScript
+export declare enum AVCastPickerStyle
+```
+
 投播组件样式参数选项。
 
 @enum { int }

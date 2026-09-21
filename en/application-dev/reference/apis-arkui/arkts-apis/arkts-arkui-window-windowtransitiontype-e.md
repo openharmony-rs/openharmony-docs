@@ -1,5 +1,9 @@
 # WindowTransitionType
 
+```TypeScript
+enum WindowTransitionType
+```
+
 Enumerates the types of window transition animations.
 
 **Since:** 20

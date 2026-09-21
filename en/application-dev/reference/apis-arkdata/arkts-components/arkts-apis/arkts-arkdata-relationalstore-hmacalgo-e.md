@@ -1,5 +1,9 @@
 # HmacAlgo
 
+```TypeScript
+enum HmacAlgo
+```
+
 Enumerates the HMAC algorithms for the database. Use the enum name rather than the enum value.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # TextVerticalAlign
 
+```TypeScript
+enum TextVerticalAlign
+```
+
 Enumerates the vertical alignment modes of text.
 
 **Since:** 20

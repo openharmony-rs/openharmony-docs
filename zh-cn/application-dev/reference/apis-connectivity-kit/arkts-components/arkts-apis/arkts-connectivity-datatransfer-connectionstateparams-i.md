@@ -1,5 +1,9 @@
 # ConnectionStateParams
 
+```TypeScript
+interface ConnectionStateParams
+```
+
 获取端口通道连接状态所需参数。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # DriverInfo (System API)
 
+```TypeScript
+interface DriverInfo
+```
+
 Defines detailed information about a driver.
 
 **Since:** 12

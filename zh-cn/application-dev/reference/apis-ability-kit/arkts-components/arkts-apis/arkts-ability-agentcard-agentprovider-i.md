@@ -1,5 +1,9 @@
 # AgentProvider
 
+```TypeScript
+export interface AgentProvider
+```
+
 表示Agent的服务提供商。
 
 @typedef AgentProvider

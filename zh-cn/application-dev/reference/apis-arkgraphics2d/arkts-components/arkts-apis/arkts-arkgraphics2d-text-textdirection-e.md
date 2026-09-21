@@ -1,5 +1,9 @@
 # TextDirection
 
+```TypeScript
+enum TextDirection
+```
+
 文本排版方向枚举。
 
 **起始版本：** 12

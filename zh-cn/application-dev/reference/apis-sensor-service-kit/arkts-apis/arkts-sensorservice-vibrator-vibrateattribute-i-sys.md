@@ -1,5 +1,9 @@
 # VibrateAttribute
 
+```TypeScript
+interface VibrateAttribute
+```
+
 马达振动属性。用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)接口的attribute参数，指定马达ID、设备ID和振动使用场景。
 
 **起始版本：** 9

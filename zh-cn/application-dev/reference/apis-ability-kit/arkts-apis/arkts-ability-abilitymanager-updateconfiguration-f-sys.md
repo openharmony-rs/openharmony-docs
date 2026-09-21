@@ -39,6 +39,8 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="updateconfiguration-1"></a>
+
 ## updateConfiguration
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # SimpleAnimatorOptions
 
+```TypeScript
+export declare class SimpleAnimatorOptions
+```
+
 Defines a simple animation parameter object. Unlike **AnimatorOptions**, this object comes with some default values for certain animation parameters, so you do not have to set them manually.
 
 **Since:** 18
@@ -37,8 +41,25 @@ A constructor used to create a **SimpleAnimatorOptions** instance.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // Animation interpolation from 100 to 200, with other animation parameters set to default values.
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## delay
@@ -71,8 +92,25 @@ Sets the playback delay for this animation.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## direction
@@ -105,8 +143,25 @@ Sets the playback direction for this animator animation.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## duration
@@ -139,8 +194,25 @@ Sets the animation duration.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## easing
@@ -173,8 +245,25 @@ Sets the interpolation curve for this animation.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## fill
@@ -207,8 +296,25 @@ Sets the fill mode for this animation.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## iterations
@@ -241,6 +347,23 @@ Sets the number of times that this animation is played.
 
 **Examples**
 
-```TypeScript
 See ArkTS-based Declarative Development Paradigm.
+
+```TypeScript
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```

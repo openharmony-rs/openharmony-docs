@@ -1,5 +1,9 @@
 # Socks5DnsStrategy
 
+```TypeScript
+export enum Socks5DnsStrategy
+```
+
 SOCKS5代理的DNS查询策略配置信息。
 
 **起始版本：** 26.0.0

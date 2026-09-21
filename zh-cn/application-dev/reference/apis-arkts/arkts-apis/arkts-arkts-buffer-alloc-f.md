@@ -9,7 +9,7 @@ import { buffer } from '@kit.ArkTS';
 ## alloc
 
 ```TypeScript
-function alloc(size: number, fill?: string | Buffer | number | number | number, encoding?: BufferEncoding): Buffer
+function alloc(size: number, fill?: string | Buffer | number, encoding?: BufferEncoding): Buffer
 ```
 
 创建指定字节长度的Buffer对象，并使用指定值进行初始化填充（默认填充0）。
@@ -25,7 +25,7 @@ function alloc(size: number, fill?: string | Buffer | number | number | number, 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | size | number | 是 | 指定的Buffer对象长度，单位：字节。取值为正整数，最大值为2^32-1，即4294967295。 |
-| fill | string &#124; Buffer &#124; number &#124; number &#124; number | 否 | 填充至新缓冲区的值。默认值：0。<br>**适用版本：** 9 - 10 |
+| fill | string &#124; Buffer &#124; number | 否 | 填充至新缓冲区的值。默认值：0。<br>**适用版本：** 9 - 10 |
 | encoding | BufferEncoding | 否 | 编码格式（当fill为string时，才有意义）。默认值：'utf8'。 |
 
 **返回值：**

@@ -1,5 +1,9 @@
 # ContentSlot properties/events
 
+```TypeScript
+declare class ContentSlotAttribute
+```
+
 Define ContentSlot attribute, to prevent improper recursive usage of ContentSlot.
 
 **Since:** 12

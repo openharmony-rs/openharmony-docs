@@ -16,6 +16,8 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -24,7 +26,7 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [MenuItemOptions](arkts-arkui-menuitemoptions-i.md) &#124; [CustomBuilder](arkts-arkui-custombuilder-t.md) | No | Information about the menu item. |
+| value | [MenuItemOptions](arkts-arkui-menuitem-comp-menuitemoptions-i.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | No | Information about the menu item. |
 
 ## Summary
 
@@ -32,4 +34,4 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | Name | Description |
 | --- | --- |
-| [MenuItemOptions](arkts-arkui-menuitemoptions-i.md) | Provides information about the menu item. |
+| [MenuItemOptions](arkts-arkui-menuitem-comp-menuitemoptions-i.md) | Provides information about the menu item. |

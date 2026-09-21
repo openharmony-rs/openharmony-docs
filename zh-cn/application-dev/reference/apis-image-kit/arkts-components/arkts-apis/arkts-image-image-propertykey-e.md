@@ -1,5 +1,9 @@
 # PropertyKey
 
+```TypeScript
+enum PropertyKey
+```
+
 表示Exif（Exchangeable image file format）图像信息的枚举。
 
 - 格式示例中的key为：image.PropertyKey.XXX（XXX为枚举的名称，如：image.PropertyKey.NEW_SUBFILE_TYPE） 。  

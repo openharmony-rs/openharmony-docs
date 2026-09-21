@@ -1,5 +1,9 @@
 # AllocatorType
 
+```TypeScript
+enum AllocatorType
+```
+
 表示用于图像解码的内存类型的枚举。开发者可根据场景选择合适的内存申请类型。
 
 **起始版本：** 15

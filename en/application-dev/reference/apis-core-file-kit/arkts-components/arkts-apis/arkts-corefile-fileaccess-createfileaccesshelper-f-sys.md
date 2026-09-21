@@ -77,34 +77,6 @@ Creates a **Helper** object to bind with all file management services in the sys
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { common } from '@kit.AbilityKit';
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-function createFileAccessHelper01(context: common.UIAbilityContext) {
-  let fileAccessHelper: fileAccess.FileAccessHelper;
-  // Obtain wantInfos by using getFileAccessAbilityInfo().
-  let wantInfos: Array<Want> = [
-    {
-      bundleName: "com.ohos.UserFile.ExternalFileManager",
-      abilityName: "FileExtensionAbility",
-    },
-  ]
-  try {
-    // context is passed by EntryAbility.
-    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
-    if (!fileAccessHelper) {
-      console.error("createFileAccessHelper interface returns an undefined object");
-    }
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
-  }
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
@@ -124,6 +96,8 @@ function createFileAccessHelper02(context: common.UIAbilityContext) {
 }
 ```
 
+
+<a id="createfileaccesshelper-1"></a>
 
 ## createFileAccessHelper
 
@@ -195,4 +169,30 @@ Creates a **Helper** object to bind with the specified Wants. This API returns t
 
 **Examples**
 
-See [createFileAccessHelper](#createfileaccesshelper)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { common } from '@kit.AbilityKit';
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+function createFileAccessHelper01(context: common.UIAbilityContext) {
+  let fileAccessHelper: fileAccess.FileAccessHelper;
+  // Obtain wantInfos by using getFileAccessAbilityInfo().
+  let wantInfos: Array<Want> = [
+    {
+      bundleName: "com.ohos.UserFile.ExternalFileManager",
+      abilityName: "FileExtensionAbility",
+    },
+  ]
+  try {
+    // context is passed by EntryAbility.
+    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
+    if (!fileAccessHelper) {
+      console.error("createFileAccessHelper interface returns an undefined object");
+    }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
+  }
+}
+```

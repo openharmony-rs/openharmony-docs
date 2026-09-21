@@ -1,5 +1,9 @@
 # TabBarPosition
 
+```TypeScript
+export declare enum TabBarPosition
+```
+
 Position of the tab bar. The default value is **TabBarPosition.BOTTOM**.
 
 **Since:** 12

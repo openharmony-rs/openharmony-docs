@@ -1,5 +1,9 @@
 # AddFilterRule（系统接口）
 
+```TypeScript
+interface AddFilterRule
+```
+
 添加网络包过滤规则。
 
 **起始版本：** 10

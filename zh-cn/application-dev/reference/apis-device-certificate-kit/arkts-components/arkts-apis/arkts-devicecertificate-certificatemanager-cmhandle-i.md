@@ -1,5 +1,9 @@
 # CMHandle
 
+```TypeScript
+export interface CMHandle
+```
+
 表示签名、验签的初始化操作句柄。
 
 **起始版本：** 11

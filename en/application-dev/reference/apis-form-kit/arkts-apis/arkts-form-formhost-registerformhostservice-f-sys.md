@@ -14,7 +14,7 @@ function registerFormHostService(service: formInfo.FormHostServiceInfo): Promise
 
 Register the form host service info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

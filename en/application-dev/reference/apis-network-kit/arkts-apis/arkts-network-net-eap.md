@@ -1,6 +1,6 @@
 # @ohos.net.eap(Extensible Authentication)
 
-The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 80 2.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
+The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
 
 **Since:** 20
 

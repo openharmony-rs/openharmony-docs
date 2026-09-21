@@ -1,5 +1,9 @@
 # CmsKeyAgreeRecipientDigestAlgorithm
 
+```TypeScript
+enum CmsKeyAgreeRecipientDigestAlgorithm
+```
+
 Enumerates the digest algorithms of the CMS KeyAgree type.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # ScreenModeInfo（系统接口）
 
+```TypeScript
+interface ScreenModeInfo
+```
+
 屏幕显示模式信息。
 
 **起始版本：** 9

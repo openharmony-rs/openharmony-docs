@@ -1,5 +1,9 @@
 # RunningLockType
 
+```TypeScript
+export enum RunningLockType
+```
+
 RunningLock锁的类型。
 
 **起始版本：** 7

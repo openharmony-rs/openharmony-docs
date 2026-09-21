@@ -1,5 +1,9 @@
 # Panel properties/events
 
+```TypeScript
+declare class PanelAttribute extends CommonMethod<PanelAttribute>
+```
+
 Pane Attribute.
 
 **Inheritance/Implementation:** PanelAttribute extends CommonMethod<PanelAttribute>
@@ -21,6 +25,8 @@ Called when the panel background mask is requested.
 **Since:** 9
 
 **Deprecated since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -44,6 +50,8 @@ Sets the height. It is valid only when PanelType is set to Custom.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -52,7 +60,7 @@ Sets the height. It is valid only when PanelType is set to Custom.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [PanelHeight](arkts-arkui-panelheight-e.md) | Yes | value - Content height to set. |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [PanelHeight](arkts-arkui-panel-comp-panelheight-e.md) | Yes | value - Content height to set. |
 
 ## dragBar
 
@@ -65,6 +73,8 @@ Called when determining whether dragbar exists.
 **Since:** 7
 
 **Deprecated since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -88,6 +98,8 @@ Called when the height in the full state is specified.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -109,6 +121,8 @@ Called when the height in the half state is specified.
 **Since:** 7
 
 **Deprecated since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -132,6 +146,8 @@ Called when the height in the mini state is specified.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -154,6 +170,8 @@ Called when the initial state of the slidable panel is set.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -162,7 +180,7 @@ Called when the initial state of the slidable panel is set.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PanelMode](arkts-arkui-panelmode-e.md) | Yes |  |
+| value | [PanelMode](arkts-arkui-panel-comp-panelmode-e.md) | Yes |  |
 
 ## onChange
 
@@ -211,6 +229,8 @@ Called when the state of the slidable panel changes.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -232,6 +252,8 @@ Called when height of the panel is changed
 **Since:** 9
 
 **Deprecated since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -255,6 +277,8 @@ Called when the panel slidable panel pops up.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -276,6 +300,8 @@ Called when the panel show close icon.
 **Since:** 10
 
 **Deprecated since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -299,6 +325,8 @@ Called when the slidable panel type is set.
 
 **Deprecated since:** 12
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -307,4 +335,4 @@ Called when the slidable panel type is set.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PanelType](arkts-arkui-paneltype-e.md) | Yes |  |
+| value | [PanelType](arkts-arkui-panel-comp-paneltype-e.md) | Yes |  |

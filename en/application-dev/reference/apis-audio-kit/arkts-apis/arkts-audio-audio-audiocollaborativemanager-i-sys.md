@@ -1,5 +1,9 @@
 # AudioCollaborativeManager (System API)
 
+```TypeScript
+interface AudioCollaborativeManager
+```
+
 Implements audio collaborative management.
 
 **Since:** 20

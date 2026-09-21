@@ -1,5 +1,9 @@
 # PermissionGrantState
 
+```TypeScript
+export enum PermissionGrantState
+```
+
 权限授予状态。
 
 **起始版本：** 9

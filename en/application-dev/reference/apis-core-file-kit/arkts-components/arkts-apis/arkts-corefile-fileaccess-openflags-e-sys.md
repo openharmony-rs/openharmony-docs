@@ -1,5 +1,9 @@
 # OPENFLAGS (System API)
 
+```TypeScript
+enum OPENFLAGS
+```
+
 Enumerates the file open modes.
 
 **Since:** 9

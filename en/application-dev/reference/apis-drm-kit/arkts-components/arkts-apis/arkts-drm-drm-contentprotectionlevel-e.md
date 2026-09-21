@@ -1,5 +1,9 @@
 # ContentProtectionLevel
 
+```TypeScript
+enum ContentProtectionLevel
+```
+
 Enumerates the content protection levels.
 
 **Since:** 11

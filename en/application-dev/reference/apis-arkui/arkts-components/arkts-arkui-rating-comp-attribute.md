@@ -1,5 +1,9 @@
 # Rating properties/events
 
+```TypeScript
+declare class RatingAttribute extends CommonMethod<RatingAttribute>
+```
+
 **Inheritance/Implementation:** RatingAttribute extends CommonMethod<RatingAttribute>
 
 **Since:** 7
@@ -26,7 +30,9 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[RatingConfiguration](arkts-arkui-ratingconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[RatingConfiguration](arkts-arkui-rating-comp-ratingconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+
+<a id="contentmodifier-1"></a>
 
 ## contentModifier
 
@@ -48,7 +54,7 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier), t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [Optional](arkts-arkui-optional-t.md)&lt;[ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[RatingConfiguration](arkts-arkui-ratingconfiguration-i.md)&gt;&gt; | Yes | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. <br>If **modifier** is set to **undefined**, no content modifier is used. |
+| modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[RatingConfiguration](arkts-arkui-rating-comp-ratingconfiguration-i.md)&gt;&gt; | Yes | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. <br>If **modifier** is set to **undefined**, no content modifier is used. |
 
 ## onChange
 
@@ -59,6 +65,8 @@ onChange(callback: (value: number) => void)
 Triggered when the rating value changes.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -71,6 +79,8 @@ Triggered when the rating value changes.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | (value: number) =&gt; void | Yes |  |
+
+<a id="onchange-1"></a>
 
 ## onChange
 
@@ -94,7 +104,7 @@ Triggered when the rating value changes. Compared with [onChange](#onchange), th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-optional-t.md)&lt;[OnRatingChangeCallback](arkts-arkui-onratingchangecallback-t.md)&gt; | Yes | Defines the callback triggered when the rating value changes.<br>If **callback** is set to **undefined**, the callback function is not used. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnRatingChangeCallback](arkts-arkui-rating-comp-onratingchangecallback-t.md)&gt; | Yes | Defines the callback triggered when the rating value changes.<br>If **callback** is set to **undefined**, the callback function is not used. |
 
 ## stars
 
@@ -105,6 +115,8 @@ stars(value: number)
 Sets the total number of stars. Values less than 0 are treated as the default value.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -117,6 +129,8 @@ Sets the total number of stars. Values less than 0 are treated as the default va
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number | Yes | Total number of stars.<br>Default value: **5** |
+
+<a id="stars-1"></a>
 
 ## stars
 
@@ -140,7 +154,7 @@ Sets the total number of stars. Values less than 0 are treated as the default va
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| starCount | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | Yes | Total number of stars.<br>If **starCount** is set to **undefined**, the default value **5** is used. |
+| starCount | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Total number of stars.<br>If **starCount** is set to **undefined**, the default value **5** is used. |
 
 ## starStyle
 
@@ -156,6 +170,8 @@ By default, the image is loaded in asynchronous mode. Synchronous loading is not
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -166,7 +182,9 @@ By default, the image is loaded in asynchronous mode. Synchronous loading is not
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [StarStyleOptions](arkts-arkui-starstyleoptions-i.md) | Yes | Star style.<br>**NOTE:** <br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed.<br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image.<br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured.<br>**Since:** 18 |
+| options | [StarStyleOptions](arkts-arkui-rating-comp-starstyleoptions-i.md) | Yes | Star style.<br>**NOTE:** <br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed.<br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image.<br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured.<br>**Since:** 18 |
+
+<a id="starstyle-1"></a>
 
 ## starStyle
 
@@ -196,7 +214,7 @@ Compared with [starStyle](#starstyle), this API supports the **undefined** type 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [Optional](arkts-arkui-optional-t.md)&lt;[StarStyleOptions](arkts-arkui-starstyleoptions-i.md)&gt; | Yes | Star style.<br>**NOTE:** <br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed.<br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image.<br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured. |
+| options | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[StarStyleOptions](arkts-arkui-rating-comp-starstyleoptions-i.md)&gt; | Yes | Star style.<br>**NOTE:** <br>If an incorrect image path is provided for **backgroundUri**, **foregroundUri**, or **secondaryUri**, the previously displayed image will be retained. If the first provided path is incorrect, no image will be displayed.<br>When **backgroundUri** or **foregroundUri** is set to **undefined** or an empty string, the **Rating** component falls back to the default star image.<br>If **secondaryUri** is not set, or is set to **undefined** or an empty string, **backgroundUri** will be used as a fallback. The behavior in this case is the same as when only **foregroundUri** and **backgroundUri** are configured. |
 
 ## stepSize
 
@@ -207,6 +225,8 @@ stepSize(value: number)
 Sets the step for rating. Values less than 0.1 are treated as the default value.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -219,6 +239,8 @@ Sets the step for rating. Values less than 0.1 are treated as the default value.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number | Yes | Step for rating.<br>Default value: **0.5**<br>Value range: [0.1, stars] |
+
+<a id="stepsize-1"></a>
 
 ## stepSize
 
@@ -242,4 +264,4 @@ Sets the step for rating. Values less than 0.1 are treated as the default value.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | [Optional](arkts-arkui-optional-t.md)&lt;number&gt; | Yes | Step for rating.<br>If **size** is set to **undefined**, the default value **0.5** is used.<br>Value range: [0.1, stars] |
+| size | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Step for rating.<br>If **size** is set to **undefined**, the default value **0.5** is used.<br>Value range: [0.1, stars] |

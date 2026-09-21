@@ -1,5 +1,9 @@
 # NetBackgroundPolicy (System API)
 
+```TypeScript
+export enum NetBackgroundPolicy
+```
+
 Enumerates the background network policies.
 
 **Since:** 10

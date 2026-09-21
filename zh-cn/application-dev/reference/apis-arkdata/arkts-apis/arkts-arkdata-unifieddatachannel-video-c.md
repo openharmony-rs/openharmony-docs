@@ -1,5 +1,9 @@
 # Video
 
+```TypeScript
+class Video extends File
+```
+
 视频类型数据，是[File](arkts-arkdata-unifieddatachannel-file-c.md)的子类，用于描述视频文件。
 
 **继承/实现关系：** Video extends [File](arkts-arkdata-unifieddatachannel-file-c.md)

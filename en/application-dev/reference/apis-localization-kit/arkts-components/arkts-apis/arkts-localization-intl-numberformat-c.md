@@ -1,5 +1,9 @@
 # NumberFormat
 
+```TypeScript
+export class NumberFormat
+```
+
 Provides the API for formatting number strings.
 
 **Since:** 6
@@ -35,12 +39,7 @@ import { intl } from '@kit.LocalizationKit';
 let formatter: intl.NumberFormat = new intl.NumberFormat();
 ```
 
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a NumberFormat object with locale ID being en-GB, style being decimal, and notation being scientific.
-let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'decimal', notation: 'scientific' });
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -64,13 +63,6 @@ Creates a **NumberFormat** object based on the specified locale and options.
 | options | [NumberOptions](arkts-localization-intl-numberoptions-i.md) | No | Options for creating the **NumberFormat** object. |
 
 **Examples**
-
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// Create a NumberFormat object using the current system locale ID.
-let formatter: intl.NumberFormat = new intl.NumberFormat();
-```
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

@@ -1,5 +1,9 @@
 # HceService
 
+```TypeScript
+export class HceService
+```
+
 Provides APIs for implementing HCE, including receiving Application Protocol Data Units (APDUs) from the peer card reader and sending a response. Before using HCE-related APIs, check whether the device supports HCE.
 
 **Since:** 8
@@ -23,6 +27,8 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 **Since:** 18
 
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
@@ -89,6 +95,8 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
@@ -110,12 +118,80 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 
 **Examples**
 
-```TypeScript
 ArkTS example:
-```
 
 ```TypeScript
+// Applicable to devices other than lite wearables
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { cardEmulation } from '@kit.ConnectivityKit';
+import { AsyncCallback } from '@kit.BasicServicesKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+let hceService: cardEmulation.HceService = new cardEmulation.HceService();
+let element: bundleManager.ElementName;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) {
+    hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onCreate');
+    element = {
+      bundleName: want.bundleName ?? '',
+      abilityName: want.abilityName ?? '',
+      moduleName: want.moduleName
+    };
+    const apduCallback: AsyncCallback<number[]> = (err, data) => {
+      // Implement data processing and handle exceptions.
+      console.info("got apdu data");
+    };
+    hceService.on('hceCmd', apduCallback);
+  }
+  onDestroy() {
+    hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onDestroy');
+    hceService.stop(element);
+  }
+  // Other functions in the lifecycle
+}
+```
+
 JS example:
+
+```TypeScript
+// Applicable to lite wearables
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+let appName = "com.example.testquestionlite";
+
+export default {
+  data:{
+    fontSize: '30px',
+    fontColor: '#50609f',
+    hide: 'show',
+    headCon: appName,
+    paymentAid: ["A0000000041010", "A0000000041012"]
+  },
+  onCreate() {
+    console.info('onCreate');
+  },
+  onReady() {
+    cardEmulation.hasHceCapability();
+    cardEmulation.isDefaultService(appName, cardEmulation.CardType.PAYMENT);
+    cardEmulation.isDefaultService(appName, cardEmulation.CardType.OTHER);
+    let hceService = new cardEmulation.HceService();
+
+    hceService.start(appName, this.paymentAid);
+    hceService.on("hceCmd", (data) => {
+      console.info('data:' + data);
+      // Data to be sent by the application. The following data is for reference only.
+      let responseData = [0x1, 0x2];
+      hceService.transmit(responseData, () => {
+        console.info('sendResponse start');
+      });
+      console.info('sendResponse end');
+    });
+  },
+  onDestroy() {
+  }
+  // Other functions in the lifecycle
+}
 ```
 
 ## sendResponse
@@ -151,12 +227,21 @@ Sends a response to the peer card reader.
 
 **Examples**
 
-```TypeScript
 ArkTS example:
 
 For details, see the example of [transmit](#transmit).
 
 JS example:
+
+```TypeScript
+<!-- Applicable to lite wearables -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        Test
+    </text>
+    <input type="button" value="sendResponse" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
 ```
 
 ```TypeScript
@@ -223,6 +308,8 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
@@ -282,12 +369,21 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 **Examples**
 
-```TypeScript
 ArkTS example:
 
 For details, see the example of on.
 
 JS example:
+
+```TypeScript
+<!-- Applicable to lite wearables -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        Test
+    </text>
+    <input type="button" value="startHCE" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
 ```
 
 ```TypeScript
@@ -347,6 +443,8 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
@@ -399,12 +497,21 @@ Stops HCE, including exiting the current application from the foreground, releas
 
 **Examples**
 
-```TypeScript
 ArkTS example:
 
 For details, see the example of on.
 
 JS example:
+
+```TypeScript
+<!-- Applicable to lite wearables -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        Test
+    </text>
+    <input type="button" value="stopHCE" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
 ```
 
 ```TypeScript
@@ -461,6 +568,8 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 **Since:** 9
 
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -521,6 +630,44 @@ hceService.transmit(responseData).then(() => {
 console.info("transmit Promise end.");
 ```
 
+<a id="transmit-1"></a>
+
+## transmit
+
+```TypeScript
+transmit(response: number[], callback: AsyncCallback<void>): void
+```
+
+Sends APDU data to the peer card reader. The application can call this API only after receiving an APDU sent by the card reader via on. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Communication.NFC.CardEmulation
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| response | number[] | Yes | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
+
+**Examples**
+
 ```TypeScript
 // Applicable to devices other than lite wearables
 import { cardEmulation } from '@kit.ConnectivityKit';
@@ -558,39 +705,3 @@ hceService.transmit(responseData, () => {
 });
 console.info("transmit Promise end.");
 ```
-
-## transmit
-
-```TypeScript
-transmit(response: number[], callback: AsyncCallback<void>): void
-```
-
-Sends APDU data to the peer card reader. The application can call this API only after receiving an APDU sent by the card reader via on. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Required permissions:** ohos.permission.NFC_CARD_EMULATION
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Communication.NFC.CardEmulation
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| response | number[] | Yes | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
-
-**Examples**
-
-See [transmit](#transmit)

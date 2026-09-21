@@ -1,5 +1,9 @@
 # EventType
 
+```TypeScript
+enum EventType
+```
+
 事件类型枚举。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # PathEffect
 
+```TypeScript
+class PathEffect
+```
+
 Implements a path effect.
 
 > **NOTE:** 
@@ -45,6 +49,22 @@ Creates a path effect by sequentially applying the inner effect and then the out
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | **PathEffect** object created. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let outerPathEffect = drawing.PathEffect.createCornerPathEffect(100);
+    let innerPathEffect = drawing.PathEffect.createCornerPathEffect(10);
+    let effect = drawing.PathEffect.createComposePathEffect(outerPathEffect, innerPathEffect);
+  }
+}
+```
+
 ## createCornerPathEffect
 
 ```TypeScript
@@ -74,6 +94,20 @@ Creates a path effect that transforms the sharp angle between line segments into
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let effect = drawing.PathEffect.createCornerPathEffect(30);
+  }
+}
+```
 
 ## createDashPathEffect
 
@@ -106,6 +140,21 @@ Creates a **PathEffect** object that converts a path into a dotted line.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let intervals = [10, 5];
+    let effect = drawing.PathEffect.createDashPathEffect(intervals, 5);
+  }
+}
+```
+
 ## createDiscretePathEffect
 
 ```TypeScript
@@ -131,6 +180,20 @@ Creates an effect that segments the path and scatters the segments in an irregul
 | Type | Description |
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | **PathEffect** object created. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let effect = drawing.PathEffect.createDiscretePathEffect(100, -50, 0);
+  }
+}
+```
 
 ## createPathDashEffect
 
@@ -165,6 +228,43 @@ Creates a dashed path effect based on the shape described by a path.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**Examples**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let pen = new drawing.Pen();
+    const penColor: common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(penColor);
+    pen.setStrokeWidth(10);
+    pen.setAntiAlias(true);
+
+    const path = new drawing.Path();
+    path.moveTo(100, 100);
+    path.lineTo(150, 50);
+    path.lineTo(200, 100);
+
+    const dashShapePath = new drawing.Path();
+    dashShapePath.moveTo(0, 0);
+    dashShapePath.lineTo(10, 0);
+    dashShapePath.lineTo(20, 10);
+    dashShapePath.lineTo(0, 10);
+
+    let pathEffect: drawing.PathEffect = drawing.PathEffect.createPathDashEffect(dashShapePath, 50, -30,
+        drawing.PathDashStyle.MORPH);
+    pen.setPathEffect(pathEffect);
+
+    canvas.attachPen(pen);
+    canvas.drawPath(path);
+    canvas.detachPen();
+  }
+}
+```
+
 ## createSumPathEffect
 
 ```TypeScript
@@ -189,3 +289,20 @@ Creates an overlay path effect based on two distinct path effects. Different fro
 | Type | Description |
 | --- | --- |
 | [PathEffect](arkts-arkgraphics2d-drawing-patheffect-c.md) | **PathEffect** object created. |
+
+**Examples**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let intervals = [10, 5];
+    let firstPathEffect = drawing.PathEffect.createDashPathEffect(intervals, 5);
+    let secondPathEffect = drawing.PathEffect.createDashPathEffect(intervals, 10);
+    let effect = drawing.PathEffect.createSumPathEffect(firstPathEffect, secondPathEffect);
+  }
+}
+```

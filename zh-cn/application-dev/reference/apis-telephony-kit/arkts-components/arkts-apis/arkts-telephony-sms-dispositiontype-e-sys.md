@@ -1,5 +1,9 @@
 # DispositionType（系统接口）
 
+```TypeScript
+export enum DispositionType
+```
+
 处理类型。
 
 **起始版本：** 8

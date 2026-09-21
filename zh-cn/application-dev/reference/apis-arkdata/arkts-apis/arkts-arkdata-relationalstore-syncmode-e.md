@@ -1,5 +1,9 @@
 # SyncMode
 
+```TypeScript
+enum SyncMode
+```
+
 指数据库同步模式。请使用枚举名称而非枚举值。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # FloatViewLimits
 
+```TypeScript
+interface FloatViewLimits
+```
+
 标准悬浮窗窗口的限制。
 
 **起始版本：** 26.0.0

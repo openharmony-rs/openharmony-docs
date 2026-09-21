@@ -1,5 +1,9 @@
 # NotifyCharacteristic
 
+```TypeScript
+interface NotifyCharacteristic
+```
+
 描述server端特征值变化时发送的特征通知参数定义。
 
 从API version 9开始支持，从API version 10开始废弃。

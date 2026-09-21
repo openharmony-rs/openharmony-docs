@@ -1,5 +1,9 @@
 # CloudAssetDownloadCode（系统接口）
 
+```TypeScript
+enum CloudAssetDownloadCode
+```
+
 枚举，批量下载添加返回值类型。
 
 **起始版本：** 21

@@ -1,5 +1,9 @@
 # MmsConfig (System API)
 
+```TypeScript
+export interface MmsConfig
+```
+
 MMS configuration file.
 
 **Since:** 11

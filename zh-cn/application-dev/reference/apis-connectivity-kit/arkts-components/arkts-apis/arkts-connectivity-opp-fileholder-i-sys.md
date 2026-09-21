@@ -1,5 +1,9 @@
 # FileHolder（系统接口）
 
+```TypeScript
+interface FileHolder
+```
+
 描述发送的文件信息。
 
 **起始版本：** 16

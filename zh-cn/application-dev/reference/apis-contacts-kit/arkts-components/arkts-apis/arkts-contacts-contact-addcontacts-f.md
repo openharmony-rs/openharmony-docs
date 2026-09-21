@@ -45,8 +45,25 @@ function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { contact } from '@kit.ContactsKit';
+
+const contactInfo1: contact.Contact = {
+  name: { fullName: 'xxx1'},
+  phoneNumbers: [{ phoneNumber: '138xxxxxx' }]
+};
+const contactInfo2: contact.Contact = {
+  name: { fullName: 'xxx2'},
+  phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
+};
+// 请在组件内获取context。
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
+  console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
+});
 ```

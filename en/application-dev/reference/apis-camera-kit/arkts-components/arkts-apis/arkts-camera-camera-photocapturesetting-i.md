@@ -1,5 +1,9 @@
 # PhotoCaptureSetting
 
+```TypeScript
+interface PhotoCaptureSetting
+```
+
 Describes the settings for taking an image.
 
 **Since:** 10

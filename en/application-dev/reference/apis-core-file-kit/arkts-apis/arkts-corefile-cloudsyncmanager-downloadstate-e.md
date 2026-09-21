@@ -1,5 +1,9 @@
 # DownloadState
 
+```TypeScript
+enum DownloadState
+```
+
 Enumerates the full download states.
 
 **Since:** 20

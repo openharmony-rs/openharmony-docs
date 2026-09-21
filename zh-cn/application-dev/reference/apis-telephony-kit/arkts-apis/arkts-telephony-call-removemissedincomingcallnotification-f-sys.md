@@ -53,16 +53,8 @@ call.removeMissedIncomingCallNotification((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.removeMissedIncomingCallNotification().then(() => {
-    console.info(`removeMissedIncomingCallNotification success`);
-}).catch((err: BusinessError) => {
-    console.error(`removeMissedIncomingCallNotification failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="removemissedincomingcallnotification-1"></a>
 
 ## removeMissedIncomingCallNotification
 
@@ -98,4 +90,12 @@ function removeMissedIncomingCallNotification(): Promise<void>
 
 **示例**
 
-参见 [removeMissedIncomingCallNotification](#removemissedincomingcallnotification)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.removeMissedIncomingCallNotification().then(() => {
+    console.info(`removeMissedIncomingCallNotification success`);
+}).catch((err: BusinessError) => {
+    console.error(`removeMissedIncomingCallNotification failed, promise: err->${JSON.stringify(err)}`);
+});
+```

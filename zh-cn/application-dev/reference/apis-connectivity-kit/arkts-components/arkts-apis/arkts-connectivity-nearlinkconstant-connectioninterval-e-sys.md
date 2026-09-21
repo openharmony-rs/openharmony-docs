@@ -1,5 +1,9 @@
 # ConnectionInterval（系统接口）
 
+```TypeScript
+export enum ConnectionInterval
+```
+
 连接间隔的枚举值。间隔越小，时延越低、吞吐越高但功耗越大；间隔越大功耗越低但时延越高。高速档适用于高吞吐低时延场景，低速档适用于对功耗敏感场景。
 
 **起始版本：** 26.0.0

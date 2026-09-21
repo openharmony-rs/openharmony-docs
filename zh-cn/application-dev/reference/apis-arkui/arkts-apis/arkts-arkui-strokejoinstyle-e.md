@@ -1,5 +1,9 @@
 # StrokeJoinStyle
 
+```TypeScript
+declare enum StrokeJoinStyle
+```
+
 定义线条拐角的样式，即在绘制折线时线段拐角处的画笔样式。
 
 **起始版本：** 26.0.0

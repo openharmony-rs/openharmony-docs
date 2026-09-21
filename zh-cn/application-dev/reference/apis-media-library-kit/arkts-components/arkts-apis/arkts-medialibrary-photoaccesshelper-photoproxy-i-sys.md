@@ -1,5 +1,9 @@
 # PhotoProxy（系统接口）
 
+```TypeScript
+interface PhotoProxy
+```
+
 照片代理，相机应用通过该对象写入图片数据。
 
 **起始版本：** 11

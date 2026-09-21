@@ -1,5 +1,9 @@
 # Role (System API)
 
+```TypeScript
+enum Role
+```
+
 Enumerates the roles of the participants in a device-cloud share.
 
 **Since:** 11

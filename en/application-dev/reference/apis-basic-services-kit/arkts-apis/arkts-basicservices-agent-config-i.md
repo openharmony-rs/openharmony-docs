@@ -1,5 +1,9 @@
 # Config
 
+```TypeScript
+interface Config
+```
+
 Provides the configuration information of an upload or download task.
 
 **Since:** 10

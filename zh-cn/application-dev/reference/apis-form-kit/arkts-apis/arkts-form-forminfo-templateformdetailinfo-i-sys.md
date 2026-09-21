@@ -1,5 +1,9 @@
 # TemplateFormDetailInfo（系统接口）
 
+```TypeScript
+interface TemplateFormDetailInfo
+```
+
 模板卡对应的真实卡片信息。
 
 **起始版本：** 23

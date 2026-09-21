@@ -1,5 +1,9 @@
 # IntervalType (System API)
 
+```TypeScript
+export enum IntervalType
+```
+
 Declares interval type.
 
 **Since:** 9

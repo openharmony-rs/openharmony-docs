@@ -1,5 +1,9 @@
 # PlayingState
 
+```TypeScript
+enum PlayingState
+```
+
 The enum of a2dp playing state.
 
 @enum { number }

@@ -1,5 +1,9 @@
 # AdvertisingParams
 
+```TypeScript
+interface AdvertisingParams
+```
+
 首次启动BLE广播时设置的参数。
 
 蓝牙协议规定，在扩展广播模式下（即广播发送参数[isExtended](arkts-connectivity-ble-advertisesetting-i.md)为true时），广播发送参数[connectable](arkts-connectivity-ble-advertisesetting-i.md)和扫描回复广播报文[advResponse](arkts-connectivity-ble-startadvertising-f.md)不能共存（即[connectable](arkts-connectivity-ble-advertisesetting-i.md)为true，[advResponse](arkts-connectivity-ble-startadvertising-f.md)需为空；[connectable](arkts-connectivity-ble-advertisesetting-i.md)为false，[advResponse](arkts-connectivity-ble-startadvertising-f.md)不能为空）。

@@ -1,5 +1,9 @@
 # LazyCustomLayoutAlgorithm
 
+```TypeScript
+export class LazyCustomLayoutAlgorithm implements LazyLayoutAlgorithm
+```
+
 自定义懒加载布局算法类。
 
 > **说明：** 
@@ -45,7 +49,7 @@ onLayout(self: FrameNode, position: Position): void
 
 > **说明：** 
 > 
-> - 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的[getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用[FrameNode](arkts-arkui-framenode-c.md)的[layout()](arkts-arkui-framenode-c.md#layout)方法设置子组件位置，参考LazyDynamicLayout组件示例1（实现懒加载自定义布局）。
+> - 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的[getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用[FrameNode](arkts-arkui-framenode-c.md)的[layout()](arkts-arkui-framenode-c.md#layout)方法设置子组件位置，参考LazyDynamicLayout组件[示例1（实现懒加载自定义布局）](arkts-arkui-arkui-components-arklazydynamiclayout.md)。
 > 
 > - 在此函数中调用[getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件时，必须传入[ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md)，避免全量加载子组件导致懒加载失效。调用[getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount)方法获取子组件总数时，必须传入[ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md)，避免获取子组件总数时全量加载子组件导致懒加载失效。
 
@@ -74,7 +78,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 > **说明：** 
 > 
-> - 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的[getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用[FrameNode](arkts-arkui-framenode-c.md)的[measure()](arkts-arkui-framenode-c.md#measure)方法测量子组件大小，参考LazyDynamicLayout组件示例1（实现懒加载自定义布局）。
+> - 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的[getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用[FrameNode](arkts-arkui-framenode-c.md)的[measure()](arkts-arkui-framenode-c.md#measure)方法测量子组件大小，参考LazyDynamicLayout组件[示例1（实现懒加载自定义布局）](arkts-arkui-arkui-components-arklazydynamiclayout.md)。
 > 
 > - 在此函数中调用[getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件时，必须传入[ExpandMode.LAZY_NOT_EXPAND](arkts-arkui-framenode-expandmode-e.md)，避免全量加载子组件导致懒加载失效。调用[getChildrenCount()](arkts-arkui-framenode-c.md#getchildrencount)方法获取子组件总数时，必须传入[ChildrenCountMode.ALL_NOT_EXPAND](arkts-arkui-framenode-childrencountmode-e.md)，避免获取子组件总数时全量加载子组件导致懒加载失效。
 
@@ -92,4 +96,4 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 | --- | --- | --- | --- |
 | self | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 懒加载动态布局组件在组件树上的实体节点。 |
 | constraint | [LayoutConstraint](arkts-arkui-framenode-layoutconstraint-i.md) | 是 | 懒加载动态布局组件进行测量时使用的布局约束。 |
-| helper | [LazyLayoutHelper](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。helper为undefined的场景如下：<br>1. 在WaterFlow组件多列模式或分段模式的多列分段下使用时不支持懒加载。<br>2. 在List组件下使用，当List设置了[lanes](../arkts-components/arkts-arkui-list-comp-attribute.md#lanes)、chainAnimation、[scrollSnapAlign](../arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个时不支持懒加载。 |
+| helper | [LazyLayoutHelper](arkts-arkui-lazylayoutalgorithm-lazylayouthelper-c.md) | 否 | 懒加载布局辅助对象，提供布局方向和可视区域位置信息。为undefined时表示不支持懒加载。helper为undefined的场景如下：<br>1. 在[WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md#water_flow)组件多列模式或分段模式的多列分段下使用时不支持懒加载。<br>2. 在[List](../arkts-components/arkts-arkui-list-comp.md#list)组件下使用，当List设置了[lanes](../arkts-components/arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](../arkts-components/arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](../arkts-components/arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个时不支持懒加载。 |

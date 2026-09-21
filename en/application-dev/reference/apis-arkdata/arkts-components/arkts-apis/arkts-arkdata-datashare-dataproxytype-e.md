@@ -1,5 +1,9 @@
 # DataProxyType
 
+```TypeScript
+enum DataProxyType
+```
+
 Enumerates the data proxy types.
 
 **Since:** 20

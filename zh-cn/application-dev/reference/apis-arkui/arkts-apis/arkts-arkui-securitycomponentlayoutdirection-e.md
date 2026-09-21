@@ -1,5 +1,9 @@
 # SecurityComponentLayoutDirection
 
+```TypeScript
+declare enum SecurityComponentLayoutDirection
+```
+
 安全控件上图标和文字的排列方向。
 
 **起始版本：** 10

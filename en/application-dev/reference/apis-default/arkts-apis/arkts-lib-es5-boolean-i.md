@@ -1,5 +1,9 @@
 # Boolean
 
+```TypeScript
+interface Boolean
+```
+
 ## Modules to Import
 
 ```TypeScript

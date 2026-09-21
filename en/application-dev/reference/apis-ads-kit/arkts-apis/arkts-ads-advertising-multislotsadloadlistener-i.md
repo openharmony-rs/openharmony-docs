@@ -1,5 +1,9 @@
 # MultiSlotsAdLoadListener
 
+```TypeScript
+export interface MultiSlotsAdLoadListener
+```
+
 Enumerates the callbacks used for the request for loading multiple ads.
 
 **Since:** 11

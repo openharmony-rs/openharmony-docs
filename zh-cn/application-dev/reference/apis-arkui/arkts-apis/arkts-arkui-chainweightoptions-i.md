@@ -1,5 +1,9 @@
 # ChainWeightOptions
 
+```TypeScript
+declare interface ChainWeightOptions
+```
+
 链中组件的布局权重。
 
 **起始版本：** 14

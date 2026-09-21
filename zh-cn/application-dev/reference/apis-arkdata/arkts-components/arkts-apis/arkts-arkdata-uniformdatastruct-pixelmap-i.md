@@ -1,5 +1,9 @@
 # PixelMap
 
+```TypeScript
+interface PixelMap
+```
+
 系统定义的像素图类型数据，用于描述图像像素数据。创建PixelMap对象后，可用于图像拖拽、图像共享等场景，实现跨应用的图像数据传递。
 
 **起始版本：** 15
@@ -15,12 +19,12 @@ import { uniformDataStruct } from '@kit.ArkData';
 ## details
 
 ```TypeScript
-details?: Record<string, number | number | number | string | Uint8Array>
+details?: Record<string, number | string | Uint8Array>
 ```
 
 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。
 
-**类型：** Record&lt;string, number &#124; number &#124; number &#124; string &#124; Uint8Array&gt;
+**类型：** Record&lt;string, number &#124; string &#124; Uint8Array&gt;
 
 **起始版本：** 15
 

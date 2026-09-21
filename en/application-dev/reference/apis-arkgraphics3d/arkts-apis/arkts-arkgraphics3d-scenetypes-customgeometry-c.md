@@ -1,5 +1,9 @@
 # CustomGeometry
 
+```TypeScript
+export declare class CustomGeometry extends GeometryDefinition
+```
+
 A custom geometry type that inherits from GeometryDefinition.
 
 @extends GeometryDefinition

@@ -1,5 +1,9 @@
 # ViewData
 
+```TypeScript
+export default interface ViewData
+```
+
 自动填充的视图数据信息。
 
 **起始版本：** 26.0.0

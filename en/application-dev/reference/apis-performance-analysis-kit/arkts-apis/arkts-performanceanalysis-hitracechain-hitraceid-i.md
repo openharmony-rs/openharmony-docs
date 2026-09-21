@@ -1,5 +1,9 @@
 # HiTraceId
 
+```TypeScript
+interface HiTraceId
+```
+
 Defines a **HiTraceId** object.
 
 **Since:** 8

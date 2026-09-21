@@ -1,5 +1,9 @@
 # CommonEventBatteryChangedKey
 
+```TypeScript
+export enum CommonEventBatteryChangedKey
+```
+
 Enumerates keys for querying the additional information about the **COMMON_EVENT_BATTERY_CHANGED** event.
 
 **Since:** 9

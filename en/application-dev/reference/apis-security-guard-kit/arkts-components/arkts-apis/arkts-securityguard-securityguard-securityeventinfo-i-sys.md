@@ -1,5 +1,9 @@
 # SecurityEventInfo (System API)
 
+```TypeScript
+interface SecurityEventInfo
+```
+
 Provides the conditions of on/off.
 
 @interface SecurityEventInfo

@@ -1,5 +1,9 @@
 # ScanMode
 
+```TypeScript
+enum ScanMode
+```
+
 The enum of BR scan mode.
 
 **Since:** 10

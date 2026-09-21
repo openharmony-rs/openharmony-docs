@@ -1,5 +1,9 @@
 # PlainText
 
+```TypeScript
+interface PlainText
+```
+
 纯文本类型数据，用于描述和管理纯文本内容。创建PlainText对象后，可用于拖拽、复制粘贴等数据共享场景，实现跨应用的纯文本数据交互。
 
 **起始版本：** 12

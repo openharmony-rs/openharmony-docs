@@ -33,6 +33,8 @@ Changes file permissions based on the file descriptor. This API uses a promise t
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="fchmod-1"></a>
+
 ## fchmod
 
 ```TypeScript

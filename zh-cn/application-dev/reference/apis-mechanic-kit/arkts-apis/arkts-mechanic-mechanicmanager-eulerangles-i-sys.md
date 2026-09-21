@@ -1,5 +1,9 @@
 # EulerAngles（系统接口）
 
+```TypeScript
+export interface EulerAngles
+```
+
 Absolute euler angles relative to the home position.
 
 @typedef EulerAngles

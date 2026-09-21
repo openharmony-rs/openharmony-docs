@@ -1,5 +1,9 @@
 # ExtBundleStats（系统接口）
 
+```TypeScript
+export interface ExtBundleStats
+```
+
 系统应用或系统服务的空间占用详情。
 
 **起始版本：** 23

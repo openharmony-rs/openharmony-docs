@@ -1,5 +1,9 @@
 # AsrVoiceControlMode（系统接口）
 
+```TypeScript
+enum AsrVoiceControlMode
+```
+
 枚举，自动语音识别（ASR）的音频通路模式。
 
 **起始版本：** 12

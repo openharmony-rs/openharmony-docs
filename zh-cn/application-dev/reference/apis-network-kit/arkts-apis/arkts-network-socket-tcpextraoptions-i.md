@@ -1,5 +1,9 @@
 # TCPExtraOptions
 
+```TypeScript
+export interface TCPExtraOptions extends ExtraOptionsBase
+```
+
 TCPSocket连接的其他属性。继承自[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)。
 
 **继承/实现关系：** TCPExtraOptions extends [ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)

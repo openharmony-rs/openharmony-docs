@@ -12,7 +12,7 @@ Defines reference resources for component attributes. Resource files must be sto
 > 
 > - When a resource type is referenced, ensure that the usage of the resource type object is currently supported.Otherwise, the effect of the attribute that uses the resource type as a parameter will be the same as when the attribute is not set.
 > 
-> - &#36;rawfile does not support preview through the [Previewer](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-previewer-arkts-js).
+> - $rawfile does not support preview through the [Previewer](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-previewer-arkts-js).
 
 **Since:** 7
 

@@ -1,5 +1,9 @@
 # ColorResponse（系统接口）
 
+```TypeScript
+interface ColorResponse extends Response
+```
+
 颜色传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
 
 **继承/实现关系：** ColorResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

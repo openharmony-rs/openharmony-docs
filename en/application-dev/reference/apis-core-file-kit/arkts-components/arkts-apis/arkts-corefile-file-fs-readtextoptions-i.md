@@ -1,5 +1,9 @@
 # ReadTextOptions
 
+```TypeScript
+export interface ReadTextOptions extends ReadOptions
+```
+
 Defines the options used in **readText()**. It inherits from [ReadOptions](arkts-corefile-file-fs-readoptions-i.md).
 
 **Inheritance/Implementation:** ReadTextOptions extends [ReadOptions](arkts-corefile-file-fs-readoptions-i.md)

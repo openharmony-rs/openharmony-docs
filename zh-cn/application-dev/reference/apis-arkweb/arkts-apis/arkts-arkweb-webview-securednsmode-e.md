@@ -1,5 +1,9 @@
 # SecureDnsMode
 
+```TypeScript
+enum SecureDnsMode
+```
+
 Web组件使用HTTPDNS的模式。
 
 **起始版本：** 10

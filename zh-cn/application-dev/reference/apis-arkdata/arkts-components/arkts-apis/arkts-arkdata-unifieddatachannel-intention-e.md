@@ -1,5 +1,9 @@
 # Intention
 
+```TypeScript
+enum Intention
+```
+
 UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF数据通路所面向的不同业务场景。
 
 **起始版本：** 10

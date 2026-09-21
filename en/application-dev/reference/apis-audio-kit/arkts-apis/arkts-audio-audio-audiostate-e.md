@@ -1,5 +1,9 @@
 # AudioState
 
+```TypeScript
+enum AudioState
+```
+
 Enumerates the audio states.
 
 **Since:** 8

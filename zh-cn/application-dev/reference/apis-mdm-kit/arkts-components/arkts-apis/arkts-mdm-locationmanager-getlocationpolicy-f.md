@@ -63,18 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { locationManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(null);
-  console.info(`Succeeded in getting location policy. policy: ${result}`);
-} catch(err) {
-  console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getlocationpolicy-1"></a>
 
 ## getLocationPolicy
 
@@ -115,4 +105,14 @@ function getLocationPolicy(admin: Want | null): LocationPolicy
 
 **示例**
 
-参见 [getLocationPolicy](#getlocationpolicy)
+```TypeScript
+import { locationManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(null);
+  console.info(`Succeeded in getting location policy. policy: ${result}`);
+} catch(err) {
+  console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

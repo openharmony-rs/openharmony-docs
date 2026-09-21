@@ -40,39 +40,6 @@ function getBundleInfo(bundleName: string,
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleName: string = "com.example.myapplication";
-let bundleFlags: number = 1;
-let options: bundle.BundleOptions = {
-  "userId": 100
-};
-
-bundle.getBundleInfo(bundleName, bundleFlags, options)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
-
-let bundleName: string = "com.example.myapplication";
-let bundleFlags: number = 1;
-
-bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. Data:' + JSON.stringify(data));
-})
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let bundleName: string = "com.example.myapplication";
 let bundleFlags: number = 1;
@@ -89,6 +56,8 @@ bundle.getBundleInfo(bundleName, bundleFlags, options, (err, data) => {
 })
 ```
 
+
+<a id="getbundleinfo-1"></a>
 
 ## getBundleInfo
 
@@ -120,8 +89,23 @@ function getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncC
 
 **示例**
 
-参见 [getBundleInfo](#getbundleinfo)
+```TypeScript
+import bundle from '@ohos.bundle';
 
+let bundleName: string = "com.example.myapplication";
+let bundleFlags: number = 1;
+
+bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+
+<a id="getbundleinfo-2"></a>
 
 ## getBundleInfo
 
@@ -159,4 +143,20 @@ function getBundleInfo(bundleName: string, bundleFlags: number, options?: Bundle
 
 **示例**
 
-参见 [getBundleInfo](#getbundleinfo)
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+let bundleFlags: number = 1;
+let options: bundle.BundleOptions = {
+  "userId": 100
+};
+
+bundle.getBundleInfo(bundleName, bundleFlags, options)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```

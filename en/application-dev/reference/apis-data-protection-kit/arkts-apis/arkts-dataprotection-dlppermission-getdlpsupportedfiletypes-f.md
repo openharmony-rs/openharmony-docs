@@ -30,7 +30,7 @@ This API is used to obtain the types of files that can be used to generate DLP f
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
@@ -46,18 +46,8 @@ dlpPermission.getDLPSupportedFileTypes().then((fileTypes) => { // Obtain the fil
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
-  if (err) {
-    console.error(`Failed to get DLP supported file types. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('fileTypes', JSON.stringify(fileTypes));
-  }
-}); // Obtain the file types that support DLP.
-```
-
+<a id="getdlpsupportedfiletypes-1"></a>
 
 ## getDLPSupportedFileTypes
 
@@ -84,10 +74,20 @@ This API is used to obtain the types of files that can be used to generate DLP f
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
 **Examples**
 
-See [getDLPSupportedFileTypes](#getdlpsupportedfiletypes)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
+  if (err) {
+    console.error(`Failed to get DLP supported file types. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('fileTypes', JSON.stringify(fileTypes));
+  }
+}); // Obtain the file types that support DLP.
+```

@@ -1,5 +1,9 @@
 # FocusWrapMode
 
+```TypeScript
+declare enum FocusWrapMode
+```
+
 Enumerates focus wrapping modes for cross-axis directional navigation.
 
 **Since:** 20

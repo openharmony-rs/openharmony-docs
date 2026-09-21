@@ -1,5 +1,9 @@
 # LocationRequestScenario
 
+```TypeScript
+export enum LocationRequestScenario
+```
+
 位置请求中定位场景类型。
 
 **起始版本：** 7

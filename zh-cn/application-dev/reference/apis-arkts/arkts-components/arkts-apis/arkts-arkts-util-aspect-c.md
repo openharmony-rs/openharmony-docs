@@ -1,5 +1,9 @@
 # Aspect
 
+```TypeScript
+class Aspect
+```
+
 提供支持面向切面编程（AOP）的 API。这些 API 可用于对类方法进行插桩或替换。
 
 **起始版本：** 11

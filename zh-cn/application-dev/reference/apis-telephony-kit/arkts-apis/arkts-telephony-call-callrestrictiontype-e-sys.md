@@ -1,5 +1,9 @@
 # CallRestrictionType（系统接口）
 
+```TypeScript
+export enum CallRestrictionType
+```
+
 呼叫限制类型。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # AnimationType
 
+```TypeScript
+enum AnimationType
+```
+
 Enumerates the types of window animations.
 
 **Since:** 20

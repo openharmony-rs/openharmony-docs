@@ -1,5 +1,9 @@
 # PersistenceV2
 
+```TypeScript
+export declare class PersistenceV2 extends AppStorageV2
+```
+
 继承自[AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要保留UI状态数据的场景。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../../ui/state-management/arkts-new-persistencev2.md)。
 
 **继承/实现关系：** PersistenceV2 extends [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)
@@ -68,9 +72,45 @@ static globalConnect<T extends object>(
 
 **示例**
 
-```TypeScript
 如下展示globalConnect持久化Map类型的示例代码：
+
+```TypeScript
+import { PersistenceV2 } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page1 {
+  // globalConnect支持持久化Map类型的数据
+  @Local map: Map<number, number> = PersistenceV2.globalConnect({
+    type: Map<number, number>, defaultCreator: () => new Map<number, number>()
+  })!;
+  output: string[] = [];
+
+  // 启动应用，第一次进入，展示restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined
+  // 关闭应用，第二次进入，展示restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined
+  // 关闭应用，第三次进入，展示restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined
+  // 关闭应用，第四次进入，展示restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2
+  aboutToAppear(): void {
+    const restoredMapSize = this.map.size;
+    this.output.push(`restored Map.size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)}, map.get(2)=${this.map.get(2)}`);
+    this.map.set(restoredMapSize, restoredMapSize);
+    // 需要手工持久化
+    PersistenceV2.save('Map');
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text(this.output.join('\n\n'))
+          .fontSize(24)
+      }
+    }
+    .width('100%')
+  }
+}
 ```
+
+<a id="globalconnect-1"></a>
 
 ## globalConnect
 

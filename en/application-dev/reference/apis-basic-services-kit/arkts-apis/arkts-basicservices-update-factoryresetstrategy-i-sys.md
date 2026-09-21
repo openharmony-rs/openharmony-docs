@@ -1,5 +1,9 @@
 # FactoryResetStrategy (System API)
 
+```TypeScript
+export interface FactoryResetStrategy
+```
+
 Represents the factory reset strategy, which contains the **scope** (reset scope) and **strategy** (reset strategy description) fields.
 
 **Since:** 26.0.0

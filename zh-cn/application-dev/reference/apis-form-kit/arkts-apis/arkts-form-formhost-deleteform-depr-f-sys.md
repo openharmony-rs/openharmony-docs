@@ -45,17 +45,8 @@ formHost.deleteForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formId: string = '12400633174999288';
-formHost.deleteForm(formId).then(() => {
-  console.info('formHost deleteForm success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="deleteform-1"></a>
 
 ## deleteForm
 
@@ -91,4 +82,13 @@ function deleteForm(formId: string): Promise<void>
 
 **示例**
 
-参见 [deleteForm](#deleteform)
+```TypeScript
+import Base from '@ohos.base';
+
+let formId: string = '12400633174999288';
+formHost.deleteForm(formId).then(() => {
+  console.info('formHost deleteForm success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
+});
+```

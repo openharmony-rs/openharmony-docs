@@ -1,5 +1,9 @@
 # CreateAppCloneParam（系统接口）
 
+```TypeScript
+export interface CreateAppCloneParam
+```
+
 创建分身应用可指定的参数信息。
 
 **起始版本：** 12
@@ -44,7 +48,7 @@ parameters?: Array<Parameters>
 
 **类型：** Array&lt;Parameters&gt;
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

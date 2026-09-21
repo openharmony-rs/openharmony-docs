@@ -1,5 +1,9 @@
 # SwitchKey
 
+```TypeScript
+enum SwitchKey
+```
+
 开关名称的枚举。
 
 **起始版本：** 26.0.0

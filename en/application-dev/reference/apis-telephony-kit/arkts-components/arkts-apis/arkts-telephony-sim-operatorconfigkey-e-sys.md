@@ -1,5 +1,9 @@
 # OperatorConfigKey (System API)
 
+```TypeScript
+export enum OperatorConfigKey
+```
+
 Indicates the carrier configuration keys.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # TabTitleBarTabItem
 
+```TypeScript
+export declare class TabTitleBarTabItem
+```
+
 Declaration of the tab item.
 
 **起始版本：** 10
@@ -38,7 +42,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol图标资源，优先级大于icon。当需要使用Symbol图标作为页签时传入此参数，不传入时使用icon参数设置的图片页签。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 

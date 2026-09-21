@@ -1,5 +1,9 @@
 # SystemFontType
 
+```TypeScript
+enum SystemFontType
+```
+
 Enumerates the font types, which can be combined through bitwise OR operations.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+export interface Options
+```
+
 Describes the event emit priority.
 
 **Since:** 11

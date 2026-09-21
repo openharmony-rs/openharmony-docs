@@ -1,5 +1,9 @@
 # AdvertiseData
 
+```TypeScript
+interface AdvertiseData
+```
+
 描述BLE广播数据包的内容。
 
 从API version 7开始支持，从API version 9开始废弃。

@@ -44,7 +44,7 @@ function startDLPManagerForResult(context: common.UIAbilityContext, want: Want):
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 | [19100016](../errorcode-dlp.md#19100016-want参数中没有uri) | The uri field is missing in the want parameter. |
@@ -72,38 +72,8 @@ if (context !== undefined) {
 }
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { common, Want } from '@kit.AbilityKit';
-import { UIContext, window } from '@kit.ArkUI';
 
-let config: window.Configuration = {
-  name: "dlp_test_window",
-  windowType: window.WindowType.TYPE_FLOAT,
-  ctx: new UIContext().getHostContext() as common.Context
-};
-window.createWindow(config).then((windowClass) => {
-  windowClass.setUIContent('pages/index/BlankPage');
-  windowClass.setWindowFocusable(true);
-  windowClass.setWindowBackgroundColor("#00000000");
-
-  let context = new UIContext().getHostContext() as common.Context; // 获取当前Context。
-  if (context !== undefined) {
-    let want: Want = {
-      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
-      "parameters": {
-        "displayName": "1.txt"
-      }
-    }; // 构造请求参数，必须包含文件uri和displayName。
-    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
-      console.info('res.resultCode', res.resultCode);
-      console.info('res.want', JSON.stringify(res.want));
-      windowClass.destroyWindow();
-    }); // 打开DLP权限管理应用。
-  }
-});
-```
-
+<a id="startdlpmanagerforresult-1"></a>
 
 ## startDLPManagerForResult
 
@@ -151,4 +121,34 @@ function startDLPManagerForResult(context: common.Context, want: Want, window: w
 
 **示例**
 
-参见 startDLPManagerForResult
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { common, Want } from '@kit.AbilityKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+let config: window.Configuration = {
+  name: "dlp_test_window",
+  windowType: window.WindowType.TYPE_FLOAT,
+  ctx: new UIContext().getHostContext() as common.Context
+};
+window.createWindow(config).then((windowClass) => {
+  windowClass.setUIContent('pages/index/BlankPage');
+  windowClass.setWindowFocusable(true);
+  windowClass.setWindowBackgroundColor("#00000000");
+
+  let context = new UIContext().getHostContext() as common.Context; // 获取当前Context。
+  if (context !== undefined) {
+    let want: Want = {
+      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+      "parameters": {
+        "displayName": "1.txt"
+      }
+    }; // 构造请求参数，必须包含文件uri和displayName。
+    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
+      console.info('res.resultCode', res.resultCode);
+      console.info('res.want', JSON.stringify(res.want));
+      windowClass.destroyWindow();
+    }); // 打开DLP权限管理应用。
+  }
+});
+```

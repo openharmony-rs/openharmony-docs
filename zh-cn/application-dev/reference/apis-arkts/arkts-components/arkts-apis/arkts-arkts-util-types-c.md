@@ -1,5 +1,9 @@
 # types
 
+```TypeScript
+class types
+```
+
 提供检查不同内置对象类型的 API，例如 ArrayBuffer、Map 和 Set，以避免类型错误导致的异常。
 
 **起始版本：** 8
@@ -216,12 +220,15 @@ console.info("result = " + result);
 // 输出结果：result = true
 ```
 
-```TypeScript
 > 说明：
 > 
 > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的属性与做判等的方式替代。
 > 
 > 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export async function* asyncGeneratorFunc() {}
 ```
 
 ```TypeScript
@@ -659,10 +666,13 @@ console.info("result = " + result);
 // 输出结果：result = true
 ```
 
-```TypeScript
 > 说明：
 > 
 > 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的属性与做判等的方式替代。
+
+```TypeScript
+// /entry/src/main/ets/pages/test.ts
+export async function* asyncGeneratorFunc() {}
 ```
 
 ```TypeScript

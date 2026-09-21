@@ -1,5 +1,9 @@
 # OutputDeviceChangeRecommendedAction
 
+```TypeScript
+enum OutputDeviceChangeRecommendedAction
+```
+
 Enumerates the recommended actions to take after an output device changes.
 
 Common scenario example: switching between a headset and a loudspeaker device. Upon switching from the loudspeaker device to the headset upon wearing, the system suggests continuing playback and prompts that the application does not need to pause. Upon transitioning from the headset to the loudspeaker device upon removal, the system suggests suspending playback.

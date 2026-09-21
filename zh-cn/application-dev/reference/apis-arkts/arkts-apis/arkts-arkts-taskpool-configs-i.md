@@ -1,5 +1,9 @@
 # Configs
 
+```TypeScript
+interface Configs
+```
+
 任务或任务组的配置项。
 
 **起始版本：** 24

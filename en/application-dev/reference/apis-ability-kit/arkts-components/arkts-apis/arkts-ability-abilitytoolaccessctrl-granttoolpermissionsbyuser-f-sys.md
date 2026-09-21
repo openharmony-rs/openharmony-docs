@@ -17,6 +17,8 @@ Grants tool permissions based on user authorization results. This function grant
 
 **Required permissions:** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,7 +33,7 @@ Grants tool permissions based on user authorization results. This function grant
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)[]&gt; | Promise used to return &#36;{TicketInfo[]}. |
+| Promise&lt;[TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)[]&gt; | Promise used to return ${TicketInfo[]}. |
 
 **Error codes:**
 

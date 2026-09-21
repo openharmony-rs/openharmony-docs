@@ -1,5 +1,9 @@
 # DataProxyConfig
 
+```TypeScript
+interface DataProxyConfig
+```
+
 Defines a struct for the data proxy configuration.
 
 **Since:** 20

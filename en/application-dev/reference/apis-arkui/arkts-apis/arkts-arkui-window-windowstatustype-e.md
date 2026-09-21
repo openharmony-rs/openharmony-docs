@@ -1,5 +1,9 @@
 # WindowStatusType
 
+```TypeScript
+enum WindowStatusType
+```
+
 Enumerates the window modes.
 
 **Since:** 11

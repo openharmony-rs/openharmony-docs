@@ -1,5 +1,9 @@
 # PhotoRiskStatus (System API)
 
+```TypeScript
+enum PhotoRiskStatus
+```
+
 Enumerates the risk types of images.
 
 **Since:** 23

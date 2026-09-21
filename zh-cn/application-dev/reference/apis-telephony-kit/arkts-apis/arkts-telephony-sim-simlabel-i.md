@@ -1,5 +1,9 @@
 # SimLabel
 
+```TypeScript
+export interface SimLabel
+```
+
 SIM卡标签。
 
 **起始版本：** 20

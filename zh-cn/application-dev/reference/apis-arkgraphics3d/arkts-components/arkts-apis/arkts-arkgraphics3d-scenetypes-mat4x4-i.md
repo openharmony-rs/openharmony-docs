@@ -1,5 +1,9 @@
 # Mat4x4
 
+```TypeScript
+export interface Mat4x4
+```
+
 4x4矩阵类型，可用于坐标变换。
 
 @typedef Mat4x4

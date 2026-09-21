@@ -1,5 +1,9 @@
 # WriteStreamOptions
 
+```TypeScript
+export interface WriteStreamOptions
+```
+
 可选项类型，支持 createWriteStream 接口使用。
 
 **起始版本：** 12

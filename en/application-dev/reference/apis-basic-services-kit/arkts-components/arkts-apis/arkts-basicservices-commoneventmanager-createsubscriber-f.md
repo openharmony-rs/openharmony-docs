@@ -65,24 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-// Subscriber information.
-let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-  events: ['event']
-};
-// Create a subscriber.
-commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-  console.info(`Succeeded in creating subscriber.`);
-  subscriber = commonEventSubscriber;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="createsubscriber-1"></a>
 
 ## createSubscriber
 
@@ -118,4 +102,20 @@ Creates a subscriber. This API uses a promise to return the result.
 
 **Examples**
 
-See [createSubscriber](#createsubscriber)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+// Subscriber information.
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+// Create a subscriber.
+commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+  console.info(`Succeeded in creating subscriber.`);
+  subscriber = commonEventSubscriber;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+});
+```

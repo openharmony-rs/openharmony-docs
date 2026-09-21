@@ -1,4 +1,4 @@
-# @ohos.application.formError
+# @ohos.application.formError(formError)
 
 interface of formError.
 

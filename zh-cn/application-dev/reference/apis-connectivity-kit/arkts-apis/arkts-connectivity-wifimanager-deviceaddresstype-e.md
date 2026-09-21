@@ -1,5 +1,9 @@
 # DeviceAddressType
 
+```TypeScript
+enum DeviceAddressType
+```
+
 Wi-Fi设备地址（MAC/BSSID）类型。是标识Wi-Fi设备或接入点的唯一地址。
 
 在Wi-Fi相关操作中，如连接指定的Wi-Fi网络、获取设备信息等，需要使用DeviceAddressType类型的参数。

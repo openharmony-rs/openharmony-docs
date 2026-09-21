@@ -1,5 +1,9 @@
 # RemoteAuthOptions (System API)
 
+```TypeScript
+interface RemoteAuthOptions
+```
+
 Represents a set of optional parameters for remote authentication.
 
 **Since:** 12

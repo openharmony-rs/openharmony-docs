@@ -1,5 +1,9 @@
 # CloudAssetDownloadNotifyType（系统接口）
 
+```TypeScript
+enum CloudAssetDownloadNotifyType
+```
+
 枚举，下载进度通知事件类型。
 
 **起始版本：** 21

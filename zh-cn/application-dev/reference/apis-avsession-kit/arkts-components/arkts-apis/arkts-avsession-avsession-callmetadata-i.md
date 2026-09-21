@@ -1,5 +1,9 @@
 # CallMetadata
 
+```TypeScript
+interface CallMetadata
+```
+
 通话会话元数据相关属性。
 
 @interface CallMetadata [since 11 - 11]

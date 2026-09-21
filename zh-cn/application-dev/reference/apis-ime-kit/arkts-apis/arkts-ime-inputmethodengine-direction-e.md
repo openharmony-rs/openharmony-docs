@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+export enum Direction
+```
+
 光标的移动方向。
 
 **起始版本：** 10

@@ -6,4 +6,4 @@
 
 | Name | Description |
 | --- | --- |
-| [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md) | The context of the agent service extension. It provides resources and methods that developers can access. |
+| [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md) | AgentExtensionContext is the context environment of [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md), inheriting from [ExtensionContext](arkts-ability-extensioncontext-c.md). |

@@ -1,5 +1,9 @@
 # Event（系统接口）
 
+```TypeScript
+interface Event
+```
+
 表示服务的事件。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # SubmitTransferCallback
 
+```TypeScript
+interface SubmitTransferCallback
+```
+
 USB异步传输回调。
 
 **起始版本：** 18

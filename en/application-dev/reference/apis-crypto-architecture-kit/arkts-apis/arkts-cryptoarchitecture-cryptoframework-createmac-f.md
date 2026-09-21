@@ -14,6 +14,11 @@ function createMac(algName: string): Mac
 
 Creates a **Mac** instance.
 
+> **NOTE:** 
+> 
+> This API supports only HMAC. The [createMac()](#createmac-1) API is
+> preferred.
+
 <br>For details about the supported specifications, see [MAC Overview and Algorithm Specifications](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md).
 
 **Since:** 9
@@ -41,6 +46,7 @@ Creates a **Mac** instance.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 
 **Examples**
@@ -58,23 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // Set algName based on the algorithm supported.
-  let spec: cryptoFramework.HmacSpec = {
-    algName: 'HMAC',
-    mdName: 'SHA256',
-  };
-  let mac = cryptoFramework.createMac(spec);
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
-}
-```
-
+<a id="createmac-1"></a>
 
 ## createMac
 
@@ -115,4 +106,19 @@ Creates a **Mac** instance.
 
 **Examples**
 
-See [createMac](#createmac)
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // Set algName based on the algorithm supported.
+  let spec: cryptoFramework.HmacSpec = {
+    algName: 'HMAC',
+    mdName: 'SHA256',
+  };
+  let mac = cryptoFramework.createMac(spec);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+}
+```

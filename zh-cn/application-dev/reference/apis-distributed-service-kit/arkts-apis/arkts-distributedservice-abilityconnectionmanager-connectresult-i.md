@@ -1,5 +1,9 @@
 # ConnectResult
 
+```TypeScript
+interface ConnectResult
+```
+
 连接的结果。
 
 **起始版本：** 18

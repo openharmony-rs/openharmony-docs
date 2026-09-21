@@ -1,5 +1,9 @@
 # Flash
 
+```TypeScript
+interface Flash extends FlashQuery
+```
+
 **Flash** inherits from [FlashQuery](arkts-camera-camera-flashquery-i.md).
 
 It provides APIs related to the flash.
@@ -42,6 +46,24 @@ Obtains the flash mode in use.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getFlashMode(photoSession: camera.PhotoSession): camera.FlashMode | undefined {
+  let flashMode: camera.FlashMode | undefined = undefined;
+  try {
+    flashMode = photoSession.getFlashMode();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getFlashMode call failed.error code: ${err.code}`);
+  }
+  return flashMode;
+}
+```
+
 ## offFlashStateChange
 
 ```TypeScript
@@ -64,6 +86,14 @@ Unsubscribes from flash light status change events.
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FlashState](arkts-camera-camera-flashstate-e.md)&gt; | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
 
+**Examples**
+
+```TypeScript
+function offFlashStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.offFlashStateChange();
+}
+```
+
 ## onFlashStateChange
 
 ```TypeScript
@@ -85,6 +115,16 @@ Subscribes to flash light status change events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FlashState](arkts-camera-camera-flashstate-e.md)&gt; | Yes | Callback used to return the flash light status. |
+
+**Examples**
+
+```TypeScript
+function onFlashStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.onFlashStateChange((flashState: camera.FlashState) => {
+    console.info(`Flash state changed: ${flashState}`);
+  });
+}
+```
 
 ## setFlashMode
 
@@ -116,3 +156,19 @@ Before the setting, do the following checks:
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setFlashMode(photoSession: camera.PhotoSession): void {
+  try {
+    photoSession.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setFlashMode call failed. error code: ${err.code}`);
+  }
+}
+```

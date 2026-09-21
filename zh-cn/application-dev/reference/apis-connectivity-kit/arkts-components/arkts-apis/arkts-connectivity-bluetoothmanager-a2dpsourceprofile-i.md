@@ -1,5 +1,9 @@
 # A2dpSourceProfile
 
+```TypeScript
+interface A2dpSourceProfile extends BaseProfile
+```
+
 使用A2dpSourceProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 从API version 9开始支持，从API version 10开始废弃。

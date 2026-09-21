@@ -62,24 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  distributedMissionManager.stopSyncRemoteMissions(
-    {
-      deviceId: ""
-    }).then(() => {
-      console.info('stopSyncRemoteMissions finished successfully');
-    }).catch((error: BusinessError) => {
-    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="stopsyncremotemissions-1"></a>
 
 ## stopSyncRemoteMissions
 
@@ -120,4 +104,20 @@ Stops synchronizing the remote mission list. This API uses a promise to return t
 
 **Examples**
 
-See [stopSyncRemoteMissions](#stopsyncremotemissions)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.stopSyncRemoteMissions(
+    {
+      deviceId: ""
+    }).then(() => {
+      console.info('stopSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+}
+```

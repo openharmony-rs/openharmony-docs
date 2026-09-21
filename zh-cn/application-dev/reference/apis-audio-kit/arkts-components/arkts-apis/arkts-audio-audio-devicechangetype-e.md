@@ -1,5 +1,9 @@
 # DeviceChangeType
 
+```TypeScript
+enum DeviceChangeType
+```
+
 表示设备连接状态变化的枚举。
 
 **起始版本：** 7

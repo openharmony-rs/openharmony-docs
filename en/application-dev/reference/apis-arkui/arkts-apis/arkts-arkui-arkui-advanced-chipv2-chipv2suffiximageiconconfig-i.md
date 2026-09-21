@@ -1,6 +1,12 @@
 # ChipV2SuffixImageIconConfig
 
-Defines suffix icon option.
+```TypeScript
+export interface ChipV2SuffixImageIconConfig extends ChipV2ImageIconConfig, ChipV2AccessibilityConfig
+```
+
+Defines the attribute configuration of the suffix icon.
+
+This API inherits from [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md) and [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md).
 
 **Inheritance/Implementation:** ChipV2SuffixImageIconConfig extends [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md), [ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md)
 
@@ -20,7 +26,9 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 action?: VoidCallback
 ```
 
-Called when suffix icon is clicked.
+Callback for the suffix icon tap event. Pass in this callback when you need to bind a tap event to the suffix icon and perform a custom operation (such as triggering a specific function or opening a dialog box). This callback is invoked when the suffix icon is tapped.
+
+Default value: **undefined**, meaning no suffix icon event is set. When **undefined** or no value is passed, tapping the suffix icon triggers no custom response.
 
 **Since:** 26.0.0
 

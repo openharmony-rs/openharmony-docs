@@ -1,5 +1,9 @@
 # NotifyType
 
+```TypeScript
+enum NotifyType
+```
+
 Enumerates the data change types.
 
 **Since:** 12

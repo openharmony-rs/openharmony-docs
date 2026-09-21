@@ -1,5 +1,9 @@
 # RectChangeOptions
 
+```TypeScript
+interface RectChangeOptions
+```
+
 Describes the value and reason returned upon a window rectangle (position and size) change.
 
 **Since:** 12

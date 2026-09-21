@@ -1,5 +1,9 @@
 # DecodingDynamicRange
 
+```TypeScript
+enum DecodingDynamicRange
+```
+
 描述解码时期望的图像动态范围。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # StartMode
 
+```TypeScript
+export const enum StartMode
+```
+
 子进程启动模式枚举。
 
 **起始版本：** 11

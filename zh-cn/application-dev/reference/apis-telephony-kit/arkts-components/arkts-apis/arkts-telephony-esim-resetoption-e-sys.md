@@ -1,5 +1,9 @@
 # ResetOption（系统接口）
 
+```TypeScript
+export enum ResetOption
+```
+
 重置状态。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # ExecuteParam (System API)
 
+```TypeScript
+interface ExecuteParam
+```
+
 Defines the parameter used to execute an intent call.
 
 **Since:** 11
@@ -179,6 +183,26 @@ Name of the module to which the ability belongs.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
+
+## toolCallId
+
+```TypeScript
+toolCallId?: string
+```
+
+Indicates the tool call ID. Used to associate this intent execute with a test step.
+
+**Type:** string
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+**Test API:** This API is used only in automated test scripts.
 
 ## uris
 

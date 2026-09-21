@@ -1,5 +1,9 @@
 # UpgradeFlag（系统接口）
 
+```TypeScript
+export enum UpgradeFlag
+```
+
 仅供内部系统使用标志位
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # DeviceIconInfo（系统接口）
 
+```TypeScript
+interface DeviceIconInfo
+```
+
 设备图标信息。
 
 **起始版本：** 18

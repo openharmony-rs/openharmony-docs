@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+interface Point
+```
+
 Describes the point coordinates, which are used for focus and exposure configuration.
 
 **Since:** 10

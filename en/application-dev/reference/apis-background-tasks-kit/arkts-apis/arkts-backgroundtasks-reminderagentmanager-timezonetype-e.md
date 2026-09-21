@@ -1,5 +1,9 @@
 # TimeZoneType
 
+```TypeScript
+export enum TimeZoneType
+```
+
 Enumerates the time zone types. When the time zone is changed, the reminder time is recalculated based on the new time zone.
 
 **Since:** 26.0.0

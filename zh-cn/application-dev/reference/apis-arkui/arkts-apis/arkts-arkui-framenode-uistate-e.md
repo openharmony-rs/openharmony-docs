@@ -1,5 +1,9 @@
 # UIState
 
+```TypeScript
+export enum UIState
+```
+
 多态样式状态枚举，用于处理多态样式。
 
 **起始版本：** 20

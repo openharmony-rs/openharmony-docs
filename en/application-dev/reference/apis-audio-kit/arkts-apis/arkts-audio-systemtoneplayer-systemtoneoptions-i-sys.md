@@ -1,5 +1,9 @@
 # SystemToneOptions (System API)
 
+```TypeScript
+export interface SystemToneOptions
+```
+
 Describes the options of system tones.
 
 **Since:** 11

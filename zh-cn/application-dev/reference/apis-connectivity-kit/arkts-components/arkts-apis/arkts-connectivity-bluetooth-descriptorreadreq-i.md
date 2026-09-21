@@ -1,5 +1,9 @@
 # DescriptorReadReq
 
+```TypeScript
+interface DescriptorReadReq
+```
+
 描述server端订阅后收到的描述符读请求事件参数结构。
 
 从API version 7开始支持，从API version 9开始废弃。

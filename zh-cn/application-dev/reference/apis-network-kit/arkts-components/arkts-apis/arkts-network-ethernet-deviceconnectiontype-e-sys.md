@@ -1,5 +1,9 @@
 # DeviceConnectionType（系统接口）
 
+```TypeScript
+export enum DeviceConnectionType
+```
+
 以太网设备连接模式。
 
 **起始版本：** 20

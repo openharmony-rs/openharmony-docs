@@ -1,5 +1,9 @@
 # DLPFile（系统接口）
 
+```TypeScript
+export interface DLPFile
+```
+
 管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md) /[openDLPFile](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
 
 **起始版本：** 10
@@ -53,7 +57,7 @@ DLP应用需要通过标准文件接口访问加密文件内容时，先添加li
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -90,38 +94,7 @@ async function exampleFunction() {
 exampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
-
-async function ExampleFunction() {
-  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-  let file: number | undefined = undefined;
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-  let appId = '';
-  let bundleName = 'com.ohos.note';
-  let userId = 100;
-  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
-  
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
-  dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
-    if (err) {
-      console.error(`Failed to add DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
-    fileIo.closeSync(file);
-  }); // 添加link文件。
-}
-
-ExampleFunction();
-```
+<a id="adddlplinkfile-1"></a>
 
 ## addDLPLinkFile
 
@@ -157,14 +130,45 @@ DLP应用需要通过标准文件接口访问加密文件内容时使用此接�
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 [addDLPLinkFile](#adddlplinkfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+  
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+  appId = data.signatureInfo.appId;
+
+  file = fileIo.openSync(uri).fd;
+  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
+  dlpFile.addDLPLinkFile('test.txt.dlp.link', async (err, res) => {
+    if (err) {
+      console.error(`Failed to add DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('res', JSON.stringify(res));
+    }
+    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
+    fileIo.closeSync(file);
+  }); // 添加link文件。
+}
+
+ExampleFunction();
+```
 
 ## closeDLPFile
 
@@ -202,7 +206,7 @@ closeDLPFile(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -238,37 +242,7 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
-
-async function ExampleFunction() {
-  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-  let file: number | undefined = undefined;
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-  let appId = '';
-  let bundleName = 'com.ohos.note';
-  let userId = 100;
-  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
-
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
-  dlpFile.closeDLPFile((err, res) => { // 关闭DLP文件。
-    if (err) {
-      console.error(`Failed to close DLPFile. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    fileIo.closeSync(file);
-  });
-}
-
-ExampleFunction();
-```
+<a id="closedlpfile-1"></a>
 
 ## closeDLPFile
 
@@ -307,14 +281,44 @@ closeDLPFile(callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 [closeDLPFile](#closedlpfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+  appId = data.signatureInfo.appId;
+
+  file = fileIo.openSync(uri).fd;
+  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
+  dlpFile.closeDLPFile((err, res) => { // 关闭DLP文件。
+    if (err) {
+      console.error(`Failed to close DLPFile. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('res', JSON.stringify(res));
+    }
+    fileIo.closeSync(file);
+  });
+}
+
+ExampleFunction();
+```
 
 ## deleteDLPLinkFile
 
@@ -355,7 +359,7 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -393,39 +397,7 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
-
-async function ExampleFunction() {
-  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-  let file: number | undefined = undefined;
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-  let appId = '';
-  let bundleName = 'com.ohos.note';
-  let userId = 100;
-  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
-
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
-  dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // 删除link文件。
-    if (err) {
-      console.error(`Failed to delete DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
-    fileIo.closeSync(file);
-  });
-}
-
-ExampleFunction();
-```
+<a id="deletedlplinkfile-1"></a>
 
 ## deleteDLPLinkFile
 
@@ -461,14 +433,46 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 [deleteDLPLinkFile](#deletedlplinkfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+  appId = data.signatureInfo.appId;
+
+  file = fileIo.openSync(uri).fd;
+  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
+  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
+  dlpFile.deleteDLPLinkFile('test.txt.dlp.link', async (err, res) => { // 删除link文件。
+    if (err) {
+      console.error(`Failed to delete DLPLinkFile. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('res', JSON.stringify(res));
+    }
+    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
+    fileIo.closeSync(file);
+  });
+}
+
+ExampleFunction();
+```
 
 ## recoverDLPFile
 
@@ -507,7 +511,7 @@ recoverDLPFile(plaintextFd: number): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
@@ -554,6 +558,53 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<a id="recoverdlpfile-1"></a>
+
+## recoverDLPFile
+
+```TypeScript
+recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
+```
+
+移除DLP文件的权限控制，恢复成明文文件，使用callback异步回调。
+
+文件所有者决定取消文件的DLP保护时使用此接口。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.ACCESS_DLP_FILE
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup &gt;-1时，fd的值被截断。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收恢复明文文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
+| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
+| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
+| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
+| [19100008](../errorcode-dlp.md#19100008-非dlp文件) | The file is not a DLP file. |
+| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
+| [19100010](../errorcode-dlp.md#19100010-只读dlp文件) | The DLP file is read only. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+
+**示例**
+
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -589,53 +640,6 @@ async function ExampleFunction() {
 
 ExampleFunction();
 ```
-
-## recoverDLPFile
-
-```TypeScript
-recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void
-```
-
-移除DLP文件的权限控制，恢复成明文文件，使用callback异步回调。
-
-文件所有者决定取消文件的DLP保护时使用此接口。
-
-**起始版本：** 10
-
-**需要权限：** ohos.permission.ACCESS_DLP_FILE
-
-**系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| plaintextFd | number | 是 | 目标明文文件的fd。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2&lt;sup&gt;31&lt;/sup &gt;-1时，fd的值被截断。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收恢复明文文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100002](../errorcode-dlp.md#19100002-加解密出错) | Credential service busy due to too many tasks or duplicate tasks. |
-| [19100003](../errorcode-dlp.md#19100003-加解密超时) | Credential task time out. |
-| [19100004](../errorcode-dlp.md#19100004-凭据服务错误) | Credential service error. |
-| [19100005](../errorcode-dlp.md#19100005-凭据认证服务器错误) | Credential authentication server error. |
-| [19100008](../errorcode-dlp.md#19100008-非dlp文件) | The file is not a DLP file. |
-| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
-| [19100010](../errorcode-dlp.md#19100010-只读dlp文件) | The DLP file is read only. |
-| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
-
-**示例**
-
-参见 [recoverDLPFile](#recoverdlpfile)
 
 ## replaceDLPLinkFile
 
@@ -674,7 +678,7 @@ replaceDLPLinkFile(linkFileName: string): Promise<void>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -714,6 +718,47 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<a id="replacedlplinkfile-1"></a>
+
+## replaceDLPLinkFile
+
+```TypeScript
+replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
+```
+
+替换link文件，使用callback异步回调。调用成功后，使用新的link文件名替换当前link文件。
+
+需要切换访问不同的DLP文件时替换link文件。需要先创建link文件并停止FUSE读写，才能执行此操作。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.ACCESS_DLP_FILE
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码401。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收替换link文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+
+**示例**
+
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -750,47 +795,6 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-## replaceDLPLinkFile
-
-```TypeScript
-replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void
-```
-
-替换link文件，使用callback异步回调。调用成功后，使用新的link文件名替换当前link文件。
-
-需要切换访问不同的DLP文件时替换link文件。需要先创建link文件并停止FUSE读写，才能执行此操作。
-
-**起始版本：** 10
-
-**需要权限：** ohos.permission.ACCESS_DLP_FILE
-
-**系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码401。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收替换link文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
-| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
-
-**示例**
-
-参见 [replaceDLPLinkFile](#replacedlplinkfile)
-
 ## resumeFuseLink
 
 ```TypeScript
@@ -823,7 +827,7 @@ link文件替换完成后，需要恢复读写关联以继续正常的文件访�
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -862,6 +866,48 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<a id="resumefuselink-1"></a>
+
+## resumeFuseLink
+
+```TypeScript
+resumeFuseLink(callback: AsyncCallback<void>): void
+```
+
+恢复FUSE关联读写，使用callback异步回调。调用成功后，恢复对link文件的读写操作。
+
+必须在调用[stopFuseLink](#stopfuselink)暂停读写后才能调用此方法恢复读写功能。
+
+link文件替换完成后需要恢复读写关联。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.ACCESS_DLP_FILE
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收恢复FUSE关联的结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
+| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
+| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
+| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
+
+**示例**
+
 ```TypeScript
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -897,48 +943,6 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-## resumeFuseLink
-
-```TypeScript
-resumeFuseLink(callback: AsyncCallback<void>): void
-```
-
-恢复FUSE关联读写，使用callback异步回调。调用成功后，恢复对link文件的读写操作。
-
-必须在调用[stopFuseLink](#stopfuselink)暂停读写后才能调用此方法恢复读写功能。
-
-link文件替换完成后需要恢复读写关联。
-
-**起始版本：** 10
-
-**需要权限：** ohos.permission.ACCESS_DLP_FILE
-
-**系统能力：** SystemCapability.Security.DataLossPrevention
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于接收恢复FUSE关联的结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
-| [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
-| [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
-| [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
-
-**示例**
-
-参见 [resumeFuseLink](#resumefuselink)
-
 ## stopFuseLink
 
 ```TypeScript
@@ -971,7 +975,7 @@ stopFuseLink(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
@@ -1008,39 +1012,7 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
-
-async function ExampleFunction() {
-  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-  let file: number | undefined = undefined;
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-  let appId = '';
-  let bundleName = 'com.ohos.note';
-  let userId = 100;
-  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
-
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-  appId = data.signatureInfo.appId;
-
-  file = fileIo.openSync(uri).fd;
-  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
-  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
-  dlpFile.stopFuseLink(async (err, res) => {
-    if (err) {
-      console.error(`Failed to stop FuseLink. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('res', JSON.stringify(res));
-    }
-    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
-    fileIo.closeSync(file);
-  }); // 暂停link读写。
-}
-
-ExampleFunction();
-```
+<a id="stopfuselink-1"></a>
 
 ## stopFuseLink
 
@@ -1075,14 +1047,46 @@ stopFuseLink(callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100009](../errorcode-dlp.md#19100009-操作dlp文件失败) | Failed to operate the DLP file. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 [stopFuseLink](#stopfuselink)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+async function ExampleFunction() {
+  let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+  let file: number | undefined = undefined;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+  let appId = '';
+  let bundleName = 'com.ohos.note';
+  let userId = 100;
+  let dlpFile: dlpPermission.DLPFile | undefined = undefined;
+
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+  appId = data.signatureInfo.appId;
+
+  file = fileIo.openSync(uri).fd;
+  dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
+  await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
+  dlpFile.stopFuseLink(async (err, res) => {
+    if (err) {
+      console.error(`Failed to stop FuseLink. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('res', JSON.stringify(res));
+    }
+    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
+    fileIo.closeSync(file);
+  }); // 暂停link读写。
+}
+
+ExampleFunction();
+```
 
 ## dlpProperty
 

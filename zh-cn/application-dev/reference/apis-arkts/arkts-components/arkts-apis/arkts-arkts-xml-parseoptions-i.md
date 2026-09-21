@@ -1,5 +1,9 @@
 # ParseOptions
 
+```TypeScript
+interface ParseOptions
+```
+
 XML解析选项，用于配置XmlPullParser的解析行为。开发者可通过supportDoctype和ignoreNameSpace控制解析范围，通过注册回调函数（tagValueCallbackFunction、attributeValueCallbackFunction、tokenValueCallbackFunction等）接收不同类型的解析事件。
 
 **起始版本：** 8

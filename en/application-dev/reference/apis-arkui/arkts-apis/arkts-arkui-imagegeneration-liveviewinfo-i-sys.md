@@ -1,5 +1,9 @@
 # LiveViewInfo (System API)
 
+```TypeScript
+interface LiveViewInfo
+```
+
 Information for LiveView in AI image generation.
 
 @interface LiveViewInfo

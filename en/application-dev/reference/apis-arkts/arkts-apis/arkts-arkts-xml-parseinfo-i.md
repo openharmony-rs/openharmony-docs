@@ -1,5 +1,9 @@
 # ParseInfo
 
+```TypeScript
+interface ParseInfo
+```
+
 The current parse info.
 
 **Since:** 8

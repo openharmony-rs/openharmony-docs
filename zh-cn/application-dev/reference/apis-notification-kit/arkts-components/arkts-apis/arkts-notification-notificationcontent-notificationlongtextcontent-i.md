@@ -1,5 +1,9 @@
 # NotificationLongTextContent
 
+```TypeScript
+export interface NotificationLongTextContent extends NotificationBasicContent
+```
+
 描述长文本通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
 
 > **说明：** 

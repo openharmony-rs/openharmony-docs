@@ -1,5 +1,9 @@
 # EllipsisMode
 
+```TypeScript
+declare enum EllipsisMode
+```
+
 Enum of ellipsisMode
 
 **起始版本：** 11

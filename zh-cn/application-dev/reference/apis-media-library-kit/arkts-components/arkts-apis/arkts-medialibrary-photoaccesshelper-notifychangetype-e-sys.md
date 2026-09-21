@@ -1,5 +1,9 @@
 # NotifyChangeType
 
+```TypeScript
+enum NotifyChangeType
+```
+
 枚举，媒体资产（图片/视频）或相册变更事件的通知类型。
 
 **起始版本：** 20

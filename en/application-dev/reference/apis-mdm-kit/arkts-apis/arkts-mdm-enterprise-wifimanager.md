@@ -40,12 +40,12 @@ import { wifiManager } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md) | Adds allowed Wi-Fi networks. The current device can only connect to the allowed Wi-Fi networks. This API is applicable to enterprise security management scenarios, for example, restricting employees' devices to connect only to Wi-Fi networks authorized by the enterprise, preventing connection to insecure external Wi-Fi networks and ensuring enterprise network and data security. |
+| [addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md) | Adds allowed Wi-Fi networks. The current device can only connect to the allowed Wi-Fi networks. This API is applicable to enterprise security management scenarios, for example, restricting employees' devices to connect onlyto Wi-Fi networks authorized by the enterprise, preventing connection to insecure external Wi-Fi networks and ensuring enterprise network and data security. |
 | [addDisallowedWifiList](arkts-mdm-wifimanager-adddisallowedwifilist-f.md) | Adds disallowed Wi-Fi networks. The current device cannot connect to the disallowed Wi-Fi networks. This API is applicable to enterprise security control and management scenarios, such as preventing devices from connecting to insecure public Wi-Fi networks (for example, those in cafes or airports), and preventing employees from connecting to competitor or malicious networks, thereby safeguarding enterprise data security. |
-| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md) | Obtains Wi-Fi networks from the allowed list. |
-| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md) | Obtains Wi-Fi networks from the allowed list. |
-| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md) | Obtains disallowed Wi-Fi networks. |
-| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md) | Obtains disallowed Wi-Fi networks. |
+| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md#getallowedwifilist) | Obtains Wi-Fi networks from the allowed list. |
+| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md#getallowedwifilist-1) | Obtains Wi-Fi networks from the allowed list. |
+| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md#getdisallowedwifilist) | Obtains disallowed Wi-Fi networks. |
+| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md#getdisallowedwifilist-1) | Obtains disallowed Wi-Fi networks. |
 | [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md) | Queries the Wi-Fi status of the current device. |
 | [removeAllowedWifiList](arkts-mdm-wifimanager-removeallowedwifilist-f.md) | Removes Wi-Fi networks from the allowed list. If some Wi-Fi networks are removed from the allowed list, the current device can only connect to the remaining ones; if all Wi-Fi networks are removed from the allowed list, the current device can connect to any Wi-Fi network. This API is applicable to enterprise Wi-Fi policy adjustment scenarios, such as removing restrictions on old Wi-Fi networks when the company switches to a new Wi-Fi network, or lifting some Wi-Fi restrictions to allow employees to connect to new office networks. |
 | [removeDisallowedWifiList](arkts-mdm-wifimanager-removedisallowedwifilist-f.md) | Removes disallowed Wi-Fi networks. If some Wi-Fi networks are removed from the disallowed list, the current device cannot connect to the remaining ones; if all Wi-Fi networks are removed from the disallowed list, the current device can connect to any Wi-Fi network. This API is applicable to enterprise Wi-Fi policy adjustment scenarios, such as lifting restrictions on a specific Wi-Fi network, allowing employees to connect to newly approved office networks, or completely removing the disabling policy. |
@@ -58,12 +58,12 @@ import { wifiManager } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md) | Queries the Wi-Fi status of the current device. This API uses an asynchronous callback to return the result. |
-| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md) | Queries the Wi-Fi status of the current device. This API uses a promise to return the result. |
+| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md#iswifiactive) | Queries the Wi-Fi status of the current device. This API uses an asynchronous callback to return the result. |
+| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md#iswifiactive-1) | Queries the Wi-Fi status of the current device. This API uses a promise to return the result. |
 | [isWifiDisabled](arkts-mdm-wifimanager-iswifidisabled-f-sys.md) | Queries whether Wi-Fi is disabled on the current device. |
 | [setWifiDisabled](arkts-mdm-wifimanager-setwifidisabled-f-sys.md) | Sets the Wi-Fi disabling policy. |
-| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md) | Configures Wi-Fi for the current device to connect to a specified network. This API uses an asynchronous callback to return the result. |
-| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md) | Configures Wi-Fi for the current device to connect to a specified network. This API uses a promise to return the result. |
+| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md#setwifiprofile) | Configures Wi-Fi for the current device to connect to a specified network. This API uses an asynchronous callback to return the result. |
+| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md#setwifiprofile-1) | Configures Wi-Fi for the current device to connect to a specified network. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

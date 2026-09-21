@@ -74,7 +74,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | --- | --- |
 | [CollectionType](arkts-arkui-collectiontype-t.md) | Defines the types of persistent collection data supported by **globalConnect** using the generic type of the input parameter of **globalConnect**. |
 | [GetterCallback](arkts-arkui-gettercallback-t.md) | Defines a callback used to obtain a value. |
-| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | Listener callback function of the [IMonitor](../arkts-components/arkts-arkui-imonitor-i.md) type. |
+| [MonitorCallback](arkts-arkui-monitorcallback-t.md) | Listener callback function of the [IMonitor](../arkts-components/arkts-arkui-common-comp-imonitor-i.md) type. |
 | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | Defines a callback used to return the cause of the persistence failure. |
 | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | Function for initializing the reusable custom component. |
 | [SetterCallback](arkts-arkui-settercallback-t.md) | Defines a callback used to set a value. |

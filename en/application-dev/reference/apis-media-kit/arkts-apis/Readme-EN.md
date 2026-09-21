@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-mediakit-->
 
-- [@ohos.multimedia.media](arkts-media-multimedia-media.md)
+- [@ohos.multimedia.media((Media))](arkts-media-multimedia-media.md)
   - [createAudioPlayer](arkts-media-media-createaudioplayer-f.md)
   - [createAudioRecorder](arkts-media-media-createaudiorecorder-f.md)
   - [createAVAdsController](arkts-media-media-createavadscontroller-f.md)
@@ -53,8 +53,6 @@
   <!--Del-->
   - [AVRecorderConfig(system api)](arkts-media-media-avrecorderconfig-i-sys.md)<!--DelEnd-->
   - [AVRecorderProfile](arkts-media-media-avrecorderprofile-i.md)
-  <!--Del-->
-  - [AVRecorderProfile(system api)](arkts-media-media-avrecorderprofile-i-sys.md)<!--DelEnd-->
   - [AVScreenCaptureRecordConfig](arkts-media-media-avscreencapturerecordconfig-i.md)
   - [AVScreenCaptureRecorder](arkts-media-media-avscreencapturerecorder-i.md)
   - [AVScreenCaptureStrategy](arkts-media-media-avscreencapturestrategy-i.md)

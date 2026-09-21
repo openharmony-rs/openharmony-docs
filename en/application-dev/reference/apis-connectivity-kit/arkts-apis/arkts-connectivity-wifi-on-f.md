@@ -135,6 +135,22 @@ Subscribe Wi-Fi hotspot state change events.
 | type | 'hotspotStateChange' | Yes | event name. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | the callback of on, 0: inactive, 1: active, 2: activating, 3: de-activating |
 
+**Examples**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvHotspotStateChangeFunc = (result:number) => {
+    console.info("Receive hotspot state change event: " + result);
+}
+
+// Register an event.
+wifi.on("hotspotStateChange", recvHotspotStateChangeFunc);
+
+// Unregister an event.
+wifi.off("hotspotStateChange", recvHotspotStateChangeFunc);
+```
+
 
 ## on('p2pStateChange')
 

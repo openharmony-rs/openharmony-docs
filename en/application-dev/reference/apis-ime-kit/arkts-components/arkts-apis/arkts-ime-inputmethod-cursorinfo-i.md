@@ -1,5 +1,9 @@
 # CursorInfo
 
+```TypeScript
+export interface CursorInfo
+```
+
 Represents the cursor information.
 
 **Since:** 10

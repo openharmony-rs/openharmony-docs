@@ -1,5 +1,9 @@
 # CertResult
 
+```TypeScript
+enum CertResult
+```
+
 表示执行结果的枚举。
 
 **起始版本：** 9

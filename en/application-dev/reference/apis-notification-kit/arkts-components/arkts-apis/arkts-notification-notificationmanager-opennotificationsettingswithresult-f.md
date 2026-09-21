@@ -24,7 +24,7 @@ Unlike openNotificationSettings, this API returns a NotificationSetting object w
 
 **See also:**
 
-[requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md) requests notification to be enabled for this application.
+[requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-3) requests notification to be enabled for this application.
 
 [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) checks whether notification is enabled for the specified application.
 

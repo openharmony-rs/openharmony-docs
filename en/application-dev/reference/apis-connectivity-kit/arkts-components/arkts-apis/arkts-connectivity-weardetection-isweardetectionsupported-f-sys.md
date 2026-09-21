@@ -53,16 +53,8 @@ try {
 }
 ```
 
-```TypeScript
-try {
-    wearDetection.isWearDetectionSupported('XX:XX:XX:XX:XX:XX').then((supported) => {
-        console.info('device support wear detection ' + supported);
-    });
-} catch (err) {
-    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
-```
 
+<a id="isweardetectionsupported-1"></a>
 
 ## isWearDetectionSupported
 
@@ -106,4 +98,12 @@ Checks whether the device supports wear detection.
 
 **Examples**
 
-See [isWearDetectionSupported](#isweardetectionsupported)
+```TypeScript
+try {
+    wearDetection.isWearDetectionSupported('XX:XX:XX:XX:XX:XX').then((supported) => {
+        console.info('device support wear detection ' + supported);
+    });
+} catch (err) {
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+}
+```

@@ -1,5 +1,9 @@
 # ProcessManager
 
+```TypeScript
+export class ProcessManager
+```
+
 提供进程管理相关接口，包括进程 UID 判断、用户信息查询、线程优先级获取、环境变量获取、进程退出和信号发送等功能。
 
 通过 `new process.ProcessManager()` 构造 ProcessManager 对象。

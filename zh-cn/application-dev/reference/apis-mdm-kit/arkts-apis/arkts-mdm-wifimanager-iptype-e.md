@@ -1,5 +1,9 @@
 # IpType
 
+```TypeScript
+enum IpType
+```
+
 表示IP类型的枚举。
 
 **起始版本：** 12

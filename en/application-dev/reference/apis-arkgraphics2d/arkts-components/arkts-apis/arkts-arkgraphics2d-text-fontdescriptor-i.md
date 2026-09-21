@@ -1,5 +1,9 @@
 # FontDescriptor
 
+```TypeScript
+interface FontDescriptor
+```
+
 Describes the font descriptor information.
 
 **Since:** 14

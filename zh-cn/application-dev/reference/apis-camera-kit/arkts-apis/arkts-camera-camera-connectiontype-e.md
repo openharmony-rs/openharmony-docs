@@ -1,5 +1,9 @@
 # ConnectionType
 
+```TypeScript
+enum ConnectionType
+```
+
 枚举，相机连接类型。
 
 **起始版本：** 10

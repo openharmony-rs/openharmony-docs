@@ -1,5 +1,9 @@
 # HuksExternalCryptoTagType
 
+```TypeScript
+export enum HuksExternalCryptoTagType
+```
+
 Enumerates the external encrypted data types.
 
 **Since:** 22

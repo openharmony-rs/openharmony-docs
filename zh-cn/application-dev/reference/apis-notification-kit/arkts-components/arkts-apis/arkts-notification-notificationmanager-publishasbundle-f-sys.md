@@ -95,58 +95,8 @@ let request: notificationManager.NotificationRequest = {
 notificationManager.publishAsBundle(request, representativeBundle, userId, callback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 被代理应用的包名
-let representativeBundle: string = 'com.example.demo';
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 100;
-// NotificationRequest对象
-let request: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
-    console.info('publishAsBundle success');
-}).catch((err: BusinessError) => {
-    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 被代理应用的包信息
-let representativeBundle: notificationManager.BundleOption = {
-  bundle: 'bundleName1',
-};
-// NotificationRequest对象
-let request: notificationManager.NotificationRequest = {
-    id: 1,
-    content: {
-        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-        normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-        }
-    }
-};
-notificationManager.publishAsBundle(representativeBundle, request).then(() => {
-    console.info('publishAsBundle success');
-}).catch((err: BusinessError) => {
-    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="publishasbundle-1"></a>
 
 ## publishAsBundle
 
@@ -207,8 +157,34 @@ function publishAsBundle(request: NotificationRequest, representativeBundle: str
 
 **示例**
 
-参见 [publishAsBundle](#publishasbundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 被代理应用的包名
+let representativeBundle: string = 'com.example.demo';
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 100;
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
+        }
+    }
+};
+notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
+    console.info('publishAsBundle success');
+}).catch((err: BusinessError) => {
+    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="publishasbundle-2"></a>
 
 ## publishAsBundle
 
@@ -268,4 +244,28 @@ function publishAsBundle(representativeBundle: BundleOption, request: Notificati
 
 **示例**
 
-参见 [publishAsBundle](#publishasbundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 被代理应用的包信息
+let representativeBundle: notificationManager.BundleOption = {
+  bundle: 'bundleName1',
+};
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: 'test_title',
+            text: 'test_text',
+            additionalText: 'test_additionalText'
+        }
+    }
+};
+notificationManager.publishAsBundle(representativeBundle, request).then(() => {
+    console.info('publishAsBundle success');
+}).catch((err: BusinessError) => {
+    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```

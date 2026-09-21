@@ -60,36 +60,8 @@ policy
   });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getNetworkAccessPolicy()
-  .then((data: policy.UidNetworkAccessPolicy) => {
-    let keyMap: Map<string, object> = new Map<string, object>(Object.entries(data));
-    let uid:number = 0;
-    let allowWiFi: string = "";
-    let allowCellular: string = "";
-
-    keyMap.forEach((value:object, key:string) => {
-      let valueMap: Map<string, string> = new Map<string, string>(Object.entries(value));
-      uid = Number.parseInt(key);
-      valueMap.forEach((value:string, key:string)=>{
-        if (key == "allowWiFi") {
-          allowWiFi = value;
-        }
-        if (key == "allowCellular") {
-          allowCellular = value;
-        }
-      })
-    })
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getnetworkaccesspolicy-1"></a>
 
 ## getNetworkAccessPolicy
 
@@ -124,4 +96,32 @@ Obtains the network access policy of all applications under the current user. Th
 
 **Examples**
 
-See [getNetworkAccessPolicy](#getnetworkaccesspolicy)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .getNetworkAccessPolicy()
+  .then((data: policy.UidNetworkAccessPolicy) => {
+    let keyMap: Map<string, object> = new Map<string, object>(Object.entries(data));
+    let uid:number = 0;
+    let allowWiFi: string = "";
+    let allowCellular: string = "";
+
+    keyMap.forEach((value:object, key:string) => {
+      let valueMap: Map<string, string> = new Map<string, string>(Object.entries(value));
+      uid = Number.parseInt(key);
+      valueMap.forEach((value:string, key:string)=>{
+        if (key == "allowWiFi") {
+          allowWiFi = value;
+        }
+        if (key == "allowCellular") {
+          allowCellular = value;
+        }
+      })
+    })
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

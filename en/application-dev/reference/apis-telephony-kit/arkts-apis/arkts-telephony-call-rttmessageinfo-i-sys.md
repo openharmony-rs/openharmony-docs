@@ -1,5 +1,9 @@
 # RttMessageInfo (System API)
 
+```TypeScript
+export interface RttMessageInfo
+```
+
 Indicates the info of the rtt message.
 
 **Since:** 22
@@ -26,6 +30,8 @@ Indicates the id of rtt.
 
 **Since:** 22
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -41,6 +47,8 @@ Indicates the rtt messgae.
 **Type:** string
 
 **Since:** 22
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Telephony.CallManager
 

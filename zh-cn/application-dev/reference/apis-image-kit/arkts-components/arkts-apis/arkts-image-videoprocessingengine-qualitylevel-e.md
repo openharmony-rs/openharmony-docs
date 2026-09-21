@@ -1,5 +1,9 @@
 # QualityLevel
 
+```TypeScript
+enum QualityLevel
+```
+
 细节增强的处理质量等级。@enum {int}
 
 **起始版本：** 18

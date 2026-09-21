@@ -1,5 +1,9 @@
 # CachedGnssLocationsRequest
 
+```TypeScript
+export interface CachedGnssLocationsRequest
+```
+
 请求订阅GNSS缓存位置上报功能接口的配置参数。
 
 **起始版本：** 9

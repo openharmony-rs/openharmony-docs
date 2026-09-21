@@ -1,5 +1,9 @@
 # DeviceChangeAction
 
+```TypeScript
+interface DeviceChangeAction
+```
+
 描述设备连接状态变化和设备信息。
 
 **起始版本：** 7

@@ -1,0 +1,98 @@
+# ScrollOptions
+
+```TypeScript
+declare interface ScrollOptions
+```
+
+滚动到指定位置的参数选项。
+
+> **说明：** 
+> 
+> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+
+**起始版本：** 18
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## animation
+
+```TypeScript
+animation?: ScrollAnimationOptions | boolean
+```
+
+动画配置。
+
+<p>&lt;strong&gt;说明&lt;/strong&gt; <br>目前List、Scroll、Grid和WaterFlow支持Boolean类型和ICurve。</p>
+
+布尔类型启用默认弹簧动效。 [since 10 - 11]布尔类型启用默认弹簧动效。 [since 12]
+
+**类型：** [ScrollAnimationOptions](arkts-arkui-scroll-comp-scrollanimationoptions-i.md) &#124; boolean
+
+**默认值：** 
+- API版本18+：ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false }
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## canOverScroll
+
+```TypeScript
+canOverScroll?: boolean
+```
+
+设置滚动目标位置是否可以超出边界。
+
+**类型：** boolean
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## xOffset
+
+```TypeScript
+xOffset: number | string
+```
+
+水平滚动偏移量。
+
+<p>&lt;strong&gt;说明&lt;/strong&gt; <br>不支持设置百分比。<br>无动画滚动时，设置为小于0的值按0处理。有动画滚动时，默认停在起始位置。通过设置&lt;em&gt;animation&lt;/em&gt;参数，可以在滚动超出边界时启用回弹效果。<br>该参数仅在滚动轴为x轴时生效。</p>
+
+**类型：** number &#124; string
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## yOffset
+
+```TypeScript
+yOffset: number | string
+```
+
+竖直滚动偏移量。
+
+<p>&lt;strong&gt;说明&lt;/strong&gt; <br>不支持设置百分比。<br>无动画滚动时，设置为小于0的值按0处理。有动画滚动时，默认停在起始位置。通过设置&lt;em&gt;animation&lt;/em&gt;参数，可以在滚动超出边界时启用回弹效果。<br>该参数仅在滚动轴为y轴时生效。</p>
+
+**类型：** number &#124; string
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

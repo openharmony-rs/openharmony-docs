@@ -1,5 +1,9 @@
 # AlbumFetchOptions (System API)
 
+```TypeScript
+interface AlbumFetchOptions
+```
+
 Defines the options for fetching file attributes.
 
 **Since:** 9

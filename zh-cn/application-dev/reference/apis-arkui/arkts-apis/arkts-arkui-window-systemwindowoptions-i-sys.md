@@ -1,5 +1,9 @@
 # SystemWindowOptions（系统接口）
 
+```TypeScript
+interface SystemWindowOptions
+```
+
 系统窗口的创建参数。
 
 **起始版本：** 14

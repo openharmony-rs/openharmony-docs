@@ -18,7 +18,7 @@ function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<n
 
 **废弃版本：** 9
 
-**替代接口：** publishReminder
+**替代接口：** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -47,19 +47,8 @@ reminderAgent.publishReminder(timer, (err: BusinessError, reminderId: number) =>
 });
 ```
 
-```TypeScript
-import reminderAgent from '@ohos.reminderAgent';
 
-let timer:reminderAgent.ReminderRequestTimer = {
-  reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
-  triggerTimeInSeconds: 10
-}
-
-reminderAgent.publishReminder(timer).then((reminderId: number) => {
-  console.info("promise, reminderId = " + reminderId);
-});
-```
-
+<a id="publishreminder-1"></a>
 
 ## publishReminder
 
@@ -73,7 +62,7 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 **废弃版本：** 9
 
-**替代接口：** publishReminder
+**替代接口：** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
@@ -93,4 +82,15 @@ function publishReminder(reminderReq: ReminderRequest): Promise<number>
 
 **示例**
 
-参见 [publishReminder](#publishreminder)
+```TypeScript
+import reminderAgent from '@ohos.reminderAgent';
+
+let timer:reminderAgent.ReminderRequestTimer = {
+  reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+reminderAgent.publishReminder(timer).then((reminderId: number) => {
+  console.info("promise, reminderId = " + reminderId);
+});
+```

@@ -1,5 +1,9 @@
 # ColorManagementQuery
 
+```TypeScript
+interface ColorManagementQuery
+```
+
 色彩管理类，用于查询色彩空间参数。
 
 **起始版本：** 12
@@ -37,3 +41,5 @@ getSupportedColorSpaces(): Array<colorSpaceManager.ColorSpace>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage.<br>**适用版本：** 12 - 17 |
+
+**示例**

@@ -72,51 +72,8 @@ try {
 }
 ```
 
-```TypeScript
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
-import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let inFile = '/data/storage/el2/base/temp/xxx.zip';
-let outFileDir = '/data/storage/el2/base/temp';
-let options: zlib.Options = {
-  level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
-};
-
-try {
-  zlib.decompressFile(inFile, outFileDir, options).then((data: void) => {
-    console.info('decompressFile success. data: ' + JSON.stringify(data));
-  }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`errData is errCode:${code}  message:${message}`);
-}
-```
-
-```TypeScript
-// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
-import { zlib, BusinessError } from '@kit.BasicServicesKit';
-
-let inFile = '/data/storage/el2/base/temp/xxx.zip';
-let outFileDir = '/data/storage/el2/base/temp';
-
-try {
-  zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
-    if (errData) {
-      console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
-    } else {
-      console.info(`decompressFile success.`);
-    }
-  })
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`decompressFile failed. code is ${code}, message is ${message}`);
-}
-```
-
+<a id="decompressfile-1"></a>
 
 ## decompressFile
 
@@ -157,8 +114,30 @@ function decompressFile(inFile: string, outFile: string, callback: AsyncCallback
 
 **示例**
 
-参见 decompressFile
+```TypeScript
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
+import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
+
+try {
+  zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
+    if (errData) {
+      console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
+    } else {
+      console.info(`decompressFile success.`);
+    }
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`decompressFile failed. code is ${code}, message is ${message}`);
+}
+```
+
+
+<a id="decompressfile-2"></a>
 
 ## decompressFile
 
@@ -205,4 +184,25 @@ function decompressFile(inFile: string, outFile: string, options?: Options): Pro
 
 **示例**
 
-参见 decompressFile
+```TypeScript
+// 代码中使用的路径需为应用的沙箱路径，如/data/storage/el2/base/temp,也可以通过context获取。
+import { zlib, BusinessError } from '@kit.BasicServicesKit';
+
+let inFile = '/data/storage/el2/base/temp/xxx.zip';
+let outFileDir = '/data/storage/el2/base/temp';
+let options: zlib.Options = {
+  level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+};
+
+try {
+  zlib.decompressFile(inFile, outFileDir, options).then((data: void) => {
+    console.info('decompressFile success. data: ' + JSON.stringify(data));
+  }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```

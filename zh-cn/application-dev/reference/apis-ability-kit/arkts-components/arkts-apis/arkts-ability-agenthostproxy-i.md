@@ -1,5 +1,9 @@
 # AgentHostProxy
 
+```TypeScript
+export interface AgentHostProxy
+```
+
 AgentHostProxy用于从[AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)服务端向客户端发送数据或安全认证请求。
 
 > **说明：** 

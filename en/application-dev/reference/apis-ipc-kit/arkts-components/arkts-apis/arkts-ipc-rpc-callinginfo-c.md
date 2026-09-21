@@ -1,5 +1,9 @@
 # CallingInfo
 
+```TypeScript
+class CallingInfo
+```
+
 Defines the IPC context, including the PID and UID, local and remote device IDs, and whether the API is invoked on the same device.
 
 **Since:** 23
@@ -26,6 +30,8 @@ PID of the caller. callerPid is valid only when the isLocalCalling is true. Othe
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## callerTokenId
@@ -41,6 +47,8 @@ Token ID of the caller. callerTokenId is valid only when the isLocalCalling is t
 **Default:** -1
 
 **Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -58,6 +66,8 @@ UID of the caller. callerUid is valid only when the isLocalCalling is true. Othe
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## isLocalCalling
@@ -74,6 +84,8 @@ Whether the peer end of the current communication is a process on the local devi
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## localDeviceId
@@ -88,6 +100,8 @@ Local device ID. This parameter is valid only in RPC scenarios. localDeviceId is
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## remoteDeviceId
@@ -101,5 +115,7 @@ Remote device ID. This parameter is valid only in RPC scenarios. remoteDeviceId 
 **Type:** string
 
 **Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Communication.IPC.Core

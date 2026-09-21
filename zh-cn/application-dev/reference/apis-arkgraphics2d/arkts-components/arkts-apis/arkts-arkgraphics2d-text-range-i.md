@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+interface Range
+```
+
 描述左闭右开区间。
 
 **起始版本：** 12

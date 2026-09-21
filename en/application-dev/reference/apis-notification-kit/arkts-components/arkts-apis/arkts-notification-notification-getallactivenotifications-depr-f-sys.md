@@ -32,6 +32,8 @@ Obtains all active notifications. This API uses an asynchronous callback to retu
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md)&gt;&gt; | Yes | Callback used to return the result. |
 
 
+<a id="getallactivenotifications-1"></a>
+
 ## getAllActiveNotifications
 
 ```TypeScript

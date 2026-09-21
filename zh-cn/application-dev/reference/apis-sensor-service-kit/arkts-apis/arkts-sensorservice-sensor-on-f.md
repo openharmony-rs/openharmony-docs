@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="on-2"></a>
+
 ## on
 
 ```TypeScript
@@ -39,6 +41,32 @@ function on(type: SensorId.ACCELEROMETER, callback: Callback<AccelerometerRespon
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅加速度传感器数据
+  sensor.on(sensor.SensorId.ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
+    // 输出X、Y、Z坐标分量
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.ACCELEROMETER);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-3"></a>
 
 ## on
 
@@ -71,6 +99,35 @@ function on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback<Accele
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅未校准加速度传感器数据
+  sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, (data: sensor.AccelerometerUncalibratedResponse) => {
+    // 输出X、Y、Z坐标分量和偏移值
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+    console.info('Succeeded in invoking on. X-coordinate bias: ' + data.biasX);
+    console.info('Succeeded in invoking on. Y-coordinate bias: ' + data.biasY);
+    console.info('Succeeded in invoking on. Z-coordinate bias: ' + data.biasZ);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.ACCELEROMETER_UNCALIBRATED);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-4"></a>
 
 ## on
 
@@ -99,6 +156,30 @@ function on(type: SensorId.AMBIENT_LIGHT, callback: Callback<LightResponse>, opt
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅环境光传感器数据
+  sensor.on(sensor.SensorId.AMBIENT_LIGHT, (data: sensor.LightResponse) => {
+    // 输出环境光强度
+    console.info('Succeeded in getting the ambient light intensity: ' + data.intensity);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.AMBIENT_LIGHT);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-5"></a>
 
 ## on
 
@@ -128,6 +209,30 @@ function on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback<AmbientTemper
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅温度传感器数据
+  sensor.on(sensor.SensorId.AMBIENT_TEMPERATURE, (data: sensor.AmbientTemperatureResponse) => {
+    // 输出温度值
+    console.info('Succeeded in invoking on. Temperature: ' + data.temperature);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.AMBIENT_TEMPERATURE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-6"></a>
 
 ## on
 
@@ -156,6 +261,30 @@ function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, opt
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅气压计传感器数据
+  sensor.on(sensor.SensorId.BAROMETER, (data: sensor.BarometerResponse) => {
+    // 输出气压值
+    console.info('Succeeded in invoking on. Atmospheric pressure: ' + data.pressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.BAROMETER);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-7"></a>
 
 ## on
 
@@ -185,6 +314,32 @@ function on(type: SensorId.GRAVITY, callback: Callback<GravityResponse>,
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅重力传感器数据
+  sensor.on(sensor.SensorId.GRAVITY, (data: sensor.GravityResponse) => {
+    // 输出X、Y、Z坐标分量
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.GRAVITY);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-8"></a>
 
 ## on
 
@@ -219,6 +374,32 @@ function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅校准的陀螺仪传感器数据
+  sensor.on(sensor.SensorId.GYROSCOPE, (data: sensor.GyroscopeResponse) => {
+    // 输出X、Y、Z坐标分量
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.GYROSCOPE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-9"></a>
 
 ## on
 
@@ -251,6 +432,35 @@ function on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeU
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅未校准陀螺仪传感器数据
+  sensor.on(sensor.SensorId.GYROSCOPE_UNCALIBRATED, (data: sensor.GyroscopeUncalibratedResponse) => {
+    // 输出X、Y、Z坐标分量和偏移值
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+    console.info('Succeeded in invoking on. X-coordinate bias: ' + data.biasX);
+    console.info('Succeeded in invoking on. Y-coordinate bias: ' + data.biasY);
+    console.info('Succeeded in invoking on. Z-coordinate bias: ' + data.biasZ);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.GYROSCOPE_UNCALIBRATED);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-10"></a>
 
 ## on
 
@@ -279,6 +489,30 @@ function on(type: SensorId.HALL, callback: Callback<HallResponse>, options?: Opt
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅霍尔传感器数据
+  sensor.on(sensor.SensorId.HALL, (data: sensor.HallResponse) => {
+    // 输出霍尔状态
+    console.info('Succeeded in invoking on. Hall status: ' + data.status);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.HALL);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-11"></a>
 
 ## on
 
@@ -311,6 +545,30 @@ function on(type: SensorId.HEART_RATE, callback: Callback<HeartRateResponse>,
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅心率传感器数据
+  sensor.on(sensor.SensorId.HEART_RATE, (data: sensor.HeartRateResponse) => {
+    // 输出心率值
+    console.info('Succeeded in invoking on. Heart rate: ' + data.heartRate);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.HEART_RATE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-12"></a>
 
 ## on
 
@@ -340,6 +598,30 @@ function on(type: SensorId.HUMIDITY, callback: Callback<HumidityResponse>,
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅湿度传感器数据
+  sensor.on(sensor.SensorId.HUMIDITY, (data: sensor.HumidityResponse) => {
+    // 输出湿度值
+    console.info('Succeeded in invoking on. Humidity: ' + data.humidity);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.HUMIDITY);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-13"></a>
 
 ## on
 
@@ -372,6 +654,32 @@ function on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback<LinearAccele
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅线性加速度传感器数据
+  sensor.on(sensor.SensorId.LINEAR_ACCELEROMETER, (data: sensor.LinearAccelerometerResponse) => {
+    // 输出X、Y、Z坐标分量
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.LINEAR_ACCELEROMETER);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-14"></a>
 
 ## on
 
@@ -401,6 +709,32 @@ function on(type: SensorId.MAGNETIC_FIELD, callback: Callback<MagneticFieldRespo
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅地磁传感器数据
+  sensor.on(sensor.SensorId.MAGNETIC_FIELD, (data: sensor.MagneticFieldResponse) => {
+    // 输出X、Y、Z坐标分量
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.MAGNETIC_FIELD);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-15"></a>
 
 ## on
 
@@ -430,6 +764,35 @@ function on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<Magne
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅未校准地磁传感器数据
+  sensor.on(sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED, (data: sensor.MagneticFieldUncalibratedResponse) => {
+    // 输出X、Y、Z坐标分量和偏移值
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+    console.info('Succeeded in invoking on. X-coordinate bias: ' + data.biasX);
+    console.info('Succeeded in invoking on. Y-coordinate bias: ' + data.biasY);
+    console.info('Succeeded in invoking on. Z-coordinate bias: ' + data.biasZ);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.MAGNETIC_FIELD_UNCALIBRATED);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-16"></a>
 
 ## on
 
@@ -465,6 +828,32 @@ function on(type: SensorId.ORIENTATION, callback: Callback<OrientationResponse>,
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅方向传感器数据
+  sensor.on(sensor.SensorId.ORIENTATION, (data: sensor.OrientationResponse) => {
+    // 输出设备绕Z、X、Y轴旋转的角度
+    console.info('Succeeded in the device rotating at an angle around the Z axis: ' + data.alpha);
+    console.info('Succeeded in the device rotating at an angle around the X axis: ' + data.beta);
+    console.info('Succeeded in the device rotating at an angle around the Y axis: ' + data.gamma);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.ORIENTATION);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-17"></a>
 
 ## on
 
@@ -500,6 +889,30 @@ function on(type: SensorId.PEDOMETER, callback: Callback<PedometerResponse>, opt
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅计步器传感器数据
+  sensor.on(sensor.SensorId.PEDOMETER, (data: sensor.PedometerResponse) => {
+    // 输出步数
+    console.info('Succeeded in invoking on. Step count: ' + data.steps);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.PEDOMETER);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-18"></a>
 
 ## on
 
@@ -532,6 +945,30 @@ function on(type: SensorId.PEDOMETER_DETECTION, callback: Callback<PedometerDete
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅计步检测器传感器数据
+  sensor.on(sensor.SensorId.PEDOMETER_DETECTION, (data: sensor.PedometerDetectionResponse) => {
+    // 输出计步标量值
+    console.info('Succeeded in invoking on. Pedometer scalar: ' + data.scalar);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-19"></a>
 
 ## on
 
@@ -560,6 +997,30 @@ function on(type: SensorId.PROXIMITY, callback: Callback<ProximityResponse>, opt
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅接近光传感器数据
+  sensor.on(sensor.SensorId.PROXIMITY, (data: sensor.ProximityResponse) => {
+    // 输出距离值
+    console.info('Succeeded in invoking on. Distance: ' + data.distance);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.PROXIMITY);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-20"></a>
 
 ## on
 
@@ -589,6 +1050,31 @@ function on(type: SensorId.ROTATION_VECTOR, callback: Callback<RotationVectorRes
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on(sensor.SensorId.ROTATION_VECTOR, (data: sensor.RotationVectorResponse) => {
+    console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+    console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+    console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+    console.info('Succeeded in invoking on. Scalar quantity: ' + data.w);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.ROTATION_VECTOR);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-21"></a>
 
 ## on
 
@@ -618,6 +1104,28 @@ function on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback<SignificantMot
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, (data: sensor.SignificantMotionResponse) => {
+    console.info('Succeeded in invoking on. Scalar data: ' + data.scalar);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.SIGNIFICANT_MOTION);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-22"></a>
 
 ## on
 
@@ -647,6 +1155,28 @@ function on(type: SensorId.WEAR_DETECTION, callback: Callback<WearDetectionRespo
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on(sensor.SensorId.WEAR_DETECTION, (data: sensor.WearDetectionResponse) => {
+    console.info('Succeeded in invoking on. Wear status: ' + data.value);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.WEAR_DETECTION);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-23"></a>
 
 ## on
 
@@ -676,6 +1206,30 @@ function on(type: SensorId.FUSION_PRESSURE, callback: Callback<FusionPressureRes
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 订阅融合压力传感器数据
+  sensor.on(sensor.SensorId.FUSION_PRESSURE, (data: sensor.FusionPressureResponse) => {
+    // 输出融合压力值
+    console.info('Succeeded in invoking on. fusionPressure: ' + data.fusionPressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.FUSION_PRESSURE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+
+<a id="on-24"></a>
 
 ## on
 
@@ -710,6 +1264,22 @@ function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<Ac
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AccelerometerResponse](arkts-sensorservice-sensor-accelerometerresponse-i.md)&gt; | 是 | 注册加速度传感器的回调函数，上报的数据类型为AccelerometerResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.AccelerometerResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-25"></a>
 
 ## on
 
@@ -744,6 +1314,25 @@ function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AccelerometerUncalibratedResponse](arkts-sensorservice-sensor-accelerometeruncalibratedresponse-i.md)&gt; | 是 | 注册未校准加速度传感器的回调函数，上报的数据类型为AccelerometerUncalibratedResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: sensor.AccelerometerUncalibratedResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  console.info('Succeeded in invoking on. X-coordinate bias: ' + data.biasX);
+  console.info('Succeeded in invoking on. Y-coordinate bias: ' + data.biasY);
+  console.info('Succeeded in invoking on. Z-coordinate bias: ' + data.biasZ);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-26"></a>
 
 ## on
 
@@ -776,6 +1365,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<Li
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LightResponse](arkts-sensorservice-sensor-lightresponse-i.md)&gt; | 是 | 注册环境光传感器的回调函数，上报的数据类型为LightResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightResponse) => {
+  console.info('Succeeded in invoking on. Illumination: ' + data.intensity);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-27"></a>
 
 ## on
 
@@ -808,6 +1411,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callb
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AmbientTemperatureResponse](arkts-sensorservice-sensor-ambienttemperatureresponse-i.md)&gt; | 是 | 注册环境温度传感器的回调函数，上报的数据类型为AmbientTemperatureResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.AmbientTemperatureResponse) => {
+  console.info('Succeeded in invoking on. Temperature: ' + data.temperature);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-28"></a>
 
 ## on
 
@@ -840,6 +1457,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<Barome
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BarometerResponse](arkts-sensorservice-sensor-barometerresponse-i.md)&gt; | 是 | 注册气压计传感器的回调函数，上报的数据类型为BarometerResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerResponse) => {
+  console.info('Succeeded in invoking on. Atmospheric pressure: ' + data.pressure);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-29"></a>
 
 ## on
 
@@ -872,6 +1503,22 @@ function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityR
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GravityResponse](arkts-sensorservice-sensor-gravityresponse-i.md)&gt; | 是 | 注册重力传感器的回调函数，上报的数据类型为GravityResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-30"></a>
 
 ## on
 
@@ -906,6 +1553,22 @@ function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<Gyrosc
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md)&gt; | 是 | 注册陀螺仪传感器的回调函数，上报的数据类型为GyroscopeResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-31"></a>
 
 ## on
 
@@ -940,6 +1603,25 @@ function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: Ca
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GyroscopeUncalibratedResponse](arkts-sensorservice-sensor-gyroscopeuncalibratedresponse-i.md)&gt; | 是 | 注册未校准陀螺仪传感器的回调函数，上报的数据类型为GyroscopeUncalibratedResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sensor.GyroscopeUncalibratedResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  console.info('Succeeded in invoking on. X-coordinate bias: ' + data.biasX);
+  console.info('Succeeded in invoking on. Y-coordinate bias: ' + data.biasY);
+  console.info('Succeeded in invoking on. Z-coordinate bias: ' + data.biasZ);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-32"></a>
 
 ## on
 
@@ -972,6 +1654,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallRespons
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HallResponse](arkts-sensorservice-sensor-hallresponse-i.md)&gt; | 是 | 注册霍尔传感器的回调函数，上报的数据类型为 HallResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 可选参数列表，当霍尔事件被触发的很频繁时，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) => {
+  console.info('Succeeded in invoking on. Status: ' + data.status);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-33"></a>
 
 ## on
 
@@ -1007,6 +1703,8 @@ function on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<Heart
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 
+<a id="on-34"></a>
+
 ## on
 
 ```TypeScript
@@ -1038,6 +1736,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<Humidit
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HumidityResponse](arkts-sensorservice-sensor-humidityresponse-i.md)&gt; | 是 | 注册湿度传感器的回调函数，上报的数据类型为HumidityResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityResponse) => {
+  console.info('Succeeded in invoking on. Humidity: ' + data.humidity);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-35"></a>
 
 ## on
 
@@ -1073,6 +1785,8 @@ function on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Callb
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
 
+<a id="on-36"></a>
+
 ## on
 
 ```TypeScript
@@ -1104,6 +1818,22 @@ function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<M
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MagneticFieldResponse](arkts-sensorservice-sensor-magneticfieldresponse-i.md)&gt; | 是 | 注册磁场传感器的回调函数，上报的数据类型为MagneticFieldResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.MagneticFieldResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-37"></a>
 
 ## on
 
@@ -1136,6 +1866,25 @@ function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MagneticFieldUncalibratedResponse](arkts-sensorservice-sensor-magneticfielduncalibratedresponse-i.md)&gt; | 是 | 注册未校准磁场传感器的回调函数，上报的数据类型为MagneticFieldUncalibratedResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data: sensor.MagneticFieldUncalibratedResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  console.info('Succeeded in invoking on. X-coordinate bias: ' + data.biasX);
+  console.info('Succeeded in invoking on. Y-coordinate bias: ' + data.biasY);
+  console.info('Succeeded in invoking on. Z-coordinate bias: ' + data.biasZ);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-38"></a>
 
 ## on
 
@@ -1168,6 +1917,22 @@ function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<Orie
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[OrientationResponse](arkts-sensorservice-sensor-orientationresponse-i.md)&gt; | 是 | 注册方向传感器的回调函数，上报的数据类型为OrientationResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.OrientationResponse) => {
+  console.info('Succeeded in the device rotating at an angle around the X axis: ' + data.beta);
+  console.info('Succeeded in the device rotating at an angle around the Y axis: ' + data.gamma);
+  console.info('Succeeded in the device rotating at an angle around the Z axis: ' + data.alpha);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-39"></a>
 
 ## on
 
@@ -1202,6 +1967,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<Pedome
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PedometerResponse](arkts-sensorservice-sensor-pedometerresponse-i.md)&gt; | 是 | 注册计步传感器的回调函数，上报的数据类型为PedometerResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerResponse) => {
+  console.info('Succeeded in invoking on. Steps: ' + data.steps);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-40"></a>
 
 ## on
 
@@ -1236,6 +2015,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callb
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PedometerDetectionResponse](arkts-sensorservice-sensor-pedometerdetectionresponse-i.md)&gt; | 是 | 注册计步检测传感器的回调函数，上报的数据类型为PedometerDetectionResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.PedometerDetectionResponse) => {
+  console.info('Succeeded in invoking on. Scalar data: ' + data.scalar);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-41"></a>
 
 ## on
 
@@ -1268,6 +2061,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<Proxim
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ProximityResponse](arkts-sensorservice-sensor-proximityresponse-i.md)&gt; | 是 | 注册接近光传感器的回调函数，上报的数据类型为ProximityResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 可选参数列表，当接近光事件被触发的很频繁时，用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityResponse) => {
+  console.info('Succeeded in invoking on. Distance: ' + data.distance);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-42"></a>
 
 ## on
 
@@ -1300,6 +2107,23 @@ function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RotationVectorResponse](arkts-sensorservice-sensor-rotationvectorresponse-i.md)&gt; | 是 | 注册旋转矢量传感器的回调函数，上报的数据类型为RotationVectorResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.RotationVectorResponse) => {
+  console.info('Succeeded in invoking on. X-coordinate component: ' + data.x);
+  console.info('Succeeded in invoking on. Y-coordinate component: ' + data.y);
+  console.info('Succeeded in invoking on. Z-coordinate component: ' + data.z);
+  console.info('Succeeded in invoking on. Scalar quantity: ' + data.w);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-43"></a>
 
 ## on
 
@@ -1332,6 +2156,20 @@ function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callba
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SignificantMotionResponse](arkts-sensorservice-sensor-significantmotionresponse-i.md)&gt; | 是 | 注册有效运动传感器的回调函数，上报的数据类型为SignificantMotionResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.SignificantMotionResponse) => {
+  console.info('Succeeded in invoking on. Scalar data: ' + data.scalar);
+},
+  { interval: 100000000 }
+);
+```
+
+
+<a id="on-44"></a>
 
 ## on
 
@@ -1364,6 +2202,18 @@ function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<W
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md)&gt; | 是 | 注册佩戴检测传感器的回调函数，上报的数据类型为WearDetectionResponse。 |
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | 否 | 用于设置传感器上报频率，默认值为200000000ns（即200ms）。 |
 
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+
+sensor.on(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearDetectionResponse) => {
+  console.info('Succeeded in invoking on. Wear status: ' + data.value);
+},
+  { interval: 100000000 }
+);
+```
+
 
 ## on('sensorStatusChange')
 
@@ -1389,3 +2239,23 @@ function on(type: 'sensorStatusChange', callback: Callback<SensorStatusEvent>): 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+
+**示例**
+
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on('sensorStatusChange', (data: sensor.SensorStatusEvent) => {
+    console.info('sensorStatusChange : ' + JSON.stringify(data));
+  });
+  setTimeout(() => {
+    sensor.off('sensorStatusChange');
+  }, 5000);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```

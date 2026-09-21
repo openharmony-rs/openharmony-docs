@@ -1,5 +1,9 @@
 # TripodStatus（系统接口）
 
+```TypeScript
+enum TripodStatus
+```
+
 Enumerates the tripod statuses.
 
 **起始版本：** 13

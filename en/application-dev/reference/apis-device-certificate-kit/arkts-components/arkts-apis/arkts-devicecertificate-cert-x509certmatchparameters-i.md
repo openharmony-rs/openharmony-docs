@@ -1,5 +1,9 @@
 # X509CertMatchParameters
 
+```TypeScript
+interface X509CertMatchParameters
+```
+
 Defines the parameters used to match a certificate. If no parameter is specified, all certificates are matched.
 
 **Since:** 11

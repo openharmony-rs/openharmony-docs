@@ -45,18 +45,8 @@ appManager.getAppMemorySize().then((data) => {
 });
 ```
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
 
-appManager.getAppMemorySize((err, data) => {
-  if (err) {
-    console.error(`getAppMemorySize fail, code: ${err.code}, msg:${err.message}`);
-  } else {
-    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="getappmemorysize-1"></a>
 
 ## getAppMemorySize
 
@@ -87,4 +77,14 @@ function getAppMemorySize(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 getAppMemorySize
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+appManager.getAppMemorySize((err, data) => {
+  if (err) {
+    console.error(`getAppMemorySize fail, code: ${err.code}, msg:${err.message}`);
+  } else {
+    console.info(`The size of app memory is: ${JSON.stringify(data)}`);
+  }
+});
+```

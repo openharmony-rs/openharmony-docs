@@ -1,6 +1,10 @@
 # ChipGroupV2IconItemConfig
 
-Defines ChipGroupV2 IconItemConfig.
+```TypeScript
+export interface ChipGroupV2IconItemConfig
+```
+
+Defines the configuration of the suffix icon item, which is used to set the style, interaction, and accessibility attributes of the suffix icon.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,11 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 accessibilityDescription?: ResourceStr
 ```
 
-Set accessibility description for icon.
+Accessibility description of the suffix icon. This description is used to explain the suffix icon to users in detail. You should provide a relatively detailed text description for this attribute of the suffix icon to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the suffix icon's attributes and accessibility text. When the suffix icon has both a text attribute and an accessibility description attribute and the icon is selected, the system announces the text attribute of the icon first, followed by the content of the accessibility description attribute.
+
+Default value: empty string.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -36,7 +44,23 @@ Set accessibility description for icon.
 accessibilityLevel?: string
 ```
 
-Set accessibility level for icon.
+Accessibility level of the suffix icon. It is used to control whether the suffix icon can be recognized by accessibility services.
+
+Supported values:
+
+**"auto"**: The attribute value of the suffix icon is converted to **"yes"**.
+
+**"yes"**: The suffix icon can be recognized by accessibility services.
+
+**"no"**: The suffix icon cannot be recognized by accessibility services.
+
+**"no-hide-descendants"**: The suffix icon and all its child components cannot be recognized by accessibility services.
+
+If a value outside the supported range is passed in, the default value is used.
+
+Default value: **"auto"**
+
+If the value is **undefined**, the default value is used.
 
 **Type:** string
 
@@ -56,7 +80,11 @@ Set accessibility level for icon.
 accessibilityText?: ResourceStr
 ```
 
-Set accessibility text for icon.
+Accessibility text attribute of the suffix icon. It is used to further explain the suffix icon to users. You can set a relatively detailed explanatory text for this attribute of the suffix icon to help users understand the operation to be performed. For example, it helps users understand the possible consequences of the operation to be performed, especially when these consequences cannot be learned from the suffix icon's attributes and accessibility text. When the suffix icon has both a text attribute and an accessibility description attribute and the icon is selected, the text attribute of the icon is announced first, followed by the content of the accessibility description attribute.
+
+Default value: empty string.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -74,7 +102,7 @@ Set accessibility text for icon.
 action: Callback<void>
 ```
 
-Icon Action.
+Response event of the custom suffix icon.
 
 **Type:** Callback&lt;void&gt;
 
@@ -92,7 +120,9 @@ Icon Action.
 icon: ChipV2ImageIconConfig
 ```
 
-IconConfig.
+Custom suffix icon. After being set, the specified icon is displayed in the suffix area of the **ChipGroupV2**.
+
+To dynamically change the icon size, you must use the SymbolGlyphModifier type when introducing [ChipGroupV2IconGroupSuffix](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2icongroupsuffix-s.md), and set the icon size attribute through the methods provided by this type. For example, dynamically adjusting the size value through the **fontSize** or **size** method.
 
 **Type:** [ChipV2ImageIconConfig](arkts-arkui-arkui-advanced-chipv2-chipv2imageiconconfig-i.md)
 

@@ -1,5 +1,9 @@
 # CertChainData
 
+```TypeScript
+interface CertChainData
+```
+
 证书链数据，在证书链校验时，作为入参传入。
 
 **起始版本：** 9

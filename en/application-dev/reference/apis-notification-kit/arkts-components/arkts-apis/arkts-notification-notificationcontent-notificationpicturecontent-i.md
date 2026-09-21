@@ -1,5 +1,9 @@
 # NotificationPictureContent
 
+```TypeScript
+export interface NotificationPictureContent extends NotificationBasicContent
+```
+
 Describes the picture-attached notification. This API is inherited from NotificationBasicContent.
 
 > **NOTE:** 

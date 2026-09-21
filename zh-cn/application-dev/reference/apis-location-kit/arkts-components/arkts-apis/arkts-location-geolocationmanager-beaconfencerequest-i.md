@@ -1,5 +1,9 @@
 # BeaconFenceRequest
 
+```TypeScript
+export interface BeaconFenceRequest
+```
+
 beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选其一，都不填则参数无效。
 
 **起始版本：** 20

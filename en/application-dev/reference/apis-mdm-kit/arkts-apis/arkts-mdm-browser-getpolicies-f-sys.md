@@ -64,25 +64,8 @@ browser.getPolicies(wantTemp, appId, (err, result) => {
 });
 ```
 
-```TypeScript
-import { browser } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace the value of appId with the specified application ID of the browser.
-let appId: string = 'com.example.******_******/******5t5CoBM=';
-browser.getPolicies(wantTemp, appId).then((result) => {
-  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getpolicies-1"></a>
 
 ## getPolicies
 
@@ -127,4 +110,21 @@ Obtains the policy of the specified browser. This API uses a promise to return t
 
 **Examples**
 
-See [getPolicies](#getpolicies)
+```TypeScript
+import { browser } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace the value of appId with the specified application ID of the browser.
+let appId: string = 'com.example.******_******/******5t5CoBM=';
+browser.getPolicies(wantTemp, appId).then((result) => {
+  console.info(`Succeeded in getting browser policies, result : ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get browser policies. Code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # MouseButton
 
+```TypeScript
+declare enum MouseButton
+```
+
 模拟注入的鼠标按钮。
 
 **起始版本：** 10

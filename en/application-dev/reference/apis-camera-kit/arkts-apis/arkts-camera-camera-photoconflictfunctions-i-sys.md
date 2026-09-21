@@ -1,5 +1,9 @@
 # PhotoConflictFunctions (System API)
 
+```TypeScript
+interface PhotoConflictFunctions extends ZoomQuery, MacroQuery
+```
+
 Photo Conflict Functions object.
 
 **Inheritance/Implementation:** PhotoConflictFunctions extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md), [MacroQuery](arkts-camera-camera-macroquery-i.md)

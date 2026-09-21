@@ -1,5 +1,9 @@
 # SubscribeInfo（系统接口）
 
+```TypeScript
+export interface SubscribeInfo
+```
+
 订阅信息。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # EapMethod
 
+```TypeScript
+enum EapMethod
+```
+
 Enumerates the EAP authentication methods.
 
 > **NOTE:** 

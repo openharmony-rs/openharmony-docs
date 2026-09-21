@@ -1,5 +1,9 @@
 # TextSelectableMode
 
+```TypeScript
+declare enum TextSelectableMode
+```
+
 Type of text selectable.
 
 @enum {number}

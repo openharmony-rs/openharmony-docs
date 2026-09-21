@@ -1,5 +1,9 @@
 # CalendarConfig
 
+```TypeScript
+interface CalendarConfig
+```
+
 Describes the calendar configuration information.
 
 **Since:** 10

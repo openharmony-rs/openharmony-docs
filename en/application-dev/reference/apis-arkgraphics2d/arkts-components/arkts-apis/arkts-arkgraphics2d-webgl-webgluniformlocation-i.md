@@ -1,5 +1,9 @@
 # WebGLUniformLocation
 
+```TypeScript
+interface WebGLUniformLocation
+```
+
 WebGL 1.0
 
 **Since:** 7

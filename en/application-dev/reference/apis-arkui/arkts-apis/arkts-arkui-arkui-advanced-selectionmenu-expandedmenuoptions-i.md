@@ -1,10 +1,14 @@
 # ExpandedMenuOptions
 
+```TypeScript
+export interface ExpandedMenuOptions extends MenuItemOptions
+```
+
 Describes the expanded drop-down menu options.
 
-Inherits from [MenuItemOptions](../arkts-components/arkts-arkui-menuitemoptions-i.md).
+Inherits from [MenuItemOptions](../arkts-components/arkts-arkui-menuitem-comp-menuitemoptions-i.md).
 
-**Inheritance/Implementation:** ExpandedMenuOptions extends [MenuItemOptions](../arkts-components/arkts-arkui-menuitemoptions-i.md)
+**Inheritance/Implementation:** ExpandedMenuOptions extends [MenuItemOptions](../arkts-components/arkts-arkui-menuitem-comp-menuitemoptions-i.md)
 
 **Since:** 11
 

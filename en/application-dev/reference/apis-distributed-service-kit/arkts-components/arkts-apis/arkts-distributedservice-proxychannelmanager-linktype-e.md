@@ -1,5 +1,9 @@
 # LinkType
 
+```TypeScript
+enum LinkType
+```
+
 Enumerates the link types.
 
 **Since:** 20

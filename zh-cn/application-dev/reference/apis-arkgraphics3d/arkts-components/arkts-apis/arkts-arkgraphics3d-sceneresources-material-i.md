@@ -1,5 +1,9 @@
 # Material
 
+```TypeScript
+export interface Material extends SceneResource
+```
+
 材质类型，继承自SceneResource。
 
 @extends SceneResource @interface Material

@@ -1,5 +1,9 @@
 # Matrix2D
 
+```TypeScript
+export class Matrix2D
+```
+
 2D transformation matrix, supporting rotation, translation, and scaling of the X-axis and Y-axis
 
 **Since:** 11

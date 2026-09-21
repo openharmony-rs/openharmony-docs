@@ -69,47 +69,8 @@ bundleManager.addDisallowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
-
-bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
-  if (err) {
-    console.error(`Failed to add disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in adding disallowed install bundles');
-});
-```
-
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
-
-bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100).then(() => {
-  console.info('Succeeded in adding disallowed install bundles');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to add disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="adddisallowedinstallbundles-1"></a>
 
 ## addDisallowedInstallBundles
 
@@ -154,8 +115,29 @@ Adds the applications that cannot be installed by the user specified by **userId
 
 **Examples**
 
-See [addDisallowedInstallBundles](#adddisallowedinstallbundles)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
+
+bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100, (err) => {
+  if (err) {
+    console.error(`Failed to add disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in adding disallowed install bundles');
+});
+```
+
+
+<a id="adddisallowedinstallbundles-2"></a>
 
 ## addDisallowedInstallBundles
 
@@ -205,4 +187,22 @@ Adds the applications that are not allowed to be installed by the current or spe
 
 **Examples**
 
-See [addDisallowedInstallBundles](#adddisallowedinstallbundles)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
+
+bundleManager.addDisallowedInstallBundles(wantTemp, appIds, 100).then(() => {
+  console.info('Succeeded in adding disallowed install bundles');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add disallowed install bundles. Code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # ConstraintSourceType（系统接口）
 
+```TypeScript
+enum ConstraintSourceType
+```
+
 表示约束来源类型的枚举。
 
 **起始版本：** 9

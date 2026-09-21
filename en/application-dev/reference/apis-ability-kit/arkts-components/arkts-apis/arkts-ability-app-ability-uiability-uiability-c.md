@@ -1,5 +1,9 @@
 # UIAbility
 
+```TypeScript
+declare class UIAbility extends Ability
+```
+
 Application component that has the UI. It provides lifecycle callbacks such as component creation, destruction, and foreground/background switching, and supports background communication.
 
 **Inheritance/Implementation:** UIAbility extends [Ability](arkts-ability-app-ability-ability-ability-c.md)
@@ -134,8 +138,7 @@ export default class MyAbility extends UIAbility {
 ## onContinue
 
 ```TypeScript
-onContinue(wantParam: Record<string, Object>):
-    AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>
+onContinue(wantParam: Record<string, Object>):AbilityConstant.OnContinueResult | Promise<AbilityConstant.OnContinueResult>
 ```
 
 Called when a UIAbility is to be migrated across devices. You can save service data to be migrated.
@@ -168,12 +171,42 @@ Called when a UIAbility is to be migrated across devices. You can save service d
 
 **Examples**
 
-```TypeScript
 The following is an example of saving data using a synchronous API during application migration:
-```
 
 ```TypeScript
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class MyUIAbility extends UIAbility {
+  onContinue(wantParam: Record<string, Object>) {
+    console.info('onContinue');
+    wantParam['myData'] = 'my1234567'; // Save the business data to be migrated.
+    return AbilityConstant.OnContinueResult.AGREE;
+  }
+}
+```
+
 The following is an example of saving data using an asynchronous API during application migration:
+
+```TypeScript
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class MyUIAbility extends UIAbility {
+  async setWant(wantParams: Record<string, Object>) {
+    console.info('setWant start');
+    for (let time = 0; time < 1000; ++time) {
+      wantParams[time] = time;
+    }
+    console.info('setWant end');
+  }
+
+  async onContinue(wantParams: Record<string, Object>) {
+    console.info('onContinue');
+    // Save the data to be migrated asynchronously.
+    return this.setWant(wantParams).then(() => {
+      return AbilityConstant.OnContinueResult.AGREE;
+    });
+  }
+}
 ```
 
 ## onCreate
@@ -242,12 +275,32 @@ This API returns the result synchronously or uses a promise to return the result
 
 **Examples**
 
-```TypeScript
 A synchronous callback example is as follows:
-```
 
 ```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class MyUIAbility extends UIAbility {
+  onDestroy() {
+    hilog.info(0x0000, 'testTag', `onDestroy`);
+    // Call the synchronous function.
+  }
+}
+```
+
 A promise asynchronous callback example is as follows:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class MyUIAbility extends UIAbility {
+  async onDestroy() {
+    hilog.info(0x0000, 'testTag', `onDestroy`);
+    // Call the asynchronous function.
+  }
+}
 ```
 
 ## onDidBackground
@@ -340,9 +393,7 @@ This API returns the result synchronously and does not support asynchronous call
 
 **Examples**
 
-```TypeScript
 For details, see [onWillForeground](#onwillforeground).
-```
 
 ## onDump
 
@@ -821,7 +872,7 @@ export default class EntryAbility extends UIAbility {
 onWindowStageCreate(windowStage: window.WindowStage): void
 ```
 
-Called when a [WindowStage](../../apis-arkui/arkts-apis/arkts-arkui-window-n.md) instance is created. You can load a page through the WindowStage instance in this callback.
+The system triggers this callback after a [WindowStage](../../apis-arkui/arkts-apis/arkts-arkui-window-n.md) instance is created. Developers can load pages through the WindowStage instance in this callback.
 
 **Since:** 9
 

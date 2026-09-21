@@ -1,5 +1,9 @@
 # VpnObserver
 
+```TypeScript
+export interface VpnObserver
+```
+
 VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md)创建VPN连接对象。
 
 **起始版本：** 26.0.0

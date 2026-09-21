@@ -4,8 +4,7 @@
 type VolumeGroupInfos = Array<Readonly<VolumeGroupInfo>>
 ```
 
-@typedef { Array&lt;Readonly&lt;VolumeGroupInfo&gt;  
-> } VolumeGroupInfos
+数组类型，[VolumeGroupInfo](arkts-audio-audio-volumegroupinfo-i-sys.md)数组，只读。
 
 **起始版本：** 9
 

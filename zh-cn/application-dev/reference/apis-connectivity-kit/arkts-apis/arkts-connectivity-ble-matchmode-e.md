@@ -1,5 +1,9 @@
 # MatchMode
 
+```TypeScript
+enum MatchMode
+```
+
 枚举，硬件过滤匹配模式。
 
 **起始版本：** 10

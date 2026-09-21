@@ -1,5 +1,9 @@
 # MediaHighlightAlbumChangeRequest (System API)
 
+```TypeScript
+class MediaHighlightAlbumChangeRequest extends MediaAnalysisAlbumChangeRequest
+```
+
 Provides APIs for managing the media album change request. It inherits from [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md).
 
 **Inheritance/Implementation:** MediaHighlightAlbumChangeRequest extends [MediaAnalysisAlbumChangeRequest](arkts-medialibrary-photoaccesshelper-mediaanalysisalbumchangerequest-c-sys.md)

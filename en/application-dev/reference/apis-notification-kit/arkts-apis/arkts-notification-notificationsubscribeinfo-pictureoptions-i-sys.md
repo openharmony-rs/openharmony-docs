@@ -1,5 +1,9 @@
 # PictureOptions (System API)
 
+```TypeScript
+export interface PictureOptions
+```
+
 Describes the image options of the live notification.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # UserStatusData（系统接口）
 
+```TypeScript
+export interface UserStatusData
+```
+
 表示用户状态数据。
 
 **起始版本：** 26.0.0

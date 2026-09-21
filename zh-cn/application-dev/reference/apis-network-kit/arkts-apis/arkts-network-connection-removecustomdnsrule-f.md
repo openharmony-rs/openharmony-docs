@@ -58,17 +58,8 @@ connection.removeCustomDnsRule("xxxx", (error: BusinessError, data: void) => {
 })
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.removeCustomDnsRule("xxxx").then(() => {
-    console.info("success");
-}).catch((error: BusinessError) => {
-    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
-})
-```
-
+<a id="removecustomdnsrule-1"></a>
 
 ## removeCustomDnsRule
 
@@ -114,4 +105,13 @@ function removeCustomDnsRule(host: string): Promise<void>
 
 **示例**
 
-参见 [removeCustomDnsRule](#removecustomdnsrule)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.removeCustomDnsRule("xxxx").then(() => {
+    console.info("success");
+}).catch((error: BusinessError) => {
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+})
+```

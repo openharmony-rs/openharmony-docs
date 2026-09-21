@@ -1,5 +1,9 @@
 # CertificatePurpose
 
+```TypeScript
+export enum CertificatePurpose
+```
+
 Enumerates the usage of a credential.
 
 **Since:** 22

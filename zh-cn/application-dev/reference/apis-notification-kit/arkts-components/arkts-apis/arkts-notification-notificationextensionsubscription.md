@@ -19,7 +19,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getSubscribeInfo](arkts-notification-notificationextensionsubscription-getsubscribeinfo-f.md) | 获取当前应用的通知扩展订阅信息。使用Promise异步回调。 |
-| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md) | 获取本应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。 |
+| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md#getusergrantedenabledbundles-1) | 获取本应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。 |
 | [isUserGranted](arkts-notification-notificationextensionsubscription-isusergranted-f.md) | 查询“允许获取本机通知”的开关状态。使用Promise异步回调。 |
 | [openSubscriptionSettings](arkts-notification-notificationextensionsubscription-opensubscriptionsettings-f.md) | 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调。 |
 | [openSubscriptionSettingsWithResult](arkts-notification-notificationextensionsubscription-opensubscriptionsettingswithresult-f.md) | 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。 |

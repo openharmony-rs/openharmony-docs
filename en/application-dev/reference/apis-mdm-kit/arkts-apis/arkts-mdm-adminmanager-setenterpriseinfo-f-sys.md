@@ -67,27 +67,8 @@ adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo, (err) => {
 });
 ```
 
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-let enterpriseInfo: adminManager.EnterpriseInfo = {
-  // Replace with actual values.
-  name: 'enterprise name',
-  description: 'enterprise description'
-};
-
-adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo).catch((err: BusinessError) => {
-  console.error(`Failed to set enterprise info. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setenterpriseinfo-1"></a>
 
 ## setEnterpriseInfo
 
@@ -131,4 +112,23 @@ Sets the enterprise information of the device administrator application. This AP
 
 **Examples**
 
-See [setEnterpriseInfo](#setenterpriseinfo)
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let enterpriseInfo: adminManager.EnterpriseInfo = {
+  // Replace with actual values.
+  name: 'enterprise name',
+  description: 'enterprise description'
+};
+
+adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo).catch((err: BusinessError) => {
+  console.error(`Failed to set enterprise info. Code: ${err.code}, message: ${err.message}`);
+});
+```

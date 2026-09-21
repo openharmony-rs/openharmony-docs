@@ -1,5 +1,9 @@
 # BrightnessBlender (System API)
 
+```TypeScript
+interface BrightnessBlender
+```
+
 Brightness blender, used to add a brightness effect to a specified component. Before calling BrightnessBlender, you need to first create a BrightnessBlender instance through createBrightnessBlender.
 
 **Since:** 12

@@ -30,7 +30,7 @@ function isInSandbox(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
@@ -46,18 +46,8 @@ dlpPermission.isInSandbox().then((isInSandbox) => { // 是否在沙箱内。
 });
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.isInSandbox((err, isInSandbox) => {
-  if (err) {
-    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('isInSandbox：', JSON.stringify(isInSandbox));
-  }
-}); // 是否在沙箱内。
-```
-
+<a id="isinsandbox-1"></a>
 
 ## isInSandbox
 
@@ -84,10 +74,20 @@ function isInSandbox(callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.1.0+ |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
 
-参见 [isInSandbox](#isinsandbox)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.isInSandbox((err, isInSandbox) => {
+  if (err) {
+    console.error(`Failed to check sandbox status. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('isInSandbox：', JSON.stringify(isInSandbox));
+  }
+}); // 是否在沙箱内。
+```

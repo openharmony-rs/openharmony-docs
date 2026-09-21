@@ -1,5 +1,9 @@
 # PortraitQuery（系统接口）
 
+```TypeScript
+interface PortraitQuery
+```
+
 Queries portrait parameters.
 
 **起始版本：** 12

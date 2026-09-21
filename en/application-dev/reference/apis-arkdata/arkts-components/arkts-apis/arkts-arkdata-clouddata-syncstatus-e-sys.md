@@ -1,5 +1,9 @@
 # SyncStatus (System API)
 
+```TypeScript
+enum SyncStatus
+```
+
 Enumerates the device-cloud sync task statuses.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # LogLevel
 
+```TypeScript
+enum LogLevel
+```
+
 Enumerates the log levels.
 
 **Since:** 7

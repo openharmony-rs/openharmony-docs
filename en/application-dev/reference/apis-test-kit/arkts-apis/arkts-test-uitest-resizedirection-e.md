@@ -1,5 +1,9 @@
 # ResizeDirection
 
+```TypeScript
+declare enum ResizeDirection
+```
+
 Enumerates the directions in which a window can be resized.
 
 **Since:** 9

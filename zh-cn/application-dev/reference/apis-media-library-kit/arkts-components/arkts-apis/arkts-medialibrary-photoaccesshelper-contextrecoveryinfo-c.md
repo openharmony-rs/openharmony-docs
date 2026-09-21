@@ -1,5 +1,9 @@
 # ContextRecoveryInfo
 
+```TypeScript
+export class ContextRecoveryInfo
+```
+
 介绍退出PhotoPicker的上下文信息。可以在后续的发射中使用的PhotoPicker，以从上一个出口恢复状态。
 
 **起始版本：** 21

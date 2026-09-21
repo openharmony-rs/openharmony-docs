@@ -1,5 +1,9 @@
 # UIAbilityIntentInfo (System API)
 
+```TypeScript
+interface UIAbilityIntentInfo
+```
+
 Describes the information of the UIAbility bound to the [intent developed using a configuration file](../../../application-models/insight-intent-config-development.md).
 
 **Since:** 23

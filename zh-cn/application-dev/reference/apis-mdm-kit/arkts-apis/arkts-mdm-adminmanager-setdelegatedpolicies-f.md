@@ -27,7 +27,7 @@ function setDelegatedPolicies(admin: Want, bundleName: string, policies: Array<s
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| bundleName | string | 是 | 被委托应用包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。 |
+| bundleName | string | 是 | 被委托应用包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md)接口查询应用自身的[BundleInfo](../../apis-ability-kit/arkts-apis/arkts-ability-bundleinfo-i.md)，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。 |
 | policies | Array&lt;string&gt; | 是 | [委托策略列表](../../../mdm/mdm-kit-appendix.md#可委托策略列表)。 |
 
 **错误码：**
@@ -58,23 +58,6 @@ try {
   // 参数需根据实际情况进行替换
   adminManager.setDelegatedPolicies(admin, "com.example.enterprise.xxx", policies);
   console.info('Succeeded in setting delegated policies.');
-} catch (err) {
-  console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { common, Want } from '@kit.AbilityKit';
-
-// 需根据实际情况进行替换
-let bundleName = 'com.example.myapplication';
-let userId = 100;
-let policies: Array<string> = ["disabled_hdc"];
-
-try {
-  adminManager.setDelegatedPolicies(bundleName, userId, policies);
-  console.info(`Succeeded in setting delegated policies.`);
 } catch (err) {
   console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
 }

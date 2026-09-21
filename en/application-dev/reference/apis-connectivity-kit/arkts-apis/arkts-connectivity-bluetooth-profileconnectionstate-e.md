@@ -1,5 +1,9 @@
 # ProfileConnectionState
 
+```TypeScript
+enum ProfileConnectionState
+```
+
 The enum of profile connection state.
 
 **Since:** 7

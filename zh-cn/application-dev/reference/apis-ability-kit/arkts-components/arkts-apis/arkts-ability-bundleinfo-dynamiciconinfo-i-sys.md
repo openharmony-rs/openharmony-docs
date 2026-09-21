@@ -1,5 +1,9 @@
 # DynamicIconInfo（系统接口）
 
+```TypeScript
+export interface DynamicIconInfo
+```
+
 应用的动态图标信息。
 
 **起始版本：** 20

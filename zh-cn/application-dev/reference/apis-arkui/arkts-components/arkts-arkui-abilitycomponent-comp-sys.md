@@ -14,7 +14,7 @@ AbilityComponent(value: { want: import('../api/@ohos.app.ability.Want').default 
 
 **废弃版本：** 10
 
-**替代接口：** UIExtensionComponentInterface
+**替代接口：** [UIExtensionComponentInterface](arkts-arkui-uiextensioncomponent-comp-sys.md#uiextensioncomponentinterface)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

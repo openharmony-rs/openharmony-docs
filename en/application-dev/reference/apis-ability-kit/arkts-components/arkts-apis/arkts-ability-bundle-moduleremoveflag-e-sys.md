@@ -1,5 +1,9 @@
 # ModuleRemoveFlag (System API)
 
+```TypeScript
+export enum ModuleRemoveFlag
+```
+
 Flag indicating whether a module is associated with a widget or shortcut when it is removed.
 
 **Since:** 9

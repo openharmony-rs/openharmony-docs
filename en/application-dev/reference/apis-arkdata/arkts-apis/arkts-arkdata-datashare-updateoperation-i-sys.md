@@ -1,5 +1,9 @@
 # UpdateOperation (System API)
 
+```TypeScript
+interface UpdateOperation
+```
+
 Represents the batch update operation information.
 
 **Since:** 12

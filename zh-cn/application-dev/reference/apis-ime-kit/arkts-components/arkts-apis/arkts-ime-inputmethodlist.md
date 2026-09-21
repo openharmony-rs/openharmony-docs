@@ -36,7 +36,7 @@
 
 ## 属性
 
-<br><br>不支持通用属性<br><br>
+<br><br>不支持[通用属性](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common)<br><br>
 
 ## 子组件
 
@@ -48,13 +48,13 @@
 
  | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |  
  | -------- | -------- | -------- | -------- | -------- |  
-| [controller](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md) | [CustomDialogController](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md) | 是 | - | 输入法切换列表弹窗控制器，用于控制弹窗的打开和关闭。<br>使用场景：当需要通过代码控制输入法切换列表弹窗的显示与隐藏时，必须提供此参数。<br>使用后效果：设置后，可通过调用controller的open()方法打开弹窗，close()方法关闭弹窗。<br>说明：需先创建CustomDialogController实例并关联InputMethodListDialog，再通过controller.open()打开弹窗。 |
+| [controller](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md) | [CustomDialogController](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md) | 是 | - | 输入法切换列表弹窗控制器，用于控制弹窗的打开和关闭。<br>使用场景：当需要通过代码控制输入法切换列表弹窗的显示与隐藏时，必须提供此参数。<br>使用后效果：设置后，可通过调用controller的[open()](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#open)方法打开弹窗，[close()](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md#close)方法关闭弹窗。<br>说明：需先创建CustomDialogController实例并关联InputMethodListDialog，再通过controller.open()打开弹窗。 |
 
  | patternOptions | [PatternOptions](arkts-ime-inputmethodlist-patternoptions-i.md) | 否 | - | 输入法模式选项配置。仅系统预置输入法支持。<br>使用场景：系统预置输入法需要支持模式切换功能（如单手模式、全屏模式等）时传入此参数，配置模式图标资源和切换回调。<br>默认值：不传入时，控件仅显示输入法列表，不提供模式切换功能。<br>说明：三方输入法应用不可使用此参数。 |<br><br>
 
 ## 事件
 
-<br><br>不支持通用事件
+<br><br>不支持[通用事件](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common)
 
 ## 导入模块
 

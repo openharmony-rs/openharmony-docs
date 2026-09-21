@@ -1,5 +1,9 @@
 # Pattern
 
+```TypeScript
+enum Pattern
+```
+
 剪贴板支持检测的模式类型。
 
 **起始版本：** 13

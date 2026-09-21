@@ -1,5 +1,9 @@
 # NotificationProgress
 
+```TypeScript
+export interface NotificationProgress
+```
+
 描述通知进度，用于在实况窗中展示进度条信息。
 
 > **说明：** 

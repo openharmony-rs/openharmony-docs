@@ -1,5 +1,9 @@
 # UserAuthWidgetMgr（系统接口）
 
+```TypeScript
+interface UserAuthWidgetMgr
+```
+
 身份认证组件管理器。用于将自定义身份认证控件注册到UserAuthWidgetMgr中进行统一管理和调度。自定义身份认证控件可接收来自用户认证框架的命令并执行相应操作。
 
 **起始版本：** 10

@@ -26,7 +26,7 @@
 
 | Name | Description |
 | --- | --- |
-| [Map](arkts-libes2015collection-p.md) |  |
-| [Set](arkts-libes2015collection-p.md) |  |
-| [WeakMap](arkts-libes2015collection-p.md) |  |
-| [WeakSet](arkts-libes2015collection-p.md) |  |
+| [Map](arkts-lib-es2015-collection-p.md) |  |
+| [Set](arkts-lib-es2015-collection-p.md) |  |
+| [WeakMap](arkts-lib-es2015-collection-p.md) |  |
+| [WeakSet](arkts-lib-es2015-collection-p.md) |  |

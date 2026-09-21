@@ -1,5 +1,9 @@
 # CustomSpanDrawInfo
 
+```TypeScript
+declare interface CustomSpanDrawInfo
+```
+
 定义自定义绘制Span的绘制信息接口。
 
 **起始版本：** 12

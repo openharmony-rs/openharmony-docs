@@ -1,5 +1,9 @@
 # EffectiveMode (System API)
 
+```TypeScript
+export enum EffectiveMode
+```
+
 Enumerates effective modes.
 
 **Since:** 9

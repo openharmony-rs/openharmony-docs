@@ -1,5 +1,9 @@
 # ServiceExtensionAbility（系统接口）
 
+```TypeScript
+declare class ServiceExtensionAbility
+```
+
 ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台服务创建、销毁、连接、断开等生命周期回调。
 
 **起始版本：** 9
@@ -97,8 +101,30 @@ class ServiceExt extends ServiceExtensionAbility {
 }
 ```
 
-```TypeScript
 如果生成返回值RemoteObject依赖一个异步接口，可以使用异步生命周期：
+
+```TypeScript
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+
+class StubTest extends rpc.RemoteObject{
+  constructor(des: string) {
+    super(des);
+  }
+  onConnect(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+  }
+}
+async function getDescriptor() {
+  // 调用异步函数...
+  return "asyncTest"
+}
+class ServiceExt extends ServiceExtensionAbility {
+  async onConnect(want: Want) {
+    console.info(`onConnect , want: ${want.abilityName}`);
+    let descriptor = await getDescriptor();
+    return new StubTest(descriptor);
+  }
+}
 ```
 
 ## onCreate
@@ -187,12 +213,29 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 
 **示例**
 
-```TypeScript
 同步回调示例如下：
-```
 
 ```TypeScript
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+
+class ServiceExt extends ServiceExtensionAbility {
+  onDisconnect(want: Want) {
+    console.info(`onDisconnect, want: ${want.abilityName}`);
+  }
+}
+```
+
 Promise异步回调示例如下：
+
+```TypeScript
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+
+class ServiceExt extends ServiceExtensionAbility {
+  async onDisconnect(want: Want) {
+    console.info(`onDisconnect, want: ${want.abilityName}`);
+    // 调用异步函数...
+  }
+}
 ```
 
 ## onDump

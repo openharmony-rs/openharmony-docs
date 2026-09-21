@@ -37,6 +37,20 @@ function off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callba
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let bundleName: string = 'ohos.samples.FormApplication';
+
+let callback = (data: formInfo.RunningFormInfo) => {
+  console.info(`a new form added, formId: ${data.formId}`);
+}
+
+formObserver.off('formAdd', bundleName, callback);
+```
+
 
 ## off('formRemove')
 
@@ -68,6 +82,20 @@ function off(type: 'formRemove', hostBundleName?: string, observerCallback?: Cal
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let bundleName: string = 'ohos.samples.FormApplication';
+
+let callback = (data: formInfo.RunningFormInfo) => {
+  console.info(`form deleted, formId: ${data.formId}`);
+}
+
+formObserver.off('formRemove', bundleName, callback);
+```
 
 
 ## off('notifyVisible')
@@ -105,6 +133,22 @@ function off(
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let bundleName: string = 'ohos.samples.FormApplication';
+
+let callback = (data: formInfo.RunningFormInfo[]) => {
+  data.forEach(item => {
+    console.info(`form change visibility, formId: ${item.formId}`);
+  });
+}
+
+formObserver.off('notifyVisible', bundleName, callback);
+```
+
 
 ## off('notifyInvisible')
 
@@ -141,6 +185,22 @@ function off(
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let bundleName: string = 'ohos.samples.FormApplication';
+
+let callback = (data: formInfo.RunningFormInfo[]) => {
+  data.forEach(item => {
+    console.info(`form change invisibility, formId: ${item.formId}`);
+  });
+}
+
+formObserver.off('notifyInvisible', bundleName, callback);
+```
+
 
 ## off('router')
 
@@ -172,6 +232,18 @@ function off(type: 'router', hostBundleName?: string, observerCallback?: Callbac
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let hostBundleName: string = 'ohos.samples.FormApplication';
+let callback = (data: formInfo.RunningFormInfo) => {
+  console.info(`Unregister form router event Listening. ID: ${data.formId}`);
+};
+formObserver.off('router', hostBundleName, callback);
+```
 
 
 ## off('message')
@@ -205,6 +277,18 @@ function off(type: 'message', hostBundleName?: string, observerCallback?: Callba
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let hostBundleName: string = 'ohos.samples.FormApplication';
+let callback = (data: formInfo.RunningFormInfo) => {
+  console.info(`Unregister form Message event Listening. ID: ${data.formId}`);
+};
+formObserver.off('message', hostBundleName, callback);
+```
+
 
 ## off('call')
 
@@ -236,3 +320,15 @@ function off(type: 'call', hostBundleName?: string, observerCallback?: Callback<
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+
+let hostBundleName: string = 'ohos.samples.FormApplication';
+let callback = (data: formInfo.RunningFormInfo) => {
+  console.info(`Unregister form Call event Listening. ID: ${data.formId}`);
+};
+formObserver.off('call', hostBundleName, callback);
+```

@@ -1,5 +1,9 @@
 # ColorFringeSettings
 
+```TypeScript
+export interface ColorFringeSettings
+```
+
 色晕设置。当RenderingPipelineType为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
 @typedef ColorFringeSettings

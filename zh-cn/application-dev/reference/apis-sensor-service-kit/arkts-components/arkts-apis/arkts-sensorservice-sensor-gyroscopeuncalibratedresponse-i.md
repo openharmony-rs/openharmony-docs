@@ -1,5 +1,9 @@
 # GyroscopeUncalibratedResponse
 
+```TypeScript
+interface GyroscopeUncalibratedResponse extends Response
+```
+
 未校准陀螺仪传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
 **继承/实现关系：** GyroscopeUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

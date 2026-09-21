@@ -1,5 +1,9 @@
 # ReadStream
 
+```TypeScript
+declare class ReadStream extends stream.Readable
+```
+
 Defines a readable stream. You need to use [fileIo.createReadStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatereadstream12) to create a **ReadStream** instance, which is inherited from [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readableoptions-i.md).
 
 The data obtained by **ReadStream** is a decoded string. Currently, only the UTF-8 format is supported.

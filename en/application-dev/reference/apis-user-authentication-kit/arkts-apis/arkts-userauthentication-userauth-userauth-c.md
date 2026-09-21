@@ -1,5 +1,9 @@
 # UserAuth
 
+```TypeScript
+class UserAuth
+```
+
 Provides APIs for managing the **UserAuth** object.
 
 **Since:** 8

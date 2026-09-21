@@ -1,5 +1,9 @@
 # SystemLoadLevel
 
+```TypeScript
+export enum SystemLoadLevel
+```
+
 系统负载融合档位。
 
 **起始版本：** 12

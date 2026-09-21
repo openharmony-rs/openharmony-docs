@@ -1,5 +1,9 @@
 # WindowSnapshotAnimationConfig
 
+```TypeScript
+interface WindowSnapshotAnimationConfig
+```
+
 窗口截图动效的配置。
 
 **起始版本：** 26.0.0

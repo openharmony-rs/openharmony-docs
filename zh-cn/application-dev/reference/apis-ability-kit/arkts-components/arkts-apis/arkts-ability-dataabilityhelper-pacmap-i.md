@@ -1,5 +1,9 @@
 # PacMap
 
+```TypeScript
+export interface PacMap
+```
+
 用于存储数据的PacMap类型。
 
 **起始版本：** 7

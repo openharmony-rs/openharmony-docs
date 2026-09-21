@@ -1,5 +1,9 @@
 # WifiCapability
 
+```TypeScript
+enum WifiCapability
+```
+
 Wi-Fi功能。
 
 **起始版本：** 26.0.0

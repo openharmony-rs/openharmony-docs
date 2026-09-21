@@ -2,7 +2,7 @@
 
 安全控件的粘贴控件。用户点击粘贴控件，应用可以临时获取读取剪贴板权限。<br>**说明**</br> <ul><li>
 
-## 核心枚举类型</li> <li>**[PasteIconStyle](arkts-arkui-pasteiconstyle-e.md)：** 粘贴控件图标风格枚举，用于指定控件展示的图标风格。</li> <li>**[PasteDescription](arkts-arkui-pastedescription-e.md)：** 粘贴控件文本描述枚举，用于指定控件展示的文本描述。</li> <li>**[PasteButtonOnClickResult](arkts-arkui-pastebuttononclickresult-e.md)：** 粘贴控件点击结果枚举，用于表示点击后授权是否成功。</li> <li>###### 核心接口类型</li> <li>**[PasteButtonOptions](arkts-arkui-pastebuttonoptions-i.md)：** 粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。</li> <li>**[PasteButtonCallback](arkts-arkui-pastebuttoncallback-t.md)：** 粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。</li> <li>###### 子组件</li> <li>不支持</li></ul>
+## 核心枚举类型</li> <li>**[PasteIconStyle](arkts-arkui-pastebutton-comp-pasteiconstyle-e.md)：** 粘贴控件图标风格枚举，用于指定控件展示的图标风格。</li> <li>**[PasteDescription](arkts-arkui-pastebutton-comp-pastedescription-e.md)：** 粘贴控件文本描述枚举，用于指定控件展示的文本描述。</li> <li>**[PasteButtonOnClickResult](arkts-arkui-pastebutton-comp-pastebuttononclickresult-e.md)：** 粘贴控件点击结果枚举，用于表示点击后授权是否成功。</li> <li>###### 核心接口类型</li> <li>**[PasteButtonOptions](arkts-arkui-pastebutton-comp-pastebuttonoptions-i.md)：** 粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。</li> <li>**[PasteButtonCallback](arkts-arkui-pastebutton-comp-pastebuttoncallback-t.md)：** 粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。</li> <li>###### 子组件</li> <li>不支持</li></ul>
 
 ## PasteButton
 
@@ -40,7 +40,7 @@ PasteButton(options: PasteButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [PasteButtonOptions](arkts-arkui-pastebuttonoptions-i.md) | 是 | 粘贴控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br>建议至少显式设置icon或text中的一项，以便用户清楚识别控件用途。<br>若icon和text都未传入，则options不生效，控件显示为默认样式：<br>{<br>icon: PasteIconStyle.LINES,<br>text: PasteDescription.PASTE,<br>buttonType: ButtonType.Capsule <br>} |
+| options | [PasteButtonOptions](arkts-arkui-pastebutton-comp-pastebuttonoptions-i.md) | 是 | 粘贴控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br>建议至少显式设置icon或text中的一项，以便用户清楚识别控件用途。<br>若icon和text都未传入，则options不生效，控件显示为默认样式：<br>{<br>icon: PasteIconStyle.LINES,<br>text: PasteDescription.PASTE,<br>buttonType: ButtonType.Capsule <br>} |
 
 ## 汇总
 
@@ -48,21 +48,21 @@ PasteButton(options: PasteButtonOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [PasteButtonOptions](arkts-arkui-pastebuttonoptions-i.md) | 用于设置粘贴控件的图标、文本、按钮类型等属性。 |
+| [PasteButtonOptions](arkts-arkui-pastebutton-comp-pastebuttonoptions-i.md) | 用于设置粘贴控件的图标、文本、按钮类型等属性。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [PasteButtonCallback](arkts-arkui-pastebuttoncallback-t.md) | 点击粘贴控件触发该回调。 |
+| [PasteButtonCallback](arkts-arkui-pastebutton-comp-pastebuttoncallback-t.md) | 点击粘贴控件触发该回调。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [PasteButtonOnClickResult](arkts-arkui-pastebuttononclickresult-e.md) | 粘贴控件点击后的授权结果。 |
-| [PasteDescription](arkts-arkui-pastedescription-e.md) | 粘贴控件的文本描述。 |
-| [PasteIconStyle](arkts-arkui-pasteiconstyle-e.md) | 粘贴控件的图标风格。 |
+| [PasteButtonOnClickResult](arkts-arkui-pastebutton-comp-pastebuttononclickresult-e.md) | 粘贴控件点击后的授权结果。 |
+| [PasteDescription](arkts-arkui-pastebutton-comp-pastedescription-e.md) | 粘贴控件的文本描述。 |
+| [PasteIconStyle](arkts-arkui-pastebutton-comp-pasteiconstyle-e.md) | 粘贴控件的图标风格。 |
 
 ## 示例
 

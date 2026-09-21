@@ -1,5 +1,9 @@
 # UIExtensionIntentInfo (System API)
 
+```TypeScript
+interface UIExtensionIntentInfo
+```
+
 Describes the information of the UIExtensionAbility bound to the [intent developed using a configuration file](../../../application-models/insight-intent-config-development.md).
 
 **Since:** 23

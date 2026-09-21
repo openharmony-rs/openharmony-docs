@@ -1,5 +1,9 @@
 # FusionFenceScene（系统接口）
 
+```TypeScript
+export enum FusionFenceScene
+```
+
 融合围栏场景。
 
 **起始版本：** 26.0.0

@@ -1,8 +1,12 @@
 # UserRecognitionResult
 
+```TypeScript
+interface UserRecognitionResult
+```
+
 Defines the user recognition result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -22,11 +26,11 @@ Authentication trust level. Only returned when the status is [MATCH](arkts-usera
 
 **Type:** [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -40,11 +44,11 @@ Recognition status. For details about the values, see [UserRecognitionStatus](ar
 
 **Type:** [UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -58,11 +62,11 @@ ID of the recognized OS user. The value is a non-negative integer.
 
 **Type:** number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -76,10 +80,10 @@ Information about the recognized user.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

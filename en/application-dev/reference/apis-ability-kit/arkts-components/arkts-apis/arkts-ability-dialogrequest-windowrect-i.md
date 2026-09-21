@@ -1,6 +1,10 @@
 # WindowRect
 
-Defines the location attributes of a modal dialog box.
+```TypeScript
+export interface WindowRect
+```
+
+Indicates the attributes of a modal dialog box.
 
 **Since:** 10
 

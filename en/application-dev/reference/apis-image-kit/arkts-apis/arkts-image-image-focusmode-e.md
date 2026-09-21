@@ -1,5 +1,9 @@
 # FocusMode
 
+```TypeScript
+enum FocusMode
+```
+
 Enumerates the focus modes.
 
 **Since:** 23

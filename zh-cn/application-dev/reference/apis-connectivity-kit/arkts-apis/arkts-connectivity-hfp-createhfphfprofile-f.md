@@ -24,7 +24,7 @@ function createHfpHfProfile(): HandsFreeHfProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| HandsFreeHfProfile | 返回HF实例，可用于获取和其他设备间的蓝牙通话音频连接状态等操作。 |
+| [HandsFreeHfProfile](arkts-connectivity-hfp-handsfreehfprofile-i-sys.md) | 返回HF实例，可用于获取和其他设备间的蓝牙通话音频连接状态等操作。 |
 
 **错误码：**
 

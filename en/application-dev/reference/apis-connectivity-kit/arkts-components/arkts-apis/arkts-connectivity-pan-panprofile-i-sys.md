@@ -1,5 +1,9 @@
 # PanProfile
 
+```TypeScript
+interface PanProfile extends BaseProfile
+```
+
 Manager pan host profile.
 
 **Inheritance/Implementation:** PanProfile extends [BaseProfile](arkts-connectivity-pan-baseprofile-t.md)

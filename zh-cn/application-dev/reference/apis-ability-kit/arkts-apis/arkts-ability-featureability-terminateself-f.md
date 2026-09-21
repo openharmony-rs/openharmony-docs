@@ -39,18 +39,8 @@ featureAbility.terminateSelf(
 )
 ```
 
-```TypeScript
-import { featureAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 停止当前的Ability
-featureAbility.terminateSelf().then(() => {
-  console.info('==========================>terminateSelf=======================>');
-}).catch((error: BusinessError) => {
-  console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
-});
-```
-
+<a id="terminateself-1"></a>
 
 ## terminateSelf
 
@@ -74,4 +64,14 @@ function terminateSelf(): Promise<void>
 
 **示例**
 
-参见 terminateSelf
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 停止当前的Ability
+featureAbility.terminateSelf().then(() => {
+  console.info('==========================>terminateSelf=======================>');
+}).catch((error: BusinessError) => {
+  console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
+});
+```

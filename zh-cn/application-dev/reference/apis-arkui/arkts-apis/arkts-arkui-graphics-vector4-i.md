@@ -1,5 +1,9 @@
 # Vector4
 
+```TypeScript
+interface Vector4
+```
+
 用于表示包含x、y、z、w四个值的向量。
 
 **起始版本：** 26.0.0

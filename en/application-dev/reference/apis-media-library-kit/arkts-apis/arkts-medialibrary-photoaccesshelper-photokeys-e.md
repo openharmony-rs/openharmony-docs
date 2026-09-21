@@ -1,5 +1,9 @@
 # PhotoKeys
 
+```TypeScript
+enum PhotoKeys
+```
+
 Defines the key information about an image or video file.
 
 **Since:** 10

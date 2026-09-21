@@ -1,5 +1,9 @@
 # NotificationKey
 
+```TypeScript
+export interface NotificationKey
+```
+
 Notification key.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # AuthParam（系统接口）
 
+```TypeScript
+interface AuthParam
+```
+
 认证参数。
 
 **起始版本：** 7

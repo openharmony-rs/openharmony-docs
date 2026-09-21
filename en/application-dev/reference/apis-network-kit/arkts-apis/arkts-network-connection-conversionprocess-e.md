@@ -1,5 +1,9 @@
 # ConversionProcess
 
+```TypeScript
+export enum ConversionProcess
+```
+
 Enumerates the parameters of the ASCII/Unicode transcoding process.
 
 **Since:** 23

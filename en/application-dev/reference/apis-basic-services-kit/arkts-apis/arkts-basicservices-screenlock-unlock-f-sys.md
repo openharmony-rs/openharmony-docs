@@ -49,16 +49,8 @@ screenLock.unlock((err: BusinessError, data: Boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-screenLock.unlock().then((data: Boolean) => {
-  console.info(`Succeeded in unlocking the screen. result: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to unlock the screen, Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="unlock-1"></a>
 
 ## unlock
 
@@ -90,4 +82,12 @@ Unlock the screen.
 
 **Examples**
 
-See [unlock](#unlock)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.unlock().then((data: Boolean) => {
+  console.info(`Succeeded in unlocking the screen. result: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to unlock the screen, Code: ${err.code}, message: ${err.message}`);
+});
+```

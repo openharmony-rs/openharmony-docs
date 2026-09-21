@@ -1,5 +1,9 @@
 # AdvertiseSetting
 
+```TypeScript
+interface AdvertiseSetting
+```
+
 描述蓝牙低功耗设备发送广播的参数。
 
 从API version 9开始支持，从API version 10开始废弃。

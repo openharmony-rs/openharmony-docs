@@ -1,5 +1,9 @@
 # CameraStatus
 
+```TypeScript
+enum CameraStatus
+```
+
 Enumerates the camera statuses.
 
 **Since:** 10

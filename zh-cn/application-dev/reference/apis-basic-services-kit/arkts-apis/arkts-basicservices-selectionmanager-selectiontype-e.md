@@ -1,5 +1,9 @@
 # SelectionType
 
+```TypeScript
+enum SelectionType
+```
+
 定义划词方式枚举值。
 
 | 名称 | 值 | 说明 |  

@@ -14,7 +14,7 @@ function updateSpatialActionEnableStatus(event: number): void
 
 Updates the awareness enabling event when the app subscribes to the function.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.vehicle.MMA_SPATIALACTION
 

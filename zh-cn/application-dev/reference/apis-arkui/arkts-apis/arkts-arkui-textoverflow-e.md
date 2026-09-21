@@ -1,5 +1,9 @@
 # TextOverflow
 
+```TypeScript
+declare enum TextOverflow
+```
+
 Declare how text overflows.
 
 **起始版本：** 7

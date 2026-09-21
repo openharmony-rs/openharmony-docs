@@ -1,5 +1,9 @@
 # AudioHapticPlayerOptions
 
+```TypeScript
+interface AudioHapticPlayerOptions
+```
+
 Describes the options for the audio-haptic player.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Provides KV store configuration.
 
 **Since:** 7

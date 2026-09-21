@@ -1,8 +1,10 @@
 # AudioLoopbackEqualizerPreset
 
-表示返听均衡器类型的枚举。
+```TypeScript
+enum AudioLoopbackEqualizerPreset
+```
 
-@enum { int }
+表示返听均衡器类型的枚举。
 
 **起始版本：** 21
 

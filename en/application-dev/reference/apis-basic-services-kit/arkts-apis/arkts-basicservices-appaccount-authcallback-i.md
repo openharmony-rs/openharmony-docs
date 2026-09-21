@@ -1,5 +1,9 @@
 # AuthCallback
 
+```TypeScript
+interface AuthCallback
+```
+
 Defines authenticator callbacks.
 
 **Since:** 9

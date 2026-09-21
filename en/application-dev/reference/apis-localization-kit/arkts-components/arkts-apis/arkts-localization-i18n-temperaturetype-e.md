@@ -1,5 +1,9 @@
 # TemperatureType
 
+```TypeScript
+export enum TemperatureType
+```
+
 Enumerates temperature units.
 
 **Since:** 18

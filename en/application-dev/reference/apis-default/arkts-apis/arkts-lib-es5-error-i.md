@@ -1,5 +1,9 @@
 # Error
 
+```TypeScript
+interface Error
+```
+
 ## Modules to Import
 
 ```TypeScript

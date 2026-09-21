@@ -14,7 +14,7 @@ function getTrustedDevices(): DeviceNodeInfo[]
 
 Obtains the list of historical trusted devices. Typical use scenarios include querying available target devices before sending data across devices.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.sec.ACCESS_UDID
 

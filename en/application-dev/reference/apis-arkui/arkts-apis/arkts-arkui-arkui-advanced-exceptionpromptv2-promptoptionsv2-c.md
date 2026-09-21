@@ -1,5 +1,9 @@
 # PromptOptionsV2
 
+```TypeScript
+export declare class PromptOptionsV2
+```
+
 Configuration parameter of ExceptionPromptV2. Use @ObservedV2 and @Trace to support deep observation and dynamic refresh of properties.
 
 **Since:** 26.0.0
@@ -144,7 +148,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol icon style of the ExceptionPromptV2, which has higher priority than icon. If this parameter is not set or is set to undefined, the symbol icon is not displayed.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 26.0.0
 

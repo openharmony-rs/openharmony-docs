@@ -1,5 +1,9 @@
 # DisposedRuleConfiguration (System API)
 
+```TypeScript
+export interface DisposedRuleConfiguration
+```
+
 Describes the configurations for setting disposed rules in batches.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # PartialResultType (System API)
 
+```TypeScript
+enum PartialResultType
+```
+
 Provides stream output result type definition.
 
 @enum { int } Constants

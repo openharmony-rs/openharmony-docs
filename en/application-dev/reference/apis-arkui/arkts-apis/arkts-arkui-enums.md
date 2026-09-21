@@ -58,6 +58,7 @@
 | [ImageRepeat](arkts-arkui-imagerepeat-e.md) | ImageRepeat enumeration description |
 | [ImageSize](arkts-arkui-imagesize-e.md) | ImageSize enumeration description |
 | [ImageSpanAlignment](arkts-arkui-imagespanalignment-e.md) | The alignment mode of the image relative to the line height. |
+| [ImmersiveStrategy](arkts-arkui-immersivestrategy-e.md) | Enumerates the immersive strategies for the safe area. |
 | [InputEventInterceptAction](arkts-arkui-inputeventinterceptaction-e.md) | Defines the input event intercept action. |
 | [InputEventSubTypeMask](arkts-arkui-inputeventsubtypemask-e.md) | Defines the input event subtype mask for monitoring. |
 | [InteractionHand](arkts-arkui-interactionhand-e.md) | Enumerates how an input event is triggered. |

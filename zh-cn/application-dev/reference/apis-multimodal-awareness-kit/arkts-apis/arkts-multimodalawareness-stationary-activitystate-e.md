@@ -1,5 +1,9 @@
 # ActivityState
 
+```TypeScript
+enum ActivityState
+```
+
 设备状态返回值。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # HuksCryptoExtensionParams
 
+```TypeScript
+export interface HuksCryptoExtensionParams
+```
+
 定义API中使用的选项。
 
 **起始版本：** 26.0.0

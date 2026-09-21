@@ -1,5 +1,9 @@
 # AxisType
 
+```TypeScript
+declare enum AxisType
+```
+
 Enumerates the axis types for axis events.
 
 **Since:** 22

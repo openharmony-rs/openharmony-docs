@@ -1,5 +1,9 @@
 # GzHeader
 
+```TypeScript
+interface GzHeader
+```
+
 传递从zlib例程中获取的Gzip头部信息。
 
 **起始版本：** 12

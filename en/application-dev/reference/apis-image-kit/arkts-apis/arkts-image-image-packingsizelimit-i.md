@@ -1,5 +1,9 @@
 # PackingSizeLimit
 
+```TypeScript
+interface PackingSizeLimit
+```
+
 Packing image size limit.
 
 **Since:** 26.0.0

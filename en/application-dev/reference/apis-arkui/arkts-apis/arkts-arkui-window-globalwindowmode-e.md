@@ -1,5 +1,9 @@
 # GlobalWindowMode
 
+```TypeScript
+enum GlobalWindowMode
+```
+
 Enumerates the window modes.
 
 **Since:** 20

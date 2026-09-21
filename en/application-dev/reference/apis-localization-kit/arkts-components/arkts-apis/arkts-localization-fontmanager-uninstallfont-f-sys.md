@@ -26,7 +26,7 @@ Uninstalls an installed font file from the system font library by font name. Thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fullName | string | Yes | Name of the font to be uninstalled. You can open the .ttf or .ttc font file to obtain the name.<br>The font name is case-sensitive. Ensure that it exactly matches the actual font name. |
+| fullName | string | Yes | Name of the font to be uninstalled. You can open the .ttf,ttc or .otf font file to obtain the name.<br>The font name is case-sensitive. Ensure that it exactly matches the actual font name. |
 
 **Return value:**
 

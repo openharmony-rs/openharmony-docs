@@ -1,5 +1,9 @@
 # WifiLinkedInfo
 
+```TypeScript
+interface WifiLinkedInfo
+```
+
 Wi-Fi连接信息。
 
 **起始版本：** 9

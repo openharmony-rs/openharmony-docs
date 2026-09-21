@@ -1,5 +1,9 @@
 # ItemState
 
+```TypeScript
+export declare enum ItemState
+```
+
 定义工具栏子项的当前状态。
 
 **起始版本：** 10

@@ -43,23 +43,6 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 import appManager from '@ohos.application.appManager';
 import { BusinessError } from '@ohos.base';
 
-let bundleName = 'bundleName';
-
-function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
-  if (err) {
-    console.error(`KillProcessesByBundleNameCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
-  } else {
-    console.info(`KillProcessesByBundleNameCallback success, data: ${JSON.stringify(data)}.`);
-  }
-}
-
-appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
-```
-
-```TypeScript
-import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
-
 let bundleName = 'com.example.myapplication';
 appManager.killProcessesByBundleName(bundleName)
   .then((data) => {
@@ -70,6 +53,8 @@ appManager.killProcessesByBundleName(bundleName)
   });
 ```
 
+
+<a id="killprocessesbybundlename-1"></a>
 
 ## killProcessesByBundleName
 
@@ -100,4 +85,19 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 
 **示例**
 
-参见 [killProcessesByBundleName](#killprocessesbybundlename)
+```TypeScript
+import appManager from '@ohos.application.appManager';
+import { BusinessError } from '@ohos.base';
+
+let bundleName = 'bundleName';
+
+function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
+  if (err) {
+    console.error(`KillProcessesByBundleNameCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`KillProcessesByBundleNameCallback success, data: ${JSON.stringify(data)}.`);
+  }
+}
+
+appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
+```

@@ -1,5 +1,9 @@
 # WifiDetailState（系统接口）
 
+```TypeScript
+enum WifiDetailState
+```
+
 表示Wi-Fi开关状态的枚举。
 
 **起始版本：** 12

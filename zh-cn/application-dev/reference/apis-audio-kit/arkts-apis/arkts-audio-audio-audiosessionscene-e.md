@@ -1,5 +1,9 @@
 # AudioSessionScene
 
+```TypeScript
+enum AudioSessionScene
+```
+
 枚举音频会话场景。
 
 **起始版本：** 20

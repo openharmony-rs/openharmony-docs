@@ -1,5 +1,9 @@
 # window
 
+```TypeScript
+declare namespace window
+```
+
 Window manager.
 
 **Since:** 6
@@ -18,28 +22,28 @@ import { window } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [createWindow](arkts-arkui-window-createwindow-f.md) | Creates a child window or system window. This API uses an asynchronous callback to return the result. |
-| [createWindow](arkts-arkui-window-createwindow-f.md) | Creates a child window or system window. This API uses a promise to return the result. |
-| [create](arkts-arkui-window-create-f.md) | Creates a child window. This API uses an asynchronous callback to return the result. |
-| [create](arkts-arkui-window-create-f.md) | Creates a child window. This API uses a promise to return the result. |
-| [create](arkts-arkui-window-create-f.md) | Creates a system window. This API uses a promise to return the result. |
-| [create](arkts-arkui-window-create-f.md) | Creates a system window. This API uses an asynchronous callback to return the result. |
-| [find](arkts-arkui-window-find-f.md) | Finds a window based on the ID. This API uses an asynchronous callback to return the result. |
-| [find](arkts-arkui-window-find-f.md) | Finds a window based on the ID. This API uses a promise to return the result. |
+| [createWindow](arkts-arkui-window-createwindow-f.md#createwindow) | Creates a child window or system window. This API uses an asynchronous callback to return the result. |
+| [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1) | Creates a child window or system window. This API uses a promise to return the result. |
+| [create](arkts-arkui-window-create-f.md#create) | Creates a child window. This API uses an asynchronous callback to return the result. |
+| [create](arkts-arkui-window-create-f.md#create-1) | Creates a child window. This API uses a promise to return the result. |
+| [create](arkts-arkui-window-create-f.md#create-2) | Creates a system window. This API uses a promise to return the result. |
+| [create](arkts-arkui-window-create-f.md#create-3) | Creates a system window. This API uses an asynchronous callback to return the result. |
+| [find](arkts-arkui-window-find-f.md#find) | Finds a window based on the ID. This API uses an asynchronous callback to return the result. |
+| [find](arkts-arkui-window-find-f.md#find-1) | Finds a window based on the ID. This API uses a promise to return the result. |
 | [findWindow](arkts-arkui-window-findwindow-f.md) | Finds a window based on the name. |
-| [getTopWindow](arkts-arkui-window-gettopwindow-f.md) | Obtains the top window of the current application. This API uses an asynchronous callback to return the result. |
-| [getTopWindow](arkts-arkui-window-gettopwindow-f.md) | Obtains the top window of the current application. This API uses a promise to return the result. |
-| [getTopWindow](arkts-arkui-window-gettopwindow-f.md) | Obtains the top window of the current application. This API uses a promise to return the result. |
-| [getTopWindow](arkts-arkui-window-gettopwindow-f.md) | Obtains the top window of the current application. This API uses an asynchronous callback to return the result. |
-| [getLastWindow](arkts-arkui-window-getlastwindow-f.md) | Obtains the topmost layer child window of the current application. This API uses an asynchronous callback to return the result. |
-| [getLastWindow](arkts-arkui-window-getlastwindow-f.md) | Obtains the topmost layer child window of the current application. This API uses a promise to return the result. |
+| [getTopWindow](arkts-arkui-window-gettopwindow-f.md#gettopwindow) | Obtains the top window of the current application. This API uses an asynchronous callback to return the result. |
+| [getTopWindow](arkts-arkui-window-gettopwindow-f.md#gettopwindow-1) | Obtains the top window of the current application. This API uses a promise to return the result. |
+| [getTopWindow](arkts-arkui-window-gettopwindow-f.md#gettopwindow-2) | Obtains the top window of the current application. This API uses a promise to return the result. |
+| [getTopWindow](arkts-arkui-window-gettopwindow-f.md#gettopwindow-3) | Obtains the top window of the current application. This API uses an asynchronous callback to return the result. |
+| [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow) | Obtains the topmost layer child window of the current application. This API uses an asynchronous callback to return the result. |
+| [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1) | Obtains the topmost layer child window of the current application. This API uses a promise to return the result. |
 | [shiftAppWindowFocus](arkts-arkui-window-shiftappwindowfocus-f.md) | Shifts the window focus from the source window to the target window in the same application. The window focus can be shifted within the main window and child windows. This API uses a promise to return the result. |
 | [shiftAppWindowPointerEvent](arkts-arkui-window-shiftappwindowpointerevent-f.md) | Transfers a mouse input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result. |
 | [shiftAppWindowTouchEvent](arkts-arkui-window-shiftappwindowtouchevent-f.md) | Transfers a touchscreen input event from one window to another within the same application. This API takes effect only for the main window and its child windows. This API uses a promise to return the result. |
 | [getVisibleWindowInfo](arkts-arkui-window-getvisiblewindowinfo-f.md) | Obtains information about visible main windows on the current screen. Visible main windows are main windows that are not returned to the background. This API uses a promise to return the result. |
 | [getWindowsByCoordinate](arkts-arkui-window-getwindowsbycoordinate-f.md) | Obtains visible windows at the specified coordinates within the current application, sorted by their current layer order. The window at the topmost layer corresponds to index 0 of the array. This API uses a promise to return the result. |
-| [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md) | Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array. This API uses a promise to return the result. |
-| [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md) | Obtains the array of window layout info visible on a specified screen. The width and height of each rect are calculated after scaling. The array is sorted by the current window level. The index of the array corresponding to the highest level is 0. |
+| [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md#getallwindowlayoutinfo) | Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array. This API uses a promise to return the result. |
+| [getAllWindowLayoutInfo](arkts-arkui-window-getallwindowlayoutinfo-f.md#getallwindowlayoutinfo-1) | Obtains the array of window layout info visible on a specified screen. The width and height of each rect are calculated after scaling. The array is sorted by the current window level. The index of the array corresponding to the highest level is 0. |
 | [getGlobalWindowMode](arkts-arkui-window-getglobalwindowmode-f.md) | Obtains the window mode of the window that is in the foreground lifecycle on the specified screen. This API uses a promise to return the result. |
 | [onApplicationFocusStateChange](arkts-arkui-window-onapplicationfocusstatechange-f.md) | Register the callback for application process focus state changes. |
 | [offApplicationFocusStateChange](arkts-arkui-window-offapplicationfocusstatechange-f.md) | Unregister the callback for application process focus state changes. |
@@ -55,21 +59,21 @@ import { window } from '@kit.ArkUI';
 | Name | Description |
 | --- | --- |
 | [createSubWindowAndBindParent](arkts-arkui-window-createsubwindowandbindparent-f-sys.md) | Create a subwindow with a specific name and bind parent. The parent window only supports main window. The subwindow follows the parent window to show/hide, but does not follow the parent window to destroy. The subwindow listens to the parent window lifecycle changes through the callback function. |
-| [minimizeAll](arkts-arkui-window-minimizeall-f-sys.md) | Minimizes all main windows on a display. |
-| [minimizeAll](arkts-arkui-window-minimizeall-f-sys.md) | Minimizes all main windows on a display. This API uses a promise to return the result. |
+| [minimizeAll](arkts-arkui-window-minimizeall-f-sys.md#minimizeall) | Minimizes all main windows on a display. |
+| [minimizeAll](arkts-arkui-window-minimizeall-f-sys.md#minimizeall-1) | Minimizes all main windows on a display. This API uses a promise to return the result. |
 | [minimizeAllWithExclusion](arkts-arkui-window-minimizeallwithexclusion-f-sys.md) | Minimizes all main windows on a display while keeping one window open. This API uses a promise to return the result. |
-| [toggleShownStateForAllAppWindows](arkts-arkui-window-toggleshownstateforallappwindows-f-sys.md) | Hides or restores the application's windows during quick multi-window switching. This API uses an asynchronous callback to return the result. |
-| [toggleShownStateForAllAppWindows](arkts-arkui-window-toggleshownstateforallappwindows-f-sys.md) | Hides or restores the application's windows during quick multi-window switching. This API uses a promise to return the result. |
-| [setWindowLayoutMode](arkts-arkui-window-setwindowlayoutmode-f-sys.md) | Sets the window layout mode. This API uses an asynchronous callback to return the result. |
-| [setWindowLayoutMode](arkts-arkui-window-setwindowlayoutmode-f-sys.md) | Sets the window layout mode. This API uses a promise to return the result. |
-| [setGestureNavigationEnabled](arkts-arkui-window-setgesturenavigationenabled-f-sys.md) | Enables or disables gesture navigation. This API uses an asynchronous callback to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation. |
-| [setGestureNavigationEnabled](arkts-arkui-window-setgesturenavigationenabled-f-sys.md) | Enables or disables gesture navigation. This API uses a promise to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation. |
-| [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md) | Controls whether a watermark image is displayed on the screen. This API uses a promise to return the result. |
-| [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md) | Set watermark image. |
-| [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md) | Controls whether a watermark image is displayed on the screen. This API uses an asynchronous callback to return the result. |
+| [toggleShownStateForAllAppWindows](arkts-arkui-window-toggleshownstateforallappwindows-f-sys.md#toggleshownstateforallappwindows) | Hides or restores the application's windows during quick multi-window switching. This API uses an asynchronous callback to return the result. |
+| [toggleShownStateForAllAppWindows](arkts-arkui-window-toggleshownstateforallappwindows-f-sys.md#toggleshownstateforallappwindows-1) | Hides or restores the application's windows during quick multi-window switching. This API uses a promise to return the result. |
+| [setWindowLayoutMode](arkts-arkui-window-setwindowlayoutmode-f-sys.md#setwindowlayoutmode) | Sets the window layout mode. This API uses an asynchronous callback to return the result. |
+| [setWindowLayoutMode](arkts-arkui-window-setwindowlayoutmode-f-sys.md#setwindowlayoutmode-1) | Sets the window layout mode. This API uses a promise to return the result. |
+| [setGestureNavigationEnabled](arkts-arkui-window-setgesturenavigationenabled-f-sys.md#setgesturenavigationenabled) | Enables or disables gesture navigation. This API uses an asynchronous callback to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation. |
+| [setGestureNavigationEnabled](arkts-arkui-window-setgesturenavigationenabled-f-sys.md#setgesturenavigationenabled-1) | Enables or disables gesture navigation. This API uses a promise to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation. |
+| [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md#setwatermarkimage) | Controls whether a watermark image is displayed on the screen. This API uses a promise to return the result. |
+| [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md#setwatermarkimage-1) | Set watermark image. |
+| [setWaterMarkImage](arkts-arkui-window-setwatermarkimage-f-sys.md#setwatermarkimage-2) | Controls whether a watermark image is displayed on the screen. This API uses an asynchronous callback to return the result. |
 | [setSpecificSystemWindowZIndex](arkts-arkui-window-setspecificsystemwindowzindex-f-sys.md) | Sets the z-level of a system window. This API uses a promise to return the result. |
-| [getTopNavDestinationName](arkts-arkui-window-gettopnavdestinationname-f-sys.md) | Obtains the name of NavDestination in the current top-level Navigation component of the specified foreground window. This API uses a promise to return the result. |
-| [getSnapshot](arkts-arkui-window-getsnapshot-f-sys.md) | Obtains a snapshot of the same size as the specified window. This API uses a promise to return the result. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode)), taking a screenshot will result in a blank screen. |
+| [getTopNavDestinationName](arkts-arkui-window-gettopnavdestinationname-f-sys.md) | Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination) in the current top-level [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component of the specified foreground window. This API uses a promise to return the result. |
+| [getSnapshot](arkts-arkui-window-getsnapshot-f-sys.md) | Obtains a snapshot of the same size as the specified window. This API uses a promise to return the result. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](arkts-arkui-window-window-i.md#setwindowprivacymode-1)), taking a screenshot will result in a blank screen. |
 | [on](arkts-arkui-window-on-f-sys.md#onsystembartintchange) | Subscribes to the property change event of the status bar and navigation bar. |
 | [off](arkts-arkui-window-off-f-sys.md#offsystembartintchange) | Unsubscribes from the property change event of the status bar and navigation bar. |
 | [on](arkts-arkui-window-on-f-sys.md#ongesturenavigationenabledchange) | Subscribes to the gesture navigation status change event. |

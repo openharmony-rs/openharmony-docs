@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Preferences实例配置选项。
 
 **起始版本：** 10

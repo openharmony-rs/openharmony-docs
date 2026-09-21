@@ -61,6 +61,29 @@ struct Index {
 }
 ```
 
+
+<a id="getdevicelist-1"></a>
+
+## getDeviceList
+
+```TypeScript
+function getDeviceList(): Promise<Array<number>>
+```
+
+Obtains the IDs of all input devices. This API uses a promise to return the result.
+
+**Since:** 9
+
+**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the IDs of all input devices. The ID is the unique ID of an input device. |
+
+**Examples**
+
 ```TypeScript
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,26 +110,3 @@ struct Index {
   }
 }
 ```
-
-
-## getDeviceList
-
-```TypeScript
-function getDeviceList(): Promise<Array<number>>
-```
-
-Obtains the IDs of all input devices. This API uses a promise to return the result.
-
-**Since:** 9
-
-**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the IDs of all input devices. The ID is the unique ID of an input device. |
-
-**Examples**
-
-See [getDeviceList](#getdevicelist)

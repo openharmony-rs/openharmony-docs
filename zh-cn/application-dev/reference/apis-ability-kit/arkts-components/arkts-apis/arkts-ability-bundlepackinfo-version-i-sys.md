@@ -1,5 +1,9 @@
 # Version（系统接口）
 
+```TypeScript
+export interface Version
+```
+
 包的版本。
 
 **起始版本：** 9

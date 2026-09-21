@@ -1,5 +1,9 @@
 # MetadataObjectType
 
+```TypeScript
+enum MetadataObjectType
+```
+
 枚举，metadata元数据检测类型。
 
 **起始版本：** 10

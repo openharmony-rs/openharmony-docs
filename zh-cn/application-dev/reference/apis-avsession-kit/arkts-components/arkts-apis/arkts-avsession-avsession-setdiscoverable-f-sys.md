@@ -42,12 +42,8 @@ avSession.setDiscoverable(true, () => {
 });
 ```
 
-```TypeScript
-avSession.setDiscoverable(true).then(() => {
-  console.info('Succeeded in setting discoverable.');
-});
-```
 
+<a id="setdiscoverable-1"></a>
 
 ## setDiscoverable
 
@@ -84,4 +80,8 @@ function setDiscoverable(enable: boolean): Promise<void>
 
 **示例**
 
-参见 [setDiscoverable](#setdiscoverable)
+```TypeScript
+avSession.setDiscoverable(true).then(() => {
+  console.info('Succeeded in setting discoverable.');
+});
+```

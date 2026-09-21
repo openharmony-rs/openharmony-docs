@@ -1,12 +1,16 @@
 # PhotoSaveOptions
 
+```TypeScript
+class PhotoSaveOptions
+```
+
 Defines the options for saving images or videos.
 
 **Since:** 9
 
 **Deprecated since:** 12
 
-**Substitutes:** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebuttonoptions-i.md)
+**Substitutes:** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp-savebuttonoptions-i.md)
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -30,6 +34,6 @@ File name of the image or video to save. If this parameter is not specified, the
 
 **Deprecated since:** 18
 
-**Substitutes:** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebuttonoptions-i.md)
+**Substitutes:** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp-savebuttonoptions-i.md)
 
 **System capability:** SystemCapability.FileManagement.UserFileService

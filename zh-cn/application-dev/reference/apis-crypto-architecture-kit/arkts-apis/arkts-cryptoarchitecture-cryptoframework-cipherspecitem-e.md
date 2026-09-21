@@ -1,5 +1,9 @@
 # CipherSpecItem
 
+```TypeScript
+enum CipherSpecItem
+```
+
 表示加解密参数的枚举。这些参数支持通过[setCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#setcipherspec)接口设置，通过[getCipherSpec](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#getcipherspec)接口获取。
 
 <br>当前只支持RSA算法和SM2算法。详细规格请参考[加解密规格](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。

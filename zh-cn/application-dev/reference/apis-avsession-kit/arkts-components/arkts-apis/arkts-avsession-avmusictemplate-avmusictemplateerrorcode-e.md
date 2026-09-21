@@ -1,5 +1,9 @@
 # AVMusicTemplateErrorCode
 
+```TypeScript
+enum AVMusicTemplateErrorCode
+```
+
 表示错误码类型的枚举。
 
 @enum { int }

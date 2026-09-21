@@ -1,5 +1,9 @@
 # ThumbnailType（系统接口）
 
+```TypeScript
+enum ThumbnailType
+```
+
 枚举，缩略图类型。
 
 **起始版本：** 13

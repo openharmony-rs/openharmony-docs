@@ -1,5 +1,9 @@
 # PhotoKeys
 
+```TypeScript
+enum PhotoKeys
+```
+
 枚举，图片和视频文件关键信息。
 
 **起始版本：** 10

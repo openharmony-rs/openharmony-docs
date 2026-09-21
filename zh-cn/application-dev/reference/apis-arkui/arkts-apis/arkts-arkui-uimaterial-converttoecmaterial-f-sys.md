@@ -12,7 +12,7 @@ import { uiMaterial } from '@kit.ArkUI';
 function convertToECMaterial(material: uiMaterial.ImmersiveMaterial) : uiMaterial.ImmersiveMaterial
 ```
 
-将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于EffectComponent的ImmersiveMaterial材质。与convertToECSubMaterial的区别：本方法转换后的材质适用于EffectComponent本身，且materialColor、applyShadow、interactive、lightEffect属性不会生效；convertToECSubMaterial转换后的材质适用于EffectComponent的子组件。两者通常配合使用，以实现材质效果绘制的合并优化。
+将一个[ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)材质转换为适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)的ImmersiveMaterial材质。与convertToECSubMaterial的区别：本方法转换后的材质适用于EffectComponent本身，且materialColor、applyShadow、interactive、lightEffect属性不会生效；convertToECSubMaterial转换后的材质适用于EffectComponent的子组件。两者通常配合使用，以实现材质效果绘制的合并优化。
 
 EffectComponent组件上不生效材质中的[materialColor](arkts-arkui-uimaterial-immersiveoptions-i.md)、[applyShadow](arkts-arkui-uimaterial-immersiveoptions-i.md)、[interactive](arkts-arkui-uimaterial-immersiveoptions-i.md)、[lightEffect](arkts-arkui-uimaterial-immersiveoptions-i.md)属性，经过该接口转换后的材质若配置了上述属性，也将不会生效。
 
@@ -36,4 +36,4 @@ EffectComponent组件上不生效材质中的[materialColor](arkts-arkui-uimater
 
 | 类型 | 说明 |
 | --- | --- |
-| [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | 经过转换后适用于EffectComponent的沉浸式材质。转换后的材质不生效[materialColor](arkts-arkui-uimaterial-immersiveoptions-i.md)、[applyShadow](arkts-arkui-uimaterial-immersiveoptions-i.md)、[interactive](arkts-arkui-uimaterial-immersiveoptions-i.md)、[lightEffect](arkts-arkui-uimaterial-immersiveoptions-i.md)属性。 |
+| [uiMaterial.ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | 经过转换后适用于[EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md#effect_component)的沉浸式材质。转换后的材质不生效[materialColor](arkts-arkui-uimaterial-immersiveoptions-i.md)、[applyShadow](arkts-arkui-uimaterial-immersiveoptions-i.md)、[interactive](arkts-arkui-uimaterial-immersiveoptions-i.md)、[lightEffect](arkts-arkui-uimaterial-immersiveoptions-i.md)属性。 |

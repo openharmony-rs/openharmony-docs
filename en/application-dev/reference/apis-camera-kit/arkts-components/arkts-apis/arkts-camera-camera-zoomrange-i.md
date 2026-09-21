@@ -1,5 +1,9 @@
 # ZoomRange
 
+```TypeScript
+interface ZoomRange
+```
+
 Describes the zoom range.
 
 **Since:** 24

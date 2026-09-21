@@ -68,6 +68,8 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
+<a id="copy-1"></a>
+
 ## copy
 
 ```TypeScript
@@ -120,6 +122,8 @@ File copy across devices is supported. This API forcibly overwrites the file or 
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="copy-2"></a>
 
 ## copy
 

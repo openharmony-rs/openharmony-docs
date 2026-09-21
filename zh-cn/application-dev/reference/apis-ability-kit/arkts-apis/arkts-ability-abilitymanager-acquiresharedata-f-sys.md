@@ -36,6 +36,8 @@ function acquireShareData(missionId: number, callback: AsyncCallback<Record<stri
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="acquiresharedata-2"></a>
+
 ## acquireShareData
 
 ```TypeScript

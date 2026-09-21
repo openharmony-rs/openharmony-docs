@@ -70,90 +70,8 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Create a buffer for image effects.
-const colorBuffer = new ArrayBuffer(96);
-// Set image initialization options.
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-
-// Create a PixelMap instance.
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // Create a ColorPicker instance for the specified color sampling area.
-  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
-    console.info('Succeeded in creating colorPicker.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
-  });
-});
-```
-
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-// Create a buffer for image effects.
-const colorBuffer = new ArrayBuffer(96);
-// Set image initialization options.
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-// Create a PixelMap instance.
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // Create a ColorPicker instance.
-  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
-    if (error) {
-      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info('Succeeded in creating color picker.');
-    }
-  });
-});
-```
-
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-// Create a buffer for image effects.
-const colorBuffer = new ArrayBuffer(96);
-// Set image initialization options.
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-// Create a PixelMap instance.
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  // Create a ColorPicker instance for the specified color sampling area.
-  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1], (error, colorPicker) => {
-    if (error) {
-      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
-    } else {
-      console.info('Succeeded in creating color picker.');
-    }
-  });
-});
-```
-
+<a id="createcolorpicker-1"></a>
 
 ## createColorPicker
 
@@ -192,8 +110,36 @@ Creates a ColorPicker instance for the selected region based on a pixel map. Thi
 
 **Examples**
 
-See [createColorPicker](#createcolorpicker)
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create a buffer for image effects.
+const colorBuffer = new ArrayBuffer(96);
+// Set image initialization options.
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+
+// Create a PixelMap instance.
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // Create a ColorPicker instance for the specified color sampling area.
+  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
+    console.info('Succeeded in creating colorPicker.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
+  });
+});
+```
+
+
+<a id="createcolorpicker-2"></a>
 
 ## createColorPicker
 
@@ -226,8 +172,36 @@ Creates a ColorPicker instance based on a pixel map. This API uses an asynchrono
 
 **Examples**
 
-See [createColorPicker](#createcolorpicker)
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
 
+// Create a buffer for image effects.
+const colorBuffer = new ArrayBuffer(96);
+// Set image initialization options.
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+// Create a PixelMap instance.
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // Create a ColorPicker instance.
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('Succeeded in creating color picker.');
+    }
+  });
+});
+```
+
+
+<a id="createcolorpicker-3"></a>
 
 ## createColorPicker
 
@@ -261,4 +235,30 @@ Creates a ColorPicker instance for the selected region based on a pixel map. Thi
 
 **Examples**
 
-See [createColorPicker](#createcolorpicker)
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+// Create a buffer for image effects.
+const colorBuffer = new ArrayBuffer(96);
+// Set image initialization options.
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+// Create a PixelMap instance.
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  // Create a ColorPicker instance for the specified color sampling area.
+  effectKit.createColorPicker(pixelMap, [0, 0, 1, 1], (error, colorPicker) => {
+    if (error) {
+      console.error(`Failed to create color picker. Code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('Succeeded in creating color picker.');
+    }
+  });
+});
+```

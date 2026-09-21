@@ -1,5 +1,9 @@
 # Morpher
 
+```TypeScript
+export interface Morpher
+```
+
 用于控制3D模型的形变，通过调整不同形变目标的权重，实现模型的动态变形效果。
 
 @interface Morpher

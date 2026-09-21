@@ -1,5 +1,9 @@
 # VignetteSettings
 
+```TypeScript
+export interface VignetteSettings
+```
+
 Describes the settings for vignette effects.
 
 @typedef VignetteSettings

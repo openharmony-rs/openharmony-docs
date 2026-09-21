@@ -1,5 +1,9 @@
 # BluetoothState
 
+```TypeScript
+enum BluetoothState
+```
+
 枚举，蓝牙开关状态。
 
 从API version 7开始支持，从API version 9开始废弃。

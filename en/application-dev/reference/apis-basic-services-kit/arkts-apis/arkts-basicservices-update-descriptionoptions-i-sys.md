@@ -1,5 +1,9 @@
 # DescriptionOptions (System API)
 
+```TypeScript
+export interface DescriptionOptions
+```
+
 Defines the description options, which specifies the format and language of the description file. The object contains the **format** and **language** fields. **format** indicates the description file format, which can be **STANDARD** or **SIMPLIFIED**. **language** indicates the language code, which can be **zh-cn**.
 
 **Since:** 9

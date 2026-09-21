@@ -1,5 +1,9 @@
 # SocketStateBase
 
+```TypeScript
+export interface SocketStateBase
+```
+
 Socket的状态信息。
 
 **起始版本：** 7

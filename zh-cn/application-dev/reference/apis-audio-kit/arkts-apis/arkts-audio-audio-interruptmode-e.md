@@ -1,5 +1,9 @@
 # InterruptMode
 
+```TypeScript
+enum InterruptMode
+```
+
 表示焦点模型的枚举。
 
 **起始版本：** 9

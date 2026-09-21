@@ -1,5 +1,9 @@
 # FileSizeFilter
 
+```TypeScript
+class FileSizeFilter
+```
+
 Describes the configuration for file size filtering.
 
 **Since:** 19

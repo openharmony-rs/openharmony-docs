@@ -1,5 +1,9 @@
 # AbilityLifecycleState
 
+```TypeScript
+export enum AbilityLifecycleState
+```
+
 Enumerates the ability lifecycle states.
 
 **Since:** 8

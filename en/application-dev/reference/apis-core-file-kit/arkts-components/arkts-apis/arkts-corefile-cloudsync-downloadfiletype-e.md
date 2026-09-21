@@ -1,5 +1,9 @@
 # DownloadFileType
 
+```TypeScript
+enum DownloadFileType
+```
+
 Enumerates the download file types from the Drive Kit.
 
 **Since:** 20

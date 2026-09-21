@@ -1,5 +1,9 @@
 # ContextAttrOptions
 
+```TypeScript
+export interface ContextAttrOptions
+```
+
 ContextAttrOptions
 
 @interface ContextAttrOptions

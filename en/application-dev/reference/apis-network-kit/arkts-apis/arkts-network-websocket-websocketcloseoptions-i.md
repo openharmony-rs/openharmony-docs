@@ -1,5 +1,9 @@
 # WebSocketCloseOptions
 
+```TypeScript
+export interface WebSocketCloseOptions
+```
+
 Defines the optional parameters carried in the request for closing a WebSocket connection.
 
 **Since:** 6
@@ -18,7 +22,7 @@ import { webSocket } from '@kit.NetworkKit';
 code?: number
 ```
 
-Error code. Set this parameter based on the actual situation. The value must be a positive integer ranging from 1 000 to 1015. If no error code is specified or the input value is not within the preceding range, the code will be set to the default value **1000**.
+Error code. Set this parameter based on the actual situation. The value must be a positive integer ranging from 1000 to 1015. If no error code is specified or the input value is not within the preceding range, the code will be set to the default value **1000**.
 
 **Type:** number
 

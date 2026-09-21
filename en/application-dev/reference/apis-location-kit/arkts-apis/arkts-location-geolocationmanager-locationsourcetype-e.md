@@ -1,5 +1,9 @@
 # LocationSourceType
 
+```TypeScript
+export enum LocationSourceType
+```
+
 Enum for the source of the location.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+enum SourceType
+```
+
 Enumerates the types of audio streams captured.
 
 **Since:** 8

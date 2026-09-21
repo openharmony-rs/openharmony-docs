@@ -1,5 +1,9 @@
 # LogType
 
+```TypeScript
+enum LogType
+```
+
 日志类型。
 
 **起始版本：** 23

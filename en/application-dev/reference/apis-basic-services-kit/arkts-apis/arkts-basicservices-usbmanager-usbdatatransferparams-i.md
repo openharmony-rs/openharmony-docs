@@ -1,5 +1,9 @@
 # UsbDataTransferParams
 
+```TypeScript
+interface UsbDataTransferParams
+```
+
 Defines a USB data transfer parameter object, which contains all parameters required for USB data transfer. It is used by the **usbSubmitTransfer** and **usbCancelTransfer** APIs to initiate transfer requests.
 
 **Since:** 18

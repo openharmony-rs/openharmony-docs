@@ -1,5 +1,9 @@
 # DisposedRule (System API)
 
+```TypeScript
+export interface DisposedRule
+```
+
 Defines a disposed rule.
 
 **Since:** 11

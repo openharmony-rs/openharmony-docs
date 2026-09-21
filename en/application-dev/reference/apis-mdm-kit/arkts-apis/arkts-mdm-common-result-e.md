@@ -1,5 +1,9 @@
 # Result
 
+```TypeScript
+export enum Result
+```
+
 Enumerates application installation results.
 
 **Since:** 22

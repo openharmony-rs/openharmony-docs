@@ -1,5 +1,9 @@
 # CopyResult（系统接口）
 
+```TypeScript
+interface CopyResult
+```
+
 表示复制操作失败时的返回信息，复制成功时则没有返回信息。
 
 **起始版本：** 10

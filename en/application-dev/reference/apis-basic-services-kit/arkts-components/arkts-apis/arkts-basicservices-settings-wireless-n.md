@@ -1,5 +1,9 @@
 # wireless
 
+```TypeScript
+namespace wireless
+```
+
 Provides methods for setting radio network information, including information about Bluetooth, Wi-Fi, Near Field Communication (NFC), and the airplane mode.
 
 @namespace wireless

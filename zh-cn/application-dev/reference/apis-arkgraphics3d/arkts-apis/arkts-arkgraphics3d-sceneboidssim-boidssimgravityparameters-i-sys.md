@@ -1,5 +1,9 @@
 # BoidsSimGravityParameters（系统接口）
 
+```TypeScript
+export interface BoidsSimGravityParameters
+```
+
 引力场参数，用于配置场景中的引力场。
 
 **起始版本：** 26.0.0

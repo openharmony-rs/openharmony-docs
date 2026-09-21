@@ -1,5 +1,9 @@
 # AuthType（系统接口）
 
+```TypeScript
+enum AuthType
+```
+
 表示身份验证的凭据类型的枚举。
 
 **起始版本：** 8

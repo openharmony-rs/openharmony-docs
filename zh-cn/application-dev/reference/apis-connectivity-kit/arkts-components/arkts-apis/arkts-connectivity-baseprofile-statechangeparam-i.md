@@ -1,5 +1,9 @@
 # StateChangeParam
 
+```TypeScript
+export interface StateChangeParam
+```
+
 本端和对端蓝牙设备间Profile连接状态变化参数。
 
 **起始版本：** 10

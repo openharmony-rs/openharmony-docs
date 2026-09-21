@@ -1,5 +1,9 @@
 # FileWriteArrayBufferOption
 
+```TypeScript
+export interface FileWriteArrayBufferOption
+```
+
 Defines the options used in writeArrayBuffer().
 
 **Since:** 3

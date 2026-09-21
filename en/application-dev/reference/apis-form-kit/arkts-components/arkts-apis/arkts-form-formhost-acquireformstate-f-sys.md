@@ -42,6 +42,8 @@ Obtains the widget state. This API uses an asynchronous callback to return the r
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
 
+<a id="acquireformstate-1"></a>
+
 ## acquireFormState
 
 ```TypeScript

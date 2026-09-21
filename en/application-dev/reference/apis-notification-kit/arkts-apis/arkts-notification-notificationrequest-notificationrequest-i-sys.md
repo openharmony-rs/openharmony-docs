@@ -1,5 +1,9 @@
 # NotificationRequest
 
+```TypeScript
+export interface NotificationRequest
+```
+
 Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior.
 
 **Since:** 7

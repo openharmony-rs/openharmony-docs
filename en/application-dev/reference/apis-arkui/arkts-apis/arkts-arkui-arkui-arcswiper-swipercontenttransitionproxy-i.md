@@ -1,5 +1,9 @@
 # SwiperContentTransitionProxy
 
+```TypeScript
+declare interface SwiperContentTransitionProxy
+```
+
 Implements the proxy object returned during the execution of the custom page transition animation of the **ArcSwiper** component. You can use this object to obtain the page information in the custom animation viewport. You can also call the **finishTransition** API of this object to notify the **ArcSwiper** component that the custom animation has finished playing.
 
 > **NOTE:** 

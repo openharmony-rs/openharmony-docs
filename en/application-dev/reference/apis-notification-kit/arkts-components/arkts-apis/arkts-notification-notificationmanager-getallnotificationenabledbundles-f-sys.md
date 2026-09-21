@@ -54,22 +54,8 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let userId : number = 100;
-
-notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption>) => {
-  console.info(`Enable bundle data is ${JSON.stringify(data)}`);
-  data.forEach(element => {
-    console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
-    console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getallnotificationenabledbundles-1"></a>
 
 ## getAllNotificationEnabledBundles
 
@@ -112,4 +98,18 @@ Obtains the list of applications that are allowed to publish notifications by a 
 
 **Examples**
 
-See [getAllNotificationEnabledBundles](#getallnotificationenabledbundles)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId : number = 100;
+
+notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption>) => {
+  console.info(`Enable bundle data is ${JSON.stringify(data)}`);
+  data.forEach(element => {
+    console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
+    console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```

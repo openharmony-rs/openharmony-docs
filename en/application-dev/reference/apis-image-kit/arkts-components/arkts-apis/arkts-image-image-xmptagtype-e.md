@@ -1,5 +1,9 @@
 # XMPTagType
 
+```TypeScript
+enum XMPTagType
+```
+
 Enumerates XMP tag type.
 
 **Since:** 26.0.0

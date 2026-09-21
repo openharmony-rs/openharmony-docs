@@ -1,5 +1,9 @@
 # WindowLayoutInfo
 
+```TypeScript
+interface WindowLayoutInfo
+```
+
 Describes the information about the window layout.
 
 **Since:** 15

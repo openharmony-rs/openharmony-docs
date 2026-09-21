@@ -1,5 +1,9 @@
 # ThumbnailChangeStatus（系统接口）
 
+```TypeScript
+enum ThumbnailChangeStatus
+```
+
 枚举，表示缩略图（包括图片/视频）更新的状态。
 
 **起始版本：** 20

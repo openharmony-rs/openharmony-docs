@@ -1,5 +1,9 @@
 # UsbEndpointTransferType
 
+```TypeScript
+export enum UsbEndpointTransferType
+```
+
 Enumerates USB transfer types.
 
 **Since:** 18

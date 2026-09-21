@@ -1,5 +1,9 @@
 # MifareClassicSize
 
+```TypeScript
+enum MifareClassicSize
+```
+
 Enumerates the sizes of a MIFARE Classic tag.
 
 **Since:** 9

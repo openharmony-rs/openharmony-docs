@@ -1,5 +1,9 @@
 # PluginComponentTemplate
 
+```TypeScript
+interface PluginComponentTemplate
+```
+
 插件组件模板参数。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # SwitchMode
 
+```TypeScript
+enum SwitchMode
+```
+
 表示视频播放的selectTrack模式枚举。
 
 可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API版本26.0.0开始HLS协议视频轨支持该扩展参数）。

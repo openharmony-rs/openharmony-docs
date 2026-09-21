@@ -1,5 +1,9 @@
 # LaunchType
 
+```TypeScript
+export enum LaunchType
+```
+
 Enumerates the [launch types](../../../application-models/uiability-launch-type.md) of the UIAbility.
 
 **Since:** 9

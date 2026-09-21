@@ -86,26 +86,8 @@ async function CreateImageSource(context : Context) {
 }
 ```
 
-```TypeScript
-import { sendableImage } from '@kit.ImageKit';
-import { fileIo } from '@kit.CoreFileKit';
 
-async function CreateImageSource(context : Context) {
-  const path: string = context.cacheDir + "/test.jpg";
-  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(file.fd);
-}
-```
-
-```TypeScript
-import { sendableImage } from '@kit.ImageKit';
-
-async function CreateImageSource() {
-  const buf: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(buf);
-}
-```
-
+<a id="createimagesource-1"></a>
 
 ## createImageSource
 
@@ -137,8 +119,19 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Examples**
 
-See [createImageSource](#createimagesource)
+```TypeScript
+import { sendableImage } from '@kit.ImageKit';
+import { fileIo } from '@kit.CoreFileKit';
 
+async function CreateImageSource(context : Context) {
+  const path: string = context.cacheDir + "/test.jpg";
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(file.fd);
+}
+```
+
+
+<a id="createimagesource-2"></a>
 
 ## createImageSource
 
@@ -172,4 +165,11 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Examples**
 
-See [createImageSource](#createimagesource)
+```TypeScript
+import { sendableImage } from '@kit.ImageKit';
+
+async function CreateImageSource() {
+  const buf: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
+  const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(buf);
+}
+```

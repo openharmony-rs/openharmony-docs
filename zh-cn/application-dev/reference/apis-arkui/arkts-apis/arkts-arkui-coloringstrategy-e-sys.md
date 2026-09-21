@@ -1,5 +1,9 @@
 # ColoringStrategy
 
+```TypeScript
+declare enum ColoringStrategy
+```
+
 智能取色枚举类型。
 
 **起始版本：** 10

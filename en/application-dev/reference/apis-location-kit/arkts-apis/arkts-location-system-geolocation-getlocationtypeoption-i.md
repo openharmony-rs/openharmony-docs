@@ -1,5 +1,9 @@
 # GetLocationTypeOption
 
+```TypeScript
+export interface GetLocationTypeOption
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

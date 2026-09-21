@@ -1,5 +1,9 @@
 # LayerMask
 
+```TypeScript
+export interface LayerMask
+```
+
 Defines the layer mask of a node.
 
 @interface LayerMask

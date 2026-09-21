@@ -1,5 +1,9 @@
 # RelativeTimeFormatInputOptions
 
+```TypeScript
+export interface RelativeTimeFormatInputOptions
+```
+
 创建相对时间格式化对象时可设置的配置项。
 
 从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。
@@ -50,7 +54,7 @@ numeric?: string
 
 默认值：always。
 
-不同取值的显示效果请参考附录表23。
+不同取值的显示效果请参考[附录表23](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -74,7 +78,7 @@ style?: string
 
 默认值：long。
 
-不同取值的显示效果请参考附录表24。
+不同取值的显示效果请参考[附录表24](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 

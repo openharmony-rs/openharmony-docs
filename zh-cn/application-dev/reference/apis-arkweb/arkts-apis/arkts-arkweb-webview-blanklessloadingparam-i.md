@@ -1,5 +1,9 @@
 # BlanklessLoadingParam
 
+```TypeScript
+interface BlanklessLoadingParam
+```
+
 无白屏加载插帧方案的加载参数。
 
 **起始版本：** 23

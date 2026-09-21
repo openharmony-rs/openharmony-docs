@@ -1,5 +1,9 @@
 # DepthDataAccuracy（系统接口）
 
+```TypeScript
+enum DepthDataAccuracy
+```
+
 Describes the accuracy of depth data.
 
 **起始版本：** 13

@@ -1,5 +1,9 @@
 # HashSet
 
+```TypeScript
+declare class HashSet<T>
+```
+
 HashSet是一种非线性容器，用于存储不重复的元素集合，支持高效的元素增删和存在性判断。HashSet基于HashMap实现，仅操作元素的值对象，不涉及键的概念。
 
 **起始版本：** 8

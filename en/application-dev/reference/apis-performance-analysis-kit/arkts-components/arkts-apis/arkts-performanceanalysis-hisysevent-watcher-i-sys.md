@@ -1,5 +1,9 @@
 # Watcher (System API)
 
+```TypeScript
+interface Watcher
+```
+
 Defines a watcher for event subscription.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # Progress (System API)
 
+```TypeScript
+interface Progress
+```
+
 progress info of batch operations.
 
 **Since:** 26.0.0

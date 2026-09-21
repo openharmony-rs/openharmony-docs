@@ -1,5 +1,9 @@
 # AddressSanitizerPolicy
 
+```TypeScript
+interface AddressSanitizerPolicy
+```
+
 提供地址越界事件配置策略的定义。
 
 **起始版本：** 24
@@ -31,6 +35,8 @@ false：不使能地址越界事件的页面切换日志。
 **类型：** boolean
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 

@@ -1,5 +1,9 @@
 # CapitalizeMode
 
+```TypeScript
+export enum CapitalizeMode
+```
+
 Enumerates the modes of capitalizing the first letter of a text.<br> <br>
 
 | Name| Value| Description|  

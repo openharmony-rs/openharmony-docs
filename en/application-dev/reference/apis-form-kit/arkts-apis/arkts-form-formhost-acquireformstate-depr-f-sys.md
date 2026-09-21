@@ -33,6 +33,8 @@ Obtains the widget state. This API uses an asynchronous callback to return the r
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[formInfo.FormStateInfo](arkts-form-forminfo-formstateinfo-i.md)&gt; | Yes | Callback used to return the result. If the widget state is obtained, **error** is undefined and **data** is the widget state obtained; otherwise, **error** is an error object. |
 
 
+<a id="acquireformstate-1"></a>
+
 ## acquireFormState
 
 ```TypeScript

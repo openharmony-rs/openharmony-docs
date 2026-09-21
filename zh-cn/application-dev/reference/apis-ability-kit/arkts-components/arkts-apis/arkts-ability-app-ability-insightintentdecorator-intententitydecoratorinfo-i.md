@@ -1,5 +1,9 @@
 # IntentEntityDecoratorInfo
 
+```TypeScript
+declare interface IntentEntityDecoratorInfo
+```
+
 用于描述[@InsightIntentEntity](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器支持的参数。
 
 **起始版本：** 20

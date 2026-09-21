@@ -1,5 +1,9 @@
 # Color（系统接口）
 
+```TypeScript
+interface Color
+```
+
 RGBA格式的颜色描述。
 
 **起始版本：** 20

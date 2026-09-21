@@ -1,5 +1,9 @@
 # UIElementInfo
 
+```TypeScript
+declare interface UIElementInfo
+```
+
 UI事件的相关信息。
 
 **起始版本：** 10

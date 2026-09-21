@@ -1,5 +1,9 @@
 # AdRequestParams
 
+```TypeScript
+export interface AdRequestParams
+```
+
 广告请求参数。
 
 **起始版本：** 11

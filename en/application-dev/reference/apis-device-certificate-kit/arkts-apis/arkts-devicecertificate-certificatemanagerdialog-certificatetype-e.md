@@ -1,5 +1,9 @@
 # CertificateType
 
+```TypeScript
+export enum CertificateType
+```
+
 Enumerates the types of the certificate to be installed.
 
 **Since:** 14

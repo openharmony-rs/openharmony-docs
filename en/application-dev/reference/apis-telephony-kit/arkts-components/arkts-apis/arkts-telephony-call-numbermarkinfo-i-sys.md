@@ -1,5 +1,9 @@
 # NumberMarkInfo (System API)
 
+```TypeScript
+export interface NumberMarkInfo
+```
+
 Defines a number mark.
 
 **Since:** 12

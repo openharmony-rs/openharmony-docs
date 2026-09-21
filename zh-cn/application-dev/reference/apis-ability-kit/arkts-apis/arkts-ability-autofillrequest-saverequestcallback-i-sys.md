@@ -1,5 +1,9 @@
 # SaveRequestCallback（系统接口）
 
+```TypeScript
+export interface SaveRequestCallback
+```
+
 自动保存或者手动保存请求回调。
 
 **起始版本：** 11

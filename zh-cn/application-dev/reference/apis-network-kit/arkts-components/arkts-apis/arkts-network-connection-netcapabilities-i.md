@@ -1,5 +1,9 @@
 # NetCapabilities
 
+```TypeScript
+export interface NetCapabilities
+```
+
 网络的能力集。
 
 **起始版本：** 8

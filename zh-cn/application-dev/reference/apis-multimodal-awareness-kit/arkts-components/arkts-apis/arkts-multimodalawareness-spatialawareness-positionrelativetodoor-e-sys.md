@@ -1,5 +1,9 @@
 # PositionRelativeToDoor（系统接口）
 
+```TypeScript
+export enum PositionRelativeToDoor
+```
+
 门内外识别接口返回结果中表示门内或门外位置的枚举。
 
 @enum { int } 门内外识别结果的枚举

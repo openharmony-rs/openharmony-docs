@@ -1,5 +1,9 @@
 # MmsReadRecInd (System API)
 
+```TypeScript
+export interface MmsReadRecInd
+```
+
 Defines the MMS message reading index.
 
 **Since:** 8

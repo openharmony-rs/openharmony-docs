@@ -1,5 +1,9 @@
 # VibrateFromPattern
 
+```TypeScript
+interface VibrateFromPattern
+```
+
 自定义振动效果触发马达振动。适用于需要灵活组合振动事件的交互反馈场景（如表情包拟真效果、游戏场景/操作反馈）。与VibrateFromFile相比，VibrateFromFile是面向文件中提前定制好的效果，将振动事件以文件描述符形式传递；VibrateFromPattern提供更加灵活的振动事件排列组合，将振动事件以振动事件数组的形式传递。
 
 **起始版本：** 18

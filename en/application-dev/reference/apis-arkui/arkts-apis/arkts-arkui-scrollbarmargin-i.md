@@ -1,5 +1,9 @@
 # ScrollBarMargin
 
+```TypeScript
+declare interface ScrollBarMargin
+```
+
 Defines the margin of the scroll bar.
 
 **Since:** 20

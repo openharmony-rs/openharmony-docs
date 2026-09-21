@@ -1,5 +1,9 @@
 # AVSessionErrorCode
 
+```TypeScript
+enum AVSessionErrorCode
+```
+
 会话发生错误时的错误码。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # InteractionHand
 
+```TypeScript
+declare enum InteractionHand
+```
+
 定义事件是由左手点击触发还是右手点击触发。
 
 **起始版本：** 15

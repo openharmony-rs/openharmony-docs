@@ -1,5 +1,9 @@
 # AdOptions
 
+```TypeScript
+export interface AdOptions
+```
+
 广告配置参数。
 
 **起始版本：** 11

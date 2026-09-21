@@ -1,5 +1,9 @@
 # CredentialChangeType (System API)
 
+```TypeScript
+enum CredentialChangeType
+```
+
 Enumerates the credential change types.
 
 **Since:** 23
@@ -18,6 +22,8 @@ A credential is added.
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -32,6 +38,8 @@ A credential is updated.
 
 **Since:** 23
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -45,6 +53,8 @@ DELETE_CREDENTIAL = 3
 A credential is deleted.
 
 **Since:** 23
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Account.OsAccount
 

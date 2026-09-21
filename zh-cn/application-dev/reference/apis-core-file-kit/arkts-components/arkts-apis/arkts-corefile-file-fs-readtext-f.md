@@ -56,6 +56,8 @@ declare function readText(
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
+<a id="readtext-1"></a>
+
 ## readText
 
 ```TypeScript
@@ -95,6 +97,8 @@ declare function readText(filePath: string, callback: AsyncCallback<string>): vo
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="readtext-2"></a>
 
 ## readText
 

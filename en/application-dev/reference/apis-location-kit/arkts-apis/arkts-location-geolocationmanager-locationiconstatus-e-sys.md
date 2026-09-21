@@ -1,5 +1,9 @@
 # LocationIconStatus (System API)
 
+```TypeScript
+export enum LocationIconStatus
+```
+
 Enum for location icon status.
 
 **Since:** 12

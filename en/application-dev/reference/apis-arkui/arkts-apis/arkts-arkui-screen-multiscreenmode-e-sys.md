@@ -1,5 +1,9 @@
 # MultiScreenMode (System API)
 
+```TypeScript
+enum MultiScreenMode
+```
+
 Enumerates the display modes of secondary screens.
 
 **Since:** 13

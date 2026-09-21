@@ -1,5 +1,9 @@
 # LocationError
 
+```TypeScript
+export enum LocationError
+```
+
 持续定位过程中的错误信息。
 
 **起始版本：** 12

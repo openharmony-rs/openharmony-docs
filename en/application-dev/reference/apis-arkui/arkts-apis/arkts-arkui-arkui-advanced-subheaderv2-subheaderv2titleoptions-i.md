@@ -1,5 +1,9 @@
 # SubHeaderV2TitleOptions
 
+```TypeScript
+export interface SubHeaderV2TitleOptions
+```
+
 Defines the options for initializing a **SubHeaderV2Title** object.
 
 **Since:** 18

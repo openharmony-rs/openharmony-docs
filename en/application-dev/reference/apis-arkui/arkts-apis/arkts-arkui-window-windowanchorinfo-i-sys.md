@@ -1,5 +1,9 @@
 # WindowAnchorInfo (System API)
 
+```TypeScript
+interface WindowAnchorInfo
+```
+
 Describes the anchor point information used to maintain the relative position between the level-1 child window and the main window.
 
 **Since:** 24

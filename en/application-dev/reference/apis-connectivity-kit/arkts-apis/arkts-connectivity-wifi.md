@@ -18,21 +18,21 @@ import { wifi } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md) | Adds a specified untrusted hotspot configuration. |
-| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md) | Adds a specified untrusted hotspot configuration. |
+| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md#adduntrustedconfig) | Adds a specified untrusted hotspot configuration. |
+| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md#adduntrustedconfig-1) | Adds a specified untrusted hotspot configuration. |
 | [createGroup](arkts-connectivity-wifi-creategroup-f.md) | Creates a P2P group. |
 | [getCountryCode](arkts-connectivity-wifi-getcountrycode-f.md) | Obtains the country code of this device. |
-| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md) | Obtains information about the current group. |
-| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md) | Obtains information about the current group. |
+| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md#getcurrentgroup) | Obtains information about the current group. |
+| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md#getcurrentgroup-1) | Obtains information about the current group. |
 | [getIpInfo](arkts-connectivity-wifi-getipinfo-f.md) | Obtains the IP information of a Wi-Fi connection. |
-| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md) | Obtains information about a Wi-Fi connection. |
-| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md) | Obtains information about a Wi-Fi connection. |
-| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md) | Obtains information about a P2P connection. |
-| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md) | Obtains information about a P2P connection. |
-| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md) | Obtains the information about the found devices. |
-| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md) | Obtains the information about the found devices. |
-| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md) | Obtains the hotspot information that scanned. |
-| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md) | Obtains the hotspot information that scanned. |
+| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md#getlinkedinfo) | Obtains information about a Wi-Fi connection. |
+| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md#getlinkedinfo-1) | Obtains information about a Wi-Fi connection. |
+| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md#getp2plinkedinfo) | Obtains information about a P2P connection. |
+| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md#getp2plinkedinfo-1) | Obtains information about a P2P connection. |
+| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md#getp2ppeerdevices) | Obtains the information about the found devices. |
+| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md#getp2ppeerdevices-1) | Obtains the information about the found devices. |
+| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md#getscaninfos) | Obtains the hotspot information that scanned. |
+| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md#getscaninfos-1) | Obtains the hotspot information that scanned. |
 | [getSignalLevel](arkts-connectivity-wifi-getsignallevel-f.md) | Calculates the Wi-Fi signal level based on the Wi-Fi RSSI and frequency band. |
 | [isConnected](arkts-connectivity-wifi-isconnected-f.md) | Checks whether a Wi-Fi connection has been set up. |
 | [isFeatureSupported](arkts-connectivity-wifi-isfeaturesupported-f.md) | Checks whether this device supports a specified feature. |
@@ -62,8 +62,8 @@ import { wifi } from '@kit.ConnectivityKit';
 | [p2pCancelConnect](arkts-connectivity-wifi-p2pcancelconnect-f.md) | Canceling a P2P connection. |
 | [p2pConnect](arkts-connectivity-wifi-p2pconnect-f.md) | Initiates a P2P connection to a device with the specified configuration. |
 | [removeGroup](arkts-connectivity-wifi-removegroup-f.md) | Removes a P2P group. |
-| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md) | Removes a specified untrusted hotspot configuration. |
-| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md) | Removes a specified untrusted hotspot configuration. |
+| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md#removeuntrustedconfig) | Removes a specified untrusted hotspot configuration. |
+| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md#removeuntrustedconfig-1) | Removes a specified untrusted hotspot configuration. |
 | [scan](arkts-connectivity-wifi-scan-f.md) | Scans Wi-Fi hotspot. |
 | [startDiscoverDevices](arkts-connectivity-wifi-startdiscoverdevices-f.md) | Discover Wi-Fi P2P devices. |
 | [stopDiscoverDevices](arkts-connectivity-wifi-stopdiscoverdevices-f.md) | Stops discovering Wi-Fi P2P devices. |
@@ -73,8 +73,8 @@ import { wifi } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md) | Adds Wi-Fi connection configuration to the device. |
-| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md) | Adds Wi-Fi connection configuration to the device. |
+| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md#adddeviceconfig) | Adds Wi-Fi connection configuration to the device. |
+| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md#adddeviceconfig-1) | Adds Wi-Fi connection configuration to the device. |
 | [connectToDevice](arkts-connectivity-wifi-connecttodevice-f-sys.md) | Connects to Wi-Fi network. |
 | [connectToNetwork](arkts-connectivity-wifi-connecttonetwork-f-sys.md) | Connects to Wi-Fi network. |
 | [deletePersistentGroup](arkts-connectivity-wifi-deletepersistentgroup-f-sys.md) | Deletes the persistent P2P group with the specified network ID. |

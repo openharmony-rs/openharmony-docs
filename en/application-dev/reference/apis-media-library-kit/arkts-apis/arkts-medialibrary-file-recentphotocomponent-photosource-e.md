@@ -1,5 +1,9 @@
 # PhotoSource
 
+```TypeScript
+export declare enum PhotoSource
+```
+
 Enumerates the sources of the image or video data.
 
 **Since:** 12

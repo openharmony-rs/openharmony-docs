@@ -1,5 +1,9 @@
 # DisplayNames
 
+```TypeScript
+interface DisplayNames
+```
+
 ## Modules to Import
 
 ```TypeScript

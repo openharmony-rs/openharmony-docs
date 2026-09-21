@@ -1,5 +1,9 @@
 # OsAccountSubProfileManager（系统接口）
 
+```TypeScript
+interface OsAccountSubProfileManager
+```
+
 系统账号子身份资料管理器类。
 
 **起始版本：** 26.0.0
@@ -58,8 +62,23 @@ createOsAccountSubProfile(osAccountLocalId: number): Promise<OsAccountSubProfile
 
 **示例**
 
-```TypeScript
 创建ID为100的系统账号的子身份资料。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.createOsAccountSubProfile(osAccountLocalId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('createOsAccountSubProfile successfully, subProfileId: ' + subProfile.id);
+  }).catch((err: BusinessError) => {
+    console.error(`createOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## deleteOsAccountSubProfile
@@ -107,8 +126,24 @@ deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 
 **示例**
 
-```TypeScript
 删除ID为100的系统账号中ID为100001的子身份资料。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.deleteOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('deleteOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## getOsAccountForegroundSubProfileId
@@ -159,9 +194,7 @@ try {
 }
 ```
 
-```TypeScript
-获取ID为100的系统账号的前台子身份资料标识符。
-```
+<a id="getosaccountforegroundsubprofileid-1"></a>
 
 ## getOsAccountForegroundSubProfileId
 
@@ -202,7 +235,24 @@ getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise<number>
 
 **示例**
 
-参见 [getOsAccountForegroundSubProfileId](#getosaccountforegroundsubprofileid)
+获取ID为100的系统账号的前台子身份资料标识符。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId(osAccountLocalId).then((subProfileId: number) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getOsAccountLocalIdForSubProfile
 
@@ -242,8 +292,23 @@ getOsAccountLocalIdForSubProfile(subProfileId: number): Promise<number>
 
 **示例**
 
-```TypeScript
 获取ID为100001的子身份资料所属的系统账号本地标识符。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountLocalIdForSubProfile(subProfileId).then((osAccountLocalId: number) => {
+    console.info('getOsAccountLocalIdForSubProfile successfully, osAccountLocalId: ' + osAccountLocalId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIdForSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIdForSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## getOsAccountSubProfile
@@ -287,13 +352,26 @@ getOsAccountSubProfile(subProfileId: number): Promise<OsAccountSubProfile>
 
 **示例**
 
-```TypeScript
 获取ID为100001的子身份资料对象信息。
-```
 
 ```TypeScript
-获取ID为100的系统账号中ID为100001的子身份资料对象信息。
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```
+
+<a id="getosaccountsubprofile-1"></a>
 
 ## getOsAccountSubProfile
 
@@ -337,7 +415,25 @@ getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise<
 
 **示例**
 
-参见 [getOsAccountSubProfile](#getosaccountsubprofile)
+获取ID为100的系统账号中ID为100001的子身份资料对象信息。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(osAccountLocalId, subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getOsAccountSubProfileIds
 
@@ -389,9 +485,7 @@ try {
 }
 ```
 
-```TypeScript
-获取ID为100的系统账号的子身份资料标识符列表。
-```
+<a id="getosaccountsubprofileids-1"></a>
 
 ## getOsAccountSubProfileIds
 
@@ -434,7 +528,24 @@ getOsAccountSubProfileIds(osAccountLocalId: number): Promise<number[]>
 
 **示例**
 
-参见 [getOsAccountSubProfileIds](#getosaccountsubprofileids)
+获取ID为100的系统账号的子身份资料标识符列表。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountSubProfileIds(osAccountLocalId).then((subProfileIds: number[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + subProfileIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## offOsAccountSubProfileEvent
 
@@ -514,8 +625,21 @@ onOsAccountSubProfileEvent(
 
 **示例**
 
-```TypeScript
 订阅系统账号子身份的创建事件。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let events: osAccount.OsAccountSubProfileEvent[] = [osAccount.OsAccountSubProfileEvent.CREATED];
+try {
+  subProfileManager.onOsAccountSubProfileEvent(events, (data: osAccount.OsAccountSubProfileEventData) => {
+    console.info('onOsAccountSubProfileEvent, event: ' + data.event + ', localId: ' + data.osAccountLocalId);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## switchOsAccountSubProfile
@@ -563,6 +687,22 @@ switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 
 **示例**
 
-```TypeScript
 将ID为100的系统账号的当前子身份资料切换到ID为100001的子身份资料。
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.switchOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('switchOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`switchOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`switchOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
 ```

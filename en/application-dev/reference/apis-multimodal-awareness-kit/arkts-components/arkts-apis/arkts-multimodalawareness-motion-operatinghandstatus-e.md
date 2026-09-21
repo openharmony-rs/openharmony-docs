@@ -1,5 +1,9 @@
 # OperatingHandStatus
 
+```TypeScript
+export enum OperatingHandStatus
+```
+
 Defines the status of the operating hand.
 
 **Since:** 15

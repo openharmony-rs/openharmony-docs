@@ -1,5 +1,9 @@
 # SourceType
 
+```TypeScript
+export declare enum SourceType
+```
+
 触屏来源的设备类型，当前支持触屏、手写笔、触控板类型上报。
 
 **起始版本：** 9

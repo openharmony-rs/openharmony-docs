@@ -1,5 +1,9 @@
 # ImageReceiver
 
+```TypeScript
+interface ImageReceiver
+```
+
 The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput). Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-image-image-createimagereceiver-f.md) to create an ImageReceiver instance. Since API version 23, you are advised to use [image.createImageReceiver](arkts-image-image-createimagereceiver-f.md) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-image-image-imagereceiveroptions-i.md). Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 9
@@ -30,6 +34,24 @@ Obtains a surface ID for the camera or other components. This API uses an asynch
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the surface ID obtained. Otherwise, **err** is an error object. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
+  receiver.getReceivingSurfaceId((err: BusinessError, id: string) => {
+    if (err) {
+      console.error(`Failed to get the ReceivingSurfaceId.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in getting the ReceivingSurfaceId.');
+    }
+  });
+}
+```
+
+<a id="getreceivingsurfaceid-1"></a>
+
 ## getReceivingSurfaceId
 
 ```TypeScript
@@ -47,6 +69,20 @@ Obtains a surface ID for the camera or other components. This API uses a promise
 | Type | Description |
 | --- | --- |
 | Promise&lt;string&gt; | Promise used to return the surface ID. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
+  receiver.getReceivingSurfaceId().then((id: string) => { 
+    console.info('Succeeded in getting the ReceivingSurfaceId.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get the ReceivingSurfaceId.code ${error.code},message is ${error.message}`);
+  })
+}
+```
 
 ## off('imageArrival')
 
@@ -67,6 +103,18 @@ Unregisters the callback function that is triggered when the buffer is released.
 | type | 'imageArrival' | Yes | Type of event, which is **'imageArrival'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | No | Callback to unregister. |
 
+**Examples**
+
+```TypeScript
+async function Off(receiver : image.ImageReceiver) {
+  let callbackFunc = ()=>{
+      // Implement the callback logic.
+  };
+  receiver.on('imageArrival', callbackFunc);
+  receiver.off('imageArrival', callbackFunc);
+}
+```
+
 ## on('imageArrival')
 
 ```TypeScript
@@ -85,6 +133,22 @@ Listens for image arrival events. This API uses an asynchronous callback to retu
 | --- | --- | --- | --- |
 | type | 'imageArrival' | Yes | Type of event to listen for. The value is fixed at **'imageArrival'**, which is triggered when an image is received. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+async function On(receiver : image.ImageReceiver) {
+  receiver.on('imageArrival', () => {
+    // After the image arrival callback is triggered, read the latest or next image for processing.
+    receiver.readLatestImage().then((img: image.Image) => {
+      console.info('Succeeded in reading the latest Image.');
+      // Process the image data.
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to read the latest Image.`);
+    });
+  });
+}
+```
 
 ## readLatestImage
 
@@ -112,6 +176,36 @@ Reads the latest image from the ImageReceiver instance. This API uses an asynchr
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Image](arkts-image-image-image-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the latest image obtained; otherwise, **err** is an error object. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ReadLatestImage(receiver : image.ImageReceiver) {
+  receiver.readLatestImage((err: BusinessError, latestImage: image.Image) => {
+    if (err || latestImage === undefined) {
+      console.error('Failed to readLatestImage.');
+      return;
+    }
+    // Parse the image content.
+    latestImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${latestImage.size.width} height:${latestImage.size.height}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
+  });
+}
+```
+
+<a id="readlatestimage-1"></a>
+
 ## readLatestImage
 
 ```TypeScript
@@ -137,6 +231,32 @@ Reads the latest image from the ImageReceiver instance. This API uses a promise 
 | Type | Description |
 | --- | --- |
 | Promise&lt;[Image](arkts-image-image-image-i.md)&gt; | Promise used to return the latest image. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ReadLatestImage(receiver : image.ImageReceiver) {
+  receiver.readLatestImage().then((latestImage: image.Image) => {
+    // Parse the image content.
+    latestImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${latestImage.size.width} height:${latestImage.size.height}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })    
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to read the latest Image.code ${error.code},message is ${error.message}`);
+  });
+}
+```
 
 ## readNextImage
 
@@ -164,6 +284,36 @@ Reads the next image from the ImageReceiver instance. This API uses an asynchron
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Image](arkts-image-image-image-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the next image obtained. Otherwise, **err** is an error object. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ReadNextImage(receiver : image.ImageReceiver) {
+  receiver.readNextImage((err: BusinessError, nextImage: image.Image) => {
+    if (err || nextImage === undefined) {
+      console.error('Failed to readNextImage.');
+      return;
+    }
+    // Parse the image content.
+    nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${nextImage.size.width} height:${nextImage.size.height} stride:${imgComponent.rowStride}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
+  });
+}
+```
+
+<a id="readnextimage-1"></a>
+
 ## readNextImage
 
 ```TypeScript
@@ -190,6 +340,32 @@ Reads the next image from the ImageReceiver instance. This API uses a promise to
 | --- | --- |
 | Promise&lt;[Image](arkts-image-image-image-i.md)&gt; | Promise used to return the next image. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function ReadNextImage(receiver : image.ImageReceiver) {
+  receiver.readNextImage().then((nextImage: image.Image) => {
+    console.info('Succeeded in reading the next Image.');
+    nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${nextImage.size.width} height:${nextImage.size.height} stride:${imgComponent.rowStride}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to read the next Image.code ${error.code},message is ${error.message}`);
+  });
+}
+```
+
 ## release
 
 ```TypeScript
@@ -211,6 +387,24 @@ Before releasing the instance, ensure that all asynchronous operations associate
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release(receiver : image.ImageReceiver) {
+  receiver.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release the receiver.code ${err.code},message is ${err.message}`);
+    } else {
+      console.info('Succeeded in releasing the receiver.');
+    }
+  })
+}
+```
+
+<a id="release-1"></a>
 
 ## release
 
@@ -234,6 +428,20 @@ Before releasing the instance, ensure that all asynchronous operations associate
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function Release(receiver : image.ImageReceiver) {
+  receiver.release().then(() => {
+    console.info('Succeeded in releasing the receiver.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to release the receiver.code ${error.code},message is ${error.message}`);
+  })
+}
+```
+
 ## setMemoryName
 
 ```TypeScript
@@ -244,7 +452,7 @@ Sets the memory name for the ImageReceiver instance. This API returns the result
 
 Only visible ASCII characters are supported. Spaces, newlines, tabs, and other control characters will be filtered out. If the filtered result consists entirely of digits, a prefix "ImageReceiver:" will be automatically prepended.The length of name must not exceed 256 bytes.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

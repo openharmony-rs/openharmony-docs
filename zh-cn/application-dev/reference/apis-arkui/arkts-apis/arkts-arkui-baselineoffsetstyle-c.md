@@ -1,5 +1,9 @@
 # BaselineOffsetStyle
 
+```TypeScript
+declare class BaselineOffsetStyle
+```
+
 文本基线偏移量对象说明。适用于需要微调文本垂直位置的场景，例如化学公式、数学表达式中的上下标文本与正常文本的对齐调整。
 
 **起始版本：** 12

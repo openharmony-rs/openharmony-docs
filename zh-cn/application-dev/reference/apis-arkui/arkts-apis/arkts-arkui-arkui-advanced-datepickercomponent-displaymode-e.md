@@ -1,5 +1,9 @@
 # DisplayMode
 
+```TypeScript
+export declare enum DisplayMode
+```
+
 DisplayMode枚举用于定义选择器的显示模式。
 
 **起始版本：** 26.0.0

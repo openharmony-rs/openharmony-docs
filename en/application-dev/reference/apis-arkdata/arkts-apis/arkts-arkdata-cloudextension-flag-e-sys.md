@@ -1,5 +1,9 @@
 # Flag (System API)
 
+```TypeScript
+export enum Flag
+```
+
 Enumerates the operations that can be performed on a database. Use the enum name rather than the enum value.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # AVDataSrcDescriptor
 
+```TypeScript
+interface AVDataSrcDescriptor
+```
+
 定义音频和视频文件的描述符，用于DataSource播放模式。使用场景：一个应用可以在下载完音频和视频资源之前创建播放实例并开始播放。
 
 **起始版本：** 10

@@ -35,17 +35,6 @@ function isOpenTouchGuide(callback: AsyncCallback<boolean>): void
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-accessibility.isOpenTouchGuide().then((data: boolean) => {
-  console.info(`success data:isOpenTouchGuide : ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to isOpenTouchGuide. Code:${err.code}, message:${err.message}`);
-});
-```
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 accessibility.isOpenTouchGuide((err: BusinessError, data: boolean) => {
   if (err) {
     console.error(`Failed to isOpenTouchGuide. Code:${err.code}, message:${err.message}`);
@@ -55,6 +44,8 @@ accessibility.isOpenTouchGuide((err: BusinessError, data: boolean) => {
 });
 ```
 
+
+<a id="isopentouchguide-1"></a>
 
 ## isOpenTouchGuide
 
@@ -80,4 +71,13 @@ function isOpenTouchGuide(): Promise<boolean>
 
 **示例**
 
-参见 [isOpenTouchGuide](#isopentouchguide)
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+accessibility.isOpenTouchGuide().then((data: boolean) => {
+  console.info(`success data:isOpenTouchGuide : ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to isOpenTouchGuide. Code:${err.code}, message:${err.message}`);
+});
+```

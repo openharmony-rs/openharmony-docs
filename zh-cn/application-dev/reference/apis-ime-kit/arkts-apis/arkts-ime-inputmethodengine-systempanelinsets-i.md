@@ -1,5 +1,9 @@
 # SystemPanelInsets
 
+```TypeScript
+interface SystemPanelInsets
+```
+
 输入法软键盘相对系统面板的偏移区域。
 
 **起始版本：** 21

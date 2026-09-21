@@ -1,5 +1,9 @@
 # GravityResponse
 
+```TypeScript
+interface GravityResponse extends Response
+```
+
 重力传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
 **继承/实现关系：** GravityResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

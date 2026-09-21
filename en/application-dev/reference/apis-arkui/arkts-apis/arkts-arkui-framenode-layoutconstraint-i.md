@@ -1,5 +1,9 @@
 # LayoutConstraint
 
+```TypeScript
+declare interface LayoutConstraint
+```
+
 Describes the layout constraints of the component.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # SelectionInfo
 
+```TypeScript
+interface SelectionInfo
+```
+
 划词事件信息。
 
 **起始版本：** 24

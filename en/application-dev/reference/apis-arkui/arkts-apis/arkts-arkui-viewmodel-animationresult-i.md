@@ -1,5 +1,9 @@
 # AnimationResult
 
+```TypeScript
+export interface AnimationResult
+```
+
 AnimationResult
 
 @interface AnimationResult

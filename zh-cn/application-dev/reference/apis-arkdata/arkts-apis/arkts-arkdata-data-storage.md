@@ -26,14 +26,14 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [deleteStorage](arkts-arkdata-storage-deletestorage-f.md) | 从内存中移除指定文件对应的Storage单实例，并删除指定文件及其备份文件、损坏文件。删除指定文件时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题，使用callback方式返回结果，此方法为异步方法。 |
-| [deleteStorage](arkts-arkdata-storage-deletestorage-f.md) | 从内存中移除指定文件对应的Storage单实例，并删除指定文件及其备份文件、损坏文件。删除指定文件时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题，使用Promise方式返回结果，此方法为异步方法。 |
+| [deleteStorage](arkts-arkdata-storage-deletestorage-f.md#deletestorage) | 从内存中移除指定文件对应的Storage单实例，并删除指定文件及其备份文件、损坏文件。删除指定文件时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题，使用callback方式返回结果，此方法为异步方法。 |
+| [deleteStorage](arkts-arkdata-storage-deletestorage-f.md#deletestorage-1) | 从内存中移除指定文件对应的Storage单实例，并删除指定文件及其备份文件、损坏文件。删除指定文件时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题，使用Promise方式返回结果，此方法为异步方法。 |
 | [deleteStorageSync](arkts-arkdata-storage-deletestoragesync-f.md) | 从内存中移除指定文件对应的Storage单实例，并删除指定文件及其备份文件、损坏文件。删除指定文件时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题。 |
-| [getStorage](arkts-arkdata-storage-getstorage-f.md) | 读取指定文件，将数据加载到Storage实例，用于数据操作，使用callback方式返回结果，此方法为异步方法。 |
-| [getStorage](arkts-arkdata-storage-getstorage-f.md) | 读取指定文件，将数据加载到Storage实例，用于数据操作，使用Promise方式返回结果，此方法为异步方法。 |
+| [getStorage](arkts-arkdata-storage-getstorage-f.md#getstorage) | 读取指定文件，将数据加载到Storage实例，用于数据操作，使用callback方式返回结果，此方法为异步方法。 |
+| [getStorage](arkts-arkdata-storage-getstorage-f.md#getstorage-1) | 读取指定文件，将数据加载到Storage实例，用于数据操作，使用Promise方式返回结果，此方法为异步方法。 |
 | [getStorageSync](arkts-arkdata-storage-getstoragesync-f.md) | 读取指定文件，将数据加载到Storage实例，用于数据操作。 |
-| [removeStorageFromCache](arkts-arkdata-storage-removestoragefromcache-f.md) | 从内存中移除指定文件对应的Storage单实例。移除Storage单实例时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题。使用callback方式返回结果，此方法为异步方法。 |
-| [removeStorageFromCache](arkts-arkdata-storage-removestoragefromcache-f.md) | 从内存中移除指定文件对应的Storage单实例。移除Storage单实例时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题。使用Promise方式返回结果，此方法为异步方法。 |
+| [removeStorageFromCache](arkts-arkdata-storage-removestoragefromcache-f.md#removestoragefromcache) | 从内存中移除指定文件对应的Storage单实例。移除Storage单实例时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题。使用callback方式返回结果，此方法为异步方法。 |
+| [removeStorageFromCache](arkts-arkdata-storage-removestoragefromcache-f.md#removestoragefromcache-1) | 从内存中移除指定文件对应的Storage单实例。移除Storage单实例时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题。使用Promise方式返回结果，此方法为异步方法。 |
 | [removeStorageFromCacheSync](arkts-arkdata-storage-removestoragefromcachesync-f.md) | 从内存中移除指定文件对应的Storage单实例。移除Storage单实例时，应用不允许再使用该实例进行数据操作，否则会出现数据一致性问题。 |
 
 ### 接口

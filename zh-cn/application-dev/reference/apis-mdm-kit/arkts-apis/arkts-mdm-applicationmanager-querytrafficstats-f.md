@@ -47,13 +47,13 @@ function queryTrafficStats(
 | bundleName | string | 是 | 应用的包名。 |
 | appIndex | number | 是 | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getappcloneidentity-f.md)等接口来获取。 |
 | accountId | number | 是 | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
-| networkInfo | statistics.NetworkInfo | 是 | 网络信息。 |
+| networkInfo | [statistics.NetworkInfo](../../apis-network-kit/arkts-apis/arkts-network-statistics-networkinfo-i.md) | 是 | 网络信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;statistics.NetStatsInfo&gt; | Promise对象，返回获取的历史流量信息对象。 |
+| Promise&lt;[statistics.NetStatsInfo](../../apis-network-kit/arkts-apis/arkts-network-statistics-netstatsinfo-i.md)&gt; | Promise对象，返回获取的历史流量信息对象。 |
 
 **错误码：**
 

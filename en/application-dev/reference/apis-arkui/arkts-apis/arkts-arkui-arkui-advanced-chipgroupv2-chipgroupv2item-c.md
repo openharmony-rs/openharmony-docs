@@ -1,6 +1,16 @@
 # ChipGroupV2Item
 
-Defines chip group item.
+```TypeScript
+export declare class ChipGroupV2Item
+```
+
+Defines a single chip item in the **ChipGroupV2** component.
+
+> **NOTE:** 
+> 
+> 1. If you need to support the close function while displaying a suffix icon (**suffixIcon** or
+> **suffixSymbolIcon**), it is recommended to implement the deletion logic in the click event of **suffixIcon** or
+> **suffixSymbolIcon**, or use other interaction methods as alternatives.
 
 **Since:** 26.0.0
 
@@ -20,7 +30,7 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 constructor(config: ChipGroupV2ItemConfig)
 ```
 
-The constructor of ChipGroupV2Item
+A constructor used to create a **ChipGroupV2Item** object.
 
 **Since:** 26.0.0
 
@@ -34,7 +44,7 @@ The constructor of ChipGroupV2Item
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md) | Yes | config of the chip group item |
+| config | [ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md) | Yes | Configuration of the **ChipGroupV2** item. |
 
 ## accessibilityDescription
 
@@ -42,7 +52,13 @@ The constructor of ChipGroupV2Item
 public accessibilityDescription?: ResourceStr
 ```
 
-Set accessibility description for ChipGroupV2 item.
+Accessibility description. This attribute is used to explain the component to users in detail. You should provide a thorough text description for this attribute to help users understand the operation and its possible results, especially when these results cannot be directly inferred from the component's attributes and accessibility text alone. When a component has both a text attribute and an accessibility description attribute and it is selected, the system first reads out the component's text attribute, followed by the content of the accessibility description attribute.
+
+Default value: empty string.
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -62,7 +78,25 @@ Set accessibility description for ChipGroupV2 item.
 public accessibilityLevel?: string
 ```
 
-Set accessibility level for ChipGroupV2 item.
+Accessibility level. This attribute is used to control whether the component can be recognized by accessibility services.
+
+Supported values:
+
+**"auto"**: the attribute value of the component is converted to **"yes"**.
+
+**"yes"**: the component can be recognized by accessibility services.
+
+**"no"**: the component cannot be recognized by accessibility services.
+
+**"no-hide-descendants"**: the component and all its child components cannot be recognized by accessibility services.
+
+When a value outside the supported range is passed in, the default value is used.
+
+Default value: **"auto"**
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** string
 
@@ -84,7 +118,13 @@ Set accessibility level for ChipGroupV2 item.
 public allowClose?: boolean
 ```
 
-Allow close.
+Whether to display the close icon. The value **true** means the close icon is displayed, and **false** means the opposite. When **suffixIcon** or **suffixSymbolIcon** is passed in, **allowClose** does not take effect. When neither **suffixIcon** nor **suffixSymbolIcon** is passed in, **allowClose** determines whether the close icon is displayed.
+
+Default value: **false**
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** boolean
 
@@ -104,7 +144,17 @@ Allow close.
 public closeIcon?: ChipV2CloseConfig
 ```
 
-Set config for default close icon when 'allowClose' is true.
+Configuration of the close icon, including accessibility attribute configuration. Set this attribute when you need to customize the size or accessibility attributes of the close icon.
+
+Default value:
+
+- **fontSize**: when **size** is **ChipV2Size.SMALL**, the default value is  
+`$r('sys.float.chip_small_font_size')`; in other cases, the default value is `$r('sys.float.chip_normal_font_size')`.  
+- Accessibility: no accessibility description.
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2CloseConfig](arkts-arkui-arkui-advanced-chipv2-chipv2closeconfig-i.md)
 
@@ -124,7 +174,9 @@ Set config for default close icon when 'allowClose' is true.
 public label: ChipV2Label
 ```
 
-Chip label.
+**ChipV2** text.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2Label](arkts-arkui-arkui-advanced-chipv2-chipv2label-c.md)
 
@@ -144,7 +196,13 @@ Chip label.
 public prefixIcon?: ChipV2PrefixImageIcon
 ```
 
-Prefix icon.
+Prefix icon, used to display an image icon before the **ChipV2** text. Set this attribute when an icon identifier needs to be displayed on the left side of the **ChipV2**.
+
+Default value: no prefix image icon.
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2PrefixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefiximageicon-c.md)
 
@@ -164,7 +222,13 @@ Prefix icon.
 public prefixSymbolIcon?: ChipV2PrefixSymbolIcon
 ```
 
-Prefix symbol icon.
+Prefix symbol icon, used to display a symbol icon before the **ChipV2** text. Set this attribute when a symbol icon identifier needs to be displayed on the left side of the **ChipV2**.
+
+Default value: no prefix symbol icon.
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2PrefixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2prefixsymbolicon-c.md)
 
@@ -184,7 +248,13 @@ Prefix symbol icon.
 public suffixIcon?: ChipV2SuffixImageIcon
 ```
 
-Suffix icon.
+Suffix icon, used to display an image icon after the **ChipV2** text. When this attribute is set, the **allowClose** attribute does not take effect.
+
+Default value: no suffix image icon displayed.
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2SuffixImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffiximageicon-c.md)
 
@@ -204,7 +274,13 @@ Suffix icon.
 public suffixSymbolIcon?: ChipV2SuffixSymbolIcon
 ```
 
-Suffix symbol icon.
+Suffix symbol icon, used to display a symbol icon after the **ChipV2** text. When this attribute is set, the **allowClose** attribute does not take effect.
+
+Default value: no suffix symbol icon displayed.
+
+When the value is **undefined**, the default value is used.
+
+Decorator: **@Trace**
 
 **Type:** [ChipV2SuffixSymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2suffixsymbolicon-c.md)
 

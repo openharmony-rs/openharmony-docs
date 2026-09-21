@@ -1,5 +1,9 @@
 # date
 
+```TypeScript
+namespace date
+```
+
 Provides methods for setting time and date formats.
 
 @namespace date

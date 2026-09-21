@@ -65,24 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
-let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-// 订阅者信息
-let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-  events: ['event']
-};
-// 创建订阅者
-commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-  console.info(`Succeeded in creating subscriber.`);
-  subscriber = commonEventSubscriber;
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="createsubscriber-1"></a>
 
 ## createSubscriber
 
@@ -118,4 +102,20 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 **示例**
 
-参见 [createSubscriber](#createsubscriber)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及取消订阅的动作
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+// 创建订阅者
+commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+  console.info(`Succeeded in creating subscriber.`);
+  subscriber = commonEventSubscriber;
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+});
+```

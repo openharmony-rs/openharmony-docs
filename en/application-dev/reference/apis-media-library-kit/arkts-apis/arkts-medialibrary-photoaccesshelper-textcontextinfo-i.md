@@ -1,5 +1,9 @@
 # TextContextInfo
 
+```TypeScript
+interface TextContextInfo
+```
+
 Represents the text information about the recommended images.
 
 **Since:** 12

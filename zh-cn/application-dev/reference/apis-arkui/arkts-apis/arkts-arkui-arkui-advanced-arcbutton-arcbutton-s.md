@@ -1,5 +1,9 @@
 # ArcButton
 
+```TypeScript
+export declare struct ArcButton
+```
+
 弧形按钮组件提供强调、普通等样式按钮，推荐用于圆形屏幕的设备。
 
 > **说明：** 

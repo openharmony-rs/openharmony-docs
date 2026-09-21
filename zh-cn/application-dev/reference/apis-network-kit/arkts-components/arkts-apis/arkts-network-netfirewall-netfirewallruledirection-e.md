@@ -1,5 +1,9 @@
 # NetFirewallRuleDirection
 
+```TypeScript
+enum NetFirewallRuleDirection
+```
+
 枚举类型，防火墙规则方向，包含入站、出站。
 
 **起始版本：** 15

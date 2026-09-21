@@ -1,5 +1,9 @@
 # GetInputDataOptions (System API)
 
+```TypeScript
+interface GetInputDataOptions
+```
+
 Represents a set of optional parameters for [onGetData](arkts-basicservices-osaccount-iinputer-i-sys.md#ongetdata).
 
 **Since:** 12

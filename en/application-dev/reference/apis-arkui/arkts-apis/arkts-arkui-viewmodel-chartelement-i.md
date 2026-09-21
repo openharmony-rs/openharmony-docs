@@ -1,5 +1,9 @@
 # ChartElement
 
+```TypeScript
+export interface ChartElement extends Element
+```
+
 The &lt;chart&gt; component displays line charts, gauge charts, and bar charts.
 
 @extends Element @interface ChartElement

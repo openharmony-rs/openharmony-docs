@@ -1,5 +1,9 @@
 # Progress
 
+```TypeScript
+interface Progress
+```
+
 Defines the copy progress information.
 
 **Since:** 11

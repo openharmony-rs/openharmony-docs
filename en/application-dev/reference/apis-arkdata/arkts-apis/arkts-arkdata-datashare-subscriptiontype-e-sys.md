@@ -1,5 +1,9 @@
 # SubscriptionType (System API)
 
+```TypeScript
+enum SubscriptionType
+```
+
 Enumerates the data subscription types.
 
 **Since:** 12

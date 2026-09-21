@@ -1,5 +1,9 @@
 # TextEditControllerEx
 
+```TypeScript
+declare interface TextEditControllerEx extends TextBaseController
+```
+
 Implements an extended text editing controller.
 
 Inherits [TextBaseController](arkts-arkui-textbasecontroller-i.md).

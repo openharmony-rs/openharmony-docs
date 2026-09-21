@@ -1,5 +1,9 @@
 # ShaderStyle
 
+```TypeScript
+declare class ShaderStyle
+```
+
 文本着色器效果基类。
 
 **起始版本：** 20

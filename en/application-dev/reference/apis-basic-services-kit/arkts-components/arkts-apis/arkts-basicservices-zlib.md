@@ -18,8 +18,8 @@ import { zlib } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md) | Compresses a file. This API uses an asynchronous callback to return the result. |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md) | Compresses a file. This API uses a promise to return the result. |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile) | Compresses a file. This API uses an asynchronous callback to return the result. |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile-1) | Compresses a file. This API uses a promise to return the result. |
 | [compressFiles](arkts-basicservices-zlib-compressfiles-f.md) | Compresses multiple specified files. This API uses a promise to return the result. |
 | [createChecksum](arkts-basicservices-zlib-createchecksum-f.md) | Creates this checksum object. This API uses a promise to return the result. |
 | [createChecksumSync](arkts-basicservices-zlib-createchecksumsync-f.md) | Creates this checksum object. A checksum instance is returned upon a success. |
@@ -27,9 +27,9 @@ import { zlib } from '@kit.BasicServicesKit';
 | [createGZipSync](arkts-basicservices-zlib-creategzipsync-f.md) | Creates this **GZip** object. A **GZip** instance is returned upon a success. |
 | [createZip](arkts-basicservices-zlib-createzip-f.md) | Creates this **Zip** instance. This API uses a promise to return the result. |
 | [createZipSync](arkts-basicservices-zlib-createzipsync-f.md) | Creates this **Zip** instance. A **Zip** instance is returned upon a success. |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md) | Decompresses a file. This API uses an asynchronous callback to return the result. |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md) | Decompresses a file. This API uses an asynchronous callback to return the result. |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md) | Decompresses a file. This API uses a promise to return the result. |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | Decompresses a file. This API uses an asynchronous callback to return the result. |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-1) | Decompresses a file. This API uses an asynchronous callback to return the result. |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile-2) | Decompresses a file. This API uses a promise to return the result. |
 | [getOriginalSize](arkts-basicservices-zlib-getoriginalsize-f.md) | Obtains the original size of a compressed file. This API uses a promise to return the result. |
 | [unzipFile](arkts-basicservices-zlib-unzipfile-f.md) | Unzips a file. The execution result is returned after the decompression is complete. This API uses a promise to return the result. |
 | [zipFile](arkts-basicservices-zlib-zipfile-f.md) | Zips a file. The execution result is returned after the compression is complete. This API uses a promise to return the result. |

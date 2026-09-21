@@ -1,5 +1,9 @@
 # ActionSheetOffset
 
+```TypeScript
+interface ActionSheetOffset
+```
+
 Alignment mode of the dialog box.
 
 **Since:** 18

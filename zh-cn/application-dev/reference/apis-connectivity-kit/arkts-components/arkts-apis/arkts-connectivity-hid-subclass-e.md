@@ -1,5 +1,9 @@
 # Subclass
 
+```TypeScript
+enum Subclass
+```
+
 枚举，HID设备的具体类型。
 
 **起始版本：** 23

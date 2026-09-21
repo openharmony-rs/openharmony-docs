@@ -1,5 +1,9 @@
 # DepthFusionQuery (System API)
 
+```TypeScript
+interface DepthFusionQuery
+```
+
 A class for querying depth fusion capabilities.
 
 **Since:** 14

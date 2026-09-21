@@ -1,5 +1,9 @@
 # Attribute
 
+```TypeScript
+enum Attribute
+```
+
 Enumerates contact attributes. The enumerated value is of the number type. Create contact data in JSON format:
 
 **Since:** 7

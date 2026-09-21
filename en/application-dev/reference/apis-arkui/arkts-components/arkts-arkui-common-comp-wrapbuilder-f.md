@@ -26,4 +26,4 @@ Defining wrapBuilder function.
 
 | Type | Description |
 | --- | --- |
-| [WrappedBuilder](arkts-arkui-wrappedbuilder-c.md)&lt;Args&gt; |  |
+| [WrappedBuilder](arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;Args&gt; |  |

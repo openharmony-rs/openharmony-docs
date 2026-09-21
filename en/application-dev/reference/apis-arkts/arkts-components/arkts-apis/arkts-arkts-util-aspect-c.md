@@ -1,5 +1,9 @@
 # Aspect
 
+```TypeScript
+class Aspect
+```
+
 Provides APIs that support Aspect Oriented Programming (AOP). These APIs can be used to perform instrumentation or replacement on class methods.
 
 **Since:** 11

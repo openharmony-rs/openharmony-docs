@@ -1,5 +1,9 @@
 # ControlCenterSession (System API)
 
+```TypeScript
+interface ControlCenterSession extends Beauty, Aperture, ColorEffect
+```
+
 Control center session object.
 
 @extends Beauty, Aperture [since 20 - 24] @extends Beauty, Aperture, ColorEffect [since 26.0.0]

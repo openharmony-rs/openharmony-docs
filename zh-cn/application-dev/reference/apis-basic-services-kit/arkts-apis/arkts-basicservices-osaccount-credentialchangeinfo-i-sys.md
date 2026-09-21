@@ -1,5 +1,9 @@
 # CredentialChangeInfo（系统接口）
 
+```TypeScript
+interface CredentialChangeInfo
+```
+
 表示凭据变更信息。
 
 **起始版本：** 23
@@ -26,6 +30,8 @@ accountId: number
 
 **起始版本：** 23
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +47,8 @@ addedCredentialId?: Uint8Array
 **类型：** Uint8Array
 
 **起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -58,6 +66,8 @@ changeType: CredentialChangeType
 
 **起始版本：** 23
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +83,8 @@ credentialType: AuthType
 **类型：** [AuthType](arkts-basicservices-osaccount-authtype-e-sys.md)
 
 **起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -90,6 +102,8 @@ deletedCredentialId?: Uint8Array
 
 **起始版本：** 23
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **系统接口：** 此接口为系统接口。
@@ -105,6 +119,8 @@ isSilent: boolean
 **类型：** boolean
 
 **起始版本：** 23
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Account.OsAccount
 

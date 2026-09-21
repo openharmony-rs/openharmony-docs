@@ -1,5 +1,9 @@
 # TaskPoolInfo
 
+```TypeScript
+class TaskPoolInfo
+```
+
 Describes the internal information about a task pool.
 
 **Since:** 10

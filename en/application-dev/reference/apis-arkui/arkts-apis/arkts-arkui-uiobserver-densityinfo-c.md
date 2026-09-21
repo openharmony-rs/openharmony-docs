@@ -1,5 +1,9 @@
 # DensityInfo
 
+```TypeScript
+export class DensityInfo
+```
+
 Provides the information contained in the callback when the screen pixel density changes.
 
 **Since:** 12

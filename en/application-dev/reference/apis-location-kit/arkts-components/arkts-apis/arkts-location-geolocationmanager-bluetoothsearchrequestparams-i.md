@@ -1,5 +1,9 @@
 # BluetoothSearchRequestParams
 
+```TypeScript
+export interface BluetoothSearchRequestParams
+```
+
 Indicates request parameters for Bluetooth search function.
 
 **Since:** 26.0.0

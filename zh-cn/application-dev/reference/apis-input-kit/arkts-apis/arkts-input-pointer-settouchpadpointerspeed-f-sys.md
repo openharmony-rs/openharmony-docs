@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 设置触摸板指针速度
-            pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.info(`Succeeded in setting touchpad pointer speed.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="settouchpadpointerspeed-1"></a>
 
 ## setTouchpadPointerSpeed
 
@@ -128,4 +103,29 @@ function setTouchpadPointerSpeed(speed: number): Promise<void>
 
 **示例**
 
-参见 [setTouchpadPointerSpeed](#settouchpadpointerspeed)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置触摸板指针速度
+            pointer.setTouchpadPointerSpeed(10).then(() => {
+              console.info(`Succeeded in setting touchpad pointer speed.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

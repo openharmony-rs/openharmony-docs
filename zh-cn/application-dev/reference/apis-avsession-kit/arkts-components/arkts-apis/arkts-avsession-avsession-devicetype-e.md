@@ -1,5 +1,9 @@
 # DeviceType
 
+```TypeScript
+enum DeviceType
+```
+
 播放设备的类型枚举。
 
 **起始版本：** 10

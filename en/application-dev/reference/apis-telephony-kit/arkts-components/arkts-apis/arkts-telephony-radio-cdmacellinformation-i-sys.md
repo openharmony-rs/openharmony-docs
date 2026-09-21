@@ -1,5 +1,9 @@
 # CdmaCellInformation (System API)
 
+```TypeScript
+export interface CdmaCellInformation
+```
+
 Obtains CDMA cell information.
 
 **Since:** 8

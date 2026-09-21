@@ -1,5 +1,9 @@
 # Credential
 
+```TypeScript
+export interface Credential
+```
+
 表示凭据详细信息。
 
 **起始版本：** 11

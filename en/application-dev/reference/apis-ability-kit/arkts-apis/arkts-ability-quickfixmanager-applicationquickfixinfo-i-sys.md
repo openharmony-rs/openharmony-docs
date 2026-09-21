@@ -1,5 +1,9 @@
 # ApplicationQuickFixInfo (System API)
 
+```TypeScript
+export interface ApplicationQuickFixInfo
+```
+
 Defines the quick fix information at the application level.
 
 **Since:** 9

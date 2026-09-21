@@ -1,5 +1,9 @@
 # CustomDialogController
 
+```TypeScript
+declare class CustomDialogController
+```
+
 自定义弹窗的控制器。
 
 ## 导入对象
@@ -7,6 +11,8 @@
 ```ts
 dialogController : CustomDialogController | null = new CustomDialogController(CustomDialogControllerOptions)
 ```
+
+
 
 > **说明：** 
 > 
@@ -26,6 +32,8 @@ close()
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -41,8 +49,8 @@ constructor(value: CustomDialogControllerOptions)
 > **说明：** 
 > 
 > 自定义弹窗的所有参数，不支持动态刷新，但可以通过设置customStyle为true，并在自定义组件上设置背景色
-> backgroundColor、背景模糊
-> backgroundBlurStyle
+> [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、背景模糊
+> [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)
 > 、尺寸设置等属性，通过属性绑定的状态变量来实现动态刷新的效果。
 > 
 > 在CustomDialogController作为全局变量以实现全局自定义弹窗的场景下，若对controller重新赋值，则无法通过其关闭之前的弹窗。建议在重新赋值前先关闭弹窗。
@@ -50,6 +58,8 @@ constructor(value: CustomDialogControllerOptions)
 > 在自定义弹窗内拉起另一个自定义弹窗时，不建议直接关闭拉起方。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -94,10 +104,12 @@ open()
 > **说明：** 
 > 
 > 不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的CustomDialog，详情见输入法框架的约束与限制说明
-> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)
+> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)
 > 。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

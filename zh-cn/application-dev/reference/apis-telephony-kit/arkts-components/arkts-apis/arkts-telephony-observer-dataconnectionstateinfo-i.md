@@ -1,5 +1,9 @@
 # DataConnectionStateInfo
 
+```TypeScript
+export interface DataConnectionStateInfo
+```
+
 数据连接状态相关信息。
 
 **起始版本：** 11

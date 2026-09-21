@@ -1,5 +1,9 @@
 # Priority
 
+```TypeScript
+export enum Priority
+```
+
 Enum for scheduling priority
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # DeviceDirection (System API)
 
+```TypeScript
+export enum DeviceDirection
+```
+
 Enumerates device directions in a video call.
 
 **Since:** 11

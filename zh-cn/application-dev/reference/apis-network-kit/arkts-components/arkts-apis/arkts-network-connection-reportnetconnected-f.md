@@ -54,16 +54,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  connection.reportNetConnected(netHandle).then(() => {
-    console.info(`Succeeded to report`);
-  });
-});
-```
-
+<a id="reportnetconnected-1"></a>
 
 ## reportNetConnected
 
@@ -103,4 +95,12 @@ function reportNetConnected(netHandle: NetHandle): Promise<void>
 
 **示例**
 
-参见 [reportNetConnected](#reportnetconnected)
+```TypeScript
+import { connection } from '@kit.NetworkKit';
+
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  connection.reportNetConnected(netHandle).then(() => {
+    console.info(`Succeeded to report`);
+  });
+});
+```

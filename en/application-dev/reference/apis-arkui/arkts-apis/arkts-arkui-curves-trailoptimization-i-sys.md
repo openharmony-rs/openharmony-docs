@@ -1,5 +1,9 @@
 # TrailOptimization (System API)
 
+```TypeScript
+interface TrailOptimization
+```
+
 Trail optimization configuration for spring animations.
 
 **Since:** 26.0.0

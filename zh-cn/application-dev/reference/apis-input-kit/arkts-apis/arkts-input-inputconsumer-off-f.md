@@ -33,6 +33,74 @@ function off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Call
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 
+**示例**
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftCtrlKey = 2072;
+          let zKey = 2042;
+          // 取消订阅单个应用快捷键回调函数
+          let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
+          };
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
+          try {
+            // 订阅热键变更事件
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
+            // 取消订阅热键变更事件
+            inputConsumer.off('hotkeyChange', hotkeyOption, hotkeyCallback);
+            console.info(`Succeeded in unsubscribing.`);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftCtrlKey = 2072;
+          let zKey = 2042;
+          // 取消订阅所有应用快捷键回调函数
+          let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
+          };
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
+          try {
+            // 订阅热键变更事件
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
+            // 取消订阅热键变更事件
+            inputConsumer.off('hotkeyChange', hotkeyOption);
+            console.info(`Succeeded in unsubscribing.`);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('keyPressed')
 
@@ -59,3 +127,41 @@ function off(type: 'keyPressed', callback?: Callback<KeyEvent>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+
+**示例**
+
+```TypeScript
+import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 取消指定回调函数
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
+              console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
+            };
+            // 订阅按键按下事件
+            inputConsumer.on('keyPressed', options, callback);
+            // 取消订阅按键按下事件
+            inputConsumer.off('keyPressed', callback);
+            // 取消当前已订阅的所有回调函数
+            inputConsumer.off('keyPressed');
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # CertBlob (System API)
 
+```TypeScript
+export interface CertBlob
+```
+
 Represents the certificate information.
 
 **Since:** 10

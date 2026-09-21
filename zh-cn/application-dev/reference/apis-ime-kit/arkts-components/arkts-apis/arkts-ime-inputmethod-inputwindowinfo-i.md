@@ -1,5 +1,9 @@
 # InputWindowInfo
 
+```TypeScript
+export interface InputWindowInfo
+```
+
 输入法软键盘的窗口信息。
 
 **起始版本：** 10

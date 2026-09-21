@@ -1,5 +1,9 @@
 # LiveFormInfo
 
+```TypeScript
+export interface LiveFormInfo
+```
+
 Provides information about a live form. @typedef { LiveFormInfo }
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # Constants
 
+```TypeScript
+enum Constants
+```
+
 表示常量的枚举。
 
 **起始版本：** 8

@@ -1,5 +1,9 @@
 # RemoteDevice
 
+```TypeScript
+interface RemoteDevice
+```
+
 Provides the method for operating on a remote device. Before using this method, you need to call [remoteDevice.createRemoteDevice](arkts-connectivity-remotedevice-createremotedevice-f.md) to create a [RemoteDevice](arkts-connectivity-remotedevice-remotedevice-i.md) instance. You need to create only one instance for a device.
 
 **Since:** 26.0.0

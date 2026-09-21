@@ -1,5 +1,9 @@
 # Geometry
 
+```TypeScript
+export interface Geometry extends Node
+```
+
 几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自Node。
 
 @extends Node @interface Geometry

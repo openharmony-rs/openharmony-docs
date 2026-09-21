@@ -1,5 +1,9 @@
 # WifiWapiConfig
 
+```TypeScript
+interface WifiWapiConfig
+```
+
 Wi-Fi WAPI config. @typedef WifiWapiConfig
 
 **Since:** 12

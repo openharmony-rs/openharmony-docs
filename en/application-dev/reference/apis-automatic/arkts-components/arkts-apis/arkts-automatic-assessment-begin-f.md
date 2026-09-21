@@ -13,7 +13,7 @@ function begin(context: UIAbilityContext, config: AssessmentConfig, callback: IA
 
 Begins an assessment session. A confirmation dialog box will be displayed for the user to confirm before the assessment session starts.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ASSESSMENT_CONFIGURATION
 

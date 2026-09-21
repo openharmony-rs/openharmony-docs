@@ -1,5 +1,9 @@
 # DeviceLogEventCode（系统接口）
 
+```TypeScript
+enum DeviceLogEventCode
+```
+
 设备日志事件返回值的枚举。
 
 **起始版本：** 13

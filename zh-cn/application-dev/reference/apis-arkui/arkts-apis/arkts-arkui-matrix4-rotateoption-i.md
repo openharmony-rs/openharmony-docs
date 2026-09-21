@@ -1,5 +1,9 @@
 # RotateOption
 
+```TypeScript
+interface RotateOption
+```
+
 旋转参数。
 
 **起始版本：** 7

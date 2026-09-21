@@ -53,8 +53,54 @@ function bulkTransfer(
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
+
+```TypeScript
+import {BusinessError} from '@kit.BasicServicesKit';
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// 把获取到的设备对象作为参数传入usbManager.connectDevice；当usbManager.connectDevice接口成功返回之后；
+// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后，再调用该接口。
+async function bulkTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  let device: usbManager.USBDevice = devicesList?.[0];
+  await usbManager.requestRight(device.name);
+  if (!usbManager.hasRight(device.name)) {
+    console.error(`request right fail`);
+    return;
+  }
+  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicePipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
+  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+    if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
+      let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
+      let ret: number = usbManager.claimInterface(devicePipe, interfaces);
+      if (ret !== 0) {
+        console.error(`claim interface failed`);
+        continue;
+      }
+      let buffer = new Uint8Array(128);
+      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
+        console.info(`bulkTransfer = ${ret}`);
+        ret = usbManager.releaseInterface(devicePipe, interfaces);
+        console.info(`releaseInterface = ${ret}`);
+        if (i === device.configs?.[0]?.interfaces.length - 1) {
+          usbManager.closePipe(devicePipe);
+        }
+      }).catch((error: BusinessError) => {
+        console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
+      });
+    }
+  }
+}
 ```

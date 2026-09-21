@@ -1,5 +1,9 @@
 # UpgradePeriod (System API)
 
+```TypeScript
+export interface UpgradePeriod
+```
+
 Represents an automatic upgrade period.
 
 **Since:** 9

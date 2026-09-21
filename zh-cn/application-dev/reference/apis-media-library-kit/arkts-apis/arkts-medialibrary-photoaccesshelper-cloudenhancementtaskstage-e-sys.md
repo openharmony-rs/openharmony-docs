@@ -1,5 +1,9 @@
 # CloudEnhancementTaskStage（系统接口）
 
+```TypeScript
+enum CloudEnhancementTaskStage
+```
+
 枚举，应用查询云增强任务状态时，在[CloudEnhancementTaskState](arkts-medialibrary-photoaccesshelper-cloudenhancement-c-sys.md)接口中返回，表示云增强任务状态。
 
 **起始版本：** 13

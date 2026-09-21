@@ -1,5 +1,9 @@
 # TextBlobRunBuffer
 
+```TypeScript
+interface TextBlobRunBuffer
+```
+
 描述一行文字中具有相同属性的连续字形。
 
 **起始版本：** 11

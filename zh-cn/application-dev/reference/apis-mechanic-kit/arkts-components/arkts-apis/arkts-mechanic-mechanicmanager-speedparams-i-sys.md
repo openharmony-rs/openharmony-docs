@@ -1,5 +1,9 @@
 # SpeedParams（系统接口）
 
+```TypeScript
+export interface SpeedParams
+```
+
 速度控制参数
 
 **起始版本：** 26.0.0

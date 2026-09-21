@@ -62,19 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    connection.pairCredibleDevice('68:13:24:79:4C:8C', 0).then(() => {
-        console.info('PairCredibleDevice');
-    }, (err: BusinessError) => {
-        console.error('PairCredibleDevice:errCode' + err.code + ', errMessage: ' + err.message);
-    });
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
 
+<a id="paircredibledevice-1"></a>
 
 ## pairCredibleDevice
 
@@ -121,4 +110,15 @@ function pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Pr
 
 **示例**
 
-参见 [pairCredibleDevice](#paircredibledevice)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    connection.pairCredibleDevice('68:13:24:79:4C:8C', 0).then(() => {
+        console.info('PairCredibleDevice');
+    }, (err: BusinessError) => {
+        console.error('PairCredibleDevice:errCode' + err.code + ', errMessage: ' + err.message);
+    });
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

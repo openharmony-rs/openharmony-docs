@@ -1,5 +1,9 @@
 # Options
 
+```TypeScript
+interface Options
+```
+
 Options用于指定在压缩或解压Zip文件时的选项。
 
 **起始版本：** 7

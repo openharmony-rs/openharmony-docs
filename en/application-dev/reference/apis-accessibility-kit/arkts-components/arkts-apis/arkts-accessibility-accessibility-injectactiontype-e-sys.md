@@ -1,5 +1,9 @@
 # InjectActionType (System API)
 
+```TypeScript
+export enum InjectActionType
+```
+
 Enumerates injection actions.
 
 **Since:** 26.0.0

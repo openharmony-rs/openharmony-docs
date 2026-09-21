@@ -1,5 +1,9 @@
 # PermissionManagedState
 
+```TypeScript
+export enum PermissionManagedState
+```
+
 应用权限的管理状态。
 
 **起始版本：** 20

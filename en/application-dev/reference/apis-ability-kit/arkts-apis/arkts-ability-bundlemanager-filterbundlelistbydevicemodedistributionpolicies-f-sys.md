@@ -22,7 +22,7 @@ Filters the bundle list by device mode distribution policies. This API uses a pr
 > (UNIVERSAL_DIFFERENT_PACKAGE, PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, and FULL_COMPATIBLE_DIFFERENT_PACKAGE)
 > must be included.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 

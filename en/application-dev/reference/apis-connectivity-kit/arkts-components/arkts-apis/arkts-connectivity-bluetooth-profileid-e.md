@@ -1,5 +1,9 @@
 # ProfileId
 
+```TypeScript
+enum ProfileId
+```
+
 The enum of profile id.
 
 **Since:** 7

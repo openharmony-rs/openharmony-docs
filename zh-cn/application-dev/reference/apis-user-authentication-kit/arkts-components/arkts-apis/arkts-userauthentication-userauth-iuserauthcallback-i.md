@@ -1,5 +1,9 @@
 # IUserAuthCallback
 
+```TypeScript
+interface IUserAuthCallback
+```
+
 返回认证结果的回调对象。
 
 **起始版本：** 8

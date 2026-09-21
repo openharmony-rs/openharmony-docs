@@ -1,5 +1,9 @@
 # BusinessAbilityFilter（系统接口）
 
+```TypeScript
+export interface BusinessAbilityFilter
+```
+
 此过滤值用于过滤查询的Ability类型。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # AudioLoopbackEqualizerPreset
 
+```TypeScript
+enum AudioLoopbackEqualizerPreset
+```
+
 Enumerates the equalizer types of audio loopback.
 
 **Since:** 21

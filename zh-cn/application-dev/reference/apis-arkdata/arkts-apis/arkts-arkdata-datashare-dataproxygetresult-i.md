@@ -1,5 +1,9 @@
 # DataProxyGetResult
 
+```TypeScript
+interface DataProxyGetResult
+```
+
 配置共享批量获取操作结果的数据结构。
 
 **起始版本：** 20

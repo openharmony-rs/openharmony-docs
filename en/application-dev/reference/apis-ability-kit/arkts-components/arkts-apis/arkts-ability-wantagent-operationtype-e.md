@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export enum OperationType
+```
+
 Enumerates the operation types of the WantAgent objects.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # ReminderState
 
+```TypeScript
+interface ReminderState
+```
+
 代理提醒状态信息。状态信息会在如下两种情况发送通知：
 
 1. 用户点击代理提醒的通知按钮时，如果应用进程存在，则会发送用户点击的按钮类型的通知给应用。

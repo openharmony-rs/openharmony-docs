@@ -1,5 +1,9 @@
 # AppGroupCallbackInfo (System API)
 
+```TypeScript
+interface AppGroupCallbackInfo
+```
+
 **Since:** 9
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.AppGroup

@@ -1,5 +1,9 @@
 # DistributedExtensionContext
 
+```TypeScript
+declare class DistributedExtensionContext extends ExtensionContext
+```
+
 Class inherited for the distributed extension function.
 
 **Inheritance/Implementation:** DistributedExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)

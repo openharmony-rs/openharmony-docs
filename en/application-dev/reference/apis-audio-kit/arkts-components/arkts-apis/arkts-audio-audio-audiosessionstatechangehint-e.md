@@ -1,5 +1,9 @@
 # AudioSessionStateChangeHint
 
+```TypeScript
+enum AudioSessionStateChangeHint
+```
+
 Enumerates the hints for audio session state changes.
 
 The hint is obtained when an [AudioSessionStateChangedEvent](arkts-audio-audio-audiosessionstatechangedevent-i.md) is received.

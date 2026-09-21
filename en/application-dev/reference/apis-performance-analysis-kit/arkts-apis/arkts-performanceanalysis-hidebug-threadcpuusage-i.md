@@ -1,5 +1,9 @@
 # ThreadCpuUsage
 
+```TypeScript
+interface ThreadCpuUsage
+```
+
 Describes the CPU usage of a thread.
 
 **Since:** 12
@@ -50,6 +54,6 @@ Thread name.
 
 **Type:** string
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

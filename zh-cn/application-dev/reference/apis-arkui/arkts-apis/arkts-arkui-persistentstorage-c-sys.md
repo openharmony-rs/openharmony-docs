@@ -1,5 +1,9 @@
 # PersistentStorage
 
+```TypeScript
+declare class PersistentStorage
+```
+
 PersistentStorage提供了UI状态的持久化存储能力，将选定的AppStorage属性持久化到文件中，在应用重启时从文件中恢复这些属性值并写入到AppStorage。具体UI使用说明，详见[PersistentStorage：持久化存储UI状态](../../../ui/state-management/arkts-persiststorage.md)。
 
 > **说明：** 
@@ -19,6 +23,8 @@ constructor(appStorage: AppStorage, storage: Storage)
 构造函数。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

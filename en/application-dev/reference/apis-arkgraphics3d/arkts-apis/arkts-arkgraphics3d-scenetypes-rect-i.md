@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+export interface Rect
+```
+
 Rectangle in a plane.
 
 @typedef Rect

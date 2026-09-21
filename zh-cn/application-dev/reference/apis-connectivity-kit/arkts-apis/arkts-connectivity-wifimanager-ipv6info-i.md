@@ -1,5 +1,9 @@
 # Ipv6Info
 
+```TypeScript
+interface Ipv6Info
+```
+
 Ipv6信息。
 
 **起始版本：** 10

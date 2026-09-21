@@ -1,5 +1,9 @@
 # ModelVersion
 
+```TypeScript
+enum ModelVersion
+```
+
 模型版本枚举。
 
 @enum { int }

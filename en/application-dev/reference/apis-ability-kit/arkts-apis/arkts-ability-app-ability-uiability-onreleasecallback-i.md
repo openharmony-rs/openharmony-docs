@@ -1,5 +1,9 @@
 # OnReleaseCallback
 
+```TypeScript
+export interface OnReleaseCallback
+```
+
 Defines the callback that is invoked when the stub on the target UIAbility is disconnected.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # ScrollEventInfo
 
+```TypeScript
+export interface ScrollEventInfo
+```
+
 ScrollEvent info.
 
 @interface ScrollEventInfo

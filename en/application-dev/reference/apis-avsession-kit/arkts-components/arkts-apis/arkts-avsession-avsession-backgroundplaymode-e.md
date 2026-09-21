@@ -1,5 +1,9 @@
 # BackgroundPlayMode
 
+```TypeScript
+enum BackgroundPlayMode
+```
+
 Supported background play mode definitions.
 
 **Since:** 24

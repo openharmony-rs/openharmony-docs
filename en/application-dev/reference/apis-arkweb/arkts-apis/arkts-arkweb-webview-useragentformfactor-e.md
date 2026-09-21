@@ -1,5 +1,9 @@
 # UserAgentFormFactor
 
+```TypeScript
+enum UserAgentFormFactor
+```
+
 Enumerates the user device forms.
 
 **Since:** 24

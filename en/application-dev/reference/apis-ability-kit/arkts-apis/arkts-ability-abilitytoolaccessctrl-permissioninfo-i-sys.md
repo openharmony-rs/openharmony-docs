@@ -1,5 +1,9 @@
 # PermissionInfo (System API)
 
+```TypeScript
+interface PermissionInfo
+```
+
 Permission information.
 
 **Since:** 26.0.0
@@ -25,6 +29,8 @@ Authorization status information.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -41,6 +47,8 @@ Permission name.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -56,6 +64,8 @@ Permission status.
 **Type:** [abilityAccessCtrl.PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

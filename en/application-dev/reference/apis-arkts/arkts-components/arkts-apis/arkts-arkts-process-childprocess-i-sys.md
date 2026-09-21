@@ -1,5 +1,9 @@
 # ChildProcess (System API)
 
+```TypeScript
+export interface ChildProcess
+```
+
 The childprocess object can be used to create a new process.
 
 **Since:** 7

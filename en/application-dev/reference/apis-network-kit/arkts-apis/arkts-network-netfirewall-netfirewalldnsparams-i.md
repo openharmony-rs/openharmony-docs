@@ -1,5 +1,9 @@
 # NetFirewallDnsParams
 
+```TypeScript
+interface NetFirewallDnsParams
+```
+
 Defines the DNS information of a firewall rule.
 
 > **Description**

@@ -1,5 +1,9 @@
 # BeaconFence
 
+```TypeScript
+export interface BeaconFence
+```
+
 Beacon fence details.
 
 **Since:** 20

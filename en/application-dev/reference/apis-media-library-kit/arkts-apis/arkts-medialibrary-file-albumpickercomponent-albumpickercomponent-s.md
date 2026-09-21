@@ -1,5 +1,9 @@
 # AlbumPickerComponent
 
+```TypeScript
+export declare struct AlbumPickerComponent
+```
+
 AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) =&gt; boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
 The **AlbumPickerComponent** embedded in the UI of an application allows the application to access the albums in the user directory without any permission.

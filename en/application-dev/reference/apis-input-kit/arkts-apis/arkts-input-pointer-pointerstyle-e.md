@@ -1,5 +1,9 @@
 # PointerStyle
 
+```TypeScript
+enum PointerStyle
+```
+
 Mouse pointer style types.
 
 **Since:** 9

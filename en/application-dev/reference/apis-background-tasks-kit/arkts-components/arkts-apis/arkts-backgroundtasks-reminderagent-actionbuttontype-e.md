@@ -1,5 +1,9 @@
 # ActionButtonType
 
+```TypeScript
+export enum ActionButtonType
+```
+
 Enumerates the button types.
 
 **Since:** 7
@@ -22,7 +26,7 @@ Button for closing the reminder.
 
 **Deprecated since:** 9
 
-**Substitutes:** ACTION_BUTTON_TYPE_CLOSE
+**Substitutes:** [ACTION_BUTTON_TYPE_CLOSE](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md#action_button_type_close)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -38,6 +42,6 @@ Button for snoozing the reminder.
 
 **Deprecated since:** 9
 
-**Substitutes:** ACTION_BUTTON_TYPE_SNOOZE
+**Substitutes:** [ACTION_BUTTON_TYPE_SNOOZE](arkts-backgroundtasks-reminderagentmanager-actionbuttontype-e.md#action_button_type_snooze)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

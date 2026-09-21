@@ -1,5 +1,9 @@
 # AuthEvent
 
+```TypeScript
+interface AuthEvent
+```
+
 认证接口的异步回调对象。
 
 **起始版本：** 9

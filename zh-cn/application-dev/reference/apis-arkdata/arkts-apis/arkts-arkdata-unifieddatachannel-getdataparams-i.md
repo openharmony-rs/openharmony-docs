@@ -1,5 +1,9 @@
 # GetDataParams
 
+```TypeScript
+interface GetDataParams
+```
+
 表示从UDMF获取数据时的参数，包含目标路径、文件冲突选项、进度条类型等。
 
 具体使用示例可见[拖拽异步获取数据]。

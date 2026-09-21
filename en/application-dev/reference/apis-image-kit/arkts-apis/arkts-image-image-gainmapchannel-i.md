@@ -1,5 +1,9 @@
 # GainmapChannel
 
+```TypeScript
+interface GainmapChannel
+```
+
 Describes the data content of a single channel of the gain map. For details, see ISO 21496-1.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # DataInfo
 
+```TypeScript
+interface DataInfo
+```
+
 存放接收的数据信息，包括通道ID和数据。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # DeviceBlockStatusInfo
 
+```TypeScript
+interface DeviceBlockStatusInfo
+```
+
 描述音频设备被堵塞状态和设备信息。
 
 @typedef DeviceBlockStatusInfo

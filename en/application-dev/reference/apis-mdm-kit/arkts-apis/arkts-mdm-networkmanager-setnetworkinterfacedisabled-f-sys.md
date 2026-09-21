@@ -69,25 +69,8 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 });
 ```
 
-```TypeScript
-import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-// Replace parameters with actual values.
-networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
-  console.info(`Succeeded in setting network interface disabled`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set network interface disabled. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="setnetworkinterfacedisabled-1"></a>
 
 ## setNetworkInterfaceDisabled
 
@@ -137,4 +120,21 @@ Disables a network interface. This API uses a promise to return the result.
 
 **Examples**
 
-See [setNetworkInterfaceDisabled](#setnetworkinterfacedisabled)
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// Replace parameters with actual values.
+networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
+  console.info(`Succeeded in setting network interface disabled`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set network interface disabled. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # BundleInstallStatus（系统接口）
 
+```TypeScript
+export enum BundleInstallStatus
+```
+
 标识应用的安装状态。
 
 **起始版本：** 23

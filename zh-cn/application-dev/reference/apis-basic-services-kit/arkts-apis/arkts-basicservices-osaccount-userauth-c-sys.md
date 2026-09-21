@@ -1,5 +1,9 @@
 # UserAuth（系统接口）
 
+```TypeScript
+class UserAuth
+```
+
 用户认证类。
 
 **起始版本：** 8
@@ -75,7 +79,7 @@ auth(
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired.<br>**适用版本：** 12+ |
 | 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
-| 12300211 | Server unreachable.<br>**适用版本：** 12+ |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -99,28 +103,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let challenge: Uint8Array = new Uint8Array([0]);
-let authType: osAccount.AuthType = osAccount.AuthType.PIN;
-let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-let options: osAccount.AuthOptions = {
-  accountId: 100
-};
-try {
-  userAuth.auth(challenge, authType, authTrustLevel, options, {
-    onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.info('auth result = ' + result);
-      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="auth-1"></a>
 
 ## auth
 
@@ -186,29 +169,9 @@ auth(
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired. |
 | 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let challenge: Uint8Array = new Uint8Array([0]);
-let authType: osAccount.AuthType = osAccount.AuthType.PIN;
-let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-try {
-  userAuth.auth(challenge, authType, authTrustLevel, {
-    onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-      console.info('auth result = ' + result);
-      console.info('auth extraInfo = ' + JSON.stringify(extraInfo));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -297,7 +260,7 @@ authUser(
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired.<br>**适用版本：** 12+ |
 | 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
-| 12300211 | Server unreachable.<br>**适用版本：** 12+ |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -522,30 +485,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let keys: Array<osAccount.GetPropertyType> = [
-  osAccount.GetPropertyType.AUTH_SUB_TYPE,
-  osAccount.GetPropertyType.REMAIN_TIMES,
-  osAccount.GetPropertyType.FREEZING_TIME
-];
-let request: osAccount.GetPropertyRequest = {
-  authType: osAccount.AuthType.PIN,
-  keys: keys
-};
-try {
-  userAuth.getProperty(request).then((result: osAccount.ExecutorProperty) => {
-    console.info('getProperty result = ' + JSON.stringify(result));
-  }).catch((err: BusinessError) => {
-    console.error(`getProperty error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getproperty-1"></a>
 
 ## getProperty
 
@@ -588,7 +528,30 @@ getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>
 
 **示例**
 
-参见 [getProperty](#getproperty)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userAuth = new osAccount.UserAuth();
+let keys: Array<osAccount.GetPropertyType> = [
+  osAccount.GetPropertyType.AUTH_SUB_TYPE,
+  osAccount.GetPropertyType.REMAIN_TIMES,
+  osAccount.GetPropertyType.FREEZING_TIME
+];
+let request: osAccount.GetPropertyRequest = {
+  authType: osAccount.AuthType.PIN,
+  keys: keys
+};
+try {
+  userAuth.getProperty(request).then((result: osAccount.ExecutorProperty) => {
+    console.info('getProperty result = ' + JSON.stringify(result));
+  }).catch((err: BusinessError) => {
+    console.error(`getProperty error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## getPropertyByCredentialId
 
@@ -826,26 +789,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let userAuth = new osAccount.UserAuth();
-let request: osAccount.SetPropertyRequest = {
-  authType: osAccount.AuthType.PIN,
-  key: osAccount.SetPropertyType.INIT_ALGORITHM,
-  setInfo: new Uint8Array([0])
-};
-try {
-  userAuth.setProperty(request).then(() => {
-    console.info('setProperty successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="setproperty-1"></a>
 
 ## setProperty
 
@@ -887,4 +831,23 @@ setProperty(request: SetPropertyRequest): Promise<void>
 
 **示例**
 
-参见 [setProperty](#setproperty)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userAuth = new osAccount.UserAuth();
+let request: osAccount.SetPropertyRequest = {
+  authType: osAccount.AuthType.PIN,
+  key: osAccount.SetPropertyType.INIT_ALGORITHM,
+  setInfo: new Uint8Array([0])
+};
+try {
+  userAuth.setProperty(request).then(() => {
+    console.info('setProperty successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setProperty failed, error = code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
+}
+```

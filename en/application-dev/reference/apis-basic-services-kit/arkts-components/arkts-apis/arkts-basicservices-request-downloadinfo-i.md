@@ -1,5 +1,9 @@
 # DownloadInfo
 
+```TypeScript
+interface DownloadInfo
+```
+
 Defines the download task information, which is the callback parameter of the [getTaskInfo](arkts-basicservices-request-downloadtask-i.md#gettaskinfo) API.
 
 **Since:** 7

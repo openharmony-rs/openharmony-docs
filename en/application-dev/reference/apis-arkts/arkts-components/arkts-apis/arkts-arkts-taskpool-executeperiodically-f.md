@@ -79,6 +79,43 @@ function taskpoolTest() {
 taskpoolTest();
 ```
 
+
+<a id="executeperiodically-1"></a>
+
+## executePeriodically
+
+```TypeScript
+function executePeriodically<A extends Array<Object>, R>(period: number, task: GenericsTask<A, R>, priority?: Priority): void
+```
+
+Executes a generic task periodically, without verifying the parameter type and return value type of the task. The verification of the **executePeriodically** task works in conjunction with **new GenericsTask**, requiring that the parameter and return value types match those specified in **new GenericsTask**.
+
+**Since:** 13
+
+**Atomic service API:** This API can be used in atomic services since API version 13.
+
+**System capability:** SystemCapability.Utils.Lang
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| period | number | Yes | Execution period, in ms. The value must be greater than or equal to 0. The value should be an integer.<br>Unit:milliseconds. |
+| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | Yes | Generic task to be executed periodically. |
+| priority | [Priority](arkts-arkts-taskpool-priority-e.md) | No | Priority of the task. The default value is **taskpool.Priority.MEDIUM**. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [10200006](../errorcode-utils.md#10200006-worker-data-serialization-exception) | An exception occurred during serialization. |
+| [10200014](../errorcode-utils.md#10200014-non-concurrent-function-error) | The function is not marked as concurrent. |
+| [10200028](../errorcode-utils.md#10200028-delay-less-than-zero) | The period is less than zero. |
+| [10200050](../errorcode-utils.md#10200050-concurrent-task-that-has-been-executed-cannot-be-executed-periodically) | The concurrent task has been executed and cannot be executed periodically. |
+| [10200057](../errorcode-utils.md#10200057-task-cannot-be-executed-by-two-apis) | The task cannot be executed by two APIs.<br>**Applicable version:** 18 and later |
+
+**Examples**
+
 ```TypeScript
 @Concurrent
 function printArgs(args: number): void {
@@ -117,40 +154,3 @@ function taskpoolTest() {
 
 taskpoolTest();
 ```
-
-
-## executePeriodically
-
-```TypeScript
-function executePeriodically<A extends Array<Object>, R>(period: number, task: GenericsTask<A, R>, priority?: Priority): void
-```
-
-Executes a generic task periodically, without verifying the parameter type and return value type of the task. The verification of the **executePeriodically** task works in conjunction with **new GenericsTask**, requiring that the parameter and return value types match those specified in **new GenericsTask**.
-
-**Since:** 13
-
-**Atomic service API:** This API can be used in atomic services since API version 13.
-
-**System capability:** SystemCapability.Utils.Lang
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| period | number | Yes | Execution period, in ms. The value must be greater than or equal to 0. The value should be an integer.<br>Unit:milliseconds. |
-| task | [GenericsTask](arkts-arkts-taskpool-genericstask-c.md)&lt;A, R&gt; | Yes | Generic task to be executed periodically. |
-| priority | [Priority](arkts-arkts-taskpool-priority-e.md) | No | Priority of the task. The default value is **taskpool.Priority.MEDIUM**. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [10200006](../errorcode-utils.md#10200006-worker-data-serialization-exception) | An exception occurred during serialization. |
-| [10200014](../errorcode-utils.md#10200014-non-concurrent-function-error) | The function is not marked as concurrent. |
-| [10200028](../errorcode-utils.md#10200028-delay-less-than-zero) | The period is less than zero. |
-| [10200050](../errorcode-utils.md#10200050-concurrent-task-that-has-been-executed-cannot-be-executed-periodically) | The concurrent task has been executed and cannot be executed periodically. |
-| [10200057](../errorcode-utils.md#10200057-task-cannot-be-executed-by-two-apis) | The task cannot be executed by two APIs.<br>**Applicable version:** 18 and later |
-
-**Examples**
-
-See [executePeriodically](#executeperiodically)

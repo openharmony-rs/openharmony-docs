@@ -1,5 +1,9 @@
 # DeviceSelectResult（系统接口）
 
+```TypeScript
+interface DeviceSelectResult
+```
+
 伴随设备选择回调的返回结果。用于在设备选择回调中返回用户选择的设备信息和扩展上下文。
 
 **起始版本：** 23

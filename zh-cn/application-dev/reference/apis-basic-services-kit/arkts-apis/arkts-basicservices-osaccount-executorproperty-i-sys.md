@@ -1,5 +1,9 @@
 # ExecutorProperty（系统接口）
 
+```TypeScript
+interface ExecutorProperty
+```
+
 提供执行器的属性。
 
 **起始版本：** 8

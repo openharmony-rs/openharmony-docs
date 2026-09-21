@@ -1,5 +1,9 @@
 # UnifiedGroupInfo (System API)
 
+```TypeScript
+export interface UnifiedGroupInfo
+```
+
 Describes the fields of notification intelligent unification information.
 
 **Since:** 12

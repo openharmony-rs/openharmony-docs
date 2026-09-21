@@ -1,5 +1,9 @@
 # AVImageQueryOptions
 
+```TypeScript
+enum AVImageQueryOptions
+```
+
 Enumerates the relationship between the video frame and the time at which the video thumbnail is obtained.
 
 The time passed in for obtaining the thumbnail may be different from the time of the video frame for which the thumbnail is actually obtained. Therefore, you need to specify their relationship.

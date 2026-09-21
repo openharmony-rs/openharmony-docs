@@ -1,5 +1,9 @@
 # WallpaperExtensionAbility（系统接口）
 
+```TypeScript
+declare class WallpaperExtensionAbility
+```
+
 WallpaperExtensionAbility为壁纸扩展模块，提供应用生命周期回调和监听壁纸变化的能力。<br>  
 > **说明：** 
 > 

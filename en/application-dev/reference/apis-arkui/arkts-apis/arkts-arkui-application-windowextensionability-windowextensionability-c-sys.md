@@ -1,5 +1,9 @@
 # WindowExtensionAbility (System API)
 
+```TypeScript
+declare class WindowExtensionAbility
+```
+
 class of window extension ability.
 
 **Since:** 9

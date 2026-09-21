@@ -1,5 +1,9 @@
 # DisconnectCause
 
+```TypeScript
+enum DisconnectCause
+```
+
 Enum for cause of disconnect.
 
 **Since:** 12

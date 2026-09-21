@@ -1,5 +1,9 @@
 # ImageFormat
 
+```TypeScript
+enum ImageFormat
+```
+
 Enumerates the image formats.
 
 **Since:** 9

@@ -24,8 +24,8 @@ import { identifier } from '@kit.AdsKit';
 
 | Name | Description |
 | --- | --- |
-| [getOAID](arkts-ads-identifier-getoaid-f.md) | Obtains the OAID. This API uses an asynchronous callback to return the result. |
-| [getOAID](arkts-ads-identifier-getoaid-f.md) | Obtains the OAID. This API uses a promise to return the result. |
+| [getOAID](arkts-ads-identifier-getoaid-f.md#getoaid) | Obtains the OAID. This API uses an asynchronous callback to return the result. |
+| [getOAID](arkts-ads-identifier-getoaid-f.md#getoaid-1) | Obtains the OAID. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)

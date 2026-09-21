@@ -1,5 +1,9 @@
 # DisplayState
 
+```TypeScript
+enum DisplayState
+```
+
 显示设备的状态枚举。
 
 **起始版本：** 7

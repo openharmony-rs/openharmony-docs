@@ -1,5 +1,9 @@
 # IInputData (System API)
 
+```TypeScript
+interface IInputData
+```
+
 Provides the password data callback.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # ActionFlagType
 
+```TypeScript
+export enum ActionFlagType
+```
+
 可以对DLP文件进行的操作类型枚举。例如：DLP沙箱应用可以根据是否具有操作权限，对其按钮进行置灰。
 
 **起始版本：** 10

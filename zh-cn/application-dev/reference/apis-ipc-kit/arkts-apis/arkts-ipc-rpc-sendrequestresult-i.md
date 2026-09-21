@@ -1,5 +1,9 @@
 # SendRequestResult
 
+```TypeScript
+interface SendRequestResult
+```
+
 发送请求的响应结果。
 
 **起始版本：** 8

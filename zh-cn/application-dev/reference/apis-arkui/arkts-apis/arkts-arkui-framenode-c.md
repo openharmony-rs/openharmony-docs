@@ -1,6 +1,10 @@
 # FrameNode
 
-FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md)可通过BuilderNode持有的FrameNode将其挂载到NodeContainer上，也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
+```TypeScript
+export class FrameNode
+```
+
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](arkts-arkui-nodecontroller-c.md)可通过[BuilderNode](arkts-arkui-buildernode-c.md)持有的FrameNode将其挂载到[NodeContainer](../arkts-components/arkts-arkui-nodecontainer-comp-attribute.md)上，也可通过FrameNode获取[RenderNode](arkts-arkui-rendernode-c.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
 
 > **说明：** 
 > 
@@ -12,7 +16,7 @@ FrameNode表示组件树的实体节点，支持节点树操作、自定义绘�
 > 
 > - 在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](arkts-arkui-framenode-c.md)对象的接口时，建议使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)的[runScopedTask](arkts-arkui-arkui-uicontext-uicontext-c.md#runscopedtask)接口明确UI 上下文，参考[执行绑定UI实例的闭包](../../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
 > 
-> - FrameNode的接口中，仅[Optional](../arkts-components/arkts-arkui-optional-t.md)类型的必选参数支持传入null或undefined。
+> - FrameNode的接口中，仅[Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)类型的必选参数支持传入null或undefined。
 
 **起始版本：** 11
 
@@ -72,9 +76,7 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 
 **示例**
 
-```TypeScript
 请参考组件设置和删除多态样式状态示例。
-```
 
 ## adoptChild
 
@@ -85,6 +87,8 @@ adoptChild(child: FrameNode): void
 当前节点接纳目标节点为附属节点。当前FrameNode如果不可修改，抛出异常信息。被接纳的附属节点不能已有父节点。调用该接口实际上不会将目标节点添加为子节点，而是仅允许当前节点接收该附属节点的生命周期回调。使用场景：当需要监听某个节点的生命周期回调但不希望改变其父子关系或组件树结构时，可通过该接口接纳其为附属节点。
 
 **起始版本：** 22
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
@@ -106,9 +110,7 @@ adoptChild(child: FrameNode): void
 
 **示例**
 
-```TypeScript
 完整示例请参考接纳为附属节点示例。
-```
 
 ## appendChild
 
@@ -130,7 +132,7 @@ appendChild(node: FrameNode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。<br> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> node节点不可以拥有父节点，否则抛出异常信息。 |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的FrameNode。<br> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅[BuilderNode](arkts-arkui-buildernode-c.md)通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> node节点不可以拥有父节点，否则抛出异常信息。 |
 
 **错误码：**
 
@@ -141,9 +143,7 @@ appendChild(node: FrameNode): void
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## cancelAnimations
 
@@ -175,9 +175,7 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 **示例**
 
-```TypeScript
 请参考动画创建与取消示例。
-```
 
 ## clearChildren
 
@@ -203,9 +201,7 @@ clearChildren(): void
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## constructor
 
@@ -372,9 +368,7 @@ convertPositionFromWindow(positionByWindow: Position): Position
 
 **示例**
 
-```TypeScript
 请参考局部与窗口坐标转换示例。
-```
 
 ## convertPositionToWindow
 
@@ -413,9 +407,7 @@ convertPositionToWindow(positionByLocal: Position): Position
 
 **示例**
 
-```TypeScript
 请参考局部与窗口坐标转换示例。
-```
 
 ## createAnimation
 
@@ -438,9 +430,9 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | property | [AnimationPropertyType](arkts-arkui-animationpropertytype-e.md) | 是 | 动画属性枚举。 |
-| startValue | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。<br>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
+| startValue | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。<br>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
 | endValue | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。 |
-| param | [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
+| param | [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md) | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
 
 **返回值：**
 
@@ -450,9 +442,7 @@ createAnimation(property: AnimationPropertyType, startValue: Optional<number[]>,
 
 **示例**
 
-```TypeScript
 请参考动画创建与取消示例。
-```
 
 ## createFrameNodes
 
@@ -854,13 +844,9 @@ getChild(index: number): FrameNode | null
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
-```TypeScript
-请参考LazyForEach场景节点操作示例。
-```
+<a id="getchild-1"></a>
 
 ## getChild
 
@@ -893,7 +879,7 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 **示例**
 
-参见 [getChild](#getchild)
+请参考LazyForEach场景节点操作示例。
 
 ## getChildrenCount
 
@@ -919,9 +905,39 @@ getChildrenCount(): number
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
+
+<a id="getchildrencount-1"></a>
+
+## getChildrenCount
+
+```TypeScript
+getChildrenCount(countMode?: ChildrenCountMode): number
 ```
+
+根据指定的计数模式获取当前FrameNode的子节点数量。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| countMode | [ChildrenCountMode](arkts-arkui-framenode-childrencountmode-e.md) | 否 | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | Returns the number of children of the current FrameNode based on the count mode. |
+
+**示例**
 
 ```TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, ChildrenCountMode, LengthUnit } from '@kit.ArkUI';
@@ -1146,38 +1162,6 @@ struct Index {
 }
 ```
 
-## getChildrenCount
-
-```TypeScript
-getChildrenCount(countMode?: ChildrenCountMode): number
-```
-
-根据指定的计数模式获取当前FrameNode的子节点数量。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| countMode | [ChildrenCountMode](arkts-arkui-framenode-childrencountmode-e.md) | 否 | The children count mode. Default value is ChildrenCountMode.ALL_EXPAND. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| number | Returns the number of children of the current FrameNode based on the count mode. |
-
-**示例**
-
-参见 [getChildrenCount](#getchildrencount)
-
 ## getCrossLanguageOptions
 
 ```TypeScript
@@ -1202,9 +1186,7 @@ getCrossLanguageOptions(): CrossLanguageOptions
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getCustomProperty
 
@@ -1236,9 +1218,7 @@ getCustomProperty(name: string): Object | undefined
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getFirstChild
 
@@ -1264,9 +1244,7 @@ getFirstChild(): FrameNode | null
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getFirstChildIndexWithoutExpand
 
@@ -1292,9 +1270,7 @@ getFirstChildIndexWithoutExpand(): number
 
 **示例**
 
-```TypeScript
 请参考LazyForEach场景节点操作示例。
-```
 
 ## getFrameNodeById
 
@@ -1316,7 +1292,7 @@ getFrameNodeById(id: string): FrameNode | null
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 查询的子节点id，为通用属性设置的组件标识。 |
+| id | string | 是 | 查询的子节点id，为通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md#common)。 |
 
 **返回值：**
 
@@ -1487,9 +1463,7 @@ getGlobalPositionOnDisplay(): Position
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getId
 
@@ -1497,7 +1471,7 @@ getGlobalPositionOnDisplay(): Position
 getId(): string
 ```
 
-获取用户设置的节点ID（通用属性设置的组件标识）。
+获取用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md#common)）。
 
 **起始版本：** 12
 
@@ -1511,13 +1485,11 @@ getId(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 用户设置的节点ID（通用属性设置的组件标识）。 |
+| string | 用户设置的节点ID（通用属性设置的[组件标识](../arkts-components/arkts-arkui-common-comp.md#common)）。 |
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getInspectorInfo
 
@@ -1547,9 +1519,7 @@ getInspectorInfo(): Object
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getInteractionEventBindingInfo
 
@@ -1581,9 +1551,7 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getLastChildIndexWithoutExpand
 
@@ -1609,9 +1577,7 @@ getLastChildIndexWithoutExpand(): number
 
 **示例**
 
-```TypeScript
 请参考LazyForEach场景节点操作示例。
-```
 
 ## getLayoutPosition
 
@@ -1637,9 +1603,7 @@ getLayoutPosition(): Position
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getMeasuredSize
 
@@ -1665,9 +1629,7 @@ getMeasuredSize(): Size
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getNextSibling
 
@@ -1693,9 +1655,7 @@ getNextSibling(): FrameNode | null
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getNodePropertyValue
 
@@ -1727,9 +1687,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 
 **示例**
 
-```TypeScript
 请参考动画创建与取消示例。
-```
 
 ## getNodeType
 
@@ -1737,7 +1695,7 @@ getNodePropertyValue(property: AnimationPropertyType): number[]
 getNodeType(): string
 ```
 
-获取节点的类型。系统组件类型为组件名称，例如，按钮组件Button的类型为Button。而对于自定义组件，若其有渲染内容，则其类型为__Common__。
+获取节点的类型。系统组件类型为组件名称，例如，按钮组件[Button](../arkts-components/arkts-arkui-button-comp.md#button)的类型为Button。而对于自定义组件，若其有渲染内容，则其类型为__Common__。
 
 **起始版本：** 12
 
@@ -1755,9 +1713,7 @@ getNodeType(): string
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getOpacity
 
@@ -1783,9 +1739,7 @@ getOpacity(): number
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getParent
 
@@ -1811,9 +1765,7 @@ getParent(): FrameNode | null
 
 **示例**
 
-```TypeScript
 请参考节点操作示例和获取根节点示例。
-```
 
 ## getPositionToParent
 
@@ -1907,7 +1859,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如transform、translate等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2079,7 +2031,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如transform、translate等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2250,7 +2202,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如transform、translate等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2353,9 +2305,7 @@ getPreviousSibling(): FrameNode | null
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getRenderNode
 
@@ -2439,9 +2389,7 @@ getUniqueId(): number
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getUserConfigBorderWidth
 
@@ -2467,9 +2415,7 @@ getUserConfigBorderWidth(): Edges<LengthMetrics>
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getUserConfigMargin
 
@@ -2495,9 +2441,7 @@ getUserConfigMargin(): Edges<LengthMetrics>
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getUserConfigPadding
 
@@ -2523,9 +2467,7 @@ getUserConfigPadding(): Edges<LengthMetrics>
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## getUserConfigSize
 
@@ -2551,9 +2493,7 @@ getUserConfigSize(): SizeT<LengthMetrics>
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## insertChildAfter
 
@@ -2575,7 +2515,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| child | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。<br>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅BuilderNode通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> child节点不可以拥有父节点，否则抛出异常信息。 |
+| child | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 需要添加的子节点。<br>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅[BuilderNode](arkts-arkui-buildernode-c.md)通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br> child节点不可以拥有父节点，否则抛出异常信息。 |
 | sibling | [FrameNode](arkts-arkui-framenode-c.md) &#124; null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
@@ -2587,9 +2527,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## invalidate
 
@@ -2629,8 +2567,106 @@ invalidateAttributes(): void
 
 **示例**
 
-```TypeScript
 从API version 21开始，通过if else动态切换两个节点，并且在节点创建时调用invalidateAttributes即时触发节点属性更新，避免组件切换过程中出现闪烁。
+
+```TypeScript
+// index.ets
+import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
+
+// 继承NodeController实现自定义NodeAdapter控制器
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  imageUrl: string = '';
+
+  constructor(imageUrl: string) {
+    super();
+    this.imageUrl = imageUrl;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r(this.imageUrl))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    // 强制当前帧内即时节点更新，避免出现切换闪烁
+    imageNode.invalidateAttributes();
+    return imageNode;
+  }
+}
+
+// 自定义挂载事件的自定义组件，挂载前加载样例图片
+@Component
+struct NodeComponent3 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+// 自定义挂载事件的自定义组件，挂载前加载样例图片
+@Component
+struct NodeComponent4 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createNode(uiContext, 'Image');
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  @State flag: boolean = true;
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
+
+  build() {
+    Column() {
+      Text('ListNode Adapter');
+      if (this.flag) {
+        NodeComponent3()
+      } else {
+        NodeComponent4()
+      }
+      if (this.flag) {
+        NodeContainer(this.adapterController)
+          .width(300).height(300)
+          .borderWidth(1).borderColor(Color.Black)
+      } else {
+        NodeContainer(this.adapterController)
+          .width(300).height(300)
+          .borderWidth(1).borderColor(Color.Black)
+      }
+      if (this.flag) {
+        Image($r('app.media.startIcon')).width(100).height(100).syncLoad(true)
+      } else {
+        Image($r('app.media.startIcon')).width(100).height(100).syncLoad(true)
+      }
+      Button('change').onClick(() => {
+        this.flag = !this.flag;
+      })
+    }
+    .borderWidth(1)
+    .width('100%')
+  }
+}
 ```
 
 ## isAttached
@@ -2657,9 +2693,7 @@ isAttached(): boolean
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## isClipToFrame
 
@@ -2685,9 +2719,7 @@ isClipToFrame(): boolean
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## isDisposed
 
@@ -2713,9 +2745,7 @@ isDisposed(): boolean
 
 **示例**
 
-```TypeScript
 请参考检验FrameNode是否有效示例。
-```
 
 ## isInRenderState
 
@@ -2830,9 +2860,7 @@ isModifiable(): boolean
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## isOnMainTree
 
@@ -3433,9 +3461,7 @@ isVisible(): boolean
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## layout
 
@@ -3461,9 +3487,7 @@ layout(position: Position): void
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## measure
 
@@ -3489,9 +3513,7 @@ measure(constraint: LayoutConstraint): void
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## moveTo
 
@@ -3507,8 +3529,8 @@ moveTo(targetParent: FrameNode, index?: number): void
 > [XComponent](arkts-arkui-typenode-xcomponent-t.md)。对于其他类型的节点，移动操作不会生效。
 > 
 > 当前仅支持根节点为以下类型组件的[BuilderNode](arkts-arkui-buildernode-c.md)进行移动操作：
-> Stack、XComponent、
-> EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
+> [Stack](../arkts-components/arkts-arkui-stack-comp.md#stack)、[XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent)、
+> [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component)。对于其他类型的组件，移动操作不会生效。
 
 **起始版本：** 18
 
@@ -3534,9 +3556,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## onDraw
 
@@ -3564,9 +3584,7 @@ FrameNode的自绘制方法，该方法会重写默认绘制方法，在FrameNod
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## onLayout
 
@@ -3592,9 +3610,7 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## onMeasure
 
@@ -3620,9 +3636,7 @@ FrameNode的自定义测量方法，该方法会重写默认测量方法，在Fr
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## recycle
 
@@ -3642,9 +3656,7 @@ recycle(): void
 
 **示例**
 
-```TypeScript
 请参考节点复用回收使用示例。
-```
 
 ## removeAdoptedChild
 
@@ -3655,6 +3667,8 @@ removeAdoptedChild(child: FrameNode): void
 移除被接纳的目标附属节点。当前FrameNode如果不可修改，抛出异常信息。
 
 **起始版本：** 22
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
@@ -3676,9 +3690,7 @@ removeAdoptedChild(child: FrameNode): void
 
 **示例**
 
-```TypeScript
 完整示例请参考接纳为附属节点示例。
-```
 
 ## removeChild
 
@@ -3710,9 +3722,7 @@ removeChild(node: FrameNode): void
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## removeSupportedUIStates
 
@@ -3738,9 +3748,7 @@ removeSupportedUIStates(uiStates: number): void
 
 **示例**
 
-```TypeScript
 请参考组件设置和删除多态样式状态示例。
-```
 
 ## reuse
 
@@ -3760,9 +3768,7 @@ reuse(): void
 
 **示例**
 
-```TypeScript
 请参考节点复用回收使用示例。
-```
 
 ## setCrossLanguageOptions
 
@@ -3807,9 +3813,7 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 
 **示例**
 
-```TypeScript
 请参考节点操作示例。
-```
 
 ## setLayoutPosition
 
@@ -3835,9 +3839,7 @@ setLayoutPosition(position: Position): void
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## setMeasuredSize
 
@@ -3863,9 +3865,7 @@ setMeasuredSize(size: Size): void
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## setNeedsLayout
 
@@ -3885,9 +3885,7 @@ setNeedsLayout(): void
 
 **示例**
 
-```TypeScript
 请参考节点自定义示例。
-```
 
 ## commonAttribute
 
@@ -3895,13 +3893,13 @@ setNeedsLayout(): void
 get commonAttribute(): CommonAttribute
 ```
 
-获取FrameNode中持有的CommonAttribute接口，用于设置通用属性和通用事件。
+获取FrameNode中持有的CommonAttribute接口，用于设置[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)和[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)。
 
 仅可以修改自定义节点的属性。
 
 > **说明：** 
 > 
-> FrameNode的效果参考对齐方式为顶部起始端的Stack容器组件。
+> FrameNode的效果参考对齐方式为顶部起始端的[Stack](../arkts-components/arkts-arkui-stack-comp.md#stack)容器组件。
 > 
 > FrameNode的属性支持情况参考
 > [属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
@@ -3918,9 +3916,7 @@ get commonAttribute(): CommonAttribute
 
 **示例**
 
-```TypeScript
 请参考基础事件示例。
-```
 
 ## commonEvent
 
@@ -3932,7 +3928,7 @@ get commonEvent(): UICommonEvent
 
 LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置事件回调才能保证监听事件正常响应。
 
-**类型：** [UICommonEvent](../arkts-components/arkts-arkui-uicommonevent-i.md)
+**类型：** [UICommonEvent](../arkts-components/arkts-arkui-common-comp-uicommonevent-i.md)
 
 **起始版本：** 12
 
@@ -3944,9 +3940,7 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 
 **示例**
 
-```TypeScript
 请参考基础事件示例和LazyForEach场景基础事件使用示例。
-```
 
 ## gestureEvent
 
@@ -3954,11 +3948,11 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 get gestureEvent(): UIGestureEvent
 ```
 
-获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过绑定手势事件绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
+获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过[绑定手势事件](../arkts-components/arkts-arkui-common-comp.md#common)绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
 
 LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置手势事件回调才能保证监听事件正常响应。
 
-**类型：** [UIGestureEvent](../arkts-components/arkts-arkui-uigestureevent-i.md)
+**类型：** [UIGestureEvent](../arkts-components/arkts-arkui-common-comp-uigestureevent-i.md)
 
 **起始版本：** 14
 
@@ -3970,6 +3964,4 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 
 **示例**
 
-```TypeScript
 请参考手势事件示例。
-```

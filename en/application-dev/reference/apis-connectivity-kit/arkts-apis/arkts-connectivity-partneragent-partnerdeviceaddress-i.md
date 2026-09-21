@@ -1,5 +1,9 @@
 # PartnerDeviceAddress
 
+```TypeScript
+export interface PartnerDeviceAddress
+```
+
 Describes the partner device address.
 
 @typedef PartnerDeviceAddress

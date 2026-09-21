@@ -1,5 +1,9 @@
 # GetDeviceOptions
 
+```TypeScript
+export interface GetDeviceOptions
+```
+
 定义设备信息获取的参数选项。
 
 **起始版本：** 3

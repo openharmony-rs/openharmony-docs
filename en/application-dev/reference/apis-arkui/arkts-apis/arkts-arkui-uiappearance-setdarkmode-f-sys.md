@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { uiAppearance } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
-    console.info('Set dark-mode successfully.');
-  }).catch((error: BusinessError) => {
-    console.error(`Set dark-mode failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="setdarkmode-1"></a>
 
 ## setDarkMode
 
@@ -116,4 +102,18 @@ Sets the system color mode. This API uses a promise to return the result.
 
 **Examples**
 
-See [setDarkMode](#setdarkmode)
+```TypeScript
+import { uiAppearance } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  uiAppearance.setDarkMode(uiAppearance.DarkMode.ALWAYS_DARK).then(() => {
+    console.info('Set dark-mode successfully.');
+  }).catch((error: BusinessError) => {
+    console.error(`Set dark-mode failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Set dark-mode failed. Code: ${err.code}, message: ${err.message}`);
+}
+```

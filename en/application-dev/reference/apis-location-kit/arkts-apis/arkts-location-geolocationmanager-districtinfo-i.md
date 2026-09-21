@@ -1,5 +1,9 @@
 # DistrictInfo
 
+```TypeScript
+interface DistrictInfo
+```
+
 Indicates request parameters for obtaining the district information.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # SyncResult
 
+```TypeScript
+interface SyncResult
+```
+
 Represents the sync result of an asset.
 
 **Since:** 20

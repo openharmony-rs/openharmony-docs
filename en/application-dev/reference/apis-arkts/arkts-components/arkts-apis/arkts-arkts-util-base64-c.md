@@ -1,5 +1,9 @@
 # Base64
 
+```TypeScript
+class Base64
+```
+
 Decodes a string or Uint8Array containing Base64 data into a newly allocated Uint8Array.
 
 **Since:** 8

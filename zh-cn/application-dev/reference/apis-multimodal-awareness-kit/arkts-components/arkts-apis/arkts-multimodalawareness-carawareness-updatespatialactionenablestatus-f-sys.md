@@ -14,7 +14,7 @@ function updateSpatialActionEnableStatus(event: number): void
 
 更新感知启用事件，当应用订阅功能时
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_SPATIALACTION
 

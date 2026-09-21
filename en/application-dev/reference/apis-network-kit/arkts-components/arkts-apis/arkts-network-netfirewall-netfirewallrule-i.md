@@ -1,5 +1,9 @@
 # NetFirewallRule
 
+```TypeScript
+interface NetFirewallRule
+```
+
 Defines a firewall rule.
 
 **Since:** 15

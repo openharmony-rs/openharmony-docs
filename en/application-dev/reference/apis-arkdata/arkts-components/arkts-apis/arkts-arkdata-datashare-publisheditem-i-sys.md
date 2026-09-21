@@ -1,5 +1,9 @@
 # PublishedItem (System API)
 
+```TypeScript
+interface PublishedItem
+```
+
 Defines the data to publish.
 
 **Since:** 10

@@ -40,6 +40,8 @@ function getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback<Arra
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回程序信息。 |
 
 
+<a id="getalllauncherabilityinfos-1"></a>
+
 ## getAllLauncherAbilityInfos
 
 ```TypeScript

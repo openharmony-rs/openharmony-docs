@@ -1,5 +1,9 @@
 # AbilityComponent properties/events
 
+```TypeScript
+declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>
+```
+
 Define the attribute functions of ability component.
 
 @extends CommonMethod&lt;AbilityComponentAttribute&gt;

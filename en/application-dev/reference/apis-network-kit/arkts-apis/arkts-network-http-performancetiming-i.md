@@ -1,5 +1,9 @@
 # PerformanceTiming
 
+```TypeScript
+export interface PerformanceTiming
+```
+
 Configures the timing for performance tracing, in ms.
 
 **Since:** 11

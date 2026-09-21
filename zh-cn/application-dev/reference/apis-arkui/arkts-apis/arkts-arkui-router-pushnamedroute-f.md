@@ -16,7 +16,7 @@ function pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<voi
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用pushNamedRoute替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -24,7 +24,7 @@ function pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<voi
 
 **废弃版本：** 18
 
-**替代接口：** pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,6 +38,91 @@ function pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<voi
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
+| [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
+
+**示例**
+
+```TypeScript
+import { router } from '@kit.ArkUI';
+
+class InnerParams {
+  data3: number[];
+
+  constructor(tuple: number[]) {
+    this.data3 = tuple;
+  }
+}
+
+class RouterParams {
+  data1: string;
+  data2: InnerParams;
+
+  constructor(str: string, tuple: number[]) {
+    this.data1 = str;
+    this.data2 = new InnerParams(tuple);
+  }
+}
+
+router.pushNamedRoute({
+  name: 'myPage',
+  params: new RouterParams('message', [123, 456, 789])
+}, (err) => {
+  if (err) {
+    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('pushNamedRoute success');
+})
+```
+
+
+<a id="pushnamedroute-1"></a>
+
+## pushNamedRoute
+
+```TypeScript
+function pushNamedRoute(options: NamedRouterOptions): Promise<void>
+```
+
+跳转到指定的命名路由页面。
+
+> **说明：** 
+> 
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute-1)替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> 
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+
+**起始版本：** 10
+
+**废弃版本：** 18
+
+**替代接口：** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute-1)(options: router.NamedRouterOptions)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
@@ -85,73 +170,53 @@ router.pushNamedRoute({
   })
 ```
 
-```TypeScript
-import { router } from '@kit.ArkUI';
 
-class InnerParams {
-  data3: number[];
+<a id="pushnamedroute-2"></a>
 
-  constructor(tuple: number[]) {
-    this.data3 = tuple;
-  }
-}
-
-class RouterParams {
-  data1: string;
-  data2: InnerParams;
-
-  constructor(str: string, tuple: number[]) {
-    this.data1 = str;
-    this.data2 = new InnerParams(tuple);
-  }
-}
-
-router.pushNamedRoute({
-  name: 'myPage',
-  params: new RouterParams('message', [123, 456, 789])
-}, (err) => {
-  if (err) {
-    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('pushNamedRoute success');
-})
-```
+## pushNamedRoute
 
 ```TypeScript
-import { router } from '@kit.ArkUI';
-
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class InnerParams {
-  data3: number[];
-
-  constructor(tuple: number[]) {
-    this.data3 = tuple;
-  }
-}
-
-class RouterParams {
-  data1: string;
-  data2: InnerParams;
-
-  constructor(str: string, tuple: number[]) {
-    this.data1 = str;
-    this.data2 = new InnerParams(tuple);
-  }
-}
-
-router.pushNamedRoute({
-  name: 'myPage',
-  params: new RouterParams('message', [123, 456, 789])
-}, router.RouterMode.Standard)
-  .then(() => {
-    console.info(`pushNamedRoute finish`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
-  })
+function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
 ```
+
+跳转到指定的命名路由页面。
+
+> **说明：** 
+> 
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute-2)替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> 
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+
+**起始版本：** 10
+
+**废弃版本：** 18
+
+**替代接口：** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute-2)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
+| [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
+
+**示例**
 
 ```TypeScript
 import { router } from '@kit.ArkUI';
@@ -187,105 +252,7 @@ router.pushNamedRoute({
 ```
 
 
-## pushNamedRoute
-
-```TypeScript
-function pushNamedRoute(options: NamedRouterOptions): Promise<void>
-```
-
-跳转到指定的命名路由页面。
-
-> **说明：** 
-> 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用pushNamedRoute替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
-> 
-> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
-
-**起始版本：** 10
-
-**废弃版本：** 18
-
-**替代接口：** pushNamedRoute(options: router.NamedRouterOptions)
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | 异常返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
-| [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
-| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
-
-**示例**
-
-参见 pushNamedRoute
-
-
-## pushNamedRoute
-
-```TypeScript
-function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
-```
-
-跳转到指定的命名路由页面。
-
-> **说明：** 
-> 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用pushNamedRoute替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
-> 
-> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
-
-**起始版本：** 10
-
-**废弃版本：** 18
-
-**替代接口：** pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | 是 | 跳转页面描述信息。 |
-| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
-| [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
-| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
-
-**示例**
-
-参见 pushNamedRoute
-
+<a id="pushnamedroute-3"></a>
 
 ## pushNamedRoute
 
@@ -297,7 +264,7 @@ function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用pushNamedRoute替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute-3)替代。pushNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -305,7 +272,7 @@ function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<
 
 **废弃版本：** 18
 
-**替代接口：** pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)
+**替代接口：** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute-3)(options: router.NamedRouterOptions, mode: router.RouterMode)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -337,4 +304,37 @@ function pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise<
 
 **示例**
 
-参见 pushNamedRoute
+```TypeScript
+import { router } from '@kit.ArkUI';
+
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class InnerParams {
+  data3: number[];
+
+  constructor(tuple: number[]) {
+    this.data3 = tuple;
+  }
+}
+
+class RouterParams {
+  data1: string;
+  data2: InnerParams;
+
+  constructor(str: string, tuple: number[]) {
+    this.data1 = str;
+    this.data2 = new InnerParams(tuple);
+  }
+}
+
+router.pushNamedRoute({
+  name: 'myPage',
+  params: new RouterParams('message', [123, 456, 789])
+}, router.RouterMode.Standard)
+  .then(() => {
+    console.info(`pushNamedRoute finish`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`pushNamedRoute failed. Code: ${err.code}, message: ${err.message}`);
+  })
+```

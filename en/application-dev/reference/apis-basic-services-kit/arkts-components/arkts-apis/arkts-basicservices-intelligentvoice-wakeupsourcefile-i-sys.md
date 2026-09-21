@@ -1,5 +1,9 @@
 # WakeupSourceFile (System API)
 
+```TypeScript
+interface WakeupSourceFile
+```
+
 Describes wakeup source file information. @typedef WakeupSourceFile
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # AVMetadata
 
+```TypeScript
+interface AVMetadata
+```
+
 The metadata of the current media.Used to set the properties of the current media file
 
 **Since:** 10

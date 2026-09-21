@@ -1,5 +1,9 @@
 # BusinessType (System API)
 
+```TypeScript
+export interface BusinessType
+```
+
 Represents an upgrade service type.
 
 **Since:** 9

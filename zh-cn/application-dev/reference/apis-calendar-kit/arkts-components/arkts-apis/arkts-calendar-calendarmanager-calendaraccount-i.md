@@ -1,5 +1,9 @@
 # CalendarAccount
 
+```TypeScript
+interface CalendarAccount
+```
+
 日历账户信息。
 
 **起始版本：** 10

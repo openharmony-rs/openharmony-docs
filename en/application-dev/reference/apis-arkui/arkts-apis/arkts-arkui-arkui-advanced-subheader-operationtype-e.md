@@ -1,5 +1,9 @@
 # OperationType
 
+```TypeScript
+export declare enum OperationType
+```
+
 Defines the style of elements in the subheader operation area.
 
 **Since:** 10

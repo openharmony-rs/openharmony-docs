@@ -36,3 +36,13 @@ function on(type: 'interfaceStateChange', callback: Callback<InterfaceStateInfo>
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+
+ethernet.on('interfaceStateChange', (data: object) => {
+  console.info('on interfaceSharingStateChange：' + JSON.stringify(data));
+});
+```

@@ -56,16 +56,8 @@ call.updateImsCallMode(1, 1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.updateImsCallMode(1, 1).then(() => {
-    console.info(`updateImsCallMode success.`);
-}).catch((err: BusinessError) => {
-    console.error(`updateImsCallMode fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="updateimscallmode-1"></a>
 
 ## updateImsCallMode
 
@@ -110,4 +102,12 @@ Updates the IMS call mode. This API uses a promise to return the result.
 
 **Examples**
 
-See [updateImsCallMode](#updateimscallmode)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.updateImsCallMode(1, 1).then(() => {
+    console.info(`updateImsCallMode success.`);
+}).catch((err: BusinessError) => {
+    console.error(`updateImsCallMode fail, promise: err->${JSON.stringify(err)}`);
+});
+```

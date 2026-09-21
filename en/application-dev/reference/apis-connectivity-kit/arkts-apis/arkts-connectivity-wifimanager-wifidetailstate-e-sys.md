@@ -1,5 +1,9 @@
 # WifiDetailState (System API)
 
+```TypeScript
+enum WifiDetailState
+```
+
 Wi-Fi detail state. @enum { int } WifiDetailState
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # SuffixIconOptions
 
+```TypeScript
+export interface SuffixIconOptions extends IconCommonOptions
+```
+
 Defines the suffix icon options.
 
 Inherits from [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md).
@@ -22,9 +26,9 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 action?: () => void
 ```
 
-Action of the suffix icon.
+Callback for the suffix icon tap event, with no parameters and no return value. It is triggered when the user taps the suffix icon.
 
-If the value is **undefined**, no action is configured for the suffix icon.
+When the value is **undefined**, no suffix icon event is set.
 
 **Since:** 11
 
@@ -40,11 +44,11 @@ If the value is **undefined**, no action is configured for the suffix icon.
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+Accessibility description for the suffix icon. This description is used to explain the suffix icon to users in detail. Developers should provide a relatively detailed text description to help users understand the operation to be performed and its possible consequences, especially when these consequences cannot be directly learned from the suffix icon's attributes and accessibility text alone. If the suffix icon has both a text attribute and an accessibility description attribute, when the suffix icon is selected, the system first announces the text attribute of the suffix icon, and then announces the content of the accessibility description attribute.
 
 Default value: **''**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -62,21 +66,21 @@ If the value is **undefined**, the default value is used.
 accessibilityLevel?: string
 ```
 
-Accessibility level of the suffix icon. It determines whether the component can be recognized by accessibility services.
+Accessibility level for the suffix icon. Controls whether the suffix icon can be recognized by accessibility services.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: It is treated as "yes" when **action** is set for the component and as "no" otherwise.
+**"auto"**: Converted to **"yes"** if the component has an action, and to **"no"** otherwise.
 
 **"yes"**: The component can be recognized by accessibility services.
 
 **"no"**: The component cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.
 
-Default value: **"auto"**
+Default value: **"auto"**.
 
-If the value is **undefined**, the default value is used.
+When the value is undefined, the default value is used.
 
 **Type:** string
 
@@ -96,11 +100,11 @@ If the value is **undefined**, the default value is used.
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessibility label name, of the suffix icon. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+Accessibility text attribute for the suffix icon. When the suffix icon does not contain a text attribute, the screen reader does not announce it upon selection, and the user cannot clearly know whether the suffix icon is currently selected. Developers can set accessibility text for such icons, which is announced by the screen reader upon selection.
 
 Default value: **''**
 
-If the value is **undefined**, the default value is used.
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

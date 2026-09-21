@@ -1,5 +1,9 @@
 # WindowFilter
 
+```TypeScript
+declare interface WindowFilter
+```
+
 窗口的标志属性信息。
 
 **起始版本：** 9

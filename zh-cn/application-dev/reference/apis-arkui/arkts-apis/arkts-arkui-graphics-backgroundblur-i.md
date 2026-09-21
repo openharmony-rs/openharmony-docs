@@ -1,5 +1,9 @@
 # BackgroundBlur
 
+```TypeScript
+export interface BackgroundBlur
+```
+
 设置背景模糊效果，支持通过模糊半径控制模糊程度，并可通过灰阶参数对图像黑白像素进行色阶调整。
 
 **起始版本：** 26.0.0

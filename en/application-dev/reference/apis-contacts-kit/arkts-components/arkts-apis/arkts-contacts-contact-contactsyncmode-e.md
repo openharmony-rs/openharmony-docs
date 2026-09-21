@@ -1,5 +1,9 @@
 # ContactSyncMode
 
+```TypeScript
+enum ContactSyncMode
+```
+
 The type of contact synchronization mode.
 
 **Since:** 26.0.0

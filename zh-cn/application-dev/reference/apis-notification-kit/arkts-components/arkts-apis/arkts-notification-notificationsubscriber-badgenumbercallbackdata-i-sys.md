@@ -1,5 +1,9 @@
 # BadgeNumberCallbackData（系统接口）
 
+```TypeScript
+export interface BadgeNumberCallbackData
+```
+
 应用角标数量变化的回调函数类型。
 
 **起始版本：** 10

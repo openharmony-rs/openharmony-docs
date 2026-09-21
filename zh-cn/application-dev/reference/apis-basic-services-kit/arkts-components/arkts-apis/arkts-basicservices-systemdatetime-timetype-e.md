@@ -1,5 +1,9 @@
 # TimeType
 
+```TypeScript
+enum TimeType
+```
+
 定义获取时间的枚举类型。
 
 **起始版本：** 10

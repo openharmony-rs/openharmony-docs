@@ -1,5 +1,9 @@
 # AdsServiceExtensionAbility (System API)
 
+```TypeScript
+export default class AdsServiceExtensionAbility
+```
+
 Provides the capability of integrating advertising services with vendors.
 
 **Since:** 11

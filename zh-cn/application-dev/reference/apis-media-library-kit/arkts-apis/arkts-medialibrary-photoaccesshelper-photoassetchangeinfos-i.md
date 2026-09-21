@@ -1,5 +1,9 @@
 # PhotoAssetChangeInfos
 
+```TypeScript
+interface PhotoAssetChangeInfos
+```
+
 媒体资产（图片/视频）的变更通知信息。
 
 **起始版本：** 20

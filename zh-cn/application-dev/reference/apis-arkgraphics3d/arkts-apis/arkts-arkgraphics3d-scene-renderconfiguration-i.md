@@ -1,5 +1,9 @@
 # RenderConfiguration
 
+```TypeScript
+export interface RenderConfiguration
+```
+
 渲染配置接口。
 
 @interface RenderConfiguration

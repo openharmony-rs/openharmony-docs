@@ -1,5 +1,9 @@
 # NativeMemInfo
 
+```TypeScript
+interface NativeMemInfo
+```
+
 描述应用进程的内存信息。
 
 **起始版本：** 12

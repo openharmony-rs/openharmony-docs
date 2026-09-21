@@ -1,5 +1,9 @@
 # PanelType
 
+```TypeScript
+export enum PanelType
+```
+
 输入法面板类型枚举。<br>
 
 | 名称 | 值 | 说明 |  

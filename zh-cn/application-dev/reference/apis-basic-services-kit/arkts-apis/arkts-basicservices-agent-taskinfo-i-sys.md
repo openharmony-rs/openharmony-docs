@@ -1,5 +1,9 @@
 # TaskInfo
 
+```TypeScript
+interface TaskInfo
+```
+
 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。
 
 **起始版本：** 10

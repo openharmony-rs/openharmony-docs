@@ -1,5 +1,9 @@
 # OsuStatus（系统接口）
 
+```TypeScript
+export enum OsuStatus
+```
+
 操作系统升级状态。
 
 **起始版本：** 18

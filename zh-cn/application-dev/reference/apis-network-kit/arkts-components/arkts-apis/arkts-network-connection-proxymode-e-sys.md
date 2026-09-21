@@ -1,5 +1,9 @@
 # ProxyMode（系统接口）
 
+```TypeScript
+export enum ProxyMode
+```
+
 表示代理模式的枚举。使用Promise异步回调。
 
 **起始版本：** 20

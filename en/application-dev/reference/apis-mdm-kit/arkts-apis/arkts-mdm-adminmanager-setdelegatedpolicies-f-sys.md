@@ -6,6 +6,8 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
+<a id="setdelegatedpolicies-1"></a>
+
 ## setDelegatedPolicies
 
 ```TypeScript
@@ -41,27 +43,6 @@ Delegates other applications to set device management policies. The applications
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
 **Examples**
-
-```TypeScript
-import { adminManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let admin: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let policies: Array<string> = ["disabled_hdc"];
-
-try {
-  // Replace parameters with actual values.
-  adminManager.setDelegatedPolicies(admin, "com.example.enterprise.xxx", policies);
-  console.info('Succeeded in setting delegated policies.');
-} catch (err) {
-  console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
-}
-```
 
 ```TypeScript
 import { adminManager } from '@kit.MDMKit';

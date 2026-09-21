@@ -1,5 +1,9 @@
 # PolicyChangedEvent
 
+```TypeScript
+export interface PolicyChangedEvent
+```
+
 策略变更事件。
 
 该接口目前在[onAdminPolicyChanged](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onadminpolicychanged)接口中作为回调入参使用。
@@ -52,7 +56,7 @@ functionName: string
 parameters: string
 ```
 
-调用接口时传入的参数值（不包含admin参数），JSON格式字符串。例如调用[setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md)接口，该字段返回值为{"policy": {"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},&#36;","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}。
+调用接口时传入的参数值（不包含admin参数），JSON格式字符串。例如调用[setPasswordPolicy](arkts-mdm-securitymanager-setpasswordpolicy-f.md)接口，该字段返回值为{"policy": {"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}。
 
 **类型：** string
 

@@ -6,6 +6,8 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
+<a id="acquireaccess-1"></a>
+
 ## acquireAccess
 
 ```TypeScript
@@ -50,24 +52,6 @@ Before calling this API, ensure that the app has enabled the sensitive data prot
 | [29300004](../errorcode-screenLockFileManager.md#29300004-permission-to-access-sensitive-data-on-the-lock-screen-has-been-revoked) | File access is denied. |
 
 **Examples**
-
-```TypeScript
-// Request the permission to access sensitive data on the lock screen.
-import { screenLockFileManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-    // Request access permission
-    let acquireStatus = screenLockFileManager.acquireAccess();
-    if (acquireStatus === screenLockFileManager.AccessStatus.ACCESS_GRANTED) {
-        hilog.info(0x0000, 'testTag', 'acquireAccess successfully.');
-    }
-} catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'acquireAccess failed: %{public}s', message);
-}
-```
 
 ```TypeScript
 // Request the permission to access media data on the lock screen.

@@ -41,6 +41,8 @@ function getVolumeByUuid(uuid: string, callback: AsyncCallback<Volume>): void
 | 13900042 | Unknown error. |
 
 
+<a id="getvolumebyuuid-1"></a>
+
 ## getVolumeByUuid
 
 ```TypeScript

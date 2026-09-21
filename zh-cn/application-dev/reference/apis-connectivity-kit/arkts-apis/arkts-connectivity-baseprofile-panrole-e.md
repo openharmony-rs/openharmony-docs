@@ -1,5 +1,9 @@
 # PanRole
 
+```TypeScript
+enum PanRole
+```
+
 枚举，PAN的不同角色。
 
 **起始版本：** 26.0.0

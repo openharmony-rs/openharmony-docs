@@ -40,16 +40,8 @@ wallpaper.isChangePermitted((error: BusinessError, data: Boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.isChangePermitted().then((data: Boolean) => {
-    console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-    console.error(`failed to isChangePermitted because: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="ischangepermitted-1"></a>
 
 ## isChangePermitted
 
@@ -73,4 +65,12 @@ Checks whether to allow the application to change the wallpaper for the current 
 
 **Examples**
 
-See [isChangePermitted](#ischangepermitted)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.isChangePermitted().then((data: Boolean) => {
+    console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+    console.error(`failed to isChangePermitted because: ${JSON.stringify(error)}`);
+});
+```

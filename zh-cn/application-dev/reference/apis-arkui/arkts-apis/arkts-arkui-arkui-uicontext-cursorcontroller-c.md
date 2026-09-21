@@ -1,5 +1,9 @@
 # CursorController
 
+```TypeScript
+export class CursorController
+```
+
 提供鼠标光标样式设置的能力，支持恢复默认鼠标光标样式、设置系统鼠标光标样式以及设置自定义鼠标光标样式，适用于需要根据界面交互状态动态调整鼠标光标显示效果的场景，有助于提升界面交互提示的清晰度。
 
 > **说明：** 
@@ -41,6 +45,35 @@ restoreDefault(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例**
+
+当光标移出绿框时，通过CursorController的restoreDefault方法恢复默认光标样式。
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { CursorController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CursorControlExample {
+  cursorController: CursorController = this.getUIContext().getCursorController();
+
+  build() {
+    Column() {
+      Row().height(200).width(200).backgroundColor(Color.Green).position({x: 150, y:70})
+        .onHover((isHover) => {
+          if (isHover) {
+            this.cursorController.setCursor(pointer.PointerStyle.EAST);
+          } else {
+            console.info('restoreDefault');
+            this.cursorController.restoreDefault();
+          }
+        })
+    }.width('100%')
+  }
+}
+```
+
 ## setCursor
 
 ```TypeScript
@@ -66,6 +99,34 @@ setCursor(value: PointerStyle): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 是 | 光标样式。 |
+
+**示例**
+
+当光标进入蓝色框时，通过CursorController的setCursor方法修改光标样式为PointerStyle.WEST。
+
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { CursorController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CursorControlExample {
+  cursorCustom: CursorController = this.getUIContext().getCursorController();
+
+  build() {
+    Column() {
+      Row().height(200).width(200).backgroundColor(Color.Blue).position({x: 100, y:70})
+        .onHover((isHover) => {
+          if (isHover) {
+            this.cursorCustom.setCursor(pointer.PointerStyle.WEST);
+          } else {
+            this.cursorCustom.restoreDefault();
+          }
+        })
+    }.width('100%')
+  }
+}
+```
 
 ## setCustomCursor
 
@@ -95,3 +156,95 @@ setCustomCursor(value: image.PixelMap, focusX?: number, focusY?: number): void
 | value | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 自定义鼠标光标样式的像素图。最大尺寸为256*256px，超过该尺寸时设置自定义鼠标光标样式不生效。 |
 | focusX | number | 否 | 自定义光标焦点的X坐标。以光标图片左上角为原点，向右为正方向。该焦点将在显示时与系统鼠标指针的屏幕坐标对齐，鼠标的点击、拖拽等操作均以此点为准。<br>默认值：0<br>单位：px<br>取值范围：[0, 图片宽度]，超出取值范围时按默认值处理。 |
 | focusY | number | 否 | 自定义光标焦点的Y坐标。以光标图片左上角为原点，向下为正方向。结合focusX共同确定图像内代表实际交互位置的点。<br>默认值：0<br>单位：px<br>取值范围：[0, 图片高度]，超出取值范围时按默认值处理。 |
+
+**示例**
+
+当光标进入蓝框且自定义光标图片加载完成后，通过调用[setCustomCursor](#setcustomcursor)接口，设置自定义鼠标光标样式。
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { CursorController } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct CustomCursorExample {
+  cursorController: CursorController = this.getUIContext().getCursorController();
+  @State pixelMap: image.PixelMap | undefined = undefined;
+
+  async loadPixelMapFromRawFile(): Promise<void> {
+    try {
+      // 1. 获取资源管理器，添加空值检查
+      const uiContext = this.getUIContext();
+      if (!uiContext) {
+        console.error('UIContext is undefined');
+        return;
+      }
+      const context = uiContext.getHostContext();
+      if (!context) {
+        console.error('HostContext is undefined');
+        return;
+      }
+      const resourceManager = context.resourceManager;
+      if (!resourceManager) {
+        console.error('ResourceManager is undefined');
+        return;
+      }
+      // 2. 读取rawfile中的图片文件
+      const fileData: Uint8Array = await resourceManager.getRawFileContent('cursor.png');
+      const buffer = fileData.buffer.slice(0);
+      // 3. 创建ImageSource
+      const imageSource = image.createImageSource(buffer);
+      // 4. 创建PixelMap（可以指定期望的尺寸）
+      const pixelMap = await imageSource.createPixelMap({
+        desiredSize: { width: 32, height: 32 }
+      });
+      this.pixelMap = pixelMap;
+      console.info('Custom cursor loaded successfully');
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to load cursor. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Button('load image')
+        .width('40%')
+        .height('7%')
+        .fontSize('30vp')
+        .margin(70)
+        .backgroundColor(Color.Blue)
+        .onClick(() => {
+          // 点击按钮加载PixelMap
+          this.loadPixelMapFromRawFile();
+        })
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Blue)
+        .onHover((isHover: boolean) => {
+          if (isHover && this.pixelMap != undefined) {
+            // 设置自定义鼠标光标样式，焦点位置设为（16，16），即光标中心
+            this.cursorController.setCustomCursor(this.pixelMap, 16, 16);
+          } else {
+            this.cursorController.restoreDefault();
+          }
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+
+  aboutToDisappear(): void {
+    // 释放PixelMap资源
+    if (this.pixelMap) {
+      this.pixelMap.release();
+      this.pixelMap = undefined;
+    }
+    this.cursorController.restoreDefault();
+  }
+}
+```

@@ -50,16 +50,8 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) 
 });
 ```
 
-```TypeScript
-power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
-.then(() => {
-    console.info('set power mode to MODE_PERFORMANCE');
-})
-.catch((err: BusinessError) => {
-    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
-});
-```
 
+<a id="setpowermode-1"></a>
 
 ## setPowerMode
 
@@ -100,4 +92,12 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 
 **示例**
 
-参见 [setPowerMode](#setpowermode)
+```TypeScript
+power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
+.then(() => {
+    console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+```

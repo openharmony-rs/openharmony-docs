@@ -1,5 +1,9 @@
 # PhotoOutput
 
+```TypeScript
+interface PhotoOutput extends CameraOutput
+```
+
 PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-camera-camera-cameraoutput-i.md).
 
 **Inheritance/Implementation:** PhotoOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
@@ -744,6 +748,27 @@ Unsubscribes from events indicating available thumbnail proxies.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError, proxyObj: camera.DeferredPhotoProxy): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
+    AppStorage.setOrCreate('proxyThumbnail', thumbnail);
+  });
+}
+
+function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.off('deferredPhotoProxyAvailable', callback);
+}
+```
+
 ## off('quickThumbnail')
 
 ```TypeScript
@@ -764,6 +789,14 @@ Unsubscribes from quick thumbnail output events.
 | --- | --- | --- | --- |
 | type | 'quickThumbnail' | Yes | Event type. The value is fixed at **'quickThumbnail'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | No | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+
+**Examples**
+
+```TypeScript
+function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
+  photoOutput.off('quickThumbnail');
+}
+```
 
 ## off('offlineDeliveryFinished')
 
@@ -819,6 +852,27 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+function callback(err: BusinessError, proxyObj: camera.DeferredPhotoProxy): void {
+  if (err !== undefined && err.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err.code}`);
+    return;
+  }
+  proxyObj.getThumbnail().then((thumbnail: image.PixelMap) => {
+    AppStorage.setOrCreate('proxyThumbnail', thumbnail);
+  });
+}
+
+function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.on('deferredPhotoProxyAvailable', callback);
+}
+```
+
 ## on('quickThumbnail')
 
 ```TypeScript
@@ -839,6 +893,53 @@ Subscribes to quick thumbnail output events. This API uses an asynchronous callb
 | --- | --- | --- | --- |
 | type | 'quickThumbnail' | Yes | Event type. The value is fixed at **'quickThumbnail'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Yes | Callback that returns a PixelMap instance. |
+
+**Examples**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { camera } from '@kit.CameraKit';
+
+function callback(err: BusinessError, pixelMap: image.PixelMap): void {
+  if (err || pixelMap === undefined) {
+      console.error('photoOutput on thumbnail failed');
+      return;
+  }
+  // Display or save the pixelMap.
+  // Perform the operation.
+}
+
+async function registerQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
+  let cameraManager: camera.CameraManager = camera.getCameraManager(context);
+  let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
+  // Create a CaptureSession instance.
+  let session: camera.Session = cameraManager.createSession(mode);
+  // Start configuring the session.
+  session.beginConfig();
+  // Add the CameraInput to the session.
+  let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
+  await cameraInput.open();
+  session.addInput(cameraInput);
+  // Add the PhotoOutput to the session.
+  let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
+  session.addOutput(photoOutput);
+  let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
+  if (!isSupported) {
+    console.info('Quick Thumbnail is not supported to be turned on.');
+    return;
+  }
+  try {
+    photoOutput.enableQuickThumbnail(true);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The enableQuickThumbnail call failed. error code: ${err.code}`);
+  }
+
+  photoOutput.on('quickThumbnail', callback);
+}
+```
 
 ## on('offlineDeliveryFinished')
 

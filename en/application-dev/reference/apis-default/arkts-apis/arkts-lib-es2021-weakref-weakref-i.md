@@ -1,5 +1,9 @@
 # WeakRef
 
+```TypeScript
+interface WeakRef<T extends object>
+```
+
 ## Modules to Import
 
 ```TypeScript

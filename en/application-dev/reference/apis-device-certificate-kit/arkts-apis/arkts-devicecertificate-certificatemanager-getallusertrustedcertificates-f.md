@@ -58,31 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  /* Obtain the user root CA certificates of the current user. To obtain the user root CA certificates accessible to all users, pass in GLOBAL_USER. */
-  let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
-  certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
-    if (cmResult === undefined) { // If the number of root CA certificates is 0, the returned cmResult is undefined.
-      console.info('The count of the user trusted certificates is 0.');
-    } else if (cmResult.certList == undefined) {
-      console.info('The result of getting current user trusted certificates is undefined.');
-    } else {
-      let list = cmResult.certList;
-      console.info('Succeeded in getting current user trusted certificates.');
-    }
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getallusertrustedcertificates-1"></a>
 
 ## getAllUserTrustedCertificates
 
@@ -120,4 +97,27 @@ Obtains the user root CA certificates based on the certificate scope. This API u
 
 **Examples**
 
-See [getAllUserTrustedCertificates](#getallusertrustedcertificates)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  /* Obtain the user root CA certificates of the current user. To obtain the user root CA certificates accessible to all users, pass in GLOBAL_USER. */
+  let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
+  certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
+    if (cmResult === undefined) { // If the number of root CA certificates is 0, the returned cmResult is undefined.
+      console.info('The count of the user trusted certificates is 0.');
+    } else if (cmResult.certList == undefined) {
+      console.info('The result of getting current user trusted certificates is undefined.');
+    } else {
+      let list = cmResult.certList;
+      console.info('Succeeded in getting current user trusted certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # ToolType
 
+```TypeScript
+export declare enum ToolType
+```
+
 Enumerates touch tool types.
 
 **Since:** 9

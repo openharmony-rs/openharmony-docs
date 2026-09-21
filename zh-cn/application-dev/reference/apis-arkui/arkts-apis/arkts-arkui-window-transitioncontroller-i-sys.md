@@ -1,5 +1,9 @@
 # TransitionController（系统接口）
 
+```TypeScript
+interface TransitionController
+```
+
 属性转换控制器。使用其子接口之前得先创建系统窗口，参照示例代码。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # DistributedObject
 
+```TypeScript
+interface DistributedObject
+```
+
 Provides APIs for managing a distributed data object. Before using any API of this class, use createDistributedObject() to create a DistributedObject object.
 
 **Since:** 8
@@ -39,12 +43,42 @@ Unsubscribes from data changes of this distributed data object.
 | type | 'change' | Yes | Event type. The value is 'change', which indicates data changes. |
 | callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | No | Callback to unregister. If this parameter is not specified, this API unsubscribes from all callbacks for data changes of this distributed object.sessionId indicates the session ID of the distributed data object. fields indicates the changed properties of the distributed data object. |
 
+**Examples**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+// Delete the data change callback.
+g_object.off('change', (sessionId: string, fields: Array<string>) => {
+    console.info('change' + sessionId);
+    if (fields != null && fields != undefined) {
+        for (let index: number = 0; index < fields.length; index++) {
+            console.info('changed !' + fields[index] + ' ' + g_object[fields[index]]);
+        }
+    }
+});
+// Unregister all data change callbacks.
+g_object.off('change');
+```
+
 ## off('status')
 
 ```TypeScript
 off(
       type: 'status',
-      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
+      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline') => void
     ): void
 ```
 
@@ -54,7 +88,7 @@ Unsubscribes from the status change of this distributed data object.
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](arkts-arkdata-distributeddataobject-dataobject-i.md#offstatus)( type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) =&gt; void )
+**Substitutes:** [off](arkts-arkdata-distributeddataobject-dataobject-i.md#offstatus)( type: 'status', callback?: (sessionId: string, networkId: string, status: 'online' | 'offline') =&gt; void )
 
 **System capability:** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -63,7 +97,32 @@ Unsubscribes from the status change of this distributed data object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'status' | Yes | Event type. The value is 'status', which indicates the status change (online or offline) of the distributed object. |
-| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline' ) =&gt; void | No | Callback to unregister. If this parameter is not specified, this API unsubscribes from all callbacks for status changes of this distributed object. sessionId indicates the session ID of the distributed data object. networkId identifies the distributed data object. status indicates the object status, which can be online or offline. |
+| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline') =&gt; void | No | Callback to unregister. If this parameter is not specified, this API unsubscribes from all callbacks for status changes of this distributed object. sessionId indicates the session ID of the distributed data object. networkId identifies the distributed data object. status indicates the object status, which can be online or offline. |
+
+**Examples**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+// Delete the online/offline callback.
+g_object.off('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
+    console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
+});
+// Unregister all status change callbacks.
+g_object.off('status');
+```
 
 ## on('change')
 
@@ -88,12 +147,39 @@ Subscribes to data changes of this distributed data object.
 | type | 'change' | Yes | Event type. The value is 'change', which indicates data changes. |
 | callback | (sessionId: string, fields: Array&lt;string&gt;) =&gt; void | Yes | Callback used to return the changes of the distributed data object. sessionId indicates the session ID of the distributed data object. fields indicates the changed properties of the distributed data object. |
 
+**Examples**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+g_object.on('change', (sessionId: string, fields: Array<string>) => {
+    console.info('change' + sessionId);
+    if (fields != null && fields != undefined) {
+        for (let index: number = 0; index < fields.length; index++) {
+            console.info('changed !' + fields[index] + ' ' + g_object[fields[index]]);
+        }
+    }
+});
+```
+
 ## on('status')
 
 ```TypeScript
 on(
       type: 'status',
-      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
+      callback: (sessionId: string, networkId: string, status: 'online' | 'offline') => void
     ): void
 ```
 
@@ -103,7 +189,7 @@ Subscribes to status changes of this distributed data object.
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](arkts-arkdata-distributeddataobject-dataobject-i.md#onstatus)( type: 'status', callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) =&gt; void )
+**Substitutes:** [on](arkts-arkdata-distributeddataobject-dataobject-i.md#onstatus)( type: 'status', callback: (sessionId: string, networkId: string, status: 'online' | 'offline') =&gt; void )
 
 **System capability:** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -112,7 +198,30 @@ Subscribes to status changes of this distributed data object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'status' | Yes | Event type. The value is 'status', which indicates the status change (online or offline) of the distributed object. |
-| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline' ) =&gt; void | Yes | Callback used to return the status change. sessionId indicates the session ID of the distributed data object. networkId identifies the device. status indicates the object status, which can be online or offline. |
+| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline') =&gt; void | Yes | Callback used to return the status change. sessionId indicates the session ID of the distributed data object. networkId identifies the device. status indicates the object status, which can be online or offline. |
+
+**Examples**
+
+```TypeScript
+class SourceObject {
+  name: string
+  age: number
+  isVis: boolean
+
+  constructor(name: string, age: number, isVis: boolean) {
+    this.name = name;
+    this.age = age;
+    this.isVis = isVis;
+  }
+}
+
+let source: SourceObject = new SourceObject('jack', 18, false);
+let g_object: distributedDataObject.DistributedObject = distributedDataObject.createDistributedObject(source);
+
+g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
+    console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
+});
+```
 
 ## setSessionId
 

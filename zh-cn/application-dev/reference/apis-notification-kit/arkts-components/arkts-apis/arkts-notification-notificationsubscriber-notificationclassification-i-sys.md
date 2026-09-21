@@ -1,5 +1,9 @@
 # NotificationClassification（系统接口）
 
+```TypeScript
+export interface NotificationClassification
+```
+
 通知分类信息。
 
 **起始版本：** 26.0.0

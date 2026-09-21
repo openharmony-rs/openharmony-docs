@@ -1,5 +1,9 @@
 # WantAgent
 
+```TypeScript
+interface WantAgent
+```
+
 点击提醒通知后跳转的目标ability信息。
 
 **起始版本：** 7
@@ -30,7 +34,7 @@ abilityName: string
 
 **废弃版本：** 9
 
-**替代接口：** abilityName
+**替代接口：** [abilityName](arkts-backgroundtasks-reminderagentmanager-wantagent-i.md#abilityname)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -48,6 +52,6 @@ pkgName: string
 
 **废弃版本：** 9
 
-**替代接口：** pkgName
+**替代接口：** [pkgName](arkts-backgroundtasks-reminderagentmanager-wantagent-i.md#pkgname)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent

@@ -1,5 +1,9 @@
 # BaseItemInfo
 
+```TypeScript
+export declare class BaseItemInfo
+```
+
 Represents basic image and video information.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # AbilityLifecycleState
 
+```TypeScript
+export enum AbilityLifecycleState
+```
+
 Enumerates the ability lifecycle states. It can be used in [getAbilityState(ability)](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md#getabilitystate) of [AbilityDelegator](../../apis-ability-kit/arkts-apis/arkts-ability-abilitydelegator-i.md) to return different ability lifecycle states.
 
 **Since:** 9

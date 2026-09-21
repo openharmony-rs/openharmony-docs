@@ -20,6 +20,12 @@ import { common } from '@kit.MDMKit';
 
 ## Summary
 
+### Functions
+
+| Name | Description |
+| --- | --- |
+| [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md) | Checks whether a specified feature is supported. |
+
 ### Interfaces
 
 | Name | Description |
@@ -32,6 +38,7 @@ import { common } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
+| [ManagedFeature](arkts-mdm-common-managedfeature-e.md) | The managed feature. |
 | [ManagedPolicy](arkts-mdm-common-managedpolicy-e.md) | Enumerates enterprise device management policies. |
 | [QueryPolicy](arkts-mdm-common-querypolicy-e.md) | The policy of query enterprise device management policy. |
 | [Result](arkts-mdm-common-result-e.md) | Enumerates application installation results. |

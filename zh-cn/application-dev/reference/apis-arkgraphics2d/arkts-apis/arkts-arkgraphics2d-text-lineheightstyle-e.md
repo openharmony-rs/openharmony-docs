@@ -1,5 +1,9 @@
 # LineHeightStyle
 
+```TypeScript
+enum LineHeightStyle
+```
+
 行高缩放基数枚举。
 
 **起始版本：** 21

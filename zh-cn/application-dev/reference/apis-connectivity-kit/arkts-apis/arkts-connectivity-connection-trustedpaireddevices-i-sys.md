@@ -1,5 +1,9 @@
 # TrustedPairedDevices（系统接口）
 
+```TypeScript
+interface TrustedPairedDevices
+```
+
 云设备列表。
 
 **起始版本：** 15

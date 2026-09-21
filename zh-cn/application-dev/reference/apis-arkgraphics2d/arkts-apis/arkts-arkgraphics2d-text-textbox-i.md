@@ -1,5 +1,9 @@
 # TextBox
 
+```TypeScript
+interface TextBox
+```
+
 文本矩形区域，表示文本在布局时所占用的矩形空间。
 
 **起始版本：** 12

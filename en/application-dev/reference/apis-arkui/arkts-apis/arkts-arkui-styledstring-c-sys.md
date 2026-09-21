@@ -1,5 +1,9 @@
 # StyledString
 
+```TypeScript
+declare class StyledString
+```
+
 StyledString
 
 **Since:** 12
@@ -34,6 +38,8 @@ Marshals a styled string by defining a callback to marshal [StyledStringMarshall
 | Type | Description |
 | --- | --- |
 | ArrayBuffer | Buffer information after marshalling.<br>**NOTE:** <br>Currently, text and images are supported. |
+
+<a id="marshalling-1"></a>
 
 ## marshalling
 
@@ -98,6 +104,8 @@ Unmarshals a styled string by defining a callback to [StyledStringMarshallingVal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [170002](../errorcode-styled-string.md#170002-styled-string-decoding-error) | Styled string decode error. |
+
+<a id="unmarshalling-1"></a>
 
 ## unmarshalling
 

@@ -1,5 +1,9 @@
 # TlsVersion
 
+```TypeScript
+export enum TlsVersion
+```
+
 枚举，TLS版本号。
 
 **起始版本：** 18

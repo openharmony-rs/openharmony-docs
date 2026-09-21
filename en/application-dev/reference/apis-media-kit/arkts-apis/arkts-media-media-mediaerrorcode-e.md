@@ -1,5 +1,9 @@
 # MediaErrorCode
 
+```TypeScript
+enum MediaErrorCode
+```
+
 Enumerates the media error codes.
 
 **Since:** 8

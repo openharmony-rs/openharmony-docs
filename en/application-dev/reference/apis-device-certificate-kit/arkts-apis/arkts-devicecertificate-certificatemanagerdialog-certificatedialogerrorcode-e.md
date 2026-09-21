@@ -1,5 +1,9 @@
 # CertificateDialogErrorCode
 
+```TypeScript
+export enum CertificateDialogErrorCode
+```
+
 Enumerates the error codes reported when the certificate management dialog box APIs are called.
 
 **Since:** 13
@@ -101,6 +105,34 @@ ERROR_NO_AVAILABLE_CERTIFICATE = 29700007
 No certificate is available.
 
 **Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_OPERATION_TIMEOUT
+
+```TypeScript
+ERROR_OPERATION_TIMEOUT = 29700009
+```
+
+The operation in the certificate management dialog box timed out.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Security.CertificateManagerDialog
+
+## ERROR_NOT_CONCURRENT_SUPPORT
+
+```TypeScript
+ERROR_NOT_CONCURRENT_SUPPORT = 29700010
+```
+
+The API does not support concurrent calls.
+
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

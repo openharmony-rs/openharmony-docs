@@ -1,5 +1,9 @@
 # EventTarget
 
+```TypeScript
+export interface EventTarget
+```
+
 用于管理Worker的监听事件。
 
 **起始版本：** 7
@@ -95,8 +99,17 @@ workerPort.addEventListener("alert_add", ()=>{
 workerPort.dispatchEvent({type: 'alert_add', timeStamp: 0}); // timeStamp暂未支持
 ```
 
-```TypeScript
 分发事件（dispatchEvent）可与监听接口（addEventListener）搭配使用，示例如下：
+
+```TypeScript
+// Index.ets
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
+workerInstance.postMessage("hello world");
+workerInstance.onmessage = (): void => {
+    console.info("receive data from worker.ets");
+}
 ```
 
 ```TypeScript

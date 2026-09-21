@@ -1,5 +1,9 @@
 # CustomSpanMetrics
 
+```TypeScript
+declare interface CustomSpanMetrics
+```
+
 定义自定义绘制Span的尺寸信息接口。
 
 **起始版本：** 12

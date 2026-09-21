@@ -1,5 +1,9 @@
 # ProgressInfo
 
+```TypeScript
+interface ProgressInfo
+```
+
 Represents the progress information.
 
 **Since:** 15

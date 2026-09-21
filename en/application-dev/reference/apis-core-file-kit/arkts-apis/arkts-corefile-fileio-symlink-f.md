@@ -35,6 +35,8 @@ Creates a symbolic link based on the file path. This API uses a promise to retur
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="symlink-1"></a>
+
 ## symlink
 
 ```TypeScript

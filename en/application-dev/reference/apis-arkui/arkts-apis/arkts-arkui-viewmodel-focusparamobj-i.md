@@ -1,5 +1,9 @@
 # FocusParamObj
 
+```TypeScript
+export interface FocusParamObj
+```
+
 Defines the focus param.
 
 @interface FocusParamObj

@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+export interface Point
+```
+
 表示一个位置点。
 
 **起始版本：** 26.0.0

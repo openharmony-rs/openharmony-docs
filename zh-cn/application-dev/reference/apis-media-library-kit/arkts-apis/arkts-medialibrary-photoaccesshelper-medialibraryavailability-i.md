@@ -1,5 +1,9 @@
 # MediaLibraryAvailability
 
+```TypeScript
+interface MediaLibraryAvailability
+```
+
 媒体库可用性信息。
 
 **起始版本：** 26.0.0

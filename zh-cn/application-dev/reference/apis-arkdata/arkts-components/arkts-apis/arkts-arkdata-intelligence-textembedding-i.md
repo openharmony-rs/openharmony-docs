@@ -1,5 +1,9 @@
 # TextEmbedding
 
+```TypeScript
+interface TextEmbedding
+```
+
 描述文本嵌入模型的文本嵌入函数。
 
 下列接口都需先使用[intelligence.getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md)获取到TextEmbedding实例，再通过此实例调用对应接口。
@@ -71,24 +75,7 @@ textEmbedding.loadModel()
   })
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// textEmbedding需先通过intelligence.getTextEmbeddingModel获取
-textEmbedding.loadModel()
-  .then(() => {
-    let batchTexts = ['text1', 'text2'];
-    textEmbedding.getEmbedding(batchTexts)
-      .then((data: Array<Array<number>>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
-      })
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
-  })
-```
+<a id="getembedding-1"></a>
 
 ## getEmbedding
 
@@ -125,25 +112,6 @@ getEmbedding(batchTexts: Array<string>): Promise<Array<Array<number>>>
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// textEmbedding需先通过intelligence.getTextEmbeddingModel获取
-textEmbedding.loadModel()
-  .then(() => {
-    let text = 'text';
-    textEmbedding.getEmbedding(text)
-      .then((data: Array<number>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to get Embedding. Code: ${err.code}, message: ${err.message}`);
-      })
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
-  })
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

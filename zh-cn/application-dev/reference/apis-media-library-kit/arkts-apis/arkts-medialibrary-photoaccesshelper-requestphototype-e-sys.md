@@ -1,5 +1,9 @@
 # RequestPhotoType（系统接口）
 
+```TypeScript
+enum RequestPhotoType
+```
+
 枚举，获取图片或视频缩略图的操作类型。
 
 **起始版本：** 11

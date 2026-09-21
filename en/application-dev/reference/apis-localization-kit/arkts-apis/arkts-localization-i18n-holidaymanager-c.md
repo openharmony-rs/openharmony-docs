@@ -1,5 +1,9 @@
 # HolidayManager
 
+```TypeScript
+export class HolidayManager
+```
+
 Provides holiday data parsing capabilities, such as determining holidays and obtaining the holiday list of a specified year.
 
 **Since:** 11

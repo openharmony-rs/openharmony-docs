@@ -47,17 +47,8 @@ formHost.deleteInvalidForms(formIds, (error: Base.BusinessError, data: number) =
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formIds: string[] = new Array('12400633174999288', '12400633174999289');
-formHost.deleteInvalidForms(formIds).then((data: number) => {
-  console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost deleteInvalidForms, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="deleteinvalidforms-1"></a>
 
 ## deleteInvalidForms
 
@@ -93,4 +84,13 @@ function deleteInvalidForms(formIds: Array<string>): Promise<number>
 
 **示例**
 
-参见 [deleteInvalidForms](#deleteinvalidforms)
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+formHost.deleteInvalidForms(formIds).then((data: number) => {
+  console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost deleteInvalidForms, error: ${JSON.stringify(error)}`);
+});
+```

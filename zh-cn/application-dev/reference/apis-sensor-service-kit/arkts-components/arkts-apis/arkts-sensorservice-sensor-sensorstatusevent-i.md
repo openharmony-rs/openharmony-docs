@@ -1,5 +1,9 @@
 # SensorStatusEvent
 
+```TypeScript
+interface SensorStatusEvent
+```
+
 设备状态变化事件数据，用于描述传感器上下线事件的信息。
 
 **起始版本：** 19

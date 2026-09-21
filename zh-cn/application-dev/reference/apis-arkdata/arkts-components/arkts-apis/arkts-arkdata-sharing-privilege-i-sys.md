@@ -1,5 +1,9 @@
 # Privilege（系统接口）
 
+```TypeScript
+interface Privilege
+```
+
 指定的端云共享数据的权限。
 
 **起始版本：** 11

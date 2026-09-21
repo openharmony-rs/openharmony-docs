@@ -1,5 +1,9 @@
 # VideoPlayer
 
+```TypeScript
+interface VideoPlayer
+```
+
 VideoPlayer is a class for video playback management. It provides APIs to manage and play videos. Before calling any API in VideoPlayer, you must use [createVideoPlayer()](arkts-media-media-createvideoplayer-f.md) to create a VideoPlayer instance.
 
 **Since:** 8
@@ -37,6 +41,8 @@ Obtains the video track information. This API uses an asynchronous callback to r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MediaDescription](arkts-media-media-mediadescription-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the MediaDescription array obtained; otherwise, **err** is an error object. |
+
+<a id="gettrackdescription-1"></a>
 
 ## getTrackDescription
 
@@ -220,6 +226,8 @@ Pauses video playback. This API uses an asynchronous callback to return the resu
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="pause-1"></a>
+
 ## pause
 
 ```TypeScript
@@ -263,6 +271,8 @@ Starts video playback. This API uses an asynchronous callback to return the resu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+<a id="play-1"></a>
 
 ## play
 
@@ -308,6 +318,8 @@ Prepares for video playback. This API uses an asynchronous callback to return th
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="prepare-1"></a>
+
 ## prepare
 
 ```TypeScript
@@ -352,6 +364,8 @@ Releases the video playback resources. This API uses an asynchronous callback to
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -395,6 +409,8 @@ Resets video playback. This API uses an asynchronous callback to return the resu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+<a id="reset-1"></a>
 
 ## reset
 
@@ -441,6 +457,8 @@ Seeks to the specified playback position. The previous key frame at the specifie
 | timeMs | number | Yes | Position to seek to, in ms. The value range is [0, duration]. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the new playback position; otherwise, **err** is an error object. |
 
+<a id="seek-1"></a>
+
 ## seek
 
 ```TypeScript
@@ -464,6 +482,8 @@ Seeks to the specified playback position. This API uses an asynchronous callback
 | timeMs | number | Yes | Position to seek to, in ms. The value range is [0, duration]. |
 | mode | [SeekMode](arkts-media-media-seekmode-e.md) | Yes | Seek mode. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the new playback position; otherwise, **err** is an error object. |
+
+<a id="seek-2"></a>
 
 ## seek
 
@@ -518,8 +538,10 @@ Sets a surface ID. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| surfaceId | string | Yes | Surface ID, which is obtained from the **XComponent**. For details about how to obtain it, see XComponent. |
+| surfaceId | string | Yes | Surface ID, which is obtained from the **XComponent**. For details about how to obtain it, see [XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the setting is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+
+<a id="setdisplaysurface-1"></a>
 
 ## setDisplaySurface
 
@@ -545,7 +567,7 @@ Sets a surface ID. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| surfaceId | string | Yes | Surface ID, which is obtained from the **XComponent**. For details about how to obtain it, see XComponent. |
+| surfaceId | string | Yes | Surface ID, which is obtained from the **XComponent**. For details about how to obtain it, see [XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent). |
 
 **Return value:**
 
@@ -575,6 +597,8 @@ Sets the playback speed. This API uses an asynchronous callback to return the re
 | --- | --- | --- | --- |
 | speed | number | Yes | Video playback speed. For details, see [PlaybackSpeed](arkts-media-media-playbackspeed-e.md). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the playback speed; otherwise, **err** is an error object. |
+
+<a id="setspeed-1"></a>
 
 ## setSpeed
 
@@ -627,6 +651,8 @@ Sets the volume. This API uses an asynchronous callback to return the result.
 | vol | number | Yes | Relative volume. The value ranges from 0.00 to 1.00. The value **1.00** indicates the maximum volume (100%). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the setting is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
+<a id="setvolume-1"></a>
+
 ## setVolume
 
 ```TypeScript
@@ -676,6 +702,8 @@ Stops video playback. This API uses an asynchronous callback to return the resul
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+<a id="stop-1"></a>
 
 ## stop
 

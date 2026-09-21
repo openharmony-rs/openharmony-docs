@@ -1,5 +1,9 @@
 # SegmentButtonItemOptionsConstructorOptions
 
+```TypeScript
+interface SegmentButtonItemOptionsConstructorOptions
+```
+
 构造参数用于SegmentButtonItemOptions。
 
 > **说明：** 

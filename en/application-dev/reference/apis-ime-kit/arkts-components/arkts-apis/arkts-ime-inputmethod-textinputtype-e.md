@@ -1,5 +1,9 @@
 # TextInputType
 
+```TypeScript
+export enum TextInputType
+```
+
 Enumerates the text input types.
 
 **Since:** 10

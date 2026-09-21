@@ -1,5 +1,9 @@
 # DriverExtensionAbility
 
+```TypeScript
+declare class DriverExtensionAbility
+```
+
 DriverExtensionAbility模块提供驱动相关扩展能力，提供驱动创建、销毁、连接、断开等生命周期回调。
 
 **起始版本：** 10
@@ -62,8 +66,33 @@ class DriverExt extends DriverExtensionAbility {
 }
 ```
 
-```TypeScript
 如果生成返回值[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)依赖一个异步接口，可以使用异步生命周期：
+
+```TypeScript
+import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
+import { rpc } from '@kit.IPCKit';
+import { Want } from '@kit.AbilityKit';
+
+class StubTest extends rpc.RemoteObject {
+    constructor(des: string) {
+        super(des);
+    }
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+      // 必须重写此接口
+      return true;
+    }
+}
+async function getDescriptor() {
+    // 调用异步函数...
+    return 'asyncTest';
+}
+class DriverExt extends DriverExtensionAbility {
+  async onConnect(want: Want) {
+    console.info(`onConnect , want: ${want.abilityName}`);
+    let descriptor = await getDescriptor();
+    return new StubTest(descriptor);
+  }
+}
 ```
 
 ## onDisconnect
@@ -99,8 +128,18 @@ class DriverExt extends DriverExtensionAbility {
 }
 ```
 
-```TypeScript
 在执行完onDisconnect生命周期回调后，应用可能会退出，从而可能导致onDisconnect中的异步函数未能正确执行，比如异步写入数据库。可以使用异步生命周期，以确保异步onDisconnect完成后再继续后续的生命周期。
+
+```TypeScript
+import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
+import { Want } from '@kit.AbilityKit';
+
+class DriverExt extends DriverExtensionAbility {
+  async onDisconnect(want: Want) {
+    console.info(`onDisconnect, want: ${want.abilityName}`);
+    // 调用异步函数...
+  }
+}
 ```
 
 ## onDump

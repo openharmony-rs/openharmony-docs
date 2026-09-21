@@ -14,7 +14,7 @@ function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: nu
 
 查询可被设置为指定类型默认应用的应用列表。当前仅支持**BROWSER**类型的查询。未被授予ohos.permission.DEFAULT_WEB_BROWSER权限的应用将从结果中排除。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 

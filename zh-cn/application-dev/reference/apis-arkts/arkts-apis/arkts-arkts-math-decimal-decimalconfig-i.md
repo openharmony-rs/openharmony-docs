@@ -1,5 +1,9 @@
 # DecimalConfig
 
+```TypeScript
+export interface DecimalConfig
+```
+
 提供Decimal的配置属性，可使用Decimal.set方法进行配置。
 
 **起始版本：** 12

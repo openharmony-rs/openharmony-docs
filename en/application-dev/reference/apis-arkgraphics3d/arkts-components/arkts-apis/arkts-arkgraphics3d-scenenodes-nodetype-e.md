@@ -1,5 +1,9 @@
 # NodeType
 
+```TypeScript
+export enum NodeType
+```
+
 Enumerates the node types.
 
 @enum { int }

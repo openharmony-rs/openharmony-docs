@@ -1,6 +1,10 @@
 # Shape properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class ShapeAttribute extends CommonMethod<ShapeAttribute>
+```
+
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
 **Inheritance/Implementation:** ShapeAttribute extends CommonMethod<ShapeAttribute>
 
@@ -14,9 +18,11 @@ In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the fo
 antiAlias(value: boolean)
 ```
 
-Sets whether to enable anti-aliasing. This attribute can be dynamically set using attributeModifier.
+Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -36,9 +42,11 @@ Sets whether to enable anti-aliasing. This attribute can be dynamically set usin
 fill(value: ResourceColor)
 ```
 
-Sets the color of the fill area. This attribute can be dynamically set using attributeModifier. Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
+Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). Invalid values are treated as the default value. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -50,7 +58,7 @@ Sets the color of the fill area. This attribute can be dynamically set using att
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the fill area.<br>Default value: [Color](../arkts-apis/arkts-arkui-color-e.md).Black<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the fill area.<br>Default value: Color.Black<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value. |
 
 ## fillOpacity
 
@@ -58,9 +66,11 @@ Sets the color of the fill area. This attribute can be dynamically set using att
 fillOpacity(value: number | string | Resource)
 ```
 
-Sets the opacity of the fill area. This attribute can be dynamically set using attributeModifier.
+Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -80,7 +90,9 @@ Sets the opacity of the fill area. This attribute can be dynamically set using a
 mesh(value: Array<any>, column: number, row: number)
 ```
 
-Sets the mesh effect. An image is divided into (row + 1) × (column + 1) meshes. The coordinates of each mesh intersection point are stored in the array. (Every two elements indicate the x and y coordinates of an intersection point.) The mesh vertex position is relocated based on the coordinates in the array value to implement partial image distortion. This attribute can be dynamically set using attributeModifier.
+Sets the mesh effect. Divides the image into a grid of (row + 1) × (column + 1), with the coordinates of each grid intersection stored in an array (every two elements represent the x and y coordinates of an intersection). The coordinates in the **value** array are used to reposition the grid vertices, implementing local distortion of the image. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). It is applicable to scenarios that require image deformation effects, such as image distortion and wave effects.
+
+The coordinate array is stored in row-major order. After the original image is evenly divided, each grid area is transformed based on the new coordinates of its vertices, ultimately producing a distortion effect.
 
 > **NOTE:** 
 > 
@@ -92,6 +104,8 @@ Sets the mesh effect. An image is divided into (row + 1) × (column + 1) meshes.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
@@ -102,9 +116,9 @@ Sets the mesh effect. An image is divided into (row + 1) × (column + 1) meshes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | Array with a length of (row + 1) × (column + 1) × 2, which records the position of each vertex of the distorted bitmap.<br>Invalid values **undefined** and **null** are treated as an empty array. If the value is set to an empty array, the values of **column** and **row** are handled as **0**, and the value is handled as an empty array. |
-| column | number | Yes | Number of mesh matrix columns.<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the values of **column** and **row** are treated as **0**, and the value of **value** is treated as an empty array. |
-| row | number | Yes | Number of mesh matrix rows.<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the values of **column** and **row** are treated as **0**, and the value of **value** is treated as an empty array. |
+| value | Array&lt;any&gt; | Yes | Array of length (row + 1) × (column + 1) × 2, which records the position of each vertex of the distorted bitmap. The coordinate system is based on the display area of the **Shape** component, with the origin (0,0) at the upper left corner, the x-axis extending to the right, and the y-axis extending downward.<br>Default unit: vp <br>When the abnormal values **undefined** and **null** are set, the parameter is processed as an empty array. |
+| column | number | Yes | Number of columns in the mesh matrix.<br>The value range is ≥ 0. <br>Default value: **0** <br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the value parameter is processed as an empty array. |
+| row | number | Yes | Number of rows in the mesh matrix.<br>The value range is ≥ 0. <br>Default value: **0** <br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the **value** parameter is processed as an empty array. |
 
 ## stroke
 
@@ -112,9 +126,11 @@ Sets the mesh effect. An image is divided into (row + 1) × (column + 1) meshes.
 stroke(value: ResourceColor)
 ```
 
-Sets the stroke color. This attribute can be dynamically set using attributeModifier. If this attribute is not set, the default stroke opacity is **0**, meaning no stroke is displayed.
+Sets the stroke color. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). If this attribute is not set, the default stroke opacity is **0**, meaning no stroke is displayed.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -126,7 +142,7 @@ Sets the stroke color. This attribute can be dynamically set using attributeModi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Stroke color.<br>Default value: [Color](../arkts-apis/arkts-arkui-color-e.md).Transparent<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as [Color](../arkts-apis/arkts-arkui-color-e.md).Black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Stroke color.<br>Default value: Color.Transparent<br>Invalid values **undefined** and **null** values are treated as the default value, and invalid values **NaN** and **Infinity** are treated as Color.Black. |
 
 ## strokeDashArray
 
@@ -134,9 +150,11 @@ Sets the stroke color. This attribute can be dynamically set using attributeModi
 strokeDashArray(value: Array<any>)
 ```
 
-Sets the stroke dashes. This attribute can be dynamically set using attributeModifier. The value must be greater than or equal to 0. Invalid values are treated as the default value.
+Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). The value must be greater than or equal to 0. Invalid values are treated as the default value.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -156,9 +174,11 @@ Sets the stroke dashes. This attribute can be dynamically set using attributeMod
 strokeDashOffset(value: Length)
 ```
 
-Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using attributeModifier. Invalid values are treated as the default value.
+Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). Invalid values are treated as the default value.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -178,9 +198,11 @@ Sets the offset of the start point for drawing the stroke. This attribute can be
 strokeLineCap(value: LineCapStyle)
 ```
 
-Sets the cap style of the stroke. This attribute can be dynamically set using attributeModifier.
+Sets the cap style of the stroke. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -200,9 +222,11 @@ Sets the cap style of the stroke. This attribute can be dynamically set using at
 strokeLineJoin(value: LineJoinStyle)
 ```
 
-Sets the join style of the stroke. This attribute can be dynamically set using attributeModifier.
+Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -222,11 +246,13 @@ Sets the join style of the stroke. This attribute can be dynamically set using a
 strokeMiterLimit(value: Length)
 ```
 
-Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using attributeModifier. The miter length indicates the distance from the outer tip to the inner corner of the miter. The border width is the value of **strokeWidth**. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
+Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). The miter length indicates the distance from the outer tip to the inner corner of the miter. The border width is the value of **strokeWidth**. This attribute works only when **strokeLineJoin** is set to **LineJoinStyle.Miter**.
 
 The value must be greater than or equal to 1.0. If the value is in the [0, 1) range, the value **1.0** will be used. In other cases, the default value will be used.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -246,9 +272,11 @@ The value must be greater than or equal to 1.0. If the value is in the [0, 1) ra
 strokeOpacity(value: number | string | Resource)
 ```
 
-Sets the stroke opacity. This attribute can be dynamically set using attributeModifier. The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -268,9 +296,11 @@ Sets the stroke opacity. This attribute can be dynamically set using attributeMo
 strokeWidth(value: Length)
 ```
 
-Sets the stroke width. This attribute can be dynamically set using attributeModifier. If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -292,7 +322,11 @@ viewPort(value: ViewportRect)
 
 Sets the viewport of the shape.
 
+The viewport defines the coordinate system and display area of the drawing content. The start point coordinates (x, y) and the width and height (width, height) of the viewport determine the display position and range of the drawing content in the component. When the viewport range differs from the component size, the drawing content is automatically scaled to fit. The viewport is commonly used to adjust the display scale and position of the drawing content.
+
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -304,4 +338,4 @@ Sets the viewport of the shape.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ViewportRect](arkts-arkui-viewportrect-i.md) | Yes | Options of the viewport.<br>Default value: **{}**<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**Since:** 18 |
+| value | [ViewportRect](arkts-arkui-shape-comp-viewportrect-i.md) | Yes | Viewport drawing attribute.<br>Default value: **{x: 0, y: 0, width: 0, height: 0}** <br>The abnormal values **undefined** and **null** are processed as the default value.<br>**Since:** 18 |

@@ -1,5 +1,9 @@
 # Queue
 
+```TypeScript
+declare class Queue<T>
+```
+
 Queue follows the principle of First In First Out (FIFO). It supports insertion of elements at the end and removal from the front of the queue. Queue is implemented based on the queue data structure.
 
 **Since:** 8

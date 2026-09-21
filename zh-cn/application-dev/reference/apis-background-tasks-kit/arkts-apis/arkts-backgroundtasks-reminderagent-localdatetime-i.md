@@ -1,5 +1,9 @@
 # LocalDateTime
 
+```TypeScript
+interface LocalDateTime
+```
+
 用于日历类提醒设置时指定时间信息。
 
 **起始版本：** 7
@@ -30,7 +34,7 @@ day: number
 
 **废弃版本：** 9
 
-**替代接口：** day
+**替代接口：** [day](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#day)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -48,7 +52,7 @@ hour: number
 
 **废弃版本：** 9
 
-**替代接口：** hour
+**替代接口：** [hour](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#hour)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -66,7 +70,7 @@ minute: number
 
 **废弃版本：** 9
 
-**替代接口：** minute
+**替代接口：** [minute](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#minute)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -84,7 +88,7 @@ month: number
 
 **废弃版本：** 9
 
-**替代接口：** month
+**替代接口：** [month](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#month)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -102,7 +106,7 @@ second?: number
 
 **废弃版本：** 9
 
-**替代接口：** second
+**替代接口：** [second](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#second)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -120,6 +124,6 @@ year: number
 
 **废弃版本：** 9
 
-**替代接口：** year
+**替代接口：** [year](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#year)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent

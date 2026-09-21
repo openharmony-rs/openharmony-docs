@@ -1,5 +1,9 @@
 # CreateAccountImplicitlyOptions
 
+```TypeScript
+interface CreateAccountImplicitlyOptions
+```
+
 表示隐式创建账号的选项。
 
 **起始版本：** 9

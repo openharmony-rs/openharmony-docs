@@ -1,5 +1,9 @@
 # DescriptionType (System API)
 
+```TypeScript
+export enum DescriptionType
+```
+
 Enumerates description file types.
 
 **Since:** 9

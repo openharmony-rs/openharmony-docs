@@ -1,4 +1,4 @@
-# @ohos.app.form.FormExtensionAbility(FormExtensionAbility)
+# @ohos.app.form.FormExtensionAbility(卡片扩展能力-FormExtensionAbility)
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。适用于需要在应用中实现卡片功能的场景，帮助开发者快速构建卡片数据更新机制，提升用户与应用的交互体验。
 

@@ -1,5 +1,9 @@
 # ConnectionState
 
+```TypeScript
+enum ConnectionState
+```
+
 Define the device connection state.
 
 **Since:** 10

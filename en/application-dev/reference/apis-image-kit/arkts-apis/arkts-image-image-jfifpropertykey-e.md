@@ -1,5 +1,9 @@
 # JfifPropertyKey
 
+```TypeScript
+enum JfifPropertyKey
+```
+
 Enumerates the properties available for the metadata of a JFIF image.
 
 **Since:** 26.0.0

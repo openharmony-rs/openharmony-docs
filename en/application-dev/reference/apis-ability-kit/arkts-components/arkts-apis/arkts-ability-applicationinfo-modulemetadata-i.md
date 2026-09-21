@@ -1,5 +1,9 @@
 # ModuleMetadata
 
+```TypeScript
+export interface ModuleMetadata
+```
+
 Describes the metadata of a module.
 
 **Since:** 10

@@ -57,17 +57,8 @@ radio.setPrimarySlotId(slotId, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.setPrimarySlotId(slotId).then(() => {
-    console.info(`setPrimarySlotId success.`);
-}).catch((err: BusinessError) => {
-    console.error(`setPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setprimaryslotid-1"></a>
 
 ## setPrimarySlotId
 
@@ -112,4 +103,13 @@ Set the index number of the main SIM card slot.
 
 **示例**
 
-参见 [setPrimarySlotId](#setprimaryslotid)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.setPrimarySlotId(slotId).then(() => {
+    console.info(`setPrimarySlotId success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
+});
+```

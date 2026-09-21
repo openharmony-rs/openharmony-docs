@@ -1,5 +1,9 @@
 # InstallationResult
 
+```TypeScript
+export interface InstallationResult
+```
+
 应用安装结果。
 
 该对象目前在[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onmarketappinstallresult)作为回调入参使用。

@@ -1,4 +1,8 @@
-# uiEffect
+# uiEffect(效果级联)
+
+```TypeScript
+declare namespace uiEffect
+```
 
 本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
 
@@ -61,6 +65,9 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 | [BlurBubblesRiseEffectParam](arkts-arkgraphics2d-uieffect-blurbubblesriseeffectparam-i-sys.md) | 模糊气泡上升效果的参数。 |
 | [LiquidMaterialEffectParam](arkts-arkgraphics2d-uieffect-liquidmaterialeffectparam-i-sys.md) | 材质效果参数，用于控制材质的折射、反射、扰动和叠加颜色等显示属性。 |
 | [WarpedRingParam](arkts-arkgraphics2d-uieffect-warpedringparam-i-sys.md) | WarpedRingParam 用于指定光环的半径、宽度、变化量、旋转、3D 朝向和噪声演化。 |
+| [GlassMarbleMaterialParam](arkts-arkgraphics2d-uieffect-glassmarblematerialparam-i-sys.md) | 玻璃弹珠的材质参数。控制材质属性（背景色、透明度、反射贴图、阴影、焦散）以及形状缩放。 |
+| [GlassMarbleContentParam](arkts-arkgraphics2d-uieffect-glassmarblecontentparam-i-sys.md) | 玻璃弹珠的内容参数。控制内容遮罩在玻璃形状内部的混合方式，包括内容遮罩本身、着色颜色、缩放、饱和度和色散。 |
+| [GlassMarbleSphereParam](arkts-arkgraphics2d-uieffect-glassmarblesphereparam-i-sys.md) | 玻璃弹珠的球体形状参数。通过圆心位置和半径定义玻璃形状的几何结构，均采用相对于组件边界的归一化坐标。 |
 | [BrightnessBlender](arkts-arkgraphics2d-uieffect-brightnessblender-i-sys.md) | 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过createBrightnessBlender创建一个BrightnessBlender实例。 |
 | [HdrBrightnessBlender](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i-sys.md) | 支持HDR的提亮混合器（继承自BrightnessBlender），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过createHdrBrightnessBlender创建一个HdrBrightnessBlender实例。该混合器参数可参考BrightnessBlender。 |
 | [HdrDarkenBlender](arkts-arkgraphics2d-uieffect-hdrdarkenblender-i-sys.md) | 支持HDR的压暗混合器，用于将压暗效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过createHdrDarkenBlender创建一个HdrDarkenBlender实例。 |

@@ -1,5 +1,9 @@
 # WorkSchedulerExtensionAbility
 
+```TypeScript
+declare class WorkSchedulerExtensionAbility
+```
+
 Provides callbacks to be invoked when the scheduling conditions are met or the scheduling ends, for example, [onWorkStart()](#onworkstart) or [onWorkStop()](#onworkstop) in WorkSchedulerExtensionAbility.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # EditableSaveButtonV2
 
+```TypeScript
+export declare class EditableSaveButtonV2
+```
+
 Declaration of the save button configuration.
 
 **Since:** 26.0.0

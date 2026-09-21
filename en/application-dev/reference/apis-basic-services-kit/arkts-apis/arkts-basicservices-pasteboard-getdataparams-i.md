@@ -1,5 +1,9 @@
 # GetDataParams
 
+```TypeScript
+interface GetDataParams
+```
+
 Defines parameters when an application obtains the Data from the pasteboard, including the destination path, file conflict options, and progress indicator types.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # CertExtension
 
+```TypeScript
+interface CertExtension
+```
+
 提供操作X.509证书扩展的API。
 
 **起始版本：** 10

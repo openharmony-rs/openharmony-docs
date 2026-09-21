@@ -1,5 +1,9 @@
 # DeviceTypes
 
+```TypeScript
+enum DeviceTypes
+```
+
 Enumerates device types, which can be used to verify the return value of **deviceType**.
 
 **Since:** 20

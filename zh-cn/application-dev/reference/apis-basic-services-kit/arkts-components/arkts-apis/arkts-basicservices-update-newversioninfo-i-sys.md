@@ -1,5 +1,9 @@
 # NewVersionInfo（系统接口）
 
+```TypeScript
+export interface NewVersionInfo
+```
+
 新版本数据。
 
 **起始版本：** 9

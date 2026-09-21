@@ -1,5 +1,9 @@
 # FilterOptions
 
+```TypeScript
+interface FilterOptions
+```
+
 Defines contact filter options.
 
 **Since:** 15

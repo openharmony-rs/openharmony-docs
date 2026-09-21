@@ -1,5 +1,9 @@
 # WorkerEventTarget
 
+```TypeScript
+export interface WorkerEventTarget
+```
+
 用于管理Worker的监听事件。
 
 **起始版本：** 9

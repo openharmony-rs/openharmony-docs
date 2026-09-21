@@ -1,5 +1,9 @@
 # ScanReportMode
 
+```TypeScript
+enum ScanReportMode
+```
+
 枚举，扫描结果上报模式。
 
 <!--Table: 20%; 10%; 70%-->

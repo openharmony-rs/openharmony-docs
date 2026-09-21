@@ -1,5 +1,9 @@
 # Ranking
 
+```TypeScript
+interface Ranking extends MediaEntity
+```
+
 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
 
 @extends MediaEntity @interface Ranking

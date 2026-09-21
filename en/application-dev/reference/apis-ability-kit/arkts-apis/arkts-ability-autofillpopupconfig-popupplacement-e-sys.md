@@ -1,5 +1,9 @@
 # PopupPlacement (System API)
 
+```TypeScript
+export declare enum PopupPlacement
+```
+
 Enumerates the positions of an auto-fill pop-up.
 
 **Since:** 12

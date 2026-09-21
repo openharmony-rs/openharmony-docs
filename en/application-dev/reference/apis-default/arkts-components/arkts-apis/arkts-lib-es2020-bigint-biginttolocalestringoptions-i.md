@@ -1,5 +1,9 @@
 # BigIntToLocaleStringOptions
 
+```TypeScript
+interface BigIntToLocaleStringOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

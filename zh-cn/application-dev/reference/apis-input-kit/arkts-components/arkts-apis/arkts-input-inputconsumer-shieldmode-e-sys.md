@@ -1,5 +1,9 @@
 # ShieldMode（系统接口）
 
+```TypeScript
+enum ShieldMode
+```
+
 系统快捷键屏蔽类型。
 
 **起始版本：** 11

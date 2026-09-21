@@ -1,5 +1,9 @@
 # CooperateState (System API)
 
+```TypeScript
+enum CooperateState
+```
+
 Enumerates the screen hopping states.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # GattClientDevice
 
+```TypeScript
+interface GattClientDevice
+```
+
 GATT客户端类，提供了和服务端进行连接和数据传输等操作方法。
 
 使用该类的方法前，需通过[createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md)方法构造该类的实例。通过创建不同的该类实例，可以管理多路GATT连接。

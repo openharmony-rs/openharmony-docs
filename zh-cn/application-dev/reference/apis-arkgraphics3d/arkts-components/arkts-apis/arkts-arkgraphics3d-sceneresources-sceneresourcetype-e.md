@@ -1,5 +1,9 @@
 # SceneResourceType
 
+```TypeScript
+export enum SceneResourceType
+```
+
 场景资源类型枚举，对场景中的资源进行分类。
 
 @enum { int }

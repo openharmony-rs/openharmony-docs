@@ -65,33 +65,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 按键重复速率60ms/次
-            inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.info(`Succeeded in setting keyboard repeat rate.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="setkeyboardrepeatrate-1"></a>
 
 ## setKeyboardRepeatRate
 
@@ -128,4 +103,29 @@ function setKeyboardRepeatRate(rate: number): Promise<void>
 
 **示例**
 
-参见 [setKeyboardRepeatRate](#setkeyboardrepeatrate)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 按键重复速率60ms/次
+            inputDevice.setKeyboardRepeatRate(60).then(() => {
+              console.info(`Succeeded in setting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

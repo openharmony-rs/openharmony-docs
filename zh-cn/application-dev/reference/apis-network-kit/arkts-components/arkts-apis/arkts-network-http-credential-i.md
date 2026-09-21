@@ -1,5 +1,9 @@
 # Credential
 
+```TypeScript
+export interface Credential
+```
+
 会话中服务器身份验证设置所使用的身份验证凭据，包括用户名和密码。
 
 **起始版本：** 18

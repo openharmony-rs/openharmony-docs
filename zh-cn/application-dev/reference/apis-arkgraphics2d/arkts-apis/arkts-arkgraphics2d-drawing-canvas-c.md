@@ -1,5 +1,9 @@
 # Canvas
 
+```TypeScript
+class Canvas
+```
+
 承载绘制内容与绘制状态的载体。Canvas提供矩形、圆形、椭圆、弧线、路径、文字、图片等多种图形的绘制能力，支持通过画笔和画刷设置绘制样式，支持画布裁剪、矩阵变换、画布状态保存与恢复等功能。
 
 > **说明：** 
@@ -50,6 +54,24 @@ attachBrush(brush: Brush): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.detachBrush();
+  }
+}
+```
+
 ## attachPen
 
 ```TypeScript
@@ -78,6 +100,25 @@ attachPen(pen: Pen): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.detachPen();
+  }
+}
+```
+
 ## clear
 
 ```TypeScript
@@ -102,6 +143,23 @@ clear(color: common2D.Color): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
+    canvas.clear(color);
+  }
+}
+```
+
+<a id="clear-1"></a>
+
 ## clear
 
 ```TypeScript
@@ -119,6 +177,21 @@ clear(color: common2D.Color | number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | [common2D.Color](arkts-arkgraphics2d-common2d-color-i.md) &#124; number | 是 | 颜色，可以用16进制ARGB格式的32位无符号整数表示，例如：0xAARRGGBB。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let color: number = 0xffff0000;
+    canvas.clear(color);
+  }
+}
+```
 
 ## clipPath
 
@@ -146,6 +219,25 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let path = new drawing.Path();
+    path.moveTo(10, 10);
+    path.cubicTo(100, 100, 80, 150, 300, 150);
+    path.close();
+    canvas.clipPath(path, drawing.ClipOp.INTERSECT, true);
+    canvas.clear({alpha: 255, red: 255, green: 0, blue: 0});
+  }
+}
+```
+
 ## clipRect
 
 ```TypeScript
@@ -172,6 +264,21 @@ clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.clipRect({left : 10, right : 500, top : 300, bottom : 900}, drawing.ClipOp.DIFFERENCE, true);
+    canvas.clear({alpha: 255, red: 255, green: 0, blue: 0});
+  }
+}
+```
+
 ## clipRegion
 
 ```TypeScript
@@ -196,6 +303,24 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let region : drawing.Region = new drawing.Region();
+    region.setRect(0, 0, 500, 500);
+    canvas.clipRegion(region);
+    let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
+    canvas.clear(color);
+  }
+}
+```
 
 ## clipRoundRect
 
@@ -223,6 +348,24 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
+    let roundRect = new drawing.RoundRect(rect, 10, 10);
+    canvas.clipRoundRect(roundRect);
+    let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
+    canvas.clear(color);
+  }
+}
+```
+
 ## concatMatrix
 
 ```TypeScript
@@ -246,6 +389,23 @@ concatMatrix(matrix: Matrix): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let matrix = new drawing.Matrix();
+    matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
+    canvas.concatMatrix(matrix);
+    canvas.drawRect({left: 10, right: 200, top: 100, bottom: 500});
+  }
+}
+```
 
 ## constructor
 
@@ -273,6 +433,26 @@ constructor(pixelmap: image.PixelMap)
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+const color = new ArrayBuffer(96);
+let opts : image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(color, opts).then((pixelMap) => {
+  const canvas = new drawing.Canvas(pixelMap);
+});
+```
+
 ## detachBrush
 
 ```TypeScript
@@ -285,6 +465,24 @@ detachBrush(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.detachBrush();
+  }
+}
+```
+
 ## detachPen
 
 ```TypeScript
@@ -296,6 +494,25 @@ detachPen(): void
 **起始版本：** 11
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.detachPen();
+  }
+}
+```
 
 ## drawArc
 
@@ -323,6 +540,27 @@ drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    const rect: common2D.Rect = {left:100, top:50, right:400, bottom:200};
+    canvas.drawArc(rect, 90, 180);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawArcWithCenter
 
 ```TypeScript
@@ -343,6 +581,27 @@ drawArcWithCenter(arc: common2D.Rect, startAngle: number, sweepAngle: number, us
 | startAngle | number | 是 | 弧的起始角度，单位为度，该参数为浮点数。0度时起始点位于椭圆的右端点，为正数时以顺时针方向放置起始点，为负数时以逆时针方向放置起始点。 |
 | sweepAngle | number | 是 | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，超过360度时将绘制一个完整的椭圆。 |
 | useCenter | boolean | 是 | 绘制时弧形的起点和终点是否连接弧形的中心点。true表示连接，false表示不连接。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    const rect: common2D.Rect = { left: 100, top: 50, right: 400, bottom: 200 };
+    canvas.drawArcWithCenter(rect, 90, 180, false);
+    canvas.detachPen();
+  }
+}
+```
 
 ## drawBackground
 
@@ -367,6 +626,23 @@ drawBackground(brush: Brush): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    brush.setColor(color);
+    canvas.drawBackground(brush);
+  }
+}
+```
 
 ## drawCircle
 
@@ -394,6 +670,25 @@ drawCircle(x: number, y: number, radius: number): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawCircle(10, 10, 2);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawColor
 
 ```TypeScript
@@ -418,6 +713,28 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let color: common2D.Color = {
+      alpha : 255,
+      red: 0,
+      green: 10,
+      blue: 10
+    };
+    canvas.drawColor(color, drawing.BlendMode.CLEAR);
+  }
+}
+```
+
+<a id="drawcolor-1"></a>
 
 ## drawColor
 
@@ -447,6 +764,22 @@ drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: B
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.drawColor(255, 0, 10, 10, drawing.BlendMode.CLEAR);
+  }
+}
+```
+
+<a id="drawcolor-2"></a>
+
 ## drawColor
 
 ```TypeScript
@@ -471,6 +804,20 @@ drawColor(color: number, blendMode?: BlendMode): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.drawColor(0xff000a0a, drawing.BlendMode.CLEAR);
+  }
+}
+```
 
 ## drawGlyphs
 
@@ -504,6 +851,34 @@ drawGlyphs(glyphIds: Array<number>, glyphIdOffset: number, positions: Array<comm
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<number> = [100, 200, 300];
+    let positionArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    positionArray.push(point1);
+    positionArray.push(point2);
+    positionArray.push(point3);
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawImage
 
 ```TypeScript
@@ -530,6 +905,44 @@ drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?:
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    const canvas = context.canvas;
+    let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+    if (pixelMap != null) {
+      canvas.drawImage(pixelMap, 0, 0, options);
+    }
+  }
+}
+```
 
 ## drawImageLattice
 
@@ -561,6 +974,64 @@ drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.R
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    const blockSize = 50;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const index = (y * width + x) * 4; // 计算当前像素的索引
+        const blockX = Math.floor(x / blockSize);
+        const blockY = Math.floor(y / blockSize);
+
+        // 通过方块坐标的奇偶性决定颜色
+        if ((blockX + blockY) % 2 === 0) {
+          // 红色方块 (R, G, B, A)
+          colorData[index] = 255;     // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 0;   // B
+        } else {
+          // 蓝色方块
+          colorData[index] = 0;       // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 255; // B
+        }
+        colorData[index + 3] = 255;   // Alpha 始终为 255（不透明）
+      }
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    canvas.drawImage(pixelMap, 0, 0); // 原图
+    let xDivs: Array<number> = [28, 36, 44, 52];
+    let yDivs: Array<number> = [28, 36, 44, 52];
+    let lattice = drawing.Lattice.createImageLattice(xDivs, yDivs, 4, 4);
+    let dst: common2D.Rect = { left: 100, top: 0, right: 164, bottom: 64 };
+    let dstScaled: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
+    canvas.drawImageLattice(pixelMap, lattice, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
+    canvas.drawImageLattice(pixelMap, lattice, dstScaled, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+  }
+}
+```
+
 ## drawImageNine
 
 ```TypeScript
@@ -591,6 +1062,62 @@ drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    const blockSize = 50;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const index = (y * width + x) * 4; // 计算当前像素的索引
+        const blockX = Math.floor(x / blockSize);
+        const blockY = Math.floor(y / blockSize);
+
+        // 通过方块坐标的奇偶性决定颜色
+        if ((blockX + blockY) % 2 === 0) {
+          // 红色方块 (R, G, B, A)
+          colorData[index] = 255;     // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 0;   // B
+        } else {
+          // 蓝色方块
+          colorData[index] = 0;       // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 255; // B
+        }
+        colorData[index + 3] = 255;   // Alpha 始终为 255（不透明）
+      }
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    canvas.drawImage(pixelMap, 0, 0); // 原图
+    let center: common2D.Rect = { left: 20, top: 10, right: 50, bottom: 40 };
+    let dst: common2D.Rect = { left: 70, top: 0, right: 100, bottom: 30 };
+    let dstScaled: common2D.Rect = { left: 110, top: 0, right: 200, bottom: 90 };
+    canvas.drawImageNine(pixelMap, center, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
+    canvas.drawImageNine(pixelMap, center, dstScaled, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+  }
+}
+```
+
 ## drawImageRect
 
 ```TypeScript
@@ -616,6 +1143,45 @@ drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    const canvas = context.canvas;
+    let pen = new drawing.Pen();
+    canvas.attachPen(pen);
+    let rect: common2D.Rect = { left: 0, top: 0, right: 200, bottom: 200 };
+    canvas.drawImageRect(pixelMap, rect);
+    canvas.detachPen();
+  }
+}
+```
 
 ## drawImageRectWithSrc
 
@@ -646,6 +1212,46 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    const canvas = context.canvas;
+    let pen = new drawing.Pen();
+    canvas.attachPen(pen);
+    let srcRect: common2D.Rect = { left: 0, top: 0, right: 100, bottom: 100 };
+    let dstRect: common2D.Rect = { left: 100, top: 100, right: 200, bottom: 200 };
+    canvas.drawImageRectWithSrc(pixelMap, srcRect, dstRect);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawLine
 
 ```TypeScript
@@ -673,6 +1279,25 @@ drawLine(x0: number, y0: number, x1: number, y1: number): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawLine(0, 0, 20, 20);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawNestedRoundRect
 
 ```TypeScript
@@ -698,6 +1323,25 @@ drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let inRect: common2D.Rect = { left : 200, top : 200, right : 400, bottom : 500 };
+    let outRect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
+    let outRoundRect = new drawing.RoundRect(outRect, 10, 10);
+    let inRoundRect = new drawing.RoundRect(inRect, 10, 10);
+    canvas.drawNestedRoundRect(outRoundRect, inRoundRect);
+    canvas.drawRoundRect(outRoundRect);
+  }
+}
+```
+
 ## drawOval
 
 ```TypeScript
@@ -722,6 +1366,27 @@ drawOval(oval: common2D.Rect): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    const rect: common2D.Rect = {left:100, top:50, right:400, bottom:500};
+    canvas.drawOval(rect);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawPath
 
 ```TypeScript
@@ -745,6 +1410,29 @@ drawPath(path: Path): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    let path = new drawing.Path();
+    path.moveTo(10,10);
+    path.cubicTo(10, 10, 10, 10, 15, 15);
+    path.close();
+    canvas.attachPen(pen);
+    canvas.drawPath(path);
+    canvas.detachPen();
+  }
+}
+```
 
 ## drawPixelMapMesh
 
@@ -777,6 +1465,47 @@ drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: 3,
+      size: { height, width }
+    };
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    const canvas = context.canvas;
+    if (pixelMap != null) {
+      const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果
+      canvas.attachBrush(brush);
+      let verts : Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]; // 18
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
+      canvas.detachBrush();
+    }
+  }
+}
+```
+
 ## drawPoint
 
 ```TypeScript
@@ -801,6 +1530,25 @@ drawPoint(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawPoint(10, 10);
+    canvas.detachPen();
+  }
+}
+```
 
 ## drawPoints
 
@@ -827,6 +1575,26 @@ drawPoints(points: Array<common2D.Point>, mode?: PointMode): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(30);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    canvas.drawPoints([{x: 100, y: 200}, {x: 150, y: 230}, {x: 200, y: 300}], drawing.PointMode.POINTS);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawRecordCmd
 
 ```TypeScript
@@ -835,7 +1603,7 @@ drawRecordCmd(recordCmd: RecordCmd): void
 
 回放已录制的绘制指令。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -846,6 +1614,28 @@ drawRecordCmd(recordCmd: RecordCmd): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | recordCmd | [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) | 是 | 已录制的绘制指令对象。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const recordCmdUtils = new drawing.RecordCmdUtils();
+    const recordCanvas = recordCmdUtils.beginRecording(200, 200);
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    recordCanvas.attachPen(pen);
+    recordCanvas.drawRect({ left : 0, right : 100, top : 0, bottom : 100 });
+    recordCanvas.detachPen();
+    const recordCmd = recordCmdUtils.finishRecording();
+    canvas.drawRecordCmd(recordCmd);
+  }
+}
+```
 
 ## drawRect
 
@@ -870,6 +1660,27 @@ drawRect(rect: common2D.Rect): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.detachPen();
+  }
+}
+```
+
+<a id="drawrect-1"></a>
 
 ## drawRect
 
@@ -898,6 +1709,26 @@ drawRect(left: number, top: number, right: number, bottom: number): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect(0, 0, 10, 10);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawRegion
 
 ```TypeScript
@@ -922,6 +1753,27 @@ drawRegion(region: Region): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    let region = new drawing.Region();
+    pen.setStrokeWidth(10);
+    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    canvas.attachPen(pen);
+    region.setRect(100, 100, 400, 400);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawRoundRect
 
 ```TypeScript
@@ -945,6 +1797,22 @@ drawRoundRect(roundRect: RoundRect): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
+    let roundRect = new drawing.RoundRect(rect, 10, 10);
+    canvas.drawRoundRect(roundRect);
+  }
+}
+```
 
 ## drawShadow
 
@@ -977,6 +1845,41 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const path = new drawing.Path();
+    path.addCircle(100, 200, 100, drawing.PathDirection.CLOCKWISE);
+    let pen = new drawing.Pen();
+    pen.setAntiAlias(true);
+    let penColor : common2D.Color = { alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 };
+    pen.setColor(penColor);
+    pen.setStrokeWidth(10.0);
+    canvas.attachPen(pen);
+    let brush = new drawing.Brush();
+    let brushColor : common2D.Color = { alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00 };
+    brush.setColor(brushColor);
+    canvas.attachBrush(brush);
+    let planeParams : common2D.Point3d = {x: 100, y: 80, z: 80};
+    let devLightPos : common2D.Point3d = {x: 200, y: 10, z: 40};
+    let ambientColor : common2D.Color = {alpha: 0xFF, red: 0, green: 0, blue: 0xFF};
+    let spotColor : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0, blue: 0};
+    let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
+    canvas.drawShadow(path, planeParams, devLightPos, 30, ambientColor, spotColor, shadowFlag);
+    canvas.detachPen();
+    canvas.detachBrush();
+  }
+}
+```
+
+<a id="drawshadow-1"></a>
+
 ## drawShadow
 
 ```TypeScript
@@ -1008,6 +1911,25 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const path = new drawing.Path();
+    path.addCircle(300, 600, 100, drawing.PathDirection.CLOCKWISE);
+    let planeParams : common2D.Point3d = {x: 100, y: 80, z: 80};
+    let devLightPos : common2D.Point3d = {x: 200, y: 10, z: 40};
+    let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
+    canvas.drawShadow(path, planeParams, devLightPos, 30, 0xFF0000FF, 0xFFFF0000, shadowFlag);
+  }
+}
+```
+
 ## drawSingleCharacter
 
 ```TypeScript
@@ -1034,6 +1956,27 @@ drawSingleCharacter(text: string, font: Font, x: number, y: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    canvas.drawSingleCharacter('你', font, 100, 100);
+    canvas.drawSingleCharacter('好', font, 120, 100);
+    canvas.detachBrush();
+  }
+}
+```
 
 ## drawSingleCharacterWithFeatures
 
@@ -1063,6 +2006,29 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    let fontFeatures : Array<drawing.FontFeature> = [];
+    fontFeatures.push({name: 'calt', value: 0});
+    canvas.attachBrush(brush);
+    canvas.drawSingleCharacterWithFeatures('你', font, 100, 100, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures('好', font, 180, 100, fontFeatures);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawTextBlob
 
 ```TypeScript
@@ -1088,6 +2054,27 @@ drawTextBlob(blob: TextBlob, x: number, y: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlob = drawing.TextBlob.makeFromString('Hello, drawing', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    canvas.attachBrush(brush);
+    canvas.drawTextBlob(textBlob, 20, 20);
+    canvas.detachBrush();
+  }
+}
+```
 
 ## drawVertices
 
@@ -1122,6 +2109,36 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array<commo
 | --- | --- |
 | [25900001](../errorcode-drawing.md#25900001-参数值异常) | Parameter error. Possible causes: Incorrect parameter range. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices, drawing.BlendMode.SRC);
+  }
+}
+```
+
 ## getHeight
 
 ```TypeScript
@@ -1139,6 +2156,21 @@ getHeight(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回画布的高度，该参数为浮点数。单位为物理像素px。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let height = canvas.getHeight();
+    console.info('get canvas height:' + height);
+  }
+}
+```
 
 ## getLocalClipBounds
 
@@ -1158,6 +2190,28 @@ getLocalClipBounds(): common2D.Rect
 | --- | --- |
 | [common2D.Rect](arkts-arkgraphics2d-common2d-rect-i.md) | 返回画布裁剪区域的矩形边界。 |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let clipRect: common2D.Rect = {
+      left : 150, top : 150, right : 300, bottom : 400
+    };
+    canvas.clipRect(clipRect, drawing.ClipOp.DIFFERENCE, true);
+    console.info('test rect.left: ' + clipRect.left);
+    console.info('test rect.top: ' + clipRect.top);
+    console.info('test rect.right: ' + clipRect.right);
+    console.info('test rect.bottom: ' + clipRect.bottom);
+    let clipBounds = canvas.getLocalClipBounds();
+  }
+}
+```
+
 ## getSaveCount
 
 ```TypeScript
@@ -1175,6 +2229,28 @@ getSaveCount(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 已保存的画布状态的数量，该参数为正整数。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({left: 10, right: 200, top: 100, bottom: 300});
+    canvas.save();
+    canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+    let saveCount = canvas.getSaveCount();
+    canvas.detachPen();
+  }
+}
+```
 
 ## getTotalMatrix
 
@@ -1194,6 +2270,23 @@ getTotalMatrix(): Matrix
 | --- | --- |
 | [Matrix](arkts-arkgraphics2d-drawing-matrix-c.md) | 返回当前画布的变换矩阵，该矩阵累积了已应用的平移、缩放、旋转和倾斜等变换效果。 |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let matrix = new drawing.Matrix();
+    matrix.setMatrix([5, 0, 0, 0, 1, 1, 0, 0, 1]);
+    canvas.setMatrix(matrix);
+    let matrixResult = canvas.getTotalMatrix();
+  }
+}
+```
+
 ## getWidth
 
 ```TypeScript
@@ -1212,6 +2305,21 @@ getWidth(): number
 | --- | --- |
 | number | 返回画布的宽度，该参数为浮点数。单位为物理像素px。 |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let width = canvas.getWidth();
+    console.info('get canvas width:' + width);
+  }
+}
+```
+
 ## isClipEmpty
 
 ```TypeScript
@@ -1229,6 +2337,24 @@ isClipEmpty(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回画布的裁剪区域是否为空的结果，true表示为空，false表示不为空。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isClipEmpty()) {
+      console.info('canvas.isClipEmpty() returned true');
+    } else {
+      console.info('canvas.isClipEmpty() returned false');
+    }
+  }
+}
+```
 
 ## isOpaque
 
@@ -1249,6 +2375,24 @@ isOpaque(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回当前Canvas绘制目标的图层是否不透明的结果，true表示不透明，false表示透明。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info('canvas.isOpaque() returned true');
+    } else {
+      console.info('canvas.isOpaque() returned false');
+    }
+  }
+}
+```
 
 ## quickRejectPath
 
@@ -1274,6 +2418,28 @@ quickRejectPath(path: Path): boolean
 | --- | --- |
 | boolean | 返回路径是否与画布区域不相交的结果。true表示路径与画布区域不相交，false表示路径与画布区域相交。 |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let path = new drawing.Path();
+    path.moveTo(10, 10);
+    path.cubicTo(10, 10, 10, 10, 15, 15);
+    path.close();
+    if (canvas.quickRejectPath(path)) {
+      console.info('canvas and path do not intersect.');
+    } else {
+      console.info('canvas and path intersect.');
+    }
+  }
+}
+```
+
 ## quickRejectRect
 
 ```TypeScript
@@ -1298,6 +2464,25 @@ quickRejectRect(rect: common2D.Rect): boolean
 | --- | --- |
 | boolean | 返回矩形是否与画布区域不相交的结果。true表示矩形与画布区域不相交，false表示矩形与画布区域相交。 |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left : 10, top : 20, right : 50, bottom : 30 };
+    if (canvas.quickRejectRect(rect)) {
+      console.info('canvas and rect do not intersect.');
+    } else {
+      console.info('canvas and rect intersect.');
+    }
+  }
+}
+```
+
 ## resetClip
 
 ```TypeScript
@@ -1312,6 +2497,22 @@ resetClip(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
+    canvas.clipRect(rect);
+    canvas.resetClip();
+  }
+}
+```
+
 ## resetMatrix
 
 ```TypeScript
@@ -1324,6 +2525,21 @@ resetMatrix(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.scale(4, 6);
+    canvas.resetMatrix();
+  }
+}
+```
+
 ## restore
 
 ```TypeScript
@@ -1335,6 +2551,26 @@ restore(): void
 **起始版本：** 12
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.save();
+    canvas.restore();
+    canvas.detachPen();
+  }
+}
+```
 
 ## restoreToCount
 
@@ -1359,6 +2595,32 @@ restoreToCount(count: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({left: 10, right: 200, top: 100, bottom: 300});
+    canvas.save();
+    canvas.drawRect({left: 10, right: 200, top: 100, bottom: 500});
+    canvas.save();
+    canvas.drawRect({left: 100, right: 300, top: 100, bottom: 500});
+    canvas.save();
+    canvas.restoreToCount(2);
+    canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+    canvas.detachPen();
+  }
+}
+```
 
 ## rotate
 
@@ -1386,6 +2648,26 @@ rotate(degrees: number, sx: number, sy: number) : void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.rotate(30, 100, 100);
+    canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+    canvas.detachPen();
+  }
+}
+```
+
 ## save
 
 ```TypeScript
@@ -1403,6 +2685,22 @@ save(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 画布状态个数，该参数为正整数。 |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = {left: 10, right: 200, top: 100, bottom: 300};
+    canvas.drawRect(rect);
+    canvas.save();
+  }
+}
+```
 
 ## saveLayer
 
@@ -1435,6 +2733,39 @@ saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.saveLayer(null, null);
+    const rectBrush = new drawing.Brush();
+    const rectColor: common2D.Color = {alpha: 255, red: 255, green: 255, blue: 0};
+    rectBrush.setColor(rectColor);
+    canvas.attachBrush(rectBrush);
+    const rect: common2D.Rect = {left:100, top:100, right:500, bottom:500};
+    canvas.drawRect(rect);
+
+    const brush = new drawing.Brush();
+    brush.setBlendMode(drawing.BlendMode.DST_OUT);
+    canvas.saveLayer(rect, brush);
+
+    const brushCircle = new drawing.Brush();
+    const colorCircle: common2D.Color = {alpha: 255, red: 0, green: 0, blue: 255};
+    brushCircle.setColor(colorCircle);
+    canvas.attachBrush(brushCircle);
+    canvas.drawCircle(500, 500, 200);
+    canvas.restore();
+    canvas.restore();
+    canvas.detachBrush();
+  }
+}
+```
+
 ## scale
 
 ```TypeScript
@@ -1460,6 +2791,26 @@ scale(sx: number, sy: number): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.scale(2, 0.5);
+    canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+    canvas.detachPen();
+  }
+}
+```
+
 ## setMatrix
 
 ```TypeScript
@@ -1483,6 +2834,23 @@ setMatrix(matrix: Matrix): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let matrix = new drawing.Matrix();
+    matrix.setMatrix([5, 0, 0, 0, 1, 1, 0, 0, 1]);
+    canvas.setMatrix(matrix);
+    canvas.drawRect({left: 10, right: 200, top: 100, bottom: 500});
+  }
+}
+```
 
 ## skew
 
@@ -1509,6 +2877,26 @@ skew(sx: number, sy: number) : void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.skew(0.1, 0.1);
+    canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+    canvas.detachPen();
+  }
+}
+```
+
 ## translate
 
 ```TypeScript
@@ -1533,3 +2921,23 @@ translate(dx: number, dy: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.translate(10, 10);
+    canvas.drawRect({left : 10, right : 500, top : 300, bottom : 900});
+    canvas.detachPen();
+  }
+}
+```

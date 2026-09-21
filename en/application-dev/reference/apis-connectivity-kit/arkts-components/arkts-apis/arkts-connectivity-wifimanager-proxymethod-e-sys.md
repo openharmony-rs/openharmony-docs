@@ -1,5 +1,9 @@
 # ProxyMethod (System API)
 
+```TypeScript
+enum ProxyMethod
+```
+
 Wi-Fi Proxy method. @enum { int }
 
 **Since:** 10

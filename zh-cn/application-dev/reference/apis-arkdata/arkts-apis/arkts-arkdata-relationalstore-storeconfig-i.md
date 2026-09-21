@@ -1,5 +1,9 @@
 # StoreConfig
 
+```TypeScript
+interface StoreConfig
+```
+
 管理关系数据库配置。
 
 **起始版本：** 9

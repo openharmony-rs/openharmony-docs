@@ -1,5 +1,9 @@
 # EnrollCallbackInfo (System API)
 
+```TypeScript
+interface EnrollCallbackInfo
+```
+
 Describes enroll callback information. @typedef EnrollCallbackInfo
 
 **Since:** 10

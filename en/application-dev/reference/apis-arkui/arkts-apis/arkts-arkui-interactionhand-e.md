@@ -1,5 +1,9 @@
 # InteractionHand
 
+```TypeScript
+declare enum InteractionHand
+```
+
 Enumerates how an input event is triggered.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # FontWidth
 
+```TypeScript
+enum FontWidth
+```
+
 Enumerates the font widths.
 
 **Since:** 12

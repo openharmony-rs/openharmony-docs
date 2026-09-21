@@ -1,5 +1,9 @@
 # HotkeyOptions
 
+```TypeScript
+interface HotkeyOptions
+```
+
 快捷键选项。
 
 **起始版本：** 14

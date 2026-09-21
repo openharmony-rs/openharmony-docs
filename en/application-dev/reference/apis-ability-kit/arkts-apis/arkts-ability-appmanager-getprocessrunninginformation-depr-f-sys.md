@@ -56,18 +56,8 @@ appManager.getProcessRunningInformation().then((data) => {
 });
 ```
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
 
-appManager.getProcessRunningInformation((error, data) => {
-  if (error && error.code !== 0) {
-    console.error(`GetProcessRunningInformation failed, error code: ${error.code}, error msg: ${error.message}.`);
-  } else {
-    console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
-  }
-});
-```
-
+<a id="getprocessrunninginformation-1"></a>
 
 ## getProcessRunningInformation
 
@@ -110,4 +100,14 @@ Obtains information about the running processes. This API uses an asynchronous c
 
 **Examples**
 
-See [getProcessRunningInformation](#getprocessrunninginformation)
+```TypeScript
+import appManager from '@ohos.application.appManager';
+
+appManager.getProcessRunningInformation((error, data) => {
+  if (error && error.code !== 0) {
+    console.error(`GetProcessRunningInformation failed, error code: ${error.code}, error msg: ${error.message}.`);
+  } else {
+    console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
+  }
+});
+```

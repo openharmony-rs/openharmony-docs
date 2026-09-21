@@ -1,5 +1,9 @@
 # ElementInfo
 
+```TypeScript
+export interface ElementInfo
+```
+
 可被观察对象关联的组件信息，包含系统组件和自定义组件。
 
 **起始版本：** 23

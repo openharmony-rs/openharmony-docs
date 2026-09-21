@@ -1,5 +1,9 @@
 # FileSyncState（系统接口）
 
+```TypeScript
+enum FileSyncState
+```
+
 端云文件同步状态，为枚举类型。
 
 **起始版本：** 11

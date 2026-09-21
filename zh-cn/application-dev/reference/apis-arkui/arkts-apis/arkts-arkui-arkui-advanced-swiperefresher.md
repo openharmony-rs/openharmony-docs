@@ -16,6 +16,29 @@ import { SwipeRefresher } from '@kit.ArkUI';
 
 ## 示例
 
-```TypeScript
 展示设置属性content为空字符串及不为空、isLoading为true和false的不同加载效果。
+
+```TypeScript
+import { SwipeRefresher } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      SwipeRefresher({
+        content: '正在加载中',
+        isLoading: true
+      })
+      SwipeRefresher({
+        content: '',
+        isLoading: true
+      })
+      SwipeRefresher({
+        content: '正在加载中',
+        isLoading: false
+      })
+    }
+  }
+}
 ```

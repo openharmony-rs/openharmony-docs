@@ -1,5 +1,9 @@
 # AcbState
 
+```TypeScript
+export enum AcbState
+```
+
 Enumerates the logical link connection states with a remote device.
 
 **Since:** 26.0.0

@@ -46,7 +46,7 @@ When a DLP management application or an authorized application needs to access a
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-encryptiondecryption-timeout) | Credential task time out. |
@@ -90,35 +90,8 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
 
-let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
-let file: number | undefined = undefined;
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-let appId = '';
-let bundleName = 'com.ohos.note';
-let userId = 100;
-
-let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
-appId = data.signatureInfo.appId; // The app ID is obtained from the application package.
-
-file = fileIo.openSync(uri).fd; // The FD is obtained by opening a file.
-dlpPermission.openDLPFile(file, appId, async (err, res) => { // Open a DLP file.
-  if (err) {
-    console.error(`Failed to open DLPFile. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('res', JSON.stringify(res));
-  }
-  await res?.closeDLPFile(); // Close the DLP object.
-  if (file) {
-    fileIo.closeSync(file);
-  }
-});
-```
-
+<a id="opendlpfile-1"></a>
 
 ## openDLPFile
 
@@ -151,7 +124,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
 | [19100003](../errorcode-dlp.md#19100003-encryptiondecryption-timeout) | Credential task time out. |
@@ -166,4 +139,31 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 
 **Examples**
 
-See [openDLPFile](#opendlpfile)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
+let file: number | undefined = undefined;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let appId = '';
+let bundleName = 'com.ohos.note';
+let userId = 100;
+
+let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
+appId = data.signatureInfo.appId; // The app ID is obtained from the application package.
+
+file = fileIo.openSync(uri).fd; // The FD is obtained by opening a file.
+dlpPermission.openDLPFile(file, appId, async (err, res) => { // Open a DLP file.
+  if (err) {
+    console.error(`Failed to open DLPFile. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('res', JSON.stringify(res));
+  }
+  await res?.closeDLPFile(); // Close the DLP object.
+  if (file) {
+    fileIo.closeSync(file);
+  }
+});
+```

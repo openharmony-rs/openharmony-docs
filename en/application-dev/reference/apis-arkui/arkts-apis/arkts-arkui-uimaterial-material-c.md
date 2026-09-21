@@ -1,5 +1,9 @@
 # Material
 
+```TypeScript
+class Material
+```
+
 System material object on the UI.
 
 **Since:** 26.0.0

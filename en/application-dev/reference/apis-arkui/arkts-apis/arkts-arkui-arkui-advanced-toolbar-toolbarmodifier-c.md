@@ -1,5 +1,9 @@
 # ToolBarModifier
 
+```TypeScript
+export declare class ToolBarModifier
+```
+
 Provides APIs for setting the height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which only takes effect when there are fewer than five items) of the toolbar, and whether to display the pressed state effect (**stateEffect**).
 
 **Since:** 13
@@ -32,7 +36,7 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backgroundColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Toolbar background color<br>Default value: **&#36;r('sys.color.ohos_id_color_toolbar_bg')** |
+| backgroundColor | [ResourceColor](arkts-arkui-resourcecolor-t.md) | Yes | Toolbar background color<br>Default value: **$r('sys.color.ohos_id_color_toolbar_bg')** |
 
 **Return value:**
 

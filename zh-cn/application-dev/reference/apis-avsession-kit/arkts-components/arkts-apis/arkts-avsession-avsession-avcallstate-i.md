@@ -1,5 +1,9 @@
 # AVCallState
 
+```TypeScript
+interface AVCallState
+```
+
 通话状态相关属性。
 
 @interface AVCallState [since 11 - 11]

@@ -1,5 +1,9 @@
 # TypeDescriptor
 
+```TypeScript
+class TypeDescriptor
+```
+
 标准化数据类型的描述类，它包含了一些属性和方法用于描述标准化数据类型自身以及和其他标准化数据类型之间的归属与层级关系，例如通过typeId与belongingToTypes维护类型映射关系，并提供层级判断等方法。详细属性与方法参见下文说明。
 
 **起始版本：** 11

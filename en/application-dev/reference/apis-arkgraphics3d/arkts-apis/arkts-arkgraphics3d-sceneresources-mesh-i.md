@@ -1,5 +1,9 @@
 # Mesh
 
+```TypeScript
+export interface Mesh extends SceneResource
+```
+
 Mesh resource, which inherits from SceneResource.
 
 @extends SceneResource @interface Mesh

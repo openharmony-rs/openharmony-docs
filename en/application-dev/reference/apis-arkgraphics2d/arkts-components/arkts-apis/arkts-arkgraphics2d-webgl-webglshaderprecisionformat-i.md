@@ -1,5 +1,9 @@
 # WebGLShaderPrecisionFormat
 
+```TypeScript
+interface WebGLShaderPrecisionFormat
+```
+
 WebGL 1.0
 
 **Since:** 7

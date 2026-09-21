@@ -18,7 +18,7 @@ function setBluetoothDisabled(admin: Want, disabled: boolean): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 

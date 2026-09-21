@@ -1,5 +1,9 @@
 # IpsecVpnConfig (System API)
 
+```TypeScript
+export interface IpsecVpnConfig extends SysVpnConfig
+```
+
 Define configuration of the ipsec VPN network.
 
 **Inheritance/Implementation:** IpsecVpnConfig extends [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)

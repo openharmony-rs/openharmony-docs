@@ -1,5 +1,9 @@
 # WifiProfile
 
+```TypeScript
+interface WifiProfile
+```
+
 Wi-Fi配置信息。
 
 **起始版本：** 12

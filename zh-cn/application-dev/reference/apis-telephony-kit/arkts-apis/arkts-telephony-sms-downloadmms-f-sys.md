@@ -44,14 +44,88 @@ function downloadMms(context: Context, mmsParams: MmsParams, callback: AsyncCall
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
-Stage模型示例：
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common, featureAbility } from '@kit.AbilityKit';
+
+// 获取context
+let context: common.BaseContext = featureAbility.getContext();
+
+// 彩信pdu存储路径
+const sandBoxPath: string = '/data/storage/el2/base/files/';
+let filePath: string = sandBoxPath + 'RetrieveConf.mms';
+
+// 从WapPush中解析出彩信URL
+let wapPushUrl: string = 'URL';
+
+// 下载彩信参数
+let mmsPars: sms.MmsParams = {
+  slotId: 0,
+  mmsc: wapPushUrl,
+  data: filePath,
+  mmsConfig: {
+   userAgent:'ua',
+   userAgentProfile: 'uaprof'
+  }
+};
+
+// 调用下载接口
+sms.downloadMms(context, mmsPars, async(err: BusinessError) =>{
+  if (err) {
+      console.error(`downloadMms fail, err : ${JSON.stringify(err)}`);
+      return;
+  }
+  console.info(`downloadMms Success`);
+})
 ```
 
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+// 彩信pdu存储路径
+const sandBoxPath = '/data/storage/el2/base/files/';
+let filePath  = sandBoxPath + 'RetrieveConf.mms';
+
+// 从WapPush中解析出彩信URL
+let wapPushUrl  = 'URL';
+
+// 彩信用户代理、用户代理描述配置。根据运营商要求配置，默认ua，uaprof
+let mmsConf: sms.MmsConfig = {
+  userAgent:'ua',
+  userAgentProfile: 'uaprof'
+};
+
+// 下载彩信参数
+let mmsPars: sms.MmsParams = {
+  slotId : 0,
+  mmsc: wapPushUrl,
+  data: filePath,
+  mmsConfig: mmsConf
+};
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+    sms.downloadMms(this.context, mmsPars, async(err: BusinessError) =>{
+        if (err) {
+            console.error(`downloadMms fail, err : ${JSON.stringify(err)}`);
+            return;
+        }
+        console.info(`downloadMms Success`);
+        });
+    }
+}
+```
+
+
+<a id="downloadmms-1"></a>
 
 ## downloadMms
 
@@ -96,4 +170,80 @@ function downloadMms(context: Context, mmsParams: MmsParams): Promise<void>
 
 **示例**
 
-参见 [downloadMms](#downloadmms)
+FA模型示例：
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common, featureAbility } from '@kit.AbilityKit';
+
+// 获取context
+let context: common.BaseContext = featureAbility.getContext();
+
+// 彩信pdu存储路径
+const sandBoxPath: string = '/data/storage/el2/base/files/';
+let filePath: string = sandBoxPath + 'RetrieveConf.mms';
+
+// 从WapPush中解析出彩信URL
+let wapPushUrl: string = 'URL';
+
+// 下载彩信参数
+let mmsPars: sms.MmsParams = {
+  slotId: 0,
+  mmsc: wapPushUrl,
+  data: filePath,
+  mmsConfig: {
+   userAgent:'ua',
+   userAgentProfile: 'uaprof'
+  }
+};
+
+// 调用发送接口
+let promise = sms.downloadMms(context, mmsPars);
+promise.then(() => {
+    console.info(`downloadMms success`);
+}).catch((err: BusinessError) => {
+    console.error(`downloadMms failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+// 彩信pdu存储路径
+const sandBoxPath = '/data/storage/el2/base/files/';
+let filePath  = sandBoxPath + 'RetrieveConf.mms';
+
+// 从WapPush中解析出彩信URL
+let wapPushUrl  = 'URL';
+
+// 彩信用户代理、用户代理描述配置。根据运营商要求配置，默认ua，uaprof
+let mmsConf: sms.MmsConfig = {
+  userAgent:'ua',
+  userAgentProfile: 'uaprof'
+};
+
+// 下载彩信参数
+let mmsPars: sms.MmsParams = {
+  slotId : 0,
+  mmsc: wapPushUrl,
+  data: filePath,
+  mmsConfig: mmsConf
+};
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = sms.downloadMms(this.context, mmsPars);
+    promise.then(() => {
+        console.info(`downloadMms success`);
+    }).catch((err: BusinessError) => {
+        console.error(`downloadMms failed, promise: err->${JSON.stringify(err)}`);
+    });
+    }
+}
+```

@@ -1,5 +1,9 @@
 # PolicyRules (System API)
 
+```TypeScript
+export enum PolicyRules
+```
+
 Enumerates the profile policy rules.
 
 **Since:** 18

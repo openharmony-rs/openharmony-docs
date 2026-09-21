@@ -1,5 +1,9 @@
 # EffectSuggestion (System API)
 
+```TypeScript
+interface EffectSuggestion
+```
+
 EffectSuggestion object.
 
 **Since:** 12

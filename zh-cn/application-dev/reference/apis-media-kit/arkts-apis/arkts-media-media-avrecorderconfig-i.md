@@ -1,5 +1,9 @@
 # AVRecorderConfig
 
+```TypeScript
+interface AVRecorderConfig
+```
+
 表示音视频录制的参数设置。<br>通过audioSourceType和videoSourceType区分纯音频录制、纯视频录制或音视频录制。纯音频录制时，仅需要设置audioSourceType；纯视频录制时，仅需要设置videoSourceType；音视频录制时，audioSourceType和videoSourceType均需要设置。
 
 **起始版本：** 9

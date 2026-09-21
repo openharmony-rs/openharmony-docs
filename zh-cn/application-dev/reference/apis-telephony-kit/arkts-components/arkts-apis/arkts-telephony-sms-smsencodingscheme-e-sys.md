@@ -1,5 +1,9 @@
 # SmsEncodingScheme（系统接口）
 
+```TypeScript
+export enum SmsEncodingScheme
+```
+
 短信编码方案。
 
 **起始版本：** 8

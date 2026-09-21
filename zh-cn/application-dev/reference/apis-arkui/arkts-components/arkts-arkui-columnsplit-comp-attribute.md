@@ -1,10 +1,14 @@
 # ColumnSplit属性/事件
 
-除支持通用属性外，还支持以下属性：
+```TypeScript
+declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
+```
 
-支持通用事件。
+除支持[通用属性](arkts-arkui-common-comp.md#common)外，还支持以下属性：
 
-**继承/实现关系：** ColumnSplitAttribute extends CommonMethod&lt;ColumnSplitAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp.md#common)。
+
+**继承/实现关系：** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 
 **起始版本：** 7
 
@@ -30,7 +34,7 @@ divider(value: ColumnSplitDividerStyle | null)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ColumnSplitDividerStyle](arkts-arkui-columnsplitdividerstyle-i.md) &#124; null | 是 | 分割线的margin，即设置分割线与子组件的距离。对象属性包括：startMargin（子组件与上方分割线的距离）和endMargin（子组件与下方分割线的距离）。<br>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br>非法值：按默认值处理。 |
+| value | [ColumnSplitDividerStyle](arkts-arkui-columnsplit-comp-columnsplitdividerstyle-i.md) &#124; null | 是 | 分割线的margin，即设置分割线与子组件的距离。对象属性包括：startMargin（子组件与上方分割线的距离）和endMargin（子组件与下方分割线的距离）。<br>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br>非法值：按默认值处理。 |
 
 ## resizeable
 
@@ -42,8 +46,8 @@ resizeable(value: boolean)
 
 > **说明：** 
 > 
-> 初始化后，当动态修改margin、[border](arkts-arkui-commonmethod-c.md#border)、
-> padding通用属性导致子组件尺寸大于相邻分割线间距时，不支持拖动分割线改变子组件的高度。
+> 初始化后，当动态修改[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)、[border](arkts-arkui-common-comp-commonmethod-c.md#border)、
+> [padding](arkts-arkui-common-comp-commonmethod-c.md#padding)通用属性导致子组件尺寸大于相邻分割线间距时，不支持拖动分割线改变子组件的高度。
 
 **起始版本：** 7
 

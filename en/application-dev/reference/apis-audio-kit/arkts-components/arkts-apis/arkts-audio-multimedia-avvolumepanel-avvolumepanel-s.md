@@ -1,5 +1,9 @@
 # AVVolumePanel
 
+```TypeScript
+export declare struct AVVolumePanel
+```
+
 A panel to set the system audio output volume.
 
 **Since:** 12

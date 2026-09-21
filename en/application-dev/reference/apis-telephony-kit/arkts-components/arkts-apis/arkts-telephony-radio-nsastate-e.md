@@ -1,5 +1,9 @@
 # NsaState
 
+```TypeScript
+export enum NsaState
+```
+
 Enumerates NSA network states.
 
 **Since:** 6

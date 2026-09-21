@@ -1,5 +1,9 @@
 # ScanFilter
 
+```TypeScript
+interface ScanFilter
+```
+
 扫描BLE广播的过滤条件，只有符合该条件的广播报文才会上报。
 
 **起始版本：** 10
@@ -182,7 +186,7 @@ serviceDataMask?: ArrayBuffer
 serviceSolicitationUuid?: string
 ```
 
-过滤包含该服务请求UUID的广播报文，serviceSolicitationUuid通常在中心设备的广播报文中携带，表示中心设备希望搜索到的服务UUID。例如：00001888-0000-1000-8000-00805F9B3 4FB。
+过滤包含该服务请求UUID的广播报文，serviceSolicitationUuid通常在中心设备的广播报文中携带，表示中心设备希望搜索到的服务UUID。例如：00001888-0000-1000-8000-00805F9B34FB。
 
 **类型：** string
 

@@ -1,5 +1,9 @@
 # NetFirewallDnsParams
 
+```TypeScript
+interface NetFirewallDnsParams
+```
+
 防火墙规则DNS信息。
 
 > **说明：** 

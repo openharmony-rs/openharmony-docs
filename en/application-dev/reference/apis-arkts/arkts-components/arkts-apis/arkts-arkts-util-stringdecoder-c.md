@@ -1,5 +1,9 @@
 # StringDecoder
 
+```TypeScript
+class StringDecoder
+```
+
 Provides the capability of decoding binary streams into strings. The following encoding types are supported: utf-8, iso-8859-2, koi8-r, macintosh, windows-1250, windows-1251, gbk, gb18030, big5, utf-16be, and UTF-16le.
 
 **Since:** 12

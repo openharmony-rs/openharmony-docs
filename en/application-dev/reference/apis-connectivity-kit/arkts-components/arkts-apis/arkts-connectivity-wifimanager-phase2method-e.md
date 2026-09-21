@@ -1,5 +1,9 @@
 # Phase2Method
 
+```TypeScript
+enum Phase2Method
+```
+
 Wi-Fi phase 2 method. @enum { int }
 
 **Since:** 10

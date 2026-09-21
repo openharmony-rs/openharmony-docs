@@ -1,5 +1,9 @@
 # ScanFilter
 
+```TypeScript
+interface ScanFilter
+```
+
 扫描过滤参数。
 
 从API version 9开始支持，从API version 10开始废弃。

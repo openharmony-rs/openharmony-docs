@@ -1,5 +1,9 @@
 # AudioSourceType
 
+```TypeScript
+enum AudioSourceType
+```
+
 表示视频录制中音频源类型的枚举。
 
 **起始版本：** 9

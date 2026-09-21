@@ -1,5 +1,9 @@
 # AuthToken (System API)
 
+```TypeScript
+interface AuthToken
+```
+
 Defines the authentication token data. It indicates the parsed **AuthToken** data returned after the verification is successful, including detailed authentication information such as the challenge value, authentication trust level, authentication type, and user ID.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # StationInfo（系统接口）
 
+```TypeScript
+interface StationInfo
+```
+
 接入的设备信息。
 
 **起始版本：** 7

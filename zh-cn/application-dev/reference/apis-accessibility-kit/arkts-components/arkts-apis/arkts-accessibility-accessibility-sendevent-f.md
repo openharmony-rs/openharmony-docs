@@ -42,23 +42,6 @@ let eventInfo: accessibility.EventInfo = ({
   triggerAction: 'click',
 });
 
-accessibility.sendEvent(eventInfo).then(() => {
-  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to sendEvent. Code:${err.code}, message:${err.message}`);
-});
-```
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let eventInfo: accessibility.EventInfo = ({
-  type: 'click',
-  bundleName: 'com.example.MyApplication',
-  triggerAction: 'click',
-});
-
 accessibility.sendEvent(eventInfo, (err: BusinessError) => {
   if (err) {
     console.error(`Failed to sendEvent. Code:${err.code}, message:${err.message}`);
@@ -68,6 +51,8 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
 });
 ```
 
+
+<a id="sendevent-1"></a>
 
 ## sendEvent
 
@@ -81,7 +66,7 @@ function sendEvent(event: EventInfo): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md)(event: EventInfo)
+**替代接口：** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-1)(event: EventInfo)
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -99,4 +84,19 @@ function sendEvent(event: EventInfo): Promise<void>
 
 **示例**
 
-参见 [sendEvent](#sendevent)
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let eventInfo: accessibility.EventInfo = ({
+  type: 'click',
+  bundleName: 'com.example.MyApplication',
+  triggerAction: 'click',
+});
+
+accessibility.sendEvent(eventInfo).then(() => {
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to sendEvent. Code:${err.code}, message:${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # PrintColorMode
 
+```TypeScript
+enum PrintColorMode
+```
+
 Enumerates the color modes.
 
 **Since:** 11

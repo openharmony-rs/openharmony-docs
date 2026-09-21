@@ -1,5 +1,9 @@
 # utils(Defines the utils for ArkTS)
 
+```TypeScript
+declare namespace utils
+```
+
 **Since:** 12
 
 **System capability:** SystemCapability.Utils.Lang

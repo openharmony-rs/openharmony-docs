@@ -1,5 +1,9 @@
 # TextMetrics
 
+```TypeScript
+export interface TextMetrics
+```
+
 TextMetrics
 
 @interface TextMetrics

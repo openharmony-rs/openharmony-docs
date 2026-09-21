@@ -1,5 +1,9 @@
 # BatchResult
 
+```TypeScript
+interface BatchResult
+```
+
 Result object containing batch operation,including [batchAdd](arkts-assetstore-asset-batchadd-f.md) and [batchUpdate](arkts-assetstore-asset-batchupdate-f.md).
 
 **Since:** 26.0.0
@@ -24,6 +28,8 @@ Failed count of the batch operation, 0 means all success.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 ## failedErrorInfos
@@ -37,5 +43,7 @@ An array of error details for assets that failed in the batch operation, includi
 **Type:** Array&lt;[BatchErrInfo](arkts-assetstore-asset-batcherrinfo-i.md)&gt;
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset

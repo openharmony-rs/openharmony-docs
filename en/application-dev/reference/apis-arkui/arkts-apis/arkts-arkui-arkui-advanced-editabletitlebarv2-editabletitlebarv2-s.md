@@ -1,5 +1,9 @@
 # EditableTitleBarV2
 
+```TypeScript
+export declare struct EditableTitleBarV2
+```
+
 Declaration of the editable title bar.
 
 **Since:** 26.0.0

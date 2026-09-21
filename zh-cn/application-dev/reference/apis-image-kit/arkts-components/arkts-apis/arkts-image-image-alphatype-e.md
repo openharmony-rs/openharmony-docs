@@ -1,5 +1,9 @@
 # AlphaType
 
+```TypeScript
+enum AlphaType
+```
+
 表示图像的透明度类型的枚举。
 
 **起始版本：** 9

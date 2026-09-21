@@ -1,5 +1,9 @@
 # BeaconManufactureData
 
+```TypeScript
+export interface BeaconManufactureData
+```
+
 beacon设备制造商数据。
 
 **起始版本：** 20

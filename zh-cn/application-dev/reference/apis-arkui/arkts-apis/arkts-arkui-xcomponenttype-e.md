@@ -1,5 +1,9 @@
 # XComponentType
 
+```TypeScript
+declare enum XComponentType
+```
+
 The type of XComponent
 
 @enum { number }
@@ -76,7 +80,7 @@ Node type.
 
 **废弃版本：** 20
 
-**替代接口：** ContentSlot
+**替代接口：** [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md#contentslot)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

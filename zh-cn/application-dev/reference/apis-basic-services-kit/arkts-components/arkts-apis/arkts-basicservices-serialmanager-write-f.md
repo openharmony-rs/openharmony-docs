@@ -50,8 +50,66 @@ function write(portId: number, buffer: Uint8Array, timeout?: number): Promise<nu
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 以下示例代码只是调用write接口的必要流程，需要放入具体的方法中执行。实际调用时，设备开发者需要遵循设备相关协议进行调用。
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { buffer } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取串口列表
+async function writeExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
+
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    let result = await serialManager.requestSerialRight(portId);
+    if (!result) {
+      // 没有访问设备的权限且用户不授权则退出
+      console.error('user is not granted the operation permission');
+      return;
+    } else {
+      console.info('grant permission successfully');
+    }
+  }
+
+  // 打开设备
+  try {
+    serialManager.open(portId);
+    console.info('open usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // 异步写入
+  try {
+    let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
+    let size: number = await serialManager.write(portId, writeBuffer, 2000);
+    if (size > 0) {
+      console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
+    }
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to write usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+
+  // 关闭串口
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to close usbSerial. Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```

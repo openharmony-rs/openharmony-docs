@@ -1,5 +1,9 @@
 # SearchParams（系统接口）
 
+```TypeScript
+export interface SearchParams
+```
+
 Parameters for target searching.
 
 @typedef SearchParams

@@ -1,5 +1,9 @@
 # Cipher
 
+```TypeScript
+export default class Cipher
+```
+
 提供加解密接口。
 
 **起始版本：** 3

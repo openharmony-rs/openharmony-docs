@@ -1,5 +1,9 @@
 # ConstraintSourceTypeInfo（系统接口）
 
+```TypeScript
+interface ConstraintSourceTypeInfo
+```
+
 表示约束来源类型信息。
 
 **起始版本：** 9

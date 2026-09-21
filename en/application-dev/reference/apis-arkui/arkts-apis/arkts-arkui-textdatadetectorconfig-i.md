@@ -1,6 +1,10 @@
 # TextDataDetectorConfig
 
-This configuration is only available for the Text and RichEditor components.
+```TypeScript
+declare interface TextDataDetectorConfig
+```
+
+This configuration is only available for the [Text](../arkts-components/arkts-arkui-text-comp.md#text) and [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor) components.
 
 **Since:** 11
 
@@ -66,7 +70,7 @@ Whether to enable the preview menu displayed when long-pressing recognized text.
 
 Default value: **false**
 
-When copyOptions is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.
+When [copyOptions](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#copyoptions) is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.
 
 This API can be properly called on phones and tablets, but has no effect on other devices such as PCs, 2-in-1 devices, TVs, and wearables.
 
@@ -88,7 +92,7 @@ onDetectResultUpdate?: Callback<string>
 
 Callback invoked when text recognition succeeds.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;string&gt;
+**Type:** Callback&lt;string&gt;
 
 **Since:** 11
 

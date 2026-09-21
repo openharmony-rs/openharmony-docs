@@ -1,5 +1,9 @@
 # Panel
 
+```TypeScript
+interface Panel
+```
+
 划词面板对象，通过[createPanel](arkts-basicservices-selectionmanager-createpanel-f.md)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力，适用于在划词完成后向用户展示自定义操作界面的场景。
 
 **起始版本：** 24

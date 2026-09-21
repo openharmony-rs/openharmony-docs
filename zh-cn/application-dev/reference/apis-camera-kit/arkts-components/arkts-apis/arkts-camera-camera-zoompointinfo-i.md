@@ -1,5 +1,9 @@
 # ZoomPointInfo
 
+```TypeScript
+interface ZoomPointInfo
+```
+
 等效焦距信息。
 
 **起始版本：** 26.0.0

@@ -105,17 +105,158 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [CustomBuilderWithId](arkts-arkui-custombuilderwithid-t.md) | 组件属性、方法参数可使用CustomBuilderWithId类型来自定义UI描述，并且可以指定组件ID生成用户自定义组件。 |
 | [GestureEventListenerCallback](arkts-arkui-gestureeventlistenercallback-t.md) | 定义了用于在UIObserver中监听手势的回调类型。 |
 | [GestureListenerCallback](arkts-arkui-gesturelistenercallback-t.md) | 定义了用于在UIObserver中监控特定手势触发信息的回调类型。 |
-| [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 定义节点标识类型。对于string类型，代表指定组件id，该id通过通用属性id设置。对于number类型，代表系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)获取。 |
+| [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 定义节点标识类型。对于string类型，代表指定组件id，该id通过通用属性[id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)设置。对于number类型，代表系统分配的唯一标识的节点UniqueID，可通过[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)获取。 |
 | [NodeRenderStateChangeCallback](arkts-arkui-noderenderstatechangecallback-t.md) | 定义了用于在UIObserver中监控某个特定节点渲染状态的回调类型。 |
 | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | Pan手势事件监听函数类型。 |
 | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 光标样式。 |
 
 ## 示例
 
-```TypeScript
 ### 示例1（启用智慧手势并自定义动作处理）
 
 以下示例通过[enableSmartTapAndSlideGestures](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#enablesmarttapandslidegestures)接口启用、关闭智慧手势，通过[registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor)、[unregisterMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#unregistermonitor)、[clearMonitors](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#clearmonitors)接口注册、注销或清空监听回调实现自定义动作处理，以及通过[requestSelected](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#requestselected)选中组件。
 
 从API版本26.0.0开始，新增enableSmartTapAndSlideGestures、registerMonitor、unregisterMonitor、clearMonitors、requestSelected、clearSelected。
+
+```TypeScript
+import {
+  BackPressActionProposal,
+  BaseGestureHandlingProposal,
+  ClickActionProposal,
+  GestureHandlingResolution,
+  NoneActionProposal,
+  PageSwitchActionProposal,
+  ScrollActionProposal,
+  SelectActionProposal
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SmartGestureControllerExample {
+  private controller = this.getUIContext().getSmartGestureController();
+  @State clickCount: number = 0;
+  @State hint: string = '';
+  // 自定义监听回调函数
+  private callback = (proposal: BaseGestureHandlingProposal): GestureHandlingResolution => {
+    // proposal.operateIntention表示底层操作意图，取值包括TAP/SLIDE_FORWARD/BACK_PRESS
+    // proposal.action表示最终执行动作，取值包括NONE/SELECT/CLICK/PAGE_FORWARD/SCROLL_FORWARD/BACK_PRESS
+    this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}`;
+
+    // 消费当前智慧手势，后续根据proposal.action改写默认动作处理。
+    const resolution = new GestureHandlingResolution(true);
+
+    // 覆盖为点击动作
+    if (proposal.action === SmartGestureAction.CLICK) {
+      const node = this.getUIContext().getFrameNodeById('target_button');
+      if (node) {
+        resolution.selectedProposal = new ClickActionProposal(node);
+      }
+    } else if (proposal.action === SmartGestureAction.SELECT) { // 覆盖为选中动作
+      const node = this.getUIContext().getFrameNodeById('target_text');
+      if (node) {
+        resolution.selectedProposal = new SelectActionProposal(node);
+      }
+    } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) { // 覆盖为翻页动作
+      const node = this.getUIContext().getFrameNodeById('scroll_area');
+      if (node) {
+        // pageCount：取值为[0, +∞)，单位为页
+        resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
+      }
+    } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) { // 覆盖为滚动动作
+      const node = this.getUIContext().getFrameNodeById('scroll_area');
+      if (node) {
+        // distance：取值为[0, +∞)，单位为vp
+        resolution.selectedProposal = new ScrollActionProposal(node, 180);
+      }
+    } else if (proposal.action === SmartGestureAction.NONE) { // 覆盖为空动作（不执行任何操作）
+      resolution.selectedProposal = new NoneActionProposal();
+    } else if (proposal.action === SmartGestureAction.BACK_PRESS) { // 覆盖为返回动作
+      resolution.selectedProposal = new BackPressActionProposal();
+    }
+
+    return resolution;
+  };
+
+  build() {
+    Scroll() {
+      Column({ space: 12 }) {
+        // 操作意图提示
+        Text(this.hint).fontSize(13).fontColor('#666')
+
+        // 目标节点：文本
+        Text('文本组件')
+          .id('target_text')
+          .fontSize(18)
+          .width('100%')
+          .padding(12)
+          .borderRadius(10)
+          .borderWidth(1)
+          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+          .onClick(() => {
+            console.info('smartGesture click is triggered');
+          })
+
+        // 目标节点：按钮
+        Button(`按钮组件 / 点击=${this.clickCount}`)
+          .id('target_button').width('100%')
+          .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+          .onClick(() => {
+            this.clickCount += 1;
+          })
+
+        // 目标节点：滚动区域
+        Scroll() {
+          Column({ space: 6 }) {
+            ForEach([0, 1, 2, 3], (item: number) => {
+              Text(`滚动内容 ${item}`).width('100%').padding(10).borderRadius(8)
+                .backgroundColor(item % 2 === 0 ? '#f6f8fa' : '#ffffff')
+            })
+          }.width('100%')
+        }
+        .id('scroll_area').height(120)
+
+        Divider()
+
+        // requestSelected/clearSelected
+        Text('选中控制').fontWeight(FontWeight.Bold).fontSize(16)
+        Row({ space: 8 }) {
+          Button('选中按钮').layoutWeight(1)
+            .onClick(() => this.controller.requestSelected('target_button'))
+          Button('选中文本').layoutWeight(1)
+            .onClick(() => this.controller.requestSelected('target_text'))
+          Button('清空选中').layoutWeight(1)
+            .onClick(() => this.controller.clearSelected())
+        }.width('100%')
+
+        // registerMonitor/unregisterMonitor/clearMonitors
+        Text('Monitor 控制').fontWeight(FontWeight.Bold).fontSize(16)
+        Row({ space: 8 }) {
+          Button('注册').layoutWeight(1)
+            .onClick(() => this.controller.registerMonitor(this.callback))
+          Button('注销').layoutWeight(1)
+            .onClick(() => this.controller.unregisterMonitor(this.callback))
+          Button('清空').layoutWeight(1)
+            .onClick(() => this.controller.clearMonitors())
+        }.width('100%')
+
+        // enableSmartTapAndSlideGestures
+        Row({ space: 8 }) {
+          Button('启用手势').layoutWeight(1)
+            .onClick(() => this.controller.enableSmartTapAndSlideGestures(true))
+          Button('禁用手势').layoutWeight(1)
+            .onClick(() => this.controller.enableSmartTapAndSlideGestures(false))
+        }.width('100%')
+      }.width('100%')
+    }
+    .layoutWeight(1)
+    .onAppear(() => {
+      this.controller.enableSmartTapAndSlideGestures(true);
+      this.controller.registerMonitor(this.callback);
+    })
+    .width('100%')
+    .height('100%')
+    .padding(12)
+    .backgroundColor('#f1f3f5')
+  }
+}
 ```

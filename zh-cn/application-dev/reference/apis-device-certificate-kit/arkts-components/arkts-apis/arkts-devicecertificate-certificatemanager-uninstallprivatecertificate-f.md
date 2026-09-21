@@ -55,23 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
-try {
-  certificateManager.uninstallPrivateCertificate(uri).then(() => {
-    console.info('Succeeded in uninstalling private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="uninstallprivatecertificate-1"></a>
 
 ## uninstallPrivateCertificate
 
@@ -110,4 +95,19 @@ function uninstallPrivateCertificate(keyUri: string): Promise<void>
 
 **示例**
 
-参见 [uninstallPrivateCertificate](#uninstallprivatecertificate)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
+try {
+  certificateManager.uninstallPrivateCertificate(uri).then(() => {
+    console.info('Succeeded in uninstalling private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to uninstall private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

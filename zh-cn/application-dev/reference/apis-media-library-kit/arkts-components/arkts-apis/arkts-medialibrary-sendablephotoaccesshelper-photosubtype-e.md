@@ -1,5 +1,9 @@
 # PhotoSubtype
 
+```TypeScript
+enum PhotoSubtype
+```
+
 枚举，不同[PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoasset-i.md)的类型。
 
 **起始版本：** 14

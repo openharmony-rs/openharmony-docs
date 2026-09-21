@@ -1,5 +1,9 @@
 # FaceTipsCode (System API)
 
+```TypeScript
+enum FaceTipsCode
+```
+
 Enumerates the tip codes for facial authentication.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # Float64ArrayConstructor
 
+```TypeScript
+interface Float64ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -17,6 +21,8 @@ new(length: number): Float64Array
 | --- | --- | --- | --- |
 | length | number | Yes |  |
 
+<a id="construct-1"></a>
+
 ## [[Construct]]
 
 ```TypeScript
@@ -28,6 +34,8 @@ new(array: ArrayLike<number> | ArrayBufferLike): Float64Array
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; &#124; [ArrayBufferLike](arkts-arraybufferlike-t.md) | Yes |  |
+
+<a id="construct-2"></a>
 
 ## [[Construct]]
 
@@ -56,6 +64,8 @@ Creates an array from an array-like or iterable object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;number&gt; | Yes |  |
+
+<a id="from-1"></a>
 
 ## from
 

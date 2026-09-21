@@ -1,5 +1,9 @@
 # WallpaperExtensionAbility (System API)
 
+```TypeScript
+declare class WallpaperExtensionAbility
+```
+
 class of wallpaper extension ability.
 
 **Since:** 10

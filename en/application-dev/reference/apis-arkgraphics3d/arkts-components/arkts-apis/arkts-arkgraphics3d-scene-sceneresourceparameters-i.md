@@ -1,5 +1,9 @@
 # SceneResourceParameters
 
+```TypeScript
+export interface SceneResourceParameters
+```
+
 Describes the scene resource parameters (name and uri), which are used to provide the name of a scene resource and the path of the resource file required in the 3D scene.
 
 @typedef SceneResourceParameters

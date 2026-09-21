@@ -1,5 +1,9 @@
 # Screen（系统接口）
 
+```TypeScript
+interface Screen
+```
+
 [物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。
 
 下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
@@ -87,42 +91,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let densityDpi: number = 320;
-class VirtualScreenOption {
-  name : string = '';
-  width : number =  0;
-  height : number = 0;
-  density : number = 0;
-  surfaceId : string = '';
-  supportsFocus ?: boolean = true;
-}
-
-let option: VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: '',
-  supportsFocus: false
-};
-
-// 创建虚拟屏幕
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  // 设置屏幕的像素密度
-  let promise: Promise<void> = screenClass.setDensityDpi(densityDpi);
-  promise.then(() => {
-    console.info('Succeeded in setting the pixel density of the screen to 320.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set the pixel density of the screen to 320. Code: ${err.code}, message: ${err.message}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="setdensitydpi-1"></a>
 
 ## setDensityDpi
 
@@ -160,7 +129,42 @@ setDensityDpi(densityDpi: number): Promise<void>
 
 **示例**
 
-参见 [setDensityDpi](#setdensitydpi)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let densityDpi: number = 320;
+class VirtualScreenOption {
+  name : string = '';
+  width : number =  0;
+  height : number = 0;
+  density : number = 0;
+  surfaceId : string = '';
+  supportsFocus ?: boolean = true;
+}
+
+let option: VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: '',
+  supportsFocus: false
+};
+
+// 创建虚拟屏幕
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  // 设置屏幕的像素密度
+  let promise: Promise<void> = screenClass.setDensityDpi(densityDpi);
+  promise.then(() => {
+    console.info('Succeeded in setting the pixel density of the screen to 320.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the pixel density of the screen to 320. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## setOrientation
 
@@ -232,69 +236,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class VirtualScreenOption {
-  name : string = '';
-  width : number =  0;
-  height : number = 0;
-  density : number = 0;
-  surfaceId : string = '';
-  supportsFocus ?: boolean = true;
-}
-
-let option: VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: '',
-  supportsFocus: false
-};
-
-// 创建虚拟屏幕
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  // 设置屏幕方向为垂直方向
-  let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL);
-  promise.then(() => {
-    console.info('Succeeded in setting the vertical orientation.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set the vertical orientation. Code: ${err.code}, message: ${err.message}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let orientationOptions : screen.OrientationOptions = {
-  needAnimation: true,
-  ignoreRotationLock: false,
-};
-
-let screenClass: screen.Screen | null = null;
-// 获取所有屏幕对象
-let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
-screensPromise.then((data: Array<screen.Screen>) => {
-  if (data.length > 0) {
-    screenClass = data[0];
-    // 设置屏幕方向为垂直方向，带动画且不忽略旋转锁定
-    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
-    promise.then(() => {
-      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to set the vertical orientation with orientationOptions. Code: ${err.code}, message: ${err.message}`);
-    });
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="setorientation-1"></a>
 
 ## setOrientation
 
@@ -332,7 +274,44 @@ setOrientation(orientation: Orientation): Promise<void>
 
 **示例**
 
-参见 [setOrientation](#setorientation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class VirtualScreenOption {
+  name : string = '';
+  width : number =  0;
+  height : number = 0;
+  density : number = 0;
+  surfaceId : string = '';
+  supportsFocus ?: boolean = true;
+}
+
+let option: VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: '',
+  supportsFocus: false
+};
+
+// 创建虚拟屏幕
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  // 设置屏幕方向为垂直方向
+  let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL);
+  promise.then(() => {
+    console.info('Succeeded in setting the vertical orientation.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the vertical orientation. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+<a id="setorientation-2"></a>
 
 ## setOrientation
 
@@ -373,7 +352,32 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 **示例**
 
-参见 [setOrientation](#setorientation)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+    // 设置屏幕方向为垂直方向，带动画且不忽略旋转锁定
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## setScreenActiveMode
 
@@ -446,43 +450,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class VirtualScreenOption {
-  name : string = '';
-  width : number =  0;
-  height : number = 0;
-  density : number = 0;
-  surfaceId : string = '';
-  supportsFocus ?: boolean = true;
-}
-
-let option: VirtualScreenOption = {
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: '',
-  supportsFocus: false
-};
-
-// 创建虚拟屏幕
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  let screenClass: screen.Screen = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-  let modeIndex: number = 0;
-  // 设置屏幕当前显示模式
-  let promise: Promise<void> = screenClass.setScreenActiveMode(modeIndex);
-  promise.then(() => {
-    console.info('Succeeded in setting screen active mode 0.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set screen active mode 0. Code: ${err.code}, message: ${err.message}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="setscreenactivemode-1"></a>
 
 ## setScreenActiveMode
 
@@ -520,7 +488,43 @@ setScreenActiveMode(modeIndex: number): Promise<void>
 
 **示例**
 
-参见 [setScreenActiveMode](#setscreenactivemode)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class VirtualScreenOption {
+  name : string = '';
+  width : number =  0;
+  height : number = 0;
+  density : number = 0;
+  surfaceId : string = '';
+  supportsFocus ?: boolean = true;
+}
+
+let option: VirtualScreenOption = {
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: '',
+  supportsFocus: false
+};
+
+// 创建虚拟屏幕
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  let screenClass: screen.Screen = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  let modeIndex: number = 0;
+  // 设置屏幕当前显示模式
+  let promise: Promise<void> = screenClass.setScreenActiveMode(modeIndex);
+  promise.then(() => {
+    console.info('Succeeded in setting screen active mode 0.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set screen active mode 0. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## activeModeIndex
 

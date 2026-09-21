@@ -1,5 +1,9 @@
 # Server
 
+```TypeScript
+interface Server
+```
+
 Represents a **Server** object, which provides methods for starting, stopping, and closing the server, and registering or unregistering event callbacks.
 
 **Since:** 20
@@ -34,6 +38,27 @@ Destroys the **Server** object to release related resources. To interact with th
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.start();
+  server.close();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
 ## off('connectionAccepted')
 
 ```TypeScript
@@ -63,6 +88,33 @@ Unregisters the callback listener for **connectionAccepted** event. This API mus
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
+
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // Construct a Server object using the specified name.
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'accept new connection');
+  });
+  // Unsubscribe from connectionAccepted events.
+  server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'accept new connection');
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## off('serverStopped')
 
@@ -94,6 +146,33 @@ Unregisters the callback listener for **serverStopped** event. This API must be 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // Construct a Server object using the specified name.
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.on('serverStopped', (reason: number): void => {
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  });
+  // Unsubscribe from serverStopped events.
+  server.off('serverStopped', (reason: number): void => {
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  });
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
 ## on('connectionAccepted')
 
 ```TypeScript
@@ -123,6 +202,33 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
+
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // Construct a Server object using the specified name.
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+  // Subscribe to connectionAccepted events.
+  server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+  });
+  // Start the server.
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
 
 ## on('serverStopped')
 
@@ -154,6 +260,33 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [32390206](../errorcode-link-enhance.md#32390206-invalid-parameter) | Invalid parameter. |
 
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  // Construct a Server object using the specified name.
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+
+  // Unsubscribe from serverStopped events.
+  server.on('serverStopped', (reason: number): void => {
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  });
+  // Start the server.
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
 ## start
 
 ```TypeScript
@@ -178,6 +311,26 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 | [32390202](../errorcode-link-enhance.md#32390202-number-of-services-exceeding-the-limit) | The number of servers exceeds the limit. |
 | [32390300](../errorcode-link-enhance.md#32390300-internal-error) | Internal error. |
 
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.start();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```
+
 ## stop
 
 ```TypeScript
@@ -199,3 +352,24 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+
+**Examples**
+
+```TypeScript
+import { linkEnhance } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = "testDemo";
+
+try {
+  let name: string = "demo";
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
+  let server: linkEnhance.Server = linkEnhance.createServer(name);
+  server.start();
+  server.stop();
+} catch (err) {
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  (err as BusinessError).message);
+}
+```

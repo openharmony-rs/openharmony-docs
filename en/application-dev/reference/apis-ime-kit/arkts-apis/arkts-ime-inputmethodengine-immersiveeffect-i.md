@@ -1,5 +1,9 @@
 # ImmersiveEffect
 
+```TypeScript
+interface ImmersiveEffect
+```
+
 Describes the immersive effect.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # SharingIfaceState（系统接口）
 
+```TypeScript
+export enum SharingIfaceState
+```
+
 网络共享状态。
 
 **起始版本：** 9

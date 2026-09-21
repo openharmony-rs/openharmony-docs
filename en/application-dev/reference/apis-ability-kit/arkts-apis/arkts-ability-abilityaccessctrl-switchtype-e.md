@@ -1,5 +1,9 @@
 # SwitchType
 
+```TypeScript
+export enum SwitchType
+```
+
 Enumerates the global switch types.
 
 **Since:** 12

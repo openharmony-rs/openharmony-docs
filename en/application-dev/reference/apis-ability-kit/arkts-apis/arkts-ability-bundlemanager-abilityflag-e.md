@@ -1,5 +1,9 @@
 # AbilityFlag
 
+```TypeScript
+enum AbilityFlag
+```
+
 Enumerates the ability flags, which indicate the type of ability information to obtain.
 
 **Since:** 20
@@ -12,7 +16,7 @@ Enumerates the ability flags, which indicate the type of ability information to 
 GET_ABILITY_INFO_DEFAULT = 0x00000000
 ```
 
-Used to obtain the default ability information, which does not contain permissions, metadata, or ability information of disabled abilities. <!--Del-->You can use [setAbilityEnabled](arkts-ability-bundlemanager-setabilityenabled-f-sys.md) to set the ability enabling status and use [isAbilityEnabled](arkts-ability-bundlemanager-isabilityenabled-f-sys.md) to obtain the ability enabling status.<!--DelEnd-->
+Used to obtain the default ability information, which does not contain permissions, metadata, or ability information of disabled abilities. <!--Del-->You can use [setAbilityEnabled](arkts-ability-bundlemanager-setabilityenabled-f-sys.md#setabilityenabled-1) to set the ability enabling status and use [isAbilityEnabled](arkts-ability-bundlemanager-isabilityenabled-f-sys.md#isabilityenabled-2) to obtain the ability enabling status.<!--DelEnd-->
 
 **Since:** 20
 

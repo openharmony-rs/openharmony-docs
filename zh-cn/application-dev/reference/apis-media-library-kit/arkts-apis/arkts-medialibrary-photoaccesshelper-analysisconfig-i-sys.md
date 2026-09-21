@@ -1,5 +1,9 @@
 # AnalysisConfig（系统接口）
 
+```TypeScript
+interface AnalysisConfig
+```
+
 资产分析配置。
 
 **起始版本：** 24

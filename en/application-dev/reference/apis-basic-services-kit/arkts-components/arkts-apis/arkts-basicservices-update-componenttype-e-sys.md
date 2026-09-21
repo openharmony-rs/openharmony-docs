@@ -1,5 +1,9 @@
 # ComponentType (System API)
 
+```TypeScript
+export enum ComponentType
+```
+
 Represents a component type.
 
 **Since:** 9

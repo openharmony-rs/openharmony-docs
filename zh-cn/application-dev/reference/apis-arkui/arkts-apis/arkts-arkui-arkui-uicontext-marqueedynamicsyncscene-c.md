@@ -1,10 +1,14 @@
 # MarqueeDynamicSyncScene
 
+```TypeScript
+export class MarqueeDynamicSyncScene extends DynamicSyncScene
+```
+
 提供Marquee组件动态帧率的配置能力，支持在Marquee组件运行动画时动态调节帧率，优化性能和功耗，适用于需要在跑马灯场景中平衡动画流畅度和系统资源消耗的场景。
 
 > **说明：** 
 > 
-> - MarqueeDynamicSyncScene继承自[DynamicSyncScene](arkts-arkui-arkui-uicontext-uicontext-c.md)，对应Marquee的动态帧率场景。
+> - MarqueeDynamicSyncScene继承自[DynamicSyncScene](arkts-arkui-arkui-uicontext-uicontext-c.md)，对应[Marquee](../arkts-components/arkts-arkui-marquee-comp.md#marquee)的动态帧率场景。
 
 **继承/实现关系：** MarqueeDynamicSyncScene extends [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)
 

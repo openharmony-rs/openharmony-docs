@@ -1,5 +1,9 @@
 # Reference（系统接口）
 
+```TypeScript
+interface Reference
+```
+
 记录表之间通过表字段指定的关联关系。其中表a关联到表b，称a为b关联的子表，b为a关联的父表。
 
 **起始版本：** 11

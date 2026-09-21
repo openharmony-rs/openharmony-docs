@@ -60,19 +60,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundle: notificationManager.BundleOption = {
-    bundle: "bundleName1",
-};
-notificationManager.setNotificationEnable(bundle, false).then(() => {
-    console.info("setNotificationEnable success");
-}).catch((err: BusinessError) => {
-    console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="setnotificationenable-1"></a>
 
 ## setNotificationEnable
 
@@ -117,4 +106,15 @@ Sets whether to enable notification for a specified application. This API uses a
 
 **Examples**
 
-See [setNotificationEnable](#setnotificationenable)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+notificationManager.setNotificationEnable(bundle, false).then(() => {
+    console.info("setNotificationEnable success");
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
+});
+```

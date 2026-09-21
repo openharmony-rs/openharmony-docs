@@ -1,5 +1,9 @@
 # TranslateOption
 
+```TypeScript
+interface TranslateOption
+```
+
 Describes the translation parameters.
 
 **Since:** 7

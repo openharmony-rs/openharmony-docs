@@ -1,5 +1,9 @@
 # SecurityParams
 
+```TypeScript
+interface SecurityParams
+```
+
 Security feature option configuration. This class provides a set of boolean switches for controlling the enablement status of specific Web features in the ArkWeb kernel. By disabling non-essential high-risk modules (such as JIT compilation, WebAssembly, and WebGL), you can reduce the attack surface and lower potential exploit risks. All properties are optional, with the default value false (not disabled). Configure them based on your specific business scenarios.
 
 **Since:** 26.0.0

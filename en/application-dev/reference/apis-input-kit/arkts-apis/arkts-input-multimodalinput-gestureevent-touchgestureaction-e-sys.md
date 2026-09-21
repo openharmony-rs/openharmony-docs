@@ -1,5 +1,9 @@
 # TouchGestureAction (System API)
 
+```TypeScript
+export declare enum TouchGestureAction
+```
+
 Enumerates touchscreen gesture types.
 
 **Since:** 18

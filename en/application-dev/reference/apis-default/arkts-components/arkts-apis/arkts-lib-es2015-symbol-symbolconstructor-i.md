@@ -1,5 +1,9 @@
 # SymbolConstructor
 
+```TypeScript
+interface SymbolConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -55,4 +59,4 @@ readonly prototype: Symbol
 
 A reference to the prototype.
 
-**Type:** [Symbol](arkts-libes2015symbol-p.md)
+**Type:** [Symbol](arkts-lib-es2015-symbol-p.md)

@@ -1,5 +1,9 @@
 # ThumbnailVisibility (System API)
 
+```TypeScript
+enum ThumbnailVisibility
+```
+
 Enumerates the visibility statuses of thumbnails.
 
 **Since:** 14

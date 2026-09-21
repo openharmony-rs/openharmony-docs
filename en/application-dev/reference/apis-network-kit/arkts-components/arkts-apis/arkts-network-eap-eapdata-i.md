@@ -1,5 +1,9 @@
 # EapData
 
+```TypeScript
+interface EapData
+```
+
 Defines the EAP data.
 
 ​

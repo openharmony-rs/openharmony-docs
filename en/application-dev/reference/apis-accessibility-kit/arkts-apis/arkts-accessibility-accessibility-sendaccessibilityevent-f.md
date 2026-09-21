@@ -48,23 +48,6 @@ let eventInfo: accessibility.EventInfo = ({
   triggerAction: 'click',
 });
 
-accessibility.sendAccessibilityEvent(eventInfo).then(() => {
-  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to send event. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let eventInfo: accessibility.EventInfo = ({
-  type: 'click',
-  bundleName: 'com.example.MyApplication',
-  triggerAction: 'click',
-});
-
 accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
   if (err) {
     console.error(`Failed to send event. Code:${err.code}, message:${err.message}`);
@@ -74,8 +57,20 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
 Example of auto-focusing:
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Column() {
+      // Add the id attribute to the component to be focused. The uniqueness of the ID is ensured by the user.
+      Button('Component to be focused').id('click')
+    }
+  }
+}
 ```
 
 ```TypeScript
@@ -98,10 +93,30 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
 Example of resource-supported auto-broadcasting18+:
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let eventInfo: accessibility.EventInfo = ({
+  type: 'announceForAccessibility',
+  bundleName: 'com.example.MyApplication',
+  triggerAction: 'common',
+  textResourceAnnouncedForAccessibility: $r('app.string.ResourceName'),
+});
+
+accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send event. Code:${err.code}, message:${err.message}`);
+    return;
+  }
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
+});
 ```
 
+
+<a id="sendaccessibilityevent-1"></a>
 
 ## sendAccessibilityEvent
 
@@ -139,4 +154,19 @@ Sends an accessibility event. The event will be distributed to registered access
 
 **Examples**
 
-See [sendAccessibilityEvent](#sendaccessibilityevent)
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let eventInfo: accessibility.EventInfo = ({
+  type: 'click',
+  bundleName: 'com.example.MyApplication',
+  triggerAction: 'click',
+});
+
+accessibility.sendAccessibilityEvent(eventInfo).then(() => {
+  console.info(`succeeded in sending event, eventInfo is ${eventInfo}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send event. Code: ${err.code}, message: ${err.message}`);
+});
+```

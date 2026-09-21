@@ -56,20 +56,8 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let accountId: string = "testAccount";
-let bundleName: string = "com.example.bundle";
-cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
-  if (err) {
-    console.error(`changeAppCloudSwitch failed with error message: ${err.message}, error code: ${err.code}`);
-  } else {
-    console.info("changeAppCloudSwitch successfully");
-  }
-});
-```
-
+<a id="changeappcloudswitch-1"></a>
 
 ## changeAppCloudSwitch
 
@@ -104,4 +92,16 @@ function changeAppCloudSwitch(accountId: string, bundleName: string, status: boo
 
 **示例**
 
-参见 [changeAppCloudSwitch](#changeappcloudswitch)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
+  if (err) {
+    console.error(`changeAppCloudSwitch failed with error message: ${err.message}, error code: ${err.code}`);
+  } else {
+    console.info("changeAppCloudSwitch successfully");
+  }
+});
+```

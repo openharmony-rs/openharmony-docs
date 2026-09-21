@@ -1,5 +1,9 @@
 # InstallStatus（系统接口）
 
+```TypeScript
+export interface InstallStatus
+```
+
 应用程序安装卸载的结果。
 
 **起始版本：** 7

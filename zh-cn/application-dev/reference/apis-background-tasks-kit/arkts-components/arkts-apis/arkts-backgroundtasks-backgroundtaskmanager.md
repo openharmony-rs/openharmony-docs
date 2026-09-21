@@ -29,12 +29,12 @@
 | --- | --- |
 | [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md#cancelsuspenddelay) | 取消延迟挂起。 |
 | [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime) | 获取应用程序进入挂起状态前的剩余时间，使用callback异步回调。 |
-| [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime) | 获取应用程序进入挂起状态前的剩余时间，使用Promise异步回调。 |
+| [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md#getremainingdelaytime-1) | 获取应用程序进入挂起状态前的剩余时间，使用Promise异步回调。 |
 | [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md#requestsuspenddelay) | 后台应用申请延迟挂起。 |
 | [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning) | 向系统申请长时任务，使用callback异步回调。 |
-| [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning) | 向系统申请长时任务，使用promise异步回调。 |
+| [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md#startbackgroundrunning-1) | 向系统申请长时任务，使用promise异步回调。 |
 | [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning) | 向系统申请取消长时任务，使用callback异步回调。 |
-| [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning) | 向系统申请取消长时任务，使用promise异步回调。 |
+| [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md#stopbackgroundrunning-1) | 向系统申请取消长时任务，使用promise异步回调。 |
 
 ### 接口
 

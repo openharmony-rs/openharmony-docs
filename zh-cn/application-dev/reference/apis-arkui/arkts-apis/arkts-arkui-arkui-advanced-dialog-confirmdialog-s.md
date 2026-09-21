@@ -1,5 +1,9 @@
 # ConfirmDialog
 
+```TypeScript
+export declare struct ConfirmDialog
+```
+
 信息确认类弹出框，用于在操作未正确执行（如网络错误、电池电量过低），或未正确操作时（如指纹录入）反馈错误或提示信息。
 
 **起始版本：** 10
@@ -180,7 +184,7 @@ themeColorMode?: ThemeColorMode
 
 默认值：ThemeColorMode.SYSTEM
 
-**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **起始版本：** 12
 

@@ -1,5 +1,9 @@
 # AttendeeRole
 
+```TypeScript
+export enum AttendeeRole
+```
+
 Enumerates the attendee role types in a conference event.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # NetworkState
 
+```TypeScript
+enum NetworkState
+```
+
 播放器的网络状态。
 
 **起始版本：** 12

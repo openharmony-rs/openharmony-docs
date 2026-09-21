@@ -1,5 +1,9 @@
 # ScanReportType
 
+```TypeScript
+enum ScanReportType
+```
+
 枚举，扫描结果上报类型。
 
 **起始版本：** 15

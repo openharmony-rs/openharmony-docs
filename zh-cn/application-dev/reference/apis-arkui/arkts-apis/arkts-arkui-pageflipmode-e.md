@@ -1,5 +1,9 @@
 # PageFlipMode
 
+```TypeScript
+declare enum PageFlipMode
+```
+
 Page flip mode of Swiper and Tabs on mouse wheel event.
 
 @enum { number } PageFlipMode

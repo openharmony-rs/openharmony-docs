@@ -71,24 +71,8 @@ taskpool.executeDelayed(1000, task).then(() => { // 1000: delayTime is 1000ms
 })
 ```
 
-```TypeScript
-// import BusinessError
-import { BusinessError } from '@kit.BasicServicesKit'
 
-@Concurrent
-function printArgs(args: number): string {
-    console.info("printArgs: " + args);
-    return "success";
-}
-
-let task: taskpool.Task = new taskpool.GenericsTask<[number], string>(printArgs, 100); // 100: test number
-taskpool.executeDelayed<[number], string>(1000, task).then((res: string) => { // 1000: delayTime is 1000ms
-  console.info('Succeeded in executing task');
-}).catch((e: BusinessError) => {
-  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
-})
-```
-
+<a id="executedelayed-1"></a>
 
 ## executeDelayed
 
@@ -128,4 +112,20 @@ function executeDelayed<A extends Array<Object>, R>(delayTime: number, task: Gen
 
 **示例**
 
-参见 executeDelayed
+```TypeScript
+// import BusinessError
+import { BusinessError } from '@kit.BasicServicesKit'
+
+@Concurrent
+function printArgs(args: number): string {
+    console.info("printArgs: " + args);
+    return "success";
+}
+
+let task: taskpool.Task = new taskpool.GenericsTask<[number], string>(printArgs, 100); // 100: test number
+taskpool.executeDelayed<[number], string>(1000, task).then((res: string) => { // 1000: delayTime is 1000ms
+  console.info('Succeeded in executing task');
+}).catch((e: BusinessError) => {
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+})
+```

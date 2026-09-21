@@ -1,5 +1,9 @@
 # ResolvedRelativeTimeFormatOptions
 
+```TypeScript
+interface ResolvedRelativeTimeFormatOptions
+```
+
 An object with properties reflecting the locale and formatting options computed during initialization of the `Intl.RelativeTimeFormat` object
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#Description).

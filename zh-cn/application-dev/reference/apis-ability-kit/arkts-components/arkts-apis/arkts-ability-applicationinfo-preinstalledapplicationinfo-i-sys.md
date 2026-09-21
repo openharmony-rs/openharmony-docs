@@ -1,5 +1,9 @@
 # PreinstalledApplicationInfo（系统接口）
 
+```TypeScript
+export interface PreinstalledApplicationInfo
+```
+
 预装应用的信息。
 
 **起始版本：** 12

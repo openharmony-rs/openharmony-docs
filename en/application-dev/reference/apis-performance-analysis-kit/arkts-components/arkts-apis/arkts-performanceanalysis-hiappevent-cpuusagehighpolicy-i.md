@@ -1,5 +1,9 @@
 # CpuUsageHighPolicy
 
+```TypeScript
+interface CpuUsageHighPolicy
+```
+
 Defines the configuration policy for the high CPU usage event.
 
 > **NOTE:** 

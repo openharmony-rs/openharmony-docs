@@ -1,5 +1,9 @@
 # PushParameters
 
+```TypeScript
+interface PushParameters
+```
+
 Defines the parameters required when using the **PluginManager.Push** API.
 
 **Since:** 8

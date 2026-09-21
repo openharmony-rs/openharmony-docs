@@ -1,5 +1,9 @@
 # DeflatePendingOutputInfo
 
+```TypeScript
+interface DeflatePendingOutputInfo
+```
+
 DeflatePending return value information.
 
 **Since:** 12

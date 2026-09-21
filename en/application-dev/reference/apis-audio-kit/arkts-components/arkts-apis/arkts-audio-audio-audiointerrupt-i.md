@@ -1,5 +1,9 @@
 # AudioInterrupt
 
+```TypeScript
+interface AudioInterrupt
+```
+
 Describes input parameters of audio interruption events.
 
 **Since:** 7

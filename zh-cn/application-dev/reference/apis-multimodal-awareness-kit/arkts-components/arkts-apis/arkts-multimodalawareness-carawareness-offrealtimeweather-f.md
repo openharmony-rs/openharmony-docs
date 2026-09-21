@@ -14,7 +14,7 @@ function offRealTimeWeather(callback?: Callback<RealTimeWeatherInfo>): void
 
 关闭实时天气感知功能。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.vehicle.MMA_WEATHER
 

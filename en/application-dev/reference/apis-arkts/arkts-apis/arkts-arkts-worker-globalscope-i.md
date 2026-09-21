@@ -1,5 +1,9 @@
 # GlobalScope
 
+```TypeScript
+declare interface GlobalScope extends WorkerEventTarget
+```
+
 Implements the running environment of the Worker thread. The GlobalScope class inherits from WorkerEventTarget.
 
 **Inheritance/Implementation:** GlobalScope extends [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)

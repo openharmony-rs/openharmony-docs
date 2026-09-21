@@ -1,5 +1,9 @@
 # HuksListAliasesReturnResult
 
+```TypeScript
+export interface HuksListAliasesReturnResult
+```
+
 返回的密钥别名数组。
 
 **起始版本：** 12

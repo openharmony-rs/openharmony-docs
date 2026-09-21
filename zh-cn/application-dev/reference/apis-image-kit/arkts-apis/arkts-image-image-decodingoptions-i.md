@@ -1,5 +1,9 @@
 # DecodingOptions
 
+```TypeScript
+interface DecodingOptions
+```
+
 图像解码设置选项。
 
 **起始版本：** 7

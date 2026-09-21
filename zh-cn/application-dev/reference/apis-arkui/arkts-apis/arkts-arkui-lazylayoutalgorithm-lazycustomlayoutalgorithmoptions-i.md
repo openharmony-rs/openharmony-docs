@@ -1,5 +1,9 @@
 # LazyCustomLayoutAlgorithmOptions
 
+```TypeScript
+interface LazyCustomLayoutAlgorithmOptions
+```
+
 自定义懒加载布局算法的构造入参，设置布局算法的主轴方向。
 
 **起始版本：** 26.0.0

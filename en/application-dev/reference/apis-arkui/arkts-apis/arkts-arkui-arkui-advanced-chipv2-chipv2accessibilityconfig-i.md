@@ -1,6 +1,10 @@
 # ChipV2AccessibilityConfig
 
-Defines accessibility config.
+```TypeScript
+export interface ChipV2AccessibilityConfig
+```
+
+Defines the accessibility attribute configuration.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,11 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 accessibilityDescription?: ResourceStr
 ```
 
-Set accessibility description.
+Accessibility description. This description is used to explain the current component to users in detail. You should provide comprehensive text descriptions to help users understand the actions to be performed and their consequences, especially when these consequences cannot be directly inferred from the component's attributes and accessibility text. When a component that is selected has both a text attribute and an accessibility description attribute, the system first reads the component's text attribute, followed by the accessibility description.
+
+Default value: empty string.
+
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -36,7 +44,21 @@ Set accessibility description.
 accessibilityLevel?: string
 ```
 
-Set accessibility level.
+Accessibility level. This attribute controls whether the component can be recognized by accessibility services.
+
+Supported values:
+
+**"auto"**: The attribute value of the current component is converted to **"yes"**.
+
+**"yes"**: The current component can be recognized by accessibility services.
+
+**"no"**: The current component cannot be recognized by accessibility services.
+
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.
+
+Default value: **"auto"**
+
+When the value is **undefined**, the default value is used.
 
 **Type:** string
 
@@ -56,7 +78,11 @@ Set accessibility level.
 accessibilityText?: ResourceStr
 ```
 
-Set accessibility text.
+Accessibility text. When a component has no text attribute, the screen reader does not read it aloud when this component is selected, making it difficult for users to identify the currently selected component. You can set accessibility text for such components so that the screen reader reads the text aloud, helping users identify the selected component.
+
+Default value: empty string.
+
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

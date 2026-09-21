@@ -1,5 +1,9 @@
 # ImsCallMode（系统接口）
 
+```TypeScript
+export enum ImsCallMode
+```
+
 IP多媒体系统调用模式。
 
 **起始版本：** 8

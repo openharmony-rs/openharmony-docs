@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="killprocessesbybundlename-1"></a>
+
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -57,48 +59,6 @@ try {
     console.info('killProcessesByBundleName success.');
   }).catch((err: BusinessError) => {
     console.error(`killProcessesByBundleName fail, code: ${err.code}, msg:${err.message}`);
-  });
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-
-function killProcessesByBundleNameCallback(err: BusinessError) {
-  if (err) {
-    console.error(`killProcessesByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
-  } else {
-    console.info('killProcessesByBundleNameCallback success.');
-  }
-}
-
-try {
-  appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-
-try {
-  appManager.killProcessesByBundleName(bundleName).then((data) => {
-    console.info('killProcessesByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;

@@ -1,5 +1,9 @@
 # PreferredNetworkMode (System API)
 
+```TypeScript
+export enum PreferredNetworkMode
+```
+
 Indicates the preferred network.
 
 **Since:** 8

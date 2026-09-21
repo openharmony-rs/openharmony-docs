@@ -1,5 +1,9 @@
 # ConnectionResult
 
+```TypeScript
+interface ConnectionResult
+```
+
 Represents the result of port connection parameter negotiation with a remote device.
 
 **Since:** 26.0.0

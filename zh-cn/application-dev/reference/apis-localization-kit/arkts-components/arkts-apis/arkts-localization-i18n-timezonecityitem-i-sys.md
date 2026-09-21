@@ -1,5 +1,9 @@
 # TimeZoneCityItem（系统接口）
 
+```TypeScript
+export interface TimeZoneCityItem
+```
+
 时区城市的组合信息。
 
 **起始版本：** 10
@@ -56,7 +60,7 @@ latitude: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -74,7 +78,7 @@ longitude: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

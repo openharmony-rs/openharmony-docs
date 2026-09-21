@@ -1,5 +1,9 @@
 # ImmersiveOptions
 
+```TypeScript
+interface ImmersiveOptions
+```
+
 Immersive material parameters.
 
 **Since:** 26.0.0
@@ -20,7 +24,7 @@ applyShadow?: boolean
 
 Whether to add a shadow effect for a material.
 
-If this parameter is set to **true**, the added shadow effect in the material always takes effect, which takes precedence over the general shadow attribute. If this parameter is set to **false**, only the general shadow attribute takes effect.
+If this parameter is set to **true**, the added shadow effect in the material always takes effect, which takes precedence over the general [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) attribute. If this parameter is set to **false**, only the general shadow attribute takes effect.
 
 Note: This parameter takes effect only for the display effect of devices with all levels of computing power.
 
@@ -50,7 +54,7 @@ Whether the subtree of the node of the material object automatically adapts the 
 
 **true** indicates that the material is automatically adapted to the complementary color of the background color only when the material layer is thin enough. The materials that can be adapted to the complementary color are defined by the system. Such materials must have at least the **THIN** or **ULTRA_THIN** style, and are related to the strength configuration of the immersive light effect of the application. The thinner the material and the stronger the immersive light effect, the more likely the material meets the requirements for adapting to the complementary color.
 
-The capability of automatically adapting the material to the complementary color takes effect only when special resource values are set for some attribute APIs. The attribute APIs include fontColor of the **Text** component, fontColor of the **Button** component, fontColor of the **SymbolGlyph** component, fillColor of the **Image** component, icon colors in placeholderColor, fontColor, and searchIcon of the **Search** component, icon colors in cancelButton, caret colors in caretStyle, and text and icon colors in [tabBar](../arkts-components/arkts-arkui-tabcontent-comp-attribute.md#tabbar) of the **TabContent** component when the [BottomTabBarStyle](../arkts-components/arkts-arkui-bottomtabbarstyle-c.md) style is used.
+The capability of automatically adapting the material to the complementary color takes effect only when special resource values are set for some attribute APIs. The attribute APIs include [fontColor](../arkts-components/arkts-arkui-text-comp-attribute.md#fontcolor) of the **Text** component, [fontColor](../arkts-components/arkts-arkui-button-comp-attribute.md#fontcolor) of the **Button** component, [fontColor](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor) of the **SymbolGlyph** component, [fillColor](../arkts-components/arkts-arkui-image-comp-attribute.md#fillcolor) of the **Image** component, icon colors in [placeholderColor](../arkts-components/arkts-arkui-search-comp-attribute.md#placeholdercolor), [fontColor](../arkts-components/arkts-arkui-search-comp-attribute.md#fontcolor), and [searchIcon](../arkts-components/arkts-arkui-search-comp-attribute.md#searchicon) of the **Search** component, icon colors in [cancelButton](../arkts-components/arkts-arkui-search-comp-attribute.md#cancelbutton), caret colors in [caretStyle](../arkts-components/arkts-arkui-search-comp-attribute.md#caretstyle), and text and icon colors in [tabBar](../arkts-components/arkts-arkui-tabcontent-comp-attribute.md#tabbar) of the **TabContent** component when the [BottomTabBarStyle](../arkts-components/arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) style is used.
 
 Note: This parameter takes effect only for the display effect of devices with high- and mid-level computing power.
 
@@ -118,7 +122,7 @@ Default value: **undefined**, indicating that the light sensing interaction feed
 materialColor?: ResourceColor
 ```
 
-Coloring of the material layer. For high- and mid-level computing power devices that support immersive materials, if this parameter is not set or is set to undefined, no additional pure color effect is blended. If this parameter is set to a valid color value, it blends an additional pure color effect into the material layer filter. If the color is completely opaque, the material layer filter effect will be blocked. For low-level computing power devices that support immersive materials, if this parameter is not set or is set to undefined, the built-in background color effect of the material for low-level computing power devices takes effect. If this parameter is set to a valid color value, it is used as the value of the backgroundColor attribute.
+Coloring of the material layer. For high- and mid-level computing power devices that support immersive materials, if this parameter is not set or is set to undefined, no additional pure color effect is blended. If this parameter is set to a valid color value, it blends an additional pure color effect into the material layer filter. If the color is completely opaque, the material layer filter effect will be blocked. For low-level computing power devices that support immersive materials, if this parameter is not set or is set to undefined, the built-in background color effect of the material for low-level computing power devices takes effect. If this parameter is set to a valid color value, it is used as the value of the [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor) attribute.
 
 Note: This parameter takes effect for the display effect of devices at all computing power levels that support immersive materials.
 

@@ -1,5 +1,9 @@
 # IPCSkeleton
 
+```TypeScript
+class IPCSkeleton
+```
+
 Obtains IPC context, including the UID and PID, local and remote device IDs, and whether the method is invoked on the same device.
 
 **Since:** 7

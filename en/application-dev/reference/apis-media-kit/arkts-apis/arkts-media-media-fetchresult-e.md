@@ -1,5 +1,9 @@
 # FetchResult
 
+```TypeScript
+enum FetchResult
+```
+
 Enumerates the results of obtaining thumbnails in batches.
 
 **Since:** 23

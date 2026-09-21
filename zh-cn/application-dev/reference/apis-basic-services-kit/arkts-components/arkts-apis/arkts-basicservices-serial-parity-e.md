@@ -1,5 +1,9 @@
 # Parity
 
+```TypeScript
+enum Parity
+```
+
 表示校验位的枚举。
 
 **起始版本：** 26.0.0

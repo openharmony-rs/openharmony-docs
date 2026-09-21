@@ -1,5 +1,9 @@
 # FaultType
 
+```TypeScript
+enum FaultType
+```
+
 Enumerates the fault types.
 
 **Since:** 8

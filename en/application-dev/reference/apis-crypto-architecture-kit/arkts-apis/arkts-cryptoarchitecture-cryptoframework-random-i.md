@@ -1,5 +1,9 @@
 # Random
 
+```TypeScript
+interface Random
+```
+
 Random interface, defining methods for generating random numbers. Before use, you must create a **Random** instance by using [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md).
 
 **Since:** 9
@@ -112,12 +116,70 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
-```TypeScript
-ArkTS example:
-```
+<a id="generaterandom-1"></a>
+
+## generateRandom
 
 ```TypeScript
+generateRandom(len: number): Promise<DataBlob>
+```
+
+Generates a random number of the specified length. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.CryptoFramework.Rand
+- API versions 9 to 11: SystemCapability.Security.CryptoFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| len | number | Yes | Length of the random number to generate, in bytes. The value range is [1, INT_MAX]. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the random number generated. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
+| [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
+
+**Examples**
+
+ArkTS example:
+
+```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rand = cryptoFramework.createRandom();
+let promiseGenerateRand = rand.generateRandom(12);
+promiseGenerateRand.then(randData => {
+  console.info('[Promise]: rand result: ' + randData.data);
+}).catch((error: BusinessError) => {
+  console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```
+
 JS example:
+
+```TypeScript
+<div class="container">
+    <text class="TestTitle">Crypto test</text>
+    <input class="btn" @click="RandTest">Rand asynchronous test</input>
+</div>
 ```
 
 ```TypeScript
@@ -177,48 +239,6 @@ export default {
 };
 ```
 
-## generateRandom
-
-```TypeScript
-generateRandom(len: number): Promise<DataBlob>
-```
-
-Generates a random number of the specified length. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.CryptoFramework.Rand
-- API versions 9 to 11: SystemCapability.Security.CryptoFramework
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| len | number | Yes | Length of the random number to generate, in bytes. The value range is [1, INT_MAX]. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md)&gt; | Promise used to return the random number generated. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
-| [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-
-**Examples**
-
-See [generateRandom](#generaterandom)
-
 ## generateRandomSync
 
 ```TypeScript
@@ -263,12 +283,33 @@ Generates a random number of the specified length. This API returns the result s
 
 **Examples**
 
-```TypeScript
 ArkTS example:
-```
 
 ```TypeScript
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let rand = cryptoFramework.createRandom();
+try {
+  let randData = rand.generateRandomSync(12);
+  if (randData != null) {
+    console.info('[Sync]: rand result: ' + randData.data);
+  } else {
+    console.error('[Sync]: get rand result: fail.');
+  }
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
+```
+
 JS example:
+
+```TypeScript
+<div class="container">
+    <text class="TestTitle">Crypto test</text>
+    <input class="btn" @click="RandTestSync">Rand synchronous test</input>
+</div>
 ```
 
 ```TypeScript

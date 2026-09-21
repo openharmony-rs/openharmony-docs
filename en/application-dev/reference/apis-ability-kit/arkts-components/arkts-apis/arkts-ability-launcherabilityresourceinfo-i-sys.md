@@ -1,5 +1,9 @@
 # LauncherAbilityResourceInfo (System API)
 
+```TypeScript
+export interface LauncherAbilityResourceInfo
+```
+
 The module provides resource information of the entry ability of an application, such as the icon and label. The information can be obtained by calling [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md).
 
 > **NOTE:** 

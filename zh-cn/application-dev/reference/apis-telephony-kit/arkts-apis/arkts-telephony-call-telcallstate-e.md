@@ -1,5 +1,9 @@
 # TelCallState
 
+```TypeScript
+export enum TelCallState
+```
+
 通话状态码。
 
 **起始版本：** 21

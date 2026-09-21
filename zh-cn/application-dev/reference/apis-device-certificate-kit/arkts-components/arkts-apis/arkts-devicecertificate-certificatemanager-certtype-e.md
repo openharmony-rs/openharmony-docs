@@ -1,5 +1,9 @@
 # CertType
 
+```TypeScript
+export enum CertType
+```
+
 表示证书类型。
 
 **起始版本：** 18

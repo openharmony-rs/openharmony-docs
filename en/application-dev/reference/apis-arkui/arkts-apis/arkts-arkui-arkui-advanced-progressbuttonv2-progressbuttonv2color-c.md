@@ -1,5 +1,9 @@
 # ProgressButtonV2Color
 
+```TypeScript
+export declare class ProgressButtonV2Color
+```
+
 Declare ProgressButtonV2 Color.
 
 **Since:** 18

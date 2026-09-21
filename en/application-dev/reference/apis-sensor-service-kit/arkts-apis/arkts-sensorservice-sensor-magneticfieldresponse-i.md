@@ -1,5 +1,9 @@
 # MagneticFieldResponse
 
+```TypeScript
+interface MagneticFieldResponse extends Response
+```
+
 Describes the magnetic field sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** MagneticFieldResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

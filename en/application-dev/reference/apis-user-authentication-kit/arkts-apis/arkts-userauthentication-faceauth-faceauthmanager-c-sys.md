@@ -1,5 +1,9 @@
 # FaceAuthManager (System API)
 
+```TypeScript
+class FaceAuthManager
+```
+
 Provides APIs for facial authentication management. It provides management features during face enrollment, including setting the **SurfaceId** of the face preview page.
 
 **Since:** 9
@@ -42,7 +46,7 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 setSurfaceId(surfaceId: string): void
 ```
 
-Sets the **SurfaceId** of the face preview page during face enrollment. This API must be used together with [addCredential](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#addcredential). Use the [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid) method to obtain the **SurfaceId** of the **XComponent** component to display the face preview page.
+Sets the **SurfaceId** of the face preview page during face enrollment. This API must be used together with [addCredential](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-useridentitymanager-c-sys.md#addcredential). Use the [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid) method to obtain the **SurfaceId** of the **XComponent** component to display the face preview page.
 
 **Since:** 9
 
@@ -56,7 +60,7 @@ Sets the **SurfaceId** of the face preview page during face enrollment. This API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| surfaceId | string | Yes | ID of the surface held by XComponent. This ID is used to display the face preview page during face enrollment. <br>**Note:** A valid **surfaceId** must be obtained through the [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid) method after **XComponent** initialization. An invalid **surfaceId** may cause the preview page to fail to display or the API call to fail. |
+| surfaceId | string | Yes | ID of the surface held by [XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent). This ID is used to display the face preview page during face enrollment. <br>**Note:** A valid **surfaceId** must be obtained through the [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid) method after **XComponent** initialization. An invalid **surfaceId** may cause the preview page to fail to display or the API call to fail. |
 
 **Error codes:**
 

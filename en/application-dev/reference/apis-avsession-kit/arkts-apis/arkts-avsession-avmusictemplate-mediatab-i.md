@@ -1,5 +1,9 @@
 # MediaTab
 
+```TypeScript
+interface MediaTab
+```
+
 The definition of the tab page.
 
 @interface MediaTab

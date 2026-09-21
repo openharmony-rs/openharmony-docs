@@ -1,5 +1,9 @@
 # Zip
 
+```TypeScript
+interface Zip
+```
+
 压缩解压缩对象实例，支持以zlib、deflate、gzip格式对数据进行压缩与解压。
 
 **起始版本：** 12
@@ -1522,9 +1526,7 @@ inflateBackInit()函数分配的所有内存都被释放。使用Promise异步�
 
 **示例**
 
-```TypeScript
 参考[inflateBack](#inflateback)中的示例代码。
-```
 
 ## inflateBackInit
 
@@ -1545,7 +1547,7 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | strm | [ZStream](arkts-basicservices-zlib-zstream-i.md) | 是 | 参考[ZStream定义](arkts-basicservices-zlib-zstream-i.md)。 |
-| windowBits | number | 是 | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br>zlib格式：[1, 15]。<br>gzip格式：大于1 5。<br>raw deflate格式：[-15, -1]。 |
+| windowBits | number | 是 | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br>zlib格式：[1, 15]。<br>gzip格式：大于15。<br>raw deflate格式：[-15, -1]。 |
 | window | ArrayBuffer | 是 | 预设的窗口缓冲区。 |
 
 **返回值：**
@@ -1563,9 +1565,7 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 
 **示例**
 
-```TypeScript
 参考[inflateBack](#inflateback)中的示例代码。
-```
 
 ## inflateCodesUsed
 

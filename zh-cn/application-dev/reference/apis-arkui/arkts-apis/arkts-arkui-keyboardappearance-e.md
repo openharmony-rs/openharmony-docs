@@ -1,5 +1,9 @@
 # KeyboardAppearance
 
+```TypeScript
+declare enum KeyboardAppearance
+```
+
 键盘外观。
 
 **起始版本：** 15

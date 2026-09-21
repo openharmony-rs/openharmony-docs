@@ -1,5 +1,9 @@
 # FailureCode
 
+```TypeScript
+declare enum FailureCode
+```
+
 Enumerates the errors codes available for failures in launching an atomic service.
 
 **Since:** 20

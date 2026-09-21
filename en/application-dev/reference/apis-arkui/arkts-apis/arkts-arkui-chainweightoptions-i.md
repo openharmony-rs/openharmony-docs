@@ -1,5 +1,9 @@
 # ChainWeightOptions
 
+```TypeScript
+declare interface ChainWeightOptions
+```
+
 Defines the layout weight of a component in a chain.
 
 **Since:** 14

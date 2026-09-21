@@ -56,27 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-    let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
-    const promise = sensor.getQuaternion(rotationVector);
-    promise.then((data: Array<number>) => {
-        for (let i = 0; i < data.length; i++) {
-            console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
-        }
-    }, (err: BusinessError) => {
-        console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
-    });
-} catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getquaternion-1"></a>
 
 ## getQuaternion
 
@@ -111,4 +92,23 @@ function getQuaternion(rotationVector: Array<number>): Promise<Array<number>>
 
 **示例**
 
-参见 [getQuaternion](#getquaternion)
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+    let rotationVector = [0.20046076, 0.21907, 0.73978853, 0.60376877];
+    const promise = sensor.getQuaternion(rotationVector);
+    promise.then((data: Array<number>) => {
+        for (let i = 0; i < data.length; i++) {
+            console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
+        }
+    }, (err: BusinessError) => {
+        console.error(`Failed to get quaternion. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to get quaternion. Code: ${e.code}, message: ${e.message}`);
+}
+```

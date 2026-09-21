@@ -1,5 +1,9 @@
 # String
 
+```TypeScript
+interface String
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -19,6 +23,8 @@ Replace all instances of a substring in a string, using a regular expression or 
 | --- | --- | --- | --- |
 | searchValue | string &#124; RegExp | Yes |  |
 | replaceValue | string | Yes |  |
+
+<a id="replaceall-1"></a>
 
 ## replaceAll
 

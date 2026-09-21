@@ -70,6 +70,43 @@ missionManager.unregisterMissionListener(listenerId, (error) => {
 });
 ```
 
+
+<a id="unregistermissionlistener-1"></a>
+
+## unregisterMissionListener
+
+```TypeScript
+function unregisterMissionListener(listenerId: number): Promise<void>
+```
+
+Unregisters a mission status listener. This API uses a promise to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [off](arkts-ability-missionmanager-off-f-sys.md)
+
+**Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Mission
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| listenerId | number | Yes | Index of the mission status listener to unregister. It is returned by **registerMissionListener()**. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
 import { BusinessError } from '@ohos.base';
@@ -108,40 +145,3 @@ missionManager.unregisterMissionListener(listenerId)
     console.error(`unregisterMissionListener failed. Code: ${error.code}, message: ${error.message}.`);
   });
 ```
-
-
-## unregisterMissionListener
-
-```TypeScript
-function unregisterMissionListener(listenerId: number): Promise<void>
-```
-
-Unregisters a mission status listener. This API uses a promise to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [off](arkts-ability-missionmanager-off-f-sys.md)
-
-**Required permissions:** ohos.permission.MANAGE_MISSIONS
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Mission
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| listenerId | number | Yes | Index of the mission status listener to unregister. It is returned by **registerMissionListener()**. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-See [unregisterMissionListener](#unregistermissionlistener)

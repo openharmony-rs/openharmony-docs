@@ -61,15 +61,8 @@ statistics.getUidTxBytes(uid, (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { statistics } from '@kit.NetworkKit';
 
-let uid = 123456789;  // This is a sample UID. Replace it with the actual UID.
-statistics.getUidTxBytes(uid).then((stats: number) => {
-  console.info(JSON.stringify(stats));
-});
-```
-
+<a id="getuidtxbytes-1"></a>
 
 ## getUidTxBytes
 
@@ -117,4 +110,11 @@ Obtains the total uplink traffic of the specified application from the last star
 
 **Examples**
 
-See [getUidTxBytes](#getuidtxbytes)
+```TypeScript
+import { statistics } from '@kit.NetworkKit';
+
+let uid = 123456789;  // This is a sample UID. Replace it with the actual UID.
+statistics.getUidTxBytes(uid).then((stats: number) => {
+  console.info(JSON.stringify(stats));
+});
+```

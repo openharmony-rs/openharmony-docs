@@ -69,36 +69,8 @@ try {
 }
 ```
 
-```TypeScript
-import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: unifiedDataChannel.Options = {
-  key: 'udmf://DataHub/com.ohos.test/0123456789'
-};
-
-try {
-  unifiedDataChannel.queryData(options).then((data) => {
-    console.info(`Succeeded in querying data. size = ${data.length}`);
-    for (let i = 0; i < data.length; i++) {
-      let records = data[i].getRecords();
-      for (let j = 0; j < records.length; j++) {
-        if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-          let text =
-            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-          console.info(`${i + 1}.${text.textContent}`);
-        }
-      }
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
-}
-```
-
+<a id="querydata-1"></a>
 
 ## queryData
 
@@ -136,4 +108,32 @@ function queryData(options: Options): Promise<Array<UnifiedData>>
 
 **示例**
 
-参见 [queryData](#querydata)
+```TypeScript
+import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: unifiedDataChannel.Options = {
+  key: 'udmf://DataHub/com.ohos.test/0123456789'
+};
+
+try {
+  unifiedDataChannel.queryData(options).then((data) => {
+    console.info(`Succeeded in querying data. size = ${data.length}`);
+    for (let i = 0; i < data.length; i++) {
+      let records = data[i].getRecords();
+      for (let j = 0; j < records.length; j++) {
+        if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
+          let text =
+            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          console.info(`${i + 1}.${text.textContent}`);
+        }
+      }
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
+}
+```

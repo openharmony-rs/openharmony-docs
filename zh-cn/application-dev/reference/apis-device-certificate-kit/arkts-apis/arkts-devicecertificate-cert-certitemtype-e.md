@@ -1,5 +1,9 @@
 # CertItemType
 
+```TypeScript
+enum CertItemType
+```
+
 表示获取证书字段的枚举。
 
 **起始版本：** 10

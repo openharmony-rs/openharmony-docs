@@ -1,5 +1,9 @@
 # SharingIfaceType（系统接口）
 
+```TypeScript
+export enum SharingIfaceType
+```
+
 网络共享类型。
 
 **起始版本：** 9

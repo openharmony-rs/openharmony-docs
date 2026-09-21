@@ -1,5 +1,9 @@
 # SatelliteStatusInfo
 
+```TypeScript
+export interface SatelliteStatusInfo
+```
+
 卫星状态信息。
 
 @interface SatelliteStatusInfo

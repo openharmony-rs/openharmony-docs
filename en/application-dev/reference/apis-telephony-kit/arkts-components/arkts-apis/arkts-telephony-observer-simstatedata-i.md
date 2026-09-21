@@ -1,5 +1,9 @@
 # SimStateData
 
+```TypeScript
+export interface SimStateData
+```
+
 Enumerates SIM card types and states.
 
 **Since:** 7

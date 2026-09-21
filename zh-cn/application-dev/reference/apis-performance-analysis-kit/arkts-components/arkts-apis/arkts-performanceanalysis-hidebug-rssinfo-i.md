@@ -1,5 +1,9 @@
 # RssInfo
 
+```TypeScript
+interface RssInfo
+```
+
 描述应用进程的物理内存信息。
 
 **起始版本：** 24
@@ -24,6 +28,8 @@ rss: bigint
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
@@ -39,6 +45,8 @@ swapRss: bigint
 **类型：** bigint
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 

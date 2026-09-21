@@ -1,5 +1,9 @@
 # MediaError
 
+```TypeScript
+enum MediaError
+```
+
 播放器的错误类型。
 
 **起始版本：** 12

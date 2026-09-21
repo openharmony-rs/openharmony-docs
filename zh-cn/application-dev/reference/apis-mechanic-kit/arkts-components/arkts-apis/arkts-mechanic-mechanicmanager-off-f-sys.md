@@ -33,3 +33,13 @@ Unregister a listener for axis state changes.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
+
+**示例**
+
+```TypeScript
+console.info('Unregister Axis Status listener');
+mechanicManager.off("rotationAxesStatusChange", (result: mechanicManager.RotationAxesStateChangeInfo) => {
+  console.info(`'result:' ${result}`);
+});
+console.info('Unregister successfully');
+```

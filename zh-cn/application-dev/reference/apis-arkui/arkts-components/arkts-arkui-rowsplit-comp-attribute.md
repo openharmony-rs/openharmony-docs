@@ -1,10 +1,14 @@
 # RowSplit属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性：
+```TypeScript
+declare class RowSplitAttribute extends CommonMethod<RowSplitAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** RowSplitAttribute extends CommonMethod&lt;RowSplitAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** RowSplitAttribute extends CommonMethod<RowSplitAttribute>
 
 **起始版本：** 7
 

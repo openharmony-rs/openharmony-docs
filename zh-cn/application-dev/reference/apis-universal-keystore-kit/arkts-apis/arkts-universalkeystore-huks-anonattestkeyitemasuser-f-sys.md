@@ -58,6 +58,110 @@ function anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: 
 
 **示例**
 
-```TypeScript
 以下代码示例接口调用的前置条件同上文generateKeyItemAsUser的前置条件
+
+```TypeScript
+/* 以RSA匿名密钥证明为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const rsaKeyAlias = 'test_rsaKeyAlias';
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+
+const securityLevel = stringToUint8Array('sec_level');
+const challenge = stringToUint8Array('challenge_data');
+const versionInfo = stringToUint8Array('version_info');
+
+function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
+  return [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_4096
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+    value: userIdStorageLevel,
+  }]
+}
+/* 1. 生成密钥 */
+async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
+  const options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
+  }).catch((err: BusinessError) => {
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
+  })
+}
+
+function GetAttestKeyProperties(keyAlias: string): Array<huks.HuksParam> {
+  return new Array<huks.HuksParam>({
+    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
+    value: securityLevel
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+    value: challenge
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_VERSION_INFO,
+    value: versionInfo
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+    value: stringToUint8Array(keyAlias)
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+    value: userIdStorageLevel,
+  })
+}
+/* 2. 获取匿名化密钥证书 */
+async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>) {
+  let attestOptions: huks.HuksOptions = {
+    properties: keyOptions,
+  }
+  console.info('开始匿名attest')
+  await huks.anonAttestKeyItemAsUser(userId, keyAlias, attestOptions).then((data) => {
+    console.info('匿名attestation ok!')
+    console.debug(`拿到的证书链是${JSON.stringify(data)}`)
+    for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
+      console.info(`证书${i}是${data.certChains[i]}`)
+    }
+    console.info('匿名 attest 成功')
+  }).catch((err: BusinessError) => {
+    console.error(`匿名 attest 失败，错误码是：${err.code} 错误码信息：${err.message}`)
+  })
+}
+
+
+async function TestHuksAnonAttest() {
+  await GenerateKey(rsaKeyAlias, GetRSA4096GenerateProperties())
+  await LetKeyAnonAttest(rsaKeyAlias, GetAttestKeyProperties(rsaKeyAlias))
+}
+
+export default function HuksAsUserTest() {
+  console.info('begin huks as user test')
+  TestHuksAnonAttest()
+}
 ```

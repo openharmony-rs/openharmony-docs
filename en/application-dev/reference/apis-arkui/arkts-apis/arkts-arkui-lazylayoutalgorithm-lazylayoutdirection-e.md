@@ -1,5 +1,9 @@
 # LazyLayoutDirection
 
+```TypeScript
+export enum LazyLayoutDirection
+```
+
 Defines the direction of lazy layout.
 
 **Since:** 26.0.0

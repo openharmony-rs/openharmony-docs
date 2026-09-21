@@ -1,5 +1,9 @@
 # PrintColorMode
 
+```TypeScript
+enum PrintColorMode
+```
+
 打印色彩模式的枚举。
 
 **起始版本：** 11

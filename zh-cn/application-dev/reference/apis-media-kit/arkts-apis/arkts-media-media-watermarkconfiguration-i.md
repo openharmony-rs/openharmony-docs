@@ -1,5 +1,9 @@
 # WatermarkConfiguration
 
+```TypeScript
+interface WatermarkConfiguration
+```
+
 添加水印的配置参数。水印位置以视频左上角为原点计算。
 
 **起始版本：** 26.0.0

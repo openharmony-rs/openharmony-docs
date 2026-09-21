@@ -1,5 +1,9 @@
 # DockInfo
 
+```TypeScript
+interface DockInfo
+```
+
 快捷栏中的应用信息。
 
 **起始版本：** 24

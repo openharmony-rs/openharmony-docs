@@ -1,5 +1,9 @@
 # MeasureOptions
 
+```TypeScript
+export interface MeasureOptions
+```
+
 Provides attributes of the measured text.
 
 **Since:** 9

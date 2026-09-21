@@ -140,6 +140,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | [PATTERN_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_number) | 数字编辑框。 |
 | [PATTERN_NUMBER_DECIMAL](arkts-ime-inputmethodengine-con.md#pattern_number_decimal) | 带小数点的数字编辑框。 |
 | [PATTERN_ONE_TIME_CODE](arkts-ime-inputmethodengine-con.md#pattern_one_time_code) | 验证码编辑框。 |
+| [PATTERN_ONE_TIME_CODE_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_one_time_code_number) | 数字验证码编辑框。固定为15。取值限定为整数。 |
 | [PATTERN_PASSWORD](arkts-ime-inputmethodengine-con.md#pattern_password) | 密码编辑框。 |
 | [PATTERN_PASSWORD_NUMBER](arkts-ime-inputmethodengine-con.md#pattern_password_number) | 数字密码编辑框。 |
 | [PATTERN_PASSWORD_SCREEN_LOCK](arkts-ime-inputmethodengine-con.md#pattern_password_screen_lock) | 锁屏密码编辑框。 |

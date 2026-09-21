@@ -1,5 +1,9 @@
 # StrongAssociationType（系统接口）
 
+```TypeScript
+enum StrongAssociationType
+```
+
 枚举，表示图片的强关联类型。
 
 **起始版本：** 20

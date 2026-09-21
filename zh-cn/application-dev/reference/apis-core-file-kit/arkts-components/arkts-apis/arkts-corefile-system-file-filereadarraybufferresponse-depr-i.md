@@ -1,5 +1,9 @@
 # FileReadArrayBufferResponse
 
+```TypeScript
+export interface FileReadArrayBufferResponse
+```
+
 文件读取返回，包含读取到的文件内容。
 
 **起始版本：** 3

@@ -1,5 +1,9 @@
 # KVStoreType
 
+```TypeScript
+enum KVStoreType
+```
+
 分布式键值数据库类型枚举。
 
 **起始版本：** 9

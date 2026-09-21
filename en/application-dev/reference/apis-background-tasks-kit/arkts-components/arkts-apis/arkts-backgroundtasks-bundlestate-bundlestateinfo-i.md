@@ -1,5 +1,9 @@
 # BundleStateInfo
 
+```TypeScript
+interface BundleStateInfo
+```
+
 **Since:** 7
 
 **Deprecated since:** 9

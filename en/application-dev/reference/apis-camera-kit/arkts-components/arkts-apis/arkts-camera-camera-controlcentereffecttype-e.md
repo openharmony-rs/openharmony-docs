@@ -1,5 +1,9 @@
 # ControlCenterEffectType
 
+```TypeScript
+enum ControlCenterEffectType
+```
+
 Enumerates the effect types supported by the camera controller.
 
 **Since:** 20

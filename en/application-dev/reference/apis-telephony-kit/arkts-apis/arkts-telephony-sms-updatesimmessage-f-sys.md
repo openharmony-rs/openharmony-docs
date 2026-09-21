@@ -59,25 +59,8 @@ sms.updateSimMessage(updateSimMessageOptions, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let updateSimMessageOptions: sms.UpdateSimMessageOptions = {
-    slotId: 0,
-    msgIndex: 1,
-    newStatus: sms.SimMessageStatus.SIM_MESSAGE_STATUS_FREE,
-    pdu: "xxxxxxx",
-    smsc: "test"
-};
-let promise = sms.updateSimMessage(updateSimMessageOptions);
-promise.then(() => {
-    console.info(`updateSimMessage success.`);
-}).catch((err: BusinessError) => {
-    console.error(`updateSimMessage failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="updatesimmessage-1"></a>
 
 ## updateSimMessage
 
@@ -121,4 +104,21 @@ Updates a SIM message. This API uses a promise to return the result.
 
 **Examples**
 
-See [updateSimMessage](#updatesimmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let updateSimMessageOptions: sms.UpdateSimMessageOptions = {
+    slotId: 0,
+    msgIndex: 1,
+    newStatus: sms.SimMessageStatus.SIM_MESSAGE_STATUS_FREE,
+    pdu: "xxxxxxx",
+    smsc: "test"
+};
+let promise = sms.updateSimMessage(updateSimMessageOptions);
+promise.then(() => {
+    console.info(`updateSimMessage success.`);
+}).catch((err: BusinessError) => {
+    console.error(`updateSimMessage failed, promise: err->${JSON.stringify(err)}`);
+});
+```

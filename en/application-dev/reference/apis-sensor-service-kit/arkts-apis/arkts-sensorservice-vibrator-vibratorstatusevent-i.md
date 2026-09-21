@@ -1,5 +1,9 @@
 # VibratorStatusEvent
 
+```TypeScript
+interface VibratorStatusEvent
+```
+
 Defines the vibrator status change event.
 
 **Since:** 19

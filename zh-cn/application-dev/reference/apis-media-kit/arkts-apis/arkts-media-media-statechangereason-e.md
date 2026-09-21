@@ -1,5 +1,9 @@
 # StateChangeReason
 
+```TypeScript
+enum StateChangeReason
+```
+
 表示播放或录制实例状态机切换原因的枚举，伴随state一起上报。
 
 **起始版本：** 9

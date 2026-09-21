@@ -1,5 +1,9 @@
 # SourceType（系统接口）
 
+```TypeScript
+export enum SourceType
+```
+
 用户场景触发源类型枚举。
 
 **起始版本：** 12

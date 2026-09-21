@@ -1,5 +1,9 @@
 # BlinkResultCode (System API)
 
+```TypeScript
+export enum BlinkResultCode
+```
+
 Enumerates the result codes of blinking operations.
 
 **Since:** 26.0.0

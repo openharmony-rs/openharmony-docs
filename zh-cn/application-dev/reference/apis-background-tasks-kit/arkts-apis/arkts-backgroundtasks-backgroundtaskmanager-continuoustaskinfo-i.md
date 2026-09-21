@@ -1,5 +1,9 @@
 # ContinuousTaskInfo
 
+```TypeScript
+interface ContinuousTaskInfo
+```
+
 长时任务信息。
 
 **起始版本：** 20

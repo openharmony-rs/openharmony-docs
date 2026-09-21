@@ -1,8 +1,10 @@
 # VolumeGroupInfo（系统接口）
 
-音量组信息。
+```TypeScript
+interface VolumeGroupInfo
+```
 
-@typedef VolumeGroupInfo
+音量组信息。
 
 **起始版本：** 9
 

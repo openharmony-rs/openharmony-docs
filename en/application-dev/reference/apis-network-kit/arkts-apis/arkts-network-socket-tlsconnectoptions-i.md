@@ -1,5 +1,9 @@
 # TLSConnectOptions
 
+```TypeScript
+export interface TLSConnectOptions
+```
+
 Defines TLS connection options.
 
 **Since:** 9

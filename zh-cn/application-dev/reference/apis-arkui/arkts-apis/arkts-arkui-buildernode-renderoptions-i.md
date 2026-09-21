@@ -1,5 +1,9 @@
 # RenderOptions
 
+```TypeScript
+export interface RenderOptions
+```
+
 创建BuilderNode时的可选参数。
 
 **起始版本：** 11
@@ -32,7 +36,7 @@ selfIdealSize?: Size
 surfaceId?: string
 ```
 
-纹理接收方的surfaceId。纹理接收方一般为OH_NativeImage。
+纹理接收方的surfaceId。纹理接收方一般为[OH_NativeImage](../../../reference/apis-arkgraphics2d/c-apis/capi-oh-nativeimage.md)。
 
 surfaceId仅当type为NodeRenderType.RENDER_TYPE_TEXTURE时生效。
 

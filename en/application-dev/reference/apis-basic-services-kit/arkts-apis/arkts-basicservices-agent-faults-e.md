@@ -1,5 +1,9 @@
 # Faults
 
+```TypeScript
+enum Faults
+```
+
 Defines the cause of a task failure.
 
 > **NOTE:** 

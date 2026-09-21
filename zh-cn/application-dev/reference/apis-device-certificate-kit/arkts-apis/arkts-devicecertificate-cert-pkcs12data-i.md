@@ -1,5 +1,9 @@
 # Pkcs12Data
 
+```TypeScript
+interface Pkcs12Data
+```
+
 P12（PKCS #12）数据，包含私钥、证书和其他证书。
 
 **起始版本：** 18

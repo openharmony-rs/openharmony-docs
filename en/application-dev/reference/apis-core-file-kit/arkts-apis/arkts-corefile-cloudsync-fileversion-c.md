@@ -1,5 +1,9 @@
 # FileVersion
 
+```TypeScript
+class FileVersion
+```
+
 Represents the device-cloud file version management class. It allows you to manage historical versions of client- cloud files, obtain the list of historical versions, download historical versions to the local device, replace the current local file with a historical version file, and query and remove conflict flags for version conflicts.
 
 **Since:** 20
@@ -90,6 +94,12 @@ A constructor used to create a **FileVersion** instance.
 | Error Code ID | Error Message |
 | --- | --- |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+**Examples**
+
+```TypeScript
+let fileVersion = new cloudSync.FileVersion();
+```
 
 ## downloadHistoryVersion
 

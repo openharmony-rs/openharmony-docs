@@ -1,5 +1,9 @@
 # CameraStatusInfo
 
+```TypeScript
+interface CameraStatusInfo
+```
+
 相机管理器回调返回的接口实例，该实例表示相机状态信息。
 
 **起始版本：** 10

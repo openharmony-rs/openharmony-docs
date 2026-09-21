@@ -1,5 +1,9 @@
 # AutoFinalizerCleaner
 
+```TypeScript
+class AutoFinalizerCleaner<T>
+```
+
 用于通过开发者自定义回调释放由开发者管理的资源的 cleaner。
 
 **起始版本：** 22

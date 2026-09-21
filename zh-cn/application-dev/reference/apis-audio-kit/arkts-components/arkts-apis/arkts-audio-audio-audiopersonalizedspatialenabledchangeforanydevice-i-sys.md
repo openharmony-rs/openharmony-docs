@@ -1,5 +1,9 @@
 # AudioPersonalizedSpatialEnabledChangeForAnyDevice（系统接口）
 
+```TypeScript
+interface AudioPersonalizedSpatialEnabledChangeForAnyDevice
+```
+
 此接口用于通知监听器任何设备个性化空间化启用状态的变化。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # WindowStateInfo
 
+```TypeScript
+interface WindowStateInfo
+```
+
 应用窗口状态信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # WindowAnimationConfig
 
+```TypeScript
+interface WindowAnimationConfig
+```
+
 Describes the configuration for window animation.
 
 **Since:** 20

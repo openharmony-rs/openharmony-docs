@@ -32,3 +32,18 @@ Subscribes to the word selection completion event. This API is used together wit
 | Error Code ID | Error Message |
 | --- | --- |
 | [33600003](../errorcode-selection.md#33600003-api-caller-and-word-selection-application-mismatched) | The application calling the API does not match the application selected in the system settings. |
+
+**Examples**
+
+```TypeScript
+import { selectionManager } from '@kit.BasicServicesKit';
+
+try {
+  // Subscribe to the word selection completion event.
+  selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
+    console.info('Enter the callback function.');
+  });
+} catch (err) {
+  console.error(`Failed to register selectionCompleted callback. Error code: ${err.code}, error message: ${err.message}`);
+}
+```

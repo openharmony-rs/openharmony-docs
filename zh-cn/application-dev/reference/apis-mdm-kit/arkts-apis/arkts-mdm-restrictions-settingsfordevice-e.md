@@ -1,5 +1,9 @@
 # SettingsForDevice
 
+```TypeScript
+enum SettingsForDevice
+```
+
 设备设置项枚举。
 
 **起始版本：** 26.0.0

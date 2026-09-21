@@ -1,5 +1,9 @@
 # BundleActiveInfoResponse
 
+```TypeScript
+interface BundleActiveInfoResponse
+```
+
 **起始版本：** 7
 
 **废弃版本：** 9

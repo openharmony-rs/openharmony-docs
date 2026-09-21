@@ -1,5 +1,9 @@
 # CloseResult
 
+```TypeScript
+export interface CloseResult
+```
+
 关闭WebSocket连接时，订阅close事件得到的关闭结果。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # MediaInfo
 
+```TypeScript
+interface MediaInfo
+```
+
 Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) callback. The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
 
 **Since:** 12

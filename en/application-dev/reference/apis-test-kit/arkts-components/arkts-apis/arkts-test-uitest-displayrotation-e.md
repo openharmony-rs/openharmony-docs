@@ -1,5 +1,9 @@
 # DisplayRotation
 
+```TypeScript
+declare enum DisplayRotation
+```
+
 Describes the display rotation of the device.
 
 **Since:** 9

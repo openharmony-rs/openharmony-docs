@@ -1,5 +1,9 @@
 # WhiteBalanceMode
 
+```TypeScript
+enum WhiteBalanceMode
+```
+
 Enumerates the white balance modes.
 
 **Since:** 20

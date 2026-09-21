@@ -1,5 +1,9 @@
 # VibratorPattern
 
+```TypeScript
+interface VibratorPattern
+```
+
 马达振动序列，每个events代表一个振动事件。通过[VibratorPatternBuilder.build](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#build)方法生成，作为[VibrateFromPattern](arkts-sensorservice-vibrator-vibratefrompattern-i.md)的pattern参数传入[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)接口触发振动。
 
 **起始版本：** 18

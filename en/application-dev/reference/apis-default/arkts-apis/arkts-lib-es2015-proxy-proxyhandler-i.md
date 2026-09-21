@@ -1,5 +1,9 @@
 # ProxyHandler
 
+```TypeScript
+interface ProxyHandler<T extends object>
+```
+
 ## Modules to Import
 
 ```TypeScript

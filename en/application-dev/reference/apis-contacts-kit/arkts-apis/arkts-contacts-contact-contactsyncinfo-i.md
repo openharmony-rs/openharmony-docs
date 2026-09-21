@@ -1,5 +1,9 @@
 # ContactSyncInfo
 
+```TypeScript
+interface ContactSyncInfo
+```
+
 Information about contact synchronization for the calling application.
 
 **Since:** 26.0.0

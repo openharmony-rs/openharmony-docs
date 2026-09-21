@@ -1,5 +1,9 @@
 # BondState
 
+```TypeScript
+enum BondState
+```
+
 The enum of bond state.
 
 **Since:** 10

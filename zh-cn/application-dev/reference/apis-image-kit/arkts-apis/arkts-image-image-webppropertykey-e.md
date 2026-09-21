@@ -1,5 +1,9 @@
 # WebPPropertyKey
 
+```TypeScript
+enum WebPPropertyKey
+```
+
 表示WebP图片信息的枚举。
 
 **起始版本：** 24

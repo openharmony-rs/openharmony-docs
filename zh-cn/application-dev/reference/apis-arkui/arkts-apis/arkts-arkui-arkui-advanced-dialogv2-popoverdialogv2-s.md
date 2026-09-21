@@ -1,5 +1,9 @@
 # PopoverDialogV2
 
+```TypeScript
+export declare struct PopoverDialogV2
+```
+
 跟手弹出框，基于目标组件位置弹出，上述的TipsDialogV2、SelectDialogV2、ConfirmDialogV2、AlertDialogV2、LoadingDialogV2、CustomContentDialogV2都可作为弹出框内容。适用于需要跟随目标组件位置显示的场景，如工具提示、操作引导等。
 
 **起始版本：** 18
@@ -62,7 +66,7 @@ targetBuilder: CustomBuilder
 
 跟手弹出框基于的目标组件。
 
-**类型：** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
+**类型：** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **起始版本：** 18
 

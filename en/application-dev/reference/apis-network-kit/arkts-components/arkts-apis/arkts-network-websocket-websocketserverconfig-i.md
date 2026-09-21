@@ -1,5 +1,9 @@
 # WebSocketServerConfig
 
+```TypeScript
+export interface WebSocketServerConfig
+```
+
 Defines the WebSocketServer configuration.
 
 **Since:** 19

@@ -13,9 +13,11 @@ export function getRemoteGrantStatus(): Promise<RemoteGrantStatus>
 
 Gets the remote grant status. This function queries whether the remote authorization feature is enabled or disabled. When enabled, the device can grant permissions to remote devices; when disabled, remote authorization is not allowed.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -25,7 +27,7 @@ Gets the remote grant status. This function queries whether the remote authoriza
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[RemoteGrantStatus](arkts-ability-abilitytoolaccessctrl-remotegrantstatus-e-sys.md)&gt; | Promise used to return &#36;{RemoteGrantStatus}. |
+| Promise&lt;[RemoteGrantStatus](arkts-ability-abilitytoolaccessctrl-remotegrantstatus-e-sys.md)&gt; | Promise used to return ${RemoteGrantStatus}. |
 
 **Error codes:**
 

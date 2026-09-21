@@ -1,5 +1,9 @@
 # IpConfig（系统接口）
 
+```TypeScript
+interface IpConfig
+```
+
 IPv4配置信息。
 
 **起始版本：** 7

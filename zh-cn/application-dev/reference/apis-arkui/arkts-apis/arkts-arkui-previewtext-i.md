@@ -1,5 +1,9 @@
 # PreviewText
 
+```TypeScript
+declare interface PreviewText
+```
+
 预上屏信息。
 
 **起始版本：** 12

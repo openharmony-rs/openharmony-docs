@@ -1,5 +1,9 @@
 # MainThreadJankPolicy
 
+```TypeScript
+interface MainThreadJankPolicy
+```
+
 Defines the configuration policy for the main thread jank event.
 
 **Since:** 22

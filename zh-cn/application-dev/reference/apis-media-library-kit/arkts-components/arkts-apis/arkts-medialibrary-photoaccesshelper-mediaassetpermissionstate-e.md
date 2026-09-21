@@ -1,5 +1,9 @@
 # MediaAssetPermissionState
 
+```TypeScript
+enum MediaAssetPermissionState
+```
+
 枚举，媒体库资产读权限状态。
 
 **起始版本：** 26.0.0

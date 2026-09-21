@@ -48,6 +48,70 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 
 ## 示例
 
-```TypeScript
 从API version 18开始，该示例展示了ArcSlider组件的基本用法。
+
+```TypeScript
+// xxx.ets
+import {
+  ArcSlider,
+  ArcSliderPosition,
+  ArcSliderOptions,
+  ArcSliderValueOptions,
+  ArcSliderLayoutOptions,
+  ArcSliderStyleOptions,
+  ArcSliderValueOptionsConstructorOptions,
+  ArcSliderLayoutOptionsConstructorOptions,
+  ArcSliderStyleOptionsConstructorOptions,
+  ArcSliderOptionsConstructorOptions
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ArcSliderExample {
+  valueOptionsConstructorOptions: ArcSliderValueOptionsConstructorOptions = {
+    progress: 60,
+    min: 10,
+    max: 110
+  };
+
+  layoutOptionsConstructorOptions: ArcSliderLayoutOptionsConstructorOptions = {
+    reverse: true,
+    position: ArcSliderPosition.RIGHT
+  };
+  styleOptionsConstructorOptions: ArcSliderStyleOptionsConstructorOptions = {
+    trackThickness: 8,
+    activeTrackThickness: 30,
+    trackColor: '#ffd5d5d5',
+    selectedColor: '#ff2787d9',
+    trackBlur: 20
+  };
+  valueOptions: ArcSliderValueOptions = new ArcSliderValueOptions(this.valueOptionsConstructorOptions);
+  layoutOptions: ArcSliderLayoutOptions = new ArcSliderLayoutOptions(this.layoutOptionsConstructorOptions);
+  styleOptions: ArcSliderStyleOptions = new ArcSliderStyleOptions(this.styleOptionsConstructorOptions);
+  // 配置ArcSlider完整选项：数值、布局、样式、表冠灵敏度以及触摸/变化/放大事件回调
+  arcSliderOptionsConstructorOptions: ArcSliderOptionsConstructorOptions = {
+    valueOptions: this.valueOptions,
+    layoutOptions: this.layoutOptions,
+    styleOptions: this.styleOptions,
+    digitalCrownSensitivity: CrownSensitivity.LOW,
+    onTouch: (event: TouchEvent) => {
+      // ...
+    },
+    onChange: (progress: number) => {
+      // ...
+    },
+    onEnlarge: (isEnlarged: boolean) => {
+      // ...
+    }
+  };
+  arcSliderOptions: ArcSliderOptions = new ArcSliderOptions(this.arcSliderOptionsConstructorOptions);
+
+  build() {
+    Column() {
+      // 创建ArcSlider组件，传入配置选项
+      ArcSlider({ options: this.arcSliderOptions })
+    }
+    .width('100%')
+  }
+}
 ```

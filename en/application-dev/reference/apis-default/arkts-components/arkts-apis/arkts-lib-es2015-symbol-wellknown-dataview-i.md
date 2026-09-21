@@ -1,5 +1,9 @@
 # DataView
 
+```TypeScript
+interface DataView
+```
+
 ## Modules to Import
 
 ```TypeScript

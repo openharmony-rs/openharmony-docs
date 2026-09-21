@@ -1,5 +1,9 @@
 # OISMode
 
+```TypeScript
+enum OISMode
+```
+
 枚举，光学防抖（Optical Image Stabilization）模式。
 
 **起始版本：** 24

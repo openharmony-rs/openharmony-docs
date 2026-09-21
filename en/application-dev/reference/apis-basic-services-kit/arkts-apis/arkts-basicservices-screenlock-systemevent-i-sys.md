@@ -1,5 +1,9 @@
 # SystemEvent (System API)
 
+```TypeScript
+interface SystemEvent
+```
+
 Indicates the system event type and parameter related to the screenlock management service.
 
 @typedef SystemEvent

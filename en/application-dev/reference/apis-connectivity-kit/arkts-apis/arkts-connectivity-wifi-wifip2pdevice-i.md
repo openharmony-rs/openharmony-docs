@@ -1,5 +1,9 @@
 # WifiP2pDevice
 
+```TypeScript
+interface WifiP2pDevice
+```
+
 P2P device information.
 
 @interface WifiP2pDevice

@@ -1,5 +1,9 @@
 # Array
 
+```TypeScript
+class Array<T> implements ConcatArray<T>
+```
+
 A linear data structure that is implemented on arrays and can be passed between ArkTS concurrent instances. Pass-by-reference is recommended for better transfer performance.
 
 > **NOTE:** 
@@ -134,6 +138,8 @@ A constructor used to create an empty ArkTS array.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Array's constructor cannot be directly invoked. |
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -160,6 +166,8 @@ A constructor used to create an ArkTS array with the given elements.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Array's constructor cannot be directly invoked. |
+
+<a id="constructor-2"></a>
 
 ## constructor
 
@@ -195,11 +203,11 @@ containsAll(elements: Array<T>): boolean
 
 Checks whether all elements in a specified ArkTS Array are contained in this ArkTS Array.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -222,6 +230,8 @@ Checks whether all elements in a specified ArkTS Array are contained in this Ark
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The containsAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
+<a id="containsall-1"></a>
+
 ## containsAll
 
 ```TypeScript
@@ -230,11 +240,11 @@ containsAll(elements: readonly T[]): boolean
 
 Checks whether all elements in a specified JavaScript built-in Array are contained in this ArkTS Array.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -614,6 +624,8 @@ Creates an ArkTS array from an array-like object.
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The from method cannot be bound.<br>**Applicable version:** 12 - 17 |
 
+<a id="from-1"></a>
+
 ## from
 
 ```TypeScript
@@ -646,6 +658,8 @@ Creates an ArkTS array from an iterable object.
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The from method cannot be bound.<br>**Applicable version:** 12 - 17 |
 
+<a id="from-2"></a>
+
 ## from
 
 ```TypeScript
@@ -672,6 +686,8 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 | Type | Description |
 | --- | --- |
 | Array&lt;T&gt; | Newly created ArkTS array. |
+
+<a id="from-3"></a>
 
 ## from
 
@@ -1040,6 +1056,8 @@ Calls a callback function for each element in this ArkTS array, uses the previou
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="reduce-1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -1111,6 +1129,8 @@ This API is similar to the [reduceRight](#reduceright-1) API, but it takes an in
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="reduceright-1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -1152,11 +1172,11 @@ retainAll(elements: Array<T>): boolean
 
 Retains only the elements in this ArkTS Array that are contained in the specified ArkTS Array.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1179,6 +1199,8 @@ Retains only the elements in this ArkTS Array that are contained in the specifie
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
+<a id="retainall-1"></a>
+
 ## retainAll
 
 ```TypeScript
@@ -1187,11 +1209,11 @@ retainAll(elements: readonly T[]): boolean
 
 Retains only the elements in this ArkTS Array that are contained in the specified JavaScript built-in Array.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1214,6 +1236,8 @@ Retains only the elements in this ArkTS Array that are contained in the specifie
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
+<a id="retainall-2"></a>
+
 ## retainAll
 
 ```TypeScript
@@ -1222,11 +1246,11 @@ retainAll(predicate: ArrayElementPredicateFn<T>): boolean
 
 Retains only the elements in this ArkTS Array that satisfy the specified predicate.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1466,6 +1490,8 @@ Removes elements from a specified position (start) and all elements after the sp
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
+
+<a id="splice-1"></a>
 
 ## splice
 

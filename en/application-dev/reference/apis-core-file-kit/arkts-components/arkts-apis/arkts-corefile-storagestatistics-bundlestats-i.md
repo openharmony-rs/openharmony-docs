@@ -1,5 +1,9 @@
 # BundleStats
 
+```TypeScript
+export interface BundleStats
+```
+
 Get the bundle statistics.
 
 **Since:** 9

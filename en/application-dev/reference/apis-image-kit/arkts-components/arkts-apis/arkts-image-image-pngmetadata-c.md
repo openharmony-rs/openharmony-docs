@@ -1,5 +1,9 @@
 # PngMetadata
 
+```TypeScript
+class PngMetadata
+```
+
 Png metadata.
 
 **Since:** 26.0.0

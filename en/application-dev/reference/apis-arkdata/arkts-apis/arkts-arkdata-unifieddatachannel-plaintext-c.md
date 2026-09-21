@@ -1,5 +1,9 @@
 # PlainText
 
+```TypeScript
+class PlainText extends Text
+```
+
 Represents the plain text data. It is a child class of [Text](arkts-arkdata-unifieddatachannel-text-c.md).
 
 **Inheritance/Implementation:** PlainText extends [Text](arkts-arkdata-unifieddatachannel-text-c.md)

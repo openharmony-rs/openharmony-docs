@@ -1,5 +1,9 @@
 # PlayInfo
 
+```TypeScript
+interface PlayInfo
+```
+
 The definition of play information.
 
 @interface PlayInfo

@@ -1,5 +1,9 @@
 # BundleActiveInfoResponse
 
+```TypeScript
+interface BundleActiveInfoResponse
+```
+
 **Since:** 7
 
 **Deprecated since:** 9

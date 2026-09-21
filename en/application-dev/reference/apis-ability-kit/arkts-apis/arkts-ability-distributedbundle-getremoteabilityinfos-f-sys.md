@@ -35,6 +35,8 @@ Obtains the information about remote abilities that match the given element name
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the remote ability information. |
 
 
+<a id="getremoteabilityinfos-1"></a>
+
 ## getRemoteAbilityInfos
 
 ```TypeScript

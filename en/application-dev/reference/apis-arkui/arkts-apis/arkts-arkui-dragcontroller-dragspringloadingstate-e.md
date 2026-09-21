@@ -1,5 +1,9 @@
 # DragSpringLoadingState
 
+```TypeScript
+const enum DragSpringLoadingState
+```
+
 Enumerates hover detection states during drag operations. Under default system configuration, if no CANCEL occurs, the state reporting is as follows: Hover still--&gt;500ms--&gt;BEGIN--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;UPDATE--&gt;100ms--&gt;END
 
 **Since:** 20

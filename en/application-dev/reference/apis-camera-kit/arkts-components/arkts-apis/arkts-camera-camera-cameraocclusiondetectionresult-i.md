@@ -1,5 +1,9 @@
 # CameraOcclusionDetectionResult
 
+```TypeScript
+interface CameraOcclusionDetectionResult
+```
+
 Describes the instance returned by the occlusion status callback, which indicates whether the camera lens is blocked or dirty.
 
 **Since:** 23

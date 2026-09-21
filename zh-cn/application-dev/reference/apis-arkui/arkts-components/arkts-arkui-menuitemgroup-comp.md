@@ -18,6 +18,8 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,7 +28,7 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [MenuItemGroupOptions](arkts-arkui-menuitemgroupoptions-i.md) | 否 | 设置MenuItemGroup的标题和尾部信息。<br> 未设置时，不显示标题和尾部信息。 |
+| value | [MenuItemGroupOptions](arkts-arkui-menuitemgroup-comp-menuitemgroupoptions-i.md) | 否 | 设置MenuItemGroup的标题和尾部信息。<br> 未设置时，不显示标题和尾部信息。 |
 
 ## 汇总
 
@@ -34,4 +36,4 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [MenuItemGroupOptions](arkts-arkui-menuitemgroupoptions-i.md) | MenuItem分组的标题和尾部信息。 |
+| [MenuItemGroupOptions](arkts-arkui-menuitemgroup-comp-menuitemgroupoptions-i.md) | MenuItem分组的标题和尾部信息。 |

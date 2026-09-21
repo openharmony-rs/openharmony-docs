@@ -1,5 +1,9 @@
 # ControlCenterStatusInfo
 
+```TypeScript
+interface ControlCenterStatusInfo
+```
+
 相机控制器效果激活状态信息。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # PerfTestStrategy
 
+```TypeScript
+declare interface PerfTestStrategy
+```
+
 性能测试执行策略。
 
 > **说明：** 

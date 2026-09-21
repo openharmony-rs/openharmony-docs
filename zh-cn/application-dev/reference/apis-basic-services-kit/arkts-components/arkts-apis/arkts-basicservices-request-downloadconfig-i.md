@@ -1,5 +1,9 @@
 # DownloadConfig
 
+```TypeScript
+interface DownloadConfig
+```
+
 下载任务的配置信息。
 
 **起始版本：** 6

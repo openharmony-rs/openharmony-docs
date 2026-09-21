@@ -1,5 +1,9 @@
 # ScanReportMode
 
+```TypeScript
+enum ScanReportMode
+```
+
 Report mode used during scan.
 
 **Since:** 15

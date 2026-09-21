@@ -1,5 +1,9 @@
 # SplitConfig
 
+```TypeScript
+interface SplitConfig
+```
+
 Manages text chunk process configurations.
 
 @interface SplitConfig

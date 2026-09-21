@@ -1,5 +1,9 @@
 # AudioPrivacyType
 
+```TypeScript
+enum AudioPrivacyType
+```
+
 表示对应播放音频流是否支持被其他应用录制的枚举。
 
 **起始版本：** 10

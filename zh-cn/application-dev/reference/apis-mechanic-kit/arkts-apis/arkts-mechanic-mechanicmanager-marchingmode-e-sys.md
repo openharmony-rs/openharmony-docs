@@ -1,5 +1,9 @@
 # MarchingMode（系统接口）
 
+```TypeScript
+export enum MarchingMode
+```
+
 行进模式定义
 
 **起始版本：** 26.0.0

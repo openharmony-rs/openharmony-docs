@@ -1,5 +1,9 @@
 # UserAgentFormFactor
 
+```TypeScript
+enum UserAgentFormFactor
+```
+
 用户设备形态。
 
 **起始版本：** 24

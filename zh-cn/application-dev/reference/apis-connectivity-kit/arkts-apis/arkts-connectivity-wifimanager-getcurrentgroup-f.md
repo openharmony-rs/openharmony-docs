@@ -55,6 +55,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
+<a id="getcurrentgroup-1"></a>
+
 ## getCurrentGroup
 
 ```TypeScript
@@ -87,4 +89,4 @@ function getCurrentGroup(callback: AsyncCallback<WifiP2pGroupInfo>): void
 
 **示例**
 
-参见 getCurrentGroup
+参见 [getCurrentGroup](#getcurrentgroup)

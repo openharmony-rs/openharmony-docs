@@ -1,5 +1,9 @@
 # AdDisplayOptions
 
+```TypeScript
+export interface AdDisplayOptions
+```
+
 Defines the ad display parameters.
 
 **Since:** 11

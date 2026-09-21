@@ -1,5 +1,9 @@
 # NotificationLiveViewContent（系统接口）
 
+```TypeScript
+export interface NotificationLiveViewContent extends NotificationBasicContent
+```
+
 描述普通实况通知。继承自[NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)。
 
 **继承/实现关系：** NotificationLiveViewContent extends [NotificationBasicContent](arkts-notification-notificationcontent-notificationbasiccontent-i.md)

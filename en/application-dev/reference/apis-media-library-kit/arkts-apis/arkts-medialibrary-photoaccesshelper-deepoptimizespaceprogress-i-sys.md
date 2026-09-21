@@ -1,5 +1,9 @@
 # DeepOptimizeSpaceProgress (System API)
 
+```TypeScript
+interface DeepOptimizeSpaceProgress
+```
+
 Defines the DeepOptimizeSpaceProgress data structure.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # GestureStyle
 
+```TypeScript
+declare class GestureStyle
+```
+
 事件手势对象说明。
 
 **起始版本：** 12

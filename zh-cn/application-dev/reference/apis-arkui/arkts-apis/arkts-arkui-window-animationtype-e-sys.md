@@ -1,5 +1,9 @@
 # AnimationType
 
+```TypeScript
+enum AnimationType
+```
+
 窗口动画类型枚举。
 
 **起始版本：** 20

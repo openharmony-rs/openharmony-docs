@@ -1,5 +1,9 @@
 # QueryMediaEntityParam
 
+```TypeScript
+interface QueryMediaEntityParam
+```
+
 查询媒体实例参数的定义。
 
 @interface QueryMediaEntityParam

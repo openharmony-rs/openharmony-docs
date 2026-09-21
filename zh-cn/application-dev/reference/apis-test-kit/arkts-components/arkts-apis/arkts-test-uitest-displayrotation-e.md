@@ -1,5 +1,9 @@
 # DisplayRotation
 
+```TypeScript
+declare enum DisplayRotation
+```
+
 设备显示器的显示方向。
 
 **起始版本：** 9

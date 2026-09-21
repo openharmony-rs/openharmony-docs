@@ -1,5 +1,9 @@
 # NetFirewallPolicy
 
+```TypeScript
+interface NetFirewallPolicy
+```
+
 防火墙策略，包含防火墙开关状态，默认的出站/入站行为（允许/阻止）。
 
 **起始版本：** 15

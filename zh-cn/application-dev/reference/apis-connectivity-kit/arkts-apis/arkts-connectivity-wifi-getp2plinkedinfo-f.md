@@ -53,6 +53,8 @@ wifi.getP2pLinkedInfo().then(data => {
 ```
 
 
+<a id="getp2plinkedinfo-1"></a>
+
 ## getP2pLinkedInfo
 
 ```TypeScript
@@ -83,4 +85,4 @@ function getP2pLinkedInfo(callback: AsyncCallback<WifiP2pLinkedInfo>): void
 
 **示例**
 
-参见 getP2pLinkedInfo
+参见 [getP2pLinkedInfo](#getp2plinkedinfo)

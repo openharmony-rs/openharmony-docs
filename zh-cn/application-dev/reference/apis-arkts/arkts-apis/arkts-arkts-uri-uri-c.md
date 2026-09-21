@@ -1,5 +1,9 @@
 # URI
 
+```TypeScript
+export class URI
+```
+
 构造一个URI对象，并提供URI比较、路径规范化、查询参数操作、路径段追加和URI类型判断等方法。
 
 **起始版本：** 8

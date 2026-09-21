@@ -1,5 +1,9 @@
 # PhyValue
 
+```TypeScript
+interface PhyValue
+```
+
 连接链路的物理通道类型配置参数。
 
 **起始版本：** 23

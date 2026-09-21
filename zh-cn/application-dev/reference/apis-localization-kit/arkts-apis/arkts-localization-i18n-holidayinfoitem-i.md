@@ -1,5 +1,9 @@
 # HolidayInfoItem
 
+```TypeScript
+export interface HolidayInfoItem
+```
+
 节假日信息。
 
 **起始版本：** 11

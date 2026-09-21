@@ -1,5 +1,9 @@
 # ColorMode
 
+```TypeScript
+export enum ColorMode
+```
+
 Defines the color mode of the current device.
 
 **Since:** 12

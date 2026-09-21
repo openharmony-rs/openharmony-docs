@@ -1,5 +1,9 @@
 # NativeMediaPlayerBridge
 
+```TypeScript
+interface NativeMediaPlayerBridge
+```
+
 NativeMediaPlayerBridge is the return value type of the [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md) callback function. It is an interface class between the player that takes over web page media and the ArkWeb kernel. The ArkWeb kernel uses an object of this interface class to control the player created by the app to take over web page media. This interface allows the app to use a custom media player to take over media content playback in web pages. It also supports player suspension and resumption mechanisms.
 
 **Since:** 12
@@ -26,6 +30,10 @@ Enables the player to enter full screen mode.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## exitFullscreen
 
 ```TypeScript
@@ -39,6 +47,10 @@ Enables the player to exit full screen mode.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
 
 ## pause
 
@@ -54,6 +66,10 @@ Pauses playback.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## play
 
 ```TypeScript
@@ -67,6 +83,10 @@ Plays the media.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
 
 ## release
 
@@ -82,6 +102,10 @@ Releases this player.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## resumePlayer
 
 ```TypeScript
@@ -93,6 +117,10 @@ Notifies the app to rebuild the player and restore its status information. This 
 **Since:** 12
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
 
 ## seek
 
@@ -114,6 +142,10 @@ Seeks to a specific time point in the media.
 | --- | --- | --- | --- |
 | targetTime | number | Yes | Target time for seek, calculated from the start of media playback.<br>Unit: seconds. |
 
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## setMuted
 
 ```TypeScript
@@ -133,6 +165,10 @@ Sets the muted status.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | muted | boolean | Yes | Whether to mute the player.<br>The value **true** means to mute the player, and **false** means the opposite. |
+
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
 
 ## setPlaybackRate
 
@@ -154,6 +190,10 @@ Sets the playback rate.
 | --- | --- | --- | --- |
 | playbackRate | number | Yes | Playback rate.<br>Value range: [0, 10.0], where 1 indicates the original speed. If the value is out of range, it is automatically corrected to the boundary value. |
 
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## setVolume
 
 ```TypeScript
@@ -174,6 +214,10 @@ Sets the playback volume.
 | --- | --- | --- | --- |
 | volume | number | Yes | Volume of the player.<br>Value range: [0, 1.0], where 0 indicates mute and 1.0 indicates the maximum volume. If the value is out of range, it is automatically corrected to the boundary value. |
 
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
+
 ## suspendPlayer
 
 ```TypeScript
@@ -191,6 +235,10 @@ Notifies the app to destroy the player and save its status information. This met
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | [SuspendType](arkts-arkweb-webview-suspendtype-e.md) | Yes | Player suspension type, which specifies how the player is suspended. Different SuspendType values correspond to different suspension scenarios. |
+
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).
 
 ## updateRect
 
@@ -214,3 +262,7 @@ Notifies the app of the surface position information. This method is called back
 | y | number | Yes | y coordinate of the surface relative to the Web component.<br>Unit: px. |
 | width | number | Yes | Width of the surface.<br>Unit: px. |
 | height | number | Yes | Height of the surface.<br>Unit: px. |
+
+**Examples**
+
+For details about the sample code, see [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer).

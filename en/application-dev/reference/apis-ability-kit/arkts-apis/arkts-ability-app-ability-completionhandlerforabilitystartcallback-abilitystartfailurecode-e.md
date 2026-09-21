@@ -1,5 +1,9 @@
 # AbilityStartFailureCode
 
+```TypeScript
+export enum AbilityStartFailureCode
+```
+
 Enumerates the specific error codes for ability launch failures.
 
 **Since:** 21

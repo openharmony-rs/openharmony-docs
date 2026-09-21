@@ -1,5 +1,9 @@
 # VideoMode
 
+```TypeScript
+export enum VideoMode
+```
+
 枚举，视频文件的log模式。
 
 **起始版本：** 22

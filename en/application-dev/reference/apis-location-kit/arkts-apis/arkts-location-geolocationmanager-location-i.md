@@ -1,5 +1,9 @@
 # Location
 
+```TypeScript
+export interface Location
+```
+
 Provides information about geographic locations.
 
 **Since:** 9

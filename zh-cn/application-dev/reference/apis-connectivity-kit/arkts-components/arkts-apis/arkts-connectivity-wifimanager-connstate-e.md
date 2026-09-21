@@ -1,5 +1,9 @@
 # ConnState
 
+```TypeScript
+export enum ConnState
+```
+
 表示Wi-Fi连接状态的枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # IntelligentVoiceEngineType (System API)
 
+```TypeScript
+enum IntelligentVoiceEngineType
+```
+
 Enumerates intelligent voice engine type. @enum {number}
 
 **Since:** 10

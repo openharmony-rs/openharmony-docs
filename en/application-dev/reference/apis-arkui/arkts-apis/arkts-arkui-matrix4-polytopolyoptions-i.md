@@ -1,5 +1,9 @@
 # PolyToPolyOptions
 
+```TypeScript
+export interface PolyToPolyOptions
+```
+
 Describes the configuration options for polygon-to-polygon transformation mapping.
 
 **Since:** 12

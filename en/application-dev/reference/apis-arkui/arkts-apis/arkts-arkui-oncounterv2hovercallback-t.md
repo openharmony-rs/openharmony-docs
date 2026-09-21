@@ -4,7 +4,7 @@
 export type OnCounterV2HoverCallback = (isHover: boolean) => void
 ```
 
-The hover callback of CounterV2.
+Defines the mouse hover callback type for the **CounterV2** component.
 
 **Since:** 26.0.0
 
@@ -18,4 +18,4 @@ The hover callback of CounterV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isHover | boolean | Yes | isHover |
+| isHover | boolean | Yes | Whether the mouse is hovering over the component. The value is **true** when the mouse enters and **false** when it leaves. |

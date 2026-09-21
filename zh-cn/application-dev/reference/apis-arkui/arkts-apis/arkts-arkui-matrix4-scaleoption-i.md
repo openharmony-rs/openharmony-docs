@@ -1,5 +1,9 @@
 # ScaleOption
 
+```TypeScript
+interface ScaleOption
+```
+
 缩放参数。
 
 **起始版本：** 7

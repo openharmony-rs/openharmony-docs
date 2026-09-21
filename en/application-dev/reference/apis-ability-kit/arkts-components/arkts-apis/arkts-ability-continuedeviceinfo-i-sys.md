@@ -1,5 +1,9 @@
 # ContinueDeviceInfo (System API)
 
+```TypeScript
+export interface ContinueDeviceInfo
+```
+
 The module defines the parameters required for initiating mission continuation. For details about mission continuation, see [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md)
 
 **Since:** 9

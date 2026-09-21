@@ -1,5 +1,9 @@
 # FlyMode (System API)
 
+```TypeScript
+enum FlyMode
+```
+
 Fly-in or fly-out deformation scene mode enumeration.
 
 **Since:** 12

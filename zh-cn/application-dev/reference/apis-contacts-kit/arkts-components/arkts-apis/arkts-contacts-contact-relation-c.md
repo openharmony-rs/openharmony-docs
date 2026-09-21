@@ -1,5 +1,9 @@
 # Relation
 
+```TypeScript
+class Relation
+```
+
 联系人的关系类。
 
 **起始版本：** 7

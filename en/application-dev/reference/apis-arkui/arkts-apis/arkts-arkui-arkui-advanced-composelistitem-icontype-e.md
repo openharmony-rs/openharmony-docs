@@ -1,5 +1,9 @@
 # IconType
 
+```TypeScript
+export declare enum IconType
+```
+
 Defines the icon type of the element on the left of the **ComposeListItem** component.
 
 **Since:** 10

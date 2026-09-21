@@ -1,5 +1,9 @@
 # PlaceholderSpan
 
+```TypeScript
+interface PlaceholderSpan
+```
+
 Describes the placeholder style.
 
 **Since:** 12

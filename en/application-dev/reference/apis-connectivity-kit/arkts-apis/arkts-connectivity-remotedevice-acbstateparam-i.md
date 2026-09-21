@@ -1,5 +1,9 @@
 # AcbStateParam
 
+```TypeScript
+interface AcbStateParam
+```
+
 Represents the result of the logical link connection status change event.
 
 **Since:** 26.0.0

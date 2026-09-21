@@ -1,5 +1,9 @@
 # PathShapeOptions
 
+```TypeScript
+interface PathShapeOptions
+```
+
 PathShape的构造函数参数。
 
 **起始版本：** 12

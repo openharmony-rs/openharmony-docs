@@ -37,6 +37,70 @@ function off(type: 'touch', receiver?: TouchEventReceiver): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (touchEvent: TouchEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅触摸事件
+            inputMonitor.on('touch', callback);
+            // 取消订阅触摸事件
+            inputMonitor.off('touch', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (touchEvent: TouchEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅触摸事件
+            inputMonitor.on('touch', callback);
+            // 取消订阅触摸事件
+            inputMonitor.off('touch');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('mouse')
 
@@ -69,6 +133,70 @@ function off(type: 'mouse', receiver?: Callback<MouseEvent>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (mouseEvent: MouseEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅鼠标事件
+            inputMonitor.on('mouse', callback);
+            // 取消订阅鼠标事件
+            inputMonitor.off('mouse', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (mouseEvent: MouseEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅鼠标事件
+            inputMonitor.on('mouse', callback);
+            // 取消订阅鼠标事件
+            inputMonitor.off('mouse');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('pinch')
 
@@ -100,6 +228,70 @@ function off(type: 'pinch', receiver?: Callback<Pinch>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅捏合事件
+            inputMonitor.on('pinch', callback);
+            // 取消订阅捏合事件
+            inputMonitor.off('pinch', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅捏合事件
+            inputMonitor.on('pinch', callback);
+            // 取消订阅捏合事件
+            inputMonitor.off('pinch');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
 
 
 ## off('pinch')
@@ -134,6 +326,70 @@ function off(type: 'pinch', fingers: number, receiver?: Callback<Pinch>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅捏合事件
+            inputMonitor.on('pinch', 2, callback);
+            // 取消订阅捏合事件
+            inputMonitor.off('pinch', 2, callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (pinchEvent: Pinch) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
+            return false;
+          };
+          try {
+            // 捏合手势监听手指数2
+            inputMonitor.on('pinch', 2, callback);
+            // 取消订阅捏合事件
+            inputMonitor.off('pinch', 2);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('rotate')
 
@@ -167,6 +423,70 @@ function off(type: 'rotate', fingers: number, receiver?: Callback<Rotate>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (rotateEvent: Rotate) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+            return false;
+          };
+          try {
+            // 旋转手势监听手指数2
+            inputMonitor.on('rotate', 2, callback);
+            // 取消订阅旋转事件
+            inputMonitor.off('rotate', 2, callback);
+            console.info(`Succeeded in turning off monitor.`); 
+          } catch (error) {
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (rotateEvent: Rotate) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
+            return false;
+          };
+          try {
+            // 旋转手势监听手指数2
+            inputMonitor.on('rotate', 2, callback);
+            // 取消订阅旋转事件
+            inputMonitor.off('rotate', 2);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('threeFingersSwipe')
 
@@ -198,6 +518,70 @@ function off(type: 'threeFingersSwipe', receiver?: Callback<ThreeFingersSwipe>):
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // 订阅三指滑动事件
+            inputMonitor.on('threeFingersSwipe', callback);
+            // 取消订阅三指滑动事件
+            inputMonitor.off('threeFingersSwipe', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // 订阅三指滑动事件
+            inputMonitor.on('threeFingersSwipe', callback);
+            // 取消订阅三指滑动事件
+            inputMonitor.off('threeFingersSwipe');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
 
 
 ## off('fourFingersSwipe')
@@ -231,6 +615,70 @@ function off(type: 'fourFingersSwipe', receiver?: Callback<FourFingersSwipe>): v
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (fourFingersSwipe: FourFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // 订阅四指滑动事件
+            inputMonitor.on('fourFingersSwipe', callback);
+            // 取消订阅四指滑动事件
+            inputMonitor.off('fourFingersSwipe', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (fourFingersSwipe: FourFingersSwipe) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
+            return false;
+          };
+          try {
+            // 订阅四指滑动事件
+            inputMonitor.on('fourFingersSwipe', callback);
+            // 取消订阅四指滑动事件
+            inputMonitor.off('fourFingersSwipe');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('threeFingersTap')
 
@@ -262,6 +710,70 @@ function off(type: 'threeFingersTap', receiver?: Callback<ThreeFingersTap>): voi
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (threeFingersTap: ThreeFingersTap) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            return false;
+          };
+          try {
+            // 订阅三指点击事件
+            inputMonitor.on('threeFingersTap', callback);
+            // 取消订阅三指点击事件
+            inputMonitor.off('threeFingersTap', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (threeFingersTap: ThreeFingersTap) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
+            return false;
+          };
+          try {
+            // 订阅三指点击事件
+            inputMonitor.on('threeFingersTap', callback);
+            // 取消订阅三指点击事件
+            inputMonitor.off('threeFingersTap');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
 
 
 ## off('fingerprint')
@@ -295,6 +807,70 @@ function off(type: 'fingerprint', receiver?: Callback<FingerprintEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅指纹事件
+            inputMonitor.on('fingerprint', callback);
+            // 取消订阅指纹事件
+            inputMonitor.off('fingerprint', callback);
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let callback = (fingerprintEvent: FingerprintEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
+            return false;
+          };
+          try {
+            // 订阅指纹事件
+            inputMonitor.on('fingerprint', callback);
+            // 取消订阅指纹事件
+            inputMonitor.off('fingerprint');
+            console.info(`Succeeded in turning off monitor.`);
+          } catch (error) {
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('swipeInward')
 
@@ -326,6 +902,70 @@ function off(type: 'swipeInward', receiver?: Callback<SwipeInward>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permit error. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听单个回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // 订阅向内滑动事件
+          inputMonitor.on('swipeInward', callback);
+          // 取消订阅向内滑动事件
+          inputMonitor.off('swipeInward', callback);
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
+
+```TypeScript
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听所有回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // 订阅向内滑动事件
+          inputMonitor.on('swipeInward', callback);
+          // 取消订阅向内滑动事件
+          inputMonitor.off('swipeInward');
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
 
 
 ## off('touchscreenSwipe')
@@ -360,6 +1000,67 @@ function off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback<Touc
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (event: TouchGestureEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+          };
+          let fingers: number = 4;
+          try {
+            // 订阅触摸屏滑动事件
+            inputMonitor.on('touchscreenSwipe', fingers, callback);
+            // 取消订阅触摸屏滑动事件
+            inputMonitor.off('touchscreenSwipe', fingers, callback);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let fingers: number = 4;
+          try {
+            // 订阅触摸屏滑动事件
+            inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // 取消订阅触摸屏滑动事件
+            inputMonitor.off('touchscreenSwipe', fingers);
+          } catch (error) {
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('touchscreenPinch')
 
@@ -393,6 +1094,67 @@ function off(type: 'touchscreenPinch', fingers: number, receiver?: Callback<Touc
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          let callback = (event: TouchGestureEvent) => {
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+          };
+          let fingers: number = 4;
+          try {
+            // 订阅触摸屏捏合事件
+            inputMonitor.on('touchscreenPinch', fingers, callback);
+            // 取消订阅触摸屏捏合事件
+            inputMonitor.off('touchscreenPinch', fingers, callback);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          let fingers: number = 4;
+          try {
+            // 订阅触摸屏捏合事件
+            inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // 取消订阅触摸屏捏合事件
+            inputMonitor.off('touchscreenPinch', fingers);
+          } catch (error) {
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
 
 ## off('keyPressed')
 
@@ -424,3 +1186,64 @@ function off(type: 'keyPressed', receiver?: Callback<KeyEvent>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听单个回调函数
+          try {
+            let callback = (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            };
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
+            inputMonitor.on('keyPressed', keys, callback);
+            // 取消订阅按键按下事件
+            inputMonitor.off('keyPressed', callback);
+          } catch (error) {
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 取消监听所有回调函数
+          try {
+            let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // 订阅按键按下事件
+            inputMonitor.on('keyPressed', keys, (event: KeyEvent) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
+            });
+            // 取消订阅按键按下事件
+            inputMonitor.off('keyPressed');
+          } catch (error) {
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

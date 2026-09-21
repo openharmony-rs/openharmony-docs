@@ -1,5 +1,9 @@
 # PiPState
 
+```TypeScript
+enum PiPState
+```
+
 画中画生命周期状态枚举。
 
 **起始版本：** 11

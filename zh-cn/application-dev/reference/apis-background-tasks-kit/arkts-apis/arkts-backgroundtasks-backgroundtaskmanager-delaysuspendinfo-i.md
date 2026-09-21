@@ -1,5 +1,9 @@
 # DelaySuspendInfo
 
+```TypeScript
+interface DelaySuspendInfo
+```
+
 短时任务信息。
 
 **起始版本：** 9

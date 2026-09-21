@@ -1,5 +1,9 @@
 # SyncResult
 
+```TypeScript
+interface SyncResult
+```
+
 表示设备同步结果。
 
 **起始版本：** 26.0.0

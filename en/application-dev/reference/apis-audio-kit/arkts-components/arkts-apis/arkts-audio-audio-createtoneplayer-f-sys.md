@@ -49,19 +49,8 @@ audio.createTonePlayer(audioRendererInfo, (err, data) => {
 });
 ```
 
-```TypeScript
-import { audio } from '@kit.AudioKit';
 
-let tonePlayer: audio.TonePlayer;
-async function createTonePlayerBefore(){
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage : audio.StreamUsage.STREAM_USAGE_DTMF,
-    rendererFlags : 0
-  };
-  tonePlayer = await audio.createTonePlayer(audioRendererInfo);
-}
-```
-
+<a id="createtoneplayer-2"></a>
 
 ## createTonePlayer
 
@@ -91,4 +80,15 @@ Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This met
 
 **Examples**
 
-See [createTonePlayer](#createtoneplayer)
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+let tonePlayer: audio.TonePlayer;
+async function createTonePlayerBefore(){
+  let audioRendererInfo: audio.AudioRendererInfo = {
+    usage : audio.StreamUsage.STREAM_USAGE_DTMF,
+    rendererFlags : 0
+  };
+  tonePlayer = await audio.createTonePlayer(audioRendererInfo);
+}
+```

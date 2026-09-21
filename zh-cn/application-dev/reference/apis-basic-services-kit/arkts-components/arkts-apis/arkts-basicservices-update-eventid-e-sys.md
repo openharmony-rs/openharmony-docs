@@ -1,5 +1,9 @@
 # EventId（系统接口）
 
+```TypeScript
+export enum EventId
+```
+
 事件ID。
 
 **起始版本：** 9

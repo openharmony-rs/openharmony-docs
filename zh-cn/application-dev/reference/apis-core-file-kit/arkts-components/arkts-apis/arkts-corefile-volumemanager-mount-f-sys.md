@@ -44,6 +44,8 @@ function mount(volumeId: string, callback: AsyncCallback<void>): void
 | 13900042 | Unknown error. |
 
 
+<a id="mount-1"></a>
+
 ## mount
 
 ```TypeScript

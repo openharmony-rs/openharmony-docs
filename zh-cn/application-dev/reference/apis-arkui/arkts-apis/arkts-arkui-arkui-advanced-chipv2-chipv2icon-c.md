@@ -1,5 +1,9 @@
 # ChipV2Icon
 
+```TypeScript
+export abstract class ChipV2Icon
+```
+
 ChipV2Icon定义图标的基类。
 
 **起始版本：** 26.0.0

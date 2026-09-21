@@ -45,6 +45,20 @@ function on(type: 'bluetoothDeviceFind', callback: Callback<Array<string>>): voi
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: Array<string>) { // data为蓝牙设备地址集合。
+    console.info('bluetooth device find = '+ JSON.stringify(data));
+}
+try {
+    connection.on('bluetoothDeviceFind', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 
 ## on('discoveryResult')
 
@@ -84,6 +98,20 @@ function on(type: 'discoveryResult', callback: Callback<Array<DiscoveryResult>>)
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent: (data: Array<connection.DiscoveryResult>) => void = (data: Array<connection.DiscoveryResult>) => { // data为蓝牙设备扫描结果集合。
+    console.info('bluetooth device find = '+ JSON.stringify(data));
+}
+try {
+    connection.on('discoveryResult', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 
 ## on('bondStateChange')
 
@@ -119,6 +147,20 @@ function on(type: 'bondStateChange', callback: Callback<BondStateParam>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>**适用版本：** 10 - 24 |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: connection.BondStateParam) { // data为回调函数入参，表示配对的状态。
+    console.info('pair state = '+ JSON.stringify(data));
+}
+try {
+    connection.on('bondStateChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 
 ## on('pinRequired')
@@ -156,6 +198,20 @@ function on(type: 'pinRequired', callback: Callback<PinRequiredParam>): void
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function onReceiveEvent(data: connection.PinRequiredParam) { // data为配对请求参数。
+    console.info('pin required = '+ JSON.stringify(data));
+}
+try {
+    connection.on('pinRequired', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 
 ## on('batteryChange')
 
@@ -186,3 +242,17 @@ function on(type: 'batteryChange', callback: Callback<BatteryInfo>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Operation failed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let onReceiveEvent: (data: connection.BatteryInfo) => void = (data: connection.BatteryInfo) => {
+    console.info('BatteryInfo = '+ JSON.stringify(data));
+}
+try {
+    connection.on('batteryChange', onReceiveEvent);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

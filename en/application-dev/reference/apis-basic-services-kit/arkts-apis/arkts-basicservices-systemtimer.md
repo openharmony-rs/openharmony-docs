@@ -21,14 +21,14 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md) | Creates a timer. This API uses an asynchronous callback to return the result. |
-| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md) | Creates a timer. This API uses a promise to return the timer ID. |
-| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md) | Destroys a timer. This API uses an asynchronous callback to return the result. |
-| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md) | Destroys a timer. This API uses a promise to return the result. |
-| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md) | Starts a timer. This API uses an asynchronous callback to return the result. |
-| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md) | Starts a timer. This API uses a promise to return the result. |
-| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md) | Stops the timer. This API uses an asynchronous callback to return the result. |
-| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md) | Stops a timer. This API uses a promise to return the result. |
+| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer) | Creates a timer. This API uses an asynchronous callback to return the result. |
+| [createTimer](arkts-basicservices-systemtimer-createtimer-f-sys.md#createtimer-1) | Creates a timer. This API uses a promise to return the timer ID. |
+| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer) | Destroys a timer. This API uses an asynchronous callback to return the result. |
+| [destroyTimer](arkts-basicservices-systemtimer-destroytimer-f-sys.md#destroytimer-1) | Destroys a timer. This API uses a promise to return the result. |
+| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer) | Starts a timer. This API uses an asynchronous callback to return the result. |
+| [startTimer](arkts-basicservices-systemtimer-starttimer-f-sys.md#starttimer-1) | Starts a timer. This API uses a promise to return the result. |
+| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer) | Stops the timer. This API uses an asynchronous callback to return the result. |
+| [stopTimer](arkts-basicservices-systemtimer-stoptimer-f-sys.md#stoptimer-1) | Stops a timer. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

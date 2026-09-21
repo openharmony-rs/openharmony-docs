@@ -1,5 +1,9 @@
 # RequestReadPermissionResult
 
+```TypeScript
+export class RequestReadPermissionResult
+```
+
 包含已授权的uri列表和无效的uri列表。
 
 **起始版本：** 23

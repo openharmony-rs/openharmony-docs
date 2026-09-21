@@ -1,5 +1,9 @@
 # PreloadMode (System API)
 
+```TypeScript
+export enum PreloadMode
+```
+
 Enumerates the modes used for preloading an application process.
 
 **Since:** 12

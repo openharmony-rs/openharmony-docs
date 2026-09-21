@@ -1,5 +1,9 @@
 # QualityLevel
 
+```TypeScript
+enum QualityLevel
+```
+
 枚举，图片质量。
 
 **起始版本：** 10

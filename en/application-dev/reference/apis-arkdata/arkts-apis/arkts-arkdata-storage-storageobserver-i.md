@@ -1,5 +1,9 @@
 # StorageObserver
 
+```TypeScript
+interface StorageObserver
+```
+
 Define the change data information object.
 
 **Since:** 6

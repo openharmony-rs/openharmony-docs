@@ -1,5 +1,9 @@
 # DepthFusion（系统接口）
 
+```TypeScript
+interface DepthFusion extends DepthFusionQuery
+```
+
 Depth fusion class. It inherits from [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md).
 
 **继承/实现关系：** DepthFusion extends [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md)

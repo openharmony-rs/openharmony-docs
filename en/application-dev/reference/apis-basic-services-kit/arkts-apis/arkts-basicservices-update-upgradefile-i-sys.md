@@ -1,5 +1,9 @@
 # UpgradeFile (System API)
 
+```TypeScript
+export interface UpgradeFile
+```
+
 Represents the upgrade file, including the file type and file path, which are used to specify the local upgrade package to be installed.
 
 **Since:** 9

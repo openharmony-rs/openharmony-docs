@@ -1,5 +1,9 @@
 # BundleInfo (System API)
 
+```TypeScript
+interface BundleInfo
+```
+
 Bundle information configuration.
 
 **Since:** 26.0.0

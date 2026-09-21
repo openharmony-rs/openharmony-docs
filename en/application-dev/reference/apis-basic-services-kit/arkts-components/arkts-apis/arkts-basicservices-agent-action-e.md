@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+enum Action
+```
+
 Defines action options.
 
 **Since:** 10

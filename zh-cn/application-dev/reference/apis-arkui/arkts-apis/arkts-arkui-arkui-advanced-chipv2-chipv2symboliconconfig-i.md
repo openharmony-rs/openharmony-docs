@@ -1,5 +1,9 @@
 # ChipV2SymbolIconConfig
 
+```TypeScript
+export interface ChipV2SymbolIconConfig
+```
+
 ChipV2SymbolIconConfig定义Symbol图标的属性配置。
 
 **起始版本：** 26.0.0
@@ -24,9 +28,9 @@ activated?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)修改动效类型及effectStrategy设置动效。
+不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)修改动效类型及[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
@@ -48,9 +52,9 @@ normal?: SymbolGlyphModifier
 
 值为undefined时，按默认值处理。
 
-不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)修改动效类型及effectStrategy设置动效。
+不支持使用[SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)修改动效类型及[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 

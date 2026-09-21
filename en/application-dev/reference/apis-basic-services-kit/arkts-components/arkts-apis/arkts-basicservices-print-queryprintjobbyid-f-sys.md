@@ -53,18 +53,8 @@ print.queryPrintJobById(jobId, (error: BusinessError, printJob : print.PrintJob)
 });
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let jobId : string = '1';
-print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
-    console.info('queryPrintJobById data : ' + JSON.stringify(printJob));
-}).catch((error: BusinessError) => {
-    console.error(`Failed to query print job by id. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="queryprintjobbyid-1"></a>
 
 ## queryPrintJobById
 
@@ -104,4 +94,14 @@ Queries a print job by ID. This API uses a promise to return the result.
 
 **Examples**
 
-See [queryPrintJobById](#queryprintjobbyid)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = '1';
+print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
+    console.info('queryPrintJobById data : ' + JSON.stringify(printJob));
+}).catch((error: BusinessError) => {
+    console.error(`Failed to query print job by id. Code: ${error.code}, message: ${error.message}`);
+});
+```

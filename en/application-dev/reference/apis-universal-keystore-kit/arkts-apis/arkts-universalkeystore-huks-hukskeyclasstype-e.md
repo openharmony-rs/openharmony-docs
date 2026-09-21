@@ -1,5 +1,9 @@
 # HuksKeyClassType
 
+```TypeScript
+export enum HuksKeyClassType
+```
+
 Enumerates the sources of a key.
 
 **Since:** 22

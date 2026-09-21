@@ -1,5 +1,9 @@
 # UserStatusFeature (System API)
 
+```TypeScript
+export enum UserStatusFeature
+```
+
 Enumerates user status detection features.
 
 **Since:** 26.0.0

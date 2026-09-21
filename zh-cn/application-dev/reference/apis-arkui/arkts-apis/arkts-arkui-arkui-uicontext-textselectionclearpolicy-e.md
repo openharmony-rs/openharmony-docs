@@ -1,5 +1,9 @@
 # TextSelectionClearPolicy
 
+```TypeScript
+export const enum TextSelectionClearPolicy
+```
+
 TextSelectionClearPolicy的枚举
 
 **起始版本：** 26.0.0

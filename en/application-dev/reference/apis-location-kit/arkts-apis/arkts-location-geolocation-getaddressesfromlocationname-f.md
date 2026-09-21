@@ -46,14 +46,8 @@ geolocation.getAddressesFromLocationName(geocodeRequest, (err, data) => {
 });
 ```
 
-```TypeScript
-import geolocation from '@ohos.geolocation';
-let geocodeRequest:geolocation.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
-geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
-    console.info('getAddressesFromLocationName: ' + JSON.stringify(result));
-});
-```
 
+<a id="getaddressesfromlocationname-1"></a>
 
 ## getAddressesFromLocationName
 
@@ -87,4 +81,10 @@ Obtain latitude and longitude info from location address
 
 **Examples**
 
-See [getAddressesFromLocationName](#getaddressesfromlocationname)
+```TypeScript
+import geolocation from '@ohos.geolocation';
+let geocodeRequest:geolocation.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
+geolocation.getAddressesFromLocationName(geocodeRequest).then((result) => {
+    console.info('getAddressesFromLocationName: ' + JSON.stringify(result));
+});
+```

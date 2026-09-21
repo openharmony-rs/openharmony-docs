@@ -1,5 +1,9 @@
 # DeviceAddressType
 
+```TypeScript
+enum DeviceAddressType
+```
+
 Wi-Fi device address( mac / bssid ) type. @enum { int }
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # DrmErrorCode
 
+```TypeScript
+enum DrmErrorCode
+```
+
 枚举，错误码。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # LRUCache
 
+```TypeScript
+class LRUCache<K, V>
+```
+
 Provides APIs to discard the least recently used data to make rooms for new elements when the cache is full. This class uses the Least Recently Used (LRU) algorithm, which believes that the recently used data may be accessed again in the near future and the least accessed data is the least valuable data and should be removed from the cache.
 
 **Since:** 9

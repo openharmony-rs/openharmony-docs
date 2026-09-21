@@ -1,5 +1,9 @@
 # AVScreenCaptureRecordConfig
 
+```TypeScript
+interface AVScreenCaptureRecordConfig
+```
+
 表示录屏参数配置。
 
 **起始版本：** 12

@@ -35,6 +35,8 @@ import { autoFillManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [FillRequest](arkts-ability-autofillmanager-fillrequest-t.md) | 自动填充的请求信息。 |
+| [OnFillFailureFn](arkts-ability-autofillmanager-onfillfailurefn-t.md) | 自动填充请求处理失败时的回调。 |
+| [OnFillSuccessFn](arkts-ability-autofillmanager-onfillsuccessfn-t.md) | 自动填充请求成功处理时的回调。 |
 | [SaveRequest](arkts-ability-autofillmanager-saverequest-t.md) | 自动保存的请求信息。 |
 
 <!--Del-->

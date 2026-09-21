@@ -1,5 +1,9 @@
 # ClickType
 
+```TypeScript
+export declare enum ClickType
+```
+
 Enumerates the click operation types.
 
 **Since:** 12

@@ -43,16 +43,8 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
-    console.info(`success to reset.`);
-}).catch((error: BusinessError) => {
-    console.error(`failed to reset because: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="reset-1"></a>
 
 ## reset
 
@@ -84,4 +76,12 @@ Removes a wallpaper of the specified type and restores the default one.
 
 **Examples**
 
-See [reset](#reset)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
+    console.info(`success to reset.`);
+}).catch((error: BusinessError) => {
+    console.error(`failed to reset because: ${JSON.stringify(error)}`);
+});
+```

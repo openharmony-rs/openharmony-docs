@@ -1,5 +1,9 @@
 # DLPSandboxState (System API)
 
+```TypeScript
+export interface DLPSandboxState
+```
+
 Represents the DLP sandbox state information.
 
 **Since:** 10

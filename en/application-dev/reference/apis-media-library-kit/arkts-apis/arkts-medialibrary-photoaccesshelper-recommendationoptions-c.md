@@ -1,5 +1,9 @@
 # RecommendationOptions
 
+```TypeScript
+class RecommendationOptions
+```
+
 Defines the image recommendation options. The image recommendation feature depends on the image data analysis capability, which varies with devices.
 
 **Since:** 11

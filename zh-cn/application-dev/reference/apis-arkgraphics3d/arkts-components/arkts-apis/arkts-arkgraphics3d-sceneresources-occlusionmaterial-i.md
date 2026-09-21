@@ -1,5 +1,9 @@
 # OcclusionMaterial
 
+```TypeScript
+export interface OcclusionMaterial extends Material
+```
+
 遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境，继承自Material。
 
 @extends Material @interface OcclusionMaterial

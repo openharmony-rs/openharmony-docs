@@ -1,5 +1,9 @@
 # UploadResponse
 
+```TypeScript
+export interface UploadResponse
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

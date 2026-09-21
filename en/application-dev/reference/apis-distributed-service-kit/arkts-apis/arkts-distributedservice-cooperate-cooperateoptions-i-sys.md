@@ -1,5 +1,9 @@
 # CooperateOptions (System API)
 
+```TypeScript
+interface CooperateOptions
+```
+
 Screen hopping options, such as the exit position.
 
 **Since:** 20

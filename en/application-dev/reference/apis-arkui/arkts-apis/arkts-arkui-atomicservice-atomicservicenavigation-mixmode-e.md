@@ -1,5 +1,9 @@
 # MixMode
 
+```TypeScript
+export declare enum MixMode
+```
+
 Provides options for background color blending modes.
 
 **Since:** 18

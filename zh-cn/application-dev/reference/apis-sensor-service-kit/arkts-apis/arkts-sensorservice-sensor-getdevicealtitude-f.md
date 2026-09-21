@@ -56,26 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  let seaPressure = 1013.2;
-  let currentPressure = 1500.0;
-  const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
-  promise.then((data: number) => {
-    console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
-  }, (err: BusinessError) => {
-    console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getdevicealtitude-1"></a>
 
 ## getDeviceAltitude
 
@@ -111,4 +93,22 @@ function getDeviceAltitude(seaPressure: number, currentPressure: number): Promis
 
 **示例**
 
-参见 getDeviceAltitude
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let seaPressure = 1013.2;
+  let currentPressure = 1500.0;
+  const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
+  promise.then((data: number) => {
+    console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+  }, (err: BusinessError) => {
+    console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get altitude. Code: ${e.code}, message: ${e.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # SecurityMode
 
+```TypeScript
+export enum SecurityMode
+```
+
 输入法的安全模式，如BASIC或FULL。
 
 **起始版本：** 11

@@ -45,19 +45,8 @@ display.getDefaultDisplay((err: BusinessError, data: display.Display) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let displayClass: display.Display | null = null;
-let promise: Promise<display.Display> = display.getDefaultDisplay();
-promise.then((data: display.Display) => {
-  displayClass = data;
-  console.info(`Succeeded in obtaining the default display object. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to obtain the default display object. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getdefaultdisplay-1"></a>
 
 ## getDefaultDisplay
 
@@ -83,4 +72,15 @@ Obtains the default Display object. This API uses a promise to return the result
 
 **Examples**
 
-See [getDefaultDisplay](#getdefaultdisplay)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+let promise: Promise<display.Display> = display.getDefaultDisplay();
+promise.then((data: display.Display) => {
+  displayClass = data;
+  console.info(`Succeeded in obtaining the default display object. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the default display object. Code: ${err.code}, message: ${err.message}`);
+});
+```

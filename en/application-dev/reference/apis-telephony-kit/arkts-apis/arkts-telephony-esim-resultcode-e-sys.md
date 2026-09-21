@@ -1,5 +1,9 @@
 # ResultCode (System API)
 
+```TypeScript
+export enum ResultCode
+```
+
 Enumerates the result codes.
 
 **Since:** 18

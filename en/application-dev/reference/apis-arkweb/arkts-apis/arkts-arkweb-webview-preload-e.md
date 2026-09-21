@@ -1,5 +1,9 @@
 # Preload
 
+```TypeScript
+enum Preload
+```
+
 Enumerates how the player preloads media data.
 
 **Since:** 12

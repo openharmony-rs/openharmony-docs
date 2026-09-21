@@ -72,41 +72,8 @@ try {
 }
 ```
 
-```TypeScript
-import { sensor } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// 使用try catch对可能出现的异常进行捕获
-try {
-  // 旋转矩阵可以为3*3，或者4*4
-  let currentRotationMatrix = [
-    1, 0, 0,
-    0, 1, 0,
-    0, 0, 1
-  ];
-  let preRotationMatrix = [
-    1, 0, 0,
-    0, 0.87, -0.50,
-    0, 0.50, 0.87
-  ];
-  const promise = sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix);
-  promise.then((data: Array<number>) => {
-    if (data.length < 3) {
-      console.error("Failed to get angle variation, length" + data.length);
-      return;
-    }
-    console.info("Z: " + data[0]);
-    console.info("X: " + data[1]);
-    console.info("Y: " + data[2]);
-  }, (err: BusinessError) => {
-    console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  let e: BusinessError = error as BusinessError;
-  console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
-}
-```
-
+<a id="getanglevariation-1"></a>
 
 ## getAngleVariation
 
@@ -142,4 +109,37 @@ function getAngleVariation(currentRotationMatrix: Array<number>, preRotationMatr
 
 **示例**
 
-参见 getAngleVariation
+```TypeScript
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  // 旋转矩阵可以为3*3，或者4*4
+  let currentRotationMatrix = [
+    1, 0, 0,
+    0, 1, 0,
+    0, 0, 1
+  ];
+  let preRotationMatrix = [
+    1, 0, 0,
+    0, 0.87, -0.50,
+    0, 0.50, 0.87
+  ];
+  const promise = sensor.getAngleVariation(currentRotationMatrix, preRotationMatrix);
+  promise.then((data: Array<number>) => {
+    if (data.length < 3) {
+      console.error("Failed to get angle variation, length" + data.length);
+      return;
+    }
+    console.info("Z: " + data[0]);
+    console.info("X: " + data[1]);
+    console.info("Y: " + data[2]);
+  }, (err: BusinessError) => {
+    console.error(`Failed to get angle variation. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to get angle variation. Code: ${e.code}, message: ${e.message}`);
+}
+```

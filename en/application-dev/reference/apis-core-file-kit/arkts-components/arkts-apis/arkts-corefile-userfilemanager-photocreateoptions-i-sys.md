@@ -1,5 +1,9 @@
 # PhotoCreateOptions (System API)
 
+```TypeScript
+interface PhotoCreateOptions
+```
+
 Defines the options for creating an image or video asset.
 
 **Since:** 10

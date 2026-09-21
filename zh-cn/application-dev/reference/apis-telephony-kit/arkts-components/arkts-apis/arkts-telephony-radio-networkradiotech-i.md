@@ -1,5 +1,9 @@
 # NetworkRadioTech
 
+```TypeScript
+export interface NetworkRadioTech
+```
+
 网络中packet service (PS) 和 circuit service (CS) 无线接入技术。
 
 **起始版本：** 11

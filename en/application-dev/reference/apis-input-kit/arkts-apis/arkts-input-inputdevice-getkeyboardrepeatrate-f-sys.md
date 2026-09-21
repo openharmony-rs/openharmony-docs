@@ -64,33 +64,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDevice } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Obtaining the Keyboard Repeat Rate
-            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
-              console.info(`Succeeded in getting keyboard repeat rate.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getkeyboardrepeatrate-1"></a>
 
 ## getKeyboardRepeatRate
 
@@ -121,4 +96,29 @@ Obtains the keyboard repeat rate. This API uses a promise to return the result.
 
 **Examples**
 
-See [getKeyboardRepeatRate](#getkeyboardrepeatrate)
+```TypeScript
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Obtaining the Keyboard Repeat Rate
+            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
+              console.info(`Succeeded in getting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

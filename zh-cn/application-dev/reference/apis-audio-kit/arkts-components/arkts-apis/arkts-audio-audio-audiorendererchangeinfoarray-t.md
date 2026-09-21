@@ -4,7 +4,7 @@
 type AudioRendererChangeInfoArray = Array<Readonly<AudioRendererChangeInfo>>
 ```
 
-数组类型，AudioRendererChangeInfo数组，只读。
+数组类型，[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)数组，只读。
 
 **起始版本：** 9
 

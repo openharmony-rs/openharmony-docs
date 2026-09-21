@@ -1,5 +1,9 @@
 # IsoInfo
 
+```TypeScript
+interface IsoInfo
+```
+
 Describes the information about the sensitivity (ISO) settings.
 
 **Since:** 22

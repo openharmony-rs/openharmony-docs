@@ -1,5 +1,9 @@
 # OnRemoteStateChangeCallback
 
+```TypeScript
+export interface OnRemoteStateChangeCallback
+```
+
 注册协同场景下跨设备组件状态变化监听通知的回调函数类型。
 
 **起始版本：** 10

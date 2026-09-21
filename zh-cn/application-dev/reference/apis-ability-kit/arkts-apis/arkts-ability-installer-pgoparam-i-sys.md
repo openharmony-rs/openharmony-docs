@@ -1,5 +1,9 @@
 # PGOParam（系统接口）
 
+```TypeScript
+export interface PGOParam
+```
+
 PGO（Profile-guided Optimization）配置文件参数信息。
 
 **起始版本：** 11

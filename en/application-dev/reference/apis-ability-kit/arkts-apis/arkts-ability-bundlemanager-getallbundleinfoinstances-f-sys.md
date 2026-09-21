@@ -14,7 +14,7 @@ function getAllBundleInfoInstances(bundleName: string, bundleFlags: number): Pro
 
 Obtains all the bundle information in the system based on the given bundle name and bundle flags. This API uses a type of promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

@@ -1,5 +1,9 @@
 # HidDeviceProfile
 
+```TypeScript
+interface HidDeviceProfile extends BaseProfile
+```
+
 该实例表示蓝牙HID通信中的HID Device角色。
 
 该类继承于[BaseProfile](arkts-connectivity-hid-baseprofile-t.md)，因此可以使用其父类中的方法。使用该类的方法前，需通过[createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md)方法构造该类的实例。通过该实例可以操作设备端的行为，如注册HID设备（[registerHidDevice](#registerhiddevice)），发送报告（[sendReport](#sendreport)）等。和该实例角色相对应的是HID Host。
@@ -24,7 +28,7 @@ connect(deviceId: BluetoothAddress): void
 
 向指定的HID主机发起连接。
 
-调用该接口前需要先调用[registerHidDevice](#registerhiddevice)完成HID设备能力注册。可通过订阅on('connectionStateChange')事件来感知连接是否成功。当不需要连接时需调用[disconnect](#disconnect)断开连接。此外，调用[unregisterHidDevice](#unregisterhiddevice)解除注册也会断开已有的HID主机连接。
+调用该接口前需要先调用[registerHidDevice](#registerhiddevice)完成HID设备能力注册。可通过订阅[on('connectionStateChange')](../../../reference/apis-connectivity-kit/js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)事件来感知连接是否成功。当不需要连接时需调用[disconnect](#disconnect)断开连接。此外，调用[unregisterHidDevice](#unregisterhiddevice)解除注册也会断开已有的HID主机连接。
 
 **起始版本：** 23
 

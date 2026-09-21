@@ -1,5 +1,9 @@
 # String
 
+```TypeScript
+interface String
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -122,6 +126,8 @@ Returns a `&lt;font&gt;` HTML element and sets the size attribute value
 | --- | --- | --- | --- |
 | size | number | Yes |  |
 
+<a id="fontsize-1"></a>
+
 ## fontsize
 
 ```TypeScript
@@ -192,6 +198,8 @@ Returns the String value result of normalizing the string into the normalization
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | form | "NFC" &#124; "NFD" &#124; "NFKC" &#124; "NFKD" | Yes |  |
+
+<a id="normalize-1"></a>
 
 ## normalize
 

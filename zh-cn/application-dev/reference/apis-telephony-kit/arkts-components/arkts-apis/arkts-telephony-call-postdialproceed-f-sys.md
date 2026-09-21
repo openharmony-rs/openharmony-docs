@@ -54,16 +54,8 @@ call.postDialProceed(1, true, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.postDialProceed(1, true).then(() => {
-    console.info(`postDialProceed success.`);
-}).catch((err: BusinessError) => {
-    console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="postdialproceed-1"></a>
 
 ## postDialProceed
 
@@ -110,4 +102,12 @@ function postDialProceed(callId: number, proceed: boolean): Promise<void>
 
 **示例**
 
-参见 [postDialProceed](#postdialproceed)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.postDialProceed(1, true).then(() => {
+    console.info(`postDialProceed success.`);
+}).catch((err: BusinessError) => {
+    console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
+});
+```

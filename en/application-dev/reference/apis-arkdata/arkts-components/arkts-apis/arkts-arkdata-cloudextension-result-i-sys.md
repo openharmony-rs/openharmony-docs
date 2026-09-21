@@ -1,5 +1,9 @@
 # Result (System API)
 
+```TypeScript
+export interface Result<T>
+```
+
 Represents the data sharing result.
 
 **Since:** 11

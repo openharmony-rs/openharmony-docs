@@ -28,8 +28,8 @@ import { socket } from '@kit.NetworkKit';
 | [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md) | Creates a **MulticastSocket** object. |
 | [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md) | Creates a **TCPSocket** object. |
 | [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md) | Creates a **TCPSocketServer** object. |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md) | Creates a **TLSSocket** object. |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md) | Upgrades a **TCPSocket** connection to a **TLSSocket** connection. |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | Creates a **TLSSocket** object. |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance-1) | Upgrades a **TCPSocket** connection to a **TLSSocket** connection. |
 | [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md) | Creates a **TLSSocketServer** object. |
 | [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md) | Creates a **UDPSocket** object. |
 

@@ -1,5 +1,9 @@
 # NetConnectionPropertyInfo
 
+```TypeScript
+export interface NetConnectionPropertyInfo
+```
+
 Defines the network connection properties.
 
 **Since:** 11

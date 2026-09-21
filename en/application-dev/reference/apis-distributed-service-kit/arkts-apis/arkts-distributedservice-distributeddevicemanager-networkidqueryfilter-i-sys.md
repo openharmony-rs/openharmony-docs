@@ -1,5 +1,9 @@
 # NetworkIdQueryFilter (System API)
 
+```TypeScript
+interface NetworkIdQueryFilter
+```
+
 Defines the network ID filter options.
 
 **Since:** 18

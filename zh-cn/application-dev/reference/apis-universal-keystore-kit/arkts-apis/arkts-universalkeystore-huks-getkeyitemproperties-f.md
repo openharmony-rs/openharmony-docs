@@ -24,6 +24,8 @@ Obtains key properties. This API uses an asynchronous callback to return the res
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -78,22 +80,8 @@ huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 此处options选择emptyOptions来传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-
-/* 获取密钥属性 */
-huks.getKeyItemProperties(keyAlias, emptyOptions)
-  .then((data) => {
-    console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
-  });
-```
-
+<a id="getkeyitemproperties-1"></a>
 
 ## getKeyItemProperties
 
@@ -147,4 +135,18 @@ function getKeyItemProperties(keyAlias: string, options: HuksOptions): Promise<H
 
 **示例**
 
-参见 getKeyItemProperties
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions来传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+/* 获取密钥属性 */
+huks.getKeyItemProperties(keyAlias, emptyOptions)
+  .then((data) => {
+    console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
+  });
+```

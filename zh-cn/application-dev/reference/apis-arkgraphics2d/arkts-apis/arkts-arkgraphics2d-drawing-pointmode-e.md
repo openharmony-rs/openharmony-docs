@@ -1,5 +1,9 @@
 # PointMode
 
+```TypeScript
+enum PointMode
+```
+
 绘制点数组的方式的枚举。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # SceneNodeParameters
 
+```TypeScript
+export interface SceneNodeParameters
+```
+
 Describes the scene node parameters, which are used to provide the name and path in the scene node tree.
 
 @typedef SceneNodeParameters

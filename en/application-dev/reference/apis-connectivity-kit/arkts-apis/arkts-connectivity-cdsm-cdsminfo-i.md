@@ -1,5 +1,9 @@
 # CdsmInfo
 
+```TypeScript
+interface CdsmInfo
+```
+
 Represents the CDSM information.
 
 **Since:** 26.0.0

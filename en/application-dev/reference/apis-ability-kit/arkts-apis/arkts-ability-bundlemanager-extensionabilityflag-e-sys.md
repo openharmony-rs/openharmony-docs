@@ -1,5 +1,9 @@
 # ExtensionAbilityFlag (System API)
 
+```TypeScript
+enum ExtensionAbilityFlag
+```
+
 Enumerates the ExtensionAbility flags, which indicate the type of ExtensionAbility information to obtain.
 
 **Since:** 9

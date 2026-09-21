@@ -57,21 +57,8 @@ sharing.startSharing(SHARING_WIFI, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sharing } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let SHARING_WIFI = 0;
-sharing
-  .startSharing(SHARING_WIFI)
-  .then(() => {
-    console.info('start wifi sharing successful');
-  })
-  .catch((error: BusinessError) => {
-    console.error('start wifi sharing failed');
-  });
-```
-
+<a id="startsharing-1"></a>
 
 ## startSharing
 
@@ -119,4 +106,17 @@ function startSharing(type: SharingIfaceType): Promise<void>
 
 **示例**
 
-参见 [startSharing](#startsharing)
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let SHARING_WIFI = 0;
+sharing
+  .startSharing(SHARING_WIFI)
+  .then(() => {
+    console.info('start wifi sharing successful');
+  })
+  .catch((error: BusinessError) => {
+    console.error('start wifi sharing failed');
+  });
+```

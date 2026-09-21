@@ -1,5 +1,9 @@
 # CBConfigOptions（系统接口）
 
+```TypeScript
+export interface CBConfigOptions
+```
+
 小区广播配置选项。
 
 **起始版本：** 7

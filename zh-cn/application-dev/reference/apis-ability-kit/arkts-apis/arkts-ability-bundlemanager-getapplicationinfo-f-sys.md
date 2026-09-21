@@ -50,29 +50,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = 'com.example.myapplication';
-let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
-let userId = 100;
-
-try {
-  bundleManager.getApplicationInfo(bundleName, appFlags, userId, (err, data) => {
-    if (err) {
-      hilog.error(0x0000, 'testTag', 'getApplicationInfo failed: %{public}s', err.message);
-    } else {
-      hilog.info(0x0000, 'testTag', 'getApplicationInfo successfully: %{public}s', JSON.stringify(data));
-    }
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed: %{public}s', message);
-}
-```
-
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = 'com.example.myapplication';
 let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
 
 try {
@@ -89,27 +66,8 @@ try {
 }
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let bundleName = 'com.example.myapplication';
-let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
-let userId = 100;
-
-try {
-  bundleManager.getApplicationInfo(bundleName, appFlags, userId).then((data) => {
-    hilog.info(0x0000, 'testTag', 'getApplicationInfo successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', message);
-}
-```
-
+<a id="getapplicationinfo-1"></a>
 
 ## getApplicationInfo
 
@@ -151,8 +109,31 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId: number
 
 **示例**
 
-参见 [getApplicationInfo](#getapplicationinfo)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+let bundleName = 'com.example.myapplication';
+let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
+let userId = 100;
+
+try {
+  bundleManager.getApplicationInfo(bundleName, appFlags, userId, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getApplicationInfo failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getApplicationInfo successfully: %{public}s', JSON.stringify(data));
+    }
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed: %{public}s', message);
+}
+```
+
+
+<a id="getapplicationinfo-2"></a>
 
 ## getApplicationInfo
 
@@ -199,4 +180,23 @@ function getApplicationInfo(bundleName: string, appFlags: number, userId?: numbe
 
 **示例**
 
-参见 [getApplicationInfo](#getapplicationinfo)
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+let userId = 100;
+
+try {
+  bundleManager.getApplicationInfo(bundleName, appFlags, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getApplicationInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', message);
+}
+```

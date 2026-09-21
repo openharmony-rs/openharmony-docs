@@ -1,5 +1,9 @@
 # PrinterPreferences
 
+```TypeScript
+interface PrinterPreferences
+```
+
 定义打印机首选项的接口。
 
 **起始版本：** 18

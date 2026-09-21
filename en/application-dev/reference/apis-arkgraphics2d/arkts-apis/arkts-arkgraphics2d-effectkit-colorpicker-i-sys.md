@@ -1,5 +1,9 @@
 # ColorPicker
 
+```TypeScript
+interface ColorPicker
+```
+
 A color picker class used to obtain the main color from image data. It is suitable for scenarios such as UI theme color extraction, image color scheme analysis, and intelligent color scheme recommendation, helping developers dynamically generate harmonious color schemes based on image content. Before calling the methods of ColorPicker, you need to create a ColorPicker instance via createColorPicker.
 
 **Since:** 9
@@ -35,6 +39,34 @@ Discriminates the light and dark degree of the picture. When the light and dark 
 | Type | Description |
 | --- | --- |
 | [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | Light and dark degree of the image. |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+const color = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(color, opts).then((pixelMap) => {
+  effectKit.createColorPicker(pixelMap, (error, colorPicker) => {
+    if (error) {
+      console.error('Failed to create color picker.');
+    } else {
+      console.info('Succeeded in creating color picker.');
+      let pictureLightDegree: effectKit.PictureLightDegree = colorPicker.discriminatePictureLightDegree();
+      console.info('The color light degree of the image is ' + pictureLightDegree);
+    }
+  });
+});
+```
 
 ## getAlphaZeroTransparentProportion
 

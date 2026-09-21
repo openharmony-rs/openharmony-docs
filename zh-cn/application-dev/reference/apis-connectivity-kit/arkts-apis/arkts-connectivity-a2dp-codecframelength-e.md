@@ -1,5 +1,9 @@
 # CodecFrameLength
 
+```TypeScript
+enum CodecFrameLength
+```
+
 枚举，蓝牙媒体音频编解码器的帧长，表示一帧音频数据播放的时长，单位为ms。帧长影响音频传输的延迟和效率。
 
 **起始版本：** 19

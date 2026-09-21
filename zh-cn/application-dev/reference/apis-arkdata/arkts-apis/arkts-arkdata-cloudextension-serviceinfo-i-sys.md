@@ -1,5 +1,9 @@
 # ServiceInfo（系统接口）
 
+```TypeScript
+export interface ServiceInfo
+```
+
 云服务信息。
 
 **起始版本：** 11

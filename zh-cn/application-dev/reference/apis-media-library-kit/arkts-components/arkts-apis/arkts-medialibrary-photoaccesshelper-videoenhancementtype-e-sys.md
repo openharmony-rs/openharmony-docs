@@ -1,5 +1,9 @@
 # VideoEnhancementType（系统接口）
 
+```TypeScript
+enum VideoEnhancementType
+```
+
 枚举，分段式视频的二段式触发类型。
 
 **起始版本：** 13

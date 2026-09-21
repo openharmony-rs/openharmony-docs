@@ -1,5 +1,9 @@
 # ExtendAction
 
+```TypeScript
+export enum ExtendAction
+```
+
 编辑框中文本的扩展编辑操作类型，如剪切、复制等。
 
 **起始版本：** 10

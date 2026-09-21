@@ -1,5 +1,9 @@
 # AcbState
 
+```TypeScript
+export enum AcbState
+```
+
 表示和远端设备的逻辑链路连接状态，为枚举值。
 
 **起始版本：** 26.0.0

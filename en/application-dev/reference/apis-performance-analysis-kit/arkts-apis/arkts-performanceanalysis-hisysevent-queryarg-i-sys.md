@@ -1,5 +1,9 @@
 # QueryArg (System API)
 
+```TypeScript
+interface QueryArg
+```
+
 Defines arguments for an event query.
 
 **Since:** 9

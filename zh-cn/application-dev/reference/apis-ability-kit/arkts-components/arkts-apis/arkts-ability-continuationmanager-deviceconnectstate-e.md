@@ -1,5 +1,9 @@
 # DeviceConnectState
 
+```TypeScript
+export enum DeviceConnectState
+```
+
 设备连接状态。
 
 **起始版本：** 8

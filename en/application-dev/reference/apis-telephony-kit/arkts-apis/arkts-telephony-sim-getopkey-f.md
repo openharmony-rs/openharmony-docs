@@ -55,17 +55,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getOpKey(0).then((data: string) => {
-    console.info(`getOpKey success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getOpKey failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getopkey-1"></a>
 
 ## getOpKey
 
@@ -104,4 +95,13 @@ Obtains the opkey of the SIM card in the specified slot. This API uses a promise
 
 **Examples**
 
-See [getOpKey](#getopkey)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getOpKey(0).then((data: string) => {
+    console.info(`getOpKey success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getOpKey failed, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -1,5 +1,9 @@
 # TextTab
 
+```TypeScript
+interface TextTab
+```
+
 Implements a paragraph-style text tab, which stores the alignment mode and position.
 
 **Since:** 18

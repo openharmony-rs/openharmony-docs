@@ -1,5 +1,9 @@
 # OpenLinkOptions
 
+```TypeScript
+export default interface OpenLinkOptions
+```
+
 **OpenLinkOptions** can be used as an input parameter of [openLink()](arkts-ability-uiabilitycontext-c.md#openlink) to indicate whether to enable only App Linking and pass in optional parameters in the form of key-value pairs.
 
 **Since:** 12
@@ -98,3 +102,87 @@ Note: For details about the usage rules, see **parameters** in [want](arkts-abil
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Examples**
+
+```TypeScript
+import { common, OpenLinkOptions, wantConstant, CompletionHandler, bundleManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0xeeee;
+const TAG: string = '[openLinkDemo]';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'I am caller';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button('start browser', { type: ButtonType.Capsule, stateEffect: true })
+          .width('87%')
+          .height('5%')
+          .margin({ bottom: '12vp' })
+          .onClick(() => {
+            // Obtain the UIAbilityContext.
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let link: string = 'https://www.example.com';
+            let completionHandler: CompletionHandler = {
+              onRequestSuccess: (elementName: bundleManager.ElementName, message: string): void => {
+                console.info(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start succeeded: ${message}`);
+              },
+              onRequestFailure: (elementName: bundleManager.ElementName, message: string): void => {
+                console.error(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start failed: ${message}`);
+              }
+            };
+            let openLinkOptions: OpenLinkOptions = {
+              appLinkingOnly: true,
+              // hideFailureTipDialog takes effect only when appLinkingOnly is set to false.
+              // hideFailureTipDialog: true,
+              parameters: {
+                [wantConstant.Params.CONTENT_TITLE_KEY]: 'contentTitle',
+                keyString: 'str',
+                keyNumber: 200,
+                keyBool: false,
+                keyObj: {
+                  keyObjKey: 'objValue',
+                }
+              },
+              completionHandler: completionHandler
+            };
+            try {
+              // Launch the target application using the openLink API.
+              context.openLink(
+                link,
+                openLinkOptions,
+                // Result callback: err is the error information, and result contains the return code resultCode and the want parameter.
+                (err, result) => {
+                  if (err) {
+                    hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`); 
+                    return;
+                  }
+                  hilog.info(DOMAIN, TAG, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
+                  hilog.info(DOMAIN, TAG, `openLink callback result data: ${JSON.stringify(result.want)}`);
+                }
+              // Print a log if the call succeeds, and catch the error if the call fails.
+              ).then(() => {
+                hilog.info(DOMAIN, TAG, `open link success.`);
+              }).catch ((err: BusinessError) => {
+                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
+              });
+            } catch (e) {
+              hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}, message: ${JSON.stringify(e.message)}`);
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

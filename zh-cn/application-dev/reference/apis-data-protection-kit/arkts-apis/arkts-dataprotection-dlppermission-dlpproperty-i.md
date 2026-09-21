@@ -1,5 +1,9 @@
 # DLPProperty
 
+```TypeScript
+export interface DLPProperty
+```
+
 表示授权相关信息。
 
 **起始版本：** 21

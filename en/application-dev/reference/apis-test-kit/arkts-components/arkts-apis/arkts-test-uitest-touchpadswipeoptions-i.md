@@ -1,5 +1,9 @@
 # TouchPadSwipeOptions
 
+```TypeScript
+declare interface TouchPadSwipeOptions
+```
+
 Describes information about the touchpad swipe gesture option.
 
 **Since:** 18

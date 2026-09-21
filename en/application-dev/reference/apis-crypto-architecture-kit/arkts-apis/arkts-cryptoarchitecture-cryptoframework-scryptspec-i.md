@@ -1,5 +1,9 @@
 # ScryptSpec
 
+```TypeScript
+interface ScryptSpec extends KdfSpec
+```
+
 Defines the child class of [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md). It is a parameter for scrypt key derivation function (KDF).
 
 > **NOTE:** 

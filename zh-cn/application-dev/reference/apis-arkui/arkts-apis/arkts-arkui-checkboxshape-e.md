@@ -1,5 +1,9 @@
 # CheckBoxShape
 
+```TypeScript
+declare enum CheckBoxShape
+```
+
 common enum of the checkbox shape
 
 @enum { number }

@@ -1,5 +1,9 @@
 # RevocationCheckOptions
 
+```TypeScript
+enum RevocationCheckOptions
+```
+
 Enumerates the options for checking the certificate revocation status.
 
 **Since:** 12

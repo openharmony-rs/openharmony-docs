@@ -1,5 +1,9 @@
 # ImsRegInfo（系统接口）
 
+```TypeScript
+export interface ImsRegInfo
+```
+
 Indicates IMS registration information.
 
 **起始版本：** 9

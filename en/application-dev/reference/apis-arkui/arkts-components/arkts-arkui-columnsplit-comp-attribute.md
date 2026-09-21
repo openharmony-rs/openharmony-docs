@@ -1,8 +1,16 @@
 # ColumnSplit properties/events
 
-In addition to the [universal attributes](arkts-arkui-commonmethod-c.md), the following attributes are supported.
+```TypeScript
+declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
+```
 
-The [universal events](arkts-arkui-commonmethod-c.md) are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
+
+> **NOTE:** 
+> 
+> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip) of the **ColumnSplit** component is **true**.
+
+The [universal events](arkts-arkui-common-comp.md#common) are supported.
 
 **Inheritance/Implementation:** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 
@@ -16,7 +24,7 @@ The [universal events](arkts-arkui-commonmethod-c.md) are supported.
 divider(value: ColumnSplitDividerStyle | null)
 ```
 
-Margin of the divider.
+Sets the distance between the divider and the child components.
 
 **Since:** 10
 
@@ -30,7 +38,7 @@ Margin of the divider.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ColumnSplitDividerStyle](arkts-arkui-columnsplitdividerstyle-i.md) &#124; null | Yes | Margin of the divider, that is, the distance between the divider and the child component.<br>Default value: **null**. When this parameter is set to null, the distance between the divider and the child component is 0 vp. <br>Invalid values are treated as the default value. |
+| value | [ColumnSplitDividerStyle](arkts-arkui-columnsplit-comp-columnsplitdividerstyle-i.md) &#124; null | Yes | Margin of the divider, which sets the distance between the divider and child components. The object properties include: **startMargin** (distance between the child component and the divider above) and **endMargin** (distance between the child component and the divider below).<br>Default value: **null**. When set to **null**, the distance between the divider and child components is 0 vp. <br>Illegal value: The default value is used. |
 
 ## resizeable
 
@@ -38,7 +46,14 @@ Margin of the divider.
 resizeable(value: boolean)
 ```
 
-Sets whether the divider can be dragged.
+Sets whether the divider can be dragged. When set to **true**, the user can drag the divider to adjust the height of adjacent child components. When set to **false**, the divider cannot be dragged and the child component height is fixed.
+
+> **NOTE:** 
+> 
+> After initialization, when dynamic modification of the [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),
+> [border](arkts-arkui-common-comp-commonmethod-c.md#border), or [padding](arkts-arkui-common-comp-commonmethod-c.md#padding) universal attributes causes a child
+> component size to exceed the spacing between adjacent dividers, dragging the divider to change the child
+> component height is not supported.
 
 **Since:** 7
 
@@ -50,4 +65,4 @@ Sets whether the divider can be dragged.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the divider can be dragged. **true**: The divider can be dragged. **false**: The divider cannot be dragged.<br>Default value: **false** <br>Invalid values are treated as the default value. |
+| value | boolean | Yes | Whether the divider can be dragged. The value **true** means that the divider can be dragged, and **false** means the opposite. The height adjustment range of a child component is limited by its maximum and minimum heights. When the size of a child component is greater than the spacing between adjacent dividers, divider drag is not supported. After initialization, when dynamic modification of **margin**, **border**, or **padding** universal attributes causes the size of a child component to be greater than the spacing between adjacent dividers, divider drag to change the height of the child component is not supported.<br>Default value: **false** <br>Illegal value: The default value is used. |

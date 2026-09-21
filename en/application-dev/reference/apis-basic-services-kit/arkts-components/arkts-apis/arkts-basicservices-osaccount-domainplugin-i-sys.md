@@ -1,5 +1,9 @@
 # DomainPlugin (System API)
 
+```TypeScript
+interface DomainPlugin
+```
+
 Provides APIs for domain account authentication.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # CropAndScaleStrategy
 
+```TypeScript
+enum CropAndScaleStrategy
+```
+
 表示裁剪与缩放的先后策略的枚举。
 
 如果在配置解码选项[DecodingOptions](arkts-image-image-decodingoptions-i.md)时，未填入参数cropAndScaleStrategy，并且同时设置了参数desiredRegion和desiredSize，由于系统对于不同图片格式采用的解码算法不同，最终解码效果将略有差异。

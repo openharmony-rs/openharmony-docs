@@ -1,5 +1,9 @@
 # FormInfo (System API)
 
+```TypeScript
+interface FormInfo
+```
+
 Defines the Gallery widget information.
 
 **Since:** 11

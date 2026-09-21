@@ -1,5 +1,9 @@
 # DialogDisplayMode
 
+```TypeScript
+declare enum DialogDisplayMode
+```
+
 Dialog display mode.
 
 @enum { DialogDisplayMode }

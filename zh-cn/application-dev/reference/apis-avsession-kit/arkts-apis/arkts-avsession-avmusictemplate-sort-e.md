@@ -1,5 +1,9 @@
 # Sort
 
+```TypeScript
+enum Sort
+```
+
 表示查询到的列表数据排序类型的枚举。
 
 @enum { int }

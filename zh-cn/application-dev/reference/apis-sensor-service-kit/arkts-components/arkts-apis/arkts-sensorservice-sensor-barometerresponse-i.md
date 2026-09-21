@@ -1,5 +1,9 @@
 # BarometerResponse
 
+```TypeScript
+interface BarometerResponse extends Response
+```
+
 气压计传感器数据，继承于[Response](arkts-sensorservice-sensor-response-i.md)。
 
 **继承/实现关系：** BarometerResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

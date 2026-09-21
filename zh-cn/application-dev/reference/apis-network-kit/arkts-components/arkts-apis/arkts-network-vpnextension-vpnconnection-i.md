@@ -1,5 +1,9 @@
 # VpnConnection
 
+```TypeScript
+export interface VpnConnection
+```
+
 VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExt.createVpnConnection创建VPN连接对象。
 
 **起始版本：** 11
@@ -248,24 +252,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
-```TypeScript
-import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
-import { BusinessError } from "@kit.BasicServicesKit";
-
-export default class MyVpnExtAbility extends VpnExtensionAbility {
-  onCreate() {
-    let vpnConnection = vpnExtension.createVpnConnection(this.context);
-
-    // 可通过generateVpnId()获取vpnId
-    let vpnId = 'testVpnId';
-    vpnConnection.destroy(vpnId).then(() => {
-      console.info("destroy success");
-    }).catch((error: BusinessError) => {
-      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
-    });
-  }
-}
-```
+<a id="destroy-1"></a>
 
 ## destroy
 
@@ -300,7 +287,24 @@ destroy(vpnId: string): Promise<void>
 
 **示例**
 
-参见 [destroy](#destroy)
+```TypeScript
+import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
+import { BusinessError } from "@kit.BasicServicesKit";
+
+export default class MyVpnExtAbility extends VpnExtensionAbility {
+  onCreate() {
+    let vpnConnection = vpnExtension.createVpnConnection(this.context);
+
+    // 可通过generateVpnId()获取vpnId
+    let vpnId = 'testVpnId';
+    vpnConnection.destroy(vpnId).then(() => {
+      console.info("destroy success");
+    }).catch((error: BusinessError) => {
+      console.error(`destroy fail, Code is ${error.code}, message is ${error.message}`);
+    });
+  }
+}
+```
 
 ## generateVpnId
 

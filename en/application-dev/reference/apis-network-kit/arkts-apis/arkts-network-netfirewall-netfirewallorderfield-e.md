@@ -1,5 +1,9 @@
 # NetFirewallOrderField
 
+```TypeScript
+enum NetFirewallOrderField
+```
+
 Enumerates the sorting methods of firewall rules.
 
 > **Description**

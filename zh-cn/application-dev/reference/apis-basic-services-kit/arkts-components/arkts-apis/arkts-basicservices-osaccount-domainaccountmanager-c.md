@@ -1,5 +1,9 @@
 # DomainAccountManager
 
+```TypeScript
+class DomainAccountManager
+```
+
 域账号管理类。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # DownloadStatus
 
+```TypeScript
+enum DownloadStatus
+```
+
 表示下载状态类型的枚举。
 
 @enum { int }

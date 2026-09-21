@@ -1,5 +1,9 @@
 # tag(Standard NFC Tags)
 
+```TypeScript
+declare namespace tag
+```
+
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:
 
 Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. Background mode does not involve tag-related APIs. For details, see [nfc-tag Read/Write Development](../../../connectivity/nfc/nfc-tag-access-guide.md#accessing-an-nfc-tag-without-starting-an-application).

@@ -1,5 +1,9 @@
 # BackgroundModeType
 
+```TypeScript
+export enum BackgroundModeType
+```
+
 Defines the type of a continuous task.
 
 **Since:** 16

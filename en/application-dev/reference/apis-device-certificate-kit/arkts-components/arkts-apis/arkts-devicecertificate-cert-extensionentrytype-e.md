@@ -1,5 +1,9 @@
 # ExtensionEntryType
 
+```TypeScript
+enum ExtensionEntryType
+```
+
 Enumerates the entry types in certificate extensions that can be obtained.
 
 **Since:** 10

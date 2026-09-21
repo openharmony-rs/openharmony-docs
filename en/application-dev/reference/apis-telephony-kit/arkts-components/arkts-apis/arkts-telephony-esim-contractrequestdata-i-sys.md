@@ -1,5 +1,9 @@
 # ContractRequestData (System API)
 
+```TypeScript
+export interface ContractRequestData
+```
+
 Information required for encryption.
 
 **Since:** 20

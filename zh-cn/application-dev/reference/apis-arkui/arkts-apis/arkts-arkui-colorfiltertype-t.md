@@ -17,4 +17,4 @@ declare type ColorFilterType = ColorFilter | DrawingColorFilter
 | 类型 | 说明 |
 | --- | --- |
 | [ColorFilter](arkts-arkui-colorfilter-c.md) | ColorFilter类型图片颜色滤镜设置项。 |
-| [DrawingColorFilter](../arkts-components/arkts-arkui-drawingcolorfilter-t.md) | DrawingColorFilter类型图片颜色滤镜设置项。 |
+| [DrawingColorFilter](../arkts-components/arkts-arkui-image-comp-drawingcolorfilter-t.md) | DrawingColorFilter类型图片颜色滤镜设置项。 |

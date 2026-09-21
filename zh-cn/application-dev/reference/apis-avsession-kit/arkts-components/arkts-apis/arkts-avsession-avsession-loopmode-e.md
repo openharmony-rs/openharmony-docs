@@ -1,5 +1,9 @@
 # LoopMode
 
+```TypeScript
+enum LoopMode
+```
+
 表示媒体播放循环模式的枚举。
 
 **起始版本：** 10

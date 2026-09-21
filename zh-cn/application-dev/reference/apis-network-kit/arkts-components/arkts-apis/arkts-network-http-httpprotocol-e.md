@@ -1,5 +1,9 @@
 # HttpProtocol
 
+```TypeScript
+export enum HttpProtocol
+```
+
 HTTP协议版本。
 
 **起始版本：** 9

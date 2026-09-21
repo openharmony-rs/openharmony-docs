@@ -1,5 +1,9 @@
 # UserActivityScenario
 
+```TypeScript
+export enum UserActivityScenario
+```
+
 位置请求中的用户活动场景类型。
 
 **起始版本：** 12

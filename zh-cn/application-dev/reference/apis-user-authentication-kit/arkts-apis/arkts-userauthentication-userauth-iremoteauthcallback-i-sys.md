@@ -1,5 +1,9 @@
 # IRemoteAuthCallback（系统接口）
 
+```TypeScript
+interface IRemoteAuthCallback
+```
+
 远程认证回调接口。该接口用于远程认证场景，提供获取远程认证页面参数和返回认证结果的回调能力。
 
 **起始版本：** 26.0.0

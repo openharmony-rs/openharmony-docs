@@ -66,34 +66,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: systemTimer.TimerOptions = {
-  type: systemTimer.TIMER_TYPE_REALTIME,
-  repeat:false
-};
-let triggerTime: number = new Date().getTime();
-triggerTime += 3000;
-
-try {
-  systemTimer.createTimer(options).then((timerId: number) => {
-    systemTimer.startTimer(timerId, triggerTime);
-    systemTimer.stopTimer(timerId).then(() => {
-      console.info(`Succeeded in stopping timer.`);
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
-    });
-    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="stoptimer-1"></a>
 
 ## stopTimer
 
@@ -130,4 +104,30 @@ function stopTimer(timer: number): Promise<void>
 
 **示例**
 
-参见 [stopTimer](#stoptimer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: systemTimer.TimerOptions = {
+  type: systemTimer.TIMER_TYPE_REALTIME,
+  repeat:false
+};
+let triggerTime: number = new Date().getTime();
+triggerTime += 3000;
+
+try {
+  systemTimer.createTimer(options).then((timerId: number) => {
+    systemTimer.startTimer(timerId, triggerTime);
+    systemTimer.stopTimer(timerId).then(() => {
+      console.info(`Succeeded in stopping timer.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
+    });
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # KeyCode
 
+```TypeScript
+enum KeyCode
+```
+
 按键编码。添加按键事件处理策略[addKeyEventPolicies](arkts-mdm-systemmanager-addkeyeventpolicies-f.md)、删除按键事件处理策略[removeKeyEventPolicies](arkts-mdm-systemmanager-removekeyeventpolicies-f.md)、获取按键事件处理策略[getKeyEventPolicies](arkts-mdm-systemmanager-getkeyeventpolicies-f.md)和按键事件回调[onKeyEvent](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onkeyevent)接口通过按键编码映射到设备对应实际按键。
 
 **起始版本：** 23

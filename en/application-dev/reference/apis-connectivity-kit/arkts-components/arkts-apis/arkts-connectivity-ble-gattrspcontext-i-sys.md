@@ -1,5 +1,9 @@
 # GattRspContext (System API)
 
+```TypeScript
+interface GattRspContext
+```
+
 Describe the context of GATT responses.
 
 **Since:** 23

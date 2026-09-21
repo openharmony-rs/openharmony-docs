@@ -38,16 +38,8 @@ call.hasCall((err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.hasCall().then(() => {
-    console.info(`hasCall success`);
-}).catch((err: BusinessError) => {
-    console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="hascall-1"></a>
 
 ## hasCall
 
@@ -69,4 +61,12 @@ Checks whether a call is in progress. This API uses a promise to return the resu
 
 **Examples**
 
-See [hasCall](#hascall)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.hasCall().then(() => {
+    console.info(`hasCall success`);
+}).catch((err: BusinessError) => {
+    console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```

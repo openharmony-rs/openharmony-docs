@@ -1,5 +1,9 @@
 # DeviceStateChange
 
+```TypeScript
+enum DeviceStateChange
+```
+
 表示设备状态。
 
 **起始版本：** 10

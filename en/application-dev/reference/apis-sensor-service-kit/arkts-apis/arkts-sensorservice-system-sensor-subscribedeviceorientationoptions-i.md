@@ -1,5 +1,9 @@
 # SubscribeDeviceOrientationOptions
 
+```TypeScript
+export interface SubscribeDeviceOrientationOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the device orientation sensor.
 
 **Since:** 6

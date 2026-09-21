@@ -17,4 +17,4 @@ Defines the callback triggered on a frame-by-frame basis during a swipe-based pa
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | index | number | Yes | Index of the currently displayed element. |
-| event | [SwiperAnimationEvent](../arkts-components/arkts-arkui-swiperanimationevent-i.md) | Yes | Extra information of the animation, which is the offset of the currently displayed element relative to the start position of the **ArcSwiper** along the main axis. |
+| event | [SwiperAnimationEvent](../arkts-components/arkts-arkui-swiper-comp-swiperanimationevent-i.md) | Yes | Extra information of the animation, which is the offset of the currently displayed element relative to the start position of the **ArcSwiper** along the main axis. |

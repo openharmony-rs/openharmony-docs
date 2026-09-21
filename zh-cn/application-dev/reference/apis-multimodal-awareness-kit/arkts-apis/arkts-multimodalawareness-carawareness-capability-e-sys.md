@@ -1,8 +1,12 @@
 # Capability
 
+```TypeScript
+enum Capability
+```
+
 车辆感知功能。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -14,7 +18,7 @@ SPATIAL_POINT = 'SpatialPoint'
 
 指向识别能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -30,7 +34,7 @@ SPATIAL_GESTURE = 'SpatialGesture'
 
 姿体动作能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -46,7 +50,7 @@ CAR_STATUS = 'CarStatus'
 
 车辆状态采集能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -62,7 +66,7 @@ CAR_CFG = 'CarCfg'
 
 车辆配置采集能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -78,7 +82,7 @@ HABIT_RECOMMENDATION = 'HabitRecommendation'
 
 习惯推荐能力
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

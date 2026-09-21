@@ -1,5 +1,9 @@
 # PlaybackMetricsKey
 
+```TypeScript
+enum PlaybackMetricsKey
+```
+
 Enumerates the playback metric keys.
 
 **Since:** 23

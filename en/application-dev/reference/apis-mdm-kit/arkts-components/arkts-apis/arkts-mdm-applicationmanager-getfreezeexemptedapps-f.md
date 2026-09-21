@@ -63,6 +63,8 @@ try {
 ```
 
 
+<a id="getfreezeexemptedapps-1"></a>
+
 ## getFreezeExemptedApps
 
 ```TypeScript

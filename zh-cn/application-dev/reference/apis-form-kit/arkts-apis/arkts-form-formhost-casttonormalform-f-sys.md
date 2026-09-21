@@ -60,22 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let formId: string = '12400633174999288';
-  formHost.castToNormalForm(formId).then(() => {
-    console.info('formHost castToNormalForm success');
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="casttonormalform-1"></a>
 
 ## castToNormalForm
 
@@ -120,4 +106,18 @@ function castToNormalForm(formId: string): Promise<void>
 
 **示例**
 
-参见 [castToNormalForm](#casttonormalform)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId).then(() => {
+    console.info('formHost castToNormalForm success');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

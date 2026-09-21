@@ -1,5 +1,9 @@
 # DomainAccountManager
 
+```TypeScript
+class DomainAccountManager
+```
+
 域账号管理类。
 
 **起始版本：** 18
@@ -55,7 +59,7 @@ static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callba
 | [12300112](../errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
 
@@ -80,33 +84,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-let credential = new Uint8Array([0]);
-try {
-  let serverParams: Record<string, Object> = {
-    "uri": "test.example.com",
-    "port": 100
-  }
-  let authOptions: osAccount.DomainAccountAuthOptions = {
-    serverParams: serverParams
-  }
-  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('auth resultCode = ' + resultCode);
-      console.info('auth authResult = ' + JSON.stringify(authResult));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="auth-1"></a>
 
 ## auth
 
@@ -155,30 +133,9 @@ static auth(
 | [12300112](../errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-let credential = new Uint8Array([0])
-try {
-  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, {
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('auth resultCode = ' + resultCode);
-      console.info('auth authResult = ' + JSON.stringify(authResult));
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -249,7 +206,7 @@ static authWithPopup(callback: IUserAuthCallback): void
 | [12300112](../errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
-| 12300211 | Server unreachable.<br>**适用版本：** 11+ |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 11+ |
 
 **示例**
 
@@ -269,21 +226,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  osAccount.DomainAccountManager.authWithPopup(100, {
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('authWithPopup resultCode = ' + resultCode);
-      console.info('authWithPopup authResult = ' + JSON.stringify(authResult));
-    }
-  })
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`authWithPopup exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="authwithpopup-1"></a>
 
 ## authWithPopup
 
@@ -328,25 +271,9 @@ static authWithPopup(localId: number, callback: IUserAuthCallback): void
 | [12300112](../errorcode-account.md#12300112-认证服务忙) | The authentication service is busy. |
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The account authentication service does not exist. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
-| 12300211 | Server unreachable.<br>**适用版本：** 11+ |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 11+ |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  osAccount.DomainAccountManager.authWithPopup({
-    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
-      console.info('auth resultCode = ' + resultCode);
-      console.info('auth authResult = ' + JSON.stringify(authResult));
-    }
-  })
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -399,7 +326,7 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 | [12300014](../errorcode-account.md#12300014-域账号未认证) | The domain account is not authenticated. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
 
@@ -425,25 +352,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let businessParams: Record<string, Object> = {
-  'clientId': 'xxx',
-  'secretId': 'yyy'
-};  // depends on the implementation of the domain plugin
-try {
-  osAccount.DomainAccountManager.getAccessToken(businessParams)
-    .then((result: Uint8Array) => {
-    console.info('getAccessToken result: ' + result);
-  }).catch((err: BusinessError) => {
-    console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getaccesstoken-2"></a>
 
 ## getAccessToken
 
@@ -485,31 +394,9 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 | [12300014](../errorcode-account.md#12300014-域账号未认证) | The domain account is not authenticated. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let businessParams: Record<string, Object> = {
-  'clientId': 'xxx',
-  'secretId': 'yyy'
-};  // depends on the implementation of the domain plugin
-try {
-  osAccount.DomainAccountManager.getAccessToken(businessParams,
-    (err: BusinessError, result: Uint8Array) => {
-    if (err) {
-      console.error(`getAccessToken failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAccessToken result: ' + result);
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -568,7 +455,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallb
 | [12300014](../errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
 
@@ -594,25 +481,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-try {
-  osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo)
-    .then((result: osAccount.DomainAccountInfo) => {
-    console.info('getAccountInfo result: ' + result);
-  }).catch((err: BusinessError) => {
-    console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="getaccountinfo-1"></a>
 
 ## getAccountInfo
 
@@ -656,31 +525,9 @@ static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccou
 | [12300014](../errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.GetDomainAccountInfoOptions = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-try {
-  osAccount.DomainAccountManager.getAccountInfo(domainAccountInfo,
-    (err: BusinessError, result: osAccount.DomainAccountInfo) => {
-    if (err) {
-      console.error(`call getAccountInfo failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAccountInfo result: ' + result);
-    }
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
-}
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -739,7 +586,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 | [12300014](../errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
 
@@ -764,24 +611,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan'
-}
-try {
-  osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((result: boolean) => {
-    console.info('hasAccount result: ' + result);
-  }).catch((err: BusinessError) => {
-      console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="hasaccount-1"></a>
 
 ## hasAccount
 
@@ -825,11 +655,28 @@ static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>
 | [12300014](../errorcode-account.md#12300014-域账号未认证) | Not authenticated. |
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
-| 12300211 | Server unreachable. |
+| [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
 **示例**
 
-参见 [hasAccount](#hasaccount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+try {
+  osAccount.DomainAccountManager.hasAccount(domainAccountInfo).then((result: boolean) => {
+    console.info('hasAccount result: ' + result);
+  }).catch((err: BusinessError) => {
+      console.error(`call hasAccount failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## isAuthenticationExpired
 
@@ -1054,26 +901,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let domainAccountInfo: osAccount.DomainAccountInfo = {
-  domain: 'CHINA',
-  accountName: 'zhangsan',
-  accountId: '123456'
-}
-let token = new Uint8Array([0])
-try {
-  osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
-    console.info('updateAccountToken successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
-}
-```
+<a id="updateaccounttoken-1"></a>
 
 ## updateAccountToken
 
@@ -1117,4 +945,23 @@ static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Arra
 
 **示例**
 
-参见 [updateAccountToken](#updateaccounttoken)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan',
+  accountId: '123456'
+}
+let token = new Uint8Array([0])
+try {
+  osAccount.DomainAccountManager.updateAccountToken(domainAccountInfo, token).then(() => {
+    console.info('updateAccountToken successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`updateAccountToken failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
+}
+```

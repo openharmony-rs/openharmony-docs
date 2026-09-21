@@ -44,8 +44,38 @@ function requestSerialRight(portId: number): Promise<boolean>
 
 **示例**
 
-```TypeScript
 > 说明：
 > 
 > 以下示例代码只是调用requestSerialRight接口的必要流程，需要放入具体的方法中执行。实际调用时，设备开发者需要遵循设备相关协议进行调用。
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取串口列表
+function requestSerialRightExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
+
+  // 检测设备是否可被应用访问
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // 没有访问设备的权限且用户不授权则退出
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to request serial right. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
 ```

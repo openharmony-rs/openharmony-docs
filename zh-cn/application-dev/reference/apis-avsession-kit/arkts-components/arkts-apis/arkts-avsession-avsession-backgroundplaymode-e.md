@@ -1,5 +1,9 @@
 # BackgroundPlayMode
 
+```TypeScript
+enum BackgroundPlayMode
+```
+
 表示session支持的后台播放模式的枚举。
 
 | 名称 | 值 | 说明 |  

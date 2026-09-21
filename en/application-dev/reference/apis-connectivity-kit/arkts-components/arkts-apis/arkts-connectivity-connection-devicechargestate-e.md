@@ -1,5 +1,9 @@
 # DeviceChargeState
 
+```TypeScript
+enum DeviceChargeState
+```
+
 Enum for the charge state.
 
 **Since:** 12

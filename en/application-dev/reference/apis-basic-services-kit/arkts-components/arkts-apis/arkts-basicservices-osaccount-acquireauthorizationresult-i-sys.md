@@ -1,5 +1,9 @@
 # AcquireAuthorizationResult (System API)
 
+```TypeScript
+interface AcquireAuthorizationResult
+```
+
 Defines the result of the authorization.
 
 **Since:** 24

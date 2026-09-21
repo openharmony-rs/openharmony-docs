@@ -20,6 +20,8 @@ function getPermissionUsedTypeInfos(
 
 **需要权限：** ohos.permission.PERMISSION_USED_STATS
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -28,7 +30,7 @@ function getPermissionUsedTypeInfos(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tokenId | number &#124; null | 否 | 访问敏感权限的应用身份标识。可通过应用BundleInfo中的[ApplicationInfo](arkts-ability-applicationinfo-i.md)的accessTokenId字段获取。当需要查询特定应用的敏感权限访问类型信息时传入具体的tokenId；为0或null时表示查询所有应用的敏感权限访问类型信息。从API version 20开始，新增支持null类型。<br>默认值：0。 |
+| tokenId | number &#124; null | 否 | 访问敏感权限的应用身份标识。可通过应用[BundleInfo](arkts-ability-bundleinfo-i.md)中的[ApplicationInfo](arkts-ability-applicationinfo-i.md)的accessTokenId字段获取。当需要查询特定应用的敏感权限访问类型信息时传入具体的tokenId；为0或null时表示查询所有应用的敏感权限访问类型信息。从API version 20开始，新增支持null类型。<br>默认值：0。 |
 | permissionName | Permissions | 否 | 被访问的敏感权限名称。当需要查询特定敏感权限的访问类型信息时传入具体的权限名；为空时表示查询所有敏感权限的访问类型信息。传入无效值时返回错误码12100001。<br>取值约束：权限名长度不能超过256个字符。默认值：空。 |
 
 **返回值：**

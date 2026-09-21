@@ -6,6 +6,8 @@
 import { fileShare } from '@kit.CoreFileKit';
 ```
 
+<a id="revokepermission-1"></a>
+
 ## revokePermission
 
 ```TypeScript
@@ -50,44 +52,6 @@ function revokePermission(tokenID: number): Promise<void>
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { picker } from '@kit.CoreFileKit';
-
-async function revokePermissionExample() {
-  try {
-    let documentSelectOptions = new picker.DocumentSelectOptions();
-    let documentPicker = new picker.DocumentViewPicker();
-    let uris = await documentPicker.select(documentSelectOptions);
-    if (uris.length === 0) {
-      console.error('No file selected');
-      return;
-    }
-    let policyInfo: fileShare.PolicyInfo = {
-      uri: uris[0],
-      // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE
-      operationMode: fileShare.OperationMode.READ_MODE,
-    };
-    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-    fileShare.revokePermission(policies).then(() => {
-      console.info('revokePermission successfully');
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error(`revokePermission failed with error message: ${err.message}, error code: ${err.code}`);
-      if (err.code === 13900001 && err.data) {
-        for (let i = 0; i < err.data.length; i++) {
-          console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
-          console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
-          console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
-        }
-      }
-    });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`revokePermission failed with err: ${JSON.stringify(err)}`);
-  }
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fileShare } from '@kit.CoreFileKit';
 
 async function revokeAllPermissionExample() {
@@ -104,36 +68,8 @@ async function revokeAllPermissionExample() {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileShare } from '@kit.CoreFileKit';
 
-async function revokeSpecificPermissionExample() {
-  try {
-    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
-    let policyInfo: fileShare.PolicyInfo = {
-      uri: 'file://docs/storage/Users/currentUser/Documents/1.txt',
-      operationMode: fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE,
-    };
-    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
-    fileShare.revokePermission(tokenID, policies).then(() => {
-      console.info('revoke persist permission successfully.');
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error(`revoke persist permission failed. Code: ${err.code}, message: ${err.message}`);
-      if (err.code === 13900001 && err.data) {
-        for (let i = 0; i < err.data.length; i++) {
-          console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
-          console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
-          console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
-        }
-      }
-    });
-  } catch (error) {
-    console.error(`revokePermission error, Code: ${error.code}, message: ${error.message}`);
-  }
-}
-```
-
+<a id="revokepermission-2"></a>
 
 ## revokePermission
 
@@ -180,4 +116,32 @@ function revokePermission(tokenID: number, policies: Array<PolicyInfo>): Promise
 
 **示例**
 
-参见 [revokePermission](#revokepermission)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileShare } from '@kit.CoreFileKit';
+
+async function revokeSpecificPermissionExample() {
+  try {
+    let tokenID = 537688848; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+    let policyInfo: fileShare.PolicyInfo = {
+      uri: 'file://docs/storage/Users/currentUser/Documents/1.txt',
+      operationMode: fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE,
+    };
+    let policies: Array<fileShare.PolicyInfo> = [policyInfo];
+    fileShare.revokePermission(tokenID, policies).then(() => {
+      console.info('revoke persist permission successfully.');
+    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
+      console.error(`revoke persist permission failed. Code: ${err.code}, message: ${err.message}`);
+      if (err.code === 13900001 && err.data) {
+        for (let i = 0; i < err.data.length; i++) {
+          console.error(`error code: ${JSON.stringify(err.data[i].code)}`);
+          console.error(`error URI: ${JSON.stringify(err.data[i].uri)}`);
+          console.error(`error reason: ${JSON.stringify(err.data[i].message)}`);
+        }
+      }
+    });
+  } catch (error) {
+    console.error(`revokePermission error, Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```

@@ -1,5 +1,9 @@
 # RecommendationType
 
+```TypeScript
+enum RecommendationType
+```
+
 枚举，推荐的图片类型。
 
 **起始版本：** 11

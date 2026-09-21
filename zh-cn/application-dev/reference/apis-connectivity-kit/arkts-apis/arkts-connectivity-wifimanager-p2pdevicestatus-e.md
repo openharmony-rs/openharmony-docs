@@ -1,5 +1,9 @@
 # P2pDeviceStatus
 
+```TypeScript
+enum P2pDeviceStatus
+```
+
 表示设备状态的枚举。
 
 **起始版本：** 9

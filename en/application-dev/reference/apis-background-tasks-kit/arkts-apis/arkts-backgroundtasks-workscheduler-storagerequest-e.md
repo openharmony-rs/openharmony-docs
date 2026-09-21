@@ -1,5 +1,9 @@
 # StorageRequest
 
+```TypeScript
+export enum StorageRequest
+```
+
 Enumerates the storage status that triggers the deferred task callback.
 
 **Since:** 9

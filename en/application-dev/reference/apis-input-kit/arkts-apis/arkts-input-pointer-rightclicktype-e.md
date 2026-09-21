@@ -1,5 +1,9 @@
 # RightClickType
 
+```TypeScript
+enum RightClickType
+```
+
 Enumerates shortcut menu triggering modes.
 
 **Since:** 10

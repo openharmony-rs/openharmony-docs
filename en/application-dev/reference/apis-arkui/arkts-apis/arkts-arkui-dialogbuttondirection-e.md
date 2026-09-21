@@ -1,5 +1,9 @@
 # DialogButtonDirection
 
+```TypeScript
+declare enum DialogButtonDirection
+```
+
 Enumerates the alignment modes of the buttons in the alert dialog box.
 
 **Since:** 10

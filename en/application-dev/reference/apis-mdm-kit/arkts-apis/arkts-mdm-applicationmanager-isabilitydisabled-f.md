@@ -71,6 +71,8 @@ try {
 ```
 
 
+<a id="isabilitydisabled-1"></a>
+
 ## isAbilityDisabled
 
 ```TypeScript

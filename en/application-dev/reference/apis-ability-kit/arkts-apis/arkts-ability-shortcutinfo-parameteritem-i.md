@@ -1,5 +1,9 @@
 # ParameterItem
 
+```TypeScript
+export interface ParameterItem
+```
+
 Describes the custom data in the shortcut configuration. You can define your own key-value pairs, and obtain the values using the keys.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # CdsmClient
 
+```TypeScript
+interface CdsmClient
+```
+
 Defines a CDSM client class, which provides APIs for obtaining the CDSM information of a remote device.
 
 - Before using the methods of this class, call [cdsm.createCdsmClient](arkts-connectivity-cdsm-createcdsmclient-f.md) to construct an  

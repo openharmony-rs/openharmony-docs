@@ -38,10 +38,3 @@ Obtains the SQL statement used to query data. This API returns the result synchr
 | [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 
 **Examples**
-
-```TypeScript
-const predicates = new relationalStore.RdbPredicates("users");
-predicates.notEqualTo("age", 18);
-predicates.equalTo("name", "zhangsan");
-const sqlInfo: relationalStore.SqlInfo = relationalStore.getQuerySqlInfo(predicates);
-```

@@ -1,5 +1,9 @@
 # UnifiedRecord
 
+```TypeScript
+class UnifiedRecord
+```
+
 An abstract definition of the data content supported by the UDMF. A **UnifiedRecord** object contains one or more data records, for example, a text record, an image record, or an HTML record. Since API version 15, different styles of the same content can be added to a **UnifiedRecord** object. Data users can obtain the corresponding styles as required.
 
 **Since:** 10
@@ -90,38 +94,7 @@ Defines a constructor used to create a **UnfiedRecord** object.
 let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 ```
 
-```TypeScript
-import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
-
-let hyperlink: uniformDataStruct.Hyperlink = {
-  uniformDataType: 'general.hyperlink',
-  url: 'www.XXX.com',
-  description: 'This is the description of the hyperlink'
-};
-let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
-
-let plainText: uniformDataStruct.PlainText = {
-  uniformDataType: 'general.plain-text',
-  textContent: 'This is a plain text example',
-  abstract: 'This is abstract'
-};
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-
-let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
-let opt: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: { height: 200, width: 200 },
-  alphaType: 3
-};
-let pixelMap: uniformDataStruct.PixelMap = {
-  uniformDataType: 'openharmony.pixel-map',
-  pixelMap: image.createPixelMapSync(arrayBuffer, opt)
-};
-let pixelMapRecord =
-  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -157,10 +130,6 @@ If **value** is of the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-ap
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Examples**
-
-```TypeScript
-let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
-```
 
 ```TypeScript
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';

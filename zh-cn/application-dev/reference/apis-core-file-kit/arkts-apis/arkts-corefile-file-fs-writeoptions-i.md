@@ -1,5 +1,9 @@
 # WriteOptions
 
+```TypeScript
+export interface WriteOptions extends Options
+```
+
 可选项类型，支持write接口使用，WriteOptions继承自[Options](arkts-corefile-file-fs-options-i.md)。
 
 **继承/实现关系：** WriteOptions extends [Options](arkts-corefile-file-fs-options-i.md)

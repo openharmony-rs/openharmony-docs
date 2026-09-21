@@ -1,5 +1,9 @@
 # URLParams
 
+```TypeScript
+class URLParams
+```
+
 The URLParams interface defines some practical methods to process URL query strings.
 
 **Since:** 9
@@ -76,7 +80,7 @@ paramsObject.append('fod', '3');
 ## constructor
 
 ```TypeScript
-constructor(init?: string[][] | Record<string, string> | string | URLParams)
+constructor(init?: string[][] | Record<string, string>  | string | URLParams)
 ```
 
 A constructor used to create a URLParams instance.

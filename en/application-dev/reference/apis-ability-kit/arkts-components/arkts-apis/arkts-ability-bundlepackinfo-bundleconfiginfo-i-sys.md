@@ -1,5 +1,9 @@
 # BundleConfigInfo (System API)
 
+```TypeScript
+export interface BundleConfigInfo
+```
+
 BundleConfigInfo: the bundle summary class.
 
 **Since:** 9

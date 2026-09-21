@@ -1,5 +1,9 @@
 # ReqPermissionDetail
 
+```TypeScript
+export interface ReqPermissionDetail
+```
+
 
 > **说明：** 
 > 

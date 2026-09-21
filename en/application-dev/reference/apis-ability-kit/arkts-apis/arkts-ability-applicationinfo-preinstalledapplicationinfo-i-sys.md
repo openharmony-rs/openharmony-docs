@@ -1,5 +1,9 @@
 # PreinstalledApplicationInfo (System API)
 
+```TypeScript
+export interface PreinstalledApplicationInfo
+```
+
 Indicates the information of preinstalled application.
 
 **Since:** 12

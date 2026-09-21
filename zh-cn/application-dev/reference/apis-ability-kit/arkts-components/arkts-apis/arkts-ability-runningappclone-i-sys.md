@@ -1,5 +1,9 @@
 # RunningAppClone（系统接口）
 
+```TypeScript
+export interface RunningAppClone
+```
+
 定义分身应用在运行态的结构信息。
 
 **起始版本：** 12
@@ -55,3 +59,22 @@ uid: number
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let bundleName: string = 'ohos.samples.etsclock';
+  appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
+      hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
+    }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+    })
+} catch (err: BusinessError) {
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+}
+```

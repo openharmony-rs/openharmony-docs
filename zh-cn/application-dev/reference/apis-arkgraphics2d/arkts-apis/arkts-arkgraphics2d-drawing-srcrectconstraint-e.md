@@ -1,5 +1,9 @@
 # SrcRectConstraint
 
+```TypeScript
+enum SrcRectConstraint
+```
+
 源矩形区域约束类型枚举，用于在画布绘制图像时指定是否将采样范围（图像像素读取范围）限制在源矩形区域内。
 
 **起始版本：** 12

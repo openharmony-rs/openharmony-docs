@@ -1,5 +1,9 @@
 # Progress（系统接口）
 
+```TypeScript
+interface Progress
+```
+
 复制操作的进度信息。
 
 **起始版本：** 26.0.0

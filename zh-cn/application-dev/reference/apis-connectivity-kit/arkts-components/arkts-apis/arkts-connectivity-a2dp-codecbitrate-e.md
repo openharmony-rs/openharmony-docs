@@ -1,5 +1,9 @@
 # CodecBitRate
 
+```TypeScript
+enum CodecBitRate
+```
+
 枚举，蓝牙媒体音频编解码器的码率，表示单位时间内音频数据的传输量，单位为kbps。码率影响音频音质和传输带宽。
 
 **起始版本：** 19

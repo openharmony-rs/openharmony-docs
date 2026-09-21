@@ -1,5 +1,9 @@
 # MediaKeyRequest
 
+```TypeScript
+interface MediaKeyRequest
+```
+
 媒体密钥请求参数。
 
 **起始版本：** 11

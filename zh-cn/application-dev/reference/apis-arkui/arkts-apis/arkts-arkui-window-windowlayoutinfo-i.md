@@ -1,5 +1,9 @@
 # WindowLayoutInfo
 
+```TypeScript
+interface WindowLayoutInfo
+```
+
 窗口布局信息。
 
 **起始版本：** 15

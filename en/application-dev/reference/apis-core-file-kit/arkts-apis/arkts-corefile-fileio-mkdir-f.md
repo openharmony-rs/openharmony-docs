@@ -35,6 +35,8 @@ Creates a directory. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="mkdir-1"></a>
+
 ## mkdir
 
 ```TypeScript
@@ -58,6 +60,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 | path | string | Yes | Application sandbox path of the directory. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked when the directory is created asynchronously. |
 
+
+<a id="mkdir-2"></a>
 
 ## mkdir
 

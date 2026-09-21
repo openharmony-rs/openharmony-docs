@@ -66,24 +66,8 @@ networkManager.getGlobalProxy(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { networkManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-networkManager.getGlobalProxy(wantTemp).then(() => {
-  console.info(`Succeeded in getting network global proxy`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get network global proxy. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getglobalproxy-1"></a>
 
 ## getGlobalProxy
 
@@ -131,4 +115,20 @@ function getGlobalProxy(admin: Want): Promise<connection.HttpProxy>
 
 **示例**
 
-参见 [getGlobalProxy](#getglobalproxy)
+```TypeScript
+import { networkManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+networkManager.getGlobalProxy(wantTemp).then(() => {
+  console.info(`Succeeded in getting network global proxy`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get network global proxy. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,6 +1,10 @@
 # ChipGroupPaddingOptions
 
-Defines the top and bottom padding of a **ChipGroup** component, which is used to control the overall height of the ChipGroup.
+```TypeScript
+export interface ChipGroupPaddingOptions
+```
+
+Defines the top and bottom padding of a **ChipGroup** component, which is used to control the overall height of the **ChipGroup**.
 
 **Since:** 12
 
@@ -18,13 +22,15 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 bottom: Length
 ```
 
-Bottom padding. Percentage values are not supported.
+Bottom padding of the **ChipGroup** (percentage not supported).
+
+If a negative number, percentage, or invalid string format is passed, the default value is used.
 
 Default value: **14**
 
 Unit: vp
 
-If this parameter is set to **undefined**, the default value is used.
+If the value is **undefined**, the default value is used.
 
 **Type:** [Length](arkts-arkui-length-t.md)
 
@@ -42,7 +48,9 @@ If this parameter is set to **undefined**, the default value is used.
 top: Length
 ```
 
-Top padding. Percentage values are not supported.
+Top padding of the **ChipGroup** (percentage not supported).
+
+If a negative number, percentage, or invalid string format is passed, the default value is used.
 
 Default value: **14**
 

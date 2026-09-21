@@ -1,5 +1,9 @@
 # TransferResult（系统接口）
 
+```TypeScript
+enum TransferResult
+```
+
 枚举，文件传输结果。
 
 **起始版本：** 16

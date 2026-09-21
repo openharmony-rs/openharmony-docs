@@ -1,5 +1,9 @@
 # RotationChangeType
 
+```TypeScript
+enum RotationChangeType
+```
+
 窗口旋转事件类型。
 
 **起始版本：** 19

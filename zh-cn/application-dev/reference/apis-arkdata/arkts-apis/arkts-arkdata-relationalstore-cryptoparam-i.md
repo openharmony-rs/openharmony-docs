@@ -1,5 +1,9 @@
 # CryptoParam
 
+```TypeScript
+interface CryptoParam
+```
+
 数据库加密参数配置。此配置只有在StoreConfig的encrypt选项设置为true或密钥非空时有效。
 
 **起始版本：** 14

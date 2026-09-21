@@ -21,6 +21,8 @@ Exports a key. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -76,21 +78,8 @@ huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* Set options to emptyOptions. */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-
-huks.exportKeyItem(keyAlias, emptyOptions)
-  .then((data) => {
-    console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
-  });
-```
-
+<a id="exportkeyitem-1"></a>
 
 ## exportKeyItem
 
@@ -147,4 +136,17 @@ Exports a key. This API uses a promise to return the result.
 
 **Examples**
 
-See [exportKeyItem](#exportkeyitem)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* Set options to emptyOptions. */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+huks.exportKeyItem(keyAlias, emptyOptions)
+  .then((data) => {
+    console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
+  });
+```

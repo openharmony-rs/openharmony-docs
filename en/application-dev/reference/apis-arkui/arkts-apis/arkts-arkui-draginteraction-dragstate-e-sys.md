@@ -1,5 +1,9 @@
 # DragState (System API)
 
+```TypeScript
+enum DragState
+```
+
 Enumerates dragging states.
 
 **Since:** 10

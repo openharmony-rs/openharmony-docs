@@ -1,5 +1,9 @@
 # TipInfo
 
+```TypeScript
+interface TipInfo
+```
+
 Represents the tip information displayed during the authentication, which is used to provide feedback during the authentication process.
 
 **Since:** 9

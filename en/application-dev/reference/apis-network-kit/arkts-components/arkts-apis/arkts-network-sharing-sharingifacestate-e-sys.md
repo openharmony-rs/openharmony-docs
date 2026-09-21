@@ -1,5 +1,9 @@
 # SharingIfaceState (System API)
 
+```TypeScript
+export enum SharingIfaceState
+```
+
 Enumerates the network sharing states of an NIC.
 
 **Since:** 9

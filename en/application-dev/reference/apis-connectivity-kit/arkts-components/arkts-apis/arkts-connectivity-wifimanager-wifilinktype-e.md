@@ -1,5 +1,9 @@
 # WifiLinkType
 
+```TypeScript
+enum WifiLinkType
+```
+
 Wi-Fi link type. @enum { int }
 
 **Since:** 18

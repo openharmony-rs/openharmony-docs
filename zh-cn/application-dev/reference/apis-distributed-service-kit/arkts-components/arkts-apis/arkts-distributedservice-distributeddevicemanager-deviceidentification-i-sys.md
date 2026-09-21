@@ -1,5 +1,9 @@
 # DeviceIdentification（系统接口）
 
+```TypeScript
+interface DeviceIdentification
+```
+
 用于分布式设备识别的结构体。
 
 **起始版本：** 24

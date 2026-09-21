@@ -1,5 +1,9 @@
 # SecurityLevel
 
+```TypeScript
+enum SecurityLevel
+```
+
 Enumerates the security levels of the web page.
 
 **Since:** 11

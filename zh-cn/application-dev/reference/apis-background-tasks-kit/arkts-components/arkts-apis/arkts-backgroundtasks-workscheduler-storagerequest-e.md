@@ -1,5 +1,9 @@
 # StorageRequest
 
+```TypeScript
+export enum StorageRequest
+```
+
 触发延迟任务回调的存储状态。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # HKDFSpec
 
+```TypeScript
+interface HKDFSpec extends KdfSpec
+```
+
 Defines the child class of [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md). It is a parameter for HKDF key derivation.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # ColorModeOptions
 
+```TypeScript
+interface ColorModeOptions
+```
+
 Defines the color space used for the snapshot.
 
 **Since:** 23

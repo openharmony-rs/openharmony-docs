@@ -1,5 +1,9 @@
 # BaseProfile
 
+```TypeScript
+interface BaseProfile
+```
+
 Base interface of profile.
 
 **Since:** 9

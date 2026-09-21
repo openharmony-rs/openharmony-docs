@@ -1,5 +1,9 @@
 # LinkType
 
+```TypeScript
+enum LinkType
+```
+
 链路类型。
 
 **起始版本：** 20

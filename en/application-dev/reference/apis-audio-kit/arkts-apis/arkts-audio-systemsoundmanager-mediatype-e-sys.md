@@ -1,5 +1,9 @@
 # MediaType (System API)
 
+```TypeScript
+enum MediaType
+```
+
 Enum for media type.
 
 **Since:** 20

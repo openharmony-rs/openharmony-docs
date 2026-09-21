@@ -1,5 +1,9 @@
 # StartOptionParams
 
+```TypeScript
+export enum StartOptionParams
+```
+
 启动选项参数的枚举。
 
 **起始版本：** 18

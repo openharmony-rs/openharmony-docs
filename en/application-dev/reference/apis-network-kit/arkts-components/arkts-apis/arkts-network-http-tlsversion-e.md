@@ -1,5 +1,9 @@
 # TlsVersion
 
+```TypeScript
+export enum TlsVersion
+```
+
 Enumerates TLS versions.
 
 **Since:** 18

@@ -34,10 +34,10 @@ import { telephonyManager } from '@kit.MDMKit';
 | [addOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-addoutgoingcallpolicynumbers-f.md) | 添加通话呼出的允许或禁用名单，如果不添加名单，任意号码都可以呼出，添加后只有名单内的号码允许或禁止呼出。例如，企业可限制员工只能拨打客户服务热线，或禁止拨打特定号码。 |
 | [deactiveSim](arkts-mdm-telephonymanager-deactivesim-f.md) | 停用指定卡槽SIM卡。停用该SIM卡，无法使用该卡槽的SIM卡接打电话，收发短信，上网。例如，企业可在员工休假或设备维护期间，临时停用SIM卡。该接口需要插入SIM卡并关闭飞行模式才能成功调用。 |
 | [getDefaultData](arkts-mdm-telephonymanager-getdefaultdata-f.md) | 获取设备当前默认使用的数据流量卡卡槽ID。例如，企业设备管理员可在设备管理过程中查询当前配置的默认数据流量卡，以便进行流量管理或切换数据卡配置。未插卡或者飞行模式下会获取上一次使用的数据流量卡卡槽ID、设备从未设置过默认数据流量卡场景下，该接口返回默认卡槽1，值为0。 |
-| [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md) | 获取通话呼入的允许或禁用名单。 |
-| [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md) | 获取通话呼入的允许或禁用名单。 |
-| [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md) | 获取通话呼出的允许或禁用名单。 |
-| [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md) | 获取通话呼出的允许或禁用名单。 |
+| [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md#getincomingcallpolicynumbers) | 获取通话呼入的允许或禁用名单。 |
+| [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md#getincomingcallpolicynumbers-1) | 获取通话呼入的允许或禁用名单。 |
+| [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md#getoutgoingcallpolicynumbers) | 获取通话呼出的允许或禁用名单。 |
+| [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md#getoutgoingcallpolicynumbers-1) | 获取通话呼出的允许或禁用名单。 |
 | [hangupCalling](arkts-mdm-telephonymanager-hangupcalling-f.md) | 挂断当前通话。仅支持运营商通话，不包括畅联等。例如，企业设备管理员可在企业安全管理场景中，强制挂断员工正在进行的不合规通话。 |
 | [isSimDisabled](arkts-mdm-telephonymanager-issimdisabled-f.md) | 查询指定卡槽是否禁用。适用于企业管理员需要确认SIM卡禁用策略是否生效的场景，帮助管理员验证策略执行状态，确保通话管控策略正确实施。 |
 | [removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md) | 移除通话呼入的允许或禁用名单，若在该名单尚未设置时进行移除，则会移除失败。例如，企业可在解除呼入通话限制、恢复员工正常接听权限时使用。 |

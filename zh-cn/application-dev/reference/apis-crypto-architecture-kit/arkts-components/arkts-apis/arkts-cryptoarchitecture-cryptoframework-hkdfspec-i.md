@@ -1,5 +1,9 @@
 # HKDFSpec
 
+```TypeScript
+interface HKDFSpec extends KdfSpec
+```
+
 密钥派生函数参数[KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md)的子类，作为HKDF密钥派生函数进行密钥派生时的输入。
 
 > **说明：** 

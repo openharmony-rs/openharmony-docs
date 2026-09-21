@@ -1,5 +1,9 @@
 # VideoScaleType
 
+```TypeScript
+enum VideoScaleType
+```
+
 枚举，视频缩放模式。
 
 **起始版本：** 9

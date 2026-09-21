@@ -1,5 +1,9 @@
 # DeviceState (System API)
 
+```TypeScript
+interface DeviceState
+```
+
 Device state used to describe states including discovery, authentication and other scenes.
 
 **Since:** 20

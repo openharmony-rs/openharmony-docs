@@ -1,5 +1,9 @@
 # AccessRule（系统接口）
 
+```TypeScript
+export interface AccessRule
+```
+
 访问规则。
 
 @interface AccessRule

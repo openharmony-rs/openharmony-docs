@@ -1,5 +1,9 @@
 # UpgradeFlag (System API)
 
+```TypeScript
+export enum UpgradeFlag
+```
+
 Upgrade flag, which is for internal use only.
 
 **Since:** 9

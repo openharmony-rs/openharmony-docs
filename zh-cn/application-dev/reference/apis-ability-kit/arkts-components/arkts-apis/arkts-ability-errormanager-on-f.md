@@ -42,6 +42,35 @@ function on(type: 'error', observer: ErrorObserver): number
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 | [16000003](../errorcode-ability.md#16000003-指定的id不存在) | 指定的ID不存在。 |
 
+**示例**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer: errorManager.ErrorObserver = {
+  onUnhandledException(errorMsg) {
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
+  },
+  onException(errorObj) {
+    console.info('onException, name: ', errorObj.name);
+    console.info('onException, message: ', errorObj.message);
+    if (typeof(errorObj.stack) === 'string') {
+      console.info('onException, stack: ', errorObj.stack);
+    }
+  }
+};
+let observerId = -1;
+
+try {
+  observerId = errorManager.on('error', observer);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
+
 
 ## on('loopObserver')
 
@@ -72,6 +101,27 @@ function on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
+
+**示例**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer: errorManager.LoopObserver = {
+  onLoopTimeOut(timeout: number) {
+    console.info('Duration timeout: ' + timeout);
+  }
+};
+
+try {
+  errorManager.on('loopObserver', 1, observer);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
 
 
 ## on('unhandledRejection')
@@ -104,6 +154,29 @@ function on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): v
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 请在主线程中调用。 |
 
+**示例**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+
+let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
+  if (promise === promise1) {
+    console.info('promise1 is rejected');
+  }
+  console.info('reason.name: ', reason.name);
+  console.info('reason.message: ', reason.message);
+  if (reason.stack) {
+    console.info('reason.stack: ', reason.stack);
+  }
+};
+
+errorManager.on('unhandledRejection', observer);
+
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throw new Error('uncaught error');
+});
+```
+
 
 ## on('globalUnhandledRejectionDetected')
 
@@ -132,6 +205,30 @@ function on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver):
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
+
+**示例**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+
+const promiseFunc = (observer: errorManager.GlobalError) => {
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
+};
+
+errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
+// 建议在抛出promise异常时，使用async抛出异常。
+const throwError = async () => {
+  throw new Error('uncaught error');
+};
+
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throwError();
+});
+```
 
 
 ## on('freeze')
@@ -169,6 +266,24 @@ function on(type: 'freeze', observer: FreezeObserver): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 
+**示例**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const freezeCallback = () => {
+  console.info('freezecallback');
+};
+try {
+  errorManager.on('freeze', freezeCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```
+
 
 ## on('globalErrorOccurred')
 
@@ -197,3 +312,26 @@ function on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | 参数错误。可能的原因：1. 必填参数未填写； 2. 参数类型不正确；3. 参数校验失败。 |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | 调用者无效。 |
+
+**示例**
+
+```TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const errorFunc = (observer: errorManager.GlobalError) => {
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
+};
+
+try {
+  errorManager.on('globalErrorOccurred', errorFunc);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
+```

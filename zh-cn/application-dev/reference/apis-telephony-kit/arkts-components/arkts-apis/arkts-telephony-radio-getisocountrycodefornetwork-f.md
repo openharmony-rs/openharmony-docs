@@ -50,17 +50,8 @@ radio.getISOCountryCodeForNetwork(slotId, (err: BusinessError, data: string) => 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
-    console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getISOCountryCodeForNetwork failed, promise: err code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getisocountrycodefornetwork-1"></a>
 
 ## getISOCountryCodeForNetwork
 
@@ -98,4 +89,13 @@ function getISOCountryCodeForNetwork(slotId: number): Promise<string>
 
 **示例**
 
-参见 [getISOCountryCodeForNetwork](#getisocountrycodefornetwork)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getISOCountryCodeForNetwork(slotId).then((data: string) => {
+    console.info(`getISOCountryCodeForNetwork success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getISOCountryCodeForNetwork failed, promise: err code: ${err.code}, message: ${err.message}`);
+});
+```

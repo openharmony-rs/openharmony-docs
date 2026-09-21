@@ -1,5 +1,9 @@
 # FilterType
 
+```TypeScript
+enum FilterType
+```
+
 Enumerates contact filter types.
 
 **Since:** 15

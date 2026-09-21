@@ -1,4 +1,4 @@
-# @ohos.arkui.componentSnapshot
+# @ohos.arkui.componentSnapshot(ComponentSnapshot)
 
 The **componentSnapshot** module provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet. Snapshots are strictly limited to the component's layout bounds. Content drawn outside the area of the owning component or the parent component is not visible in the snapshots. In addition, sibling components stacked in the component's area are not displayed in the snapshot.
 
@@ -32,10 +32,10 @@ import { componentSnapshot } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md) | Renders a custom component in the application background and outputs its snapshot. This API uses an asynchronous callback to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md) | Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
-| [get](arkts-arkui-componentsnapshot-get-f.md) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses an asynchronous callback to return the result. |
-| [get](arkts-arkui-componentsnapshot-get-f.md) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses a promise to return the result. |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder) | Renders a custom component in the application background and outputs its snapshot. This API uses an asynchronous callback to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder-1) | Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses an asynchronous callback to return the result. |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get-1) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses a promise to return the result. |
 | [getSync](arkts-arkui-componentsnapshot-getsync-f.md) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API synchronously waits for the snapshot to complete and returns a [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) object. |
 
 ### Interfaces

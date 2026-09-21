@@ -1,5 +1,9 @@
 # UIExtensionAbility
 
+```TypeScript
+declare class UIExtensionAbility extends ExtensionAbility
+```
+
 UIExtensionAbility is an ExtensionAbility component with a User Interface (UI). It inherits from [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md) and provides basic lifecycle capabilities such as component creation, destruction, and foreground/background switching. Unlike the UIAbility, the UIExtensionAbility does not appear as a separate mission in the mission view. The foreground/background state and visibility of the UIExtensionAbility follow those of its host window. You cannot directly inherit from the UIExtensionAbility. However, you can choose other components that inherit from UIExtensionAbility based on specific service scenarios. For example, when handling data shared from other applications, you can use the [ShareExtensionAbility](arkts-ability-app-ability-shareextensionability-shareextensionability-c.md); when providing widget editing functionality, you can use the [FormEditExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-formeditextensionability-formeditextensionability-c.md). For details about the inheritance relationship of each ability, see [Inheritance Relationship](../../../reference/apis-ability-kit/js-apis-app-ability-ability.md#ability-inheritance-relationship).
 
 **Inheritance/Implementation:** UIExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)
@@ -94,12 +98,46 @@ Called when a UIExtensionAbility is destroyed. You can clear resources and save 
 
 **Examples**
 
-```TypeScript
 A synchronous callback example is as follows:
-```
 
 ```TypeScript
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ShareExtAbility';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  onDestroy() {
+    console.info(TAG, `onDestroy`);
+  }
+}
+```
+
 An asynchronous callback example is as follows:
+
+```TypeScript
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ShareExtAbility';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  // Use the async/await syntax to implement an asynchronous callback. The async keyword declares that onDestroy is an asynchronous function.
+  async onDestroy(): Promise<void> {
+    console.info(TAG, `onDestroy begin`);
+    try {
+      const result: string = await new Promise((resolve: Function) => {
+        setTimeout(() => {
+          resolve('Hello, world!');
+        }, 3000);
+      });
+      console.info(TAG, result); // result is 'Hello, world!'
+    } catch (e) {
+      console.error(TAG, `Get exception: ${e}`);
+    }
+    console.info(TAG, `onDestroy end`);
+  }
+}
 ```
 
 ## onForeground

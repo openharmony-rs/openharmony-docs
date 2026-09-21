@@ -1,5 +1,9 @@
 # ShapeMask
 
+```TypeScript
+export declare class ShapeMask
+```
+
 Describes the shape mask.
 
 **Since:** 12

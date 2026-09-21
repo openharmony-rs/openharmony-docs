@@ -1,5 +1,9 @@
 # SubscribeInfo (System API)
 
+```TypeScript
+export interface SubscribeInfo
+```
+
 Represents the subscription information.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # GattProperties
 
+```TypeScript
+interface GattProperties
+```
+
 描述GATT特征值支持的属性。决定了特征值内容和描述符如何被使用和访问。
 
 **起始版本：** 10

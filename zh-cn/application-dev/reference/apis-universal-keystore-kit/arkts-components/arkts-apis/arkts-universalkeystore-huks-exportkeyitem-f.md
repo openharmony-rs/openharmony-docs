@@ -20,6 +20,8 @@ function exportKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCa
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -76,22 +78,8 @@ huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 此处options选择emptyOptions来传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-
-/* 导出公钥 */
-huks.exportKeyItem(keyAlias, emptyOptions)
-  .then((data) => {
-    console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
-  });
-```
-
+<a id="exportkeyitem-1"></a>
 
 ## exportKeyItem
 
@@ -147,4 +135,18 @@ function exportKeyItem(keyAlias: string, options: HuksOptions): Promise<HuksRetu
 
 **示例**
 
-参见 [exportKeyItem](#exportkeyitem)
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions来传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+
+/* 导出公钥 */
+huks.exportKeyItem(keyAlias, emptyOptions)
+  .then((data) => {
+    console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
+  });
+```

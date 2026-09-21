@@ -1,5 +1,9 @@
 # LocalizedEdgeWidths
 
+```TypeScript
+declare interface LocalizedEdgeWidths
+```
+
 Defines component edge widths for localized logical directions.
 
 To reference this object, at least one parameter must be passed.

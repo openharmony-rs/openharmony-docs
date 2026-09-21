@@ -1,5 +1,9 @@
 # WebGL2RenderingContextBase
 
+```TypeScript
+interface WebGL2RenderingContextBase
+```
+
 WebGL 2.0
 
 **Since:** 7
@@ -369,6 +373,8 @@ Compressed texture image 3D from PBO offset
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 
+<a id="compressedteximage3d-1"></a>
+
 ## compressedTexImage3D
 
 ```TypeScript
@@ -450,6 +456,8 @@ Compressed texture sub image 3D from PBO offset
 | format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
+
+<a id="compressedtexsubimage3d-1"></a>
 
 ## compressedTexSubImage3D
 
@@ -1677,6 +1685,8 @@ Sets texture image 3D from PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
+<a id="teximage3d-1"></a>
+
 ## texImage3D
 
 ```TypeScript
@@ -1717,6 +1727,8 @@ Sets texture image 3D from TexImageSource
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
+<a id="teximage3d-2"></a>
+
 ## texImage3D
 
 ```TypeScript
@@ -1756,6 +1768,8 @@ Sets texture image 3D from ArrayBufferView
 | format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Source data |
+
+<a id="teximage3d-3"></a>
 
 ## texImage3D
 
@@ -1903,6 +1917,8 @@ Sets texture sub image 3D from PBO offset
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
+<a id="texsubimage3d-1"></a>
+
 ## texSubImage3D
 
 ```TypeScript
@@ -1944,6 +1960,8 @@ Sets texture sub image 3D from TexImageSource
 | format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
+
+<a id="texsubimage3d-2"></a>
 
 ## texSubImage3D
 

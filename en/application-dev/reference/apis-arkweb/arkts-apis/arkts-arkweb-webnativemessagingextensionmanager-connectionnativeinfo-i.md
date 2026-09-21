@@ -1,5 +1,9 @@
 # ConnectionNativeInfo
 
+```TypeScript
+interface ConnectionNativeInfo
+```
+
 Represents the information about the web native message connection.
 
 **Since:** 21

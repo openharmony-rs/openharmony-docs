@@ -1,5 +1,9 @@
 # FontInfo
 
+```TypeScript
+interface FontInfo
+```
+
 字体的详细信息。
 
 **起始版本：** 10

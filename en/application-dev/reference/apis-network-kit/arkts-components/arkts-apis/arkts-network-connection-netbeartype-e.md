@@ -1,5 +1,9 @@
 # NetBearType
 
+```TypeScript
+export enum NetBearType
+```
+
 Enumerates network types.
 
 **Since:** 8

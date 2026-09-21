@@ -4,7 +4,7 @@
 export type OnInlineCounterV2Change = (value: number) => void
 ```
 
-The change callback of the inline CounterV2.
+Defines the callback for the value change of the inline number **CounterV2**.
 
 **Since:** 26.0.0
 
@@ -18,4 +18,4 @@ The change callback of the inline CounterV2.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | value.<br>The value should be an integer. |
+| value | number | Yes | Current value. Value range: [min, max], where **min** and **max** correspond to the minimum and maximum values of **CounterV2**, respectively. |

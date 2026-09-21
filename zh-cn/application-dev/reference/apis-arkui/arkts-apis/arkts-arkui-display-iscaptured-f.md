@@ -40,16 +40,8 @@ let ret: boolean = false;
 ret = display.isCaptured();
 ```
 
-```TypeScript
-try {
-  const bundleList: Array<string> = ['com.example.app'];
-  let ret = display.isCaptured(bundleList);
-  console.info(`The screen is captured or not: ${ret}`);
-} catch (err) {
-  console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
-}
-```
 
+<a id="iscaptured-1"></a>
 
 ## isCaptured
 
@@ -88,4 +80,12 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 **示例**
 
-参见 isCaptured
+```TypeScript
+try {
+  const bundleList: Array<string> = ['com.example.app'];
+  let ret = display.isCaptured(bundleList);
+  console.info(`The screen is captured or not: ${ret}`);
+} catch (err) {
+  console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
+}
+```

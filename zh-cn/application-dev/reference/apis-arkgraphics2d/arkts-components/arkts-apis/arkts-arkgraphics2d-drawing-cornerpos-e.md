@@ -1,5 +1,9 @@
 # CornerPos
 
+```TypeScript
+enum CornerPos
+```
+
 圆角位置枚举。
 
 **起始版本：** 12

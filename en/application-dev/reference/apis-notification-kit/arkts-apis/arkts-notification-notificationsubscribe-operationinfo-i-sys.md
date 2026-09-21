@@ -1,5 +1,9 @@
 # OperationInfo (System API)
 
+```TypeScript
+export interface OperationInfo
+```
+
 Defines cross-device collaborative operation information.
 
 **Since:** 18

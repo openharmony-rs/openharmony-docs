@@ -1,5 +1,9 @@
 # MultithreadingDetectionOptions
 
+```TypeScript
+interface MultithreadingDetectionOptions
+```
+
 多线程安全检测功能参数配置。
 
 **起始版本：** 26.0.0

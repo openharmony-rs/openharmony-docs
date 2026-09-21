@@ -1,5 +1,9 @@
 # CompleteData
 
+```TypeScript
+export interface CompleteData
+```
+
 表示主动触发WantAgent返回的数据。
 
 **起始版本：** 9

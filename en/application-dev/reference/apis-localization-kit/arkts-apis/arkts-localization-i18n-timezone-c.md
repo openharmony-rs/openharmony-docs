@@ -1,5 +1,9 @@
 # TimeZone
 
+```TypeScript
+export class TimeZone
+```
+
 Provides time zone management capabilities, such as time zone name translation, offset retrieval, and transition rule retrieval.
 
 **Since:** 7

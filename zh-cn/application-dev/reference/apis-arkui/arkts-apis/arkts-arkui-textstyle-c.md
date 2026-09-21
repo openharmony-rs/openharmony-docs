@@ -1,5 +1,9 @@
 # TextStyle
 
+```TypeScript
+declare class TextStyle
+```
+
 文本字体样式对象说明。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ResolvedUIContext
 
+```TypeScript
+export class ResolvedUIContext extends UIContext
+```
+
 **ResolvedUIContext** instance object.
 
 > **NOTE:** 

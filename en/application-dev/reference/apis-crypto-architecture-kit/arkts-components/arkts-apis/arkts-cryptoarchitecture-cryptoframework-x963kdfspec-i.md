@@ -1,5 +1,9 @@
 # X963KdfSpec
 
+```TypeScript
+interface X963KdfSpec extends KdfSpec
+```
+
 Defines the child class of [KdfSpec](arkts-cryptoarchitecture-cryptoframework-kdfspec-i.md). It is a parameter for X963KDF key derivation function (KDF).
 
 > **NOTE:** 

@@ -1,8 +1,12 @@
 # ExternalLogContainer
 
+```TypeScript
+class ExternalLogContainer
+```
+
 An external log container including all external log files.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -20,9 +24,11 @@ getAllLogFiles(): Set<string>
 
 Get the set of all external log file paths
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -40,9 +46,11 @@ getAllLogs(): Set<ExternalLogWrapper>
 
 Get the set of all ExternalLogWrappers
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -60,9 +68,11 @@ getFirstGeneratedLogFiles(num: number): Set<string>
 
 Get the first generated external log file paths of a given number
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -86,9 +96,11 @@ getLogFilesGeneratedAfter(timePoint: number): Set<string>
 
 Get the set of all external log file paths which are after a given time
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -112,9 +124,11 @@ getLogFilesGeneratedBefore(timePoint: number): Set<string>
 
 Get the set of all external log file paths which are before a given time
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -138,9 +152,11 @@ getLogFilesLargerThan(sizeKb: number): Set<string>
 
 Get the set of all external log file paths whose size are larger than a given amount
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -164,9 +180,11 @@ getLogFilesOfSysEvent(event: string): Set<string>
 
 Get the set of all external log file paths of a given system event
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -190,9 +208,11 @@ getLogFilesSmallerThan(sizeKb: number): Set<string>
 
 Get the set of all external log file paths whose size are smaller than a given amount
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -216,9 +236,11 @@ getLogNumber(): number
 
 Get the number of all external log files
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

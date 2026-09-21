@@ -42,36 +42,8 @@ function off(type: 'printerStateChange', callback?: Callback<boolean>): void
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
 
-// Trigger this callback when a added printer is changed.
-let onPrinterChange =
-    (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
-    };
-print.on('printerChange', onPrinterChange);
-print.off('printerChange');
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
 print.off('printerStateChange', (data: boolean) => {
     console.info('off printerStateChange data : ' + JSON.stringify(data));
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.off('jobStateChange', (data: boolean) => {
-    console.info('offJobStateChanged data : ' + JSON.stringify(data));
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.off('extInfoChange', (data: boolean) => {
-    console.info('offExtInfoChange data : ' + JSON.stringify(data));
 });
 ```
 
@@ -112,36 +84,8 @@ function off(type: 'jobStateChange', callback?: Callback<boolean>): void
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';
 
-// Trigger this callback when a added printer is changed.
-let onPrinterChange =
-    (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
-    };
-print.on('printerChange', onPrinterChange);
-print.off('printerChange');
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.off('printerStateChange', (data: boolean) => {
-    console.info('off printerStateChange data : ' + JSON.stringify(data));
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
 print.off('jobStateChange', (data: boolean) => {
     console.info('offJobStateChanged data : ' + JSON.stringify(data));
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.off('extInfoChange', (data: boolean) => {
-    console.info('offExtInfoChange data : ' + JSON.stringify(data));
 });
 ```
 
@@ -178,34 +122,6 @@ function off(type: 'extInfoChange', callback?: Callback<boolean>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-// Trigger this callback when a added printer is changed.
-let onPrinterChange =
-    (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
-        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
-    };
-print.on('printerChange', onPrinterChange);
-print.off('printerChange');
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.off('printerStateChange', (data: boolean) => {
-    console.info('off printerStateChange data : ' + JSON.stringify(data));
-});
-```
-
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-
-print.off('jobStateChange', (data: boolean) => {
-    console.info('offJobStateChanged data : ' + JSON.stringify(data));
-});
-```
 
 ```TypeScript
 import { print } from '@kit.BasicServicesKit';

@@ -1,5 +1,9 @@
 # LevelOrder
 
+```TypeScript
+export class LevelOrder
+```
+
 Defines the display order of a dialog box.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # SerialAttribute
 
+```TypeScript
+interface SerialAttribute
+```
+
 串口的配置参数。
 
 **起始版本：** 19

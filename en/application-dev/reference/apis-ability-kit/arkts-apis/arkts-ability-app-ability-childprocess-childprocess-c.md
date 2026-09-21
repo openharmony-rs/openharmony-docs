@@ -1,5 +1,9 @@
 # ChildProcess
 
+```TypeScript
+declare class ChildProcess
+```
+
 ChildProcess is the base class for you to customize child processes. When starting a child process through [childProcessManager](arkts-ability-app-ability-childprocessmanager.md), you must inherit this class and override the entrypoint method.
 
 **Since:** 11

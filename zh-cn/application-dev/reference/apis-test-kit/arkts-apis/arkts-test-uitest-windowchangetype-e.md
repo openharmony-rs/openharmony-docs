@@ -1,5 +1,9 @@
 # WindowChangeType
 
+```TypeScript
+declare enum WindowChangeType
+```
+
 支持监听的窗口变化事件类型。
 
 **起始版本：** 22

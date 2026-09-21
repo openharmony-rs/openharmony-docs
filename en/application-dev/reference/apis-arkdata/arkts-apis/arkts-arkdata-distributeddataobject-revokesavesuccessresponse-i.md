@@ -1,5 +1,9 @@
 # RevokeSaveSuccessResponse
 
+```TypeScript
+interface RevokeSaveSuccessResponse
+```
+
 Represents the information returned by the callback of revokeSave.
 
 **Since:** 9

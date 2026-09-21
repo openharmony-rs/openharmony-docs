@@ -1,5 +1,9 @@
 # PickerMediaType
 
+```TypeScript
+enum PickerMediaType
+```
+
 Enumerates the media types displayed in the camera picker.
 
 **Since:** 11

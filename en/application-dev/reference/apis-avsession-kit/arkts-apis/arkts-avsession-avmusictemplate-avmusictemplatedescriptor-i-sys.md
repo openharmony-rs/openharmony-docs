@@ -1,5 +1,9 @@
 # AVMusicTemplateDescriptor (System API)
 
+```TypeScript
+interface AVMusicTemplateDescriptor
+```
+
 Description of the AVMusicTemplate.
 
 @typedef {AVMusicTemplateDescriptor}

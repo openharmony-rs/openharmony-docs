@@ -1,5 +1,9 @@
 # AnimationPropertyType
 
+```TypeScript
+declare enum AnimationPropertyType
+```
+
 Enumerates animatable property types for component animations.
 
 **Since:** 20

@@ -52,18 +52,8 @@ hash.hash(filePath, "sha256").then((str: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-let filePath = pathDir + "/test.txt";
-hash.hash(filePath, "sha256", (err: BusinessError, str: string) => {
-  if (err) {
-    console.error("calculate file hash failed with error message: " + err.message + ", error code: " + err.code);
-  } else {
-    console.info("calculate file hash succeed:" + str);
-  }
-});
-```
 
+<a id="hash-1"></a>
 
 ## hash
 
@@ -96,4 +86,14 @@ Calculates a hash value for a file. This API uses an asynchronous callback to re
 
 **Examples**
 
-See [hash](#hash)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let filePath = pathDir + "/test.txt";
+hash.hash(filePath, "sha256", (err: BusinessError, str: string) => {
+  if (err) {
+    console.error("calculate file hash failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("calculate file hash succeed:" + str);
+  }
+});
+```

@@ -1,5 +1,9 @@
 # RetentionPolicy
 
+```TypeScript
+export const enum RetentionPolicy
+```
+
 Enum for Retention annotation field type.
 
 **Since:** 24

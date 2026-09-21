@@ -1,5 +1,9 @@
 # CertChainBuildResult
 
+```TypeScript
+interface CertChainBuildResult
+```
+
 表示证书链创建结果。
 
 **起始版本：** 12

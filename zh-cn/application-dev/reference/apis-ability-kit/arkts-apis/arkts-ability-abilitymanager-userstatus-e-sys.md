@@ -1,5 +1,9 @@
 # UserStatus（系统接口）
 
+```TypeScript
+export enum UserStatus
+```
+
 用户操作的断言调试结果，该类型为枚举。
 
 **起始版本：** 12

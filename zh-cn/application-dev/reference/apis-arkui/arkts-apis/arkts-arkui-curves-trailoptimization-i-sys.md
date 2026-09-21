@@ -1,5 +1,9 @@
 # TrailOptimization（系统接口）
 
+```TypeScript
+interface TrailOptimization
+```
+
 弹簧动画尾迹优化配置。
 
 **起始版本：** 26.0.0

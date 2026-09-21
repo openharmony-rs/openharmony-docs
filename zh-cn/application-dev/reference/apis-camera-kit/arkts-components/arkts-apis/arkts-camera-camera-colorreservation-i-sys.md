@@ -1,5 +1,9 @@
 # ColorReservation（系统接口）
 
+```TypeScript
+interface ColorReservation extends ColorReservationQuery
+```
+
 ColorReservation extends [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md) Provides API for obtaining and setting a color reservation type.
 
 **继承/实现关系：** ColorReservation extends [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md)
@@ -44,22 +48,6 @@ Obtains the color reservation type in use.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getColorReservation(session: camera.VideoSessionForSys): camera.ColorReservationType | undefined {
-  let colorReservation: camera.ColorReservationType | undefined = undefined;
-  try {
-    colorReservation = session.getColorReservation();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The setColorReservation call failed. error code: ${err.code}`);
-  }
-  return colorReservation;
-}
-```
 
 ## setColorReservation
 

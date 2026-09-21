@@ -1,5 +1,9 @@
 # USBEndpoint
 
+```TypeScript
+interface USBEndpoint
+```
+
 Defines a USB endpoint, which is used for data transfer between the host and the USB device. You can obtain the USB endpoint through [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md).
 
 > **Note:** 

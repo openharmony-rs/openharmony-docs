@@ -1,5 +1,9 @@
 # CellInformation
 
+```TypeScript
+export interface CellInformation
+```
+
 小区信息。
 
 **起始版本：** 8

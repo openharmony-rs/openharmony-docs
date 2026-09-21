@@ -1,5 +1,9 @@
 # TypedArray
 
+```TypeScript
+interface TypedArray extends Int8Array
+```
+
 TypedArray 继承 Int8Array 的特性与方法。
 
 @extends Int8Array @typedef TypedArray

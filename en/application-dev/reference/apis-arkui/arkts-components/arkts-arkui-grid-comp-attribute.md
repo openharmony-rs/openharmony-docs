@@ -1,5 +1,9 @@
 # Grid properties/events
 
+```TypeScript
+declare class GridAttribute extends ScrollableCommonMethod<GridAttribute>
+```
+
 In addition to universal attributes and [scrollable component common attributes](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
 
 In addition to universal events and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
@@ -30,7 +34,7 @@ Sets the alignment mode of grid items in the grid. For details about the usage, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignment | [Optional](arkts-arkui-optional-t.md)&lt;[GridItemAlignment](arkts-arkui-griditemalignment-e.md)&gt; | Yes | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT** |
+| alignment | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[GridItemAlignment](arkts-arkui-grid-comp-griditemalignment-e.md)&gt; | Yes | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT** |
 
 ## cachedCount
 
@@ -46,6 +50,8 @@ The number of the grid items to be cached before and after the currently display
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -54,7 +60,9 @@ The number of the grid items to be cached before and after the currently display
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Number of grid items to be cached (preloaded).<br>Default value: the number of rows visible on the screen for vertical scrolling, or the number of columns visible on the screen for horizontal scrolling. The maximum value is 16.<br>Value range: 0, +∞).<br>Values less than 0 are treated as **1**.<br>When **value** is updated using a state variable, the **Grid** component does not trigger a layout update. The number of cached nodes is updated only during the next layout. |
+| value | number | Yes | Number of grid items to be cached (preloaded).<br>Default value: the number of rows visible on the screen for vertical scrolling, or the number of columns visible on the screen for horizontal scrolling. The maximum value is 16.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>When **value** is updated using a state variable, the **Grid** component does not trigger a layout update. The number of cached nodes is updated only during the next layout. |
+
+<a id="cachedcount-1"></a>
 
 ## cachedCount
 
@@ -64,7 +72,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of grid items to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-The number of the grid items to be cached before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. This attribute can be combined with the [clip or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+The number of the grid items to be cached before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. This attribute can be combined with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 **Since:** 14
 
@@ -95,6 +103,8 @@ When **layoutDirection** is **Column** or **ColumnReverse**, the value indicates
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -114,6 +124,8 @@ columnsGap(value: Length)
 Sets the gap between columns. A value less than 0 evaluates to the default value.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -145,6 +157,8 @@ If this attribute is set to **'0fr'**, the column width is 0, and grid item in t
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -154,6 +168,8 @@ If this attribute is set to **'0fr'**, the column width is 0, and grid item in t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | string | Yes |  |
+
+<a id="columnstemplate-1"></a>
 
 ## columnsTemplate
 
@@ -204,7 +220,7 @@ Sets the effect used when the scroll boundary is reached.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None** |
-| options | [EdgeEffectOptions](arkts-arkui-edgeeffectoptions-i.md) | No | Whether to enable the scroll effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value: **{ alwaysEnabled: false }**<br>**Since:** 11 |
+| options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | No | Whether to enable the scroll effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** means to enable the scroll effect, and **{ alwaysEnabled: false }** means the opposite.<br>Default value: **{ alwaysEnabled: false }**<br>**Since:** 11 |
 
 ## editMode
 
@@ -215,6 +231,8 @@ editMode(value: boolean)
 Sets whether to enable edit mode. In edit mode, the user can drag the grid items in the **Grid** component.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -246,7 +264,7 @@ Sets the options of the edit mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EditModeOptions](arkts-arkui-editmodeoptions-i.md) | No | Edit mode options. |
+| options | [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md) | No | Edit mode options. |
 
 ## enableEditMode
 
@@ -294,7 +312,7 @@ Sets whether to support the scrolling gesture.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](arkts-arkui-scroller-c.md).<br>Default value: **true** |
+| value | boolean | Yes | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](arkts-arkui-scroll-comp-scroller-c.md).<br>Default value: **true** |
 
 ## focusWrapMode
 
@@ -316,7 +334,7 @@ Sets the focus wrap mode for cross-axis arrow keys.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | Yes | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE:** <br>Abnormal values are treated as the default value, meaning that cross- axis arrow keys cannot wrap. |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | Yes | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE:** <br>Abnormal values are treated as the default value, meaning that cross- axis arrow keys cannot wrap. |
 
 ## friction
 
@@ -350,6 +368,8 @@ Sets the main axis layout direction of the grid.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -358,7 +378,7 @@ Sets the main axis layout direction of the grid.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [GridDirection](arkts-arkui-griddirection-e.md) | Yes | Main axis layout direction of the grid.<br>Default value: **GridDirection.Row** |
+| value | [GridDirection](arkts-arkui-grid-comp-griddirection-e.md) | Yes | Main axis layout direction of the grid.<br>Default value: **GridDirection.Row** |
 
 ## maxCount
 
@@ -375,6 +395,8 @@ When **layoutDirection** is **Column** or **ColumnReverse**, the value indicates
 If the value of **maxCount** is smaller than that of **minCount**, the default values of **maxCount** and **minCount** are used.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -402,6 +424,8 @@ If the value of **minCount** is greater than that of **maxCount**, both **minCou
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -418,9 +442,11 @@ If the value of **minCount** is greater than that of **maxCount**, both **minCou
 multiSelectable(value: boolean)
 ```
 
-Sets whether to enable multiselect. After multiselect is enabled, you can use **GridItem**'s **selected** attribute and **onSelect** event to obtain the selection state of **GridItem**. Additionally, you can set the selected state style of **GridItem** using Polymorphic Style (by default, **GridItem** has no selected state style).
+Sets whether to enable multiselect. After multiselect is enabled, you can use **GridItem**'s **selected** attributeand **onSelect** event to obtain the selection state of **GridItem**. Additionally, you can set the selected state style of **GridItem** using Polymorphic Style (by default, **GridItem** has no selected state style).
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -452,7 +478,7 @@ Sets the nested scrolling options. Sets the nested scrolling modes for both forw
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-nestedscrolloptions-i.md) | Yes | Nested scrolling options. |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options. |
 
 ## onEditModeChange
 
@@ -486,6 +512,8 @@ Triggered when the dragged item enters the drop target of the grid.
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -505,6 +533,8 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 After binding, a callback is triggered when the component is dragged out of the component range.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -526,6 +556,8 @@ After binding, a callback is triggered when the drag moves within the range of a
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -546,13 +578,15 @@ Triggered when a grid item starts to be dragged.
 
 This event is triggered when the user long presses a grid item.
 
-Drag gesture recognition is also initiated by a long press, and the event processing mechanism prioritizes child component events. Therefore, when the grid item is bound to the [LongPressGesture](arkts-arkui-longpressgestureinterface-i.md), it cannot be dragged. In light of this, if both long press and drag operations are required on the grid item, you can use the universal drag event.
+Drag gesture recognition is also initiated by a long press, and the event processing mechanism prioritizes child component events. Therefore, when the grid item is bound to the [LongPressGesture](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md), it cannot be dragged. In light of this, if both long press and drag operations are required on the grid item, you can use the universal drag event.
 
 The floating grid element being dragged can move within the application window. If it is necessary to restrict its movement range, this can be achieved through custom gestures. For details, see [Example 16: Customizing the Drag Effect for GridItem](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-16-customizing-the-drag-effect-for-griditem).
 
 Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-17-dragging-grid-items-with-drag-events).
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -562,7 +596,7 @@ Automatic scrolling is not supported when a grid item is dragged to the edge of 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md) | Yes | Callback triggered when the dragging of a grid element starts.<br>In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](arkts-arkui-onitemdragstartcallback-t.md).<br>**Since:** 23 |
+| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | Yes | Callback triggered when the dragging of a grid element starts.<br>In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md).<br>**Since:** 23 |
 
 ## onItemDrop
 
@@ -575,6 +609,8 @@ onItemDrop(
 The component bound to this event can be used as the drag release target. This callback is triggered when the drag behavior is stopped within the scope of the component.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -694,11 +730,11 @@ This event is triggered when either of the following conditions is met:
 
 1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
 2. The **Grid** component scrolls by inertia.
-3. Call the fling API to trigger scrolling.
+3. Call the [fling](arkts-arkui-scroll-comp-scroller-c.md#fling) API to trigger scrolling.
 
 This event is not triggered in the following scenarios:
 
-1. A scroll control API other than fling is called.
+1. A scroll control API other than [fling](arkts-arkui-scroll-comp-scroller-c.md#fling) is called.
 2. The out-of-bounds bounce effect is active.
 3. The scrollbar is dragged.
 
@@ -714,7 +750,7 @@ This event is not triggered in the following scenarios:
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [OnScrollFrameBeginCallback](arkts-arkui-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 20 |
+| event | [OnScrollFrameBeginCallback](arkts-arkui-scroll-comp-onscrollframebegincallback-t.md) | Yes | Callback triggered when each frame scrolling starts.<br>**Since:** 20 |
 
 ## onScrollIndex
 
@@ -725,6 +761,8 @@ onScrollIndex(event: (first: number, last: number) => void)
 Called when the first or last item displayed in the grid changes.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -742,7 +780,7 @@ Called when the first or last item displayed in the grid changes.
 onScrollStart(event: () => void)
 ```
 
-Triggered when the grid starts scrolling initiated by the user's finger dragging the grid or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroller-c.md) starts.
+Triggered when the grid starts scrolling initiated by the user's finger dragging the grid or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroll-comp-scroller-c.md) starts.
 
 **Since:** 10
 
@@ -764,7 +802,7 @@ Triggered when the grid starts scrolling initiated by the user's finger dragging
 onScrollStop(event: () => void)
 ```
 
-Triggered when the grid stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroller-c.md) stops.
+Triggered when the grid stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroll-comp-scroller-c.md) stops.
 
 **Since:** 10
 
@@ -789,6 +827,8 @@ rowsGap(value: Length)
 Sets the gap between rows. A value less than 0 evaluates to the default value.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -820,6 +860,8 @@ If this attribute is set to **'0fr'**, the row height is 0, and grid item in the
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -839,6 +881,8 @@ scrollBar(value: BarState)
 Sets the scrollbar state.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -860,6 +904,8 @@ Sets the scrollbar color.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -869,6 +915,8 @@ Sets the scrollbar color.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color.<br>Default value: **'#182431'** (40% opacity)<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**.<br>A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
+
+<a id="scrollbarcolor-1"></a>
 
 ## scrollBarColor
 
@@ -902,6 +950,8 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -911,6 +961,8 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar. |
+
+<a id="scrollbarwidth-1"></a>
 
 ## scrollBarWidth
 
@@ -949,6 +1001,8 @@ Drag animations are only supported in grids with fixed size rules; scenarios inv
 For details about the **supportAnimation** animation effect, see [Example 5: Implementing Dragging in a Grid](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-5-implementing-dragging-in-a-grid). For other animation effects, customize the drag effect.
 
 **Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

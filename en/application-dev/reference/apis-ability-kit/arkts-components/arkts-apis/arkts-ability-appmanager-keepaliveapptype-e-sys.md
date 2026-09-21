@@ -1,5 +1,9 @@
 # KeepAliveAppType (System API)
 
+```TypeScript
+export enum KeepAliveAppType
+```
+
 Enumerates the types of applications to be kept alive.
 
 **Since:** 14

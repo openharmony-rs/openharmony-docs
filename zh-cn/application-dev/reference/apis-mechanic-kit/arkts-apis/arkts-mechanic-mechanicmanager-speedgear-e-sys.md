@@ -1,5 +1,9 @@
 # SpeedGear（系统接口）
 
+```TypeScript
+export enum SpeedGear
+```
+
 速度档位定义
 
 **起始版本：** 26.0.0

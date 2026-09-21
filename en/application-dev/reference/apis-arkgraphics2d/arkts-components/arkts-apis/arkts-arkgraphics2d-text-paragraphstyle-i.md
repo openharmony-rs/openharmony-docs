@@ -1,5 +1,9 @@
 # ParagraphStyle
 
+```TypeScript
+interface ParagraphStyle
+```
+
 Represents a paragraph style, which controls the overall layout behavior of a paragraph, including attributes such as alignment, line break strategy, and maximum number of lines. ParagraphStyle serves as a required parameter of the [ParagraphBuilder](arkts-arkgraphics2d-text-paragraphbuilder-c.md) constructor, and works together with [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md) (which controls text-level styles) to determine the final typesetting result of the paragraph.
 
 **Since:** 12
@@ -356,7 +360,7 @@ Whether to consider the alignment impact of trailing spaces during text layout. 
 verticalAlign?: TextVerticalAlign
 ```
 
-Text vertical alignment mode. The default value is BASELINE, which means text baseline alignment. This attribute takes effect when line height scaling is enabled (that is, when [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)'s heightScale is set) or when text in different font sizes is mixed in a line (that is, when [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)'s fontSize is set). If there is superscript or subscript text in the line (that is, text with [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)'s badgeType attribute set), the superscript or subscript text participates in vertical alignment in the same way as normal text.
+Text vertical alignment mode. The default value is BASELINE, which means text baseline alignment. This attribute takes effect when line height scaling is enabled (that is, when [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)'s heightScaleis set) or when text in different font sizes is mixed in a line (that is, when [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)'s fontSize is set). If there is superscript or subscript text in the line (that is, text with [TextStyle](arkts-arkgraphics2d-text-textstyle-i.md)'s badgeType attribute set), the superscript or subscripttext participates in vertical alignment in the same way as normal text.
 
 **Type:** [TextVerticalAlign](arkts-arkgraphics2d-text-textverticalalign-e.md)
 

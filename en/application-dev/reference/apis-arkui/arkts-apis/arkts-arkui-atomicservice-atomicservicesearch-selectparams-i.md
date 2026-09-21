@@ -1,5 +1,9 @@
 # SelectParams
 
+```TypeScript
+export interface SelectParams
+```
+
 Provides optional attributes for the selection area.
 
 **Since:** 18
@@ -34,7 +38,7 @@ arrowPosition?: ArrowPosition
 
 Set the layout direction for text and arrow in select.
 
-**Type:** [ArrowPosition](../arkts-components/arkts-arkui-arrowposition-e.md)
+**Type:** [ArrowPosition](../arkts-components/arkts-arkui-select-comp-arrowposition-e.md)
 
 **Since:** 18
 
@@ -50,7 +54,7 @@ divider?: Optional<DividerOptions> | null
 
 Sets the divider of select.
 
-**Type:** [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[DividerOptions](../arkts-components/arkts-arkui-divideroptions-i.md)&gt; &#124; null
+**Type:** [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[DividerOptions](../arkts-components/arkts-arkui-textpicker-comp-divideroptions-i.md)&gt; &#124; null
 
 **Since:** 18
 
@@ -114,7 +118,7 @@ menuBackgroundBlurStyle?: BlurStyle
 
 Set menu background blur Style.
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 18
 
@@ -146,7 +150,7 @@ menuItemContentModifier?: ContentModifier<MenuItemConfiguration>
 
 Register a ContentModifier for each menu item.
 
-**Type:** [ContentModifier](../arkts-components/arkts-arkui-contentmodifier-i.md)&lt;[MenuItemConfiguration](../arkts-components/arkts-arkui-menuitemconfiguration-i.md)&gt;
+**Type:** [ContentModifier](../arkts-components/arkts-arkui-common-comp-contentmodifier-i.md)&lt;[MenuItemConfiguration](../arkts-components/arkts-arkui-select-comp-menuitemconfiguration-i.md)&gt;
 
 **Since:** 18
 
@@ -226,7 +230,7 @@ options?: Array<SelectOption>
 
 SubOption array of the select.
 
-**Type:** Array&lt;[SelectOption](../arkts-components/arkts-arkui-selectoption-i.md)&gt;
+**Type:** Array&lt;[SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)&gt;
 
 **Since:** 18
 

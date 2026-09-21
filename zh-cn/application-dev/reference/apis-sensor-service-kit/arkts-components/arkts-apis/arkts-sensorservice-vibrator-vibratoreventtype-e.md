@@ -1,5 +1,9 @@
 # VibratorEventType
 
+```TypeScript
+enum VibratorEventType
+```
+
 振动事件类型。用于[VibratorEvent](arkts-sensorservice-vibrator-vibratorevent-i.md)的eventType字段指定振动事件的类型。
 
 **起始版本：** 18

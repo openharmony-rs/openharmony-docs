@@ -1,5 +1,9 @@
 # EntityType
 
+```TypeScript
+enum EntityType
+```
+
 Enumeration of media resource type.
 
 @enum { int }

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="addslot-2"></a>
+
 ## addSlot
 
 ```TypeScript
@@ -28,6 +30,8 @@ Adds a notification slot of a specified type. This API uses an asynchronous call
 | type | SlotType | Yes | Type of the notification slot to add. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+
+<a id="addslot-3"></a>
 
 ## addSlot
 

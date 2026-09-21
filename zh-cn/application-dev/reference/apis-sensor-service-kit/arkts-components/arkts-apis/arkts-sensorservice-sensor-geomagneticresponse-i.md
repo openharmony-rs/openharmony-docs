@@ -1,5 +1,9 @@
 # GeomagneticResponse
 
+```TypeScript
+interface GeomagneticResponse
+```
+
 设置地磁响应对象，用于描述指定地理位置的地磁场信息。
 
 **起始版本：** 8

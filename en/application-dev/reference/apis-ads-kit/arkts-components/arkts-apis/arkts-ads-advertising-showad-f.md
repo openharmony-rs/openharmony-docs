@@ -38,12 +38,22 @@ Shows a full-screen ad.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../errorcode-ads.md#401-incorrect-ads-request-parameter) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [21800001](../errorcode-ads.md#21800001-internal-system-error) | System internal error. |
 | [21800004](../errorcode-ads.md#21800004-ad-display-failure) | Failed to display the ad. |
 
 **Examples**
 
-```TypeScript
 For details about how to obtain the context, see [Acquisition of Context](../../../application-models/application-context-stage.md#acquisition-of-context).
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { advertising } from '@kit.AdsKit';
+
+function showAd(ad: advertising.Advertisement, context?: common.UIAbilityContext): void {
+  // Ad display parameters. You can set the parameters based on the project requirements.
+  const adDisplayOptions: advertising.AdDisplayOptions = {};
+  // Show the ad.
+  advertising.showAd(ad, adDisplayOptions, context);
+}
 ```

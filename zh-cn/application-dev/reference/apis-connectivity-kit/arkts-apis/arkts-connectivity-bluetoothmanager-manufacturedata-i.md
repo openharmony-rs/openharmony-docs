@@ -1,5 +1,9 @@
 # ManufactureData
 
+```TypeScript
+interface ManufactureData
+```
+
 描述BLE广播数据包的内容。
 
 从API version 9开始支持，从API version 10开始废弃。

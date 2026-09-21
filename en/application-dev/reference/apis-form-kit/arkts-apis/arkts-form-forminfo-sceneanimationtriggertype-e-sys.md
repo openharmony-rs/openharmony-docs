@@ -1,5 +1,9 @@
 # SceneAnimationTriggerType (System API)
 
+```TypeScript
+enum SceneAnimationTriggerType
+```
+
 The trigger type of the scene animation.
 
 @enum { int }

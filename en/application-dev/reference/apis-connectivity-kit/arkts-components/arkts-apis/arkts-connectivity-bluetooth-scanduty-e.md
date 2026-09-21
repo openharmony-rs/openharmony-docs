@@ -1,5 +1,9 @@
 # ScanDuty
 
+```TypeScript
+enum ScanDuty
+```
+
 The enum of scan duty.
 
 **Since:** 7

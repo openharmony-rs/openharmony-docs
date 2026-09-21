@@ -1,5 +1,9 @@
 # SubscribeCallbackData（系统接口）
 
+```TypeScript
+export interface SubscribeCallbackData
+```
+
 返回携带系统属性值的通知信息。
 
 **起始版本：** 7

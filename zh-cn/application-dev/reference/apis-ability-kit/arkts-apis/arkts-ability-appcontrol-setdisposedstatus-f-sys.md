@@ -43,28 +43,6 @@ function setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCal
 **示例**
 
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { appControl } from '@kit.AbilityKit';
-
-let appId = "com.example.myapplication_xxxxx";
-let want: Want = { bundleName: 'com.example.myapplication' };
-
-try {
-  appControl.setDisposedStatus(appId, want)
-    .then(() => {
-      console.info('setDisposedStatus success');
-    }).catch((error: BusinessError) => {
-    let message = (error as BusinessError).message;
-    console.error('setDisposedStatus failed ' + message);
-  });
-} catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('setDisposedStatus failed ' + message);
-}
-```
-
-```TypeScript
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
@@ -87,6 +65,8 @@ try {
 }
 ```
 
+
+<a id="setdisposedstatus-1"></a>
 
 ## setDisposedStatus
 
@@ -129,4 +109,24 @@ function setDisposedStatus(appId: string, disposedWant: Want): Promise<void>
 
 **示例**
 
-参见 [setDisposedStatus](#setdisposedstatus)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { appControl } from '@kit.AbilityKit';
+
+let appId = "com.example.myapplication_xxxxx";
+let want: Want = { bundleName: 'com.example.myapplication' };
+
+try {
+  appControl.setDisposedStatus(appId, want)
+    .then(() => {
+      console.info('setDisposedStatus success');
+    }).catch((error: BusinessError) => {
+    let message = (error as BusinessError).message;
+    console.error('setDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('setDisposedStatus failed ' + message);
+}
+```

@@ -1,5 +1,9 @@
 # NotificationFlagStatus
 
+```TypeScript
+export enum NotificationFlagStatus
+```
+
 Enumerates the notification flag states.
 
 **Since:** 11

@@ -1,6 +1,10 @@
 # HapModuleInfo
 
-Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md)获取。
+```TypeScript
+export interface HapModuleInfo
+```
+
+Hap模块信息，未做特殊说明的属性，均通过[bundle.getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo-2)获取。
 
 > **说明：** 
 > 

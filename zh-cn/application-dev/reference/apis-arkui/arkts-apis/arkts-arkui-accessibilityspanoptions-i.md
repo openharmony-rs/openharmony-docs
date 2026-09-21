@@ -1,5 +1,9 @@
 # AccessibilitySpanOptions
 
+```TypeScript
+declare interface AccessibilitySpanOptions
+```
+
 Span的无障碍朗读功能属性。
 
 **起始版本：** 23

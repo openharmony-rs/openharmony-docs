@@ -37,6 +37,8 @@ Obtains the dispatch information. This API uses an asynchronous callback to retu
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 
+<a id="getdispatchinfo-1"></a>
+
 ## getDispatchInfo
 
 ```TypeScript

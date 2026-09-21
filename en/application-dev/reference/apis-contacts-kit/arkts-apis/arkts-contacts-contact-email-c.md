@@ -1,5 +1,9 @@
 # Email
 
+```TypeScript
+class Email
+```
+
 Defines a contact's email.
 
 **Since:** 7

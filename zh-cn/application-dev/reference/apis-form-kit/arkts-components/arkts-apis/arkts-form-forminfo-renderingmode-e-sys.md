@@ -1,5 +1,9 @@
 # RenderingMode（系统接口）
 
+```TypeScript
+enum RenderingMode
+```
+
 卡片支持的渲染模式枚举。
 
 **起始版本：** 18

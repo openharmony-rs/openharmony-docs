@@ -18,7 +18,7 @@ function getValidReminders(callback: AsyncCallback<Array<ReminderRequest>>): voi
 
 **废弃版本：** 9
 
-**替代接口：** getValidReminders
+**替代接口：** [getValidReminders](arkts-backgroundtasks-reminderagentmanager-getvalidreminders-f.md)
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -59,6 +59,33 @@ reminderAgent.getValidReminders((err: BusinessError, reminders: Array<reminderAg
 })
 ```
 
+
+<a id="getvalidreminders-1"></a>
+
+## getValidReminders
+
+```TypeScript
+function getValidReminders(): Promise<Array<ReminderRequest>>
+```
+
+获取当前应用已设置的所有有效（未过期）的提醒，使用Promise方式实现异步调用。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getValidReminders](arkts-backgroundtasks-reminderagentmanager-getvalidreminders-f.md)
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Array&lt;[ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)&gt;&gt; | 返回当前应用已设置的所有有效（未过期）的提醒。 |
+
+**示例**
+
 ```TypeScript
 import reminderAgent from '@ohos.reminderAgent';
 
@@ -86,30 +113,3 @@ reminderAgent.getValidReminders().then((reminders: Array<reminderAgent.ReminderR
   }
 })
 ```
-
-
-## getValidReminders
-
-```TypeScript
-function getValidReminders(): Promise<Array<ReminderRequest>>
-```
-
-获取当前应用已设置的所有有效（未过期）的提醒，使用Promise方式实现异步调用。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** getValidReminders
-
-**系统能力：** SystemCapability.Notification.ReminderAgent
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;Array&lt;[ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)&gt;&gt; | 返回当前应用已设置的所有有效（未过期）的提醒。 |
-
-**示例**
-
-参见 [getValidReminders](#getvalidreminders)

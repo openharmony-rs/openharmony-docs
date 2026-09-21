@@ -1,5 +1,9 @@
 # ProbeResultInfo
 
+```TypeScript
+export interface ProbeResultInfo
+```
+
 网络探测结果信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # PlaylistLoopMode
 
+```TypeScript
+enum PlaylistLoopMode
+```
+
 表示播放列表循环模式的枚举。
 
 **起始版本：** 26.0.0

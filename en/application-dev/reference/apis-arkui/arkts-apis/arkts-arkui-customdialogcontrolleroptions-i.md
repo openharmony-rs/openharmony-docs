@@ -1,5 +1,9 @@
 # CustomDialogControllerOptions
 
+```TypeScript
+declare interface CustomDialogControllerOptions
+```
+
 Defines the style of the custom dialog box.
 
 > **NOTE:** 
@@ -35,6 +39,8 @@ Callback invoked when the dialog box is closed after the Back button or mask is 
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -52,6 +58,8 @@ Default value: **DialogAlignment.Default**
 **Type:** [DialogAlignment](arkts-arkui-dialogalignment-e.md)
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -71,6 +79,8 @@ Default value: **true**
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -89,7 +99,7 @@ Default value: **BlurStyle.COMPONENT_ULTRA_THICK**
 
 Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Default:** BlurStyle.COMPONENT_ULTRA_THICK
 
@@ -109,7 +119,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.
 
-**Type:** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-backgroundblurstyleoptions-i.md)
+**Type:** [BackgroundBlurStyleOptions](../arkts-components/arkts-arkui-common-comp-backgroundblurstyleoptions-i.md)
 
 **Since:** 19
 
@@ -153,7 +163,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.
 
-**Type:** [BackgroundEffectOptions](../arkts-components/arkts-arkui-backgroundeffectoptions-i.md)
+**Type:** [BackgroundEffectOptions](../arkts-components/arkts-arkui-common-comp-backgroundeffectoptions-i.md)
 
 **Since:** 19
 
@@ -251,6 +261,8 @@ To listen for data changes in the builder, use the @Link or @Consume decorator; 
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -273,7 +285,7 @@ Parameters for defining the close animation of the dialog box.
 
 For page transition, you are advised to use the default close animation.
 
-**Type:** [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md)
+**Type:** [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md)
 
 **Since:** 10
 
@@ -295,7 +307,7 @@ You can set separate radii for the four corners.
 
 Default value: **{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }**
 
-Note: The default corner radius of the background is 32 vp. This attribute must be used together with the borderRadius attribute.
+Note: The default corner radius of the background is 32 vp. This attribute must be used together with the [borderRadius](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderradius) attribute.
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
@@ -333,6 +345,8 @@ When this parameter is set to **true**:
 **Type:** boolean
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -426,6 +440,8 @@ Value range: an integer no less than 0
 
 **Since:** 8
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -464,7 +480,7 @@ Display area of the dialog box in the hover state.
 
 Default value: **HoverModeAreaType.BOTTOM_SCREEN**
 
-**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-hovermodeareatype-e.md)
+**Type:** [HoverModeAreaType](../arkts-components/arkts-arkui-common-comp-hovermodeareatype-e.md)
 
 **Default:** HoverModeAreaType.BOTTOM_SCREEN
 
@@ -561,7 +577,7 @@ How the dialog box avoids the soft keyboard when it is brought up.
 
 Default value: **KeyboardAvoidMode.DEFAULT**
 
-**Type:** [KeyboardAvoidMode](../arkts-components/arkts-arkui-keyboardavoidmode-e.md)
+**Type:** KeyboardAvoidMode
 
 **Default:** KeyboardAvoidMode.DEFAULT
 
@@ -681,7 +697,7 @@ Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**
 
 **maskRect** does not take effect when **showInSubWindow** is set to **true**.
 
-**Type:** [Rectangle](../arkts-components/arkts-arkui-rectangle-i.md)
+**Type:** [Rectangle](../arkts-components/arkts-arkui-common-comp-rectangle-i.md)
 
 **Since:** 10
 
@@ -705,6 +721,8 @@ Default value: **{dx: 0, dy: 0}**
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -724,7 +742,7 @@ Event callback after the dialog box appears.
 3. When a dialog box is dismissed immediately after being shown, **onWillDisappear** may be triggered before **onDidAppear**.
 4. If the dialog box is dismissed before its entrance animation is finished, the animation will be interrupted, and **onDidAppear** will not be triggered.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt;
+**Type:** Callback&lt;void&gt;
 
 **Since:** 19
 
@@ -746,7 +764,7 @@ Event callback after the dialog box disappears.
 
 1. The normal timing sequence is as follows: onWillAppear &gt; onDidAppear &gt; onWillDisappear &gt; onDidDisappear.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt;
+**Type:** Callback&lt;void&gt;
 
 **Since:** 19
 
@@ -769,7 +787,7 @@ Event callback when the dialog box is about to appear.
 1. The normal timing sequence is as follows: onWillAppear &gt; onDidAppear &gt; onWillDisappear &gt; onDidDisappear.
 2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt;
+**Type:** Callback&lt;void&gt;
 
 **Since:** 19
 
@@ -791,7 +809,7 @@ Event callback when the dialog box is about to disappear.
 
 1. The normal timing sequence is as follows: onWillAppear &gt; onDidAppear &gt; onWillDisappear &gt; onDidDisappear.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt;
+**Type:** Callback&lt;void&gt;
 
 **Since:** 19
 
@@ -814,7 +832,7 @@ Callback for interactive closure of the dialog box.
 1. If this callback is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The **reason** parameter in the callback is used to determine whether the dialog box can be closed. The reason returned by the component does not support the value **CLOSE_BUTTON**.
 2. In the **onWillDismiss** callback, another **onWillDismiss** callback is not allowed.
 
-**Type:** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;[DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)&gt;
+**Type:** Callback&lt;[DismissDialogAction](arkts-arkui-dismissdialogaction-i.md)&gt;
 
 **Since:** 12
 
@@ -840,7 +858,7 @@ Parameters for defining the open animation of the dialog box.
 
 **playMode**: The default value is **PlayMode.Normal**; any other value is handled as the default value.
 
-**Type:** [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md)
+**Type:** [AnimateParam](../arkts-components/arkts-arkui-common-comp-animateparam-i.md)
 
 **Since:** 10
 
@@ -860,7 +878,7 @@ Shadow of the dialog box.
 
 Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.
 
-**Type:** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**Type:** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **Since:** 12
 
@@ -905,7 +923,7 @@ systemMaterial?: SystemUiMaterial
 
 System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.
 
-**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-systemuimaterial-t.md)
+**Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
 **Since:** 26.0.0
 

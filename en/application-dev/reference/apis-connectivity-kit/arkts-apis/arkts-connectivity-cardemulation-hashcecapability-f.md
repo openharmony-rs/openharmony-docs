@@ -18,6 +18,8 @@ Checks whether the device supports HCE.
 
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation

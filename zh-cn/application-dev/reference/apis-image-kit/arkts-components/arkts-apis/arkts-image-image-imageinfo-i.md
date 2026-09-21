@@ -1,5 +1,9 @@
 # ImageInfo
 
+```TypeScript
+interface ImageInfo
+```
+
 表示图片信息。
 
 **起始版本：** 6

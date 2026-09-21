@@ -1,5 +1,9 @@
 # WakeupIntelligentVoiceEventType (System API)
 
+```TypeScript
+enum WakeupIntelligentVoiceEventType
+```
+
 Enumerates wakeup intelligent voice event type. @enum {number}
 
 **Since:** 10

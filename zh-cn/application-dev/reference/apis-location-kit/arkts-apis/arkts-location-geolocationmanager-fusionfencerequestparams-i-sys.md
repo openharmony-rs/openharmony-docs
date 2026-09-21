@@ -1,5 +1,9 @@
 # FusionFenceRequestParams（系统接口）
 
+```TypeScript
+export interface FusionFenceRequestParams
+```
+
 融合围栏请求信息。
 
 **起始版本：** 26.0.0

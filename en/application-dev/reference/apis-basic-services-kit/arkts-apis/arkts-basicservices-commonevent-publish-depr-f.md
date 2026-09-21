@@ -46,6 +46,35 @@ let publishCallBack = (err: Base.BusinessError) => {
 commonEvent.publish("event", publishCallBack);
 ```
 
+
+<a id="publish-1"></a>
+
+## publish
+
+```TypeScript
+function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
+```
+
+Publishes a common event with given properties. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
+
+**System capability:** SystemCapability.Notification.CommonEvent
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| event | string | Yes | Name of the common event to publish. |
+| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | Yes | Properties of the common event to publish. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result of publishing a common event. |
+
+**Examples**
+
 ```TypeScript
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -69,32 +98,3 @@ let publishCallBack = (err: Base.BusinessError) => {
 // Publish a common event.
 commonEvent.publish("event", options, publishCallBack);
 ```
-
-
-## publish
-
-```TypeScript
-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
-```
-
-Publishes a common event with given properties. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Notification.CommonEvent
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| event | string | Yes | Name of the common event to publish. |
-| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | Yes | Properties of the common event to publish. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result of publishing a common event. |
-
-**Examples**
-
-See [publish](#publish)

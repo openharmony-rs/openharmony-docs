@@ -37,6 +37,16 @@ function on(type: 'sharingStateChange', callback: Callback<boolean>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 
+**示例**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.on('sharingStateChange', (data: boolean) => {
+  console.info('on sharingStateChange: ' + JSON.stringify(data));
+});
+```
+
 
 ## on('interfaceSharingStateChange')
 
@@ -69,6 +79,16 @@ function on(type: 'interfaceSharingStateChange', callback: Callback<InterfaceSha
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
 
+**示例**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.on('interfaceSharingStateChange', (data: object) => {
+  console.info('on interfaceSharingStateChange:' + JSON.stringify(data));
+});
+```
+
 
 ## on('sharingUpstreamChange')
 
@@ -100,3 +120,13 @@ function on(type: 'sharingUpstreamChange', callback: Callback<NetHandle>): void
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. |
+
+**示例**
+
+```TypeScript
+import { sharing } from '@kit.NetworkKit';
+
+sharing.on('sharingUpstreamChange', (data: object) => {
+  console.info('on sharingUpstreamChange:' + JSON.stringify(data));
+});
+```

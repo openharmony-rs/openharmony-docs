@@ -1,5 +1,9 @@
 # AudioChannelLayout
 
+```TypeScript
+enum AudioChannelLayout
+```
+
 Audio AudioChannel Layout. A 64-bit integer indicates that the appearance and order of the speakers for recording or playback.
 
 **Since:** 11

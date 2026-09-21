@@ -1,5 +1,9 @@
 # WifiScanInfo
 
+```TypeScript
+interface WifiScanInfo
+```
+
 Describes the scanned Wi-Fi information. @typedef WifiScanInfo
 
 **Since:** 12

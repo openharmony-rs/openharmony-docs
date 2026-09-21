@@ -1,5 +1,9 @@
 # PbesEncryptionAlgorithm
 
+```TypeScript
+enum PbesEncryptionAlgorithm
+```
+
 表示基于密码的加密算法枚举。
 
 **起始版本：** 21

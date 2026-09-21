@@ -1,5 +1,9 @@
 # Action
 
+```TypeScript
+enum Action
+```
+
 Enumerates the actions that can be taken for data packets.
 
 **Since:** 12

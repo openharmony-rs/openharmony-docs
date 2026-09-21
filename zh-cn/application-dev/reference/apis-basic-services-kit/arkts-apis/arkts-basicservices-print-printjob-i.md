@@ -1,5 +1,9 @@
 # PrintJob
 
+```TypeScript
+interface PrintJob
+```
+
 定义打印任务的接口。
 
 **起始版本：** 24

@@ -1,10 +1,14 @@
 # A2dpSinkProfile
 
+```TypeScript
+interface A2dpSinkProfile extends BaseProfile
+```
+
 管理a2dp sink业务。
 
 **继承/实现关系：** A2dpSinkProfile extends [BaseProfile](arkts-connectivity-a2dp-baseprofile-t.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -22,7 +26,7 @@ connect(deviceId: string): void
 
 向远端设备发起A2DP sink连接。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -59,7 +63,7 @@ disconnect(deviceId: string): void
 
 断开与远端设备的A2DP sink连接。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -95,7 +99,7 @@ getPlayingState(deviceId: string): PlayingState
 
 获取设备播放状态。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 

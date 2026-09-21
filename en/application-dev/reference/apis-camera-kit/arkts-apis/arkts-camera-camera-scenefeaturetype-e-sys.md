@@ -1,5 +1,9 @@
 # SceneFeatureType (System API)
 
+```TypeScript
+enum SceneFeatureType
+```
+
 Enumerates the scene features.
 
 **Since:** 12

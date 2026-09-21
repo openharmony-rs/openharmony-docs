@@ -1,5 +1,9 @@
 # UsageType (System API)
 
+```TypeScript
+enum UsageType
+```
+
 Enum for usage type used in capture session.
 
 **Since:** 13

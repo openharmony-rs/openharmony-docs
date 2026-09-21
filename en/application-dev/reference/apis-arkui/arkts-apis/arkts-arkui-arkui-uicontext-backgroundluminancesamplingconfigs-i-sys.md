@@ -1,5 +1,9 @@
 # BackgroundLuminanceSamplingConfigs (System API)
 
+```TypeScript
+export interface BackgroundLuminanceSamplingConfigs
+```
+
 Sets the background luminance sampling parameters.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # Constants
 
+```TypeScript
+interface Constants
+```
+
 分布式键值数据库常量。
 
 **起始版本：** 9

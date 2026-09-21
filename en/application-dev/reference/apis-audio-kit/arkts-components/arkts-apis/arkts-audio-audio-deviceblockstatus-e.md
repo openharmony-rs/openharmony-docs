@@ -1,5 +1,9 @@
 # DeviceBlockStatus
 
+```TypeScript
+enum DeviceBlockStatus
+```
+
 Enumerates the blocked statuses of audio devices.
 
 **Since:** 13

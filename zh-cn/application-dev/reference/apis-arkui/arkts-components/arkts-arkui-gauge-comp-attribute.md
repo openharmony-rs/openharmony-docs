@@ -1,10 +1,14 @@
 # Gauge属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)外，还支持以下属性。
+```TypeScript
+declare class GaugeAttribute extends CommonMethod<GaugeAttribute>
+```
 
-支持[通用事件](arkts-arkui-commonmethod-c.md)。
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性。
 
-**继承/实现关系：** GaugeAttribute extends CommonMethod&lt;GaugeAttribute&gt;
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
+
+**继承/实现关系：** GaugeAttribute extends CommonMethod<GaugeAttribute>
 
 **起始版本：** 8
 
@@ -62,7 +66,7 @@ contentModifier(modifier: ContentModifier<GaugeConfiguration>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-contentmodifier-i.md)&lt;[GaugeConfiguration](arkts-arkui-gaugeconfiguration-i.md)&gt; | 是 | 在Gauge组件上定制内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[GaugeConfiguration](arkts-arkui-gauge-comp-gaugeconfiguration-i.md)&gt; | 是 | 在Gauge组件上定制内容区的方法。<br>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## description
 
@@ -86,7 +90,7 @@ description(value: CustomBuilder)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-custombuilder-t.md) | 是 | 说明内容。<br>**说明：** <br>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br>设置null则不显示内容。<br>不设置则依赖是否设置数据最大最小值。<br>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br>若未设置最大最小值，则不显示内容。<br>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 说明内容。<br>**说明：** <br>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br>设置null则不显示内容。<br>不设置则依赖是否设置数据最大最小值。<br>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br>若未设置最大最小值，则不显示内容。<br>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
 
 ## endAngle
 
@@ -132,7 +136,7 @@ indicator(value: GaugeIndicatorOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [GaugeIndicatorOptions](arkts-arkui-gaugeindicatoroptions-i.md) | 是 | 指针样式。<br>**说明：** <br>设置null则不显示指针。 |
+| value | [GaugeIndicatorOptions](arkts-arkui-gauge-comp-gaugeindicatoroptions-i.md) | 是 | 指针样式。<br>**说明：** <br>设置null则不显示指针。 |
 
 ## privacySensitive
 
@@ -144,7 +148,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 > **说明：** 
 > 
-> 从API version 20开始，该接口支持在attributeModifier中调用。
+> 从API version 20开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 
 **起始版本：** 12
 
@@ -160,7 +164,7 @@ privacySensitive(isPrivacySensitiveMode: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isPrivacySensitiveMode | [Optional](arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br>**说明：** <br>设置null则不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用FormComponent组件设置[隐私遮罩](arkts-arkui-commonmethod-c.md#obscured)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置隐私敏感。在隐私模式下，Gauge指针指向0位置，最大值最小值文本将被遮罩，量程显示灰色或底色。true表示打开隐私敏感，false表示关闭隐私敏感。<br>**说明：** <br>设置null则不敏感。<!--Del--> <br>需要在卡片中使用Progress，并用[FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component系统接口)组件设置[隐私遮罩](arkts-arkui-common-comp-commonmethod-c.md#obscured)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## startAngle
 
@@ -228,7 +232,7 @@ trackShadow(value: GaugeShadowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [GaugeShadowOptions](arkts-arkui-gaugeshadowoptions-i.md) | 是 | 添加阴影效果，可以指定模糊半径、X轴和Y轴的偏移量。<br>**说明：** <br>阴影颜色与圆环颜色一致。<br>设置null为不开启投影。 |
+| value | [GaugeShadowOptions](arkts-arkui-gauge-comp-gaugeshadowoptions-i.md) | 是 | 添加阴影效果，可以指定模糊半径、X轴和Y轴的偏移量。<br>**说明：** <br>阴影颜色与圆环颜色一致。<br>设置null为不开启投影。 |
 
 ## value
 

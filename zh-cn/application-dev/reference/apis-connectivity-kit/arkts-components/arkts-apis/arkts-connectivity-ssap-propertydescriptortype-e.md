@@ -1,5 +1,9 @@
 # PropertyDescriptorType
 
+```TypeScript
+enum PropertyDescriptorType
+```
+
 表示Property的描述符类型，为枚举值。
 
 **起始版本：** 26.0.0

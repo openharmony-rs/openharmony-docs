@@ -1,5 +1,9 @@
 # EventFlag
 
+```TypeScript
+enum EventFlag
+```
+
 事件类型枚举。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # CertificateStatus
 
+```TypeScript
+enum CertificateStatus
+```
+
 Enumerates the statuses of device certificates.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # EapData
 
+```TypeScript
+interface EapData
+```
+
 EAP信息。
 
 ​**系统能力**​：SystemCapability.Communication.NetManager.Eap

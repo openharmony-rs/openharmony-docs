@@ -1,5 +1,9 @@
 # CaretStyle
 
+```TypeScript
+interface CaretStyle
+```
+
 定义光标样式。
 
 **起始版本：** 10

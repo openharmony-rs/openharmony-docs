@@ -1,5 +1,9 @@
 # NotificationSubscriber (System API)
 
+```TypeScript
+export interface NotificationSubscriber
+```
+
 Provides callback methods for subscribers to receive and cancel notifications.
 
 **Since:** 7

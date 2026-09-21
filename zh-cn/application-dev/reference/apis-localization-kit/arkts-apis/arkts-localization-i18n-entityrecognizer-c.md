@@ -1,5 +1,9 @@
 # EntityRecognizer
 
+```TypeScript
+export class EntityRecognizer
+```
+
 提供实体识别相关的能力，可以获取文本中实体的类型和起止位置。当前支持识别的实体包括电话号码和时间日期。
 
 **起始版本：** 11

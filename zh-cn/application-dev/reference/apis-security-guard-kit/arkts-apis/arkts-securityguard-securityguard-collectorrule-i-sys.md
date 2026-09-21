@@ -1,5 +1,9 @@
 # CollectorRule（系统接口）
 
+```TypeScript
+interface CollectorRule
+```
+
 安全事件采集规则。
 
 @typedef CollectorRule

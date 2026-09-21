@@ -1,5 +1,9 @@
 # PermissionDef（系统接口）
 
+```TypeScript
+export interface PermissionDef
+```
+
 配置文件中定义的权限详细信息。
 
 > **说明：** 

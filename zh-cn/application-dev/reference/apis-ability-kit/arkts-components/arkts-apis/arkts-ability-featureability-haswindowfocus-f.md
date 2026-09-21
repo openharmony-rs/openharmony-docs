@@ -41,15 +41,8 @@ featureAbility.hasWindowFocus((error, data) => {
 });
 ```
 
-```TypeScript
-import { featureAbility } from '@kit.AbilityKit';
 
-// 检查Ability的主窗口是否具有窗口焦点
-featureAbility.hasWindowFocus().then((data) => {
-  console.info(`hasWindowFocus data: ${JSON.stringify(data)}`);
-});
-```
-
+<a id="haswindowfocus-1"></a>
 
 ## hasWindowFocus
 
@@ -73,4 +66,11 @@ function hasWindowFocus(): Promise<boolean>
 
 **示例**
 
-参见 [hasWindowFocus](#haswindowfocus)
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+
+// 检查Ability的主窗口是否具有窗口焦点
+featureAbility.hasWindowFocus().then((data) => {
+  console.info(`hasWindowFocus data: ${JSON.stringify(data)}`);
+});
+```

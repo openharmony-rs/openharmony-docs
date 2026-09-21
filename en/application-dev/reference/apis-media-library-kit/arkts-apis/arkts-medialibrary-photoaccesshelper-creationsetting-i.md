@@ -1,5 +1,9 @@
 # CreationSetting
 
+```TypeScript
+export interface CreationSetting
+```
+
 Represents the configuration for saving images or videos to the media library, including the file name, file type, and other related parameters.
 
 **Since:** 23

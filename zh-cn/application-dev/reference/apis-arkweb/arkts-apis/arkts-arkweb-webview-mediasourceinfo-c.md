@@ -1,5 +1,9 @@
 # MediaSourceInfo
 
+```TypeScript
+class MediaSourceInfo
+```
+
 MediaSourceInfo 是表示媒体源信息的数据类。在 Web 媒体播放场景中，MediaSourceInfo 类封装了媒体源的基本信息，帮助应用了解媒体源的类型、地址和格式，应用根据这些信息创建自定义播放器并开始播放。
 
 **起始版本：** 12
@@ -20,6 +24,10 @@ format: string
 
 媒体源格式，可能为空，需要开发者自行判断格式。
 
+只读：否
+
+可选：否
+
 **类型：** string
 
 **起始版本：** 12
@@ -36,6 +44,10 @@ source: string
 
 媒体源地址。
 
+只读：否
+
+可选：否
+
 **类型：** string
 
 **起始版本：** 12
@@ -51,6 +63,10 @@ type: SourceType
 ```
 
 媒体源的类型。
+
+只读：否
+
+可选：否
 
 **类型：** [SourceType](arkts-arkweb-webview-sourcetype-e.md)
 

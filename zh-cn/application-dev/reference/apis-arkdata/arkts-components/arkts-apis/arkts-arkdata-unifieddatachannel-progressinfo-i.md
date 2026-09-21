@@ -1,5 +1,9 @@
 # ProgressInfo
 
+```TypeScript
+interface ProgressInfo
+```
+
 定义进度上报的数据。
 
 **起始版本：** 15

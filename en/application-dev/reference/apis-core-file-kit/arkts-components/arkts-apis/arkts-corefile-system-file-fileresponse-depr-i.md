@@ -1,5 +1,9 @@
 # FileResponse
 
+```TypeScript
+export interface FileResponse
+```
+
 Returns a file, including the file information.
 
 **Since:** 3

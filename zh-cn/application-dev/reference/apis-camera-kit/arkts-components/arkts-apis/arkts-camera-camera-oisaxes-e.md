@@ -1,5 +1,9 @@
 # OISAxes
 
+```TypeScript
+enum OISAxes
+```
+
 枚举，光学防抖（OIS）轴向。
 
 **起始版本：** 24

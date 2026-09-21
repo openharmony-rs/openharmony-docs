@@ -1,5 +1,9 @@
 # TimeLapsePreviewType（系统接口）
 
+```TypeScript
+enum TimeLapsePreviewType
+```
+
 Enumerates the time-lapse preview types, which affect the shooting algorithm.
 
 **起始版本：** 12

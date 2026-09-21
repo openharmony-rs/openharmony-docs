@@ -1,5 +1,9 @@
 # TransientParam
 
+```TypeScript
+interface TransientParam
+```
+
 Defines the parameters for transient vibration.
 
 **Since:** 18

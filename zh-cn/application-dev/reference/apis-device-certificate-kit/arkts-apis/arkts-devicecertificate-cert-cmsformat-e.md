@@ -1,5 +1,9 @@
 # CmsFormat
 
+```TypeScript
+enum CmsFormat
+```
+
 表示CMS编码格式的枚举。
 
 **起始版本：** 18

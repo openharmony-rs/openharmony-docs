@@ -1,5 +1,9 @@
 # AVQueueItem
 
+```TypeScript
+interface AVQueueItem
+```
+
 The item in the playlist of the session
 
 **Since:** 10

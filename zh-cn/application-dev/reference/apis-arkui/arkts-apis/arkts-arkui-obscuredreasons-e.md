@@ -1,5 +1,9 @@
 # ObscuredReasons
 
+```TypeScript
+declare enum ObscuredReasons
+```
+
 ObscuredReasons.
 
 **起始版本：** 10

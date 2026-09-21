@@ -1,5 +1,9 @@
 # VideoProcessor
 
+```TypeScript
+interface VideoProcessor
+```
+
 提供VideoProcessor类型，包括AIHDR相关功能。
 
 **起始版本：** 26.0.0

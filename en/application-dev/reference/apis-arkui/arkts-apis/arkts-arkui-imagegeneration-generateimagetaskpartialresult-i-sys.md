@@ -1,5 +1,9 @@
 # GenerateImageTaskPartialResult (System API)
 
+```TypeScript
+interface GenerateImageTaskPartialResult
+```
+
 Configuration stream result for AI-generated image tasks.
 
 @interface GenerateImageTaskPartialResult

@@ -1,5 +1,9 @@
 # Colors
 
+```TypeScript
+export declare interface Colors
+```
+
 Defines the struct of Colors.
 
 **Since:** 12

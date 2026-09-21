@@ -1,5 +1,9 @@
 # Display
 
+```TypeScript
+interface Display
+```
+
 Implements a Display instance, with attributes and APIs defined.
 
 Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md) or [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md) to obtain a Display instance.
@@ -108,18 +112,7 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-let promise: Promise<display.CutoutInfo> = displayClass.getCutoutInfo();
-promise.then((data: display.CutoutInfo) => {
-  console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get cutoutInfo. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="getcutoutinfo-1"></a>
 
 ## getCutoutInfo
 
@@ -149,7 +142,18 @@ Obtains the cutout information of the display. This API uses a promise to return
 
 **Examples**
 
-See [getCutoutInfo](#getcutoutinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+let promise: Promise<display.CutoutInfo> = displayClass.getCutoutInfo();
+promise.then((data: display.CutoutInfo) => {
+  console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get cutoutInfo. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getDisplayCapability
 
@@ -292,6 +296,23 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<display.Rect> = (data: display.Rect) => {
+  console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
+};
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.off('availableAreaChange', callback);
+} catch (exception) {
+  console.error(`Failed to unregister callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('availableAreaChange')
 
 ```TypeScript
@@ -321,6 +342,23 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
+
+**Examples**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<display.Rect> = (data: display.Rect) => {
+  console.info(`Listening enabled. Data: ${JSON.stringify(data)}`);
+};
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  displayClass.on('availableAreaChange', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## alive
 

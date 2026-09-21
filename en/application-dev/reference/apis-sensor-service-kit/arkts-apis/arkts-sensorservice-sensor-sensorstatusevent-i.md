@@ -1,5 +1,9 @@
 # SensorStatusEvent
 
+```TypeScript
+interface SensorStatusEvent
+```
+
 Defines a device status change event.
 
 **Since:** 19

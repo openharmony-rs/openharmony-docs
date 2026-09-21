@@ -1,5 +1,9 @@
 # VideoPlayerState
 
+```TypeScript
+export declare enum VideoPlayerState
+```
+
 Enumerates the video playback states.
 
 **Since:** 14

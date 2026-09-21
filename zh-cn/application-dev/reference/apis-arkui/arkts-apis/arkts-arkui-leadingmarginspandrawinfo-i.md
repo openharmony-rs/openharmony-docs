@@ -1,5 +1,9 @@
 # LeadingMarginSpanDrawInfo
 
+```TypeScript
+declare interface LeadingMarginSpanDrawInfo
+```
+
 自定义绘制信息。
 
 **起始版本：** 22

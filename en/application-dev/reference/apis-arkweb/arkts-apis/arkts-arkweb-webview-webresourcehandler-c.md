@@ -1,5 +1,9 @@
 # WebResourceHandler
 
+```TypeScript
+class WebResourceHandler
+```
+
 WebResourceHandler is a handler used to return the result of an intercepted request to the **Web** component in custom scheme interception scenarios. After **WebSchemeHandler** decides to intercept a request, the developer uses **WebResourceHandler** to provide a custom response header (**didReceiveResponse**) and response body data (**didReceiveResponseBody**) to the **Web** component, and notifies the request of completion (**didFinish**) or failure (**didFail**). **didFail** supports an overloaded method (API version 20 and later) to simplify the error handling process. This API enables the app layer to fully customize the response to network requests.
 
 **WebResourceHandler** works with [WebSchemeHandler](arkts-arkweb-webview-webschemehandler-c.md) and [WebSchemeHandlerResponse](arkts-arkweb-webview-webschemehandlerresponse-c.md): the **onRequestStart** callback of **WebSchemeHandler** receives a **WebResourceHandler** instance, the developer constructs a **WebSchemeHandlerResponse** object, passes the response header and response body data through **didReceiveResponse** and **didReceiveResponseBody** of **WebResourceHandler**, and finally calls **didFinish** or **didFail** to end the request.
@@ -41,6 +45,12 @@ Notifies the ArkWeb kernel that the intercepted request will fail and ends the n
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler-is-invalid) | The resource handler is invalid. |
 
+**Examples**
+
+For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart).
+
+<a id="didfail-1"></a>
+
 ## didFail
 
 ```TypeScript
@@ -67,6 +77,82 @@ Notifies the ArkWeb kernel that the intercepted request will fail. If **complete
 | [17100101](../errorcode-webview.md#17100101-incorrect-network-error-code) | The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler-is-invalid) | The resource handler is invalid. |
 
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info('[schemeHandler] onRequestStart');
+              try {
+                console.info('[schemeHandler] onRequestStart url:' + request.getRequestUrl());
+                console.info('[schemeHandler] onRequestStart method:' + request.getRequestMethod());
+                console.info('[schemeHandler] onRequestStart referrer:' + request.getReferrer());
+                console.info('[schemeHandler] onRequestStart isMainFrame:' + request.isMainFrame());
+                console.info('[schemeHandler] onRequestStart hasGesture:' + request.hasGesture());
+                console.info('[schemeHandler] onRequestStart header size:' + request.getHeader().length);
+                console.info('[schemeHandler] onRequestStart resource type:' + request.getRequestResourceType());
+                console.info('[schemeHandler] onRequestStart frame url:' + request.getFrameUrl());
+                let header = request.getHeader();
+                for (let i = 0; i < header.length; i++) {
+                  console.info('[schemeHandler] onRequestStart header:' + header[i].headerKey + ' ' + header[i].headerValue);
+                }
+                let stream = request.getHttpBodyStream();
+                if (stream) {
+                  console.info('[schemeHandler] onRequestStart has http body stream');
+                } else {
+                  console.info('[schemeHandler] onRequestStart has no http body stream');
+                }
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              if (request.getRequestUrl().endsWith('example.com')) {
+                return false;
+              }
+
+              try {
+                // Directly calls didFail(WebNetErrorList.ERR_FAILED, true). If didReceiveResponse was not called before this, the system automatically generates a response header, and the network error code is -104 (corresponding to ERR_CONNECTION_FAILED).
+                resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
+              } catch (error) {
+                // When error.code is 17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
+                // and the code value of didFail(code: WebNetErrorList, completeIfNoResponse: boolean) is not null, the API is still called.
+                console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              return true;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info('[schemeHandler] onRequestStop');
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
+
+<a id="didfail-2"></a>
+
 ## didFail
 
 ```TypeScript
@@ -75,7 +161,7 @@ didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: n
 
 Notify that this request should be failed.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -92,6 +178,82 @@ Notify that this request should be failed.
 | Error Code ID | Error Message |
 | --- | --- |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler-is-invalid) | The resource handler is invalid. |
+
+**Examples**
+
+For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart).
+
+```TypeScript
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info('[schemeHandler] onRequestStart');
+              try {
+                console.info('[schemeHandler] onRequestStart url:' + request.getRequestUrl());
+                console.info('[schemeHandler] onRequestStart method:' + request.getRequestMethod());
+                console.info('[schemeHandler] onRequestStart referrer:' + request.getReferrer());
+                console.info('[schemeHandler] onRequestStart isMainFrame:' + request.isMainFrame());
+                console.info('[schemeHandler] onRequestStart hasGesture:' + request.hasGesture());
+                console.info('[schemeHandler] onRequestStart header size:' + request.getHeader().length);
+                console.info('[schemeHandler] onRequestStart resource type:' + request.getRequestResourceType());
+                console.info('[schemeHandler] onRequestStart frame url:' + request.getFrameUrl());
+                let header = request.getHeader();
+                for (let i = 0; i < header.length; i++) {
+                  console.info('[schemeHandler] onRequestStart header:' + header[i].headerKey + ' ' + header[i].headerValue);
+                }
+                let stream = request.getHttpBodyStream();
+                if (stream) {
+                  console.info('[schemeHandler] onRequestStart has http body stream');
+                } else {
+                  console.info('[schemeHandler] onRequestStart has no http body stream');
+                }
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              if (request.getRequestUrl().endsWith('example.com')) {
+                return false;
+              }
+
+              try {
+                // Directly calls didFail(WebNetErrorList.ERR_FAILED, true). If didReceiveResponse was not called before this, the system automatically generates a response header, and the network error code is -104 (corresponding to ERR_CONNECTION_FAILED).
+                resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
+              } catch (error) {
+                // When error.code is 17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
+                // and the code value of didFail(code: WebNetErrorList, completeIfNoResponse: boolean) is not null, the API is still called.
+                console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              return true;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info('[schemeHandler] onRequestStop');
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
 
 ## didFinish
 
@@ -112,6 +274,10 @@ Notifies the **Web** component that the intercepted request is complete and no m
 | Error Code ID | Error Message |
 | --- | --- |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler-is-invalid) | The resource handler is invalid. |
+
+**Examples**
+
+For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart).
 
 ## didReceiveResponse
 
@@ -140,6 +306,10 @@ Passes the constructed response header to the intercepted request. This API must
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler-is-invalid) | The resource handler is invalid. |
 
+**Examples**
+
+For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart).
+
 ## didReceiveResponseBody
 
 ```TypeScript
@@ -166,3 +336,7 @@ Passes the constructed response body to the intercepted request. This API must b
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | [17100021](../errorcode-webview.md#17100021-webresourcehandler-is-invalid) | The resource handler is invalid. |
+
+**Examples**
+
+For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart).

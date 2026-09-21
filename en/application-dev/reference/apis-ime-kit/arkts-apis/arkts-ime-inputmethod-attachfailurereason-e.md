@@ -1,5 +1,9 @@
 # AttachFailureReason
 
+```TypeScript
+export enum AttachFailureReason
+```
+
 Enumerates the reasons for attachment failure.
 
 **Since:** 22

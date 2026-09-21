@@ -1,5 +1,9 @@
 # MultiAppMode (System API)
 
+```TypeScript
+export enum MultiAppMode
+```
+
 The module defines whether an application supports the multi-app mode.
 
 **Since:** 12
@@ -30,9 +34,11 @@ The application does not support the multi-app mode.
 MULTI_INSTANCE = 1
 ```
 
-The application supports the multi-instance mode.
+The application supports the multi-instance mode. When an application is set to this mode, users can open multiple application instances simultaneously on the same device. Each instance runs independently with its own running environment and resources.
 
-Note: This property is valid only for 2-in-1 devices.
+> **NOTE:** 
+> 
+> Only PC and 2-in-1 devices are supported.
 
 **Since:** 14
 
@@ -48,7 +54,7 @@ Note: This property is valid only for 2-in-1 devices.
 APP_CLONE = 2
 ```
 
-The application supports the app-clone mode.
+The application supports the app-clone mode. The app-clone mode allows creating independent copy instances for the application, with each instance having its own data space, suitable for scenarios that require isolated user data.
 
 **Since:** 12
 

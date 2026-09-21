@@ -1,5 +1,9 @@
 # FoldStatus
 
+```TypeScript
+enum FoldStatus
+```
+
 枚举，折叠机折叠状态。
 
 **起始版本：** 12

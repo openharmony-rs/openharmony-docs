@@ -1,5 +1,9 @@
 # Transform
 
+```TypeScript
+export class Transform extends Duplex
+```
+
 A special duplex stream that supports data conversion and result output. The **Transform** class inherits from [Duplex](arkts-arkts-stream-duplex-c.md) and supports all the APIs in **Duplex**.
 
 **Inheritance/Implementation:** Transform extends [Duplex](arkts-arkts-stream-duplex-c.md)

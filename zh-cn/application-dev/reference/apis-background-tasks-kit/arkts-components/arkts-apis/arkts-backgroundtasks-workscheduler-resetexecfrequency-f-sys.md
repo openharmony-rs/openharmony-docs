@@ -14,7 +14,7 @@ function resetExecFrequency(uid: number): void
 
 重置应用所在活跃分组的执行频率。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 

@@ -1,5 +1,9 @@
 # MouseLocation (System API)
 
+```TypeScript
+interface MouseLocation
+```
+
 Defines the mouse pointer position for screen hopping.
 
 **Since:** 12

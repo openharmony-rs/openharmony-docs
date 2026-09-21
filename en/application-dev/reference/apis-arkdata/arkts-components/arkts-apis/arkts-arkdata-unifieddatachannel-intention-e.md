@@ -1,5 +1,9 @@
 # Intention
 
+```TypeScript
+enum Intention
+```
+
 Enumerates the data channel types supported by the UDMF. It is used to identify different service scenarios, to which the UDMF data channels apply.
 
 **Since:** 10

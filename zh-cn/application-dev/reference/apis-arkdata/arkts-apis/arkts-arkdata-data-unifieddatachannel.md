@@ -25,16 +25,16 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | 名称 | 说明 |
 | --- | --- |
 | [convertRecordsToEntries](arkts-arkdata-unifieddatachannel-convertrecordstoentries-f.md) | 本接口用于将传入的data转换成多样式数据结构。若原data使用多个record去承载同一份数据的不同数据格式，则可以使用此接口将原data转换为多样式数据结构。 |
-| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用callback异步回调。 |
-| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用Promise异步回调。 |
-| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用callback异步回调。 |
-| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用Promise异步回调。 |
-| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md) | 查询UDMF公共数据通路的数据，使用callback异步回调。 |
-| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md) | 查询UDMF公共数据通路的数据，使用Promise异步回调。 |
+| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用callback异步回调。 |
+| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata-1) | 删除UDMF公共数据通路的数据，返回删除的数据集，使用Promise异步回调。 |
+| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用callback异步回调。 |
+| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata-1) | 将数据写入UDMF的公共数据通路中，并生成数据的唯一标识符，使用Promise异步回调。 |
+| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata) | 查询UDMF公共数据通路的数据，使用callback异步回调。 |
+| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata-1) | 查询UDMF公共数据通路的数据，使用Promise异步回调。 |
 | [removeAppShareOptions](arkts-arkdata-unifieddatachannel-removeappshareoptions-f.md) | 清除[setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md)设置的管控信息。调用成功后，setAppShareOptions设置的管控信息被清除，应用内拖拽通道数据恢复到默认使用范围。 |
 | [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md) | 设置应用内拖拽通道数据可使用的范围[ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md)，目前仅支持DRAG类型数据通道的管控设置。调用成功后，应用内拖拽通道数据的使用范围被设置为指定的ShareOptions值。 |
-| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md) | 更新已写入UDMF的公共数据通路的数据，使用callback异步回调。 |
-| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md) | 更新已写入UDMF的公共数据通路的数据，使用Promise异步回调。 |
+| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata) | 更新已写入UDMF的公共数据通路的数据，使用callback异步回调。 |
+| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata-1) | 更新已写入UDMF的公共数据通路的数据，使用Promise异步回调。 |
 
 ### 类
 

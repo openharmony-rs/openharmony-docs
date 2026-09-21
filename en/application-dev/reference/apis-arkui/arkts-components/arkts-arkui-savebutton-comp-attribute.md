@@ -1,6 +1,10 @@
 # SaveButton properties/events
 
-Universal attributes are not supported. This component supports the attributes listed below, as well as universal attributes of security components. Only the following events are supported.
+```TypeScript
+declare class SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
+```
+
+Universal attributes are not supported. This component supports the attributes listed below, as well as [universal attributes of security components](../arkts-apis/arkts-arkui-security_component.md). Only the following events are supported.
 
 **Inheritance/Implementation:** SaveButtonAttribute extends SecurityComponentMethod<SaveButtonAttribute>
 
@@ -60,7 +64,7 @@ Sets the icon size of the **SaveButton** component.
 onClick(event: SaveButtonCallback)
 ```
 
-Triggered when the **SaveButton** component is clicked. When a user clicks the save button for the first time, an authorization dialog box is displayed. If the user allows authorization, the app obtains temporary access to media library APIs. For details about the authorization duration, see the description of the SaveButton constructor. Authorization fails if the user declines authorization or closes the dialog box.
+Triggered when the **SaveButton** component is clicked. When a user clicks the save button for the first time, an authorization dialog box is displayed. If the user allows authorization, the app obtains temporary access to media library APIs. For details about the authorization duration, see the description of the [SaveButton](arkts-arkui-savebutton-comp.md#savebutton) constructor. Authorization fails if the user declines authorization or closes the dialog box.
 
 **Since:** 10
 
@@ -74,7 +78,7 @@ Triggered when the **SaveButton** component is clicked. When a user clicks the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [SaveButtonCallback](arkts-arkui-savebuttoncallback-t.md) | Yes | Callback object for the click event, which carries click details, authorization result and error information.<br>Starting from API version 18, **SaveButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |
+| event | [SaveButtonCallback](arkts-arkui-savebutton-comp-savebuttoncallback-t.md) | Yes | Callback object for the click event, which carries click details, authorization result and error information.<br>Starting from API version 18, **SaveButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |
 
 ## setIcon
 
@@ -98,7 +102,7 @@ Sets the icon of the **SaveButton** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Custom icon resource information. Only data sources of the Resource type are supported.<br>Images in the following formats are supported: PNG, JPG, JPEG, BMP, SVG, WebP, GIF, and HEIF. For details about the supported image formats, see Image. If the resource is not an image resource or the format is not supported, the icon is displayed as blank. <br>Since API version 26.0.0, data sources of the Resource type in Symbol format are supported. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the custom icon does not take effect and the save button uses the default style. |
+| icon | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Custom icon resource information. Only data sources of the Resource type are supported. <br>Images in the following formats are supported: PNG, JPG, JPEG, BMP, SVG, WebP, GIF, and HEIF. For details about the supported image formats, see [Image](arkts-arkui-image-comp.md#image). If the resource is not an image resource or the format is not supported, the icon is displayed as blank. <br>Since API version 26.0.0, data sources of the Resource type in Symbol format are supported. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the custom icon does not take effect and the save button uses the default style. |
 
 ## setText
 
@@ -157,7 +161,7 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 Sets the font weight of the symbol icon for the save button.
 
 - Before calling this method, you need to call [setIcon](#seticon) to configure a symbol-  
-style icon resource (i.e., **&#36;r('sys.symbol.*xxx*')**).  
+style icon resource (i.e., **$r('sys.symbol.*xxx*')**).  
 - If no symbol icon is configured, the font weight setting will not apply.
 
 **Since:** 26.0.0
@@ -185,7 +189,7 @@ symbolIconColor(color: Array<ResourceColor>)
 Sets the color of the symbol icon for the save button.
 
 - Before calling this method, you need to call [setIcon](#seticon) to configure a symbol-  
-style icon resource (i.e., **&#36;r('sys.symbol.xxx')**).  
+style icon resource (i.e., **$r('sys.symbol.xxx')**).  
 - If no symbol icon is set, the color set via this method does not take effect.  
 - It is recommended that you use this API together with [symbolRenderingStrategy](#symbolrenderingstrategy) to achieve different rendering effects.
 
@@ -214,7 +218,7 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 Sets the rendering strategy for the symbol icon of the save button.
 
 - Before calling this method, you need to call [setIcon](#seticon) to configure a symbol-  
-style icon resource (i.e., **&#36;r('sys.symbol.*xxx*')**).  
+style icon resource (i.e., **$r('sys.symbol.*xxx*')**).  
 - The configured rendering strategy will not apply if no symbol icon is set.  
 - When this parameter is used together with [symbolIconColor](#symboliconcolor), the  
 rendering strategy determines how the color array is applied.
@@ -233,7 +237,7 @@ rendering strategy determines how the color array is applied.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| strategy | [SymbolRenderingStrategy](arkts-arkui-symbolrenderingstrategy-e.md) | Yes | Rendering strategy for the symbol icon of the save button, which defines how the symbol icon is rendered.<br>Default value: SymbolRenderingStrategy.SINGLE. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect. |
+| strategy | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Yes | Rendering strategy for the symbol icon of the save button, which defines how the symbol icon is rendered.<br>Default value: SymbolRenderingStrategy.SINGLE. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect. |
 
 ## userCancelEvent
 

@@ -1,5 +1,9 @@
 # MeasureOptions
 
+```TypeScript
+export interface MeasureOptions
+```
+
 被计算文本属性。
 
 **起始版本：** 9

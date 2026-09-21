@@ -1,5 +1,9 @@
 # ArcSliderStyleOptions
 
+```TypeScript
+declare class ArcSliderStyleOptions
+```
+
 Defines the style of the arc slider.
 
 **Since:** 18

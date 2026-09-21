@@ -1,5 +1,9 @@
 # AuthInstance
 
+```TypeScript
+interface AuthInstance
+```
+
 执行用户认证的对象。
 
 **起始版本：** 9

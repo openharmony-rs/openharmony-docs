@@ -1,5 +1,9 @@
 # WaitingReason
 
+```TypeScript
+enum WaitingReason
+```
+
 枚举，定义任务等待的原因。
 
 **起始版本：** 20

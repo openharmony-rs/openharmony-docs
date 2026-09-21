@@ -1,5 +1,9 @@
 # MacAddressInfo
 
+```TypeScript
+export interface MacAddressInfo
+```
+
 以太网网卡名称及MAC地址信息。
 
 **起始版本：** 14

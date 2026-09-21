@@ -1,5 +1,9 @@
 # AtomicFile
 
+```TypeScript
+export class AtomicFile
+```
+
 AtomicFile是一个用于对文件进行原子读写等操作的类。
 
 在写操作时，通过写入临时文件，并在写入成功后将其重命名到原始文件位置来确保写入文件的完整性；而在写入失败时删除临时文件，不修改原始文件内容。

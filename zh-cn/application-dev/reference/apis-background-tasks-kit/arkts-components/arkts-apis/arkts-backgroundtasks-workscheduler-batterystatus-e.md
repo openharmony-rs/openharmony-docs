@@ -1,5 +1,9 @@
 # BatteryStatus
 
+```TypeScript
+export enum BatteryStatus
+```
+
 触发延迟任务回调的电池状态。
 
 **起始版本：** 9

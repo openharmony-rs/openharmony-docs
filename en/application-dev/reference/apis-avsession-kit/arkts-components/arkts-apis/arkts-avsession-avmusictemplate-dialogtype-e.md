@@ -1,5 +1,9 @@
 # DialogType
 
+```TypeScript
+enum DialogType
+```
+
 Enumeration of dialog type.
 
 @enum { int }

@@ -1,5 +1,9 @@
 # DeviceRole (System API)
 
+```TypeScript
+enum DeviceRole
+```
+
 Enum for the role of device.
 
 **Since:** 23

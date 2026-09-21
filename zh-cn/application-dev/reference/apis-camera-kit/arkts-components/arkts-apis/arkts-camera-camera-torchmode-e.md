@@ -1,5 +1,9 @@
 # TorchMode
 
+```TypeScript
+enum TorchMode
+```
+
 枚举，手电筒模式。
 
 **起始版本：** 11

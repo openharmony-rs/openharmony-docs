@@ -1,5 +1,9 @@
 # ExecuteResult
 
+```TypeScript
+interface ExecuteResult
+```
+
 Enumerates the return results of intent execution.
 
 **Since:** 11
@@ -22,7 +26,7 @@ Interaction information returned after the intent execution completes.
 
 **Type:** [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

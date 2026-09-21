@@ -1,5 +1,9 @@
 # SignatureInfo
 
+```TypeScript
+interface SignatureInfo
+```
+
 Describes the signature information of the bundle.
 
 **Since:** 20

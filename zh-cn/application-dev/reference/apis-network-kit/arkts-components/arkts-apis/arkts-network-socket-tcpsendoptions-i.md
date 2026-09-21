@@ -1,5 +1,9 @@
 # TCPSendOptions
 
+```TypeScript
+export interface TCPSendOptions
+```
+
 TCPSocket发送请求的参数。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # ScreenDensity
 
+```TypeScript
+export enum ScreenDensity
+```
+
 Enumerates the screen density types.
 
 **Since:** 6

@@ -1,5 +1,9 @@
 # CustomDialogOptions
 
+```TypeScript
+interface CustomDialogOptions extends BaseDialogOptions
+```
+
 Extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) to provide enhanced customization capabilities for the dialog box.
 
 **Inheritance/Implementation:** CustomDialogOptions extends [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)
@@ -22,7 +26,7 @@ backgroundBlurStyle?: BlurStyle
 
 Background blur style of the dialog box. <br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK** <br>**NOTE:** <br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Default:** BlurStyle.COMPONENT_ULTRA_THICK
 
@@ -114,7 +118,7 @@ builder: CustomBuilder
 
 Custom content of the dialog box. <br>**NOTE:** <br>The builder needs to be assigned an arrow function in the following format: () =&gt; { this.XXX() }, where XXX indicates the internal builder name. <br>Global builders must be created inside the component and called within the internal builder. <br>The width and height percentages of the builder's root node are relative to the size of the dialog box container. <br>The width and height percentages of non-root nodes are relative to the size of their parent node.
 
-**Type:** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
+**Type:** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **Since:** 11
 
@@ -168,7 +172,7 @@ shadow?: ShadowOptions | ShadowStyle
 
 Shadow of the dialog box. <br>Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.
 
-**Type:** [ShadowOptions](../arkts-components/arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-shadowstyle-e.md)
+**Type:** [ShadowOptions](../arkts-components/arkts-arkui-common-comp-shadowoptions-i.md) &#124; [ShadowStyle](../arkts-components/arkts-arkui-common-comp-shadowstyle-e.md)
 
 **Since:** 12
 

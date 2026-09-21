@@ -1,5 +1,9 @@
 # DeviceEncryptionStatus (System API)
 
+```TypeScript
+export interface DeviceEncryptionStatus
+```
+
 Represents the file system encryption status.
 
 **Since:** 11

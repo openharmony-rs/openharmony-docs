@@ -1,5 +1,9 @@
 # VpnConnection (System API)
 
+```TypeScript
+export interface VpnConnection
+```
+
 Defines a VPN connection object. Before calling **VpnConnection** APIs, you need to create a VPN connection object by calling [vpn.createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md).
 
 **Since:** 10
@@ -48,11 +52,30 @@ Destroys a VPN. This API uses an asynchronous callback to return the result.
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+  Destroy(): void {
+    this.VpnConnection.destroy((error: BusinessError) => {
+      console.error(JSON.stringify(error));
+    });
+  }
+  build() { }
+}
 ```
+
+<a id="destroy-1"></a>
 
 ## destroy
 
@@ -88,7 +111,30 @@ Destroys a VPN. This API uses a promise to return the result.
 
 **Examples**
 
-See [destroy](#destroy)
+> NOTE
+> 
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+  Destroy(): void {
+    this.VpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((err: BusinessError) => {
+      console.error("destroy fail" + JSON.stringify(err));
+    });
+  }
+  build() { }
+}
+```
 
 ## protect
 
@@ -127,11 +173,48 @@ Protects sockets against a VPN connection. The data sent through sockets is dire
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket, vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+
+  Protect(): void {
+    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+    let ipAddress: socket.NetAddress = {
+      address: "0.0.0.0"
+    }
+    tcp.bind(ipAddress);
+    let netAddress: socket.NetAddress = {
+      address: "192.168.1.11",
+      port: 8888
+    }
+    let addressConnect: socket.TCPConnectOptions = {
+      address: netAddress,
+      timeout: 6000
+    }
+    tcp.connect(addressConnect);
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunnelFd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
+        console.error(JSON.stringify(error));
+      });
+    });
+  }
+  build() { }
+}
 ```
+
+<a id="protect-1"></a>
 
 ## protect
 
@@ -175,7 +258,48 @@ Protects sockets against a VPN connection. The data sent through sockets is dire
 
 **Examples**
 
-See [protect](#protect)
+> NOTE
+> 
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { socket, vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+
+  Protect(): void {
+    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
+    let ipAddress: socket.NetAddress = {
+      address: "0.0.0.0"
+    }
+    tcp.bind(ipAddress);
+    let netAddress: socket.NetAddress = {
+      address: "192.168.1.11",
+      port: 8888
+    }
+    let addressConnect: socket.TCPConnectOptions = {
+      address: netAddress,
+      timeout: 6000
+    }
+    tcp.connect(addressConnect);
+    tcp.getSocketFd().then((tunnelFd: number) => {
+      console.info("tunnelFd: " + tunnelFd);
+      this.VpnConnection.protect(tunnelFd).then(() => {
+        console.info("protect success.");
+      }).catch((err: BusinessError) => {
+        console.error("protect fail" + JSON.stringify(err));
+      });
+    });
+  }
+  build() { }
+}
+```
 
 ## setUp
 
@@ -215,11 +339,42 @@ Creates a VPN based on the specified configuration. This API uses an asynchronou
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+  SetUp(): void {
+    let config: vpn.VpnConfig = {
+      addresses: [{
+        address: {
+          address: "10.0.0.5",
+          family: 1
+        },
+        prefixLength: 24
+      }],
+      mtu: 1400,
+      dnsAddresses: ["114.114.114.114"]
+    }
+    this.VpnConnection.setUp(config, (error: BusinessError, data: number) => {
+      console.error(JSON.stringify(error));
+      console.info("tunfd: " + JSON.stringify(data));
+    });
+  }
+  build() { }
+}
 ```
+
+<a id="setup-1"></a>
 
 ## setUp
 
@@ -264,4 +419,38 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 **Examples**
 
-See [setUp](#setup)
+> NOTE
+> 
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { vpn } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  private VpnConnection: vpn.VpnConnection = vpn.createVpnConnection(this.context);
+  SetUp(): void {
+    let config: vpn.VpnConfig = {
+      addresses: [{
+        address: {
+          address: "10.0.0.5",
+          family: 1
+        },
+        prefixLength: 24
+      }],
+      mtu: 1400,
+      dnsAddresses: ["114.114.114.114"]
+    }
+    this.VpnConnection.setUp(config).then((data: number) => {
+      console.info("setUp success, tunfd: " + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      console.error("setUp fail" + JSON.stringify(err));
+    });
+  }
+  build() { }
+}
+```

@@ -1,5 +1,9 @@
 # CertRevocationFlag
 
+```TypeScript
+enum CertRevocationFlag
+```
+
 Enumerates the certificate revocation flags.
 
 **Since:** 26.0.0

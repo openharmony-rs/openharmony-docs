@@ -53,17 +53,8 @@ sim.getVoiceMailNumber(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getVoiceMailNumber(0).then((data: string) => {
-    console.info(`getVoiceMailNumber success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getVoiceMailNumber failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getvoicemailnumber-1"></a>
 
 ## getVoiceMailNumber
 
@@ -108,4 +99,13 @@ Obtains the voice mailbox number of the SIM card in a specified slot.
 
 **Examples**
 
-See [getVoiceMailNumber](#getvoicemailnumber)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getVoiceMailNumber(0).then((data: string) => {
+    console.info(`getVoiceMailNumber success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getVoiceMailNumber failed, promise: err->${JSON.stringify(err)}`);
+});
+```

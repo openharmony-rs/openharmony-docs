@@ -1,5 +1,9 @@
 # ResourceInfo
 
+```TypeScript
+interface ResourceInfo
+```
+
 预下载的资源信息。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # GwpAsanOptions
 
+```TypeScript
+interface GwpAsanOptions
+```
+
 Enumerates the GWP-ASan configuration items. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
 
 **Since:** 20

@@ -1,11 +1,7 @@
 # EventType
 
 ```TypeScript
-type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
-  'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
-  'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
-  'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' | 
-  'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'
+type EventType = 'accessibilityFocus' | 'accessibilityFocusClear''click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit''textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility''announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' | 'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'
 ```
 
 无障碍事件类型。

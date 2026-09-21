@@ -1,5 +1,9 @@
 # RunningMode (System API)
 
+```TypeScript
+export enum RunningMode
+```
+
 Represents the running mode of a device administrator application.
 
 **Since:** 19

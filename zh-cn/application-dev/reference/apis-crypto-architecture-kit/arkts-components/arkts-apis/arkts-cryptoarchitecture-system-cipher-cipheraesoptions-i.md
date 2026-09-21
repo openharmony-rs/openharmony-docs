@@ -1,5 +1,9 @@
 # CipherAesOptions
 
+```TypeScript
+export interface CipherAesOptions
+```
+
 调用cipher aes方法时，传入的参数。
 
 **起始版本：** 3

@@ -1,5 +1,9 @@
 # AlbumChangeInfo
 
+```TypeScript
+interface AlbumChangeInfo
+```
+
 相册信息。
 
 **起始版本：** 20

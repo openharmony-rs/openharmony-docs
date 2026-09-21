@@ -1,5 +1,9 @@
 # DecorationOptions
 
+```TypeScript
+declare interface DecorationOptions
+```
+
 文本装饰线样式的额外配置选项对象说明。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # PrinterEvent
 
+```TypeScript
+enum PrinterEvent
+```
+
 Enumerates printer-related events.
 
 **Since:** 18

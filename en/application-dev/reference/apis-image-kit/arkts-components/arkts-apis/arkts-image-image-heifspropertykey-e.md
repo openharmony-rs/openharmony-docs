@@ -1,5 +1,9 @@
 # HeifsPropertyKey
 
+```TypeScript
+enum HeifsPropertyKey
+```
+
 Enumerates the properties available for the metadata of a HEIFS image.
 
 **Since:** 23

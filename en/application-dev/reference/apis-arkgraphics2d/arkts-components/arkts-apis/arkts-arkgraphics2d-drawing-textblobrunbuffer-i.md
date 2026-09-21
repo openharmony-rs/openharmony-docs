@@ -1,5 +1,9 @@
 # TextBlobRunBuffer
 
+```TypeScript
+interface TextBlobRunBuffer
+```
+
 Describes a series of consecutive glyphs with the same attributes in a text blob.
 
 **Since:** 11

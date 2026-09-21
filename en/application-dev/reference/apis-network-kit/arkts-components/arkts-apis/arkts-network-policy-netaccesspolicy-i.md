@@ -1,5 +1,9 @@
 # NetAccessPolicy
 
+```TypeScript
+export interface NetAccessPolicy
+```
+
 Defines the network access policy information.
 
 **Since:** 26.0.0

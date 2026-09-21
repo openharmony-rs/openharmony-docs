@@ -1,5 +1,9 @@
 # DownloadStyleOptions
 
+```TypeScript
+export interface DownloadStyleOptions
+```
+
 Defines the DownloadFileButton style option.
 
 @interface DownloadStyleOptions

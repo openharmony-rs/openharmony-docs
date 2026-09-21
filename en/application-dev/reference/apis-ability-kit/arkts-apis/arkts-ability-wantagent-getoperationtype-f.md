@@ -105,6 +105,46 @@ try {
 }
 ```
 
+
+<a id="getoperationtype-1"></a>
+
+## getOperationType
+
+```TypeScript
+function getOperationType(agent: WantAgent): Promise<number>
+```
+
+Obtains the operation type of a WantAgent object. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| agent | [WantAgent](arkts-ability-wantagent-t.md) | Yes | Indicates the WantAgent. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;number&gt; | Returns the OperationType of the WantAgent. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
+| [16000015](../errorcode-ability.md#16000015-service-timeout) | Service timeout. |
+| [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
+
+**Examples**
+
 ```TypeScript
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
@@ -167,43 +207,3 @@ try {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
 }
 ```
-
-
-## getOperationType
-
-```TypeScript
-function getOperationType(agent: WantAgent): Promise<number>
-```
-
-Obtains the operation type of a WantAgent object. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-t.md) | Yes | Indicates the WantAgent. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;number&gt; | Returns the OperationType of the WantAgent. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
-| [16000015](../errorcode-ability.md#16000015-service-timeout) | Service timeout. |
-| [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
-
-**Examples**
-
-See [getOperationType](#getoperationtype)

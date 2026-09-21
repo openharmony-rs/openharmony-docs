@@ -1,5 +1,9 @@
 # ScaleMode
 
+```TypeScript
+enum ScaleMode
+```
+
 Enumerates the scale modes of images.
 
 **Since:** 9

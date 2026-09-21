@@ -1,5 +1,9 @@
 # Order (System API)
 
+```TypeScript
+export enum Order
+```
+
 Enumerates update commands.
 
 **Since:** 9

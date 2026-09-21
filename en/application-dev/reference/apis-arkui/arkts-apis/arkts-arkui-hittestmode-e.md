@@ -1,5 +1,9 @@
 # HitTestMode
 
+```TypeScript
+declare enum HitTestMode
+```
+
 Sets the response logic and node blocking rules for the hit test.
 
 > **NOTE:** 
@@ -7,7 +11,7 @@ Sets the response logic and node blocking rules for the hit test.
 > When multiple nodes in a **Stack** component have overlapping touch areas, if the touch point hits a child
 > component of the topmost node, only the topmost node will undergo hit testing by default. In this case, touch
 > testing for lower-layer nodes can only be triggered by setting the
-> [hitTestBehavior](../arkts-components/arkts-arkui-commonmethod-c.md#hittestbehavior) of the topmost node to **HitTestMode.Transparent**.
+> [hitTestBehavior](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#hittestbehavior) of the topmost node to **HitTestMode.Transparent**.
 
 **Since:** 9
 
@@ -24,6 +28,8 @@ Default
 Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -43,6 +49,8 @@ The node itself responds to the hit test and blocks the hit test of child nodes,
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
@@ -61,6 +69,8 @@ Both the node itself and its child nodes respond to the hit test and do not bloc
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
@@ -78,6 +88,8 @@ None
 The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

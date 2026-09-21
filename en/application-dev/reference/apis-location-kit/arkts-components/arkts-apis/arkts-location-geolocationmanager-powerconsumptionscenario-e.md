@@ -1,5 +1,9 @@
 # PowerConsumptionScenario
 
+```TypeScript
+export enum PowerConsumptionScenario
+```
+
 Enum for power consumption scenario.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # PageMediaEntity
 
+```TypeScript
+interface PageMediaEntity extends OperResult
+```
+
 标签页媒体的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
 
 @extends OperResult @interface Compilation

@@ -73,37 +73,8 @@ screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenClass: screen.Screen | null = null;
-class VirtualScreenOption {
-  name : string = '';
-  width : number =  0;
-  height : number = 0;
-  density : number = 0;
-  surfaceId : string = '';
-  supportsFocus ?: boolean = true;
-}
-
-let option: VirtualScreenOption = { 
-  name: 'screen01',
-  width: 1080,
-  height: 2340,
-  density: 2,
-  surfaceId: '',
-  supportsFocus: false
-}; // 创建虚拟屏幕的参数
-
-// 创建虚拟屏幕
-screen.createVirtualScreen(option).then((data: screen.Screen) => {
-  screenClass = data;
-  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="createvirtualscreen-1"></a>
 
 ## createVirtualScreen
 
@@ -144,4 +115,33 @@ function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>
 
 **示例**
 
-参见 [createVirtualScreen](#createvirtualscreen)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+class VirtualScreenOption {
+  name : string = '';
+  width : number =  0;
+  height : number = 0;
+  density : number = 0;
+  surfaceId : string = '';
+  supportsFocus ?: boolean = true;
+}
+
+let option: VirtualScreenOption = { 
+  name: 'screen01',
+  width: 1080,
+  height: 2340,
+  density: 2,
+  surfaceId: '',
+  supportsFocus: false
+}; // 创建虚拟屏幕的参数
+
+// 创建虚拟屏幕
+screen.createVirtualScreen(option).then((data: screen.Screen) => {
+  screenClass = data;
+  console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
+});
+```

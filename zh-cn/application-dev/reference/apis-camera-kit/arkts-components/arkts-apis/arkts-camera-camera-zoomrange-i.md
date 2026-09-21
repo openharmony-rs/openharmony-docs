@@ -1,5 +1,9 @@
 # ZoomRange
 
+```TypeScript
+interface ZoomRange
+```
+
 变焦范围。
 
 **起始版本：** 24

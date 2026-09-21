@@ -64,18 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<string> = applicationManager.getDisallowedRunningBundlesSync(null);
-  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
-} catch (err) {
-  console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="getdisallowedrunningbundlessync-1"></a>
 
 ## getDisallowedRunningBundlesSync
 
@@ -117,4 +107,14 @@ function getDisallowedRunningBundlesSync(admin: Want | null, accountId?: number)
 
 **示例**
 
-参见 getDisallowedRunningBundlesSync
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<string> = applicationManager.getDisallowedRunningBundlesSync(null);
+  console.info(`Succeeded in getting disallowed running bundles, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get disallowed running bundles. Code is ${err.code}, message is ${err.message}`);
+}
+```

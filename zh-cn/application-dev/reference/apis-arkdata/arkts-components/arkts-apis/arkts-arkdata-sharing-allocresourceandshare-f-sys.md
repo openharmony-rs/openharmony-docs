@@ -94,51 +94,46 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 });
 ```
 
-```TypeScript
-import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let participants = new Array<cloudData.sharing.Participant>();
-participants.push({
-  identity: '000000000',
-  role: cloudData.sharing.Role.ROLE_INVITER,
-  state: cloudData.sharing.State.STATE_UNKNOWN,
-  privilege: {
-    writable: true,
-    readable: true,
-    creatable: false,
-    deletable: false,
-    shareable: false
-  },
-  attachInfo: ''
-});
-let sharingResource: string;
-let predicates = new relationalStore.RdbPredicates('test_table');
-predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError, resultSet: relationalStore.ResultSet) => {
-  if (err) {
-    console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
-    return;
-  }
-  if (resultSet === undefined || resultSet === null) {
-    console.error(`resultSet is null`);
-    return;
-  }
-  try {
-    if (!resultSet.goToFirstRow()) {
-      console.error(`row error`);
-      return;
-    }
-    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
-  } catch (err) {
-    console.error(`Failed to get sharing resource: ${err}`);
-  } finally {
-    resultSet.close();
-  }
-});
+<a id="allocresourceandshare-1"></a>
+
+## allocResourceAndShare
+
+```TypeScript
+function allocResourceAndShare(
+      storeId: string,
+      predicates: relationalStore.RdbPredicates,
+      participants: Array<Participant>,
+      callback: AsyncCallback<relationalStore.ResultSet>
+    ): void
 ```
+
+根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集，使用callback异步回调。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| storeId | string | 是 | 数据库名称。 |
+| predicates | [relationalStore.RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md) | 是 | 表示查询共享资源标识的数据的谓词条件。 |
+| participants | Array&lt;[Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt; | 是 | 端云共享的参与者。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[relationalStore.ResultSet](arkts-arkdata-relationalstore-resultset-i.md)&gt; | 是 | 回调函数。返回查询并共享的共享资源标识结果集。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+
+**示例**
 
 ```TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -187,46 +182,7 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
 ```
 
 
-## allocResourceAndShare
-
-```TypeScript
-function allocResourceAndShare(
-      storeId: string,
-      predicates: relationalStore.RdbPredicates,
-      participants: Array<Participant>,
-      callback: AsyncCallback<relationalStore.ResultSet>
-    ): void
-```
-
-根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集，使用callback异步回调。
-
-**起始版本：** 11
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| storeId | string | 是 | 数据库名称。 |
-| predicates | [relationalStore.RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md) | 是 | 表示查询共享资源标识的数据的谓词条件。 |
-| participants | Array&lt;[Participant](arkts-arkdata-sharing-participant-i-sys.md)&gt; | 是 | 端云共享的参与者。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[relationalStore.ResultSet](arkts-arkdata-relationalstore-resultset-i.md)&gt; | 是 | 回调函数。返回查询并共享的共享资源标识结果集。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-
-**示例**
-
-参见 [allocResourceAndShare](#allocresourceandshare)
-
+<a id="allocresourceandshare-2"></a>
 
 ## allocResourceAndShare
 
@@ -268,4 +224,48 @@ function allocResourceAndShare(
 
 **示例**
 
-参见 [allocResourceAndShare](#allocresourceandshare)
+```TypeScript
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let participants = new Array<cloudData.sharing.Participant>();
+participants.push({
+  identity: '000000000',
+  role: cloudData.sharing.Role.ROLE_INVITER,
+  state: cloudData.sharing.State.STATE_UNKNOWN,
+  privilege: {
+    writable: true,
+    readable: true,
+    creatable: false,
+    deletable: false,
+    shareable: false
+  },
+  attachInfo: ''
+});
+let sharingResource: string;
+let predicates = new relationalStore.RdbPredicates('test_table');
+predicates.equalTo('data', 'data_test');
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError, resultSet: relationalStore.ResultSet) => {
+  if (err) {
+    console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
+    return;
+  }
+  try {
+    if (!resultSet.goToFirstRow()) {
+      console.error(`row error`);
+      return;
+    }
+    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${res}`);
+    sharingResource = res;
+  } catch (err) {
+    console.error(`Failed to get sharing resource: ${err}`);
+  } finally {
+    resultSet.close();
+  }
+});
+```

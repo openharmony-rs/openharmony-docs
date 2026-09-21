@@ -28,6 +28,8 @@ Multiple callback functions are allowed to be subscribed for the same permission
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.

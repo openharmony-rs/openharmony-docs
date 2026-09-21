@@ -1,5 +1,9 @@
 # StatusBarProperty
 
+```TypeScript
+interface StatusBarProperty
+```
+
 状态栏的属性。在获取状态栏属性信息时返回。
 
 **起始版本：** 18

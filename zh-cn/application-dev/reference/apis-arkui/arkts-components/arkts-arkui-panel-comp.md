@@ -2,7 +2,7 @@
 
 可滑动面板，提供一种轻量的内容展示窗口，方便在不同尺寸中切换。
 
-> **说明：** > > 从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](arkts-arkui-commonmethod-c.md#bindsheet)。
+> **说明：** > > 从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](arkts-arkui-common-comp-commonmethod-c.md#bindsheet)。
 
 ## Panel
 
@@ -20,6 +20,8 @@ Panel(show: boolean)
 
 **废弃版本：** 12
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -36,9 +38,9 @@ Panel(show: boolean)
 
 | 名称 | 说明 |
 | --- | --- |
-| [PanelHeight](arkts-arkui-panelheight-e.md) | 设置可滑动面板的高度。 |
-| [PanelMode](arkts-arkui-panelmode-e.md) | 设置可滑动面板的初始状态 |
-| [PanelType](arkts-arkui-paneltype-e.md) | 设置可滑动面板的类型 |
+| [PanelHeight](arkts-arkui-panel-comp-panelheight-e.md) | 设置可滑动面板的高度。 |
+| [PanelMode](arkts-arkui-panel-comp-panelmode-e.md) | 设置可滑动面板的初始状态 |
+| [PanelType](arkts-arkui-panel-comp-paneltype-e.md) | 设置可滑动面板的类型 |
 
 ## 示例
 

@@ -1,5 +1,9 @@
 # DeviceModel（系统接口）
 
+```TypeScript
+interface DeviceModel
+```
+
 描述远端设备的型号信息。
 
 **起始版本：** 26.0.0

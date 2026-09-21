@@ -1,5 +1,9 @@
 # SuffixImageIconOptions
 
+```TypeScript
+export interface SuffixImageIconOptions extends IconOptions
+```
+
 后缀图标选项的类型。
 
 继承自[IconOptions](arkts-arkui-arkui-advanced-chipgroup-iconoptions-i.md)。

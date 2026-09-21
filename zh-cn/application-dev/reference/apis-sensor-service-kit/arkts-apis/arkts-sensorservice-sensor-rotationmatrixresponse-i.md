@@ -1,5 +1,9 @@
 # RotationMatrixResponse
 
+```TypeScript
+interface RotationMatrixResponse
+```
+
 设置旋转矩阵响应对象，用于描述旋转矩阵和倾斜矩阵的计算结果。
 
 **起始版本：** 8

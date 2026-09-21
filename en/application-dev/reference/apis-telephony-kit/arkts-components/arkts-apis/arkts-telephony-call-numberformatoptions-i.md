@@ -1,5 +1,9 @@
 # NumberFormatOptions
 
+```TypeScript
+export interface NumberFormatOptions
+```
+
 Provides an option for number formatting.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # HiTraceTracepointType
 
+```TypeScript
+enum HiTraceTracepointType
+```
+
 跟踪埋点类型枚举。用于标识业务流程中的关键节点，例如CS和CR用于标记客户端请求的发送和接收，SS和SR用于标记服务端请求的接收和发送，GENERAL用于标记无法归入上述四种场景的其他关键节点。
 
 **起始版本：** 8

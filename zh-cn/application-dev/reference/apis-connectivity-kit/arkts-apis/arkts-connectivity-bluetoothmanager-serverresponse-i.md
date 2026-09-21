@@ -1,5 +1,9 @@
 # ServerResponse
 
+```TypeScript
+interface ServerResponse
+```
+
 描述server端回复client端读/写请求的响应参数结构。
 
 从API version 9开始支持，从API version 10开始废弃。

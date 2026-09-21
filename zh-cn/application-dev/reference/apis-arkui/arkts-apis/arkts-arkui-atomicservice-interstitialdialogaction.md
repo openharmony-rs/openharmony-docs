@@ -6,11 +6,11 @@
 
 ## 属性
 
-不支持通用属性。
+不支持[通用属性](../arkts-components/arkts-arkui-common-comp.md#common)。
 
 ## 事件
 
-不支持通用事件。
+不支持[通用事件](../arkts-components/arkts-arkui-common-comp.md#common)。
 
 ## 导入模块
 
@@ -42,20 +42,213 @@ import { InterstitialDialogAction, IconStyle, TitlePosition, BottomOffset } from
 
 ## 示例
 
-```TypeScript
 ### 示例1
 
 为可选属性设置相应值，用两种不同参数类型分别为主标题、副标题设置颜色值，关闭按钮设置为暗色调，主副标题相对位置设置为主标题在副标题上方，底部距离类型设置为不存在菜单栏情况下的距离。
-```
 
 ```TypeScript
+// ../entryability/EntryAbility
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let dialogUIContext: UIContext | null = null;
+
+export function getDialogUIContext(): UIContext | null {
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
+  }
+  return dialogUIContext;
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', `Failed to load the content, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      dialogUIContext = windowClass.getUIContext();
+    });
+
+    // 获取窗口
+    windowStage.getMainWindow((err, data) => {
+      if (err.code) {
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      // 设置窗口非全屏
+      windowClass.setWindowLayoutFullScreen(false);
+    })
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
 ```
 
+
+
 ```TypeScript
+// Index.ets
+import { getDialogUIContext } from '../entryability/EntryAbility';
+import { UIContext, InterstitialDialogAction, IconStyle, TitlePosition, BottomOffset } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('show dialog')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let ctx: UIContext | null = getDialogUIContext();
+            let interstitialDialogAction: InterstitialDialogAction = new InterstitialDialogAction({
+              uiContext: ctx as UIContext,
+              title: '主标题',
+              subtitle: '副标题',
+              titleColor: 'rgb(255, 192, 0)',
+              subtitleColor: Color.Red,
+              backgroundImage: $r('app.media.testBackgroundImg'),
+              foregroundImage: $r('app.media.testForegroundImg'),
+              iconStyle: IconStyle.DARK,
+              titlePosition: TitlePosition.TOP,
+              bottomOffsetType: BottomOffset.OFFSET_FOR_NONE,
+              onDialogClick: () => { console.info('outer dialog click action') },
+              onDialogClose: () => { console.info('outer close action') }
+            });
+            interstitialDialogAction.openDialog();
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .backgroundColor('rgba(0, 0, 0, 0.1)')
+  }
+}
+```
+
 ### 示例2
 
 为可选属性设置相应值，用两种不同参数类型分别为主标题、副标题设置颜色值，关闭按钮设置为亮色调，主副标题相对位置设置为主标题在副标题下方，底部距离类型设置为存在菜单栏情况下的距离。
+
+```TypeScript
+// ../entryability/EntryAbility
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dialogUIContext: UIContext | null = null;
+
+export function getDialogUIContext(): UIContext | null {
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
+  }
+  return dialogUIContext;
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', `Failed to load the content, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      let errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      dialogUIContext = windowClass.getUIContext();
+    });
+
+    // 获取窗口
+    windowStage.getMainWindow((err, data) => {
+      if (err.code) {
+        console.error(`Failed to obtain the main window, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      // 设置窗口非全屏
+      windowClass.setWindowLayoutFullScreen(false);
+    })
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
 ```
 
 ```TypeScript

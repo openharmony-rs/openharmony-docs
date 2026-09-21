@@ -1,5 +1,9 @@
 # CommonOptions
 
+```TypeScript
+export declare class CommonOptions
+```
+
 CommonOptions defines common options for the date time picker.
 
 > **Description:**

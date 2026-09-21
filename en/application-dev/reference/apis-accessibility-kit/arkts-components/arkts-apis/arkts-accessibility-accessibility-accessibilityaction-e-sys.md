@@ -1,5 +1,9 @@
 # AccessibilityAction (System API)
 
+```TypeScript
+export enum AccessibilityAction
+```
+
 Enumerates executable actions for accessibility node elements.
 
 An accessibility node element refers to a component on the UI that can perform accessibility operations, such as a button or text input box.

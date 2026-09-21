@@ -1,5 +1,9 @@
 # TimeoutOptions
 
+```TypeScript
+interface TimeoutOptions
+```
+
 Task timeout configuration.
 
 **起始版本：** 26.0.0

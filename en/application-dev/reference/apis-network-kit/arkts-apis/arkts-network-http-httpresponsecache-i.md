@@ -1,5 +1,9 @@
 # HttpResponseCache
 
+```TypeScript
+export interface HttpResponseCache
+```
+
 Defines an object that stores the response to an HTTP request. Before invoking APIs provided by **HttpResponseCache**, you must call [createHttpResponseCache()](arkts-network-http-createhttpresponsecache-f.md) to create an **HttpRequestTask** object.
 
 **Usage of Keywords in the Response Header**  
@@ -65,7 +69,6 @@ Disables the cache and deletes the data in it. This API uses an asynchronous cal
 
 **Examples**
 
-```TypeScript
 ### delete
 
 delete(callback: AsyncCallback<void>): void
@@ -77,9 +80,55 @@ Atomic service API: This API can be used in atomic services since API version 11
 System capability: SystemCapability.Communication.NetStack
 
 Parameters
-```
 
 ```TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+httpRequest.request("EXAMPLE_URL").then(data => {
+  const httpResponseCache = http.createHttpResponseCache();
+  httpResponseCache.delete((err: BusinessError) => {
+    try {
+      if (err) {
+        console.error('fail: ' + err);
+      } else {
+        console.info('success');
+      }
+    } catch (err) {
+      console.error('error: ' + err);
+    }
+  });
+  httpRequest.destroy();
+}).catch((error: BusinessError) => {
+  console.error("errcode" + JSON.stringify(error));
+});
+```
+
+<a id="delete-1"></a>
+
+## delete
+
+```TypeScript
+delete(): Promise<void>
+```
+
+Disables the cache and deletes the data in it. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
 ### delete
 
 delete(): Promise<void>
@@ -91,9 +140,25 @@ Atomic service API: This API can be used in atomic services since API version 11
 System capability: SystemCapability.Communication.NetStack
 
 Return value
-```
 
 ```TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+httpRequest.request("EXAMPLE_URL").then(data => {
+  const httpResponseCache = http.createHttpResponseCache();
+  httpResponseCache.delete().then(() => {
+    console.info("success");
+  }).catch((err: BusinessError) => {
+    console.error("fail");
+  });
+  httpRequest.destroy();
+}).catch((error: BusinessError) => {
+  console.error("errcode" + JSON.stringify(error));
+});
+```
+
 ### delete
 
 delete(): Promise<void>
@@ -119,31 +184,24 @@ Atomic service API: This API can be used in atomic services since API version 22
 System capability: SystemCapability.Communication.NetStack
 
 ### Attributes
-```
-
-## delete
 
 ```TypeScript
-delete(): Promise<void>
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+httpRequest.request("EXAMPLE_URL").then(data => {
+  const httpResponseCache = http.createHttpResponseCache();
+  httpResponseCache.delete().then(() => {
+    console.info("success");
+  }).catch((err: BusinessError) => {
+    console.error("fail");
+  });
+  httpRequest.destroy();
+}).catch((error: BusinessError) => {
+  console.error("errcode" + JSON.stringify(error));
+});
 ```
-
-Disables the cache and deletes the data in it. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Communication.NetStack
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-See [delete](#delete)
 
 ## flush
 
@@ -167,7 +225,6 @@ Flushes data in the cache to the file system so that the cached data can be acce
 
 **Examples**
 
-```TypeScript
 ### flush
 
 flush(callback: AsyncCallback<void>): void
@@ -179,21 +236,31 @@ Atomic service API: This API can be used in atomic services since API version 11
 System capability: SystemCapability.Communication.NetStack
 
 Parameters
-```
 
 ```TypeScript
-### flush
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-flush(): Promise<void>
-
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
-
-Atomic service API: This API can be used in atomic services since API version 11.
-
-System capability: SystemCapability.Communication.NetStack
-
-Return value
+let httpResponseCache = http.createHttpResponseCache();
+let httpRequest = http.createHttp();
+httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse) => {
+  if (!err) {
+    httpResponseCache.flush((err: BusinessError) => {
+      if (err) {
+        console.error('flush fail');
+      }
+      console.info('flush success');
+    });
+    httpRequest.destroy();
+  } else {
+    console.error('error:' + JSON.stringify(err));
+    // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
+    httpRequest.destroy();
+  }
+});
 ```
+
+<a id="flush-1"></a>
 
 ## flush
 
@@ -217,4 +284,33 @@ Flushes data in the cache to the file system so that the cached data can be acce
 
 **Examples**
 
-See [flush](#flush)
+### flush
+
+flush(): Promise<void>
+
+Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
+
+Atomic service API: This API can be used in atomic services since API version 11.
+
+System capability: SystemCapability.Communication.NetStack
+
+Return value
+
+```TypeScript
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let httpRequest = http.createHttp();
+let httpResponseCache = http.createHttpResponseCache();
+let promise = httpRequest.request("EXAMPLE_URL");
+
+promise.then((data: http.HttpResponse) => {
+  httpResponseCache.flush().then(() => {
+    console.error('flush success');
+  }).catch((err: BusinessError) => {
+    console.error('flush fail');
+  });
+}).catch((err: Error) => {
+  console.error('error:' + JSON.stringify(err));
+});
+```

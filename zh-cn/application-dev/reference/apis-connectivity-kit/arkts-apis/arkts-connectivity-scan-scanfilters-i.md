@@ -1,5 +1,9 @@
 # ScanFilters
 
+```TypeScript
+interface ScanFilters
+```
+
 表示扫描过滤条件。
 
 **起始版本：** 26.0.0

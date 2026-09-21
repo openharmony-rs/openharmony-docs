@@ -1,5 +1,9 @@
 # IAuthWidgetCallback (System API)
 
+```TypeScript
+interface IAuthWidgetCallback
+```
+
 Defines the callback of the authentication widget. The authentication widget uses this callback to obtain commands sent by the user authentication framework and perform corresponding authentication operations based on the command content.
 
 **Since:** 10

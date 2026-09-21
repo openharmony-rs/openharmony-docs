@@ -1,5 +1,9 @@
 # AdvertisingParams
 
+```TypeScript
+interface AdvertisingParams
+```
+
 表示发送广播携带的参数。
 
 **起始版本：** 26.0.0

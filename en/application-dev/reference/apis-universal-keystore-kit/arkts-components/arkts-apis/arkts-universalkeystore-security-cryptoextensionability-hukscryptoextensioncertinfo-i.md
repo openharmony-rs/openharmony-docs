@@ -1,5 +1,9 @@
 # HuksCryptoExtensionCertInfo
 
+```TypeScript
+export interface HuksCryptoExtensionCertInfo
+```
+
 Represents the information of certificate.
 
 **Since:** 22

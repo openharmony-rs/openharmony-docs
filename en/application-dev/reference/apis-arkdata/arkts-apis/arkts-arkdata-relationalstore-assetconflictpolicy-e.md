@@ -1,5 +1,9 @@
 # AssetConflictPolicy
 
+```TypeScript
+enum AssetConflictPolicy
+```
+
 Describes the asset conflict policy.
 
 **Since:** 26.0.0

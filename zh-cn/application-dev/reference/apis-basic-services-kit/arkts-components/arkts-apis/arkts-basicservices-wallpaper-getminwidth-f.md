@@ -43,16 +43,8 @@ wallpaper.getMinWidth((error: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getMinWidth().then((data: number) => {
-    console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to getMinWidth. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
+<a id="getminwidth-1"></a>
 
 ## getMinWidth
 
@@ -79,4 +71,12 @@ function getMinWidth(): Promise<number>
 
 **示例**
 
-参见 [getMinWidth](#getminwidth)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.getMinWidth().then((data: number) => {
+    console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to getMinWidth. Code: ${error.code}, message: ${error.message}`);
+});
+```

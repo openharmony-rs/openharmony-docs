@@ -1,5 +1,9 @@
 # PowerPolicy (System API)
 
+```TypeScript
+export interface PowerPolicy
+```
+
 Represents the power policy.
 
 **Since:** 11

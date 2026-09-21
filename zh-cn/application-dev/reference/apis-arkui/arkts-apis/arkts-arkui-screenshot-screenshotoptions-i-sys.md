@@ -1,5 +1,9 @@
 # ScreenshotOptions（系统接口）
 
+```TypeScript
+interface ScreenshotOptions
+```
+
 设置截取图像的信息。
 
 **起始版本：** 7

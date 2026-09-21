@@ -35,44 +35,6 @@ Obtains the value of a specified character string in the database.
 **Examples**
 
 ```TypeScript
-import { settings } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, value) => {
-  if (err) {
-    console.error(`Failed to get the setting. ${err.message} `);
-    return;
-  }
-  console.info(`callback:value -> ${value}`)
-});
-```
-
-```TypeScript
-import { settings } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value) => {
-  console.info(`promise:value -> ${value}`)
-});
-```
-
-```TypeScript
-import { settings } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
-
-// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the getValue API will update its value.)
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
-  console.info(`Promise:value -> ${value}`);
-});
-```
-
-```TypeScript
 import featureAbility from '@ohos.ability.featureAbility';
 
 let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
@@ -86,16 +48,8 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 });
 ```
 
-```TypeScript
-import featureAbility from '@ohos.ability.featureAbility';
 
-let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
-let helper = featureAbility.acquireDataAbilityHelper(uri);
-settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value:string) => {
-    console.info(`promise:value -> ${JSON.stringify(value)}`)
-});
-```
-
+<a id="getvalue-1"></a>
 
 ## getValue
 
@@ -130,8 +84,18 @@ Obtains the value of a specified character string in the database.
 
 **Examples**
 
-See [getValue](#getvalue)
+```TypeScript
+import featureAbility from '@ohos.ability.featureAbility';
 
+let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
+let helper = featureAbility.acquireDataAbilityHelper(uri);
+settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value:string) => {
+    console.info(`promise:value -> ${JSON.stringify(value)}`)
+});
+```
+
+
+<a id="getvalue-2"></a>
 
 ## getValue
 
@@ -157,8 +121,23 @@ Get value from settingsdata
 
 **Examples**
 
-See [getValue](#getvalue)
+```TypeScript
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
 
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, value) => {
+  if (err) {
+    console.error(`Failed to get the setting. ${err.message} `);
+    return;
+  }
+  console.info(`callback:value -> ${value}`)
+});
+```
+
+
+<a id="getvalue-3"></a>
 
 ## getValue
 
@@ -189,8 +168,19 @@ Get value from settingsdata
 
 **Examples**
 
-See [getValue](#getvalue)
+```TypeScript
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
 
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value) => {
+  console.info(`promise:value -> ${value}`)
+});
+```
+
+
+<a id="getvalue-4"></a>
 
 ## getValue
 
@@ -222,4 +212,14 @@ Get value from settingsdata [USER_SECURE] domain need ohos.permission.MANAGE_SEC
 
 **Examples**
 
-See [getValue](#getvalue)
+```TypeScript
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the getValue API will update its value.)
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
+  console.info(`Promise:value -> ${value}`);
+});
+```

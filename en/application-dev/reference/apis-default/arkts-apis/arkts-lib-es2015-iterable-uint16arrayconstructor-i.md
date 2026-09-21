@@ -1,5 +1,9 @@
 # Uint16ArrayConstructor
 
+```TypeScript
+interface Uint16ArrayConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # KeyUsageType
 
+```TypeScript
+enum KeyUsageType
+```
+
 表示证书中密钥用途的枚举。
 
 **起始版本：** 12

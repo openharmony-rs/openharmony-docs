@@ -1,5 +1,9 @@
 # GeneralCallbacks (System API)
 
+```TypeScript
+interface GeneralCallbacks
+```
+
 General callbacks for both backup and restore procedure. The backup service will notify the client by these callbacks.
 
 @interface GeneralCallbacks

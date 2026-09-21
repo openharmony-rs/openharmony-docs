@@ -1,5 +1,9 @@
 # CastDisplayState
 
+```TypeScript
+enum CastDisplayState
+```
+
 投播显示设备状态的枚举。
 
 **起始版本：** 12

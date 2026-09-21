@@ -1,5 +1,9 @@
 # DialogType (System API)
 
+```TypeScript
+enum DialogType
+```
+
 The enum of bluetooth dialog type.
 
 **Since:** 20

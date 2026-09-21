@@ -1,5 +1,9 @@
 # ApplicationInstance
 
+```TypeScript
+export interface ApplicationInstance
+```
+
 应用实例。
 
 **起始版本：** 20

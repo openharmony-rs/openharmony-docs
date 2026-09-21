@@ -1,8 +1,12 @@
 # HyperSnapErrorInfo
 
+```TypeScript
+export interface HyperSnapErrorInfo
+```
+
 描述Hyper Snap的错误信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -22,7 +26,7 @@ code: HyperSnapErrorCode
 
 **类型：** [HyperSnapErrorCode](arkts-ability-hypersnapmanager-hypersnaperrorcode-e.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +42,7 @@ msg: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,7 +58,7 @@ occurTimeStamp: number
 
 **类型：** number
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

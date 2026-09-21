@@ -1,5 +1,9 @@
 # ActiveStreamVolumeInfo（系统接口）
 
+```TypeScript
+interface ActiveStreamVolumeInfo
+```
+
 活动音频流的音量信息。
 
 @typedef ActiveStreamVolumeInfo
@@ -22,7 +26,7 @@ import { audio } from '@kit.AudioKit';
 appVolume: number
 ```
 
-应用程序的音量。取值限定为整数。
+应用程序的音量，该值应为整数。
 
 **类型：** number
 
@@ -40,7 +44,7 @@ appVolume: number
 clientUid: number
 ```
 
-应用程序的UID。取值限定为整数。
+应用程序的UID，该值应为整数。
 
 **类型：** number
 

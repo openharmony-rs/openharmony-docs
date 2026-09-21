@@ -1,5 +1,9 @@
 # WindowProxyProperties
 
+```TypeScript
+interface WindowProxyProperties
+```
+
 用于表示组件的相关信息。
 
 **起始版本：** 14

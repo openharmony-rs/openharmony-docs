@@ -1,5 +1,9 @@
 # SceneType
 
+```TypeScript
+export enum SceneType
+```
+
 Enumeration type of scene.
 
 @enum { int } SceneType

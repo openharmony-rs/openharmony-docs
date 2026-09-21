@@ -1,5 +1,9 @@
 # WindowStateInfo
 
+```TypeScript
+interface WindowStateInfo
+```
+
 Defines the application window state information.
 
 **Since:** 26.0.0

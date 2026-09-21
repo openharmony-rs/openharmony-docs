@@ -1,5 +1,9 @@
 # RuleType (System API)
 
+```TypeScript
+enum RuleType
+```
+
 Enumerates matching rule types.
 
 **Since:** 9

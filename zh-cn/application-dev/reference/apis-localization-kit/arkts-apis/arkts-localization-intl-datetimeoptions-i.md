@@ -1,5 +1,9 @@
 # DateTimeOptions
 
+```TypeScript
+export interface DateTimeOptions
+```
+
 时间日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。
 
 **起始版本：** 6
@@ -26,7 +30,7 @@ dateStyle?: string
 
 "long", "short", "medium", "full", "auto"。
 
-不同取值的显示效果请参考附录表1。
+不同取值的显示效果请参考[附录表1](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -76,7 +80,7 @@ dayPeriod?: string
 
 "long", "short", "narrow", "auto"。
 
-不同取值的显示效果请参考附录表10。
+不同取值的显示效果请参考[附录表10](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -102,7 +106,7 @@ era?: string
 
 "long", "short", "narrow", "auto"。
 
-不同取值的显示效果请参考附录表9。
+不同取值的显示效果请参考[附录表9](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -204,9 +208,9 @@ hourCycle?: string
 
 "h11", "h12", "h23", "h24"。
 
-不设置dateStyle或timeStyle参数时的显示效果请参考附录表5。
+不设置dateStyle或timeStyle参数时的显示效果请参考[附录表5](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
-设置dateStyle或timeStyle参数时的显示效果请参考附录表6。
+设置dateStyle或timeStyle参数时的显示效果请参考[附录表6](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -304,7 +308,7 @@ month?: string
 
 "numeric", "2-digit", "long", "short", "narrow", "auto"。
 
-不同取值的显示效果请参考附录表7。
+不同取值的显示效果请参考[附录表7](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -378,7 +382,7 @@ timeStyle?: string
 
 "long", "short", "medium", "full", "auto"。
 
-不同取值的显示效果请参考附录表2。
+不同取值的显示效果请参考[附录表2](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -426,7 +430,7 @@ timeZoneName?: string
 
 "long", "short", "auto"。
 
-不同取值的显示效果请参考附录表8。
+不同取值的显示效果请参考[附录表8](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -452,7 +456,7 @@ weekday?: string
 
 "long", "short", "narrow", "auto"。
 
-不同取值的显示效果请参考附录表4。
+不同取值的显示效果请参考[附录表4](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 
@@ -478,7 +482,7 @@ year?: string
 
 "numeric", "2-digit"。
 
-不同取值的显示效果请参考附录表3。
+不同取值的显示效果请参考[附录表3](../../../reference/apis-localization-kit/js-apis-intl.md#附录)。
 
 **类型：** string
 

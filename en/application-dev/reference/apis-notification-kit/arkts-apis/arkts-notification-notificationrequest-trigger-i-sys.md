@@ -1,5 +1,9 @@
 # Trigger (System API)
 
+```TypeScript
+export interface Trigger
+```
+
 Defines the details for triggering a geofence.
 
 **Since:** 23

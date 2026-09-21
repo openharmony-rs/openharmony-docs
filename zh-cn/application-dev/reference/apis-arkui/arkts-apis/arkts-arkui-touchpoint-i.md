@@ -1,5 +1,9 @@
 # TouchPoint
 
+```TypeScript
+declare interface TouchPoint
+```
+
 配置跟手点坐标，不配置时，默认居中。
 
 **起始版本：** 11

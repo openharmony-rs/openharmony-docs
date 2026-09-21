@@ -1,5 +1,9 @@
 # NotificationKey（系统接口）
 
+```TypeScript
+export interface NotificationKey
+```
+
 通知键值。
 
 **起始版本：** 9

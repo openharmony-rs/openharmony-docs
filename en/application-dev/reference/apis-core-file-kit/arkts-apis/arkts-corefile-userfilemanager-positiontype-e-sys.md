@@ -1,5 +1,9 @@
 # PositionType (System API)
 
+```TypeScript
+enum PositionType
+```
+
 Enumerates the file location.
 
 **Since:** 10

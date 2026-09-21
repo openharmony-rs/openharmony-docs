@@ -1,5 +1,9 @@
 # TouchPadSwipeOptions
 
+```TypeScript
+declare interface TouchPadSwipeOptions
+```
+
 触摸板多指滑动手势选项相关信息。
 
 **起始版本：** 18

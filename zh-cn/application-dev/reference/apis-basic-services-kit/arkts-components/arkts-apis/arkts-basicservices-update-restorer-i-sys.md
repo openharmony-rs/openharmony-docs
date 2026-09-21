@@ -1,5 +1,9 @@
 # Restorer（系统接口）
 
+```TypeScript
+export interface Restorer
+```
+
 提供清除用户数据分区、深度清除用户数据和操作系统分区、同步清除文件密钥等恢复出厂设置功能的工具类。
 
 > **恢复出厂设置流程**：
@@ -175,22 +179,7 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 获取恢复出厂设置对象
-  let factoryRestorer = update.getRestorer();
-  // 执行恢复出厂设置
-  factoryRestorer.factoryReset().then(() => {
-    console.info(`factoryReset success`);
-  }).catch((resetError: BusinessError) => {
-    console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
-  });
-} catch (error) {
-  console.error(`Fail to get factoryRestorer: ${error}`);
-}
-```
+<a id="factoryreset-1"></a>
 
 ## factoryReset
 
@@ -238,7 +227,22 @@ factoryReset(): Promise<void>
 
 **示例**
 
-参见 [factoryReset](#factoryreset)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 获取恢复出厂设置对象
+  let factoryRestorer = update.getRestorer();
+  // 执行恢复出厂设置
+  factoryRestorer.factoryReset().then(() => {
+    console.info(`factoryReset success`);
+  }).catch((resetError: BusinessError) => {
+    console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
+  });
+} catch (error) {
+  console.error(`Fail to get factoryRestorer: ${error}`);
+}
+```
 
 ## forceFactoryReset
 

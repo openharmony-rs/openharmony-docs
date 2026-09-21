@@ -1,5 +1,9 @@
 # ControlEvent (System API)
 
+```TypeScript
+export interface ControlEvent
+```
+
 Defines a control event.
 
 **Since:** 20

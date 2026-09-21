@@ -1,5 +1,9 @@
 # MainThreadJankPolicy
 
+```TypeScript
+interface MainThreadJankPolicy
+```
+
 提供主线程超时事件配置策略的定义。
 
 **起始版本：** 22

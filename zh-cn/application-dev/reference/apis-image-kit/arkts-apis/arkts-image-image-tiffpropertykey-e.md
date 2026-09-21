@@ -1,5 +1,9 @@
 # TiffPropertyKey
 
+```TypeScript
+enum TiffPropertyKey
+```
+
 表示TIFF图片信息的枚举。
 
 > **说明：** 

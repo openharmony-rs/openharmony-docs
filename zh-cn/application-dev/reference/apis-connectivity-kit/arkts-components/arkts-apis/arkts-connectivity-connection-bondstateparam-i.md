@@ -1,5 +1,9 @@
 # BondStateParam
 
+```TypeScript
+interface BondStateParam
+```
+
 描述配对状态结果的参数结构。
 
 **起始版本：** 10

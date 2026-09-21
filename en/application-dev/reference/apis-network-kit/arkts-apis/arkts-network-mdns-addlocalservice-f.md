@@ -42,14 +42,38 @@ Adds an MDNS service. This API uses an asynchronous callback to return the resul
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
+
+```TypeScript
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the application context.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let localServiceInfo: mdns.LocalServiceInfo = {
+  serviceType: "_print._tcp",
+  serviceName: "servicename",
+  port: 5555,
+  host: {
+  address: "10.14.**.***",
+  },
+  serviceAttribute: [{key: "111", value: [1]}]
+}
+
+mdns.addLocalService(context, localServiceInfo, (error:BusinessError, data:mdns.LocalServiceInfo) =>  {
+  console.error(JSON.stringify(error));
+  console.info(JSON.stringify(data));
+});
 ```
 
+
+<a id="addlocalservice-1"></a>
 
 ## addLocalService
 
@@ -91,4 +115,31 @@ Adds an MDNS service. This API uses a promise to return the result.
 
 **Examples**
 
-See [addLocalService](#addlocalservice)
+> NOTE
+> 
+> In the sample code provided in this topic, this.context is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+Stage model:
+
+```TypeScript
+import { mdns } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the application context.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+let localServiceInfo: mdns.LocalServiceInfo = {
+  serviceType: "_print._tcp",
+  serviceName: "servicename",
+  port: 5555,
+  host: {
+    address: "10.14.**.***",
+  },
+  serviceAttribute: [{key: "111", value: [1]}]
+}
+
+mdns.addLocalService(context, localServiceInfo).then((data: mdns.LocalServiceInfo) => {
+  console.info(JSON.stringify(data));
+});
+```

@@ -1,5 +1,9 @@
 # SnapshotInfo
 
+```TypeScript
+interface SnapshotInfo
+```
+
 Provides information used to obtain a full drawing result.
 
 **Since:** 12

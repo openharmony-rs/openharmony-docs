@@ -1,5 +1,9 @@
 # BrightnessBlenderParam (System API)
 
+```TypeScript
+export declare interface BrightnessBlenderParam
+```
+
 Parameter list of BrightnessBlender, used to configure various properties of the brightness effect, including grayscale adjustment coefficients, saturation, and blending ratio parameters.
 
 **Since:** 12

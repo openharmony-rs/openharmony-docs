@@ -1,5 +1,9 @@
 # VoiceContentOptions（系统接口）
 
+```TypeScript
+export interface VoiceContentOptions
+```
+
 通知语音播报配置项。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # ColorShaderStyle
 
+```TypeScript
+declare class ColorShaderStyle extends ShaderStyle
+```
+
 Displays a solid color. **ColorShaderStyle** inherits from [ShaderStyle](arkts-arkui-shaderstyle-c.md).
 
 **Inheritance/Implementation:** ColorShaderStyle extends [ShaderStyle](arkts-arkui-shaderstyle-c.md)

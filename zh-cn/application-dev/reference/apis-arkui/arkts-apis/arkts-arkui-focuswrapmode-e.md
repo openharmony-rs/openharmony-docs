@@ -1,5 +1,9 @@
 # FocusWrapMode
 
+```TypeScript
+declare enum FocusWrapMode
+```
+
 交叉轴方向键走焦模式枚举。
 
 **起始版本：** 20

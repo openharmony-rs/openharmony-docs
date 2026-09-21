@@ -1,5 +1,9 @@
 # USBRequestDirection
 
+```TypeScript
+export enum USBRequestDirection
+```
+
 Enumerates request directions.
 
 **Since:** 9

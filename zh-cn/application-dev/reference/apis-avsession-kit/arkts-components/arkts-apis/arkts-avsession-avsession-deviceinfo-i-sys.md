@@ -1,5 +1,9 @@
 # DeviceInfo
 
+```TypeScript
+interface DeviceInfo
+```
+
 播放设备的相关信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # Constants
 
+```TypeScript
+interface Constants
+```
+
 Provides constants of the distributed KV store.
 
 **Since:** 9

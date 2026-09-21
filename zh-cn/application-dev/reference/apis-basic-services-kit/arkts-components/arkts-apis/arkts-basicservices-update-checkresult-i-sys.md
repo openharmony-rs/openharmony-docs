@@ -1,5 +1,9 @@
 # CheckResult（系统接口）
 
+```TypeScript
+export interface CheckResult
+```
+
 版本检查结果。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # AVMediaDescription
 
+```TypeScript
+interface AVMediaDescription
+```
+
 播放列表媒体元数据的相关属性。
 
 **起始版本：** 10
@@ -86,7 +90,7 @@ assetId: string
 
 - 该属性发生变化则其他元数据属性都将被刷新。  
 - 若该属性维持不变，且不设置相应的媒体元数据信息，那么将不会更新对应的媒体元数据信息。  
-- 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setavmetadata)方法将失败，返回错误码6600101。
+- 当该属性设为空值时，调用[setAVMetadata](arkts-avsession-avsession-avsession-i.md#setavmetadata-1)方法将失败，返回错误码6600101。
 
 **类型：** string
 
@@ -209,6 +213,8 @@ extras?: {[key: string]: Object}
 **类型：** {[key: string]: Object}
 
 **起始版本：** 10
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 

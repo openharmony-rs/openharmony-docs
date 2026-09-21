@@ -1,5 +1,9 @@
 # TouchEventData (System API)
 
+```TypeScript
+interface TouchEventData
+```
+
 Defines the touch event data.
 
 **Since:** 11

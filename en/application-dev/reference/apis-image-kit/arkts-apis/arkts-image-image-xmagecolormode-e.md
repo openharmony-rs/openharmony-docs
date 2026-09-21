@@ -1,5 +1,9 @@
 # XmageColorMode
 
+```TypeScript
+enum XmageColorMode
+```
+
 Enumerates the XMAGE color modes.
 
 **Since:** 23

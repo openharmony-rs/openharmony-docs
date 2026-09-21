@@ -1,5 +1,9 @@
 # WindowState
 
+```TypeScript
+enum WindowState
+```
+
 应用窗口状态。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # FormBindingData
 
+```TypeScript
+interface FormBindingData
+```
+
 Describes a **FormBindingData** object.
 
 **Since:** 8

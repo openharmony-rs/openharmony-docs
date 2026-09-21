@@ -1,5 +1,9 @@
 # CloudEnhancementTaskState（系统接口）
 
+```TypeScript
+interface CloudEnhancementTaskState
+```
+
 云增强任务状态，应用调用云增强任务查询接口的返回类型，包含云增强任务状态及部分状态下的额外信息。
 
 **起始版本：** 13

@@ -1,5 +1,9 @@
 # RouterPageState
 
+```TypeScript
+export enum RouterPageState
+```
+
 routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](arkts-arkui-uiobserver-routerpageinfo-c.md)中，作为[routerPageUpdate](arkts-arkui-uiobserver-on-f.md#onrouterpageupdate)无感监听的返回值。
 
 **起始版本：** 11

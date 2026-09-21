@@ -1,5 +1,9 @@
 # GyroscopeResponse
 
+```TypeScript
+interface GyroscopeResponse extends Response
+```
+
 Describes the gyroscope sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** GyroscopeResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

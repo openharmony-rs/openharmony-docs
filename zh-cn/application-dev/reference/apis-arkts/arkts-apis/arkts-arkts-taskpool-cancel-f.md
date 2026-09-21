@@ -120,6 +120,8 @@ concurrentFunc();
 ```
 
 
+<a id="cancel-1"></a>
+
 ## cancel
 
 ```TypeScript
@@ -148,8 +150,46 @@ function cancel(group: TaskGroup): void
 
 **示例**
 
-参见 cancel
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+@Concurrent
+function printArgs(args: number): number {
+  let t: number = Date.now();
+  while (Date.now() - t < 2000) {
+    continue;
+  }
+  console.info("printArgs: " + args);
+  return args;
+}
+
+function concurrentFunc() {
+  let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
+  taskGroup1.addTask(printArgs, 10); // 10: test number
+  let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
+  taskGroup2.addTask(printArgs, 100); // 100: test number
+  taskpool.execute(taskGroup1).then((res: Array<Object>) => {
+    console.info(`Succeeded in executing task. res is: ` + res);
+  });
+  taskpool.execute(taskGroup2).then((res: Array<Object>) => {
+    console.info(`Succeeded in executing task. res is: ` + res);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
+  });
+  setTimeout(() => {
+    try {
+      taskpool.cancel(taskGroup2);
+    } catch (e) {
+      console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
+    }
+  }, 1000);
+}
+
+concurrentFunc();
+```
+
+
+<a id="cancel-2"></a>
 
 ## cancel
 
@@ -186,4 +226,42 @@ function cancel(taskId: number): void
 
 **示例**
 
-参见 cancel
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Concurrent
+function printArgs(args: number): number {
+  let t: number = Date.now();
+  while (Date.now() - t < 2000) {
+    continue;
+  }
+  if (taskpool.Task.isCanceled()) {
+    console.info("task has been canceled after 2s sleep.");
+    return args + 1;
+  }
+  console.info("printArgs: " + args);
+  return args;
+}
+
+@Concurrent
+function cancelFunction(taskId: number) {
+  try {
+    taskpool.cancel(taskId);
+  } catch (e) {
+    console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
+  }
+}
+
+function concurrentFunc() {
+  let task = new taskpool.Task(printArgs, 100); // 100: test number
+  taskpool.execute(task).catch((err: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
+  });
+  setTimeout(() => {
+    let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
+    taskpool.execute(cancelTask);
+  }, 1000);
+}
+
+concurrentFunc();
+```

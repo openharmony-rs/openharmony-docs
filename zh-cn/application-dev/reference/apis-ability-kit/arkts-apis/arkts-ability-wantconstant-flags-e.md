@@ -1,5 +1,9 @@
 # Flags
 
+```TypeScript
+export enum Flags
+```
+
 Want.flags字段常用的系统预置关键字。开发者可以通过这些预置关键字设置或获取应用跳转等场景中额外携带的标志位信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # AlertDialogButtonBaseOptions
 
+```TypeScript
+declare interface AlertDialogButtonBaseOptions
+```
+
 Defines the button style of the alert dialog box.
 
 > **NOTE:** 

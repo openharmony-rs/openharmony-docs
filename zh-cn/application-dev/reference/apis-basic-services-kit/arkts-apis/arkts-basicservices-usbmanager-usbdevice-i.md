@@ -1,5 +1,9 @@
 # USBDevice
 
+```TypeScript
+interface USBDevice
+```
+
 USB设备信息。
 
 **起始版本：** 9

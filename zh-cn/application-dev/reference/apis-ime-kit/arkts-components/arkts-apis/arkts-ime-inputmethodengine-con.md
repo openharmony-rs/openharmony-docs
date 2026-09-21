@@ -426,6 +426,22 @@ const PATTERN_ONE_TIME_CODE: number
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+## PATTERN_ONE_TIME_CODE_NUMBER
+
+```TypeScript
+const PATTERN_ONE_TIME_CODE_NUMBER: number
+```
+
+数字验证码编辑框。固定为15。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ## PATTERN_PASSWORD
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # EnterpriseAdminExtensionAbility
 
+```TypeScript
+export default class EnterpriseAdminExtensionAbility
+```
+
 This module provides the [enterprise device management extension ability](../../../mdm/mdm-kit-term.md#enterpriseadminextensionability) and is the core component of the enterprise device administrator application.
 
 **Main functions**:
@@ -416,6 +420,31 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+<a id="onbundleadded-1"></a>
+
+## onBundleAdded
+
+```TypeScript
+onBundleAdded(bundleName: string, accountId: number): void
+```
+
+Called when applications are installed. The application bundle name and account ID are included. You should register the **MANAGED_EVENT_BUNDLE_ADDED** event through [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md). The enterprise administrator application can subscribe to application installation events. When an application is installed on an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| bundleName | string | Yes | Bundle name of the application installed. |
+| accountId | number | Yes | Account ID of the application installed. |
+
+**Examples**
+
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -441,31 +470,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-## onBundleAdded
-
-```TypeScript
-onBundleAdded(bundleName: string, accountId: number): void
-```
-
-Called when applications are installed. The application bundle name and account ID are included. You should register the **MANAGED_EVENT_BUNDLE_ADDED** event through [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md). The enterprise administrator application can subscribe to application installation events. When an application is installed on an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the application installed. |
-| accountId | number | Yes | Account ID of the application installed. |
-
-**Examples**
-
-See [onBundleAdded](#onbundleadded)
 
 ## onBundleRemoved
 
@@ -514,6 +518,31 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+<a id="onbundleremoved-1"></a>
+
+## onBundleRemoved
+
+```TypeScript
+onBundleRemoved(bundleName: string, accountId: number): void
+```
+
+Called when applications are uninstalled. The application bundle name and account ID are included. You should register the **MANAGED_EVENT_BUNDLE_REMOVED** event through [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md). The enterprise administrator application can subscribe to application uninstallation events. When an application is uninstalled from an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| bundleName | string | Yes | Bundle name of the application uninstalled. |
+| accountId | number | Yes | Account ID of the application uninstalled. |
+
+**Examples**
+
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -539,31 +568,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-## onBundleRemoved
-
-```TypeScript
-onBundleRemoved(bundleName: string, accountId: number): void
-```
-
-Called when applications are uninstalled. The application bundle name and account ID are included. You should register the **MANAGED_EVENT_BUNDLE_REMOVED** event through [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md). The enterprise administrator application can subscribe to application uninstallation events. When an application is uninstalled from an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the application uninstalled. |
-| accountId | number | Yes | Account ID of the application uninstalled. |
-
-**Examples**
-
-See [onBundleRemoved](#onbundleremoved)
 
 ## onBundleUpdated
 

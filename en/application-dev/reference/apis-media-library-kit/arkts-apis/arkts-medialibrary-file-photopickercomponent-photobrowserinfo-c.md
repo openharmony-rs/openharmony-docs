@@ -1,5 +1,9 @@
 # PhotoBrowserInfo
 
+```TypeScript
+export declare class PhotoBrowserInfo
+```
+
 Represents information about the photo browser page.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # ImageReceiverOptions
 
+```TypeScript
+interface ImageReceiverOptions
+```
+
 ImageReceiver的初始化选项。
 
 **起始版本：** 23

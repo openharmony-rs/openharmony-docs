@@ -1,5 +1,9 @@
 # XmlDynamicSerializer
 
+```TypeScript
+class XmlDynamicSerializer
+```
+
 XmlDynamicSerializer类用于动态生成XML字符串。当无法确定XML内容长度时，推荐使用该类。
 
 > **说明：** 

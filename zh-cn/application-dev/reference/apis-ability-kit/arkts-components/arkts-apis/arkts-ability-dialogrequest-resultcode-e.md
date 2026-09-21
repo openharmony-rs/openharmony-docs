@@ -1,5 +1,9 @@
 # ResultCode
 
+```TypeScript
+export enum ResultCode
+```
+
 模态弹框请求结果码。
 
 **起始版本：** 9

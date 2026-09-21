@@ -1,5 +1,9 @@
 # HardwareDescriptor（系统接口）
 
+```TypeScript
+interface HardwareDescriptor
+```
+
 表示分布式硬件的描述信息。
 
 @typedef HardwareDescriptor

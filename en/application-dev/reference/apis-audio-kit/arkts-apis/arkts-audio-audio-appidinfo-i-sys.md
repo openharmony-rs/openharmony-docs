@@ -1,5 +1,9 @@
 # AppIdInfo (System API)
 
+```TypeScript
+interface AppIdInfo
+```
+
 Describes app ID information.
 
 **Since:** 26.0.0

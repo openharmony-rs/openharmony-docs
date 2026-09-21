@@ -1,5 +1,9 @@
 # ComponentSnapshot
 
+```TypeScript
+export class ComponentSnapshot
+```
+
 Provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet.
 
 > **NOTE:** 

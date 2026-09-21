@@ -44,7 +44,7 @@ This API starts the DLP manager application to configure file permissions and re
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.1.0 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 | [19100016](../errorcode-dlp.md#19100016-uri-missing-in-want) | The uri field is missing in the want parameter. |
@@ -72,38 +72,8 @@ if (context !== undefined) {
 }
 ```
 
-```TypeScript
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { common, Want } from '@kit.AbilityKit';
-import { UIContext, window } from '@kit.ArkUI';
 
-let config: window.Configuration = {
-  name: "dlp_test_window",
-  windowType: window.WindowType.TYPE_FLOAT,
-  ctx: new UIContext().getHostContext() as common.Context
-};
-window.createWindow(config).then((windowClass) => {
-  windowClass.setUIContent('pages/index/BlankPage');
-  windowClass.setWindowFocusable(true);
-  windowClass.setWindowBackgroundColor("#00000000");
-
-  let context = new UIContext().getHostContext() as common.Context; // Obtain the current context.
-  if (context !== undefined) {
-    let want: Want = {
-      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
-      "parameters": {
-        "displayName": "1.txt"
-      }
-    }; // Construct request parameters, which must include uri and displayName.
-    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
-      console.info('res.resultCode', res.resultCode);
-      console.info('res.want', JSON.stringify(res.want));
-      windowClass.destroyWindow();
-    }); // Start the DLP manager application.
-  }
-});
-```
-
+<a id="startdlpmanagerforresult-1"></a>
 
 ## startDLPManagerForResult
 
@@ -151,4 +121,34 @@ This API starts the DLP manager application to configure file permissions and re
 
 **Examples**
 
-See [startDLPManagerForResult](#startdlpmanagerforresult)
+```TypeScript
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { common, Want } from '@kit.AbilityKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+let config: window.Configuration = {
+  name: "dlp_test_window",
+  windowType: window.WindowType.TYPE_FLOAT,
+  ctx: new UIContext().getHostContext() as common.Context
+};
+window.createWindow(config).then((windowClass) => {
+  windowClass.setUIContent('pages/index/BlankPage');
+  windowClass.setWindowFocusable(true);
+  windowClass.setWindowBackgroundColor("#00000000");
+
+  let context = new UIContext().getHostContext() as common.Context; // Obtain the current context.
+  if (context !== undefined) {
+    let want: Want = {
+      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+      "parameters": {
+        "displayName": "1.txt"
+      }
+    }; // Construct request parameters, which must include uri and displayName.
+    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
+      console.info('res.resultCode', res.resultCode);
+      console.info('res.want', JSON.stringify(res.want));
+      windowClass.destroyWindow();
+    }); // Start the DLP manager application.
+  }
+});
+```

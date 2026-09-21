@@ -1,5 +1,9 @@
 # PowerScene (System API)
 
+```TypeScript
+enum PowerScene
+```
+
 Defines the scenario to which the power policy applies.
 
 **Since:** 11

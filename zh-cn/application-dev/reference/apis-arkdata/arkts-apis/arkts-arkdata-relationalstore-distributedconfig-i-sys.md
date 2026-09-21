@@ -1,5 +1,9 @@
 # DistributedConfig
 
+```TypeScript
+interface DistributedConfig
+```
+
 记录表的分布式配置信息。
 
 **起始版本：** 10

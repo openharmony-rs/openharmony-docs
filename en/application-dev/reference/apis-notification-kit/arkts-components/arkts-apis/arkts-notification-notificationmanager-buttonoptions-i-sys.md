@@ -1,5 +1,9 @@
 # ButtonOptions (System API)
 
+```TypeScript
+export interface ButtonOptions
+```
+
 Provides the button information of the notification.
 
 **Since:** 11

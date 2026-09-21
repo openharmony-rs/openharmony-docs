@@ -1,5 +1,9 @@
 # PresetFillType
 
+```TypeScript
+declare enum PresetFillType
+```
+
 Specify the number of columns for different responsive breakpoints.
 
 @enum { number }

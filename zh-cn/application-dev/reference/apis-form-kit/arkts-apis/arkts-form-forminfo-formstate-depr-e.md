@@ -1,5 +1,9 @@
 # FormState
 
+```TypeScript
+enum FormState
+```
+
 卡片状态枚举。
 
 **起始版本：** 8

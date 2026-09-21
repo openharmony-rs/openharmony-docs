@@ -1,5 +1,9 @@
 # SmsSegmentsInfo（系统接口）
 
+```TypeScript
+export interface SmsSegmentsInfo
+```
+
 短信段信息。
 
 **起始版本：** 8

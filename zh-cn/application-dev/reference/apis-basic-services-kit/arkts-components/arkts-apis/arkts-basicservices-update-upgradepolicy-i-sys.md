@@ -1,5 +1,9 @@
 # UpgradePolicy（系统接口）
 
+```TypeScript
+export interface UpgradePolicy
+```
+
 升级策略，用于控制升级行为。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # EventInfo
 
+```TypeScript
+class EventInfo
+```
+
 Defines the accessibility event information, which describes UI changes or interaction events. It is used as a parameter of [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md) to define the event type and trigger action. The sent accessibility event will be distributed by the system to registered accessibility applications that match the event type for response. For details, see [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md).
 
 **Since:** 7
@@ -47,12 +51,7 @@ let eventInfo = new accessibility.EventInfo({
 });
 ```
 
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-
-// The parameters are, in order: type, bundleName, triggerAction.
-let eventInfo = new accessibility.EventInfo('click', 'com.example.MyApplication', 'click');
-```
+<a id="constructor-2"></a>
 
 ## constructor
 
@@ -80,7 +79,12 @@ Constructor, which is used to construct an EventInfo instance using independent 
 
 **Examples**
 
-See [constructor](#constructor)
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+
+// The parameters are, in order: type, bundleName, triggerAction.
+let eventInfo = new accessibility.EventInfo('click', 'com.example.MyApplication', 'click');
+```
 
 ## beginIndex
 
@@ -345,7 +349,7 @@ Text moving granularity. The default value is char.
 textResourceAnnouncedForAccessibility?: Resource
 ```
 
-Content for proactive announcement, which supports the Resource type. The Resource can only reference string resources (for example, &#36;r('app.string.xxx')).
+Content for proactive announcement, which supports the Resource type. The Resource can only reference string resources (for example, $r('app.string.xxx')).
 
 **Type:** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 

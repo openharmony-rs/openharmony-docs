@@ -20,6 +20,8 @@ Obtains information about how a sensitive permission is used by an application.
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.

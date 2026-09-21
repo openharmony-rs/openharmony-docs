@@ -1,5 +1,9 @@
 # HttpRequestContext
 
+```TypeScript
+export interface HttpRequestContext
+```
+
 Defines HTTP request context data. The object instance is passed as a parameter in the [interceptorHandle](arkts-network-http-httpinterceptor-i.md#interceptorhandle) method of the interceptor. You can use this object to obtain and modify the information about the HTTP request.
 
 **Since:** 22

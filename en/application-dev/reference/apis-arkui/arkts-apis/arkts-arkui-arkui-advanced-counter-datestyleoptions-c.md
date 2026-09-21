@@ -1,6 +1,12 @@
 # DateStyleOptions
 
-Defines the date style options.
+```TypeScript
+declare class DateStyleOptions extends CommonOptions
+```
+
+Defines the attributes and events of the inline date counter.
+
+Inherits from [CommonOptions](arkts-arkui-arkui-advanced-counter-commonoptions-c.md).
 
 **Inheritance/Implementation:** DateStyleOptions extends [CommonOptions](arkts-arkui-arkui-advanced-counter-commonoptions-c.md)
 
@@ -20,7 +26,13 @@ import { CounterComponent, CounterOptions, CounterType, DateData } from '@kit.Ar
 onDateChange?: (date: DateData) => void
 ```
 
-Trigger an event when the date of the counter has been changed.
+Callback invoked when the date changes to return the current date. Use case: Pass in this callback when you need to perform custom operations (such as updating associated UI, logging, saving state, etc.) upon date changes.
+
+**date**: currently displayed date value.
+
+Default value: no callback is triggered.
+
+If the value is **undefined**, the default value is used.
 
 **Since:** 11
 
@@ -42,7 +54,17 @@ Trigger an event when the date of the counter has been changed.
 day?: number
 ```
 
-Set the day of the counter component.
+Initial day of the inline date type.
+
+Default value: **1**.
+
+Value range: [1, 31].
+
+**Note:** The specific value range of days in each month is determined by the actual number of days in that month.
+
+If the value is out of the range, the default value is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** number
 
@@ -62,7 +84,15 @@ Set the day of the counter component.
 month?: number
 ```
 
-Set the month of the counter component.
+Initial month of the inline date type.
+
+Default value: **1**.
+
+Value range: [1, 12].
+
+If the value is out of the range, the default value is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** number
 
@@ -82,7 +112,15 @@ Set the month of the counter component.
 year?: number
 ```
 
-Set the year of the counter component, ranges from 1 to 5000.
+Initial year of the inline date type.
+
+Default value: **1**.
+
+Value range: [1, 5000].
+
+If the value is out of the range, the default value is used.
+
+If the value is **undefined**, the default value is used.
 
 **Type:** number
 

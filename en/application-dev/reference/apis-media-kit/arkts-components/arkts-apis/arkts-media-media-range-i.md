@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+interface Range
+```
+
 Provides Range with lower and upper limit.
 
 **Since:** 11

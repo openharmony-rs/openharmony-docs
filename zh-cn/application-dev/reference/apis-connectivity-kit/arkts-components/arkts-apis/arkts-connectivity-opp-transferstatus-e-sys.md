@@ -1,5 +1,9 @@
 # TransferStatus（系统接口）
 
+```TypeScript
+enum TransferStatus
+```
+
 枚举，文件传输状态。
 
 **起始版本：** 16

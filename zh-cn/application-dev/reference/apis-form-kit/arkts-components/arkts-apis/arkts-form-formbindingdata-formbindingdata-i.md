@@ -1,5 +1,9 @@
 # FormBindingData
 
+```TypeScript
+interface FormBindingData
+```
+
 FormBindingData对象的属性定义。
 
 **起始版本：** 9

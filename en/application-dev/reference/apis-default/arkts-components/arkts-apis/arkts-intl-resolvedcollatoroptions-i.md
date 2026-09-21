@@ -1,5 +1,9 @@
 # ResolvedCollatorOptions
 
+```TypeScript
+interface ResolvedCollatorOptions
+```
+
 ## Modules to Import
 
 ```TypeScript

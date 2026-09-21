@@ -1,5 +1,9 @@
 # PatternOptions
 
+```TypeScript
+export interface PatternOptions
+```
+
 **Since:** 11
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

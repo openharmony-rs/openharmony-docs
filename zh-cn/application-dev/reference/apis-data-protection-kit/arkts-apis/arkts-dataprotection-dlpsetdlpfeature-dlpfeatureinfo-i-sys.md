@@ -1,5 +1,9 @@
 # DLPFeatureInfo（系统接口）
 
+```TypeScript
+export interface DLPFeatureInfo
+```
+
 DLP特性开关的状态信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # OperateCheckV2Options
 
+```TypeScript
+export interface OperateCheckV2Options
+```
+
 OperateCheckV2构造函数的参数选项。
 
 **起始版本：** 26.0.0

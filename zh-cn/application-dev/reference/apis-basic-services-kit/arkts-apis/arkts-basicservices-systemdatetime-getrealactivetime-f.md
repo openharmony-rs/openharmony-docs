@@ -54,38 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemDateTime.getRealActiveTime((error: BusinessError, time: number) => {
-    if (error) {
-      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-      return;
-    }
-    console.info(`Succeeded in getting real active time : ${time}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemDateTime.getRealActiveTime().then((time: number) => {
-    console.info(`Succeeded in getting real active time : ${time}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getrealactivetime-1"></a>
 
 ## getRealActiveTime
 
@@ -117,8 +87,25 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 **示例**
 
-参见 getRealActiveTime
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  systemDateTime.getRealActiveTime((error: BusinessError, time: number) => {
+    if (error) {
+      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info(`Succeeded in getting real active time : ${time}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="getrealactivetime-2"></a>
 
 ## getRealActiveTime
 
@@ -156,4 +143,17 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 **示例**
 
-参见 getRealActiveTime
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.getRealActiveTime().then((time: number) => {
+    console.info(`Succeeded in getting real active time : ${time}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
+}
+```

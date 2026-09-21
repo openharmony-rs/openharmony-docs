@@ -1,5 +1,9 @@
 # NetFirewallIpParams
 
+```TypeScript
+interface NetFirewallIpParams
+```
+
 Defines the IP parameters of the firewall rule. The IP address type can be IPv4 or IPv6. A single IP address or IP address segment is supported.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # CheckPackageHasInstalledOptions
 
+```TypeScript
+export interface CheckPackageHasInstalledOptions
+```
+
 
 > **NOTE:** 
 > 

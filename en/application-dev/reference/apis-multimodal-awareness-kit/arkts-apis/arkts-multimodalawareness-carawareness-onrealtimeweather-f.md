@@ -14,7 +14,7 @@ function onRealTimeWeather(callback: Callback<RealTimeWeatherInfo>): void
 
 Enables real-time weather awareness and subscribes to real-time weather awareness results. If the capability is not supported, no callback will be triggered. You can obtain the supported capabilities by calling the getAllCapacityList method.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.vehicle.MMA_WEATHER
 

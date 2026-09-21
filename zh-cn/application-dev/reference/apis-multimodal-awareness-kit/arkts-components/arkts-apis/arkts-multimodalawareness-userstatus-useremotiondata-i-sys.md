@@ -1,5 +1,9 @@
 # UserEmotionData（系统接口）
 
+```TypeScript
+export interface UserEmotionData extends UserStatusData
+```
+
 表示用户情绪数据。
 
 **继承/实现关系：** UserEmotionData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

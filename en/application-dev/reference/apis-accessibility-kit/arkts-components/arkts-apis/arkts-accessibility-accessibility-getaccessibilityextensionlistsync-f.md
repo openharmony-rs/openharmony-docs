@@ -43,10 +43,50 @@ This API is the synchronous version of [accessibility.getAccessibilityExtensionL
 
 **Examples**
 
-```TypeScript
 Query all installed accessibility applications.
-```
 
 ```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'all'; // The accessibility app type is all.
+let abilityState: accessibility.AbilityState = 'install'; // The accessibility app state is installed.
+let data: accessibility.AccessibilityAbilityInfo[];
+
+try {
+  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+}
+
+// For example, an accessibility app with the bundle name com.example.myaccessibilityapp is installed in the system.
+// The log output is as follows:
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+```
+
 Query all enabled accessibility applications with voice feedback.
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // The accessibility app type is spoken feedback.
+let abilityState: accessibility.AbilityState = 'enable'; // The accessibility app state is enabled.
+let data: accessibility.AccessibilityAbilityInfo[];
+
+try {
+  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+}
 ```

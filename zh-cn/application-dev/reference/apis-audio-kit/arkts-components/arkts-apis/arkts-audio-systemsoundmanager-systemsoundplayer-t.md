@@ -6,8 +6,6 @@ type SystemSoundPlayer = _SystemSoundPlayer
 
 系统音效播放器对象。
 
-@typedef { _SystemSoundPlayer } SystemSoundPlayer
-
 **起始版本：** 23
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core

@@ -1,5 +1,9 @@
 # CertificateScope
 
+```TypeScript
+export enum CertificateScope
+```
+
 Defines the usage scope of the certificate to be installed.
 
 **Since:** 14

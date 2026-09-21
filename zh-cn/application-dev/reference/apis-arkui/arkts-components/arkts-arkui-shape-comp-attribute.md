@@ -1,8 +1,12 @@
 # Shape属性/事件
 
-除支持[通用属性](arkts-arkui-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+```TypeScript
+declare class ShapeAttribute extends CommonMethod<ShapeAttribute>
+```
 
-**继承/实现关系：** ShapeAttribute extends CommonMethod&lt;ShapeAttribute&gt;
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
+
+**继承/实现关系：** ShapeAttribute extends CommonMethod<ShapeAttribute>
 
 **起始版本：** 7
 
@@ -14,9 +18,11 @@
 antiAlias(value: boolean)
 ```
 
-设置是否开启抗锯齿效果，支持attributeModifier动态设置属性方法。
+设置是否开启抗锯齿效果，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -36,9 +42,11 @@ antiAlias(value: boolean)
 fill(value: ResourceColor)
 ```
 
-设置填充区域的颜色，支持attributeModifier动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
+设置填充区域的颜色，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -58,9 +66,11 @@ fill(value: ResourceColor)
 fillOpacity(value: number | string | Resource)
 ```
 
-设置填充区域透明度，支持attributeModifier动态设置属性方法。
+设置填充区域透明度，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -80,7 +90,7 @@ fillOpacity(value: number | string | Resource)
 mesh(value: Array<any>, column: number, row: number)
 ```
 
-设置网格效果。将图像分割为（row + 1）* （column + 1）的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持attributeModifier动态设置属性方法。适用于需要实现图像变形效果的场景，如图片扭曲、波浪效果等视觉效果。
+设置网格效果。将图像分割为（row + 1）* （column + 1）的网格，每个网格交点坐标存储在数组中（每两个元素表示一个交点的x、y坐标）。通过数组value中的坐标值，重新定位网格顶点位置，实现图像局部扭曲。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。适用于需要实现图像变形效果的场景，如图片扭曲、波浪效果等视觉效果。
 
 坐标数组按行优先顺序存储。原始图像被均匀分割后，每个网格区域根据顶点的新坐标进行变换，最终形成扭曲效果。
 
@@ -91,6 +101,8 @@ mesh(value: Array<any>, column: number, row: number)
 > drawPixelMapMesh。
 
 **起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -112,9 +124,11 @@ mesh(value: Array<any>, column: number, row: number)
 stroke(value: ResourceColor)
 ```
 
-设置边框颜色，支持attributeModifier动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
+设置边框颜色，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法，不设置时，默认边框透明度为0，即没有边框。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -134,9 +148,11 @@ stroke(value: ResourceColor)
 strokeDashArray(value: Array<any>)
 ```
 
-设置边框间隙，支持attributeModifier动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
+设置边框间隙，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -156,9 +172,11 @@ strokeDashArray(value: Array<any>)
 strokeDashOffset(value: Length)
 ```
 
-设置边框绘制起点的偏移量，支持attributeModifier动态设置属性方法。异常值按照默认值处理。
+设置边框绘制起点的偏移量，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -178,9 +196,11 @@ strokeDashOffset(value: Length)
 strokeLineCap(value: LineCapStyle)
 ```
 
-设置边框端点绘制样式，支持attributeModifier动态设置属性方法。
+设置边框端点绘制样式，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -200,9 +220,11 @@ strokeLineCap(value: LineCapStyle)
 strokeLineJoin(value: LineJoinStyle)
 ```
 
-设置边框拐角绘制样式，支持attributeModifier动态设置属性方法。
+设置边框拐角绘制样式，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -222,11 +244,13 @@ strokeLineJoin(value: LineJoinStyle)
 strokeMiterLimit(value: Length)
 ```
 
-设置斜接长度与边框宽度比值的极限值，支持attributeModifier动态设置属性方法。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。该属性取值需在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
+设置斜接长度与边框宽度比值的极限值，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。斜接长度表示外边框外边交点到内边交点的距离，边框宽度即strokeWidth属性的值。该属性取值需在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
 
 该属性的合法值范围应当大于等于1.0，当取值范围在[0,1)时按1.0处理，其余异常值按默认值处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -246,9 +270,11 @@ strokeMiterLimit(value: Length)
 strokeOpacity(value: number | string | Resource)
 ```
 
-设置边框透明度，支持attributeModifier动态设置属性方法。该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0。
+设置边框透明度，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -268,9 +294,11 @@ strokeOpacity(value: number | string | Resource)
 strokeWidth(value: Length)
 ```
 
-设置边框宽度，支持attributeModifier动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
+设置边框宽度，支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。该属性若为string类型，暂不支持百分比，百分比按照1px处理。
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -296,6 +324,8 @@ viewPort(value: ViewportRect)
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
@@ -306,4 +336,4 @@ viewPort(value: ViewportRect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ViewportRect](arkts-arkui-viewportrect-i.md) | 是 | Viewport绘制属性。<br>默认值：{x: 0, y: 0, width: 0, height: 0} <br>异常值undefined和null按照默认值处理。<br>**适用版本：** 18 |
+| value | [ViewportRect](arkts-arkui-shape-comp-viewportrect-i.md) | 是 | Viewport绘制属性。<br>默认值：{x: 0, y: 0, width: 0, height: 0} <br>异常值undefined和null按照默认值处理。<br>**适用版本：** 18 |

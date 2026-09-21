@@ -58,8 +58,55 @@ Generates a key for the specified user. This API uses a promise to return the re
 
 **Examples**
 
-```TypeScript
 Prerequisites:
 
 The caller must be a system application running under user 0 to user 99 (inclusive) and must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. For details, see [singleton](../../../../device-dev/subsystems/subsys-app-privilege-config-guide.md#device-specific-application-privileges).
+
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
+
+const aesKeyAlias = 'test_aesKeyAlias';
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+
+function GetAesGenerateProperties(): Array<huks.HuksParam> {
+  return [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_AES
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+    huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+    value: userIdStorageLevel,
+  }]
+}
+
+async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
+  const options: huks.HuksOptions = {
+    properties: genProperties
+  }
+  await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
+    console.info("Generated a key with alias of: " + keyAlias + "")
+  }).catch((err: BusinessError) => {
+    console.error("Failed to generate the key. Error code: " + err.code + " Error message: " + err.message)
+  })
+}
+
+
+export default function HuksAsUserTest() {
+  console.info('begin huks as user test')
+  GenerateKey(aesKeyAlias, GetAesGenerateProperties())
+}
 ```

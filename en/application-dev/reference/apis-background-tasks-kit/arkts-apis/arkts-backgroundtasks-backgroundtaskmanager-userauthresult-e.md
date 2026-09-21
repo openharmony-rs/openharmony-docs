@@ -1,5 +1,9 @@
 # UserAuthResult
 
+```TypeScript
+export enum UserAuthResult
+```
+
 Represents the user authorization result.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # NamedRouterOptions
 
+```TypeScript
+interface NamedRouterOptions
+```
+
 Describes the named route options.
 
 **Since:** 10

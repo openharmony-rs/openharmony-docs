@@ -1,5 +1,9 @@
 # UsbDeviceId
 
+```TypeScript
+export interface UsbDeviceId
+```
+
 Represents the USB device identity information.
 
 **Since:** 12

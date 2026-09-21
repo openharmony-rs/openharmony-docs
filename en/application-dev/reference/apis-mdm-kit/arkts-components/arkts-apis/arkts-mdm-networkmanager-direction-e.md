@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+enum Direction
+```
+
 Enumerates the direction chains to which the rule applies.
 
 **Since:** 12

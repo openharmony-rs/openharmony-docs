@@ -1,5 +1,9 @@
 # FileSpec
 
+```TypeScript
+interface FileSpec
+```
+
 Provides the file information of a table item.
 
 **Since:** 10

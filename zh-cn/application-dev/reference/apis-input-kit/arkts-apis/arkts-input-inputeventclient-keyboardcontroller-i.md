@@ -1,5 +1,9 @@
 # KeyboardController
 
+```TypeScript
+interface KeyboardController
+```
+
 提供模拟按键操作的功能。模拟按键操作序列必须满足以下要求：<br>1. 按键只能在抬起状态下被按下，或者在该按键是最近按下的按键且未抬起的情况下被按下。<br>2. 按键只能在被按下后才能抬起。<br>3. 最多可以同时按下并保持五个按键。
 
 **起始版本：** 26.0.0
@@ -119,6 +123,4 @@ releaseKey(keyCode: KeyCode): Promise<void>
 
 **示例**
 
-```TypeScript
 参见[pressKey](#presskey)示例。
-```

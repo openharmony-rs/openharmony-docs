@@ -1,5 +1,9 @@
 # NotificationRequest
 
+```TypeScript
+export interface NotificationRequest
+```
+
 定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
 
 **起始版本：** 7

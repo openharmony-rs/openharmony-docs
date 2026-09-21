@@ -1,5 +1,9 @@
 # CommunicationDeviceType
 
+```TypeScript
+enum CommunicationDeviceType
+```
+
 Enumerates the available device types for communication. @enum { int }
 
 **Since:** 12

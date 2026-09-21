@@ -1,5 +1,9 @@
 # LocalizedPadding
 
+```TypeScript
+declare interface LocalizedPadding
+```
+
 内边距类型，用于描述组件不同方向的内边距。
 
 **起始版本：** 12

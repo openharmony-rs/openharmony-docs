@@ -1,5 +1,9 @@
 # Size（系统接口）
 
+```TypeScript
+interface Size
+```
+
 表示截取图像的大小。
 
 **起始版本：** 7

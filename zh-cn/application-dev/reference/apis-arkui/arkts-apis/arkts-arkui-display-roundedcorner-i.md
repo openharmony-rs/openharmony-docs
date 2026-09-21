@@ -1,5 +1,9 @@
 # RoundedCorner
 
+```TypeScript
+interface RoundedCorner
+```
+
 屏幕圆角定义。
 
 **起始版本：** 23

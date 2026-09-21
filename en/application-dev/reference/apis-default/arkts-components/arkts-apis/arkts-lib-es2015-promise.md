@@ -17,4 +17,4 @@
 
 | Name | Description |
 | --- | --- |
-| [Promise](arkts-libes2015promise-p.md) |  |
+| [Promise](arkts-lib-es2015-promise-p.md) |  |

@@ -1,5 +1,9 @@
 # TreeListenerManager
 
+```TypeScript
+export declare class TreeListenerManager
+```
+
 树视图组件的监听管理器，可以获取监听器实例并绑定至树视图组件，用于管理树的节点监听，同一个监听器不可以控制多个树视图组件。
 
 **起始版本：** 10

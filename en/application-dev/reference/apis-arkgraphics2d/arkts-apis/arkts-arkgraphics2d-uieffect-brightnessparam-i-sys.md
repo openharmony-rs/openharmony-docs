@@ -1,5 +1,9 @@
 # BrightnessParam (System API)
 
+```TypeScript
+interface BrightnessParam
+```
+
 Detailed description of the material brightness parameters.
 
 **Since:** 22

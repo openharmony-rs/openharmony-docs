@@ -1,5 +1,9 @@
 # Want
 
+```TypeScript
+export default class Want
+```
+
 Want is a carrier for information transfer between objects (application components). Want can be used as a parameter of **startAbility** to specify a startup target and information that needs to be carried during startup, for example, **bundleName** and **abilityName**, which respectively indicate the bundle name of the target ability and the ability name in the bundle. When ability A needs to start ability B and transfer some data to ability B, it can use Want a carrier to transfer the data.
 
 **Since:** 8
@@ -187,3 +191,147 @@ URI information to match. If **Uri** is specified in a Want object, the Want obj
 **Substitutes:** [uri](arkts-ability-app-ability-want-want-c.md#uri)
 
 **System capability:** SystemCapability.Ability.AbilityBase
+
+**Examples**
+
+Basic usage (called in a UIAbility object, where context in the example is the context object of the UIAbility).
+
+```TypeScript
+import Want from '@ohos.application.Want';
+import { BusinessError } from '@ohos.base';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+
+let want: Want = {
+'deviceId': '', // An empty deviceId indicates the local device.
+'bundleName': 'com.example.myapplication',
+'abilityName': 'EntryAbility',
+};
+class MyAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+      this.context.startAbility(want, (error: BusinessError) => {
+        // Explicitly launch the ability. The ability can be uniquely identified by bundleName, abilityName, and moduleName.
+        if (error) {
+          console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+        }
+      });
+    }
+}
+```
+
+Passes data through custom fields. The following are the currently supported types (called in a UIAbility object, where context in the example is the context object of the UIAbility).
+
+String
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForString: 'str',
+  },
+};
+```
+
+Number
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForInt: 100,
+    keyForDouble: 99.99,
+  },
+};
+```
+
+Boolean
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForBool: true,
+  },
+};
+```
+
+Object
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForObject: {
+      keyForObjectString: 'str',
+      keyForObjectInt: -200,
+      keyForObjectDouble: 35.5,
+      keyForObjectBool: false,
+    },
+  },
+};
+```
+
+Array
+
+```TypeScript
+import Want from '@ohos.application.Want';
+
+let want: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    keyForArrayString: ['str1', 'str2', 'str3'],
+    keyForArrayInt: [100, 200, 300, 400],
+    keyForArrayDouble: [0.1, 0.2],
+    keyForArrayObject: [{obj1: 'aaa'}, {obj2: 100}],
+  },
+};
+```
+
+File descriptor (FD)
+
+```TypeScript
+import fileIo from '@ohos.file.fs';
+import Want from '@ohos.application.Want';
+import { BusinessError } from '@ohos.base';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+
+let fd: number = 0;
+try {
+  fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+} catch (e) {
+  console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
+}
+let want: Want = {
+  deviceId: '', // An empty deviceId indicates the local device.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EntryAbility',
+  parameters: {
+    'keyFd': { 'type': 'FD', 'value': fd }
+  }
+};
+
+class MyAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    this.context.startAbility(want, (error: BusinessError) => {
+      // Launch the ability explicitly. An ability can be uniquely identified by bundleName, abilityName, and moduleName.
+      if (error) {
+        console.error(`StartAbility failed, error code: ${error.code}, error msg: ${error.message}.`);
+      }
+    });
+  }
+}
+```

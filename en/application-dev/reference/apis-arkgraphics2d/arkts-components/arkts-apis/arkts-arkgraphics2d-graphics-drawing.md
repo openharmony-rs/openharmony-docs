@@ -57,6 +57,15 @@ import { drawing } from '@kit.ArkGraphics2D';
 | [FontMetrics](arkts-arkgraphics2d-drawing-fontmetrics-i.md) | Describes the attributes that describe the font size and layout. A typeface has similar font metrics. |
 | [RecordCmd](arkts-arkgraphics2d-drawing-recordcmd-i.md) | Describes a list of recorded drawing commands. |
 | [TextBlobRunBuffer](arkts-arkgraphics2d-drawing-textblobrunbuffer-i.md) | Describes a series of consecutive glyphs with the same attributes in a text blob. |
+| [TypefaceFallbackInfo](arkts-arkgraphics2d-drawing-typefacefallbackinfo-i.md) | Defines the typeface fallback info structure for a run of glyphs that share the same fallback typeface. |
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [AtlasImage](arkts-arkgraphics2d-drawing-atlasimage-i-sys.md) | Defines the atlas frame parameters for sprite sheet frame animation. |
+<!--DelEnd-->
 
 ### Enums
 
@@ -87,3 +96,11 @@ import { drawing } from '@kit.ArkGraphics2D';
 | [TextEncoding](arkts-arkgraphics2d-drawing-textencoding-e.md) | Enumerates the text encoding types. |
 | [TileMode](arkts-arkgraphics2d-drawing-tilemode-e.md) | Enumerates the tile modes of the shader effect. |
 | [VertexMode](arkts-arkgraphics2d-drawing-vertexmode-e.md) | Enumerates the connection modes for vertex drawing. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [AtlasInterpolationMode](arkts-arkgraphics2d-drawing-atlasinterpolationmode-e-sys.md) | Defines the interpolation mode for sprite sheet frame animation. |
+<!--DelEnd-->

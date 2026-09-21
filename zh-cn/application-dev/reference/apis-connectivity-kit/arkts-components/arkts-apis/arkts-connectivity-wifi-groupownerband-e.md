@@ -1,5 +1,9 @@
 # GroupOwnerBand
 
+```TypeScript
+enum GroupOwnerBand
+```
+
 表示群组带宽的枚举。
 
 > **说明：** 

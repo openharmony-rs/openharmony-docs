@@ -55,6 +55,8 @@ try {
 ```
 
 
+<a id="cancelpairingdevice-1"></a>
+
 ## cancelPairingDevice
 
 ```TypeScript
@@ -99,4 +101,11 @@ function cancelPairingDevice(deviceId: string): Promise<void>
 
 **示例**
 
-参见 [cancelPairingDevice](#cancelpairingdevice)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```

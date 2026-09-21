@@ -1,5 +1,9 @@
 # UnitUsage
 
+```TypeScript
+export enum UnitUsage
+```
+
 单位格式化使用场景的枚举。
 
 **起始版本：** 23

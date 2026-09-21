@@ -1,5 +1,9 @@
 # CameraErrorCode
 
+```TypeScript
+enum CameraErrorCode
+```
+
 相机错误码。
 
 接口使用不正确以及on接口监听error状态返回。

@@ -1,5 +1,9 @@
 # DeviceEncryptionStatus（系统接口）
 
+```TypeScript
+export interface DeviceEncryptionStatus
+```
+
 设备管理应用的文件系统加密状态。
 
 **起始版本：** 11

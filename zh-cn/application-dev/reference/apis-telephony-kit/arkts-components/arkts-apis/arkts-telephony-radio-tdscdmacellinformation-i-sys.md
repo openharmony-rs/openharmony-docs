@@ -1,5 +1,9 @@
 # TdscdmaCellInformation（系统接口）
 
+```TypeScript
+export interface TdscdmaCellInformation
+```
+
 Obtains TDSCDMA cell information.
 
 **起始版本：** 8

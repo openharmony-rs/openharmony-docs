@@ -1,5 +1,9 @@
 # HuksListAliasesReturnResult
 
+```TypeScript
+export interface HuksListAliasesReturnResult
+```
+
 Defines the returned key alias array.
 
 **Since:** 12

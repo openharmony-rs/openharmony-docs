@@ -1,5 +1,9 @@
 # IpInfo
 
+```TypeScript
+interface IpInfo
+```
+
 IP信息。
 
 > **说明：** 

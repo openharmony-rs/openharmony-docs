@@ -61,19 +61,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundle: notificationManager.BundleOption = {
-    bundle: 'bundleName1',
-};
-notificationManager.displayBadge(bundle, false).then(() => {
-    console.info('displayBadge success');
-}).catch((err: BusinessError) => {
-    console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="displaybadge-1"></a>
 
 ## displayBadge
 
@@ -119,4 +108,15 @@ function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>
 
 **示例**
 
-参见 [displayBadge](#displaybadge)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName1',
+};
+notificationManager.displayBadge(bundle, false).then(() => {
+    console.info('displayBadge success');
+}).catch((err: BusinessError) => {
+    console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
+});
+```

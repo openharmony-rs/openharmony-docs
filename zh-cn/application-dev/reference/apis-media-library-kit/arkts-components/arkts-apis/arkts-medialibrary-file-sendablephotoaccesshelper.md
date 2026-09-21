@@ -25,7 +25,7 @@ import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f-sys.md) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
+| [getPhotoAccessHelper](arkts-medialibrary-sendablephotoaccesshelper-getphotoaccesshelper-f-sys.md#getphotoaccesshelper-1) | 支持跨用户获取相册管理模块的实例，用于访问和修改相册中的媒体文件。 |
 <!--DelEnd-->
 
 ### 接口

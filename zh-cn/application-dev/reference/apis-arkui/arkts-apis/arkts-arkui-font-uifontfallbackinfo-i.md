@@ -1,5 +1,9 @@
 # UIFontFallbackInfo
 
+```TypeScript
+interface UIFontFallbackInfo
+```
+
 系统的UI字体配置信息。
 
 **起始版本：** 11

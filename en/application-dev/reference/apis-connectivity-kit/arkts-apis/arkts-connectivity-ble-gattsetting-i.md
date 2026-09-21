@@ -1,5 +1,9 @@
 # GattSetting
 
+```TypeScript
+interface GattSetting
+```
+
 Describes the setting for Gatt Connection.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # Resource
 
+```TypeScript
+export interface Resource
+```
+
 本模块提供资源相关信息，包括应用包名、应用模块名、资源ID等。
 
 **起始版本：** 9

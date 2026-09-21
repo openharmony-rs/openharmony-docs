@@ -1,5 +1,9 @@
 # ListFormatOptions
 
+```TypeScript
+interface ListFormatOptions
+```
+
 An object with some or all properties of the `Intl.ListFormat` constructor `options` parameter.
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat#parameters).

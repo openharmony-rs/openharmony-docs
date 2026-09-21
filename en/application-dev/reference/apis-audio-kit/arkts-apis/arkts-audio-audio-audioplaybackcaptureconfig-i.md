@@ -1,5 +1,9 @@
 # AudioPlaybackCaptureConfig
 
+```TypeScript
+interface AudioPlaybackCaptureConfig
+```
+
 Defines configuration for capturing played audio.
 
 **Since:** 10

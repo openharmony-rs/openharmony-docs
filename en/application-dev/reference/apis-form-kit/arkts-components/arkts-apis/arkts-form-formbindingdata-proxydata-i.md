@@ -1,5 +1,9 @@
 # ProxyData
 
+```TypeScript
+interface ProxyData
+```
+
 Defines the form proxy data.
 
 @typedef ProxyData

@@ -1,5 +1,9 @@
 # DataBits
 
+```TypeScript
+enum DataBits
+```
+
 Enumerates the number of data bits, in bits.
 
 **Since:** 19

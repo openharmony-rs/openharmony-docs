@@ -1,5 +1,9 @@
 # PhotoCaptureSetting
 
+```TypeScript
+interface PhotoCaptureSetting
+```
+
 拍摄照片的设置。
 
 **起始版本：** 10

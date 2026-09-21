@@ -1,5 +1,9 @@
 # TextHighContrast
 
+```TypeScript
+enum TextHighContrast
+```
+
 文字渲染高对比度配置类型枚举。
 
 **起始版本：** 20

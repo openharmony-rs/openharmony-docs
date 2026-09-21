@@ -1,5 +1,9 @@
 # ConfirmDialogV2
 
+```TypeScript
+export declare struct ConfirmDialogV2
+```
+
 信息确认类弹出框，用于反馈错误或提示信息。当操作未正确执行（如网络错误、电池电量过低）或用户操作不当时（如指纹录入），弹出此类对话框进行提示。
 
 **起始版本：** 18

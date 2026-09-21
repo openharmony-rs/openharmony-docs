@@ -1,5 +1,9 @@
 # MmsSendConf (System API)
 
+```TypeScript
+export interface MmsSendConf
+```
+
 Defines the MMS message sending configuration.
 
 **Since:** 8

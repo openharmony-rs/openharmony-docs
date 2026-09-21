@@ -58,18 +58,8 @@ call.setVoNRState(slotId, state, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
-call.setVoNRState(slotId, state).then(() => {
-    console.info(`setVoNRState success`);
-}).catch((err: BusinessError) => {
-    console.error(`setVoNRState fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="setvonrstate-1"></a>
 
 ## setVoNRState
 
@@ -114,4 +104,14 @@ Sets the status of the VoNR switch. This API uses a promise to return the result
 
 **Examples**
 
-See [setVoNRState](#setvonrstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
+call.setVoNRState(slotId, state).then(() => {
+    console.info(`setVoNRState success`);
+}).catch((err: BusinessError) => {
+    console.error(`setVoNRState fail, promise: err->${JSON.stringify(err)}`);
+});
+```

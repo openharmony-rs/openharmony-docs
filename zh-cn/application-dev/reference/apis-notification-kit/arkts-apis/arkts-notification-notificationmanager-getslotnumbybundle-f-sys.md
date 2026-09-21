@@ -62,20 +62,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundle: notificationManager.BundleOption = {
-  bundle: 'bundleName1',
-};
-
-notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
-    console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getslotnumbybundle-1"></a>
 
 ## getSlotNumByBundle
 
@@ -120,4 +108,16 @@ function getSlotNumByBundle(bundle: BundleOption): Promise<number>
 
 **示例**
 
-参见 [getSlotNumByBundle](#getslotnumbybundle)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundle: notificationManager.BundleOption = {
+  bundle: 'bundleName1',
+};
+
+notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
+    console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # DistributedAccountStatus
 
+```TypeScript
+enum DistributedAccountStatus
+```
+
 Enumerates the statuses of a distributed account.
 
 **Since:** 10

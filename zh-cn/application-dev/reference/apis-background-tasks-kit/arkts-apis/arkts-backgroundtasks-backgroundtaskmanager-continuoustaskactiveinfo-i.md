@@ -1,5 +1,9 @@
 # ContinuousTaskActiveInfo
 
+```TypeScript
+interface ContinuousTaskActiveInfo
+```
+
 长时任务激活信息。
 
 **起始版本：** 20

@@ -1,5 +1,9 @@
 # TextCase
 
+```TypeScript
+declare enum TextCase
+```
+
 The style of the text case.
 
 **Since:** 7

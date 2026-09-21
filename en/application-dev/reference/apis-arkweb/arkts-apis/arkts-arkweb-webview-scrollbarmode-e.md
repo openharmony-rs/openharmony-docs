@@ -1,5 +1,9 @@
 # ScrollbarMode
 
+```TypeScript
+enum ScrollbarMode
+```
+
 Enumerates the global scrollbar modes in the web page.
 
 **Since:** 23

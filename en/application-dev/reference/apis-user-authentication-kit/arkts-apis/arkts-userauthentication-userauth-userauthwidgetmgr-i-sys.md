@@ -1,5 +1,9 @@
 # UserAuthWidgetMgr (System API)
 
+```TypeScript
+interface UserAuthWidgetMgr
+```
+
 Defines the authentication widget manager. It is used to register the custom authentication widget with the **UserAuthWidgetMgr** for unified management and scheduling. The custom authentication widget can receive commands from the user authentication framework and perform corresponding operations.
 
 **Since:** 10

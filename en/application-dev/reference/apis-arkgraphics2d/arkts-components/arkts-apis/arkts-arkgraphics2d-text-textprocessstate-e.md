@@ -1,5 +1,9 @@
 # TextProcessState
 
+```TypeScript
+enum TextProcessState
+```
+
 Enumerates text processing states.
 
 **Since:** 26.0.0

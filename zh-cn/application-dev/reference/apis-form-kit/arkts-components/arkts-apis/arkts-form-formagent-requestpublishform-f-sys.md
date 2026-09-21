@@ -38,10 +38,10 @@ function requestPublishForm(want: Want, callback: AsyncCallback<string>): void
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
-| [16501002](../errorcode-form.md#16501002-卡片数量达到上限) | The number of forms exceeds the upper limit.<br>**适用版本：** 26.1.0+ |
+| [16501002](../errorcode-form.md#16501002-卡片数量达到上限) | The number of forms exceeds the upper limit.<br>**适用版本：** 26.0.1+ |
 | [16501008](../errorcode-form.md#16501008-等待卡片加桌超时) | Waiting for the form addition to the desktop timed out.<br>**适用版本：** 12+ |
-| [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish form.<br>**适用版本：** 26.1.0+ |
-| [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.1.0+ |
+| [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish form.<br>**适用版本：** 26.0.1+ |
+| [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.0.1+ |
 
 **示例**
 
@@ -72,31 +72,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formAgent } from '@kit.FormKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let want: Want = {
-  bundleName: 'com.ohos.exampledemo',
-  abilityName: 'FormAbility',
-  parameters: {
-    'ohos.extra.param.key.form_dimension': 2,
-    'ohos.extra.param.key.form_name': 'widget',
-    'ohos.extra.param.key.module_name': 'entry'
-  }
-};
-try {
-  formAgent.requestPublishForm(want).then((data: string) => {
-    console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="requestpublishform-1"></a>
 
 ## requestPublishForm
 
@@ -135,11 +112,34 @@ function requestPublishForm(want: Want): Promise<string>
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
-| [16501002](../errorcode-form.md#16501002-卡片数量达到上限) | The number of forms exceeds the upper limit.<br>**适用版本：** 26.1.0+ |
+| [16501002](../errorcode-form.md#16501002-卡片数量达到上限) | The number of forms exceeds the upper limit.<br>**适用版本：** 26.0.1+ |
 | [16501008](../errorcode-form.md#16501008-等待卡片加桌超时) | Waiting for the form addition to the desktop timed out.<br>**适用版本：** 12+ |
-| [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish form.<br>**适用版本：** 26.1.0+ |
-| [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.1.0+ |
+| [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish form.<br>**适用版本：** 26.0.1+ |
+| [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.0.1+ |
 
 **示例**
 
-参见 [requestPublishForm](#requestpublishform)
+```TypeScript
+import { formAgent } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.ohos.exampledemo',
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+try {
+  formAgent.requestPublishForm(want).then((data: string) => {
+    console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

@@ -1,5 +1,9 @@
 # ChipV2AccessibilityConfig
 
+```TypeScript
+export interface ChipV2AccessibilityConfig
+```
+
 ChipV2AccessibilityConfig定义无障碍属性配置。
 
 **起始版本：** 26.0.0

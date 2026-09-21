@@ -1,5 +1,9 @@
 # BeautyQuery（系统接口）
 
+```TypeScript
+interface BeautyQuery
+```
+
 Provides APIs to obtain and set the beauty effect.
 
 **起始版本：** 12

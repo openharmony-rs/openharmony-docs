@@ -1,5 +1,9 @@
 # AVCastPickerState
 
+```TypeScript
+export declare enum AVCastPickerState
+```
+
 Definition of av cast picker state
 
 **Since:** 11

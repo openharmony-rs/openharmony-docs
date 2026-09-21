@@ -1,5 +1,9 @@
 # WeakRefConstructor
 
+```TypeScript
+interface WeakRefConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

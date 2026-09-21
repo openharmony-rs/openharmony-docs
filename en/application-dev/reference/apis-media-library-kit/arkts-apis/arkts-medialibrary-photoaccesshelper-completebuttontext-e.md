@@ -1,5 +1,9 @@
 # CompleteButtonText
 
+```TypeScript
+enum CompleteButtonText
+```
+
 Enumerates the text displayed on the complete button.
 
 **Since:** 14

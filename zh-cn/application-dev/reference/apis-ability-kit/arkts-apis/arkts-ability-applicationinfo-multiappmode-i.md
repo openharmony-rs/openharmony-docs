@@ -1,5 +1,9 @@
 # MultiAppMode
 
+```TypeScript
+export interface MultiAppMode
+```
+
 表示[应用多开](../../../quick-start/multiInstance.md)模式。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ScanFilter
 
+```TypeScript
+interface ScanFilter
+```
+
 Describes the criteria for filtering scanning results can be set.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # CsrAttribute
 
+```TypeScript
+interface CsrAttribute
+```
+
 Defines the CSR attribute representation.
 
 <br>CSR attribute field. Currently, only string-type attribute fields are supported. The attribute value added to the CSR is encoded in UTF-8 format. The common type is challengePassword.

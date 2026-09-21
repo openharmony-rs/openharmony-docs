@@ -1,5 +1,9 @@
 # SyncInfo（系统接口）
 
+```TypeScript
+interface SyncInfo
+```
+
 端云同步信息，包含最近一次端云同步的时间、结果和状态。
 
 **起始版本：** 12

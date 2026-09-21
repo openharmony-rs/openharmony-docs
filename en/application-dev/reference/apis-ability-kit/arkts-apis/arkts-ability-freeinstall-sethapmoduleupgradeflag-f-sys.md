@@ -44,6 +44,8 @@ Sets an upgrade flag for a module. This API uses an asynchronous callback to ret
 | [17700002](../errorcode-bundle.md#17700002-module-name-does-not-exist) | The specified module name is not found. |
 
 
+<a id="sethapmoduleupgradeflag-1"></a>
+
 ## setHapModuleUpgradeFlag
 
 ```TypeScript

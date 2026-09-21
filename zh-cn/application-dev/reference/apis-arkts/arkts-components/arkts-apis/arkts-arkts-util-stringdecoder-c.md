@@ -1,5 +1,9 @@
 # StringDecoder
 
+```TypeScript
+class StringDecoder
+```
+
 提供将二进制流解码为字符串的能力。支持以下编码类型：utf-8、iso-8859-2、koi8-r、macintosh、windows-1250、windows-1251、gbk、gb18030、big5、utf-16be 和 UTF-16le。
 
 **起始版本：** 12

@@ -14,7 +14,7 @@ function getTouchpadScrollDirection(callback: AsyncCallback<boolean>): void
 
 获取触控板滚轴方向，使用callback异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -62,6 +62,36 @@ struct Index {
 }
 ```
 
+
+<a id="gettouchpadscrolldirection-1"></a>
+
+## getTouchpadScrollDirection
+
+```TypeScript
+function getTouchpadScrollDirection(): Promise<boolean>
+```
+
+获取触控板滚轴方向，使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error.<br>**适用版本：** 10 - 26.0.0 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -88,33 +118,3 @@ struct Index {
   }
 }
 ```
-
-
-## getTouchpadScrollDirection
-
-```TypeScript
-function getTouchpadScrollDirection(): Promise<boolean>
-```
-
-获取触控板滚轴方向，使用Promise异步回调。
-
-**起始版本：** 26.1.0
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | SystemAPI permission error.<br>**适用版本：** 10 - 26.0.0 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**
-
-参见 getTouchpadScrollDirection

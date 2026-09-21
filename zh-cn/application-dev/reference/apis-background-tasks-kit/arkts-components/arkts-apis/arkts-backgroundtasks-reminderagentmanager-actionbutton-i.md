@@ -1,5 +1,9 @@
 # ActionButton
 
+```TypeScript
+interface ActionButton
+```
+
 弹出的提醒中按钮的类型和标题。
 
 **起始版本：** 9

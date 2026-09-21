@@ -1,5 +1,9 @@
 # AudioSessionBehaviorFlags
 
+```TypeScript
+enum AudioSessionBehaviorFlags
+```
+
 Enumerates audio session behavior flags.
 
 **Since:** 24

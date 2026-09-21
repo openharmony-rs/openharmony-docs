@@ -1,5 +1,9 @@
 # KeyAction
 
+```TypeScript
+enum KeyAction
+```
+
 按键动作。
 
 **起始版本：** 23

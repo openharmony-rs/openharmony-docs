@@ -1,5 +1,9 @@
 # CustomContentDialog
 
+```TypeScript
+export declare struct CustomContentDialog
+```
+
 自定义内容区弹出框，同时支持定义操作区按钮样式。
 
 > **说明：** 
@@ -183,7 +187,7 @@ themeColorMode?: ThemeColorMode
 
 默认值：ThemeColorMode.SYSTEM
 
-**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
+**类型：** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
 
 **起始版本：** 12
 

@@ -1,5 +1,9 @@
 # FixedMode (System API)
 
+```TypeScript
+export declare enum FixedMode
+```
+
 Enumerates coordinate correction modes.
 
 **Since:** 19

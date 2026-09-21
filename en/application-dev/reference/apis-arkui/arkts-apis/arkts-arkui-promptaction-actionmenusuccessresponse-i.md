@@ -1,5 +1,9 @@
 # ActionMenuSuccessResponse
 
+```TypeScript
+interface ActionMenuSuccessResponse
+```
+
 Describes the action menu response result.
 
 **Since:** 9
@@ -23,6 +27,8 @@ Index of the selected button in the **buttons** array, starting from **0**.
 **Type:** number
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

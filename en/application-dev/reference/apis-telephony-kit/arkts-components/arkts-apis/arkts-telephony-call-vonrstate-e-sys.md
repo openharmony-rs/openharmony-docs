@@ -1,5 +1,9 @@
 # VoNRState (System API)
 
+```TypeScript
+export enum VoNRState
+```
+
 Enumerates VoNR switch states.
 
 **Since:** 10

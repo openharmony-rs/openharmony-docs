@@ -1,5 +1,9 @@
 # ElementAttributeValues
 
+```TypeScript
+export interface ElementAttributeValues
+```
+
 Provides attribute names and value types of a node element.
 
 **Since:** 9

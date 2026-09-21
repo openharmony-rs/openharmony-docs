@@ -1,5 +1,9 @@
 # TextUndefinedGlyphDisplay
 
+```TypeScript
+enum TextUndefinedGlyphDisplay
+```
+
 文本未定义字形时的显示方式枚举。
 
 **起始版本：** 20

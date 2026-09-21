@@ -47,10 +47,31 @@ function getPreferencesSync(context: Context, options: Options): Preferences
 
 **示例**
 
-```TypeScript
 FA模型示例：
-```
 
 ```TypeScript
+// 获取context
+import { featureAbility } from '@kit.AbilityKit';
+
+let context = featureAbility.getContext();
+let dataPreferences: preferences.Preferences | null = null;
+
+let options: preferences.Options = { name: 'myStore' };
+dataPreferences = preferences.getPreferencesSync(context, options);
+```
+
 Stage模型示例：
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | null = null;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    dataPreferences = preferences.getPreferencesSync(this.context, options);
+  }
+}
 ```

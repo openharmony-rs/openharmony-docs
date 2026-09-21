@@ -1,5 +1,9 @@
 # EvaluationResult (System API)
 
+```TypeScript
+interface EvaluationResult
+```
+
 Describes evaluation result. @typedef EvaluationResult
 
 **Since:** 12

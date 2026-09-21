@@ -47,16 +47,8 @@ avSession.stopCasting(myToken, () => {
 });
 ```
 
-```TypeScript
-let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
-let myToken: avSession.SessionToken = {
-  sessionId: sessionId,
-}
-avSession.stopCasting(myToken).then(() => {
-  console.info('Succeeded in stopping casting.');
-});
-```
 
+<a id="stopcasting-1"></a>
 
 ## stopCasting
 
@@ -93,16 +85,6 @@ function stopCasting(session: SessionToken): Promise<void>
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
 **示例**
-
-```TypeScript
-let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
-let myToken: avSession.SessionToken = {
-  sessionId: sessionId,
-}
-avSession.stopCasting(myToken, () => {
-    console.info('Succeeded in stopping casting.');
-});
-```
 
 ```TypeScript
 let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。

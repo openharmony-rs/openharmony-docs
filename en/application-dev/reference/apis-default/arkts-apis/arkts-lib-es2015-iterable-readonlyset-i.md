@@ -1,5 +1,9 @@
 # ReadonlySet
 
+```TypeScript
+interface ReadonlySet<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

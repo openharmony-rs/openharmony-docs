@@ -1,5 +1,9 @@
 # WifiLinkedInfo
 
+```TypeScript
+interface WifiLinkedInfo
+```
+
 Wi-Fi connection information. @typedef WifiLinkedInfo
 
 **Since:** 12

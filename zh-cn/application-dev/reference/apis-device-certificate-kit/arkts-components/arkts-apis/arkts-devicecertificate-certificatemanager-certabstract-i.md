@@ -1,5 +1,9 @@
 # CertAbstract
 
+```TypeScript
+export interface CertAbstract
+```
+
 表示证书简要信息。
 
 **起始版本：** 11

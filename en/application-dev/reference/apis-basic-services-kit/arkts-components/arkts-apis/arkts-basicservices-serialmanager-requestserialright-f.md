@@ -44,8 +44,38 @@ Requests the permission for the app to access the serial port device. After the 
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > The following sample code shows the basic process for calling the requestSerialRight API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+import { serialManager } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the serial port list.
+function requestSerialRightExample() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('usbSerial portList: ' + JSON.stringify(portList));
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
+    return;
+  }
+  let portId: number = portList[0].portId;
+
+  // Check whether the device can be accessed by the application.
+  if (!serialManager.hasSerialRight(portId)) {
+    serialManager.requestSerialRight(portId).then(result => {
+      if (!result) {
+        // If the application does not have the access permission and the user does not grant the permission, the application exits.
+        console.error('user is not granted the operation permission');
+        return;
+      } else {
+        console.info('grant permission successfully');
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to request serial right. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
 ```

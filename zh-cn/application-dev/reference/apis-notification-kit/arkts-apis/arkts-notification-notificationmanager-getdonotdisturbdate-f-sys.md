@@ -57,46 +57,8 @@ let getDoNotDisturbDateCallback = (err: BusinessError, data: notificationManager
 notificationManager.getDoNotDisturbDate(getDoNotDisturbDateCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
-  console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let getDoNotDisturbDateCallback = (err: BusinessError, data: notificationManager.DoNotDisturbDate): void => {
-    if (err) {
-        console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
-    } else {
-        console.info(`getDoNotDisturbDate success, data is ${JSON.stringify(data)}`);
-    }
-}
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.getDoNotDisturbDate(userId, getDoNotDisturbDateCallback);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 用户ID，使用时需替换为真实的userId。
-let userId: number = 1;
-
-notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
-    console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getdonotdisturbdate-1"></a>
 
 ## getDoNotDisturbDate
 
@@ -134,8 +96,18 @@ function getDoNotDisturbDate(): Promise<DoNotDisturbDate>
 
 **示例**
 
-参见 [getDoNotDisturbDate](#getdonotdisturbdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
+  console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+<a id="getdonotdisturbdate-2"></a>
 
 ## getDoNotDisturbDate
 
@@ -176,8 +148,25 @@ function getDoNotDisturbDate(userId: number, callback: AsyncCallback<DoNotDistur
 
 **示例**
 
-参见 [getDoNotDisturbDate](#getdonotdisturbdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let getDoNotDisturbDateCallback = (err: BusinessError, data: notificationManager.DoNotDisturbDate): void => {
+    if (err) {
+        console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getDoNotDisturbDate success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.getDoNotDisturbDate(userId, getDoNotDisturbDateCallback);
+```
+
+
+<a id="getdonotdisturbdate-3"></a>
 
 ## getDoNotDisturbDate
 
@@ -223,4 +212,15 @@ function getDoNotDisturbDate(userId: number): Promise<DoNotDisturbDate>
 
 **示例**
 
-参见 [getDoNotDisturbDate](#getdonotdisturbdate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: number = 1;
+
+notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
+    console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+});
+```

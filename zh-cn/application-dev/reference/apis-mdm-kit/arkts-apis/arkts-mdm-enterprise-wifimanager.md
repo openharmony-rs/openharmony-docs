@@ -41,10 +41,10 @@ import { wifiManager } from '@kit.MDMKit';
 | --- | --- |
 | [addAllowedWifiList](arkts-mdm-wifimanager-addallowedwifilist-f.md) | 添加Wi-Fi允许名单。添加允许名单后当前设备仅允许连接该名单下的Wi-Fi。适用于企业安全管理场景，例如限制员工设备只能连接公司授权的Wi-Fi网络，防止连接不安全的外部Wi-Fi，保障企业网络安全和数据安全。 |
 | [addDisallowedWifiList](arkts-mdm-wifimanager-adddisallowedwifilist-f.md) | 添加Wi-Fi禁用名单。添加禁用名单后当前设备不允许连接该名单下的Wi-Fi。适用于企业安全管控场景，例如禁止设备连接不安全的公共Wi-Fi(如咖啡馆、机场Wi-Fi)、防止员工连接竞争对手或恶意网络，保障企业数据安全。 |
-| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md) | 获取Wi-Fi允许名单。 |
-| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md) | 获取Wi-Fi允许名单。 |
-| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md) | 获取Wi-Fi禁用名单。 |
-| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md) | 获取Wi-Fi禁用名单。 |
+| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md#getallowedwifilist) | 获取Wi-Fi允许名单。 |
+| [getAllowedWifiList](arkts-mdm-wifimanager-getallowedwifilist-f.md#getallowedwifilist-1) | 获取Wi-Fi允许名单。 |
+| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md#getdisallowedwifilist) | 获取Wi-Fi禁用名单。 |
+| [getDisallowedWifiList](arkts-mdm-wifimanager-getdisallowedwifilist-f.md#getdisallowedwifilist-1) | 获取Wi-Fi禁用名单。 |
 | [isWifiActiveSync](arkts-mdm-wifimanager-iswifiactivesync-f.md) | 查询当前设备Wi-Fi开启状态。 |
 | [removeAllowedWifiList](arkts-mdm-wifimanager-removeallowedwifilist-f.md) | 移除Wi-Fi允许名单。若移除允许名单中的部分Wi-Fi，则当前设备仅允许连接剩下未移除的Wi-Fi。若移除允许名单中的所有Wi-Fi，则当前设备可以连接任意Wi-Fi。适用于企业Wi-Fi策略调整场景，例如公司更换Wi-Fi网络时移除旧网络限制、或解除部分Wi-Fi限制以允许员工连接新的办公网络。 |
 | [removeDisallowedWifiList](arkts-mdm-wifimanager-removedisallowedwifilist-f.md) | 移除Wi-Fi禁用名单。若移除禁用名单中的部分Wi-Fi，则当前设备不允许连接禁用名单内剩余的Wi-Fi。若移除禁用名单中的所有Wi-Fi，则当前设备可以连接任意的Wi-Fi。适用于企业Wi-Fi策略调整场景，例如解除对特定Wi- Fi的禁用限制、允许员工连接新批准的办公网络、或完全移除禁用策略。 |
@@ -57,12 +57,12 @@ import { wifiManager } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md) | 查询当前设备的Wi-Fi开启状态。使用callback异步回调。 |
-| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md) | 查询当前设备的Wi-Fi开启状态。使用Promise异步回调。 |
+| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md#iswifiactive) | 查询当前设备的Wi-Fi开启状态。使用callback异步回调。 |
+| [isWifiActive](arkts-mdm-wifimanager-iswifiactive-f-sys.md#iswifiactive-1) | 查询当前设备的Wi-Fi开启状态。使用Promise异步回调。 |
 | [isWifiDisabled](arkts-mdm-wifimanager-iswifidisabled-f-sys.md) | 查询当前设备Wi-Fi是否被禁用。 |
 | [setWifiDisabled](arkts-mdm-wifimanager-setwifidisabled-f-sys.md) | 设置禁用Wi-Fi策略。 |
-| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md) | 为当前设备配置Wi-Fi，使连接到指定网络。使用callback异步回调。 |
-| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md) | 为当前设备配置Wi-Fi，使连接到指定网络。使用Promise异步回调。 |
+| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md#setwifiprofile) | 为当前设备配置Wi-Fi，使连接到指定网络。使用callback异步回调。 |
+| [setWifiProfile](arkts-mdm-wifimanager-setwifiprofile-f-sys.md#setwifiprofile-1) | 为当前设备配置Wi-Fi，使连接到指定网络。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

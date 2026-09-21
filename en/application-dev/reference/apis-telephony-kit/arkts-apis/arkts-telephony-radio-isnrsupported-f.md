@@ -31,12 +31,8 @@ let result: boolean = radio.isNRSupported();
 console.info("Result: "+ result);
 ```
 
-```TypeScript
-let slotId: number = 0;
-let result: boolean = radio.isNRSupported(slotId);
-console.info("Result: "+ result);
-```
 
+<a id="isnrsupported-1"></a>
 
 ## isNRSupported
 
@@ -64,4 +60,8 @@ Checks whether the SIM card in the specified slot supports NR.
 
 **Examples**
 
-See [isNRSupported](#isnrsupported)
+```TypeScript
+let slotId: number = 0;
+let result: boolean = radio.isNRSupported(slotId);
+console.info("Result: "+ result);
+```

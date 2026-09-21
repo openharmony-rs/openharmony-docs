@@ -1,5 +1,9 @@
 # FileDeleteOption
 
+```TypeScript
+export interface FileDeleteOption
+```
+
 可选项类型，支持delete接口使用。
 
 **起始版本：** 3

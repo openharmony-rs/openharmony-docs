@@ -1,5 +1,9 @@
 # ApplicationEvent
 
+```TypeScript
+enum ApplicationEvent
+```
+
 Enumerates print application events.
 
 **Since:** 14

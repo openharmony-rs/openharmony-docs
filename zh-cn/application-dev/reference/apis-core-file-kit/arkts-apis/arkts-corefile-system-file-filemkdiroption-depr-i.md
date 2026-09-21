@@ -1,5 +1,9 @@
 # FileMkdirOption
 
+```TypeScript
+export interface FileMkdirOption
+```
+
 可选项类型，支持mkdir接口使用。
 
 **起始版本：** 3

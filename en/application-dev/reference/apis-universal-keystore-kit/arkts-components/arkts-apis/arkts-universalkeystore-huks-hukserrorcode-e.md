@@ -1,5 +1,9 @@
 # HuksErrorCode
 
+```TypeScript
+export enum HuksErrorCode
+```
+
 Enumerates the error codes.
 
 > **NOTE:** 

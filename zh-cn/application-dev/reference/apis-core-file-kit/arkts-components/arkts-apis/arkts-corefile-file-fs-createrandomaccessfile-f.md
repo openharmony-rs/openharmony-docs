@@ -66,6 +66,8 @@ declare function createRandomAccessFile(file: string | File, mode?: number,
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
+<a id="createrandomaccessfile-1"></a>
+
 ## createRandomAccessFile
 
 ```TypeScript
@@ -116,6 +118,8 @@ declare function createRandomAccessFile(file: string | File, callback: AsyncCall
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="createrandomaccessfile-2"></a>
 
 ## createRandomAccessFile
 

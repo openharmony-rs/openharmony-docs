@@ -1,5 +1,9 @@
 # PerformanceInfo
 
+```TypeScript
+interface PerformanceInfo
+```
+
 Describes the pre-downloaded performance information.
 
 **Since:** 20

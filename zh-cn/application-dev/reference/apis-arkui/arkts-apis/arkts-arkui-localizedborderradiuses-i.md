@@ -1,5 +1,9 @@
 # LocalizedBorderRadiuses
 
+```TypeScript
+declare interface LocalizedBorderRadiuses
+```
+
 圆角类型，用于描述组件边框圆角半径。
 
 引用该对象时，至少传入一个参数。

@@ -1,5 +1,9 @@
 # CmsRecipientEncryptionAlgorithm
 
+```TypeScript
+enum CmsRecipientEncryptionAlgorithm
+```
+
 CMS封装数据的内容加密算法的枚举。
 
 **起始版本：** 22

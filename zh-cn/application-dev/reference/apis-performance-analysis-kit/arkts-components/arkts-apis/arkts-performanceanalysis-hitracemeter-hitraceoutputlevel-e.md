@@ -1,5 +1,9 @@
 # HiTraceOutputLevel
 
+```TypeScript
+enum HiTraceOutputLevel
+```
+
 枚举，跟踪输出级别。
 
 低于系统跟踪输出级别阈值的打点将不会生效。log版本阈值为INFO；nolog版本阈值为COMMERCIAL。

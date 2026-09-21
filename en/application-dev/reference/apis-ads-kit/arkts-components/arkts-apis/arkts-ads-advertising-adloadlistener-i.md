@@ -1,5 +1,9 @@
 # AdLoadListener
 
+```TypeScript
+export interface AdLoadListener
+```
+
 Enumerates the callbacks used for the request for loading an ad.
 
 **Since:** 11

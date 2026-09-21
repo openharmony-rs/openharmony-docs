@@ -1,5 +1,9 @@
 # MapMseProfile
 
+```TypeScript
+interface MapMseProfile extends BaseProfile
+```
+
 该实例表示蓝牙消息访问协议中的MSE角色。
 
 - 该类继承于[BaseProfile](arkts-connectivity-map-baseprofile-t.md)，因此可以使用其父类中的方法。  

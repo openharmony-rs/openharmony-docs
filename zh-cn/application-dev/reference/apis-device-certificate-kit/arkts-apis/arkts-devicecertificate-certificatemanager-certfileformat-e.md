@@ -1,5 +1,9 @@
 # CertFileFormat
 
+```TypeScript
+export enum CertFileFormat
+```
+
 表示证书文件格式。
 
 **起始版本：** 26.0.0

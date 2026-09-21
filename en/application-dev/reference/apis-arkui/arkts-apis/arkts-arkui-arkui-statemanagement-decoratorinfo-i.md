@@ -1,5 +1,9 @@
 # DecoratorInfo
 
+```TypeScript
+export interface DecoratorInfo
+```
+
 Defines the decorator and component information associated with the observable object.
 
 **Since:** 23

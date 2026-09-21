@@ -1,5 +1,9 @@
 # TabTitleBarMenuItem
 
+```TypeScript
+export declare class TabTitleBarMenuItem
+```
+
 Declaration of the menu item on the right side.
 
 **Since:** 10
@@ -144,7 +148,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol icon resource, which has higher priority than **value**.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

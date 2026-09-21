@@ -1,5 +1,9 @@
 # SignatureInfo
 
+```TypeScript
+interface SignatureInfo
+```
+
 描述应用包的签名信息。
 
 **起始版本：** 20

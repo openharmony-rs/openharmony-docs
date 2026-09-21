@@ -1,5 +1,9 @@
 # ConnectOptions
 
+```TypeScript
+interface ConnectOptions
+```
+
 应用连接时所需的连接选项。
 
 **起始版本：** 18

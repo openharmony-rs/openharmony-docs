@@ -1,5 +1,9 @@
 # AudioLoopbackReverbPreset
 
+```TypeScript
+enum AudioLoopbackReverbPreset
+```
+
 Enumerates the reverb modes of audio loopback.
 
 **Since:** 21

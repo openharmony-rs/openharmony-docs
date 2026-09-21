@@ -1,5 +1,9 @@
 # QueryOptions
 
+```TypeScript
+export interface QueryOptions
+```
+
 Defines the type of the IP address to be queried.
 
 **Since:** 23

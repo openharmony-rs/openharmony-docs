@@ -1,5 +1,9 @@
 # AgentUIExtensionAbility
 
+```TypeScript
+declare class AgentUIExtensionAbility extends UIExtensionAbility
+```
+
 AgentUIExtensionAbility继承自[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)，为开发者提供接入端侧Agent UI界面显示能力。
 
 [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)提供智能体扩展能力，AgentUIExtensionAbility必须与AgentExtensionAbility共进程运行，不支持独立运行。

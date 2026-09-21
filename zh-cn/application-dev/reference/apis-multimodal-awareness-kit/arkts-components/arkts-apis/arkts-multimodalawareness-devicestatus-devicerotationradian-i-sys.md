@@ -1,5 +1,9 @@
 # DeviceRotationRadian（系统接口）
 
+```TypeScript
+export interface DeviceRotationRadian
+```
+
 设备旋转弧度接口。
 
 **起始版本：** 20

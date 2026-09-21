@@ -1,5 +1,9 @@
 # Position
 
+```TypeScript
+export interface Position
+```
+
 Describes the position of the window or component.
 
 **Since:** 20

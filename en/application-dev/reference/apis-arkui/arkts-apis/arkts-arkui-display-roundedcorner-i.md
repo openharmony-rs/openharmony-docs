@@ -1,5 +1,9 @@
 # RoundedCorner
 
+```TypeScript
+interface RoundedCorner
+```
+
 Describes a single rounded corner on the screen.
 
 **Since:** 23

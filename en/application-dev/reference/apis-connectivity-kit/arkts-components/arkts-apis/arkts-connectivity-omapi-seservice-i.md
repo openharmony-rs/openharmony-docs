@@ -1,5 +1,9 @@
 # SEService
 
+```TypeScript
+export interface SEService
+```
+
 **SEService** indicates the connection service used to connect to all available SEs in the system. You can use [createService](arkts-connectivity-omapi-createservice-f.md) to create an **SEService** instance.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # BlinkingMode (System API)
 
+```TypeScript
+export enum BlinkingMode
+```
+
 Enumerates the blinking modes.
 
 **Since:** 26.0.0

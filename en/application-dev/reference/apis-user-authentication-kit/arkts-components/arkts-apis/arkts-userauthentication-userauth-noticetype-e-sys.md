@@ -1,5 +1,9 @@
 # NoticeType (System API)
 
+```TypeScript
+enum NoticeType
+```
+
 Enumerates the notification types of user authentication. This enum defines the notification types supported by the system, which are used to identify the source of a notification.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # CmKeyPurpose
 
+```TypeScript
+export enum CmKeyPurpose
+```
+
 Enumerates the purposes of using the key.
 
 **Since:** 11

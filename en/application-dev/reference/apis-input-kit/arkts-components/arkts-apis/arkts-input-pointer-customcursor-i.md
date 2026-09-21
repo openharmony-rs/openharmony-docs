@@ -1,5 +1,9 @@
 # CustomCursor
 
+```TypeScript
+interface CustomCursor
+```
+
 Defines custom cursor resources.
 
 **Since:** 15

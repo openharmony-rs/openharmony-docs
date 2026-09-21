@@ -1,5 +1,9 @@
 # HuksImportKeyType
 
+```TypeScript
+export enum HuksImportKeyType
+```
+
 Enumerates the types of keys to import. By default, a public key is imported. This field is not required when a symmetric key is imported.
 
 **Since:** 9
@@ -18,6 +22,8 @@ Public key
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -34,6 +40,8 @@ Private key
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** 
@@ -49,6 +57,8 @@ HUKS_KEY_TYPE_KEY_PAIR = 2
 Public and private key pair
 
 **Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

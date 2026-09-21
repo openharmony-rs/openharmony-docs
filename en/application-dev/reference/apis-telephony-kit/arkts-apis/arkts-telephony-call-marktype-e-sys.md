@@ -1,5 +1,9 @@
 # MarkType (System API)
 
+```TypeScript
+export enum MarkType
+```
+
 Enumerates number mark types.
 
 **Since:** 12

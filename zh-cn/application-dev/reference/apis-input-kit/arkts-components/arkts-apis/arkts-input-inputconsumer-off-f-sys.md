@@ -34,3 +34,71 @@ function off(type: 'key', keyOptions: KeyOptions, callback?: Callback<KeyOptions
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
+
+**示例**
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          // 取消订阅单个回调函数
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
+          };
+          let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
+          try {
+            // 订阅按键事件
+            inputConsumer.on('key', keyOption, callback);
+            // 取消订阅按键事件
+            inputConsumer.off('key', keyOption, callback);
+            console.info(`Succeeded in unsubscribing.`);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+```TypeScript
+import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          // 取消订阅所有回调函数
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
+          };
+          let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
+          try {
+            // 订阅按键事件
+            inputConsumer.on('key', keyOption, callback);
+            // 取消订阅按键事件
+            inputConsumer.off('key', keyOption);
+            console.info(`Succeeded in unsubscribing.`);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

@@ -1,5 +1,9 @@
 # Device
 
+```TypeScript
+interface Device
+```
+
 Represents the peripheral device information.
 
 **Since:** 10

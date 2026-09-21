@@ -1,5 +1,9 @@
 # HuksAuthAccessType
 
+```TypeScript
+export enum HuksAuthAccessType
+```
+
 表示安全访问控制类型。
 
 **起始版本：** 9

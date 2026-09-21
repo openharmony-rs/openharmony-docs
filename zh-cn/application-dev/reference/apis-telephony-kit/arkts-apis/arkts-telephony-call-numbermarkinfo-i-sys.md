@@ -1,5 +1,9 @@
 # NumberMarkInfo（系统接口）
 
+```TypeScript
+export interface NumberMarkInfo
+```
+
 电话号码的标记信息。
 
 **起始版本：** 12

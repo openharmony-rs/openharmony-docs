@@ -33,6 +33,21 @@ function off(type: 'add' | 'remove' | 'change', callback?: Callback<number>): vo
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.off('remove');
+
+let callback: Callback<number> = (data: number) => {
+  console.info(`Succeeded in unregistering the callback for display remove. Data: ${data}`);
+};
+// 关闭传入的callback监听
+display.off('remove', callback);
+```
+
 
 ## off('add' | 'remove' | 'change')
 
@@ -61,6 +76,10 @@ function off(type: 'add' | 'remove' | 'change', callback?: Callback<number>): vo
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+**示例**
+
+参见 off
+
 
 ## off('add' | 'remove' | 'change')
 
@@ -88,6 +107,10 @@ function off(type: 'add' | 'remove' | 'change', callback?: Callback<number>): vo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例**
+
+参见 off
 
 
 ## off('foldStatusChange')
@@ -118,6 +141,21 @@ function off(type: 'foldStatusChange', callback?: Callback<FoldStatus>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.off('foldStatusChange');
+
+let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
+  console.info(`unregistering FoldStatus changes callback. Data: ${data}`);
+};
+// 关闭传入的callback监听
+display.off('foldStatusChange', callback);
+```
+
 
 ## off('foldAngleChange')
 
@@ -146,6 +184,21 @@ function off(type: 'foldAngleChange', callback?: Callback<Array<number>>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.off('foldAngleChange');
+
+let callback: Callback<Array<number>> = (angles: Array<number>) => {
+  console.info('Listening fold angles length: ' + angles.length);
+};
+// 关闭传入的callback监听
+display.off('foldAngleChange', callback);
+```
 
 
 ## off('captureStatusChange')
@@ -176,6 +229,21 @@ function off(type: 'captureStatusChange', callback?: Callback<boolean>): void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.off('captureStatusChange');
+
+let callback: Callback<boolean> = (captureStatus: boolean) => {
+  console.info('Listening capture status: ' + captureStatus);
+};
+// 关闭传入的callback监听
+display.off('captureStatusChange', callback);
+```
+
 
 ## off('foldDisplayModeChange')
 
@@ -204,6 +272,21 @@ function off(type: 'foldDisplayModeChange', callback?: Callback<FoldDisplayMode>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
+
+**示例**
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+// 如果通过on注册多个callback，同时关闭所有callback监听
+display.off('foldDisplayModeChange');
+
+let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+  console.info(`unregistering FoldDisplayMode changes callback. Data: ${data}`);
+};
+// 关闭传入的callback监听
+display.off('foldDisplayModeChange', callback);
+```
 
 
 ## off('brightnessInfoChange')
@@ -234,3 +317,16 @@ function off(type: 'brightnessInfoChange', callback?: BrightnessCallback<number,
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 | [1400004](../errorcode-display.md#1400004-参数异常) | Parameter error. Possible cause: 1. Invalid parameter range. |
+
+**示例**
+
+```TypeScript
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.off('brightnessInfoChange', callback);
+} catch (error) {
+  console.error(`Failed to unregister brightnessInfoChange listener. Code: ${error.code}, message: ${error.message}`);
+}
+```

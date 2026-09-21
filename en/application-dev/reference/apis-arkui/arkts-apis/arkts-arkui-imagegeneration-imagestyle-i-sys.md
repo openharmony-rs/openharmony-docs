@@ -1,5 +1,9 @@
 # ImageStyle (System API)
 
+```TypeScript
+interface ImageStyle
+```
+
 Style types supported by AI image generation models, like Graffiti, Watercolor.
 
 @interface ImageStyle

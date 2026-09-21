@@ -1,5 +1,9 @@
 # ContactAttributes
 
+```TypeScript
+class ContactAttributes
+```
+
 联系人属性列表，一般作为入参用来标识希望查询的联系人属性。当传入为null时，默认查询全部属性。
 
 **起始版本：** 7

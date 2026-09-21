@@ -1,5 +1,9 @@
 # RingtoneInfo (System API)
 
+```TypeScript
+export interface RingtoneInfo
+```
+
 Describes the custom ringtone information.
 
 **Since:** 21

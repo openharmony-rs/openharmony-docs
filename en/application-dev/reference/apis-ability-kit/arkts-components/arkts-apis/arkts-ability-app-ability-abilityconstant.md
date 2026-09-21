@@ -36,14 +36,14 @@ import { AbilityConstant } from '@kit.AbilityKit';
 | [OnSaveResult](arkts-ability-abilityconstant-onsaveresult-e.md) | Enumerates the result types for the operation of saving application data. You can use it in [onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate) of the UIAbility to complete [UIAbility backup and restore](../../../application-models/ability-recover-guideline.md). |
 | [PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md) | Enumerates the actions triggered when an application is closed by the user. You can use it in [onPrepareTermination](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onpreparetermination) or [onPrepareTerminationAsync](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onprepareterminationasync) of [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md). |
 | [StateType](arkts-ability-abilityconstant-statetype-e.md) | Enumerates the scenarios for saving application data. You can use it in [onSaveState()](arkts-ability-app-ability-uiability-uiability-c.md#onsavestate) of the UIAbility to complete [UIAbility backup and restore](../../../application-models/ability-recover-guideline.md). |
-| [WindowMode](arkts-ability-abilityconstant-windowmode-e.md) | Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](arkts-ability-uiabilitycontext-c.md#startability). |
+| [WindowMode](arkts-ability-abilityconstant-windowmode-e.md) | Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](arkts-ability-uiabilitycontext-c.md#startability-2). |
 
 <!--Del-->
 ### Enums(System API)
 
 | Name | Description |
 | --- | --- |
-| [WindowMode](arkts-ability-abilityconstant-windowmode-e-sys.md) | Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](arkts-ability-uiabilitycontext-c.md#startability). |
+| [WindowMode](arkts-ability-abilityconstant-windowmode-e-sys.md) | Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](arkts-ability-uiabilitycontext-c.md#startability-2). |
 <!--DelEnd-->
 
 ### Constants

@@ -15,7 +15,7 @@ function onCarAwareness(capability: Capability, callback: Callback<CarAwarenessI
 
 开启汽车感知，订阅汽车感知结果。如果不支持该功能，则不会回调，支持的能力可以通过getAllCapacityList方法获取。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

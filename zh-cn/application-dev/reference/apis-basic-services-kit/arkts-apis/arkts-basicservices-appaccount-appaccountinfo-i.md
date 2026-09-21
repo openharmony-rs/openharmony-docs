@@ -1,5 +1,9 @@
 # AppAccountInfo
 
+```TypeScript
+interface AppAccountInfo
+```
+
 表示应用账号信息。
 
 **起始版本：** 7

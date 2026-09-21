@@ -1,5 +1,9 @@
 # SwiperItemInfo
 
+```TypeScript
+export interface SwiperItemInfo
+```
+
 Provides information about **Swiper** child components.
 
 **Since:** 22

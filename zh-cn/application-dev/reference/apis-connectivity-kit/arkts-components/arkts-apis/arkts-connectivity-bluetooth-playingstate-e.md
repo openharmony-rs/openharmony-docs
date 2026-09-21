@@ -1,5 +1,9 @@
 # PlayingState
 
+```TypeScript
+enum PlayingState
+```
+
 枚举，蓝牙A2DP 播放状态。
 
 从API version 8开始支持，从API version 9开始废弃。

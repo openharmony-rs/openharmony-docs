@@ -30,21 +30,3 @@ function getTouchModeSync(): string
 | string | 表示当前操作模式。<br>- singleTouchMode：表示单击操作模式。<br>- doubleTouchMode：表示双击操作模式。<br>- none：表示未开启触摸浏览功能。 |
 
 **示例**
-
-```TypeScript
-import { accessibility } from '@kit.AccessibilityKit';
-
-@Entry
-@Component
-struct Index {
-  aboutToAppear(): void {
-    let touchMode: string = accessibility.getTouchModeSync();
-    console.info(`current touch mode: ${JSON.stringify(touchMode)}`);
-  }
-
-  build() {
-    Column() {
-    }
-  }
-}
-```

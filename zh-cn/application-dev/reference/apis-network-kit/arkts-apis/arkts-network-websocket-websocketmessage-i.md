@@ -1,5 +1,9 @@
 # WebSocketMessage
 
+```TypeScript
+export interface WebSocketMessage
+```
+
 从指定客户端接收到的消息，包括客户端的信息和数据。
 
 **起始版本：** 19

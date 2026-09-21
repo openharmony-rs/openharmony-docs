@@ -1,5 +1,9 @@
 # SysVpnType（系统接口）
 
+```TypeScript
+export enum SysVpnType
+```
+
 定义VPN网络的类型。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # ChangeInfo
 
+```TypeScript
+interface ChangeInfo
+```
+
 记录端云同步过程详情。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # OobData (System API)
 
+```TypeScript
+interface OobData
+```
+
 Out Of Band data used in Bluetooth device pairing.
 
 **Since:** 23

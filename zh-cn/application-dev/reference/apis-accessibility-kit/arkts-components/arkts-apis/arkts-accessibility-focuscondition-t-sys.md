@@ -1,8 +1,7 @@
 # FocusCondition（系统接口）
 
 ```TypeScript
-export type FocusCondition = 'forward' | 'backward' |
-'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
+export type FocusCondition = 'forward' | 'backward''findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
 ```
 
 表示查询可聚焦节点方式。

@@ -1,5 +1,9 @@
 # FoldDisplayMode
 
+```TypeScript
+enum FoldDisplayMode
+```
+
 可折叠设备的显示模式枚举。
 
 > **说明：** 

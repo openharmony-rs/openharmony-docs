@@ -1,5 +1,9 @@
 # PartnerAgentExtensionAbility
 
+```TypeScript
+export default declare class PartnerAgentExtensionAbility extends ExtensionAbility
+```
+
 Class for the PartnerAgentExtensionAbility. Applications can use this ability to discover devices.
 
 **Inheritance/Implementation:** PartnerAgentExtensionAbility extends [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md)

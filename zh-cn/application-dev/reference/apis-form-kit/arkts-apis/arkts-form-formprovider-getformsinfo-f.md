@@ -39,23 +39,6 @@ function getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback<A
 **示例**
 
 ```TypeScript
-import { formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  formProvider.getFormsInfo((error, data) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
-      return;
-    }
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -76,25 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formInfo, formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const filter: formInfo.FormInfoFilter = {
-  // 获取指定module的卡片信息
-  moduleName: 'entry'
-};
-try {
-  formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="getformsinfo-1"></a>
 
 ## getFormsInfo
 
@@ -127,8 +93,25 @@ function getFormsInfo(callback: AsyncCallback<Array<formInfo.FormInfo>>): void
 
 **示例**
 
-参见 getFormsInfo
+```TypeScript
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  formProvider.getFormsInfo((error, data) => {
+    if (error) {
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+
+<a id="getformsinfo-2"></a>
 
 ## getFormsInfo
 
@@ -167,4 +150,21 @@ function getFormsInfo(filter?: formInfo.FormInfoFilter): Promise<Array<formInfo.
 
 **示例**
 
-参见 getFormsInfo
+```TypeScript
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  // 获取指定module的卡片信息
+  moduleName: 'entry'
+};
+try {
+  formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

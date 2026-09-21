@@ -1,5 +1,9 @@
 # ObserverOptions
 
+```TypeScript
+export interface ObserverOptions
+```
+
 Describes the observer options.
 
 **Since:** 12

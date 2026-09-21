@@ -1,5 +1,9 @@
 # FormCustomConfig (System API)
 
+```TypeScript
+interface FormCustomConfig
+```
+
 FormCustomConfig
 
 @typedef FormCustomConfig

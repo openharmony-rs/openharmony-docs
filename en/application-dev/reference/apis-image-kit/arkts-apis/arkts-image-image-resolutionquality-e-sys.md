@@ -1,5 +1,9 @@
 # ResolutionQuality (System API)
 
+```TypeScript
+enum ResolutionQuality
+```
+
 Enumerates the image quality levels.
 
 **Since:** 12

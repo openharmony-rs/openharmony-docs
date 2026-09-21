@@ -1,5 +1,9 @@
 # HuksResult
 
+```TypeScript
+export interface HuksResult
+```
+
 Represents the result returned.
 
 > **NOTE:** 

@@ -1,5 +1,9 @@
 # AnimationStopMode
 
+```TypeScript
+export enum AnimationStopMode
+```
+
 Enumerates the stop modes of an animation.
 
 **Since:** 24

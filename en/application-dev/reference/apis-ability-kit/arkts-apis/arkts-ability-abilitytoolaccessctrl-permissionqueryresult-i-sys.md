@@ -1,5 +1,9 @@
 # PermissionQueryResult (System API)
 
+```TypeScript
+interface PermissionQueryResult
+```
+
 Permission query result.
 
 **Since:** 26.0.0
@@ -25,6 +29,8 @@ Whether a dialog is required.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -41,6 +47,8 @@ Permission result list.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -56,6 +64,8 @@ Ticket information.
 **Type:** [TicketInfo](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

@@ -18,7 +18,7 @@ Installs specified applications. This API uses an asynchronous callback to retur
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md#install-2)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -52,56 +52,6 @@ Installs specified applications. This API uses an asynchronous callback to retur
 ```TypeScript
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Install the application for the current user.
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
-
-bundleManager.install(wantTemp, hapFilePaths).then(() => {
-  console.info('Succeeded in installing bundles.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to install bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// Install the application for all users.
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
-const params: Record<string, string> = {
-  'ohos.bms.param.enterpriseForAllUser': 'true'
-};
-let installParam: bundleManager.InstallParam = {
-  // Replace with actual values.
-  userId: 100,
-  installFlag: 0,
-  parameters: params
-};
-bundleManager.install(wantTemp, hapFilePaths, installParam).then(() => {
-  console.info('Succeeded in installing bundles.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to install bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -120,31 +70,8 @@ bundleManager.install(wantTemp, hapFilePaths, (err) => {
 });
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
-let installParam: bundleManager.InstallParam = {
-  userId: 100,
-  installFlag: 1,
-};
-
-bundleManager.install(wantTemp, hapFilePaths, installParam, (err) => {
-  if (err) {
-    console.error(`Failed to install bundles. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in installing bundles');
-});
-```
-
+<a id="install-1"></a>
 
 ## install
 
@@ -158,7 +85,7 @@ Installs applications with specified parameters. This API uses an asynchronous c
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md#install-2)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -190,4 +117,27 @@ Installs applications with specified parameters. This API uses an asynchronous c
 
 **Examples**
 
-See [install](#install)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
+let installParam: bundleManager.InstallParam = {
+  userId: 100,
+  installFlag: 1,
+};
+
+bundleManager.install(wantTemp, hapFilePaths, installParam, (err) => {
+  if (err) {
+    console.error(`Failed to install bundles. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in installing bundles');
+});
+```

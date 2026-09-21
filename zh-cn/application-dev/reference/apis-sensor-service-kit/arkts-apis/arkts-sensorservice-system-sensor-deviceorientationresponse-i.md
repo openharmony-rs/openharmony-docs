@@ -1,5 +1,9 @@
 # DeviceOrientationResponse
 
+```TypeScript
+export interface DeviceOrientationResponse
+```
+
 设备方向传感器数据变化后的回调函数的响应对象，包含设备方向的三个旋转角度数据。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。

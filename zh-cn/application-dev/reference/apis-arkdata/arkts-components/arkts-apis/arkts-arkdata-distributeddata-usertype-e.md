@@ -1,5 +1,9 @@
 # UserType
 
+```TypeScript
+enum UserType
+```
+
 用户类型枚举。
 
 **起始版本：** 7

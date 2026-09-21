@@ -1,5 +1,9 @@
 # AtomicServiceBar
 
+```TypeScript
+export interface AtomicServiceBar
+```
+
 interface AtomicServiceBar
 
 **Since:** 11
@@ -37,6 +41,32 @@ Get size and position of the bar.
 | --- | --- |
 | [Frame](arkts-arkui-graphics-frame-i.md) | The size and position of bar in vp relative to window. |
 
+**Examples**
+
+```TypeScript
+import { AtomicServiceBar, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('getBarRect')
+      .onClick(() => {
+        let uiContext: UIContext = this.getUIContext();
+        let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+        if (atomicServiceBar != undefined) {
+          let rect = atomicServiceBar.getBarRect();
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully. x:'
+            + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
+        } else {
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+        }
+      })
+  }
+}
+```
+
 ## onBarRectChange
 
 ```TypeScript
@@ -58,6 +88,8 @@ When size and position of the bar changed, callback will be called.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[Frame](arkts-arkui-graphics-frame-i.md)&gt; | Yes | Callback that param contains the Frame. The parameters of the callback function cannot be undefined or null. |
+
+**Examples**
 
 ## setBackgroundColor
 
@@ -81,6 +113,35 @@ Set the background color of the bar.
 | --- | --- | --- | --- |
 | color | [Nullable](arkts-arkui-nullable-t.md)&lt;[Color](arkts-arkui-color-e.md) &#124; number &#124; string&gt; | Yes | the color to set, undefined indicates using default. |
 
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
+        atomicServiceBar.setBackgroundColor(0x88888888);
+      } else {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```
+
 ## setIconColor
 
 ```TypeScript
@@ -102,6 +163,35 @@ Set the color of the icon on the bar.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | color | [Nullable](arkts-arkui-nullable-t.md)&lt;[Color](arkts-arkui-color-e.md) &#124; number &#124; string&gt; | Yes | the color to set to icon, undefined indicates using default. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
+        atomicServiceBar.setIconColor(0x12345678);
+      } else {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```
 
 ## setTitleContent
 
@@ -125,6 +215,35 @@ Set the title of the bar.
 | --- | --- | --- | --- |
 | content | string | Yes | the content of the bar. |
 
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
+        atomicServiceBar.setTitleContent('text2');
+      } else {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```
+
 ## setTitleFontStyle
 
 ```TypeScript
@@ -147,6 +266,35 @@ Set the font style of the bar's title.
 | --- | --- | --- | --- |
 | font | [FontStyle](arkts-arkui-fontstyle-e.md) | Yes | the font style of the bar's title. |
 
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
+        atomicServiceBar.setTitleFontStyle(FontStyle.Normal);
+      } else {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```
+
 ## setVisible
 
 ```TypeScript
@@ -168,3 +316,32 @@ Set the visibility of the bar, except the icon.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | visible | boolean | Yes | whether this bar is visible. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', 'Ability onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err) {
+        hilog.info(0x0000, 'testTag', 'LoadContent failed.');
+        return;
+      }
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+      if (atomicServiceBar != undefined) {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
+        atomicServiceBar.setVisible(false);
+      } else {
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+      }
+    });
+  }
+}
+```

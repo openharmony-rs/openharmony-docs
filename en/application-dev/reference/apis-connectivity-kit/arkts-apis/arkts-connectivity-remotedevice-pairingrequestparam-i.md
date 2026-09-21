@@ -1,5 +1,9 @@
 # PairingRequestParam
 
+```TypeScript
+interface PairingRequestParam
+```
+
 Describes pairing request parameters.
 
 **Since:** 26.0.0

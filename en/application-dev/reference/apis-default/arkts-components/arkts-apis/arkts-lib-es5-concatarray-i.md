@@ -1,5 +1,9 @@
 # ConcatArray
 
+```TypeScript
+interface ConcatArray<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

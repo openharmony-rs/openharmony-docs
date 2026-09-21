@@ -1,5 +1,9 @@
 # DisconnectReason
 
+```TypeScript
+enum DisconnectReason
+```
+
 Enumerates the disconnection reasons.
 
 **Since:** 18

@@ -18,7 +18,7 @@ function resetFactory(admin: Want, callback: AsyncCallback<void>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)(admin: Want, operation: Operation, addition?: string)
+**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)(admin: Want, operation: Operation, addition?: string)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -66,23 +66,8 @@ deviceControl.resetFactory(wantTemp, (err) => {
 })
 ```
 
-```TypeScript
-import { deviceControl } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-deviceControl.resetFactory(wantTemp).then(() => {
-}).catch((err: BusinessError) => {
-  console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
-})
-```
-
+<a id="resetfactory-1"></a>
 
 ## resetFactory
 
@@ -96,7 +81,7 @@ function resetFactory(admin: Want): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md)(admin: Want, operation: Operation, addition?: string)
+**替代接口：** [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1)(admin: Want, operation: Operation, addition?: string)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -130,4 +115,19 @@ function resetFactory(admin: Want): Promise<void>
 
 **示例**
 
-参见 [resetFactory](#resetfactory)
+```TypeScript
+import { deviceControl } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+deviceControl.resetFactory(wantTemp).then(() => {
+}).catch((err: BusinessError) => {
+  console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
+})
+```

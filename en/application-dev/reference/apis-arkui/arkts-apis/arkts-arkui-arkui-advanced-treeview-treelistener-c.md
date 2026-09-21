@@ -1,5 +1,9 @@
 # TreeListener
 
+```TypeScript
+export declare class TreeListener
+```
+
 Listener of the tree view component. You can bind it to the **TreeView** component and use it to listen for changes of tree nodes. One listener can be bound to only one **TreeView** component.
 
 **Since:** 10

@@ -20,9 +20,7 @@ This API is used to query the number of active notifications published by the cu
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
 
 **Parameters:**
 
@@ -55,16 +53,8 @@ let getActiveNotificationCountCallback = (err: BusinessError, data: number): voi
 notificationManager.getActiveNotificationCount(getActiveNotificationCountCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getActiveNotificationCount().then((data: number) => {
-  console.info(`Succeeded in getting active notification count, data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get active notification count. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="getactivenotificationcount-1"></a>
 
 ## getActiveNotificationCount
 
@@ -80,9 +70,7 @@ This API is used to query the number of active notifications published by the cu
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:**
-
-[setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-1) sets the notification badge number.
 
 **Return value:**
 
@@ -100,4 +88,12 @@ This API is used to query the number of active notifications published by the cu
 
 **Examples**
 
-See [getActiveNotificationCount](#getactivenotificationcount)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getActiveNotificationCount().then((data: number) => {
+  console.info(`Succeeded in getting active notification count, data is ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get active notification count. Code is ${err.code}, message is ${err.message}`);
+});
+```

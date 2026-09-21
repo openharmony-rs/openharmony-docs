@@ -1,8 +1,12 @@
 # InteractionUI（系统接口）
 
+```TypeScript
+interface InteractionUI
+```
+
 定义当前意图执行完成后需要展示的交互界面的信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,7 +28,7 @@ interactionUIType: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,5 +1,9 @@
 # AccessStatus
 
+```TypeScript
+export enum AccessStatus
+```
+
 表示锁屏下敏感数据访问权限申请状态的枚举。
 
 **起始版本：** 12

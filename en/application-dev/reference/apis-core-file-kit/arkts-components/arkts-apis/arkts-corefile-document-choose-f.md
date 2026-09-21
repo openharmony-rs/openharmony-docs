@@ -32,6 +32,8 @@ Chooses files of the specified types. This API uses a promise to return the resu
 | Promise&lt;string&gt; | Promise used to return the result. An error code is returned. |
 
 
+<a id="choose-1"></a>
+
 ## choose
 
 ```TypeScript
@@ -52,6 +54,8 @@ Chooses a file. This API uses an asynchronous callback to return the result.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. An error code is returned. |
 
+
+<a id="choose-2"></a>
 
 ## choose
 

@@ -1,5 +1,9 @@
 # FillFailureResult
 
+```TypeScript
+export interface FillFailureResult
+```
+
 自动填充失败结果。
 
 **起始版本：** 26.0.0

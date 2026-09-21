@@ -59,6 +59,8 @@ wifiManager.getP2pGroups().then(data => {
 ```
 
 
+<a id="getp2pgroups-1"></a>
+
 ## getP2pGroups
 
 ```TypeScript

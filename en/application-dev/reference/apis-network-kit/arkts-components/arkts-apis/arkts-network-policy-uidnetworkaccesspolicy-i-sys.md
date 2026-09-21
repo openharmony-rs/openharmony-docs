@@ -1,5 +1,9 @@
 # UidNetworkAccessPolicy (System API)
 
+```TypeScript
+export interface UidNetworkAccessPolicy
+```
+
 Defines the network policy for an application with the specified UID.
 
 **Since:** 12

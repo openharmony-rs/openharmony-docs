@@ -1,5 +1,9 @@
 # Axis
 
+```TypeScript
+export declare enum Axis
+```
+
 Enumerates mouse axis types.
 
 **Since:** 9

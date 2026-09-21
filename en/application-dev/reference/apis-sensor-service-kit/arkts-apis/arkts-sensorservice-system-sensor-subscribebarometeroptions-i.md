@@ -1,5 +1,9 @@
 # SubscribeBarometerOptions
 
+```TypeScript
+export interface SubscribeBarometerOptions
+```
+
 Defines the type of data to return for a subscription to data changes of the barometer sensor.
 
 **Since:** 3

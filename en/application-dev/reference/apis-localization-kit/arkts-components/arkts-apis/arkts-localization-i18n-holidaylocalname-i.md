@@ -1,5 +1,9 @@
 # HolidayLocalName
 
+```TypeScript
+export interface HolidayLocalName
+```
+
 Represents the name of a holiday in different languages.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # AsyncLock
 
+```TypeScript
+class AsyncLock
+```
+
 实现异步锁功能的类，允许在锁下执行异步操作。该类使用@Sendable装饰器装饰。
 
 **起始版本：** 12
@@ -60,6 +64,8 @@ lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
 
+<a id="lockasync-1"></a>
+
 ## lockAsync
 
 ```TypeScript
@@ -92,6 +98,8 @@ lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
+
+<a id="lockasync-2"></a>
 
 ## lockAsync
 

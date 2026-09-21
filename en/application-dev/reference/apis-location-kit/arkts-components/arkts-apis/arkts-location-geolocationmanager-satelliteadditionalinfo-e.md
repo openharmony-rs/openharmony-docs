@@ -1,5 +1,9 @@
 # SatelliteAdditionalInfo
 
+```TypeScript
+export enum SatelliteAdditionalInfo
+```
+
 Enum for satellite additional information.
 
 **Since:** 12

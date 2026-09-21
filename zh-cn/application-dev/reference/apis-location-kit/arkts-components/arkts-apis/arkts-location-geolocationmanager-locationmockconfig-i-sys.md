@@ -1,5 +1,9 @@
 # LocationMockConfig（系统接口）
 
+```TypeScript
+export interface LocationMockConfig
+```
+
 位置模拟功能的配置参数，包含了模拟位置上报的时间间隔和模拟位置数组。
 
 **起始版本：** 9

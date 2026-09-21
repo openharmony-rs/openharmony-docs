@@ -1,5 +1,9 @@
 # ImageEmbedding
 
+```TypeScript
+interface ImageEmbedding
+```
+
 描述多模态嵌入模型的图像嵌入函数。
 
 下列接口都需先使用[intelligence.getImageEmbeddingModel](arkts-arkdata-intelligence-getimageembeddingmodel-f.md)获取到ImageEmbedding实例，再通过此实例调用对应接口。

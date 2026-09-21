@@ -1,5 +1,9 @@
 # BlinkingScenario（系统接口）
 
+```TypeScript
+export enum BlinkingScenario
+```
+
 表示闪烁场景的枚举。
 
 **起始版本：** 26.0.0

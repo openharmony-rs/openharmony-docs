@@ -1,5 +1,9 @@
 # MessageOption
 
+```TypeScript
+class MessageOption
+```
+
 Defines the options used to construct the **MessageOption** object.
 
 **Since:** 7
@@ -39,21 +43,13 @@ A constructor used to create a **MessageOption** object.
 import { rpc } from '@kit.IPCKit';
 
 class TestRemoteObject extends rpc.MessageOption {
-  constructor(async: boolean) {
-    super(async);
-  }
-}
-```
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-
-class TestRemoteObject extends rpc.MessageOption {
   constructor(syncFlags?: number,waitTime?: number) {
     super(syncFlags,waitTime);
   }
 }
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -83,16 +79,6 @@ import { rpc } from '@kit.IPCKit';
 class TestRemoteObject extends rpc.MessageOption {
   constructor(async: boolean) {
     super(async);
-  }
-}
-```
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-
-class TestRemoteObject extends rpc.MessageOption {
-  constructor(syncFlags?: number,waitTime?: number) {
-    super(syncFlags,waitTime);
   }
 }
 ```

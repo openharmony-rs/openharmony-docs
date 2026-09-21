@@ -1,5 +1,9 @@
 # Reference (System API)
 
+```TypeScript
+interface Reference
+```
+
 Indicates the reference between tables.
 
 **Since:** 11

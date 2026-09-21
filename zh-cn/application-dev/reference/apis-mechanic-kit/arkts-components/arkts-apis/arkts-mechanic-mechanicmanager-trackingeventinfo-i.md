@@ -1,5 +1,9 @@
 # TrackingEventInfo
 
+```TypeScript
+export interface TrackingEventInfo
+```
+
 Tracking event callback info.
 
 @typedef TrackingEventInfo

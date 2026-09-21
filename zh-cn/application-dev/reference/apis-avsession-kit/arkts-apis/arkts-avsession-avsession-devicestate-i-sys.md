@@ -1,5 +1,9 @@
 # DeviceState（系统接口）
 
+```TypeScript
+interface DeviceState
+```
+
 投播设备的连接状态。
 
 **起始版本：** 20

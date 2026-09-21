@@ -1,5 +1,9 @@
 # BackupExtensionAbility
 
+```TypeScript
+declare class BackupExtensionAbility
+```
+
 备份恢复扩展能力。应用可通过该类实现自定义备份、恢复、进度上报和安全退出逻辑。
 
 **起始版本：** 10
@@ -101,10 +105,46 @@ class BackupExt extends BackupExtensionAbility {
 }
 ```
 
-```TypeScript
 > 说明：
 > 
 > 异步处理业务场景中，推荐使用示例如下。
+
+```TypeScript
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface ErrorInfo {
+  type: string,
+  errorCode: number,
+  errorInfo: string
+}
+class BackupExt extends BackupExtensionAbility {
+  // 异步实现
+  async onBackupEx(backupInfo: string): Promise<string> {
+    try {
+      if (backupInfo == '') {
+        // 当backupInfo为空时，应用根据业务自行做处理。
+        console.info('backupInfo is empty');
+      }
+      console.info(`onBackupEx ok`);
+      let errorInfo: ErrorInfo = {
+        type: 'ErrorInfo',
+        errorCode: 0,
+        errorInfo: 'app customized error info'
+      }
+      return JSON.stringify(errorInfo);
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.error(`BackupExt error. Code:${error.code}, message:${error.message}`);
+      let errorInfo: ErrorInfo = {
+        type: 'ErrorInfo',
+        errorCode: error.code,
+        errorInfo: error.message
+      }
+      return JSON.stringify(errorInfo);
+    }
+  }
+}
 ```
 
 ## onProcess
@@ -365,10 +405,46 @@ class BackupExt extends BackupExtensionAbility {
 }
 ```
 
-```TypeScript
 > 说明：
 > 
 > 同步处理业务场景中，推荐使用示例如下。
+
+```TypeScript
+import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+interface ErrorInfo {
+  type: string,
+  errorCode: number,
+  errorInfo: string
+}
+
+class BackupExt extends BackupExtensionAbility {
+  // 同步实现
+  onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): string {
+    try {
+      if (restoreInfo == '') {
+        // 当restoreInfo为空时，应用根据业务自行做处理。
+        console.info('restoreInfo is empty');
+      }
+      console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
+      let errorInfo: ErrorInfo = {
+        type: 'ErrorInfo',
+        errorCode: 0,
+        errorInfo: 'app customized error info'
+      }
+      return JSON.stringify(errorInfo);
+    } catch (err) {
+      let error: BusinessError = err as BusinessError;
+      console.error(`onRestoreEx error. Code:${error.code}, message:${error.message}`);
+      let errorInfo: ErrorInfo = {
+        type: 'ErrorInfo',
+        errorCode: error.code,
+        errorInfo: error.message
+      }
+      return JSON.stringify(errorInfo);
+    }
+  }
+}
 ```
 
 ## context

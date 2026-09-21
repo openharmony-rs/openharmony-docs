@@ -1,5 +1,9 @@
 # CollaborateResult
 
+```TypeScript
+export enum CollaborateResult
+```
+
 Enumerates the collaboration request results. You can use it in multi-device collaboration scenarios to specify whether the target application accepts the collaboration request from the caller application. You can use it in [onCollaborate()](arkts-ability-app-ability-uiability-uiability-c.md#oncollaborate) of the UIAbility.
 
 **Since:** 18

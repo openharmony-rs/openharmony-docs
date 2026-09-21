@@ -1,5 +1,9 @@
 # DiscoveryEventInfo
 
+```TypeScript
+export interface DiscoveryEventInfo
+```
+
 监听到的MDNS服务事件信息。
 
 **起始版本：** 11

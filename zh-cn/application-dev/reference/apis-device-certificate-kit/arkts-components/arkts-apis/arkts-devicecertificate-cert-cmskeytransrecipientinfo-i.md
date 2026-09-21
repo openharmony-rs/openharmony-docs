@@ -1,5 +1,9 @@
 # CmsKeyTransRecipientInfo
 
+```TypeScript
+interface CmsKeyTransRecipientInfo
+```
+
 CMS封装数据的KeyTrans接收方信息。
 
 **起始版本：** 22

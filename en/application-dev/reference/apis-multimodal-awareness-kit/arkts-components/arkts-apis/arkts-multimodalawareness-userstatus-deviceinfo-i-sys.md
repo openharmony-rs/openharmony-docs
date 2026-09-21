@@ -1,5 +1,9 @@
 # DeviceInfo (System API)
 
+```TypeScript
+export interface DeviceInfo
+```
+
 Defines device information.
 
 **Since:** 26.0.0

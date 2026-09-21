@@ -1,5 +1,9 @@
 # dom
 
+```TypeScript
+export declare class dom
+```
+
 global dom
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # DecodingOptionsForPicture
 
+```TypeScript
+interface DecodingOptionsForPicture
+```
+
 图像解码设置选项。
 
 **起始版本：** 13

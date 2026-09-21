@@ -1,5 +1,9 @@
 # OutputDeviceChangeRecommendedAction
 
+```TypeScript
+enum OutputDeviceChangeRecommendedAction
+```
+
 表示输出设备变更后推荐操作的枚举。常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放，提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。
 
 **起始版本：** 20

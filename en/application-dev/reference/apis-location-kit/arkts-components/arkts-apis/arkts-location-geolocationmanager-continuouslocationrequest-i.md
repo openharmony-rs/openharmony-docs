@@ -1,5 +1,9 @@
 # ContinuousLocationRequest
 
+```TypeScript
+export interface ContinuousLocationRequest
+```
+
 Configuring parameters in continuous location requests.
 
 **Since:** 12

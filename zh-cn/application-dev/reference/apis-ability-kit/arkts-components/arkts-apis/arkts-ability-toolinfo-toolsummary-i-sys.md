@@ -1,5 +1,9 @@
 # ToolSummary（系统接口）
 
+```TypeScript
+export interface ToolSummary
+```
+
 描述CLI工具的摘要信息。
 
 **起始版本：** 26.0.0

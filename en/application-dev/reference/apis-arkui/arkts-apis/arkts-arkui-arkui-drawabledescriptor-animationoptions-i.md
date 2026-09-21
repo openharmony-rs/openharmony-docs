@@ -1,5 +1,9 @@
 # AnimationOptions
 
+```TypeScript
+declare interface AnimationOptions
+```
+
 Provides the configuration options for animation playback, including the playback duration, number of playback times, and autoplay behavior.
 
 **Since:** 12
@@ -129,3 +133,56 @@ The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the anim
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+```TypeScript
+import { AnimationOptions, AnimatedDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Example {
+  pixelMaps: Array<image.PixelMap> = [];
+  // Configure animation options for an array of four images.
+  options: AnimationOptions = {
+    duration: 2000,
+    iterations: 1,
+    frameDurations: [20, 30, 40, 50],
+    autoPlay: true
+  };
+  @State animated?: DrawableDescriptor = undefined;
+
+  aboutToAppear() {
+    // Replace $r('app.media.png1') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png1')));
+     // Replace $r('app.media.png2') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png2')));
+     // Replace $r('app.media.png3') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png3')));
+     // Replace $r('app.media.png4') with the image resource file you use.
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png4')));
+    this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.animated)
+          .width(100)
+          .height(100)
+      }
+    }
+  }
+
+  private getPixmapFromMedia(resource: Resource) {
+    let unit8Array = this.getUIContext().getHostContext()?.resourceManager?.getMediaContentSync(resource.id);
+    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
+    let pixelMap: image.PixelMap = imageSource.createPixelMapSync({
+      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+    });
+    imageSource.release();
+    return pixelMap;
+  }
+}
+```

@@ -1,5 +1,9 @@
 # WebPMetadata
 
+```TypeScript
+class WebPMetadata
+```
+
 WebP metadata.
 
 **起始版本：** 24

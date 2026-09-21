@@ -1,5 +1,9 @@
 # KeyboardArea
 
+```TypeScript
+export interface KeyboardArea
+```
+
 Represents the keyboard area on the panel.
 
 **Since:** 15

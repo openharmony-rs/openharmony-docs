@@ -1,5 +1,9 @@
 # MifareUltralightTag
 
+```TypeScript
+export interface MifareUltralightTag extends TagSession
+```
+
 MifareUltralightTag 提供对MIFARE Ultralight属性和I/O操作的访问，继承自TagSession。
 
 TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
@@ -111,35 +115,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
-
-function nfcTechDemo() {
-    // 如果没有连接Tag，请先连接
-    if (!mifareUltralight.isTagConnected()) {
-        if (!mifareUltralight.connectTag()) {
-            console.error("mifareUltralight connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let pageIndex = 1; // 将其更改为正确的 index
-        mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
-            if (err) {
-                console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="readmultiplepages-1"></a>
 
 ## readMultiplePages
 
@@ -175,7 +151,35 @@ readMultiplePages(pageIndex: number, callback: AsyncCallback<number[]>): void
 
 **示例**
 
-参见 [readMultiplePages](#readmultiplepages)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareUltralight.isTagConnected()) {
+        if (!mifareUltralight.connectTag()) {
+            console.error("mifareUltralight connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let pageIndex = 1; // 将其更改为正确的 index
+        mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
+            if (err) {
+                console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```
 
 ## writeSinglePage
 
@@ -246,36 +250,7 @@ function nfcTechDemo() {
 }
 ```
 
-```TypeScript
-import { tag } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
-
-function nfcTechDemo() {
-    // 如果没有连接Tag，请先连接
-    if (!mifareUltralight.isTagConnected()) {
-        if (!mifareUltralight.connectTag()) {
-            console.error("mifareUltralight connectTag failed.");
-            return;
-        }
-    }
-
-    try {
-        let pageIndex = 1; // 将其更改为正确的 index
-        let rawData = [0x01, 0x02, 0x03, 0x04];  // 必须是4个字节，将其更改为正确的data
-        mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
-        if (err) {
-                console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
-            } else {
-                console.info("mifareUltralight writeSinglePage AsyncCallback success.");
-            }
-        });
-    } catch (businessError) {
-        console.error(`mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
-    }
-}
-```
+<a id="writesinglepage-1"></a>
 
 ## writeSinglePage
 
@@ -312,4 +287,33 @@ writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback<void>
 
 **示例**
 
-参见 [writeSinglePage](#writesinglepage)
+```TypeScript
+import { tag } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
+
+function nfcTechDemo() {
+    // 如果没有连接Tag，请先连接
+    if (!mifareUltralight.isTagConnected()) {
+        if (!mifareUltralight.connectTag()) {
+            console.error("mifareUltralight connectTag failed.");
+            return;
+        }
+    }
+
+    try {
+        let pageIndex = 1; // 将其更改为正确的 index
+        let rawData = [0x01, 0x02, 0x03, 0x04];  // 必须是4个字节，将其更改为正确的data
+        mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
+        if (err) {
+                console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
+            } else {
+                console.info("mifareUltralight writeSinglePage AsyncCallback success.");
+            }
+        });
+    } catch (businessError) {
+        console.error(`mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
+    }
+}
+```

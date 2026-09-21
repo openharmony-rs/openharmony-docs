@@ -1,5 +1,9 @@
 # ReminderRequestCalendar
 
+```TypeScript
+interface ReminderRequestCalendar extends ReminderRequest
+```
+
 ReminderRequestCalendar extends ReminderRequest
 
 Defines a reminder for a calendar event.

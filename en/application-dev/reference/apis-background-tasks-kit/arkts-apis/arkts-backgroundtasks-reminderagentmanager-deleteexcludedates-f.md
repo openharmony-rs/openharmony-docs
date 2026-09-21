@@ -16,6 +16,8 @@ Deletes all non-reminder dates for a recurring calendar reminder with a specific
 
 **Since:** 12
 
+**Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**

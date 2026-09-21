@@ -1,5 +1,9 @@
 # FragmentMapPropertyKey
 
+```TypeScript
+enum FragmentMapPropertyKey
+```
+
 Enumerates the fragment map information.
 
 **Since:** 13

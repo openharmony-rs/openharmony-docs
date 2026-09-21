@@ -1,5 +1,9 @@
 # AxisValue
 
+```TypeScript
+export declare interface AxisValue
+```
+
 鼠标轴类型和轴的值。
 
 **起始版本：** 9

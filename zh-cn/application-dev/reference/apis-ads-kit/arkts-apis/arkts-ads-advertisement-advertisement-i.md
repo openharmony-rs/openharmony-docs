@@ -1,5 +1,9 @@
 # Advertisement
 
+```TypeScript
+export interface Advertisement
+```
+
 本模块为请求的广告内容。
 
 **起始版本：** 11

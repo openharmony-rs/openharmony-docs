@@ -1,5 +1,9 @@
 # NetUidPolicy（系统接口）
 
+```TypeScript
+export enum NetUidPolicy
+```
+
 应用对应的网络策略。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # SoftShadowConfig
 
+```TypeScript
+export declare abstract class SoftShadowConfig
+```
+
 Abstract base class for soft shadow configuration. It defines the interface for controlling the shadow algorithm type and its parameters.
 
 **Since:** 26.0.0

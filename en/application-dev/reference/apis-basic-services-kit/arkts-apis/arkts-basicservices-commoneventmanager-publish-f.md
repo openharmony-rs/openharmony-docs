@@ -56,31 +56,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Common event information. The following uses an ordered common event as an example.
-let options: commonEventManager.CommonEventPublishData = {
-  code: 0,
-  data: 'initial data',
-  isOrdered: true // The common event is an ordered one.
-};
-
-// Publish a common event.
-try {
-  commonEventManager.publish('event', options, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info(`Succeeded in publishing common event.`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="publish-1"></a>
 
 ## publish
 
@@ -115,4 +92,27 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 **Examples**
 
-See [publish](#publish)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Common event information. The following uses an ordered common event as an example.
+let options: commonEventManager.CommonEventPublishData = {
+  code: 0,
+  data: 'initial data',
+  isOrdered: true // The common event is an ordered one.
+};
+
+// Publish a common event.
+try {
+  commonEventManager.publish('event', options, (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in publishing common event.`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+}
+```

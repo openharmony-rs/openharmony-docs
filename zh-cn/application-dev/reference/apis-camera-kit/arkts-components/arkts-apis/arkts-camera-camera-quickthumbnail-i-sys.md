@@ -1,5 +1,9 @@
 # QuickThumbnail（系统接口）
 
+```TypeScript
+interface QuickThumbnail
+```
+
 Quick thumbnail object
 
 **起始版本：** 19

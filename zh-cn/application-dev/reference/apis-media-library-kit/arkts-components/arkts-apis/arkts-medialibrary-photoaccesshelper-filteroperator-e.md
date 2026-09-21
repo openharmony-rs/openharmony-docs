@@ -1,5 +1,9 @@
 # FilterOperator
 
+```TypeScript
+export enum FilterOperator
+```
+
 枚举，支持进行过滤的操作符。
 
 **起始版本：** 19

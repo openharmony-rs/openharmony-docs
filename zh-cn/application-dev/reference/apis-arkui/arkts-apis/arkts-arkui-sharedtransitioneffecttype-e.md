@@ -1,5 +1,9 @@
 # SharedTransitionEffectType
 
+```TypeScript
+declare enum SharedTransitionEffectType
+```
+
 动画类型。
 
 **起始版本：** 7

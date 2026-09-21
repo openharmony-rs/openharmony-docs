@@ -1,5 +1,9 @@
 # DomainFilterRule
 
+```TypeScript
+interface DomainFilterRule
+```
+
 Represents a domain name filtering rule.
 
 In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.

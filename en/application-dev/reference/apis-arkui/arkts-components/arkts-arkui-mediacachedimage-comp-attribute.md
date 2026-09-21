@@ -1,5 +1,9 @@
 # MediaCachedImage properties/events
 
+```TypeScript
+declare class MediaCachedImageAttribute extends ImageAttribute
+```
+
 Attributes of MediaCachedImage inherited from ImageAttribute.
 
 @extends ImageAttribute

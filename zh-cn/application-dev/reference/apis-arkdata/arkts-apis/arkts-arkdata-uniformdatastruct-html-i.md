@@ -1,5 +1,9 @@
 # HTML
 
+```TypeScript
+interface HTML
+```
+
 HTML类型数据，用于描述超文本标记语言数据。创建HTML对象后，可在拖拽、复制粘贴等场景中传递富文本内容，支持跨应用的HTML格式数据交互，并可通过uriAuthorizationPolicies控制URI授权策略。
 
 **起始版本：** 12

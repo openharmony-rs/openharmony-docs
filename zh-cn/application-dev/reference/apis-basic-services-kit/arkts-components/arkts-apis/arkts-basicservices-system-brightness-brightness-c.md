@@ -1,5 +1,9 @@
 # Brightness
 
+```TypeScript
+export default class Brightness
+```
+
 提供屏幕亮度、模式的查询、调节接口，以及屏幕常亮的设置接口。
 
 **起始版本：** 3
@@ -26,6 +30,8 @@ static getMode(options?: GetBrightnessModeOptions): void
 
 **废弃版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -36,12 +42,27 @@ static getMode(options?: GetBrightnessModeOptions): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+brightness.getMode({
+    success: (data: BrightnessModeResponse) => {
+      console.info('success get mode:' + data.mode);
+    },
+    fail: (data: string, code: number) => {
+      console.error(`Failed to get brightness mode. Code: ${code}, message: ${data}`);
+    }
+});
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="getMode"></input>
+    <text class="title">getMode: {{ mode }}</text>
+</div>
 ```
 
 ```TypeScript
@@ -98,6 +119,8 @@ static getValue(options?: GetBrightnessOptions): void
 
 **废弃版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -108,12 +131,27 @@ static getValue(options?: GetBrightnessOptions): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+brightness.getValue({
+    success: (data: BrightnessResponse) => {
+      console.info('success get brightness value:' + data.value);
+    },
+    fail: (data: string, code: number) => {
+      console.error(`Failed to get brightness value. Code: ${code}, message: ${data}`);
+    }
+});
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Get Value" style="width: 240px; height: 50px; margin: 5px;" onclick="getValue"></input>
+    <text class="title">getValue: {{ value }}</text>
+</div>
 ```
 
 ```TypeScript
@@ -178,6 +216,8 @@ static setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **替代接口：** setWindowKeepScreenOn
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -188,12 +228,28 @@ static setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+brightness.setKeepScreenOn({
+    keepScreenOn: true,
+    success: () => {
+      console.info('handling set keep screen on success.');
+    },
+    fail: (data: string, code: number) => {
+      console.error(`Failed to set keep screen on. Code: ${code}, message: ${data}`);
+    }
+});
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="SetKeepScreenOn" style="width: 240px; height: 50px; margin: 5px;" onclick="setKeepScreenOn"></input>
+    <text class="title">setKeepScreenOn: {{ keepScreenOn }}</text>
+</div>
 ```
 
 ```TypeScript
@@ -250,6 +306,8 @@ static setMode(options?: SetBrightnessModeOptions): void
 
 **废弃版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -260,12 +318,28 @@ static setMode(options?: SetBrightnessModeOptions): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+brightness.setMode({
+    mode: 1,
+    success: () => {
+      console.info('handling set mode success.');
+    },
+    fail: (data: string, code: number) => {
+      console.error(`Failed to set brightness mode. Code: ${code}, message: ${data}`);
+    }
+});
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Mode" style="width: 240px; height: 50px; margin: 5px;" onclick="setMode"></input>
+    <text class="title">setMode: {{ mode }}</text>
+</div>
 ```
 
 ```TypeScript
@@ -324,6 +398,8 @@ static setValue(options?: SetBrightnessOptions): void
 
 **替代接口：** [setValue](arkts-basicservices-brightness-setvalue-f-sys.md)
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -334,12 +410,28 @@ static setValue(options?: SetBrightnessOptions): void
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+brightness.setValue({
+    value: 100,
+    success: () => {
+      console.info('handling set brightness success.');
+    },
+    fail: (data: string, code: number) => {
+      console.error(`Failed to set brightness value. Code: ${code}, message: ${data}`);
+    }
+});
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <input type="button" value="Set Value" style="width: 240px; height: 50px; margin: 5px;" onclick="setValue"></input>
+    <text class="title">setValue: {{ value }}</text>
+</div>
 ```
 
 ```TypeScript

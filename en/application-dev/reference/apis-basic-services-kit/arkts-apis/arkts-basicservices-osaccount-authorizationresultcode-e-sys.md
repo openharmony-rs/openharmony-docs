@@ -1,5 +1,9 @@
 # AuthorizationResultCode (System API)
 
+```TypeScript
+enum AuthorizationResultCode
+```
+
 Enumerates authorization result codes.
 
 **Since:** 24

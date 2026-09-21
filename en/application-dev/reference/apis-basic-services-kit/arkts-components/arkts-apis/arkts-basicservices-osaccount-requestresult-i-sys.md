@@ -1,5 +1,9 @@
 # RequestResult (System API)
 
+```TypeScript
+interface RequestResult
+```
+
 Defines the request result information.
 
 **Since:** 8

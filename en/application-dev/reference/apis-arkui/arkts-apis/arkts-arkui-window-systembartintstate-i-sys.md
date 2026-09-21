@@ -1,5 +1,9 @@
 # SystemBarTintState (System API)
 
+```TypeScript
+interface SystemBarTintState
+```
+
 Describes the callback for the current system bar.
 
 **Since:** 8

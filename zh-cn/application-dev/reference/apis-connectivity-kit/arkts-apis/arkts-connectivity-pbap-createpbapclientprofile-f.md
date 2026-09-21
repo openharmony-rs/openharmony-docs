@@ -14,7 +14,7 @@ function createPbapClientProfile(): PbapClientProfile
 
 创建PBAP客户端配置文件的实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +24,7 @@ function createPbapClientProfile(): PbapClientProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| PbapClientProfile | 返回pbap客户端配置文件的实例。 |
+| [PbapClientProfile](arkts-connectivity-pbap-pbapclientprofile-i-sys.md) | 返回pbap客户端配置文件的实例。 |
 
 **错误码：**
 

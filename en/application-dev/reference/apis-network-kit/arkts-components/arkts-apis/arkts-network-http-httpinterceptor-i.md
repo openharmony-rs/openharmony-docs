@@ -1,5 +1,9 @@
 # HttpInterceptor
 
+```TypeScript
+export interface HttpInterceptor
+```
+
 Defines the HTTP interceptor API, which is used to define the interception processing function.
 
 **Since:** 22
@@ -41,7 +45,6 @@ Intercepts the HTTP processing and modifies it as required.
 
 **Examples**
 
-```TypeScript
 ### interceptorHandle
 
 interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise<ChainContinue>
@@ -55,6 +58,23 @@ System capability: SystemCapability.Communication.NetStack
 Parameters
 
 Return value
+
+```TypeScript
+import { http } from '@kit.NetworkKit';
+
+// Create a custom interceptor.
+class CustomInterceptor implements http.HttpInterceptor {
+  interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
+
+  async interceptorHandle(reqContext: http.HttpRequestContext, rspContext: http.HttpResponse): Promise<http.ChainContinue> {
+    // Add the authentication header in the initial request phase.
+    reqContext.header['Authorization'] = 'Bearer token';
+    console.info('Interceptor: Added authorization header');
+    return true; // Continue to process the interceptor chain.
+  }
+}
+
+let customInterceptor = new CustomInterceptor();
 ```
 
 ## interceptorType

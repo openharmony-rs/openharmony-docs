@@ -1,5 +1,9 @@
 # InstallParam（系统接口）
 
+```TypeScript
+export interface InstallParam
+```
+
 安装、恢复或卸载时需要指定的参数。
 
 **起始版本：** 7

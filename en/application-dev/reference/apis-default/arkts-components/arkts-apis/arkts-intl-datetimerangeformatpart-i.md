@@ -1,5 +1,9 @@
 # DateTimeRangeFormatPart
 
+```TypeScript
+interface DateTimeRangeFormatPart extends DateTimeFormatPart
+```
+
 ## Modules to Import
 
 ```TypeScript

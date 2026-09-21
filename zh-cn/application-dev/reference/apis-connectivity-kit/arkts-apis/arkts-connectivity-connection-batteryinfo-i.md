@@ -1,5 +1,9 @@
 # BatteryInfo
 
+```TypeScript
+interface BatteryInfo
+```
+
 描述设备的电量信息。
 
 只有支持特定电量信息AT（Attention）命令（包括：+XEVENT和IPHONEACCEV）的设备才支持上报有效的电量信息。

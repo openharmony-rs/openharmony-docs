@@ -1,5 +1,9 @@
 # MaxSelected
 
+```TypeScript
+export declare class MaxSelected
+```
+
 Represents the maximum number of media assets that can be selected at a time.
 
 **Since:** 12

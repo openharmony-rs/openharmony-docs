@@ -1,5 +1,9 @@
 # VolumeGroupInfo (System API)
 
+```TypeScript
+interface VolumeGroupInfo
+```
+
 Describes an audio volume group.
 
 **Since:** 9

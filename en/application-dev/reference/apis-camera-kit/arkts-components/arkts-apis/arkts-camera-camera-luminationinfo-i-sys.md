@@ -1,5 +1,9 @@
 # LuminationInfo (System API)
 
+```TypeScript
+interface LuminationInfo
+```
+
 Describes the illumination information.
 
 **Since:** 12

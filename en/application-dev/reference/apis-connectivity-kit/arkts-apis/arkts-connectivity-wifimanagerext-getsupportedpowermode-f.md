@@ -49,6 +49,8 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 ```
 
 
+<a id="getsupportedpowermode-1"></a>
+
 ## getSupportedPowerMode
 
 ```TypeScript

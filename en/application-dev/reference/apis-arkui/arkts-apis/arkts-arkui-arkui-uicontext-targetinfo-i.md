@@ -1,5 +1,9 @@
 # TargetInfo
 
+```TypeScript
+export interface TargetInfo
+```
+
 Specifies the target node for component binding.
 
 **Since:** 18
@@ -39,7 +43,7 @@ Unique ID of the custom component where the target node is located. When the abo
 id: string | number
 ```
 
-Target node for binding popups or menus.<br>**NOTE:** <br>1. When **id** is a number, it corresponds to the component's **UniqueID**, whose uniqueness is guaranteed by the system.<br>2. When **id** is a string, it corresponds to the component specified by the universal attribute id. You must ensure the uniqueness of this ID, although there may be multiple instances.
+Target node for binding popups or menus.<br>**NOTE:** <br>1. When **id** is a number, it corresponds to the component's **UniqueID**, whose uniqueness is guaranteed by the system.<br>2. When **id** is a string, it corresponds to the component specified by the universal attribute [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id). You must ensure the uniqueness of this ID, although there may be multiple instances.
 
 **Type:** string &#124; number
 

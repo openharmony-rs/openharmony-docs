@@ -1,5 +1,9 @@
 # HiTraceCommunicationMode
 
+```TypeScript
+enum HiTraceCommunicationMode
+```
+
 Enumerates communication modes.
 
 **Since:** 8

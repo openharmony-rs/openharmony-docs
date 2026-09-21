@@ -37,17 +37,6 @@ Triggers vibration based on a specified duration. This API uses an asynchronous 
 import { vibrator } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-vibrator.vibrate(1000).then(() => {
-  console.info('Succeed in vibrating');
-}, (error: BusinessError) => {
-  console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
-```TypeScript
-import { vibrator } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
 vibrator.vibrate(1000, (error: BusinessError) => {
   if (error) {
     console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
@@ -57,30 +46,8 @@ vibrator.vibrate(1000, (error: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { vibrator } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-vibrator.vibrate(vibrator.EffectId.EFFECT_CLOCK_TIMER).then(() => {
-  console.info('Succeed in vibrating');
-}, (error: BusinessError) => {
-  console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
-```TypeScript
-import { vibrator } from '@kit.SensorServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-vibrator.vibrate(vibrator.EffectId.EFFECT_CLOCK_TIMER, (error: BusinessError) => {
-  if (error) {
-    console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
-  } else {
-    console.info('Succeed in vibrating');
-  }
-})
-```
-
+<a id="vibrate-1"></a>
 
 ## vibrate
 
@@ -94,7 +61,7 @@ Triggers vibration based on a specified duration. This API uses a promise to ret
 
 **Deprecated since:** 9
 
-**Substitutes:** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)(effect: VibrateEffect, attribute: VibrateAttribute)
+**Substitutes:** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)(effect: VibrateEffect, attribute: VibrateAttribute)
 
 **Required permissions:** ohos.permission.VIBRATE
 
@@ -114,8 +81,19 @@ Triggers vibration based on a specified duration. This API uses a promise to ret
 
 **Examples**
 
-See [vibrate](#vibrate)
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+vibrator.vibrate(1000).then(() => {
+  console.info('Succeed in vibrating');
+}, (error: BusinessError) => {
+  console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+
+<a id="vibrate-2"></a>
 
 ## vibrate
 
@@ -129,7 +107,7 @@ Triggers vibration based on a specified effect. This API uses a promise to retur
 
 **Deprecated since:** 9
 
-**Substitutes:** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)(effect: VibrateEffect, attribute: VibrateAttribute)
+**Substitutes:** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)(effect: VibrateEffect, attribute: VibrateAttribute)
 
 **Required permissions:** ohos.permission.VIBRATE
 
@@ -149,8 +127,19 @@ Triggers vibration based on a specified effect. This API uses a promise to retur
 
 **Examples**
 
-See [vibrate](#vibrate)
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+vibrator.vibrate(vibrator.EffectId.EFFECT_CLOCK_TIMER).then(() => {
+  console.info('Succeed in vibrating');
+}, (error: BusinessError) => {
+  console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+
+<a id="vibrate-3"></a>
 
 ## vibrate
 
@@ -179,4 +168,15 @@ Triggers vibration based on a specified effect. This API uses an asynchronous ca
 
 **Examples**
 
-See [vibrate](#vibrate)
+```TypeScript
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+vibrator.vibrate(vibrator.EffectId.EFFECT_CLOCK_TIMER, (error: BusinessError) => {
+  if (error) {
+    console.error(`Failed to vibrate. Code: ${error.code}, message: ${error.message}`);
+  } else {
+    console.info('Succeed in vibrating');
+  }
+})
+```

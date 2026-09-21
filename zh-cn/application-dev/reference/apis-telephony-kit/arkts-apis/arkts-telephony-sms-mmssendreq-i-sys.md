@@ -1,5 +1,9 @@
 # MmsSendReq（系统接口）
 
+```TypeScript
+export interface MmsSendReq
+```
+
 彩信发送请求。
 
 **起始版本：** 8

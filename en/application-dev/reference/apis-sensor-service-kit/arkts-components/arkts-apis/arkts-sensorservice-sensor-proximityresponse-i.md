@@ -1,5 +1,9 @@
 # ProximityResponse
 
+```TypeScript
+interface ProximityResponse extends Response
+```
+
 Describes the proximity sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** ProximityResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

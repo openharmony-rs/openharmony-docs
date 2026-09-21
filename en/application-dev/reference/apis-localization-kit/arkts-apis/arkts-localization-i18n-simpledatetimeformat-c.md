@@ -1,5 +1,9 @@
 # SimpleDateTimeFormat
 
+```TypeScript
+export class SimpleDateTimeFormat
+```
+
 Provide a simple date time formatting interface.
 
 **Since:** 18

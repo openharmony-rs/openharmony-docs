@@ -1,5 +1,9 @@
 # PositionArea
 
+```TypeScript
+interface PositionArea
+```
+
 表示图片指定区域内的数据。
 
 **起始版本：** 7

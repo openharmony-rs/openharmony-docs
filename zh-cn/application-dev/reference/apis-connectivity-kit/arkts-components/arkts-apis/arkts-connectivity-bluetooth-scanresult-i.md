@@ -1,5 +1,9 @@
 # ScanResult
 
+```TypeScript
+interface ScanResult
+```
+
 扫描结果上报数据。
 
 从API version 7开始支持，从API version 9开始废弃。

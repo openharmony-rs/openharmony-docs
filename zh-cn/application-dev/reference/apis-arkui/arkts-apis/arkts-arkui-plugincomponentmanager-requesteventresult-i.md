@@ -1,5 +1,9 @@
 # RequestEventResult
 
+```TypeScript
+interface RequestEventResult
+```
+
 注册request监听方法后，接收到请求事件时回应请求的数据类型。
 
 **起始版本：** 8

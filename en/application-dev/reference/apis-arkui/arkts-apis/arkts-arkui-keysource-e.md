@@ -1,5 +1,9 @@
 # KeySource
 
+```TypeScript
+declare enum KeySource
+```
+
 Sets the device type that triggers the button event.
 
 **Since:** 7
@@ -16,6 +20,8 @@ Unknown input device.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -29,6 +35,8 @@ Keyboard
 The input device is a keyboard.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

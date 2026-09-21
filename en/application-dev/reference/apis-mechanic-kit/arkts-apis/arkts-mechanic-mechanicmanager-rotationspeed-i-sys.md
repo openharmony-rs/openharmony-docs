@@ -1,5 +1,9 @@
 # RotationSpeed (System API)
 
+```TypeScript
+export interface RotationSpeed
+```
+
 Rotational speed. A negative value indicates a clockwise rotation, and a positive value indicates a counterclockwise rotation. @typedef RotationSpeed
 
 **Since:** 20

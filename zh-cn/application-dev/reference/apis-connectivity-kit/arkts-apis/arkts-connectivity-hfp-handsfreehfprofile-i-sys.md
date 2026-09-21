@@ -1,5 +1,9 @@
 # HandsFreeHfProfile
 
+```TypeScript
+interface HandsFreeHfProfile extends BaseProfile
+```
+
 该实例表示蓝牙通话音频中的HF角色‌。
 
 - 该类继承于[BaseProfile](arkts-connectivity-hfp-baseprofile-t.md)，因此可以使用其父类中的方法。  

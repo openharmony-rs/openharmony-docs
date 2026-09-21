@@ -1,5 +1,9 @@
 # LockReason
 
+```TypeScript
+export enum LockReason
+```
+
 Enumerates SIM card lock types.
 
 **Since:** 8

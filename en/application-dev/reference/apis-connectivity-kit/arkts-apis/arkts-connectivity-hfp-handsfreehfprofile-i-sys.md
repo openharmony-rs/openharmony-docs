@@ -1,5 +1,9 @@
 # HandsFreeHfProfile
 
+```TypeScript
+interface HandsFreeHfProfile extends BaseProfile
+```
+
 Manage hfp sink profile.
 
 **Inheritance/Implementation:** HandsFreeHfProfile extends [BaseProfile](arkts-connectivity-hfp-baseprofile-t.md)

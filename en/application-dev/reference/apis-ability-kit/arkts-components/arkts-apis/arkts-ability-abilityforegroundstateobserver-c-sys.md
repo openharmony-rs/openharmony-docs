@@ -1,5 +1,9 @@
 # AbilityForegroundStateObserver (System API)
 
+```TypeScript
+export default class AbilityForegroundStateObserver
+```
+
 The module defines the listener used to listen for ability foreground and background state changes.
 
 **Since:** 11

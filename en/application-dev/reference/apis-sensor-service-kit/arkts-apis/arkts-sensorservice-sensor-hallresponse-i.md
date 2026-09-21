@@ -1,5 +1,9 @@
 # HallResponse
 
+```TypeScript
+interface HallResponse extends Response
+```
+
 Describes the Hall effect sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** HallResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

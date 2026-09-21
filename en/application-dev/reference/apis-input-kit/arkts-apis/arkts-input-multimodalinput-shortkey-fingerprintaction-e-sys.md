@@ -1,5 +1,9 @@
 # FingerprintAction (System API)
 
+```TypeScript
+export declare enum FingerprintAction
+```
+
 Enumerates fingerprint gesture event types.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # NetFirewallOrderType
 
+```TypeScript
+enum NetFirewallOrderType
+```
+
 枚举类型，防火墙规则排序顺序，包含升序或降序。
 
 **起始版本：** 15

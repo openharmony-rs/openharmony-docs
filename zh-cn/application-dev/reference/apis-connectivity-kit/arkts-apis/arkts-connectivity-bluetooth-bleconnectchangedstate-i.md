@@ -1,5 +1,9 @@
 # BLEConnectChangedState
 
+```TypeScript
+interface BLEConnectChangedState
+```
+
 描述Gatt profile连接状态 。
 
 从API version 7开始支持，从API version 9开始废弃。

@@ -1,5 +1,9 @@
 # ProtocolType
 
+```TypeScript
+export enum ProtocolType
+```
+
 网络协议类型的枚举。
 
 **起始版本：** 23

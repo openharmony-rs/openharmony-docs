@@ -1,5 +1,9 @@
 # ISO8601DateTimeFormatOptions
 
+```TypeScript
+export interface ISO8601DateTimeFormatOptions
+```
+
 Represents optional configuration items for the ISO8601DateTimeFormat object. These options determine which elements need to be displayed after formatting and the corresponding format.
 
 **Since:** 26.0.0

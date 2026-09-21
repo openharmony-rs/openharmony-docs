@@ -1,5 +1,9 @@
 # GeoCodeRequest
 
+```TypeScript
+export interface GeoCodeRequest
+```
+
 地理编码请求参数。
 
 @interface GeoCodeRequest

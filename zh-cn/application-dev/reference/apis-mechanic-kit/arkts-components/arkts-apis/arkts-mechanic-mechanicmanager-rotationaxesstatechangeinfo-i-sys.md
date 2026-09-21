@@ -1,5 +1,9 @@
 # RotationAxesStateChangeInfo（系统接口）
 
+```TypeScript
+export interface RotationAxesStateChangeInfo
+```
+
 旋转轴状态变更信息@typedef RotationAxesStateChangeInfo
 
 **起始版本：** 20

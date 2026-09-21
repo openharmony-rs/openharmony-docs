@@ -1,5 +1,9 @@
 # ForegroundBlur
 
+```TypeScript
+export interface ForegroundBlur
+```
+
 Sets a foreground blur effect.
 
 **Since:** 26.0.0

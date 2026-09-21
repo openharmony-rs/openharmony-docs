@@ -59,22 +59,8 @@ try {
 }
 ```
 
-```TypeScript
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-  deviceManager.unbindDevice(12345678).then((data: number) => {
-    console.info(`unbindDevice success, Device_Id is ${data}.`);
-  }, (error: BusinessError) => {
-    console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
-  });
-} catch (error) {
-  console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
-}
-```
-
+<a id="unbinddevice-1"></a>
 
 ## unbindDevice
 
@@ -116,4 +102,18 @@ function unbindDevice(deviceId: number): Promise<number>
 
 **示例**
 
-参见 unbindDevice
+```TypeScript
+import { deviceManager } from '@kit.DriverDevelopmentKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
+  deviceManager.unbindDevice(12345678).then((data: number) => {
+    console.info(`unbindDevice success, Device_Id is ${data}.`);
+  }, (error: BusinessError) => {
+    console.error(`unbindDevice async fail. Code is ${error.code}, message is ${error.message}`);
+  });
+} catch (error) {
+  console.error(`unbindDevice fail. Code is ${error.code}, message is ${error.message}`);
+}
+```

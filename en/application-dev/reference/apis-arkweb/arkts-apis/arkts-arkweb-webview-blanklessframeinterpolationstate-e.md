@@ -1,5 +1,9 @@
 # BlanklessFrameInterpolationState
 
+```TypeScript
+enum BlanklessFrameInterpolationState
+```
+
 Frame interpolation status of blankless loading.
 
 **Since:** 23

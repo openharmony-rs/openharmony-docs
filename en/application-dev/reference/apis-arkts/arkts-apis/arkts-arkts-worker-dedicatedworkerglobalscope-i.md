@@ -1,5 +1,9 @@
 # DedicatedWorkerGlobalScope
 
+```TypeScript
+export interface DedicatedWorkerGlobalScope extends WorkerGlobalScope
+```
+
 Specifies the worker thread running environment, which is isolated from the host thread environment
 
 **Inheritance/Implementation:** DedicatedWorkerGlobalScope extends [WorkerGlobalScope](arkts-arkts-worker-workerglobalscope-i.md)
@@ -171,6 +175,8 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
+<a id="postmessage-1"></a>
+
 ## postMessage
 
 ```TypeScript
@@ -202,31 +208,6 @@ import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
 workerInstance.postMessage("hello world");
-workerInstance.onmessage = (e: MessageEvents): void => {
-    // let data = e.data;
-    console.info("receive data from worker.ets");
-}
-```
-
-```TypeScript
-// worker.ets
-import { DedicatedWorkerGlobalScope, worker } from '@kit.ArkTS';
-
-const workerPort: DedicatedWorkerGlobalScope = worker.parentPort;
-
-workerPort.onmessage = (): void => {
-    // let data = e.data;
-    let buffer = new ArrayBuffer(5)
-    workerPort.postMessage(buffer, [buffer]);
-}
-```
-
-```TypeScript
-// Index.ets
-import { worker } from '@kit.ArkTS';
-
-const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
-workerInstance.postMessage("hello world");
 workerInstance.onmessage = (): void => {
     console.info("receive data from worker.ets");
 }
@@ -241,6 +222,8 @@ parentPort.onmessage = (e: MessageEvents) => {
   parentPort.postMessage("receive data from main thread");
 }
 ```
+
+<a id="postmessage-2"></a>
 
 ## postMessage
 
@@ -289,26 +272,5 @@ workerPort.onmessage = (): void => {
     // let data = e.data;
     let buffer = new ArrayBuffer(5)
     workerPort.postMessage(buffer, [buffer]);
-}
-```
-
-```TypeScript
-// Index.ets
-import { worker } from '@kit.ArkTS';
-
-const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
-workerInstance.postMessage("hello world");
-workerInstance.onmessage = (): void => {
-    console.info("receive data from worker.ets");
-}
-```
-
-```TypeScript
-// worker.ets
-import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS';
-
-const parentPort = worker.parentPort;
-parentPort.onmessage = (e: MessageEvents) => {
-  parentPort.postMessage("receive data from main thread");
 }
 ```

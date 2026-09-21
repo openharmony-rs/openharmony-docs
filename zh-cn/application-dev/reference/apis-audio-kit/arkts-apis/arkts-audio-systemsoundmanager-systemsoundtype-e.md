@@ -1,8 +1,10 @@
 # SystemSoundType
 
-枚举，表示系统音效类型。
+```TypeScript
+enum SystemSoundType
+```
 
-@enum { int }
+枚举，表示系统音效类型。
 
 **起始版本：** 23
 

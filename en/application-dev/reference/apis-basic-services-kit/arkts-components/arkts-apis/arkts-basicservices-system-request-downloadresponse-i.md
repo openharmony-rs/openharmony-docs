@@ -1,5 +1,9 @@
 # DownloadResponse
 
+```TypeScript
+export interface DownloadResponse
+```
+
 **Since:** 3
 
 **Deprecated since:** 9

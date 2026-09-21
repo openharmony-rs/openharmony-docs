@@ -69,28 +69,8 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let config: ethernet.InterfaceConfiguration = {
-  mode: 0,
-  ipAddr: "192.168.xx.xxx",
-  route: "192.168.xx.xxx",
-  gateway: "192.168.xx.xxx",
-  netMask: "255.255.255.0",
-  dnsServers: "1.1.1.1"
-};
-
-const setConfigPromise = ethernet.setIfaceConfig("eth0", config);
-
-setConfigPromise.then(() => {
-  console.info("setIfaceConfig promise ok");
-}).catch((error: BusinessError)  => {
-  console.error("setIfaceConfig promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="setifaceconfig-1"></a>
 
 ## setIfaceConfig
 
@@ -138,4 +118,24 @@ Sets the network interface configuration information. This API uses a promise to
 
 **Examples**
 
-See [setIfaceConfig](#setifaceconfig)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let config: ethernet.InterfaceConfiguration = {
+  mode: 0,
+  ipAddr: "192.168.xx.xxx",
+  route: "192.168.xx.xxx",
+  gateway: "192.168.xx.xxx",
+  netMask: "255.255.255.0",
+  dnsServers: "1.1.1.1"
+};
+
+const setConfigPromise = ethernet.setIfaceConfig("eth0", config);
+
+setConfigPromise.then(() => {
+  console.info("setIfaceConfig promise ok");
+}).catch((error: BusinessError)  => {
+  console.error("setIfaceConfig promise error = " + JSON.stringify(error));
+});
+```

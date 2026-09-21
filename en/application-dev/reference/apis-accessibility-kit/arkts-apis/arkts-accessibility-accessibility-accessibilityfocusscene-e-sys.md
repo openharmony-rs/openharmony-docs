@@ -1,5 +1,9 @@
 # AccessibilityFocusScene (System API)
 
+```TypeScript
+export enum AccessibilityFocusScene
+```
+
 Enumerates the focus scenarios for accessibility.
 
 **Since:** 26.0.0

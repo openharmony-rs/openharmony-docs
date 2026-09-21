@@ -1,5 +1,9 @@
 # HdrMetadataKey
 
+```TypeScript
+enum HdrMetadataKey
+```
+
 Enumerates the keys of HDR metadata used by [pixelmap](arkts-image-image-pixelmap-i.md).
 
 **Since:** 12

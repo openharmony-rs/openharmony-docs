@@ -1,5 +1,9 @@
 # AutoFillPopupConfig (System API)
 
+```TypeScript
+export default interface AutoFillPopupConfig
+```
+
 The module describes the size and position information of an auto-fill pop-up.
 
 **Since:** 12

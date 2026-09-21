@@ -1,5 +1,9 @@
 # ToneMappingSettings
 
+```TypeScript
+export interface ToneMappingSettings
+```
+
 Describes the tone mapping settings.
 
 @typedef ToneMappingSettings

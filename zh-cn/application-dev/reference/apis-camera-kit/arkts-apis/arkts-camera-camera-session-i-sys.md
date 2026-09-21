@@ -1,5 +1,9 @@
 # Session
 
+```TypeScript
+interface Session
+```
+
 会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能（录像，拍照）。
 
 **起始版本：** 11

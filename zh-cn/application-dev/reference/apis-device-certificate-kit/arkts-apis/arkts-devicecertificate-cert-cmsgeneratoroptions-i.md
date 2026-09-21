@@ -1,5 +1,9 @@
 # CmsGeneratorOptions
 
+```TypeScript
+interface CmsGeneratorOptions
+```
+
 表示生成CMS消息的配置选项。
 
 **起始版本：** 18

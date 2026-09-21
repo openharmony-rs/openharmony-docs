@@ -1,5 +1,9 @@
 # LocaleResponse
 
+```TypeScript
+export interface LocaleResponse
+```
+
 @interface LocaleResponse
 
 **Since:** 12

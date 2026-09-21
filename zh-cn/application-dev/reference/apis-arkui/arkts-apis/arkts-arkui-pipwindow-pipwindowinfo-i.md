@@ -1,5 +1,9 @@
 # PiPWindowInfo
 
+```TypeScript
+interface PiPWindowInfo
+```
+
 画中画窗口信息。
 
 **起始版本：** 15

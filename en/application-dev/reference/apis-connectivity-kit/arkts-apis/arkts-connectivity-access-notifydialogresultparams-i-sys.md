@@ -1,5 +1,9 @@
 # NotifyDialogResultParams (System API)
 
+```TypeScript
+interface NotifyDialogResultParams
+```
+
 Describes the result of bluetooth dialog.
 
 **Since:** 20

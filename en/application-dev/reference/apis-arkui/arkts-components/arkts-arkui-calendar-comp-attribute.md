@@ -1,5 +1,9 @@
 # Calendar properties/events
 
+```TypeScript
+declare class CalendarAttribute
+```
+
 **Since:** 7
 
 **Deprecated since:** 20

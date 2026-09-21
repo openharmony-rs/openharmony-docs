@@ -30,3 +30,18 @@ function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [33600003](../errorcode-selection.md#33600003-调用接口的应用与系统设置中选择的应用不匹配) | The application calling the API does not match the application selected in the system settings. |
+
+**示例**
+
+```TypeScript
+import { selectionManager } from '@kit.BasicServicesKit';
+
+try {
+  // 订阅划词完成事件
+  selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
+    console.info('Enter the callback function.');
+  });
+} catch (err) {
+  console.error(`Failed to register selectionCompleted callback. Error code: ${err.code}, error message: ${err.message}`);
+}
+```

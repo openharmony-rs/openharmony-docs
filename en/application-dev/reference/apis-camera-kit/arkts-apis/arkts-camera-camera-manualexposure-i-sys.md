@@ -1,5 +1,9 @@
 # ManualExposure
 
+```TypeScript
+interface ManualExposure extends ManualExposureQuery
+```
+
 ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md) Provides APIs to obtain and set the exposure duration.
 
 **Inheritance/Implementation:** ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)

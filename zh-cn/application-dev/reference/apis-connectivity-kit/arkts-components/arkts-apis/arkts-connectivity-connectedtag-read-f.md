@@ -47,18 +47,8 @@ connectedTag.read().then((data) => {
 });
 ```
 
-```TypeScript
-import { connectedTag } from '@kit.ConnectivityKit';
 
-connectedTag.read((err, data)=> {
-    if (err) {
-        console.error("connectedTag read AsyncCallback err: " + err);
-    } else {
-        console.info("connectedTag read AsyncCallback data: " + data);
-    }
-});
-```
-
+<a id="read-1"></a>
 
 ## read
 
@@ -90,4 +80,14 @@ function read(callback: AsyncCallback<number[]>): void
 
 **示例**
 
-参见 [read](#read)
+```TypeScript
+import { connectedTag } from '@kit.ConnectivityKit';
+
+connectedTag.read((err, data)=> {
+    if (err) {
+        console.error("connectedTag read AsyncCallback err: " + err);
+    } else {
+        console.info("connectedTag read AsyncCallback data: " + data);
+    }
+});
+```

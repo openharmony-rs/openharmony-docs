@@ -1,5 +1,9 @@
 # BadgeConfig
 
+```TypeScript
+export declare class BadgeConfig
+```
+
 Describes the badge configuration.
 
 **Since:** 21

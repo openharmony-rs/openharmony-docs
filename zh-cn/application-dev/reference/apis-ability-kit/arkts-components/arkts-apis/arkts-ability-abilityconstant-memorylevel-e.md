@@ -1,5 +1,9 @@
 # MemoryLevel
 
+```TypeScript
+export enum MemoryLevel
+```
+
 整机可用内存级别，该类型为枚举，可配合UIAbility的[onMemoryLevel()](arkts-ability-app-ability-ability-ability-c.md#onmemorylevel)方法根据level执行不同内存级别的相应操作。
 
 > **说明：** 

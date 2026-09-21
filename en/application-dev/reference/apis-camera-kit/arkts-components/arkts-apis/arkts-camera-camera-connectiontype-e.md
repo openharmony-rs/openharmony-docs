@@ -1,5 +1,9 @@
 # ConnectionType
 
+```TypeScript
+enum ConnectionType
+```
+
 Enumerates the camera connection types.
 
 **Since:** 10

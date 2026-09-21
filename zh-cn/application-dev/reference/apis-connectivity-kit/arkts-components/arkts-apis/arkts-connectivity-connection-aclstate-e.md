@@ -1,5 +1,9 @@
 # AclState
 
+```TypeScript
+export enum AclState
+```
+
 枚举，表示ACL连接状态。
 
 **起始版本：** 26.0.0

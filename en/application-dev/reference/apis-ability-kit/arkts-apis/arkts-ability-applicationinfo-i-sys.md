@@ -1,5 +1,9 @@
 # ApplicationInfo
 
+```TypeScript
+export interface ApplicationInfo
+```
+
 The module defines the application information.
 
 **Since:** 9
@@ -16,7 +20,7 @@ Indicates the reserved flag of the application.
 
 **Type:** [bundleManager.ApplicationReservedFlag](arkts-ability-bundlemanager-applicationreservedflag-e-sys.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

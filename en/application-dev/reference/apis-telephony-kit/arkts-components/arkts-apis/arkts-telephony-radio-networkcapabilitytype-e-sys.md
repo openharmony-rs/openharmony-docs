@@ -1,5 +1,9 @@
 # NetworkCapabilityType (System API)
 
+```TypeScript
+export enum NetworkCapabilityType
+```
+
 Enum for network capability type.
 
 **Since:** 10

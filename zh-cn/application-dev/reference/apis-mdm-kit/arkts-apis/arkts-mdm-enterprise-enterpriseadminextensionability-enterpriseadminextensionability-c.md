@@ -1,5 +1,9 @@
 # EnterpriseAdminExtensionAbility
 
+```TypeScript
+export default class EnterpriseAdminExtensionAbility
+```
+
 本模块提供[企业设备管理扩展能力](../../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)，是企业设备管理应用的核心组件。
 
 **主要功能**：
@@ -413,6 +417,31 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+<a id="onbundleadded-1"></a>
+
+## onBundleAdded
+
+```TypeScript
+onBundleAdded(bundleName: string, accountId: number): void
+```
+
+应用安装事件回调，回调中包含应用包名和账号ID。通过接口[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundleName | string | 是 | 被安装应用的包名。 |
+| accountId | number | 是 | 被安装应用所在的用户ID。 |
+
+**示例**
+
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -438,31 +467,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-## onBundleAdded
-
-```TypeScript
-onBundleAdded(bundleName: string, accountId: number): void
-```
-
-应用安装事件回调，回调中包含应用包名和账号ID。通过接口[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)注册MANAGED_EVENT_BUNDLE_ADDED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用安装事件，端侧应用安装事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
-
-**起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| bundleName | string | 是 | 被安装应用的包名。 |
-| accountId | number | 是 | 被安装应用所在的用户ID。 |
-
-**示例**
-
-参见 [onBundleAdded](#onbundleadded)
 
 ## onBundleRemoved
 
@@ -511,6 +515,31 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+<a id="onbundleremoved-1"></a>
+
+## onBundleRemoved
+
+```TypeScript
+onBundleRemoved(bundleName: string, accountId: number): void
+```
+
+应用卸载事件回调，回调中包含应用包名和账号ID。通过接口[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundleName | string | 是 | 被卸载应用的包名。 |
+| accountId | number | 是 | 被卸载应用所在的用户ID。 |
+
+**示例**
+
 ```TypeScript
 import { EnterpriseAdminExtensionAbility, adminManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -536,31 +565,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-## onBundleRemoved
-
-```TypeScript
-onBundleRemoved(bundleName: string, accountId: number): void
-```
-
-应用卸载事件回调，回调中包含应用包名和账号ID。通过接口[adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md)注册MANAGED_EVENT_BUNDLE_REMOVED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅应用卸载事件，端侧应用卸载事件通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
-
-**起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| bundleName | string | 是 | 被卸载应用的包名。 |
-| accountId | number | 是 | 被卸载应用所在的用户ID。 |
-
-**示例**
-
-参见 [onBundleRemoved](#onbundleremoved)
 
 ## onBundleUpdated
 

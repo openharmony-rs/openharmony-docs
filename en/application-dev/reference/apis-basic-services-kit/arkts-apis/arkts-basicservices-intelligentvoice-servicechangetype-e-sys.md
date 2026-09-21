@@ -1,5 +1,9 @@
 # ServiceChangeType (System API)
 
+```TypeScript
+enum ServiceChangeType
+```
+
 Enumerates service change type. @enum {number}
 
 **Since:** 10

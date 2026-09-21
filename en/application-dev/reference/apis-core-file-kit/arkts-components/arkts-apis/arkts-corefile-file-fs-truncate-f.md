@@ -55,6 +55,8 @@ Truncates a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
+<a id="truncate-1"></a>
+
 ## truncate
 
 ```TypeScript
@@ -97,6 +99,8 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 | 13900033 | Too many symbolic links encountered |
 | 13900042 | Unknown error |
 
+
+<a id="truncate-2"></a>
 
 ## truncate
 

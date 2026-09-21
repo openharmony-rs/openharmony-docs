@@ -1,5 +1,9 @@
 # CertChainBuildParameters
 
+```TypeScript
+interface CertChainBuildParameters
+```
+
 证书链创建参数。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # AudioKey (System API)
 
+```TypeScript
+enum AudioKey
+```
+
 Defines the key information about an audio file.
 
 **Since:** 9

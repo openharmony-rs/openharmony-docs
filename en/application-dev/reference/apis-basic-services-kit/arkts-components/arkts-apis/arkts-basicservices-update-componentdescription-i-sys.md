@@ -1,5 +1,9 @@
 # ComponentDescription (System API)
 
+```TypeScript
+export interface ComponentDescription
+```
+
 Represents a component description file.
 
 **Since:** 9

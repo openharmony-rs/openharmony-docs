@@ -1,5 +1,9 @@
 # MappingMode
 
+```TypeScript
+declare enum MappingMode
+```
+
 Enumerated type of the file memory mapping mode, which can be used by the mmap API.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # AddPermissionUsedRecordOptions（系统接口）
 
+```TypeScript
+interface AddPermissionUsedRecordOptions
+```
+
 添加权限使用记录可选参数集。
 
 **起始版本：** 12
@@ -45,6 +49,8 @@ usedType?: PermissionUsedType
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
 **起始版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 

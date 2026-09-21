@@ -1,5 +1,9 @@
 # MediaSourceLoader
 
+```TypeScript
+interface MediaSourceLoader
+```
+
 用于定义媒体数据加载器，需要应用程序对其进行实现。
 
 **起始版本：** 18

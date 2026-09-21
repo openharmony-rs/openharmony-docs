@@ -1,5 +1,9 @@
 # MajorMinorClass
 
+```TypeScript
+enum MajorMinorClass
+```
+
 The enum of major minor class of a bluetooth device.
 
 **Since:** 8

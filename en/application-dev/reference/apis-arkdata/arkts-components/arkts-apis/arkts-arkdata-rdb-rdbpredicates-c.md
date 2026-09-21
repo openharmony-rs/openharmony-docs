@@ -1,5 +1,9 @@
 # RdbPredicates
 
+```TypeScript
+class RdbPredicates
+```
+
 Defines predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # SubWindowAttachOptions（系统接口）
 
+```TypeScript
+interface SubWindowAttachOptions
+```
+
 子窗与主窗保持相对位置不变时的参数。
 
 **起始版本：** 24

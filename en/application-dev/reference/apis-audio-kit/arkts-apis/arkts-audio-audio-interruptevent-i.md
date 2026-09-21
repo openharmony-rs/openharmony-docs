@@ -1,5 +1,9 @@
 # InterruptEvent
 
+```TypeScript
+interface InterruptEvent
+```
+
 Describes the interruption event received by the application when the audio is interrupted.
 
 **Since:** 9

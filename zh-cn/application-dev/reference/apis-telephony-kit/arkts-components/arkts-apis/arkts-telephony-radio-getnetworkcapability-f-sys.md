@@ -59,18 +59,8 @@ radio.getNetworkCapability(slotId, type, (err: BusinessError, data: radio.Networ
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
-radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityState) => {
-    console.info(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getnetworkcapability-1"></a>
 
 ## getNetworkCapability
 
@@ -115,4 +105,14 @@ Get the network capability state according to the specified capability type.
 
 **示例**
 
-参见 [getNetworkCapability](#getnetworkcapability)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
+radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityState) => {
+    console.info(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
+});
+```

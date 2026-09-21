@@ -1,5 +1,9 @@
 # Parity
 
+```TypeScript
+enum Parity
+```
+
 Enumerates the parity check modes.
 
 **Since:** 19

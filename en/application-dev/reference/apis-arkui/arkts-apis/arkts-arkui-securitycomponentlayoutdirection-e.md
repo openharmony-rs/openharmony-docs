@@ -1,5 +1,9 @@
 # SecurityComponentLayoutDirection
 
+```TypeScript
+declare enum SecurityComponentLayoutDirection
+```
+
 Enumerates the layout directions of the icon and text on a security component.
 
 **Since:** 10

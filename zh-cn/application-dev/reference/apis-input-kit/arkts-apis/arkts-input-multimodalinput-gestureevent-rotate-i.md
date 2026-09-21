@@ -1,5 +1,9 @@
 # Rotate
 
+```TypeScript
+export declare interface Rotate
+```
+
 旋转手势事件。
 
 **起始版本：** 11

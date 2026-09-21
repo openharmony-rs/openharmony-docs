@@ -1,5 +1,9 @@
 # TextInputType
 
+```TypeScript
+export enum TextInputType
+```
+
 文本输入类型。
 
 **起始版本：** 10

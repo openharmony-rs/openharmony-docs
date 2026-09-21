@@ -1,5 +1,9 @@
 # PlayParameters
 
+```TypeScript
+export interface PlayParameters
+```
+
 表示音频池播放参数设置。
 
 通过设置播放相关参数，来控制播放的音量，循环次数，播放优先级等参数。
@@ -86,7 +90,7 @@ priority?: number
 rate?: number
 ```
 
-设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendererrate-e.md)。默认值：0。
+设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendererrate-e.md)。默认值：RENDER_RATE_NORMAL，对应枚举值0。
 
 **类型：** number
 

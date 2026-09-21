@@ -52,14 +52,8 @@ connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.Ne
 });
 ```
 
-```TypeScript
-import { connection } from '@kit.NetworkKit';
 
-connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
-  console.info("Succeeded to get data: " + JSON.stringify(data));
-});
-```
-
+<a id="getaddressesbyname-1"></a>
 
 ## getAddressesByName
 
@@ -98,19 +92,6 @@ function getAddressesByName(host: string): Promise<Array<NetAddress>>
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
 **示例**
-
-```TypeScript
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.NetAddress[]) => {
-  if (error) {
-    console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
-    return;
-  }
-  console.info("Succeeded to get data: " + JSON.stringify(data));
-});
-```
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';

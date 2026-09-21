@@ -1,5 +1,9 @@
 # DeviceProfileInfoFilterOptions (System API)
 
+```TypeScript
+interface DeviceProfileInfoFilterOptions
+```
+
 Defines device profile information filter options.
 
 **Since:** 15

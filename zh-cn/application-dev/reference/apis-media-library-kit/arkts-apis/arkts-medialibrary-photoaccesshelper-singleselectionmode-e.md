@@ -1,5 +1,9 @@
 # SingleSelectionMode
 
+```TypeScript
+export enum SingleSelectionMode
+```
+
 枚举，单选模式类型。
 
 **起始版本：** 18

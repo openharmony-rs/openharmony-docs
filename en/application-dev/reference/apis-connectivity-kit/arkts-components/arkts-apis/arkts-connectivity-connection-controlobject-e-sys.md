@@ -1,5 +1,9 @@
 # ControlObject (System API)
 
+```TypeScript
+enum ControlObject
+```
+
 Describes the control object.
 
 **Since:** 15

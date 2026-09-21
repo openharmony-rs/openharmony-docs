@@ -1,5 +1,9 @@
 # Pattern
 
+```TypeScript
+export interface Pattern
+```
+
 输入法模式选项的图标资源定义，用于配置键盘模式在弹窗中的视觉表现。仅当前输入法（即系统预置输入法）可使用。
 
 **起始版本：** 11
@@ -18,7 +22,7 @@ import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
 icon: Resource
 ```
 
-输入法模式选项的默认（未选中）状态图标资源。<br> <br>使用场景：用于标识每个键盘模式在未选中时的视觉表现形式，用户在弹窗中可据此识别不同的模式选项。<br> <br>使用后效果：设置后，弹窗中该模式选项在未选中状态时显示此图标。<br> <br>说明：需使用Resource类型资源引用（如&#36;r('app.media.xxx')），确保工程resource目录中已添加对应的图标资源文件。不支持string和PixelMap类型的图片资源。
+输入法模式选项的默认（未选中）状态图标资源。<br> <br>使用场景：用于标识每个键盘模式在未选中时的视觉表现形式，用户在弹窗中可据此识别不同的模式选项。<br> <br>使用后效果：设置后，弹窗中该模式选项在未选中状态时显示此图标。<br> <br>说明：需使用Resource类型资源引用（如$r('app.media.xxx')），确保工程resource目录中已添加对应的图标资源文件。不支持string和PixelMap类型的图片资源。
 
 **类型：** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 

@@ -1,5 +1,9 @@
 # PickerResult
 
+```TypeScript
+class PickerResult
+```
+
 Defines the processing result of the camera picker.
 
 **Since:** 11

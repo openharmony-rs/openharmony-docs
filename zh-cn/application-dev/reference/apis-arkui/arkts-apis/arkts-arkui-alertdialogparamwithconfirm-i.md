@@ -1,5 +1,9 @@
 # AlertDialogParamWithConfirm
 
+```TypeScript
+declare interface AlertDialogParamWithConfirm extends AlertDialogParam
+```
+
 继承自[AlertDialogParam](arkts-arkui-alertdialogparam-i.md)。
 
 confirm参数优先级：fontColor、backgroundColor &gt; style &gt; defaultFocus
@@ -21,6 +25,8 @@ confirm?: AlertDialogButtonBaseOptions
 **类型：** [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

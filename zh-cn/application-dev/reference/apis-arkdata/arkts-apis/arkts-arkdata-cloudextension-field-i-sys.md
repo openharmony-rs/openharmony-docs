@@ -1,5 +1,9 @@
 # Field（系统接口）
 
+```TypeScript
+export interface Field
+```
+
 数据库中的字段结构。
 
 **起始版本：** 11

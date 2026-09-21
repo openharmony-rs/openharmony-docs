@@ -1,5 +1,9 @@
 # NotificationFilter（系统接口）
 
+```TypeScript
+export interface NotificationFilter
+```
+
 描述查询普通实况窗时的筛选条件。
 
 **起始版本：** 11

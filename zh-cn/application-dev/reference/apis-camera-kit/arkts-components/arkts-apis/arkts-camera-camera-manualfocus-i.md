@@ -1,5 +1,9 @@
 # ManualFocus
 
+```TypeScript
+interface ManualFocus extends ManualFocusQuery
+```
+
 ManualFocus object.
 
 **继承/实现关系：** ManualFocus extends [ManualFocusQuery](arkts-camera-camera-manualfocusquery-i.md)

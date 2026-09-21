@@ -1,5 +1,9 @@
 # BusinessAbilityFilter (System API)
 
+```TypeScript
+export interface BusinessAbilityFilter
+```
+
 This filter value is used to filter business ability info
 
 @typedef BusinessAbilityFilter

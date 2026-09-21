@@ -1,5 +1,9 @@
 # ThumbnailChangeStatus (System API)
 
+```TypeScript
+enum ThumbnailChangeStatus
+```
+
 Enumerates the change statuses of thumbnails (including images and videos).
 
 **Since:** 20

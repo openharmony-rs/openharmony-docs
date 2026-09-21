@@ -1,23 +1,23 @@
 # ArkTS API<!--arkts-formkit-->
 
 <!--Del-->
-- [@ohos.app.form.formAgent(FormAgent)](arkts-form-app-form-formagent.md)<!--DelEnd-->
+- [@ohos.app.form.formAgent(卡片代理-FormAgent)](arkts-form-app-form-formagent.md)<!--DelEnd-->
   <!--Del-->
   - [requestPublishForm(系统接口)](arkts-form-formagent-requestpublishform-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [updateFormCrossBundle(系统接口)](arkts-form-formagent-updateformcrossbundle-f-sys.md)<!--DelEnd-->
-- [@ohos.app.form.formBindingData(卡片数据绑定类)](arkts-form-app-form-formbindingdata.md)
+- [@ohos.app.form.formBindingData(卡片数据绑定-FormBindingData)](arkts-form-app-form-formbindingdata.md)
   - [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-f.md)
   - [FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md)
   - [ProxyData](arkts-form-formbindingdata-proxydata-i.md)
-- [@ohos.app.form.FormEditExtensionAbility(FormEditExtensionAbility)](arkts-form-app-form-formeditextensionability.md)
+- [@ohos.app.form.FormEditExtensionAbility(卡片编辑扩展能力-FormEditExtensionAbility)](arkts-form-app-form-formeditextensionability.md)
   - [FormEditExtensionAbility](arkts-form-app-form-formeditextensionability-formeditextensionability-c.md)
-- [@ohos.app.form.FormExtensionAbility(FormExtensionAbility)](arkts-form-app-form-formextensionability.md)
+- [@ohos.app.form.FormExtensionAbility(卡片扩展能力-FormExtensionAbility)](arkts-form-app-form-formextensionability.md)
   - [FormExtensionAbility](arkts-form-app-form-formextensionability-formextensionability-c.md)
   <!--Del-->
   - [FormExtensionAbility(系统接口)](arkts-form-app-form-formextensionability-formextensionability-c-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.app.form.formHost(formHost)](arkts-form-app-form-formhost.md)<!--DelEnd-->
+- [@ohos.app.form.formHost(卡片使用方-FormHost)](arkts-form-app-form-formhost.md)<!--DelEnd-->
   <!--Del-->
   - [acquireFormData(系统接口)](arkts-form-formhost-acquireformdata-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -102,7 +102,7 @@
   - [updateFormLockedState(系统接口)](arkts-form-formhost-updateformlockedstate-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [updateFormSize(系统接口)](arkts-form-formhost-updateformsize-f-sys.md)<!--DelEnd-->
-- [@ohos.app.form.formInfo(formInfo)](arkts-form-app-form-forminfo.md)
+- [@ohos.app.form.formInfo(卡片信息-FormInfo)](arkts-form-app-form-forminfo.md)
   <!--Del-->
   - [ChangeSceneAnimationStateRequest(系统接口)](arkts-form-forminfo-changesceneanimationstaterequest-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -170,7 +170,7 @@
   - [SceneAnimationTriggerType(系统接口)](arkts-form-forminfo-sceneanimationtriggertype-e-sys.md)<!--DelEnd-->
   - [VisibilityType](arkts-form-forminfo-visibilitytype-e.md)
 <!--Del-->
-- [@ohos.app.form.formObserver(formObserver)](arkts-form-app-form-formobserver.md)<!--DelEnd-->
+- [@ohos.app.form.formObserver(卡片监听方-FormObserver)](arkts-form-app-form-formobserver.md)<!--DelEnd-->
   <!--Del-->
   - [getRunningFormInfoById(系统接口)](arkts-form-formobserver-getrunningforminfobyid-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -181,7 +181,7 @@
   - [off(系统接口)](arkts-form-formobserver-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [on(系统接口)](arkts-form-formobserver-on-f-sys.md)<!--DelEnd-->
-- [@ohos.app.form.formProvider(formProvider)](arkts-form-app-form-formprovider.md)
+- [@ohos.app.form.formProvider(卡片提供方-FormProvider)](arkts-form-app-form-formprovider.md)
   <!--Del-->
   - [activateSceneAnimation(系统接口)](arkts-form-formprovider-activatesceneanimation-f-sys.md)<!--DelEnd-->
   - [cancelOverflow](arkts-form-formprovider-canceloverflow-f.md)
@@ -213,13 +213,13 @@
   - [updateForm](arkts-form-formprovider-updateform-f.md)
   <!--Del-->
   - [updateTemplateFormDetailInfo(系统接口)](arkts-form-formprovider-updatetemplateformdetailinfo-f-sys.md)<!--DelEnd-->
-- [@ohos.app.form.LiveFormExtensionAbility(LiveFormExtensionAbility)](arkts-form-app-form-liveformextensionability.md)
+- [@ohos.app.form.LiveFormExtensionAbility(互动卡片扩展能力-LiveFormExtensionAbility)](arkts-form-app-form-liveformextensionability.md)
   - [LiveFormExtensionAbility](arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)
   - [LiveFormInfo](arkts-form-app-form-liveformextensionability-liveforminfo-i.md)
 - [@ohos.application.formBindingData(卡片数据绑定类)](arkts-form-application-formbindingdata.md)
   - [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-depr-f.md)
   - [FormBindingData](arkts-form-formbindingdata-formbindingdata-depr-i.md)
-- [@ohos.application.formError(formError)](arkts-form-application-formerror.md)
+- [@ohos.application.formError(卡片错误码-FormError)](arkts-form-application-formerror.md)
   - [FormError](arkts-form-formerror-formerror-e.md)
   <!--Del-->
   - [FormError(系统接口)](arkts-form-formerror-formerror-e-sys.md)<!--DelEnd-->

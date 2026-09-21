@@ -1,5 +1,9 @@
 # AttendeeType
 
+```TypeScript
+export enum AttendeeType
+```
+
 Enumerates the types of attendees invited to a conference event.
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # EditableTextChangeValue
 
+```TypeScript
+interface EditableTextChangeValue
+```
+
 Provides detailed information of text changes, including preview text.
 
 **Since:** 15

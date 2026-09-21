@@ -1,5 +1,9 @@
 # AppIdInfo（系统接口）
 
+```TypeScript
+interface AppIdInfo
+```
+
 应用ID信息，包含应用的UID（标识应用身份）、PID（标识运行中的进程）、Token ID（用于常规身份识别与权限校验）和FullToken ID（携带应用完整身份权限信息，用于原始应用溯源与全链路权限校验）。
 
 **起始版本：** 26.0.0

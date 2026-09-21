@@ -1,5 +1,9 @@
 # WebSocketOpenInfo
 
+```TypeScript
+export interface WebSocketOpenInfo
+```
+
 WebSocket连接成功后的详细信息。
 
 **起始版本：** 26.0.0

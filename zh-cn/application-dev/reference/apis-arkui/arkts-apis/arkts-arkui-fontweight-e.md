@@ -1,5 +1,9 @@
 # FontWeight
 
+```TypeScript
+declare enum FontWeight
+```
+
 The font weight of the text
 
 **起始版本：** 7

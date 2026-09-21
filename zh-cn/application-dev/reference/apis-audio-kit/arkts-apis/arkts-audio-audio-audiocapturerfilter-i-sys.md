@@ -1,6 +1,10 @@
 # AudioCapturerFilter（系统接口）
 
-过滤条件类。在调用selectOutputDeviceByFilter接口前，需要先创建AudioCapturerFilter实例。
+```TypeScript
+interface AudioCapturerFilter
+```
+
+过滤条件类。在调用selectInputDeviceByFilter接口前，需要先创建AudioCapturerFilter实例。
 
 **起始版本：** 18
 
@@ -20,9 +24,7 @@ import { audio } from '@kit.AudioKit';
 capturerInfo?: AudioCapturerInfo
 ```
 
-表示采集器信息。
-
-SystemCapability.Multimedia.Audio.Capturer
+表示采集器信息。不填写时表示不按采集器信息过滤。
 
 **类型：** [AudioCapturerInfo](arkts-audio-audio-audiocapturerinfo-i.md)
 
@@ -38,9 +40,7 @@ SystemCapability.Multimedia.Audio.Capturer
 uid?: number
 ```
 
-表示应用ID。
-
-SystemCapability.Multimedia.Audio.Core
+表示应用ID。不填写时表示不按应用ID过滤。
 
 **类型：** number
 

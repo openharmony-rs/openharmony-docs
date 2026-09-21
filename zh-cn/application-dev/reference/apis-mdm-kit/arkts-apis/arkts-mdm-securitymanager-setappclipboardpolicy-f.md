@@ -27,7 +27,7 @@ function setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| tokenId | number | 是 | 目标应用的身份标识。可通过bundleManager.getApplicationInfo获取accessTokenId。 |
+| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../../apis-ability-kit/arkts-apis/arkts-ability-applicationinfo-i.md)获取accessTokenId。 |
 | policy | [ClipboardPolicy](arkts-mdm-securitymanager-clipboardpolicy-e.md) | 是 | 剪贴板策略。 |
 
 **错误码：**
@@ -60,26 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { securityManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let bundleName: string = 'com.example.myapplication';
-let accountId: number = 100;
-try {
-  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
-  console.info(`Succeeded in setting clipboard policy.`);
-} catch (err) {
-  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="setappclipboardpolicy-1"></a>
 
 ## setAppClipboardPolicy
 
@@ -116,4 +98,22 @@ function setAppClipboardPolicy(admin: Want, bundleName: string, accountId: numbe
 
 **示例**
 
-参见 setAppClipboardPolicy
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.myapplication';
+let accountId: number = 100;
+try {
+  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
+} catch (err) {
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```

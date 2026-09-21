@@ -1,5 +1,9 @@
 # Orientation
 
+```TypeScript
+enum Orientation
+```
+
 Enumerates image orientation.
 
 **Since:** 23

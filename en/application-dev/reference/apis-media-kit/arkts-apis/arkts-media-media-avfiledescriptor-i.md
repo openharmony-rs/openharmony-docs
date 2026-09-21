@@ -1,5 +1,9 @@
 # AVFileDescriptor
 
+```TypeScript
+interface AVFileDescriptor
+```
+
 Media file descriptor. The caller needs to ensure that the fd is valid and the offset and length are correct.
 
 **Since:** 9

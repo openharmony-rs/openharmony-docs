@@ -1,5 +1,9 @@
 # LineJoinStyle
 
+```TypeScript
+declare enum LineJoinStyle
+```
+
 Line Join Style
 
 **Since:** 7

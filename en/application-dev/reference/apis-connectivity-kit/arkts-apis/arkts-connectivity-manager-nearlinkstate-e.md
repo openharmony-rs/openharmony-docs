@@ -1,5 +1,9 @@
 # NearlinkState
 
+```TypeScript
+enum NearlinkState
+```
+
 Enumerated the NearLink statuses.
 
 **Since:** 26.0.0

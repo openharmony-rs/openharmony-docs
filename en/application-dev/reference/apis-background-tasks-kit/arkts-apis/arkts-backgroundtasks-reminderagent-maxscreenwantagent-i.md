@@ -1,5 +1,9 @@
 # MaxScreenWantAgent
 
+```TypeScript
+interface MaxScreenWantAgent
+```
+
 Provides the information about the target package and ability to start automatically when the reminder is displayed in full-screen mode. This API is reserved.
 
 **Since:** 7
@@ -30,7 +34,7 @@ Name of the ability that is automatically started when the reminder arrives and 
 
 **Deprecated since:** 9
 
-**Substitutes:** abilityName
+**Substitutes:** [abilityName](arkts-backgroundtasks-reminderagentmanager-maxscreenwantagent-i.md#abilityname)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -48,6 +52,6 @@ Name of the HAP that is automatically started when the reminder arrives and the 
 
 **Deprecated since:** 9
 
-**Substitutes:** pkgName
+**Substitutes:** [pkgName](arkts-backgroundtasks-reminderagentmanager-maxscreenwantagent-i.md#pkgname)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

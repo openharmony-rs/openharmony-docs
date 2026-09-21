@@ -1,5 +1,9 @@
 # ConnectionReason
 
+```TypeScript
+enum ConnectionReason
+```
+
 连接原因的枚举。
 
 **起始版本：** 26.0.0

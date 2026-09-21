@@ -1,5 +1,9 @@
 # NetCapabilityInfo
 
+```TypeScript
+export interface NetCapabilityInfo
+```
+
 提供承载数据网络能力的实例。
 
 **起始版本：** 10

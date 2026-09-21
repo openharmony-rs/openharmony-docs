@@ -60,28 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务获取私有凭据详情，需要使用凭据的唯一标识符，此处省略 */
-try {
-  certificateManager.getPrivateCertificate(uri).then((cmResult) => {
-    if (cmResult?.credential == undefined) {
-      console.info('The result of getting private certificate is undefined.');
-    } else {
-      let list = cmResult.credential;
-      console.info('Succeeded in getting private certificate.');
-    }
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to get private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getprivatecertificate-1"></a>
 
 ## getPrivateCertificate
 
@@ -120,4 +100,24 @@ function getPrivateCertificate(keyUri: string): Promise<CMResult>
 
 **示例**
 
-参见 getPrivateCertificate
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri: string = 'test'; /* 业务获取私有凭据详情，需要使用凭据的唯一标识符，此处省略 */
+try {
+  certificateManager.getPrivateCertificate(uri).then((cmResult) => {
+    if (cmResult?.credential == undefined) {
+      console.info('The result of getting private certificate is undefined.');
+    } else {
+      let list = cmResult.credential;
+      console.info('Succeeded in getting private certificate.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to get private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

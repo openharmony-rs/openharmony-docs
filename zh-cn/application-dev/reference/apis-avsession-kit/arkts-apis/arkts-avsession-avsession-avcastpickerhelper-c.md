@@ -1,12 +1,16 @@
 # AVCastPickerHelper
 
+```TypeScript
+class AVCastPickerHelper
+```
+
 投播半模态对象，可拉起半模态窗口，选择投播设备。在使用前，需要创建AVCastPickerHelper实例。
 
 > **说明：** 
 > 
 > - 本Class首批接口从API version 14开始支持。
 > 
-> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-commonmethod-c.md#bindcontentcover)。
+> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover)。
 
 **起始版本：** 14
 
@@ -45,6 +49,34 @@ constructor(context: Context)
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+**示例**
+
+```TypeScript
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(40)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as Context;
+            let avCastPicker = new avSession.AVCastPickerHelper(context);
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## off('pickerStateChange')
 
 ```TypeScript
@@ -72,6 +104,18 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState>) : void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
+
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function onPickerStateChange(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.off('pickerStateChange');
+}
+```
 
 ## on('pickerStateChange')
 
@@ -103,6 +147,21 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState>) : void
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { AVCastPickerState } from '@kit.AVSessionKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function onPickerStateChange(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.on('pickerStateChange', (state: AVCastPickerState) => {
+    console.info(`picker state change : ${state}`);
+  });
+}
+```
+
 ## resetCommunicationDevice
 
 ```TypeScript
@@ -122,6 +181,20 @@ resetCommunicationDevice(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+async function avCastPicker(context: common.Context) {
+  let avCastPicker = new avSession.AVCastPickerHelper(context);
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('Succeeded in resetting communication device.');
+  });
+}
+```
 
 ## select
 
@@ -154,3 +227,28 @@ select(options?: AVCastPickerOptions): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+import { avSession } from '@kit.AVSessionKit';
+
+class MyPage {
+  private avCastPicker: avSession.AVCastPickerHelper;
+
+  constructor(context: common.Context) {
+    this.avCastPicker = new avSession.AVCastPickerHelper(context);
+  }
+
+  async selectCastDevice() {
+    const avCastPickerOptions: avSession.AVCastPickerOptions = {
+      sessionType: 'video',
+    };
+
+this.avCastPicker.select(avCastPickerOptions).then(() => {
+  console.info('Succeeded in selecting.');
+});
+  }
+}
+```

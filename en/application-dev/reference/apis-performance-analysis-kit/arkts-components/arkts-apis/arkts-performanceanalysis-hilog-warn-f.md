@@ -31,10 +31,14 @@ Prints WARN logs.
 
 **Examples**
 
-```TypeScript
 This example is used to output a WARN log with the format string being "%{public}s World %{private}d". The variable  is a plaintext string, and the variable  is a private integer.
-```
 
 ```TypeScript
+hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
+```
+
 If "hello" is filled in %{public}s and 3 in %{private}d, the output log is as follows:
+
+```TypeScript
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```

@@ -1,5 +1,9 @@
 # ReminderRequestCalendar
 
+```TypeScript
+interface ReminderRequestCalendar extends ReminderRequest
+```
+
 ReminderRequestCalendar extends ReminderRequest
 
 日历实例对象，用于设置提醒的时间。

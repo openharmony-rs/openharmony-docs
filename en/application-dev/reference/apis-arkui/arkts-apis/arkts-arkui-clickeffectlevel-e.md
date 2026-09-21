@@ -1,5 +1,9 @@
 # ClickEffectLevel
 
+```TypeScript
+declare enum ClickEffectLevel
+```
+
 Enum of click effect level.
 
 **Since:** 10

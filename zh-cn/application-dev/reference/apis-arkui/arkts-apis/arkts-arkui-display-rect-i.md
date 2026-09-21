@@ -1,5 +1,9 @@
 # Rect
 
+```TypeScript
+interface Rect
+```
+
 矩形区域。
 
 **起始版本：** 9

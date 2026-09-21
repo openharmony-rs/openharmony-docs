@@ -1,5 +1,9 @@
 # VisibilityType
 
+```TypeScript
+enum VisibilityType
+```
+
 The visibility of a form.
 
 **Since:** 9

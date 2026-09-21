@@ -1,5 +1,9 @@
 # CameraConcurrentType
 
+```TypeScript
+enum CameraConcurrentType
+```
+
 枚举，镜头并发类型。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # HidDeviceProfile
 
+```TypeScript
+interface HidDeviceProfile extends BaseProfile
+```
+
 Manager HID device profile.
 
 **Inheritance/Implementation:** HidDeviceProfile extends [BaseProfile](arkts-connectivity-hid-baseprofile-t.md)

@@ -1,6 +1,10 @@
 # HoverModeStatus
 
-Provides information about the device or application's folding, rotation, and window state.
+```TypeScript
+export interface HoverModeStatus
+```
+
+Provides device or application information covering fold status, hover mode, application rotation, and window status type.
 
 **Since:** 12
 
@@ -18,7 +22,7 @@ import { ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayout
 appRotation: number
 ```
 
-Rotation angle of the application.
+App rotation angle, in degrees.
 
 **Type:** number
 
@@ -36,7 +40,7 @@ Rotation angle of the application.
 foldStatus: display.FoldStatus
 ```
 
-Fold status of the device.
+Fold status of the device, including expanded, half-folded, and fully folded states.
 
 **Type:** [display.FoldStatus](arkts-arkui-display-foldstatus-e.md)
 
@@ -54,7 +58,7 @@ Fold status of the device.
 isHoverMode: boolean
 ```
 
-Whether the application is in the hover state. The value **true** means that the application is in the hover state, and **false** means the opposite.
+Whether the app is currently in hover state. The value **true** indicates hover state, and **false** indicates non-hover state.
 
 **Type:** boolean
 
@@ -72,7 +76,7 @@ Whether the application is in the hover state. The value **true** means that the
 windowStatusType: window.WindowStatusType
 ```
 
-Window mode.
+Window mode, including full-screen, split-screen, and freeform window modes.
 
 **Type:** [window.WindowStatusType](arkts-arkui-window-windowstatustype-e.md)
 

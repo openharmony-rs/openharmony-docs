@@ -1,5 +1,9 @@
 # WindowType
 
+```TypeScript
+enum WindowType
+```
+
 窗口类型枚举。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # RecentPhotoComponent
 
+```TypeScript
+export declare struct RecentPhotoComponent
+```
+
 RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback, onRecentPhotoClick: RecentPhotoClickCallback, onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback, })
 
 Allows an application to access the latest image or video file in the public directory to access the recent image or video in the user directory without the media access permission.

@@ -1,5 +1,9 @@
 # TagInfo
 
+```TypeScript
+export interface TagInfo
+```
+
 Before a card with tags is read or written, **[TagInfo](arkts-connectivity-tag-taginfo-i.md)** must be obtained to determine the tag technologies supported by the card. In this way, the application can invoke the correct API to communicate with the card.
 
 **Since:** 7

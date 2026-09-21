@@ -1,5 +1,9 @@
 # AVCallState
 
+```TypeScript
+interface AVCallState
+```
+
 Used to indicate the call state of the current call.
 
 @interface AVCallState [since 11 - 11]

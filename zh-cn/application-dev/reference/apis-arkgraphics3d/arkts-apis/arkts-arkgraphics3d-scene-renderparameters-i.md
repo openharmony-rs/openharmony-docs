@@ -1,5 +1,9 @@
 # RenderParameters
 
+```TypeScript
+export interface RenderParameters
+```
+
 渲染参数接口。
 
 @interface RenderParameters

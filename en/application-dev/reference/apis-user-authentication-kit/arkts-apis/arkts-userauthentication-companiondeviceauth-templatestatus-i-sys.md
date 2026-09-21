@@ -1,5 +1,9 @@
 # TemplateStatus (System API)
 
+```TypeScript
+interface TemplateStatus
+```
+
 Describes the complete status information about a registered companion device authentication template, including the template ID, data confirmation status, validity, user ID, time when the template is added, supported services, and associated device status.
 
 **Since:** 23

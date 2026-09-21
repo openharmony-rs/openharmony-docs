@@ -1,5 +1,9 @@
 # Iterator
 
+```TypeScript
+interface Iterator<T, TReturn = any, TNext = undefined>
+```
+
 ## Modules to Import
 
 ```TypeScript

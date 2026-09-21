@@ -1,5 +1,9 @@
 # OcspDigest
 
+```TypeScript
+enum OcspDigest
+```
+
 Enumerates the OCSP digest algorithm.
 
 **Since:** 26.0.0

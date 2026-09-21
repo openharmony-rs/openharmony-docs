@@ -1,5 +1,9 @@
 # DataParams
 
+```TypeScript
+interface DataParams
+```
+
 端口数据发送和接收的参数。
 
 **起始版本：** 26.0.0

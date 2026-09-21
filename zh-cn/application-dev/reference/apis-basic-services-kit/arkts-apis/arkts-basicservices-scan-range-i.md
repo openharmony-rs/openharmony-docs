@@ -1,5 +1,9 @@
 # Range
 
+```TypeScript
+interface Range
+```
+
 定义范围的接口。
 
 **起始版本：** 20

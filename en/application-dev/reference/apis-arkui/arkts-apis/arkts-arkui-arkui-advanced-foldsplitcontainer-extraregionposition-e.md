@@ -1,5 +1,9 @@
 # ExtraRegionPosition
 
+```TypeScript
+export declare enum ExtraRegionPosition
+```
+
 Provides the position information of the extra region.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # MarqueeDynamicSyncSceneType
 
+```TypeScript
+export const enum MarqueeDynamicSyncSceneType
+```
+
 Enum of scene type for Marquee
 
 **Since:** 14

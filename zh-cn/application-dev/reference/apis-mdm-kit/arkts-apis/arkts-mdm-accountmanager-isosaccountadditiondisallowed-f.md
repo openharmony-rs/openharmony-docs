@@ -65,18 +65,8 @@ try {
 }
 ```
 
-```TypeScript
-import { accountManager } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(null, 100);
-  console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
-} catch (err) {
-  console.error(`Failed to query the os account addition or not. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="isosaccountadditiondisallowed-1"></a>
 
 ## isOsAccountAdditionDisallowed
 
@@ -118,4 +108,14 @@ function isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): 
 
 **示例**
 
-参见 isOsAccountAdditionDisallowed
+```TypeScript
+import { accountManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let isDisallowed: boolean = accountManager.isOsAccountAdditionDisallowed(null, 100);
+  console.info(`Succeeded in querying the os account addition or not: ${isDisallowed}`);
+} catch (err) {
+  console.error(`Failed to query the os account addition or not. Code: ${err.code}, message: ${err.message}`);
+}
+```

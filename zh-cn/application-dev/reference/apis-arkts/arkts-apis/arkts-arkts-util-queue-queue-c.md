@@ -1,5 +1,9 @@
 # Queue
 
+```TypeScript
+declare class Queue<T>
+```
+
 Queue遵循先进先出原则：在尾部增加元素，在头部删除元素。Queue基于循环队列的数据结构实现。
 
 **起始版本：** 8

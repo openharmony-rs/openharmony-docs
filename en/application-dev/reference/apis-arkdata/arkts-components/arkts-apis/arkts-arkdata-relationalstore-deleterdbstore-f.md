@@ -40,14 +40,49 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 **Examples**
 
-```TypeScript
 FA model:
-```
 
 ```TypeScript
-Stage model:
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+relationalStore.deleteRdbStore(context, "RdbTest.db", (err: BusinessError) => {
+  if (err) {
+    console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  // After the database is deleted, the initialized RdbStore instance cannot be used.
+  // Clear the related variables to release resources in time.
+  console.info('Delete RdbStore successfully.');
+});
 ```
 
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err: BusinessError) => {
+      if (err) {
+        console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        return;
+      }
+      // After the database is deleted, the initialized RdbStore instance cannot be used.
+      // Clear the related variables to release resources in time.
+      console.info('Delete RdbStore successfully.');
+    });
+  }
+}
+```
+
+
+<a id="deleterdbstore-1"></a>
 
 ## deleteRdbStore
 
@@ -85,8 +120,58 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 **Examples**
 
-See [deleteRdbStore](#deleterdbstore)
+FA model:
 
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: "RdbTest.db",
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+
+relationalStore.deleteRdbStore(context, STORE_CONFIG, (err: BusinessError) => {
+  if (err) {
+    console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  // After the database is deleted, the initialized RdbStore instance cannot be used.
+  // Clear the related variables to release resources in time.
+  console.info('Delete RdbStore successfully.');
+});
+```
+
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err: BusinessError) => {
+      if (err) {
+        console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        return;
+      }
+      // After the database is deleted, the initialized RdbStore instance cannot be used.
+      // Clear the related variables to release resources in time.
+      console.info('Delete RdbStore successfully.');
+    });
+  }
+}
+```
+
+
+<a id="deleterdbstore-2"></a>
 
 ## deleteRdbStore
 
@@ -127,8 +212,45 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 **Examples**
 
-See [deleteRdbStore](#deleterdbstore)
+FA model:
 
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+relationalStore.deleteRdbStore(context, "RdbTest.db").then(() => {
+  // After the database is deleted, the initialized RdbStore instance cannot be used.
+  // Clear the related variables to release resources in time.
+  console.info('Delete RdbStore successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+});
+```
+
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db").then(() => {
+      // After the database is deleted, the initialized RdbStore instance cannot be used.
+      // Clear the related variables to release resources in time.
+      console.info('Delete RdbStore successfully.');
+    }).catch((err: BusinessError) => {
+      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
+}
+```
+
+
+<a id="deleterdbstore-3"></a>
 
 ## deleteRdbStore
 
@@ -172,4 +294,48 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 
 **Examples**
 
-See [deleteRdbStore](#deleterdbstore)
+FA model:
+
+```TypeScript
+import { featureAbility } from "@kit.AbilityKit";
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let context = featureAbility.getContext();
+
+const STORE_CONFIG: relationalStore.StoreConfig = {
+  name: "RdbTest.db",
+  securityLevel: relationalStore.SecurityLevel.S3
+};
+
+relationalStore.deleteRdbStore(context, STORE_CONFIG).then(() => {
+  // After the database is deleted, the initialized RdbStore instance cannot be used.
+  // Clear the related variables to release resources in time.
+  console.info('Delete RdbStore successfully.');
+}).catch((err: BusinessError) => {
+  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+});
+```
+
+Stage model:
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG).then(() => {
+      // After the database is deleted, the initialized RdbStore instance cannot be used.
+      // Clear the related variables to release resources in time.
+      console.info('Delete RdbStore successfully.');
+    }).catch((err: BusinessError) => {
+      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
+}
+```

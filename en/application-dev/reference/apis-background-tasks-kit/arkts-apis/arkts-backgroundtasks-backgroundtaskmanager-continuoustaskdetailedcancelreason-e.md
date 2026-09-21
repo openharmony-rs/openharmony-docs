@@ -1,5 +1,9 @@
 # ContinuousTaskDetailedCancelReason
 
+```TypeScript
+export enum ContinuousTaskDetailedCancelReason
+```
+
 Describes the detailed reason for canceling a continuous task.
 
 **Since:** 26.0.0
@@ -168,7 +172,7 @@ SYSTEM_CANCEL_NOT_USE_NEARLINK = 15
 
 A continuous task of the **NEARLINK** type is requested, but nearlink is not in use.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

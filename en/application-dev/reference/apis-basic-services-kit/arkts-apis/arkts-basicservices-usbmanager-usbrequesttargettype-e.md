@@ -1,5 +1,9 @@
 # USBRequestTargetType
 
+```TypeScript
+export enum USBRequestTargetType
+```
+
 Enumerates request target types.
 
 **Since:** 9

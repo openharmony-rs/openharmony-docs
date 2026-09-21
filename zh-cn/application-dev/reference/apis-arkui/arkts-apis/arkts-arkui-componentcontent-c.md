@@ -1,8 +1,12 @@
 # ComponentContent
 
+```TypeScript
+export class ComponentContent<T extends Object> extends Content
+```
+
 有两种创建实体封装组件的方式。ComponentContent需要通过update接口手动更新内容，主要适用于弹窗等解耦封装场景；ReactiveComponentContent支持响应式数据自动更新、完整生命周期管理和组件复用，适用于长列表等高性能渲染场景。开发者可根据实际需求从以下方式中选择。
 
-ComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递，便于开发者对弹窗类组件进行解耦封装。其底层使用了BuilderNode，具体使用规格参考BuilderNode。
+ComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递，便于开发者对弹窗类组件进行解耦封装。其底层使用了BuilderNode，具体使用规格参考[BuilderNode](arkts-arkui-buildernode-c.md)。
 
 ReactiveComponentContent表示组件内容的实体封装，其对象支持在非UI组件中创建与传递。它支持响应式数据自动更新、完整的生命周期管理和组件复用，适用于长列表等需要高性能渲染的场景。其底层使用了ReactiveBuilderNode，具体使用规格参考[ReactiveBuilderNode](arkts-arkui-buildernode-reactivebuildernode-c.md)。
 
@@ -102,6 +106,8 @@ struct Index {
 }
 ```
 
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -186,6 +192,8 @@ struct Index {
   }
 }
 ```
+
+<a id="constructor-2"></a>
 
 ## constructor
 

@@ -1,5 +1,9 @@
 # NetworkType
 
+```TypeScript
+export enum NetworkType
+```
+
 触发延迟任务回调的网络类型。
 
 **起始版本：** 9

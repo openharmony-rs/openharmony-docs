@@ -1,5 +1,9 @@
 # ColoringStrategy
 
+```TypeScript
+declare enum ColoringStrategy
+```
+
 Enumerates the coloring strategies.
 
 **Since:** 10

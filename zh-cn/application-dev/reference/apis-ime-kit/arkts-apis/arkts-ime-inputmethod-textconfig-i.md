@@ -1,5 +1,9 @@
 # TextConfig
 
+```TypeScript
+export interface TextConfig
+```
+
 编辑框的配置信息。
 
 **起始版本：** 10

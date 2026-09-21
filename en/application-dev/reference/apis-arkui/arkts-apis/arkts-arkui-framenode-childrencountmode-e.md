@@ -1,5 +1,9 @@
 # ChildrenCountMode
 
+```TypeScript
+export enum ChildrenCountMode
+```
+
 Enumerates the modes of counting child nodes.
 
 **Since:** 26.0.0
@@ -12,7 +16,7 @@ Enumerates the modes of counting child nodes.
 ALL_EXPAND = 0
 ```
 
-Counting all child node after expansion. When a lazy loading node (for example, LazyForEach) is encountered, the node is expanded and the number of all child nodes is returned.
+Counting all child node after expansion. When a lazy loading node (for example, [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md#lazy_for_each)) is encountered, the node is expanded and the number of all child nodes is returned.
 
 Whether to expand lazy loading nodes: yes
 

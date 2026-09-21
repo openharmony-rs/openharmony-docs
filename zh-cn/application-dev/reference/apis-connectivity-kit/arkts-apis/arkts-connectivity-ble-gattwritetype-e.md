@@ -1,5 +1,9 @@
 # GattWriteType
 
+```TypeScript
+enum GattWriteType
+```
+
 枚举，写入特征值的方式（不同的取值，对端蓝牙设备的表现不一样）。
 
 **起始版本：** 10

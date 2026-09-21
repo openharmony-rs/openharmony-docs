@@ -1,5 +1,9 @@
 # MemLevel
 
+```TypeScript
+export enum MemLevel
+```
+
 MemLevel
 
 **Since:** 7

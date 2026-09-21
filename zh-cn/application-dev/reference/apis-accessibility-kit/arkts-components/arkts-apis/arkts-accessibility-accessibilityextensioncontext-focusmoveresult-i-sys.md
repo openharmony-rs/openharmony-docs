@@ -1,5 +1,9 @@
 # FocusMoveResult（系统接口）
 
+```TypeScript
+export declare interface FocusMoveResult
+```
+
 查询无障碍节点返回值类型。
 
 **起始版本：** 23

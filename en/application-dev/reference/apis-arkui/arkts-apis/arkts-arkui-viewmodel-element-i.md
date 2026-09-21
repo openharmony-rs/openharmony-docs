@@ -1,5 +1,9 @@
 # Element
 
+```TypeScript
+export interface Element
+```
+
 Element
 
 @interface Element

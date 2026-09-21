@@ -1,5 +1,9 @@
 # DataViewConstructor
 
+```TypeScript
+interface DataViewConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

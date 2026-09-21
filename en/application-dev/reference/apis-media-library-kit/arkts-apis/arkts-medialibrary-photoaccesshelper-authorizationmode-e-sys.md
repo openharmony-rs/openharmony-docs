@@ -1,5 +1,9 @@
 # AuthorizationMode (System API)
 
+```TypeScript
+enum AuthorizationMode
+```
+
 Enumerates the authorization modes.
 
 **Since:** 12

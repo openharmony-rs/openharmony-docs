@@ -1,8 +1,12 @@
 # ImageAnimator properties/events
 
-In addition to the universal attributes, the following attributes are supported.
+```TypeScript
+declare class ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
+```
 
-In addition to the universal events, the following events are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
+
+In addition to the [universal events](arkts-arkui-common-comp.md#common), the following events are supported.
 
 **Inheritance/Implementation:** ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
 
@@ -19,6 +23,8 @@ duration(value: number)
 Sets the playback duration. This attribute does not take effect when a separate duration is set for any of the image frames.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -42,6 +48,8 @@ Sets the status before and after execution of the animation in the current playb
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
@@ -63,6 +71,8 @@ fixedSize(value: boolean)
 Sets whether the image size is fixed at the component size.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -86,6 +96,8 @@ Sets image frame information. Dynamic update is not supported.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
@@ -96,7 +108,7 @@ Sets image frame information. Dynamic update is not supported.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[ImageFrameInfo](arkts-arkui-imageframeinfo-i.md)&gt; | Yes | Image frame information. The information of each frame includes the path, size, position, and playback duration of an image. For details, see [ImageFrameInfo](arkts-arkui-imageframeinfo-i.md).<br> Default value: **[]**<br> Note: If the input array is too large, memory usage may increase. Therefore, as the controller of memory usage, be sure to assess potential memory consumption before passing in the data to avoid issues such as insufficient memory. |
+| value | Array&lt;[ImageFrameInfo](arkts-arkui-imageanimator-comp-imageframeinfo-i.md)&gt; | Yes | Image frame information. The information of each frame includes the path, size, position, and playback duration of an image. For details, see [ImageFrameInfo](arkts-arkui-imageanimator-comp-imageframeinfo-i.md).<br> Default value: **[]**<br> Note: If the input array is too large, memory usage may increase. Therefore, as the controller of memory usage, be sure to assess potential memory consumption before passing in the data to avoid issues such as insufficient memory. |
 
 ## iterations
 
@@ -107,6 +119,8 @@ iterations(value: number)
 Sets the number of times that the animation is played.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -124,7 +138,7 @@ Sets the number of times that the animation is played.
 monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 ```
 
-Sets whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-commonmethod-c.md#onvisibleareachange) event.
+Sets whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) event.
 
 **Since:** 17
 
@@ -138,7 +152,7 @@ Sets whether the component should automatically pause or resume based on its vis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitorInvisibleArea | boolean | Yes | Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-commonmethod-c.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>With the value **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false**<br> **NOTE:** <br>When this parameter is dynamically changed from **true** to **false**, the component will resume from its last paused state based on the current [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md).<br>Changes to this property do not affect the custom [state](#state) value. |
+| monitorInvisibleArea | boolean | Yes | Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>With the value **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false**<br> **NOTE:** <br>When this parameter is dynamically changed from **true** to **false**, the component will resume from its last paused state based on the current [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md).<br>Changes to this property do not affect the custom [state](#state) value. |
 
 ## onCancel
 
@@ -149,6 +163,8 @@ onCancel(event: () => void)
 Triggered when the animation playback returns to the initial state.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -172,6 +188,8 @@ Triggered when the animation playback completes or stops.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
@@ -193,6 +211,8 @@ onPause(event: () => void)
 Triggered when the animation playback is paused.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -216,6 +236,8 @@ Triggered when the animation playback is repeated.
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -235,6 +257,8 @@ onStart(event: () => void)
 Triggered when the animation starts to play.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -265,6 +289,8 @@ Sets the number of images to be pre-decoded.
 
 **Deprecated since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -282,6 +308,8 @@ reverse(value: boolean)
 Sets the playback direction.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -304,6 +332,8 @@ state(value: AnimationStatus)
 Sets the playback state of the animation.
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

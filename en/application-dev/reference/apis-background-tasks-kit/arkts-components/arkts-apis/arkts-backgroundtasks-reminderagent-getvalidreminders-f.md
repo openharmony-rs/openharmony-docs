@@ -18,7 +18,7 @@ Obtains all valid (not yet expired) reminders set by the current application. Th
 
 **Deprecated since:** 9
 
-**Substitutes:** getValidReminders
+**Substitutes:** [getValidReminders](arkts-backgroundtasks-reminderagentmanager-getvalidreminders-f.md)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -59,6 +59,33 @@ reminderAgent.getValidReminders((err: BusinessError, reminders: Array<reminderAg
 })
 ```
 
+
+<a id="getvalidreminders-1"></a>
+
+## getValidReminders
+
+```TypeScript
+function getValidReminders(): Promise<Array<ReminderRequest>>
+```
+
+Obtains all valid (not yet expired) reminders set by the current application. This API uses a promise to return the reminders.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getValidReminders](arkts-backgroundtasks-reminderagentmanager-getvalidreminders-f.md)
+
+**System capability:** SystemCapability.Notification.ReminderAgent
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)&gt;&gt; | Promise used to return an array of all valid reminders set by the current application. |
+
+**Examples**
+
 ```TypeScript
 import reminderAgent from '@ohos.reminderAgent';
 
@@ -86,30 +113,3 @@ reminderAgent.getValidReminders().then((reminders: Array<reminderAgent.ReminderR
   }
 })
 ```
-
-
-## getValidReminders
-
-```TypeScript
-function getValidReminders(): Promise<Array<ReminderRequest>>
-```
-
-Obtains all valid (not yet expired) reminders set by the current application. This API uses a promise to return the reminders.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** getValidReminders
-
-**System capability:** SystemCapability.Notification.ReminderAgent
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;[ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)&gt;&gt; | Promise used to return an array of all valid reminders set by the current application. |
-
-**Examples**
-
-See [getValidReminders](#getvalidreminders)

@@ -1,5 +1,9 @@
 # MenuType
 
+```TypeScript
+declare enum MenuType
+```
+
 Enumerates the menu types.
 
 **Since:** 13

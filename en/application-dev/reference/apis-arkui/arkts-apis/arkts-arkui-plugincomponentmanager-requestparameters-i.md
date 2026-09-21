@@ -1,5 +1,9 @@
 # RequestParameters
 
+```TypeScript
+interface RequestParameters
+```
+
 Defines the parameters required when using the **PluginManager.Request** API.
 
 **Since:** 8

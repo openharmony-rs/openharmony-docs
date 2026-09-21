@@ -1,5 +1,9 @@
 # WebSchemeHandlerResponse
 
+```TypeScript
+class WebSchemeHandlerResponse
+```
+
 WebSchemeHandlerResponse是自定义scheme拦截场景中用于构造HTTP响应数据的类。开发者通过该类创建Response对象，设置HTTP状态码、状态文本、媒体类型、字符集、自定义响应头、网络错误码以及重定向URL等属性，然后通过WebResourceHandler将自定义响应返回给Web组件。该类是自定义资源拦截的核心数据载体。
 
 WebSchemeHandlerResponse与WebResourceHandler配合使用：开发者构造WebSchemeHandlerResponse对象并填充响应属性，然后通过WebResourceHandler的didReceiveResponse方法将响应头发送给被拦截的请求。
@@ -28,6 +32,50 @@ Response的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('response').onClick(() => {
+        let response = new webview.WebSchemeHandlerResponse();
+        try {
+          response.setUrl("http://www.example.com")
+          response.setStatus(200)
+          response.setStatusText("OK")
+          response.setMimeType("text/html")
+          response.setEncoding("utf-8")
+          response.setHeaderByName("header1", "value1", false)
+          response.setNetErrorCode(WebNetErrorList.NET_OK)
+          response.setCustomErrorCode(1001)
+          console.info("[schemeHandler] getUrl:" + response.getUrl())
+          console.info("[schemeHandler] getStatus:" + response.getStatus())
+          console.info("[schemeHandler] getStatusText:" + response.getStatusText())
+          console.info("[schemeHandler] getMimeType:" + response.getMimeType())
+          console.info("[schemeHandler] getEncoding:" + response.getEncoding())
+          console.info("[schemeHandler] getHeaderByName:" + response.getHeaderByName("header1"))
+          console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
+          console.info("[schemeHandler] getCustomErrorCode:" + response.getCustomErrorCode())
+
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getCustomErrorCode
 
 ```TypeScript
@@ -36,7 +84,7 @@ getCustomErrorCode(): number
 
 获取当前Response的自定义错误码。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,6 +95,10 @@ getCustomErrorCode(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 当前Response的自定义错误码。 |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## getEncoding
 
@@ -67,6 +119,10 @@ getEncoding(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 返回响应内容的字符编码格式，如'utf-8'、'gbk'等。 |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## getHeaderByName
 
@@ -94,6 +150,10 @@ getHeaderByName(name: string): string
 | --- | --- |
 | string | 指定名称的响应头字段对应的值。 |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## getMimeType
 
 ```TypeScript
@@ -113,6 +173,10 @@ getMimeType(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 返回响应内容的MIME类型字符串，如'text/html'、'application/json'等。 |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## getNetErrorCode
 
@@ -134,6 +198,10 @@ getNetErrorCode(): WebNetErrorList
 | --- | --- |
 | [WebNetErrorList](arkts-arkweb-web-neterrorlist-webneterrorlist-e.md) | 返回Response的网络错误码。 |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## getStatus
 
 ```TypeScript
@@ -154,6 +222,10 @@ getStatus(): number
 | --- | --- |
 | number | 返回Response的HTTP状态码。 |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## getStatusText
 
 ```TypeScript
@@ -173,6 +245,10 @@ getStatusText(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | 状态文本。 |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## getUrl
 
@@ -196,15 +272,19 @@ getUrl(): string
 | --- | --- |
 | string | 获取经过重定向或因HSTS而更改后的URL。 |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## setCustomErrorCode
 
 ```TypeScript
 setCustomErrorCode(customErrorCode: number): void
 ```
 
-给当前的Response设置自定义错误码。详情参考WebResourceError.getCustomErrorCode。
+给当前的Response设置自定义错误码。详情参考[WebResourceError.getCustomErrorCode](../arkts-components/arkts-arkweb-web-comp-webresourceerror-c.md#getcustomerrorcode)。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -215,6 +295,10 @@ setCustomErrorCode(customErrorCode: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | customErrorCode | number | 是 | 该响应的自定义错误码。 |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## setEncoding
 
@@ -241,6 +325,10 @@ setEncoding(encoding: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## setHeaderByName
 
@@ -270,6 +358,10 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## setMimeType
 
 ```TypeScript
@@ -295,6 +387,10 @@ setMimeType(type: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## setNetErrorCode
 
@@ -322,6 +418,10 @@ setNetErrorCode(code: WebNetErrorList): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## setStatus
 
 ```TypeScript
@@ -347,6 +447,10 @@ setStatus(code: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
 
 ## setStatusText
 
@@ -374,6 +478,10 @@ setStatusText(text: string): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
+**示例**
+
+完整示例代码参考[constructor](#constructor)。
+
 ## setUrl
 
 ```TypeScript
@@ -399,3 +507,7 @@ setUrl(url: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. |
+
+**示例**
+
+完整示例代码参考[constructor](#constructor)。

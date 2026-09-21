@@ -35,17 +35,8 @@ sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-sms.getDefaultSmsSlotId().then((data: number) => {
-    console.info(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getdefaultsmsslotid-1"></a>
 
 ## getDefaultSmsSlotId
 
@@ -67,4 +58,13 @@ Obtains the default slot ID of the SIM card used to send SMS messages. This API 
 
 **Examples**
 
-See [getDefaultSmsSlotId](#getdefaultsmsslotid)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+sms.getDefaultSmsSlotId().then((data: number) => {
+    console.info(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
+});
+```

@@ -1,5 +1,9 @@
 # WindowFilter
 
+```TypeScript
+declare interface WindowFilter
+```
+
 Provides the flag attributes of this window.
 
 **Since:** 9

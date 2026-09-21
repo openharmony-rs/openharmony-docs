@@ -1,7 +1,7 @@
 # SpecificSystemBar
 
 ```TypeScript
-type SpecificSystemBar = 'status' | 'navigation'| 'navigationIndicator'
+type SpecificSystemBar = 'status' | 'navigation' | 'navigationIndicator'
 ```
 
 Defines the type of system bar that can be displayed or hidden.

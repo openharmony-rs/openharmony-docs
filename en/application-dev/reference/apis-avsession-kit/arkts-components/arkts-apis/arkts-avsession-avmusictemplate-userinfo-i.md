@@ -1,5 +1,9 @@
 # UserInfo
 
+```TypeScript
+interface UserInfo
+```
+
 The definition of User information.
 
 @interface UserInfo

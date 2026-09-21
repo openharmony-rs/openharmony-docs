@@ -31,20 +31,6 @@ function getNameForUid(uid: number, callback: AsyncCallback<string>): void
 
 ```TypeScript
 import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let uid: number = 20010005;
-
-bundle.getNameForUid(uid)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
-
-```TypeScript
-import bundle from '@ohos.bundle';
 
 let uid: number = 20010005;
 
@@ -57,6 +43,8 @@ bundle.getNameForUid(uid, (err, data) => {
 })
 ```
 
+
+<a id="getnameforuid-1"></a>
 
 ## getNameForUid
 
@@ -88,4 +76,16 @@ function getNameForUid(uid: number): Promise<string>
 
 **示例**
 
-参见 getNameForUid
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let uid: number = 20010005;
+
+bundle.getNameForUid(uid)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```

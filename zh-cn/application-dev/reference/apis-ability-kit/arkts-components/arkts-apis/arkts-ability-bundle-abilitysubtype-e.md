@@ -1,5 +1,9 @@
 # AbilitySubType
 
+```TypeScript
+export enum AbilitySubType
+```
+
 
 > **说明：** 
 > 

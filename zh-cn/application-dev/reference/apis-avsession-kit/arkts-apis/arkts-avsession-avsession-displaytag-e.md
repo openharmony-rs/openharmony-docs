@@ -1,5 +1,9 @@
 # DisplayTag
 
+```TypeScript
+enum DisplayTag
+```
+
 枚举，表示当前媒体资源的金标，即应用媒体音源的特殊类型标识。
 
 @enum { int }

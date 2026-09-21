@@ -1,5 +1,9 @@
 # DataType (System API)
 
+```TypeScript
+export enum DataType
+```
+
 Enumerates the data types.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # ShortcutInfo
 
+```TypeScript
+export interface ShortcutInfo
+```
+
 快捷方式的配置信息。
 
 **起始版本：** 20

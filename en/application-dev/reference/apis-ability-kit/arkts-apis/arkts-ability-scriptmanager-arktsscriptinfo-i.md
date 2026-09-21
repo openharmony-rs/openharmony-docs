@@ -1,5 +1,9 @@
 # ArkTSScriptInfo
 
+```TypeScript
+interface ArkTSScriptInfo
+```
+
 arkTS script info.
 
 **Since:** 26.0.0

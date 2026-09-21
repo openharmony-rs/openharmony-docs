@@ -1,5 +1,9 @@
 # TextVerticalAlign
 
+```TypeScript
+declare enum TextVerticalAlign
+```
+
 Defines the vertical alignment mode of text. The default value is **BASELINE** (aligning along the baseline).
 
 **Since:** 20

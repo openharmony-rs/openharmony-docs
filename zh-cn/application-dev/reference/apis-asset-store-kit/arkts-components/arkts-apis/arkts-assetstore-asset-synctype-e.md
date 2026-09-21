@@ -1,5 +1,9 @@
 # SyncType
 
+```TypeScript
+enum SyncType
+```
+
 枚举，关键资产支持的同步类型。
 
 **起始版本：** 11

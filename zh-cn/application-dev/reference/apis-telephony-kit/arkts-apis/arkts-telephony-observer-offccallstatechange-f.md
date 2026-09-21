@@ -18,6 +18,8 @@ function offCCallStateChange(callback?: Callback<CCallStateInfo>): void
 
 **需要权限：** ohos.permission.MANAGE_CALL_FOR_DEVICES
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Telephony.StateRegistry
 
 **参数：**

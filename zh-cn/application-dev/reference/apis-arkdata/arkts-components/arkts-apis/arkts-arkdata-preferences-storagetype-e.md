@@ -1,5 +1,9 @@
 # StorageType
 
+```TypeScript
+enum StorageType
+```
+
 Preferences的存储模式枚举。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # OperResult
 
+```TypeScript
+interface OperResult
+```
+
 The definition of the operate result.
 
 @interface OperResult

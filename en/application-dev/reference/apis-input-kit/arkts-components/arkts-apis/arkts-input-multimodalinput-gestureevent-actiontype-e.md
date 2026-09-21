@@ -1,5 +1,9 @@
 # ActionType
 
+```TypeScript
+export declare enum ActionType
+```
+
 Enumerates gesture event types.
 
 **Since:** 10

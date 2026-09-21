@@ -53,19 +53,8 @@ print.connectPrinter(printerId, (error: BusinessError) => {
 })
 ```
 
-```TypeScript
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// printer ID can be obtained from the on('printerChange') callback.
-let printerId: string = 'printerId_32';
-print.connectPrinter(printerId).then(() => {
-    console.info('start connect Printer success');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to connectPrinter. Code: ${error.code}, message: ${error.message}`);
-})
-```
-
+<a id="connectprinter-1"></a>
 
 ## connectPrinter
 
@@ -104,4 +93,15 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 
 **Examples**
 
-See [connectPrinter](#connectprinter)
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// printer ID can be obtained from the on('printerChange') callback.
+let printerId: string = 'printerId_32';
+print.connectPrinter(printerId).then(() => {
+    console.info('start connect Printer success');
+}).catch((error: BusinessError) => {
+    console.error(`Failed to connectPrinter. Code: ${error.code}, message: ${error.message}`);
+})
+```

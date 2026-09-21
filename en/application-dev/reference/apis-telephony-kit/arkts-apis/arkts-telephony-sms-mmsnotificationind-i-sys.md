@@ -1,5 +1,9 @@
 # MmsNotificationInd (System API)
 
+```TypeScript
+export interface MmsNotificationInd
+```
+
 Defines an MMS notification index.
 
 **Since:** 8

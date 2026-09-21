@@ -1,5 +1,9 @@
 # AudioDeviceCallbackInfo（系统接口）
 
+```TypeScript
+export interface AudioDeviceCallbackInfo
+```
+
 音频设备信息。
 
 **起始版本：** 10
@@ -60,6 +64,8 @@ isMicDisabled?: boolean
 **类型：** boolean
 
 **起始版本：** 24
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

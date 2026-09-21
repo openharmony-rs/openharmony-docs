@@ -1,5 +1,9 @@
 # RelativeTimeFormatResolvedOptions
 
+```TypeScript
+export interface RelativeTimeFormatResolvedOptions
+```
+
 相对时间格式化对象的格式化配置项。
 
 **起始版本：** 8

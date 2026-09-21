@@ -1,5 +1,9 @@
 # KeyboardType
 
+```TypeScript
+enum KeyboardType
+```
+
 Enumerates keyboard types.
 
 **Since:** 9

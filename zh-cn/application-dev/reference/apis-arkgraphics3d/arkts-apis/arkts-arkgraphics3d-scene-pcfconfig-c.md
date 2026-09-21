@@ -1,5 +1,9 @@
 # PCFConfig
 
+```TypeScript
+export declare class PCFConfig extends SoftShadowConfig
+```
+
 PCF（Percentage Closer Filtering，百分比邻近过滤）软阴影配置类，继承自SoftShadowConfig。
 
 **继承/实现关系：** PCFConfig extends [SoftShadowConfig](arkts-arkgraphics3d-scene-softshadowconfig-c.md)

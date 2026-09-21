@@ -1,5 +1,9 @@
 # ImmersiveMode
 
+```TypeScript
+export enum ImmersiveMode
+```
+
 Enumerates the display area modes of the dialog box overlay within a page.
 
 **Since:** 15

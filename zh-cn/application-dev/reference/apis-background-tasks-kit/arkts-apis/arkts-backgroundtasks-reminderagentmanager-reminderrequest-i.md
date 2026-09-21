@@ -1,5 +1,9 @@
 # ReminderRequest
 
+```TypeScript
+interface ReminderRequest
+```
+
 代理提醒对象，用于设置提醒类型、响铃时长等具体信息。
 
 **起始版本：** 9
@@ -66,7 +70,7 @@ content?: string
 contentResourceId?: number
 ```
 
-指明提醒内容的资源ID，通过`&#36;r(资源名称).id`方法获取。
+指明提醒内容的资源ID，通过`$r(资源名称).id`方法获取。
 
 **类型：** number
 
@@ -108,7 +112,7 @@ expiredContent?: string
 expiredContentResourceId?: number
 ```
 
-指明提醒过期后内容的资源ID，通过`&#36;r(资源名称).id`方法获取。
+指明提醒过期后内容的资源ID，通过`$r(资源名称).id`方法获取。
 
 **类型：** number
 
@@ -276,7 +280,7 @@ snoozeContent?: string
 snoozeContentResourceId?: number
 ```
 
-指明延时提醒内容的资源ID，通过`&#36;r(资源名称).id`方法获取。
+指明延时提醒内容的资源ID，通过`$r(资源名称).id`方法获取。
 
 **类型：** number
 
@@ -365,7 +369,7 @@ title?: string
 titleResourceId?: number
 ```
 
-指明提醒标题的资源ID，通过`&#36;r(资源名称).id`方法获取。
+指明提醒标题的资源ID，通过`$r(资源名称).id`方法获取。
 
 **类型：** number
 

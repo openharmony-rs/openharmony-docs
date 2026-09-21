@@ -79,6 +79,75 @@ Removes a callback function that was previously registered with `on()`.
 | options | [ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | Yes | The options object. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | No | The callback function to remove. If not provided, all callbacks for the given event type and scroll ID will be removed. |
 
+**Examples**
+
+```TypeScript
+import { uiObserver } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct Index {
+  scroller: Scroller = new Scroller();
+  options: uiObserver.ObserverOptions = { id: 'testId' };
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7]
+
+  build() {
+    Column() {
+      Column() {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .id('testId')
+        .height('80%')
+      }
+      .width('100%')
+
+      Row() {
+        Button('UIObserver on')
+          .onClick(() => {
+            // Register a listener.
+            uiObserver.on('scrollEvent', (info) => {
+              console.info(`scrollEventInfo ${JSON.stringify(info)}`);
+            });
+          })
+        Button('UIObserver off')
+          .onClick(() => {
+            // Unregister the listener.
+            uiObserver.off('scrollEvent');
+          })
+      }
+
+      Row() {
+        Button('UIObserverWithId on')
+          .onClick(() => {
+            // Register a listener with the specified component ID.
+            uiObserver.on('scrollEvent', this.options, (info) => {
+              console.info(`scrollEventInfo ${JSON.stringify(info)}`);
+            });
+          })
+        Button('UIObserverWithId off')
+          .onClick(() => {
+            // Unregister the listener.
+            uiObserver.off('scrollEvent',this.options);
+          })
+      }
+    }
+    .height('100%')
+  }
+}
+```
+
 
 ## off('scrollEvent')
 
@@ -127,6 +196,33 @@ Unsubscribes from state changes of the page during routing.
 | type | 'routerPageUpdate' | Yes | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing. |
 | context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) &#124; UIContext | Yes | Context information, which is used to specify the target page scope. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RouterPageInfo](arkts-arkui-uiobserver-routerpageinfo-c.md)&gt; | No | Target listener to unregister. |
+
+**Examples**
+
+```TypeScript
+// used in UIAbility
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { uiObserver, UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // Before actual use, uiContext must be assigned a value. For details, see the example for uiObserver.on('routerPageUpdate').
+  private uiContext: UIContext | null = null;
+
+  onDestroy(): void {
+    // Unregister all callbacks for the routerPageUpdate event under the current ability context.
+    uiObserver.off('routerPageUpdate', this.context)
+  }
+
+  onWindowStageDestroy(): void {
+    // Unregister all callbacks for the routerPageUpdate event under the UI context.
+    if (this.uiContext) {
+      uiObserver.off('routerPageUpdate', this.uiContext);
+    }
+  }
+
+  // ... other function in EntryAbility
+}
+```
 
 
 ## off('densityUpdate')

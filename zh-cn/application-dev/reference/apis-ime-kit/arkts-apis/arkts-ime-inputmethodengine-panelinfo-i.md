@@ -1,5 +1,9 @@
 # PanelInfo
 
+```TypeScript
+export interface PanelInfo
+```
+
 输入法面板属性。
 
 **起始版本：** 10

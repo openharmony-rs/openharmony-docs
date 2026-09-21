@@ -1,5 +1,9 @@
 # SubscribeCap (System API)
 
+```TypeScript
+enum SubscribeCap
+```
+
 Enumerates the discovery capabilities.
 
 **Since:** 7

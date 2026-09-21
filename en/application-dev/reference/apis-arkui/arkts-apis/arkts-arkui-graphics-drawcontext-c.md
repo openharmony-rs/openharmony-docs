@@ -1,5 +1,9 @@
 # DrawContext
 
+```TypeScript
+export class DrawContext
+```
+
 Graphics drawing context, which provides the canvas width and height required for drawing.
 
 **Since:** 11

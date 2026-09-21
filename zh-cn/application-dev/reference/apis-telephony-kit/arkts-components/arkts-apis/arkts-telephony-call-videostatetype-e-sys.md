@@ -1,5 +1,9 @@
 # VideoStateType（系统接口）
 
+```TypeScript
+export enum VideoStateType
+```
+
 视频状态类型。
 
 **起始版本：** 7

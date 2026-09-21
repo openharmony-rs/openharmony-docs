@@ -1,5 +1,9 @@
 # AccessibilityElement
 
+```TypeScript
+export declare interface AccessibilityElement
+```
+
 无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。
 
 调用AccessibilityElement的方法前，先通过[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或[AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)获取AccessibilityElement实例。
@@ -120,16 +124,58 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void
 
 **示例**
 
-```TypeScript
 无参数Action。
-```
 
 ```TypeScript
+// 无参数Action示例：
+import { AccessibilityAction } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
+// Action描述中无明确要求的，均为无参数Action。
+rootElement.executeAction(AccessibilityAction.CLICK).then(() => {
+  console.info(`succeeded in performing action CLICK`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to perform action CLICK. Code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 有参数Action（setSelection）。
-```
 
 ```TypeScript
+// 有参数Action示例：
+import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// selectTextBegin：表示选择起始位置。
+// selectTextEnd：表示选择结束位置。
+// selectTextInForWard：true表示为前光标，false表示为后光标。
+let parameter : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true };
+// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
+// setSelection示例代码。
+rootElement.executeAction(AccessibilityAction.SET_SELECTION, parameter).then(() => {
+  console.info(`succeeded in performing action SET_SELECTION`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to perform action SET_SELECTION. Code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 有参数Action（setCursorPosition）。
+
+```TypeScript
+// 有参数Action示例：
+import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// offset：表示光标的设置位置。
+let parameter : Parameter = { offset: '1' };
+// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
+// setCursorPosition示例代码。
+rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, parameter).then(() => {
+  console.info(`succeeded in performing action SET_CURSOR_POSITION`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to perform action SET_CURSOR_POSITION. Code: ${err?.code}, message: ${err?.message}`);
+});
 ```
 
 ## findElement('textType')
@@ -165,6 +211,23 @@ findElement(type: 'textType', condition: string): Promise<Array<AccessibilityEle
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致。
+let condition = 'location'; 
+
+// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
+rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## findElement('elementId')
 
 ```TypeScript
@@ -199,6 +262,23 @@ findElement(type: 'elementId', condition: number): Promise<AccessibilityElement>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// elementId为10。
+let condition = 10;
+
+// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
+rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## findElementByContent
 
@@ -359,39 +439,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 </html>
 ```
 
-```TypeScript
-// Page.ets
-import { webview } from '@kit.ArkWeb';
-controller: webview.WebviewController = new webview.WebviewController();
-
-// 点击“Title1”，使其成为无障碍焦点元素。下一个聚焦类型为标题的焦点元素是“Title2”。
-build() {
-  Text('Connect')
-      .id('connect')
-      .fontSize($r('app.float.page_text_font_size'))
-      .fontWeight(FontWeight.Bold)
-
-  TextInput({ placeholder: 'please input...' })
-      .id('text_input')
-      .fontSize($r('app.float.page_text_font_size'))
-
-  Web({ src: $rawfile("index.html"), controller: this.controller })
-}
-
-// AccessibilityExtAbility.ets
-import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
-    focus.findElementByFocusDirection('forward', FocusRuleType.FOCUS_BY_TITLE).then((element: AccessibilityElement) => {
-        console.info(`findElementByFocusDirection forward componentId: ${element.componentId}`);
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to findElementByFocusDirection forward. Code: ${err.code}, message: ${err.message}`);
-    });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="findelementbyfocusdirection-1"></a>
 
 ## findElementByFocusDirection
 
@@ -434,7 +482,58 @@ findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Pro
 
 **示例**
 
-参见 [findElementByFocusDirection](#findelementbyfocusdirection)
+```TypeScript
+// Page.ets
+import { webview } from '@kit.ArkWeb';
+controller: webview.WebviewController = new webview.WebviewController();
+
+// 点击“Title1”，使其成为无障碍焦点元素。下一个聚焦类型为标题的焦点元素是“Title2”。
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+
+  Web({ src: $rawfile("index.html"), controller: this.controller })
+}
+
+// AccessibilityExtAbility.ets
+import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementByFocusDirection('forward', FocusRuleType.FOCUS_BY_TITLE).then((element: AccessibilityElement) => {
+        console.info(`findElementByFocusDirection forward componentId: ${element.componentId}`);
+    }).catch((err: BusinessError) => {
+        console.error(`Failed to findElementByFocusDirection forward. Code: ${err.code}, message: ${err.message}`);
+    });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+```TypeScript
+// index.html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<h3>Title1</h3>
+<div class="base-elements">
+    <a href="#link1">Link1</a>
+    <h4>Title2</h4> <a href="#link2">Link2</a>
+    <p>说明文本text3</p>
+</div>
+</body>
+</html>
+```
 
 ## findElementById
 
@@ -644,6 +743,49 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 });
 ```
 
+<a id="findelementsbycondition-1"></a>
+
+## findElementsByCondition
+
+```TypeScript
+findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise<FocusMoveResult>
+```
+
+根据规则和查询条件查找目标类型的可聚焦节点。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| rule | [FocusRule](arkts-accessibility-focusrule-t-sys.md) | 是 | 检查当前节点及其子节点的规则。 |
+| condition | [FocusCondition](arkts-accessibility-focuscondition-t-sys.md) | 是 | 表示查询可聚焦节点方式。 |
+| type | [FocusRuleType](arkts-accessibility-accessibility-focusruletype-e-sys.md) | 是 | 聚焦类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[FocusMoveResult](arkts-accessibility-accessibilityextensioncontext-focusmoveresult-i-sys.md)&gt; | Promise对象，返回查询结果对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+
+**示例**
+
 ```TypeScript
 // Page.ets
 // 点击“二级标题1”，使其成为无障碍焦点元素。下一个聚焦类型为标题的焦点元素是“二级标题2”。
@@ -695,49 +837,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
   console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-## findElementsByCondition
-
-```TypeScript
-findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise<FocusMoveResult>
-```
-
-根据规则和查询条件查找目标类型的可聚焦节点。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| rule | [FocusRule](arkts-accessibility-focusrule-t-sys.md) | 是 | 检查当前节点及其子节点的规则。 |
-| condition | [FocusCondition](arkts-accessibility-focuscondition-t-sys.md) | 是 | 表示查询可聚焦节点方式。 |
-| type | [FocusRuleType](arkts-accessibility-accessibility-focusruletype-e-sys.md) | 是 | 聚焦类型。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[FocusMoveResult](arkts-accessibility-accessibilityextensioncontext-focusmoveresult-i-sys.md)&gt; | Promise对象，返回查询结果对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-
-**示例**
-
-参见 [findElementsByCondition](#findelementsbycondition)
 
 ## getChildren
 
@@ -813,17 +912,6 @@ getCursorPosition(callback: AsyncCallback<number>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
-rootElement.getCursorPosition().then((data: number) => {
-  console.info(`succeeded in getting cursor position, ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get cursor position. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
 rootElement.getCursorPosition((err: BusinessError, data: number) => {
   if (err && err.code) {
     console.error(`Failed to get cursor position. Code: ${err.code}, message: ${err.message}`);
@@ -832,6 +920,8 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
   console.info(`succeeded in getting cursor position, ${data}`);
 });
 ```
+
+<a id="getcursorposition-1"></a>
 
 ## getCursorPosition
 
@@ -855,7 +945,16 @@ getCursorPosition(): Promise<number>
 
 **示例**
 
-参见 [getCursorPosition](#getcursorposition)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// rootElement是AccessibilityElement的实例，需通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或getRootInActiveWindow()获取。
+rootElement.getCursorPosition().then((data: number) => {
+  console.info(`succeeded in getting cursor position, ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get cursor position. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## getParent
 
@@ -1364,7 +1463,7 @@ customActions?: Array<string>
 customComponentType?: string
 ```
 
-自定义组件类型。与元素的[AccessibilityRoleType](../../apis-arkui/arkts-components/arkts-arkui-accessibilityroletype-e.md)类型所对应。
+自定义组件类型。与元素的[AccessibilityRoleType](../../apis-arkui/arkts-components/arkts-arkui-common-comp-accessibilityroletype-e.md)类型所对应。
 
 **类型：** string
 

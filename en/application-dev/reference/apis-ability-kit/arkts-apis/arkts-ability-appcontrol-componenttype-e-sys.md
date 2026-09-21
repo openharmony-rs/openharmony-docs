@@ -1,5 +1,9 @@
 # ComponentType (System API)
 
+```TypeScript
+export enum ComponentType
+```
+
 Enumerates the types of application components that function as the displayed page.
 
 **Since:** 11

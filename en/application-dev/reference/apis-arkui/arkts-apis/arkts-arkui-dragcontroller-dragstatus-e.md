@@ -1,5 +1,9 @@
 # DragStatus
 
+```TypeScript
+const enum DragStatus
+```
+
 Describes the dragging start and end states.
 
 **Since:** 11

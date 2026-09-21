@@ -1,5 +1,9 @@
 # Circle
 
+```TypeScript
+export interface Circle
+```
+
 用于设置圆形的属性。
 
 **起始版本：** 12

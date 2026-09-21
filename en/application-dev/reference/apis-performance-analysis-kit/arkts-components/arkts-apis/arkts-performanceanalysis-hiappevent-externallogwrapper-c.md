@@ -1,8 +1,12 @@
 # ExternalLogWrapper
 
+```TypeScript
+class ExternalLogWrapper
+```
+
 The wrapper of external log, providing various information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -20,9 +24,11 @@ getFilePath(): string
 
 Get the file path
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -40,9 +46,11 @@ getGenerationTime(): number
 
 Get the generation time point (ms) of the file
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -60,9 +68,11 @@ getSizeInKb(): number
 
 Get the file size in kb
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -80,9 +90,11 @@ getSysEvent(): string
 
 Get the system event of the file
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

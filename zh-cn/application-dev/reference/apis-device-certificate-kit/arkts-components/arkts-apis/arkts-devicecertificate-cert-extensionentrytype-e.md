@@ -1,5 +1,9 @@
 # ExtensionEntryType
 
+```TypeScript
+enum ExtensionEntryType
+```
+
 证书扩展项类型的枚举。
 
 **起始版本：** 10

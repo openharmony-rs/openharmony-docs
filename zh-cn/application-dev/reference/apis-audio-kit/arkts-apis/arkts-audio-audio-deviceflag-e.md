@@ -1,5 +1,9 @@
 # DeviceFlag
 
+```TypeScript
+enum DeviceFlag
+```
+
 枚举，可获取的设备种类。
 
 **起始版本：** 7

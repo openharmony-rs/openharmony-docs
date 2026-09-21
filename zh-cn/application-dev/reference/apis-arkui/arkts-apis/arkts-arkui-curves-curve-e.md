@@ -1,5 +1,9 @@
 # Curve
 
+```TypeScript
+enum Curve
+```
+
 插值曲线和动效请参考&lt;!--RP1--&gt;[贝塞尔曲线](arkts-arkui-curves.md)&lt;!--RP1End--&gt;。
 
 | 名称 | 值 | 说明 |  

@@ -20,6 +20,12 @@ import { common } from '@kit.MDMKit';
 
 ## 汇总
 
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md) | 查询是否支持某个管控特性 |
+
 ### 接口
 
 | 名称 | 说明 |
@@ -32,6 +38,7 @@ import { common } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [ManagedFeature](arkts-mdm-common-managedfeature-e.md) | 管控特性。 |
 | [ManagedPolicy](arkts-mdm-common-managedpolicy-e.md) | 企业设备管控策略。 |
 | [QueryPolicy](arkts-mdm-common-querypolicy-e.md) | 查询企业设备管理策略 |
 | [Result](arkts-mdm-common-result-e.md) | 应用安装结果码。 |

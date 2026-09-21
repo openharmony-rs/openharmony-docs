@@ -1,5 +1,9 @@
 # ComponentEventType
 
+```TypeScript
+declare enum ComponentEventType
+```
+
 支持监听的控件操作事件类型。
 
 **起始版本：** 22

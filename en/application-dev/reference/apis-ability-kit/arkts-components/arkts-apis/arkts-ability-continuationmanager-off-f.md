@@ -45,6 +45,19 @@ Unsubscribes from device connection events.
 | [16600002](../errorcode-DistributedSchedule.md#16600002-the-specified-token-or-callback-is-not-registered) | The specified token or callback is not registered. |
 | [16600004](../errorcode-DistributedSchedule.md#16600004-the-specified-callback-has-been-registered) | The specified callback has been registered. |
 
+**Examples**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+let token: number = 1;
+try {
+  continuationManager.off("deviceSelected", token);
+} catch (err) {
+  console.error('off failed, cause: ' + JSON.stringify(err));
+}
+```
+
 
 ## off('deviceUnselected')
 
@@ -85,6 +98,19 @@ Unsubscribes from device disconnection events.
 | [16600002](../errorcode-DistributedSchedule.md#16600002-the-specified-token-or-callback-is-not-registered) | The specified token or callback is not registered. |
 | [16600004](../errorcode-DistributedSchedule.md#16600004-the-specified-callback-has-been-registered) | The specified callback has been registered. |
 
+**Examples**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+let token: number = 1;
+try {
+  continuationManager.off("deviceUnselected", token);
+} catch (err) {
+  console.error('off failed, cause: ' + JSON.stringify(err));
+}
+```
+
 
 ## off('deviceConnect')
 
@@ -111,6 +137,18 @@ Unsubscribes from device connection events. This API uses an asynchronous callba
 | type | 'deviceConnect' | Yes | Event type. The value is fixed at **deviceConnect**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ContinuationResult](arkts-ability-continuationmanager-continuationresult-t.md)&gt; | No | Callback invoked when a device is selected from the device list provided by the device selection module. This callback returns the device ID, type, and name. |
 
+**Examples**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+continuationManager.off("deviceConnect", (data) => {
+  console.info('onDeviceConnect deviceId: ' + JSON.stringify(data.id));
+  console.info('onDeviceConnect deviceType: ' + JSON.stringify(data.type));
+  console.info('onDeviceConnect deviceName: ' + JSON.stringify(data.name));
+});
+```
+
 
 ## off('deviceDisconnect')
 
@@ -136,3 +174,13 @@ Unsubscribes from device disconnection events. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | type | 'deviceDisconnect' | Yes | Event type. The value is fixed at **deviceDisconnect**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback invoked when a device is unselected from the device list provided by the device selection module. This callback returns the device ID. |
+
+**Examples**
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+continuationManager.off("deviceDisconnect", (data) => {
+  console.info('onDeviceDisconnect deviceId: ' + JSON.stringify(data));
+});
+```

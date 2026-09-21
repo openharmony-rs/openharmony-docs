@@ -1,5 +1,9 @@
 # UpdateSimMessageOptions (System API)
 
+```TypeScript
+export interface UpdateSimMessageOptions
+```
+
 Defines the updating SIM message options.
 
 **Since:** 7

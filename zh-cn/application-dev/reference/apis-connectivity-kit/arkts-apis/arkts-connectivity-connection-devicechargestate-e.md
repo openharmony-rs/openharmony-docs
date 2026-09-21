@@ -1,5 +1,9 @@
 # DeviceChargeState
 
+```TypeScript
+enum DeviceChargeState
+```
+
 枚举，表示设备当前的充电状态。
 
 **起始版本：** 12

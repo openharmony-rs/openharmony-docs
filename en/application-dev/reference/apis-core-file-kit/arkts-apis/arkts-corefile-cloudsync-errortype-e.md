@@ -1,5 +1,9 @@
 # ErrorType
 
+```TypeScript
+enum ErrorType
+```
+
 Enumerates the device-cloud sync errors.
 
 - In the current phase, **NETWORK_UNAVAILABLE** is returned only when the mobile data network and Wi-Fi are  

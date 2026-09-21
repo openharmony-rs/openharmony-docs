@@ -1,5 +1,9 @@
 # PngMetadata
 
+```TypeScript
+class PngMetadata
+```
+
 Png metadata.
 
 **起始版本：** 26.0.0

@@ -1,12 +1,16 @@
 # ConstraintSizeOptions
 
+```TypeScript
+declare interface ConstraintSizeOptions
+```
+
 Defines the size constraints of a component during layout.
 
 > **NOTE:** 
 > 
-> In the Row, Column, and RelativeContainer
+> In the [Row](../arkts-components/arkts-arkui-row-comp.md#row), [Column](../arkts-components/arkts-arkui-column-comp.md#column), and [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container)
 > components, setting **width** and **height** to **auto** means that the size adapts to the size of their child
-> components. In the TextInput component, setting **width** to **auto** means that the width
+> components. In the [TextInput](../arkts-components/arkts-arkui-textinput-comp.md#text_input) component, setting **width** to **auto** means that the width
 > adapts to the width of the text content.
 
 **Since:** 7

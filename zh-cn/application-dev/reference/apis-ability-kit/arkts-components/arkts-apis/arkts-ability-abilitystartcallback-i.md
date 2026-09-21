@@ -1,5 +1,9 @@
 # AbilityStartCallback
 
+```TypeScript
+declare interface AbilityStartCallback
+```
+
 定义拉起UIExtensionAbility执行结果的回调。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

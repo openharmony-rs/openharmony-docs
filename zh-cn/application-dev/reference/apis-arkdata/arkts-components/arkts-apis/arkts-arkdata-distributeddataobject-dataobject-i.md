@@ -1,5 +1,9 @@
 # DataObject
 
+```TypeScript
+interface DataObject
+```
+
 表示一个分布式数据对象。在使用以下接口前，需调用[create()](arkts-arkdata-distributeddataobject-create-f.md)获取DataObject对象。
 
 **起始版本：** 9
@@ -95,6 +99,42 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="bindassetstore-1"></a>
+
+## bindAssetStore
+
+```TypeScript
+bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>
+```
+
+绑定分布式数据对象中的单个资产与其对应的数据库信息，当前版本只支持分布式数据对象中的资产与关系型数据库的绑定。使用Promise异步回调。<br> <br>当分布式数据对象中包含的资产和关系型数据库中包含的资产指向同一个实体资产文件，即两个资产的Uri相同时，就会存在冲突，我们把这种资产称为融合资产。如果需要分布式数据管理进行融合资产的冲突解决，需要先进行资产的绑定。当应用退出session后，绑定关系随之消失。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| assetKey | string | 是 | 待绑定的融合资产在分布式数据对象中的键值。 |
+| bindInfo | [BindInfo](arkts-arkdata-distributeddataobject-bindinfo-i.md) | 是 | 待绑定的融合资产在数据库中的信息，包含库名、表名、主键、列名及在数据库中的资产名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+
+**示例**
+
 ```TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -147,42 +187,6 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-## bindAssetStore
-
-```TypeScript
-bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>
-```
-
-绑定分布式数据对象中的单个资产与其对应的数据库信息，当前版本只支持分布式数据对象中的资产与关系型数据库的绑定。使用Promise异步回调。<br> <br>当分布式数据对象中包含的资产和关系型数据库中包含的资产指向同一个实体资产文件，即两个资产的Uri相同时，就会存在冲突，我们把这种资产称为融合资产。如果需要分布式数据管理进行融合资产的冲突解决，需要先进行资产的绑定。当应用退出session后，绑定关系随之消失。
-
-**起始版本：** 11
-
-**系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| assetKey | string | 是 | 待绑定的融合资产在分布式数据对象中的键值。 |
-| bindInfo | [BindInfo](arkts-arkdata-distributeddataobject-bindinfo-i.md) | 是 | 待绑定的融合资产在数据库中的信息，包含库名、表名、主键、列名及在数据库中的资产名。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-
-**示例**
-
-参见 [bindAssetStore](#bindassetstore)
-
 ## off('change')
 
 ```TypeScript
@@ -208,12 +212,28 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+// 删除数据变更回调
+g_object.off('change', (sessionId: string, fields: Array<string>) => {
+    console.info('change' + sessionId);
+    if (g_object != null && fields != null && fields != undefined) {
+        for (let index: number = 0; index < fields.length; index++) {
+            console.info('changed !' + fields[index] + ' ' + g_object[fields[index]]);
+        }
+    }
+});
+// 删除所有的数据变更回调
+g_object.off('change');
+```
+
 ## off('status')
 
 ```TypeScript
 off(
       type: 'status',
-      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
+      callback?: (sessionId: string, networkId: string, status: 'online' | 'offline') => void
     ): void
 ```
 
@@ -228,13 +248,24 @@ off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline' ) =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline') =&gt; void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+// 删除上下线回调
+g_object.off('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
+    console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
+});
+// 删除所有的上下线回调
+g_object.off('status');
+```
 
 ## off('change')
 
@@ -255,6 +286,44 @@ off(type: 'change', callback?: DataObserver): void
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | 否 | 需要删除的数据变更回调实例，若不设置则删除该对象所有的数据变更回调实例。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info('change callback1 ' + sessionId);
+  if (fields != null && fields != undefined) {
+      for (let index: number = 0; index < fields.length; index++) {
+          console.info('change !' + fields[index]);
+      }
+  }
+}
+
+const changeCallback2: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info('change callback2 ' + sessionId);
+  if (fields != null && fields != undefined) {
+      for (let index: number = 0; index < fields.length; index++) {
+          console.info('change !' + fields[index]);
+      }
+  }
+}
+
+try {
+  // 删除单个数据变更回调函数
+  g_object.on('change', changeCallback1);
+  g_object.off('change', changeCallback1);
+
+  // 删除所有数据变更回调函数
+  g_object.on('change', changeCallback1);
+  g_object.on('change', changeCallback2);
+  g_object.off('change');
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('status')
 
 ```TypeScript
@@ -274,6 +343,33 @@ off(type: 'status', callback?: StatusObserver): void
 | type | 'status' | 是 | 事件类型，固定为'status'，表示分布式数据对象状态变更事件。 |
 | callback | [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | 否 | 需要删除状态变更的回调实例，若不设置则删除该对象所有的状态变更回调实例。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
+  console.info('status callback1' + sessionId);
+}
+
+const statusCallback2: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
+  console.info('status callback2' + sessionId);
+}
+try {
+  // 删除单个状态变更回调函数
+  g_object.on('status', statusCallback1);
+  g_object.off('status', statusCallback1);
+
+  // 删除所有状态变更回调函数
+  g_object.on('status', statusCallback1);
+  g_object.on('status', statusCallback2);
+  g_object.off('status');
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## off('progressChanged')
 
 ```TypeScript
@@ -292,6 +388,35 @@ off(type: 'progressChanged', callback?: ProgressObserver): void
 | --- | --- | --- | --- |
 | type | 'progressChanged' | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
 | callback | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | 否 | 需要取消监听的回调实例，若不设置，则取消对该事件的所有监听。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const progressChangedCallback1: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info('progressChanged callback1' + sessionId);
+  console.info('progressChanged callback1' + progress);
+}
+
+const progressChangedCallback2: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info('progressChanged callback2' + sessionId);
+  console.info('progressChanged callback2' + progress);
+}
+try {
+  g_object.on('progressChanged', progressChangedCallback1);
+  // 取消对资产传输进度的监听
+  g_object.off('progressChanged', progressChangedCallback1);
+
+  g_object.on('progressChanged', progressChangedCallback1);
+  g_object.on('progressChanged', progressChangedCallback2);
+  // 取消对资产传输进度的所有监听
+  g_object.off('progressChanged');
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## on('change')
 
@@ -318,12 +443,25 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void 
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
+**示例**
+
+```TypeScript
+g_object.on('change', (sessionId: string, fields: Array<string>) => {
+    console.info('change' + sessionId);
+    if (g_object != null && fields != null && fields != undefined) {
+        for (let index: number = 0; index < fields.length; index++) {
+            console.info('changed !' + fields[index] + ' ' + g_object[fields[index]]);
+        }
+    }
+});
+```
+
 ## on('status')
 
 ```TypeScript
 on(
       type: 'status',
-      callback: (sessionId: string, networkId: string, status: 'online' | 'offline' ) => void
+      callback: (sessionId: string, networkId: string, status: 'online' | 'offline') => void
     ): void
 ```
 
@@ -338,13 +476,21 @@ on(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'status' | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline' ) =&gt; void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' &#124; 'offline') =&gt; void | 是 | 监听上下线回调实例。<br>sessionId：标识变更对象的sessionId；<br>networkId：对端设备的网络标识；<br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+g_object.on('status', (sessionId: string, networkId: string, status: 'online' | 'offline') => {
+    console.info('status changed ' + sessionId + ' ' + status + ' ' + networkId);
+});
+```
 
 ## on('change')
 
@@ -365,6 +511,27 @@ on(type: 'change', callback: DataObserver): void
 | type | 'change' | 是 | 事件类型，固定为'change'，表示数据变更。 |
 | callback | [DataObserver](arkts-arkdata-distributeddataobject-dataobserver-t.md) | 是 | 表示分布式数据对象数据变更的回调实例。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const changeCallback1: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info('change callback1 ' + sessionId);
+  if (fields != null && fields != undefined) {
+      for (let index: number = 0; index < fields.length; index++) {
+          console.info('change !' + fields[index]);
+      }
+  }
+}
+try {
+  g_object.on('change', changeCallback1);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('status')
 
 ```TypeScript
@@ -384,6 +551,22 @@ on(type: 'status', callback: StatusObserver): void
 | type | 'status' | 是 | 事件类型，固定为'status'，表示分布式数据对象状态变更事件。 |
 | callback | [StatusObserver](arkts-arkdata-distributeddataobject-statusobserver-t.md) | 是 | 表示分布式数据对象状态变更的回调实例。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const statusCallback1: distributedDataObject.StatusObserver = (sessionId: string, networkId: string, status: string) => {
+  console.info('status callback ' + sessionId);
+}
+try {
+  g_object.on('status', statusCallback1);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## on('progressChanged')
 
 ```TypeScript
@@ -402,6 +585,23 @@ on(type: 'progressChanged', callback: ProgressObserver): void
 | --- | --- | --- | --- |
 | type | 'progressChanged' | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
 | callback | [ProgressObserver](arkts-arkdata-distributeddataobject-progressobserver-t.md) | 是 | 表示资产传输进度变化的回调实例。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const progressChangedCallback: distributedDataObject.ProgressObserver = (sessionId: string, progress: number) => {
+  console.info('progressChanged callback' + sessionId);
+  console.info('progressChanged callback' + progress);
+}
+try {
+  g_object.on('progressChanged', progressChangedCallback);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`Failed to execute. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 ## revokeSave
 
@@ -454,25 +654,7 @@ g_object.revokeSave((err: BusinessError, result: distributedDataObject.RevokeSav
 });
 ```
 
-```TypeScript
-g_object.setSessionId('123456');
-// 持久化数据
-g_object.save('local').then((result: distributedDataObject.SaveSuccessResponse) => {
-    console.info('save callback');
-    console.info('save sessionId ' + result.sessionId);
-    console.info('save version ' + result.version);
-    console.info('save deviceId ' + result.deviceId);
-}).catch((err: BusinessError) => {
-    console.error(`Failed to save. Code: ${err.code}, message: ${err.message}`);
-});
-// 删除持久化保存的数据
-g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessResponse) => {
-    console.info('revokeSave callback');
-    console.info('sessionId' + result.sessionId);
-}).catch((err: BusinessError) => {
-    console.error(`Failed to revoke save. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="revokesave-1"></a>
 
 ## revokeSave
 
@@ -500,7 +682,25 @@ revokeSave(): Promise<RevokeSaveSuccessResponse>
 
 **示例**
 
-参见 [revokeSave](#revokesave)
+```TypeScript
+g_object.setSessionId('123456');
+// 持久化数据
+g_object.save('local').then((result: distributedDataObject.SaveSuccessResponse) => {
+    console.info('save callback');
+    console.info('save sessionId ' + result.sessionId);
+    console.info('save version ' + result.version);
+    console.info('save deviceId ' + result.deviceId);
+}).catch((err: BusinessError) => {
+    console.error(`Failed to save. Code: ${err.code}, message: ${err.message}`);
+});
+// 删除持久化保存的数据
+g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessResponse) => {
+    console.info('revokeSave callback');
+    console.info('sessionId' + result.sessionId);
+}).catch((err: BusinessError) => {
+    console.error(`Failed to revoke save. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## save
 
@@ -547,17 +747,7 @@ g_object.save('local', (err: BusinessError, result:distributedDataObject.SaveSuc
 });
 ```
 
-```TypeScript
-g_object.setSessionId('123456');
-g_object.save('local').then((callbackInfo: distributedDataObject.SaveSuccessResponse) => {
-    console.info('save callback');
-    console.info('save sessionId ' + callbackInfo.sessionId);
-    console.info('save version ' + callbackInfo.version);
-    console.info('save deviceId ' + callbackInfo.deviceId);
-}).catch((err: BusinessError) => {
-    console.error(`Failed to save. Code: ${err.code}, message: ${err.message}`);
-});
-```
+<a id="save-1"></a>
 
 ## save
 
@@ -595,7 +785,17 @@ save(deviceId: string): Promise<SaveSuccessResponse>
 
 **示例**
 
-参见 [save](#save)
+```TypeScript
+g_object.setSessionId('123456');
+g_object.save('local').then((callbackInfo: distributedDataObject.SaveSuccessResponse) => {
+    console.info('save callback');
+    console.info('save sessionId ' + callbackInfo.sessionId);
+    console.info('save version ' + callbackInfo.version);
+    console.info('save deviceId ' + callbackInfo.deviceId);
+}).catch((err: BusinessError) => {
+    console.error(`Failed to save. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## setAsset
 
@@ -819,31 +1019,7 @@ g_object.setSessionId('', () => {
 });
 ```
 
-```TypeScript
-// g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId(), () => {
-    console.info('join session');
-});
-// 退出分布式组网
-g_object.setSessionId(() => {
-    console.info('leave all session.');
-});
-```
-
-```TypeScript
-// g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId()).then(() => {
-    console.info('join session.');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to set sessionId. Code: ${error.code}, message: ${error.message}`);
-});
-// 退出分布式组网
-g_object.setSessionId().then(() => {
-    console.info('leave all session.');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to set sessionId. Code: ${error.code}, message: ${error.message}`);
-});
-```
+<a id="setsessionid-1"></a>
 
 ## setSessionId
 
@@ -882,37 +1058,13 @@ setSessionId(callback: AsyncCallback<void>): void
 g_object.setSessionId(distributedDataObject.genSessionId(), () => {
     console.info('join session');
 });
-// g_object退出分布式组网
-g_object.setSessionId('', () => {
-    console.info('leave all session');
-});
-```
-
-```TypeScript
-// g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId(), () => {
-    console.info('join session');
-});
 // 退出分布式组网
 g_object.setSessionId(() => {
     console.info('leave all session.');
 });
 ```
 
-```TypeScript
-// g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId()).then(() => {
-    console.info('join session.');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to set sessionId. Code: ${error.code}, message: ${error.message}`);
-});
-// 退出分布式组网
-g_object.setSessionId().then(() => {
-    console.info('leave all session.');
-}).catch((error: BusinessError) => {
-    console.error(`Failed to set sessionId. Code: ${error.code}, message: ${error.message}`);
-});
-```
+<a id="setsessionid-2"></a>
 
 ## setSessionId
 
@@ -949,28 +1101,6 @@ setSessionId(sessionId?: string): Promise<void>
 | [15400001](../errorcode-distributed-dataObject.md#15400001-创建内存数据库失败) | Failed to create the in-memory database. |
 
 **示例**
-
-```TypeScript
-// g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId(), () => {
-    console.info('join session');
-});
-// g_object退出分布式组网
-g_object.setSessionId('', () => {
-    console.info('leave all session');
-});
-```
-
-```TypeScript
-// g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId(), () => {
-    console.info('join session');
-});
-// 退出分布式组网
-g_object.setSessionId(() => {
-    console.info('leave all session.');
-});
-```
 
 ```TypeScript
 // g_object加入分布式组网

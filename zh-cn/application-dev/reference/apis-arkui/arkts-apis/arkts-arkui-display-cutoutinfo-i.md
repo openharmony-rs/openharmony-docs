@@ -1,5 +1,9 @@
 # CutoutInfo
 
+```TypeScript
+interface CutoutInfo
+```
+
 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
 
 **起始版本：** 9

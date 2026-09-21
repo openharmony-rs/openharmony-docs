@@ -53,19 +53,8 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the screen ID using getAllScreens().
-let mirrorScreenIds: Array<number> = [1, 2, 3]; // ID array of mirrored screens.
-// Stop the mirror mode.
-screen.stopMirror(mirrorScreenIds).then(() => {
-  console.info('Succeeded in stopping mirror screens.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="stopmirror-1"></a>
 
 ## stopMirror
 
@@ -103,4 +92,15 @@ Stops mirror mode. This API uses a promise to return the result.
 
 **Examples**
 
-See [stopMirror](#stopmirror)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Obtain the screen ID using getAllScreens().
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // ID array of mirrored screens.
+// Stop the mirror mode.
+screen.stopMirror(mirrorScreenIds).then(() => {
+  console.info('Succeeded in stopping mirror screens.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
+});
+```

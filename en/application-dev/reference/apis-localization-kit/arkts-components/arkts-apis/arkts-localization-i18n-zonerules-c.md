@@ -1,5 +1,9 @@
 # ZoneRules
 
+```TypeScript
+export class ZoneRules
+```
+
 Queries the time zone transition rule.
 
 **Since:** 20

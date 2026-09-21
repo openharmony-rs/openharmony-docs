@@ -1,5 +1,9 @@
 # PinRequiredParam
 
+```TypeScript
+interface PinRequiredParam
+```
+
 描述配对请求参数。
 
 从API version 8开始支持，从API version 9开始废弃。

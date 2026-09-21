@@ -9,7 +9,7 @@
 | [ColorShaderStyle](arkts-arkui-colorshaderstyle-c.md) | 显示为纯色。ColorShaderStyle继承自[ShaderStyle](arkts-arkui-shaderstyle-c.md)。 |
 | [ContentTransition](arkts-arkui-contenttransition-c.md) | 文本动效基类。 |
 | [LinearGradientStyle](arkts-arkui-lineargradientstyle-c.md) | 显示为线性渐变。LinearGradientStyle继承自[ShaderStyle](arkts-arkui-shaderstyle-c.md)。 |
-| [NumericTextTransition](arkts-arkui-numerictexttransition-c.md) | 数字翻牌动效。仅限正整数，不支持小数和负数。不支持渐变色和Text跑马灯模式。不支持选中，copyOption属性无效。当文本存在子组件时或通过属性字符串设置时，数字翻牌失效。 |
+| [NumericTextTransition](arkts-arkui-numerictexttransition-c.md) | 数字翻牌动效。仅限正整数，不支持小数和负数。不支持渐变色和Text跑马灯模式。不支持选中，[copyOption](../arkts-components/arkts-arkui-text-comp-attribute.md#copyoption)属性无效。当文本存在子组件时或通过属性字符串设置时，数字翻牌失效。 |
 | [RadialGradientStyle](arkts-arkui-radialgradientstyle-c.md) | 显示为径向渐变。RadialGradientStyle继承自[ShaderStyle](arkts-arkui-shaderstyle-c.md)。 |
 | [ShaderStyle](arkts-arkui-shaderstyle-c.md) | 文本着色器效果基类。 |
 | [TextMenuItemId](arkts-arkui-textmenuitemid-c.md) | 自定义菜单项的Id值。用于识别菜单选项，内置菜单项Id值见下列属性表格。 |
@@ -41,7 +41,7 @@
 | [StyledStringController](arkts-arkui-styledstringcontroller-i.md) | 定义StyledString控制器。 |
 | [TextBaseController](arkts-arkui-textbasecontroller-i.md) | 文本选择控制器。 |
 | [TextChangeOptions](arkts-arkui-textchangeoptions-i.md) | 文本变化相关信息，包括变化前后的选区范围、变化前的文本内容等。 |
-| [TextDataDetectorConfig](arkts-arkui-textdatadetectorconfig-i.md) | 该配置只支持Text组件和RichEditor组件。 |
+| [TextDataDetectorConfig](arkts-arkui-textdatadetectorconfig-i.md) | 该配置只支持[Text](../arkts-components/arkts-arkui-text-comp.md#text)组件和[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor)组件。 |
 | [TextEditControllerEx](arkts-arkui-texteditcontrollerex-i.md) | 文本扩展编辑控制器。 |
 | [TextLayoutOptions](arkts-arkui-textlayoutoptions-i.md) | 文本布局选项。 |
 | [TextMenuItem](arkts-arkui-textmenuitem-i.md) | 文本菜单项 |

@@ -1,5 +1,9 @@
 # ArcSliderPosition
 
+```TypeScript
+export declare enum ArcSliderPosition
+```
+
 Defines the position of the arc slider on the screen.
 
 **Since:** 18

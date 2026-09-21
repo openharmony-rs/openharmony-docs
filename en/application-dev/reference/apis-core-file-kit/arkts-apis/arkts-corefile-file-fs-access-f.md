@@ -53,6 +53,8 @@ If the read, write, or read and write permission verification fails, the error c
 | 13900042 | Unknown error |
 
 
+<a id="access-1"></a>
+
 ## access
 
 ```TypeScript
@@ -91,6 +93,8 @@ Checks whether a file or directory exists. This API uses an asynchronous callbac
 | 13900033 | Too many symbolic links encountered |
 | 13900042 | Unknown error |
 
+
+<a id="access-2"></a>
 
 ## access
 

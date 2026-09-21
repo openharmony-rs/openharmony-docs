@@ -1,5 +1,9 @@
 # TextDecorationType
 
+```TypeScript
+declare enum TextDecorationType
+```
+
 Text decoration type.
 
 **Since:** 7

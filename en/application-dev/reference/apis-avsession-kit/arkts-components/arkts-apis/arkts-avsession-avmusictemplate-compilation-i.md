@@ -1,5 +1,9 @@
 # Compilation
 
+```TypeScript
+interface Compilation extends OperResult
+```
+
 The definition of compilation.
 
 @extends OperResult @interface Compilation

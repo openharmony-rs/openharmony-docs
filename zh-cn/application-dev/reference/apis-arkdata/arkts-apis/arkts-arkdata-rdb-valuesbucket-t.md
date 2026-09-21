@@ -1,7 +1,7 @@
 # ValuesBucket
 
 ```TypeScript
-type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }
+type ValuesBucket = { [key: string]: ValueType | Uint8Array | null}
 ```
 
 用于存储键值对的类型。
@@ -14,4 +14,4 @@ type ValuesBucket = { [key: string]: ValueType | Uint8Array | null }
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**类型：** { [key: string]: ValueType | Uint8Array | null }
+**类型：** { [key: string]: ValueType | Uint8Array | null}

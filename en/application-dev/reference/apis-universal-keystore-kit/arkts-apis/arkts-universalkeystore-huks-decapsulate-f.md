@@ -17,6 +17,8 @@ Decapsulates a post-quantum cryptography key. This operation can be managed by H
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**

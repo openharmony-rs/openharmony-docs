@@ -1,5 +1,9 @@
 # TouchOptions
 
+```TypeScript
+declare interface TouchOptions
+```
+
 Common options for touch operations.
 
 **Since:** 26.0.0
@@ -27,6 +31,8 @@ Duration of the operation in milliseconds. <br>Value range: The value should be 
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Test.UiTest
@@ -45,6 +51,8 @@ Pressure value of the touch. The value range is [0, 1]. The default value is **0
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.Test.UiTest
@@ -62,6 +70,8 @@ Speed of touch action. <br>Value range:[200, 40000] <br>Unit: px/s. <br>If the v
 **Type:** number
 
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

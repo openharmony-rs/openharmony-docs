@@ -1,5 +1,9 @@
 # ArcSliderValueOptions
 
+```TypeScript
+declare class ArcSliderValueOptions
+```
+
 Defines the value of the arc slider.
 
 **Since:** 18

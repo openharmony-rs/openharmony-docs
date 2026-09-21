@@ -76,27 +76,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formBindingData, formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
-let param: Record<string, string> = {
-  'temperature': '22c',
-  'time': '22:00'
-}
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-try {
-  formProvider.updateForm(formId, obj).then(() => {
-    console.info(`formProvider updateForm success`);
-  }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="updateform-1"></a>
 
 ## updateForm
 
@@ -146,4 +127,23 @@ Updates a widget. This API uses a promise to return the result.
 
 **Examples**
 
-See [updateForm](#updateform)
+```TypeScript
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+}
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formProvider.updateForm(formId, obj).then(() => {
+    console.info(`formProvider updateForm success`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

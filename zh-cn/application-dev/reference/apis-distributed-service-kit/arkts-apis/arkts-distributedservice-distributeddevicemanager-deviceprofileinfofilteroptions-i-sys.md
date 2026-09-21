@@ -1,5 +1,9 @@
 # DeviceProfileInfoFilterOptions（系统接口）
 
+```TypeScript
+interface DeviceProfileInfoFilterOptions
+```
+
 设备信息过滤器选项。
 
 **起始版本：** 15

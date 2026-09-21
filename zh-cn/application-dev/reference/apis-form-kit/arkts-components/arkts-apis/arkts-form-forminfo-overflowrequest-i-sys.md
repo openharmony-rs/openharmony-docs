@@ -1,5 +1,9 @@
 # OverflowRequest（系统接口）
 
+```TypeScript
+interface OverflowRequest
+```
+
 互动卡片动效请求信息。
 
 **起始版本：** 20

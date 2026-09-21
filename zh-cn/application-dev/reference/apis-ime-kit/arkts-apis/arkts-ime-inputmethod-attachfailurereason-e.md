@@ -1,5 +1,9 @@
 # AttachFailureReason
 
+```TypeScript
+export enum AttachFailureReason
+```
+
 枚举，绑定失败的原因。
 
 **起始版本：** 22

@@ -61,6 +61,8 @@ Moves the source directory to the destination directory. This API uses a promise
 | 13900042 | Unknown error |
 
 
+<a id="movedir-1"></a>
+
 ## moveDir
 
 ```TypeScript
@@ -105,6 +107,8 @@ Moves the source directory to the destination directory. This API uses an asynch
 | 13900042 | Unknown error |
 
 
+<a id="movedir-2"></a>
+
 ## moveDir
 
 ```TypeScript
@@ -137,6 +141,8 @@ An exception will be thrown if a directory conflict occurs, that is, the destina
 | --- | --- |
 | 13900015 | File exists |
 
+
+<a id="movedir-3"></a>
 
 ## moveDir
 
@@ -182,6 +188,8 @@ Moves the source directory to the destination directory. You can set the move mo
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="movedir-4"></a>
 
 ## moveDir
 

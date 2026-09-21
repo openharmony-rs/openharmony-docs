@@ -1,5 +1,9 @@
 # HttpResponse
 
+```TypeScript
+interface HttpResponse
+```
+
 任务响应头的数据结构。
 
 **起始版本：** 12

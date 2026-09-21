@@ -1,5 +1,9 @@
 # OnscreenAwarenessCap (System API)
 
+```TypeScript
+export interface OnscreenAwarenessCap
+```
+
 Defines onscreen awareness capabilities (including but not limited to awareness in a reading scenario and OCR).
 
 **Since:** 23

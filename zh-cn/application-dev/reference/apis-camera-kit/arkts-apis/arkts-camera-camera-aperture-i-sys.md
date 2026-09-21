@@ -1,5 +1,9 @@
 # Aperture
 
+```TypeScript
+interface Aperture extends ApertureQuery
+```
+
 物理光圈对象。
 
 Aperture继承自ApertureQuery。

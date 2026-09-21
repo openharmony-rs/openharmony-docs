@@ -1,5 +1,9 @@
 # BleProfile
 
+```TypeScript
+enum BleProfile
+```
+
 The Profile of the BLE protocol.
 
 **Since:** 21

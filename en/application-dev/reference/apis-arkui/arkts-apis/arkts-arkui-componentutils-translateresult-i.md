@@ -1,5 +1,9 @@
 # TranslateResult
 
+```TypeScript
+interface TranslateResult
+```
+
 Translation Result
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # FoldedRegionLayoutOptions
 
+```TypeScript
+export interface FoldedRegionLayoutOptions
+```
+
 折叠态布局信息。
 
 **起始版本：** 12

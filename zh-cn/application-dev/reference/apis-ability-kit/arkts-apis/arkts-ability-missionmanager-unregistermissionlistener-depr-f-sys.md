@@ -70,6 +70,43 @@ missionManager.unregisterMissionListener(listenerId, (error) => {
 });
 ```
 
+
+<a id="unregistermissionlistener-1"></a>
+
+## unregisterMissionListener
+
+```TypeScript
+function unregisterMissionListener(listenerId: number): Promise<void>
+```
+
+解注册任务状态监听器。使用Promise异步回调。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [off](arkts-ability-missionmanager-off-f-sys.md)
+
+**需要权限：** ohos.permission.MANAGE_MISSIONS
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由registerMissionListener方法返回。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
 ```TypeScript
 import missionManager from '@ohos.application.missionManager';
 import { BusinessError } from '@ohos.base';
@@ -108,40 +145,3 @@ missionManager.unregisterMissionListener(listenerId)
     console.error(`unregisterMissionListener failed. Code: ${error.code}, message: ${error.message}.`);
   });
 ```
-
-
-## unregisterMissionListener
-
-```TypeScript
-function unregisterMissionListener(listenerId: number): Promise<void>
-```
-
-解注册任务状态监听器。使用Promise异步回调。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [off](arkts-ability-missionmanager-off-f-sys.md)
-
-**需要权限：** ohos.permission.MANAGE_MISSIONS
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由registerMissionListener方法返回。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**示例**
-
-参见 [unregisterMissionListener](#unregistermissionlistener)

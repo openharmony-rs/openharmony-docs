@@ -1,5 +1,9 @@
 # ContentProtectionLevel
 
+```TypeScript
+enum ContentProtectionLevel
+```
+
 枚举，内容保护级别。
 
 **起始版本：** 11

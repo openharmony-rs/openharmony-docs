@@ -1,5 +1,9 @@
 # X509TrustAnchor
 
+```TypeScript
+interface X509TrustAnchor
+```
+
 Represents an X.509 trust anchor, which is used to verify the certificate chain. The certificate or public key in the trust anchor is used as the trusted root to verify the certificate chain.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # HuksCryptoExtensionResultCode
 
+```TypeScript
+export const enum HuksCryptoExtensionResultCode
+```
+
 [HuksCryptoExtensionResult](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensionresultcode-e.md)中的resultCode枚举值。
 
 **起始版本：** 22

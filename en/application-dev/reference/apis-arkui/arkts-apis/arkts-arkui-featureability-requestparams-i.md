@@ -1,5 +1,9 @@
 # RequestParams
 
+```TypeScript
+export interface RequestParams
+```
+
 @typedef RequestParams
 
 **Since:** 5

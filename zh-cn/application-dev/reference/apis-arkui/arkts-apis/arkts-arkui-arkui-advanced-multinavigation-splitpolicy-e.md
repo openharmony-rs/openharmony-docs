@@ -1,5 +1,9 @@
 # SplitPolicy
 
+```TypeScript
+export declare enum SplitPolicy
+```
+
 表示MultiNavigation中页面的类型。
 
 **起始版本：** 14

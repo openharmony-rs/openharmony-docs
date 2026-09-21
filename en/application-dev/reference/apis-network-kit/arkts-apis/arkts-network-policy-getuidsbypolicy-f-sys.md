@@ -51,19 +51,8 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getUidsByPolicy(11111)
-  .then((data: object) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
-```
-
+<a id="getuidsbypolicy-1"></a>
 
 ## getUidsByPolicy
 
@@ -106,4 +95,15 @@ Obtains all UIDs that match the policy by policy. This API uses a promise to ret
 
 **Examples**
 
-See [getUidsByPolicy](#getuidsbypolicy)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+policy
+  .getUidsByPolicy(11111)
+  .then((data: object) => {
+    console.info(JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error(JSON.stringify(error));
+  });
+```

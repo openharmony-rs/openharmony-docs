@@ -22,7 +22,7 @@ Called when the RootScene is used.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| session | [RootSceneSession](arkts-arkui-rootscenesession-i-sys.md) | Yes | indicates the session of RootScene. |
+| session | [RootSceneSession](arkts-arkui-rootscene-comp-rootscenesession-i-sys.md) | Yes | indicates the session of RootScene. |
 
 ## Summary
 
@@ -30,4 +30,4 @@ Called when the RootScene is used.
 
 | Name | Description |
 | --- | --- |
-| [RootSceneSession](arkts-arkui-rootscenesession-i-sys.md) | Defines the session of RootScene. |
+| [RootSceneSession](arkts-arkui-rootscene-comp-rootscenesession-i-sys.md) | Defines the session of RootScene. |

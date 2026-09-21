@@ -1,5 +1,9 @@
 # ChargeType (System API)
 
+```TypeScript
+export enum ChargeType
+```
+
 Enumerates charging types.
 
 **Since:** 10

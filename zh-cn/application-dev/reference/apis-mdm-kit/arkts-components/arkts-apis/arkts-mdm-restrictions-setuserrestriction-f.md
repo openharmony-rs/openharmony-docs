@@ -63,24 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { restrictions } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  restrictions.setUserRestriction(wantTemp, restrictions.SettingsForDevice.SET_APN, true);
-  console.info('Succeeded in restricting from setting apn');
-} catch (err) {
-  console.error(`Failed to restrict from setting apn. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="setuserrestriction-1"></a>
 
 ## setUserRestriction
 
@@ -117,4 +101,20 @@ function setUserRestriction(admin: Want, settingsItem: SettingsForDevice, restri
 
 **示例**
 
-参见 [setUserRestriction](#setuserrestriction)
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  restrictions.setUserRestriction(wantTemp, restrictions.SettingsForDevice.SET_APN, true);
+  console.info('Succeeded in restricting from setting apn');
+} catch (err) {
+  console.error(`Failed to restrict from setting apn. Code is ${err.code}, message is ${err.message}`);
+}
+```

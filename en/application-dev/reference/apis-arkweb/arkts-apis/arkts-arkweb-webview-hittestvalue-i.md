@@ -1,5 +1,9 @@
 # HitTestValue
 
+```TypeScript
+interface HitTestValue
+```
+
 Provides the element information of the area being clicked. For the sample code, see [getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest).
 
 **Since:** 9

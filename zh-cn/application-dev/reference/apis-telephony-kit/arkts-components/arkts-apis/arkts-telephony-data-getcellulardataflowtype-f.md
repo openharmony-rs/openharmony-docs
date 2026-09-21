@@ -49,17 +49,8 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 });
 ```
 
-```TypeScript
-import { data } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getcellulardataflowtype-1"></a>
 
 ## getCellularDataFlowType
 
@@ -91,4 +82,13 @@ function getCellularDataFlowType(): Promise<DataFlowType>
 
 **示例**
 
-参见 [getCellularDataFlowType](#getcellulardataflowtype)
+```TypeScript
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
+    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
+});
+```

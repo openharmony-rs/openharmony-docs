@@ -1,5 +1,9 @@
 # InputMethodEngine
 
+```TypeScript
+interface InputMethodEngine
+```
+
 
 > **说明：** <br>
 > <br>
@@ -49,6 +53,16 @@ off(
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
 | callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
+**示例**
+
+```TypeScript
+inputMethodEngine.getInputMethodEngine()
+  .off('inputStart',
+    (kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.TextInputClient) => {
+      console.info('delete inputStart notification.');
+    });
+```
+
 ## off('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -75,31 +89,12 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 | type | 'keyboardShow' &#124; 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。<br>-'keyboardShow'表示显示输入法软键盘。<br>-'keyboardHide'表示隐藏输入法软键盘。 |
 | callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
-## off('keyboardShow' | 'keyboardHide')
+**示例**
 
 ```TypeScript
-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
+inputMethodEngine.getInputMethodEngine().off('keyboardShow');
+inputMethodEngine.getInputMethodEngine().off('keyboardHide');
 ```
-
-取消订阅输入法软键盘显示或隐藏事件。使用callback异步回调。<br> <br>  
-> **说明：** <br>
-> <br>
-> 从API version 8开始支持，API version 23开始废弃。
-
-**起始版本：** 8
-
-**废弃版本：** 23
-
-**替代接口：** off(type: 'keyboardShow' | 'keyboardHide', callback?: () =&gt; void)
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'keyboardShow' &#124; 'keyboardHide' | 是 | 要取消监听的输入法软键盘事件类型。<br>-'keyboardShow'表示显示输入法软键盘。<br>-'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () =&gt; void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 ## on('inputStart')
 
@@ -130,6 +125,16 @@ on(
 | type | 'inputStart' | 是 | 设置监听类型，固定取值为'inputStart'。 |
 | callback | (kbController: KeyboardController, textInputClient: TextInputClient) =&gt; void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
 
+**示例**
+
+```TypeScript
+inputMethodEngine.getInputMethodEngine()
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.TextInputClient) => {
+      // 使用kbController和textClient进行相关操作
+    });
+```
+
 ## on('keyboardShow' | 'keyboardHide')
 
 ```TypeScript
@@ -156,28 +161,13 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 | type | 'keyboardShow' &#124; 'keyboardHide' | 是 | 设置监听类型。<br>-'keyboardShow'表示显示输入法软键盘。<br>-'keyboardHide'表示隐藏输入法软键盘。 |
 | callback | () =&gt; void | 是 | 回调函数。 |
 
-## on('keyboardShow' | 'keyboardHide')
+**示例**
 
 ```TypeScript
-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
+inputMethodEngine.getInputMethodEngine().on('keyboardShow', () => {
+  console.info('inputMethodEngine keyboardShow.');
+});
+inputMethodEngine.getInputMethodEngine().on('keyboardHide', () => {
+  console.info('inputMethodEngine keyboardHide.');
+});
 ```
-
-订阅输入法软键盘显示或隐藏事件。使用callback异步回调。<br> <br>  
-> **说明：** <br>
-> <br>
-> 从API version 8开始支持，API version 23开始废弃。
-
-**起始版本：** 8
-
-**废弃版本：** 23
-
-**替代接口：** on(type: 'keyboardShow' | 'keyboardHide', callback: () =&gt; void)
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | 'keyboardShow' &#124; 'keyboardHide' | 是 | 设置监听类型。<br>-'keyboardShow'表示显示输入法软键盘。<br>-'keyboardHide'表示隐藏输入法软键盘。 |
-| callback | () =&gt; void | 是 | 回调函数。 |

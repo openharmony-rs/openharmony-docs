@@ -1,5 +1,9 @@
 # ErrorReason
 
+```TypeScript
+enum ErrorReason
+```
+
 枚举，描述错误原因。
 
 **起始版本：** 23

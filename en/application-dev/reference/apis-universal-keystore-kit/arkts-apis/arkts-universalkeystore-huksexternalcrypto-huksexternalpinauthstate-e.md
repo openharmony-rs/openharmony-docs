@@ -1,5 +1,9 @@
 # HuksExternalPinAuthState
 
+```TypeScript
+export enum HuksExternalPinAuthState
+```
+
 Enumerates the UKey PIN authentication states.
 
 **Since:** 22

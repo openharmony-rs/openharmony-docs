@@ -1,5 +1,9 @@
 # DistributedTableType
 
+```TypeScript
+enum DistributedTableType
+```
+
 分布式表类型的枚举。请使用枚举名称而非枚举值。此配置项为数据库级配置，如果数据库中有多张分布式表，则所有表必须使用相同的分布式表类型，且不支持切换升级。
 
 **起始版本：** 23

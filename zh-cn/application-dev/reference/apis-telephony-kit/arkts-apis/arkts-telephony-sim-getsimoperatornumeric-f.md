@@ -51,17 +51,8 @@ sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimOperatorNumeric(0).then((data: string) => {
-    console.info(`getSimOperatorNumeric success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimOperatorNumeric failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimoperatornumeric-1"></a>
 
 ## getSimOperatorNumeric
 
@@ -100,4 +91,13 @@ function getSimOperatorNumeric(slotId: number): Promise<string>
 
 **示例**
 
-参见 getSimOperatorNumeric
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimOperatorNumeric(0).then((data: string) => {
+    console.info(`getSimOperatorNumeric success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimOperatorNumeric failed, promise: err->${JSON.stringify(err)}`);
+});
+```

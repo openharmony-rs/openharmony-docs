@@ -1,5 +1,9 @@
 # LabelMarginOptions
 
+```TypeScript
+export interface LabelMarginOptions
+```
+
 LabelMarginOptions用于定义文本与左右侧图标之间间距。
 
 **起始版本：** 11

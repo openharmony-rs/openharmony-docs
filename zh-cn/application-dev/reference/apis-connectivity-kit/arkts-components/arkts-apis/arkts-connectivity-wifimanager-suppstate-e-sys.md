@@ -1,5 +1,9 @@
 # SuppState（系统接口）
 
+```TypeScript
+export enum SuppState
+```
+
 表示请求状态的枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # CloudMediaTaskPauseCause (System API)
 
+```TypeScript
+enum CloudMediaTaskPauseCause
+```
+
 Enumerates the reasons why a cloud media asset download task is paused.
 
 **Since:** 14

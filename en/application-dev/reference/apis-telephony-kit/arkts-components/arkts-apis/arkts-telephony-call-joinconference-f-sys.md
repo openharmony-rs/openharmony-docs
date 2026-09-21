@@ -56,19 +56,8 @@ call.joinConference(1, callNumberList, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let callNumberList: Array<string> = [
-    "138XXXXXXXX"
-];
-call.joinConference(1, callNumberList).then(() => {
-    console.info(`joinConference success.`);
-}).catch((err: BusinessError) => {
-    console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="joinconference-1"></a>
 
 ## joinConference
 
@@ -110,4 +99,15 @@ Joins a conference call. This API uses a promise to return the result.
 
 **Examples**
 
-See [joinConference](#joinconference)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callNumberList: Array<string> = [
+    "138XXXXXXXX"
+];
+call.joinConference(1, callNumberList).then(() => {
+    console.info(`joinConference success.`);
+}).catch((err: BusinessError) => {
+    console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
+});
+```

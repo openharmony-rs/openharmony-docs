@@ -1,5 +1,9 @@
 # AsyncIterable
 
+```TypeScript
+interface AsyncIterable<T>
+```
+
 ## Modules to Import
 
 ```TypeScript

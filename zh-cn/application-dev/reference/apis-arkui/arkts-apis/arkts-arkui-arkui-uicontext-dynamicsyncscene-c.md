@@ -1,5 +1,9 @@
 # DynamicSyncScene
 
+```TypeScript
+export class DynamicSyncScene
+```
+
 提供组件自定义场景下相关帧率的配置。
 
 > **说明：** 
@@ -45,7 +49,59 @@ getFrameRateRange(): ExpectedFrameRateRange
 
 | 类型 | 说明 |
 | --- | --- |
-| [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | The range of frameRate. |
+| [ExpectedFrameRateRange](../arkts-components/arkts-arkui-common-comp-expectedframeraterange-i.md) | The range of frameRate. |
+
+**示例**
+
+```TypeScript
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("动画" + JSON.stringify(this.ANIMATION))
+      Text("跟手" + JSON.stringify(this.GESTURE))
+      Row(){
+        Swiper() {
+          Text("one")
+          Text("two")
+          Text("three")
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(() => {
+          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scenes: SwiperDynamicSyncScene) => {
+
+            if (scenes.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scenes.setFrameRateRange(this.ANIMATION);
+              scenes.getFrameRateRange();
+            }
+
+            if (scenes.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scenes.setFrameRateRange(this.GESTURE);
+              scenes.getFrameRateRange();
+            }
+          });
+        })
+      }
+  }
+}
+```
 
 ## setFrameRateRange
 
@@ -69,4 +125,54 @@ setFrameRateRange(range: ExpectedFrameRateRange): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-expectedframeraterange-i.md) | 是 | The range of frameRate. |
+| range | [ExpectedFrameRateRange](../arkts-components/arkts-arkui-common-comp-expectedframeraterange-i.md) | 是 | The range of frameRate. |
+
+**示例**
+
+```TypeScript
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("动画" + JSON.stringify(this.ANIMATION))
+      Text("跟手" + JSON.stringify(this.GESTURE))
+      Row(){
+        Swiper() {
+          Text("one")
+          Text("two")
+          Text("three")
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(()=>{
+          this.scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scene: SwiperDynamicSyncScene) => {
+
+            if (scene.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scene.setFrameRateRange(this.ANIMATION);
+            }
+
+            if (scene.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scene.setFrameRateRange(this.GESTURE);
+            }
+          });
+        })
+    }
+  }
+}
+```

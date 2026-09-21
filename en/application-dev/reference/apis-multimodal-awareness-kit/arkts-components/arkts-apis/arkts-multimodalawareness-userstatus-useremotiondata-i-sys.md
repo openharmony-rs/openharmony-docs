@@ -1,5 +1,9 @@
 # UserEmotionData (System API)
 
+```TypeScript
+export interface UserEmotionData extends UserStatusData
+```
+
 Defines user emotion data.
 
 **Inheritance/Implementation:** UserEmotionData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

@@ -14,7 +14,7 @@ function setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, ap
 
 Sets additional information for a specified application instance. This API can be called only by AppGallery.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 

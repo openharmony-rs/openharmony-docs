@@ -1,5 +1,9 @@
 # AssetStatus
 
+```TypeScript
+enum AssetStatus
+```
+
 描述资产附件的状态枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 11

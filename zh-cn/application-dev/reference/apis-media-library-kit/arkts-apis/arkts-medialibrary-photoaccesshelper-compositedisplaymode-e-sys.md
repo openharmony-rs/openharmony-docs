@@ -1,5 +1,9 @@
 # CompositeDisplayMode（系统接口）
 
+```TypeScript
+enum CompositeDisplayMode
+```
+
 枚举，表示复合图显示模式。
 
 **起始版本：** 23

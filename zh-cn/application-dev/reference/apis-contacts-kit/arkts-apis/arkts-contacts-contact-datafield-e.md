@@ -1,5 +1,9 @@
 # DataField
 
+```TypeScript
+enum DataField
+```
+
 枚举，联系人数据字段。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # NetworkInformationState (System API)
 
+```TypeScript
+export enum NetworkInformationState
+```
+
 Obtains network information status.
 
 **Since:** 6

@@ -1,5 +1,9 @@
 # ExtensionAbilityType
 
+```TypeScript
+export enum ExtensionAbilityType
+```
+
 扩展组件的类型。
 
 <!--Table: 30%; 10%; 60%-->
@@ -448,7 +452,7 @@ PARTNER_AGENT = 36
 AGENT = 37
 ```
 
-AgentExtensionAbility：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
+[AgentExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -464,7 +468,7 @@ AgentExtensionAbility：提供智能体扩展能力，包括智能体服务的�
 AGENT_UI = 38
 ```
 
-AgentUIExtensionAbility：为开发者提供接入端侧Agent UI界面显示能力。
+[AgentUIExtensionAbility](../../../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

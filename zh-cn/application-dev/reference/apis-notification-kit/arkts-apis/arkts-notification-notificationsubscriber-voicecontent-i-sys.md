@@ -1,5 +1,9 @@
 # VoiceContent（系统接口）
 
+```TypeScript
+export interface VoiceContent
+```
+
 通知语音播报内容。
 
 **起始版本：** 26.0.0

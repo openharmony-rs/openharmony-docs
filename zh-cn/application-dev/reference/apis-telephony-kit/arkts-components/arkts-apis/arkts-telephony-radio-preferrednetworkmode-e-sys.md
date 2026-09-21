@@ -1,5 +1,9 @@
 # PreferredNetworkMode（系统接口）
 
+```TypeScript
+export enum PreferredNetworkMode
+```
+
 Indicates the preferred network.
 
 **起始版本：** 8

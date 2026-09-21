@@ -1,5 +1,9 @@
 # UsbTransferStatus
 
+```TypeScript
+export enum UsbTransferStatus
+```
+
 数据处理完成后通过回调返回的状态码。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # Router
 
+```TypeScript
+export default class Router
+```
+
 The **Router** module provides APIs to access pages through URIs.
 
 **Since:** 3

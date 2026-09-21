@@ -1,5 +1,9 @@
 # StringConstructor
 
+```TypeScript
+interface StringConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

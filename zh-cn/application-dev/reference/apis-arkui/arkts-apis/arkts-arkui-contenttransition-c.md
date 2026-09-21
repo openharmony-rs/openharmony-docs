@@ -1,5 +1,9 @@
 # ContentTransition
 
+```TypeScript
+declare class ContentTransition
+```
+
 文本动效基类。
 
 **起始版本：** 20

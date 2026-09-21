@@ -1,5 +1,9 @@
 # RelativeTimeFormatInputOptions
 
+```TypeScript
+export interface RelativeTimeFormatInputOptions
+```
+
 创建相对时间格式化对象时可设置的配置项。
 
 从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。

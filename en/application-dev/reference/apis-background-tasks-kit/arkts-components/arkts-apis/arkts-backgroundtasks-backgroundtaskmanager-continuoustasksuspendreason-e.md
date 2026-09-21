@@ -1,5 +1,9 @@
 # ContinuousTaskSuspendReason
 
+```TypeScript
+export enum ContinuousTaskSuspendReason
+```
+
 Describes the reason why a continuous task is suspended.
 
 **Since:** 20

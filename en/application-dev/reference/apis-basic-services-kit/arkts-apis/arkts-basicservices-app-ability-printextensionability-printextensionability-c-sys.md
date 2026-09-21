@@ -1,5 +1,9 @@
 # PrintExtensionAbility
 
+```TypeScript
+declare class PrintExtensionAbility
+```
+
 class of print extension ability.
 
 **Since:** 14

@@ -30,3 +30,20 @@ function off(type: 'systemLoadChange', callback?: Callback<SystemLoadLevel>): vo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Callback parameter error;<br> 2. Unregister type has not register; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { systemLoad } from '@kit.BasicServicesKit';
+
+function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
+    console.info(`system load changed, current level ` + res);
+}
+
+try {
+    systemLoad.off('systemLoadChange', onSystemLoadChange);
+    console.info(`unregister systemload callback succeeded. `);
+} catch (err) {
+    console.error(`unregister systemload callback failed: ` + JSON.stringify(err));
+}
+```

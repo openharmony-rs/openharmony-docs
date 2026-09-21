@@ -1,5 +1,9 @@
 # USBDevicePipe
 
+```TypeScript
+interface USBDevicePipe
+```
+
 USB设备连接通道，用于确定总线地址和设备地址。
 
 **起始版本：** 9

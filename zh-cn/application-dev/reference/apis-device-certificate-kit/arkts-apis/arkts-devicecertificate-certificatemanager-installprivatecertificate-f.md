@@ -68,52 +68,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-/* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
-let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
-]);
-let keystorePwd: string = '123456';
-try {
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
-    let uri: string = cmResult?.uri ?? '';
-    console.info('Succeeded in installing private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-/* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
-let keystore: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
-]);
-let keystorePwd: string = '123456';
-try {
-  /* 安装凭据在首次解锁设备后可以使用。 */
-  let level = certificateManager.AuthStorageLevel.EL2;
-  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
-    let uri: string = cmResult.uri ?? '';
-    console.info('Succeeded in installing private certificate.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="installprivatecertificate-1"></a>
 
 ## installPrivateCertificate
 
@@ -155,8 +111,30 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 **示例**
 
-参见 installPrivateCertificate
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+/* 安装的凭据数据需要业务赋值，本例数据非凭据数据 */
+let keystore: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
+]);
+let keystorePwd: string = '123456';
+try {
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
+    let uri: string = cmResult?.uri ?? '';
+    console.info('Succeeded in installing private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
+<a id="installprivatecertificate-2"></a>
 
 ## installPrivateCertificate
 
@@ -199,4 +177,26 @@ function installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, ce
 
 **示例**
 
-参见 installPrivateCertificate
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
+let keystore: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
+]);
+let keystorePwd: string = '123456';
+try {
+  /* 安装凭据在首次解锁设备后可以使用。 */
+  let level = certificateManager.AuthStorageLevel.EL2;
+  certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
+    let uri: string = cmResult.uri ?? '';
+    console.info('Succeeded in installing private certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to install private certificate. Code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # BlanklessFrameInterpolationInfo
 
+```TypeScript
+interface BlanklessFrameInterpolationInfo
+```
+
 无白屏加载插帧状态信息，作为[BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md)中的回调入参使用。
 
 **起始版本：** 23

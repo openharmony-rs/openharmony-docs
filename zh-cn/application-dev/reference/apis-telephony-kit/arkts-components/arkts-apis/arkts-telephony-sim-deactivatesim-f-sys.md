@@ -53,17 +53,8 @@ sim.deactivateSim(0, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.deactivateSim(0).then(() => {
-    console.info(`deactivateSim success.`);
-}).catch((err: BusinessError) => {
-    console.error(`deactivateSim failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="deactivatesim-1"></a>
 
 ## deactivateSim
 
@@ -108,4 +99,13 @@ Disable SIM card in specified slot.
 
 **示例**
 
-参见 [deactivateSim](#deactivatesim)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.deactivateSim(0).then(() => {
+    console.info(`deactivateSim success.`);
+}).catch((err: BusinessError) => {
+    console.error(`deactivateSim failed, promise: err->${JSON.stringify(err)}`);
+});
+```

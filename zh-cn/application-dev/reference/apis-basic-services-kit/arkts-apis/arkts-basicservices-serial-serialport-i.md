@@ -1,5 +1,9 @@
 # SerialPort
 
+```TypeScript
+interface SerialPort
+```
+
 串口对象，提供串口设备的信息和通信能力。
 
 **起始版本：** 26.0.0

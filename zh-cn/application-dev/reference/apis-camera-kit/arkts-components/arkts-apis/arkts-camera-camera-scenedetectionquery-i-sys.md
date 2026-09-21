@@ -1,5 +1,9 @@
 # SceneDetectionQuery（系统接口）
 
+```TypeScript
+interface SceneDetectionQuery
+```
+
 Provides the scene detection and query capabilities.
 
 **起始版本：** 12

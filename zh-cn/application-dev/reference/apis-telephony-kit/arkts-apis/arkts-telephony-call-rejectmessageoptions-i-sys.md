@@ -1,5 +1,9 @@
 # RejectMessageOptions（系统接口）
 
+```TypeScript
+export interface RejectMessageOptions
+```
+
 拒绝消息可选参数。
 
 **起始版本：** 7

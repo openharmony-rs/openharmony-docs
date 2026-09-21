@@ -1,5 +1,9 @@
 # ArcSlider
 
+```TypeScript
+declare struct ArcSlider
+```
+
 弧形滑动条组件，通常用于在圆形屏幕的穿戴设备中快速调节设置值，如音量调节、亮度调节等应用场景。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # RequestReadPermissionResult
 
+```TypeScript
+export class RequestReadPermissionResult
+```
+
 Request read permission result
 
 **Since:** 23

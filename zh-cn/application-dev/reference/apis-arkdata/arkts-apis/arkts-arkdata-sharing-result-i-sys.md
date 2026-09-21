@@ -1,5 +1,9 @@
 # Result（系统接口）
 
+```TypeScript
+interface Result<T>
+```
+
 端云共享结果的返回值。
 
 **起始版本：** 11

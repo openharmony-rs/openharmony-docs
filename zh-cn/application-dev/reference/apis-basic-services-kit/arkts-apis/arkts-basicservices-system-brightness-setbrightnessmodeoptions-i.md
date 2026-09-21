@@ -1,5 +1,9 @@
 # SetBrightnessModeOptions
 
+```TypeScript
+export interface SetBrightnessModeOptions
+```
+
 设置屏幕亮度模式的参数对象。
 
 **起始版本：** 3
@@ -26,6 +30,8 @@ complete?: () => void
 
 **废弃版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## fail
@@ -39,6 +45,8 @@ fail?: (data: string, code: number) => void
 **起始版本：** 3
 
 **废弃版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -61,6 +69,8 @@ success?: () => void
 
 **废弃版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## mode
@@ -76,5 +86,7 @@ mode: number
 **起始版本：** 3
 
 **废弃版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite

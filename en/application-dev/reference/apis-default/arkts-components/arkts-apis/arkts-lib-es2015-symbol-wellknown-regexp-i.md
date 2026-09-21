@@ -1,5 +1,9 @@
 # RegExp
 
+```TypeScript
+interface RegExp
+```
+
 ## Modules to Import
 
 ```TypeScript
@@ -33,6 +37,8 @@ Replaces text in a string, using this regular expression.
 | --- | --- | --- | --- |
 | string | string | Yes |  |
 | replaceValue | string | Yes |  |
+
+<a id="symbolreplace-1"></a>
 
 ## [Symbol.replace]
 

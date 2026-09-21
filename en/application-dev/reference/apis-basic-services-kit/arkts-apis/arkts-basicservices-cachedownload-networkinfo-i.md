@@ -1,5 +1,9 @@
 # NetworkInfo
 
+```TypeScript
+interface NetworkInfo
+```
+
 Describes the pre-downloaded network information.
 
 **Since:** 20

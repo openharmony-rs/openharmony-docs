@@ -1,5 +1,9 @@
 # EffectSuggestionType (System API)
 
+```TypeScript
+enum EffectSuggestionType
+```
+
 Enum for effect suggestion.
 
 **Since:** 12

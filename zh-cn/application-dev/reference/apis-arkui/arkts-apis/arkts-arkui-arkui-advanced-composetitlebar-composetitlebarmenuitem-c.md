@@ -1,5 +1,9 @@
 # ComposeTitleBarMenuItem
 
+```TypeScript
+export declare class ComposeTitleBarMenuItem
+```
+
 **起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -146,7 +150,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。不设置时使用value属性指定的图标资源。
 
-**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 

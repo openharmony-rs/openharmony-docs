@@ -1,5 +1,9 @@
 # DownloadStopReason
 
+```TypeScript
+enum DownloadStopReason
+```
+
 Enumerates the reasons why the full download stops. The default value is **NO_STOP**.
 
 **Since:** 20

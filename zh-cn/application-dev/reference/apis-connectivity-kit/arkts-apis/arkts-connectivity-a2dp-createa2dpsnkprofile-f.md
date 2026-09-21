@@ -14,7 +14,7 @@ function createA2dpSnkProfile(): A2dpSinkProfile
 
 创建a2dp sink实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -24,7 +24,7 @@ function createA2dpSnkProfile(): A2dpSinkProfile
 
 | 类型 | 说明 |
 | --- | --- |
-| A2dpSinkProfile | 返回profile的实例。 |
+| [A2dpSinkProfile](arkts-connectivity-a2dp-a2dpsinkprofile-i-sys.md) | 返回profile的实例。 |
 
 **错误码：**
 

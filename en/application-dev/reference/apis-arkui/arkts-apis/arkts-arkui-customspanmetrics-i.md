@@ -1,5 +1,9 @@
 # CustomSpanMetrics
 
+```TypeScript
+declare interface CustomSpanMetrics
+```
+
 Defines the CustomSpanMetrics interface.
 
 **Since:** 12

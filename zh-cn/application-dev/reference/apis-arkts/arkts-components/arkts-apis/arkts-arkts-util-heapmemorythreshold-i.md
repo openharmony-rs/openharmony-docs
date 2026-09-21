@@ -1,5 +1,9 @@
 # HeapMemoryThreshold
 
+```TypeScript
+interface HeapMemoryThreshold
+```
+
 描述 GC 后触发已注册回调的堆内存预警阈值。
 
 @interface HeapMemoryThreshold

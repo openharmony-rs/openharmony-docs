@@ -1,5 +1,9 @@
 # PlayingState
 
+```TypeScript
+enum PlayingState
+```
+
 枚举，蓝牙媒体音频播放状态。
 
 **起始版本：** 10

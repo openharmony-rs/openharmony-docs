@@ -1,5 +1,9 @@
 # GetReportData
 
+```TypeScript
+interface GetReportData
+```
+
 描述HID主机向HID设备发送的GET_REPORT传输请求事件的信息。
 
 **起始版本：** 23

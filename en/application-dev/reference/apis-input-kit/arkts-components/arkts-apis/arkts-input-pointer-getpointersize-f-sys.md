@@ -64,33 +64,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // Obtain the mouse pointer size.
-            pointer.getPointerSize().then((size: number) => {
-              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
+<a id="getpointersize-1"></a>
 
 ## getPointerSize
 
@@ -120,4 +95,29 @@ Obtains the current mouse pointer size. This API uses a promise to return the re
 
 **Examples**
 
-See [getPointerSize](#getpointersize)
+```TypeScript
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Obtain the mouse pointer size.
+            pointer.getPointerSize().then((size: number) => {
+              console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```

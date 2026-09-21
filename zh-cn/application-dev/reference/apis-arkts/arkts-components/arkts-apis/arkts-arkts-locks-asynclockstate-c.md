@@ -1,5 +1,9 @@
 # AsyncLockState
 
+```TypeScript
+class AsyncLockState
+```
+
 用于存储异步锁实例上当前执行的所有锁操作的信息的类。
 
 **起始版本：** 12

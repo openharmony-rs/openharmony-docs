@@ -1,5 +1,9 @@
 # VideoPixelFormat（系统接口）
 
+```TypeScript
+export enum VideoPixelFormat
+```
+
 视频像素格式配置选项。
 
 **起始版本：** 18

@@ -1,5 +1,9 @@
 # Environment
 
+```TypeScript
+export interface Environment extends SceneResource
+```
+
 Environment resource, which inherits from SceneResource.
 
 @extends SceneResource @interface Environment

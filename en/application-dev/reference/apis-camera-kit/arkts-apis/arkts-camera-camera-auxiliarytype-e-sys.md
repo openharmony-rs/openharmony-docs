@@ -1,5 +1,9 @@
 # AuxiliaryType (System API)
 
+```TypeScript
+enum AuxiliaryType
+```
+
 Enum for auxiliary type.
 
 **Since:** 18

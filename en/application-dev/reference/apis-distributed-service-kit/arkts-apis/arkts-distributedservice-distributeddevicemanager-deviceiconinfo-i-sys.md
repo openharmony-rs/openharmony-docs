@@ -1,5 +1,9 @@
 # DeviceIconInfo (System API)
 
+```TypeScript
+interface DeviceIconInfo
+```
+
 Defines the device icon information.
 
 **Since:** 18

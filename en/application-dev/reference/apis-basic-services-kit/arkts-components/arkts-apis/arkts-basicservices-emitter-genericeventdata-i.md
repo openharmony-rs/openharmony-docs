@@ -1,5 +1,9 @@
 # GenericEventData
 
+```TypeScript
+export interface GenericEventData<T>
+```
+
 Describes the generic data carried by the emitted event.
 
 **Since:** 12

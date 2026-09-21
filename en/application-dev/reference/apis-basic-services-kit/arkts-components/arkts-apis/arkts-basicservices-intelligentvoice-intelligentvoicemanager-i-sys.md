@@ -1,5 +1,9 @@
 # IntelligentVoiceManager (System API)
 
+```TypeScript
+interface IntelligentVoiceManager
+```
+
 Implements intelligent voice management. @typedef IntelligentVoiceManager
 
 **Since:** 10
@@ -81,6 +85,14 @@ Unsubscribes service change events.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+**Examples**
+
+```TypeScript
+if (intelligentVoiceManager != null) {
+  intelligentVoiceManager.off('serviceChange');
+}
+```
+
 ## on('serviceChange')
 
 ```TypeScript
@@ -110,3 +122,11 @@ Subscribes service change events. When the state of intelligent voice service ch
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+
+**Examples**
+
+```TypeScript
+if (intelligentVoiceManager != null) {
+  intelligentVoiceManager.on('serviceChange', (serviceChangeType: intelligentVoice.ServiceChangeType) => {});
+}
+```

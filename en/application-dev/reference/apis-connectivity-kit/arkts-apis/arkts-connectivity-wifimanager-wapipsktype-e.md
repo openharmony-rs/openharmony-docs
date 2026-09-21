@@ -1,5 +1,9 @@
 # WapiPskType
 
+```TypeScript
+enum WapiPskType
+```
+
 Describes the WAPI pre-shared key Type. @enum { int }
 
 **Since:** 12

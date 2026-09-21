@@ -1,5 +1,9 @@
 # KeyPressedConfig
 
+```TypeScript
+interface KeyPressedConfig
+```
+
 按键事件消费设置。
 
 **起始版本：** 16

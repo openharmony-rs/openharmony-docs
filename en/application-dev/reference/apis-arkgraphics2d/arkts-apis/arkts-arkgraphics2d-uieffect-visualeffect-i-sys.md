@@ -1,5 +1,9 @@
 # VisualEffect
 
+```TypeScript
+interface VisualEffect
+```
+
 VisualEffect class, used to apply background color blending, border lighting, color gradient, and other effects to a component. Before calling VisualEffect methods, you need to first create a VisualEffect instance through createEffect.
 
 **Since:** 12
@@ -238,7 +242,7 @@ capture, such as systemMaterial, backgroundEffect, brightness, and blur, will no
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| distortionParam | [DistortionParam](../../apis-arkui/arkts-components/arkts-arkui-distortionparam-i-sys.md) | Yes | The parameters of the nonlinear deformation effect. |
+| distortionParam | [DistortionParam](../../apis-arkui/arkts-components/arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | Yes | The parameters of the nonlinear deformation effect. |
 
 **Return value:**
 
@@ -273,6 +277,41 @@ struct Index {
   }
 }
 ```
+
+## glassMarbleEffect
+
+```TypeScript
+glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask,
+      content?: GlassMarbleContentParam): VisualEffect
+```
+
+Adds a glass marble effect to the component. The glass marble effect composites a glass sphere with material parameters and an optional content layer to produce a realistic glass-like visual with refraction, dispersion, halo, shadow, and glow.
+
+> **NOTE:** 
+> 
+> It is applied to the background layer of the component.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| material | [GlassMarbleMaterialParam](arkts-arkgraphics2d-uieffect-glassmarblematerialparam-i-sys.md) | Yes | The material parameters controlling background color, opacity, reflection map, shadow, caustic, and shape scaling. |
+| marbleShell | [GlassMarbleSphereParam](arkts-arkgraphics2d-uieffect-glassmarblesphereparam-i-sys.md) &#124; [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | Yes | Required shape parameter; it can be either sphere geometry parameters (center and radius) or a prebuilt resource map mask. |
+| content | [GlassMarbleContentParam](arkts-arkgraphics2d-uieffect-glassmarblecontentparam-i-sys.md) | No | Optional content parameters including a content mask, tint color, scaling, saturation, and chromatic dispersion of the blended content. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | Returns the VisualEffect with the glass marble effect attached. |
 
 ## liquidMaterial
 

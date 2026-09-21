@@ -1,5 +1,9 @@
 # EnabledPriorityNotificationByBundleCallbackData（系统接口）
 
+```TypeScript
+export interface EnabledPriorityNotificationByBundleCallbackData
+```
+
 应用通知优先级开关状态。
 
 **起始版本：** 23

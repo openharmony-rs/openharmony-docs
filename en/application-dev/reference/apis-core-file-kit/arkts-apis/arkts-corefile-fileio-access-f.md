@@ -35,6 +35,8 @@ Checks whether this process can access a file. This API uses a promise to return
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="access-1"></a>
+
 ## access
 
 ```TypeScript
@@ -58,6 +60,8 @@ Checks whether this process can access a file. This API uses an asynchronous cal
 | path | string | Yes | Application sandbox path of the file. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked when the file is asynchronously checked. |
 
+
+<a id="access-2"></a>
 
 ## access
 

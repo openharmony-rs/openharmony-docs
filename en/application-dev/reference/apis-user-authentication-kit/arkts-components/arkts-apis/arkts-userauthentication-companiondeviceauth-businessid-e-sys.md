@@ -1,5 +1,9 @@
 # BusinessId (System API)
 
+```TypeScript
+enum BusinessId
+```
+
 Enumerates service IDs. A service ID uniquely identifies a service scenario supported by the companion device. The service scenarios supported by different companion devices vary according to the authentication security. For example, executing voice commands without screen unlocking.
 
 The companion device relationships of different service IDs are independent of each other and do not interfere with each other. They can be added, deleted, and authenticated independently.

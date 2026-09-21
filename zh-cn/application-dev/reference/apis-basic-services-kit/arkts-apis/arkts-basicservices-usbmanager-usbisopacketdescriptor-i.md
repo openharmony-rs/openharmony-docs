@@ -1,5 +1,9 @@
 # UsbIsoPacketDescriptor
 
+```TypeScript
+interface UsbIsoPacketDescriptor
+```
+
 实时传输模式回调返回的分包信息。
 
 **起始版本：** 18

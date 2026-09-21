@@ -1,5 +1,9 @@
 # ModuleInfo
 
+```TypeScript
+export interface ModuleInfo
+```
+
 应用程序的模块信息。
 
 > **说明：** 

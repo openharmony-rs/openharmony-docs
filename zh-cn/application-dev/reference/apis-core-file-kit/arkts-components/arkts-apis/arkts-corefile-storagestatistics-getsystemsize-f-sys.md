@@ -41,15 +41,6 @@ function getSystemSize(callback: AsyncCallback<number>): void
 **示例**
 
 ```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-storageStatistics.getSystemSize().then((number: number) => {
-  console.info("getSystemSize successfully:" + number);
-}).catch((err: BusinessError) => {
-  console.error(`getSystemSize failed with err, code is: ${err.code}, message is: ${err.message}`);
-});
-```
-
-```TypeScript
 import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getSystemSize((error: BusinessError, number: number) => {
@@ -62,6 +53,8 @@ storageStatistics.getSystemSize((error: BusinessError, number: number) => {
 });
 ```
 
+
+<a id="getsystemsize-1"></a>
 
 ## getSystemSize
 
@@ -97,4 +90,11 @@ function getSystemSize(): Promise<number>
 
 **示例**
 
-参见 [getSystemSize](#getsystemsize)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getSystemSize().then((number: number) => {
+  console.info("getSystemSize successfully:" + number);
+}).catch((err: BusinessError) => {
+  console.error(`getSystemSize failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```

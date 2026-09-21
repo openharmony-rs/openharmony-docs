@@ -14,6 +14,11 @@ function setResidentProcessEnabled(bundleName: string, enable: boolean): Promise
 
 Enables or disables the resident process of an application.
 
+> **NOTE:** 
+> 
+> This API does not support setting or removing the resident process status of clone applications (with a specified
+> bundle name).
+
 **Since:** 12
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

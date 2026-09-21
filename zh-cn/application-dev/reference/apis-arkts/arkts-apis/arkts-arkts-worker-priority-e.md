@@ -1,5 +1,9 @@
 # Priority
 
+```TypeScript
+export enum Priority
+```
+
 表示发送消息时的优先级枚举，各优先级对应关系请参考EventHandler等级定义。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # ProxyTypes
 
+```TypeScript
+export enum ProxyTypes
+```
+
 Socket代理类型。
 
 **起始版本：** 18

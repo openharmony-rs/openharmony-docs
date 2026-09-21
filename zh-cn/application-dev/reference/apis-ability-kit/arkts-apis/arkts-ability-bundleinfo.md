@@ -25,6 +25,9 @@ The module defines the bundle information. An application can obtain its own bun
 
 | 名称 | 说明 |
 | --- | --- |
+| [BundleExtensionPolicyInfo](arkts-ability-bundleinfo-bundleextensionpolicyinfo-i-sys.md) | 定义包扩展策略信息。 |
+| [BundleInfo](arkts-ability-bundleinfo-i-sys.md) | 应用包信息。 |
 | [BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md) | 应用包选项，用于设置或查询应用相关信息。 |
 | [DynamicIconInfo](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md) | 应用的动态图标信息。 |
+| [SignatureInfo](arkts-ability-bundleinfo-signatureinfo-i-sys.md) | 描述应用包的签名信息。 |
 <!--DelEnd-->

@@ -1,5 +1,9 @@
 # RotationInfoType
 
+```TypeScript
+enum RotationInfoType
+```
+
 Enumerates the types of rotation information.
 
 **Since:** 23

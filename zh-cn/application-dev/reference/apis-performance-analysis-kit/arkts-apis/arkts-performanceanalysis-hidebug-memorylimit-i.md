@@ -1,5 +1,9 @@
 # MemoryLimit
 
+```TypeScript
+interface MemoryLimit
+```
+
 应用进程内存限制。
 
 **起始版本：** 12

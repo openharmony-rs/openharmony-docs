@@ -1,5 +1,9 @@
 # PreconfigType
 
+```TypeScript
+enum PreconfigType
+```
+
 枚举，提供预配置的类型。
 
 **起始版本：** 12

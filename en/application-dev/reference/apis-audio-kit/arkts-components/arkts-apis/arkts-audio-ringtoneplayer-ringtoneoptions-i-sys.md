@@ -1,5 +1,9 @@
 # RingtoneOptions (System API)
 
+```TypeScript
+export interface RingtoneOptions
+```
+
 Enumerates the ringtone parameters.
 
 **Since:** 10

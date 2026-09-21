@@ -1,5 +1,9 @@
 # LocalFilePresentStatus (System API)
 
+```TypeScript
+interface LocalFilePresentStatus
+```
+
 Specifies a result object that contains the application bundle name and the status information about whether there are files that have not been uploaded to the cloud in the cloud storage space.
 
 **Since:** 23

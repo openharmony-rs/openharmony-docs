@@ -1,5 +1,9 @@
 # IDeliveryShortMessageCallback
 
+```TypeScript
+export interface IDeliveryShortMessageCallback
+```
+
 Provides the callback for the SMS message delivery report.
 
 **Since:** 6

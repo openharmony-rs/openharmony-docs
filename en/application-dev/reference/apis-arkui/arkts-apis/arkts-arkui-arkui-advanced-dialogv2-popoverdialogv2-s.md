@@ -1,5 +1,9 @@
 # PopoverDialogV2
 
+```TypeScript
+export declare struct PopoverDialogV2
+```
+
 Declare struct PopoverDialogV2
 
 @struct { PopoverDialogV2 }
@@ -62,7 +66,7 @@ targetBuilder: CustomBuilder
 
 Sets the targetBuilder content.
 
-**Type:** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md)
+**Type:** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
 **Since:** 18
 

@@ -1,5 +1,9 @@
 # ThermalLevel
 
+```TypeScript
+export enum ThermalLevel
+```
+
 热档位信息。热档位从COOL到ESCAPE逐级递进，各级别对应的设备状态与业务动作建议如下表所示。
 
 **起始版本：** 8

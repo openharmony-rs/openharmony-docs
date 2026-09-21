@@ -1,5 +1,9 @@
 # RecurrenceRule
 
+```TypeScript
+export interface RecurrenceRule
+```
+
 Describes the recurrence rule of a recurring event.
 
 **Since:** 10

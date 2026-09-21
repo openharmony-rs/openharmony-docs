@@ -1,5 +1,9 @@
 # InsertValue
 
+```TypeScript
+declare interface InsertValue
+```
+
 定义插入的文本值信息。
 
 **起始版本：** 12

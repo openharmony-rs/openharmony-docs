@@ -1,5 +1,9 @@
 # SystemBarProperties
 
+```TypeScript
+interface SystemBarProperties
+```
+
 状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。
 
 **起始版本：** 6

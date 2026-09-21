@@ -1,5 +1,9 @@
 # URLSearchParams
 
+```TypeScript
+class URLSearchParams
+```
+
 The URLSearchParams interface defines some practical methods to process URL query strings.
 
 **Since:** 7
@@ -84,7 +88,7 @@ paramsObject.append('fod', '3');
 ## constructor
 
 ```TypeScript
-constructor(init?: string[][] | Record<string, string> | string | URLSearchParams)
+constructor(init?: string[][] | Record<string, string>  | string | URLSearchParams)
 ```
 
 A parameterized constructor used to create an URLSearchParams instance. As the input parameter of the constructor function, init supports four types. The input parameter is a character string two-dimensional array. The input parameter is the object list. The input parameter is a character string. The input parameter is the URLSearchParams object.

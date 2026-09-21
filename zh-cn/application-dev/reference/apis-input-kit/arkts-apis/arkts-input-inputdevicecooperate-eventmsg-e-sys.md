@@ -1,5 +1,9 @@
 # EventMsg（系统接口）
 
+```TypeScript
+enum EventMsg
+```
+
 键鼠穿越事件。
 
 **起始版本：** 9

@@ -58,31 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  /* 获取当前用户下的用户根CA证书列表，如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
-  let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
-  certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
-    if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
-      console.info('The count of the user trusted certificates is 0.');
-    } else if (cmResult.certList == undefined) {
-      console.info('The result of getting current user trusted certificates is undefined.');
-    } else {
-      let list = cmResult.certList;
-      console.info('Succeeded in getting current user trusted certificates.');
-    }
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (error) {
-  console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="getallusertrustedcertificates-1"></a>
 
 ## getAllUserTrustedCertificates
 
@@ -120,4 +97,27 @@ function getAllUserTrustedCertificates(scope: CertScope): Promise<CMResult>
 
 **示例**
 
-参见 [getAllUserTrustedCertificates](#getallusertrustedcertificates)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  /* 获取当前用户下的用户根CA证书列表，如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
+  let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
+  certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
+    if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
+      console.info('The count of the user trusted certificates is 0.');
+    } else if (cmResult.certList == undefined) {
+      console.info('The result of getting current user trusted certificates is undefined.');
+    } else {
+      let list = cmResult.certList;
+      console.info('Succeeded in getting current user trusted certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to get current user trusted certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```

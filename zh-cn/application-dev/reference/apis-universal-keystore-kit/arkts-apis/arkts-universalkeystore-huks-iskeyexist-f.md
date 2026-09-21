@@ -50,17 +50,8 @@ huks.isKeyExist(keyAlias, emptyOptions, (err, data) => {
 });
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 此处options选择emptyOptions来传空 */
-let keyAlias = 'keyAlias';
-let emptyOptions: huks.HuksOptions = {
-  properties: []
-};
-let result = huks.isKeyExist(keyAlias, emptyOptions);
-```
-
+<a id="iskeyexist-1"></a>
 
 ## isKeyExist
 
@@ -73,13 +64,13 @@ function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.isKeyItemExist&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-iskeyitemexist-f.md)替代。
+> [huks.isKeyItemExist&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md)(keyAlias: string, options: HuksOptions)
+**替代接口：** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist-1)(keyAlias: string, options: HuksOptions)
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -98,4 +89,13 @@ function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 
 **示例**
 
-参见 isKeyExist
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 此处options选择emptyOptions来传空 */
+let keyAlias = 'keyAlias';
+let emptyOptions: huks.HuksOptions = {
+  properties: []
+};
+let result = huks.isKeyExist(keyAlias, emptyOptions);
+```

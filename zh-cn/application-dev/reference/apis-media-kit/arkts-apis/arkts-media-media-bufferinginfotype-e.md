@@ -1,5 +1,9 @@
 # BufferingInfoType
 
+```TypeScript
+enum BufferingInfoType
+```
+
 缓存事件类型枚举。
 
 **起始版本：** 8

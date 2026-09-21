@@ -1,5 +1,9 @@
 # ArcButtonStyleMode
 
+```TypeScript
+export declare enum ArcButtonStyleMode
+```
+
 Enumerates the style modes that can be set for **ArcButton**.
 
 **Since:** 18

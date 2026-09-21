@@ -4,7 +4,7 @@
 type AudioCapturerChangeInfoArray = Array<Readonly<AudioCapturerChangeInfo>>
 ```
 
-数组类型，AudioCapturerChangeInfo数组，只读。
+数组类型，[AudioCapturerChangeInfo](arkts-audio-audio-audiocapturerchangeinfo-i.md)数组，只读。
 
 **起始版本：** 9
 

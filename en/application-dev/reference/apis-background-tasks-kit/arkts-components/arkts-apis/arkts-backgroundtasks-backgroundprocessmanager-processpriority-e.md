@@ -1,5 +1,9 @@
 # ProcessPriority
 
+```TypeScript
+export enum ProcessPriority
+```
+
 Specifies the child process priority.
 
 **Since:** 17

@@ -1,5 +1,9 @@
 # ResizeDirection
 
+```TypeScript
+declare enum ResizeDirection
+```
+
 窗口调整大小的方向。
 
 **起始版本：** 9

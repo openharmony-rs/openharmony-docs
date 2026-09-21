@@ -1,5 +1,9 @@
 # EventFilter
 
+```TypeScript
+class EventFilter
+```
+
 日程过滤器，查询日程时进行筛选过滤，获取符合条件的日程。
 
 **起始版本：** 10

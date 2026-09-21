@@ -1,5 +1,9 @@
 # RunningLock
 
+```TypeScript
+class RunningLock
+```
+
 阻止系统睡眠或使能接近光控制亮灭屏的锁，不同的锁类型具有不同的功能，详见[RunningLockType](arkts-basicservices-runninglock-runninglocktype-e.md)。需结合[create](arkts-basicservices-runninglock-create-f.md)创建锁、[hold](#hold)持锁、[unhold](#unhold)释放锁使用。具体使用方法见示例。
 
 **起始版本：** 7

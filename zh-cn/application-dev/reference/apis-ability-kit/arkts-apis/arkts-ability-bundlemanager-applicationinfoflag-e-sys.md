@@ -1,5 +1,9 @@
 # ApplicationInfoFlag（系统接口）
 
+```TypeScript
+export enum ApplicationInfoFlag
+```
+
 标识应用和用户之间的各种状态类型。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # WantAgent
 
+```TypeScript
+interface WantAgent
+```
+
 Defines the information about the redirected-to ability.
 
 **Since:** 9

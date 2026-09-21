@@ -1,5 +1,9 @@
 # GridPinchModeType
 
+```TypeScript
+export enum GridPinchModeType
+```
+
 枚举，宫格捏合模式类型。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # AbilityForegroundStateObserver（系统接口）
 
+```TypeScript
+export default class AbilityForegroundStateObserver
+```
+
 定义应用前后台状态监听。
 
 **起始版本：** 11

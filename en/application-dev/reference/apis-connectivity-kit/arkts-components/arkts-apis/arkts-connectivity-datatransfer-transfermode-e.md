@@ -1,5 +1,9 @@
 # TransferMode
 
+```TypeScript
+enum TransferMode
+```
+
 Enumerates the data transfer modes with a remote device.
 
 **Since:** 26.0.0

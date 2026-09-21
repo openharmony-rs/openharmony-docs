@@ -1,5 +1,9 @@
 # WindowRect
 
+```TypeScript
+export interface WindowRect
+```
+
 表示模态弹框的属性。
 
 **起始版本：** 10

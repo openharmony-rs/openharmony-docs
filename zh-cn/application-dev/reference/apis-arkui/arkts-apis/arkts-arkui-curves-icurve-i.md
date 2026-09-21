@@ -1,5 +1,9 @@
 # ICurve
 
+```TypeScript
+interface ICurve
+```
+
 曲线对象，支持通过本模块中的[curves.initCurve](arkts-arkui-curves-initcurve-f.md)、[curves.stepsCurve](arkts-arkui-curves-stepscurve-f.md)、[curves.cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md)、[curves.springCurve](arkts-arkui-curves-springcurve-f.md)、[curves.springMotion](arkts-arkui-curves-springmotion-f.md)、[curves.responsiveSpringMotion](arkts-arkui-curves-responsivespringmotion-f.md)、[curves.interpolatingSpring](arkts-arkui-curves-interpolatingspring-f.md)、[curves.customCurve](arkts-arkui-curves-customcurve-f.md)方法创建不同类型的曲线对象，并可通过曲线对象调用其[interpolate](#interpolate)的成员方法。其中springMotion、responsiveSpringMotion、interpolatingSpring创建的弹性动画曲线为物理曲线，时间不能归一，不能通过interpolate函数获得插值。
 
 **起始版本：** 9

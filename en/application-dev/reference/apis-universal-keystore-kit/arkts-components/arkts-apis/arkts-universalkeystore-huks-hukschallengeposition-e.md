@@ -1,5 +1,9 @@
 # HuksChallengePosition
 
+```TypeScript
+export enum HuksChallengePosition
+```
+
 Enumerates the positions of the 8-byte valid value in a custom challenge generated.
 
 **Since:** 9

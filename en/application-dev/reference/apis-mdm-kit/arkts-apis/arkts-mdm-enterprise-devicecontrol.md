@@ -23,8 +23,8 @@ import { deviceControl } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md) | Allows administrators to perform operations such as factory reset, restart, shutdown, and screen lock on devices. For example, in enterprise device management scenarios, administrators can remotely control employee devices to perform factory reset, restart, shutdown, or screen lock operations. |
-| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md) | Allows the administrator to operate devices, for example, erasing disks. |
+| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice) | Allows administrators to perform operations such as factory reset, restart, shutdown, and screen lock on devices. For example, in enterprise device management scenarios, administrators can remotely control employee devices to perform factory reset, restart, shutdown, or screen lock operations. |
+| [operateDevice](arkts-mdm-devicecontrol-operatedevice-f.md#operatedevice-1) | Allows the administrator to operate devices, for example, erasing disks. |
 
 <!--Del-->
 ### Functions(System API)
@@ -33,8 +33,8 @@ import { deviceControl } from '@kit.MDMKit';
 | --- | --- |
 | [lockScreen](arkts-mdm-devicecontrol-lockscreen-f-sys.md) | Locks the device screen immediately. |
 | [reboot](arkts-mdm-devicecontrol-reboot-f-sys.md) | Reboots the device. |
-| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md) | Restores factory settings. This API uses an asynchronous callback to return the result. |
-| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md) | Restores factory settings. This API uses a promise to return the result. |
+| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md#resetfactory) | Restores factory settings. This API uses an asynchronous callback to return the result. |
+| [resetFactory](arkts-mdm-devicecontrol-resetfactory-f-sys.md#resetfactory-1) | Restores factory settings. This API uses a promise to return the result. |
 | [shutdown](arkts-mdm-devicecontrol-shutdown-f-sys.md) | Shuts down the device. |
 <!--DelEnd-->
 

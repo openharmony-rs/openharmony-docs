@@ -6,7 +6,9 @@
 
 >
 
-## 子组件 > > 该组件为基础组件，不建议包含子组件。
+## 子组件
+
+该组件为基础组件，不建议包含子组件。
 
 ## TextPicker
 
@@ -18,6 +20,8 @@ TextPicker(options?: TextPickerOptions)
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,7 +30,7 @@ TextPicker(options?: TextPickerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TextPickerOptions](arkts-arkui-textpickeroptions-i.md) | 否 | 配置文本选择器的参数。当需要自定义选择器的数据源、选中项、列宽等配置时传入此参数。参数缺省时组件无法显示。 |
+| options | [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) | 否 | 配置文本选择器的参数。当需要自定义选择器的数据源、选中项、列宽等配置时传入此参数。参数缺省时组件无法显示。 |
 
 ## 汇总
 
@@ -34,27 +38,26 @@ TextPicker(options?: TextPickerOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [DividerOptions](arkts-arkui-divideroptions-i.md) | 分割线的信息。 |
-| [PickerBackgroundStyle](arkts-arkui-pickerbackgroundstyle-i.md) | 选择器选中项的背景样式，包括选中项的背景颜色和边框圆角半径。 |
-| [TextCascadePickerRangeContent](arkts-arkui-textcascadepickerrangecontent-i.md) | 多列联动数据选择器的数据选项内容。 |
-| [TextPickerDialogOptions](arkts-arkui-textpickerdialogoptions-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md)。 |
-| [TextPickerDialogOptionsExt](arkts-arkui-textpickerdialogoptionsext-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpickeroptions-i.md)。 |
-| [TextPickerOptions](arkts-arkui-textpickeroptions-i.md) | 文本选择器的参数说明。 |
-| [TextPickerRangeContent](arkts-arkui-textpickerrangecontent-i.md) | 单列数据选择器的数据选项内容。 |
-| [TextPickerResult](arkts-arkui-textpickerresult-i.md) | 文本选择器结果。 |
-| [TextPickerTextStyle](arkts-arkui-textpickertextstyle-i.md) | 文本样式选项，继承自[PickerTextStyle](arkts-arkui-pickertextstyle-i.md)。 |
+| [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) | 分割线的信息。 |
+| [PickerBackgroundStyle](arkts-arkui-textpicker-comp-pickerbackgroundstyle-i.md) | 选择器选中项的背景样式，包括选中项的背景颜色和边框圆角半径。 |
+| [TextCascadePickerRangeContent](arkts-arkui-textpicker-comp-textcascadepickerrangecontent-i.md) | 多列联动数据选择器的数据选项内容。 |
+| [TextPickerDialogOptions](arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)。 |
+| [TextPickerDialogOptionsExt](arkts-arkui-textpicker-comp-textpickerdialogoptionsext-i.md) | 文本选择器弹窗的参数继承自[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)。 |
+| [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) | 文本选择器的参数说明。 |
+| [TextPickerRangeContent](arkts-arkui-textpicker-comp-textpickerrangecontent-i.md) | 单列数据选择器的数据选项内容。 |
+| [TextPickerResult](arkts-arkui-textpicker-comp-textpickerresult-i.md) | 文本选择器结果。 |
+| [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | 文本样式选项，继承自[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnTextPickerChangeCallback](arkts-arkui-ontextpickerchangecallback-t.md) | 定义触发onChange事件的回调类型。 |
-| [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpickerenterselectedareacallback-t.md) | 定义触发onEnterSelectedArea事件的回调类型。 |
-| [TextPickerScrollStopCallback](arkts-arkui-textpickerscrollstopcallback-t.md) | 定义触发onScrollStop事件的回调类型。 |
+| [OnTextPickerChangeCallback](arkts-arkui-textpicker-comp-ontextpickerchangecallback-t.md) | 定义触发onChange事件的回调类型。 |
+| [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpicker-comp-textpickerenterselectedareacallback-t.md) | 定义触发onEnterSelectedArea事件的回调类型。 |
+| [TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md) | 定义触发onScrollStop事件的回调类型。 |
 
 ## 示例
 
-```TypeScript
 ### 示例1（设置选择器列数）
 
 该示例通过配置range实现单列数据选择器和多列数据选择器，并使用columnWidths调整每一列的宽度。
@@ -62,65 +65,327 @@ TextPicker(options?: TextPickerOptions)
 从API version 18开始，新增了[TextPickerOptions](#textpickeroptions对象说明)的columnWidths属性。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 1;
+  private apfruits: string[] = ['apple1', 'apple2', 'apple3', 'apple4'];
+  private orfruits: string[] = ['orange1', 'orange2', 'orange3', 'orange4'];
+  private pefruits: string[] = ['peach1', 'peach2', 'peach3', 'peach4'];
+  private multi: string[][] = [this.apfruits, this.orfruits, this.pefruits];
+  private cascade: TextCascadePickerRangeContent[] = [
+    {
+      text: '辽宁省',
+      children: [{ text: '沈阳市', children: [{ text: '沈河区' }, { text: '和平区' }, { text: '浑南区' }] },
+        { text: '大连市', children: [{ text: '中山区' }, { text: '金州区' }, { text: '长海县' }] }]
+    },
+    {
+      text: '吉林省',
+      children: [{ text: '长春市', children: [{ text: '南关区' }, { text: '宽城区' }, { text: '朝阳区' }] },
+        { text: '四平市', children: [{ text: '铁西区' }, { text: '铁东区' }, { text: '梨树县' }] }]
+    },
+    {
+      text: '黑龙江省',
+      children: [{ text: '哈尔滨市', children: [{ text: '道里区' }, { text: '道外区' }, { text: '南岗区' }] },
+        { text: '牡丹江市', children: [{ text: '东安区' }, { text: '西安区' }, { text: '爱民区' }] }]
+    }
+  ];
+  private singleColumnWidths: LengthMetrics[] = [
+    LengthMetrics.percent(50)
+  ];
+
+  private multipleColumnWidths: LengthMetrics[] = [
+    LengthMetrics.vp(100),
+    LengthMetrics.vp(200),
+    LengthMetrics.vp(100)
+  ];
+
+  private cascadeColumnWidths: LengthMetrics[] = [
+    LengthMetrics.percent(20),
+    LengthMetrics.percent(30),
+    LengthMetrics.percent(50)
+  ];
+  build() {
+    Column() {
+
+      TextPicker({ range: this.apfruits, selected: this.select, columnWidths: this.singleColumnWidths })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        }).margin({ bottom: 50 })
+        .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
+          console.info('Picker item enter selected area, value: ' + value + ', index: ' + index);
+        })
+
+      TextPicker({ range: this.multi, columnWidths: this.multipleColumnWidths })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onScrollStop ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+        }).margin({ bottom: 50 })
+        .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列:onEnterSelectedArea ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+        })
+
+      TextPicker({ range: this.cascade, columnWidths: this.cascadeColumnWidths })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列联动:onChange ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列联动:onScrollStop ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+        })
+        .onEnterSelectedArea((value: string | string[], index: number | number[]) => {
+          console.info('TextPicker 多列联动:onEnterSelectedArea ' + JSON.stringify(value) + ', ' + 'index: ' + JSON.stringify(index));
+        })
+    }
+  }
+}
+```
+
 ### 示例2（设置文本样式）
 
 该示例使用[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)、[selectedTextStyle](#selectedtextstyle10)设置文本选择器中的文本样式。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 0;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({
+        range: this.fruits,
+        selected: this.select,
+        value: this.fruits[this.select]
+      })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
+        .defaultPickerItemHeight(50)
+        .canLoop(false)
+        .selectedIndex(2)
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例3（设置无分割线样式）
 
 该示例通过配置[divider](#divider12)为null实现无分割线样式的文本选择器。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 0;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({ range: this.fruits, selected: this.select })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
+        .divider(null)
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例4（设置分割线样式）
 
 该示例通过配置divider的DividerOptions设置文本选择器的分割线样式。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 1;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({ range: this.fruits, selected: this.select })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
+        .divider({
+          strokeWidth: 10,
+          color: Color.Red,
+          startMargin: 10,
+          endMargin: 20
+        } as DividerOptions)
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例5（设置渐隐效果）
 
 该示例通过配置[gradientHeight](#gradientheight12)设置文本选择器的渐隐效果高度。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 1;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({ range: this.fruits, selected: this.select })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
+        .gradientHeight(100)
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例6（设置选择项高度）
 
 该示例通过配置[defaultPickerItemHeight](#defaultpickeritemheight)设置选择项的高度。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 1;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({ range: this.fruits, selected: this.select })
+        .defaultPickerItemHeight(60)
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例7（设置循环滚动）
 
 该示例通过配置[canLoop](#canloop10)设置文本选择器是否循环滚动。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  @State isLoop: boolean = false;
+  private select: number = 1;
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({ range: this.fruits, selected: this.select })
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+        .canLoop(this.isLoop)
+
+      Row() {
+        Text('循环滚动').fontSize(20)
+
+        Toggle({ type: ToggleType.Switch, isOn: false })
+          .onChange((isOn: boolean) => {
+            this.isLoop = isOn;
+          })
+      }.position({ x: '60%', y: '40%' })
+
+    }.width('100%')
+  }
+}
+```
+
 ### 示例8（设置选中项索引值）
 
 该示例通过配置[selectedIndex](#selectedindex10)设置默认选中项的索引值。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4'];
+
+  build() {
+    Column() {
+      TextPicker({ range: this.fruits, selected: 1 })
+        .selectedIndex(2)
+        .onChange((value: string | string[], index: number | number[]) => {
+          console.info('Picker item changed, value: ' + value + ', index: ' + index);
+        })
+        .onScrollStop((value: string | string[], index: number | number[]) => {
+          console.info('Picker scroll stopped, value: ' + value + ', index: ' + index);
+        })
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例9（设置关闭文本样式变化动效与对应文本样式）
 
 该示例通过配置[disableTextStyleAnimation](#disabletextstyleanimation15)、[defaultTextStyle](#defaulttextstyle15)实现关闭文本选择器文本样式变化的动效，并设置文本样式。
@@ -128,20 +393,140 @@ TextPicker(options?: TextPickerOptions)
 从API version 15开始，新增disableTextStyleAnimation、defaultTextStyle接口。
 
 
-```
 
 ```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private select: number = 1;
+  private fruits: string[] = ['AAAAA', 'BBBBBBBBBBBBB', 'CCCC', 'DDDDDDDD', 'EEE'];
+
+  build() {
+    Column() {
+      TextPicker({
+        range: this.fruits,
+        selected: this.select,
+        value: this.fruits[this.select]
+      })
+        .disableTextStyleAnimation(true)
+        .margin({ bottom: 30 })
+      TextPicker({
+        range: this.fruits,
+        selected: this.select,
+        value: this.fruits[this.select]
+      })
+        .disableTextStyleAnimation(true)
+        .defaultTextStyle({ minFontSize: 18, maxFontSize: 28, overflow: TextOverflow.Ellipsis })
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ### 示例10（设置选中项背景样式）
 
 该示例通过配置[selectedBackgroundStyle](#selectedbackgroundstyle20)实现文本选择器选中项的背景样式。
 
 
-```
 
 ```TypeScript
+import { LengthUnit } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private showText1: string [] =
+    ['Text1', 'Text1', 'Text1', 'Text1']
+  private showText2: string[] [] =
+    [
+      ['Text2', 'Text2', 'Text2', 'Text2'],
+      ['Text3', 'Text3', 'Text3', 'Text3']
+  ]
+
+  build() {
+    Column() {
+      Row() {
+        TextPicker({ range: this.showText1 })
+          .selectedBackgroundStyle({
+            color: '#FFD5D5D5',
+            borderRadius: { value: 0, unit: LengthUnit.VP }
+          })
+        Column()
+          .width('10%')
+        TextPicker({ range: this.showText1 })
+          .selectedBackgroundStyle({
+            color: '#FFE3F8F9',
+            borderRadius: {
+              topStart: { value: 5, unit: LengthUnit.VP },
+              topEnd: { value: 10, unit: LengthUnit.VP },
+              bottomStart: { value: 15, unit: LengthUnit.VP },
+              bottomEnd: { value: 20, unit: LengthUnit.VP }
+            }
+          })
+      }
+
+      Row()
+        .height('10%')
+      Row() {
+        TextPicker({ range: this.showText2 })
+          .selectedBackgroundStyle({
+            borderRadius: {
+              topLeft: 8,
+              topRight: 8,
+              bottomLeft: 8,
+              bottomRight: 8
+            },
+            color: '#FFFFEEF6'
+          })
+      }
+    }.height('100%')
+  }
+}
+```
+
 ### 示例11（设置文本的最大字号、最小字号、超长文本截断方式）
 
 该示例通过配置[disappearTextStyle](#disappeartextstyle20)、[textStyle](#textstyle20)和[selectedTextStyle](#selectedtextstyle20)，设置文本的颜色、最大字号、最小字号、超长文本截断方式。
 
 从API version 20开始，新增disappearTextStyle、textStyle和selectedTextStyle接口。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct TextPickerExample {
+  private rangeValue: string[] = ['AAAAA', 'BBBBBBBBBBBBB', 'CCCC', 'DDDDDDDD', 'EEEEEEEEEEEEEEE'];
+
+  build() {
+    RelativeContainer() {
+      TextPicker({
+        range: this.rangeValue
+      })
+        .disappearTextStyle({
+          color: '#fff52769',
+          // 设置minFontSize与maxFontSize时，font中的size属性将被忽略。
+          font: { size: 50 },
+          minFontSize: 12,
+          maxFontSize: 18,
+          overflow: TextOverflow.Ellipsis
+        })
+        .textStyle({
+          color: Color.Orange,
+          minFontSize: 12,
+          maxFontSize: 18,
+          overflow: TextOverflow.MARQUEE
+        })
+        .selectedTextStyle({
+          color: '#ff9eea48',
+          minFontSize: 12,
+          maxFontSize: 18,
+          overflow: TextOverflow.Clip
+        })
+        .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```

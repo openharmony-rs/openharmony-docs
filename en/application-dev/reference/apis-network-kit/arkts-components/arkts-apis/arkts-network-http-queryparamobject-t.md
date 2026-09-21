@@ -1,7 +1,7 @@
 # QueryParamObject
 
 ```TypeScript
-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>
+export type QueryParamObject = Record<string, QueryParamValue[]>
 ```
 
 Defines the key-value object type used to construct URL query parameters.
@@ -26,4 +26,4 @@ Defines the key-value object type used to construct URL query parameters.
 
 **System capability:** SystemCapability.Communication.NetStack
 
-**Type:** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md) | [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;
+**Type:** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;

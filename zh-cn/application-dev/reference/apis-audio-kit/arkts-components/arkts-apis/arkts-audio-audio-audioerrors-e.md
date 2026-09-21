@@ -1,5 +1,9 @@
 # AudioErrors
 
+```TypeScript
+enum AudioErrors
+```
+
 表示音频错误码的枚举。
 
 **起始版本：** 9

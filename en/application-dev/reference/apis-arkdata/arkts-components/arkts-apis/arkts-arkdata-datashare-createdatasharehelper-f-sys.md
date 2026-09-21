@@ -67,58 +67,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
-    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let context = this.context;
-    try {
-      dataShare.createDataShareHelper(context, uri, {isProxy : true}, (err:BusinessError, data:dataShare.DataShareHelper) => {
-        if (err !== undefined) {
-          console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        console.info("createDataShareHelper succeed, data : " + data);
-        dataShareHelper = data;
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
-    };
-  }
-}
-```
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
-    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let context = this.context;
-    try {
-      dataShare.createDataShareHelper(context, uri, {isProxy : true}).then((data: dataShare.DataShareHelper) => {
-        console.info("createDataShareHelper succeed, data : " + data);
-        dataShareHelper = data;
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
-    };
-  }
-}
-```
-
+<a id="createdatasharehelper-1"></a>
 
 ## createDataShareHelper
 
@@ -160,8 +110,35 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 
 **Examples**
 
-See [createDataShareHelper](#createdatasharehelper)
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
+    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
+    let context = this.context;
+    try {
+      dataShare.createDataShareHelper(context, uri, {isProxy : true}, (err:BusinessError, data:dataShare.DataShareHelper) => {
+        if (err !== undefined) {
+          console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        console.info("createDataShareHelper succeed, data : " + data);
+        dataShareHelper = data;
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
+    };
+  }
+}
+```
+
+
+<a id="createdatasharehelper-2"></a>
 
 ## createDataShareHelper
 
@@ -207,4 +184,27 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 
 **Examples**
 
-See [createDataShareHelper](#createdatasharehelper)
+```TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
+    let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
+    let context = this.context;
+    try {
+      dataShare.createDataShareHelper(context, uri, {isProxy : true}).then((data: dataShare.DataShareHelper) => {
+        console.info("createDataShareHelper succeed, data : " + data);
+        dataShareHelper = data;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
+    };
+  }
+}
+```

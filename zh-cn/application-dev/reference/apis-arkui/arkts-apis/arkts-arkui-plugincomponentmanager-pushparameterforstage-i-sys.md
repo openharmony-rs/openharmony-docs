@@ -1,5 +1,9 @@
 # PushParameterForStage（系统接口）
 
+```TypeScript
+interface PushParameterForStage
+```
+
 用于设置Stage模型下使用pluginComponentManager.push方法时需要传递的参数。
 
 **起始版本：** 9

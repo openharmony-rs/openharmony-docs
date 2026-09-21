@@ -38,6 +38,8 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
 
 
+<a id="getwant-1"></a>
+
 ## getWant
 
 ```TypeScript

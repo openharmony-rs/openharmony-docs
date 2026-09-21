@@ -1,5 +1,9 @@
 # PortraitThemeType（系统接口）
 
+```TypeScript
+enum PortraitThemeType
+```
+
 Enumerates the camera portrait theme types.
 
 **起始版本：** 14

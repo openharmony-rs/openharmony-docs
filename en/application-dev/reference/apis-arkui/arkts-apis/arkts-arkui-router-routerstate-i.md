@@ -1,5 +1,9 @@
 # RouterState
 
+```TypeScript
+interface RouterState
+```
+
 Describes the page routing state.
 
 **Since:** 8

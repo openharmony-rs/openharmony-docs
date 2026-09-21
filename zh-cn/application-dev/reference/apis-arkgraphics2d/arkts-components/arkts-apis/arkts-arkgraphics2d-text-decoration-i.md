@@ -1,5 +1,9 @@
 # Decoration
 
+```TypeScript
+interface Decoration
+```
+
 文本装饰线。
 
 **起始版本：** 12

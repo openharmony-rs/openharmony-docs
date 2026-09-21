@@ -1,5 +1,9 @@
 # RectHeightStyle
 
+```TypeScript
+enum RectHeightStyle
+```
+
 矩形区域高度规格枚举。
 
 **起始版本：** 12

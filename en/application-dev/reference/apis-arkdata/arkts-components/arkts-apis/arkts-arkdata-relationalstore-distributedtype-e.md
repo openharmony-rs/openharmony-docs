@@ -1,5 +1,9 @@
 # DistributedType
 
+```TypeScript
+enum DistributedType
+```
+
 Enumerates the distributed database table types. Use the enum name rather than the enum value.
 
 **Since:** 10

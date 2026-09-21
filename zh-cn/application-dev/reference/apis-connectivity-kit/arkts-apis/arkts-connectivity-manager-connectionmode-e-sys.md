@@ -1,5 +1,9 @@
 # ConnectionMode（系统接口）
 
+```TypeScript
+enum ConnectionMode
+```
+
 连接模式的枚举值。
 
 **起始版本：** 26.0.0

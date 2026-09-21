@@ -1,5 +1,9 @@
 # MixMode
 
+```TypeScript
+export declare enum MixMode
+```
+
 背景色混合模式的可选项。
 
 **起始版本：** 18

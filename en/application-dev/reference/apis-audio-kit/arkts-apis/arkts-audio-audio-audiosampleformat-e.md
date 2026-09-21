@@ -1,5 +1,9 @@
 # AudioSampleFormat
 
+```TypeScript
+enum AudioSampleFormat
+```
+
 Enumerates the audio sample formats.
 
 **Since:** 8

@@ -1,5 +1,9 @@
 # CloudMediaDownloadType（系统接口）
 
+```TypeScript
+enum CloudMediaDownloadType
+```
+
 枚举，表示云端媒体资产的下载方式。
 
 **起始版本：** 14

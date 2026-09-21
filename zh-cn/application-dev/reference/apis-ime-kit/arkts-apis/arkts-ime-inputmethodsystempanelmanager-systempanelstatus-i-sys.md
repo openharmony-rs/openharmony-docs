@@ -1,5 +1,9 @@
 # SystemPanelStatus（系统接口）
 
+```TypeScript
+interface SystemPanelStatus
+```
+
 系统面板状态。
 
 **起始版本：** 26.0.0

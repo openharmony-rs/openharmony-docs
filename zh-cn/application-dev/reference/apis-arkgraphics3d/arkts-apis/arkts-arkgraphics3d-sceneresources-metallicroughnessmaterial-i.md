@@ -1,5 +1,9 @@
 # MetallicRoughnessMaterial
 
+```TypeScript
+export interface MetallicRoughnessMaterial extends Material
+```
+
 用于实现真实感外观的材质资源。采用基于物理渲染（PBR）的金属-粗糙度模型，通过调节金属度和粗糙度参数，可模拟金属、塑料等不同材质的表面光照与反射效果，继承自Material。
 
 @extends Material @interface MetallicRoughnessMaterial

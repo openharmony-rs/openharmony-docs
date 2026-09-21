@@ -1,5 +1,9 @@
 # NotificationControlFlagStatus（系统接口）
 
+```TypeScript
+export enum NotificationControlFlagStatus
+```
+
 每个bit位都可以控制通知的提示方式。当notificationControlFlags和下表中枚举值进行按位或操作，则表示关闭其提示方式。
 
 **起始版本：** 12

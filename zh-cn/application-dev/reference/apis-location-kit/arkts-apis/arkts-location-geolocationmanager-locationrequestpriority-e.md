@@ -1,5 +1,9 @@
 # LocationRequestPriority
 
+```TypeScript
+export enum LocationRequestPriority
+```
+
 位置请求中位置信息优先级类型。
 
 **起始版本：** 9

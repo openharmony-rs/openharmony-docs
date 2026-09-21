@@ -1,5 +1,9 @@
 # AuthTipInfo
 
+```TypeScript
+interface AuthTipInfo
+```
+
 Represents the intermediate authentication status. This API is used to describe various intermediate states generated during authentication, including the authentication type and specific status code corresponding to each state. The application can obtain these intermediate states through [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) to provide more refined user feedback and status awareness during authentication.
 
 **Since:** 20

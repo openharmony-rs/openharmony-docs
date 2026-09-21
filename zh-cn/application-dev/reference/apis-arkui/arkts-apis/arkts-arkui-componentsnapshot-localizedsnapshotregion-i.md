@@ -1,5 +1,9 @@
 # LocalizedSnapshotRegion
 
+```TypeScript
+interface LocalizedSnapshotRegion
+```
+
 定义组件截图的矩形区域，start和end的值在布局方向为LTR时指定为left和right，在布局方向为RTL时指定为right和left。
 
 > **说明：** 

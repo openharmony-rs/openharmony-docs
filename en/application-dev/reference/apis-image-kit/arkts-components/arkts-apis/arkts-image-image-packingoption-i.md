@@ -1,5 +1,9 @@
 # PackingOption
 
+```TypeScript
+interface PackingOption
+```
+
 Describes the options for image encoding.
 
 **Since:** 6

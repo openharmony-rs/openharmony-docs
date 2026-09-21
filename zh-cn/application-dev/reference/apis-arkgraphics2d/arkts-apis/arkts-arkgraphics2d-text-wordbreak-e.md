@@ -1,5 +1,9 @@
 # WordBreak
 
+```TypeScript
+enum WordBreak
+```
+
 断词策略枚举。
 
 **起始版本：** 12

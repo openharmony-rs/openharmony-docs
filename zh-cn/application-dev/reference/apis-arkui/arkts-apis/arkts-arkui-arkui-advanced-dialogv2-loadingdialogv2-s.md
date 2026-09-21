@@ -1,5 +1,9 @@
 # LoadingDialogV2
 
+```TypeScript
+export declare struct LoadingDialogV2
+```
+
 进度加载类弹出框，操作正在执行时的提示信息。适用于耗时操作的场景，如数据加载、文件上传等，用于告知用户当前正在处理中。
 
 **起始版本：** 18

@@ -61,17 +61,8 @@ let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-notificationManager.removeSlot(slotType).then(() => {
-  console.info(`Succeeded in removing slot.`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="removeslot-1"></a>
 
 ## removeSlot
 
@@ -91,7 +82,7 @@ function removeSlot(slotType: SlotType): Promise<void>
 
 [addSlot](arkts-notification-notificationmanager-addslot-f.md) 创建通知频道。
 
-[getSlot](arkts-notification-notificationmanager-getslot-f.md) 获取指定类型的通知渠道。
+[getSlot](arkts-notification-notificationmanager-getslot-f.md#getslot-2) 获取指定类型的通知渠道。
 
 [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md) 删除所有通知渠道。
 
@@ -118,4 +109,13 @@ function removeSlot(slotType: SlotType): Promise<void>
 
 **示例**
 
-参见 [removeSlot](#removeslot)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+notificationManager.removeSlot(slotType).then(() => {
+  console.info(`Succeeded in removing slot.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
+});
+```

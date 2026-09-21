@@ -18,6 +18,6 @@ Defines a callback for pan gesture events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [GestureEvent](../arkts-components/arkts-arkui-gestureevent-i.md) | Yes | Information about the gesture event that triggers the callback. |
-| current | [GestureRecognizer](../arkts-components/arkts-arkui-gesturerecognizer-c.md) | Yes | Information about the gesture recognizer that detects the event. |
+| event | [GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md) | Yes | Information about the gesture event that triggers the callback. |
+| current | [GestureRecognizer](../arkts-components/arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) | Yes | Information about the gesture recognizer that detects the event. |
 | node | [FrameNode](arkts-arkui-framenode-c.md) | No | Component bound to the gesture event. |

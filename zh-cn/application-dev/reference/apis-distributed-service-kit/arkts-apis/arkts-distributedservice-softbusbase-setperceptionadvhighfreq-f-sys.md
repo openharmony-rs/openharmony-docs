@@ -1,0 +1,48 @@
+# setPerceptionAdvHighFreq（系统接口）
+
+## 导入模块
+
+```TypeScript
+```
+
+## setPerceptionAdvHighFreq
+
+```TypeScript
+function setPerceptionAdvHighFreq(type: PerceptionType, customData?: ArrayBuffer): Promise<void>
+```
+
+将活跃感知广播主切换为高频，持续10s。高频期后到期后，广播会自动恢复到之前的频率。自定义负载可以在同样的时间。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ACCESS_SOFTBUS_SYS_HAP and ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.SoftBus.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | [PerceptionType](arkts-distributedservice-softbusbase-perceptiontype-e-sys.md) | 是 | 感知业务类型。详细信息请参见[PerceptionType](arkts-distributedservice-softbusbase-perceptiontype-e-sys.md)。 |
+| customData | ArrayBuffer | 否 | 广告中携带的自定义负载。该数据结构定义如下：应用层协议。如果长度超过5字节，则会抛出错误。<br>最大长度为5。默认值：一个空的ArrayBuffer。<br>The maximum length is 5. Default value: An empty ArrayBuffer. |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 不返回任何值的Promise。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied, need to acquire ohos.permission.ACCESS_SOFTBUS_SYS_HAP and ohos.permission.DISTRIBUTED_DATASYNC. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. An unexpected system error occurred. |
+| 2000003 | Temporary error. The request failed due to a temporary error and can be retried. |
+| 2006001 | Underlying module error. The request failed due to an error in another underlying module and can be retried after a period of time. |

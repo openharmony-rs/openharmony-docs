@@ -1,5 +1,9 @@
 # Querier（系统接口）
 
+```TypeScript
+interface Querier
+```
+
 用于接收安全数据的回调函数。
 
 @interface Querier

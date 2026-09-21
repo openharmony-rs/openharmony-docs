@@ -4,7 +4,7 @@
 
 > **说明：**
  >
- > - 从API version 8 开始，该接口不再维护，推荐使用新接口@ohos.router。
+ > - 从API version 8 开始，该接口不再维护，推荐使用新接口[@ohos.router](../../../reference/apis-arkui/js-apis-md)。
 
 
 
@@ -40,10 +40,20 @@ import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, Ena
 
 ## 示例
 
-```TypeScript
 该示例展示了类Web范式下router.replace接口的跳转功能。
 
 示例树状结构如下：
+
+```TypeScript
+pages
+├─ index
+│  ├─ index.css
+│  ├─ index.hml
+│  └─ index.js
+└─ routerPages
+   ├─ routerPage.css
+   ├─ routerPage.hml
+   └─ routerPage.js
 ```
 
 ```TypeScript

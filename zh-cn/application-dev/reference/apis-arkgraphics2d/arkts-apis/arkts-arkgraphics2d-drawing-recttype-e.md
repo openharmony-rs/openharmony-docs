@@ -1,5 +1,9 @@
 # RectType
 
+```TypeScript
+enum RectType
+```
+
 定义填充网格的矩形类型的枚举，用于在图像分割绘制时指定各个矩形区域的填充方式。仅在[Lattice](arkts-arkgraphics2d-drawing-lattice-c.md)中使用。
 
 **起始版本：** 12

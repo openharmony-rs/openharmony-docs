@@ -1,5 +1,9 @@
 # SingleKVStore
 
+```TypeScript
+interface SingleKVStore
+```
+
 SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据变更、订阅数据端端同步完成的方法。
 
 在调用SingleKVStore的方法前，需要先通过getKVStore构建一个SingleKVStore实例。
@@ -13,6 +17,8 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 ```TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 ```
+
+<a id="delete-2"></a>
 
 ## delete
 
@@ -101,6 +107,8 @@ try {
 }
 ```
 
+<a id="delete-3"></a>
+
 ## delete
 
 ```TypeScript
@@ -142,6 +150,8 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise<void>
 **示例**
 
 参见 [delete](#delete)
+
+<a id="getresultset-4"></a>
 
 ## getResultSet
 
@@ -342,6 +352,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="getresultset-5"></a>
 
 ## getResultSet
 
@@ -548,6 +560,8 @@ try {
 }
 ```
 
+<a id="putbatch-2"></a>
+
 ## putBatch
 
 ```TypeScript
@@ -659,6 +673,8 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<a id="putbatch-3"></a>
 
 ## putBatch
 

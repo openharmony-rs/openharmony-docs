@@ -1,5 +1,9 @@
 # SurfaceParam (System API)
 
+```TypeScript
+interface SurfaceParam
+```
+
 Surface configuration parameters.
 
 @interface SurfaceParam

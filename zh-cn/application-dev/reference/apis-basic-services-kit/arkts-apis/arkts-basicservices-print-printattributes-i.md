@@ -1,5 +1,9 @@
 # PrintAttributes
 
+```TypeScript
+interface PrintAttributes
+```
+
 定义打印参数的接口。
 
 **起始版本：** 11

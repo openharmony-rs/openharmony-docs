@@ -1,5 +1,9 @@
 # RangingCapabilitySupported
 
+```TypeScript
+interface RangingCapabilitySupported
+```
+
 Describes the contents of the ranging support types.
 
 **Since:** 26.0.0

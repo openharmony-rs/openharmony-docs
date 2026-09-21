@@ -1,5 +1,9 @@
 # QueryShortCutFlag (System API)
 
+```TypeScript
+export enum QueryShortCutFlag
+```
+
 Flag used to specify the query scope for shortcuts.
 
 **Since:** 9

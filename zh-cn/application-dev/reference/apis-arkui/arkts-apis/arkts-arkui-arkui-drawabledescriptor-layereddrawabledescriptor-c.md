@@ -1,5 +1,9 @@
 # LayeredDrawableDescriptor
 
+```TypeScript
+export class LayeredDrawableDescriptor extends DrawableDescriptor
+```
+
 当传入资源id或name为包含前景和背景资源的json文件时，生成LayeredDrawableDescriptor对象。继承自[DrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)。
 
 drawable.json位于项目工程entry/src/main/resources/base/media目录下。定义请参考：
@@ -357,6 +361,89 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+**示例**
+
+使用json文件创建LayeredDrawableDescriptor，示例代码如下。
+
+```TypeScript
+// xxx.ets
+import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // $r('app.media.drawable')需要替换为开发者所需的图像资源文件。
+  private layeredDrawableDescriptor: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+
+  build() {
+    Row() {
+      Column() {
+        Image((this.layeredDrawableDescriptor instanceof LayeredDrawableDescriptor) ?
+          this.layeredDrawableDescriptor : undefined)
+        Image((this.layeredDrawableDescriptor instanceof LayeredDrawableDescriptor) ?
+          this.layeredDrawableDescriptor?.getForeground()?.getPixelMap() : undefined)
+      }.height('50%')
+    }.width('50%')
+  }
+}
+```
+
+使用PixelMapDrawableDescriptor创建LayeredDrawableDescriptor，示例代码如下。
+
+```TypeScript
+import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Index {
+  @State fore1: image.PixelMap | undefined = undefined;
+  @State back1: image.PixelMap | undefined = undefined;
+
+  @State foregroundDraw: DrawableDescriptor | undefined = undefined;
+  @State backgroundDraw: DrawableDescriptor | undefined = undefined;
+  @State maskDraw: DrawableDescriptor | undefined = undefined;
+  @State maskPixel: image.PixelMap | undefined = undefined;
+  @State draw: LayeredDrawableDescriptor | undefined = undefined;
+
+  async aboutToAppear() {
+    // $r('app.media.foreground')需要替换为开发者所需的图像资源文件。
+    this.fore1 = await this.getPixmapFromMedia($r('app.media.foreground'));
+    // $r('app.media.background')需要替换为开发者所需的图像资源文件。
+    this.back1 = await this.getPixmapFromMedia($r('app.media.background'));
+    // $r('app.media.ohos_icon_mask')需要替换为开发者所需的图像资源文件。
+    this.maskPixel = await this.getPixmapFromMedia($r('app.media.ohos_icon_mask'));
+    // 使用PixelMapDrawableDescriptor创建LayeredDrawableDescriptor。
+    this.foregroundDraw = new PixelMapDrawableDescriptor(this.fore1);
+    this.backgroundDraw = new PixelMapDrawableDescriptor(this.back1);
+    this.maskDraw = new PixelMapDrawableDescriptor(this.maskPixel);
+    this.draw = new LayeredDrawableDescriptor(this.foregroundDraw,this.backgroundDraw,this.maskDraw);
+  }
+
+  build() {
+    Row() {
+      Column() {
+          Image(this.draw)
+            .width(300)
+            .height(300)
+      }.height('100%').justifyContent(FlexAlign.Center)
+    }.width('100%').height("100%").backgroundColor(Color.Pink)
+  }
+  // 根据资源，通过图片框架获取pixelMap。
+  private async getPixmapFromMedia(resource: Resource) {
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
+    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+      desiredPixelFormat: image.PixelMapFormat.BGRA_8888
+    });
+    await imageSource.release();
+    return createPixelMap;
   }
 }
 ```

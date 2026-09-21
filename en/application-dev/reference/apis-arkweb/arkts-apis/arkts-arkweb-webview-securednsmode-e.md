@@ -1,5 +1,9 @@
 # SecureDnsMode
 
+```TypeScript
+enum SecureDnsMode
+```
+
 Enumerates the modes in which the **Web** component uses HTTPDNS.
 
 **Since:** 10

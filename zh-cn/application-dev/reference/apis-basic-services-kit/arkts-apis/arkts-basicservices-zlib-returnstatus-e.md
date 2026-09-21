@@ -1,5 +1,9 @@
 # ReturnStatus
 
+```TypeScript
+export enum ReturnStatus
+```
+
 压缩/解压缩函数的返回代码。
 
 **起始版本：** 12

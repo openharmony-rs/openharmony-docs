@@ -1,5 +1,9 @@
 # ReportType
 
+```TypeScript
+enum ReportType
+```
+
 枚举，报告类型。
 
 **起始版本：** 23

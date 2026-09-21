@@ -1,5 +1,9 @@
 # PathOp
 
+```TypeScript
+enum PathOp
+```
+
 路径操作类型枚举，可用于合并或裁剪路径等功能。
 
 **起始版本：** 12

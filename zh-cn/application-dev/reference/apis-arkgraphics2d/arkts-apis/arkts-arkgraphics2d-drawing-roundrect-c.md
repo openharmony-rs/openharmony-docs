@@ -1,5 +1,9 @@
 # RoundRect
 
+```TypeScript
+class RoundRect
+```
+
 圆角矩形对象。支持设置和获取指定圆角位置的圆角半径，以及对圆角矩形进行平移操作。
 
 > **说明：** 
@@ -38,6 +42,18 @@ constructor(roundRect: RoundRect)
 | --- | --- | --- | --- |
 | roundRect | [RoundRect](arkts-arkgraphics2d-drawing-roundrect-c.md) | 是 | 用于拷贝的圆角矩形。 |
 
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
+let roundRect = new drawing.RoundRect(rect, 50, 50);
+let roundRect2 = new drawing.RoundRect(roundRect);
+```
+
+<a id="constructor-1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -63,6 +79,15 @@ constructor(rect: common2D.Rect, xRadii: number, yRadii: number)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+let rect: common2D.Rect = {left: 100, top: 100, right: 500, bottom: 300};
+let roundRect = new drawing.RoundRect(rect, 50, 50);
+```
 
 ## getCorner
 
@@ -94,6 +119,17 @@ getCorner(pos: CornerPos): common2D.Point
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+let cornerRadius = roundRect.getCorner(drawing.CornerPos.BOTTOM_LEFT_POS);
+console.info("getCorner---" + cornerRadius.x);
+console.info("getCorner---" + cornerRadius.y);
+```
+
 ## offset
 
 ```TypeScript
@@ -118,6 +154,15 @@ offset(dx: number, dy: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+roundRect.offset(100, 100);
+```
 
 ## setCorner
 
@@ -144,3 +189,12 @@ setCorner(pos: CornerPos, x: number, y: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+import { drawing } from '@kit.ArkGraphics2D';
+
+let roundRect: drawing.RoundRect = new drawing.RoundRect({left: 0, top: 0, right: 300, bottom: 300}, 50, 50);
+roundRect.setCorner(drawing.CornerPos.TOP_LEFT_POS, 150, 150);
+```

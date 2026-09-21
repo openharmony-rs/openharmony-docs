@@ -1,5 +1,9 @@
 # NetFirewallOrderField
 
+```TypeScript
+enum NetFirewallOrderField
+```
+
 枚举类型，防火墙规则排序方法。
 
 > **说明：** 

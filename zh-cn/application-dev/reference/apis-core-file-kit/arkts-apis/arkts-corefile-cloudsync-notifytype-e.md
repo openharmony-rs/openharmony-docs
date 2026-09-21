@@ -1,5 +1,9 @@
 # NotifyType
 
+```TypeScript
+enum NotifyType
+```
+
 数据变更通知类型。
 
 **起始版本：** 12

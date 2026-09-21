@@ -1,5 +1,9 @@
 # RestoreParamType（系统接口）
 
+```TypeScript
+enum RestoreParamType
+```
+
 Enumerates the types of the parameters used for prelaunch.
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # ControlType (System API)
 
+```TypeScript
+export enum ControlType
+```
+
 Enumerates the control type of application disposal.
 
 **Since:** 11

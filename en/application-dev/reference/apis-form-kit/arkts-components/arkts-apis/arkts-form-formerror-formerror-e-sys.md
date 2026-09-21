@@ -1,5 +1,9 @@
 # FormError
 
+```TypeScript
+enum FormError
+```
+
 Error of form.
 
 @enum { int }

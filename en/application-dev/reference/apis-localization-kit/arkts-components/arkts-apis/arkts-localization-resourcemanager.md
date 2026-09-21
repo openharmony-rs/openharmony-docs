@@ -44,10 +44,10 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | Name | Description |
 | --- | --- |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | Obtains the **ResourceManager** object of the current application. This API uses an asynchronous callback to return the result. |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | Obtains the **ResourceManager** object of the specified application. This API uses an asynchronous callback to return the result. |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | Obtains the **ResourceManager** object of the current application. This API uses a promise to return the result. |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md) | Obtains the **ResourceManager** object of the specified application. This API uses a promise to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | Obtains the **ResourceManager** object of the current application. This API uses an asynchronous callback to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-1) | Obtains the **ResourceManager** object of the specified application. This API uses an asynchronous callback to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-2) | Obtains the **ResourceManager** object of the current application. This API uses a promise to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-3) | Obtains the **ResourceManager** object of the specified application. This API uses a promise to return the result. |
 | [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md) | Obtains a system resource management object for accessing preset system resources. |
 | [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md) | Obtains a system resource management object for accessing preset system resources. |
 

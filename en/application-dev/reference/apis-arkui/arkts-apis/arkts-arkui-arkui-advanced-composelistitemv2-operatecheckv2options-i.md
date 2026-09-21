@@ -1,5 +1,9 @@
 # OperateCheckV2Options
 
+```TypeScript
+export interface OperateCheckV2Options
+```
+
 Declare interface OperateCheckV2Options
 
 **Since:** 26.0.0

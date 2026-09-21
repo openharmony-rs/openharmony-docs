@@ -1,5 +1,9 @@
 # NotifyType（系统接口）
 
+```TypeScript
+enum NotifyType
+```
+
 枚举，通知类型。
 
 **起始版本：** 10

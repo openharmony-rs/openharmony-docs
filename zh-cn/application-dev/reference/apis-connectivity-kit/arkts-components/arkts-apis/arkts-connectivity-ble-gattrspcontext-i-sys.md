@@ -1,5 +1,9 @@
 # GattRspContext（系统接口）
 
+```TypeScript
+interface GattRspContext
+```
+
 client端调用[writeCharacteristicValueWithContext](arkts-connectivity-ble-gattclientdevice-i-sys.md#writecharacteristicvaluewithcontext)等接口并接收到server端的回复消息后，蓝牙子系统上报给应用的信息。
 
 **起始版本：** 23

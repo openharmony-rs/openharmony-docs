@@ -1,5 +1,9 @@
 # SppOptions
 
+```TypeScript
+interface SppOptions
+```
+
 Describes the spp parameters.
 
 **Since:** 10

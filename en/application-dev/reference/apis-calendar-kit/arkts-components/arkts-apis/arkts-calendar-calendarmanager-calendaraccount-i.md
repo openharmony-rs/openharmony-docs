@@ -1,5 +1,9 @@
 # CalendarAccount
 
+```TypeScript
+interface CalendarAccount
+```
+
 Describes the calendar account information.
 
 **Since:** 10

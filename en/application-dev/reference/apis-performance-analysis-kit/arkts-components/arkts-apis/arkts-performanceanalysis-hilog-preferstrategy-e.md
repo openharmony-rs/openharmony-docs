@@ -1,5 +1,9 @@
 # PreferStrategy
 
+```TypeScript
+enum PreferStrategy
+```
+
 Enumerates the preference strategies.
 
 **Since:** 21

@@ -35,6 +35,8 @@ declare function access(path: string, mode?: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
+<a id="access-1"></a>
+
 ## access
 
 ```TypeScript
@@ -58,6 +60,8 @@ declare function access(path: string, callback: AsyncCallback<void>): void
 | path | string | 是 | 待访问文件的应用沙箱路径。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步检查当前进程是否可访问某文件之后的回调。 |
 
+
+<a id="access-2"></a>
 
 ## access
 

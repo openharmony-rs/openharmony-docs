@@ -1,5 +1,9 @@
 # PanelType
 
+```TypeScript
+export enum PanelType
+```
+
 Enumerates the word selection panel types, which defines the two-level architecture of the panel: menu panel (level 1) and main panel (level 2).
 
 **Since:** 24

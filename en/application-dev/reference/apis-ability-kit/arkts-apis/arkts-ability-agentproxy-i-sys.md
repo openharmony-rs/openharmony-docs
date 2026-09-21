@@ -1,5 +1,9 @@
 # AgentProxy (System API)
 
+```TypeScript
+export interface AgentProxy
+```
+
 The proxy object of the AgentExtensionAbility, used to send messages to the AgentExtensionAbility, etc.
 
 @interface AgentProxy

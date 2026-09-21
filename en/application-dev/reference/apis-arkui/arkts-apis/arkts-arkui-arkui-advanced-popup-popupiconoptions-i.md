@@ -1,5 +1,9 @@
 # PopupIconOptions
 
+```TypeScript
+export interface PopupIconOptions
+```
+
 Defines the icon options.
 
 **Since:** 11
@@ -20,7 +24,7 @@ borderRadius?: Length | BorderRadiuses
 
 Rounded corner of the icon.
 
-Default value: **&#36;r('sys.float.ohos_id_corner_radius_default_s')**
+Default value: **$r('sys.float.ohos_id_corner_radius_default_s')**
 
 **Type:** [Length](arkts-arkui-length-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 

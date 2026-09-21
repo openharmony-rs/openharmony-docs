@@ -1,4 +1,4 @@
-# @ohos.app.form.formObserver(formObserver)
+# @ohos.app.form.formObserver(卡片监听方-FormObserver)
 
 formObserver模块提供了卡片监听方相关接口的能力，包括对同一用户下安装的卡片新增、删除、可见性变化事件的订阅和取消订阅，获取正在运行的卡片信息等。
 
@@ -25,16 +25,16 @@ import { formObserver } from '@kit.FormKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md) | 根据formId查询已添加的卡片信息。使用Promise异步回调。 |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md) | 根据formId查询已添加的卡片信息。使用Promise异步回调。 |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md) | 根据formId查询已添加的卡片信息。使用callback异步回调。 |
-| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md) | 根据卡片标识formId，查询已添加的卡片信息。使用callback异步回调。 |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md) | 获取设备上正在运行的所有非临时卡片信息。使用callback异步回调。 |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md) | 获取设备上正在运行的所有非临时卡片信息。使用callback异步回调。 |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md) | 获取设备上正在运行的所有非临时卡片信息。使用Promise异步回调。 |
-| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md) | 获取设备上正在运行的所有非临时卡片信息。使用Promise异步回调。 |
-| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md) | 根据提供方信息查询已添加的卡片信息列表。使用Promise异步回调。 |
-| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md) | 根据提供方信息查询已添加的卡片信息列表。使用callback异步回调。 |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid) | 根据formId查询已添加的卡片信息。使用Promise异步回调。 |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-1) | 根据formId查询已添加的卡片信息。使用Promise异步回调。 |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-2) | 根据formId查询已添加的卡片信息。使用callback异步回调。 |
+| [getRunningFormInfoById](arkts-form-formobserver-getrunningforminfobyid-f-sys.md#getrunningforminfobyid-3) | 根据卡片标识formId，查询已添加的卡片信息。使用callback异步回调。 |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos) | 获取设备上正在运行的所有非临时卡片信息。使用callback异步回调。 |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-1) | 获取设备上正在运行的所有非临时卡片信息。使用callback异步回调。 |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-2) | 获取设备上正在运行的所有非临时卡片信息。使用Promise异步回调。 |
+| [getRunningFormInfos](arkts-form-formobserver-getrunningforminfos-f-sys.md#getrunningforminfos-3) | 获取设备上正在运行的所有非临时卡片信息。使用Promise异步回调。 |
+| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md#getrunningforminfosbyfilter) | 根据提供方信息查询已添加的卡片信息列表。使用Promise异步回调。 |
+| [getRunningFormInfosByFilter](arkts-form-formobserver-getrunningforminfosbyfilter-f-sys.md#getrunningforminfosbyfilter-1) | 根据提供方信息查询已添加的卡片信息列表。使用callback异步回调。 |
 | [off](arkts-form-formobserver-off-f-sys.md#offformadd) | 取消订阅卡片新增事件。使用callback异步回调。 |
 | [off](arkts-form-formobserver-off-f-sys.md#offformremove) | 取消订阅卡片删除事件。使用callback异步回调。 |
 | [off](arkts-form-formobserver-off-f-sys.md#offnotifyvisible) | 取消订阅通知卡片可见的事件。使用callback异步回调。 |

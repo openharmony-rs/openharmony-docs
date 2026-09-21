@@ -62,18 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { applicationManager, common } from '@kit.MDMKit';
 
-try {
-  // 参数需根据实际情况进行替换
-  let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(null);
-  console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
-  console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
+<a id="getfreezeexemptedapps-1"></a>
 
 ## getFreezeExemptedApps
 
@@ -113,4 +103,14 @@ function getFreezeExemptedApps(admin: Want | null): Array<common.ApplicationInst
 
 **示例**
 
-参见 [getFreezeExemptedApps](#getfreezeexemptedapps)
+```TypeScript
+import { applicationManager, common } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(null);
+  console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
+}
+```

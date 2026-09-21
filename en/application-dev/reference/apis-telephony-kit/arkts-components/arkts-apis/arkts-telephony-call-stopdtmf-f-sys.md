@@ -55,16 +55,8 @@ call.stopDTMF(1, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.stopDTMF(1).then(() => {
-    console.info(`stopDTMF success.`);
-}).catch((err: BusinessError) => {
-    console.error(`stopDTMF fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="stopdtmf-1"></a>
 
 ## stopDTMF
 
@@ -108,4 +100,12 @@ Stops playing DTMF tones. This API uses a promise to return the result.
 
 **Examples**
 
-See [stopDTMF](#stopdtmf)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.stopDTMF(1).then(() => {
+    console.info(`stopDTMF success.`);
+}).catch((err: BusinessError) => {
+    console.error(`stopDTMF fail, promise: err->${JSON.stringify(err)}`);
+});
+```

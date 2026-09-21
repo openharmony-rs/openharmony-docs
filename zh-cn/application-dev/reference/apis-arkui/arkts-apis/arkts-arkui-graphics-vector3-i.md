@@ -1,5 +1,9 @@
 # Vector3
 
+```TypeScript
+interface Vector3
+```
+
 用于表示包含x、y、z三个值的向量。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # AudioCapturerMicInData (System API)
 
+```TypeScript
+interface AudioCapturerMicInData
+```
+
 Describes audio capturer data that contains processed audio data and microphone input (mic-in) audio data before any processing.
 
 **Since:** 24

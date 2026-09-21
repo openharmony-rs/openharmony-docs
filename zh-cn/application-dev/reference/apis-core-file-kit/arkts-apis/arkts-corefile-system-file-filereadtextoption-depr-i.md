@@ -1,5 +1,9 @@
 # FileReadTextOption
 
+```TypeScript
+export interface FileReadTextOption
+```
+
 可选项类型，支持readText接口使用。
 
 **起始版本：** 3
@@ -54,7 +58,7 @@ fail?: (data: string, code: number) => void
 success?: (data: FileReadTextResponse) => void
 ```
 
-接口调用成功的回调函数。返回FileReadTextResponse。
+接口调用成功的回调函数。返回[FileReadTextResponse](arkts-corefile-system-file-filereadtextresponse-depr-i.md#filereadtextresponse)。
 
 **起始版本：** 3
 

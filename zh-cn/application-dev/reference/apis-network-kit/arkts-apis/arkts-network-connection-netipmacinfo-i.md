@@ -1,5 +1,9 @@
 # NetIpMacInfo
 
+```TypeScript
+export interface NetIpMacInfo
+```
+
 IP邻居表条目信息。
 
 **起始版本：** 22

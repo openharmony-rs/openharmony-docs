@@ -56,6 +56,8 @@ declare function write(
 | 13900042 | Unknown error |
 
 
+<a id="write-1"></a>
+
 ## write
 
 ```TypeScript
@@ -95,6 +97,8 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="write-2"></a>
 
 ## write
 

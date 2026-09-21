@@ -69,47 +69,8 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
 
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
-
-bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
-  if (err) {
-    console.error(`Failed to add allowed install bundles. Code is ${err.code}, message is ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in adding allowed install bundles');
-});
-```
-
-```TypeScript
-import { bundleManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let wantTemp: Want = {
-  // Replace with actual values.
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// Replace with actual values.
-let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
-
-bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100).then(() => {
-  console.info('Succeeded in adding allowed install bundles');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to add allowed install bundles. Code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="addallowedinstallbundles-1"></a>
 
 ## addAllowedInstallBundles
 
@@ -154,8 +115,29 @@ Adds the applications that can be installed by the user specified by **userId**.
 
 **Examples**
 
-See [addAllowedInstallBundles](#addallowedinstallbundles)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
+
+bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
+  if (err) {
+    console.error(`Failed to add allowed install bundles. Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in adding allowed install bundles');
+});
+```
+
+
+<a id="addallowedinstallbundles-2"></a>
 
 ## addAllowedInstallBundles
 
@@ -205,4 +187,22 @@ Adds the applications that can be installed by the current or specified user. Th
 
 **Examples**
 
-See [addAllowedInstallBundles](#addallowedinstallbundles)
+```TypeScript
+import { bundleManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let appIds: Array<string> = ['com.example.******_******/******5t5CoBM='];
+
+bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100).then(() => {
+  console.info('Succeeded in adding allowed install bundles');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add allowed install bundles. Code is ${err.code}, message is ${err.message}`);
+});
+```

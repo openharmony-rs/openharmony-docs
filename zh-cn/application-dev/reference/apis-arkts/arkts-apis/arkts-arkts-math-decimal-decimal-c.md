@@ -1,5 +1,9 @@
 # Decimal
 
+```TypeScript
+declare class Decimal
+```
+
 任意精度的Decimal类型。
 
 **起始版本：** 12
@@ -31,6 +35,8 @@ abs(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="abs-1"></a>
 
 ## abs
 
@@ -90,6 +96,8 @@ acos(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
+<a id="acos-1"></a>
+
 ## acos
 
 ```TypeScript
@@ -148,6 +156,8 @@ acosh(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="acosh-1"></a>
 
 ## acosh
 
@@ -214,6 +224,8 @@ add(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
+<a id="add-1"></a>
+
 ## add
 
 ```TypeScript
@@ -272,6 +284,8 @@ asin(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="asin-1"></a>
 
 ## asin
 
@@ -332,6 +346,8 @@ asinh(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
+<a id="asinh-1"></a>
+
 ## asinh
 
 ```TypeScript
@@ -390,6 +406,8 @@ atan(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="atan-1"></a>
 
 ## atan
 
@@ -484,6 +502,8 @@ atanh(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
+<a id="atanh-1"></a>
+
 ## atanh
 
 ```TypeScript
@@ -537,6 +557,8 @@ cbrt(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="cbrt-1"></a>
+
 ## cbrt
 
 ```TypeScript
@@ -588,6 +610,8 @@ ceil(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="ceil-1"></a>
 
 ## ceil
 
@@ -654,6 +678,8 @@ clamp(min: Value, max: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `min` is out of range. |
+
+<a id="clamp-1"></a>
 
 ## clamp
 
@@ -768,6 +794,8 @@ cos(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="cos-1"></a>
+
 ## cos
 
 ```TypeScript
@@ -819,6 +847,8 @@ cosh(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="cosh-1"></a>
 
 ## cosh
 
@@ -903,6 +933,8 @@ div(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+
+<a id="div-1"></a>
 
 ## div
 
@@ -1027,6 +1059,8 @@ exp(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
+<a id="exp-1"></a>
+
 ## exp
 
 ```TypeScript
@@ -1079,6 +1113,8 @@ floor(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="floor-1"></a>
 
 ## floor
 
@@ -1418,6 +1454,8 @@ ln(): Decimal
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
+<a id="ln-1"></a>
+
 ## ln
 
 ```TypeScript
@@ -1483,6 +1521,8 @@ log(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
+
+<a id="log-1"></a>
 
 ## log
 
@@ -1680,6 +1720,8 @@ mod(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
+<a id="mod-1"></a>
+
 ## mod
 
 ```TypeScript
@@ -1744,6 +1786,8 @@ mul(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+
+<a id="mul-1"></a>
 
 ## mul
 
@@ -1831,6 +1875,8 @@ pow(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
+<a id="pow-1"></a>
+
 ## pow
 
 ```TypeScript
@@ -1884,6 +1930,8 @@ precision(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | the number type |
+
+<a id="precision-1"></a>
 
 ## precision
 
@@ -1942,6 +1990,8 @@ static random(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable |
+
+<a id="random-1"></a>
 
 ## random
 
@@ -2089,6 +2139,8 @@ sin(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="sin-1"></a>
+
 ## sin
 
 ```TypeScript
@@ -2141,6 +2193,8 @@ sinh(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="sinh-1"></a>
+
 ## sinh
 
 ```TypeScript
@@ -2192,6 +2246,8 @@ sqrt(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="sqrt-1"></a>
 
 ## sqrt
 
@@ -2256,6 +2312,8 @@ sub(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+
+<a id="sub-1"></a>
 
 ## sub
 
@@ -2344,6 +2402,8 @@ tan(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="tan-1"></a>
+
 ## tan
 
 ```TypeScript
@@ -2395,6 +2455,8 @@ tanh(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="tanh-1"></a>
 
 ## tanh
 
@@ -2448,6 +2510,8 @@ toBinary(): string
 | --- | --- |
 | string | the string type |
 
+<a id="tobinary-1"></a>
+
 ## toBinary
 
 ```TypeScript
@@ -2479,6 +2543,8 @@ toBinary(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
+
+<a id="tobinary-2"></a>
 
 ## toBinary
 
@@ -2533,6 +2599,8 @@ toDecimalPlaces(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="todecimalplaces-1"></a>
+
 ## toDecimalPlaces
 
 ```TypeScript
@@ -2564,6 +2632,8 @@ toDecimalPlaces(decimalPlaces: number): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
+
+<a id="todecimalplaces-2"></a>
 
 ## toDecimalPlaces
 
@@ -2618,6 +2688,8 @@ toExponential(): string
 | --- | --- |
 | string | the string type |
 
+<a id="toexponential-1"></a>
+
 ## toExponential
 
 ```TypeScript
@@ -2649,6 +2721,8 @@ toExponential(decimalPlaces: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
+
+<a id="toexponential-2"></a>
 
 ## toExponential
 
@@ -2703,6 +2777,8 @@ toFixed(): string
 | --- | --- |
 | string | the string type |
 
+<a id="tofixed-1"></a>
+
 ## toFixed
 
 ```TypeScript
@@ -2734,6 +2810,8 @@ toFixed(decimalPlaces: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
+
+<a id="tofixed-2"></a>
 
 ## toFixed
 
@@ -2788,6 +2866,8 @@ toFraction(): Decimal[]
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | the Decimal[] type |
 
+<a id="tofraction-1"></a>
+
 ## toFraction
 
 ```TypeScript
@@ -2840,6 +2920,8 @@ toHexadecimal(): string
 | --- | --- |
 | string | the string type |
 
+<a id="tohexadecimal-1"></a>
+
 ## toHexadecimal
 
 ```TypeScript
@@ -2871,6 +2953,8 @@ toHexadecimal(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
+
+<a id="tohexadecimal-2"></a>
 
 ## toHexadecimal
 
@@ -2936,6 +3020,8 @@ toNearest(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+
+<a id="tonearest-1"></a>
 
 ## toNearest
 
@@ -3011,6 +3097,8 @@ toOctal(): string
 | --- | --- |
 | string | the string type |
 
+<a id="tooctal-1"></a>
+
 ## toOctal
 
 ```TypeScript
@@ -3042,6 +3130,8 @@ toOctal(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
+
+<a id="tooctal-2"></a>
 
 ## toOctal
 
@@ -3096,6 +3186,8 @@ toPrecision(): string
 | --- | --- |
 | string | the string type |
 
+<a id="toprecision-1"></a>
+
 ## toPrecision
 
 ```TypeScript
@@ -3127,6 +3219,8 @@ toPrecision(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
+
+<a id="toprecision-2"></a>
 
 ## toPrecision
 
@@ -3181,6 +3275,8 @@ toSignificantDigits(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
+<a id="tosignificantdigits-1"></a>
+
 ## toSignificantDigits
 
 ```TypeScript
@@ -3212,6 +3308,8 @@ toSignificantDigits(significantDigits: number): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
+
+<a id="tosignificantdigits-2"></a>
 
 ## toSignificantDigits
 
@@ -3285,6 +3383,8 @@ trunc(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
+
+<a id="trunc-1"></a>
 
 ## trunc
 

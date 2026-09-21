@@ -1,5 +1,9 @@
 # ContinueResultInfo
 
+```TypeScript
+interface ContinueResultInfo
+```
+
 Describes the quick start result returned by the callback.
 
 **Since:** 18

@@ -16,5 +16,5 @@ export type NavDestinationBuilder = (name: string, param?: Object) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | string | 是 | NavDestination页面名称。 |
-| param | Object | 否 | NavDestination页面详细参数。默认值为空。 |
+| name | string | 是 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面名称。 |
+| param | Object | 否 | [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)页面详细参数。默认值为空。 |

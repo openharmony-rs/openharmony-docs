@@ -1,5 +1,9 @@
 # CBConfigListConfigs (System API)
 
+```TypeScript
+export interface CBConfigListConfigs
+```
+
 Defines the cell broadcast configuration list configs.
 
 **Since:** 23

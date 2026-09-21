@@ -1,5 +1,9 @@
 # FontMetrics
 
+```TypeScript
+interface FontMetrics
+```
+
 描述字形大小和布局的属性信息，同一种字体中的字符属性大致相同。
 
 **起始版本：** 11

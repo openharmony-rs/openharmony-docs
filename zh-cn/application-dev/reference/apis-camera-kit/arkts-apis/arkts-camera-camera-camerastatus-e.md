@@ -1,5 +1,9 @@
 # CameraStatus
 
+```TypeScript
+enum CameraStatus
+```
+
 枚举，相机状态。
 
 **起始版本：** 10

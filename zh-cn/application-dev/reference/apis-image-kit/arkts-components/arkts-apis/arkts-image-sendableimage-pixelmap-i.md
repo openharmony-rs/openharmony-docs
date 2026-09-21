@@ -1,5 +1,9 @@
 # PixelMap
 
+```TypeScript
+interface PixelMap extends ISendable
+```
+
 Sendable PixelMap instance.
 
 @typedef PixelMap

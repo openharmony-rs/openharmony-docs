@@ -1,5 +1,9 @@
 # AdvancedMeasureFormat
 
+```TypeScript
+export class AdvancedMeasureFormat
+```
+
 Provides the number formatting capability, supporting automatic unit conversion based on specific application scenarios.
 
 **Since:** 23

@@ -55,18 +55,8 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // In actual development, you need to first obtain it based on the socket you created.
-statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
-  console.info(JSON.stringify(stats));
-}).catch((err: BusinessError) => {
-  console.error(JSON.stringify(err));
-});
-```
-
+<a id="getsockfdrxbytes-1"></a>
 
 ## getSockfdRxBytes
 
@@ -108,4 +98,14 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 
 **Examples**
 
-See [getSockfdRxBytes](#getsockfdrxbytes)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
+
+let sockfd = 50; // In actual development, you need to first obtain it based on the socket you created.
+statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
+  console.info(JSON.stringify(stats));
+}).catch((err: BusinessError) => {
+  console.error(JSON.stringify(err));
+});
+```

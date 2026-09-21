@@ -1,5 +1,9 @@
 # NetworkSelectionModeOptions（系统接口）
 
+```TypeScript
+export interface NetworkSelectionModeOptions
+```
+
 Obtains the network selection mode option.
 
 **起始版本：** 6

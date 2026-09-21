@@ -1,5 +1,9 @@
 # EncodingType
 
+```TypeScript
+enum EncodingType
+```
+
 表示编码格式的枚举。
 
 **起始版本：** 12

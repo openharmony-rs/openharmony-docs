@@ -1,5 +1,9 @@
 # AccessFlagType
 
+```TypeScript
+declare enum AccessFlagType
+```
+
 Enumerates the locations of the file to verify.
 
 **Since:** 12

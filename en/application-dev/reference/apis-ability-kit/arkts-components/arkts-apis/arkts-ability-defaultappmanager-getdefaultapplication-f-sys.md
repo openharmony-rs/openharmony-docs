@@ -49,36 +49,6 @@ import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { uniformTypeDescriptor } from '@kit.ArkData';
 
-defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
-  .then((data) => {
-    console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
-
-defaultAppManager.getDefaultApplication("image/png")
-  .then((data) => {
-    console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
-
-defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI)
-  .then((data) => {
-    console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
-```
-
-```TypeScript
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
-
 let userId = 100;
 defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err: BusinessError, data) => {
   if (err) {
@@ -105,36 +75,8 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 });
 ```
 
-```TypeScript
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
 
-defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
-});
-
-defaultAppManager.getDefaultApplication("image/png", (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
-});
-
-defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
-});
-```
-
+<a id="getdefaultapplication-1"></a>
 
 ## getDefaultApplication
 
@@ -172,8 +114,38 @@ Obtains the default application based on a system-defined application type, a fi
 
 **Examples**
 
-See [getDefaultApplication](#getdefaultapplication)
+```TypeScript
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
+defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication("image/png", (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+```
+
+
+<a id="getdefaultapplication-2"></a>
 
 ## getDefaultApplication
 
@@ -218,4 +190,32 @@ Obtains the default application based on a system-defined application type, a fi
 
 **Examples**
 
-See [getDefaultApplication](#getdefaultapplication)
+```TypeScript
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
+  .then((data) => {
+    console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.getDefaultApplication("image/png")
+  .then((data) => {
+    console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI)
+  .then((data) => {
+    console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
+  })
+  .catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  });
+```

@@ -1,5 +1,9 @@
 # CipherRsaOptions
 
+```TypeScript
+export interface CipherRsaOptions
+```
+
 调用cipher rsa方法时，传入的参数。
 
 **起始版本：** 3

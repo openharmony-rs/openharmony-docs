@@ -1,5 +1,9 @@
 # Album
 
+```TypeScript
+interface Album extends MediaEntity
+```
+
 The definition of Album.
 
 @extends MediaEntity @interface Album

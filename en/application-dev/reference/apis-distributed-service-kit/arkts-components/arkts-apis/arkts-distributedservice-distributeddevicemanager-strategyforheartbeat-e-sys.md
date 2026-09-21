@@ -1,5 +1,9 @@
 # StrategyForHeartbeat (System API)
 
+```TypeScript
+enum StrategyForHeartbeat
+```
+
 Defines the heartbeat broadcast policy.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # DragInfo
 
+```TypeScript
+interface DragInfo
+```
+
 Defines the attributes required for initiating a drag action and information carried in the dragging process.
 
 **Since:** 10
@@ -15,7 +19,7 @@ import { dragController } from '@kit.ArkUI';
 ## autoHideComponentUniqueIds
 
 ```TypeScript
-autoHideComponentUniqueIds?: number | number[]
+autoHideComponentUniqueIds?: number[]
 ```
 
 Unique ID of the component that is automatically hidden by the system during proactive dragging. A single unique ID or an array of unique IDs can be passed.
@@ -28,7 +32,7 @@ The unique ID of a component can be obtained by using [UIContext.getFrameNodeByI
 
 You need to restore the component display status as required in the drag end callback.
 
-**Type:** number &#124; number[]
+**Type:** number[]
 
 **Since:** 26.0.0
 
@@ -124,7 +128,7 @@ previewOptions?: DragPreviewOptions
 
 Processing mode of the drag preview and the display of the number badge during dragging.
 
-**Type:** [DragPreviewOptions](../arkts-components/arkts-arkui-dragpreviewoptions-i.md)
+**Type:** [DragPreviewOptions](../arkts-components/arkts-arkui-common-comp-dragpreviewoptions-i.md)
 
 **Since:** 11
 

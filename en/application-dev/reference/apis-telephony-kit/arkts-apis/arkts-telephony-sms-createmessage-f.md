@@ -50,20 +50,8 @@ sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessag
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-const specification: string = '3gpp';
-// Display PDUs in array format. The type is number.
-const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
-sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
-    console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`createMessage failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="createmessage-1"></a>
 
 ## createMessage
 
@@ -102,4 +90,16 @@ Creates an SMS instance based on the protocol data unit (PDU) and specified SMS 
 
 **Examples**
 
-See [createMessage](#createmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const specification: string = '3gpp';
+// Display PDUs in array format. The type is number.
+const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
+sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
+    console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`createMessage failed, promise: err->${JSON.stringify(err)}`);
+});
+```

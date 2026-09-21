@@ -1,5 +1,9 @@
 # PrintQuality
 
+```TypeScript
+enum PrintQuality
+```
+
 打印质量的枚举。
 
 **起始版本：** 14

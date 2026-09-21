@@ -1,5 +1,9 @@
 # WallpaperInfo (System API)
 
+```TypeScript
+interface WallpaperInfo
+```
+
 WallpaperInfo definition including folding status, rotation status, and resource path.
 
 @typedef WallpaperInfo

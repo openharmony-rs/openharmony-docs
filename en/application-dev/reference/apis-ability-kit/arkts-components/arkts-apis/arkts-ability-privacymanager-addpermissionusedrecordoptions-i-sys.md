@@ -1,5 +1,9 @@
 # AddPermissionUsedRecordOptions (System API)
 
+```TypeScript
+interface AddPermissionUsedRecordOptions
+```
+
 Represents the options for adding a permission usage record.
 
 **Since:** 12
@@ -45,6 +49,8 @@ Default value: NORMAL_TYPE.
 **Type:** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 
 **Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 

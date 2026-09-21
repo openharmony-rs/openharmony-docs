@@ -1,5 +1,9 @@
 # OISMode
 
+```TypeScript
+enum OISMode
+```
+
 Enumerates the optical image stabilization (OIS) mode.
 
 **Since:** 24

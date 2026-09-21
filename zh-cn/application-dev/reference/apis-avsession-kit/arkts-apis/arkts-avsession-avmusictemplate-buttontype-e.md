@@ -1,5 +1,9 @@
 # ButtonType
 
+```TypeScript
+enum ButtonType
+```
+
 表示按钮类型的枚举。
 
 @enum { int }

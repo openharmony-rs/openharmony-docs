@@ -1,5 +1,9 @@
 # EditableTextChangeValue
 
+```TypeScript
+interface EditableTextChangeValue
+```
+
 文本变化的详细信息，包括预上屏。
 
 **起始版本：** 15

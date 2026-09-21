@@ -1,5 +1,9 @@
 # CMErrorCode
 
+```TypeScript
+export enum CMErrorCode
+```
+
 Enumerates the error codes used in the certificate management APIs.
 
 **Since:** 11

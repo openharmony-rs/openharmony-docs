@@ -1,5 +1,9 @@
 # TransactionOptions
 
+```TypeScript
+interface TransactionOptions
+```
+
 Represents the configuration of a transaction object.
 
 **Since:** 14

@@ -1,5 +1,9 @@
 # RevocationCheckParameter
 
+```TypeScript
+interface RevocationCheckParameter
+```
+
 表示证书链校验证书吊销状态的参数。
 
 **起始版本：** 12

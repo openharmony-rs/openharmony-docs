@@ -1,5 +1,9 @@
 # EnterpriseInfo（系统接口）
 
+```TypeScript
+export interface EnterpriseInfo
+```
+
 设备管理应用的企业信息。
 
 **起始版本：** 9

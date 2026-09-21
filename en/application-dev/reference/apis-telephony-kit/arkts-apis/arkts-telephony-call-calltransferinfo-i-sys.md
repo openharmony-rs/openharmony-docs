@@ -1,5 +1,9 @@
 # CallTransferInfo (System API)
 
+```TypeScript
+export interface CallTransferInfo
+```
+
 Defines the call transfer information.
 
 **Since:** 8

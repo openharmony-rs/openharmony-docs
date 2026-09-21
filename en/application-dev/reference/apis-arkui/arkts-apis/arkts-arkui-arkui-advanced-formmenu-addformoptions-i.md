@@ -1,5 +1,9 @@
 # AddFormOptions
 
+```TypeScript
+export interface AddFormOptions
+```
+
 Defines the add form options.
 
 **Since:** 12

@@ -53,6 +53,8 @@ Creates a directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
+<a id="mkdir-1"></a>
+
 ## mkdir
 
 ```TypeScript
@@ -101,6 +103,8 @@ Creates a directory. This API uses a promise to return the result. The value **t
 | 13900042 | Unknown error |
 
 
+<a id="mkdir-2"></a>
+
 ## mkdir
 
 ```TypeScript
@@ -142,6 +146,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
+
+<a id="mkdir-3"></a>
 
 ## mkdir
 

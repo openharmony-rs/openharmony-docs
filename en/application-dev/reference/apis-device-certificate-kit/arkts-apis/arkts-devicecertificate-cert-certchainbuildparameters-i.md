@@ -1,5 +1,9 @@
 # CertChainBuildParameters
 
+```TypeScript
+interface CertChainBuildParameters
+```
+
 Represents the parameters for building a certificate chain.
 
 **Since:** 12

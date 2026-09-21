@@ -1,5 +1,9 @@
 # WebSoftKeyboardBehaviorMode
 
+```TypeScript
+enum WebSoftKeyboardBehaviorMode
+```
+
 Enumerates the behavior modes of the web soft keyboard.
 
 **Since:** 22

@@ -16,5 +16,5 @@ Defines the content of the **NavDestination** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | Name of the NavDestination page. |
-| param | Object | No | Settings of the NavDestination page. The default value is undefined. |
+| name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination) page. |
+| param | Object | No | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination) page. The default value is undefined. |

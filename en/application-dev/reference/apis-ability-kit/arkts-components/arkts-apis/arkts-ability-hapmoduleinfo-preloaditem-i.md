@@ -1,5 +1,9 @@
 # PreloadItem
 
+```TypeScript
+export interface PreloadItem
+```
+
 Describes the preloaded module information in the atomic service.
 
 **Since:** 9

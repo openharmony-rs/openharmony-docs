@@ -1,10 +1,14 @@
 # ResultSet
 
+```TypeScript
+interface ResultSet
+```
+
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
 ResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
-下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
+下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery-1)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
 
 **起始版本：** 9
 

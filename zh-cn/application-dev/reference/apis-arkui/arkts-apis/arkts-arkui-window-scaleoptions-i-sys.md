@@ -1,5 +1,9 @@
 # ScaleOptions（系统接口）
 
+```TypeScript
+interface ScaleOptions
+```
+
 缩放参数。
 
 **起始版本：** 9

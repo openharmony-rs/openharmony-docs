@@ -55,18 +55,8 @@ screen.stopExpand(expandScreenIds, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let expandScreenIds: Array<number> = [1, 2, 3]; // 扩展屏幕ID集合
-// 停止屏幕的扩展模式
-screen.stopExpand(expandScreenIds).then(() => {
-  console.info('Succeeded in stopping expand screens.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="stopexpand-1"></a>
 
 ## stopExpand
 
@@ -106,4 +96,14 @@ function stopExpand(expandScreen:Array<number>): Promise<void>
 
 **示例**
 
-参见 [stopExpand](#stopexpand)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let expandScreenIds: Array<number> = [1, 2, 3]; // 扩展屏幕ID集合
+// 停止屏幕的扩展模式
+screen.stopExpand(expandScreenIds).then(() => {
+  console.info('Succeeded in stopping expand screens.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
+});
+```

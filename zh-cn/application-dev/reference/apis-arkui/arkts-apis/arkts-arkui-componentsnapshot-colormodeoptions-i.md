@@ -1,5 +1,9 @@
 # ColorModeOptions
 
+```TypeScript
+interface ColorModeOptions
+```
+
 定义截图时所使用的色彩空间。
 
 **起始版本：** 23

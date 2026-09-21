@@ -1,5 +1,9 @@
 # AudioSpatialDeviceState (System API)
 
+```TypeScript
+interface AudioSpatialDeviceState
+```
+
 Describes spatial device state.
 
 **Since:** 11

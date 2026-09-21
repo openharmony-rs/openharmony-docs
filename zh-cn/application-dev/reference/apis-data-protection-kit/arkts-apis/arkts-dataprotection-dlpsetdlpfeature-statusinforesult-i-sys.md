@@ -1,5 +1,9 @@
 # StatusInfoResult（系统接口）
 
+```TypeScript
+export interface StatusInfoResult
+```
+
 DLP特性开关状态设置的结果信息。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # AppPreloadType
 
+```TypeScript
+export enum AppPreloadType
+```
+
 表示应用当前进程的预加载类型枚举。
 
 **起始版本：** 22

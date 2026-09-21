@@ -1,5 +1,9 @@
 # SubWindowOptions
 
+```TypeScript
+interface SubWindowOptions
+```
+
 Describes the parameters used for creating a child window.
 
 **Since:** 11

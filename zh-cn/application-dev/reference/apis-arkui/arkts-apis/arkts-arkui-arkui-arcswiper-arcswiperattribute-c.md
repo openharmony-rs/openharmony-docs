@@ -1,8 +1,12 @@
 # ArcSwiperAttribute
 
+```TypeScript
+declare class ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>
+```
+
 除支持通用属性外，还支持以下属性。
 
-**继承/实现关系：** ArcSwiperAttribute extends CommonMethod&lt;ArcSwiperAttribute&gt;
+**继承/实现关系：** ArcSwiperAttribute extends CommonMethod<ArcSwiperAttribute>
 
 **起始版本：** 18
 
@@ -34,7 +38,7 @@ customContentTransition(transition: Optional<SwiperContentAnimatedTransition>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| transition | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[SwiperContentAnimatedTransition](arkts-arkui-arkui-arcswiper-swipercontentanimatedtransition-i.md)&gt; | 是 | ArcSwiper自定义切换动画相关信息，包含timeout和transition两个属性。 |
+| transition | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[SwiperContentAnimatedTransition](arkts-arkui-arkui-arcswiper-swipercontentanimatedtransition-i.md)&gt; | 是 | ArcSwiper自定义切换动画相关信息，包含timeout和transition两个属性。 |
 
 **返回值：**
 
@@ -60,7 +64,7 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcSwiperAttri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[CrownSensitivity](arkts-arkui-crownsensitivity-e.md)&gt; | 是 | 旋转表冠的灵敏度。设置不同灵敏度级别可调整表冠滚动的响应速度。<br>默认值：CrownSensitivity.MEDIUM |
+| sensitivity | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](arkts-arkui-crownsensitivity-e.md)&gt; | 是 | 旋转表冠的灵敏度。设置不同灵敏度级别可调整表冠滚动的响应速度。<br>默认值：CrownSensitivity.MEDIUM |
 
 **返回值：**
 
@@ -86,7 +90,7 @@ disableSwipe(disabled: Optional<boolean>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 设置是否禁用组件滑动切换功能。设置为true禁用，false不禁用。<br>默认值：false |
+| disabled | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置是否禁用组件滑动切换功能。设置为true禁用，false不禁用。<br>默认值：false |
 
 **返回值：**
 
@@ -112,7 +116,7 @@ disableTransitionAnimation(disabled: Optional<boolean>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disabled | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否关闭特殊动效效果。<br>true：关闭特殊动效效果；false：不关闭特殊动效效果。<br>传入参数非法时，按false处理。 |
+| disabled | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否关闭特殊动效效果。<br>true：关闭特殊动效效果；false：不关闭特殊动效效果。<br>传入参数非法时，按false处理。 |
 
 **返回值：**
 
@@ -138,7 +142,7 @@ duration(duration: Optional<number>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| duration | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 子组件切换的动画时长。<br>默认值：400<br>单位：毫秒。传入负数时按默认值处理。 |
+| duration | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | 是 | 子组件切换的动画时长。<br>默认值：400<br>单位：毫秒。传入负数时按默认值处理。 |
 
 **返回值：**
 
@@ -164,7 +168,7 @@ effectMode(edgeEffect: Optional<EdgeEffect>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| edgeEffect | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[EdgeEffect](arkts-arkui-edgeeffect-e.md)&gt; | 是 | 边缘滑动效果。通过ArcSwiperController接口控制翻页时，回弹效果不生效。<br>默认值：EdgeEffect.Spring |
+| edgeEffect | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[EdgeEffect](arkts-arkui-edgeeffect-e.md)&gt; | 是 | 边缘滑动效果。通过ArcSwiperController接口控制翻页时，回弹效果不生效。<br>默认值：EdgeEffect.Spring |
 
 **返回值：**
 
@@ -190,7 +194,7 @@ index(index: Optional<number>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;number&gt; | 是 | 当前在容器中显示的子组件的索引值。<br>当index值为undefined时，按取值为0处理。 |
+| index | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | 是 | 当前在容器中显示的子组件的索引值。<br>当index值为undefined时，按取值为0处理。 |
 
 **返回值：**
 
@@ -216,7 +220,7 @@ indicator(style: Optional<ArcDotIndicator | boolean>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) &#124; boolean&gt; | 是 | 弧形圆点指示器样式。<br> - ArcDotIndicator：弧形圆点指示器属性及功能。<br> - boolean：是否启用弧形圆点指示器。设置为true启用，false不启用。<br> 默认值：true<br> 默认类型：ArcDotIndicator |
+| style | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[ArcDotIndicator](arkts-arkui-arkui-arcswiper-arcdotindicator-c.md) &#124; boolean&gt; | 是 | 弧形圆点指示器样式。<br> - ArcDotIndicator：弧形圆点指示器属性及功能。<br> - boolean：是否启用弧形圆点指示器。设置为true启用，false不启用。<br> 默认值：true<br> 默认类型：ArcDotIndicator |
 
 **返回值：**
 
@@ -232,7 +236,7 @@ onAnimationEnd(handler: Optional<AnimationEndHandler>): ArcSwiperAttribute
 
 切换动画结束时触发该回调。
 
-当ArcSwiper切换动效结束时触发，包括动画过程中手势中断或通过[SwiperController](../arkts-components/arkts-arkui-swipercontroller-c.md)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
+当ArcSwiper切换动效结束时触发，包括动画过程中手势中断或通过[SwiperController](../arkts-components/arkts-arkui-swiper-comp-swipercontroller-c.md)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
 
 **起始版本：** 18
 
@@ -244,7 +248,7 @@ onAnimationEnd(handler: Optional<AnimationEndHandler>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[AnimationEndHandler](arkts-arkui-animationendhandler-t.md)&gt; | 是 | 切换动画结束时触发该回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[AnimationEndHandler](arkts-arkui-animationendhandler-t.md)&gt; | 是 | 切换动画结束时触发该回调。 |
 
 **返回值：**
 
@@ -270,7 +274,7 @@ onAnimationStart(handler: Optional<AnimationStartHandler>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[AnimationStartHandler](arkts-arkui-animationstarthandler-t.md)&gt; | 是 | 切换动画开始时的回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[AnimationStartHandler](arkts-arkui-animationstarthandler-t.md)&gt; | 是 | 切换动画开始时的回调。 |
 
 **返回值：**
 
@@ -298,7 +302,7 @@ ArcSwiper组件结合[LazyForEach](../../../ui/rendering-control/arkts-rendering
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[IndexChangedHandler](arkts-arkui-indexchangedhandler-t.md)&gt; | 是 | 当前显示元素的索引回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[IndexChangedHandler](arkts-arkui-indexchangedhandler-t.md)&gt; | 是 | 当前显示元素的索引回调。 |
 
 **返回值：**
 
@@ -324,7 +328,7 @@ onGestureSwipe(handler: Optional<GestureSwipeHandler>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;[GestureSwipeHandler](arkts-arkui-gestureswipehandler-t.md)&gt; | 是 | 在页面跟手滑动过程中，逐帧触发该回调。 |
+| handler | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;[GestureSwipeHandler](arkts-arkui-gestureswipehandler-t.md)&gt; | 是 | 在页面跟手滑动过程中，逐帧触发该回调。 |
 
 **返回值：**
 
@@ -350,7 +354,7 @@ vertical(isVertical: Optional<boolean>): ArcSwiperAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isVertical | [Optional](../arkts-components/arkts-arkui-optional-t.md)&lt;boolean&gt; | 是 | 是否为纵向滑动。<br>true: 纵向滑动；false: 横向滑动。<br>默认值：false |
+| isVertical | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否为纵向滑动。<br>true: 纵向滑动；false: 横向滑动。<br>默认值：false |
 
 **返回值：**
 

@@ -1,5 +1,9 @@
 # JoinStyle
 
+```TypeScript
+enum JoinStyle
+```
+
 Enumerates the join styles of a pen. The join style defines the shape of the joints of a polyline segment drawn by the pen.
 
 **Since:** 12

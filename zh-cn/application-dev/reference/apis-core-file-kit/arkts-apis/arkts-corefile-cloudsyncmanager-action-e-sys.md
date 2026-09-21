@@ -1,5 +1,9 @@
 # Action（系统接口）
 
+```TypeScript
+enum Action
+```
+
 清理本地云相关数据时的Action，为枚举类型。
 
 **起始版本：** 10

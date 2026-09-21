@@ -1,5 +1,9 @@
 # FocusQuery
 
+```TypeScript
+interface FocusQuery
+```
+
 FocusQuery provides APIs to check whether a focus mode is supported.
 
 > **NOTE:** 

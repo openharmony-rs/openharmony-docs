@@ -1,5 +1,9 @@
 # ProxyData
 
+```TypeScript
+interface ProxyData
+```
+
 卡片代理刷新订阅数据信息。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # SessionCategory（系统接口）
 
+```TypeScript
+enum SessionCategory
+```
+
 表示不同场景会话类别的枚举。
 
 @enum { int }

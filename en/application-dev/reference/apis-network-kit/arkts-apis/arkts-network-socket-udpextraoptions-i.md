@@ -1,5 +1,9 @@
 # UDPExtraOptions
 
+```TypeScript
+export interface UDPExtraOptions extends ExtraOptionsBase
+```
+
 Defines other properties of the **UDPSocket** object. This object is inherited from [ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md).
 
 **Inheritance/Implementation:** UDPExtraOptions extends [ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)

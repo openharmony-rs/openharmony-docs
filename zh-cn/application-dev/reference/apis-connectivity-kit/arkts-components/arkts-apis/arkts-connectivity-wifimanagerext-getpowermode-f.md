@@ -52,24 +52,8 @@ async function getWifiPowerMode() {
 }
 ```
 
-```TypeScript
-import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
-      if (err) {
-          console.error("Failed to get linked information");
-          return;
-      }
-      console.info("get power mode info: " + JSON.stringify(data));
-  });
-
-  wifiManagerExt.getPowerMode().then(data => {
-      console.info("get power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get power mode error");
-  });
-```
-
+<a id="getpowermode-1"></a>
 
 ## getPowerMode
 
@@ -101,4 +85,20 @@ function getPowerMode(callback: AsyncCallback<PowerMode>): void
 
 **示例**
 
-参见 [getPowerMode](#getpowermode)
+```TypeScript
+import { wifiManagerExt } from '@kit.ConnectivityKit';
+
+  wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
+      if (err) {
+          console.error("Failed to get linked information");
+          return;
+      }
+      console.info("get power mode info: " + JSON.stringify(data));
+  });
+
+  wifiManagerExt.getPowerMode().then(data => {
+      console.info("get power mode info: " + JSON.stringify(data));
+  }).catch((error:number) => {
+      console.error("get power mode error");
+  });
+```

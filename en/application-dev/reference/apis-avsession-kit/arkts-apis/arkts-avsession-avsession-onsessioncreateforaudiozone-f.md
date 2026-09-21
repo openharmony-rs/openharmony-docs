@@ -14,7 +14,7 @@ function onSessionCreateForAudioZone(userId: number, callback: Callback<AVSessio
 
 Register session create callback for a specific audio zone.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 

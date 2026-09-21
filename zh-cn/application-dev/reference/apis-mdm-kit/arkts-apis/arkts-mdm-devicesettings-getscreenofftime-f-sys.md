@@ -66,24 +66,8 @@ deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
 });
 ```
 
-```TypeScript
-import { deviceSettings } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-deviceSettings.getScreenOffTime(wantTemp).then((result) => {
-  console.info(`Succeeded in getting screen off time, result : ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get screen off time. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getscreenofftime-1"></a>
 
 ## getScreenOffTime
 
@@ -131,4 +115,20 @@ function getScreenOffTime(admin: Want): Promise<number>
 
 **示例**
 
-参见 [getScreenOffTime](#getscreenofftime)
+```TypeScript
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+deviceSettings.getScreenOffTime(wantTemp).then((result) => {
+  console.info(`Succeeded in getting screen off time, result : ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get screen off time. Code: ${err.code}, message: ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # WorkerOptions
 
+```TypeScript
+export interface WorkerOptions
+```
+
 Worker构造函数的选项，用于为Worker添加其他信息。
 
 **起始版本：** 7

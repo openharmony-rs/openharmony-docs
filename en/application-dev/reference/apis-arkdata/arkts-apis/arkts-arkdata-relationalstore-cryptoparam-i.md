@@ -1,5 +1,9 @@
 # CryptoParam
 
+```TypeScript
+interface CryptoParam
+```
+
 Represents the configuration of database encryption parameters. This configuration is valid only when **encrypt** of **StoreConfig** is set to **true** or the key is not empty.
 
 **Since:** 14

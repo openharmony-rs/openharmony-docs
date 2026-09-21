@@ -1,5 +1,9 @@
 # UserAuthExtensionAbility（系统接口）
 
+```TypeScript
+export default class UserAuthExtensionAbility extends UIExtensionAbility
+```
+
 用户认证扩展能力组件
 
 @extends UIExtensionAbility

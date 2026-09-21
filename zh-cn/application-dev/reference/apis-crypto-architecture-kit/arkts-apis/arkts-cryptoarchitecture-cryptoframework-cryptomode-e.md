@@ -1,5 +1,9 @@
 # CryptoMode
 
+```TypeScript
+enum CryptoMode
+```
+
 枚举加密和解密的密码操作模式。
 
 **起始版本：** 9

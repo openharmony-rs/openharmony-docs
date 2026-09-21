@@ -1,5 +1,9 @@
 # LineHeightStyle
 
+```TypeScript
+declare class LineHeightStyle
+```
+
 Describes the text line height style.
 
 **Since:** 12
@@ -27,6 +31,8 @@ A constructor used to create a text line height style.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | lineHeight | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Yes | Text line height options. If **value** of **LengthMetrics** is less than or equal to 0, the text line height is unlimited and automatically adapts to the font size. |
+
+<a id="constructor-1"></a>
 
 ## constructor
 

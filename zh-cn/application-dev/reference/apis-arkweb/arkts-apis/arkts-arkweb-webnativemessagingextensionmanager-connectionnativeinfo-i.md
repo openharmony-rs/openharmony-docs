@@ -1,5 +1,9 @@
 # ConnectionNativeInfo
 
+```TypeScript
+interface ConnectionNativeInfo
+```
+
 表示Web原生消息连接的连接信息。
 
 **起始版本：** 21

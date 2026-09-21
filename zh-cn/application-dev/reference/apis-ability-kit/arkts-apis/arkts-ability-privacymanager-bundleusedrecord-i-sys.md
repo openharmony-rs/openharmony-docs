@@ -1,5 +1,9 @@
 # BundleUsedRecord（系统接口）
 
+```TypeScript
+interface BundleUsedRecord
+```
+
 某个应用或设备的访问记录。
 
 **起始版本：** 9
@@ -26,6 +30,8 @@ bundleName: string
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -41,6 +47,8 @@ deviceId: string
 **类型：** string
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -58,6 +66,8 @@ deviceName?: string
 
 **起始版本：** 24
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +83,8 @@ isRemote: boolean
 **类型：** boolean
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -90,6 +102,8 @@ permissionRecords: Array<PermissionUsedRecord>
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
@@ -105,6 +119,8 @@ tokenId: number
 **类型：** number
 
 **起始版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 

@@ -1,5 +1,9 @@
 # CooperateMessage (System API)
 
+```TypeScript
+interface CooperateMessage
+```
+
 Defines a screen hopping status change event.
 
 **Since:** 11

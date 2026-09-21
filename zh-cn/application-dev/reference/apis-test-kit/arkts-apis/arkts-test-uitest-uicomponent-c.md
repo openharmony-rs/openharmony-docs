@@ -1,5 +1,9 @@
 # UiComponent
 
+```TypeScript
+declare class UiComponent
+```
+
 UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
 
 > **说明：** 

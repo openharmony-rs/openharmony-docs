@@ -1,5 +1,9 @@
 # EditableLeftIconV2Options
 
+```TypeScript
+export declare interface EditableLeftIconV2Options
+```
+
 Indicates the options of the left icon.
 
 **Since:** 26.0.0

@@ -42,6 +42,8 @@ function getBundlePackInfo(bundleName: string,
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
 
+<a id="getbundlepackinfo-1"></a>
+
 ## getBundlePackInfo
 
 ```TypeScript

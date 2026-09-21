@@ -1,5 +1,9 @@
 # ModifierKey
 
+```TypeScript
+declare enum ModifierKey
+```
+
 输入法修饰键类型。
 
 **起始版本：** 10

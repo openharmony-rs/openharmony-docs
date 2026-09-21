@@ -1,5 +1,9 @@
 # Set
 
+```TypeScript
+class Set<T>
+```
+
 A non-linear data structure.
 
 > **NOTE:** 
@@ -125,6 +129,8 @@ A constructor used to create an ArkTS set.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The ArkTS Set's constructor cannot be directly invoked. |
+
+<a id="constructor-1"></a>
 
 ## constructor
 

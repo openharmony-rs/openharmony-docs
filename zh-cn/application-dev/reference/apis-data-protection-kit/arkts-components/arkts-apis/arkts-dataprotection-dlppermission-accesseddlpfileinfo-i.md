@@ -1,5 +1,9 @@
 # AccessedDLPFileInfo
 
+```TypeScript
+export interface AccessedDLPFileInfo
+```
+
 表示被打开的DLP文件的信息。
 
 **起始版本：** 10

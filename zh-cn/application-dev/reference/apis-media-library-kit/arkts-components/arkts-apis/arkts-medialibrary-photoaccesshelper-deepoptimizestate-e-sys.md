@@ -1,5 +1,9 @@
 # DeepOptimizeState（系统接口）
 
+```TypeScript
+enum DeepOptimizeState
+```
+
 表示深度优化存储空间的状态类型的枚举。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # TextOverflow
 
+```TypeScript
+declare enum TextOverflow
+```
+
 Display mode when the text is too long.
 
 **Since:** 7

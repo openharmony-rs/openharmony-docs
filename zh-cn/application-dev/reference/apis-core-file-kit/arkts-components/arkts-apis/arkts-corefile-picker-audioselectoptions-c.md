@@ -1,5 +1,9 @@
 # AudioSelectOptions
 
+```TypeScript
+class AudioSelectOptions
+```
+
 音频选择选项。
 
 **起始版本：** 9

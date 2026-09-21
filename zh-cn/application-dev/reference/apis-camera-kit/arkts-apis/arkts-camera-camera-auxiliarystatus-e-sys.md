@@ -1,5 +1,9 @@
 # AuxiliaryStatus（系统接口）
 
+```TypeScript
+enum AuxiliaryStatus
+```
+
 Enum for auxiliary status.
 
 **起始版本：** 18

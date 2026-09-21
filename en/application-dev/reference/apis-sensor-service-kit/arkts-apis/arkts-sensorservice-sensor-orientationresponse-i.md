@@ -1,5 +1,9 @@
 # OrientationResponse
 
+```TypeScript
+interface OrientationResponse extends Response
+```
+
 Describes the orientation sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** OrientationResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

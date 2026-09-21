@@ -1,5 +1,9 @@
 # VolumeAdjustType（系统接口）
 
+```TypeScript
+enum VolumeAdjustType
+```
+
 枚举，音量调节类型。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # MmsInformation (System API)
 
+```TypeScript
+export interface MmsInformation
+```
+
 Defines the MMS message information.
 
 **Since:** 8

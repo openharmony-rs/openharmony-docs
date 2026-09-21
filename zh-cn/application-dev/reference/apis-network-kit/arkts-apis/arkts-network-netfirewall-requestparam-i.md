@@ -1,5 +1,9 @@
 # RequestParam
 
+```TypeScript
+interface RequestParam
+```
+
 查询输入信息结构。
 
 **起始版本：** 15

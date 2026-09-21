@@ -1,5 +1,9 @@
 # RouterItem
 
+```TypeScript
+export interface RouterItem
+```
+
 Describes the router table configuration of the module.
 
 **Since:** 12

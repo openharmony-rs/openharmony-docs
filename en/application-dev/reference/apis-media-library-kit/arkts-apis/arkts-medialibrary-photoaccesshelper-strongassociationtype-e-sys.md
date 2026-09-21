@@ -1,5 +1,9 @@
 # StrongAssociationType (System API)
 
+```TypeScript
+enum StrongAssociationType
+```
+
 Enumerates the strong association types of photos.
 
 **Since:** 20

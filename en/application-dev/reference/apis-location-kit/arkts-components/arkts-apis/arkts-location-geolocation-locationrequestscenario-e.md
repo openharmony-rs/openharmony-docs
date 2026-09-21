@@ -1,5 +1,9 @@
 # LocationRequestScenario
 
+```TypeScript
+export enum LocationRequestScenario
+```
+
 Enum for location scenario
 
 **Since:** 7

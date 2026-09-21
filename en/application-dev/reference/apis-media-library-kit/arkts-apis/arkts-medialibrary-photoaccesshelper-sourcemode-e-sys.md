@@ -1,5 +1,9 @@
 # SourceMode (System API)
 
+```TypeScript
+enum SourceMode
+```
+
 Enumerates the types of the file to read.
 
 **Since:** 11

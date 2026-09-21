@@ -1,5 +1,9 @@
 # RouterMode
 
+```TypeScript
+export enum RouterMode
+```
+
 Enumerates the routing modes.
 
 **Since:** 9

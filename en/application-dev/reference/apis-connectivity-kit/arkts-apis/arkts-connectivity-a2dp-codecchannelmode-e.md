@@ -1,5 +1,9 @@
 # CodecChannelMode
 
+```TypeScript
+enum CodecChannelMode
+```
+
 Describes the codec channel mode.
 
 **Since:** 11

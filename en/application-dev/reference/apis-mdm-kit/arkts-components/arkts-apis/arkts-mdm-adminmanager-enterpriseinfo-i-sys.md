@@ -1,5 +1,9 @@
 # EnterpriseInfo (System API)
 
+```TypeScript
+export interface EnterpriseInfo
+```
+
 Represents the enterprise information of a device administrator application.
 
 **Since:** 9

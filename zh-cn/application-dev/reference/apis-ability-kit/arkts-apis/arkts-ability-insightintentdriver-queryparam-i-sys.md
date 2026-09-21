@@ -1,5 +1,9 @@
 # QueryParam（系统接口）
 
+```TypeScript
+interface QueryParam
+```
+
 查询洞察意图实体时的Param。
 
 @typedef QueryParam

@@ -12,7 +12,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 function setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
 ```
 
-Sets an application clone as the default application of the specified type. This API returns the result synchronously. To set an application as the default browser, the target application must have been granted the ohos.permission.DEFAULT_WEB_BROWSER permission. Otherwise, error 18000001 is returned. [since 26.1.0]
+Sets an application clone as the default application of the specified type. This API returns the result synchronously. To set an application as the default browser, the target application must have been granted the ohos.permission.DEFAULT_WEB_BROWSER permission. Otherwise, error 18000001 is returned. [since 26.0.1]
 
 **Since:** 23
 
@@ -42,7 +42,7 @@ Sets an application clone as the default application of the specified type. This
 | [17700025](../errorcode-bundle.md#17700025-invalid-type) | The specified type is invalid. |
 | [17700028](../errorcode-bundle.md#17700028-mismatch-between-ability-and-type) | The specified ability and type do not match. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
-| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.1.0 and later |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 

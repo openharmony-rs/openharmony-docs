@@ -40,14 +40,6 @@ Initiates a call. You can set call options as needed. This API uses an asynchron
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-});
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let dialOptions: call.DialOptions = {
     extras: false
 }
@@ -56,19 +48,8 @@ call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let dialOptions: call.DialOptions = {
-    extras: false
-}
-call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
-    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="dial-1"></a>
 
 ## dial
 
@@ -106,8 +87,21 @@ Initiates a call. You can set call options as needed. This API uses a promise to
 
 **Examples**
 
-See [dial](#dial)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let dialOptions: call.DialOptions = {
+    extras: false
+}
+call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
+    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+
+<a id="dial-2"></a>
 
 ## dial
 
@@ -139,4 +133,10 @@ Initiates a call. This API uses an asynchronous callback to return the result.
 
 **Examples**
 
-See [dial](#dial)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+});
+```

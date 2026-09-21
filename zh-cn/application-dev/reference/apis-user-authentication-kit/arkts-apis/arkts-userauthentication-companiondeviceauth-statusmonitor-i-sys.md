@@ -1,5 +1,9 @@
 # StatusMonitor（系统接口）
 
+```TypeScript
+interface StatusMonitor
+```
+
 状态监听器对象。用于监听或获取模板状态、持续认证状态、可添加设备状态等信息。通过[getStatusMonitor](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md)获取此对象。
 
 **起始版本：** 23

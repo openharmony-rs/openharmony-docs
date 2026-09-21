@@ -1,5 +1,9 @@
 # GestureListenerType
 
+```TypeScript
+export const enum GestureListenerType
+```
+
 此枚举类型用于指定需要监控的手势类型。
 
 **起始版本：** 20

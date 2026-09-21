@@ -1,5 +1,9 @@
 # Notification
 
+```TypeScript
+interface Notification
+```
+
 通知栏自定义信息。
 
 **起始版本：** 15

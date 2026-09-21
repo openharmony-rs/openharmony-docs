@@ -22,9 +22,9 @@ The **CommonEvent** module provides capabilities to publish, subscribe to, and u
 | Name | Description |
 | --- | --- |
 | [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber) | Creates a subscriber. This API uses an asynchronous callback to return the result. |
-| [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber) | Creates a subscriber. This API uses a promise to return the result. |
+| [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber-1) | Creates a subscriber. This API uses a promise to return the result. |
 | [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish) | Publishes a common event with given properties. This API uses an asynchronous callback to return the result. |
-| [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish) | Publishes a common event with given properties. This API uses an asynchronous callback to return the result. |
+| [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish-1) | Publishes a common event with given properties. This API uses an asynchronous callback to return the result. |
 | [subscribe](arkts-basicservices-commonevent-subscribe-depr-f.md#subscribe) | Subscribes to common events. This API uses an asynchronous callback to return the result. |
 | [unsubscribe](arkts-basicservices-commonevent-unsubscribe-depr-f.md#unsubscribe) | Unsubscribes from common events. This API uses an asynchronous callback to return the result. |
 
@@ -34,7 +34,7 @@ The **CommonEvent** module provides capabilities to publish, subscribe to, and u
 | Name | Description |
 | --- | --- |
 | [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser) | Publishes a common event to a specific user. This API uses an asynchronous callback to return the result. |
-| [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser) | Publishes a common event with given properties to a specific user. This API uses an asynchronous callback to return the result. |
+| [publishAsUser](arkts-basicservices-commonevent-publishasuser-depr-f-sys.md#publishasuser-1) | Publishes a common event with given properties to a specific user. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 ### Enums

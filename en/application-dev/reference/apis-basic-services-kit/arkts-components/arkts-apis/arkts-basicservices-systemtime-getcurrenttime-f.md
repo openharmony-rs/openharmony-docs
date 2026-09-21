@@ -54,38 +54,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  systemTime.getCurrentTime((error: BusinessError, time: number) => {
-    if (error) {
-      console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
-      return;
-    }
-    console.info(`Succeeded in getting currentTime : ${time}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  systemTime.getCurrentTime().then((time: number) => {
-    console.info(`Succeeded in getting currentTime : ${time}`);
-  }).catch((error: BusinessError) => {
-    console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
-  });
-} catch(e) {
-  let error = e as BusinessError;
-  console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
-}
-```
-
+<a id="getcurrenttime-1"></a>
 
 ## getCurrentTime
 
@@ -117,8 +87,25 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 **Examples**
 
-See [getCurrentTime](#getcurrenttime)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 
+try {
+  systemTime.getCurrentTime((error: BusinessError, time: number) => {
+    if (error) {
+      console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.info(`Succeeded in getting currentTime : ${time}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+}
+```
+
+
+<a id="getcurrenttime-2"></a>
 
 ## getCurrentTime
 
@@ -156,4 +143,17 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 **Examples**
 
-See [getCurrentTime](#getcurrenttime)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemTime.getCurrentTime().then((time: number) => {
+    console.info(`Succeeded in getting currentTime : ${time}`);
+  }).catch((error: BusinessError) => {
+    console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+}
+```

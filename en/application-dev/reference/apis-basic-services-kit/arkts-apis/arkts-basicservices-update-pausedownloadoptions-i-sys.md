@@ -1,5 +1,9 @@
 # PauseDownloadOptions (System API)
 
+```TypeScript
+export interface PauseDownloadOptions
+```
+
 Defines the pausing download options, which are used to control the pause behavior. The object contains the **isAllowAutoResume** field. The value **true** indicates that automatically resuming download is allowed, and the value **false** indicates that download needs to be manually resumed.
 
 **Since:** 9

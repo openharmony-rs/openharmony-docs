@@ -1,5 +1,9 @@
 # KeysInfo
 
+```TypeScript
+interface KeysInfo
+```
+
 Defines the status information of a media key.
 
 **Since:** 11

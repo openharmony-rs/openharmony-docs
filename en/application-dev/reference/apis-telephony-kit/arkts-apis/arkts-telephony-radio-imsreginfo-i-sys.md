@@ -1,5 +1,9 @@
 # ImsRegInfo (System API)
 
+```TypeScript
+export interface ImsRegInfo
+```
+
 Indicates IMS registration information.
 
 **Since:** 9

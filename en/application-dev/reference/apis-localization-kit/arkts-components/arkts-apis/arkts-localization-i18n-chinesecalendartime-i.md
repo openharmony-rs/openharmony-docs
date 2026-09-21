@@ -1,5 +1,9 @@
 # ChineseCalendarTime
 
+```TypeScript
+export interface ChineseCalendarTime
+```
+
 Represents chinese calendar time element for the ChineseCalendar object.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # SearchPlayInfoType
 
+```TypeScript
+enum SearchPlayInfoType
+```
+
 表示搜播信息类型的枚举。
 
 @enum { string }

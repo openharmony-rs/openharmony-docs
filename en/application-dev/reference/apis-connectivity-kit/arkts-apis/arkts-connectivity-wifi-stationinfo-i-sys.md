@@ -1,5 +1,9 @@
 # StationInfo (System API)
 
+```TypeScript
+interface StationInfo
+```
+
 Wi-Fi station information.
 
 @interface StationInfo

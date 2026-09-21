@@ -1,5 +1,9 @@
 # NrCellInformation（系统接口）
 
+```TypeScript
+export interface NrCellInformation
+```
+
 Obtains NR cell information.
 
 **起始版本：** 8

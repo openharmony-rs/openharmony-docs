@@ -1,10 +1,14 @@
 # FileUri
 
+```TypeScript
+class FileUri extends uri.URI
+```
+
 FileUri表示文件的URI，继承自uri.URI。
 
 @extends uri.URI
 
-**继承/实现关系：** FileUri extends uri.URI
+**继承/实现关系：** FileUri extends [uri.URI](../../apis-arkts/arkts-apis/arkts-arkts-uri-uri-c.md)
 
 **起始版本：** 15
 

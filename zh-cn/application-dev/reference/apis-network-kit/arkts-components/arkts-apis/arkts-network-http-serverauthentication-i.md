@@ -1,5 +1,9 @@
 # ServerAuthentication
 
+```TypeScript
+export interface ServerAuthentication
+```
+
 HTTP服务器身份验证。
 
 **起始版本：** 18

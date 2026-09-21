@@ -1,5 +1,9 @@
 # CameraOutputCapability
 
+```TypeScript
+interface CameraOutputCapability
+```
+
 Describes the camera output capability.
 
 **Since:** 10

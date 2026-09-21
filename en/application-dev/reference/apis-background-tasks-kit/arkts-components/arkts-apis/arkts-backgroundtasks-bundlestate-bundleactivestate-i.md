@@ -1,5 +1,9 @@
 # BundleActiveState
 
+```TypeScript
+interface BundleActiveState
+```
+
 **Since:** 7
 
 **Deprecated since:** 9

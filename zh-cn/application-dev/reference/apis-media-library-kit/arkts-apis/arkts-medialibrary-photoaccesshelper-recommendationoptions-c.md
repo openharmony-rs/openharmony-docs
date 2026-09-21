@@ -1,5 +1,9 @@
 # RecommendationOptions
 
+```TypeScript
+class RecommendationOptions
+```
+
 图片推荐选项(基于图片数据分析结果，依赖设备适配)。
 
 **起始版本：** 11

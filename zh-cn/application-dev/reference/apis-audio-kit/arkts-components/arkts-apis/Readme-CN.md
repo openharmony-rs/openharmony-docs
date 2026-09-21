@@ -74,6 +74,8 @@
   - [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i.md)
   <!--Del-->
   - [AudioRendererOptions(系统接口)](arkts-audio-audio-audiorendereroptions-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AudioRendererTargetParams(系统接口)](arkts-audio-audio-audiorenderertargetparams-i-sys.md)<!--DelEnd-->
   - [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md)
   <!--Del-->
   - [AudioRoutingManager(系统接口)](arkts-audio-audio-audioroutingmanager-i-sys.md)<!--DelEnd-->
@@ -99,8 +101,6 @@
   <!--Del-->
   - [AudioVolumeManager(系统接口)](arkts-audio-audio-audiovolumemanager-i-sys.md)<!--DelEnd-->
   - [CaptureFilterOptions](arkts-audio-audio-capturefilteroptions-i.md)
-  <!--Del-->
-  - [CollaborativeRecordingConfiguration(系统接口)](arkts-audio-audio-collaborativerecordingconfiguration-i-sys.md)<!--DelEnd-->
   - [CurrentInputDeviceChangedEvent](arkts-audio-audio-currentinputdevicechangedevent-i.md)
   - [CurrentOutputDeviceChangedEvent](arkts-audio-audio-currentoutputdevicechangedevent-i.md)
   - [DeviceBlockStatusInfo](arkts-audio-audio-deviceblockstatusinfo-i.md)
@@ -110,10 +110,6 @@
   <!--Del-->
   - [InterruptResult(系统接口)](arkts-audio-audio-interruptresult-i-sys.md)<!--DelEnd-->
   - [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)
-  <!--Del-->
-  - [NoiseReductionCapability(系统接口)](arkts-audio-audio-noisereductioncapability-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [NoiseReductionConfigAction(系统接口)](arkts-audio-audio-noisereductionconfigaction-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [SoundCardInfo(系统接口)](arkts-audio-audio-soundcardinfo-i-sys.md)<!--DelEnd-->
   - [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md)
@@ -129,8 +125,6 @@
   - [VolumeEvent(系统接口)](arkts-audio-audio-volumeevent-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [VolumeGroupInfo(系统接口)](arkts-audio-audio-volumegroupinfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [VolumeLimitExceededEvent(系统接口)](arkts-audio-audio-volumelimitexceededevent-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ActiveStreamsVolumeInfoArray(系统接口)](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md)<!--DelEnd-->
   - [AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md)
@@ -169,6 +163,8 @@
   - [AudioLoopbackReverbPreset](arkts-audio-audio-audioloopbackreverbpreset-e.md)
   - [AudioLoopbackStatus](arkts-audio-audio-audioloopbackstatus-e.md)
   - [AudioPlaybackCaptureMode](arkts-audio-audio-audioplaybackcapturemode-e.md)
+  <!--Del-->
+  - [AudioPlaybackCaptureMode(系统接口)](arkts-audio-audio-audioplaybackcapturemode-e-sys.md)<!--DelEnd-->
   - [AudioPrivacyType](arkts-audio-audio-audioprivacytype-e.md)
   - [AudioRendererRate](arkts-audio-audio-audiorendererrate-e.md)
   - [AudioRingMode](arkts-audio-audio-audioringmode-e.md)
@@ -178,6 +174,8 @@
   <!--Del-->
   - [AudioSeparationVolumeType(系统接口)](arkts-audio-audio-audioseparationvolumetype-e-sys.md)<!--DelEnd-->
   - [AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md)
+  <!--Del-->
+  - [AudioSessionBehaviorFlags(系统接口)](arkts-audio-audio-audiosessionbehaviorflags-e-sys.md)<!--DelEnd-->
   - [AudioSessionDeactivatedReason](arkts-audio-audio-audiosessiondeactivatedreason-e.md)
   - [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md)
   - [AudioSessionStateChangeHint](arkts-audio-audio-audiosessionstatechangehint-e.md)

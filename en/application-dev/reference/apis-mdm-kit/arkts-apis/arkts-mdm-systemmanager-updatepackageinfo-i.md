@@ -1,5 +1,9 @@
 # UpdatePackageInfo
 
+```TypeScript
+export interface UpdatePackageInfo
+```
+
 Represents information about the system update packages.
 
 **Since:** 12

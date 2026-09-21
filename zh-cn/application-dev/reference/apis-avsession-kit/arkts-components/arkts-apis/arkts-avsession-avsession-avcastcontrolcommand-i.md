@@ -1,5 +1,9 @@
 # AVCastControlCommand
 
+```TypeScript
+interface AVCastControlCommand
+```
+
 投播控制器接受的命令的对象描述。
 
 **起始版本：** 10

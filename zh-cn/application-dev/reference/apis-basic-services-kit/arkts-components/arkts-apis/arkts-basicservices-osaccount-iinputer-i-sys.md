@@ -1,5 +1,9 @@
 # IInputer（系统接口）
 
+```TypeScript
+interface IInputer
+```
+
 凭据输入器回调。
 
 **起始版本：** 8

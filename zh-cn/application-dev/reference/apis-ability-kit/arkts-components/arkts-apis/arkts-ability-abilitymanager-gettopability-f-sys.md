@@ -34,6 +34,8 @@ function getTopAbility(): Promise<ElementName>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 
+<a id="gettopability-1"></a>
+
 ## getTopAbility
 
 ```TypeScript

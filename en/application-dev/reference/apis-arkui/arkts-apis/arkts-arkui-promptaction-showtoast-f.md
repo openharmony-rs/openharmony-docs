@@ -28,6 +28,8 @@ Creates and displays a toast.
 
 **Substitutes:** showToast
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -47,7 +49,6 @@ Creates and displays a toast.
 
 **Examples**
 
-```TypeScript
 showToast(options: ShowToastOptions): void
 
 Creates and displays a toast.
@@ -73,4 +74,30 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 > NOTE
 > 
 > If error code 100001 is returned, indicating an ambiguous UI context, use the corresponding APIs from UIContext instead. For details, see [Using the UI Context API for UI Operations (UIContext)](../../../ui/arkts-global-interface.md).
+
+```TypeScript
+import { promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct toastExample {
+  build() {
+    Column() {
+      Button('Show toast').fontSize(20)
+        .onClick(() => {
+          try {
+            promptAction.showToast({
+              message: 'Hello World',
+              duration: 2000
+            });
+          } catch (error) {
+            let message = (error as BusinessError).message;
+            let code = (error as BusinessError).code;
+            console.error(`showToast args error code is ${code}, message is ${message}`);
+          };
+        })
+    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```

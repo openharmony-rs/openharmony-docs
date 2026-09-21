@@ -1,7 +1,7 @@
 # ValueType
 
 ```TypeScript
-type ValueType = number | number | number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
+type ValueType = number | number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
 ```
 
 Enumerates the data field types allowed in a unified data record.

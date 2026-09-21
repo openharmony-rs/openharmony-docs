@@ -1,5 +1,9 @@
 # GeometryType
 
+```TypeScript
+export enum GeometryType
+```
+
 几何类型枚举，用于指定不同的几何类型。
 
 @enum { int }

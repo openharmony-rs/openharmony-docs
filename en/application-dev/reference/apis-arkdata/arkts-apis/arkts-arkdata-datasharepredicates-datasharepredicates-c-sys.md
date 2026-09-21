@@ -1,5 +1,9 @@
 # DataSharePredicates
 
+```TypeScript
+class DataSharePredicates
+```
+
 Provides APIs for setting different **DataSharePredicates** objects. This type is not multi-thread safe. If a **DataSharePredicates** instance is operated by multiple threads at the same time in an application, use a lock for it.
 
 **Since:** 10

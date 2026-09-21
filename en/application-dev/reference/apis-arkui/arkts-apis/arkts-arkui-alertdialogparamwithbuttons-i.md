@@ -1,5 +1,9 @@
 # AlertDialogParamWithButtons
 
+```TypeScript
+declare interface AlertDialogParamWithButtons extends AlertDialogParam
+```
+
 Inherited from [AlertDialogParam](arkts-arkui-alertdialogparam-i.md).
 
 **Inheritance/Implementation:** AlertDialogParamWithButtons extends [AlertDialogParam](arkts-arkui-alertdialogparam-i.md)
@@ -20,6 +24,8 @@ Information about the primary button, including the enabling status, default foc
 
 **Since:** 7
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -35,6 +41,8 @@ Information about the secondary button, including the enabling status, default f
 **Type:** [AlertDialogButtonBaseOptions](arkts-arkui-alertdialogbuttonbaseoptions-i.md)
 
 **Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

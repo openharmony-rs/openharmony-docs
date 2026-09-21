@@ -1,5 +1,9 @@
 # Portrait（系统接口）
 
+```TypeScript
+interface Portrait extends PortraitQuery
+```
+
 Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md). Provides the APIs for portrait photo settings.
 
 **继承/实现关系：** Portrait extends [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.md)

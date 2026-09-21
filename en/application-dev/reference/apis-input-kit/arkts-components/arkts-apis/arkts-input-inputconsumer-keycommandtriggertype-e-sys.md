@@ -1,5 +1,9 @@
 # KeyCommandTriggerType (System API)
 
+```TypeScript
+export enum KeyCommandTriggerType
+```
+
 KeyCommandTriggerType
 
 **Since:** 26.0.0

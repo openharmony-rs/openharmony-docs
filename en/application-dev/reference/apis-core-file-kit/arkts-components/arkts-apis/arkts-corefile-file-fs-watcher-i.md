@@ -1,5 +1,9 @@
 # Watcher
 
+```TypeScript
+export interface Watcher
+```
+
 Provides APIs for observing the changes of files or directories. Before using the APIs of **Watcher**, call **createWatcher()** to create a **Watcher** object.
 
 **Since:** 10

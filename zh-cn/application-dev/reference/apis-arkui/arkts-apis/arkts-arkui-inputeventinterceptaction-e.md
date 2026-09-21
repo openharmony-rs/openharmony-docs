@@ -1,5 +1,9 @@
 # InputEventInterceptAction
 
+```TypeScript
+declare enum InputEventInterceptAction
+```
+
 输入事件拦截动作枚举。
 
 **起始版本：** 26.0.0

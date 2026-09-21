@@ -32,7 +32,7 @@ Creates a **SecurityUIExtensionComponent** component to embed and display the UI
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | import('../api/@ohos.app.ability.Want').default | Yes | Ability information to load. The **UIExtensionAbilit**y to be started is determined by both **bundleName** and **abilityName**. In addition, the **ability.want.params.uiExtensionType** field must be specified in **parameters** to indicate the type of the **UIExtensionAbility**. Currently, only **sysPicker/photoPicker** is supported. |
-| options | [SecurityUIExtensionOptions](arkts-arkui-securityuiextensionoptions-i-sys.md) | No | Options used to construct **SecurityUIExtensionComponent**. If this parameter is left empty, the default value is used for each field. |
+| options | [SecurityUIExtensionOptions](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionoptions-i-sys.md) | No | Options used to construct **SecurityUIExtensionComponent**. If this parameter is left empty, the default value is used for each field. |
 
 ## Summary
 
@@ -40,12 +40,12 @@ Creates a **SecurityUIExtensionComponent** component to embed and display the UI
 
 | Name | Description |
 | --- | --- |
-| [SecurityUIExtensionOptions](arkts-arkui-securityuiextensionoptions-i-sys.md) | Defines the options to be passed when constructing **SecurityUIExtensionComponent**. |
-| [SecurityUIExtensionProxy](arkts-arkui-securityuiextensionproxy-i-sys.md) | Implements a **SecurityUIExtensionProxy** instance for the component host to send data to, subscribe to, or unsubscribe from the started ability through the connection established between the two parties. |
-| [TerminationInfo](arkts-arkui-terminationinfo-i-sys.md) | Defines the result returned when the started **UIExtensionAbility** exits normally. |
+| [SecurityUIExtensionOptions](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionoptions-i-sys.md) | Defines the options to be passed when constructing **SecurityUIExtensionComponent**. |
+| [SecurityUIExtensionProxy](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionproxy-i-sys.md) | Implements a **SecurityUIExtensionProxy** instance for the component host to send data to, subscribe to, or unsubscribe from the started ability through the connection established between the two parties. |
+| [TerminationInfo](arkts-arkui-securityuiextensioncomponent-comp-terminationinfo-i-sys.md) | Defines the result returned when the started **UIExtensionAbility** exits normally. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [SecurityDpiFollowStrategy](arkts-arkui-securitydpifollowstrategy-e-sys.md) | Defines the enum of the resolution following strategy for **SecurityUIExtensionComponent**. |
+| [SecurityDpiFollowStrategy](arkts-arkui-securityuiextensioncomponent-comp-securitydpifollowstrategy-e-sys.md) | Defines the enum of the resolution following strategy for **SecurityUIExtensionComponent**. |

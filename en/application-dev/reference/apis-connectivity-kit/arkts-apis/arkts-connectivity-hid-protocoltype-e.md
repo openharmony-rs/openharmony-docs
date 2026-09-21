@@ -1,5 +1,9 @@
 # ProtocolType
 
+```TypeScript
+enum ProtocolType
+```
+
 Describe the protocol type.
 
 **Since:** 23

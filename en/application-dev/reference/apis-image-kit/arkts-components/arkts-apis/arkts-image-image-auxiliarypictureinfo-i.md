@@ -1,5 +1,9 @@
 # AuxiliaryPictureInfo
 
+```TypeScript
+interface AuxiliaryPictureInfo
+```
+
 Describes the auxiliary picture information.
 
 **Since:** 13

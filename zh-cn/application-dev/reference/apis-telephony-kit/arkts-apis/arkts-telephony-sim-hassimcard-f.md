@@ -50,17 +50,8 @@ sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.hasSimCard(0).then((data: boolean) => {
-    console.info(`hasSimCard success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`hasSimCard failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="hassimcard-1"></a>
 
 ## hasSimCard
 
@@ -98,4 +89,13 @@ function hasSimCard(slotId: number): Promise<boolean>
 
 **示例**
 
-参见 hasSimCard
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.hasSimCard(0).then((data: boolean) => {
+    console.info(`hasSimCard success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`hasSimCard failed, promise: err->${JSON.stringify(err)}`);
+});
+```

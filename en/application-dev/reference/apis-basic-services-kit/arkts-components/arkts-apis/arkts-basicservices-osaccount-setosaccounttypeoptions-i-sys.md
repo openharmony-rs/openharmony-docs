@@ -1,5 +1,9 @@
 # SetOsAccountTypeOptions (System API)
 
+```TypeScript
+interface SetOsAccountTypeOptions
+```
+
 Defines the options for setting the OS account type.
 
 **Since:** 24

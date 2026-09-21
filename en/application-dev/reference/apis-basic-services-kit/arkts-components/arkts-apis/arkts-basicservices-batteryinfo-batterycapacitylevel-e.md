@@ -1,5 +1,9 @@
 # BatteryCapacityLevel
 
+```TypeScript
+export enum BatteryCapacityLevel
+```
+
 Enumerates battery levels.
 
 **Since:** 9

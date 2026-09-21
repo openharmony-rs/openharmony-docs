@@ -1,5 +1,9 @@
 # ImageAnalyzerController
 
+```TypeScript
+declare class ImageAnalyzerController
+```
+
 图像AI分析控制器。可以将此对象绑定至支持的组件，并通过该控制器调用其提供的方法。
 
 **起始版本：** 12

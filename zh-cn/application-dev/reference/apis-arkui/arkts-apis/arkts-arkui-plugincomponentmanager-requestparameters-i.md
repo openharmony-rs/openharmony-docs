@@ -1,5 +1,9 @@
 # RequestParameters
 
+```TypeScript
+interface RequestParameters
+```
+
 使用pluginComponentManager.request方法时需要传递的参数。
 
 **起始版本：** 8

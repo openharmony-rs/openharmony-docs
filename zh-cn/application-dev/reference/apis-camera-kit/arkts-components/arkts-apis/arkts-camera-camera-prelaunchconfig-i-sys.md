@@ -1,5 +1,9 @@
 # PrelaunchConfig（系统接口）
 
+```TypeScript
+interface PrelaunchConfig
+```
+
 Defines the camera prelaunch configuration. Currently, the configuration is used for sensor-level prelaunch. It will be used for stream-level prelaunch in a later version.
 
 **起始版本：** 10

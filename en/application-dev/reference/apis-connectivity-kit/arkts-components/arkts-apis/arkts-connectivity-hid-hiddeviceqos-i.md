@@ -1,5 +1,9 @@
 # HidDeviceQos
 
+```TypeScript
+interface HidDeviceQos
+```
+
 Represents the Quality of Service (QoS) settings for a bluetooth hid device application.
 
 **Since:** 23

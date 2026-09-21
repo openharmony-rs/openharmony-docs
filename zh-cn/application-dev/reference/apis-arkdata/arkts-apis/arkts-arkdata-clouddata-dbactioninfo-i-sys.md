@@ -1,5 +1,9 @@
 # DBActionInfo（系统接口）
 
+```TypeScript
+interface DBActionInfo
+```
+
 端云协同数据库级清除规则。
 
 **起始版本：** 23

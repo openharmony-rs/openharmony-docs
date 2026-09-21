@@ -1,5 +1,9 @@
 # FingerprintEvent（系统接口）
 
+```TypeScript
+export declare interface FingerprintEvent
+```
+
 指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
 **起始版本：** 12

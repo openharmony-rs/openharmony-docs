@@ -1,6 +1,10 @@
 # CounterV2NumberStyleOptions
 
-Defines the number style options.
+```TypeScript
+declare class CounterV2NumberStyleOptions extends CounterV2InlineStyleOptions
+```
+
+Defines the attributes and events of the list and compact **CounterV2**.
 
 **Inheritance/Implementation:** CounterV2NumberStyleOptions extends [CounterV2InlineStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2inlinestyleoptions-c.md)
 
@@ -20,7 +24,13 @@ import { CounterV2Component, CounterV2Options, CounterV2DateData, CounterV2Type 
 onBlurDecrease?: VoidCallback
 ```
 
-Trigger an event when the decrease button loses focus.
+Callback triggered when the decrease button of the **CounterV2** component loses focus.
+
+Use scenario: Pass this callback when custom operations (such as validating input and saving state) need to be performed when the decrease button loses focus.
+
+Default value: **undefined**, indicating that this callback is not triggered.
+
+When the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -36,7 +46,13 @@ Trigger an event when the decrease button loses focus.
 onBlurIncrease?: VoidCallback
 ```
 
-Trigger an event when the increase button loses focus.
+Callback triggered when the increase button of the **CounterV2** component loses focus.
+
+Use scenario: Pass this callback when custom operations (such as validating input and saving state) need to be performed when the increase button loses focus.
+
+Default value: **undefined**, indicating that this callback is not triggered.
+
+When the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -52,7 +68,13 @@ Trigger an event when the increase button loses focus.
 onFocusDecrease?: VoidCallback
 ```
 
-Trigger an event when the decrease button gets focus.
+Callback triggered when the decrease button of the **CounterV2** component gains focus.
+
+Use scenario: Pass this callback when custom operations (such as changing styles and logging) need to be performed when the decrease button gains focus.
+
+Default value: **undefined**, indicating that this callback is not triggered.
+
+When the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -68,7 +90,13 @@ Trigger an event when the decrease button gets focus.
 onFocusIncrease?: VoidCallback
 ```
 
-Trigger an event when the increase button gets focus.
+Callback triggered when the increase button of the **CounterV2** component gains focus.
+
+Use scenario: Pass this callback when custom operations (such as changing styles and logging) need to be performed when the increase button gains focus.
+
+Default value: **undefined**, indicating that this callback is not triggered.
+
+When the value is **undefined**, the default value is used.
 
 **Since:** 26.0.0
 
@@ -84,7 +112,13 @@ Trigger an event when the increase button gets focus.
 label?: ResourceStr
 ```
 
-Set the label of the counter component.
+Description text of **CounterV2**.
+
+Default value: ''
+
+Note: Pass this parameter when description text (such as price and quantity) needs to be displayed next to **CounterV2**.
+
+When the value is **undefined**, the default value is used.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

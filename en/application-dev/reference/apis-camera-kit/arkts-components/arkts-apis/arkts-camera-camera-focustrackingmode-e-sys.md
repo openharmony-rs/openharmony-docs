@@ -1,5 +1,9 @@
 # FocusTrackingMode (System API)
 
+```TypeScript
+enum FocusTrackingMode
+```
+
 Enumerates the focus tracking modes.
 
 **Since:** 15

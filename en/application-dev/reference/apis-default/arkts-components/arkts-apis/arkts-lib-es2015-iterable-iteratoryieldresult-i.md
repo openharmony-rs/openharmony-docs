@@ -1,5 +1,9 @@
 # IteratorYieldResult
 
+```TypeScript
+interface IteratorYieldResult<TYield>
+```
+
 ## Modules to Import
 
 ```TypeScript

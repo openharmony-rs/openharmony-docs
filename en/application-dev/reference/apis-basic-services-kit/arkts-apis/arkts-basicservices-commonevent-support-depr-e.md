@@ -1,5 +1,9 @@
 # Support
 
+```TypeScript
+export enum Support
+```
+
 A system common event is an event that is published by a system service or system application and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
 
 **Since:** 7

@@ -1,5 +1,9 @@
 # document(File Operation)
 
+```TypeScript
+declare namespace document
+```
+
 document
 
 **Since:** 6

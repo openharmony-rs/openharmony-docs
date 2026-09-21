@@ -1,5 +1,9 @@
 # PropertyWriteRequest
 
+```TypeScript
+interface PropertyWriteRequest
+```
+
 表示客户端的Property写请求参数。
 
 **起始版本：** 26.0.0

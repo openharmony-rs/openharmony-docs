@@ -1,5 +1,9 @@
 # Sensor
 
+```TypeScript
+export default class Sensor
+```
+
 **Since:** 6
 
 **Deprecated since:** 8
@@ -49,14 +53,14 @@ Subscribes to data changes of the acceleration sensor. If this API is called mul
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [ACCELEROMETER](arkts-sensorservice-sensor-on-f.md)
+> [ACCELEROMETER](arkts-sensorservice-sensor-on-f.md#on-24)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-24)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -81,14 +85,14 @@ Subscribes to data changes of the barometer sensor. If this API is called multip
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [BAROMETER](arkts-sensorservice-sensor-on-f.md)
+> [BAROMETER](arkts-sensorservice-sensor-on-f.md#on-28)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-28)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -111,7 +115,7 @@ Subscribes to data changes of the compass sensor. If this API is called multiple
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [ORIENTATION](arkts-sensorservice-sensor-on-f.md)
+> [ORIENTATION](arkts-sensorservice-sensor-on-f.md#on-38)
 > since API Version 8.
 
 **Since:** 3
@@ -143,14 +147,14 @@ If this API is called multiple times for the same application, the last call tak
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [ORIENTATION](arkts-sensorservice-sensor-on-f.md)
+> [ORIENTATION](arkts-sensorservice-sensor-on-f.md#on-38)
 > instead. since API Version 8.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-38)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -175,14 +179,14 @@ If this API is called multiple times for the same application, the last call tak
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [GYROSCOPE](arkts-sensorservice-sensor-on-f.md)
+> [GYROSCOPE](arkts-sensorservice-sensor-on-f.md#on-30)
 > instead. since API Version 8.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-30)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -207,14 +211,14 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [HEART_RATE](arkts-sensorservice-sensor-on-f.md)
+> [HEART_RATE](arkts-sensorservice-sensor-on-f.md#on-33)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-33)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
 
@@ -239,7 +243,7 @@ Subscribes to data changes of the ambient light sensor. If this API is called mu
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [AMBIENT_LIGHT](arkts-sensorservice-sensor-on-f.md)
+> [AMBIENT_LIGHT](arkts-sensorservice-sensor-on-f.md#on-26)
 > since API Version 8.
 
 **Since:** 3
@@ -269,14 +273,14 @@ Subscribes to wearing status changes of a wearable device. If this API is called
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [WEAR_DETECTION](arkts-sensorservice-sensor-on-f.md)
+> [WEAR_DETECTION](arkts-sensorservice-sensor-on-f.md#on-44)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-44)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -299,7 +303,7 @@ Subscribes to data changes of the proximity sensor. If this API is called multip
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [PROXIMITY](arkts-sensorservice-sensor-on-f.md)
+> [PROXIMITY](arkts-sensorservice-sensor-on-f.md#on-41)
 > instead. since API Version 8.
 
 **Since:** 3
@@ -329,14 +333,14 @@ Subscribes to data changes of the step counter sensor. If this API is called mul
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [PEDOMETER](arkts-sensorservice-sensor-on-f.md)
+> [PEDOMETER](arkts-sensorservice-sensor-on-f.md#on-39)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
+**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md#on-39)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -361,14 +365,14 @@ Unsubscribes from data changes of the acceleration sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [ACCELEROMETER](arkts-sensorservice-sensor-off-f.md)
+> [ACCELEROMETER](arkts-sensorservice-sensor-off-f.md#off-47)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-47)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -387,14 +391,14 @@ Unsubscribes from data changes of the barometer sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [BAROMETER](arkts-sensorservice-sensor-off-f.md)
+> [BAROMETER](arkts-sensorservice-sensor-off-f.md#off-51)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-51)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -411,14 +415,14 @@ Unsubscribes from data changes of the compass sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [ORIENTATION](arkts-sensorservice-sensor-off-f.md)
+> [ORIENTATION](arkts-sensorservice-sensor-off-f.md#off-61)
 > instead.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-61)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -435,14 +439,14 @@ Unsubscribes from data changes of the device orientation sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [ORIENTATION](arkts-sensorservice-sensor-off-f.md)
+> [ORIENTATION](arkts-sensorservice-sensor-off-f.md#off-61)
 > instead. since API Version 8.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-61)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -459,14 +463,14 @@ Unsubscribes from data changes of the gyroscope sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [GYROSCOPE](arkts-sensorservice-sensor-off-f.md)
+> [GYROSCOPE](arkts-sensorservice-sensor-off-f.md#off-53)
 > instead. since API Version 8.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-53)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -485,14 +489,14 @@ Unsubscribes from data changes of the heart rate sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [HEART_RATE](arkts-sensorservice-sensor-off-f.md)
+> [HEART_RATE](arkts-sensorservice-sensor-off-f.md#off-56)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-56)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
 
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
 
@@ -511,14 +515,14 @@ Unsubscribes from data changes of the ambient light sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [AMBIENT_LIGHT](arkts-sensorservice-sensor-off-f.md)
+> [AMBIENT_LIGHT](arkts-sensorservice-sensor-off-f.md#off-49)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-49)(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -535,14 +539,14 @@ Unsubscribes from wearing status changes of a wearable device.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [WEAR_DETECTION](arkts-sensorservice-sensor-off-f.md)
+> [WEAR_DETECTION](arkts-sensorservice-sensor-off-f.md#off-67)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-67)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -559,7 +563,7 @@ Unsubscribes from data changes of the proximity sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [PROXIMITY](arkts-sensorservice-sensor-off-f.md)
+> [PROXIMITY](arkts-sensorservice-sensor-off-f.md#off-64)
 > instead. since API Version 8.
 
 **Since:** 3
@@ -583,14 +587,14 @@ Unsubscribes from data changes of the step counter sensor.
 > **NOTE:** 
 > 
 > Except for lite wearables, You are advised to use
-> [PEDOMETER](arkts-sensorservice-sensor-off-f.md)
+> [PEDOMETER](arkts-sensorservice-sensor-off-f.md#off-62)
 > instead. since API Version 8.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
-**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
+**Substitutes:** [off](arkts-sensorservice-sensor-off-f.md#off-62)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 

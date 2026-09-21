@@ -1,5 +1,9 @@
 # FocusRuleType (System API)
 
+```TypeScript
+export enum FocusRuleType
+```
+
 Enumerates the focus rule types.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # ExposureMode
 
+```TypeScript
+enum ExposureMode
+```
+
 枚举，曝光模式。
 
 **起始版本：** 10

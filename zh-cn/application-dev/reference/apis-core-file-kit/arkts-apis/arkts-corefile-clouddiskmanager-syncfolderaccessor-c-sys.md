@@ -1,5 +1,9 @@
 # SyncFolderAccessor（系统接口）
 
+```TypeScript
+class SyncFolderAccessor
+```
+
 同步根管理类，负责为系统文件管理应用提供获取三方网盘注册的同步根信息的能力。
 
 **起始版本：** 21

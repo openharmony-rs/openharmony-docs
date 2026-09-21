@@ -1,5 +1,9 @@
 # Progress
 
+```TypeScript
+interface Progress
+```
+
 任务进度的数据结构。
 
 **起始版本：** 10

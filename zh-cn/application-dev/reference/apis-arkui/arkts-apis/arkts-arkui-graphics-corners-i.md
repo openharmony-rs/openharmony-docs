@@ -1,5 +1,9 @@
 # Corners
 
+```TypeScript
+interface Corners<T>
+```
+
 用于设置四个角的圆角属性。
 
 **起始版本：** 12

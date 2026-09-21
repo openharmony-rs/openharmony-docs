@@ -1,5 +1,9 @@
 # CloudSyncConfig
 
+```TypeScript
+interface CloudSyncConfig
+```
+
 Cloud sync configuration.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # SwiperContentInfo
 
+```TypeScript
+export interface SwiperContentInfo
+```
+
 Provides content area information of the **Swiper** component.
 
 **Since:** 22

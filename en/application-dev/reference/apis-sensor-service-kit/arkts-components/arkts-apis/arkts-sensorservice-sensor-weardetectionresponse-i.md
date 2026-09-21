@@ -1,5 +1,9 @@
 # WearDetectionResponse
 
+```TypeScript
+interface WearDetectionResponse extends Response
+```
+
 Describes the wear detection sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** WearDetectionResponse extends [Response](arkts-sensorservice-sensor-response-i.md)

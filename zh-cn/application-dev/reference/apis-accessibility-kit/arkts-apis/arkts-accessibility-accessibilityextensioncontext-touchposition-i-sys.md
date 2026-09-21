@@ -1,5 +1,9 @@
 # TouchPosition（系统接口）
 
+```TypeScript
+export declare interface TouchPosition
+```
+
 触摸点击位置。
 
 **起始版本：** 26.0.0

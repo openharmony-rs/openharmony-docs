@@ -1,5 +1,9 @@
 # AccessibilityHoverType
 
+```TypeScript
+declare enum AccessibilityHoverType
+```
+
 Type of accessibility hover event.
 
 @enum {number}

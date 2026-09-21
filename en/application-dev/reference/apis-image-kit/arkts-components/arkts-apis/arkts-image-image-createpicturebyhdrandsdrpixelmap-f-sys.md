@@ -77,46 +77,8 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-```TypeScript
-import { fileIo } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-async function CreatePictureTest(context: Context) {
-  const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // Obtain an SDR image.
-  let imageSource: image.ImageSource = image.createImageSource(rawFile);
-  let decodingOptionsForSDR: image.DecodingOptions = {
-    desiredDynamicRange : image.DecodingDynamicRange.SDR,
-  }
-  let decodingOptionsForHDR: image.DecodingOptions = {
-    desiredDynamicRange : image.DecodingDynamicRange.HDR, // Decode an SDR PixelMap into an HDR PixelMap using AIHDR.
-  }
-  let sdrPixelMap = await imageSource.createPixelMap(decodingOptionsForSDR);
-  let hdrPixelMap = await imageSource.createPixelMap(decodingOptionsForHDR);
-  let params : image.GainmapParams = {
-    isFullSizeGainmap: true
-  }
-
-  // Obtain the gainmap generated and encode the gainmap.
-  let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
-  if (picture != null) {
-    console.info('Succeeded in creating picture');
-  } else {
-    console.error('Create picture failed');
-  }
-  const imagePackerObj = image.createImagePacker();
-  let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
-  packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
-  const path: string = context.filesDir + "/hdr-test.jpg";
-  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-  imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
-  }).catch((error : BusinessError) => {
-    console.error('Failed to pack the image. And the error is: ' + error);
-  })
-}
-```
-
+<a id="createpicturebyhdrandsdrpixelmap-1"></a>
 
 ## createPictureByHdrAndSdrPixelMap
 
@@ -158,4 +120,42 @@ Creates a Picture object by a HDR PixelMap and a SDR PixelMap with specified opt
 
 **Examples**
 
-See [createPictureByHdrAndSdrPixelMap](#createpicturebyhdrandsdrpixelmap)
+```TypeScript
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function CreatePictureTest(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // Obtain an SDR image.
+  let imageSource: image.ImageSource = image.createImageSource(rawFile);
+  let decodingOptionsForSDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.SDR,
+  }
+  let decodingOptionsForHDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.HDR, // Decode an SDR PixelMap into an HDR PixelMap using AIHDR.
+  }
+  let sdrPixelMap = await imageSource.createPixelMap(decodingOptionsForSDR);
+  let hdrPixelMap = await imageSource.createPixelMap(decodingOptionsForHDR);
+  let params : image.GainmapParams = {
+    isFullSizeGainmap: true
+  }
+
+  // Obtain the gainmap generated and encode the gainmap.
+  let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
+  if (picture != null) {
+    console.info('Succeeded in creating picture');
+  } else {
+    console.error('Create picture failed');
+  }
+  const imagePackerObj = image.createImagePacker();
+  let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
+  packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+  const path: string = context.filesDir + "/hdr-test.jpg";
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
+  }).catch((error : BusinessError) => {
+    console.error('Failed to pack the image. And the error is: ' + error);
+  })
+}
+```

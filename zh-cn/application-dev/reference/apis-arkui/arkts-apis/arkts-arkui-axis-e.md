@@ -1,5 +1,9 @@
 # Axis
 
+```TypeScript
+declare enum Axis
+```
+
 定义轴的方向。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # LightEffectOptions
 
+```TypeScript
+interface LightEffectOptions
+```
+
 沉浸式材质的光感交互反馈配置。光感交互反馈是指组件在用户触摸交互时，材质表面呈现动态光感变化的视觉效果。用于自定义反馈光感的颜色。
 
 **起始版本：** 26.0.0

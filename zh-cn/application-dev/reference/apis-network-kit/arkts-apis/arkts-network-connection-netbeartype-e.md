@@ -1,5 +1,9 @@
 # NetBearType
 
+```TypeScript
+export enum NetBearType
+```
+
 网络类型。
 
 **起始版本：** 8

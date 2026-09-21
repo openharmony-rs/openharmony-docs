@@ -1,5 +1,9 @@
 # AutoSyncTriggerInfo
 
+```TypeScript
+interface AutoSyncTriggerInfo
+```
+
 自动同步触发信息。
 
 **起始版本：** 26.0.0

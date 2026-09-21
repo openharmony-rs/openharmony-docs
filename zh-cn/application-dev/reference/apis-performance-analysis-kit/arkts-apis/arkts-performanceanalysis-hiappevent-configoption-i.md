@@ -1,5 +1,9 @@
 # ConfigOption
 
+```TypeScript
+interface ConfigOption
+```
+
 提供对应用事件打点功能的配置选项。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # HapModuleInfo
 
+```TypeScript
+export interface HapModuleInfo
+```
+
 HAP信息。
 
 **起始版本：** 9

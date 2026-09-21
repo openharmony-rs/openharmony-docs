@@ -1,5 +1,9 @@
 # ActionType (System API)
 
+```TypeScript
+export enum ActionType
+```
+
 Type of action sequence.
 
 **Since:** 26.0.0

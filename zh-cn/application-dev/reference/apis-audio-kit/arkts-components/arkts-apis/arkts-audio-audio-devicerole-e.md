@@ -1,5 +1,9 @@
 # DeviceRole
 
+```TypeScript
+enum DeviceRole
+```
+
 表示设备角色的枚举。
 
 **起始版本：** 7

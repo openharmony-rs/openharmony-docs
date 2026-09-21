@@ -1,5 +1,9 @@
 # PrintErrorCode
 
+```TypeScript
+enum PrintErrorCode
+```
+
 Enumerates the print error codes.
 
 **Since:** 14

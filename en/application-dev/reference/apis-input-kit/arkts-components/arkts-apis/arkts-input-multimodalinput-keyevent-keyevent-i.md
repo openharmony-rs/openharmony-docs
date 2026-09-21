@@ -1,5 +1,9 @@
 # KeyEvent
 
+```TypeScript
+export declare interface KeyEvent extends InputEvent
+```
+
 Key event.
 
 @interface KeyEvent [since 9 - 11]

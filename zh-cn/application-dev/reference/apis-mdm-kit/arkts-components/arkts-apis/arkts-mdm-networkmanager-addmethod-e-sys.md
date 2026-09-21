@@ -1,5 +1,9 @@
 # AddMethod（系统接口）
 
+```TypeScript
+enum AddMethod
+```
+
 添加网络包方法。
 
 **起始版本：** 10

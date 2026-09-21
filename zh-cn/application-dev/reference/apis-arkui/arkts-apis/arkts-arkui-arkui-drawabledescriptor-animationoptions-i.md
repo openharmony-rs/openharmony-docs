@@ -1,5 +1,9 @@
 # AnimationOptions
 
+```TypeScript
+declare interface AnimationOptions
+```
+
 动画播放参数。包括播放时延，迭代次数，单帧播放时间，是否自动播放。
 
 **起始版本：** 12
@@ -129,3 +133,56 @@ stopMode?: AnimationStopMode
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { AnimationOptions, AnimatedDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct Example {
+  pixelMaps: Array<image.PixelMap> = [];
+  // 设置了4张图，同时设置4张图的duration。
+  options: AnimationOptions = {
+    duration: 2000,
+    iterations: 1,
+    frameDurations: [20, 30, 40, 50],
+    autoPlay: true
+  };
+  @State animated?: DrawableDescriptor = undefined;
+
+  aboutToAppear() {
+    // $r('app.media.png1')需要替换为开发者所需的图像资源文件。
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png1')));
+     // $r('app.media.png2')需要替换为开发者所需的图像资源文件。
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png2')));
+     // $r('app.media.png3')需要替换为开发者所需的图像资源文件。
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png3')));
+     // $r('app.media.png4')需要替换为开发者所需的图像资源文件。
+    this.pixelMaps.push(this.getPixmapFromMedia($r('app.media.png4')));
+    this.animated = new AnimatedDrawableDescriptor(this.pixelMaps, this.options);
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.animated)
+          .width(100)
+          .height(100)
+      }
+    }
+  }
+
+  private getPixmapFromMedia(resource: Resource) {
+    let unit8Array = this.getUIContext().getHostContext()?.resourceManager?.getMediaContentSync(resource.id);
+    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
+    let pixelMap: image.PixelMap = imageSource.createPixelMapSync({
+      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+    });
+    imageSource.release();
+    return pixelMap;
+  }
+}
+```

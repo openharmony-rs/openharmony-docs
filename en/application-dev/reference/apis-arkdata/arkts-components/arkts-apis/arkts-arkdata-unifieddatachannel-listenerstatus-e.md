@@ -1,5 +1,9 @@
 # ListenerStatus
 
+```TypeScript
+enum ListenerStatus
+```
+
 Enumerates the status codes returned when data is obtained from the UDMF.
 
 **Since:** 15

@@ -1,5 +1,9 @@
 # Value
 
+```TypeScript
+interface Value
+```
+
 Defines the **value** object in a KV store.
 
 **Since:** 9
@@ -31,12 +35,12 @@ Type of the value.
 ## value
 
 ```TypeScript
-value: Uint8Array | string | number | number | boolean
+value: Uint8Array | string | number | boolean
 ```
 
 Value of the KV pair.
 
-**Type:** Uint8Array &#124; string &#124; number &#124; number &#124; boolean
+**Type:** Uint8Array &#124; string &#124; number &#124; boolean
 
 **Since:** 9
 

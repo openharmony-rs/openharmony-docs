@@ -1,5 +1,9 @@
 # RotateResult
 
+```TypeScript
+interface RotateResult
+```
+
 Rotation Result.
 
 **Since:** 10

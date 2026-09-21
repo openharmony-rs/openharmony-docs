@@ -1,5 +1,9 @@
 # IpProfile
 
+```TypeScript
+interface IpProfile
+```
+
 IP配置信息。
 
 **起始版本：** 12

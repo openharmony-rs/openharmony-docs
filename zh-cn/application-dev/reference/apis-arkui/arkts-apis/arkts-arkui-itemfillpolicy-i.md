@@ -1,5 +1,9 @@
 # ItemFillPolicy
 
+```TypeScript
+declare interface ItemFillPolicy
+```
+
 定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **起始版本：** 22

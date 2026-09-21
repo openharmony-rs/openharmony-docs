@@ -1,5 +1,9 @@
 # Point
 
+```TypeScript
+export interface Point
+```
+
 Indicates a location point, including the longitude and latitude.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # Touch
 
+```TypeScript
+export declare interface Touch
+```
+
 触屏点信息。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # TipsDialogV2
 
+```TypeScript
+export declare struct TipsDialogV2
+```
+
 提示弹出框，即为带图形确认弹出框，必要时可通过图形化方式展现确认弹出框。适用于需要图形化方式展示的重要提示场景，如应用卸载确认等。
 
 **起始版本：** 18
@@ -140,7 +144,7 @@ imageRes: ResourceStr | PixelMap
 
 展示的图片。
 
-**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [PixelMap](../arkts-components/arkts-arkui-common-comp-pixelmap-t.md)
 
 **起始版本：** 18
 

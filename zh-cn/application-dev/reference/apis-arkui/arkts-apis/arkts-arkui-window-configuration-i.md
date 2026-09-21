@@ -1,5 +1,9 @@
 # Configuration
 
+```TypeScript
+interface Configuration
+```
+
 创建子窗口或系统窗口时的参数。
 
 **起始版本：** 9

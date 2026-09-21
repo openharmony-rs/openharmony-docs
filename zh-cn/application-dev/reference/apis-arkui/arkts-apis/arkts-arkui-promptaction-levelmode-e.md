@@ -1,5 +1,9 @@
 # LevelMode
 
+```TypeScript
+export enum LevelMode
+```
+
 弹窗显示层级模式。
 
 **起始版本：** 15

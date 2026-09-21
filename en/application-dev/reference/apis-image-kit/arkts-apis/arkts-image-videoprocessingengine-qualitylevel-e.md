@@ -1,5 +1,9 @@
 # QualityLevel
 
+```TypeScript
+enum QualityLevel
+```
+
 Levels of processing quality for detail enhancement. @enum {int}
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # DeviceConnectState
 
+```TypeScript
+export enum DeviceConnectState
+```
+
 Device connection state.
 
 **Since:** 8

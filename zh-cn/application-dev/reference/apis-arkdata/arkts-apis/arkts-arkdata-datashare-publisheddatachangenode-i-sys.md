@@ -1,5 +1,9 @@
 # PublishedDataChangeNode（系统接口）
 
+```TypeScript
+interface PublishedDataChangeNode
+```
+
 订阅/取消订阅已发布数据变更的结果。
 
 **起始版本：** 10

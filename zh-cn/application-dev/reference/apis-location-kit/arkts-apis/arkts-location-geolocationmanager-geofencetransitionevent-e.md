@@ -1,5 +1,9 @@
 # GeofenceTransitionEvent
 
+```TypeScript
+export enum GeofenceTransitionEvent
+```
+
 地理围栏事件。
 
 **起始版本：** 12

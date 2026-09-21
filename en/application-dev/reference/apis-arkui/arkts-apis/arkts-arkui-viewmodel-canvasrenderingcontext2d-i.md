@@ -1,5 +1,9 @@
 # CanvasRenderingContext2D
 
+```TypeScript
+export interface CanvasRenderingContext2D
+```
+
 CanvasRenderingContext2D allows you to draw rectangles, text, images, and other objects on a canvas. You can call getContext('2d') on canvas to obtain a CanvasRenderingContext2D object.
 
 @interface CanvasRenderingContext2D
@@ -174,6 +178,8 @@ Creates an ImageData object.
 | --- | --- |
 | ImageData | Returns the newly created FunctionCallable object. |
 
+<a id="createimagedata-1"></a>
+
 ## createImageData
 
 ```TypeScript
@@ -254,6 +260,8 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 | Type | Description |
 | --- | --- |
 | [Path2D](arkts-arkui-viewmodel-path2d-i.md) | the object of Path2D. |
+
+<a id="createpath2d-1"></a>
 
 ## createPath2D
 
@@ -363,6 +371,8 @@ Draws an image.
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
 
+<a id="drawimage-1"></a>
+
 ## drawImage
 
 ```TypeScript
@@ -401,6 +411,8 @@ Draws an image.
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
 
+<a id="drawimage-2"></a>
+
 ## drawImage
 
 ```TypeScript
@@ -424,6 +436,8 @@ Draws an image.
 | dy | number | Yes | Y-coordinate of the upper left corner of the drawing area on the canvas. |
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
+
+<a id="drawimage-3"></a>
 
 ## drawImage
 
@@ -726,6 +740,8 @@ Puts the ImageData onto a rectangular area on the canvas.
 | dx | number | Yes | X-axis offset of the rectangle area on the canvas. |
 | dy | number | Yes | Y-axis offset of the rectangle area on the canvas. |
 
+<a id="putimagedata-1"></a>
+
 ## putImageData
 
 ```TypeScript
@@ -940,6 +956,8 @@ Draws a border stroke.
 **Model restriction:** This API can be used only in the FA model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="stroke-1"></a>
 
 ## stroke
 

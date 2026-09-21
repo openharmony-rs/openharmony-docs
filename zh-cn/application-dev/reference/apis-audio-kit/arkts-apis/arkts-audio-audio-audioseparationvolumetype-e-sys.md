@@ -1,5 +1,9 @@
 # AudioSeparationVolumeType（系统接口）
 
+```TypeScript
+enum AudioSeparationVolumeType
+```
+
 表示音频分离效果的音量类型。
 
 **起始版本：** 26.0.0

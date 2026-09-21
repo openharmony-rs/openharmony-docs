@@ -1,5 +1,9 @@
 # DeviceBlockStatus
 
+```TypeScript
+enum DeviceBlockStatus
+```
+
 表示音频设备是否被堵塞的枚举。
 
 **起始版本：** 13

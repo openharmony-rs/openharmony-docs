@@ -1,5 +1,9 @@
 # LiveFormExtensionAbility
 
+```TypeScript
+declare class LiveFormExtensionAbility extends ExtensionAbility
+```
+
 Interactive widget extension class. It provides APIs for the widget provider to receive notifications about widget creation and destruction.
 
 **Inheritance/Implementation:** LiveFormExtensionAbility extends [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md)

@@ -1,5 +1,9 @@
 # Font
 
+```TypeScript
+declare interface Font
+```
+
 Sets the text style.
 
 > **NOTE:** 

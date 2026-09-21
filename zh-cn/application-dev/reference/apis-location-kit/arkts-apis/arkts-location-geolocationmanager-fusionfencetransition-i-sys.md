@@ -1,5 +1,9 @@
 # FusionFenceTransition（系统接口）
 
+```TypeScript
+export interface FusionFenceTransition
+```
+
 融合围栏回调事件信息。
 
 **起始版本：** 26.0.0

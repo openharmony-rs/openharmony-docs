@@ -1,5 +1,9 @@
 # NoiseReductionMode
 
+```TypeScript
+enum NoiseReductionMode
+```
+
 表示录音降噪模式的枚举。
 
 **起始版本：** 26.0.0

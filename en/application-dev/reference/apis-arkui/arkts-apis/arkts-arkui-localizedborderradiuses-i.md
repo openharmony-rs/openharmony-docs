@@ -1,5 +1,9 @@
 # LocalizedBorderRadiuses
 
+```TypeScript
+declare interface LocalizedBorderRadiuses
+```
+
 Defines the corner radius of a component's border.
 
 To reference this object, at least one parameter must be passed.

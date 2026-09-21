@@ -77,40 +77,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          // 获取当前系统中所有session的描述符。
-          let descriptors = await AVSessionManager.getAllSessionDescriptors();
-          if (descriptors.length === 0) {
-            console.error(`No session in system, can not create controller.`);
-            return;
-          }
-          // 取目标session的sessionId创建controller。
-          let sessionId = descriptors[0].sessionId;
-
-          let avCastController: avSession.AVCastController;
-          avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
-            avCastController = avcontroller;
-            console.info('Succeeded in getting AV cast controller.');
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
+<a id="getavcastcontroller-2"></a>
 
 ## getAVCastController
 
@@ -153,40 +121,6 @@ function getAVCastController(sessionId: string): Promise<AVCastController>
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | session does not exist |
 
 **示例**
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          // 获取当前系统中所有session的描述符。
-          let descriptors = await AVSessionManager.getAllSessionDescriptors();
-          if (descriptors.length === 0) {
-            console.error(`No session in system, can not create controller.`);
-            return;
-          }
-          // 取目标session的sessionId创建controller。
-          let sessionId = descriptors[0].sessionId;
-
-          let avCastController: avSession.AVCastController;
-          avSession.getAVCastController(sessionId, (avcontroller: avSession.AVCastController) => {
-            avCastController = avcontroller;
-            console.info('Succeeded in getting AV cast controller.');
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

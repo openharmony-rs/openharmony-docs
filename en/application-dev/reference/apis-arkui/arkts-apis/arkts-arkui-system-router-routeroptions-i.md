@@ -1,5 +1,9 @@
 # RouterOptions
 
+```TypeScript
+export interface RouterOptions
+```
+
 Defines the page routing parameters.
 
 **Since:** 3

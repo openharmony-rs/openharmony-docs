@@ -1,5 +1,9 @@
 # CallerType
 
+```TypeScript
+enum CallerType
+```
+
 Enumerates CallerType including caller source type.
 
 **Since:** 22

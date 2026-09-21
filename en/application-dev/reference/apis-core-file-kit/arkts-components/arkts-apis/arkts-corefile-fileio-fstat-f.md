@@ -34,6 +34,8 @@ Obtains file status based on the file descriptor. This API uses a promise to ret
 | Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | Promise that returns the detailed file status obtained. |
 
 
+<a id="fstat-1"></a>
+
 ## fstat
 
 ```TypeScript

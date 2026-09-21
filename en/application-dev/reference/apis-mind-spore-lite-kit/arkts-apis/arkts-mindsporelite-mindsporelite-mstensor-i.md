@@ -1,5 +1,9 @@
 # MSTensor
 
+```TypeScript
+interface MSTensor
+```
+
 Provides MSTensor definition
 
 **Since:** 10

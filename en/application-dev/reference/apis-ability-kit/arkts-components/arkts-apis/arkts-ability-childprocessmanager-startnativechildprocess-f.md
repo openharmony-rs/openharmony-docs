@@ -54,10 +54,81 @@ Starts a [native child process](../../../application-models/ability-terminology.
 
 **Examples**
 
-```TypeScript
 For details about the child process, see Child Process Development Guide (ArkTS) - Creating a Native Child Process That Supports Parameter Passing:
-```
 
 ```TypeScript
+#include <AbilityKit/native_child_process.h>
+
+extern "C" {
+
+/**
+ * Entry function of a child process, which implements the service logic of the child process.
+ * The function name can be customized and is specified when the main process calls the OH_Ability_StartNativeChildProcess method. In this example, the function name is Main.
+ * After the function is returned, the child process exits.
+ */
+void Main(NativeChildProcess_Args args)
+{
+    // Obtain the passed-in entryParams.
+    char *entryParams = args.entryParams;
+    // Obtain the input FD list, corresponding to args.fds in ChildProcessArgs.
+    NativeChildProcess_Fd *current = args.fdList.head;
+    while (current != nullptr) {
+        char *fdName = current->fdName;
+        int32_t fd = current->fd;
+        current = current->next;
+        // Service logic
+    }
+}
+} // extern "C"
+```
+
 Sample code for the main process is provided below. For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// Main process:
+// Use the childProcessManager.startNativeChildProcess method to start a child process:
+import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              let path = context.filesDir + "/test.txt";
+              let file = fileIo.openSync(path, fileIo.OpenMode.READ_ONLY | fileIo.OpenMode.CREATE);
+              let args: ChildProcessArgs = {
+                entryParams: "testParam",
+                fds: {
+                  "key1": file.fd
+                }
+              };
+              let options: ChildProcessOptions = {
+                isolationMode: false
+              };
+              childProcessManager.startNativeChildProcess("libentry.so:Main", args, options)
+                .then((pid) => {
+                  console.info(`startNativeChildProcess success, pid: ${pid}`);
+                })
+                .catch((err: BusinessError) => {
+                  console.error(`startNativeChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                })
+            } catch (err: BusinessError) {
+              console.error(`startNativeChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
 ```

@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="createcontroller-1"></a>
+
 ## createController
 
 ```TypeScript
@@ -62,34 +64,6 @@ struct Index {
               if (descriptors.length > 0 ) {
                 avSession.createController(descriptors[0]?.sessionId).then((avcontroller: avSession.AVSessionController) => {
                   console.info('Succeeded in creating controller.');
-                });
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-```TypeScript
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
-              if (descriptors.length > 0) {
-                avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.AVSessionController) => { 
-                  console.info('Succeeded in creating controller.'); 
                 });
               }
             });

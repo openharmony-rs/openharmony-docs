@@ -1,5 +1,9 @@
 # UdpNetPortStatesInfo
 
+```TypeScript
+export interface UdpNetPortStatesInfo
+```
+
 UDP端口状态信息。
 
 **起始版本：** 24

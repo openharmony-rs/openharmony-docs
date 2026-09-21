@@ -1,5 +1,9 @@
 # AppLinkState（系统接口）
 
+```TypeScript
+enum AppLinkState
+```
+
 枚举，用于标识文件记忆链接的状态信息。
 
 **起始版本：** 24

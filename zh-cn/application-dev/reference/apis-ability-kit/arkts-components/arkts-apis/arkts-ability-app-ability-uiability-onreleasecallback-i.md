@@ -1,5 +1,9 @@
 # OnReleaseCallback
 
+```TypeScript
+export interface OnReleaseCallback
+```
+
 注册通用组件服务端Stub（桩）断开监听通知的回调函数类型。
 
 **起始版本：** 9

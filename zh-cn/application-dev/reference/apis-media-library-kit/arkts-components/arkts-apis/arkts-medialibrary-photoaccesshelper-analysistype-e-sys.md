@@ -1,5 +1,9 @@
 # AnalysisType（系统接口）
 
+```TypeScript
+enum AnalysisType
+```
+
 枚举，智慧分析类型。
 
 **起始版本：** 11

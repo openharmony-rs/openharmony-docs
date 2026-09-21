@@ -1,5 +1,9 @@
 # URI
 
+```TypeScript
+export class URI
+```
+
 URI Represents a Uniform Resource Identifier (URI) reference.
 
 **Since:** 8

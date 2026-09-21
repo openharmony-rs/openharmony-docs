@@ -1,5 +1,9 @@
 # ImageMetadata
 
+```TypeScript
+interface ImageMetadata
+```
+
 Metadata set of an image.
 
 **Since:** 23

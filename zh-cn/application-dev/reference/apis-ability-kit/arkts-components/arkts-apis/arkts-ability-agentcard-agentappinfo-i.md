@@ -1,5 +1,9 @@
 # AgentAppInfo
 
+```TypeScript
+export interface AgentAppInfo
+```
+
 Agent的应用信息。
 
 @typedef AgentAppInfo

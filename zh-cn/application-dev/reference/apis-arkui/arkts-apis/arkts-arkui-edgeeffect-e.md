@@ -1,5 +1,9 @@
 # EdgeEffect
 
+```TypeScript
+declare enum EdgeEffect
+```
+
 Sliding effect
 
 **起始版本：** 7

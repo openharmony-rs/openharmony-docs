@@ -1,5 +1,9 @@
 # ContinuableInfo (System API)
 
+```TypeScript
+export interface ContinuableInfo
+```
+
 The module provides the mission continuation information to be returned when the listener for listening for the mission continuation state is registered. For details about the registration, see [on('continueStateChange')](arkts-ability-distributedmissionmanager-on-f-sys.md#oncontinuestatechange).
 
 **Since:** 10

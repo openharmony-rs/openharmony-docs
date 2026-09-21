@@ -1,5 +1,9 @@
 # TouchType
 
+```TypeScript
+declare enum TouchType
+```
+
 Sets the trigger status type of a touch operation.
 
 **Since:** 7

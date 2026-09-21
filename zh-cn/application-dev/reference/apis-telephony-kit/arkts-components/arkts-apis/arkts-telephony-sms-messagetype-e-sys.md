@@ -1,5 +1,9 @@
 # MessageType（系统接口）
 
+```TypeScript
+export enum MessageType
+```
+
 消息类型。
 
 **起始版本：** 8

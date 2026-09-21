@@ -1,5 +1,9 @@
 # RectType
 
+```TypeScript
+enum RectType
+```
+
 Enumerates the types of window rectangle coordinate systems.
 
 **Since:** 19

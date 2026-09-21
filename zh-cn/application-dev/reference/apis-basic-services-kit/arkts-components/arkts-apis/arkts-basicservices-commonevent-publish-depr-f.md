@@ -46,6 +46,35 @@ let publishCallBack = (err: Base.BusinessError) => {
 commonEvent.publish("event", publishCallBack);
 ```
 
+
+<a id="publish-1"></a>
+
+## publish
+
+```TypeScript
+function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
+```
+
+以回调形式发布公共事件。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | string | 是 | 表示要发布的公共事件。 |
+| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
+
+**示例**
+
 ```TypeScript
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
@@ -69,32 +98,3 @@ let publishCallBack = (err: Base.BusinessError) => {
 // 发布公共事件
 commonEvent.publish("event", options, publishCallBack);
 ```
-
-
-## publish
-
-```TypeScript
-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void
-```
-
-以回调形式发布公共事件。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| event | string | 是 | 表示要发布的公共事件。 |
-| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | 是 | 表示发布公共事件的属性。 |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示发布公共事件的回调方法。 |
-
-**示例**
-
-参见 [publish](#publish)

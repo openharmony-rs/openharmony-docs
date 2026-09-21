@@ -1,5 +1,9 @@
 # Event
 
+```TypeScript
+class Event
+```
+
 联系人事件类。
 
 **起始版本：** 7

@@ -1,5 +1,9 @@
 # RotationMatrixResponse
 
+```TypeScript
+interface RotationMatrixResponse
+```
+
 Describes the response for setting the rotation matrix.
 
 **Since:** 8

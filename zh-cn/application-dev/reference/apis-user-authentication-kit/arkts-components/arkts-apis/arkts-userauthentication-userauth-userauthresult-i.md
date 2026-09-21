@@ -1,5 +1,9 @@
 # UserAuthResult
 
+```TypeScript
+interface UserAuthResult
+```
+
 用户认证结果。认证通过时，返回认证类型和认证通过的令牌信息；认证不通过时，返回相应的错误码。该接口用于描述认证完成后的结果信息，应用可通过[IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)的onResult回调获取此结果。
 
 **起始版本：** 10

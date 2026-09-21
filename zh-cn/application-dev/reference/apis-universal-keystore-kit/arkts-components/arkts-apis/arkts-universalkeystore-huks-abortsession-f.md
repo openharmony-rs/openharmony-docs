@@ -16,6 +16,8 @@ abortSession终止密钥操作。使用callback异步回调。
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.Huks.Core
@@ -46,16 +48,86 @@ abortSession终止密钥操作。使用callback异步回调。
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用，
+ * 当这三个操作中的任一阶段发生错误时，都需要调用huks.abortSession来终止密钥的使用
+ *
+ * 以下以RSA密钥的callback功能使用为例
+ */
+
+let keyAlias = 'HuksDemoRSA';
+let properties: Array<huks.HuksParam> = []
+let options: huks.HuksOptions = {
+  properties: properties,
+  inData: new Uint8Array(0)
+};
+let handle: number = 0;
+
+async function huksAbort() {
+  properties = [{
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_RSA
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS1_V1_5
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }, {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_ECB,
+  }];
+
+  /* 1. 生成密钥 */
+  huks.generateKeyItem(keyAlias, options, (error) => {
+    if (error) {
+      console.error(`callback: generateKeyItem failed`);
+    } else {
+      console.info(`callback: generateKeyItem success`);
+      /* 2. 初始化密钥会话 */
+      huks.initSession(keyAlias, options, (error, data) => { // 以initSession阶段进行abortSession为例
+        if (error) {
+          console.error(`callback: initSession failed`);
+        } else {
+          console.info(`callback: initSession success, data = ${JSON.stringify(data)}`);
+          handle = data.handle;
+          /* 3. 发生错误，终止密钥操作 */
+          huks.abortSession(handle, options, (error) => {
+            if (error) {
+              console.error(`callback: abortSession failed`);
+            } else {
+              console.info(`callback: abortSession success`);
+            }
+          });
+        }
+      });
+    }
+  });
+}
+```
+
 JS示例：
 
 > 说明
 > 
 > JS示例代码仅供轻量级设备使用。
+
+```TypeScript
+<stack class="container">
+    <input type="button" class="threeStageBtn1" @click="threeStageEncrypt">加密数据</input>
+    <input type="button" class="threeStageBtn2" @click="threeStageDecrypt">解密数据</input>
+    <text class="result">{{result}}</text>
+</stack>
 ```
 
 ```TypeScript
@@ -354,6 +426,54 @@ export default {
 };
 ```
 
+
+<a id="abortsession-1"></a>
+
+## abortSession
+
+```TypeScript
+function abortSession(handle: number, options: HuksOptions): Promise<void>
+```
+
+abortSession终止密钥操作。使用Promise异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| handle | number | 是 | abortSession操作的uint64类型的handle值。 |
+| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | abortSession操作的参数集合。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
+| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
+| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
+| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
+| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
+| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
+| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 22+ |
+| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 22+ |
+| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
+| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
+
+**示例**
+
 ```TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -421,51 +541,3 @@ async function testAbort() {
   await huksAbort();
 }
 ```
-
-
-## abortSession
-
-```TypeScript
-function abortSession(handle: number, options: HuksOptions): Promise<void>
-```
-
-abortSession终止密钥操作。使用Promise异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| handle | number | 是 | abortSession操作的uint64类型的handle值。 |
-| options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | 是 | abortSession操作的参数集合。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | api is not supported |
-| [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
-| [12000005](../errorcode-huks.md#12000005-进程通信错误) | IPC communication failed |
-| [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine or UKey driver |
-| [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
-| [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000020](../errorcode-huks.md#12000020-依赖的模块报错) | the provider operation failed<br>**适用版本：** 22+ |
-| [12000024](../errorcode-huks.md#12000024-设备或资源繁忙) | the provider or UKey is busy<br>**适用版本：** 22+ |
-| [12000018](../errorcode-huks.md#12000018-输入参数非法) | the group id specified by the access group tag is invalid<br>**适用版本：** 23+ |
-| [12000026](../errorcode-huks.md#12000026-安全元件故障) | the secure element is not available<br>**适用版本：** 26.0.0+ |
-
-**示例**
-
-参见 [abortSession](#abortsession)

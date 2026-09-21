@@ -1,5 +1,9 @@
 # Coordinate2D
 
+```TypeScript
+declare interface Coordinate2D
+```
+
 描述一个二维坐标。
 
 **起始版本：** 26.0.0

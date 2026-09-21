@@ -1,5 +1,9 @@
 # NavDestinationSwitchInfo
 
+```TypeScript
+export interface NavDestinationSwitchInfo
+```
+
 Provides the information about page switching of the **Navigation** component.
 
 **Since:** 12

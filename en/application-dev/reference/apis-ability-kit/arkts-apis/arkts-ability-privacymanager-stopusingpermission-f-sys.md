@@ -20,6 +20,8 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -65,74 +67,8 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then((
 });
 ```
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
 
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
-let pid: number = rpc.IPCSkeleton.getCallingPid();
-
-// without pid
-privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.info('stopUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-
-// with pid
-privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
-  console.info('stopUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
-
-let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
-let pid: number = rpc.IPCSkeleton.getCallingPid();
-
-// Without the pid parameter
-privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
-  console.info('stopUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-
-// With the pid parameter
-privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
-  console.info('stopUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-
-// With the extended identity ID
-privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {enhancedIdentity: 'test'}).then(() => {
-  console.info('stopUsingPermission success');
-}).catch((err: BusinessError): void => {
-  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
-// Stop using a specified permission
-privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
-  if (err) {
-    console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('stopUsingPermission success');
-  }
-});
-```
-
+<a id="stopusingpermission-1"></a>
 
 ## stopUsingPermission
 
@@ -147,6 +83,8 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 **Since:** 9
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -175,8 +113,23 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 
 **Examples**
 
-See [stopUsingPermission](#stopusingpermission)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+// Stop using a specified permission
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: BusinessError, data: void) => {
+  if (err) {
+    console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('stopUsingPermission success');
+  }
+});
+```
+
+
+<a id="stopusingpermission-2"></a>
 
 ## stopUsingPermission
 
@@ -232,8 +185,38 @@ The PID must be the same as the PID passed in [startUsingPermission](arkts-abili
 
 **Examples**
 
-See [stopUsingPermission](#stopusingpermission)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
 
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+
+// Without the pid parameter
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// With the pid parameter
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// With the extended identity ID
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {enhancedIdentity: 'test'}).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="stopusingpermission-3"></a>
 
 ## stopUsingPermission
 
@@ -252,6 +235,8 @@ The pid must be the same as the pid passed into [startUsingPermission](arkts-abi
 **Since:** 18
 
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -286,4 +271,25 @@ The pid must be the same as the pid passed into [startUsingPermission](arkts-abi
 
 **Examples**
 
-See [stopUsingPermission](#stopusingpermission)
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
+
+let tokenID: number = rpc.IPCSkeleton.getCallingTokenId(); // It can also be obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
+let pid: number = rpc.IPCSkeleton.getCallingPid();
+
+// without pid
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+
+// with pid
+privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
+  console.info('stopUsingPermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```

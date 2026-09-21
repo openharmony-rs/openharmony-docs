@@ -1,5 +1,9 @@
 # TextAreaElement
 
+```TypeScript
+export interface TextAreaElement extends Element
+```
+
 The &lt;textarea&gt; component provides an interactive interface to receive user input, which is displayed in multiple lines by default.
 
 @extends Element @interface TextAreaElement

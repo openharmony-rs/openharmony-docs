@@ -1,5 +1,9 @@
 # USBControlParams
 
+```TypeScript
+interface USBControlParams
+```
+
 控制传输参数。
 
 **起始版本：** 8

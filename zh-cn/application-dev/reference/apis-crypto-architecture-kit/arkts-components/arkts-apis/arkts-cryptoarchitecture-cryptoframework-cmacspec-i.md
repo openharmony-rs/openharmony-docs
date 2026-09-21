@@ -1,5 +1,9 @@
 # CmacSpec
 
+```TypeScript
+interface CmacSpec extends MacSpec
+```
+
 消息认证码参数[MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md)的子类，作为CMAC计算的输入。
 
 > **说明：** 

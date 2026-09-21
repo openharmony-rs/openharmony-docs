@@ -1,5 +1,9 @@
 # FormInfo
 
+```TypeScript
+interface FormInfo
+```
+
 卡片配置信息。
 
 **起始版本：** 9

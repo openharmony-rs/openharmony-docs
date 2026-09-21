@@ -1,5 +1,9 @@
 # Statistic
 
+```TypeScript
+interface Statistic
+```
+
 Defines a struct for the device-cloud sync statistics of a database table.
 
 **Since:** 10

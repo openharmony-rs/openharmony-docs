@@ -1,5 +1,9 @@
 # CursorConfig
 
+```TypeScript
+interface CursorConfig
+```
+
 自定义光标配置。
 
 **起始版本：** 15

@@ -1,5 +1,9 @@
 # SecurityEventRule（系统接口）
 
+```TypeScript
+interface SecurityEventRule
+```
+
 用户获取安全数据的规则。
 
 @interface SecurityEventRule

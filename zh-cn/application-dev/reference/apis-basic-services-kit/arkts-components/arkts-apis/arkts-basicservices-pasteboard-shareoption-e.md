@@ -1,5 +1,9 @@
 # ShareOption
 
+```TypeScript
+enum ShareOption
+```
+
 可粘贴数据的范围类型枚举。
 
 **起始版本：** 9

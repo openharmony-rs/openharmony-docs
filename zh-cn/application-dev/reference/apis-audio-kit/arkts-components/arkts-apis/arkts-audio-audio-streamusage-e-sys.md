@@ -1,5 +1,9 @@
 # StreamUsage
 
+```TypeScript
+enum StreamUsage
+```
+
 枚举，音频流使用类型。
 
 **起始版本：** 7
@@ -84,8 +88,6 @@ STREAM_USAGE_ANNOUNCEMENT = 22
 
 通知音。
 
-此接口仅可在Stage模型下使用。
-
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -102,8 +104,6 @@ STREAM_USAGE_EMERGENCY = 23
 
 告警音。
 
-此接口仅可在Stage模型下使用。
-
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -115,10 +115,10 @@ STREAM_USAGE_EMERGENCY = 23
 ## STREAM_USAGE_VOICE_ASSISTANT_SYSTEM
 
 ```TypeScript
-STREAM_USAGE_VOICE_ASSISTANT_SYSTEM = 24
+STREAM_USAGE_VOICE_ASSISTANT_SYSTEM = 27
 ```
 
-Voice assistant broadcast usage for system app.
+系统内置语音播报音。
 
 **起始版本：** 26.0.0
 

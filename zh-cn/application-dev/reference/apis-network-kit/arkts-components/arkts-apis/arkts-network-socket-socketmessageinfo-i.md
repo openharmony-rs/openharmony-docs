@@ -1,5 +1,9 @@
 # SocketMessageInfo
 
+```TypeScript
+export interface SocketMessageInfo
+```
+
 socket连接信息
 
 **起始版本：** 11

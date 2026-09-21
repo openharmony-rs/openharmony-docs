@@ -1,5 +1,9 @@
 # IsoInfo
 
+```TypeScript
+interface IsoInfo
+```
+
 感光度（ISO）参数信息。
 
 **起始版本：** 22

@@ -1,5 +1,9 @@
 # DLPFileAccess
 
+```TypeScript
+export enum DLPFileAccess
+```
+
 Enumerates the permissions on a DLP file.
 
 **Since:** 10

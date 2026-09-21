@@ -1,5 +1,9 @@
 # FileReadTextOption
 
+```TypeScript
+export interface FileReadTextOption
+```
+
 可选项类型，支持readText接口使用。
 
 **起始版本：** 3

@@ -1,5 +1,9 @@
 # AllocatorType
 
+```TypeScript
+enum AllocatorType
+```
+
 Enumerates the types of the memory used for image decoding.
 
 **Since:** 15

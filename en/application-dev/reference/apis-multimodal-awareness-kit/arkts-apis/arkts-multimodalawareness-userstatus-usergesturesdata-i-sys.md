@@ -1,5 +1,9 @@
 # UserGesturesData (System API)
 
+```TypeScript
+export interface UserGesturesData extends UserFacesData
+```
+
 Defines user gesture data.
 
 **Inheritance/Implementation:** UserGesturesData extends [UserFacesData](arkts-multimodalawareness-userstatus-userfacesdata-i-sys.md)

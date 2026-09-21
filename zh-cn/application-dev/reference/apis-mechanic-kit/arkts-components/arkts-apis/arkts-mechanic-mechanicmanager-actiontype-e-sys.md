@@ -1,5 +1,9 @@
 # ActionType（系统接口）
 
+```TypeScript
+export enum ActionType
+```
+
 动作序列类型
 
 **起始版本：** 26.0.0

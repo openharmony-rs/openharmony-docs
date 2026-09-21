@@ -1,5 +1,9 @@
 # PopupOptions
 
+```TypeScript
+export interface PopupOptions
+```
+
 Defines the style parameters of the popup.
 
 **Since:** 11
@@ -105,7 +109,7 @@ Maximum width of the popup. This API allows the popup to display with a custom w
 **NOTE:** 
 
 1. When using resource references, ensure that the parameter type matches the attribute method type.
-2. **maxWidth** accepts numeric values (both floating-point and integer values), such as **&#36;r('app.float.maxWidth')** and **&#36;r('app.integer.maxWidth')**.
+2. **maxWidth** accepts numeric values (both floating-point and integer values), such as **$r('app.float.maxWidth')** and **$r('app.integer.maxWidth')**.
 3. When the type is Resource, values default to px units if no unit is explicitly specified.
 
 Default value: **400vp**

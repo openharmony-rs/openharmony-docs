@@ -46,17 +46,8 @@ formHost.notifyFormsVisible(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formIds: string[] = new Array('12400633174999288', '12400633174999289');
-formHost.notifyFormsVisible(formIds, true).then(() => {
-  console.info('formHost notifyFormsVisible success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost notifyFormsVisible, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="notifyformsvisible-1"></a>
 
 ## notifyFormsVisible
 
@@ -93,4 +84,13 @@ function notifyFormsVisible(formIds: Array<string>, isVisible: boolean): Promise
 
 **示例**
 
-参见 [notifyFormsVisible](#notifyformsvisible)
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+formHost.notifyFormsVisible(formIds, true).then(() => {
+  console.info('formHost notifyFormsVisible success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost notifyFormsVisible, error: ${JSON.stringify(error)}`);
+});
+```

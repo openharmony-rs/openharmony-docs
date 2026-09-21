@@ -1,5 +1,9 @@
 # ShareType (System API)
 
+```TypeScript
+enum ShareType
+```
+
 Enum for the share type.
 
 **Since:** 11

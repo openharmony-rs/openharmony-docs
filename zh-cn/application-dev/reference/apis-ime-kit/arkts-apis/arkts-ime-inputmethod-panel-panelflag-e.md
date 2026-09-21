@@ -1,5 +1,9 @@
 # PanelFlag
 
+```TypeScript
+export enum PanelFlag
+```
+
 输入法面板状态类型枚举。定义面板的显示状态形态，决定面板是固定态、悬浮态还是候选词态。<br> <br>  
 > **说明：** <br>
 > <br>

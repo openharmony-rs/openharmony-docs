@@ -75,6 +75,41 @@ struct Index {
 }
 ```
 
+
+<a id="getpointerstyle-1"></a>
+
+## getPointerStyle
+
+```TypeScript
+function getPointerStyle(windowId: number): Promise<PointerStyle>
+```
+
+获取鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| windowId | number | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[PointerStyle](arkts-input-pointer-pointerstyle-e.md)&gt; | Promise对象，返回鼠标样式类型。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**
+
 ```TypeScript
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -114,38 +149,3 @@ struct Index {
   }
 }
 ```
-
-
-## getPointerStyle
-
-```TypeScript
-function getPointerStyle(windowId: number): Promise<PointerStyle>
-```
-
-获取鼠标样式类型，此接口仅支持获取本应用进程内窗口的鼠标样式类型，使用Promise异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| windowId | number | 是 | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](arkts-input-pointer-setpointerstyle-f.md)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[PointerStyle](arkts-input-pointer-pointerstyle-e.md)&gt; | Promise对象，返回鼠标样式类型。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**
-
-参见 [getPointerStyle](#getpointerstyle)

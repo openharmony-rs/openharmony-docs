@@ -1,5 +1,9 @@
 # TabContentInfo
 
+```TypeScript
+export interface TabContentInfo
+```
+
 Provides the **TabContent** switching information.
 
 **Since:** 12

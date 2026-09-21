@@ -53,6 +53,8 @@ wifi.getCurrentGroup().then(data => {
 ```
 
 
+<a id="getcurrentgroup-1"></a>
+
 ## getCurrentGroup
 
 ```TypeScript

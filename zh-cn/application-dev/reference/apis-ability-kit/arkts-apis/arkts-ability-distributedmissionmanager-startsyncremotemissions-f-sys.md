@@ -64,27 +64,8 @@ try {
 }
 ```
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  distributedMissionManager.startSyncRemoteMissions(
-    {
-      deviceId: "",
-      fixConflict: false,
-      tag: 0
-    }
-  ).then(() => {
-      console.info('startSyncRemoteMissions finished successfully');
-    }).catch((error: BusinessError) => {
-    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="startsyncremotemissions-1"></a>
 
 ## startSyncRemoteMissions
 
@@ -127,4 +108,23 @@ function startSyncRemoteMissions(parameter: MissionParameter): Promise<void>
 
 **示例**
 
-参见 [startSyncRemoteMissions](#startsyncremotemissions)
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.startSyncRemoteMissions(
+    {
+      deviceId: "",
+      fixConflict: false,
+      tag: 0
+    }
+  ).then(() => {
+      console.info('startSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
+    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+}
+```

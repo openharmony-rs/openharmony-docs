@@ -77,37 +77,8 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let userId : number = 100;
-let trustlist: Array<notificationManager.BundleOption> = [
-  {
-    // 需根据实际情况进行替换
-    bundle: 'bundleName',
-    uid: 0
-  },
-  {
-    // 需根据实际情况进行替换
-    bundle: 'bundleName1',
-    uid: 1
-  }
-]
-let templates: Array<notificationManager.DoNotDisturbProfile> = [
-  {
-    id: 3,
-    name: '工作模式',
-    trustlist: trustlist
-  }
-]
-
-notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
-  console.info('addDoNotDisturbProfile success.');
-}).catch((err: BusinessError) => {
-  console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="adddonotdisturbprofile-1"></a>
 
 ## addDoNotDisturbProfile
 
@@ -155,4 +126,33 @@ function addDoNotDisturbProfile(templates: Array<DoNotDisturbProfile>, userId: n
 
 **示例**
 
-参见 [addDoNotDisturbProfile](#adddonotdisturbprofile)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId : number = 100;
+let trustlist: Array<notificationManager.BundleOption> = [
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName',
+    uid: 0
+  },
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName1',
+    uid: 1
+  }
+]
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式',
+    trustlist: trustlist
+  }
+]
+
+notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
+  console.info('addDoNotDisturbProfile success.');
+}).catch((err: BusinessError) => {
+  console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+});
+```

@@ -1,5 +1,9 @@
 # ISendable
 
+```TypeScript
+interface ISendable
+```
+
 是所有Sendable对象类型（除null和undefined）的父类型。实现该接口后，自定义类的实例将支持跨线程传递。自身不定义任何方法和属性。
 
 ArkTS中，ISendable类型的对象是Object类型的实例，遵循Object类型的基本特征，同时支持跨线程传递。

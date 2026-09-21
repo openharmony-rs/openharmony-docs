@@ -1,5 +1,9 @@
 # ReadOptions
 
+```TypeScript
+export interface ReadOptions
+```
+
 Defines the options used in **read()**.
 
 **Since:** 11

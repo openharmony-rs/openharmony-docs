@@ -49,37 +49,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { uniformTypeDescriptor } from '@kit.ArkData';
 
 let userId = 100;
-defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId)
-  .then((data) => {
-    console.info('Operation successful.');
-  })
-  .catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
-
-defaultAppManager.resetDefaultApplication("image/png", userId)
-  .then((data) => {
-    console.info('Operation successful.');
-  })
-  .catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
-
-defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId)
-  .then((data) => {
-    console.info('Operation successful.');
-  })
-  .catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
-```
-
-```TypeScript
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
-
-let userId = 100;
 defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId,
   (err: BusinessError, data) => {
     if (err) {
@@ -107,36 +76,8 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
   });
 ```
 
-```TypeScript
-import { defaultAppManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { uniformTypeDescriptor } from '@kit.ArkData';
 
-defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
-
-defaultAppManager.resetDefaultApplication("image/png", (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
-
-defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
-```
-
+<a id="resetdefaultapplication-1"></a>
 
 ## resetDefaultApplication
 
@@ -173,8 +114,38 @@ Resets the default application based on a system-defined application type, a fil
 
 **Examples**
 
-See [resetDefaultApplication](#resetdefaultapplication)
+```TypeScript
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
 
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.resetDefaultApplication("image/png", (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+```
+
+
+<a id="resetdefaultapplication-2"></a>
 
 ## resetDefaultApplication
 
@@ -218,4 +189,33 @@ Resets the default application based on a system-defined application type, a fil
 
 **Examples**
 
-See [resetDefaultApplication](#resetdefaultapplication)
+```TypeScript
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+let userId = 100;
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId)
+  .then((data) => {
+    console.info('Operation successful.');
+  })
+  .catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.resetDefaultApplication("image/png", userId)
+  .then((data) => {
+    console.info('Operation successful.');
+  })
+  .catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId)
+  .then((data) => {
+    console.info('Operation successful.');
+  })
+  .catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  });
+```

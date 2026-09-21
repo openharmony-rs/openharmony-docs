@@ -1,5 +1,9 @@
 # FinishWithResultParams
 
+```TypeScript
+export interface FinishWithResultParams
+```
+
 @typedef FinishWithResultParams
 
 **Since:** 5

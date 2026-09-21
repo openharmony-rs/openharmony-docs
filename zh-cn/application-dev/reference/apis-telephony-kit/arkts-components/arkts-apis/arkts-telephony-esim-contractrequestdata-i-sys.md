@@ -1,5 +1,9 @@
 # ContractRequestData（系统接口）
 
+```TypeScript
+export interface ContractRequestData
+```
+
 加密需要的信息。
 
 **起始版本：** 20

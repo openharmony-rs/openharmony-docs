@@ -1,5 +1,9 @@
 # NetStatsChangeInfo（系统接口）
 
+```TypeScript
+export interface NetStatsChangeInfo
+```
+
 监听和管理网络接口的状态和使用情况。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # NNRTDevice
 
+```TypeScript
+interface NNRTDevice
+```
+
 Provides the NNRT device info
 
 **Since:** 10

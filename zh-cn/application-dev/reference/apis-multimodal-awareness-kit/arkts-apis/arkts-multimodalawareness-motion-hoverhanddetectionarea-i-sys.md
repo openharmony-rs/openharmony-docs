@@ -1,5 +1,9 @@
 # HoverHandDetectionArea（系统接口）
 
+```TypeScript
+export interface HoverHandDetectionArea
+```
+
 悬浮手矩形检测区域的基本数据结构。
 
 **起始版本：** 26.0.0

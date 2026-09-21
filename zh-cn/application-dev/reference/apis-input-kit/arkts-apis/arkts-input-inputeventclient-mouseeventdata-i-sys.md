@@ -1,5 +1,9 @@
 # MouseEventData（系统接口）
 
+```TypeScript
+interface MouseEventData
+```
+
 鼠标注入描述信息。
 
 **起始版本：** 11

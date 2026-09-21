@@ -1,5 +1,9 @@
 # CloudService（系统接口）
 
+```TypeScript
+export interface CloudService
+```
+
 提供对接同步云服务的类。开发者需要继承此类并实现类的接口，系统内部通过该类的接口连接并使用同步云服务。
 
 **起始版本：** 11

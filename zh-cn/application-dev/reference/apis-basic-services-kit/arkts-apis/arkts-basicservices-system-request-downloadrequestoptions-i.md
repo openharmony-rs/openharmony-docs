@@ -1,5 +1,9 @@
 # DownloadRequestOptions
 
+```TypeScript
+export interface DownloadRequestOptions
+```
+
 **起始版本：** 3
 
 **废弃版本：** 9

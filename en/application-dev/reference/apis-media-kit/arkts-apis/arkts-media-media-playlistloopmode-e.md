@@ -1,5 +1,9 @@
 # PlaylistLoopMode
 
+```TypeScript
+enum PlaylistLoopMode
+```
+
 Enumerates loop mode keys for playback.
 
 **Since:** 26.0.0

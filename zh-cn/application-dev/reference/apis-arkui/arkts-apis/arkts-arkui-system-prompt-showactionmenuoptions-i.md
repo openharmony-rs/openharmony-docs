@@ -1,5 +1,9 @@
 # ShowActionMenuOptions
 
+```TypeScript
+export interface ShowActionMenuOptions
+```
+
 定义ShowActionMenu的选项。
 
 **起始版本：** 6
@@ -22,6 +26,8 @@ complete?: () => void
 
 **起始版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -35,6 +41,8 @@ fail?: (errMsg: string) => void
 接口调用失败的回调函数。
 
 **起始版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -55,6 +63,8 @@ success?: (tapIndex: number, errMsg: string) => void
 弹出对话框时调用。
 
 **起始版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -79,6 +89,8 @@ buttons: [Button, Button?, Button?, Button?, Button?, Button?]
 
 **起始版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -94,6 +106,8 @@ title?: string
 **类型：** string
 
 **起始版本：** 6
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

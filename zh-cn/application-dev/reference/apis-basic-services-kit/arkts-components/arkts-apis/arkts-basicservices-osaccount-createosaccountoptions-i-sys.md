@@ -1,5 +1,9 @@
 # CreateOsAccountOptions（系统接口）
 
+```TypeScript
+interface CreateOsAccountOptions
+```
+
 表示用于创建系统账号的可选参数。
 
 **起始版本：** 12

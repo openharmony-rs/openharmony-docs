@@ -1,5 +1,9 @@
 # AVSessionDescriptor
 
+```TypeScript
+interface AVSessionDescriptor
+```
+
 The description of the session
 
 **Since:** 23

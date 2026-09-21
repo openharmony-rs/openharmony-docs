@@ -1,5 +1,9 @@
 # UserAuthResult
 
+```TypeScript
+export enum UserAuthResult
+```
+
 用户授权结果，表示长时任务授权状态。
 
 **起始版本：** 22

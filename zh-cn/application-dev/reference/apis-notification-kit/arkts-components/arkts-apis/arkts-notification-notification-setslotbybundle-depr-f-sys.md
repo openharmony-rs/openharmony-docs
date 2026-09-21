@@ -34,6 +34,8 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定通知通道回调函数。 |
 
 
+<a id="setslotbybundle-1"></a>
+
 ## setSlotByBundle
 
 ```TypeScript

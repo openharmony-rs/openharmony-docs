@@ -1,5 +1,9 @@
 # EditableTitleV2Options
 
+```TypeScript
+export declare interface EditableTitleV2Options
+```
+
 Indicates the options of the title.
 
 **Since:** 26.0.0

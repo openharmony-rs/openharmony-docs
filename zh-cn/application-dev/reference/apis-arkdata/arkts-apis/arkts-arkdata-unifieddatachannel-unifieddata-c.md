@@ -1,5 +1,9 @@
 # UnifiedData
 
+```TypeScript
+class UnifiedData
+```
+
 表示UDMF统一数据对象，提供封装一组数据记录的方法。
 
 **起始版本：** 10
@@ -93,10 +97,6 @@ constructor(record: UnifiedRecord)
 **示例**
 
 ```TypeScript
-let unifiedData = new unifiedDataChannel.UnifiedData();
-```
-
-```TypeScript
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 let plainText : uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
@@ -106,6 +106,8 @@ let plainText : uniformDataStruct.PlainText = {
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
+
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -127,17 +129,6 @@ constructor()
 
 ```TypeScript
 let unifiedData = new unifiedDataChannel.UnifiedData();
-```
-
-```TypeScript
-import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-let plainText : uniformDataStruct.PlainText = {
-  uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-};
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
 
 ## getRecords

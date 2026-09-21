@@ -1,5 +1,9 @@
 # Notification
 
+```TypeScript
+interface Notification
+```
+
 Describes the custom information of the notification bar.
 
 **Since:** 15

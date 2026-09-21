@@ -1,5 +1,9 @@
 # QueryMediaEntityParam
 
+```TypeScript
+interface QueryMediaEntityParam
+```
+
 The definition of QueryMediaEntityParam.
 
 @interface QueryMediaEntityParam

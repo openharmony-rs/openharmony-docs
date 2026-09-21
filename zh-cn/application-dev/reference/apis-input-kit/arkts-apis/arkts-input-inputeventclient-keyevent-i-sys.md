@@ -1,5 +1,9 @@
 # KeyEvent（系统接口）
 
+```TypeScript
+interface KeyEvent
+```
+
 按键注入描述信息。
 
 **起始版本：** 8

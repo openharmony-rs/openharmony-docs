@@ -1,5 +1,9 @@
 # UnitInfo
 
+```TypeScript
+export interface UnitInfo
+```
+
 度量衡单位信息。
 
 **起始版本：** 8

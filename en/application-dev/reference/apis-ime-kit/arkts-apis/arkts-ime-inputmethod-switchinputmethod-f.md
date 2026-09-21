@@ -61,56 +61,8 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in switching input method.');
-  } else {
-    console.error('Failed to switch input method.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-```TypeScript
-import { InputMethodSubtype } from '@kit.IMEKit';
-
-async function switchInputMethodWithSubtype() {
-  // 1. Obtain the current input method.
-  const currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
-  if (!currentIme) {
-    console.error("Failed to get current input method");
-    return;
-  }
-  try {
-    // 2. Switch the input method.
-    await inputMethod.switchInputMethod(currentIme.name);
-    console.info('Succeeded in switching inputMethod.');
-  } catch (err) {
-    console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
-  }
-  // 3. Obtain the current input method subtype.
-  const currentSubtype: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
-  if (!currentSubtype) {
-    console.error("Failed to get current input subtype");
-    return;
-  }
-  try {
-    // 4. Switch the input method subtype.
-    await inputMethod.switchInputMethod(currentIme.name, currentSubtype.id);
-    console.info('Succeeded in switching inputMethod.');
-  } catch (err) {
-    console.error(`Failed to switchInputMethod. Code: ${err.code}, message: ${err.message}`);
-  }
-}
-
-switchInputMethodWithSubtype();
-```
-
+<a id="switchinputmethod-1"></a>
 
 ## switchInputMethod
 
@@ -155,4 +107,17 @@ Switches to another input method. This API uses a promise to return the result. 
 
 **Examples**
 
-See [switchInputMethod](#switchinputmethod)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+inputMethod.switchInputMethod(currentIme).then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in switching input method.');
+  } else {
+    console.error('Failed to switch input method.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethod, code: ${err.code}, message: ${err.message}`);
+});
+```

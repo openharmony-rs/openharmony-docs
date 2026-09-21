@@ -1,5 +1,9 @@
 # NetWorkStrategy
 
+```TypeScript
+enum NetWorkStrategy
+```
+
 Enumerates the network sync options.
 
 **Since:** 12

@@ -1,16 +1,7 @@
 # GestureType
 
 ```TypeScript
-type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' |
-  'right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown' |
-  'up' | 'upThenLeft' | 'upThenRight' | 'upThenDown' |
-  'down' | 'downThenLeft' | 'downThenRight' | 'downThenUp' |
-  'twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap' |
-  'twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold' |
-  'threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap' |
-  'fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold' |
-  'threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight' |
-  'fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'
+type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown''right' | 'rightThenLeft' | 'rightThenUp' | 'rightThenDown''up' | 'upThenLeft' | 'upThenRight' | 'upThenDown''down' | 'downThenLeft' | 'downThenRight' | 'downThenUp''twoFingerSingleTap' | 'twoFingerDoubleTap' | 'twoFingerDoubleTapAndHold' | 'twoFingerTripleTap''twoFingerTripleTapAndHold' | 'threeFingerSingleTap' | 'threeFingerDoubleTap' | 'threeFingerDoubleTapAndHold''threeFingerTripleTap' | 'threeFingerTripleTapAndHold' | 'fourFingerSingleTap' | 'fourFingerDoubleTap''fourFingerDoubleTapAndHold' | 'fourFingerTripleTap' | 'fourFingerTripleTapAndHold''threeFingerSwipeUp' | 'threeFingerSwipeDown' | 'threeFingerSwipeLeft' | 'threeFingerSwipeRight''fourFingerSwipeUp' | 'fourFingerSwipeDown' | 'fourFingerSwipeLeft' | 'fourFingerSwipeRight' | 'oneFingerDoubleTap'
 ```
 
 Enumerates the gesture event types. A gesture event is triggered by the accessibility service when the user performs a specific gesture operation. The accessibility extension can receive and process the corresponding gesture event through the **onAccessibilityEvent** callback.

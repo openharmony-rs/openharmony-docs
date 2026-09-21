@@ -1,5 +1,9 @@
 # AudioSpatialDeviceType（系统接口）
 
+```TypeScript
+enum AudioSpatialDeviceType
+```
+
 枚举，空间化设备类型。
 
 **起始版本：** 11

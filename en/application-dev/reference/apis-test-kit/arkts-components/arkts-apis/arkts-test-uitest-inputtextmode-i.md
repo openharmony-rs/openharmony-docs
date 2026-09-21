@@ -1,5 +1,9 @@
 # InputTextMode
 
+```TypeScript
+declare interface InputTextMode
+```
+
 Describes the text input mode.
 
 **Since:** 20

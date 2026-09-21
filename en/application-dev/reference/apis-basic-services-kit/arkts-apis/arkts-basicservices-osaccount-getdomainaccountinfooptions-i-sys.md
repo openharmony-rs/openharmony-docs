@@ -1,5 +1,9 @@
 # GetDomainAccountInfoOptions (System API)
 
+```TypeScript
+interface GetDomainAccountInfoOptions
+```
+
 Defines the options for obtaining domain account information.
 
 **Since:** 10

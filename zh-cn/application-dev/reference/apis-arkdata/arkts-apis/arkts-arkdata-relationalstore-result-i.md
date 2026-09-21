@@ -1,5 +1,9 @@
 # Result
 
+```TypeScript
+interface Result
+```
+
 记录受影响的数据行数量和结果集。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # OsAccountSwitchEventData (System API)
 
+```TypeScript
+interface OsAccountSwitchEventData
+```
+
 Defines the event that indicates the start or end of a foreground-background OS account switchover.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # CollaborateEventInfo
 
+```TypeScript
+interface CollaborateEventInfo
+```
+
 协同事件信息。
 
 **起始版本：** 18

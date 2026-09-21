@@ -1,5 +1,9 @@
 # InputMethodSetting
 
+```TypeScript
+interface InputMethodSetting
+```
+
 In the following API examples, you must first use [getSetting](arkts-ime-inputmethod-getsetting-f.md) to obtain an **InputMethodSetting** instance, and then call the APIs using the obtained instance.
 
 **Since:** 8
@@ -48,15 +52,7 @@ inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().displayOptionalInputMethod().then(() => {
-  console.info('Succeeded in displaying optionalInputMethod.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="displayoptionalinputmethod-1"></a>
 
 ## displayOptionalInputMethod
 
@@ -82,7 +78,15 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 **Examples**
 
-See [displayOptionalInputMethod](#displayoptionalinputmethod)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().displayOptionalInputMethod().then(() => {
+  console.info('Succeeded in displaying optionalInputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
+})
+```
 
 ## getAllInputMethods
 
@@ -123,15 +127,7 @@ inputMethod.getSetting().getAllInputMethods((err: BusinessError, data: Array<inp
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().getAllInputMethods().then((data: Array<inputMethod.InputMethodProperty>) => {
-  console.info('Succeeded in getting all inputMethods.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="getallinputmethods-1"></a>
 
 ## getAllInputMethods
 
@@ -160,7 +156,15 @@ Obtains a list of all input methods. This API uses a promise to return the resul
 
 **Examples**
 
-See [getAllInputMethods](#getallinputmethods)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().getAllInputMethods().then((data: Array<inputMethod.InputMethodProperty>) => {
+  console.info('Succeeded in getting all inputMethods.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAllInputMethods, code: ${err.code}, message: ${err.message}`);
+})
+```
 
 ## getAllInputMethodsSync
 
@@ -191,18 +195,6 @@ Obtains a list of all input methods. This API returns the result synchronously.
 
 ```TypeScript
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync();
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync(100);
-  console.info('Succeeded in getting all input methods, count: ' + imeProperty.length);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getAllInputMethodsSync. Code: ${error.code}, message: ${error.message}`);
-}
 ```
 
 ## getInputMethods
@@ -251,15 +243,7 @@ inputMethod.getSetting().getInputMethods(true, (err: BusinessError, data: Array<
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
-  console.info('Succeeded in getting inputMethods.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="getinputmethods-1"></a>
 
 ## getInputMethods
 
@@ -300,7 +284,15 @@ Obtains a list of activated or deactivated input methods. This API uses a promis
 
 **Examples**
 
-See [getInputMethods](#getinputmethods)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().getInputMethods(true).then((data: Array<inputMethod.InputMethodProperty>) => {
+  console.info('Succeeded in getting inputMethods.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
+})
+```
 
 ## getInputMethodsSync
 
@@ -343,18 +335,6 @@ Obtains a list of activated or deactivated input methods. This API returns the r
 
 ```TypeScript
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true);
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getInputMethodsSync(true, 100);
-  console.info('Succeeded in getting enabled input methods, count: ' + imeProperty.length);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getInputMethodsSync. Code: ${error.code}, message: ${error.message}`);
-}
 ```
 
 ## getInputMethodState
@@ -435,18 +415,7 @@ inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Arra
 });
 ```
 
-```TypeScript
-import { InputMethodSubtype } from '@kit.IMEKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
-
-inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
-  console.info('Succeeded in listing currentInputMethodSubtype.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="listcurrentinputmethodsubtype-1"></a>
 
 ## listCurrentInputMethodSubtype
 
@@ -475,7 +444,18 @@ Obtains all subtypes of this input method. This API uses a promise to return the
 
 **Examples**
 
-See [listCurrentInputMethodSubtype](#listcurrentinputmethodsubtype)
+```TypeScript
+import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+
+inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethodSubtype>) => {
+  console.info('Succeeded in listing currentInputMethodSubtype.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+})
+```
 
 ## listInputMethod
 
@@ -513,15 +493,7 @@ inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputM
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().listInputMethod().then((data: Array<inputMethod.InputMethodProperty>) => {
-  console.info('Succeeded in listing inputMethod.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="listinputmethod-1"></a>
 
 ## listInputMethod
 
@@ -547,7 +519,15 @@ Obtains a list of installed input methods. This API uses a promise to return the
 
 **Examples**
 
-See [listInputMethod](#listinputmethod)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().listInputMethod().then((data: Array<inputMethod.InputMethodProperty>) => {
+  console.info('Succeeded in listing inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
+})
+```
 
 ## listInputMethodSubtype
 
@@ -603,24 +583,7 @@ inputMethodSetting.listInputMethodSubtype(inputMethodProperty,
   });
 ```
 
-```TypeScript
-import { InputMethodSubtype } from '@kit.IMEKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let inputMethodProperty: inputMethod.InputMethodProperty = {
-  name: 'com.example.keyboard',
-  id: 'propertyId',
-  packageName: 'com.example.keyboard',
-  methodId: 'propertyId'
-}
-let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
-
-inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
-  console.info('Succeeded in listing inputMethodSubtype.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="listinputmethodsubtype-1"></a>
 
 ## listInputMethodSubtype
 
@@ -656,7 +619,24 @@ Obtains all subtypes of a specified input method. This API uses a promise to ret
 
 **Examples**
 
-See [listInputMethodSubtype](#listinputmethodsubtype)
+```TypeScript
+import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let inputMethodProperty: inputMethod.InputMethodProperty = {
+  name: 'com.example.keyboard',
+  id: 'propertyId',
+  packageName: 'com.example.keyboard',
+  methodId: 'propertyId'
+}
+let inputMethodSetting: inputMethod.InputMethodSetting = inputMethod.getSetting();
+
+inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data: Array<InputMethodSubtype>) => {
+  console.info('Succeeded in listing inputMethodSubtype.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to listInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
+})
+```
 
 ## off('imeChange')
 
@@ -680,6 +660,12 @@ Disables listening for the input method and subtype change event. This API uses 
 | type | 'imeChange' | Yes | Listening type. The value is fixed at **'imeChange'**. |
 | callback | (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) =&gt; void | No | Callback used to return the input method attributes and subtype. |
 
+**Examples**
+
+```TypeScript
+inputMethod.getSetting().off('imeChange');
+```
+
 ## on('imeChange')
 
 ```TypeScript
@@ -701,6 +687,18 @@ Enables listening for the input method and subtype change event. This API uses a
 | --- | --- | --- | --- |
 | type | 'imeChange' | Yes | Listening type. The value is fixed at **'imeChange'**. |
 | callback | (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) =&gt; void | Yes | Callback used to return the input method attributes and subtype. |
+
+**Examples**
+
+```TypeScript
+import { InputMethodSubtype } from '@kit.IMEKit';
+
+inputMethod.getSetting()
+  .on('imeChange', (inputMethodProperty: inputMethod.InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => {
+    console.info(`Succeeded in subscribing imeChange: inputMethodProperty.name: ${inputMethodProperty.name} ` +
+      `, inputMethodSubtype.id: ${inputMethodSubtype.id}`);
+  });
+```
 
 ## showOptionalInputMethods
 
@@ -748,19 +746,7 @@ inputMethod.getSetting().showOptionalInputMethods((err: BusinessError, result: b
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().showOptionalInputMethods().then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in showing optionalInputMethods.');
-  } else {
-    console.error(`Failed to showOptionalInputMethods.`);
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to showOptionalInputMethods, code: ${err.code}, message: ${err.message}`);
-})
-```
+<a id="showoptionalinputmethods-1"></a>
 
 ## showOptionalInputMethods
 
@@ -792,4 +778,16 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 **Examples**
 
-See [showOptionalInputMethods](#showoptionalinputmethods)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().showOptionalInputMethods().then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in showing optionalInputMethods.');
+  } else {
+    console.error(`Failed to showOptionalInputMethods.`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to showOptionalInputMethods, code: ${err.code}, message: ${err.message}`);
+})
+```

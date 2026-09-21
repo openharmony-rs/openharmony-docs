@@ -1,5 +1,9 @@
 # BigIntConstructor
 
+```TypeScript
+interface BigIntConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

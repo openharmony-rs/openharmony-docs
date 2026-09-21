@@ -1,5 +1,9 @@
 # Photo
 
+```TypeScript
+interface Photo
+```
+
 全质量图对象。
 
 **起始版本：** 11

@@ -46,14 +46,6 @@ function disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback<voi
 **示例**
 
 ```TypeScript
-try {
-  await connection.disconnectAllowedProfiles('68:13:24:79:4C:8C');
-} catch (err) {
-  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
-}
-```
-
-```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.disconnectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
@@ -62,19 +54,6 @@ try {
             return;
         }
         console.info('disconnectAllowedProfiles, err: ' + JSON.stringify(err));
-    });
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
-        console.info('disconnectAllowedProfiles');
-    }, (err: BusinessError) => {
-        console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);

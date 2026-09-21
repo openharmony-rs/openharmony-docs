@@ -1,5 +1,9 @@
 # UploadRequestOptions
 
+```TypeScript
+export interface UploadRequestOptions
+```
+
 **起始版本：** 3
 
 **废弃版本：** 9

@@ -1,5 +1,9 @@
 # StrutStyle
 
+```TypeScript
+interface StrutStyle
+```
+
 支柱样式，用于控制绘制文本的行间距、基线对齐方式以及其他与行高相关的属性，默认不开启。
 
 **起始版本：** 12

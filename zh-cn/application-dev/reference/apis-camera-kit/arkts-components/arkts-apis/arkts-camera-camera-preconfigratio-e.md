@@ -1,5 +1,9 @@
 # PreconfigRatio
 
+```TypeScript
+enum PreconfigRatio
+```
+
 枚举，提供预配置的分辨率比例。
 
 **起始版本：** 12

@@ -1,5 +1,9 @@
 # DisplayIntentType（系统接口）
 
+```TypeScript
+enum DisplayIntentType
+```
+
 枚举截图显示意图类型。
 
 @enum { int }

@@ -47,6 +47,8 @@ Instructs the widgets to enable or disable updates. This API uses an asynchronou
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 
 
+<a id="notifyformsenableupdate-1"></a>
+
 ## notifyFormsEnableUpdate
 
 ```TypeScript

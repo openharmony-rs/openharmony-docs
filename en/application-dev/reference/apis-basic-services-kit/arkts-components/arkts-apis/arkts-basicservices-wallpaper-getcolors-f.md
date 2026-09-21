@@ -41,16 +41,8 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessEr
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<wallpaper.RgbaColor>) => {
-    console.info(`success to getColors: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to getColors because: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="getcolors-1"></a>
 
 ## getColors
 
@@ -80,4 +72,12 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 
 **Examples**
 
-See [getColors](#getcolors)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<wallpaper.RgbaColor>) => {
+    console.info(`success to getColors: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`failed to getColors because: ${JSON.stringify(error)}`);
+});
+```

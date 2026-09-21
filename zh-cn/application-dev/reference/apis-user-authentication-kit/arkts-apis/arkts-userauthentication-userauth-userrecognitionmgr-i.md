@@ -1,8 +1,12 @@
 # UserRecognitionMgr
 
+```TypeScript
+interface UserRecognitionMgr
+```
+
 提供用户识别结果查询和订阅接口，使用[getUserRecognitionMgr](arkts-userauthentication-userauth-getuserrecognitionmgr-f.md)获取**UserRecognitionMgr**实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -20,11 +24,11 @@ getUserRecognitionResult(): Promise<UserRecognitionResult>
 
 获取最新的用户识别结果。该接口使用promise返回结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -48,11 +52,11 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 
 取消订阅用户识别变更事件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -76,11 +80,11 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 订阅用户识别变更事件。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 

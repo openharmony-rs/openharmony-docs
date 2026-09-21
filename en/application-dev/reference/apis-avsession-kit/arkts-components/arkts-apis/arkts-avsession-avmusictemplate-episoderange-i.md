@@ -1,5 +1,9 @@
 # EpisodeRange
 
+```TypeScript
+interface EpisodeRange
+```
+
 The definition of EpisodeRange.
 
 @interface EpisodeRange

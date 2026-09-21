@@ -1,5 +1,9 @@
 # FusionAssetType
 
+```TypeScript
+enum FusionAssetType
+```
+
 融合资产类型枚举表。
 
 **起始版本：** 22

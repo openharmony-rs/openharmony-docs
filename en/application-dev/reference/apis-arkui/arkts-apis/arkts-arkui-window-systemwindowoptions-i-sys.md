@@ -1,5 +1,9 @@
 # SystemWindowOptions (System API)
 
+```TypeScript
+interface SystemWindowOptions
+```
+
 Describes the parameters for creating a system window.
 
 **Since:** 14

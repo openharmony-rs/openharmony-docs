@@ -49,8 +49,28 @@ A maximum of 100 contacts can be imported at a time. Importing contact portraits
 
 **Examples**
 
-```TypeScript
 > NOTE
 > 
 > In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context in the component.
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let contactList: contact.Contact[] = [];
+let contactInfo: contact.Contact = {
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxx'
+  }]
+}
+contactList.push(contactInfo);
+let promise = contact.importContactsViaUI(context, contactList);
+promise.then((data) => {
+  console.info(`Succeeded in importing Contact via UI: data -> ${JSON.stringify(data)}`);
+});
 ```

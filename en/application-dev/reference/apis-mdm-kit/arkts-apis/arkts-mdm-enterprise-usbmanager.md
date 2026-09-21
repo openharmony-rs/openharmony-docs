@@ -29,13 +29,14 @@ import { usbManager } from '@kit.MDMKit';
 | [addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md) | Adds allowed USB devices. |
 | [addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md) | Adds disallowed USB device types. Unlike the [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md) API, this API does not require matching based on the [defined-class-codes](https://www.usb.org/defined-class-codes) standard. This API takes effect immediately on connected USB devices without requiring re-plugging. For example, if a USB wired headset is in normal use and this API is called to disable it, the headset will become unavailable immediately. |
 | [addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md) | Adds disallowed USB device types. |
-| [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md) | Obtains allowed USB devices. |
-| [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md) | Obtains allowed USB devices. |
+| [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md#getallowedusbdevices) | Obtains allowed USB devices. |
+| [getAllowedUsbDevices](arkts-mdm-usbmanager-getallowedusbdevices-f.md#getallowedusbdevices-1) | Obtains allowed USB devices. |
 | [getDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-getdisallowedpermissiveusbdevices-f.md) | Obtains the USB device types that have been disallowed via [addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md). |
-| [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md) | Obtains the disallowed USB device types. |
-| [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md) | Obtains the disallowed USB device types. |
-| [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md) | Obtains the access policy of the USB storage device. |
-| [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md) | Obtains the USB storage device (baseClass = 0x08) access policy. |
+| [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getdisallowedusbdevices) | Obtains the disallowed USB device types. |
+| [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getdisallowedusbdevices-1) | Obtains the disallowed USB device types. |
+| [getUsbSerialNumber](arkts-mdm-usbmanager-getusbserialnumber-f.md) | Queries the serial number of the usb device. |
+| [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy) | Obtains the access policy of the USB storage device. |
+| [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-1) | Obtains the USB storage device (baseClass = 0x08) access policy. |
 | [removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md) | Removes allowed USB devices. |
 | [removeDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-removedisallowedpermissiveusbdevices-f.md) | Removes the USB device types that have been disallowed via [addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md). The removed USB device types can be used normally. |
 | [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md) | Removes the disallowed USB device types. |
@@ -48,8 +49,8 @@ import { usbManager } from '@kit.MDMKit';
 | --- | --- |
 | [disableUsb](arkts-mdm-usbmanager-disableusb-f-sys.md) | Enables or disables USB. |
 | [isUsbDisabled](arkts-mdm-usbmanager-isusbdisabled-f-sys.md) | Queries whether the USB is disabled. |
-| [setUsbPolicy](arkts-mdm-usbmanager-setusbpolicy-f-sys.md) | Sets the USB read/write policy. This API uses an asynchronous callback to return the result. |
-| [setUsbPolicy](arkts-mdm-usbmanager-setusbpolicy-f-sys.md) | Sets the USB read/write policy. This API uses a promise to return the result. |
+| [setUsbPolicy](arkts-mdm-usbmanager-setusbpolicy-f-sys.md#setusbpolicy) | Sets the USB read/write policy. This API uses an asynchronous callback to return the result. |
+| [setUsbPolicy](arkts-mdm-usbmanager-setusbpolicy-f-sys.md#setusbpolicy-1) | Sets the USB read/write policy. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

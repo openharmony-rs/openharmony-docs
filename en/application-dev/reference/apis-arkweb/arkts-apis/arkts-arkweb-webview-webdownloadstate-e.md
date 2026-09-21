@@ -1,5 +1,9 @@
 # WebDownloadState
 
+```TypeScript
+enum WebDownloadState
+```
+
 Enumerates the states of a download task.
 
 **Since:** 11

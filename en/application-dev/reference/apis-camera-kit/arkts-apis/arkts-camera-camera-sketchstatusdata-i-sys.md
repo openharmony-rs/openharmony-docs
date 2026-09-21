@@ -1,5 +1,9 @@
 # SketchStatusData (System API)
 
+```TypeScript
+interface SketchStatusData
+```
+
 Defines the PiP status data.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # AppPreloadType
 
+```TypeScript
+export enum AppPreloadType
+```
+
 Enumerates the preloading types of the current application process.
 
 **Since:** 22

@@ -1,5 +1,9 @@
 # HuksChallengePosition
 
+```TypeScript
+export enum HuksChallengePosition
+```
+
 表示challenge类型为用户自定义类型时，生成的challenge有效长度仅为8字节连续的数据，且仅支持4种位置。
 
 **起始版本：** 9

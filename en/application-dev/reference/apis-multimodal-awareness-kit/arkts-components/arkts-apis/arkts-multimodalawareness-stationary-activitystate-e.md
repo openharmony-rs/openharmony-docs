@@ -1,5 +1,9 @@
 # ActivityState
 
+```TypeScript
+enum ActivityState
+```
+
 Enumerates the device statuses.
 
 **Since:** 9

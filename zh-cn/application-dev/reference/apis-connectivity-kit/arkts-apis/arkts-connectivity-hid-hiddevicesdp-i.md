@@ -1,5 +1,9 @@
 # HidDeviceSdp
 
+```TypeScript
+interface HidDeviceSdp
+```
+
 描述HID设备在服务发现协议（SDP）中的服务注册配置。该结构定义了HID设备的身份标识、能力描述和协议特征，是HID主机发现、识别和连接HID设备的关键参数。
 
 **起始版本：** 23

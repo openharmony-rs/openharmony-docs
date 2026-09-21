@@ -56,16 +56,8 @@ call.getCallRestrictionStatus(0, 1, (err: BusinessError, data: call.RestrictionS
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-call.getCallRestrictionStatus(0, 1).then((data: call.RestrictionStatus) => {
-    console.info(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getCallRestrictionStatus fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getcallrestrictionstatus-1"></a>
 
 ## getCallRestrictionStatus
 
@@ -110,4 +102,12 @@ Obtains the call restriction status. This API uses a promise to return the resul
 
 **Examples**
 
-See [getCallRestrictionStatus](#getcallrestrictionstatus)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.getCallRestrictionStatus(0, 1).then((data: call.RestrictionStatus) => {
+    console.info(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getCallRestrictionStatus fail, promise: err->${JSON.stringify(err)}`);
+});
+```

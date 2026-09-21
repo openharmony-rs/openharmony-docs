@@ -1,5 +1,9 @@
 # CompressStrategy
 
+```TypeScript
+export enum CompressStrategy
+```
+
 CompressStrategy
 
 **Since:** 7

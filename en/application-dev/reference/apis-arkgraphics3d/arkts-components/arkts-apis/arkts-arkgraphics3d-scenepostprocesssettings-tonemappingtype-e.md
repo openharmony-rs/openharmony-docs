@@ -1,5 +1,9 @@
 # ToneMappingType
 
+```TypeScript
+export enum ToneMappingType
+```
+
 Enumerates the tone mapping types.
 
 @enum { int }

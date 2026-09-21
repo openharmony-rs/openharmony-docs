@@ -1,5 +1,9 @@
 # DialogButtonDirection
 
+```TypeScript
+declare enum DialogButtonDirection
+```
+
 警告弹窗中按钮的对齐方式。
 
 **起始版本：** 10

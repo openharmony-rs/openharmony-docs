@@ -1,5 +1,9 @@
 # WindowInfo
 
+```TypeScript
+export interface WindowInfo
+```
+
 Represents window information.
 
 **Since:** 12

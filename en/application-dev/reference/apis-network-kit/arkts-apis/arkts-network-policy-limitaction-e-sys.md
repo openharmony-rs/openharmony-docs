@@ -1,5 +1,9 @@
 # LimitAction (System API)
 
+```TypeScript
+export enum LimitAction
+```
+
 Enumerates the actions that can be taken when the data volume quota is reached.
 
 **Since:** 10

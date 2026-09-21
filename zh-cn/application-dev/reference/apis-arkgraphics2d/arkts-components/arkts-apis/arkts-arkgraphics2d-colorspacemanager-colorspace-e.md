@@ -1,5 +1,9 @@
 # ColorSpace
 
+```TypeScript
+enum ColorSpace
+```
+
 色域类型枚举。
 
 **起始版本：** 9

@@ -1,5 +1,9 @@
 # ControlCenterQuery
 
+```TypeScript
+interface ControlCenterQuery
+```
+
 ControlCenterQuery is used to check whether the camera controller is supported.
 
 **Since:** 20
@@ -32,6 +36,8 @@ Obtains the effect types supported by the camera controller.
 | --- | --- |
 | Array&lt;[ControlCenterEffectType](arkts-camera-camera-controlcentereffecttype-e.md)&gt; | Array of effect types supported. |
 
+**Examples**
+
 ## isControlCenterSupported
 
 ```TypeScript
@@ -51,3 +57,12 @@ Checks whether the camera controller is supported.
 | Type | Description |
 | --- | --- |
 | boolean | Check result for the support of the camera controller. **true** if supported, **false** otherwise. |
+
+**Examples**
+
+```TypeScript
+function isControlCenterSupported(videoSession: camera.VideoSession): boolean {
+    let isSupported: boolean = videoSession.isControlCenterSupported();
+    return isSupported;
+}
+```

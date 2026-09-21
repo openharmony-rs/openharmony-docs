@@ -1,5 +1,9 @@
 # Focus
 
+```TypeScript
+interface Focus extends FocusQuery
+```
+
 **Focus** inherits from [FocusQuery](arkts-camera-camera-focusquery-i.md).
 
 It provides APIs related to focus operations.

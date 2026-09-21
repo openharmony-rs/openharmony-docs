@@ -1,5 +1,9 @@
 # PbesParams
 
+```TypeScript
+interface PbesParams
+```
+
 表示基于密码的加密算法参数，当前仅支持PBES2。
 
 **起始版本：** 21

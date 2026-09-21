@@ -1,5 +1,9 @@
 # TextBadgeType
 
+```TypeScript
+enum TextBadgeType
+```
+
 Enumerates the text badges.
 
 **Since:** 20

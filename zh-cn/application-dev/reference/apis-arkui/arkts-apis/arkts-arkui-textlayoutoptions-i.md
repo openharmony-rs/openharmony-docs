@@ -1,5 +1,9 @@
 # TextLayoutOptions
 
+```TypeScript
+declare interface TextLayoutOptions
+```
+
 文本布局选项。
 
 **起始版本：** 20

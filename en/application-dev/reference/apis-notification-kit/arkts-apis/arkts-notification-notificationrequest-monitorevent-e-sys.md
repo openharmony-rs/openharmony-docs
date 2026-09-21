@@ -1,5 +1,9 @@
 # MonitorEvent (System API)
 
+```TypeScript
+export enum MonitorEvent
+```
+
 Enumerates the event types of monitoring a geofence.
 
 **Since:** 23

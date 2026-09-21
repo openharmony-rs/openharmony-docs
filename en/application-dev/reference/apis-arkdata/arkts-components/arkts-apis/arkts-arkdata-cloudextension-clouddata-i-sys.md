@@ -1,5 +1,9 @@
 # CloudData (System API)
 
+```TypeScript
+export interface CloudData
+```
+
 Represents the cloud data.
 
 **Since:** 11

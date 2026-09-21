@@ -1,6 +1,10 @@
 # AtomicServiceNavigation
 
-**AtomicServiceNavigation** is a component that serves as the root container of a page. By default, it includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of NavDestination) and non-home page content through routing.
+```TypeScript
+export declare struct AtomicServiceNavigation
+```
+
+**AtomicServiceNavigation** is a component that serves as the root container of a page. By default, it includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination)) and non-home page content through routing.
 
 **Since:** 12
 
@@ -74,7 +78,7 @@ menus?: CustomBuilder | Array<NavigationMenuItem>
 
 The layout style users defined and inserted.
 
-**Type:** [CustomBuilder](../arkts-components/arkts-arkui-custombuilder-t.md) &#124; Array&lt;[NavigationMenuItem](../arkts-components/arkts-arkui-navigationmenuitem-i.md)&gt;
+**Type:** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md) &#124; Array&lt;[NavigationMenuItem](../arkts-components/arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;
 
 **Since:** 18
 
@@ -110,7 +114,7 @@ mode?: NavigationMode
 
 Sets the mode of navigation.
 
-**Type:** [NavigationMode](../arkts-components/arkts-arkui-navigationmode-e.md)
+**Type:** [NavigationMode](../arkts-components/arkts-arkui-navigation-comp-navigationmode-e.md)
 
 **Since:** 12
 
@@ -128,7 +132,7 @@ modeChangeCallback?: Callback<NavigationMode>
 
 Trigger callback when navigation mode changes.
 
-**Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NavigationMode](../arkts-components/arkts-arkui-navigationmode-e.md)&gt;
+**Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NavigationMode](../arkts-components/arkts-arkui-navigation-comp-navigationmode-e.md)&gt;
 
 **Since:** 12
 
@@ -201,7 +205,7 @@ navPathStack?: NavPathStack
 
 the information of route page.Providers methods for controlling destination page in the stack.
 
-**Type:** [NavPathStack](../arkts-components/arkts-arkui-navpathstack-c.md)
+**Type:** [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md)
 
 **Since:** 12
 

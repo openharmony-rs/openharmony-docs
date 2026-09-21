@@ -1,5 +1,9 @@
 # ResolvedSymbolDateTimeFormatOptions
 
+```TypeScript
+export interface ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions
+```
+
 自定义符号时间日期格式化对象配置项的解析结果。继承自Intl.ResolvedDateTimeFormatOptions，支持Intl.ResolvedDateTimeFormatOptions的所有配置项，并且功能与其一致。
 
 **继承/实现关系：** ResolvedSymbolDateTimeFormatOptions extends Intl.ResolvedDateTimeFormatOptions

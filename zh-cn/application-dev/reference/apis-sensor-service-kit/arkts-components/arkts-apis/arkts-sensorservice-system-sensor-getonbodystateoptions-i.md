@@ -1,5 +1,9 @@
 # GetOnBodyStateOptions
 
+```TypeScript
+export interface GetOnBodyStateOptions
+```
+
 获取传感器所在设备佩戴状态时的参数，包括回调函数。此接口为一次性获取，不会持续监听状态变化。
 
 **起始版本：** 3

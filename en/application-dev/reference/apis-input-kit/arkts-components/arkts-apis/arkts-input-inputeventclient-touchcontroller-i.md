@@ -1,5 +1,9 @@
 # TouchController
 
+```TypeScript
+interface TouchController
+```
+
 Provides the capability of simulating touch operations. The simulated touch operation sequence must meet the following requirements:
 
 1. All touch points must share the same **displayId**.
@@ -144,9 +148,7 @@ Moves a touch point. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 For details, see [touchDown](#touchdown).
-```
 
 ## touchUp
 
@@ -186,6 +188,4 @@ Releases a touch point. This API uses a promise to return the result.
 
 **Examples**
 
-```TypeScript
 For details, see [touchDown](#touchdown).
-```

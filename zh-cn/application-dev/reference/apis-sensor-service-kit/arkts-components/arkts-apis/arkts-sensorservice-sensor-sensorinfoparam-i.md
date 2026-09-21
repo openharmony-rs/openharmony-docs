@@ -1,5 +1,9 @@
 # SensorInfoParam
 
+```TypeScript
+interface SensorInfoParam
+```
+
 传感器传入设置参数，多传感器情况下通过deviceId、sensorIndex控制指定传感器。
 
 **起始版本：** 19

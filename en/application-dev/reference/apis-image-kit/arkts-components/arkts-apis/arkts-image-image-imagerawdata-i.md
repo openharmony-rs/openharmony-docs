@@ -1,5 +1,9 @@
 # ImageRawData
 
+```TypeScript
+interface ImageRawData
+```
+
 Describes raw data in an image.
 
 **Since:** 24

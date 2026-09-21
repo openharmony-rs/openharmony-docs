@@ -1,5 +1,9 @@
 # HapModuleInfo
 
+```TypeScript
+export interface HapModuleInfo
+```
+
 The module defines the HAP module information.
 
 **Since:** 9

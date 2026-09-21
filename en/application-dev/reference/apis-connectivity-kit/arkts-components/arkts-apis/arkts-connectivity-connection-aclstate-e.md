@@ -1,5 +1,9 @@
 # AclState
 
+```TypeScript
+export enum AclState
+```
+
 The enum of acl state.
 
 **Since:** 26.0.0

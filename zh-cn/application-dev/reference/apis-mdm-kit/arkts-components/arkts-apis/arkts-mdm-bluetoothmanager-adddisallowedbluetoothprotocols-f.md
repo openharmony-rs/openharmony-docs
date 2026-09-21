@@ -63,36 +63,8 @@ try {
 }
 ```
 
-```TypeScript
-import { Want } from '@kit.AbilityKit';
-import { bluetoothManager } from '@kit.MDMKit';
 
-// 创建企业设备管理扩展组件
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-// 定义用户ID
-let accountId: number = 100;
-// 定义蓝牙协议数组
-let protocols: Array<bluetoothManager.Protocol> = [
-  bluetoothManager.Protocol.GATT,
-  bluetoothManager.Protocol.SPP,
-  bluetoothManager.Protocol.OPP
-];
-
-try {
-  // 添加蓝牙协议禁用名单，指定传输策略为禁止发送和接收
-  bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols,
-    bluetoothManager.TransferPolicy.RECEIVE_SEND);
-  console.info('Succeeded in adding disallowed bluetooth protocols.');
-} catch (err) {
-  console.error(`Failed to add disallowed bluetooth protocols. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
+<a id="adddisallowedbluetoothprotocols-1"></a>
 
 ## addDisallowedBluetoothProtocols
 
@@ -138,4 +110,32 @@ function addDisallowedBluetoothProtocols(admin: Want, accountId: number, protoco
 
 **示例**
 
-参见 [addDisallowedBluetoothProtocols](#adddisallowedbluetoothprotocols)
+```TypeScript
+import { Want } from '@kit.AbilityKit';
+import { bluetoothManager } from '@kit.MDMKit';
+
+// 创建企业设备管理扩展组件
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// 定义用户ID
+let accountId: number = 100;
+// 定义蓝牙协议数组
+let protocols: Array<bluetoothManager.Protocol> = [
+  bluetoothManager.Protocol.GATT,
+  bluetoothManager.Protocol.SPP,
+  bluetoothManager.Protocol.OPP
+];
+
+try {
+  // 添加蓝牙协议禁用名单，指定传输策略为禁止发送和接收
+  bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols,
+    bluetoothManager.TransferPolicy.RECEIVE_SEND);
+  console.info('Succeeded in adding disallowed bluetooth protocols.');
+} catch (err) {
+  console.error(`Failed to add disallowed bluetooth protocols. Code is ${err.code}, message is ${err.message}`);
+}
+```

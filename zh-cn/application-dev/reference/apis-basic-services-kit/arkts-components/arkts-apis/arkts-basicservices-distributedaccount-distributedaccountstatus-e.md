@@ -1,5 +1,9 @@
 # DistributedAccountStatus
 
+```TypeScript
+enum DistributedAccountStatus
+```
+
 表示分布式账号状态枚举。
 
 **起始版本：** 10

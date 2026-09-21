@@ -1,5 +1,9 @@
 # Reader
 
+```TypeScript
+export interface Reader
+```
+
 Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。通过[SEService.getReaders](arkts-connectivity-omapi-seservice-i.md#getreaders)获取Reader实例。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # FixedMode（系统接口）
 
+```TypeScript
+export declare enum FixedMode
+```
+
 修正坐标的模式。默认值为NONE。
 
 **系统API**: 此接口为系统接口。

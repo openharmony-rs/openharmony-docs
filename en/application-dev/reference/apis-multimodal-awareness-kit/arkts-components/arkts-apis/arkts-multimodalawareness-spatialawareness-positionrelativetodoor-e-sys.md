@@ -1,5 +1,9 @@
 # PositionRelativeToDoor (System API)
 
+```TypeScript
+export enum PositionRelativeToDoor
+```
+
 Enum for identification result inside and outside the door
 
 @enum { int } PositionRelativeToDoor

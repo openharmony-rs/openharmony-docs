@@ -51,6 +51,8 @@ Obtains detailed attribute information of a file or directory. This API uses a p
 | 13900042 | Unknown error |
 
 
+<a id="stat-1"></a>
+
 ## stat
 
 ```TypeScript

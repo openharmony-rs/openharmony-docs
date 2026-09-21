@@ -1,5 +1,9 @@
 # SystemToneType (System API)
 
+```TypeScript
+enum SystemToneType
+```
+
 Enum for system tone type.
 
 **Since:** 11

@@ -1,5 +1,9 @@
 # FormType
 
+```TypeScript
+enum FormType
+```
+
 支持的卡片类型枚举。
 
 **起始版本：** 8

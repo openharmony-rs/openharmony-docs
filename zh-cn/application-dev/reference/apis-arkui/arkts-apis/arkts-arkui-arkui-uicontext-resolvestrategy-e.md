@@ -1,5 +1,9 @@
 # ResolveStrategy
 
+```TypeScript
+export const enum ResolveStrategy
+```
+
 UIContext对象的解析策略。
 
 **起始版本：** 22

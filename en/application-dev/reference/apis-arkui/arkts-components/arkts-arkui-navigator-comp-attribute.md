@@ -1,5 +1,9 @@
 # Navigator properties/events
 
+```TypeScript
+declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>
+```
+
 Declare navigator properties.
 
 **Inheritance/Implementation:** NavigatorAttribute extends CommonMethod<NavigatorAttribute>
@@ -8,7 +12,7 @@ Declare navigator properties.
 
 **Deprecated since:** 13
 
-**Substitutes:** Navigation
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +28,7 @@ Sets whether the **Navigator** component is activated. If the component is activ
 
 **Deprecated since:** 13
 
-**Substitutes:** Navigation
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -48,7 +52,7 @@ Sets the data that needs to be passed to the target page during redirection.
 
 **Deprecated since:** 13
 
-**Substitutes:** param
+**Substitutes:** [param](arkts-arkui-navigation-comp-navpathinfo-c.md#param)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -72,7 +76,7 @@ Sets the path of the target page to be redirected to. The target page must be ad
 
 **Deprecated since:** 13
 
-**Substitutes:** Navigation
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -96,7 +100,7 @@ Sets the navigation type.
 
 **Deprecated since:** 13
 
-**Substitutes:** Navigation
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -106,4 +110,4 @@ Sets the navigation type.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NavigationType](arkts-arkui-navigationtype-e.md) | Yes | Navigation type.<br>Default value: **NavigationType.Push** |
+| value | [NavigationType](arkts-arkui-navigator-comp-navigationtype-e.md) | Yes | Navigation type.<br>Default value: **NavigationType.Push** |

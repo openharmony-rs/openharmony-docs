@@ -1,5 +1,9 @@
 # CameraCapabilities（系统接口）
 
+```TypeScript
+export interface CameraCapabilities
+```
+
 视频通话本端相机画面分辨率信息。
 
 **起始版本：** 11

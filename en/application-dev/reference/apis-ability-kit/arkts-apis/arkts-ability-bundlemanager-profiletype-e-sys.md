@@ -1,5 +1,9 @@
 # ProfileType (System API)
 
+```TypeScript
+export enum ProfileType
+```
+
 Enumerates the types of profiles (also called application files).
 
 **Since:** 11

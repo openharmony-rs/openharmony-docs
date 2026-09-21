@@ -34,6 +34,8 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the obtained **HuksResult**. Otherwise, **err** is an error object. |
 
 
+<a id="update-1"></a>
+
 ## update
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # console
 
+```TypeScript
+export declare class console
+```
+
 提供控制台。
 
 **起始版本：** 3

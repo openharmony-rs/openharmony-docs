@@ -1,5 +1,9 @@
 # MovingPhotoEffectMode（系统接口）
 
+```TypeScript
+enum MovingPhotoEffectMode
+```
+
 Enumeration of moving photo effect mode.
 
 **起始版本：** 14

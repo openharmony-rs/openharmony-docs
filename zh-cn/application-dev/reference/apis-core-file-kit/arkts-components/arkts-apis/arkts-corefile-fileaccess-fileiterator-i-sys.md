@@ -1,5 +1,9 @@
 # FileIterator（系统接口）
 
+```TypeScript
+interface FileIterator
+```
+
 表示文件夹的迭代器对象。
 
 **起始版本：** 9

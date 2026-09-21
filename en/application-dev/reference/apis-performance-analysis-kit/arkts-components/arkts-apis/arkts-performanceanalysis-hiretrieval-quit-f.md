@@ -16,6 +16,8 @@ Quit the HiRetrieval project. This operation clears the current HiRetrieval conf
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval

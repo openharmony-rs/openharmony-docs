@@ -1,5 +1,9 @@
 # SubWindowOptions
 
+```TypeScript
+interface SubWindowOptions
+```
+
 子窗口创建参数。
 
 **起始版本：** 11

@@ -1,5 +1,9 @@
 # TraceRouteOptions
 
+```TypeScript
+export interface TraceRouteOptions
+```
+
 路由跟踪的选项。
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # PrintJobData
 
+```TypeScript
+interface PrintJobData
+```
+
 定义打印任务的接口。
 
 **起始版本：** 23

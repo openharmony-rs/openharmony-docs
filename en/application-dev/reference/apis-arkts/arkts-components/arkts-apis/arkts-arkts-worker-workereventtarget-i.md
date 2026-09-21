@@ -1,5 +1,9 @@
 # WorkerEventTarget
 
+```TypeScript
+export interface WorkerEventTarget
+```
+
 Processes worker listening events.
 
 **Since:** 9

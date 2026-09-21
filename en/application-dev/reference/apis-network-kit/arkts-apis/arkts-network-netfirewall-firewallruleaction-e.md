@@ -1,5 +1,9 @@
 # FirewallRuleAction
 
+```TypeScript
+enum FirewallRuleAction
+```
+
 Enumerates the firewall rule actions, including allowing or denying network connections.
 
 **Since:** 15

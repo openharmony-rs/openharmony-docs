@@ -53,16 +53,8 @@ screenLock.sendScreenLockEvent('unlockScreenResult', 0, (err: BusinessError, res
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-screenLock.sendScreenLockEvent('unlockScreenResult', 0).then((result: Boolean) => {
-  console.info(`Succeeded in Sending screenlock event. result: ${result}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="sendscreenlockevent-1"></a>
 
 ## sendScreenLockEvent
 
@@ -104,4 +96,12 @@ The screen lock app sends the event to the screen lock service.
 
 **Examples**
 
-See [sendScreenLockEvent](#sendscreenlockevent)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+screenLock.sendScreenLockEvent('unlockScreenResult', 0).then((result: Boolean) => {
+  console.info(`Succeeded in Sending screenlock event. result: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
+});
+```

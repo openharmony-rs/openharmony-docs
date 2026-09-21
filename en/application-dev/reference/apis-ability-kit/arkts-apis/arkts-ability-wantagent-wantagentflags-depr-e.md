@@ -1,5 +1,9 @@
 # WantAgentFlags
 
+```TypeScript
+export enum WantAgentFlags
+```
+
 Enumerates flags for using a WantAgent.
 
 **Since:** 7

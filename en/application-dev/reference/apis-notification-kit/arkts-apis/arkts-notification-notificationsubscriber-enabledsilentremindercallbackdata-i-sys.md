@@ -1,5 +1,9 @@
 # EnabledSilentReminderCallbackData (System API)
 
+```TypeScript
+export interface EnabledSilentReminderCallbackData
+```
+
 Returns the application notification silent reminder switch state.
 
 **Since:** 24

@@ -1,5 +1,9 @@
 # RowLayoutAlgorithmOptions
 
+```TypeScript
+interface RowLayoutAlgorithmOptions
+```
+
 设置水平方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
 
 **起始版本：** 24
@@ -38,7 +42,7 @@ alignItems?: VerticalAlign
 isReverse?: boolean
 ```
 
-子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性direction影响，如果direction属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。
+子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#direction)影响，如果[direction](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#direction)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。
 
 默认值：false
 

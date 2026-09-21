@@ -32,26 +32,26 @@ import { continuationManager } from '@kit.AbilityKit';
 | [on](arkts-ability-continuationmanager-on-f.md#ondeviceunselected) | 异步方法，监听设备断开状态，使用Callback形式返回断开的设备信息。 |
 | [on](arkts-ability-continuationmanager-on-f.md#ondeviceconnect) | 异步方法，监听设备连接状态，使用Callback形式返回连接的设备信息。 |
 | [on](arkts-ability-continuationmanager-on-f.md#ondevicedisconnect) | 异步方法，监听设备断开状态，使用Callback形式返回断开的设备信息。 |
-| [register](arkts-ability-continuationmanager-register-f.md) | 注册流转管理服务，并获取对应的注册token，无过滤条件，使用AsyncCallback方式作为异步方法。 |
-| [register](arkts-ability-continuationmanager-register-f.md) | 连接流转管理服务，并获取对应的注册token，使用AsyncCallback方式作为异步方法。 |
-| [register](arkts-ability-continuationmanager-register-f.md) | 连接流转管理服务，并获取对应的注册token，使用Promise方式作为异步方法。 |
-| [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md) | 注册流转管理服务，并获取对应的注册token，无过滤条件，使用AsyncCallback方式作为异步方法。 |
-| [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md) | 连接流转管理服务，并获取对应的注册token，使用AsyncCallback方式作为异步方法。 |
-| [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md) | 连接流转管理服务，并获取对应的注册token，使用Promise方式作为异步方法。 |
-| [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md) | 拉起设备选择模块，可显示组网内可选择设备列表信息，无过滤条件，使用AsyncCallback方式作为异步方法。 |
-| [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用AsyncCallback方式作为异步方法。 |
-| [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用Promise方式作为异步方法。 |
-| [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md) | 拉起设备选择模块，可显示组网内可选择设备列表信息，无过滤条件，使用AsyncCallback方式作为异步方法。 |
-| [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用AsyncCallback方式作为异步方法。 |
-| [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用Promise方式作为异步方法。 |
-| [unregister](arkts-ability-continuationmanager-unregister-f.md) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用AsyncCallback方式作为异步方法。 |
-| [unregister](arkts-ability-continuationmanager-unregister-f.md) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用Promise方式作为异步方法。 |
-| [unregisterContinuation](arkts-ability-continuationmanager-unregistercontinuation-f.md) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用AsyncCallback方式作为异步方法。 |
-| [unregisterContinuation](arkts-ability-continuationmanager-unregistercontinuation-f.md) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用Promise方式作为异步方法。 |
-| [updateConnectStatus](arkts-ability-continuationmanager-updateconnectstatus-f.md) | 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。 |
-| [updateConnectStatus](arkts-ability-continuationmanager-updateconnectstatus-f.md) | 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。 |
-| [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md) | 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。 |
-| [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md) | 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。 |
+| [register](arkts-ability-continuationmanager-register-f.md#register) | 注册流转管理服务，并获取对应的注册token，无过滤条件，使用AsyncCallback方式作为异步方法。 |
+| [register](arkts-ability-continuationmanager-register-f.md#register-1) | 连接流转管理服务，并获取对应的注册token，使用AsyncCallback方式作为异步方法。 |
+| [register](arkts-ability-continuationmanager-register-f.md#register-2) | 连接流转管理服务，并获取对应的注册token，使用Promise方式作为异步方法。 |
+| [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md#registercontinuation) | 注册流转管理服务，并获取对应的注册token，无过滤条件，使用AsyncCallback方式作为异步方法。 |
+| [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md#registercontinuation-1) | 连接流转管理服务，并获取对应的注册token，使用AsyncCallback方式作为异步方法。 |
+| [registerContinuation](arkts-ability-continuationmanager-registercontinuation-f.md#registercontinuation-2) | 连接流转管理服务，并获取对应的注册token，使用Promise方式作为异步方法。 |
+| [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md#startcontinuationdevicemanager) | 拉起设备选择模块，可显示组网内可选择设备列表信息，无过滤条件，使用AsyncCallback方式作为异步方法。 |
+| [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md#startcontinuationdevicemanager-1) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用AsyncCallback方式作为异步方法。 |
+| [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md#startcontinuationdevicemanager-2) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用Promise方式作为异步方法。 |
+| [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md#startdevicemanager) | 拉起设备选择模块，可显示组网内可选择设备列表信息，无过滤条件，使用AsyncCallback方式作为异步方法。 |
+| [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md#startdevicemanager-1) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用AsyncCallback方式作为异步方法。 |
+| [startDeviceManager](arkts-ability-continuationmanager-startdevicemanager-f.md#startdevicemanager-2) | 拉起设备选择模块，可显示组网内可选择设备列表信息，使用Promise方式作为异步方法。 |
+| [unregister](arkts-ability-continuationmanager-unregister-f.md#unregister) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用AsyncCallback方式作为异步方法。 |
+| [unregister](arkts-ability-continuationmanager-unregister-f.md#unregister-1) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用Promise方式作为异步方法。 |
+| [unregisterContinuation](arkts-ability-continuationmanager-unregistercontinuation-f.md#unregistercontinuation) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用AsyncCallback方式作为异步方法。 |
+| [unregisterContinuation](arkts-ability-continuationmanager-unregistercontinuation-f.md#unregistercontinuation-1) | 解注册流转管理服务，传入注册时获取的token进行解注册，使用Promise方式作为异步方法。 |
+| [updateConnectStatus](arkts-ability-continuationmanager-updateconnectstatus-f.md#updateconnectstatus) | 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。 |
+| [updateConnectStatus](arkts-ability-continuationmanager-updateconnectstatus-f.md#updateconnectstatus-1) | 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。 |
+| [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md#updatecontinuationstate) | 通知设备选择模块，更新当前的连接状态，使用AsyncCallback方式作为异步方法。 |
+| [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md#updatecontinuationstate-1) | 通知设备选择模块，更新当前的连接状态，使用Promise方式作为异步方法。 |
 
 ### 枚举
 

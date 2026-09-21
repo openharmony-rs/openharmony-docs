@@ -1,5 +1,9 @@
 # HighlightUserActionType（系统接口）
 
+```TypeScript
+enum HighlightUserActionType
+```
+
 枚举，时刻用户行为类型。
 
 **起始版本：** 12

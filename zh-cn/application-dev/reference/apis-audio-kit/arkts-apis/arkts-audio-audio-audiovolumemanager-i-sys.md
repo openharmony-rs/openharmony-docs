@@ -1,6 +1,10 @@
 # AudioVolumeManager
 
-音量管理。在使用AudioVolumeManager的接口前，需要使用[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。
+```TypeScript
+interface AudioVolumeManager
+```
+
+音量管理，提供音量组信息查询、应用级音量控制、系统音量百分比管理等功能。适用于需要对音量进行精细化控制、监听音量变化、管理应用级音量的场景。在使用AudioVolumeManager的接口前，需要使用[getVolumeManager](arkts-audio-audio-audiomanager-i.md#getvolumemanager)获取AudioVolumeManager实例。
 
 **起始版本：** 9
 
@@ -12,44 +16,13 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-## confirmVolumeLimitExceeded
-
-```TypeScript
-confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
-```
-
-确认调整超出音量保护阈值的音量结果。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型，不同的音量类型有不同的阈值，volumeType 用于识别当前的音量类型阈值。 |
-| result | boolean | 是 | 确认音量调整已超过音量保护阈值 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-| [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
-
 ## forceVolumeKeyControlType
 
 ```TypeScript
 forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 ```
 
-设置音量键调节类型。
+强制修改音量键调节的音量类型。
 
 **起始版本：** 20
 
@@ -64,7 +37,7 @@ forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 应用程序期望控制的音频音量类型。 |
-| duration | number | 是 | 无音量键事件时，控制音量类型的持续时间，单位为秒（s）。<br>当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。<br>如果持续时间设置为-1，则取消该设置。 |
+| duration | number | 是 | 无音量键事件时，控制音量类型的持续时间，单位为s。<br>当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10s。<br>如果持续时间设置为-1，则取消该设置。 |
 
 **错误码：**
 
@@ -175,7 +148,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 getAudioVolumeTypeByStreamUsage(streamUsage: StreamUsage): AudioVolumeType
 ```
 
-按流类型获取卷类型。
+按流类型获取音量类型。
 
 **起始版本：** 20
 
@@ -208,7 +181,7 @@ getAudioVolumeTypeByStreamUsage(streamUsage: StreamUsage): AudioVolumeType
 getMaxSystemVolume(volumeType: AudioVolumeType): number
 ```
 
-获取音量类型允许的最大音量大小。
+获取最大系统音量。
 
 **起始版本：** 20
 
@@ -220,13 +193,13 @@ getMaxSystemVolume(volumeType: AudioVolumeType): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 最大音量。 |
+| number | 最大音量等级。 |
 
 **错误码：**
 
@@ -241,7 +214,7 @@ getMaxSystemVolume(volumeType: AudioVolumeType): number
 getMinSystemVolume(volumeType: AudioVolumeType): number
 ```
 
-获取音量类型允许的最小音量大小。
+获取最小系统音量。
 
 **起始版本：** 20
 
@@ -253,13 +226,13 @@ getMinSystemVolume(volumeType: AudioVolumeType): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 最小音量. |
+| number | 最小音量等级。 |
 
 **错误码：**
 
@@ -331,13 +304,13 @@ getStreamUsagesByVolumeType(volumeType: AudioVolumeType): StreamUsageArray
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | 返回音频流类型。 |
+| [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | 返回音频流类型数组。 |
 
 **错误码：**
 
@@ -352,7 +325,7 @@ getStreamUsagesByVolumeType(volumeType: AudioVolumeType): StreamUsageArray
 getSupportedAudioVolumeTypes(): Array<Readonly<AudioVolumeType>>
 ```
 
-获取系统支持的卷类型。
+获取系统支持的音量类型。
 
 **起始版本：** 20
 
@@ -378,7 +351,7 @@ getSupportedAudioVolumeTypes(): Array<Readonly<AudioVolumeType>>
 getSystemVolume(volumeType: AudioVolumeType): number
 ```
 
-取消监听系统音量变化事件。使用callback异步回调。
+获取系统音量。
 
 **起始版本：** 20
 
@@ -390,13 +363,13 @@ getSystemVolume(volumeType: AudioVolumeType): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 当前系统音量级别。 |
+| number | 当前系统音量等级。 |
 
 **错误码：**
 
@@ -520,12 +493,7 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 });
 ```
 
-```TypeScript
-async function getVolumeGroupInfos(){
-  let volumegroupinfos: audio.VolumeGroupInfos = await audio.getAudioManager().getVolumeManager().getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
-  console.info('Promise returned to indicate that the volumeGroup list is obtained.'+JSON.stringify(volumegroupinfos))
-}
-```
+<a id="getvolumegroupinfos-1"></a>
 
 ## getVolumeGroupInfos
 
@@ -555,7 +523,12 @@ getVolumeGroupInfos(networkId: string): Promise<VolumeGroupInfos>
 
 **示例**
 
-参见 [getVolumeGroupInfos](#getvolumegroupinfos)
+```TypeScript
+async function getVolumeGroupInfos(){
+  let volumegroupinfos: audio.VolumeGroupInfos = await audio.getAudioManager().getVolumeManager().getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+  console.info('Promise returned to indicate that the volumeGroup list is obtained.'+JSON.stringify(volumegroupinfos))
+}
+```
 
 ## getVolumeGroupInfosSync
 
@@ -622,7 +595,7 @@ getVolumeInUnitOfDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 | volumeLevel | number | 是 | 要设置的音量级别。 |
 | device | [DeviceType](arkts-audio-audio-devicetype-e.md) | 是 | 输出设备类型。 |
 
@@ -696,7 +669,7 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
 isSystemMuted(volumeType: AudioVolumeType): boolean
 ```
 
-检查音量类型是否被静音。
+检查系统音量是否静音.
 
 **起始版本：** 20
 
@@ -708,7 +681,7 @@ isSystemMuted(volumeType: AudioVolumeType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量类型。 |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
 
 **返回值：**
 
@@ -729,7 +702,7 @@ isSystemMuted(volumeType: AudioVolumeType): boolean
 off(type: 'appVolumeChangeForUid', callback?: Callback<VolumeEvent>): void
 ```
 
-取消监听指定应用应用级音量变化事件。使用callback异步回调。
+取消订阅指定应用应用级音量变化事件。
 
 **起始版本：** 19
 
@@ -743,8 +716,8 @@ off(type: 'appVolumeChangeForUid', callback?: Callback<VolumeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'appVolumeChangeForUid' | 是 | 事件回调类型，支持的事件为'appVolumeChangeForUid'，当取消监听指定应用应用级音量变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 回调函数，返回变化后的音量信息。 |
+| type | 'appVolumeChangeForUid' | 是 | 事件回调类型，支持的事件为'appVolumeChangeForUid'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 待取消的应用应用级音量变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
@@ -754,13 +727,31 @@ off(type: 'appVolumeChangeForUid', callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioVolumeManager.off('appVolumeChangeForUid');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.on('appVolumeChangeForUid', appVolumeChangeForUidCallback);
+
+audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
+```
+
 ## off('activeVolumeTypeChange')
 
 ```TypeScript
 off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void
 ```
 
-取消监听当前活跃流变化事件。使用callback异步回调。
+取消监听当前活跃流变化事件。
 
 **起始版本：** 20
 
@@ -772,8 +763,8 @@ off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'activeVolumeTypeChange' | 是 | 事件回调类型，支持的事件为'activeVolumeTypeChange'，当取消监听当前活跃流变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)&gt; | 否 | 回调函数，返回变化后的活跃音频音量类型。 |
+| type | 'activeVolumeTypeChange' | 是 | 事件回调类型，支持的事件为'activeVolumeTypeChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md)&gt; | 否 | 待取消的当前活跃流变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
@@ -781,6 +772,22 @@ off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioVolumeManager.off('activeVolumeTypeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
+  console.info(`VolumeType of stream: ${volumeType} `);
+};
+
+audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+
+audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+```
 
 ## off('systemVolumeChange')
 
@@ -788,7 +795,7 @@ off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void
 off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void
 ```
 
-取消监听系统音量变化事件。使用callback异步回调。
+取消监听系统音量变化事件。
 
 **起始版本：** 20
 
@@ -800,8 +807,8 @@ off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'systemVolumeChange' | 是 | 事件回调类型，支持的事件为'systemVolumeChange'，当取消监听系统音量变化事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 回调函数，返回变化后的音量信息。 |
+| type | 'systemVolumeChange' | 是 | 事件回调类型，支持的事件为'systemVolumeChange'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 待取消的系统音量变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
@@ -809,6 +816,22 @@ off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+// 取消该事件的所有监听。
+audioVolumeManager.off('systemVolumeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
+```
 
 ## offSystemVolumeChangeByFilter
 
@@ -830,7 +853,7 @@ offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 订阅中使用的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 用于订阅的回调函数。 |
 
 **错误码：**
 
@@ -839,42 +862,13 @@ offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system app. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
-## offVolumeLimitExceeded
-
-```TypeScript
-offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void
-```
-
-取消订阅当前音量是否超过音量保护阈值的监控。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md)&gt; | 否 | 1. 必填参数缺失；。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
 ## offVolumePercentageChange
 
 ```TypeScript
 offVolumePercentageChange(callback?: Callback<VolumeEvent>): void
 ```
 
-取消监听系统音量变化事件。使用callback异步回调。
+取消订阅系统音量变化事件。
 
 **起始版本：** 23
 
@@ -886,7 +880,7 @@ offVolumePercentageChange(callback?: Callback<VolumeEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 回调函数，返回变化后的音量信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 否 | 待取消的系统音量变化回调函数。不填写时取消该事件的所有回调。 |
 
 **错误码：**
 
@@ -946,6 +940,18 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback<VolumeEvent>):
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+let uid: number = 20010041; // 应用ID。
+
+audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
 ## on('activeVolumeTypeChange')
 
 ```TypeScript
@@ -973,6 +979,14 @@ on(type: 'activeVolumeTypeChange', callback: Callback<AudioVolumeType>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+**示例**
+
+```TypeScript
+audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeType) => {
+  console.info(`VolumeType of stream: ${volumeType} `);
+});
+```
 
 ## on('systemVolumeChange')
 
@@ -1002,6 +1016,14 @@ on(type: 'systemVolumeChange', callback: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
 ## onSystemVolumeChangeByFilter
 
 ```TypeScript
@@ -1023,42 +1045,13 @@ onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<Volu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [SystemVolumeFilter](arkts-audio-audio-systemvolumefilter-i-sys.md) | 是 | 用于系统音量变化的过滤器。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | 订阅中使用的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | 用于接收系统音量信息的回调函数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not a system app. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
-
-## onVolumeLimitExceeded
-
-```TypeScript
-onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void
-```
-
-监听当前音量超过音量保护阈值的事件。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md)&gt; | 是 | 回调函数，用于获取音量限制事件。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## onVolumePercentageChange
@@ -1126,7 +1119,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1153,7 +1146,7 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
 setAppVolumePercentageForUid(uid: number, volume: number): Promise<void>
 ```
 
-根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
+根据应用ID设置指定应用的音量百分比（范围为[0, 100]），适用于系统多应用音量独立控制场景。使用Promise异步回调。
 
 **起始版本：** 19
 
@@ -1174,7 +1167,7 @@ setAppVolumePercentageForUid(uid: number, volume: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1224,7 +1217,7 @@ setSystemVolumeByUid(volumeType: AudioVolumeType, volume: number, callingUid: nu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 承诺用于返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1268,7 +1261,7 @@ setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Prom
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音量流类型。 |
-| percentage | number | 是 | 音量百分比，可设置范围的最小值是通过[getMinSystemVolumePercentage](#getminsystemvolumepercentage)接口获取到的音量百分比， 最大值是100。 |
+| percentage | number | 是 | 音量百分比，可设置范围的最小值是通过[getMinSystemVolumePercentage](#getminsystemvolumepercentage)接口获取到的音量百分比，最大值是100，必须使用整数值。 |
 
 **返回值：**
 
@@ -1290,5 +1283,129 @@ setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Prom
 ```TypeScript
 audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).then(() => {
   console.info('Promise returned to indicate a successful volume setting.');
+});
+```
+
+## setVoipCapturerMuteForUid
+
+```TypeScript
+setVoipCapturerMuteForUid(uid: number, streamId: number, muted: boolean): Promise<void>
+```
+
+根据应用ID和音频流ID设置VoIP录制流静音状态。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 若有多个调用方对同一应用ID和音频流ID设置了静音状态，仅当所有调用方取消静音后，VoIP录制流才会取消静音。
+> 
+> - 当应用异常退出、应用释放并重启音频流或音频服务异常退出并重启时，该音频流设置的静音状态将自动失效。此类情况下，需重新调用此接口设置静音状态。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MUTE_VOIP_CAPTURE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uid | number | 是 | 应用ID。<br>该值应为整数。 |
+| streamId | number | 是 | VoIP音频流唯一ID。 |
+| muted | boolean | 是 | 设置VoIP录制流是否为静音状态。true表示设置为静音，false表示解除静音。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uid = 20010041; // 应用ID。
+let streamId = 100001; // 音频流ID。
+
+audioVolumeManager.setVoipCapturerMuteForUid(uid, streamId, true).then(() => {
+  console.info('Succeeded in setting voip capturer mute state.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set voip capturer mute state. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## setVoipRendererMuteForUid
+
+```TypeScript
+setVoipRendererMuteForUid(uid: number, streamId: number, muted: boolean): Promise<void>
+```
+
+根据应用ID和音频流ID设置VoIP播放流静音状态。使用Promise异步回调。
+
+> **说明：** 
+> 
+> - 若有多个调用方对同一应用ID和音频流ID设置了静音状态，仅当所有调用方取消静音后，VoIP播放流才会取消静音。
+> 
+> - 当应用异常退出、应用释放并重启音频流或音频服务异常退出并重启时，该音频流设置的静音状态将自动失效。此类情况下，需重新调用此接口设置静音状态。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MUTE_VOIP_PLAYBACK
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uid | number | 是 | 应用ID。<br>该值应为整数。 |
+| streamId | number | 是 | VoIP音频流唯一ID。 |
+| muted | boolean | 是 | 设置VoIP播放流是否为静音状态。true表示设置为静音，false表示解除静音。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system App. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+| [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uid = 20010041; // 应用ID。
+let streamId = 100001; // 音频流ID。
+
+audioVolumeManager.setVoipRendererMuteForUid(uid, streamId, true).then(() => {
+  console.info('Succeeded in setting voip renderer mute state.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set voip renderer mute state. Code: ${err.code}, message: ${err.message}`);
 });
 ```

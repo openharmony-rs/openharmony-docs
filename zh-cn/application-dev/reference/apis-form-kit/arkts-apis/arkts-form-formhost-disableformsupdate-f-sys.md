@@ -60,22 +60,8 @@ try {
 }
 ```
 
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let formId: string[] = ['12400633174999288'];
-  formHost.disableFormsUpdate(formId).then(() => {
-    console.info('formHost disableFormsUpdate success');
-  }).catch((error: BusinessError) => {
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
+<a id="disableformsupdate-1"></a>
 
 ## disableFormsUpdate
 
@@ -120,4 +106,18 @@ function disableFormsUpdate(formIds: Array<string>): Promise<void>
 
 **示例**
 
-参见 [disableFormsUpdate](#disableformsupdate)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.disableFormsUpdate(formId).then(() => {
+    console.info('formHost disableFormsUpdate success');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

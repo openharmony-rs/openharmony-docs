@@ -1,5 +1,9 @@
 # ChangeType
 
+```TypeScript
+enum ChangeType
+```
+
 数据变更类型枚举。
 
 **起始版本：** 20

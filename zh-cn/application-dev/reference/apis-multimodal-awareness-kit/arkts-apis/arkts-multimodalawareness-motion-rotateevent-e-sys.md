@@ -1,5 +1,9 @@
 # RotateEvent（系统接口）
 
+```TypeScript
+export enum RotateEvent
+```
+
 旋转事件枚举。
 
 **起始版本：** 26.0.0

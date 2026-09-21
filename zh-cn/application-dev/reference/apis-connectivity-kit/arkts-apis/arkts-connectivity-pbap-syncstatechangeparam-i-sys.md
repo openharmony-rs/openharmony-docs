@@ -1,8 +1,12 @@
 # SyncStateChangeParam（系统接口）
 
+```TypeScript
+interface SyncStateChangeParam
+```
+
 电话本同步状态变化信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -24,7 +28,7 @@ deviceId: string
 
 **类型：** string
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,7 +46,7 @@ state: SyncStateType
 
 **类型：** [SyncStateType](arkts-connectivity-pbap-syncstatetype-e-sys.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

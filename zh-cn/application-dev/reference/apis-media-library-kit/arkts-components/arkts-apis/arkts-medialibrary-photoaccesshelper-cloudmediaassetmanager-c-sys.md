@@ -1,5 +1,9 @@
 # CloudMediaAssetManager（系统接口）
 
+```TypeScript
+class CloudMediaAssetManager
+```
+
 云端媒体资产管理类，该类用于管理云端资产的下载任务，以及删除云端资产在本地的数据和文件。
 
 **起始版本：** 14

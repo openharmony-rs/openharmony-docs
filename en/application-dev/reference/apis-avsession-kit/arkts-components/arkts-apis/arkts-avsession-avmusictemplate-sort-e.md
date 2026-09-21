@@ -1,5 +1,9 @@
 # Sort
 
+```TypeScript
+enum Sort
+```
+
 Enumeration of Sort type.
 
 @enum { int }

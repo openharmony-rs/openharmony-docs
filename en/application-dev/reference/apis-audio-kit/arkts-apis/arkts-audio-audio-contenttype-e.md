@@ -1,5 +1,9 @@
 # ContentType
 
+```TypeScript
+enum ContentType
+```
+
 Enumerates the audio content types.
 
 **Since:** 7

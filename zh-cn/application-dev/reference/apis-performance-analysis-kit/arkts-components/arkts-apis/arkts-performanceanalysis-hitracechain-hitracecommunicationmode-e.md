@@ -1,5 +1,9 @@
 # HiTraceCommunicationMode
 
+```TypeScript
+enum HiTraceCommunicationMode
+```
+
 跟踪通信类型枚举。用于标识通信发生的层级，例如THREAD用于标记同一应用内线程间通信，PROCESS用于标记同一设备内进程间通信，DEVICE用于标记跨设备的分布式通信。
 
 **起始版本：** 8

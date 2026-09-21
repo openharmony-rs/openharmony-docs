@@ -38,6 +38,7 @@ Wakes up a device.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types; |
 | [4900101](../errorcode-power.md#4900101-service-connection-failure) | Failed to connect to the service. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 19 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. This API cannot work in car devices.<br>**Applicable version:** 26.0.1 and later |
 
 **Examples**
 

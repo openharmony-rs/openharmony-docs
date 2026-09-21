@@ -1,5 +1,9 @@
 # DownloadProgress
 
+```TypeScript
+class DownloadProgress
+```
+
 Describes the full download progress.
 
 **Since:** 20

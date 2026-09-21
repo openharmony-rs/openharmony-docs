@@ -1,5 +1,9 @@
 # AuthTokenInfo
 
+```TypeScript
+interface AuthTokenInfo
+```
+
 表示Auth令牌信息。
 
 **起始版本：** 9

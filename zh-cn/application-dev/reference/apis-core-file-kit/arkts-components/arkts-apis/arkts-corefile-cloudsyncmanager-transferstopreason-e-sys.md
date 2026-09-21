@@ -1,5 +1,9 @@
 # TransferStopReason（系统接口）
 
+```TypeScript
+enum TransferStopReason
+```
+
 搬迁停止原因的枚举。
 
 **起始版本：** 26.0.0

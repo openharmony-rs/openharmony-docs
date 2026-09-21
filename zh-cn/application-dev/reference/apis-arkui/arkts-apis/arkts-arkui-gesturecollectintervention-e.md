@@ -1,5 +1,9 @@
 # GestureCollectIntervention
 
+```TypeScript
+declare enum GestureCollectIntervention
+```
+
 定义手势和事件收集的干预操作类型。
 
 **起始版本：** 26.0.0

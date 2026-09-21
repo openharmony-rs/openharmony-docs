@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.MDMKit';
 function addAllowedWifiList(admin: Want, list: Array<WifiAccessInfo>): void
 ```
 
-Adds allowed Wi-Fi networks. The current device can only connect to the allowed Wi-Fi networks. This API is applicable to enterprise security management scenarios, for example, restricting employees' devices to connect only to Wi-Fi networks authorized by the enterprise, preventing connection to insecure external Wi-Fi networks and ensuring enterprise network and data security.
+Adds allowed Wi-Fi networks. The current device can only connect to the allowed Wi-Fi networks. This API is applicable to enterprise security management scenarios, for example, restricting employees' devices to connect onlyto Wi-Fi networks authorized by the enterprise, preventing connection to insecure external Wi-Fi networks and ensuring enterprise network and data security.
 
 A policy conflict is reported when this API is called in the following scenarios:
 

@@ -39,6 +39,8 @@ function onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Call
 | [31500002](../errorcode-motion.md#31500002-订阅失败) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC <br> request exception. |
 
 
+<a id="onhoverhandchange-1"></a>
+
 ## onHoverHandChange
 
 ```TypeScript

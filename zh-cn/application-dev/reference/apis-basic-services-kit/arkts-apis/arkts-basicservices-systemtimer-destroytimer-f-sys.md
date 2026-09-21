@@ -67,35 +67,8 @@ try {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: systemTimer.TimerOptions = {
-  type: systemTimer.TIMER_TYPE_REALTIME,
-  repeat:false
-};
-let triggerTime: number = new Date().getTime();
-triggerTime += 3000;
-
-try {
-  systemTimer.createTimer(options).then((timerId: number) => {
-    systemTimer.startTimer(timerId, triggerTime);
-    systemTimer.stopTimer(timerId);
-    systemTimer.destroyTimer(timerId).then(() => {
-      console.info(`Succeeded in destroying timer.`);
-    }).catch((error: BusinessError) => {
-      console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
-    });
-    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="destroytimer-1"></a>
 
 ## destroyTimer
 
@@ -132,4 +105,31 @@ function destroyTimer(timer: number): Promise<void>
 
 **示例**
 
-参见 [destroyTimer](#destroytimer)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: systemTimer.TimerOptions = {
+  type: systemTimer.TIMER_TYPE_REALTIME,
+  repeat:false
+};
+let triggerTime: number = new Date().getTime();
+triggerTime += 3000;
+
+try {
+  systemTimer.createTimer(options).then((timerId: number) => {
+    systemTimer.startTimer(timerId, triggerTime);
+    systemTimer.stopTimer(timerId);
+    systemTimer.destroyTimer(timerId).then(() => {
+      console.info(`Succeeded in destroying timer.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
+    });
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
+}
+```

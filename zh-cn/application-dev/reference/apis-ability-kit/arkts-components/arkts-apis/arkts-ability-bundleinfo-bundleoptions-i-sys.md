@@ -1,5 +1,9 @@
 # BundleOptions（系统接口）
 
+```TypeScript
+export interface BundleOptions
+```
+
 应用包选项，用于设置或查询应用相关信息。
 
 **起始版本：** 20

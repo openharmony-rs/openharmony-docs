@@ -1,5 +1,9 @@
 # NetworkSelectionMode
 
+```TypeScript
+export enum NetworkSelectionMode
+```
+
 Enumerates network selection modes.
 
 **Since:** 6

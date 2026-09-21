@@ -1,5 +1,9 @@
 # DragAndDropInfo
 
+```TypeScript
+interface DragAndDropInfo
+```
+
 拖拽过程中监听到status改变时上报的数据。
 
 **起始版本：** 11
@@ -20,7 +24,7 @@ event: DragEvent
 
 当前状态所对应的拖拽事件。通过dragController发起的dragEvent仅支持获取result和behavior，且用于拖拽结束状态。
 
-**类型：** [DragEvent](../arkts-components/arkts-arkui-dragevent-i.md)
+**类型：** [DragEvent](../arkts-components/arkts-arkui-common-comp-dragevent-i.md)
 
 **起始版本：** 11
 

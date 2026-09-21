@@ -1,12 +1,10 @@
 # AudioRecordingManager
 
-录音策略管理，提供协同录音和录音控制能力。在使用AudioRecordingManager的接口之前，需先通过[getRecordingManager](arkts-audio-audio-audiomanager-i-sys.md#getrecordingmanager)获取AudioRecordingManager实例。
+```TypeScript
+interface AudioRecordingManager
+```
 
-> **说明：** 
-> 
-> - 本模块首批接口从API版本26.0.0开始支持。
-> 
-> - 本模块接口仅可在Stage模型下使用。
+录音策略管理，提供协同录音和录音控制能力。通过[getRecordingManager](arkts-audio-audio-audiomanager-i.md#getrecordingmanager)获取AudioRecordingManager实例。
 
 **起始版本：** 26.0.0
 

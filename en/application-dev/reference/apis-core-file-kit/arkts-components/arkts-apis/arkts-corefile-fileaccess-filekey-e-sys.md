@@ -1,5 +1,9 @@
 # FileKey (System API)
 
+```TypeScript
+enum FileKey
+```
+
 Property elements that support the file queries.
 
 **Since:** 10

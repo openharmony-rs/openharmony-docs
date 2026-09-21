@@ -1,5 +1,9 @@
 # FluidLightMode（系统接口）
 
+```TypeScript
+export enum FluidLightMode
+```
+
 枚举，输入法流光模式。<br>
 
 | 名称 | 值 | 说明 |  

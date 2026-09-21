@@ -1,12 +1,16 @@
 # PhotoSaveOptions
 
+```TypeScript
+class PhotoSaveOptions
+```
+
 图片或视频的保存选项。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebuttonoptions-i.md)
+**替代接口：** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp-savebuttonoptions-i.md)
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -30,6 +34,6 @@ newFileNames?: Array<string>
 
 **废弃版本：** 18
 
-**替代接口：** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebuttonoptions-i.md)
+**替代接口：** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp-savebuttonoptions-i.md)
 
 **系统能力：** SystemCapability.FileManagement.UserFileService

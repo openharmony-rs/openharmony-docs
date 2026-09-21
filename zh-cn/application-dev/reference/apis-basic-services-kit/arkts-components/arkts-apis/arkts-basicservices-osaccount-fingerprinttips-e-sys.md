@@ -1,5 +1,9 @@
 # FingerprintTips（系统接口）
 
+```TypeScript
+enum FingerprintTips
+```
+
 表示指纹身份验证过程中提示的枚举。
 
 **起始版本：** 8

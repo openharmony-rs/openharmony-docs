@@ -1,5 +1,9 @@
 # PanelRect
 
+```TypeScript
+export interface PanelRect
+```
+
 输入法面板位置大小信息。
 
 **起始版本：** 12

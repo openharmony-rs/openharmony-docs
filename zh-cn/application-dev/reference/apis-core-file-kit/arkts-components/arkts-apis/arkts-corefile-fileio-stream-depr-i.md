@@ -1,5 +1,9 @@
 # Stream
 
+```TypeScript
+declare interface Stream
+```
+
 文件流，在调用Stream的方法前，需要先通过createStream()方法（同步或异步）来构建一个Stream实例。
 
 **起始版本：** 6
@@ -50,14 +54,7 @@ ss.close().then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-ss.close((err: BusinessError) => {
-  // do something
-});
-```
+<a id="close-1"></a>
 
 ## close
 
@@ -82,17 +79,6 @@ close(callback: AsyncCallback<void>): void
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步关闭文件流之后的回调。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-ss.close().then(() => {
-  console.info("close fileStream succeed");
-}).catch((err: BusinessError) => {
-  console.error("close fileStream  failed with error:" + err);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -162,14 +148,7 @@ ss.flush().then(() => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-ss.flush((err: BusinessError) => {
-  // do something
-});
-```
+<a id="flush-1"></a>
 
 ## flush
 
@@ -195,7 +174,14 @@ flush(callback: AsyncCallback<void>): void
 
 **示例**
 
-参见 [flush](#flush)
+```TypeScript
+import { BusinessError } from '@ohos.base';
+let filePath = pathDir + "/test.txt";
+let ss = fileio.createStreamSync(filePath, "r+");
+ss.flush((err: BusinessError) => {
+  // do something
+});
+```
 
 ## flushSync
 
@@ -283,29 +269,7 @@ ss.read(arrayBuffer, option).then((readResult: fileio.ReadOut) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
-import buffer from '@ohos.buffer';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-let arrayBuffer = new ArrayBuffer(4096);
-class Option {
-  offset: number = 0;
-  length: number = 4096;
-  position: number = 0;
-}
-let option = new Option();
-option.offset = 1;
-option.length = 5;
-option.position = 5;
-ss.read(arrayBuffer, option, (err: BusinessError, readResult: fileio.ReadOut) => {
-  if (readResult.bytesRead) {
-    console.info("read data succeed");
-    let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
-    console.info(`The content of file: ${buf.toString()}`);
-  }
-});
-```
+<a id="read-1"></a>
 
 ## read
 
@@ -380,6 +344,8 @@ ss.read(arrayBuffer, option, (err: BusinessError, readResult: fileio.ReadOut) =>
 });
 ```
 
+<a id="read-2"></a>
+
 ## read
 
 ```TypeScript
@@ -413,30 +379,6 @@ read(
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ReadOut](arkts-corefile-fileio-readout-depr-i.md)&gt; | 是 | 异步从流文件读取数据之后的回调。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-import buffer from '@ohos.buffer';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-let arrayBuffer = new ArrayBuffer(4096);
-class Option {
-  offset: number = 0;
-  length: number = 4096;
-  position: number = 0;
-}
-let option = new Option();
-option.offset = 1;
-option.length = 5;
-option.position = 5;
-ss.read(arrayBuffer, option).then((readResult: fileio.ReadOut) => {
-  console.info("read data succeed");
-  let buf = buffer.from(arrayBuffer, 0, readResult.bytesRead);
-  console.info(`The content of file: ${buf.toString()}`);
-}).catch((err: BusinessError) => {
-  console.error("read data failed with error:" + err);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';
@@ -576,27 +518,7 @@ ss.write("hello, world", option).then((number: number) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@ohos.base';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-class Option {
-  offset: number = 0;
-  length: number = 4096;
-  position: number = 0;
-  encoding: string = 'utf-8';
-}
-let option = new Option();
-option.offset = 1;
-option.length = 5;
-option.position = 5;
-ss.write("hello, world", option, (err: BusinessError, bytesWritten: number) => {
-  if (bytesWritten) {
-    // do something
-    console.info("write succeed and size is:" + bytesWritten);
-  }
-});
-```
+<a id="write-1"></a>
 
 ## write
 
@@ -666,6 +588,8 @@ ss.write("hello, world", option, (err: BusinessError, bytesWritten: number) => {
 });
 ```
 
+<a id="write-2"></a>
+
 ## write
 
 ```TypeScript
@@ -700,27 +624,6 @@ write(
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步写入完成后执行的回调函数，返回实际写入的长度，单位为Byte。 |
 
 **示例**
-
-```TypeScript
-import { BusinessError } from '@ohos.base';
-let filePath = pathDir + "/test.txt";
-let ss = fileio.createStreamSync(filePath, "r+");
-class Option {
-  offset: number = 0;
-  length: number = 4096;
-  position: number = 0;
-  encoding: string = 'utf-8';
-}
-let option = new Option();
-option.offset = 1;
-option.length = 5;
-option.position = 5;
-ss.write("hello, world", option).then((number: number) => {
-  console.info("write succeed and size is:" + number);
-}).catch((err: BusinessError) => {
-  console.error("write failed with error:" + err);
-});
-```
 
 ```TypeScript
 import { BusinessError } from '@ohos.base';

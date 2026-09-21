@@ -1,5 +1,9 @@
 # AVDownloaderManager
 
+```TypeScript
+interface AVDownloaderManager
+```
+
 离线下载任务管理接口，用于管理媒体资源的离线下载任务，包括创建、暂停、恢复、移除下载任务以及监听下载状态和进度变化事件。适用于需要在应用内支持流媒体资源离线缓存、实现无网络环境下播放等场景，可帮助用户节省流量并提升弱网或离线场景下的媒体播放体验。通过[createAVDownloaderManager](arkts-media-media-createavdownloadermanager-f.md)创建实例。
 
 **起始版本：** 26.0.0
@@ -38,6 +42,18 @@ addAVDownloadTask(source: MediaSource): string
 | --- | --- |
 | string | 成功添加的离线下载任务ID。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  console.info(`Succeeded in adding download task, taskId: ${taskId}`);
+}
+```
+
 ## allowsCellularAccess
 
 ```TypeScript
@@ -58,6 +74,15 @@ allowsCellularAccess(value: boolean): void
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否允许在蜂窝网络环境下进行下载。true：允许在蜂窝网络环境下下载。- false：不允许在蜂窝网络环境下下载（默认）。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.allowsCellularAccess(true);
+}
+```
+
 ## getDownloadTasks
 
 ```TypeScript
@@ -77,6 +102,19 @@ getDownloadTasks(): Array<string>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;string&gt; | 若任务管理器中存在任务，返回任务ID数组；否则返回空数组。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  let tasks: Array<string> = downloaderManager.getDownloadTasks();
+  console.info(`Download tasks: ${tasks}`);
+}
+```
 
 ## getTaskCacheDirectory
 
@@ -110,6 +148,19 @@ getTaskCacheDirectory(taskId: string): string
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the manager, an error is returned. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  let cacheDir: string = downloaderManager.getTaskCacheDirectory(taskId);
+  console.info(`Task cache directory: ${cacheDir}`);
+}
+```
+
 ## getTaskProgress
 
 ```TypeScript
@@ -141,6 +192,19 @@ getTaskProgress(taskId: string): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the manager, an error is returned. |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  let progress: number = downloaderManager.getTaskProgress(taskId);
+  console.info(`Task progress: ${progress}`);
+}
+```
 
 ## getTaskStatus
 
@@ -174,6 +238,19 @@ getTaskStatus(taskId: string): AVDownloadTaskState
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the manager, an error is returned. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  let status: media.AVDownloadTaskState = downloaderManager.getTaskStatus(taskId);
+  console.info(`Task status: ${status}`);
+}
+```
+
 ## offProgressChange
 
 ```TypeScript
@@ -193,6 +270,15 @@ offProgressChange(callback?: OnAVDownloadProgressChangeHandle): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | 否 | 进度变化事件的处理函数，必须是通过onProgressChange注册过的处理函数。<br>默认值：不指定此参数时，取消注册该事件的所有处理函数。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.offProgressChange();
+}
+```
 
 ## offStatusChange
 
@@ -214,6 +300,15 @@ offStatusChange(callback?: OnAVDownloadTaskStateHandle): void
 | --- | --- | --- | --- |
 | callback | [OnAVDownloadTaskStateHandle](arkts-media-media-onavdownloadtaskstatehandle-t.md) | 否 | 状态变化事件的处理函数，必须是通过onStatusChange注册过的处理函数。<br>默认值：不指定此参数时，取消注册该事件的所有处理函数。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.offStatusChange();
+}
+```
+
 ## onProgressChange
 
 ```TypeScript
@@ -234,6 +329,17 @@ onProgressChange(callback: OnAVDownloadProgressChangeHandle): void
 | --- | --- | --- | --- |
 | callback | [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | 是 | 进度变化事件的处理函数。由应用实现。<br>第一个参数为下载任务ID，第二个参数为下载进度值。<br>进度值取值范围为-1或[0.0, 1.0]。-1表示资源大小未知。 |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.onProgressChange((taskId: string, progress: number) => {
+    console.info(`Task progress changed, taskId: ${taskId}, progress: ${progress}`);
+  });
+}
+```
+
 ## onStatusChange
 
 ```TypeScript
@@ -253,6 +359,17 @@ onStatusChange(callback: OnAVDownloadTaskStateHandle): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [OnAVDownloadTaskStateHandle](arkts-media-media-onavdownloadtaskstatehandle-t.md) | 是 | 状态变化事件的处理函数。由应用实现。<br>第一个参数为状态变化的任务ID，第二个参数为任务的新状态。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.onStatusChange((taskId: string, state: media.AVDownloadTaskState) => {
+    console.info(`Task status changed, taskId: ${taskId}, state: ${state}`);
+  });
+}
+```
 
 ## pauseDownloadTask
 
@@ -281,6 +398,18 @@ pauseDownloadTask(taskId?: string): void
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the offline download task manager. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  downloaderManager.pauseDownloadTask(taskId);
+}
+```
+
 ## release
 
 ```TypeScript
@@ -294,6 +423,15 @@ release(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.release();
+}
+```
 
 ## removeDownloadTask
 
@@ -320,6 +458,18 @@ removeDownloadTask(taskId?: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the offline download task manager. |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  downloaderManager.removeDownloadTask(taskId);
+}
+```
 
 ## resumeDownloadTask
 
@@ -348,6 +498,19 @@ resumeDownloadTask(taskId?: string): void
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | If the specified ID is not in the offline download task manager. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  let headers: Record<string, string> = {'User-Agent' : 'MyApp/1.0'};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl('http://example.com/video.mp4', headers);
+  let taskId: string = downloaderManager.addAVDownloadTask(mediaSource);
+  downloaderManager.pauseDownloadTask(taskId);
+  downloaderManager.resumeDownloadTask(taskId);
+}
+```
+
 ## setRequestTimeout
 
 ```TypeScript
@@ -367,3 +530,12 @@ setRequestTimeout(timeout: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | timeout | number | 是 | 超时时间，单位为毫秒。<br>取值限定为整数。<br>如果值大于0，表示超时时间，取值范围(0, +∞)。<br>如果值小于等于0，表示无超时限制，建议根据业务场景设置合理的超时时间以避免任务长时间挂起。<br>如果不设置，使用默认超时时间，默认时间为60000毫秒。 |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let downloaderManager: media.AVDownloaderManager = await media.createAVDownloaderManager();
+  downloaderManager.setRequestTimeout(30000);
+}
+```

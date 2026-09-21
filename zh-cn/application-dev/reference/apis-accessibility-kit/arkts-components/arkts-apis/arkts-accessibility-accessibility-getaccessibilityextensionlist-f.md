@@ -44,14 +44,50 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 **示例**
 
-```TypeScript
 查询所有已安装的辅助应用。
-```
 
 ```TypeScript
-查询所有已启用的具有语音反馈的辅助应用。
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+});
+
+// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
+// 日志打印结果为：
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
+查询所有已启用的具有语音反馈的辅助应用。
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+
+<a id="getaccessibilityextensionlist-1"></a>
 
 ## getAccessibilityExtensionList
 
@@ -85,4 +121,48 @@ function getAccessibilityExtensionList(abilityType: AbilityType, stateType: Abil
 
 **示例**
 
-参见 [getAccessibilityExtensionList](#getaccessibilityextensionlist)
+查询所有已安装的辅助应用。
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+  if (err) {
+    console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+});
+
+// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
+// 日志打印结果为：
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+```
+
+查询所有已启用的具有语音反馈的辅助应用。
+
+```TypeScript
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+  if (err) {
+    console.error(`Failed to get accessibility extension list. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+});
+```

@@ -1,5 +1,9 @@
 # NetFirewallDomainParams
 
+```TypeScript
+interface NetFirewallDomainParams
+```
+
 Defines domain name parameters of a firewall rule. Currently, Chinese domain names are not supported.
 
 **Since:** 15

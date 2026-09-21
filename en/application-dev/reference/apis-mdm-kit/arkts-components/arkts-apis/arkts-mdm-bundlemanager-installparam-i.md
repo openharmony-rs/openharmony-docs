@@ -1,5 +1,9 @@
 # InstallParam
 
+```TypeScript
+interface InstallParam
+```
+
 Defines the parameters for application installation.
 
 **Since:** 12

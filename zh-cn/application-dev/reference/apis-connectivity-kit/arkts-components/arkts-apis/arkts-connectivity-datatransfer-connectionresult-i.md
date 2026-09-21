@@ -1,5 +1,9 @@
 # ConnectionResult
 
+```TypeScript
+interface ConnectionResult
+```
+
 与远端设备端口连接参数的协商结果
 
 **起始版本：** 26.0.0

@@ -1,5 +1,9 @@
 # ThreeFingersSwipe
 
+```TypeScript
+export declare interface ThreeFingersSwipe
+```
+
 Defines a three-finger swipe gesture event.
 
 **Since:** 10

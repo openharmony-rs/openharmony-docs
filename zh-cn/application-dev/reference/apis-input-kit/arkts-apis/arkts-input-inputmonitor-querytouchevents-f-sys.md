@@ -40,3 +40,25 @@ function queryTouchEvents(count: number) : Promise<Array<TouchEvent>>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
+
+**示例**
+
+```TypeScript
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 查询触屏事件数量
+  inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
+    events.forEach((event, index) => {
+      console.info(`Succeeded in querying touch event ${index}, actionTime=${event.actionTime}, sourceType=${event.sourceType}.`);
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to query touch events promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+  });
+} catch (error) {
+  const code = (error as BusinessError).code;
+  const message = (error as BusinessError).message;
+  console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
+}
+```

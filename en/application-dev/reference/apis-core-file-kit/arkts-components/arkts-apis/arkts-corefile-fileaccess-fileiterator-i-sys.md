@@ -1,5 +1,9 @@
 # FileIterator (System API)
 
+```TypeScript
+interface FileIterator
+```
+
 Provides the **FileIterator** object.
 
 **Since:** 9

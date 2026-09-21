@@ -1,5 +1,9 @@
 # PermissionStatusInfo（系统接口）
 
+```TypeScript
+interface PermissionStatusInfo
+```
+
 表示权限状态信息。
 
 **起始版本：** 26.0.0

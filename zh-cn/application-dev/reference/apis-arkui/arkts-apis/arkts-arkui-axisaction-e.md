@@ -1,5 +1,9 @@
 # AxisAction
 
+```TypeScript
+declare enum AxisAction
+```
+
 定义轴事件的轴动作类型。
 
 **起始版本：** 17

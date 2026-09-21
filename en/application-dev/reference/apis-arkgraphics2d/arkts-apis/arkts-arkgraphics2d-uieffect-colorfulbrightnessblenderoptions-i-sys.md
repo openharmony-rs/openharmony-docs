@@ -1,5 +1,9 @@
 # ColorfulBrightnessBlenderOptions (System API)
 
+```TypeScript
+interface ColorfulBrightnessBlenderOptions
+```
+
 Optional enhanced configuration for the hue-preserving brightening and darkening blender, passed in as the options parameter of createColorfulBrightnessBlender. In addition to the regular BrightnessBlenderParam, it can be further fine-tuned for the brightening or darkening direction, color enhancement strength, input color influence, contrast against the background, and the HDR switch. If not passed, each item uses its default value.
 
 **Since:** 26.2.0

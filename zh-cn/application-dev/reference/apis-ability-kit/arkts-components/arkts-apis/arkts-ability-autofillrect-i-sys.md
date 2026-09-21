@@ -1,5 +1,9 @@
 # AutoFillRect（系统接口）
 
+```TypeScript
+export default interface AutoFillRect
+```
+
 用于自动填充的矩形区域。
 
 **起始版本：** 12

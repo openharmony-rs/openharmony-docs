@@ -1,5 +1,9 @@
 # AVTimedMetaData
 
+```TypeScript
+interface AVTimedMetaData
+```
+
 描述基于时间的元数据的信息。
 
 **起始版本：** 26.0.0

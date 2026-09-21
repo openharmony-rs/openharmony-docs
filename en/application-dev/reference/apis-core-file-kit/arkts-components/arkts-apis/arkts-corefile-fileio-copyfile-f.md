@@ -36,6 +36,8 @@ Copies a file. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="copyfile-1"></a>
+
 ## copyFile
 
 ```TypeScript
@@ -60,6 +62,8 @@ Copies a file. This API uses an asynchronous callback to return the result.
 | dest | string &#124; number | Yes | Path or file descriptor of the destination file. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked when the file is copied asynchronously. |
 
+
+<a id="copyfile-2"></a>
 
 ## copyFile
 

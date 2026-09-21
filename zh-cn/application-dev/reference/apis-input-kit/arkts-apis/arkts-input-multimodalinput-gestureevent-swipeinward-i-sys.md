@@ -1,5 +1,9 @@
 # SwipeInward（系统接口）
 
+```TypeScript
+export declare interface SwipeInward
+```
+
 向内滑动事件。
 
 **起始版本：** 12

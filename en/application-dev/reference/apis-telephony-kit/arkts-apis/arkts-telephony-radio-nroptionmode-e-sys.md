@@ -1,5 +1,9 @@
 # NROptionMode (System API)
 
+```TypeScript
+export enum NROptionMode
+```
+
 Obtains the option mode of NR.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # PhotoCreationConfig
 
+```TypeScript
+interface PhotoCreationConfig
+```
+
 Represents the configuration for saving a media asset (image or video) to the media library, including the file name.
 
 **Since:** 12

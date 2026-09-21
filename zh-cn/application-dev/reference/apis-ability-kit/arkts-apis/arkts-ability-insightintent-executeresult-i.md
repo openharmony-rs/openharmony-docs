@@ -1,5 +1,9 @@
 # ExecuteResult
 
+```TypeScript
+interface ExecuteResult
+```
+
 意图执行的返回结果。
 
 **起始版本：** 11

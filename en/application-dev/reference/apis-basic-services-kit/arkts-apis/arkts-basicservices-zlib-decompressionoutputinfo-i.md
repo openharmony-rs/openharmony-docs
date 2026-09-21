@@ -1,5 +1,9 @@
 # DecompressionOutputInfo
 
+```TypeScript
+interface DecompressionOutputInfo
+```
+
 Uncompress2 return value information.
 
 **Since:** 12

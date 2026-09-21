@@ -1,5 +1,9 @@
 # PictureComplexityDegree（系统接口）
 
+```TypeScript
+enum PictureComplexityDegree
+```
+
 图片内容复杂度的枚举。
 
 **起始版本：** 22

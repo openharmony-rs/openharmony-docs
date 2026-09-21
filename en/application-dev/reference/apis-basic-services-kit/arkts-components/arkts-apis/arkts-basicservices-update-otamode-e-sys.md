@@ -1,5 +1,9 @@
 # OtaMode (System API)
 
+```TypeScript
+export enum OtaMode
+```
+
 Enumerates the update modes.
 
 **Since:** 20

@@ -1,5 +1,9 @@
 # GradientAlpha
 
+```TypeScript
+export declare enum GradientAlpha
+```
+
 渐变色显示区域不透明度的可选项。
 
 **起始版本：** 18

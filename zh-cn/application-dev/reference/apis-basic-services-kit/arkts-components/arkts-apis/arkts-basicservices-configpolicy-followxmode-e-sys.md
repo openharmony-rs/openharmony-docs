@@ -1,5 +1,9 @@
 # FollowXMode（系统接口）
 
+```TypeScript
+export enum FollowXMode
+```
+
 **起始版本：** 11
 
 **系统能力：** SystemCapability.Customization.ConfigPolicy
@@ -40,7 +44,7 @@ NO_RULE_FOLLOWED = 1
 SIM_DEFAULT = 10
 ```
 
-跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/&#36;{opkey}下查找文件。
+跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。
 
 **起始版本：** 11
 
@@ -54,7 +58,7 @@ SIM_DEFAULT = 10
 SIM_1 = 11
 ```
 
-跟随卡1模式，会根据卡1的opkey在各配置层级下的etc/carrier/&#36;{opkey}下查找文件。
+跟随卡1模式，会根据卡1的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。
 
 **起始版本：** 11
 
@@ -68,7 +72,7 @@ SIM_1 = 11
 SIM_2 = 12
 ```
 
-跟随卡2模式，会根据卡2的opkey在各配置层级下的etc/carrier/&#36;{opkey}下查找文件。
+跟随卡2模式，会根据卡2的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。
 
 **起始版本：** 11
 

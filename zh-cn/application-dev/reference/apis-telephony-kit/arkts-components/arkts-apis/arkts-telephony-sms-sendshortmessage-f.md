@@ -72,41 +72,8 @@ sms.sendShortMessage(options, (err: BusinessError) => {
 });
 ```
 
-```TypeScript
-import { sms } from '@kit.TelephonyKit';
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
-let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    if (err) {
-        console.error('sendCallback: err->${JSON.stringify(err)}');
-        return;
-    }
-    console.info('sendCallback: data->${JSON.stringify(data)}');
-};
-let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    if (err) {
-        console.error('deliveryCallback: err->${JSON.stringify(err)}');
-        return;
-    }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}');
-};
-let options: sms.SendMessageOptions = {
-    slotId: 0,
-    content: '短信内容',
-    destinationHost: '+861xxxxxxxxxx',
-    serviceCenter: '+861xxxxxxxxxx',
-    destinationPort: 1000,
-    sendCallback: sendCallback,
-    deliveryCallback: deliveryCallback
-};
-let promise = sms.sendShortMessage(options);
-promise.then(() => {
-    console.info(`sendShortMessage success`);
-}).catch((err: BusinessError) => {
-    console.error(`sendShortMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
-});
-```
-
+<a id="sendshortmessage-1"></a>
 
 ## sendShortMessage
 
@@ -147,4 +114,37 @@ function sendShortMessage(options: SendMessageOptions): Promise<void>
 
 **示例**
 
-参见 [sendShortMessage](#sendshortmessage)
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+
+let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
+    if (err) {
+        console.error('sendCallback: err->${JSON.stringify(err)}');
+        return;
+    }
+    console.info('sendCallback: data->${JSON.stringify(data)}');
+};
+let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
+    if (err) {
+        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        return;
+    }
+    console.info('deliveryCallback: data->${JSON.stringify(data)}');
+};
+let options: sms.SendMessageOptions = {
+    slotId: 0,
+    content: '短信内容',
+    destinationHost: '+861xxxxxxxxxx',
+    serviceCenter: '+861xxxxxxxxxx',
+    destinationPort: 1000,
+    sendCallback: sendCallback,
+    deliveryCallback: deliveryCallback
+};
+let promise = sms.sendShortMessage(options);
+promise.then(() => {
+    console.info(`sendShortMessage success`);
+}).catch((err: BusinessError) => {
+    console.error(`sendShortMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
+});
+```

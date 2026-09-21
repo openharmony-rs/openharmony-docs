@@ -1,5 +1,9 @@
 # Util
 
+```TypeScript
+export interface Util
+```
+
 **起始版本：** 8
 
 **废弃版本：** 9

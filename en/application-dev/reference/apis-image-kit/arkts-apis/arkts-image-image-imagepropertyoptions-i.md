@@ -1,5 +1,9 @@
 # ImagePropertyOptions
 
+```TypeScript
+interface ImagePropertyOptions
+```
+
 Describes the image properties.
 
 **Since:** 11

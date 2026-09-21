@@ -1,5 +1,9 @@
 # ConnectionStrategy（系统接口）
 
+```TypeScript
+export enum ConnectionStrategy
+```
+
 枚举，表示Profile的连接策略。
 
 **起始版本：** 10

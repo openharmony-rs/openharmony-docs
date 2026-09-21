@@ -1,5 +1,9 @@
 # SceneType
 
+```TypeScript
+export enum SceneType
+```
+
 枚举，动态照片播放的场景。
 
 **起始版本：** 23

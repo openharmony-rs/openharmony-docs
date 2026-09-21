@@ -62,17 +62,8 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let enable: boolean = true;
-notificationManager.setDistributedEnable(enable).then(() => {
-    console.info("setDistributedEnable success");
-}).catch((err: BusinessError) => {
-    console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
-});
-```
-
+<a id="setdistributedenable-1"></a>
 
 ## setDistributedEnable
 
@@ -121,4 +112,13 @@ Sets whether to enable distributed notification on this device. This API uses a 
 
 **Examples**
 
-See [setDistributedEnable](#setdistributedenable)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enable: boolean = true;
+notificationManager.setDistributedEnable(enable).then(() => {
+    console.info("setDistributedEnable success");
+}).catch((err: BusinessError) => {
+    console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
+});
+```

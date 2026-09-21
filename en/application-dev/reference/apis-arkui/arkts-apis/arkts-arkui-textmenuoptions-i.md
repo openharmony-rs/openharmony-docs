@@ -1,5 +1,9 @@
 # TextMenuOptions
 
+```TypeScript
+declare interface TextMenuOptions
+```
+
 Provides the options for customizing the context menu on selection.
 
 **Since:** 16

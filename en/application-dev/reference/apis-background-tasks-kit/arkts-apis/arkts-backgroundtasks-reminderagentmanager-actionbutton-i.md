@@ -1,5 +1,9 @@
 # ActionButton
 
+```TypeScript
+interface ActionButton
+```
+
 Describes the button displayed for a reminder.
 
 **Since:** 9

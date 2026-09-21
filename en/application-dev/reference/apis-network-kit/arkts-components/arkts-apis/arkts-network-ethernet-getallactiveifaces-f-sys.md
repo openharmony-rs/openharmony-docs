@@ -55,20 +55,8 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 });
 ```
 
-```TypeScript
-import { ethernet } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-ethernet.getAllActiveIfaces().then((data: string[]) => {
-  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
-  for (let i = 0; i < data.length; i++) {
-    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
-  }
-}).catch((error:BusinessError) => {
-  console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
-});
-```
-
+<a id="getallactiveifaces-1"></a>
 
 ## getAllActiveIfaces
 
@@ -103,4 +91,16 @@ Obtains the active network interface. This API uses a promise to return the resu
 
 **Examples**
 
-See [getAllActiveIfaces](#getallactiveifaces)
+```TypeScript
+import { ethernet } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+ethernet.getAllActiveIfaces().then((data: string[]) => {
+  console.info("getAllActiveIfaces promise data.length = " + JSON.stringify(data.length));
+  for (let i = 0; i < data.length; i++) {
+    console.info("getAllActiveIfaces promise  = " + JSON.stringify(data[i]));
+  }
+}).catch((error:BusinessError) => {
+  console.error("getAllActiveIfaces promise error = " + JSON.stringify(error));
+});
+```

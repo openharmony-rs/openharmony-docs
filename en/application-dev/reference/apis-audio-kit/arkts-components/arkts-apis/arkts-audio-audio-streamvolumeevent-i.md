@@ -1,5 +1,9 @@
 # StreamVolumeEvent
 
+```TypeScript
+interface StreamVolumeEvent
+```
+
 Describes the event received by the application when the audio stream volume is changed.
 
 **Since:** 20

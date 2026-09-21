@@ -55,22 +55,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formIds: string[] = ['12400633174999288'];
-  formHost.setFormsRecyclable(formIds, (err: BusinessError) => {
-    if (err) {
-      console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
-    }
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let formIds: string[] = ['12400633174999288'];
   formHost.setFormsRecyclable(formIds).then(() => {
     console.info('setFormsRecyclable success');
   }).catch((err: BusinessError) => {
@@ -81,6 +65,8 @@ try {
 }
 ```
 
+
+<a id="setformsrecyclable-1"></a>
 
 ## setFormsRecyclable
 
@@ -120,4 +106,18 @@ function setFormsRecyclable(formIds: Array<string>, callback: AsyncCallback<void
 
 **示例**
 
-参见 [setFormsRecyclable](#setformsrecyclable)
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds, (err: BusinessError) => {
+    if (err) {
+      console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

@@ -1,5 +1,9 @@
 # DrawableDescriptor
 
+```TypeScript
+export class DrawableDescriptor
+```
+
 父类对象提供可重写的方法，包含：获取[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)实例，图片资源加载能力。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # CommandInfo
 
+```TypeScript
+interface CommandInfo
+```
+
 定义要发送到会话的命令信息。
 
 **起始版本：** 22

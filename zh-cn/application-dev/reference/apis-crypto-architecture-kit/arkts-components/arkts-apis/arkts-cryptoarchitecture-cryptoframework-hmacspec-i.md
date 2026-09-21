@@ -1,5 +1,9 @@
 # HmacSpec
 
+```TypeScript
+interface HmacSpec extends MacSpec
+```
+
 消息认证码参数[MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md)的子类，作为HMAC计算的输入。
 
 > **说明：** 

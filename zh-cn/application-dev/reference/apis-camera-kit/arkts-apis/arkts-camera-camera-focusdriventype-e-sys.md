@@ -1,5 +1,9 @@
 # FocusDrivenType（系统接口）
 
+```TypeScript
+enum FocusDrivenType
+```
+
 Enumerates the focus drive types.
 
 **起始版本：** 15

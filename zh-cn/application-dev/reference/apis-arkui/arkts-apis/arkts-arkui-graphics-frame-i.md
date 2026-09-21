@@ -1,5 +1,9 @@
 # Frame
 
+```TypeScript
+export declare interface Frame
+```
+
 用于设置或返回组件的布局大小和位置。
 
 **起始版本：** 11

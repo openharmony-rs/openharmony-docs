@@ -1,5 +1,9 @@
 # DownloadConfiguration（系统接口）
 
+```TypeScript
+export interface DownloadConfiguration
+```
+
 下载过程中的属性配置。
 
 **起始版本：** 18

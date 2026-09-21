@@ -1,5 +1,9 @@
 # Module (System API)
 
+```TypeScript
+enum Module
+```
+
 Enumerates the modules from which information is obtained.
 
 **Since:** 8

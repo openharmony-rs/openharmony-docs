@@ -1,5 +1,9 @@
 # MaximizeOptions
 
+```TypeScript
+interface MaximizeOptions
+```
+
 Optional configuration for maximizing.
 
 **Since:** 26.0.0

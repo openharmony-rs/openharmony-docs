@@ -1,5 +1,9 @@
 # ReminderType
 
+```TypeScript
+export enum ReminderType
+```
+
 Enumerates the reminder types.
 
 **Since:** 9

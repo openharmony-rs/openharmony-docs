@@ -56,29 +56,6 @@ let moduleName = "feature";
 let isEnabled = false;
 
 try {
-
-  overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled)
-    .then((data) => {
-      console.info('setOverlayEnabledByBundleName successfully');
-    }).catch((err: BusinessError) => {
-    console.error('setOverlayEnabledByBundleName failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error('setOverlayEnabledByBundleName failed due to err code: ' + code + ' ' + 'message:' + message);
-}
-```
-
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = "com.example.myapplication_xxxxx";
-let moduleName = "feature";
-let isEnabled = false;
-
-try {
   overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled, (err, data) => {
     if (err) {
       console.error('setOverlayEnabledByBundleName failed due to err code: ' + err.code + ' ' + 'message:' +
@@ -94,6 +71,8 @@ try {
 }
 ```
 
+
+<a id="setoverlayenabledbybundlename-1"></a>
 
 ## setOverlayEnabledByBundleName
 
@@ -141,4 +120,25 @@ function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isE
 
 **示例**
 
-参见 [setOverlayEnabledByBundleName](#setoverlayenabledbybundlename)
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = "com.example.myapplication_xxxxx";
+let moduleName = "feature";
+let isEnabled = false;
+
+try {
+
+  overlay.setOverlayEnabledByBundleName(bundleName, moduleName, isEnabled)
+    .then((data) => {
+      console.info('setOverlayEnabledByBundleName successfully');
+    }).catch((err: BusinessError) => {
+    console.error('setOverlayEnabledByBundleName failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('setOverlayEnabledByBundleName failed due to err code: ' + code + ' ' + 'message:' + message);
+}
+```

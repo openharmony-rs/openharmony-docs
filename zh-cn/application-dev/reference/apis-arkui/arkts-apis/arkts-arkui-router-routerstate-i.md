@@ -1,5 +1,9 @@
 # RouterState
 
+```TypeScript
+interface RouterState
+```
+
 页面状态信息。
 
 **起始版本：** 8

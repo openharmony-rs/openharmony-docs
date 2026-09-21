@@ -73,21 +73,6 @@ function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 async function getFileAccessAbilityInfo() {
-  let wantInfos: Array<Want> = [];
-  try {
-    wantInfos = await fileAccess.getFileAccessAbilityInfo();
-    console.info("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("getFileAccessAbilityInfo failed, errCode:" + error.code + ", errMessage:" + error.message);
-  }
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-async function getFileAccessAbilityInfo() {
   try {
     fileAccess.getFileAccessAbilityInfo((err: BusinessError, wantInfos: Array<Want>) => {
       if (err) {
@@ -103,6 +88,8 @@ async function getFileAccessAbilityInfo() {
 }
 ```
 
+
+<a id="getfileaccessabilityinfo-1"></a>
 
 ## getFileAccessAbilityInfo
 
@@ -167,4 +154,17 @@ function getFileAccessAbilityInfo(): Promise<Array<Want>>
 
 **示例**
 
-参见 [getFileAccessAbilityInfo](#getfileaccessabilityinfo)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+async function getFileAccessAbilityInfo() {
+  let wantInfos: Array<Want> = [];
+  try {
+    wantInfos = await fileAccess.getFileAccessAbilityInfo();
+    console.info("getFileAccessAbilityInfo data " + JSON.stringify(wantInfos));
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error("getFileAccessAbilityInfo failed, errCode:" + error.code + ", errMessage:" + error.message);
+  }
+}
+```

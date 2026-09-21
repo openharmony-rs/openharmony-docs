@@ -1,5 +1,9 @@
 # ErrorInfo
 
+```TypeScript
+export interface ErrorInfo<T extends Error = BusinessError>
+```
+
 错误信息。
 
 **起始版本：** 20

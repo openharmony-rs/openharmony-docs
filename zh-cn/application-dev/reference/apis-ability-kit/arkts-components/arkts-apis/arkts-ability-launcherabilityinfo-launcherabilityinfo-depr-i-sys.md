@@ -1,5 +1,9 @@
 # LauncherAbilityInfo（系统接口）
 
+```TypeScript
+export interface LauncherAbilityInfo
+```
+
 LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityInfos](../../../reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md#innerbundlemanagergetlauncherabilityinfosdeprecated)获取。
 
 > **说明：** 

@@ -1,5 +1,9 @@
 # ChipGroupItemOptions
 
+```TypeScript
+export interface ChipGroupItemOptions
+```
+
 ChipGroupItemOptions定义每个Chip的非通用属性。
 
 > **说明：** 

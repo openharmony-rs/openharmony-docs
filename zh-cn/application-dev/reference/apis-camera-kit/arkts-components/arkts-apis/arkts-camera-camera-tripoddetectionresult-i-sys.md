@@ -1,5 +1,9 @@
 # TripodDetectionResult（系统接口）
 
+```TypeScript
+interface TripodDetectionResult extends SceneFeatureDetectionResult
+```
+
 TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) Describes the tripod detection result.
 
 **继承/实现关系：** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)

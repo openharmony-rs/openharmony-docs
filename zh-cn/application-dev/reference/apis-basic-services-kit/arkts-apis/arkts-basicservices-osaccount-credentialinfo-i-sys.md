@@ -1,5 +1,9 @@
 # CredentialInfo（系统接口）
 
+```TypeScript
+interface CredentialInfo
+```
+
 表示凭证信息。
 
 **起始版本：** 8

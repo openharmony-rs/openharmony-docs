@@ -1,8 +1,12 @@
 # Element
 
+```TypeScript
+interface Element
+```
+
 Defines a dataset element used in privacy search. Each element contains a key for matching, an optional hash algorithm, and an optional value for PIR protocol retrieval.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -21,9 +25,11 @@ The key of the dataset element, used for matching against the privacy target.
 
 **Type:** Uint8Array
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -37,9 +43,11 @@ The value associated with the element key. This field is used in PIR protocol to
 
 **Type:** Uint8Array
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -53,8 +61,10 @@ The hash algorithm used for hashing the element key. If not specified, the eleme
 
 **Type:** [HashAlg](arkts-dataprotection-privacycomputation-hashalg-e.md)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.Security.Asset

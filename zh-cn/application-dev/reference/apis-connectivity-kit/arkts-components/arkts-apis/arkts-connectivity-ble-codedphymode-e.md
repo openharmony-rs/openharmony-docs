@@ -1,5 +1,9 @@
 # CodedPhyMode
 
+```TypeScript
+enum CodedPhyMode
+```
+
 枚举，BLE_PHY_CODED类型下的编码方式。
 
 **起始版本：** 23

@@ -1,5 +1,9 @@
 # RenderConfiguration
 
+```TypeScript
+export interface RenderConfiguration
+```
+
 Describes the rendering configuration.
 
 @interface RenderConfiguration

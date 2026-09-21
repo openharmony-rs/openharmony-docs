@@ -13,9 +13,11 @@ export function generateControlledDevicePackage(permissionQuery: PermissionQuery
 
 生成受控设备的授权包。根据权限查询列表生成远程授权包。生成的包可以发送到控制器设备进行权限验证。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -31,7 +33,7 @@ export function generateControlledDevicePackage(permissionQuery: PermissionQuery
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[RemoteAuthPackage](arkts-ability-abilitytoolaccessctrl-remoteauthpackage-i-sys.md)[]&gt; | Promise用于返回&#36;{RemoteAuthPackage[]}。 |
+| Promise&lt;[RemoteAuthPackage](arkts-ability-abilitytoolaccessctrl-remoteauthpackage-i-sys.md)[]&gt; | Promise用于返回${RemoteAuthPackage[]}。 |
 
 **错误码：**
 

@@ -1,5 +1,9 @@
 # EventType (System API)
 
+```TypeScript
+enum EventType
+```
+
 Enumerate system event types.
 
 **Since:** 9

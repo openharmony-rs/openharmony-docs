@@ -1,5 +1,9 @@
 # BitVector
 
+```TypeScript
+class BitVector
+```
+
 A linear data structure that is implemented on arrays. A bit vector stores bit values and provides bit-level storage and processing.
 
 > **NOTE:** 

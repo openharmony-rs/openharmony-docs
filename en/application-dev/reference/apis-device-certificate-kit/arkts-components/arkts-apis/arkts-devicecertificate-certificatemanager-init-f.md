@@ -62,28 +62,8 @@ try {
 }
 ```
 
-```TypeScript
-import { certificateManager } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* The service needs to use the unique identifier of the credential to initialize signing and signature verification, which is not elaborated here. */
-const req: certificateManager.CMSignatureSpec = {
-  purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
-  padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
-  digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
-}
-try {
-  certificateManager.init(uri, req).then((handle) => {
-    console.info('Succeeded in initiating.');
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
-  })
-} catch (error) {
-  console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
+<a id="init-1"></a>
 
 ## init
 
@@ -124,4 +104,24 @@ Initializes the signing or signature verification operation using the specified 
 
 **Examples**
 
-See [init](#init)
+```TypeScript
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri: string = 'test'; /* The service needs to use the unique identifier of the credential to initialize signing and signature verification, which is not elaborated here. */
+const req: certificateManager.CMSignatureSpec = {
+  purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
+  padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
+  digest: certificateManager.CmKeyDigest.CM_DIGEST_MD5
+}
+try {
+  certificateManager.init(uri, req).then((handle) => {
+    console.info('Succeeded in initiating.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to init. Code: ${error.code}, message: ${error.message}`);
+}
+```

@@ -1,5 +1,9 @@
 # BundleInfo（系统接口）
 
+```TypeScript
+interface BundleInfo
+```
+
 端云协同应用信息。
 
 **起始版本：** 26.0.0

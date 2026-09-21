@@ -1,5 +1,9 @@
 # WindowSizeLayoutBreakpointInfo
 
+```TypeScript
+export class WindowSizeLayoutBreakpointInfo
+```
+
 Provides information about window size layout breakpoint changes.
 
 **Since:** 22

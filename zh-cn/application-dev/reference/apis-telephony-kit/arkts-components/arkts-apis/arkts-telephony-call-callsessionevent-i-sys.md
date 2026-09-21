@@ -1,5 +1,9 @@
 # CallSessionEvent（系统接口）
 
+```TypeScript
+export interface CallSessionEvent
+```
+
 视频通话事件信息。
 
 **起始版本：** 11

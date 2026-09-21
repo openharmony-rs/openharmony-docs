@@ -26,6 +26,8 @@ Calls the function with the specified object as the this value and the elements 
 | argumentsList | Readonly&lt;A&gt; | Yes |  |
 
 
+<a id="apply-1"></a>
+
 ## apply
 
 ```TypeScript

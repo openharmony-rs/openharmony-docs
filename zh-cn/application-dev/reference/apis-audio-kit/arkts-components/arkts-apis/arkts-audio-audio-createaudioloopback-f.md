@@ -12,9 +12,15 @@ import { audio } from '@kit.AudioKit';
 function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 ```
 
-创建音频返听器。使用Promise异步回调。在使用createAudioLoopback接口之前，需先通过[isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported)查询系统返听能力。
+创建音频返听器。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+在使用createAudioLoopback接口之前，需先通过[isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported)查询系统返听能力。
+
+**起始版本：** 20
+
+**需要权限：** 
+- API版本27+：N/A
+- API版本20-26：ohos.permission.MICROPHONE
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -34,21 +40,9 @@ function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 20 - 26.0.0 |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Unsupported API.<br>**适用版本：** 20 - 26.0.0 |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Loopback mode is unsupported. |
 
 **示例**
-
-```TypeScript
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let audioLoopback: audio.AudioLoopback;
-
-audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE).then((data) => {
-  audioLoopback = data;
-  console.info('AudioLoopback Created : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`AudioLoopback Created : ERROR : ${err}`);
-});
-```

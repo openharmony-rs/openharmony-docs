@@ -1,5 +1,9 @@
 # ExceptionPrompt
 
+```TypeScript
+export declare struct ExceptionPrompt
+```
+
 Declare struct ExceptionPrompt higher-order component.
 
 **Since:** 12

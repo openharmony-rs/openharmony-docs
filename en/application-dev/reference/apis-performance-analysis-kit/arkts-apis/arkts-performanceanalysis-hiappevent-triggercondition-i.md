@@ -1,5 +1,9 @@
 # TriggerCondition
 
+```TypeScript
+interface TriggerCondition
+```
+
 Defines the triggering condition parameters of the **onTrigger** callback of a [Watcher](arkts-performanceanalysis-hiappevent-watcher-i.md).
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # SettingContent
 
+```TypeScript
+interface SettingContent
+```
+
 The definition of setting content
 
 @interface SettingContent

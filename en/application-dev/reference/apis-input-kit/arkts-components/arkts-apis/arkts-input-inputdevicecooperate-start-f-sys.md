@@ -73,30 +73,8 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { inputDeviceCooperate } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          const sinkDeviceDescriptor = 'descriptor';
-          const srcInputDeviceId = 0;
-          inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
-            console.info(`Succeeded in starting keyboard mouse crossing.`);
-          }).catch((error: BusinessError) => {
-            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          });
-        })
-    }
-  }
-}
-```
-
+<a id="start-1"></a>
 
 ## start
 
@@ -140,4 +118,26 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Examples**
 
-See [start](#start)
+```TypeScript
+import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          const sinkDeviceDescriptor = 'descriptor';
+          const srcInputDeviceId = 0;
+          inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
+            console.info(`Succeeded in starting keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
+        })
+    }
+  }
+}
+```

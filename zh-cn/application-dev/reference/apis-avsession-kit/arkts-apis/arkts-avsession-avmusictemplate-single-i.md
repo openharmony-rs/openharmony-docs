@@ -1,5 +1,9 @@
 # Single
 
+```TypeScript
+interface Single extends MediaEntity
+```
+
 单曲的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
 
 @extends MediaEntity @interface Single

@@ -1,5 +1,9 @@
 # Filter
 
+```TypeScript
+interface Filter
+```
+
 Filter effect class, used to apply corresponding effects to specified components. Before calling Filter methods, you need to first create a Filter instance through createFilter.
 
 **Since:** 12
@@ -575,7 +579,7 @@ Applies a soft halo bloom effect to the image, creating a gentle glow around bri
 > 
 > It is recommended to use as a foreground filter.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -929,7 +933,7 @@ Applies a spin blur effect to the image, creating rotational motion trails aroun
 > 
 > It is recommended to use as a foreground filter.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

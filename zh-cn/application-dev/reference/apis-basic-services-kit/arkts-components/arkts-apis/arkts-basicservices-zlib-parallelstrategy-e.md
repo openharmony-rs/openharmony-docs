@@ -1,5 +1,9 @@
 # ParallelStrategy
 
+```TypeScript
+export enum ParallelStrategy
+```
+
 ParallelStrategy作为[Options](arkts-basicservices-zlib-options-i.md)的一个属性，用于指定压缩或解压时的串行或并行策略。
 
 **起始版本：** 18

@@ -53,6 +53,8 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
+<a id="getp2plocaldevice-1"></a>
+
 ## getP2pLocalDevice
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # TabContentState
 
+```TypeScript
+export enum TabContentState
+```
+
 TabContent组件的状态。
 
 **起始版本：** 12

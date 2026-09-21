@@ -1,5 +1,9 @@
 # WebHttpCookie
 
+```TypeScript
+interface WebHttpCookie
+```
+
 Defines cookie-related fields.
 
 **Since:** 23

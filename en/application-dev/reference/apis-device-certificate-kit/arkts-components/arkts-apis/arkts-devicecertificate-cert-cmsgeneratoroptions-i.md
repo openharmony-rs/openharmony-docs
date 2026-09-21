@@ -1,5 +1,9 @@
 # CmsGeneratorOptions
 
+```TypeScript
+interface CmsGeneratorOptions
+```
+
 Represents the configuration for generating a CMS message.
 
 **Since:** 18

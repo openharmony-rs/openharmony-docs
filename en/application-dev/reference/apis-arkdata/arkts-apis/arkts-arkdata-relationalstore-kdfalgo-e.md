@@ -1,5 +1,9 @@
 # KdfAlgo
 
+```TypeScript
+enum KdfAlgo
+```
+
 Enumerates the PBKDF2 algorithms for the database. Use the enum name rather than the enum value.
 
 **Since:** 14

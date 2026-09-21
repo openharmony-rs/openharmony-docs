@@ -1,5 +1,9 @@
 # ExchangeFreq (System API)
 
+```TypeScript
+enum ExchangeFreq
+```
+
 Enumerates the device discovery frequencies.
 
 **Since:** 7

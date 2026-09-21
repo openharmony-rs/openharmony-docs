@@ -1,5 +1,9 @@
 # RenderFit
 
+```TypeScript
+declare enum RenderFit
+```
+
 Enumerates the modes in which the final state of the component's content is rendered during its width and height animation process.
 
 **Since:** 10

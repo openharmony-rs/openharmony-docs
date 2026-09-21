@@ -1,5 +1,9 @@
 # RoundRect
 
+```TypeScript
+export interface RoundRect
+```
+
 Describes a rectangle with rounded corners.
 
 **Since:** 12

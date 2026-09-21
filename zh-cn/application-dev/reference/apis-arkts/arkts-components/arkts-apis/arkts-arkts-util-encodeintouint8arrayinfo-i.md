@@ -1,5 +1,9 @@
 # EncodeIntoUint8ArrayInfo
 
+```TypeScript
+interface EncodeIntoUint8ArrayInfo
+```
+
 编码信息，包含已读取的字符数和已写入的字节数。
 
 **起始版本：** 11

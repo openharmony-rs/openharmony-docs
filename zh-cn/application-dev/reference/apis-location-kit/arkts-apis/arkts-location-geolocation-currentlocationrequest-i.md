@@ -1,5 +1,9 @@
 # CurrentLocationRequest
 
+```TypeScript
+export interface CurrentLocationRequest
+```
+
 当前位置信息请求参数。
 
 @interface CurrentLocationRequest

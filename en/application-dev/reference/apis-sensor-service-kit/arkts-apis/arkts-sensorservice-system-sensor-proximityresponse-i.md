@@ -1,5 +1,9 @@
 # ProximityResponse
 
+```TypeScript
+export interface ProximityResponse
+```
+
 Callback invoked when the proximity sensor data changes.
 
 **Since:** 3

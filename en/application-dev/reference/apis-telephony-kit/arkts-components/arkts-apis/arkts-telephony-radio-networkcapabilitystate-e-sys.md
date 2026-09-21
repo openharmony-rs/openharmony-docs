@@ -1,5 +1,9 @@
 # NetworkCapabilityState (System API)
 
+```TypeScript
+export enum NetworkCapabilityState
+```
+
 Enum for network capability state.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # TabTitleBarTabItem
 
+```TypeScript
+export declare class TabTitleBarTabItem
+```
+
 Declaration of the tab item.
 
 **Since:** 10
@@ -38,7 +42,7 @@ symbolStyle?: SymbolGlyphModifier
 
 Symbol icon of the tab, which has higher priority than **icon**.
 
-**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
+**Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
 **Since:** 18
 

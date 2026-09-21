@@ -1,5 +1,9 @@
 # RoundRectShapeOptions
 
+```TypeScript
+interface RoundRectShapeOptions extends ShapeSize
+```
+
 Represents the parameter of the constructor used to create a **RectShape** object with rounded corners.
 
 This API inherits from [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md).

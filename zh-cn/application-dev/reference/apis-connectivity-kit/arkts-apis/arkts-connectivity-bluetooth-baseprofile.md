@@ -20,7 +20,7 @@ import { baseProfile } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [BaseProfile](arkts-connectivity-baseprofile-baseprofile-i.md) | 基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)、HandsFreeAudioGatewayProfile等Profile类型都继承于该类。 |
+| [BaseProfile](arkts-connectivity-baseprofile-baseprofile-i.md) | 基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)、[HandsFreeAudioGatewayProfile](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md)等Profile类型都继承于该类。 |
 | [StateChangeParam](arkts-connectivity-baseprofile-statechangeparam-i.md) | 本端和对端蓝牙设备间Profile连接状态变化参数。 |
 
 <!--Del-->
@@ -28,7 +28,7 @@ import { baseProfile } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [BaseProfile](arkts-connectivity-baseprofile-baseprofile-i-sys.md) | 基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)、HandsFreeAudioGatewayProfile等Profile类型都继承于该类。 |
+| [BaseProfile](arkts-connectivity-baseprofile-baseprofile-i-sys.md) | 基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](arkts-connectivity-a2dp-a2dpsourceprofile-i.md)、[HandsFreeAudioGatewayProfile](arkts-connectivity-hfp-handsfreeaudiogatewayprofile-i-sys.md)等Profile类型都继承于该类。 |
 <!--DelEnd-->
 
 ### 枚举

@@ -1,5 +1,9 @@
 # Constants
 
+```TypeScript
+enum Constants
+```
+
 Enumerates the constants.
 
 **Since:** 8

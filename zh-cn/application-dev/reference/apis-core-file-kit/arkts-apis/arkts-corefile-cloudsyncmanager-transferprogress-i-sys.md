@@ -1,5 +1,9 @@
 # TransferProgress（系统接口）
 
+```TypeScript
+interface TransferProgress
+```
+
 搬迁任务的进度信息。
 
 **起始版本：** 26.0.0

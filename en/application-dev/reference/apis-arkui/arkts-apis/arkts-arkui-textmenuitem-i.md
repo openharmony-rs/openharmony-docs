@@ -1,5 +1,9 @@
 # TextMenuItem
 
+```TypeScript
+declare interface TextMenuItem
+```
+
 TextMenuItem
 
 **Since:** 12

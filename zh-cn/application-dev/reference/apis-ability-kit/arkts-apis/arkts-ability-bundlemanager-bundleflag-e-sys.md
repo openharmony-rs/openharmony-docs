@@ -1,5 +1,9 @@
 # BundleFlag
 
+```TypeScript
+enum BundleFlag
+```
+
 包信息标志，指示需要获取的包信息的内容。
 
 **起始版本：** 9

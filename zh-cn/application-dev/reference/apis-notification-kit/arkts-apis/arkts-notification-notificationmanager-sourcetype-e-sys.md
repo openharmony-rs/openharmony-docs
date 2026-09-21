@@ -1,5 +1,9 @@
 # SourceType（系统接口）
 
+```TypeScript
+export enum SourceType
+```
+
 通知来源类型。
 
 **起始版本：** 9

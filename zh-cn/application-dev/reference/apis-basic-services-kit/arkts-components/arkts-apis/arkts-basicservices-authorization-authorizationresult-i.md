@@ -1,8 +1,12 @@
 # AuthorizationResult
 
+```TypeScript
+interface AuthorizationResult
+```
+
 定义授权结果。目前，所有[特权](arkts-basicservices-authorization-privilege-e.md) 的授权有效期均与调用进程的生命周期相绑定（随进程销毁而失效）。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -22,7 +26,7 @@ privilege: Privilege
 
 **类型：** [Privilege](arkts-basicservices-authorization-privilege-e.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -38,7 +42,7 @@ resultCode: AuthorizationResultCode
 
 **类型：** [AuthorizationResultCode](arkts-basicservices-authorization-authorizationresultcode-e.md)
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

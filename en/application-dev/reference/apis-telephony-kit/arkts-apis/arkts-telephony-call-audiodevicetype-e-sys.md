@@ -1,5 +1,9 @@
 # AudioDeviceType (System API)
 
+```TypeScript
+export enum AudioDeviceType
+```
+
 Enumerates audio device types.
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # MeasureText
 
+```TypeScript
+export default class MeasureText
+```
+
 定义测算文本相关接口。
 
 **起始版本：** 9
@@ -29,7 +33,7 @@ static measureText(options: MeasureOptions): number
 > 
 > - 从API version 12开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)方法获取当前UI上下文关联的[MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 > 
-> - measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用measureTextSize方法。
+> - measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretextsize)方法。
 
 **起始版本：** 9
 

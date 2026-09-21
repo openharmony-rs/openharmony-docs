@@ -1,5 +1,9 @@
 # AudioEffectMode
 
+```TypeScript
+enum AudioEffectMode
+```
+
 Enumerates the audio effect modes.
 
 **Since:** 10

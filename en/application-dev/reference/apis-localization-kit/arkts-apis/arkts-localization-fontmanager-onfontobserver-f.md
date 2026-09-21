@@ -12,9 +12,13 @@ import { fontManager } from '@kit.LocalizationKit';
 function onFontObserver(observer: FontClientObserver): void
 ```
 
-Registers a font service death observer. When the font service dies unexpectedly, the [onServiceDied](arkts-localization-fontmanager-fontclientobserver-i.md#onservicedied) callback is invoked.
+Registers a listener for monitoring the font service status.
 
-**Since:** 26.1.0
+> **NOTE:** 
+> - Each application can register only one font service status change listener. Repeated registration will result in an error.
+> - A maximum of five applications per user can be registered simultaneously; otherwise, an error will occur.
+
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.UPDATE_SCOPE_FONT
 
@@ -26,7 +30,7 @@ Registers a font service death observer. When the font service dies unexpectedly
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| observer | [FontClientObserver](arkts-localization-fontmanager-fontclientobserver-i.md) | Yes | Font service death observer. |
+| observer | [FontClientObserver](arkts-localization-fontmanager-fontclientobserver-i.md) | Yes | Listener for the font service status. |
 
 **Error codes:**
 

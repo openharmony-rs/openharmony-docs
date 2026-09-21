@@ -1,5 +1,9 @@
 # InterruptHint
 
+```TypeScript
+enum InterruptHint
+```
+
 Enumerates the hints provided along with audio interruption.
 
 The hint is obtained when an [InterruptEvent](arkts-audio-audio-interruptevent-i.md) is received.

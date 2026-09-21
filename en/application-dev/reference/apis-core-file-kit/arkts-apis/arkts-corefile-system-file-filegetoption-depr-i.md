@@ -1,5 +1,9 @@
 # FileGetOption
 
+```TypeScript
+export interface FileGetOption
+```
+
 Defines the options used in get().
 
 **Since:** 3

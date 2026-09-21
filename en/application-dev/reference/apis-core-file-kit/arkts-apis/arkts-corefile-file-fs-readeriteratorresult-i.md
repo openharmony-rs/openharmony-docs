@@ -1,5 +1,9 @@
 # ReaderIteratorResult
 
+```TypeScript
+export interface ReaderIteratorResult
+```
+
 Represents the information obtained by the **ReaderIterator** object.
 
 **Since:** 11

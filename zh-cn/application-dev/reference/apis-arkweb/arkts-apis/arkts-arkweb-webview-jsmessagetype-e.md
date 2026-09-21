@@ -1,6 +1,10 @@
 # JsMessageType
 
-[runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext)接口脚本执行后返回的结果的类型。
+```TypeScript
+enum JsMessageType
+```
+
+[runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext-1)接口脚本执行后返回的结果的类型。
 
 **起始版本：** 10
 

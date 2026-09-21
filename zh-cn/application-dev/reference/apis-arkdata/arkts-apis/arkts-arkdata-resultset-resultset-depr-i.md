@@ -1,5 +1,9 @@
 # ResultSet
 
+```TypeScript
+export interface ResultSet
+```
+
 结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
 > **说明：** 
@@ -212,7 +216,7 @@ getLong(columnIndex: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 以Long形式返回指定列的值。<br>该接口支持的数据范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议使用getDouble。 |
+| number | 以Long形式返回指定列的值。<br>该接口支持的数据范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议使用[getDouble](../../../reference/apis-arkdata/js-apis-data-resultset.md#getdouble)。 |
 
 **示例**
 

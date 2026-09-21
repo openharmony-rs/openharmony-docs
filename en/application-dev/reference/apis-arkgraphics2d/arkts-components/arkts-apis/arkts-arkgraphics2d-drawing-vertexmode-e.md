@@ -1,5 +1,9 @@
 # VertexMode
 
+```TypeScript
+enum VertexMode
+```
+
 Enumerates the connection modes for vertex drawing.
 
 **Since:** 23

@@ -1,5 +1,9 @@
 # NotificationReminderInfo（系统接口）
 
+```TypeScript
+export interface NotificationReminderInfo
+```
+
 描述指定应用提醒方式信息。
 
 **起始版本：** 21

@@ -1,5 +1,9 @@
 # WindowMode
 
+```TypeScript
+declare enum WindowMode
+```
+
 Enumerates the window modes.
 
 **Since:** 9

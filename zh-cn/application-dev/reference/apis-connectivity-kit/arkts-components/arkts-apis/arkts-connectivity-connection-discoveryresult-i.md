@@ -1,5 +1,9 @@
 # DiscoveryResult
 
+```TypeScript
+interface DiscoveryResult
+```
+
 扫描到设备后，上报的扫描结果。
 
 **起始版本：** 18

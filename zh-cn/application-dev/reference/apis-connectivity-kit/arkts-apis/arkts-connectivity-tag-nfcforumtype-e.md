@@ -1,5 +1,9 @@
 # NfcForumType
 
+```TypeScript
+enum NfcForumType
+```
+
 NFC Forum标准里面Tag类型的定义。
 
 **起始版本：** 9

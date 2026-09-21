@@ -1,5 +1,9 @@
 # DeviceUsage
 
+```TypeScript
+enum DeviceUsage
+```
+
 Enumerates the audio device types by usage.
 
 **Since:** 12

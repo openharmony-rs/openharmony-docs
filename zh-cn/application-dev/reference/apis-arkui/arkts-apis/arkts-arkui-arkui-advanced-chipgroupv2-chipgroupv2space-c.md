@@ -1,5 +1,9 @@
 # ChipGroupV2Space
 
+```TypeScript
+export declare class ChipGroupV2Space
+```
+
 ChipGroupV2Space定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距。
 
 **起始版本：** 26.0.0

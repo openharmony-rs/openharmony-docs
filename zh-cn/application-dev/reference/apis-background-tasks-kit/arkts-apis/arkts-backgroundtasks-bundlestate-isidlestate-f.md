@@ -42,17 +42,8 @@ bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) =>
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { bundleState } from '@kit.BackgroundTasksKit';
-// 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
-bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
-  console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
-}).catch((err: BusinessError) => {
-  console.error('BUNDLE_ACTIVE isIdleState promise failed, because: ' + err.code);
-});
-```
 
+<a id="isidlestate-1"></a>
 
 ## isIdleState
 
@@ -82,4 +73,13 @@ function isIdleState(bundleName: string): Promise<boolean>
 
 **示例**
 
-参见 isIdleState
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
+// 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
+bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
+  console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
+}).catch((err: BusinessError) => {
+  console.error('BUNDLE_ACTIVE isIdleState promise failed, because: ' + err.code);
+});
+```

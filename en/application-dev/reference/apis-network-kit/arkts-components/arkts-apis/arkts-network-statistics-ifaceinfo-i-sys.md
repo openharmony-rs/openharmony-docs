@@ -1,5 +1,9 @@
 # IfaceInfo (System API)
 
+```TypeScript
+export interface IfaceInfo
+```
+
 Defines the parameters for querying historical traffic of an NIC.
 
 **Since:** 10

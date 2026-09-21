@@ -1,5 +1,9 @@
 # DoNotDisturbType（系统接口）
 
+```TypeScript
+export enum DoNotDisturbType
+```
+
 免打扰设置的时间类型。
 
 **起始版本：** 9

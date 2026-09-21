@@ -1,5 +1,9 @@
 # AuthCallback
 
+```TypeScript
+interface AuthCallback
+```
+
 认证器回调类。
 
 **起始版本：** 9

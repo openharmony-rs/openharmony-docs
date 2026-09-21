@@ -1,5 +1,9 @@
 # AVPlayer
 
+```TypeScript
+interface AVPlayer
+```
+
 播放管理类，用于管理和播放媒体资源。支持音视频播放、播放控制（播放、暂停、停止、跳转、倍速等）、状态管理和事件监听。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-media-media-createavplayer-f.md)构建一个AVPlayer实例。
 
 在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange)：监听播放状态机AVPlayerState切换。[on('error')](#onerror)：监听错误事件。
@@ -56,6 +60,19 @@ addPlaybackMediaSource(src: MediaSource, id?: string): Promise<string>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The media source ID does not exist in the playlist. Returned by promise. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let source1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let source2 = await player.addPlaybackMediaSource(mediaSource2, source1);
+}
+```
+
 ## addSubtitleFromFd
 
 ```TypeScript
@@ -91,6 +108,18 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+
+let avPlayer = await media.createAVPlayer();
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fileDescriptor = await context.resourceManager.getRawFd('xxx.srt');
+
+avPlayer.addSubtitleFromFd(fileDescriptor.fd, fileDescriptor.offset, fileDescriptor.length);
+```
+
 ## addSubtitleFromUrl
 
 ```TypeScript
@@ -123,6 +152,16 @@ addSubtitleFromUrl(url: string): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let fdUrl:string = 'https://abc.bcd.example/cde/index.srt'; // 此处仅为示意，请替换为真实资源文件URL。
+  let avPlayer: media.AVPlayer = await media.createAVPlayer();
+  avPlayer.addSubtitleFromUrl(fdUrl);
+}
+```
 
 ## advanceToMediaSource
 
@@ -159,6 +198,25 @@ advanceToMediaSource(id: string): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The mediasource does not exist in the playlist. Returned via promise. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
+  let mediaSource3: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video3.mp4", headers);
+  let sourceId3 = await player.addPlaybackMediaSource(mediaSource3);
+  await player.prepare();
+  await player.play();
+  await player.advanceToMediaSource(sourceId3);
+}
+```
+
 ## advanceToNextMediaSource
 
 ```TypeScript
@@ -187,6 +245,24 @@ advanceToNextMediaSource() : Promise<void>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed . Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The previous mediasource does not exist in the playlist. Returned via promise. |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource2);
+
+  await player.prepare();
+  await player.play();
+  await player.advanceToNextMediaSource();
+}
+```
 
 ## advanceToPrevMediaSource
 
@@ -217,6 +293,27 @@ advanceToPrevMediaSource(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The next mediasource does not exist in the playlist. Returned via promise. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource2);
+  let mediaSource3: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video3.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource3);
+
+  await player.prepare();
+  await player.play();
+  await player.advanceToNextMediaSource();
+  await player.advanceToPrevMediaSource();
+}
+```
+
 ## clearPlaybackList
 
 ```TypeScript
@@ -244,6 +341,20 @@ clearPlaybackList(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed . Returned via promise. |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2, sourceId1);
+  await player.clearPlaybackList();
+}
+```
 
 ## deselectTrack
 
@@ -278,6 +389,32 @@ deselectTrack(index: number): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avPlayer: media.AVPlayer = await media.createAVPlayer();
+let audioTrackIndex: Object = 0;
+avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+  if (arrList != null) {
+    for (let i = 0; i < arrList.length; i++) {
+      if (i != 0) {
+        // 获取音频轨道列表。
+        audioTrackIndex = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+      }
+    }
+  } else {
+    console.error(`Failed to get TrackDescription. Code:${error.code},message:${error.message}`);
+  }
+});
+
+// 选择其中一个音频轨道。
+avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
+// 取消选择上次选中的音频轨道，并恢复到默认音频轨道。
+avPlayer.deselectTrack(parseInt(audioTrackIndex.toString()));
+```
+
 ## getCurrentMediaSource
 
 ```TypeScript
@@ -305,6 +442,18 @@ getCurrentMediaSource(): MediaSource | undefined
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource);
+  let currentMediaSource: media.MediaSource | undefined = player.getCurrentMediaSource();
+}
+```
 
 ## getCurrentPresentationTimestamp
 
@@ -334,6 +483,24 @@ getCurrentPresentationTimestamp() : number
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.play().then(() => {
+    console.info('Succeeded in playing');
+    let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
+    console.info(`AVPlayer getCurrentPresentationTimestamp== ${currentPresentation}`);
+  }, (err: BusinessError) => {
+    console.error(`Failed to play. Code:${err.code},message:${err.message}`);
+  });
+}
+```
+
 ## getLoadedTimeRanges
 
 ```TypeScript
@@ -360,6 +527,21 @@ getLoadedTimeRanges(): Promise<Array<Range>>
 | --- | --- |
 | Promise&lt;Array&lt;[Range](arkts-media-media-range-i.md)&gt;&gt; | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
+    console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to getLoadedTimeRanges. Code:${err.code},message:${err.message}`);
+  });
+}
+```
+
 ## getMediaKeySystemInfos
 
 ```TypeScript
@@ -379,6 +561,23 @@ getMediaKeySystemInfos(): Array<drm.MediaKeySystemInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Array&lt;[drm.MediaKeySystemInfo](../../apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysysteminfo-i.md)&gt; | MediaKeySystemInfo数组，MediaKeySystemInfo具有uuid和pssh两个属性。当返回值为undefined时，表示mediaKeySystemInfoUpdate事件未触发。 |
+
+**示例**
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在mediaKeySystemInfoUpdate事件触发成功后才能调用。
+  const infos = avPlayer.getMediaKeySystemInfos();
+  console.info('GetMediaKeySystemInfos count: ' + infos.length);
+  for (let i = 0; i < infos.length; i++) {
+    console.info('GetMediaKeySystemInfos uuid: ' + infos[i]['uuid']);
+    console.info('GetMediaKeySystemInfos pssh: ' + infos[i]['pssh']);
+  }
+}
+```
 
 ## getMediaSources
 
@@ -408,6 +607,20 @@ getMediaSources(): Array<MediaSource | undefined>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
+  let sources: Array<media.MediaSource | undefined> = player.getMediaSources();
+}
+```
+
 ## getPlaybackInfo
 
 ```TypeScript
@@ -425,6 +638,31 @@ getPlaybackInfo(): Promise<PlaybackInfo>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[PlaybackInfo](arkts-media-media-playbackinfo-i.md)&gt; | Promise对象，返回播放器信息PlaybackInfo。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avPlayer: media.AVPlayer | undefined;
+let playbackInfo: media.PlaybackInfo | undefined;
+media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
+  if (player) {
+    avPlayer = player;
+    console.info(`Succeeded in creating AVPlayer`);
+    if (avPlayer) {
+      try {
+        playbackInfo = await avPlayer.getPlaybackInfo();
+        console.info(`AVPlayer getPlaybackInfo = ${JSON.stringify(playbackInfo)}`); // 打印整个PlaybackInfo的值。
+      } catch (error) {
+        console.error(`error = ${error}`);
+      }
+    }
+  } else {
+    console.error(`Failed to create AVPlayer, error message:${err.message}`);
+  }
+});
+```
 
 ## getPlaybackPosition
 
@@ -452,6 +690,24 @@ getPlaybackPosition() : number
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.prepare().then(() => {
+    console.info('Succeeded in preparing');
+    let playbackPosition: number = avPlayer.getPlaybackPosition();
+    console.info(`AVPlayer getPlaybackPosition== ${playbackPosition}`);
+  }, (err: BusinessError) => {
+    console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
+  });
+}
+```
+
 ## getPlaybackRate
 
 ```TypeScript
@@ -470,6 +726,17 @@ getPlaybackRate(): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回播放倍速速率。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getPlaybackRate().then((rate: number) => {
+    console.info('Succeeded getPlaybackRate' + rate);
+  });
+}
+```
+
 ## getPlaybackStatisticMetrics
 
 ```TypeScript
@@ -487,6 +754,31 @@ getPlaybackStatisticMetrics(): Promise<PlaybackMetrics>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[PlaybackMetrics](arkts-media-media-playbackmetrics-t.md)&gt; | Promise对象，返回当前播放器的指标信息PlaybackMetrics。 |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avPlayer: media.AVPlayer | undefined;
+let playbackMetrics: media.PlaybackMetrics | undefined;
+media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
+  if (player) {
+    avPlayer = player;
+    console.info(`Succeeded in creating AVPlayer`);
+    if (avPlayer) {
+      try {
+        playbackMetrics = await avPlayer.getPlaybackStatisticMetrics();
+        console.info(`AVPlayer getPlaybackStatisticMetrics = ${JSON.stringify(playbackMetrics)}`); // 打印整个playbackMetrics的值。
+      } catch (error) {
+        console.error(`error = ${error}`);
+      }
+    }
+  } else {
+    console.error(`Failed to create AVPlayer, error message:${err.message}`);
+  }
+});
+```
 
 ## getSeekableTimeRanges
 
@@ -514,6 +806,21 @@ getSeekableTimeRanges(): Promise<Array<Range>>
 | --- | --- |
 | Promise&lt;Array&lt;[Range](arkts-media-media-range-i.md)&gt;&gt; | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
+    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to getSeekableTimeRanges. Code:${err.code},message:${err.message}`);
+  });
+}
+```
+
 ## getSelectedTracks
 
 ```TypeScript
@@ -539,6 +846,22 @@ getSelectedTracks(): Promise<Array<number>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  avPlayer.getSelectedTracks().then((arrList: Array<number>) => {
+    console.info('Succeeded in getting SelectedTracks');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get SelectedTracks. Code:${error.code},message:${error.message}`);
+  });
+}
+```
 
 ## getTrackDescription
 
@@ -566,6 +889,26 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+    if (error) {
+      console.error(`Failed to do getTrackDescription, error:${error}`);
+    } else {
+      console.info('Succeeded in doing getTrackDescription');
+    }
+  });
+}
+```
+
+<a id="gettrackdescription-1"></a>
+
 ## getTrackDescription
 
 ```TypeScript
@@ -591,6 +934,22 @@ getTrackDescription(): Promise<Array<MediaDescription>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  avPlayer.getTrackDescription().then((arrList: Array<media.MediaDescription>) => {
+    console.info('Succeeded in getting TrackDescription');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get TrackDescription. Code:${error.code},message:${error.message}`);
+  });
+}
+```
 
 ## getTrackSelectionFilter
 
@@ -618,6 +977,21 @@ getTrackSelectionFilter(): Promise<TrackSelectionFilter>
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  let player = await media.createAVPlayer();
+  player.getTrackSelectionFilter().then((selectionFilter: media.TrackSelectionFilter) => {
+    console.info(`Succeeded in getting TrackSelectionFilter: ${selectionFilter}`);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getTrackSelectionFilter, error message is:' + err.message);
+  });
+}
+```
+
 ## isSeekContinuousSupported
 
 ```TypeScript
@@ -637,6 +1011,16 @@ isSeekContinuousSupported() : boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 媒体源是否支持以SEEK_CONTINUOUS模式进行seek。true表示支持，false表示不支持。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  let isSupported = avPlayer.isSeekContinuousSupported();
+}
+```
 
 ## off('mediaKeySystemInfoUpdate')
 
@@ -659,6 +1043,16 @@ off(type: 'mediaKeySystemInfoUpdate', callback?: Callback<Array<drm.MediaKeySyst
 | type | 'mediaKeySystemInfoUpdate' | 是 | 版权保护信息更新上报事件回调类型，取消注册的事件：'mediaKeySystemInfoUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[drm.MediaKeySystemInfo](../../apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysysteminfo-i.md)&gt;&gt; | 否 | 版权保护信息更新上报事件回调方法，上报版权保护信息数组。如果填写该参数，仅取消注册此回调方法，否则取消注册mediaKeySystemInfoUpdate事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收mediaKeySystemInfoUpdate事件回调。
+  avPlayer.off('mediaKeySystemInfoUpdate');
+}
+```
+
 ## off('stateChange')
 
 ```TypeScript
@@ -679,6 +1073,16 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 | --- | --- | --- | --- |
 | type | 'stateChange' | 是 | 状态机切换事件回调类型，取消注册的事件：'stateChange' |
 | callback | [OnAVPlayerStateChangeHandle](arkts-media-media-onavplayerstatechangehandle-t.md) | 否 | 状态机切换事件回调方法。如果填写该参数，仅取消注册此回调的方法，否则取消注册stateChange事件的所有回调方法。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收播放状态机AVPlayerState切换的事件。
+  avPlayer.off('stateChange');
+}
+```
 
 ## off('volumeChange')
 
@@ -701,6 +1105,16 @@ off(type: 'volumeChange', callback?: Callback<number>): void
 | type | 'volumeChange' | 是 | setVolume生效的事件回调类型，取消注册的事件：'volumeChange'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | setVolume生效的事件回调方法，上报生效的媒体音量。如果填写该参数，仅取消注册此回调方法，否则取消注册volumeChange事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setVolume生效的事件。
+  avPlayer.off('volumeChange');
+}
+```
+
 ## off('endOfStream')
 
 ```TypeScript
@@ -721,6 +1135,16 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 资源播放至结尾的事件回调类型，取消注册的事件：'endOfStream'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 资源播放至结尾的事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册endOfStream事件的所有回调方法。<br>**适用版本：** 19 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收endOfStream事件回调。
+  avPlayer.off('endOfStream');
+}
+```
 
 ## off('seekDone')
 
@@ -743,6 +1167,16 @@ off(type: 'seekDone', callback?: Callback<number>): void
 | type | 'seekDone' | 是 | seek生效的事件回调类型，取消注册的事件：'seekDone'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br>**视频播放：** [SeekMode](arkts-media-media-seekmode-e.md)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。如果填写该参数，仅取消注册此回调的方法，否则取消注册seekDone事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收seek生效的事件回调。
+  avPlayer.off('seekDone');
+}
+```
+
 ## off('speedDone')
 
 ```TypeScript
@@ -763,6 +1197,16 @@ off(type: 'speedDone', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'speedDone' | 是 | setSpeed生效的事件回调类型，取消注册的事件：'speedDone'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-media-media-playbackspeed-e.md)。如果填写该参数，仅取消注册此回调方法，否则取消注册speedDone事件的所有回调方法。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setSpeed生效事件回调。
+  avPlayer.off('speedDone');
+}
+```
 
 ## off('playbackRateDone')
 
@@ -785,6 +1229,16 @@ off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void
 | type | 'playbackRateDone' | 是 | setPlaybackRate生效的事件回调类型，取消注册的事件：'playbackRateDone'。 |
 | callback | [OnPlaybackRateDone](arkts-media-media-onplaybackratedone-t.md) | 否 | setPlaybackRate生效的事件回调方法，上报设置后的播放速率。如果填写该参数，仅取消注册此回调方法，否则取消注册playbackRateDone事件的所有回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setPlaybackRate生效的事件。
+  avPlayer.off('playbackRateDone');
+}
+```
+
 ## off('bitrateDone')
 
 ```TypeScript
@@ -805,6 +1259,16 @@ off(type: 'bitrateDone', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'bitrateDone' | 是 | setBitrate生效的事件回调类型，取消注册的事件：'bitrateDone'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | setBitrate生效的事件回调方法，上报生效的比特率。如果填写该参数，仅取消注册此回调方法，否则取消注册bitrateDone事件的所有回调方法。<br>**适用版本：** 19 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收setBitrate生效事件回调。
+  avPlayer.off('bitrateDone');
+}
+```
 
 ## off('timeUpdate')
 
@@ -827,6 +1291,16 @@ off(type: 'timeUpdate', callback?: Callback<number>): void
 | type | 'timeUpdate' | 是 | 时间更新的回调类型，取消注册的事件：'timeUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数。返回当前时间。如果填写该参数，仅取消注册此回调方法，否则取消注册timeUpdate事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收资源播放当前时间事件回调。
+  avPlayer.off('timeUpdate');
+}
+```
+
 ## off('durationUpdate')
 
 ```TypeScript
@@ -847,6 +1321,16 @@ off(type: 'durationUpdate', callback?: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'durationUpdate' | 是 | 时长更新的回调类型，取消注册的事件：'durationUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数。返回资源时长。如果填写该参数，仅取消注册此回调方法，否则取消注册durationUpdate事件的所有回调方法。<br>**适用版本：** 19 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收资源播放资源的时长事件回调。
+  avPlayer.off('durationUpdate');
+}
+```
 
 ## off('bufferingUpdate')
 
@@ -869,6 +1353,16 @@ off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 | type | 'bufferingUpdate' | 是 | 播放缓存事件回调类型，取消注册的事件：'bufferingUpdate'。 |
 | callback | [OnBufferingUpdateHandler](arkts-media-media-onbufferingupdatehandler-t.md) | 否 | 播放缓存事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册bufferingUpdate事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收资源播放资源的时长事件回调。
+  avPlayer.off('bufferingUpdate');
+}
+```
+
 ## off('startRenderFrame')
 
 ```TypeScript
@@ -889,6 +1383,16 @@ off(type: 'startRenderFrame', callback?: Callback<void>): void
 | --- | --- | --- | --- |
 | type | 'startRenderFrame' | 是 | 视频播放开始首帧渲染事件回调类型，取消注册的事件：'startRenderFrame'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 视频播放开始首帧渲染事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册startRenderFrame事件的所有回调方法。<br>**适用版本：** 19 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收视频播放开始首帧渲染的更新事件回调。
+  avPlayer.off('startRenderFrame');
+}
+```
 
 ## off('videoSizeChange')
 
@@ -911,6 +1415,16 @@ off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 | type | 'videoSizeChange' | 是 | 视频播放宽高变化事件回调类型，取消注册的事件：'videoSizeChange'。 |
 | callback | [OnVideoSizeChangeHandler](arkts-media-media-onvideosizechangehandler-t.md) | 否 | 视频播放宽高变化事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册videoSizeChange事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再监听视频播放宽高变化事件。
+  avPlayer.off('videoSizeChange');
+}
+```
+
 ## off('audioInterrupt')
 
 ```TypeScript
@@ -931,6 +1445,16 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 音频焦点变化事件回调类型，取消注册的事件：'audioInterrupt'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.InterruptEvent](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptevent-i.md)&gt; | 否 | 音频焦点变化事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册audioInterrupt事件的所有回调方法。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收音频焦点变化事件回调。
+  avPlayer.off('audioInterrupt');
+}
+```
 
 ## off('availableBitrates')
 
@@ -953,6 +1477,16 @@ off(type: 'availableBitrates', callback?: Callback<Array<number>>): void
 | type | 'availableBitrates' | 是 | HLS/DASH协议网络流可用比特率上报事件回调类型，取消注册的事件：'availableBitrates'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;number&gt;&gt; | 否 | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。如果填写该参数，仅取消注册此回调方法，否则取消注册availableBitrates事件的所有回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收HLS/DASH协议网络流可用的比特率列表回调。
+  avPlayer.off('availableBitrates');
+}
+```
+
 ## off('error')
 
 ```TypeScript
@@ -973,6 +1507,16 @@ off(type: 'error', callback?: ErrorCallback): void
 | --- | --- | --- | --- |
 | type | 'error' | 是 | 错误事件回调类型，取消注册的事件：'error' |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 错误事件回调方法，使用播放器的过程中发生错误，会提供错误码ID和错误信息。如果填写该参数，仅取消注册此回调方法，否则取消注册error事件的所有回调方法。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再监听AVPlayer的错误事件。
+  avPlayer.off('error');
+}
+```
 
 ## off('audioOutputDeviceChangeWithInfo')
 
@@ -1001,6 +1545,16 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback<audio.AudioStre
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收音频流输出设备变化事件。
+  avPlayer.off('audioOutputDeviceChangeWithInfo');
+}
+```
+
 ## off('subtitleUpdate')
 
 ```TypeScript
@@ -1021,6 +1575,16 @@ off(type: 'subtitleUpdate', callback?: Callback<SubtitleInfo>): void
 | --- | --- | --- | --- |
 | type | 'subtitleUpdate' | 是 | 事件回调类型，支持的事件为：'subtitleUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SubtitleInfo](arkts-media-media-subtitleinfo-i.md)&gt; | 否 | 取消外挂字幕事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册subtitleUpdate事件的所有回调方法。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收获取外挂字幕的事件。
+  avPlayer.off('subtitleUpdate');
+}
+```
 
 ## off('trackChange')
 
@@ -1043,6 +1607,16 @@ off(type: 'trackChange', callback?: OnTrackChangeHandler): void
 | type | 'trackChange' | 是 | 事件回调类型，支持的事件为：'trackChange'。 |
 | callback | [OnTrackChangeHandler](arkts-media-media-ontrackchangehandler-t.md) | 否 | 取消轨道变更事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册trackChange事件的所有回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收轨道变更的事件。
+  avPlayer.off('trackChange');
+}
+```
+
 ## off('trackInfoUpdate')
 
 ```TypeScript
@@ -1064,6 +1638,16 @@ off(type: 'trackInfoUpdate', callback?: Callback<Array<MediaDescription>>): void
 | type | 'trackInfoUpdate' | 是 | 事件回调类型，支持的事件为：'trackInfoUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[MediaDescription](arkts-media-media-mediadescription-i.md)&gt;&gt; | 否 | 取消轨道信息更新事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册trackInfoUpdate事件的所有回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收轨道信息更新的事件。
+  avPlayer.off('trackInfoUpdate');
+}
+```
+
 ## off('amplitudeUpdate')
 
 ```TypeScript
@@ -1082,6 +1666,16 @@ off(type: 'amplitudeUpdate', callback?: Callback<Array<number>>): void
 | --- | --- | --- | --- |
 | type | 'amplitudeUpdate' | 是 | 事件回调类型，支持的事件为：'amplitudeUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;number&gt;&gt; | 否 | 取消音频最大电平值更新事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册amplitudeUpdate事件的所有回调方法。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收获取音频最大电平值事件上报。
+  avPlayer.off('amplitudeUpdate');
+}
+```
 
 ## off('seiMessageReceived')
 
@@ -1105,6 +1699,16 @@ off(type: 'seiMessageReceived', payloadTypes?: Array<number>, callback?: OnSeiMe
 | payloadTypes | Array&lt;number&gt; | 否 | SEI信息的订阅负载类型。 |
 | callback | [OnSeiMessageHandle](arkts-media-media-onseimessagehandle-t.md) | 否 | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。如果填写该参数，仅取消注册此回调方法，否则取消注册seiMessageReceived事件的所有回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收seiMessageReceived事件回调。
+  avPlayer.off('seiMessageReceived');
+}
+```
+
 ## off('superResolutionChanged')
 
 ```TypeScript
@@ -1126,6 +1730,16 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 | type | 'superResolutionChanged' | 是 | 事件回调类型，支持的事件为：'superResolutionChanged'，当超分算法开启/关闭状态变化时，触发该事件。 |
 | callback | [OnSuperResolutionChanged](arkts-media-media-onsuperresolutionchanged-t.md) | 否 | 超分开关事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册superResolutionChanged事件的所有回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 取消后，不再接收超分算法开启/关闭事件。
+  avPlayer.off('superResolutionChanged');
+}
+```
+
 ## offMetricsEvent
 
 ```TypeScript
@@ -1143,6 +1757,15 @@ offMetricsEvent(callback?: Callback<Array<AVMetricsEvent>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AVMetricsEvent](arkts-media-media-avmetricsevent-i.md)&gt;&gt; | 否 | 上报的指标事件信息的方法。使用callback异步回调。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offMetricsEvent();
+}
+```
 
 ## offPlaybackContentChanged
 
@@ -1166,6 +1789,20 @@ offPlaybackContentChanged(callback?: Callback<string>):void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 否 | 当事件触发时调用的回调函数。若未指定此参数，则取消订阅该事件的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let callback = (id: string) => {
+    console.info('MediaSourceChange callback called');
+  };
+
+  avPlayer.onPlaybackContentChanged(callback);
+  avPlayer.offPlaybackContentChanged(callback);
+}
+```
+
 ## offTimedMetaData
 
 ```TypeScript
@@ -1188,6 +1825,15 @@ offTimedMetaData(callback?: Callback<AVTimedMetaData>): void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVTimedMetaData](arkts-media-media-avtimedmetadata-i.md)&gt; | 否 | 回调函数，返回上报基于时间的元数据。默认值为取消订阅该事件的所有回调函数。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offTimedMetaData();
+}
+```
+
 ## on('mediaKeySystemInfoUpdate')
 
 ```TypeScript
@@ -1208,6 +1854,23 @@ on(type: 'mediaKeySystemInfoUpdate', callback: Callback<Array<drm.MediaKeySystem
 | --- | --- | --- | --- |
 | type | 'mediaKeySystemInfoUpdate' | 是 | 版权保护信息更新上报事件回调类型，支持的事件：'mediaKeySystemInfoUpdate'，当播放内容的版权保护信息更新时上报事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[drm.MediaKeySystemInfo](../../apis-drm-kit/arkts-apis/arkts-drm-drm-mediakeysysteminfo-i.md)&gt;&gt; | 是 | 版权保护信息更新上报事件回调方法，上报MediaKeySystemInfo数组。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收mediaKeySystemInfoUpdate事件回调。
+  avPlayer.on('mediaKeySystemInfoUpdate', (mediaKeySystemInfo: Array<drm.MediaKeySystemInfo>) => {
+    for (let i = 0; i < mediaKeySystemInfo.length; i++) {
+      console.info('mediaKeySystemInfoUpdate happened uuid: ' + mediaKeySystemInfo[i]["uuid"]);
+      console.info('mediaKeySystemInfoUpdate happened pssh: ' + mediaKeySystemInfo[i]["pssh"]);
+    }
+  });
+}
+```
 
 ## on('stateChange')
 
@@ -1230,6 +1893,49 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 | type | 'stateChange' | 是 | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
 | callback | [OnAVPlayerStateChangeHandle](arkts-media-media-onavplayerstatechangehandle-t.md) | 是 | 状态机切换事件回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听播放状态机AVPlayerState切换的事件。
+  avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
+    switch (state) {
+      case 'idle':
+        console.info('state idle called');
+        break;
+      case 'initialized':
+        console.info('state initialized called');
+        break;
+      case 'prepared':
+        console.info('state prepared called');
+        break;
+      case 'playing':
+        console.info('state playing called');
+        break;
+      case 'paused':
+        console.info('state paused called');
+        break;
+      case 'completed':
+        console.info('state completed called');
+        break;
+      case 'stopped':
+        console.info('state stopped called');
+        break;
+      case 'released':
+        console.info('state released called');
+        break;
+      case 'error':
+        console.info('state error called');
+        break;
+      default:
+        console.info('unknown state :' + state);
+        break;
+    }
+  });
+}
+```
+
 ## on('volumeChange')
 
 ```TypeScript
@@ -1250,6 +1956,18 @@ on(type: 'volumeChange', callback: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'volumeChange' | 是 | setVolume生效的事件回调类型，支持的事件：'volumeChange'，每次调用setVolume后都会回调此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | setVolume生效的事件回调方法，上报生效的媒体音量。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setVolume生效的事件回调。
+  avPlayer.on('volumeChange', (vol: number) => {
+    console.info('volumeChange called,and new volume is :' + vol);
+  });
+}
+```
 
 ## on('endOfStream')
 
@@ -1272,6 +1990,18 @@ on(type: 'endOfStream', callback: Callback<void>): void
 | type | 'endOfStream' | 是 | 资源播放至结尾的事件回调类型，支持的事件：'endOfStream'，当播放至结尾时会上报此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 资源播放至结尾的事件回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收endOfStream事件回调。
+  avPlayer.on('endOfStream', () => {
+    console.info('endOfStream called');
+  });
+}
+```
+
 ## on('seekDone')
 
 ```TypeScript
@@ -1292,6 +2022,18 @@ on(type: 'seekDone', callback: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'seekDone' | 是 | seek生效的事件回调类型，支持的事件：'seekDone'，除SEEK_CONTINUOUS外的[SeekMode](arkts-media-media-seekmode-e.md)每次调用seek后都会回调此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br>**视频播放：** [SeekMode](arkts-media-media-seekmode-e.md)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收seek生效的事件回调。
+  avPlayer.on('seekDone', (seekDoneTime:number) => {
+    console.info('seekDone called,and seek time is:' + seekDoneTime);
+  });
+}
+```
 
 ## on('speedDone')
 
@@ -1314,6 +2056,18 @@ on(type: 'speedDone', callback: Callback<number>): void
 | type | 'speedDone' | 是 | setSpeed生效的事件回调类型，支持的事件：'speedDone'，每次调用setSpeed后都会回调此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-media-media-playbackspeed-e.md)。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setSpeed生效事件回调。
+  avPlayer.on('speedDone', (speed:number) => {
+    console.info('speedDone called,and speed value is:' + speed);
+  });
+}
+```
+
 ## on('playbackRateDone')
 
 ```TypeScript
@@ -1335,6 +2089,18 @@ on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void
 | type | 'playbackRateDone' | 是 | setPlaybackRate生效的事件回调类型，支持的事件：'playbackRateDone'，每次调用setPlaybackRate后都会回调此事件。 |
 | callback | [OnPlaybackRateDone](arkts-media-media-onplaybackratedone-t.md) | 是 | setPlaybackRate生效的事件回调方法，上报设置后的播放速率。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setPlaybackRate生效的事件。
+  avPlayer.on('playbackRateDone', (rate:number) => {
+    console.info('playbackRateDone called,and rate value is:' + rate);
+  });
+}
+```
+
 ## on('bitrateDone')
 
 ```TypeScript
@@ -1355,6 +2121,18 @@ on(type: 'bitrateDone', callback: Callback<number>): void
 | --- | --- | --- | --- |
 | type | 'bitrateDone' | 是 | setBitrate生效的事件回调类型，支持的事件：'bitrateDone'，每次调用setBitrate后都会回调此事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | setBitrate生效的事件回调方法，上报生效的比特率。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收setBitrate生效事件回调。
+  avPlayer.on('bitrateDone', (bitrate:number) => {
+    console.info('bitrateDone called,and bitrate value is:' + bitrate);
+  });
+}
+```
 
 ## on('timeUpdate')
 
@@ -1410,6 +2188,18 @@ on(type: 'durationUpdate', callback: Callback<number>): void
 | type | 'durationUpdate' | 是 | 时长更新的回调类型，支持的事件：'durationUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。返回资源时长。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收资源播放资源的时长事件回调。
+  avPlayer.on('durationUpdate', (duration: number) => {
+    console.info('durationUpdate called,new duration is :' + duration);
+  });
+}
+```
+
 ## on('bufferingUpdate')
 
 ```TypeScript
@@ -1430,6 +2220,18 @@ on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void
 | --- | --- | --- | --- |
 | type | 'bufferingUpdate' | 是 | 播放缓存事件回调类型，支持的事件：'bufferingUpdate'。 |
 | callback | [OnBufferingUpdateHandler](arkts-media-media-onbufferingupdatehandler-t.md) | 是 | 播放缓存事件回调方法。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收音视频缓存更新事件回调。
+  avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+    console.info('bufferingUpdate called,and infoType value is:' + infoType + ', value is :' + value);
+  });
+}
+```
 
 ## on('startRenderFrame')
 
@@ -1452,6 +2254,18 @@ on(type: 'startRenderFrame', callback: Callback<void>): void
 | type | 'startRenderFrame' | 是 | 视频播放开始首帧渲染事件回调类型，支持的事件：'startRenderFrame'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 视频播放开始首帧渲染事件回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，开始接收视频播放开始首帧渲染的更新事件回调。
+  avPlayer.on('startRenderFrame', () => {
+    console.info('startRenderFrame called');
+  });
+}
+```
+
 ## on('videoSizeChange')
 
 ```TypeScript
@@ -1472,6 +2286,18 @@ on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void
 | --- | --- | --- | --- |
 | type | 'videoSizeChange' | 是 | 视频播放宽高变化事件回调类型，支持的事件：'videoSizeChange'。 |
 | callback | [OnVideoSizeChangeHandler](arkts-media-media-onvideosizechangehandler-t.md) | 是 | 视频播放宽高变化事件回调方法。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听视频播放宽高变化事件，仅视频播放支持该订阅事件，默认只在prepared状态上报一次。
+  avPlayer.on('videoSizeChange', (width: number, height: number) => {
+    console.info('videoSizeChange called,and width is:' + width + ', height is :' + height);
+  });
+}
+```
 
 ## on('audioInterrupt')
 
@@ -1494,6 +2320,20 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | type | 'audioInterrupt' | 是 | 音频焦点变化事件回调类型，支持的事件：'audioInterrupt'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.InterruptEvent](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptevent-i.md)&gt; | 是 | 音频焦点变化事件回调方法。<br>**适用版本：** 12 |
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听音频焦点变化事件，多个音视频资源同时播放时，会根据音频焦点模型audio.InterruptMode触发此事件。
+  avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
+    console.info('audioInterrupt called,and InterruptEvent info is:' + info);
+  });
+}
+```
+
 ## on('availableBitrates')
 
 ```TypeScript
@@ -1514,6 +2354,18 @@ on(type: 'availableBitrates', callback: Callback<Array<number>>): void
 | --- | --- | --- | --- |
 | type | 'availableBitrates' | 是 | HLS/DASH协议网络流可用比特率上报事件回调类型，支持的事件：'availableBitrates'，只会在prepared之后上报一次。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。<br>**适用版本：** 12 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听后，播放状态切换prepared状态时，接收到HLS/DASH协议网络流可用的比特率列表回调。
+  avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+    console.info('availableBitrates called,and availableBitrates length is:' + bitrates.length);
+  });
+}
+```
 
 ## on('error')
 
@@ -1563,6 +2415,20 @@ on(type: 'error', callback: ErrorCallback): void
 | [5410002](../errorcode-media.md#5410002-不支持seek_continuous模式的seek) | Seek continuous unsupported.<br>**适用版本：** 18+ |
 | [5411012](../errorcode-media.md#5411012-http明文拦截导致请求不受支持) | Http cleartext traffic is not permitted.<br>**适用版本：** 23+ |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 监听AVPlayer的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。
+  avPlayer.on('error', (error: BusinessError) => {
+    console.info('error happened,and error message is :' + error.message);
+    console.info('error happened,and error code is :' + error.code);
+  });
+}
+```
+
 ## on('audioOutputDeviceChangeWithInfo')
 
 ```TypeScript
@@ -1592,6 +2458,20 @@ on(type: 'audioOutputDeviceChangeWithInfo', callback: Callback<audio.AudioStream
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 开始监听音频流输出设备变化及原因。
+  avPlayer.on('audioOutputDeviceChangeWithInfo', (data: audio.AudioStreamDeviceChangeInfo) => {
+    console.info(`${JSON.stringify(data)}`);
+  });
+}
+```
+
 ## on('subtitleUpdate')
 
 ```TypeScript
@@ -1612,6 +2492,25 @@ on(type: 'subtitleUpdate', callback: Callback<SubtitleInfo>): void
 | --- | --- | --- | --- |
 | type | 'subtitleUpdate' | 是 | 事件回调类型，支持的事件为：'subtitleUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SubtitleInfo](arkts-media-media-subtitleinfo-i.md)&gt; | 是 | 外挂字幕事件回调方法。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 订阅获取外挂字幕的事件，当有外挂字幕时，会触发事件。
+  avPlayer.on('subtitleUpdate', async (info: media.SubtitleInfo) => {
+    if (info) {
+      let text = (!info.text) ? '' : info.text
+      let startTime = (!info.startTime) ? 0 : info.startTime
+      let duration = (!info.duration) ? 0 : info.duration
+      console.info('subtitleUpdate info: text=' + text + ' startTime=' + startTime +' duration=' + duration);
+    } else {
+      console.info('subtitleUpdate info is null');
+    }
+  });
+}
+```
 
 ## on('trackChange')
 
@@ -1634,6 +2533,18 @@ on(type: 'trackChange', callback: OnTrackChangeHandler): void
 | type | 'trackChange' | 是 | 事件回调类型，支持的事件为：'trackChange'。 |
 | callback | [OnTrackChangeHandler](arkts-media-media-ontrackchangehandler-t.md) | 是 | 轨道变更事件回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 订阅获取轨道变更的事件，当播放的轨道变更时，会触发事件回调。
+  avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
+    console.info('trackChange info: index=' + index + ' isSelect=' + isSelect);
+  });
+}
+```
+
 ## on('trackInfoUpdate')
 
 ```TypeScript
@@ -1655,6 +2566,26 @@ on(type: 'trackInfoUpdate', callback: Callback<Array<MediaDescription>>): void
 | type | 'trackInfoUpdate' | 是 | 事件回调类型，支持的事件为：'trackInfoUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[MediaDescription](arkts-media-media-mediadescription-i.md)&gt;&gt; | 是 | 轨道信息更新事件回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 订阅获取轨道信息更新的事件，当播放的轨道有更新时，会触发事件回调。
+  avPlayer.on('trackInfoUpdate', (info: Array<media.MediaDescription>) => {
+    if (info) {
+      for (let i = 0; i < info.length; i++) {
+        let propertyIndex: Object = info[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+        let propertyType: Object = info[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
+        console.info('track info: index=' + propertyIndex + ' tracktype=' + propertyType);
+      }
+    } else {
+      console.info('track info is null');
+    }
+  });
+}
+```
+
 ## on('amplitudeUpdate')
 
 ```TypeScript
@@ -1673,6 +2604,18 @@ on(type: 'amplitudeUpdate', callback: Callback<Array<number>>): void
 | --- | --- | --- | --- |
 | type | 'amplitudeUpdate' | 是 | 事件回调类型，支持的事件为：'amplitudeUpdate'。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 音频最大电平值更新事件回调方法。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 订阅音频最大电平值，音频资源播放时定时上报。
+  avPlayer.on('amplitudeUpdate', (value: Array<number>) => {
+    console.info(`amplitudeUpdate called,and amplitudeUpdate = ${value}`);
+  });
+}
+```
 
 ## on('seiMessageReceived')
 
@@ -1696,6 +2639,32 @@ on(type: 'seiMessageReceived', payloadTypes: Array<number>, callback: OnSeiMessa
 | payloadTypes | Array&lt;number&gt; | 是 | SEI信息的订阅负载类型数组。当前仅支持负载类型为5，即payloadType = 5。 |
 | callback | [OnSeiMessageHandle](arkts-media-media-onseimessagehandle-t.md) | 是 | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。 |
 
+**示例**
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+
+  // 监听后，开始接收seiMessageReceived事件回调。订阅payloadType为5的SEI消息，并解码payload（去除前16字节头部）为UTF-8字符串
+  avPlayer.on('seiMessageReceived', [5], (messages: Array<media.SeiMessage>, playbackPosition?: number) =>
+  {
+    console.info('seiMessageReceived playbackPosition ' + playbackPosition);
+
+    for (let key = 0; key < messages.length; key++) {
+      console.info('seiMessageReceived messages payloadType ' + messages[key].payloadType + ' payload size ' + messages[key].payload.byteLength);
+
+      let textDecoder = util.TextDecoder.create("utf-8",{ignoreBOM: true});
+      let ab = messages[key]?.payload?.slice(16, messages[key].payload.byteLength);
+      let result: Uint8Array = new Uint8Array(ab);
+      let retStr: string = textDecoder.decodeToString(result);
+      console.info('seiMessageReceived messages payload ' + retStr);
+    }
+  });
+}
+```
+
 ## on('superResolutionChanged')
 
 ```TypeScript
@@ -1717,6 +2686,18 @@ on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void
 | type | 'superResolutionChanged' | 是 | 事件回调类型，支持的事件为：'superResolutionChanged'，当超分算法开启/关闭状态变化时，触发该事件。 |
 | callback | [OnSuperResolutionChanged](arkts-media-media-onsuperresolutionchanged-t.md) | 是 | 超分开关事件回调方法。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 订阅监听超分算法开启/关闭事件。
+  avPlayer.on('superResolutionChanged', (enabled: boolean) => {
+    console.info('superResolutionChanged called, and enabled is:' + enabled);
+  });
+}
+```
+
 ## onMetricsEvent
 
 ```TypeScript
@@ -1734,6 +2715,23 @@ onMetricsEvent(callback: Callback<Array<AVMetricsEvent>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AVMetricsEvent](arkts-media-media-avmetricsevent-i.md)&gt;&gt; | 是 | 上报的指标事件信息的方法。使用callback异步回调。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onMetricsEvent((info: Array<media.AVMetricsEvent>) => {
+    if (info) {
+      for (let i = 0; i < info.length; i++) {
+        console.info('metrics info: index=' + i + ' info=' + JSON.stringify(info));
+      }
+    } else {
+      console.info('metrics info is null');
+    }
+  });
+}
+```
 
 ## onPlaybackContentChanged
 
@@ -1757,6 +2755,17 @@ onPlaybackContentChanged(callback: Callback<string>):void
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | 是 | 事件触发时调用的回调函数。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onPlaybackContentChanged((id: string) => {
+    console.info('MediaSourceChange called, SourceId:' + id);
+  });
+}
+```
+
 ## onTimedMetaData
 
 ```TypeScript
@@ -1778,6 +2787,17 @@ onTimedMetaData(callback: Callback<AVTimedMetaData>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVTimedMetaData](arkts-media-media-avtimedmetadata-i.md)&gt; | 是 | 回调函数，返回上报基于时间的元数据。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
+    // 实际业务代码。
+  });
+}
+```
 
 ## pause
 
@@ -1805,6 +2825,26 @@ pause(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至playing状态后才能调用。
+  avPlayer.pause((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to pause. Code:${err.code},message:${err.message}`);
+    } else {
+      console.info('Succeeded in pausing');
+    }
+  });
+}
+```
+
+<a id="pause-1"></a>
+
 ## pause
 
 ```TypeScript
@@ -1830,6 +2870,22 @@ pause(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至playing状态后才能调用。
+  avPlayer.pause().then(() => {
+    console.info('Succeeded in pausing');
+  }, (err: BusinessError) => {
+    console.error(`Failed to pause. Code:${err.code},message:${err.message}`);
+  });
+}
+```
 
 ## play
 
@@ -1857,6 +2913,26 @@ play(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/paused/completed状态后才能调用。
+  avPlayer.play((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to play. Code:${err.code},message:${err.message}`);
+    } else {
+      console.info('Succeeded in playing');
+    }
+  });
+}
+```
+
+<a id="play-1"></a>
+
 ## play
 
 ```TypeScript
@@ -1882,6 +2958,22 @@ play(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/paused/completed状态后才能调用。
+  avPlayer.play().then(() => {
+    console.info('Succeeded in playing');
+  }, (err: BusinessError) => {
+    console.error(`Failed to play. Code:${err.code},message:${err.message}`);
+  });
+}
+```
 
 ## prepare
 
@@ -1909,6 +3001,26 @@ prepare(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.prepare((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
+    } else {
+      console.info('Succeeded in preparing');
+    }
+  });
+}
+```
+
+<a id="prepare-1"></a>
 
 ## prepare
 
@@ -1939,6 +3051,22 @@ prepare(): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400106](../errorcode-media.md#5400106-不支持的规格) | Unsupported format. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.prepare().then(() => {
+    console.info('Succeeded in preparing');
+  }, (err: BusinessError) => {
+    console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
+  });
+}
+```
+
 ## release
 
 ```TypeScript
@@ -1965,6 +3093,26 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发除released以外的状态才能调用。
+  avPlayer.release((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to release. Code:${err.code},message:${err.message}`);
+    } else {
+      console.info('Succeeded in releasing');
+    }
+  });
+}
+```
+
+<a id="release-1"></a>
+
 ## release
 
 ```TypeScript
@@ -1990,6 +3138,22 @@ release(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发除released以外的状态才能调用。
+  avPlayer.release().then(() => {
+    console.info('Succeeded in releasing');
+  }, (err: BusinessError) => {
+    console.error(`Failed to release. Code:${err.code},message:${err.message}`);
+  });
+}
+```
 
 ## removePlaybackMediaSource
 
@@ -2030,6 +3194,18 @@ removePlaybackMediaSource(id: string): Promise<void>
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The media source ID does not exist in the playlist. Returned via promise. |
 
+**示例**
+
+```TypeScript
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId = await player.addPlaybackMediaSource(mediaSource1);
+  await player.removePlaybackMediaSource(sourceId);
+}
+```
+
 ## reset
 
 ```TypeScript
@@ -2056,6 +3232,26 @@ reset(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped/error状态后才能调用。
+  avPlayer.reset((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to reset. Code:${err.code},message:${err.message}`);
+    } else {
+      console.info('Succeeded in resetting');
+    }
+  });
+}
+```
+
+<a id="reset-1"></a>
+
 ## reset
 
 ```TypeScript
@@ -2081,6 +3277,22 @@ reset(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped/error状态后才能调用。
+  avPlayer.reset().then(() => {
+    console.info('Succeeded in resetting');
+  }, (err: BusinessError) => {
+    console.error(`Failed to reset. Code:${err.code},message:${err.message}`);
+  });
+}
+```
 
 ## seek
 
@@ -2109,6 +3321,30 @@ seek(timeMs: number, mode?: SeekMode): void
 | timeMs | number | 是 | 指定的跳转时间节点，单位毫秒（ms），取值范围为[0, [duration](../../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)]。<br>当模式为[SEEK_CONTINUOUS](arkts-media-media-seekmode-e.md)时，可以取值-1，表示SEEK_CONTINUOUS模式结束。该值必须为整数。 |
 | mode | [SeekMode](arkts-media-media-seekmode-e.md) | 否 | 基于视频I帧的跳转模式，默认为SEEK_PREV_SYNC模式，**仅在视频资源播放时设置**。 |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let seekTime: number = 1000;
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC);
+}
+```
+
+```TypeScript
+async function test(){
+  // SEEK_CONTINUOUS 可以结合Slider的onChange回调方法进行对应处理，当slideMode为Moving时，触发拖动过程的SeekContinuous。
+  let avPlayer = await media.createAVPlayer();
+  let slideMovingTime: number = 2000;
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.seek(slideMovingTime, media.SeekMode.SEEK_CONTINUOUS);
+
+  // 当slideMode为End时，调用seek(-1, media.SeekMode.SEEK_CONTINUOUS)结束seek。
+  avPlayer.seek(-1, media.SeekMode.SEEK_CONTINUOUS);
+}
+```
+
 ## seekToDefaultPosition
 
 ```TypeScript
@@ -2128,6 +3364,22 @@ seekToDefaultPosition(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  try {
+    avPlayer.seekToDefaultPosition()
+    console.info('Succeeded in calling seekToDefaultPosition.');
+  } catch (err) {
+    console.error(`Failed to seekToDefaultPosition. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## selectTrack
 
@@ -2165,6 +3417,33 @@ selectTrack(index: number, mode?: SwitchMode): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer: media.AVPlayer = await media.createAVPlayer();
+  let audioTrackIndex: Object = 0;
+  avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+    if (arrList != null) {
+      // 遍历轨道描述列表，提取非首个轨道的索引用于音频轨道选择。
+      for (let i = 0; i < arrList.length; i++) {
+        if (i != 0) {
+          // 获取当前轨道的索引。
+          audioTrackIndex = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+        }
+      }
+    } else {
+      console.error(`Failed to get TrackDescription. Code:${error.code},message:${error.message}`);
+    }
+  });
+
+  // 选择其中一个音频轨道。
+  avPlayer.selectTrack(parseInt(audioTrackIndex.toString()));
+}
+```
+
 ## setBitrate
 
 ```TypeScript
@@ -2184,6 +3463,17 @@ setBitrate(bitrate: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bitrate | number | 是 | 指定比特率，须通过availableBitrates事件获得当前HLS/DASH协议网络流可用的比特率列表，如果用户指定的比特率不在此列表中，则播放器将从可用比特率列表中选择最接近的比特率。如果通过availableBitrates事件获得的比特率列表长度为0，则不支持指定比特率，也不会产生bitrateDone回调。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let bitrate: number = 96000;
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.setBitrate(bitrate);
+}
+```
 
 ## setDecryptionConfig
 
@@ -2211,6 +3501,27 @@ setDecryptionConfig(mediaKeySession: drm.MediaKeySession, secureVideoPath: boole
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+
+**示例**
+
+关于drm模块的示例具体可见[@ohos.multimedia.drm](../apis-drm-kit/arkts-apis-drm.md)。
+
+```TypeScript
+import { drm } from '@kit.DrmKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 创建MediaKeySystem系统。
+  let keySystem:drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+  // 创建MediaKeySession解密会话。
+  let keySession:drm.MediaKeySession = keySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+  // 生成许可证请求、设置许可证响应等。
+  // 安全视频通路标志。
+  let secureVideoPath:boolean = false;
+  // 设置解密配置。
+  avPlayer.setDecryptionConfig(keySession, secureVideoPath);
+}
+```
 
 ## setLoudnessGain
 
@@ -2248,6 +3559,23 @@ setLoudnessGain(loudnessGain: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+**示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+
+  let loudnessGain: number = 1.0;
+  avPlayer.audioRendererInfo = {
+    usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+    rendererFlags: 0
+  };
+  avPlayer.setLoudnessGain(loudnessGain);
+}
+```
+
 ## setMediaMuted
 
 ```TypeScript
@@ -2284,6 +3612,24 @@ setMediaMuted(mediaType: MediaType, muted: boolean): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { media } from '@kit.MediaKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.prepare().then(() => {
+    console.info('Succeeded in preparing');
+    avPlayer.setMediaMuted(media.MediaType.MEDIA_TYPE_AUD, true);
+  }, (err: BusinessError) => {
+    console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
+  });
+}
+```
+
 ## setMediaSource
 
 ```TypeScript
@@ -2317,6 +3663,25 @@ setMediaSource(src: MediaSource, strategy?: PlaybackStrategy): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {'User-Agent' : 'User-Agent-Value'};
+  let mediaSource : media.MediaSource = media.createMediaSourceWithUrl('http://xxx',  headers);
+  let playStrategy : media.PlaybackStrategy = {
+    preferredWidth: 1,
+    preferredHeight: 2,
+    preferredBufferDuration: 3,
+    preferredHdr: false,
+    preferredBufferDurationForPlaying: 1,
+    thresholdForAutoQuickPlay: 5
+  };
+  player.setMediaSource(mediaSource, playStrategy);
+}
+```
 
 ## setPlaybackRange
 
@@ -2353,6 +3718,21 @@ setPlaybackRange(startTimeMs: number, endTimeMs: number, mode?: SeekMode) : Prom
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Return by promise. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.setPlaybackRange(0, 6000, media.SeekMode.SEEK_CLOSEST).then(() => {
+    console.info('Succeeded setPlaybackRange');
+  }).catch((err: BusinessError) => {
+    console.error('Failed to setPlaybackRange' + err.message);
+  });
+}
+```
+
 ## setPlaybackRate
 
 ```TypeScript
@@ -2383,6 +3763,16 @@ setPlaybackRate(rate: number): void
 | --- | --- |
 | [5400108](../errorcode-media.md#5400108-参数超过取值范围) | The parameter check failed, parameter value out of range. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed, if invalid state or live stream. |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.setPlaybackRate(2.0);
+}
+```
 
 ## setPlaybackStrategy
 
@@ -2417,6 +3807,27 @@ setPlaybackStrategy(strategy: PlaybackStrategy): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
 
+**示例**
+
+```TypeScript
+import { common } from '@kit.AbilityKit';
+
+let player = await media.createAVPlayer();
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+player.fdSrc = fileDescriptor;
+let playStrategy : media.PlaybackStrategy = {
+  preferredWidth: 1,
+  preferredHeight: 2,
+  preferredBufferDuration: 3,
+  preferredHdr: false,
+  mutedMediaType: media.MediaType.MEDIA_TYPE_AUD,
+  preferredBufferDurationForPlaying: 1,
+  thresholdForAutoQuickPlay: 5
+};
+player.setPlaybackStrategy(playStrategy);
+```
+
 ## setSpeed
 
 ```TypeScript
@@ -2440,6 +3851,16 @@ setSpeed(speed: PlaybackSpeed): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | speed | [PlaybackSpeed](arkts-media-media-playbackspeed-e.md) | 是 | 指定播放倍速模式。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.setSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
+}
+```
 
 ## setSuperResolution
 
@@ -2477,6 +3898,22 @@ setSuperResolution(enabled: boolean) : Promise<void>
 | [5410003](../errorcode-media.md#5410003-不支持超分) | Super-resolution not supported. Return by promise. |
 | [5410004](../errorcode-media.md#5410004-未使能超分) | Missing enable super-resolution feature in [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md). Return by promise. |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4';    // 此处仅为示意，请替换为真实资源文件URL。
+  avPlayer.url = url;
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  await avPlayer.setPlaybackStrategy(playStrategy);
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
+  await avPlayer.setSuperResolution(true);
+}
+```
+
 ## setTrackSelectionFilter
 
 ```TypeScript
@@ -2508,6 +3945,36 @@ setTrackSelectionFilter(filter : TrackSelectionFilter): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test() {
+  let player = await media.createAVPlayer();
+  let selectionFilter: media.TrackSelectionFilter = {
+    maxVideoBitrate: 80000,
+    minVideoBitrate: 0,
+    maxVideoFrameRate: 60,
+    minVideoFrameRate: 0,
+    maxVideoResolution: { width: 1080, height: 720 },
+    minVideoResolution: { width: 0, height: 0 },
+    preferredVideoMimeTypes: [media.CodecMimeType.VIDEO_AVC],
+    maxAudioBitrate: 8000,
+    minAudioBitrate: 0,
+    maxAudioChannels: 3,
+    preferredAudioMimeTypes: [media.CodecMimeType.AUDIO_AAC, media.CodecMimeType.AUDIO_MP3],
+    preferredAudioLanguages: [],
+    preferredSubtitleLanguages: []
+  };
+  player.setTrackSelectionFilter(selectionFilter).then(() => {
+    console.info('Succeeded in setting TrackSelectionFilter');
+  }).catch((err: BusinessError) => {
+    console.error('Failed to setTrackSelectionFilter, error message is:' + err.message);
+  });
+}
+```
 
 ## setVideoWindowSize
 
@@ -2549,6 +4016,23 @@ setVideoWindowSize(width: number, height: number) : Promise<void>
 | [5410003](../errorcode-media.md#5410003-不支持超分) | Super-resolution not supported. Return by promise. |
 | [5410004](../errorcode-media.md#5410004-未使能超分) | Missing enable super-resolution feature in [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md). Return by promise. |
 
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4';    // 此处仅为示意，请替换为真实资源文件URL。
+  avPlayer.url = url;
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  await avPlayer.setPlaybackStrategy(playStrategy);
+  await avPlayer.setSuperResolution(true);
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized/prepared/playing/paused/completed/stopped状态后才能调用。
+  await avPlayer.setVideoWindowSize(1920, 1080);
+}
+```
+
 ## setVolume
 
 ```TypeScript
@@ -2568,6 +4052,16 @@ setVolume(volume: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volume | number | 是 | 指定的相对音量大小，取值范围为[0.00-1.00]，1表示最大音量，即100%。 |
+
+**示例**
+
+```TypeScript
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let volume: number = 1.0;
+  avPlayer.setVolume(volume);
+}
+```
 
 ## stop
 
@@ -2595,6 +4089,26 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by callback. |
 
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.stop((err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to stop. Code:${err.code},message:${err.message}`);
+    } else {
+      console.info('Succeeded in stopping');
+    }
+  });
+}
+```
+
+<a id="stop-1"></a>
+
 ## stop
 
 ```TypeScript
@@ -2620,6 +4134,22 @@ stop(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [5400102](../errorcode-media.md#5400102-当前状态不支持此操作) | Operation not allowed. Return by promise. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused/completed状态后才能调用。
+  avPlayer.stop().then(() => {
+    console.info('Succeeded in stopping');
+  }, (err: BusinessError) => {
+    console.error(`Failed to stop. Code:${err.code},message:${err.message}`);
+  });
+}
+```
 
 ## audioEffectMode
 
@@ -2887,7 +4417,7 @@ surfaceId?: string
 
 **使用示例**：
 
-通过[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponentcontroller-c.md#getxcomponentsurfaceid)接口创建surfaceId。
+通过[getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid)接口创建surfaceId。
 
 **类型：** string
 

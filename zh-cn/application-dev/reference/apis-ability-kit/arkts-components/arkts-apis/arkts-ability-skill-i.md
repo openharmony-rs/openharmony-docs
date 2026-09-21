@@ -1,5 +1,9 @@
 # Skill
 
+```TypeScript
+export interface Skill
+```
+
 skill标签对象。
 
 **起始版本：** 12

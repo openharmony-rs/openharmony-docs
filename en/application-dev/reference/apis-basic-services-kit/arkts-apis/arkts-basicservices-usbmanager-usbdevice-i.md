@@ -1,5 +1,9 @@
 # USBDevice
 
+```TypeScript
+interface USBDevice
+```
+
 Represents the USB device information.
 
 **Since:** 9

@@ -1,5 +1,9 @@
 # RectChangeReason
 
+```TypeScript
+enum RectChangeReason
+```
+
 Enumerates the reasons for changes in the rectangle (position and size) of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **Since:** 14

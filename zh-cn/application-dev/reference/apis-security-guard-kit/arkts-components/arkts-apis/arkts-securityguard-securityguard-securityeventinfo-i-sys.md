@@ -1,5 +1,9 @@
 # SecurityEventInfo（系统接口）
 
+```TypeScript
+interface SecurityEventInfo
+```
+
 调用订阅接口使用的事件信息。
 
 @interface SecurityEventInfo

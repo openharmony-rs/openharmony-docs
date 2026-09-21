@@ -1,5 +1,9 @@
 # ChangeData
 
+```TypeScript
+interface ChangeData
+```
+
 Defines the return value of the listener callback.
 
 **Since:** 10

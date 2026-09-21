@@ -1,6 +1,10 @@
 # ChipGroupV2Items
 
-Defines items of chip group.
+```TypeScript
+export declare class ChipGroupV2Items extends Array<ChipGroupV2Item>
+```
+
+Defines the array class of the **ChipGroupV2** item, which inherits from Array&lt;[ChipGroupV2Item](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2item-c.md)&gt;.
 
 **Inheritance/Implementation:** ChipGroupV2Items extends Array<ChipGroupV2Item>
 
@@ -22,7 +26,7 @@ import { ChipGroupV2ItemConfig, ChipGroupV2Item, ChipGroupV2Items, ChipGroupV2It
 constructor(items: ChipGroupV2ItemConfig[])
 ```
 
-The constructor of ChipGroupV2Items
+A constructor used to create a **ChipGroupV2Items** object.
 
 **Since:** 26.0.0
 
@@ -36,4 +40,4 @@ The constructor of ChipGroupV2Items
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| items | [ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)[] | Yes | config array of chip group items |
+| items | [ChipGroupV2ItemConfig](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2itemconfig-i.md)[] | Yes | Array of **ChipGroupV2** item configurations. |

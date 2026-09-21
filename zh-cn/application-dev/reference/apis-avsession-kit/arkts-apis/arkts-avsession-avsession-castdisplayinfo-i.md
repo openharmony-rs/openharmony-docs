@@ -1,5 +1,9 @@
 # CastDisplayInfo
 
+```TypeScript
+interface CastDisplayInfo
+```
+
 扩展屏投播显示设备相关属性。
 
 **起始版本：** 12

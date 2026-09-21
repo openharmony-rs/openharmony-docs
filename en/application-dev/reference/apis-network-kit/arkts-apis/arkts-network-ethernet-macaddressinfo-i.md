@@ -1,5 +1,9 @@
 # MacAddressInfo
 
+```TypeScript
+export interface MacAddressInfo
+```
+
 Defines the name and MAC address of an Ethernet NIC.
 
 **Since:** 14

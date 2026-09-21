@@ -1,5 +1,9 @@
 # RouterOptions
 
+```TypeScript
+export interface RouterOptions
+```
+
 定义路由器的选项。
 
 **起始版本：** 3

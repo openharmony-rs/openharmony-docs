@@ -1,5 +1,9 @@
 # DownloadConfig
 
+```TypeScript
+interface DownloadConfig
+```
+
 Defines the download task configuration.
 
 **Since:** 6

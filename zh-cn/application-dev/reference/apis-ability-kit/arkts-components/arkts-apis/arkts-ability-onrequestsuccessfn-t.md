@@ -19,3 +19,7 @@ export type OnRequestSuccessFn = (name: string) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 被拉起Ability组件或系统操作的名称。  Ability组件名称采用'[bundleName]#[moduleName]#[abilityName]'格式拼接。 |
+
+**示例**
+
+参见[OnRequestFailureFn](arkts-ability-onrequestfailurefn-t.md)。

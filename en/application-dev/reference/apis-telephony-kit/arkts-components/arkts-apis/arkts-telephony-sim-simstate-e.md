@@ -1,5 +1,9 @@
 # SimState
 
+```TypeScript
+export enum SimState
+```
+
 Enumerates SIM card states.
 
 **Since:** 6

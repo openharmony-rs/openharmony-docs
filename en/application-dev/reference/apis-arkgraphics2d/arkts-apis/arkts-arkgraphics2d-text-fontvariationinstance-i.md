@@ -1,5 +1,9 @@
 # FontVariationInstance
 
+```TypeScript
+interface FontVariationInstance
+```
+
 Font variable instance information, which stores preset variable font style information.
 
 **Since:** 24

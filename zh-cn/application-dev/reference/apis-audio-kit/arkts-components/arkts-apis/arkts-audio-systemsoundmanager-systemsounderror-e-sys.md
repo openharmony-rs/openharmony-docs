@@ -1,5 +1,9 @@
 # SystemSoundError（系统接口）
 
+```TypeScript
+enum SystemSoundError
+```
+
 枚举，系统声音错误类型。
 
 **起始版本：** 20

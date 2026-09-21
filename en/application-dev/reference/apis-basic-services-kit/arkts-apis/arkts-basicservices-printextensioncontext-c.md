@@ -1,5 +1,9 @@
 # PrintExtensionContext
 
+```TypeScript
+export default class PrintExtensionContext extends ExtensionContext
+```
+
 The context of print extension. It allows access to serviceExtension-specific resources.
 
 **Inheritance/Implementation:** PrintExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)

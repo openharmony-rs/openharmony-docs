@@ -1,5 +1,9 @@
 # ToolBarV2ItemText
 
+```TypeScript
+export declare class ToolBarV2ItemText
+```
+
 Declare type ToolBarV2ItemText
 
 **Since:** 18

@@ -1,5 +1,9 @@
 # XMPEnumerateOptions
 
+```TypeScript
+interface XMPEnumerateOptions
+```
+
 Describes XMP enumerate option parameters.
 
 **Since:** 26.0.0

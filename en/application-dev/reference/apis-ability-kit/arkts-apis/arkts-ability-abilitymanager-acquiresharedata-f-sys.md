@@ -36,6 +36,8 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
 
+<a id="acquiresharedata-2"></a>
+
 ## acquireShareData
 
 ```TypeScript

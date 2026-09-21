@@ -1,5 +1,9 @@
 # ConnectionParams
 
+```TypeScript
+interface ConnectionParams
+```
+
 发起端口连接的参数。
 
 **起始版本：** 26.0.0

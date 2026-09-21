@@ -1,5 +1,9 @@
 # ScaleResult
 
+```TypeScript
+interface ScaleResult
+```
+
 Scale Result
 
 **Since:** 10

@@ -1,5 +1,9 @@
 # ContentBlur
 
+```TypeScript
+export interface ContentBlur
+```
+
 Sets a content blur effect.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # LocalDateTime
 
+```TypeScript
+interface LocalDateTime
+```
+
 Sets the time information for a calendar reminder.
 
 **Since:** 7
@@ -30,7 +34,7 @@ Date.
 
 **Deprecated since:** 9
 
-**Substitutes:** day
+**Substitutes:** [day](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#day)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -48,7 +52,7 @@ Hour.
 
 **Deprecated since:** 9
 
-**Substitutes:** hour
+**Substitutes:** [hour](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#hour)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -66,7 +70,7 @@ Minute.
 
 **Deprecated since:** 9
 
-**Substitutes:** minute
+**Substitutes:** [minute](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#minute)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -84,7 +88,7 @@ Month.
 
 **Deprecated since:** 9
 
-**Substitutes:** month
+**Substitutes:** [month](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#month)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -102,7 +106,7 @@ Second.
 
 **Deprecated since:** 9
 
-**Substitutes:** second
+**Substitutes:** [second](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#second)
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -120,6 +124,6 @@ Year.
 
 **Deprecated since:** 9
 
-**Substitutes:** year
+**Substitutes:** [year](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#year)
 
 **System capability:** SystemCapability.Notification.ReminderAgent

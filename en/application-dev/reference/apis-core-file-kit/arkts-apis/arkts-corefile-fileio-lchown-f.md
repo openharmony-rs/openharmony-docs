@@ -34,6 +34,8 @@ Changes the file owner (owner of the symbolic link, not the file referred to by 
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
+<a id="lchown-1"></a>
+
 ## lchown
 
 ```TypeScript

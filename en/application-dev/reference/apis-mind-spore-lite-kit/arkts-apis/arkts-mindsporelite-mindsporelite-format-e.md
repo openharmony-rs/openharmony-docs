@@ -1,5 +1,9 @@
 # Format
 
+```TypeScript
+export enum Format
+```
+
 Enum for provides MSTensor format
 
 **Since:** 10

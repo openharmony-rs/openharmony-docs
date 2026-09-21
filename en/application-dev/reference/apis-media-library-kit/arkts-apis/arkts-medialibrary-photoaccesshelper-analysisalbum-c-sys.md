@@ -1,5 +1,9 @@
 # AnalysisAlbum (System API)
 
+```TypeScript
+class AnalysisAlbum
+```
+
 Implements an **Analysis** album.
 
 **Since:** 18

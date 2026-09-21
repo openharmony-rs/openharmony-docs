@@ -1,5 +1,9 @@
 # ProvisionRequest
 
+```TypeScript
+interface ProvisionRequest
+```
+
 设备证书请求。
 
 **起始版本：** 11

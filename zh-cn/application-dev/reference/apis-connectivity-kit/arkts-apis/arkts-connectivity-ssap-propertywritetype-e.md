@@ -1,5 +1,9 @@
 # PropertyWriteType
 
+```TypeScript
+enum PropertyWriteType
+```
+
 表示Property支持的写类型，为枚举值。
 
 **起始版本：** 26.0.0

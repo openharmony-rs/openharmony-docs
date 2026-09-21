@@ -1,5 +1,9 @@
 # ChipV2CloseConfig
 
+```TypeScript
+export interface ChipV2CloseConfig extends ChipV2AccessibilityConfig
+```
+
 ChipV2CloseConfig用于定义ChipV2组件关闭图标的功能属性配置，包括无障碍功能属性。
 
 继承自[ChipV2AccessibilityConfig](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityconfig-i.md)。
@@ -26,9 +30,9 @@ fontSize?: LengthMetrics
 
 默认值：
 
-size为ChipV2Size.SMALL时，默认值：`&#36;r('sys.float.chip_small_font_size')`。
+size为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_small_font_size')`。
 
-size不为ChipV2Size.SMALL时，默认值：`&#36;r('sys.float.chip_normal_font_size')`
+size不为ChipV2Size.SMALL时，默认值：`$r('sys.float.chip_normal_font_size')`
 
 单位：fp
 

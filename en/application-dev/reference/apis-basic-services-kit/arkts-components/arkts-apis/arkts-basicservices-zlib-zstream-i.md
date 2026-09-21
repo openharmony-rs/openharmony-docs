@@ -1,5 +1,9 @@
 # ZStream
 
+```TypeScript
+interface ZStream
+```
+
 Process all the information required for compression and decompression.
 
 **Since:** 12

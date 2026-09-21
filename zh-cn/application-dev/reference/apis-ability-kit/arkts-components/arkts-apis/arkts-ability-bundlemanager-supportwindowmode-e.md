@@ -1,5 +1,9 @@
 # SupportWindowMode
 
+```TypeScript
+export enum SupportWindowMode
+```
+
 标识该组件所支持的窗口模式。
 
 **起始版本：** 9

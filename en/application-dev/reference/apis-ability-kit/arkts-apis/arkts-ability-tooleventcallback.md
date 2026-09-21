@@ -7,7 +7,7 @@
 
 | Name | Description |
 | --- | --- |
-| [ToolEventCallback](arkts-ability-tooleventcallback-i-sys.md) | This interface is used to receive cli event when the cli tool process is running. |
+| [ToolEventCallback](arkts-ability-tooleventcallback-i-sys.md) | ToolEventCallback is used to receive session events generated during the running of the CLI tool process. |
 <!--DelEnd-->
 
 <!--Del-->

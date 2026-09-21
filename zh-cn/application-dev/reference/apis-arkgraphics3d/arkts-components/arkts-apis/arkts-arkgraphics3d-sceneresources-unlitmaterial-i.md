@@ -1,5 +1,9 @@
 # UnlitMaterial
 
+```TypeScript
+export interface UnlitMaterial extends Material
+```
+
 不受光照影响的材质，其着色值只与设置的基础颜色有关，与光照条件无关，继承自Material。
 
 @extends Material @interface UnlitMaterial

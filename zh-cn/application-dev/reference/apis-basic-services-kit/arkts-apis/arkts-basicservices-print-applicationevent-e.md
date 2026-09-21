@@ -1,5 +1,9 @@
 # ApplicationEvent
 
+```TypeScript
+enum ApplicationEvent
+```
+
 打印应用事件的枚举。
 
 **起始版本：** 14

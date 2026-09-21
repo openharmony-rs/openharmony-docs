@@ -2,7 +2,9 @@
 
 The namespace of privacyComputation, providing privacy-preserving computation capabilities such as privacy target generation, privacy search, and search result retrieval.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used in both the stage model and FA model.
 
 **System capability:** SystemCapability.Security.Asset
 

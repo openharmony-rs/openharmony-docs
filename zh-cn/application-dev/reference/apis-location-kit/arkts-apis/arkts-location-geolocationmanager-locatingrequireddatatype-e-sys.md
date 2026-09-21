@@ -1,5 +1,9 @@
 # LocatingRequiredDataType（系统接口）
 
+```TypeScript
+export enum LocatingRequiredDataType
+```
+
 定位业务所需数据的类型。
 
 **起始版本：** 10

@@ -1,5 +1,9 @@
 # XMPNamespace
 
+```TypeScript
+interface XMPNamespace
+```
+
 Describes XMP namespace parameters.
 
 **Since:** 26.0.0

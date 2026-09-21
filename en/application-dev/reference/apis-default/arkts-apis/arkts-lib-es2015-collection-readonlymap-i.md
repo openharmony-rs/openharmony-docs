@@ -1,5 +1,9 @@
 # ReadonlyMap
 
+```TypeScript
+interface ReadonlyMap<K, V>
+```
+
 ## Modules to Import
 
 ```TypeScript

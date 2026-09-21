@@ -1,5 +1,9 @@
 # WebNativeMessagingExtensionAbility
 
+```TypeScript
+export default class WebNativeMessagingExtensionAbility extends ExtensionAbility
+```
+
 Provides the web native messaging capability and is inherited from ExtensionAbility.
 
 **Inheritance/Implementation:** WebNativeMessagingExtensionAbility extends [ExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-extensionability-extensionability-c.md)

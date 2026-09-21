@@ -25,6 +25,8 @@ Imports a wrapped key. This API uses an asynchronous callback to return the resu
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** 
@@ -238,19 +240,8 @@ function huksImportWrappedKey() {
 }
 ```
 
-```TypeScript
-import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 处理流程与callback类似，主要差异点为如下函数： */
-/* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
-async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
-  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
-    .then(() => {
-      console.info(`promise: importWrappedKeyItem success`);
-    });
-}
-```
-
+<a id="importwrappedkeyitem-1"></a>
 
 ## importWrappedKeyItem
 
@@ -312,4 +303,15 @@ Imports a wrapped key. This API uses a promise to return the result.
 
 **示例**
 
-参见 importWrappedKeyItem
+```TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
+
+/* 处理流程与callback类似，主要差异点为如下函数： */
+/* 该处为示例代码，实际运行过程中，应使用实际导入密钥数据。数据构造方式由上注释可见说明 */
+async function testImportWrappedFunc(alias: string, wrappingAlias: string, options: huks.HuksOptions) {
+  await huks.importWrappedKeyItem(alias, wrappingAlias, options)
+    .then(() => {
+      console.info(`promise: importWrappedKeyItem success`);
+    });
+}
+```

@@ -1,5 +1,9 @@
 # Method（系统接口）
 
+```TypeScript
+interface Method
+```
+
 表示服务的方法。
 
 **起始版本：** 26.0.0

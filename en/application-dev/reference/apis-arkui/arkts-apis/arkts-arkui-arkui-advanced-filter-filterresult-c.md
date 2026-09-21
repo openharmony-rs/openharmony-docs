@@ -1,5 +1,9 @@
 # FilterResult
 
+```TypeScript
+export declare class FilterResult
+```
+
 This parameter specifies the selection result of a filtering dimension. The index starts from 0.
 
 **Since:** 22

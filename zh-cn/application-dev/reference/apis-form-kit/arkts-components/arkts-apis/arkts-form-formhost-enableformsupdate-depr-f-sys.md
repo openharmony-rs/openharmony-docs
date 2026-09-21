@@ -45,17 +45,8 @@ formHost.enableFormsUpdate(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-```TypeScript
-import Base from '@ohos.base';
 
-let formIds: string[] = ['12400633174999288'];
-formHost.enableFormsUpdate(formIds).then(() => {
-  console.info('formHost enableFormsUpdate success');
-}).catch((error: Base.BusinessError) => {
-  console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
-});
-```
-
+<a id="enableformsupdate-1"></a>
 
 ## enableFormsUpdate
 
@@ -91,4 +82,13 @@ function enableFormsUpdate(formIds: Array<string>): Promise<void>
 
 **示例**
 
-参见 [enableFormsUpdate](#enableformsupdate)
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.enableFormsUpdate(formIds).then(() => {
+  console.info('formHost enableFormsUpdate success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
+});
+```

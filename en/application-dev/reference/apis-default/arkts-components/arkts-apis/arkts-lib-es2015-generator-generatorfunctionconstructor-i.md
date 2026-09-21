@@ -1,5 +1,9 @@
 # GeneratorFunctionConstructor
 
+```TypeScript
+interface GeneratorFunctionConstructor
+```
+
 ## Modules to Import
 
 ```TypeScript

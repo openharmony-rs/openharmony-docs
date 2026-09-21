@@ -1,5 +1,9 @@
 # BluetoothAddress
 
+```TypeScript
+export interface BluetoothAddress
+```
+
 Describe the type of Bluetooth address.
 
 **Since:** 21

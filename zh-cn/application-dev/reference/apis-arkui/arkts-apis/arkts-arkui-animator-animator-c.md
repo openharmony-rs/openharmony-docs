@@ -1,5 +1,9 @@
 # Animator
 
+```TypeScript
+export default class Animator
+```
+
 定义Animator类。
 
 **起始版本：** 6
@@ -54,13 +58,29 @@ static create(options: AnimatorOptions): AnimatorResult
 
 **示例**
 
-```TypeScript
 完整示例请参考基于ArkTS扩展的声明式开发范式。
 
 > 说明：
 > 
 > 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
+
+```TypeScript
+import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
+
+let options: AnimatorOptions = {
+  duration: 1500,
+  easing: 'friction',
+  delay: 0,
+  fill: "forwards",
+  direction: "normal",
+  iterations: 3,
+  begin: 200.0,
+  end: 400.0
+};
+animator.create(options); // 建议使用 UIContext.createAnimator()接口
 ```
+
+<a id="create-1"></a>
 
 ## create
 
@@ -98,7 +118,17 @@ static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **示例**
 
-参见 [create](#create)
+完整示例请参考基于ArkTS扩展的声明式开发范式。
+
+> 说明：
+> 
+> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的createAnimator接口明确UI上下文。
+
+```TypeScript
+import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
+let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
+animator.create(options); // 建议使用 UIContext.createAnimator()接口
+```
 
 ## createAnimator
 
@@ -134,6 +164,20 @@ static createAnimator(options: AnimatorOptions): AnimatorResult
 
 **示例**
 
-```TypeScript
 完整示例请参考基于ArkTS扩展的声明式开发范式。
+
+```TypeScript
+import { Animator as animator, AnimatorOptions } from '@kit.ArkUI';
+
+let options: AnimatorOptions = { // xxx.js文件中不需要强调显式类型AnimatorOptions
+  duration: 1500,
+  easing: "friction",
+  delay: 0,
+  fill: "forwards",
+  direction: "normal",
+  iterations: 3,
+  begin: 200.0,
+  end: 400.0,
+};
+this.animator = animator.createAnimator(options);
 ```

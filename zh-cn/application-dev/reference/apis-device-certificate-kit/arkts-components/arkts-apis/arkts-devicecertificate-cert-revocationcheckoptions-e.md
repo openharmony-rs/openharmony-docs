@@ -1,5 +1,9 @@
 # RevocationCheckOptions
 
+```TypeScript
+enum RevocationCheckOptions
+```
+
 表示证书链在线校验证书吊销状态选项的枚举。
 
 **起始版本：** 12

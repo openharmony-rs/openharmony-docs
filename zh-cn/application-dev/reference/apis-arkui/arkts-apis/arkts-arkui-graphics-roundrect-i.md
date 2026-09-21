@@ -1,5 +1,9 @@
 # RoundRect
 
+```TypeScript
+export interface RoundRect
+```
+
 用于设置带有圆角的矩形。
 
 **起始版本：** 12

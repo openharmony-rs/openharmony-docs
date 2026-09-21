@@ -1,5 +1,9 @@
 # FileManifestData (System API)
 
+```TypeScript
+interface FileManifestData
+```
+
 Manifest file information in incremental data. FileManifestData is useful when doing IPC with the backup service.
 
 @interface FileManifestData

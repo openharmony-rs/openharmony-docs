@@ -1,5 +1,9 @@
 # CustomKeyboardContinueFeature
 
+```TypeScript
+export const enum CustomKeyboardContinueFeature
+```
+
 自定义键盘接续特性的枚举。
 
 **起始版本：** 23

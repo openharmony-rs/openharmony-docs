@@ -1,5 +1,9 @@
 # IconTypeV2
 
+```TypeScript
+export declare enum IconTypeV2
+```
+
 Declare enum IconTypeV2
 
 **Since:** 26.0.0

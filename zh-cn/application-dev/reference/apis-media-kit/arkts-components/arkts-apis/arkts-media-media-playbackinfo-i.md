@@ -1,5 +1,9 @@
 # PlaybackInfo
 
+```TypeScript
+interface PlaybackInfo
+```
+
 提供播放统计数据信息。
 
 **起始版本：** 12

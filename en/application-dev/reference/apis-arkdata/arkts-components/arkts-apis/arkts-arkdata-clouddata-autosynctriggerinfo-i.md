@@ -1,5 +1,9 @@
 # AutoSyncTriggerInfo
 
+```TypeScript
+interface AutoSyncTriggerInfo
+```
+
 Describes information about the automatic synchronization trigger mode.
 
 **Since:** 26.0.0

@@ -1,5 +1,9 @@
 # SwitchStatus
 
+```TypeScript
+enum SwitchStatus
+```
+
 Enumerates switch states.
 
 **Since:** 26.0.0

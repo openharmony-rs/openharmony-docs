@@ -1,5 +1,9 @@
 # UdpNetPortStatesInfo
 
+```TypeScript
+export interface UdpNetPortStatesInfo
+```
+
 Describes the UDP port state information.
 
 **Since:** 24

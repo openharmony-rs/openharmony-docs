@@ -1,5 +1,9 @@
 # SplitConfig
 
+```TypeScript
+interface SplitConfig
+```
+
 管理文本分块的配置信息。
 
 @interface SplitConfig

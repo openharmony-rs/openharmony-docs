@@ -1,4 +1,8 @@
-# uiEffect
+# uiEffect(Cascading Effect)
+
+```TypeScript
+declare namespace uiEffect
+```
 
 This module provides basic capabilities for component effects, including blur, brightening, and more. Effects are categorized into the Filter and VisualEffect classes, and effects of the same class can be cascaded under an instance of that effect class. Using this module, you can quickly implement complex visual effects without needing to master underlying image processing algorithms, reducing development complexity and improving user experience. In actual development, blur can be used for background blurring, and brightening can be used for bright screen display, etc.
 
@@ -61,6 +65,9 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 | [BlurBubblesRiseEffectParam](arkts-arkgraphics2d-uieffect-blurbubblesriseeffectparam-i-sys.md) | The parameters of blur bubbles rise effect. |
 | [LiquidMaterialEffectParam](arkts-arkgraphics2d-uieffect-liquidmaterialeffectparam-i-sys.md) | Material effect parameters, used to control the display properties of the material such as refraction, reflection, perturbation, and overlay color. |
 | [WarpedRingParam](arkts-arkgraphics2d-uieffect-warpedringparam-i-sys.md) | WarpedRingParam specifies the ring's radius, width, variation, rotation, 3D orientation and noise evolution. |
+| [GlassMarbleMaterialParam](arkts-arkgraphics2d-uieffect-glassmarblematerialparam-i-sys.md) | Material parameters for the glass marble. Controls material properties (background color, opacity, reflection map, shadow, caustic) and shape scaling. |
+| [GlassMarbleContentParam](arkts-arkgraphics2d-uieffect-glassmarblecontentparam-i-sys.md) | Content parameters for the glass marble. Controls how the content mask is blended inside the glass shape, including the content mask itself, tint color, scaling, saturation, and chromatic dispersion. |
+| [GlassMarbleSphereParam](arkts-arkgraphics2d-uieffect-glassmarblesphereparam-i-sys.md) | Sphere shape parameters for the glass marble. Defines the geometry of the glass shape through a center position and a radius, all in normalized coordinates relative to the component bounds. |
 | [BrightnessBlender](arkts-arkgraphics2d-uieffect-brightnessblender-i-sys.md) | Brightness blender, used to add a brightness effect to a specified component. Before calling BrightnessBlender, you need to first create a BrightnessBlender instance through createBrightnessBlender. |
 | [HdrBrightnessBlender](arkts-arkgraphics2d-uieffect-hdrbrightnessblender-i-sys.md) | HDR-enabled brightness blender (inherited from BrightnessBlender), used to add a brightness effect to a specified component. Before calling HdrBrightnessBlender, you need to first create an HdrBrightnessBlender instance through createHdrBrightnessBlender. The parameters of this blender can be referenced from BrightnessBlender. |
 | [HdrDarkenBlender](arkts-arkgraphics2d-uieffect-hdrdarkenblender-i-sys.md) | HDR-adaptive darken blender, used to add a darken effect to a specified component. Before calling HdrDarkenBlender, you need to first create an HdrDarkenBlender instance through createHdrDarkenBlender. |

@@ -1,5 +1,9 @@
 # SatelliteConstellationCategory
 
+```TypeScript
+export enum SatelliteConstellationCategory
+```
+
 Enum for satellite constellation category.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # FontVariationInstance
 
+```TypeScript
+interface FontVariationInstance
+```
+
 字体可变实例信息，存放预设的可变字体样式信息。
 
 **起始版本：** 24

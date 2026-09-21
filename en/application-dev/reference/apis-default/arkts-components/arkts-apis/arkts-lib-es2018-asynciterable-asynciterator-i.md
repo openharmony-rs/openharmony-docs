@@ -1,5 +1,9 @@
 # AsyncIterator
 
+```TypeScript
+interface AsyncIterator<T, TReturn = any, TNext = undefined>
+```
+
 ## Modules to Import
 
 ```TypeScript

@@ -1,5 +1,9 @@
 # FileMoveOption
 
+```TypeScript
+export interface FileMoveOption
+```
+
 Defines the options used in move().
 
 **Since:** 3

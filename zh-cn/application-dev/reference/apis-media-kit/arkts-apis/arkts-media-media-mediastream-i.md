@@ -1,5 +1,9 @@
 # MediaStream
 
+```TypeScript
+interface MediaStream
+```
+
 媒体流。AVPlayer用来访问媒体数据，目前只支持直播流。
 
 **起始版本：** 19

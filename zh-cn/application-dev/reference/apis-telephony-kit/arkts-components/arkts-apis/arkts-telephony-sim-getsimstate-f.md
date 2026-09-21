@@ -50,17 +50,8 @@ sim.getSimState(0, (err: BusinessError, data: sim.SimState) => {
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { sim } from '@kit.TelephonyKit';
 
-sim.getSimState(0).then((data: sim.SimState) => {
-    console.info(`getSimState success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
-});
-```
-
+<a id="getsimstate-1"></a>
 
 ## getSimState
 
@@ -98,4 +89,13 @@ function getSimState(slotId: number): Promise<SimState>
 
 **示例**
 
-参见 [getSimState](#getsimstate)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.getSimState(0).then((data: sim.SimState) => {
+    console.info(`getSimState success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSimState failed, promise: err->${JSON.stringify(err)}`);
+});
+```

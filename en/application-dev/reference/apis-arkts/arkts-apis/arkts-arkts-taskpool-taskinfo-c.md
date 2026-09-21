@@ -1,5 +1,9 @@
 # TaskInfo
 
+```TypeScript
+class TaskInfo
+```
+
 Describes the internal information about a task.
 
 **Since:** 10

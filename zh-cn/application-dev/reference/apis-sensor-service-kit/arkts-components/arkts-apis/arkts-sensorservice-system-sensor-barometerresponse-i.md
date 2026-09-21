@@ -1,5 +1,9 @@
 # BarometerResponse
 
+```TypeScript
+export interface BarometerResponse
+```
+
 气压计传感器数据改变后的回调函数的响应对象，包含气压值数据。
 
 **起始版本：** 3

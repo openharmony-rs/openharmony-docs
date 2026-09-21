@@ -1,5 +1,9 @@
 # DateTimeFormat
 
+```TypeScript
+export class DateTimeFormat
+```
+
 提供日期格式化的能力。
 
 **起始版本：** 6
@@ -45,15 +49,7 @@ import { intl } from '@kit.LocalizationKit';
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
 
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// 使用zh-CN区域ID创建DateTimeFormat对象，日期风格为full，时间风格为medium
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat('zh-CN', { dateStyle: 'full', timeStyle: 'medium' });
-
-// 使用区域ID列表创建DateTimeFormat对象，因为ban为非法区域ID，因此使用zh区域ID创建DateTimeFormat对象
-formatter = new intl.DateTimeFormat(['ban', 'zh'], { dateStyle: 'full', timeStyle: 'medium' });
-```
+<a id="constructor-1"></a>
 
 ## constructor
 
@@ -83,13 +79,6 @@ constructor(locale: string | Array<string>, options?: DateTimeOptions)
 | options | [DateTimeOptions](arkts-localization-intl-datetimeoptions-i.md) | 否 | 创建时间日期格式化对象时可设置的配置项。<br>若所有选项均未设置时，year、month、day三个属性的默认值为numeric。<br>默认值：所有属性都取默认值时的配置项。 |
 
 **示例**
-
-```TypeScript
-import { intl } from '@kit.LocalizationKit';
-
-// 使用系统当前区域ID创建DateTimeFormat对象
-let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
-```
 
 ```TypeScript
 import { intl } from '@kit.LocalizationKit';

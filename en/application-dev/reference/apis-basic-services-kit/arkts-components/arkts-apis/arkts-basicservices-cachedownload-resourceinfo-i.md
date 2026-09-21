@@ -1,5 +1,9 @@
 # ResourceInfo
 
+```TypeScript
+interface ResourceInfo
+```
+
 Describes the pre-downloaded resource information.
 
 **Since:** 20

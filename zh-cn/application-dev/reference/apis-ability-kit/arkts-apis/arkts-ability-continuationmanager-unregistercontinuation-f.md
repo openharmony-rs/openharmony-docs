@@ -61,22 +61,8 @@ try {
 }
 ```
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let token: number = -1;
-try {
-  continuationManager.unregisterContinuation(token).then(() => {
-      console.info('unregisterContinuation finished. ');
-    }).catch((err: BusinessError) => {
-      console.error('unregisterContinuation failed, cause: ' + JSON.stringify(err));
-  });
-} catch (err) {
-  console.error('unregisterContinuation failed, cause: ' + JSON.stringify(err));
-}
-```
-
+<a id="unregistercontinuation-1"></a>
 
 ## unregisterContinuation
 
@@ -121,4 +107,18 @@ function unregisterContinuation(token: number): Promise<void>
 
 **示例**
 
-参见 unregisterContinuation
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let token: number = -1;
+try {
+  continuationManager.unregisterContinuation(token).then(() => {
+      console.info('unregisterContinuation finished. ');
+    }).catch((err: BusinessError) => {
+      console.error('unregisterContinuation failed, cause: ' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('unregisterContinuation failed, cause: ' + JSON.stringify(err));
+}
+```

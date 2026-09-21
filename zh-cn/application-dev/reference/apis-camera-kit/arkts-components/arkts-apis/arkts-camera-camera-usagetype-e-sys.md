@@ -1,5 +1,9 @@
 # UsageType（系统接口）
 
+```TypeScript
+enum UsageType
+```
+
 Enum for usage type used in capture session.
 
 **起始版本：** 13

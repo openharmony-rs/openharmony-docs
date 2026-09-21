@@ -1,5 +1,9 @@
 # NotificationInfo
 
+```TypeScript
+export interface NotificationInfo
+```
+
 The **NotificationInfo** module describes the notification information delivered to the onReceiveMessage callback of ExtensionAbility for notification subscriptions.
 
 **Since:** 22

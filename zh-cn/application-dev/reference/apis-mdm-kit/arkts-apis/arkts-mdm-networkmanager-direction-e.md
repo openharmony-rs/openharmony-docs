@@ -1,5 +1,9 @@
 # Direction
 
+```TypeScript
+enum Direction
+```
+
 规则链。
 
 **起始版本：** 12

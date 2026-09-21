@@ -1,5 +1,9 @@
 # CBConfigListConfigs（系统接口）
 
+```TypeScript
+export interface CBConfigListConfigs
+```
+
 定义小区广播列表配置
 
 **起始版本：** 23

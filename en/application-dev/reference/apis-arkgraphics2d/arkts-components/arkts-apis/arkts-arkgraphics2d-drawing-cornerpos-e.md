@@ -1,5 +1,9 @@
 # CornerPos
 
+```TypeScript
+enum CornerPos
+```
+
 Enumerates the corner positions of a rounded rectangle.
 
 **Since:** 12

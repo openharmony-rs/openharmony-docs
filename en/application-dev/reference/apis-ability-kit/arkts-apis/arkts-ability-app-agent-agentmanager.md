@@ -1,6 +1,6 @@
 # @ohos.app.agent.agentManager
 
-The module provides the capability to interact with agents in the system.
+The agentManager module provides agent management capabilities, supporting operations such as connecting to and disconnecting from AgentExtensionAbility, lifecycle management of LOW_CODE agents, connection management between AgentExtensionAbility and ServiceExtensionAbility, and obtaining AgentCard information on the device.
 
 @namespace agentManager
 
@@ -32,7 +32,7 @@ import { agentManager } from '@kit.AbilityKit';
 | [disconnectServiceExtensionAbility](arkts-ability-agentmanager-disconnectserviceextensionability-f-sys.md) | Disconnects an AgentExtensionAbility from a ServiceExtensionAbility, in contrast to [connectServiceExtensionAbility](arkts-ability-agentmanager-connectserviceextensionability-f-sys.md). |
 | [getAgentCardByAgentId](arkts-ability-agentmanager-getagentcardbyagentid-f-sys.md) | Gets the AgentCard within specified agent id. |
 | [getAgentCardsByBundleName](arkts-ability-agentmanager-getagentcardsbybundlename-f-sys.md) | Gets all AgentCards within specified bundleName. |
-| [getAllAgentCards](arkts-ability-agentmanager-getallagentcards-f-sys.md) | Gets all AgentCards on the device. |
+| [getAllAgentCards](arkts-ability-agentmanager-getallagentcards-f-sys.md) | Obtains all AgentCards on the device. This API uses a promise to return the result. |
 | [notifyLowCodeAgentComplete](arkts-ability-agentmanager-notifylowcodeagentcomplete-f-sys.md) | Notifies that the specified LOW_CODE agent has completed. |
 | [registerAgentCard](arkts-ability-agentmanager-registeragentcard-f-sys.md) | Registers an AgentCard. If `agentCard.type` is not specified, it defaults to `agentConstant.AgentCardType.APP`. When the type is `APP` or `LOW_CODE`, `appInfo` is validated, especially `bundleName` and `abilityName`. A maximum of 1000 AgentCards can be registered under one bundle. |
 | [updateAgentCard](arkts-ability-agentmanager-updateagentcard-f-sys.md) | Updates the AgentCard within specified agent id. |

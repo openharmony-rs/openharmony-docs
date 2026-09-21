@@ -1,5 +1,9 @@
 # CdsmConnectionState
 
+```TypeScript
+enum CdsmConnectionState
+```
+
 表示合作设备集合中成员设备的连接状态，为枚举值。
 
 **起始版本：** 26.0.0

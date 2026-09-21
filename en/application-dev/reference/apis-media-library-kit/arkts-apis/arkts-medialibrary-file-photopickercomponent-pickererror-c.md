@@ -1,5 +1,9 @@
 # PickerError
 
+```TypeScript
+export declare class PickerError
+```
+
 Describes the function name, error code, and message of the error returned when an error occurs during the use of the **PhotoPickerComponent** component.
 
 **Since:** 23

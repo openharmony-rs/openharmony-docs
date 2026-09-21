@@ -1,5 +1,9 @@
 # OppTransferInformation (System API)
 
+```TypeScript
+interface OppTransferInformation
+```
+
 Describes the transferred file information.
 
 **Since:** 16

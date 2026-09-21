@@ -1,5 +1,9 @@
 # IInputData（系统接口）
 
+```TypeScript
+interface IInputData
+```
+
 密码数据回调。
 
 **起始版本：** 8

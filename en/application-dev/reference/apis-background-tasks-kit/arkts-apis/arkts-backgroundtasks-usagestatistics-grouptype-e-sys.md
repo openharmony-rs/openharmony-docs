@@ -1,5 +1,9 @@
 # GroupType (System API)
 
+```TypeScript
+export enum GroupType
+```
+
 Declares group type.
 
 **Since:** 9

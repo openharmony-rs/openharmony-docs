@@ -1,5 +1,9 @@
 # MediaAssetProgressHandler
 
+```TypeScript
+interface MediaAssetProgressHandler
+```
+
 **MediaAssetProgressHandler** is used to obtain the media asset processing progress from **onProgress()**.
 
 **Since:** 15

@@ -33,6 +33,8 @@ Adds an array of notification slots. This API uses an asynchronous callback to r
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
+<a id="addslots-1"></a>
+
 ## addSlots
 
 ```TypeScript

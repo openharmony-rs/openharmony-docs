@@ -58,23 +58,8 @@ try {
 }
 ```
 
-```TypeScript
-import { quickFixManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let hapModuleQuickFixFiles = ['/data/storage/el2/base/entry.hqf'];
-
-try {
-  quickFixManager.applyQuickFix(hapModuleQuickFixFiles).then(() => {
-    console.info(`applyQuickFix success`);
-  }).catch((error: BusinessError) => {
-    console.error(`applyQuickFix err: ${error}`);
-  });
-} catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-}
-```
-
+<a id="applyquickfix-1"></a>
 
 ## applyQuickFix
 
@@ -116,4 +101,19 @@ Applies a quick fix patch. This API uses a promise to return the result.
 
 **Examples**
 
-See [applyQuickFix](#applyquickfix)
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapModuleQuickFixFiles = ['/data/storage/el2/base/entry.hqf'];
+
+try {
+  quickFixManager.applyQuickFix(hapModuleQuickFixFiles).then(() => {
+    console.info(`applyQuickFix success`);
+  }).catch((error: BusinessError) => {
+    console.error(`applyQuickFix err: ${error}`);
+  });
+} catch (paramError) {
+  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+}
+```

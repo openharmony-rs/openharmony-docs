@@ -1,5 +1,9 @@
 # ContinuousTaskSuspendInfo
 
+```TypeScript
+interface ContinuousTaskSuspendInfo
+```
+
 Describes the information about a suspended continuous task.
 
 **Since:** 20

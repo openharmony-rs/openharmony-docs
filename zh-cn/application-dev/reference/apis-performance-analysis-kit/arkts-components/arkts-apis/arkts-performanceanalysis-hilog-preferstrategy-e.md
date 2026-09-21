@@ -1,5 +1,9 @@
 # PreferStrategy
 
+```TypeScript
+enum PreferStrategy
+```
+
 偏好策略。
 
 **起始版本：** 21

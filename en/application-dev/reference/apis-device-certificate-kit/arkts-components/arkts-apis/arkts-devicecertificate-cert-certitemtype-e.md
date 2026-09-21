@@ -1,5 +1,9 @@
 # CertItemType
 
+```TypeScript
+enum CertItemType
+```
+
 Enumerates the certificate fields that can be obtained.
 
 **Since:** 10

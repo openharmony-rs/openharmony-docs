@@ -1,5 +1,9 @@
 # AudioChannelLayout
 
+```TypeScript
+enum AudioChannelLayout
+```
+
 表示音频文件声道布局类型的枚举。
 
 **起始版本：** 11

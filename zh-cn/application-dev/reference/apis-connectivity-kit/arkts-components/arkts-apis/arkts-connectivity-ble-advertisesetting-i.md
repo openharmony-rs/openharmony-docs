@@ -1,5 +1,9 @@
 # AdvertiseSetting
 
+```TypeScript
+interface AdvertiseSetting
+```
+
 描述BLE广播的发送参数。
 
 **起始版本：** 10

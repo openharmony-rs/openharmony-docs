@@ -1,5 +1,9 @@
 # ArcButtonOptions
 
+```TypeScript
+export declare class ArcButtonOptions
+```
+
 Defines the default or custom style parameters for the **ArcButton** component.
 
 **Since:** 18
@@ -42,7 +46,7 @@ Background blur style of the arc button.
 
 Default value: **BlurStyle.NONE**
 
-**Type:** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
+**Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
 **Since:** 18
 
@@ -184,7 +188,7 @@ onClick?: Callback<ClickEvent>
 
 Callback triggered by click actions on the arc button.
 
-**Type:** Callback&lt;[ClickEvent](../arkts-components/arkts-arkui-clickevent-i.md)&gt;
+**Type:** Callback&lt;[ClickEvent](../arkts-components/arkts-arkui-common-comp-clickevent-i.md)&gt;
 
 **Since:** 18
 
@@ -200,7 +204,7 @@ onTouch?: Callback<TouchEvent>
 
 Callback triggered by touch actions on the arc button.
 
-**Type:** Callback&lt;[TouchEvent](../arkts-components/arkts-arkui-touchevent-i.md)&gt;
+**Type:** Callback&lt;[TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md)&gt;
 
 **Since:** 18
 

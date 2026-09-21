@@ -1,5 +1,9 @@
 # ChangeType
 
+```TypeScript
+enum ChangeType
+```
+
 描述数据变更类型的枚举。请使用枚举名称而非枚举值。
 
 **起始版本：** 10

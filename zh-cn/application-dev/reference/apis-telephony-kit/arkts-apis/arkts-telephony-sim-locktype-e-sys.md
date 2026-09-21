@@ -1,5 +1,9 @@
 # LockType（系统接口）
 
+```TypeScript
+export enum LockType
+```
+
 Indicates the lock types.
 
 **起始版本：** 8

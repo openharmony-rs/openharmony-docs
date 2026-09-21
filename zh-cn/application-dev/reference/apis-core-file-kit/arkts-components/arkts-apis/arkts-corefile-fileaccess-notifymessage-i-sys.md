@@ -1,5 +1,9 @@
 # NotifyMessage（系统接口）
 
+```TypeScript
+interface NotifyMessage
+```
+
 通知回调函数的值。
 
 **起始版本：** 10

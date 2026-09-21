@@ -1,5 +1,9 @@
 # SetStorageOptions
 
+```TypeScript
+export interface SetStorageOptions
+```
+
 **起始版本：** 3
 
 **废弃版本：** 6

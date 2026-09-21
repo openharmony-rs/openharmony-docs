@@ -1,5 +1,9 @@
 # MifareUltralightType
 
+```TypeScript
+enum MifareUltralightType
+```
+
 Enumerates the MIFARE Ultralight tag types.
 
 **Since:** 9

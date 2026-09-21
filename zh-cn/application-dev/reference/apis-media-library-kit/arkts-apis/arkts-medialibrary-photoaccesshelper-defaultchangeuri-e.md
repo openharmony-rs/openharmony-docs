@@ -1,5 +1,9 @@
 # DefaultChangeUri
 
+```TypeScript
+enum DefaultChangeUri
+```
+
 枚举，DefaultChangeUri子类型。
 
 **起始版本：** 10

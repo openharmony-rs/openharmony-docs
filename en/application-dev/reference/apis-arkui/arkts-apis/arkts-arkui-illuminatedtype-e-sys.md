@@ -1,5 +1,9 @@
 # IlluminatedType (System API)
 
+```TypeScript
+declare enum IlluminatedType
+```
+
 Enum of Illuminated type
 
 **Since:** 11

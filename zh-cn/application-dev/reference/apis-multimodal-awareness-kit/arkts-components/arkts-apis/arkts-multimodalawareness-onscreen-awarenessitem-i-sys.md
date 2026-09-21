@@ -1,5 +1,9 @@
 # AwarenessItem（系统接口）
 
+```TypeScript
+export interface AwarenessItem
+```
+
 提供页面信息。包括：
 
 * 页面基础信息，如页面内容、链接、截屏。  

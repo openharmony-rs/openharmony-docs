@@ -1,5 +1,9 @@
 # PanelRect
 
+```TypeScript
+export interface PanelRect
+```
+
 Represents the size of the input method panel.
 
 **Since:** 12

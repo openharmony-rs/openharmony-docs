@@ -1,5 +1,9 @@
 # ToolBarV2
 
+```TypeScript
+export declare struct ToolBarV2
+```
+
 Declare Component ToolBarV2
 
 **Since:** 18

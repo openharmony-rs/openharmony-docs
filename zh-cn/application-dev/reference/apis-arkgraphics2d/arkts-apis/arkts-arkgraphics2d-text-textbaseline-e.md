@@ -1,5 +1,9 @@
 # TextBaseline
 
+```TypeScript
+enum TextBaseline
+```
+
 文本基线类型枚举。
 
 **起始版本：** 12

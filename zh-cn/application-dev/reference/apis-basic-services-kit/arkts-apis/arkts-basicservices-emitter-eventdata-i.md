@@ -1,5 +1,9 @@
 # EventData
 
+```TypeScript
+export interface EventData
+```
+
 发送事件时传递的数据。
 
 **起始版本：** 7

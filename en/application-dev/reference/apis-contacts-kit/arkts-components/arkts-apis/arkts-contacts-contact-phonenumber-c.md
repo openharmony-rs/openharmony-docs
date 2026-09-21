@@ -1,5 +1,9 @@
 # PhoneNumber
 
+```TypeScript
+class PhoneNumber
+```
+
 Defines a contact's phone number.
 
 **Since:** 7

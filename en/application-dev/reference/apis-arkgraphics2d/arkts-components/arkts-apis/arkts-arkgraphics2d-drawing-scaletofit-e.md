@@ -1,5 +1,9 @@
 # ScaleToFit
 
+```TypeScript
+enum ScaleToFit
+```
+
 Enumerates the modes of scaling a source rectangle into a destination rectangle.
 
 **Since:** 12

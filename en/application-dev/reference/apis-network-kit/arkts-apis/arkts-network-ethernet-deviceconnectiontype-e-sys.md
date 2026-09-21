@@ -1,5 +1,9 @@
 # DeviceConnectionType (System API)
 
+```TypeScript
+export enum DeviceConnectionType
+```
+
 Enumerates Ethernet device connection modes.
 
 **Since:** 20

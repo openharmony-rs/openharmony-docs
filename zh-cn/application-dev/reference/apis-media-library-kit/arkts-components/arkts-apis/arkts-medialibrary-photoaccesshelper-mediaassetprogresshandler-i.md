@@ -1,5 +1,9 @@
 # MediaAssetProgressHandler
 
+```TypeScript
+interface MediaAssetProgressHandler
+```
+
 媒体资产进度处理器，应用于onProgress方法中获取媒体资产进度。
 
 > **说明：** 

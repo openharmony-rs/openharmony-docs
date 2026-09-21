@@ -1,5 +1,9 @@
 # CompleteData
 
+```TypeScript
+export interface CompleteData
+```
+
 Describes the data returned by the operation of proactive triggering a WantAgent object.
 
 **Since:** 9

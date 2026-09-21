@@ -64,6 +64,8 @@ try {
 ```
 
 
+<a id="getpoliciessync-1"></a>
+
 ## getPoliciesSync
 
 ```TypeScript

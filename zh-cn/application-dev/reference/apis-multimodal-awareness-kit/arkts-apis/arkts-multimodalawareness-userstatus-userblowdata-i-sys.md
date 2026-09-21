@@ -1,5 +1,9 @@
 # UserBlowData（系统接口）
 
+```TypeScript
+export interface UserBlowData extends UserStatusData
+```
+
 表示用户吹气数据。
 
 **继承/实现关系：** UserBlowData extends [UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)

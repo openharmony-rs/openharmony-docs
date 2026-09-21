@@ -1,5 +1,9 @@
 # PairingStateParam
 
+```TypeScript
+interface PairingStateParam
+```
+
 配对状态参数。
 
 **起始版本：** 26.0.0

@@ -1,10 +1,10 @@
 # @ohos.matrix4(矩阵变换)
 
-用于对组件进行图形变换的各种操作，为组件提供矩阵变换能力，支持对图形进行平移、旋转和缩放等。
+用于对组件进行[图形变换](../arkts-components/arkts-arkui-common-comp.md#common)的各种操作，为组件提供矩阵变换能力，支持对图形进行平移、旋转和缩放等。
 
 Matrix4的使用场景包括：
 
-图形变换中的transform接口通过使用图形变换矩阵Matrix4对象设置组件的二维变换矩阵，[transform3D](../arkts-components/arkts-arkui-commonmethod-c.md#transform3d)接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。
+[图形变换](../arkts-components/arkts-arkui-common-comp.md#common)中的[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1)接口通过使用图形变换矩阵Matrix4对象设置组件的二维变换矩阵，[transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d)接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。
 
 **起始版本：** 7
 

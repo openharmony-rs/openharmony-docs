@@ -1,5 +1,9 @@
 # HttpResponse
 
+```TypeScript
+interface HttpResponse
+```
+
 Describes the data structure of the task response header.
 
 **Since:** 12

@@ -1,5 +1,9 @@
 # ReturnType
 
+```TypeScript
+enum ReturnType
+```
+
 Enumerates the type of information returned by an asset query operation.
 
 **Since:** 11

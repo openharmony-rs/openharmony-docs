@@ -18,6 +18,8 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -26,7 +28,7 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [MenuItemOptions](arkts-arkui-menuitemoptions-i.md) &#124; [CustomBuilder](arkts-arkui-custombuilder-t.md) | 否 | 包含设置MenuItem的各项信息。需要使用标准菜单项配置（如起始图标、内容、标签等）时选择MenuItemOptions；需要自定义菜单项的显示内容和布局时选择CustomBuilder。如果不传该参数，则创建空的MenuItem对象。 |
+| value | [MenuItemOptions](arkts-arkui-menuitem-comp-menuitemoptions-i.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 否 | 包含设置MenuItem的各项信息。需要使用标准菜单项配置（如起始图标、内容、标签等）时选择MenuItemOptions；需要自定义菜单项的显示内容和布局时选择CustomBuilder。如果不传该参数，则创建空的MenuItem对象。 |
 
 ## 汇总
 
@@ -34,4 +36,4 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | 名称 | 说明 |
 | --- | --- |
-| [MenuItemOptions](arkts-arkui-menuitemoptions-i.md) | Menu中的菜单项信息。 |
+| [MenuItemOptions](arkts-arkui-menuitem-comp-menuitemoptions-i.md) | Menu中的菜单项信息。 |

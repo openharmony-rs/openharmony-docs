@@ -1,5 +1,9 @@
 # Protocol
 
+```TypeScript
+export enum Protocol
+```
+
 蓝牙协议类型。
 
 **起始版本：** 20

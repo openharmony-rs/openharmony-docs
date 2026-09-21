@@ -1,4 +1,4 @@
-# @ohos.mediaquery
+# @ohos.mediaquery(Media Query)
 
 The **mediaquery** module provides different styles for different media types.
 
@@ -24,11 +24,11 @@ import { mediaquery } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [matchMediaSync](arkts-arkui-mediaquery-matchmediasync-f.md) | Sets the media query condition. This API returns the corresponding media query listener. |
+| [matchMediaSync](arkts-arkui-mediaquery-matchmediasync-f.md) | Sets the media query criteria and returns the corresponding listening handle. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
 | [MediaQueryListener](arkts-arkui-mediaquery-mediaquerylistener-i.md) | Implements the media query listener, including the first query result when the listener is applied for. The specified media query condition, for example, **'(width &lt;= 600vp)'**, is compared system information. If related information is not initialized during the first query, **matches** returns **false**. |
-| [MediaQueryResult](arkts-arkui-mediaquery-mediaqueryresult-i.md) | Provides the media query result. |
+| [MediaQueryResult](arkts-arkui-mediaquery-mediaqueryresult-i.md) | Represents the media query result. |

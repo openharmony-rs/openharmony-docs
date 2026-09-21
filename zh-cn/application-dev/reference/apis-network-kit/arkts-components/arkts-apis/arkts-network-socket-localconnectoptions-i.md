@@ -1,5 +1,9 @@
 # LocalConnectOptions
 
+```TypeScript
+export interface LocalConnectOptions
+```
+
 LocalSocket客户端在连接服务端时传入的参数信息。
 
 **起始版本：** 11

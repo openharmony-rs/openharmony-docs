@@ -77,34 +77,6 @@ function createFileAccessHelper(context: Context): FileAccessHelper
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { common } from '@kit.AbilityKit';
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
-function createFileAccessHelper01(context: common.UIAbilityContext) {
-  let fileAccessHelper: fileAccess.FileAccessHelper;
-  // wantInfos 从getFileAccessAbilityInfo()获取
-  let wantInfos: Array<Want> = [
-    {
-      bundleName: "com.ohos.UserFile.ExternalFileManager",
-      abilityName: "FileExtensionAbility",
-    },
-  ]
-  try {
-    // context 是EntryAbility 传过来的context
-    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
-    if (!fileAccessHelper) {
-      console.error("createFileAccessHelper interface returns an undefined object");
-    }
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
-  }
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
@@ -124,6 +96,8 @@ function createFileAccessHelper02(context: common.UIAbilityContext) {
 }
 ```
 
+
+<a id="createfileaccesshelper-1"></a>
 
 ## createFileAccessHelper
 
@@ -195,4 +169,30 @@ function createFileAccessHelper(context: Context, wants: Array<Want>): FileAcces
 
 **示例**
 
-参见 [createFileAccessHelper](#createfileaccesshelper)
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { common } from '@kit.AbilityKit';
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+function createFileAccessHelper01(context: common.UIAbilityContext) {
+  let fileAccessHelper: fileAccess.FileAccessHelper;
+  // wantInfos 从getFileAccessAbilityInfo()获取
+  let wantInfos: Array<Want> = [
+    {
+      bundleName: "com.ohos.UserFile.ExternalFileManager",
+      abilityName: "FileExtensionAbility",
+    },
+  ]
+  try {
+    // context 是EntryAbility 传过来的context
+    fileAccessHelper = fileAccess.createFileAccessHelper(context, wantInfos);
+    if (!fileAccessHelper) {
+      console.error("createFileAccessHelper interface returns an undefined object");
+    }
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
+  }
+}
+```

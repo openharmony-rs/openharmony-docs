@@ -1,5 +1,9 @@
 # AVCastController
 
+```TypeScript
+interface AVCastController
+```
+
 在投播建立后，调用[avSession.AVSession.getAVCastController](arkts-avsession-avsession-avsession-i.md#getavcastcontroller)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 > **说明：** 
@@ -57,24 +61,6 @@ media.createAVRecorder().then((avRecorder) => {
     surfaceID = surfaceId;
     if (surfaceID) {
       // 需先通过avSession.getAVCastController获取avCastController实例。
-      avCastController.setDisplaySurface(surfaceID).then(() => {
-        console.info('Succeeded in setting display surface.');
-      });
-    }
-  });
-})
-```
-
-```TypeScript
-import { media } from '@kit.MediaKit';
-
-let surfaceID: string = '';
-media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((surfaceId: string) => {
-    console.info('Succeeded in getting input surface.');
-    surfaceID = surfaceId;
-    if (surfaceID) {
-      // 需先通过avSession.getAVCastController获取avCastController实例。
       avCastController.setDisplaySurface(surfaceID, () => {
           console.info('Succeeded in setting display surface.');
       });
@@ -82,6 +68,8 @@ media.createAVRecorder().then((avRecorder) => {
   });
 })
 ```
+
+<a id="setdisplaysurface-1"></a>
 
 ## setDisplaySurface
 
@@ -119,4 +107,20 @@ setDisplaySurface(surfaceId: string): Promise<void>
 
 **示例**
 
-参见 [setDisplaySurface](#setdisplaysurface)
+```TypeScript
+import { media } from '@kit.MediaKit';
+
+let surfaceID: string = '';
+media.createAVRecorder().then((avRecorder) => {
+  avRecorder.getInputSurface((surfaceId: string) => {
+    console.info('Succeeded in getting input surface.');
+    surfaceID = surfaceId;
+    if (surfaceID) {
+      // 需先通过avSession.getAVCastController获取avCastController实例。
+      avCastController.setDisplaySurface(surfaceID).then(() => {
+        console.info('Succeeded in setting display surface.');
+      });
+    }
+  });
+})
+```

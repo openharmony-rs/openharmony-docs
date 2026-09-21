@@ -50,17 +50,8 @@ radio.getSignalInformation(slotId, (err: BusinessError, data: Array<radio.Signal
 });
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
 
-let slotId: number = 0;
-radio.getSignalInformation(slotId).then((data: Array<radio.SignalInformation>) => {
-    console.info(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-    console.error(`getSignalInformation failed, promise: err code: ${err.code}, message: ${err.message}`);
-});
-```
-
+<a id="getsignalinformation-1"></a>
 
 ## getSignalInformation
 
@@ -98,4 +89,13 @@ function getSignalInformation(slotId: number): Promise<Array<SignalInformation>>
 
 **示例**
 
-参见 getSignalInformation
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+radio.getSignalInformation(slotId).then((data: Array<radio.SignalInformation>) => {
+    console.info(`getSignalInformation success, promise: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getSignalInformation failed, promise: err code: ${err.code}, message: ${err.message}`);
+});
+```

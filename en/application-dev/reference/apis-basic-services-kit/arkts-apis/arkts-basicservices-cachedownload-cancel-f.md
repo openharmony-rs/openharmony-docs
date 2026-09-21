@@ -25,7 +25,7 @@ Cancels an ongoing download task based on the URL. The saved memory cache and fi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| url | string | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 81 92 bytes. |
+| url | string | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 8192 bytes. |
 
 **Error codes:**
 

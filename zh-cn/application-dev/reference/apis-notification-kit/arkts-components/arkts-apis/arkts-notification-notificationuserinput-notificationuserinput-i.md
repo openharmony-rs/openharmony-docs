@@ -1,5 +1,9 @@
 # NotificationUserInput
 
+```TypeScript
+export interface NotificationUserInput
+```
+
 保存用户输入的通知消息。
 
 **起始版本：** 8

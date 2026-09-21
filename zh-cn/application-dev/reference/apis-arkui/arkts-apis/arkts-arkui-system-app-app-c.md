@@ -1,5 +1,9 @@
 # App
 
+```TypeScript
+export default class App
+```
+
 定义App类的静态函数
 
 **起始版本：** 3
@@ -24,6 +28,8 @@ static getInfo(): AppResponse
 
 **起始版本：** 3
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
@@ -36,12 +42,40 @@ static getInfo(): AppResponse
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+import app, { AppResponse } from '@system.app';
+export default class Info {
+  getInfo() {
+    let info:AppResponse = app.getInfo();
+    console.info(JSON.stringify(info));
+  }
+}
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.getInfo example
+    </text>
+    <div class="info-item">
+        <text class="label">appName:</text>
+        <text class="value">{{appName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionName:</text>
+        <text class="value">{{versionName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionCode:</text>
+        <text class="value">{{versionCode}}</text>
+    </div>
+    <input type="button" value="getAppInfo" style="width: 240px; height: 50px; margin: 5px;" onclick="getAppInfo"></input>
+</div>
 ```
 
 ```TypeScript
@@ -188,6 +222,8 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -239,6 +275,8 @@ static setImageFileCacheSize(value: number): void
 
 **起始版本：** 7
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -276,6 +314,8 @@ static setImageRawDataCacheSize(value: number): void
 Set image cache capacity of raw image data size in bytes before decode. if not set, the application will not cache any raw image data.
 
 **起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -328,18 +368,38 @@ static terminate(): void
 
 **起始版本：** 3
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 **示例**
 
-```TypeScript
 ArkTS示例：
-```
 
 ```TypeScript
+import app, { AppResponse } from '@system.app';
+export default class TerM {
+  terminate() {
+    app.terminate();
+  }
+}
+```
+
 JS示例：
+
+```TypeScript
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.terminate example
+    </text>
+    <text class="desc">
+        Click the button below to exit the app
+    </text>
+    <input type="button" value="exit app" style="width: 240px; height: 50px; margin: 5px;" onclick="terminateApp"></input>
+</div>
 ```
 
 ```TypeScript

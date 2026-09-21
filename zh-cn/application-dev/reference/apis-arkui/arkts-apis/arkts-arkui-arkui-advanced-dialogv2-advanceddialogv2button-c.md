@@ -1,5 +1,9 @@
 # AdvancedDialogV2Button
 
+```TypeScript
+export declare class AdvancedDialogV2Button
+```
+
 弹出框操作区按钮。
 
 > **说明：** 
@@ -94,7 +98,7 @@ buttonStyle?: ButtonStyleMode
 
 默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。
 
-**类型：** [ButtonStyleMode](../arkts-components/arkts-arkui-buttonstylemode-e.md)
+**类型：** [ButtonStyleMode](../arkts-components/arkts-arkui-button-comp-buttonstylemode-e.md)
 
 **默认值：** ButtonStyleMode.TEXTUAL
 
@@ -216,7 +220,7 @@ role?: ButtonRole
 
 默认值：ButtonRole.NORMAL
 
-**类型：** [ButtonRole](../arkts-components/arkts-arkui-buttonrole-e.md)
+**类型：** [ButtonRole](../arkts-components/arkts-arkui-button-comp-buttonrole-e.md)
 
 **默认值：** ButtonRole.NORMAL
 

@@ -1,5 +1,9 @@
 # DetailedCallState（系统接口）
 
+```TypeScript
+export enum DetailedCallState
+```
+
 详细的呼叫状态。
 
 **起始版本：** 7

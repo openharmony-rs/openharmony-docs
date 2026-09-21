@@ -6,6 +6,8 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
+<a id="getdefaultinputmethod-1"></a>
+
 ## getDefaultInputMethod
 
 ```TypeScript
@@ -45,10 +47,6 @@ Get the default input method of a specified user.
 | [12800025](../errorcode-inputmethod-framework.md#12800025-cross-user-operation-denied) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
 **Examples**
-
-```TypeScript
-let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod();
-```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
