@@ -7219,6 +7219,7 @@ ArkTS-Sta: enableDrag(value: boolean | undefined)
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------- | ---- | --------------------------------- |
 | value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用网页拖拽功能，true表示启用，false表示不启用。传入undefined或null时为true。 |
+
  **示例：**
 
   ArkTS-Dyn示例：
