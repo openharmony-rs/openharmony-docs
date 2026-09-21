@@ -547,15 +547,9 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 ### 录制虚拟扩展屏幕
 
-从API version 26.1.0开始，支持创建虚拟扩展屏幕并对其内容进行录制。
+从API version 26.0.1开始，支持[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式，即可以创建虚拟扩展屏幕并对其内容进行录制。
 
-即[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
-
-在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。该模式下不会弹出Picker，无论[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值。
-
-> **说明：**
->
-> 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制：针对有内置屏的设备，仅能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
+在此模式下，系统会创建一个虚拟扩展屏幕，应用可对其内容进行录制。关于虚拟屏和扩展屏的概念说明请参见[屏幕管理开发术语](../../displaymanager/display-terminology.md)。
 
 <!-- @[screenCapture_virtualExtendedScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -571,6 +565,12 @@ config.captureMode = OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN;
 // 创建的虚拟扩展屏幕绑定到displayId为0的屏幕上。
 config.videoInfo.videoCapInfo.displayId = 0;
 ```
+
+> **说明：**
+>
+> 该模式下不会弹出Picker，无论[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值。
+>
+> 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制：针对有内置屏的设备，仅能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
 
 
 
@@ -636,7 +636,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 > **说明：**
 >
-> 从API version 26.1.0开始，当录屏模式为[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
+> 从API version 26.0.1开始，当录屏模式为[OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 更多资源
 
