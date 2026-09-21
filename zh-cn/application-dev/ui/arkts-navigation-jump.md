@@ -211,7 +211,7 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
 
 3. 带错误码的跳转：跳转结束会触发异步回调，返回错误码信息。
 
-      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
       
       ``` TypeScript
       const DOMAIN = 0x0000;
@@ -224,7 +224,7 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
       });
       ```
 
-      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
       
       ``` TypeScript
       const DOMAIN = 0x0000;
@@ -278,7 +278,7 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
    this.pageStack.replacePathByName('pageTwo', 'PageTwo Param');
    ```
 
-   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
 
    ``` TypeScript
    const DOMAIN = 0x0000;
