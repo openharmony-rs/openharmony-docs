@@ -94,7 +94,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ----- |
-| url | string | 是 | 待安装的字体文件路径，仅支持.ttf、.ttc和.otf格式的字体文件。 |
+| url | string | 是 | 待安装的字体文件路径，仅支持`.ttf`、`.ttc`和`.otf`格式的字体文件。 |
 | scope | [FontScope](#fontscope) | 是 | 字体作用范围。 |
 
 **返回值：**
