@@ -2,7 +2,7 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @shilei123-->
-<!--Designer: @yao_dashuai-->
+<!--Designer: @li-jiangfeng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
