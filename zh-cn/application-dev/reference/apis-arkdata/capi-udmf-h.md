@@ -2437,7 +2437,7 @@ int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *t
 | -- | -- |
 | const [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) *summary | [入参]表示指向[OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)实例的指针。该指针不能为NULL。 |
 | const char *type | [入参]表示查询的数据类型。该参数是以'\0'结尾的UTF-8字符串，不能为空。 |
-| int64_t *dataSize | [出参] 数据大小，单位为字节。如果未找到对应函数类型，*dataSize为-1。|
+| int64_t *dataSize | [出参] 数据大小，单位为字节。如果未找到对应数据类型，则*dataSize值为-1。|
 
 **返回：**
 
