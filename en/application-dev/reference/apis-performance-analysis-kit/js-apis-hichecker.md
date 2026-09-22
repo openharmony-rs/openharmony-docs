@@ -6,8 +6,9 @@
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=e7dd3a89a3290ed7a4eadac67526f33c246b623a translatedAt=2026-09-21T02:46:06.300Z pushedAt=2026-09-22T01:29:30.412Z -->
 
-The HiChecker module allows you to check issues that may be easily ignored during development of applications (including system-built and third-party applications). Such issues include calling of time-consuming functions by key application threads, event distribution and execution timeout in application processes, and ability resource leakage in application processes. The issues are recorded in logs or lead to process crashes explicitly so that you can find and rectify them.
+HiChecker can be used as a detection tool in the application development phase to detect some easily overlooked issues during code running, such as time-consuming calls in application threads and Ability resource leakage in the application process. Developers can view specific issues through logs or process crashes and fix them to improve the application experience.
 
 > **NOTE**
 >
@@ -32,14 +33,16 @@ Provides the constants of all rule types.
 | RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | Alarm rule, which is programmed to force the application to exit when an alarm is generated.                         |
 | RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | Caution rule, which is programmed to detect whether any time-consuming function is invoked.                     |
 | RULE_THREAD_CHECK_NETWORK_USAGE                  | bigint   | 1ULL << 1  | Caution rule, which is programmed to detect whether the thread invokes a time-consuming network API.<br>**Since:** 26.0.0 |
-| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | Caution rule, which is programmed to detect whether ability leakage has occurred.                     |
+| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | Detection Rule, checks whether an Ability leak occurs.                      |
 | RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | Caution rule, which is programmed to detect the ArkUI performance.                              |
 
 ## hichecker.addCheckRule<sup>9+</sup>
 
 addCheckRule(rule: bigint): void
 
-Adds one or more check rules. HiChecker detects unexpected operations or gives feedback based on the added rules. You can use **grep HiChecker** to check for the application running information in the hilog.
+Adds one or more rules to the system. The system performs detection or gives feedback based on the added rules. When a corresponding rule is triggered, you can use **grep HiChecker** in hilog to view the running information.
+
+If the rule level of the passed-in rule is thread level, the rule takes effect only in the current thread.
 
 **System capability**: SystemCapability.HiviewDFX.HiChecker
 
@@ -47,11 +50,11 @@ Adds one or more check rules. HiChecker detects unexpected operations or gives f
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| rule   | bigint | Yes  | Rule to be added.|
+| rule   | bigint | Yes   | Rule to add. Multiple rules can be combined using the OR operation. Available values include: <br>**RULE_CAUTION_PRINT_LOG** (log recording), **RULE_CAUTION_TRIGGER_CRASH** (application exit), **RULE_THREAD_CHECK_SLOW_PROCESS** (detect time-consuming function calls), and so on. For details, see [Constants](#constants). |
 
 **Error codes**
 
-| ID| Error Message|
+| ID | Error Message |
 | ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, only one bigint type parameter is needed  |
 
@@ -75,7 +78,9 @@ try {
 
 removeCheckRule(rule: bigint): void
 
-Removes one or more rules. The removed rules will become ineffective.
+Removes one or more rules. The removed rules will no longer take effect.
+
+If the rule level of the passed-in rule is thread level, the rule is removed only from the current thread.
 
 **System capability**: SystemCapability.HiviewDFX.HiChecker
 
@@ -83,11 +88,11 @@ Removes one or more rules. The removed rules will become ineffective.
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| rule   | bigint | Yes  | Rule to be removed.|
+| rule   | bigint | Yes   | Rule to be removed. Multiple rules can be combined using the OR operation. Available values include: <br>**RULE_CAUTION_PRINT_LOG** (log recording), **RULE_CAUTION_TRIGGER_CRASH** (application exit), **RULE_THREAD_CHECK_SLOW_PROCESS** (detect time-consuming function calls), etc. For details, see [Constants](#constants). |
 
 **Error codes**
 
-| ID| Error Message|
+| ID | Error Message |
 | ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, only one bigint type parameter is needed  |
 
@@ -111,7 +116,9 @@ try {
 
 containsCheckRule(rule: bigint): boolean
 
-Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread.
+Checks whether the currently added rule set contains a specific rule.
+
+If the rule level of the passed-in rule is thread level, the query is performed only in the current thread.
 
 **System capability**: SystemCapability.HiviewDFX.HiChecker
 
@@ -129,7 +136,7 @@ Checks whether the specified rule exists in the collection of added rules. If th
 
 **Error codes**
 
-| ID| Error Message|
+| ID | Error Message |
 | ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, only one bigint type parameter is needed  |
 
@@ -229,7 +236,7 @@ Obtains a collection of thread, process, and alarm rules that have been added.
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // Obtain the collection of added rules.
-hichecker.getRule(); // return 1n;
+hichecker.getRule();
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>

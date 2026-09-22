@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=00ffa17dad78f74cc2e0acc571993c663e969c2a translatedAt=2026-09-21T02:32:33.902Z pushedAt=2026-09-22T01:29:30.384Z -->
 
 ```c
 typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
@@ -13,7 +14,15 @@ typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 
 ## Overview
 
-Defines the struct for the CPU usage of all threads of an application.
+Defines the struct for the CPU usage of all threads of the current process.
+
+When to use:
+
+Application performance monitoring: Obtain thread CPU usage to monitor the running status and performance bottlenecks of an application.
+
+Thread performance optimization: Analyze the CPU usage of each thread to optimize thread scheduling and resource allocation.
+
+System debugging: Track thread CPU usage during debugging to locate performance issues.
 
 **Since**: 12
 
@@ -30,3 +39,5 @@ Defines the struct for the CPU usage of all threads of an application.
 | uint32_t threadId | Thread ID.|
 | double cpuUsage | Thread CPU usage, in percentage.|
 | struct [HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | Pointer to the CPU usage of the next thread.|
+
+

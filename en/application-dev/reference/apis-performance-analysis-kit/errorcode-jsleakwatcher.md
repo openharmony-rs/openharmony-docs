@@ -6,12 +6,13 @@
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=acb6c2a8ea8fe2b36afd72ac2fbf7aa77d477f04 translatedAt=2026-09-21T02:42:45.782Z pushedAt=2026-09-22T01:29:30.406Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 10801001 Invalid isEnabled
+## 10801001 Invalid isEnabled Parameter
 
 **Error Message**
 
@@ -32,7 +33,7 @@ When the **enableLeakWatcher** function is called, the invalid parameter **isEna
 
 Ensure that the type of **isEnabled** is correct.
 
-## 10801002 Invalid config
+## 10801002 Invalid config Parameter
 
 **Error Message**
 
@@ -54,7 +55,7 @@ When the **enableLeakWatcher** function is called, the invalid parameter **confi
 
 Ensure that the type of **config** is correct.
 
-## 10801003 Invalid callback
+## 10801003 Invalid callback Parameter
 
 **Error Message**
 
@@ -66,14 +67,15 @@ When the **enableLeakWatcher** function is called, the invalid parameter **callb
 
 **Possible Causes**
 
-1. The type of **callback** is incorrect.
+1. The type of the input parameter **callback** is incorrect.
 
 2. Mandatory parameters are not specified.
 
-3. Parameter verification failed.  
+3. Parameter verification failed. The input parameter of the **callback** function is an array of two string elements.
 
 **Solution**
 
 Ensure that the type of **callback** is correct. The input parameter of the **callback** function is an array of two strings.
 
-Index **0** indicates the name of the leak list file, whose name extension is **.jsleaklist**. Index **1** indicates the name of the VM memory snapshot file, whose name extension is **.rawheap**.
+Index 0 is the leak list file name with the suffix .jsleaklist; index 1 is the virtual machine memory snapshot file name with the suffix .rawheap.
+

@@ -6,8 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=7507bf7498175f9363f60d56ed8f750b80e8d09c translatedAt=2026-09-21T03:05:31.355Z pushedAt=2026-09-22T01:29:30.426Z -->
 
 The **userAccessCtrl** module is a core component of the OpenHarmony user identity and access management (UserIAM) system. It is dedicated to the verification and management of authentication tokens. This module provides APIs for verifying authentication tokens (**AuthToken**). It can parse and verify user authentication results and return detailed authentication information.
 
