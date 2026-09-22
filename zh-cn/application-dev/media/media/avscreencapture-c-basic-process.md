@@ -568,9 +568,8 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 > **说明：**
 >
-> 该模式下不会弹出Picker，无论[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值。
->
-> 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制：针对有内置屏的设备，仅能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
+> - 无论[OH_AVScreenCapture_StrategyForPickerPopUp()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)设置为任何值，该模式下都不会弹出Picker，。
+> - 录制虚拟扩展屏幕时，扩展屏幕的显示模式受系统限制。针对有内置屏的设备，只能同时存在1个扩展屏幕；针对无内置屏的设备，最多可同时存在2个扩展屏幕。
 
 
 
