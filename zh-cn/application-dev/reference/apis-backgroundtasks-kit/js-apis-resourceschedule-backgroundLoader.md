@@ -7,9 +7,9 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与 执行。开发指导请参考[后台加载任务开发指南](../../task-management/background-loader.md)。
+本模块支持后台加载任务的注册、取消及查询操作。在开发过程中，如果需要通过预先加载应用数据来提升应用启动速度，可调用本模块提供的接口来注册后台加载任务。系统将在空闲时段，综合当前内存占用、剩余电量及设备温度等因素进行智能调度与执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 ## 导入模块
 
@@ -18,7 +18,7 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 ```
 ## 常量
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -37,7 +37,7 @@ registerTask(taskInfo: TaskInfo): void
 
 注册后台加载任务，成功后会将任务添加到后台加载任务队列，满足触发条件后由系统调度执行。多次注册会覆盖原有任务，仅最后一次生效。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -93,7 +93,7 @@ unregisterTask(taskInfo: TaskInfo): void
 
 取消注册后台加载任务。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -147,7 +147,7 @@ getTaskInfo(taskId: number): Promise\<TaskInfo>
 
 查询已经注册的后台加载任务，使用Promise形式返回。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **需要权限**：ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -197,7 +197,7 @@ finishTask(taskInfo: TaskInfo): void
  
 后台加载完成后，应用必须通过异步回调后独立线程执行finishTask，以实现任务结束状态的系统通知。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **超时时间限制**：应用需要确保后台加载任务在30秒内执行完成。 如果应用在执行后台加载任务时出现多次超时，系统将禁用后续的后台加载任务调度。
 
@@ -292,7 +292,7 @@ finishTask(taskInfo: TaskInfo): void
 
 应用定义和指定的后台加载任务信息。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -308,7 +308,7 @@ finishTask(taskInfo: TaskInfo): void
 
 当系统回调应用的ON_STOP时，若应用需要处理具体的任务停止原因，则需要从参数进行反序列化获得结构TaskStopInfo。具体示例参考[finishTask](#backgroundloaderfinishtask)函数的完整实例。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -325,7 +325,7 @@ finishTask(taskInfo: TaskInfo): void
 
 系统回调应用的onStop方法的TaskStopInfo参数结构体中的错误码枚举定义。
 
-**起始版本：**  26.0.1
+**起始版本：**  26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
