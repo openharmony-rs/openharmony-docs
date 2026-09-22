@@ -217,7 +217,7 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
       const DOMAIN = 0x0000;
       this.pageStack.pushDestination({
         name: 'pageTwo', param: 'PageTwo Param'}).catch((error: BusinessError) => {
-        hilog.info(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
+        hilog.error(DOMAIN, 'testTag', '[pushDestination]failed', 'error code = ', error.code,
           'error.message = ', error.message);
       }).then(() => {
         hilog.info(DOMAIN, 'testTag', '[pushDestination]success.');
