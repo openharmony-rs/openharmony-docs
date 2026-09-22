@@ -57,6 +57,7 @@
     - [@ohos.app.agent.agentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
     - [@ohos.app.agent.AgentUIExtensionAbility (带界面的智能体扩展组件)](js-apis-agent-agentUIExtensionAbility.md)
+    - [@ohos.app.cli.cliManager (CLI工具管理)](js-apis-app-cli-cliManager.md)
     - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](js-apis-app-ability-abilityConstant-sys.md)
