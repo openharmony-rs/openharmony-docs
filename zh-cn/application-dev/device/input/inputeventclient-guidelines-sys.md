@@ -68,7 +68,7 @@ struct Index {
             }
 
             let eventUp: EventUp = { KeyEvent: backKeyUp }
-            inputEventClient.injectEvent(eventUp); // 注入返回按键抬起事件,查看返回键功能是否生效，应用是否返回桌面
+            inputEventClient.injectEvent(eventUp); // 注入返回按键抬起事件，查看返回键功能是否生效，应用是否返回桌面
           } catch (error) {
             console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
