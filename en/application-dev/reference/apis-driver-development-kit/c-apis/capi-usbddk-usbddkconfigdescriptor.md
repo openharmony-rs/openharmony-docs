@@ -8,6 +8,8 @@ typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
 
 Defines configuration descriptors.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

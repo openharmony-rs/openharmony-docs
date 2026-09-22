@@ -8,6 +8,8 @@ typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
 
 对应JSVM的编译选项，包含内容和ID。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

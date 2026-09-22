@@ -4,6 +4,8 @@
 
 Describe the functions of AbilityResourceInfo.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 ## Files

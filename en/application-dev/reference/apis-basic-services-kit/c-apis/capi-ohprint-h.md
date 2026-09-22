@@ -101,6 +101,8 @@ enum Print_ErrorCode
 
 Enumerates the error codes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -127,6 +129,8 @@ enum Print_PrinterState
 
 Enumerates the printer states.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -144,6 +148,8 @@ enum Print_DiscoveryEvent
 **Description**
 
 Enumerates the printer discovery events.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -164,6 +170,8 @@ enum Print_PrinterEvent
 
 Enumerates the printer change events.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -183,6 +191,8 @@ enum Print_DuplexMode
 
 Enumerates the duplex modes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -201,6 +211,8 @@ enum Print_ColorMode
 
 Enumerates the color modes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -218,6 +230,8 @@ enum Print_OrientationMode
 **Description**
 
 Enumerates the orientation modes.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -239,6 +253,8 @@ enum Print_Quality
 
 Enumerates the print qualities.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -256,6 +272,8 @@ enum Print_DocumentFormat
 **Description**
 
 Enumerates the MIME types.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -276,6 +294,8 @@ enum Print_JobDocAdapterState
 **Description**
 
 Enumerates the print job adapter states.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
 
@@ -299,6 +319,8 @@ enum OH_Print_JobState
 
 Enumerates the print job states.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 24
 
 | Enum item | Description |
@@ -321,6 +343,8 @@ typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 
 Defines a callback used to return the file write-back result.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 13
 
 **Parameters**:
@@ -339,6 +363,8 @@ typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Pr
 **Description**
 
 Defines a callback to be invoked when the file write-back starts.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
 
@@ -362,6 +388,8 @@ typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 
 Defines a callback to be invoked when the print job state changes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 13
 
 **Parameters**:
@@ -380,6 +408,8 @@ typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const
 **Description**
 
 Defines a callback used to return the discovered printers.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
@@ -400,6 +430,8 @@ typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Prin
 
 Defines a callback to be invoked when a printer is changed.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -418,6 +450,8 @@ Print_ErrorCode OH_Print_Init()
 **Description**
 
 Checks and starts the print service, initializes the print client, and connects it with the print service.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -439,6 +473,8 @@ Print_ErrorCode OH_Print_Release()
 
 Disconnects from the print service, dismisses the previous callback, and releases the print client resources.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Returns**:
@@ -456,6 +492,8 @@ Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback ca
 **Description**
 
 Starts printer discovery.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -483,6 +521,8 @@ Print_ErrorCode OH_Print_StopPrinterDiscovery()
 
 Stops printer discovery.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -502,6 +542,8 @@ Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)
 **Description**
 
 Connects to a printer by the printer ID.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -529,6 +571,8 @@ Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)
 
 Starts a print job.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -554,6 +598,8 @@ Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallba
 **Description**
 
 Registers a listener for printer changes.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -581,6 +627,8 @@ void OH_Print_UnregisterPrinterChangeListener()
 
 Unregisters this listener for printer changes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -594,6 +642,8 @@ Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)
 **Description**
 
 Queries the list of added printers.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -621,6 +671,8 @@ void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)
 
 Releases the memory used to query the printer list.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -638,6 +690,8 @@ Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterIn
 **Description**
 
 Queries printer information by printer ID.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -666,6 +720,8 @@ void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)
 
 Releases the memory used to query the printer information.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -684,6 +740,8 @@ Print_ErrorCode OH_Print_LaunchPrinterManager()
 
 Starts the printer management window of the system.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Returns**:
@@ -701,6 +759,8 @@ Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Pri
 **Description**
 
 Queries the printer properties based on the list of property keys.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -730,6 +790,8 @@ void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)
 
 Releases the memory used to query the printer properties.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -747,6 +809,8 @@ Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Pr
 **Description**
 
 Updates the printer properties based on the KV pairs.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -775,6 +839,8 @@ Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const P
 
 Restores printer properties to the default settings based on the property key list.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Required permission**: {@code ohos.permission.PRINT}
 
 **Since**: 12
@@ -801,6 +867,8 @@ Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_Prin
 **Description**
 
 Starts the printing dialog box.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
 
@@ -830,6 +898,8 @@ typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState s
 
 Defines a callback to be invoked when the print job state changes.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 24
 
 **Parameters**:
@@ -848,6 +918,8 @@ Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *pr
 **Description**
 
 Starts a print job with the callback to be invoked when the print job state changes.
+
+**System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: ohos.permission.PRINT
 

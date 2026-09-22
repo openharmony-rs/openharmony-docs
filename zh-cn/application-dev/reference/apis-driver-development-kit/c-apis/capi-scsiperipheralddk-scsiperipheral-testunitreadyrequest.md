@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_TestUnitReadyRequest {...} ScsiPeripheral_TestUnit
 
 SCSI命令（TEST UNIT READY）的请求结构体，通常用于确认逻辑单元是否就绪（逻辑单元是SCSI设备中可独立寻址的I/O操作实体）。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

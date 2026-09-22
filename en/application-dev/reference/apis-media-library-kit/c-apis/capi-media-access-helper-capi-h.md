@@ -32,6 +32,8 @@ MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequ
 
 Applies changes to an asset or album.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Required permission**: ohos.permission.WRITE_IMAGEVIDEO
 
 **Since**: 12

@@ -77,6 +77,8 @@ enum IMAGE_PACKER_DYNAMIC_RANGE
 
 Enumerates the dynamic range for encoding.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 12
 
 | Enum item | Description |
@@ -97,6 +99,8 @@ Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 
 Creates the pointer to an OH_PackingOptions struct.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 12
 
 **Parameters**:
@@ -109,7 +113,7 @@ Creates the pointer to an OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>{@link IMAGE_BAD_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_PackingOptions_GetMimeType()
 
@@ -120,6 +124,8 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_
 **Description**
 
 Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -134,7 +140,7 @@ Obtains the MIME type. **value.data** obtained through this API lacks the string
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr, or format is nullptr.<br>    <br>{@link IMAGE_ALLOC_FAILED} allocate memory failed.<br>    <br>{@link IMAGE_COPY_FAILED} copy memory failed |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr.      <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed.      <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed |
 
 ### OH_PackingOptions_GetMimeTypeWithNull()
 
@@ -145,6 +151,8 @@ Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options
 **Description**
 
 Obtains the MIME type in the packing options. The output **format.data** ends with the string terminator **\0**.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 19
 
@@ -159,7 +167,7 @@ Obtains the MIME type in the packing options. The output **format.data** ends wi
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_PACKER_INVALID_PARAMETER} if options or format is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if options or format is nullptr. |
 
 ### OH_PackingOptions_SetMimeType()
 
@@ -170,6 +178,8 @@ Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_
 **Description**
 
 Sets the MIME type.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -184,7 +194,7 @@ Sets the MIME type.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr, or format is nullptr.<br>    <br>{@link IMAGE_ALLOC_FAILED} allocate memory failed.<br>    <br>{@link IMAGE_COPY_FAILED} copy memory failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or format is nullptr.      <br>[IMAGE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) allocate memory failed.      <br>[IMAGE_COPY_FAILED](capi-image-common-h.md#image_errorcode) copy memory failed. |
 
 ### OH_PackingOptions_GetQuality()
 
@@ -195,6 +205,8 @@ Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_
 **Description**
 
 Obtains the encoding quality.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -209,7 +221,7 @@ Obtains the encoding quality.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr, or quality is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or quality is nullptr. |
 
 ### OH_PackingOptions_SetQuality()
 
@@ -220,6 +232,8 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_
 **Description**
 
 Sets the encoding quality.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -234,7 +248,7 @@ Sets the encoding quality.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptions_GetNeedsPackProperties()
 
@@ -245,6 +259,8 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *opti
 **Description**
 
 Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -259,7 +275,7 @@ Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr, or needsPackProperties is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or needsPackProperties is nullptr. |
 
 ### OH_PackingOptions_SetNeedsPackProperties()
 
@@ -270,6 +286,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 **Description**
 
 Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -284,7 +302,7 @@ Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptions_GetDesiredDynamicRange()
 
@@ -295,6 +313,8 @@ Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *opti
 **Description**
 
 Obtains the desired dynamic range during encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -309,7 +329,7 @@ Obtains the desired dynamic range during encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr, or desiredDynamicRange is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr, or desiredDynamicRange is nullptr. |
 
 ### OH_PackingOptions_SetDesiredDynamicRange()
 
@@ -320,6 +340,8 @@ Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *opti
 **Description**
 
 Sets the desired dynamic range during encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -334,7 +356,7 @@ Sets the desired dynamic range during encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptions_Release()
 
@@ -345,6 +367,8 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 **Description**
 
 Releases the pointer to an OH_PackingOptions struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -358,7 +382,7 @@ Releases the pointer to an OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptionsForSequence_Create()
 
@@ -369,6 +393,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence
 **Description**
 
 Creates the pointer to an OH_PackingOptionsForSequence struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -382,7 +408,7 @@ Creates the pointer to an OH_PackingOptionsForSequence struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptionsForSequence_SetFrameCount()
 
@@ -393,6 +419,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForS
 **Description**
 
 Sets the number of frames for image sequence encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -407,7 +435,7 @@ Sets the number of frames for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptionsForSequence_GetFrameCount()
 
@@ -418,6 +446,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForS
 **Description**
 
 Obtains the number of frames for image sequence encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -432,7 +462,7 @@ Obtains the number of frames for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options or frameCount is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options or frameCount is nullptr. |
 
 ### OH_PackingOptionsForSequence_SetDelayTimeList()
 
@@ -444,6 +474,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDelayTimeList(OH_PackingOptionsF
 
 Sets the delay time array for image sequence encoding.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 18
 
 **Parameters**:
@@ -458,7 +490,7 @@ Sets the delay time array for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options or delayTimeList is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options or delayTimeList is nullptr. |
 
 ### OH_PackingOptionsForSequence_GetDelayTimeList()
 
@@ -470,6 +502,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsF
 
 Obtains the delay time array for image sequence encoding.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 18
 
 **Parameters**:
@@ -484,7 +518,7 @@ Obtains the delay time array for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options or delayTimeList is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options or delayTimeList is nullptr. |
 
 ### OH_PackingOptionsForSequence_SetDisposalTypes()
 
@@ -495,6 +529,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsF
 **Description**
 
 Sets the disposal type array for image sequence encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -510,7 +546,7 @@ Sets the disposal type array for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options or disposalTypes is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options or disposalTypes is nullptr. |
 
 ### OH_PackingOptionsForSequence_GetDisposalTypes()
 
@@ -521,6 +557,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsF
 **Description**
 
 Obtains the disposal type array for image sequence encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -536,7 +574,7 @@ Obtains the disposal type array for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options or disposalTypes is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options or disposalTypes is nullptr. |
 
 ### OH_PackingOptionsForSequence_SetLoopCount()
 
@@ -547,6 +585,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSe
 **Description**
 
 Sets the number of loops for image sequence encoding. The value range is [0, 65535], where **0** means an infinite loop. If this field is not carried, loop playback is not performed.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -561,7 +601,7 @@ Sets the number of loops for image sequence encoding. The value range is [0, 655
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_PackingOptionsForSequence_GetLoopCount()
 
@@ -572,6 +612,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSe
 **Description**
 
 Obtains the number of loops for image sequence encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -586,7 +628,7 @@ Obtains the number of loops for image sequence encoding.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options or loopCount is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options or loopCount is nullptr. |
 
 ### OH_PackingOptionsForSequence_Release()
 
@@ -597,6 +639,8 @@ Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequenc
 **Description**
 
 Releases the pointer to an OH_PackingOptionsForSequence struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -610,7 +654,7 @@ Releases the pointer to an OH_PackingOptionsForSequence struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} options is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr. |
 
 ### OH_ImagePackerNative_Create()
 
@@ -621,6 +665,8 @@ Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 **Description**
 
 Creates the pointer to an OH_ImagePackerNative struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -634,7 +680,7 @@ Creates the pointer to an OH_ImagePackerNative struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>{@link IMAGE_BAD_PARAMETER} imagePacker is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) imagePacker is nullptr.</li>          </ul> |
 
 ### OH_ImagePackerNative_PackToDataFromImageSource()
 
@@ -645,6 +691,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 **Description**
 
 Encodes an image source into data in a given format.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -662,7 +710,7 @@ Encodes an image source into data in a given format.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER}imagePacker is nullptr, or options is nullptr,<br>        or imageSource is nullptr, or outData is nullptr.<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode)imagePacker is nullptr, or options is nullptr,          or imageSource is nullptr, or outData is nullptr.      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmap()
 
@@ -673,6 +721,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 **Description**
 
 Encodes a PixelMap into data in a given format.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -690,7 +740,7 @@ Encodes a PixelMap into data in a given format.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER}imagePacker is nullptr, or options is nullptr,<br>        or pixelmap is nullptr, or outData is nullptr.<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode)imagePacker is nullptr, or options is nullptr,          or pixelmap is nullptr, or outData is nullptr.      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
@@ -701,6 +751,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 **Description**
 
 Encodes a picture into data in a given format.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 13
 
@@ -718,7 +770,7 @@ Encodes a picture into data in a given format.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} imagePacker is nullptr, or picture is nullptr, or outData is nullptr,<br>        or size is invalid.<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) imagePacker is nullptr, or picture is nullptr, or outData is nullptr,          or size is invalid.      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmapSequence()
 
@@ -729,6 +781,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 **Description**
 
 Encodes a PixelMap sequence into data.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -747,7 +801,7 @@ Encodes a PixelMap sequence into data.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} one of the pointer type parameters is nullptr, or size/length is invalid<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) one of the pointer type parameters is nullptr, or size/length is invalid      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToFileFromImageSource()
 
@@ -758,6 +812,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 **Description**
 
 Encodes an image source into a file.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -774,7 +830,7 @@ Encodes an image source into a file.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER}imagePacker is nullptr, or options is nullptr,<br>        or imageSource is nullptr, or fd is invalid.<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode)imagePacker is nullptr, or options is nullptr,          or imageSource is nullptr, or fd is invalid.      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmap()
 
@@ -785,6 +841,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 **Description**
 
 Encodes a PixelMap into a file.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -801,7 +859,7 @@ Encodes a PixelMap into a file.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER}imagePacker is nullptr, or options is nullptr,<br>        or pixelmap is nullptr, or fd is invalid.<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode)imagePacker is nullptr, or options is nullptr,          or pixelmap is nullptr, or fd is invalid.      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToFileFromPicture()
 
@@ -812,6 +870,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 **Description**
 
 Encodes a picture into a file.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 13
 
@@ -828,7 +888,7 @@ Encodes a picture into a file.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} imagePacker is nullptr, or picture is nullptr, or fd is invalid.<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) imagePacker is nullptr, or picture is nullptr, or fd is invalid.      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmapSequence()
 
@@ -839,6 +899,8 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 **Description**
 
 Encodes a PixelMap sequence into a file.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 18
 
@@ -856,7 +918,7 @@ Encodes a PixelMap sequence into a file.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} one of the pointer type parameters is nullptr, or length is invalid<br>    <br>{@link IMAGE_ENCODE_FAILED} encode failed. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) one of the pointer type parameters is nullptr, or length is invalid      <br>[IMAGE_ENCODE_FAILED](capi-image-common-h.md#image_errorcode) encode failed. |
 
 ### OH_ImagePackerNative_Release()
 
@@ -867,6 +929,8 @@ Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 **Description**
 
 Releases the pointer to an OH_ImagePackerNative struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 12
 
@@ -880,7 +944,7 @@ Releases the pointer to an OH_ImagePackerNative struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_BAD_PARAMETER} imagePacker is nullptr. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_BAD_PARAMETER](capi-image-common-h.md#image_errorcode) imagePacker is nullptr. |
 
 ### OH_ImagePackerNative_GetSupportedFormats()
 
@@ -891,6 +955,8 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType** suppor
 **Description**
 
 Obtains the supported image formats that can be encoded.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 20
 
@@ -905,6 +971,6 @@ Obtains the supported image formats that can be encoded.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | {@link IMAGE_SUCCESS} if the execution is successful.<br>    <br>{@link IMAGE_PACKER_INVALID_PARAMETER} if <b>supportedFormats</b> or <b>length</b> is empty. |
+| Image_ErrorCode | [IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.      <br>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if <b>supportedFormats</b> or <b>length</b> is empty. |
 
 

@@ -8,6 +8,8 @@ typedef struct Asset_Blob {...} Asset_Blob
 
 Defines a binary array, that is, an array of bytes with variable length.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Related module**: [AssetType](capi-assettype.md)

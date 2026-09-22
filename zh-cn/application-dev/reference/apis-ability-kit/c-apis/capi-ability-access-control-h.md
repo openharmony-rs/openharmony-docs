@@ -32,6 +32,8 @@ bool OH_AT_CheckSelfPermission(const char *permission)
 
 校验应用是否被授予指定的权限。
 
+**系统能力：** SystemCapability.Security.AccessToken
+
 **起始版本：** 12
 
 **参数：**

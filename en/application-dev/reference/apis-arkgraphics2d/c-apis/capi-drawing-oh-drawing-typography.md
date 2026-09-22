@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Typography OH_Drawing_Typography
 
 Defines a struct used to manage the typography layout and display.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)

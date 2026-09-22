@@ -8,6 +8,8 @@ struct WebSocket_OpenResult {...}
 
 Defines the parameters for the connection success received by the WebSocket client.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)

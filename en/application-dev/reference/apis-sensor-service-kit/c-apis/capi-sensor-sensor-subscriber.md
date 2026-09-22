@@ -8,6 +8,8 @@ typedef struct Sensor_Subscriber Sensor_Subscriber
 
 Defines a struct the sensor subscriber information.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)

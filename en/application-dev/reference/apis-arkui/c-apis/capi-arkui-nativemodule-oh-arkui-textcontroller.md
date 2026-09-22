@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_TextController OH_ArkUI_TextController
 
 Defines controller for text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

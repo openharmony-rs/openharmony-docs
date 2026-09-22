@@ -8,6 +8,8 @@ typedef struct OH_AudioConverter_Format {...} OH_AudioConverter_Format
 
 定义音频转换器格式数据结构，用于描述基本音频格式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AudioConverter](capi-audioconverter.md)

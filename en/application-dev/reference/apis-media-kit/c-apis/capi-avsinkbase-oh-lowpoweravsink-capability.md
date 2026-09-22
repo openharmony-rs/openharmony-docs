@@ -8,6 +8,8 @@ typedef struct OH_LowPowerAVSink_Capability OH_LowPowerAVSink_Capability
 
 Forward declaration of OH_LowPowerAVSink_Capability.
 
+**System capability**: SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **Since**: 20
 
 **Related module**: [AVSinkBase](capi-avsinkbase.md)

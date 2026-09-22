@@ -8,6 +8,8 @@ typedef struct NetConn_NetAddr {...} NetConn_NetAddr
 
 Defines network addresses.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

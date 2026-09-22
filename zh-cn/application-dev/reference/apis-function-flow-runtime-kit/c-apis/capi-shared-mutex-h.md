@@ -38,6 +38,8 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 初始化rwlock。<br> 该rwlock不再使用时，必须通过[ffrt_rwlock_destroy](capi-shared-mutex-h.md#ffrt_rwlock_destroy)销毁。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -62,6 +64,8 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 **描述：**
 
 加写锁。<br> 锁不可用时阻塞当前线程。成功时，调用线程持有排他写锁，直至通过[ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock) 释放。写锁具有排他性，不允许与任何读锁同时持有。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 18
 
@@ -93,6 +97,8 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 
 尝试加写锁。<br> 不会阻塞当前线程。成功时，调用线程持有排他写锁，直至通过[ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock)释放。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -121,6 +127,8 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 **描述：**
 
 加读锁。<br> 锁不可用时阻塞当前线程。成功时，调用线程持有读锁，直至通过[ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock)释放。 多个读者可同时持有该锁，但不允许与写锁同时持有。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 18
 
@@ -152,6 +160,8 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 
 尝试加读锁。<br> 不会阻塞当前线程。成功时，调用线程持有读锁，直至通过[ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock)释放。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -181,6 +191,8 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 
 解锁rwlock。<br> 调用线程必须已持有该rwlock，且该锁之前由[ffrt_rwlock_rdlock](capi-shared-mutex-h.md#ffrt_rwlock_rdlock)、[ffrt_rwlock_tryrdlock](capi-shared-mutex-h.md#ffrt_rwlock_tryrdlock)、 [ffrt_rwlock_wrlock](capi-shared-mutex-h.md#ffrt_rwlock_wrlock)或[ffrt_rwlock_trywrlock](capi-shared-mutex-h.md#ffrt_rwlock_trywrlock)获取。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -204,6 +216,8 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 **描述：**
 
 销毁rwlock。<br> 该rwlock必须已通过[ffrt_rwlock_init](capi-shared-mutex-h.md#ffrt_rwlock_init)初始化，且在调用本接口时不得被任何线程以读锁或写锁持有。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 18
 

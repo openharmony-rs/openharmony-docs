@@ -4,6 +4,8 @@
 
 This module provides file sharing capabilities to authorize Uniform Resource Identifiers (URIs) for public directory files that have read and write access to other applications.
 
+**System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
 **Since**: 12
 
 ## Files

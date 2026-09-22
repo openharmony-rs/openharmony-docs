@@ -4,6 +4,8 @@
 
 Provides a unified entry point for crypto header files for developer convenience.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 ## Files

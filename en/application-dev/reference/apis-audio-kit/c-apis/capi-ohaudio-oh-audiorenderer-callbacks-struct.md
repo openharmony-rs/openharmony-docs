@@ -8,6 +8,8 @@ typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callback
 
 Declaring the callback struct for renderer stream.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Deprecated**: 20

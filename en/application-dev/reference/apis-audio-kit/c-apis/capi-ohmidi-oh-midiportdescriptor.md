@@ -8,6 +8,8 @@ typedef struct OH_MIDIPortDescriptor {...} OH_MIDIPortDescriptor
 
 Port Descriptor.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)

@@ -8,6 +8,8 @@ typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
 
 声明色彩空间管理对象，提供获取色彩空间基础属性的能力。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 20
 
 **相关模块：** [Drawing](capi-drawing.md)

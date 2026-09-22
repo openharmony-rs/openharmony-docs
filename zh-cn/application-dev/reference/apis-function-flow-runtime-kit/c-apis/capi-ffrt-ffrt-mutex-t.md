@@ -8,6 +8,8 @@ typedef struct ffrt_mutex_t {...} ffrt_mutex_t
 
 互斥锁结构体，用于存储互斥锁的内部数据。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **相关模块：** [FFRT](capi-ffrt.md)
@@ -33,5 +35,7 @@ uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint3
 **描述：**
 
 互斥锁的内部存储。请勿直接访问，通过`ffrt_mutex_*`等接口管理。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 

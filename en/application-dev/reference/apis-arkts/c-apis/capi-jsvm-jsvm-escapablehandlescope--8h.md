@@ -8,6 +8,8 @@ typedef struct JSVM_EscapableHandleScope__* JSVM_EscapableHandleScope
 
 To represent a JavaScript VM escapable handle scope.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

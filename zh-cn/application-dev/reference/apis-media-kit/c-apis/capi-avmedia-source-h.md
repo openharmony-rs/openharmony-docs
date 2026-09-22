@@ -80,6 +80,8 @@ enum AVLoadingRequestError
 
 网络加载请求的错误码枚举。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -105,6 +107,8 @@ OH_AVHttpHeader *OH_AVHttpHeader_Create(void)
 
 创建一个HTTP头部实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **返回值：**
@@ -122,6 +126,8 @@ OH_AVErrCode OH_AVHttpHeader_Destroy(OH_AVHttpHeader *header)
 **描述：**
 
 释放一个HTTP头部实例。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -146,6 +152,8 @@ OH_AVErrCode OH_AVHttpHeader_GetCount(OH_AVHttpHeader *header, uint32_t *count)
 **描述：**
 
 获取HTTP头部实例中的记录项数量。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -172,6 +180,8 @@ OH_AVErrCode OH_AVHttpHeader_AddRecord(OH_AVHttpHeader *header, const char *key,
 
 向HTTP头部实例中添加一个键值对记录。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -197,6 +207,8 @@ OH_AVErrCode OH_AVHttpHeader_GetRecord(OH_AVHttpHeader *header, uint32_t index, 
 **描述：**
 
 通过索引获取HTTP头部实例中的键值对记录。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -225,6 +237,8 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithUrl(const char *url, OH_AVHttpHeade
 
 通过URL创建媒体源。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -250,6 +264,8 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithDataSource(OH_AVDataSource *dataSou
 
 通过OH_AVDataSource创建媒体源。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -273,6 +289,8 @@ OH_AVMediaSource *OH_AVMediaSource_CreateWithFd(int32_t fd, int64_t offset, int6
 **描述：**
 
 通过文件描述符（FileDescriptor）创建媒体源。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -300,6 +318,8 @@ OH_AVErrCode OH_AVMediaSource_Destroy(OH_AVMediaSource *source)
 
 释放media source实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -323,6 +343,8 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 **描述：**
 
 设置媒体MIME类型以处理扩展媒体源。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -349,6 +371,8 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetUrl(OH_AVMediaSourceLoadingReques
 
 获取请求的URL。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -374,6 +398,8 @@ OH_AVErrCode OH_AVMediaSourceLoadingRequest_GetHttpHeader(OH_AVMediaSourceLoadin
 
 获取请求的HTTP头部。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -398,6 +424,8 @@ int32_t OH_AVMediaSourceLoadingRequest_RespondData(OH_AVMediaSourceLoadingReques
 **描述：**
 
 用于向AVPlayer发送请求数据的接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -427,6 +455,8 @@ void OH_AVMediaSourceLoadingRequest_RespondHeader(OH_AVMediaSourceLoadingRequest
 
 应用用于向AVPlayer发送响应头部的接口，必须在首次调用[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)之前调用。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -448,6 +478,8 @@ void OH_AVMediaSourceLoadingRequest_FinishLoading(OH_AVMediaSourceLoadingRequest
 
 通知播放器当前请求的状态。在推送完单个资源的所有数据后，应用应发送LOADING_ERROR_SUCCESS状态，以通知播放器资源推送已完成。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -468,6 +500,8 @@ OH_AVMediaSourceLoader *OH_AVMediaSourceLoader_Create(void)
 
 创建一个OH_AVMediaSourceLoader实例。成功时返回OH_AVMediaSourceLoader指针，失败时返回空指针。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **返回值：**
@@ -485,6 +519,8 @@ OH_AVErrCode OH_AVMediaSourceLoader_Destroy(OH_AVMediaSourceLoader *loader)
 **描述：**
 
 释放OH_AVMediaSourceLoader实例。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -509,6 +545,8 @@ OH_AVErrCode OH_AVMediaSource_SetMediaSourceLoader(OH_AVMediaSource *source, OH_
 **描述：**
 
 为媒体源实例设置一个源加载器。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -535,6 +573,8 @@ typedef int64_t (*OH_AVMediaSourceLoaderOnSourceOpenedCallback)(OH_AVMediaSource
 
 定义由服务端调用的SourceOpenCallback函数。客户端应处理传入的请求，并返回所打开资源的唯一句柄。 客户端必须在处理完请求后立即返回句柄。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -560,6 +600,8 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceReadCallback)(int64_t uuid, int64_t
 
 定义由服务端调用的SourceReadCallback函数。客户端应记录读取请求，并在有足够数据时通过请求对象的[OH_AVMediaSourceLoadingRequest_RespondData](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_responddata)和[OH_AVMediaSourceLoadingRequest_RespondHeader](capi-avmedia-source-h.md#oh_avmediasourceloadingrequest_respondheader) 方法推送数据。客户端必须在处理完请求后立即返回。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -581,6 +623,8 @@ typedef void (*OH_AVMediaSourceLoaderOnSourceClosedCallback)(int64_t uuid, void 
 
 定义由服务端调用的SourceCloseCallback函数。客户端应释放相关资源，并在处理完请求后立即返回。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -599,6 +643,8 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceOpenCallback(OH_AVMediaSourceLoader
 **描述：**
 
 为OH_AVMediaSourceLoader设置打开回调函数。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 
@@ -626,6 +672,8 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceReadCallback(OH_AVMediaSourceLoader
 
 为OH_AVMediaSourceLoader设置读取回调函数。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -651,6 +699,8 @@ OH_AVErrCode OH_AVMediaSourceLoader_SetSourceCloseCallback(OH_AVMediaSourceLoade
 **描述：**
 
 为OH_AVMediaSourceLoader设置关闭回调函数。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
 

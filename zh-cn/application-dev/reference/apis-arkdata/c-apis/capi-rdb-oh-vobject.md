@@ -8,6 +8,8 @@ typedef struct OH_VObject {...} OH_VObject
 
 表示允许的数据字段类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -51,7 +53,7 @@ int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向{@link OH_VObject}实例的指针。 |
 |  int64_t *value | 表示指向int64_t类型输入参数或int64_t类型数组的指针。 |
 |  uint32_t count | 如果value是指向单个数值的指针，则count = 1；如果value是指向数组的指针，则count是数组的长度。 |
 
@@ -82,7 +84,7 @@ int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向{@link OH_VObject}实例的指针。 |
 |  double *value | 表示指向double类型输入参数或double类型数组的指针。 |
 |  uint32_t count | 如果value是指向单个数值的指针，则count = 1；如果value是指向数组的指针，则count是数组的长度。 |
 
@@ -113,7 +115,7 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向{@link OH_VObject}实例的指针。 |
 |  const char *value | 表示const char *类型的输入参数。 |
 
 **返回值：**
@@ -143,7 +145,7 @@ int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向{@link OH_VObject}实例的指针。 |
 |  const char **value | 表示const char *数组类型的输入参数。 |
 |  uint32_t count | 表示字符串数组参数value的长度。 |
 
@@ -174,7 +176,7 @@ int (*destroy)(OH_VObject *valueObject)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向[OH_VObject](capi-rdb-oh-vobject.md)实例的指针。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) *valueObject | 表示指向{@link OH_VObject}实例的指针。 |
 
 **返回值：**
 

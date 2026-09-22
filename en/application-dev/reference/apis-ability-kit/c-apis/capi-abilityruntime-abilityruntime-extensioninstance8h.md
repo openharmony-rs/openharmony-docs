@@ -8,6 +8,8 @@ typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanc
 
 Defines the pointer to AbilityRuntime_ExtensionInstance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

@@ -8,6 +8,8 @@ typedef struct Camera_VideoProfile {...} Camera_VideoProfile
 
 The struct describes the video profile.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

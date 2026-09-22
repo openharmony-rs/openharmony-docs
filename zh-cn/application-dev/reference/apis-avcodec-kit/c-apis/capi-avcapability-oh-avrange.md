@@ -8,6 +8,8 @@ typedef struct OH_AVRange {...} OH_AVRange
 
 范围包含最小值和最大值。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 10
 
 **相关模块：** [AVCapability](capi-avcapability.md)

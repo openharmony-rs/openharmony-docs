@@ -32,6 +32,8 @@ enum OH_Preferences_ErrCode
 
 错误码信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |

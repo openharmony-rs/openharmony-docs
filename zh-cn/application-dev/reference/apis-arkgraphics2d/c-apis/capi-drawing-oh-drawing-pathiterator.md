@@ -8,6 +8,8 @@ typedef struct OH_Drawing_PathIterator OH_Drawing_PathIterator
 
 定义为路径操作迭代器，可通过遍历迭代器读取path的操作指令。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **相关模块：** [Drawing](capi-drawing.md)

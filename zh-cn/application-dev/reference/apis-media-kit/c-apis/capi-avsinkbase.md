@@ -2,7 +2,9 @@
 
 ## 概述
 
-AVSinkBase模块提供低功耗音频输出和低功耗视频输出的变量、属性和函数。
+AVSinkBase模块为LowPowerAudioSink和LowPowerVideoSink提供变量、属性和函数。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 

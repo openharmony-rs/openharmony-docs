@@ -8,6 +8,8 @@ typedef struct Hid_EmitItem {...} Hid_EmitItem
 
 表示HID事件信息结构体，包含事件类型、事件编码和事件值，用于描述输入设备的上报事件。在驱动开发场景中，该结构体用于传递和识别各类HID设备产生的事件。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)

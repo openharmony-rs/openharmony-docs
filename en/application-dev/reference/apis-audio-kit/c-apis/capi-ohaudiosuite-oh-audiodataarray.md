@@ -8,6 +8,8 @@ typedef struct OH_AudioDataArray {...} OH_AudioDataArray
 
 Define the audio data array structure. This structure is used to get the processed audio data after acquisition processing during multi-channel rendering.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

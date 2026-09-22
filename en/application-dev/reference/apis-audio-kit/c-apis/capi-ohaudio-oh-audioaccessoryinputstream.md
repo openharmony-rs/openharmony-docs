@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessoryInputStream OH_AudioAccessoryInputStream
 
 Declare the audio accessory input stream.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)

@@ -8,6 +8,8 @@ typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandle
 
 When the object's getter, setter, deleter, and enumerator operations are performed, the corresponding callback will be triggered.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 12
 
 **Related module**: [JSVM](capi-jsvm.md)

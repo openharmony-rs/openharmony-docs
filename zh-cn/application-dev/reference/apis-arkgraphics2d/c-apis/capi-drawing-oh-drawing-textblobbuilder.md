@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextBlobBuilder OH_Drawing_TextBlobBuilder
 
 定义文本构建器，用于构建文本。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

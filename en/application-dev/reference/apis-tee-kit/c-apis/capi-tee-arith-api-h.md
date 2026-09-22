@@ -82,6 +82,8 @@ size_t TEE_BigIntFMMSizeInU32(size_t modulusSizeInBits)
 
 Obtains the size of the array of uint32_t values.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -105,6 +107,8 @@ size_t TEE_BigIntFMMContextSizeInU32(size_t modulusSizeInBits)
 **Description**
 
 Obtains the size of an array of uint32_t values required to represent a fast modular context.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -130,6 +134,8 @@ void TEE_BigIntInit(TEE_BigInt *bigInt, size_t len)
 
 Initializes a <b>TEE_BigInt</b>.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -148,6 +154,8 @@ void TEE_BigIntInitFMMContext(TEE_BigIntFMMContext *context, size_t len, const T
 **Description**
 
 Calculates the necessary prerequisites for fast modular multiplication and stores them in a context.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -168,6 +176,8 @@ TEE_Result TEE_BigIntInitFMMContext1(TEE_BigIntFMMContext *context, size_t len, 
 **Description**
 
 Calculates the necessary prerequisites for fast modular multiplication and stores them in a context.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -195,6 +205,8 @@ void TEE_BigIntInitFMM(TEE_BigIntFMM *bigIntFMM, size_t len)
 
 Initializes a <b>TEE_BigIntFMM</b> and sets its represented value to zero.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -213,6 +225,8 @@ TEE_Result TEE_BigIntConvertFromOctetString(TEE_BigInt *dest, const uint8_t *buf
 **Description**
 
 Converts an octet string buffer into the <b>TEE_BigInt</b> format.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -241,6 +255,8 @@ TEE_Result TEE_BigIntConvertToOctetString(void *buffer, size_t *bufferLen, const
 
 Converts the absolute value of an integer in <b>TEE_BigInt</b> format into an octet string.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -267,6 +283,8 @@ void TEE_BigIntConvertFromS32(TEE_BigInt *dest, int32_t shortVal)
 
 Sets <b>dest</b> to the value <b>shortVal</b>.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -285,6 +303,8 @@ TEE_Result TEE_BigIntConvertToS32(int32_t *dest, const TEE_BigInt *src)
 **Description**
 
 Sets <b>dest</b> to the value of <b>src</b>, including the sign of <b>src</b>.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -311,6 +331,8 @@ int32_t TEE_BigIntCmp(const TEE_BigInt *op1, const TEE_BigInt *op2)
 
 Checks whether op1 > op2, op1 == op2, or op1 < op2.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -335,6 +357,8 @@ int32_t TEE_BigIntCmpS32(const TEE_BigInt *op, int32_t shortVal)
 **Description**
 
 Checks whether op > shortVal, op == shortVal, or op < shortVal.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -361,6 +385,8 @@ void TEE_BigIntShiftRight(TEE_BigInt *dest, const TEE_BigInt *op, size_t bits)
 
 Computes \|dest\| = \|op\| >> bits.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -380,6 +406,8 @@ bool TEE_BigIntGetBit(const TEE_BigInt *src, uint32_t bitIndex)
 **Description**
 
 Obtains the <b>bitIndex</b> bit of the natural binary representation of \|src\|.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -406,6 +434,8 @@ uint32_t TEE_BigIntGetBitCount(const TEE_BigInt *src)
 
 Obtains the number of bits in the natural binary representation of \|src\|, that is, the magnitude of <b>src</b>.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -429,6 +459,8 @@ TEE_Result TEE_BigIntSetBit(TEE_BigInt *op, uint32_t bitIndex, bool value)
 **Description**
 
 Sets the first bit of <b>bitIndex</b> in the natural binary representation of <b>op</b> to <b>1</b> or <b>0</b>.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -456,6 +488,8 @@ TEE_Result TEE_BigIntAssign(TEE_BigInt *dest, const TEE_BigInt *src)
 
 Assigns the value of <b>src</b> to <b>dest</b>.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -480,6 +514,8 @@ TEE_Result TEE_BigIntAbs(TEE_BigInt *dest, const TEE_BigInt *src)
 **Description**
 
 Assigns the value of <b>src</b> to <b>dest</b>.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -506,6 +542,8 @@ void TEE_BigIntAdd(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op
 
 Computes dest = op1 + op2.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -525,6 +563,8 @@ void TEE_BigIntSub(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op
 **Description**
 
 Computes dest = op1 – op2.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -546,6 +586,8 @@ void TEE_BigIntNeg(TEE_BigInt *dest, const TEE_BigInt *op)
 
 Negates an operand: dest = –op.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -564,6 +606,8 @@ void TEE_BigIntMul(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt *op
 **Description**
 
 Computes dest = op1 * op2.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -585,6 +629,8 @@ void TEE_BigIntSquare(TEE_BigInt *dest, const TEE_BigInt *op)
 
 Computes dest = op * op.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -603,6 +649,8 @@ void TEE_BigIntDiv(TEE_BigInt *dest_q, TEE_BigInt *dest_r, const TEE_BigInt *op1
 **Description**
 
 Computes <b>dest_r</b> and <b>dest_q</b> to make op1 = dest_q* op2 + dest_r.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -625,6 +673,8 @@ void TEE_BigIntMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *n)
 
 Computes dest = op (mod n) to make 0 <= dest < n.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -644,6 +694,8 @@ void TEE_BigIntAddMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt 
 **Description**
 
 Computes dest = (op1 + op2) (mod n).
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -666,6 +718,8 @@ void TEE_BigIntSubMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt 
 
 Computes dest = (op1 – op2) (mod n).
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -686,6 +740,8 @@ void TEE_BigIntMulMod(TEE_BigInt *dest, const TEE_BigInt *op1, const TEE_BigInt 
 **Description**
 
 Computes dest = (op1* op2)(mod n).
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -708,6 +764,8 @@ void TEE_BigIntSquareMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigIn
 
 Computes dest = (op * op) (mod n).
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -728,6 +786,8 @@ void TEE_BigIntInvMod(TEE_BigInt *dest, const TEE_BigInt *op, const TEE_BigInt *
 
 Computes <b>dest</b> to make dest* op = 1 (mod n).
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -747,6 +807,8 @@ bool TEE_BigIntRelativePrime(const TEE_BigInt *op1, const TEE_BigInt *op2)
 **Description**
 
 Checks whether gcd(op1, op2) == 1.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -773,6 +835,8 @@ void TEE_BigIntComputeExtendedGcd(TEE_BigInt *gcd, TEE_BigInt *u, TEE_BigInt *v,
 
 Computes the greatest common divisor of <b>op1</b> and <b>op2</b>.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -794,6 +858,8 @@ int32_t TEE_BigIntIsProbablePrime(const TEE_BigInt *op, uint32_t confidenceLevel
 **Description**
 
 Performs a probabilistic primality test on <b>op</b>.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -820,6 +886,8 @@ void TEE_BigIntConvertToFMM(TEE_BigIntFMM *dest, const TEE_BigInt *src, const TE
 
 Converts <b>src</b> into a representation suitable for doing fast modular multiplication.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -840,6 +908,8 @@ void TEE_BigIntConvertFromFMM(TEE_BigInt *dest, const TEE_BigIntFMM *src, const 
 **Description**
 
 Converts <b>src</b> in the fast modular multiplication representation back to a <b>TEE_BigInt</b> representation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -862,6 +932,8 @@ void TEE_BigIntComputeFMM(TEE_BigIntFMM *dest, const TEE_BigIntFMM *op1, const T
 
 Computes dest = op1* op2 in the fast modular multiplication representation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -883,6 +955,8 @@ TEE_Result TEE_BigIntExpMod(TEE_BigInt *des, TEE_BigInt *op1, const TEE_BigInt *
 **Description**
 
 Computes dest = (op1 ^ op2)(mod n).
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

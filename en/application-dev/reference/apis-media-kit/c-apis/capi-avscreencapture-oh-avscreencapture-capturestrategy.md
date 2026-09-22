@@ -8,6 +8,8 @@ typedef struct OH_AVScreenCapture_CaptureStrategy OH_AVScreenCapture_CaptureStra
 
 The OH_AVScreenCapture_CaptureStrategy struct describes the screen capture strategy.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 20
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

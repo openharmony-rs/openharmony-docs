@@ -8,6 +8,8 @@ typedef struct ArkUI_StringAsyncEvent {...} ArkUI_StringAsyncEvent
 
 Defines the string type parameter used by the component callback event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

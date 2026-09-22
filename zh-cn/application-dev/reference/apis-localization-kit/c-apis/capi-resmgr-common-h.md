@@ -48,6 +48,8 @@ enum ResourceManager_ErrorCode
 
 资源管理错误码。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -76,6 +78,8 @@ enum ResourceManager_Direction
 
 屏幕方向的枚举。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -93,6 +97,8 @@ enum ResourceManager_ColorMode
 
 颜色模式的枚举。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -109,6 +115,8 @@ enum ResourceManager_DeviceType
 **描述：**
 
 设备类型的枚举。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -131,6 +139,8 @@ enum ScreenDensity
 **描述：**
 
 屏幕密度类型的枚举。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 

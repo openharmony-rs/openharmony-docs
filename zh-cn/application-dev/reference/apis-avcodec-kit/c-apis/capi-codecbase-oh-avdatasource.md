@@ -8,6 +8,8 @@ typedef struct OH_AVDataSource {...} OH_AVDataSource
 
 用户自定义数据源。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 12
 
 **相关模块：** [CodecBase](capi-codecbase.md)

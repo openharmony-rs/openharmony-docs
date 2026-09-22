@@ -8,6 +8,8 @@ typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
 
 Key agreement structure, representing a key agreement context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)

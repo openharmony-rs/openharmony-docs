@@ -32,7 +32,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)](#gamedevice_devicemonitorcallback) | GameDevice_DeviceMonitorCallback | 定义{@link OH_GameDevice_RegisterDeviceMonitor}中使用的回调函数。当设备上线或下线时，该回调函数将被调用。 |
+| [typedef void (\*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent)](#gamedevice_devicemonitorcallback) | GameDevice_DeviceMonitorCallback | 定义[OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。 |
 | [GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_StatusChangedType* statusChangedType)](#oh_gamedevice_deviceevent_getchangedtype) | - | 从设备状态变化事件中获取状态变化类型。 |
 | [GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct GameDevice_DeviceEvent* deviceEvent, GameDevice_DeviceInfo** deviceInfo)](#oh_gamedevice_deviceevent_getdeviceinfo) | - | 从设备状态变化事件中获取设备信息。 |
 | [GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo** deviceInfo)](#oh_gamedevice_destroydeviceinfo) | - | 销毁设备信息实例。 |
@@ -47,7 +47,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| void (*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent) | 定义{@link OH_GameDevice_RegisterDeviceMonitor}中使用的回调函数。当设备上线或下线时，该回调函数将被调用。<br>**起始版本：** 21 |
+| void (*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceEvent* deviceEvent) | 定义[OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。<br>**起始版本：** 21 |
 
 ## 枚举类型说明
 
@@ -60,6 +60,8 @@ enum GameDevice_StatusChangedType
 **描述：**
 
 此枚举定义设备的状态变化类型。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -77,6 +79,8 @@ enum GameDevice_DeviceType
 **描述：**
 
 此枚举定义设备类型。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -96,7 +100,9 @@ typedef void (*GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceE
 
 **描述：**
 
-定义{@link OH_GameDevice_RegisterDeviceMonitor}中使用的回调函数。当设备上线或下线时，该回调函数将被调用。
+定义[OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -116,6 +122,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct G
 
 从设备状态变化事件中获取状态变化类型。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -129,7 +137,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct G
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceEvent为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceEvent_GetDeviceInfo()
 
@@ -140,6 +148,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct Ga
 **描述：**
 
 从设备状态变化事件中获取设备信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -154,7 +164,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct Ga
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceEvent为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceEvent为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 **参考：**
 
@@ -171,6 +181,8 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo**
 
 销毁设备信息实例。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -183,7 +195,7 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo**
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetDeviceId()
 
@@ -194,6 +206,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameD
 **描述：**
 
 从设备信息中获取设备ID。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -208,7 +222,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameD
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo或deviceId为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li>     <li>如果设备内存不足，返回{@link GAME_CONTROLLER_NO_MEMORY}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo或deviceId为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetName()
 
@@ -219,6 +233,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevic
 **描述：**
 
 从设备信息中获取设备名称。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -233,7 +249,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevic
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo或name为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li>     <li>如果设备内存不足，返回{@link GAME_CONTROLLER_NO_MEMORY}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo或name为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetProduct()
 
@@ -244,6 +260,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDe
 **描述：**
 
 从设备信息中获取产品信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -258,7 +276,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDe
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetVersion()
 
@@ -269,6 +287,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDe
 **描述：**
 
 从设备信息中获取版本信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -283,7 +303,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDe
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetPhysicalAddress()
 
@@ -294,6 +314,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struc
 **描述：**
 
 从设备信息中获取物理地址。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -308,7 +330,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struc
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo或physicalAddress为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li>     <li>如果设备内存不足，返回{@link GAME_CONTROLLER_NO_MEMORY}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo或physicalAddress为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果设备内存不足，返回[GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetDeviceType()
 
@@ -319,6 +341,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct Gam
 **描述：**
 
 从设备信息中获取设备类型。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -333,6 +357,6 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct Gam
 
 | 类型 | 说明 |
 | -- | -- |
-| GameController_ErrorCode | <ul><li>如果执行成功，返回{@link GAME_CONTROLLER_SUCCESS}。</li>     <li>如果参数deviceInfo为null，返回<br>    {@link GAME_CONTROLLER_PARAM_ERROR}。</li></ul> |
+| GameController_ErrorCode | <ul><li>如果执行成功，返回[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li>     <li>如果参数deviceInfo为null，返回      [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode)。</li></ul> |
 
 

@@ -8,6 +8,8 @@ typedef struct Ethernet_NetAddrList {...} Ethernet_NetAddrList
 
 以太网网卡网络地址列表。
 
+**系统能力：** SystemCapability.Communication.NetManager.Ethernet
+
 **起始版本：** 26.0.0
 
 **相关模块：** [netmanager_ext](capi-netmanager-ext.md)

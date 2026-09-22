@@ -8,6 +8,8 @@ typedef struct ContentEmbed_ExtensionContext ContentEmbed_ExtensionContext
 
 声明OE Extension上下文的结构体类型。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

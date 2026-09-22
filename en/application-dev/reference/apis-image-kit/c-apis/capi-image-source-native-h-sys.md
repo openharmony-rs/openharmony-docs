@@ -20,21 +20,21 @@ The file declares the APIs for image decoding.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_ImageSource_SVGResourceLimitLevel(System API)](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | Indicates the enumeration of SVG resource restriction levels. Higher levels allow fewer resources to be used when parsing and rendering SVG images. System resource limits are enforced regardless of the level specified.**System API:** This is a system API. |
+| [OH_ImageSource_SVGResourceLimitLevel(System API)](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | Indicates the enumeration of SVG resource restriction levels. Higher levels allow fewer resources to be used when parsing and rendering SVG images. System resource limits are enforced regardless of the level specified.<br>**System API:** This is a system API. |
 
 ### Function
 
 | Name | Description |
 | -- | -- |
-| [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)(System API)](#oh_imagesourcenative_setsvgresourcelimitlevel) | Sets the SVG resource limit level for the image source. This only takes effect for SVG format images. For non-SVG images, this function has no effect. Must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) to ensure the limit takes effect on both DOM parsing and rendering stages.**System API:** This is a system API. |
-| [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)(System API)](#oh_imagesourcenative_getsvgresourcelimitlevel) | Gets the SVG resource limit level of the image source.**System API:** This is a system API. |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool *needsDecodeDfxData)(System API)](#oh_decodingoptionsforpicture_getneedsdecodedfxdata) | Obtains the **needsDecodeDfxData** parameter in the decoding options.**System API:** This is a system API. |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool needsDecodeDfxData)(System API)](#oh_decodingoptionsforpicture_setneedsdecodedfxdata) | Sets the **needsDecodeDfxData** parameter in the decoding options.**System API:** This is a system API. |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size *desiredSizeForMainPixelmap)(System API)](#oh_decodingoptionsforpicture_getdesiredsizeformainpixelmap) | Gets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.**System API:** This is a system API. |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size desiredSizeForMainPixelmap)(System API)](#oh_decodingoptionsforpicture_setdesiredsizeformainpixelmap) | Sets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.**System API:** This is a system API. |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT *desiredPixelFormat)(System API)](#oh_decodingoptionsforpicture_getdesiredpixelformat) | Get pixelFormat number for DecodingOptionsForPicture struct.**System API:** This is a system API. |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT desiredPixelFormat)(System API)](#oh_decodingoptionsforpicture_setdesiredpixelformat) | Set pixelFormat number for DecodingOptionsForPicture struct.**System API:** This is a system API. |
-| [Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNative *source, uint32_t index, Image_MetadataType *metadataTypes, size_t typeCount, OH_PictureMetadata **outMetadataArray, size_t *metadataCount)(System API)](#oh_imagesourcenative_readimagemetadatabytype) | Read metadata of the image source, use metadatatype to specify metadata of interest. If metadataType is not specified, all supported metadata will be returned.**System API:** This is a system API. |
+| [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)(System API)](#oh_imagesourcenative_setsvgresourcelimitlevel) | Sets the SVG resource limit level for the image source. This only takes effect for SVG format images. For non-SVG images, this function has no effect. Must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) to ensure the limit takes effect on both DOM parsing and rendering stages.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)(System API)](#oh_imagesourcenative_getsvgresourcelimitlevel) | Gets the SVG resource limit level of the image source.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool *needsDecodeDfxData)(System API)](#oh_decodingoptionsforpicture_getneedsdecodedfxdata) | Obtains the **needsDecodeDfxData** parameter in the decoding options.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool needsDecodeDfxData)(System API)](#oh_decodingoptionsforpicture_setneedsdecodedfxdata) | Sets the **needsDecodeDfxData** parameter in the decoding options.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size *desiredSizeForMainPixelmap)(System API)](#oh_decodingoptionsforpicture_getdesiredsizeformainpixelmap) | Gets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size desiredSizeForMainPixelmap)(System API)](#oh_decodingoptionsforpicture_setdesiredsizeformainpixelmap) | Sets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT *desiredPixelFormat)(System API)](#oh_decodingoptionsforpicture_getdesiredpixelformat) | Get pixelFormat number for DecodingOptionsForPicture struct.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT desiredPixelFormat)(System API)](#oh_decodingoptionsforpicture_setdesiredpixelformat) | Set pixelFormat number for DecodingOptionsForPicture struct.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNative *source, uint32_t index, Image_MetadataType *metadataTypes, size_t typeCount, OH_PictureMetadata **outMetadataArray, size_t *metadataCount)(System API)](#oh_imagesourcenative_readimagemetadatabytype) | Read metadata of the image source, use metadatatype to specify metadata of interest. If metadataType is not specified, all supported metadata will be returned.<br>**System API:** This is a system API. |
 
 ## Enum type description
 
@@ -48,7 +48,9 @@ enum OH_ImageSource_SVGResourceLimitLevel
 
 Indicates the enumeration of SVG resource restriction levels. Higher levels allow fewer resources to be used when parsing and rendering SVG images. System resource limits are enforced regardless of the level specified.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Since**: 26.0.1
 
 **System API:** This is a system API.
 
@@ -72,7 +74,9 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 
 Sets the SVG resource limit level for the image source. This only takes effect for SVG format images. For non-SVG images, this function has no effect. Must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) to ensure the limit takes effect on both DOM parsing and rendering stages.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Since**: 26.0.1
 
 **System API:** This is a system API.
 
@@ -81,13 +85,13 @@ Sets the SVG resource limit level for the image source. This only takes effect f
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Indicates a pointer to the image source. |
-| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) level | Indicates the SVG resource limit level. For details, see [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel). |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h-sys.md#oh_imagesource_svgresourcelimitlevel) level | Indicates the SVG resource limit level. For details, see [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>{@link OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION} if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} source is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION](capi-image-common-h.md#image_errorcode) if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) source is nullptr.</li>          </ul> |
 
 ### OH_ImageSourceNative_GetSvgResourceLimitLevel()
 
@@ -99,7 +103,9 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 
 Gets the SVG resource limit level of the image source.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Since**: 26.0.1
 
 **System API:** This is a system API.
 
@@ -108,13 +114,13 @@ Gets the SVG resource limit level of the image source.
 | Parameter | Description |
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Indicates a pointer to the image source. |
-| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) *level | Indicates the pointer to receive the SVG resource limit level. For details, see [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel). |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h-sys.md#oh_imagesource_svgresourcelimitlevel) *level | Indicates the pointer to receive the SVG resource limit level. For details, see [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>{@link OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION} if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} source or level is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>[OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION](capi-image-common-h.md#image_errorcode) if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) source or level is nullptr.</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData()
 
@@ -125,6 +131,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOp
 **Description**
 
 Obtains the **needsDecodeDfxData** parameter in the decoding options.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -141,7 +149,7 @@ Obtains the **needsDecodeDfxData** parameter in the decoding options.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} options or needsDecodeDfxData is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options or needsDecodeDfxData is nullptr.</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData()
 
@@ -152,6 +160,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOp
 **Description**
 
 Sets the **needsDecodeDfxData** parameter in the decoding options.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -168,7 +178,7 @@ Sets the **needsDecodeDfxData** parameter in the decoding options.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap()
 
@@ -179,6 +189,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_De
 **Description**
 
 Gets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -195,7 +207,7 @@ Gets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap()
 
@@ -206,6 +218,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_De
 **Description**
 
 Sets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -222,7 +236,7 @@ Sets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_GetDesiredPixelFormat()
 
@@ -233,6 +247,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOp
 **Description**
 
 Get pixelFormat number for DecodingOptionsForPicture struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -249,7 +265,7 @@ Get pixelFormat number for DecodingOptionsForPicture struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_SetDesiredPixelFormat()
 
@@ -260,6 +276,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOp
 **Description**
 
 Set pixelFormat number for DecodingOptionsForPicture struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -276,7 +294,7 @@ Set pixelFormat number for DecodingOptionsForPicture struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_ImageSourceNative_ReadImageMetadataByType()
 
@@ -287,6 +305,8 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 **Description**
 
 Read metadata of the image source, use metadatatype to specify metadata of interest. If metadataType is not specified, all supported metadata will be returned.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -307,6 +327,6 @@ Read metadata of the image source, use metadatatype to specify metadata of inter
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} if source, outMetadataArray or metadataCount is nullptr.</li><br>        <li>{@link IMAGE_SOURCE_UNSUPPORTED_METADATA} if metadata doesn't exist, or types are unsupported.</li><br>        <li>{@link IMAGE_SOURCE_ALLOC_FAILED} memory allocation failed.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if source, outMetadataArray or metadataCount is nullptr.</li>          <li>[IMAGE_SOURCE_UNSUPPORTED_METADATA](capi-image-common-h.md#image_errorcode) if metadata doesn't exist, or types are unsupported.</li>          <li>[IMAGE_SOURCE_ALLOC_FAILED](capi-image-common-h.md#image_errorcode) memory allocation failed.</li>          </ul> |
 
 

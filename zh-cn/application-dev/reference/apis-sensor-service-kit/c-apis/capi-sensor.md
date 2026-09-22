@@ -4,6 +4,8 @@
 
 提供用于定义通用传感器属性的API。
 
+**系统能力：** SystemCapability.Sensors.Sensor
+
 **起始版本：** 11
 
 ## 文件汇总

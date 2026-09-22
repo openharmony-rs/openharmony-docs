@@ -8,6 +8,8 @@ typedef struct CloudDisk_ChangeData {...} CloudDisk_ChangeData
 
 定义了同步根路径下单个文件变更事件的数据结构。该结构包含有关文件变更的详细信息，包括唯一ID、父目录的唯一ID、相对路径、变更类型、文件大小和时间戳。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **相关模块：** [CloudDisk](capi-clouddisk.md)

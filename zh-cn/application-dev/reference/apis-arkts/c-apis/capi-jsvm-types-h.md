@@ -128,6 +128,8 @@ enum JSVM_PropertyAttributes
 
 用于控制JavaScript对象属性的行为。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -152,6 +154,8 @@ enum JSVM_ValueType
 **描述：**
 
 描述JSVM_Value的类型。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
@@ -178,6 +182,8 @@ enum JSVM_TypedarrayType
 
 描述Typedarray的类型。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -203,6 +209,8 @@ enum JSVM_Status
 **描述：**
 
 表示JSVM-API调用成功或失败的完整状态码。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
@@ -245,6 +253,8 @@ enum JSVM_KeyCollectionMode
 
 限制查找属性的范围。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -261,6 +271,8 @@ enum JSVM_KeyFilter
 **描述：**
 
 属性过滤器，可以通过使用or来构造一个复合过滤器。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
@@ -283,6 +295,8 @@ enum JSVM_KeyConversion
 
 键转换选项。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -299,6 +313,8 @@ enum JSVM_MemoryPressureLevel
 **描述：**
 
 内存压力水平。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
@@ -319,6 +335,8 @@ enum JSVM_CompileMode
 
 编译模式。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -338,6 +356,8 @@ enum JSVM_CompileOptionId
 **描述：**
 
 JSVM编译选项ID。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 
@@ -360,6 +380,8 @@ enum JSVM_RegExpFlags
 **描述：**
 
 正则表达式标志位。它们可以用来启用一组标志。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 
@@ -386,6 +408,8 @@ enum JSVM_InitializedFlag
 
 初始化方式的标志位。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -402,6 +426,8 @@ enum JSVM_WasmOptLevel
 **描述：**
 
 WebAssembly 函数优化等级。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 
@@ -420,6 +446,8 @@ enum JSVM_CacheType
 
 缓存类型。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -437,6 +465,8 @@ enum JSVM_MicrotaskPolicy
 
 JSVM 微任务执行策略。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -453,6 +483,8 @@ enum JSVM_TraceCategory
 **描述：**
 
 JSVM 内部 Trace 事件的类别。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
 
@@ -476,6 +508,8 @@ enum JSVM_CBTriggerTimeForGC
 
 触发回调函数的时机。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -492,6 +526,8 @@ enum JSVM_GCType
 **描述：**
 
 GC类型。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
 
@@ -513,6 +549,8 @@ enum JSVM_GCCallbackFlags
 **描述：**
 
 GC回调函数标记。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
 
@@ -536,6 +574,8 @@ enum JSVM_PromiseRejectEvent
 
 promise-reject事件。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -555,6 +595,8 @@ enum JSVM_MessageErrorLevel
 **描述：**
 
 message的报错级别。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
 
@@ -577,6 +619,8 @@ enum JSVM_DefineClassOptionsId
 
 定义Class的选项ID。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -594,6 +638,8 @@ enum JSVM_DebugOption
 **描述：**
 
 调试选项。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 20
 
@@ -614,6 +660,8 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void*
 
 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会 在关联的JS对象被GC回收时被调用，用以执行native的清理动作。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 ### JSVM_CDECL* JSVM_FinalizeArrayBuffer()
@@ -626,6 +674,8 @@ typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeD
 
 用于从外部内存创建的 ArrayBuffer 的 Finalize 回调函数指针类型。<br> 与 JSVM_Finalize 类似，但包含一个 copied 参数，用于指示引擎是否将外部数据拷贝到内部缓冲区 （true）或使用了零拷贝方式（false）。当 copied 为 true 时，引擎不持有对原始外部数据的引用， 调用方可在 API 调用返回后立即释放。当 copied 为 false 时，finalizeData 指向引擎正在释放 的原始外部内存，回调函数应对其进行释放。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 26.0.0
 
 ### JSVM_CDECL* JSVM_OutputStream()
@@ -637,6 +687,8 @@ typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* s
 **描述：**
 
 输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。 空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 
@@ -656,6 +708,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSV
 
 GC回调的函数指针类型。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 ### JSVM_CDECL* JSVM_HandlerForOOMError()
@@ -667,6 +721,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const c
 **描述：**
 
 OOM-Error回调的函数指针类型。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
 
@@ -680,6 +736,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const
 
 Fatal-Error回调的函数指针类型。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 ### JSVM_CDECL* JSVM_HandlerForPromiseReject()
@@ -692,6 +750,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_Promi
 
 Promise-Reject回调的函数指针类型。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 18
 
 ### JSVM_CDECL* JSVM_HandlerForHeapThreshold()
@@ -703,6 +763,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t thr
 **描述：**
 
 堆阈值回调的函数指针类型。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 26.0.0
 

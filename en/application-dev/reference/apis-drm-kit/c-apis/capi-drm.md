@@ -4,6 +4,8 @@
 
 Provides APIs of Drm.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 ## Files

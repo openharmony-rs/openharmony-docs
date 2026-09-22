@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontDescriptor {...} OH_Drawing_FontDescriptor
 
 This struct describes the detailed information about a system font.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

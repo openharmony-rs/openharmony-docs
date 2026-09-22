@@ -8,6 +8,8 @@ typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 
 Defines an array of absolute coordinates.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

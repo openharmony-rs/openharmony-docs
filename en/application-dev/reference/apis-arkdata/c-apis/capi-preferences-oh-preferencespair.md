@@ -8,6 +8,8 @@ typedef struct OH_PreferencesPair OH_PreferencesPair
 
 Defines a struct for the **Preferences** data in KV format.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 **Related module**: [Preferences](capi-preferences.md)

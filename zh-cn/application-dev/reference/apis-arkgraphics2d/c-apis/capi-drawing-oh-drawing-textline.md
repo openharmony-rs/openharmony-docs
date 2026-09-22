@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextLine OH_Drawing_TextLine
 
 用于管理文本行。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **相关模块：** [Drawing](capi-drawing.md)

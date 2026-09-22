@@ -8,6 +8,8 @@ typedef struct ffrt_task_attr_t {...} ffrt_task_attr_t
 
 Defines the task attribute structure used to store task attribute information.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)
@@ -33,5 +35,7 @@ uint32_t storage[(ffrt_task_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(u
 **Description**
 
 Internal storage backing the task attribute. Do not access directly; use the {@link ffrt_task_attr_init} and `ffrt_task_attr_set_*` APIs to manage contents.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 

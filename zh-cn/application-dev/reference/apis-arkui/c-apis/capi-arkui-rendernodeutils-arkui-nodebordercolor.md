@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeBorderColor ArkUI_NodeBorderColorOption
 
 定义边框颜色配置项。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

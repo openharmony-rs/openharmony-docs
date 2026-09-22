@@ -8,6 +8,8 @@ typedef struct ArkUI_Curve ArkUI_Curve
 
 Defines an interpolation curve.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

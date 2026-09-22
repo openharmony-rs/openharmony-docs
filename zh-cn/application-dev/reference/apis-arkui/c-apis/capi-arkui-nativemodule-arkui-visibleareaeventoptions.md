@@ -8,6 +8,8 @@ typedef struct ArkUI_VisibleAreaEventOptions ArkUI_VisibleAreaEventOptions
 
 可见区域变化监听的参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 17
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

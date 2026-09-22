@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderNodeMaskOption ArkUI_RenderNodeMaskOption
 
 Defines a render node mask option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

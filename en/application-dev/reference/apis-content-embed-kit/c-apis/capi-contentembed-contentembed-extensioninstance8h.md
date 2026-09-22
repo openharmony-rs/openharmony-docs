@@ -8,6 +8,8 @@ typedef struct ContentEmbed_ExtensionInstance* ContentEmbed_ExtensionInstanceHan
 
 Declares the pointer type of the instance object of the ContentEmbed extension.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)

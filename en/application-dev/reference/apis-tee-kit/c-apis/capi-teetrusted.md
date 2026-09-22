@@ -4,6 +4,8 @@
 
 TEE(Trusted Excution Environment) API. Provides security capability APIs such as trusted storage, encryption and decryption, and trusted time for trusted application development.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 ## Files

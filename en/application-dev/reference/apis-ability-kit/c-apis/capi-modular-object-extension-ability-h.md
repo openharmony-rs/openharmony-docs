@@ -57,6 +57,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc)(OH_Ability
 
 Callback invoked when a modular object extension is started for initialization.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -76,6 +78,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc)(OH_Abilit
 
 Callback invoked before a modular object extension is destroyed.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -93,6 +97,8 @@ typedef OHIPCRemoteStub* (*OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFun
 **Description**
 
 Callback invoked when a modular object extension is connected to an ability.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -113,6 +119,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc)(OH_Abi
 
 Callback invoked when all abilities connected to a modular object extension are disconnected.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -131,6 +139,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCrea
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -144,7 +154,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](c
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDestroyFunc()
 
@@ -155,6 +165,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDest
 **Description**
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -169,7 +181,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConnectFunc()
 
@@ -180,6 +192,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConn
 **Description**
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -194,7 +208,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisconnectFunc()
 
@@ -205,6 +219,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisc
 **Description**
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md).
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -219,7 +235,7 @@ Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFun
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_GetContextFromInstance()
 
@@ -230,6 +246,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFrom
 **Description**
 
 Gets the extension context from the modular object extension instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -244,7 +262,7 @@ Gets the extension context from the modular object extension instance.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed. |
 
 ### OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFromBase()
 
@@ -255,6 +273,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFro
 **Description**
 
 Gets the modular object extension instance from a base extension instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -269,6 +289,6 @@ Gets the modular object extension instance from a base extension instance.
 
 | Type | Description |
 | -- | -- |
-| AbilityRuntime_ErrorCode | Returns a specific error code.          {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} success.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} parameter check failed.<br>        {@link ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE} if the ability instance is not          a modular object extension. |
+| AbilityRuntime_ErrorCode | Returns a specific error code.          [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) success.          [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) parameter check failed.          [ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE](capi-ability-runtime-common-h.md#abilityruntime_errorcode) if the ability instance is not          a modular object extension. |
 
 

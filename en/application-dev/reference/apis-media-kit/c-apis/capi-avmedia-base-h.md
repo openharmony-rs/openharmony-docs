@@ -32,6 +32,8 @@ enum OH_AVMedia_SeekMode
 
 Enumerates the mappings between time points and frames.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 23
 
 | Enum item | Description |

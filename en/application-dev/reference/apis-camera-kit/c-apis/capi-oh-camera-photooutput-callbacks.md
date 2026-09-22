@@ -8,6 +8,8 @@ typedef struct PhotoOutput_Callbacks {...} PhotoOutput_Callbacks
 
 The struct describes the callbacks related to photo output.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

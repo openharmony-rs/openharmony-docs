@@ -8,7 +8,9 @@ typedef struct OH_ArkUI_NativeModule_LineSpacingOptions OH_ArkUI_NativeModule_Li
 
 Defines the line spacing options for text.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 

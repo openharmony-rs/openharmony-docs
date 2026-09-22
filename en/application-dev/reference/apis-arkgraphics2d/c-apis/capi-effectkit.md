@@ -4,6 +4,8 @@
 
 Provides basic image processing capabilities, including brightness adjustment, blurring, and grayscale conversion of the current image. It is suitable for scenarios where image filter effects need to be quickly implemented within an app, such as image editing, photo beautification, and camera filters. This helps developers quickly implement image effect processing without focusing on the underlying algorithm implementation, reducing development complexity.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 ## Files

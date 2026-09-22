@@ -8,6 +8,8 @@ typedef struct OH_Huks_CertChain {...} OH_Huks_CertChain
 
 Defines the struct of a certificate chain.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

@@ -8,6 +8,8 @@ typedef struct HiDebug_NativeStackFrame {...} HiDebug_NativeStackFrame
 
 native栈帧内容的定义。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 **相关模块：** [HiDebug](capi-hidebug.md)

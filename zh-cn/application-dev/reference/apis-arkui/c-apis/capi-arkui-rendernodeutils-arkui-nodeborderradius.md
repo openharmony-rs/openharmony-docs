@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeBorderRadius ArkUI_NodeBorderRadiusOption
 
 定义边框圆角配置项。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

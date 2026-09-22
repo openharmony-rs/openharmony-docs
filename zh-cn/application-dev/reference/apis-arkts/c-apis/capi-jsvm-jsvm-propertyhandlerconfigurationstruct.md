@@ -8,6 +8,8 @@ typedef struct JSVM_PropertyHandlerConfigurationStruct {...} JSVM_PropertyHandle
 
 当执行对象的getter、setter、deleter和enumerator操作时，该结构体中对应的函数回调将会触发。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

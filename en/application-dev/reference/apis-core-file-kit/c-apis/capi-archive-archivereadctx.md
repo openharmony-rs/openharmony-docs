@@ -8,6 +8,8 @@ typedef struct ArchiveReadCtx *OH_Archive_Reader_Ctx
 
 Archive Reader context structure.
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 26.0.0
 
 **Related module**: [Archive](capi-archive.md)

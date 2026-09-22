@@ -8,6 +8,8 @@ typedef struct Input_Hotkey Input_Hotkey
 
 Defines the hotkey struct, which describes the hotkey design logic such as the key combination, trigger conditions, and callback handling. Applications can register and manage custom hotkeys.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 14
 
 **Related module**: [input](capi-input.md)

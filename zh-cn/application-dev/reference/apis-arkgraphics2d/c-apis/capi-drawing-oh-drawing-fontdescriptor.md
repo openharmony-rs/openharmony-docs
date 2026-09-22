@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontDescriptor {...} OH_Drawing_FontDescriptor
 
 描述系统字体详细信息的结构体。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

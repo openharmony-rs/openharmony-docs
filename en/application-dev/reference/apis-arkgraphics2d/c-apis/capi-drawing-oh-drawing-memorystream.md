@@ -8,6 +8,8 @@ typedef struct OH_Drawing_MemoryStream OH_Drawing_MemoryStream
 
 Defines a struct for a memory stream.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

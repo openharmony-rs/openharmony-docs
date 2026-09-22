@@ -4,6 +4,8 @@
 
 分布式数据管理（Distributed Data Manager，data）支持单设备的各种结构化数据的持久化，以及端云间的同步、共享功能。 分布式数据管理定义了一系列数据类型，可以对数据进行增删改查。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 ## 文件汇总

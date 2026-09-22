@@ -8,6 +8,8 @@ typedef struct UsbInterfaceDescriptor {...} __attribute__((packed)) UsbInterface
 
 标准接口描述符，对应USB协议中Standard Interface Descriptor。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)

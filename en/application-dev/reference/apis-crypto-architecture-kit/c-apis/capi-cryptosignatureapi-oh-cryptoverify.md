@@ -8,6 +8,8 @@ typedef struct OH_CryptoVerify OH_CryptoVerify
 
 Verification structure, representing a verification context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoSignatureApi](capi-cryptosignatureapi.md)

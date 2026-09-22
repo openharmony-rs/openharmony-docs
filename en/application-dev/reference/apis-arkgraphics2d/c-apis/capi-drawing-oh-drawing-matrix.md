@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Matrix OH_Drawing_Matrix
 
 Defines a struct for a matrix, which is used to describe coordinate transformation.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

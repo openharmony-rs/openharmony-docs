@@ -45,7 +45,7 @@ The file declares the camera manager concepts.
 | [Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_Manager* cameraManager, Camera_Position position, Camera_Type type, Camera_Input** cameraInput)](#oh_cameramanager_createcamerainput_withpositionandtype) | - | Creates a **Camera_Input** instance with the specified camera position and type. |
 | [Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraManager, const Camera_Profile* profile, const char* surfaceId, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createpreviewoutput) | - | Creates a **PreviewOutput** instance. |
 | [Camera_ErrorCode OH_CameraManager_CreatePreviewOutputUsedInPreconfig(Camera_Manager* cameraManager, const char* surfaceId, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createpreviewoutputusedinpreconfig) | - | Creates a **PreviewOutput** instance to be used in a preconfiguration stream. |
-| [Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manager* cameraManager, const Camera_Profile* profile, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createdeferredpreviewoutput) | - | Create a defer preview output instance.The caller must call {@link OH_PreviewOutput_Release} to free the memory of the output. |
+| [Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manager* cameraManager, const Camera_Profile* profile, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createdeferredpreviewoutput) | - | Create a defer preview output instance.The caller must call [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release) to free the memory of the output. |
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManager, const Camera_Profile* profile, const char* surfaceId, Camera_PhotoOutput** photoOutput)](#oh_cameramanager_createphotooutput) | - | Creates a **PhotoOutput** instance. This API can only be used to create a **PhotoOutput** object in JPEG format. |
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutputUsedInPreconfig(Camera_Manager* cameraManager, const char* surfaceId, Camera_PhotoOutput** photoOutput)](#oh_cameramanager_createphotooutputusedinpreconfig) | - | Creates a **PhotoOutput** instance to be used in a preconfiguration stream. |
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutputWithoutSurface(Camera_Manager *cameraManager, const Camera_Profile *profile, Camera_PhotoOutput **photoOutput)](#oh_cameramanager_createphotooutputwithoutsurface) | - | Creates a **PhotoOutput** instance. **surfaceId** is not required in this function. |
@@ -85,6 +85,8 @@ typedef void (*OH_CameraManager_StatusCallback)(Camera_Manager* cameraManager, C
 
 Defines the callback defined in the [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) struct and used to report the camera manager status.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -103,6 +105,8 @@ typedef void (*OH_CameraManager_TorchStatusCallback)(Camera_Manager* cameraManag
 **Description**
 
 Defines the callback to listen for flashlight status changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -123,6 +127,8 @@ typedef void (*OH_CameraManager_OnFoldStatusInfoChange)(Camera_Manager* cameraMa
 
 Defines the callback to listen for fold status changes of the camera manager.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -141,6 +147,8 @@ Camera_ErrorCode OH_CameraManager_RegisterCallback(Camera_Manager* cameraManager
 **Description**
 
 Registers a callback to listen for camera status changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -167,6 +175,8 @@ Camera_ErrorCode OH_CameraManager_UnregisterCallback(Camera_Manager* cameraManag
 
 Unregisters the callback used to listen for camera status changes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -191,6 +201,8 @@ Camera_ErrorCode OH_CameraManager_RegisterTorchStatusCallback(Camera_Manager* ca
 **Description**
 
 Registers a callback to listen for flashlight status changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -217,6 +229,8 @@ Camera_ErrorCode OH_CameraManager_UnregisterTorchStatusCallback(Camera_Manager* 
 
 Unregisters the callback used to listen for flashlight status changes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -241,6 +255,8 @@ Camera_ErrorCode OH_CameraManager_RegisterFoldStatusInfoCallback(Camera_Manager*
 **Description**
 
 Registers a callback to listen for fold status changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
@@ -267,6 +283,8 @@ Camera_ErrorCode OH_CameraManager_UnregisterFoldStatusInfoCallback(Camera_Manage
 
 Unregisters the callback used to listen for fold status changes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -291,6 +309,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameras(Camera_Manager* cameraMana
 **Description**
 
 Obtains the supported cameras.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -318,6 +338,8 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameras(Camera_Manager* cameraM
 
 Deletes supported cameras.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -344,6 +366,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapability(Camera_Mana
 
 Obtains the output capability supported by a camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -351,7 +375,7 @@ Obtains the output capability supported by a camera.
 | Parameter | Description |
 | -- | -- |
 | Camera_Manager* cameraManager | Pointer to the **Camera_Manager** instance. |
-| cameras | the {@link Camera_Device} to be queried. |
+| cameras | the [Camera_Device](capi-oh-camera-camera-device.md) to be queried. |
 | Camera_OutputCapability** cameraOutputCapability | Double pointer to the output capability, which is defined in the Camera_OutputCapability struct, if the function is successfully called. |
 
 **Returns**:
@@ -369,6 +393,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMod
 **Description**
 
 Obtains the output capability supported by a camera in the specified mode.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -397,6 +423,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithScen
 
 Obtains the complete output capabilities supported by a specified camera in a specified mode, including YUV, HEIF, and HDR. Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -424,6 +452,8 @@ Camera_ErrorCode OH_CameraManager_DeleteSupportedCameraOutputCapability(Camera_M
 
 Deletes the output capability supported by a camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -448,6 +478,8 @@ Camera_ErrorCode OH_CameraManager_IsCameraMuted(Camera_Manager* cameraManager, b
 **Description**
 
 Checks whether a camera is muted.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -474,6 +506,8 @@ Camera_ErrorCode OH_CameraManager_CreateCaptureSession(Camera_Manager* cameraMan
 
 Creates a **CaptureSession** instance.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -498,6 +532,8 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManage
 **Description**
 
 Creates a **Camera_Input** instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Required permission**: ohos.permission.CAMERA
 
@@ -526,6 +562,8 @@ Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_M
 **Description**
 
 Creates a **Camera_Input** instance with the specified camera position and type.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Required permission**: ohos.permission.CAMERA
 
@@ -556,6 +594,8 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraMana
 
 Creates a **PreviewOutput** instance.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -583,6 +623,8 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutputUsedInPreconfig(Camera_Mana
 
 Creates a **PreviewOutput** instance to be used in a preconfiguration stream.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -607,7 +649,9 @@ Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manag
 
 **Description**
 
-Create a defer preview output instance.The caller must call {@link OH_PreviewOutput_Release} to free the memory of the output.
+Create a defer preview output instance.The caller must call [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release) to free the memory of the output.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -615,15 +659,15 @@ Create a defer preview output instance.The caller must call {@link OH_PreviewOut
 
 | Parameter | Description |
 | -- | -- |
-| const Camera_Manager* cameraManager | the {@link Camera_Manager} instance. |
-| const Camera_Profile* profile | the {@link Camera_Profile} to create {@link Camera_PreviewOutput}. |
-| Camera_PreviewOutput** previewOutput | the {@link Camera_PreviewOutput} will be created if the method call succeeds. |
+| const Camera_Manager* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
+| const Camera_Profile* profile | the [Camera_Profile](capi-oh-camera-camera-profile.md) to create [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md). |
+| Camera_PreviewOutput** previewOutput | the [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md) will be created if the method call succeeds. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_CameraManager_CreatePhotoOutput()
 
@@ -634,6 +678,8 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManage
 **Description**
 
 Creates a **PhotoOutput** instance. This API can only be used to create a **PhotoOutput** object in JPEG format.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -662,6 +708,8 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutputUsedInPreconfig(Camera_Manage
 
 Creates a **PhotoOutput** instance to be used in a preconfiguration stream.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -688,6 +736,8 @@ Camera_ErrorCode OH_CameraManager_CreatePhotoOutputWithoutSurface(Camera_Manager
 
 Creates a **PhotoOutput** instance. **surfaceId** is not required in this function.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -713,6 +763,8 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutput(Camera_Manager* cameraManage
 **Description**
 
 Creates a **VideoOutput** instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -741,6 +793,8 @@ Camera_ErrorCode OH_CameraManager_CreateVideoOutputUsedInPreconfig(Camera_Manage
 
 Creates a **VideoOutput** instance to be used in a preconfiguration stream.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -767,6 +821,8 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutput(Camera_Manager* cameraMan
 
 Creates a **MetadataOutput** instance.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -792,6 +848,8 @@ Camera_ErrorCode OH_CameraManager_CreateMetadataOutputWithObjectTypes(Camera_Man
 **Description**
 
 Creates a **metadataOutput** instance using an array of metadata object types.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
 
@@ -820,6 +878,8 @@ Camera_ErrorCode OH_CameraManager_GetSupportedSceneModes(Camera_Device* camera, 
 
 Obtains the scene modes supported by a camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -846,6 +906,8 @@ Camera_ErrorCode OH_CameraManager_DeleteSceneModes(Camera_Manager* cameraManager
 
 Deletes scene modes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -871,6 +933,8 @@ Camera_ErrorCode OH_CameraManager_IsTorchSupported(Camera_Manager* cameraManager
 
 Checks whether the device supports the flashlight.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -895,6 +959,8 @@ Camera_ErrorCode OH_CameraManager_IsTorchSupportedByTorchMode(Camera_Manager* ca
 **Description**
 
 Checks whether the device supports the specified flashlight mode.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -922,6 +988,8 @@ Camera_ErrorCode OH_CameraManager_SetTorchMode(Camera_Manager* cameraManager, Ca
 
 Sets a flashlight mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -946,6 +1014,8 @@ Camera_ErrorCode OH_CameraManager_IsTorchLevelControlSupported(const Camera_Mana
 **Description**
 
 Checks whether the device supports flashlight brightness control.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -972,6 +1042,8 @@ Camera_ErrorCode OH_CameraManager_SetTorchModeOnWithLevel(Camera_Manager* camera
 
 Turns on the flashlight and sets the brightness level.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -997,22 +1069,24 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevice(Camera_Manager* cameraManager,
 
 Queries a specified device based on position and type.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | the {@link Camera_Manager} instance. |
-| Camera_Position position | the {@link Camera_Position} instance. |
-| Camera_Type type | the {@link Camera_Type} instance. |
-| Camera_Device* camera | the {@link Camera_Device} to be set. |
+| Camera_Manager* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
+| Camera_Position position | the [Camera_Position](capi-camera-h.md#camera_position) instance. |
+| Camera_Type type | the [Camera_Type](capi-camera-h.md#camera_type) instance. |
+| Camera_Device* camera | the [Camera_Device](capi-oh-camera-camera-device.md) to be set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link #CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_CameraManager_GetCameraDevices()
 
@@ -1023,6 +1097,8 @@ Camera_ErrorCode OH_CameraManager_GetCameraDevices(Camera_Manager* cameraManager
 **Description**
 
 Obtains the list of cameras that meet the search criteria based on the camera position, camera types, and connection type.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
 
@@ -1051,6 +1127,8 @@ Camera_ErrorCode OH_CameraManager_DeleteCameraDevices(Camera_Manager* cameraMana
 
 Deletes the specified camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -1076,22 +1154,24 @@ Camera_ErrorCode OH_CameraManager_GetCameraConcurrentInfos(Camera_Manager* camer
 
 Obtains the concurrent information of specified cameras, the empty return means concurrency is not supported.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| Camera_Manager* cameraManager | the {@link Camera_Manager} instance. |
-| const Camera_Device* camera | the {@link Camera_Device} instance. |
+| Camera_Manager* cameraManager | the [Camera_Manager](capi-oh-camera-camera-manager.md) instance. |
+| const Camera_Device* camera | the [Camera_Device](capi-oh-camera-camera-device.md) instance. |
 | uint32_t deviceSize | length of the input device array. |
-| Camera_ConcurrentInfo** cameraConcurrentInfo | the {@link Camera_ConcurrentInfo} to be set. |
+| Camera_ConcurrentInfo** cameraConcurrentInfo | the [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) to be set. |
 | uint32_t* infoSize | length of the returned concurrency information array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link #CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 

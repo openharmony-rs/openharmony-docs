@@ -52,6 +52,8 @@ enum ArkUI_KeyCode
 
 Enumerates the key codes for key events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 | Enum item | Description |
@@ -213,6 +215,8 @@ enum ArkUI_KeyEventType
 
 Enumerates the types of key events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 | Enum item | Description |
@@ -233,6 +237,8 @@ enum ArkUI_KeySourceType
 
 Enumerates the types of input devices that trigger key events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 | Enum item | Description |
@@ -251,6 +257,8 @@ enum ArkUI_KeyIntension
 **Description**
 
 Enumerates the intentions corresponding to key events.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -295,6 +303,8 @@ ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 
 Obtains the type of the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -318,6 +328,8 @@ int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 **Description**
 
 Obtains the key code from the specified key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -343,6 +355,8 @@ const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 
 Obtains the key value from the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -366,6 +380,8 @@ ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* eve
 **Description**
 
 Obtains the type of input device that triggers the specified key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -391,6 +407,8 @@ void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool sto
 
 Stops the specified key event from bubbling upwards or downwards.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -409,6 +427,8 @@ ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEven
 **Description**
 
 Obtains the intention code associated with the specified key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -434,6 +454,8 @@ uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 
 Obtains the Unicode value of the specified key event. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -458,6 +480,8 @@ void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsu
 
 Sets whether the specified key event is consumed in the key event callback.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -476,6 +500,8 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 **Description**
 
 Dispatches the specified key event to a specific node.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -496,6 +522,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 
 Obtains the state of the NumLock key when the specified key event occurs.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -509,7 +537,7 @@ Obtains the state of the NumLock key when the specified key event occurs.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_KeyEvent_IsCapsLockOn()
 
@@ -520,6 +548,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 **Description**
 
 Obtains the state of the CapsLock key when the specified key event occurs.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -534,7 +564,7 @@ Obtains the state of the CapsLock key when the specified key event occurs.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 ### OH_ArkUI_KeyEvent_IsScrollLockOn()
 
@@ -545,6 +575,8 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 **Description**
 
 Obtains the state of the ScrollLock key when the specified key event occurs.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -559,6 +591,6 @@ Obtains the state of the ScrollLock key when the specified key event occurs.
 
 | Type | Description |
 | -- | -- |
-| ArkUI_ErrorCode | Result code.      <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.<br>    <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
+| ArkUI_ErrorCode | Result code.      <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if the operation is successful.      <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](../../apis-arkdata/c-apis/capi-error-code-h.md#arkui_errorcode) if a parameter error occurs. |
 
 

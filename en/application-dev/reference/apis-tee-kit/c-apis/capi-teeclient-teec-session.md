@@ -8,6 +8,8 @@ typedef struct TEEC_Session {...} TEEC_Session
 
 Defines the session between a CA and a TA.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

@@ -4,6 +4,8 @@
 
 Provides APIs to define common sensor attributes.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 ## Files

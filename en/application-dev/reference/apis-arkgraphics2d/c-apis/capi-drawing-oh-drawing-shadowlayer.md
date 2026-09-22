@@ -8,6 +8,8 @@ typedef struct OH_Drawing_ShadowLayer OH_Drawing_ShadowLayer
 
 Defines a struct for a shadow, which is used to describe the shadow layer of the drawn content.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

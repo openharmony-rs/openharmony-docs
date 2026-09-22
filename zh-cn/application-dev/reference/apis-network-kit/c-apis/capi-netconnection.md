@@ -4,6 +4,8 @@
 
 为网络管理数据网络连接模块提供C接口数据结构。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 11
 
 ## 文件汇总

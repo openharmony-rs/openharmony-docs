@@ -8,6 +8,8 @@ typedef struct MediaKeySystem MediaKeySystem
 
 The struct describes a media key system.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)

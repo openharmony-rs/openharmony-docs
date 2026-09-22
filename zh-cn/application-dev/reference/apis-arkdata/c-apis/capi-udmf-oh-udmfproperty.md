@@ -8,6 +8,8 @@ typedef struct OH_UdmfProperty OH_UdmfProperty
 
 定义统一数据对象中数据记录的属性结构。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 12
 
 **相关模块：** [UDMF](capi-udmf.md)

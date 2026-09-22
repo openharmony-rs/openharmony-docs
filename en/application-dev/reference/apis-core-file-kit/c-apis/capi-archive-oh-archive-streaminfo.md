@@ -8,6 +8,8 @@ typedef struct OH_Archive_StreamInfo {...} OH_Archive_StreamInfo
 
 Stream compression information structure.
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 26.0.0
 
 **Related module**: [Archive](capi-archive.md)

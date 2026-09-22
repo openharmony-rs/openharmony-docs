@@ -4,6 +4,8 @@
 
 The CodecBase module provides variables, properties, and functions for audio and video muxer, demuxer, and basic encoding and decoding functions.
 
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
 **Since**: 9
 
 ## Files

@@ -8,6 +8,8 @@ struct OhosImageSize {...}
 
 定义图像大小。是{@link OhosImageDecodingOps}的成员变量。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **相关模块：** [Image](capi-image.md)

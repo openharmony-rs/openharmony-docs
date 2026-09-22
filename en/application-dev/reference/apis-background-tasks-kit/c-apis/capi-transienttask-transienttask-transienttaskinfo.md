@@ -8,6 +8,8 @@ typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTask
 
 A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day.
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 20
 
 **Related module**: [TransientTask](capi-transienttask.md)

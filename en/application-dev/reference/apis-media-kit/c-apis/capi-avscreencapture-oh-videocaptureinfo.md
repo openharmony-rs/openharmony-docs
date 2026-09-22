@@ -8,6 +8,8 @@ typedef struct OH_VideoCaptureInfo {...} OH_VideoCaptureInfo
 
 The struct describes the video capture information. When **videoFrameWidth** and **videoFrameHeight** are both **0**, video-related parameters are ignored and screen data is not recorded.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

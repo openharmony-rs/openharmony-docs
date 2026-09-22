@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_SystemNodeFormat {...} OH_AudioSuite_SystemNodeForm
 
 Define the audio format info structure, used to describe basic audio format for system node.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ typedef struct OH_AudioObjectPosition {...} OH_AudioObjectPosition
 
 Represents the position of an audio object in three-dimensional space.<br> The position can be expressed in either Cartesian or polar coordinates.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Related module**: [Core](capi-core.md)

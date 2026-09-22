@@ -59,6 +59,8 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) struct and used to report camera input errors.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -70,10 +72,10 @@ Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camer
 
 **Reference**:
 
-CAMERA_CONFLICT_CAMERA
-CAMERA_DEVICE_DISABLED
-CAMERA_DEVICE_PREEMPTED
-CAMERA_SERVICE_FATAL_ERROR
+[CAMERA_CONFLICT_CAMERA](capi-camera-h.md#camera_errorcode)
+[CAMERA_DEVICE_DISABLED](capi-camera-h.md#camera_errorcode)
+[CAMERA_DEVICE_PREEMPTED](capi-camera-h.md#camera_errorcode)
+[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
 
 ### OH_CameraInput_RegisterCallback()
@@ -85,6 +87,8 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 **Description**
 
 Registers a callback to listen for camera input events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -111,6 +115,8 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 
 Unregisters the callback used to listen for camera input events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -136,6 +142,8 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 
 Opens a camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -159,6 +167,8 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 **Description**
 
 Opens a camera in secure mode.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -185,6 +195,8 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 
 Closes a camera.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -209,6 +221,8 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 Releases a Camera_Input instance. Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -232,6 +246,8 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 **Description**
 
 Checks whether the physical camera orientation is adjustable in different fold states of the device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -258,6 +274,8 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 
 Obtains the physical camera orientation in the current fold state of the device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -282,6 +300,8 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 **Description**
 
 Enables or disables the use of the physical camera orientation.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -308,6 +328,8 @@ typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* 
 
 Defines a callback used to return the check result for whether a camera lens is blocked or dirty.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -326,6 +348,8 @@ Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input*
 **Description**
 
 Registers a callback used to check whether a camera lens is blocked or dirty.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 23
 
@@ -352,6 +376,8 @@ Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Inpu
 
 Unregisters the callback used to check whether a camera lens is blocked or dirty.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -376,6 +402,8 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 **Description**
 
 Opens the camera based on the specified concurrency type.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 18
 

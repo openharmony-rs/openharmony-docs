@@ -59,6 +59,8 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 在[CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md)中被调用的相机输入错误回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -70,10 +72,10 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 **参考：**
 
-CAMERA_CONFLICT_CAMERA
-CAMERA_DEVICE_DISABLED
-CAMERA_DEVICE_PREEMPTED
-CAMERA_SERVICE_FATAL_ERROR
+[CAMERA_CONFLICT_CAMERA](capi-camera-h.md#camera_errorcode)
+[CAMERA_DEVICE_DISABLED](capi-camera-h.md#camera_errorcode)
+[CAMERA_DEVICE_PREEMPTED](capi-camera-h.md#camera_errorcode)
+[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
 
 ### OH_CameraInput_RegisterCallback()
@@ -85,6 +87,8 @@ Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, Came
 **描述：**
 
 注册相机输入更改事件回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -111,6 +115,8 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 
 注销相机输入更改事件回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -136,6 +142,8 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 
 打开相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -159,6 +167,8 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 **描述：**
 
 打开安全相机。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -185,6 +195,8 @@ Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 
 关闭相机。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -209,6 +221,8 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 释放相机输入实例。 <br>和[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)只需要调用其中一个，调用之后无须再调用[OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close)。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -232,6 +246,8 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 **描述：**
 
 查询设备不同折叠状态下，相机物理镜头角度是否可变。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 22
 
@@ -258,6 +274,8 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 
 获取设备当前折叠状态下的物理镜头角度。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 22
 
 **参数：**
@@ -282,6 +300,8 @@ Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* camer
 **描述：**
 
 选择是否使用物理镜头角度。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 22
 
@@ -308,6 +328,8 @@ typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* 
 
 相机镜头遮挡、脏污检测结果回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -326,6 +348,8 @@ Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input*
 **描述：**
 
 注册相机镜头遮挡、脏污检测事件回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 23
 
@@ -352,6 +376,8 @@ Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Inpu
 
 注销相机镜头遮挡、脏污检测事件回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -376,6 +402,8 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 **描述：**
 
 根据指定并发类型打开相机。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 18
 

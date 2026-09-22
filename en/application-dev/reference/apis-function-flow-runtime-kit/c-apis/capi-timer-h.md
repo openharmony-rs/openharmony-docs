@@ -33,6 +33,8 @@ FFRT_C_API ffrt_timer_t ffrt_timer_start(ffrt_qos_t qos, uint64_t timeout, void*
 
 Starts a timer on an FFRT worker.<br> Avoid calling `exit` or [ffrt_timer_stop](capi-timer-h.md#ffrt_timer_stop) in `cb` to prevent undefined behavior or deadlock.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -65,6 +67,8 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 **Description**
 
 Stops a timer on an FFRT worker.<br> This is a blocking interface. Avoid calling it inside the callback function to prevent deadlock or synchronization issues. If the callback associated with `handle` is currently running, this function waits for the callback to complete before returning.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 12
 

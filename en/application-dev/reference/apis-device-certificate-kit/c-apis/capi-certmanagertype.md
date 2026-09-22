@@ -4,6 +4,8 @@
 
 Defines the macros, enumerated values, data structures, and error codes used by OpenHarmony Certificate Manager APIs.
 
+**System capability**: SystemCapability.Security.CertificateManager
+
 **Since**: 22
 
 ## Files

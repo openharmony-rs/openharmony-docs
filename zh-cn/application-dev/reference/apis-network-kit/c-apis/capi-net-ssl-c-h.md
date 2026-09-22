@@ -141,6 +141,8 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 
 整体明文HTTP是否允许。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 18
@@ -166,6 +168,8 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 **描述：**
 
 按域名明文HTTP是否允许。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -193,6 +197,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **描述：**
 
 检查组件是否已配置开启明文HTTP拦截功能。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -223,6 +229,8 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -251,6 +259,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **描述：**
 
 释放由OH_NetStack_CreateAndVerifySortedCertChain分配的证书链。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 26.0.0
 

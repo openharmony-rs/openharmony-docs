@@ -8,6 +8,8 @@ typedef struct ArkWeb_ProxyMethod {...} ArkWeb_ProxyMethod
 
 ArkWeb_ProxyMethod is a struct that defines a JavaScript proxy method. It supports secure communication between JavaScript and native code, and is suitable for scenarios where native capabilities need to be called from a web page. This struct specifies the basic information of a native method that can be called from JavaScript, consisting of three fields: the method name, the corresponding native callback pointer, and the custom data to carry. Multiple ArkWeb_ProxyMethod instances can be combined into an ArkWeb_ProxyObject, which is injected into a web page as an object, allowing web apps to conveniently access native device capabilities.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Related module**: [Web](capi-web.md)

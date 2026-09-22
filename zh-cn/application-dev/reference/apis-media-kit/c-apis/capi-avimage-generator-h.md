@@ -7,6 +7,7 @@
 **引用文件：** <multimedia/player_framework/avimage_generator.h>
 
 **库：** libavimage_generator.so
+   @syscap SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 
@@ -26,7 +27,7 @@
 | -- | -- |
 | [OH_AVImageGenerator* OH_AVImageGenerator_Create(void)](#oh_avimagegenerator_create) | 创建OH_AVImageGenerator实例，用于生成指定时间点视频帧。 |
 | [OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int32_t fd, int64_t offset, int64_t size)](#oh_avimagegenerator_setfdsource) | 通过媒体文件描述符设置数据源。 |
-| [OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)](#oh_avimagegenerator_fetchframebytime) | 从视频资源中获取指定时间点视频帧。 |
+| [OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)](#oh_avimagegenerator_fetchframebytime) | 从视频资源中获取指定时间点视频帧。<br> 此函数必须在[OH_AVImageGenerator_SetFDSource](capi-avimage-generator-h.md#oh_avimagegenerator_setfdsource)之后调用。 |
 | [OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)](#oh_avimagegenerator_release) | 释放用于OH_AVImageGenerator的资源以及销毁OH_AVImageGenerator实例。 |
 
 ## 函数说明
@@ -40,6 +41,8 @@ OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 **描述：**
 
 创建OH_AVImageGenerator实例，用于生成指定时间点视频帧。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 
@@ -58,6 +61,8 @@ OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int
 **描述：**
 
 通过媒体文件描述符设置数据源。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 
@@ -84,7 +89,9 @@ OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator
 
 **描述：**
 
-从视频资源中获取指定时间点视频帧。
+从视频资源中获取指定时间点视频帧。<br> 此函数必须在[OH_AVImageGenerator_SetFDSource](capi-avimage-generator-h.md#oh_avimagegenerator_setfdsource)之后调用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 
@@ -112,6 +119,8 @@ OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 **描述：**
 
 释放用于OH_AVImageGenerator的资源以及销毁OH_AVImageGenerator实例。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18
 

@@ -8,6 +8,8 @@ typedef struct OH_HiDebug_ResProfilerConfig {...} OH_HiDebug_ResProfilerConfig
 
 定义资源采集配置结构体类型。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 24
 
 **相关模块：** [HiDebug](capi-hidebug.md)

@@ -8,6 +8,8 @@ typedef struct OH_CryptoDigest OH_CryptoDigest
 
 摘要结构体，表示摘要上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **相关模块：** [CryptoDigestApi](capi-cryptodigestapi.md)

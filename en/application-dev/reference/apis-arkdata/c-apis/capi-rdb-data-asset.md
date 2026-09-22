@@ -8,6 +8,8 @@ typedef struct Data_Asset Data_Asset
 
 Define the Data_Asset structure type.<br> Provides information of an asset.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

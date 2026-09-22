@@ -43,6 +43,8 @@ enum OH_AudioAccessoryType
 
 枚举音频配件连接类型。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |

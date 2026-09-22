@@ -8,6 +8,8 @@ typedef struct OH_AudioConverterStruct OH_AudioConverter
 
 声明音频格式转换器。<br> 音频格式转换器句柄用于执行音频格式转换相关功能。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AudioConverter](capi-audioconverter.md)

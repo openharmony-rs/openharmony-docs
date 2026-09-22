@@ -8,6 +8,8 @@ typedef struct OH_AudioCapturerStruct OH_AudioCapturer
 
 Declaring the audio capturer stream. The instance of renderer stream is used for capturing audio data.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Related module**: [OHAudio](capi-ohaudio.md)

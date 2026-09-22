@@ -8,6 +8,8 @@ typedef struct ArkWeb_JavaScriptBridgeData {...} ArkWeb_JavaScriptBridgeData
 
 ArkWeb_JavaScriptBridgeData是JavaScript桥接数据定义结构体，用于在Native代码和Web页面之间传递JavaScript桥接相关的数据。该结构体封装了桥接调用中的参数数据， 是JavaScript桥接子系统中的基本数据单元，配合ArkWeb_ControllerAPI中的JavaScript Proxy注册接口使用。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)

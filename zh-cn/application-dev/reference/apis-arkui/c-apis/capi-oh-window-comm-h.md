@@ -61,6 +61,8 @@ enum WindowManager_ErrorCode
 
 窗口管理接口返回状态码枚举。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -91,6 +93,8 @@ enum WindowManager_AvoidAreaType
 
 避让区域枚举类型。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -110,6 +114,8 @@ enum WindowManager_WindowType
 **描述：**
 
 窗口类型。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 15
 
@@ -133,6 +139,8 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 
 帧率指标回调类型。
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 26.0.0
 
 ### OH_WindowManager_DensityInfoCallback()
@@ -144,6 +152,8 @@ typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_
 **描述：**
 
 density信息回调类型。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 24
 

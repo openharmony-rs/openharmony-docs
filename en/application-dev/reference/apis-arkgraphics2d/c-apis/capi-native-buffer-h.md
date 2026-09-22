@@ -606,7 +606,7 @@ Set the dma buffer name of the OH_NativeBuffer.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 

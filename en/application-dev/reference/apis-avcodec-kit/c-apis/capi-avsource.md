@@ -4,6 +4,8 @@
 
 The AVSource module provides functions for constructing media resource object functionality.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 10
 
 ## Files

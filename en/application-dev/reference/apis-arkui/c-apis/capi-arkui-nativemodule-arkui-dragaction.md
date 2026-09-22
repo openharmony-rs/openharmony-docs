@@ -8,6 +8,8 @@ typedef struct ArkUI_DragAction ArkUI_DragAction
 
 Defines a drag action.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

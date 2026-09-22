@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_Rect {...} NativeDisplayManager_Rect
 
 矩形区域。
 
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
 **起始版本：** 12
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)

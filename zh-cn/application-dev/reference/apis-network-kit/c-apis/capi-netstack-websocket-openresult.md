@@ -8,6 +8,8 @@ struct WebSocket_OpenResult {...}
 
 websocket客户端来自服务端连接成功的参数。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 11
 
 **相关模块：** [netstack](capi-netstack.md)

@@ -8,6 +8,8 @@ typedef struct Camera_AutoDeviceSwitchStatusInfo {...} Camera_AutoDeviceSwitchSt
 
 自动设备切换状态信息。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 13
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

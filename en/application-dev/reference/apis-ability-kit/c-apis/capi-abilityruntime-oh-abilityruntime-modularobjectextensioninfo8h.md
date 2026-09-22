@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionInfo* OH_AbilityRuntime_M
 
 Defines the pointer to OH_AbilityRuntime_ModularObjectExtensionInfo.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

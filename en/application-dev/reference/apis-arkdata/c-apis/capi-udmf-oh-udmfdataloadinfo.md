@@ -6,7 +6,9 @@ typedef struct OH_UdmfDataLoadInfo OH_UdmfDataLoadInfo
 
 ## Overview
 
-Indicates data loading information.
+Defines a struct for the data loading information.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
 

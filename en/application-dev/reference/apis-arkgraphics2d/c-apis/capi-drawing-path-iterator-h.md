@@ -42,6 +42,8 @@ enum OH_Drawing_PathIteratorVerb
 
 Enumerates the path operation types contained in an iterator. It is used to read path operation instructions.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 | Enum item | Description |
@@ -67,14 +69,16 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorCreate(const OH_Drawing_Path* path, 
 
 Creates an **OH_Drawing_PathIterator** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Path* path | Pointer to an {@link OH_Drawing_Path} object. |
-| OH_Drawing_PathIterator** pathIterator | Double pointer to an {@link OH_Drawing_PathIterator} object, which serves as an output parameter. |
+| const OH_Drawing_Path* path | Pointer to an [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. |
+| OH_Drawing_PathIterator** pathIterator | Double pointer to an [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) object, which serves as an output parameter. |
 
 **Returns**:
 
@@ -92,13 +96,15 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorDestroy(OH_Drawing_PathIterator* pat
 
 Destroys an **OH_Drawing_PathIterator** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_PathIterator* pathIterator | Pointer to an {@link OH_Drawing_PathIterator} object. |
+| OH_Drawing_PathIterator* pathIterator | Pointer to an [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) object. |
 
 **Returns**:
 
@@ -116,13 +122,15 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorHasNext(const OH_Drawing_PathIterato
 
 Checks whether there is any next operation in the path operation iterator.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_PathIterator* pathIterator | Pointer to an {@link OH_Drawing_PathIterator} object. |
+| const OH_Drawing_PathIterator* pathIterator | Pointer to an [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) object. |
 | bool* hasNext | Whether there is a next operation in the path operation iterator, which serves as an output parameter. A value of **true** means there is a next operation; **false** means the opposite. |
 
 **Returns**:
@@ -141,13 +149,15 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorNext(OH_Drawing_PathIterator* pathIt
 
 Retrieves the next operation in this path and moves the iterator to that operation.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_PathIterator* pathIterator | Pointer to an {@link OH_Drawing_PathIterator} object. |
+| OH_Drawing_PathIterator* pathIterator | Pointer to an [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) object. |
 | OH_Drawing_Point2D* points | Array of coordinate points. |
 | uint32_t count | Size of the coordinate point array. |
 | uint32_t offset | Offset of the write position relative to the start point in the array. The value range is [0, count - 4]. |
@@ -169,13 +179,15 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorPeek(const OH_Drawing_PathIterator* 
 
 Retrieves the next operation in this path, without moving the iterator.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_PathIterator* pathIterator | Pointer to an {@link OH_Drawing_PathIterator} object. |
+| const OH_Drawing_PathIterator* pathIterator | Pointer to an [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) object. |
 | [OH_Drawing_PathIteratorVerb](capi-drawing-path-iterator-h.md#oh_drawing_pathiteratorverb)* verb | Next operation of the current path, which serves as an output parameter. |
 
 **Returns**:

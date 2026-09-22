@@ -4,6 +4,8 @@
 
 Defines C APIs for cellular data module.
 
+**System capability**: SystemCapability.Telephony.CellularData
+
 **Since**: 13
 
 ## Files

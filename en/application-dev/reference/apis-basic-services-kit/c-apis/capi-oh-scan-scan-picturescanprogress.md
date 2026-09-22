@@ -8,6 +8,8 @@ typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress
 
 Defines the progress of scanning a picture by the scanner.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [OH_Scan](capi-oh-scan.md)

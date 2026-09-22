@@ -6,7 +6,9 @@ typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3
 
 ## Overview
 
-Defines a collection of gesture APIs, including gesture APIs in the [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) and [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md) structs and new gesture APIs.
+Defines a collection of gesture APIs, including gesture APIs in the {@link ArkUI_NativeGestureAPI_1} and<br>{@link ArkUI_NativeGestureAPI_2} structs and new gesture APIs.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 

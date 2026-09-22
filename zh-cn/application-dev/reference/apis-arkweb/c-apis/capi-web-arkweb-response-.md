@@ -8,6 +8,8 @@ typedef struct ArkWeb_Response_ ArkWeb_Response
 
 ArkWeb_Response是用于构建自定义HTTP响应的结构体，定义了响应状态码、响应头、响应体等核心字段。该结构体配合ArkWeb_ResourceHandler使用， 在Scheme请求拦截场景中为被拦截的请求提供完整的HTTP响应数据，实现自定义的资源返回能力。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)

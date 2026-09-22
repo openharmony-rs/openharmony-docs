@@ -39,6 +39,8 @@ enum OH_Drawing_BlurType
 
 蒙版滤波器模糊操作类型的枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -60,6 +62,8 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 **描述：**
 
 创建具有模糊效果的蒙版滤波器。常用于为图形、文本等绘制内容添加模糊视觉效果。创建的蒙版滤波器对象使用完毕后， 必须调用[OH_Drawing_MaskFilterDestroy](capi-drawing-mask-filter-h.md#oh_drawing_maskfilterdestroy)销毁并释放内存。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -86,6 +90,8 @@ void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 **描述：**
 
 销毁蒙版滤波器对象，并收回该对象占用的内存。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 

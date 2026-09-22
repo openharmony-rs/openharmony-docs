@@ -8,6 +8,8 @@ struct OH_NativeBuffer
 
 NativeBuffer结构体类型，用于执行NativeBuffer相关操作。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)

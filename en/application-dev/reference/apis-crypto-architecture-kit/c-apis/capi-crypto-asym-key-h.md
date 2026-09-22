@@ -86,6 +86,8 @@ enum CryptoAsymKey_ParamType
 
 Defines asymmetric key parameter types.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -131,6 +133,8 @@ enum Crypto_EncodingType
 
 Defines the encoding type.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -148,6 +152,8 @@ enum CryptoPrivKeyEncoding_ParamType
 
 Defines private key encoding parameter types.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 | Enum item | Description |
@@ -164,6 +170,8 @@ enum CryptoAsymKeySpec_Type
 **Description**
 
 Defines asymmetric key specification types.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -187,6 +195,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 Creates an asymmetric key generator based on the given algorithm name.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -200,7 +210,7 @@ Creates an asymmetric key generator based on the given algorithm name.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} if ctx or algoName is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the algorithm is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or algoName is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 **Reference**:
 
@@ -218,6 +228,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 Generates an asymmetric key pair.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -231,7 +243,7 @@ Generates an asymmetric key pair.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} if ctx or keyCtx is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory operation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or keyCtx is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory operation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeyGenerator_Convert()
 
@@ -242,6 +254,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 **Description**
 
 Converts asymmetric key data to a key pair.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -259,7 +273,7 @@ Converts asymmetric key data to a key pair.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} if ctx is NULL, pubKeyData and<br>           priKeyData are both NULL, keyCtx is NULL, or type is not a valid Crypto_EncodingType.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the key format is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if key conversion fails. Possible causes:             key data is corrupted or not valid PEM/DER format, key data does not match the algorithm,             or the password for an encrypted private key is incorrect.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if ctx is NULL, pubKeyData and             priKeyData are both NULL, keyCtx is NULL, or type is not a valid Crypto_EncodingType.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the key format is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if key conversion fails. Possible causes:             key data is corrupted or not valid PEM/DER format, key data does not match the algorithm,             or the password for an encrypted private key is incorrect.</li>          </ul> |
 
 ### OH_CryptoAsymKeyGenerator_GetAlgoName()
 
@@ -270,6 +284,8 @@ const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx
 **Description**
 
 Obtains the algorithm name of the asymmetric key generator.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -295,6 +311,8 @@ void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)
 
 Destroys the asymmetric key generator.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -313,6 +331,8 @@ void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)
 
 Destroys the key pair.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -330,6 +350,8 @@ OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 **Description**
 
 Obtains the public key from the key pair.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -355,6 +377,8 @@ OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 
 Obtains the private key from the key pair.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -379,6 +403,8 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 
 Encodes the public key.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -394,7 +420,7 @@ Encodes the public key.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} if key, out, or encodingStandard is NULL, type is<br>           not a valid Crypto_EncodingType, or the encoding standard is incompatible with the key type.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the encoding format is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if encoding fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if key, out, or encodingStandard is NULL, type is             not a valid Crypto_EncodingType, or the encoding standard is incompatible with the key type.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the encoding format is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails.</li>          </ul> |
 
 ### OH_CryptoPubKey_GetParam()
 
@@ -405,6 +431,8 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 **Description**
 
 Obtains the specified parameter of the public key.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -420,7 +448,7 @@ Obtains the specified parameter of the public key.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} if key or value is NULL, or the<br>           parameter type is not supported for the key algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the parameter type is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if getting param fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) if key or value is NULL, or the             parameter type is not supported for the key algorithm.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the parameter type is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if getting param fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeyGenerator_SetPassword()
 
@@ -431,6 +459,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 **Description**
 
 Sets the password for the asymmetric key generator. Call this method to set the password if you need to use [OH_CryptoAsymKeyGenerator_Convert](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert) to convert encrypted private key data to a key pair.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -446,7 +476,7 @@ Sets the password for the asymmetric key generator. Call this method to set the 
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if ctx or password is NULL,<br>        or passwordLen is 0.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or password is NULL,          or passwordLen is 0.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoPrivKeyEncodingParams_Create()
 
@@ -457,6 +487,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 **Description**
 
 Creates private key encoding parameters.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -470,7 +502,7 @@ Creates private key encoding parameters.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if ctx is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 **Reference**:
 
@@ -487,6 +519,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodi
 
 Sets private key encoding parameters.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -501,7 +535,7 @@ Sets private key encoding parameters.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if ctx or value is NULL,<br>           value->data is NULL, value->len is 0, or type is unrecognized.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation for deep copy fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if ctx or value is NULL,             value->data is NULL, value->len is 0, or type is unrecognized.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for deep copy fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoPrivKeyEncodingParams_Destroy()
 
@@ -512,6 +546,8 @@ void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)
 **Description**
 
 Destroys private key encoding parameters.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -531,6 +567,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 
 Encodes the private key.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -547,7 +585,7 @@ Encodes the private key.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if key, out, or encodingStandard is NULL,<br>           type is not a valid Crypto_EncodingType, or the encoding standard is incompatible<br>           with the key type.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the encoding format is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if encoding fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if key, out, or encodingStandard is NULL,             type is not a valid Crypto_EncodingType, or the encoding standard is incompatible             with the key type.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the encoding format is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails.</li>          </ul> |
 
 ### OH_CryptoPrivKey_GetParam()
 
@@ -558,6 +596,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 **Description**
 
 Obtains the specified parameter of the private key.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -573,7 +613,7 @@ Obtains the specified parameter of the private key.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if key or value is NULL, or<br>           the parameter type is not supported for the key algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the parameter type is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if getting param fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if key or value is NULL, or             the parameter type is not supported for the key algorithm.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the parameter type is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if getting param fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_GenEcCommonParamsSpec()
 
@@ -584,6 +624,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 **Description**
 
 Generates EC common parameter specification.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -598,7 +640,7 @@ Generates EC common parameter specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if curveName or spec is NULL,<br>           or the curve name is not a valid elliptic curve.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the curve is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if generating spec fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if curveName or spec is NULL,             or the curve name is not a valid elliptic curve.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the curve is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if generating spec fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_GenDhCommonParamsSpec()
 
@@ -609,6 +651,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 **Description**
 
 Generates DH common parameter specification.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -624,7 +668,7 @@ Generates DH common parameter specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if spec is NULL,<br>           pLen is negative, skLen is negative, or skLen is greater than pLen.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec is NULL,             pLen is negative, skLen is negative, or skLen is greater than pLen.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_Create()
 
@@ -635,6 +679,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 **Description**
 
 Creates an asymmetric key specification based on the given algorithm name and specification type.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -650,7 +696,7 @@ Creates an asymmetric key specification based on the given algorithm name and sp
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if algoName or spec is NULL,<br>            algoName is not a supported algorithm name.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if algoName or spec is NULL,              algoName is not a supported algorithm name.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_SetParam()
 
@@ -661,6 +707,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, Cryp
 **Description**
 
 Sets the specified parameter of the asymmetric key specification.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -676,7 +724,7 @@ Sets the specified parameter of the asymmetric key specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if spec or value is NULL,<br>           value->data is NULL, value->len is 0, or the parameter type is not<br>           supported for the algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation for deep copy fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or value is NULL,             value->data is NULL, value->len is 0, or the parameter type is not             supported for the algorithm.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for deep copy fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_SetCommonParamsSpec()
 
@@ -687,6 +735,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec 
 **Description**
 
 Sets the common parameter specification into the asymmetric key specification.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -701,7 +751,7 @@ Sets the common parameter specification into the asymmetric key specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if spec or commonParamsSpec is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or commonParamsSpec is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_GetParam()
 
@@ -712,6 +762,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 **Description**
 
 Obtains the specified parameter of the asymmetric key specification.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -727,7 +779,7 @@ Obtains the specified parameter of the asymmetric key specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if spec or value is NULL, or<br>           the parameter type is not supported for the algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if spec or value is NULL, or             the parameter type is not supported for the algorithm.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoAsymKeySpec_Destroy()
 
@@ -738,6 +790,8 @@ void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)
 **Description**
 
 Destroys the asymmetric key specification.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -757,6 +811,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 
 Creates a key generator based on the asymmetric key specification.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -770,7 +826,7 @@ Creates a key generator based on the asymmetric key specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if keySpec or generator is NULL,<br>           or key specification parameters are incomplete or invalid.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the algorithm is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if creating generator fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if keySpec or generator is NULL,             or key specification parameters are incomplete or invalid.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the algorithm is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if creating generator fails.</li>          </ul> |
 
 **Reference**:
 
@@ -787,6 +843,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 
 Generates a key pair based on the asymmetric key specification.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -800,7 +858,7 @@ Generates a key pair based on the asymmetric key specification.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if generator or keyPair is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the operation is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if generating key pair fails. Possible causes:             key specification parameters are incomplete or inconsistent.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if generator or keyPair is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the operation is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if generating key pair fails. Possible causes:             key specification parameters are incomplete or inconsistent.</li>          </ul> |
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_Destroy()
 
@@ -811,6 +869,8 @@ void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec
 **Description**
 
 Destroys the specification-based asymmetric key generator.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -830,6 +890,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 
 Creates an elliptic curve point.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -844,7 +906,7 @@ Creates an elliptic curve point.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if curveName or point is NULL,<br>           or the curve name is invalid.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the curve is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if creating EC point fails. Possible causes:             the point data format is incorrect.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if curveName or point is NULL,             or the curve name is invalid.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the curve is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if creating EC point fails. Possible causes:             the point data format is incorrect.</li>          </ul> |
 
 **Reference**:
 
@@ -862,6 +924,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 Obtains the x and y coordinates of the elliptic curve point.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -876,7 +940,7 @@ Obtains the x and y coordinates of the elliptic curve point.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if point, x, or y is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if point, x, or y is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 ### OH_CryptoEcPoint_SetCoordinate()
 
@@ -887,6 +951,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto
 **Description**
 
 Sets the x and y coordinates of the elliptic curve point.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -902,7 +968,7 @@ Sets the x and y coordinates of the elliptic curve point.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if point, x, or y is NULL.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if unsupported operation or algorithm.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation for deep copy fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if crypto operation fails.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if point, x, or y is NULL.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if unsupported operation or algorithm.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation for deep copy fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if crypto operation fails.</li>          </ul> |
 
 **Reference**:
 
@@ -919,6 +985,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 
 Encodes the elliptic curve point to the specified format.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -933,7 +1001,7 @@ Encodes the elliptic curve point to the specified format.
 
 | Type | Description |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} if the operation succeeds.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} if point, format, or out is NULL,<br>           or the format string is not a valid point format.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} if the format is not supported.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} if memory allocation fails.</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} if encoding fails. Possible causes:             the point is not a valid curve point.</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) if the operation succeeds.</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) if point, format, or out is NULL,             or the format string is not a valid point format.</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) if the format is not supported.</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if memory allocation fails.</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) if encoding fails. Possible causes:             the point is not a valid curve point.</li>          </ul> |
 
 ### OH_CryptoEcPoint_Destroy()
 
@@ -944,6 +1012,8 @@ void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)
 **Description**
 
 Destroys the elliptic curve point.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 

@@ -8,6 +8,8 @@ typedef struct Sensor_Event Sensor_Event
 
 Defines a struct for the sensor data information.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)

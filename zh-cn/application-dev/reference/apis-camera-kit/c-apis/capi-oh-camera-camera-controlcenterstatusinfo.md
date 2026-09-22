@@ -8,6 +8,8 @@ typedef struct Camera_ControlCenterStatusInfo {...} Camera_ControlCenterStatusIn
 
 控制器效果激活状态信息。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 20
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

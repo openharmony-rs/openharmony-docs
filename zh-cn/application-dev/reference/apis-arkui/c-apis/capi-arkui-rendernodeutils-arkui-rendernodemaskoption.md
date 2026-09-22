@@ -8,6 +8,8 @@ typedef struct ArkUI_RenderNodeMaskOption ArkUI_RenderNodeMaskOption
 
 定义节点遮罩配置项。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

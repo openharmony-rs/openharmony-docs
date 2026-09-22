@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionContext* OH_AbilityRuntim
 
 Defines a pointer type to OH_AbilityRuntime_ModObjExtensionContextHandle.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

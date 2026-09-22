@@ -8,6 +8,8 @@ typedef struct Http_Buffer {...} Http_Buffer
 
 HTTP缓存结构体。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 20
 
 **相关模块：** [netstack](capi-netstack.md)

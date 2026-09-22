@@ -8,6 +8,8 @@ typedef void* ffrt_loop_t
 
 loop句柄，用于标识不同的loop。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 12
 
 **相关模块：** [FFRT](capi-ffrt.md)

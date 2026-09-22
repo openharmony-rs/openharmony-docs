@@ -4,6 +4,8 @@
 
 定义通用密钥库（HUKS）针对外部密钥管理扩展使用的宏、枚举值和数据结构。
 
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
 **起始版本：** 22
 
 ## 文件汇总

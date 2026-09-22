@@ -4,6 +4,8 @@
 
 The VideoEncoder module provides interfaces for video encoding.
 
+**System capability**: SystemCapability.Multimedia.Media.VideoEncoder
+
 **Since**: 9
 
 ## Files

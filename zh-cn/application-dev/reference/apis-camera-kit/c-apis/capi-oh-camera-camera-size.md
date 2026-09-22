@@ -8,6 +8,8 @@ typedef struct Camera_Size {...} Camera_Size
 
 大小参数。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

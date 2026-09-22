@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd
 
 Defines the recording command class, which is used to store the set of recording commands.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Related module**: [Drawing](capi-drawing.md)

@@ -4,6 +4,8 @@
 
 Distributed device management module, which provides APIs to obtain information about trusted devices and local devices.
 
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
 **起始版本：** 20
 
 ## 文件汇总

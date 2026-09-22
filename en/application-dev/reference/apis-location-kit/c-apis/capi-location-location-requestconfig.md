@@ -8,6 +8,8 @@ typedef struct Location_RequestConfig Location_RequestConfig
 
 Define the structure of location request parameters.
 
+**System capability**: SystemCapability.Location.Location.Core
+
 **Since**: 13
 
 **Related module**: [Location](capi-location.md)

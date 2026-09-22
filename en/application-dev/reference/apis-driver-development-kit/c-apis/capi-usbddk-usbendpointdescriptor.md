@@ -8,6 +8,8 @@ typedef struct UsbEndpointDescriptor {...} __attribute__((packed)) UsbEndpointDe
 
 Defines standard endpoint descriptors, which correspond to **Standard Endpoint Descriptor** in the USB protocol.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

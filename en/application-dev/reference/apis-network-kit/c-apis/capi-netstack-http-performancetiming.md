@@ -6,7 +6,9 @@ typedef struct Http_PerformanceTiming {...} Http_PerformanceTiming
 
 ## Overview
 
-Defines the HTTP response timing information, which will be collected via [Http_Response](capi-netstack-http-response.md).
+Defines the HTTP response timing information, which will be collected via {@link Http_Response}.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 

@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Stream ContentEmbed_Stream
 
 声明OE文档Stream结构体类型。类似于文件系统中的文件，可对其进行读取或写入，且Stream对象只能存在于Storage对象中。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

@@ -8,6 +8,8 @@ typedef struct GamePad_ButtonEvent GamePad_ButtonEvent
 
 定义手柄按键事件。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)

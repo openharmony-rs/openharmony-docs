@@ -8,6 +8,8 @@ typedef struct ArkUI_RectShape ArkUI_RectShapeOption
 
 定义矩形形状配置项，用于在ArkUI渲染节点中描述矩形或椭圆形的形状范围，可作为创建遮罩或裁剪配置项的输入。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

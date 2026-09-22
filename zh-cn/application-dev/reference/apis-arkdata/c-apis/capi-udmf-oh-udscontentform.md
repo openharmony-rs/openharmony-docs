@@ -8,6 +8,8 @@ typedef struct OH_UdsContentForm OH_UdsContentForm
 
 描述内容卡片类型的统一数据结构。
 
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
 **起始版本：** 14
 
 **相关模块：** [UDMF](capi-udmf.md)

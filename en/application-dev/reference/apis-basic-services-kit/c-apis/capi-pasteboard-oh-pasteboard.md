@@ -8,6 +8,8 @@ typedef struct OH_Pasteboard OH_Pasteboard
 
 Defines the pasteboard object to operate the system pasteboard.
 
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
 **Since**: 13
 
 **Related module**: [Pasteboard](capi-pasteboard.md)

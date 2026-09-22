@@ -8,6 +8,8 @@ typedef struct GamePad_ButtonEvent GamePad_ButtonEvent
 
 Defines gamepad button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)

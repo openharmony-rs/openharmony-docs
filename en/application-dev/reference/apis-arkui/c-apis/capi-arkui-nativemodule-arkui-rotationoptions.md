@@ -8,6 +8,8 @@ typedef struct ArkUI_RotationOptions {...} ArkUI_RotationOptions
 
 Defines the rotation options for component transition.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

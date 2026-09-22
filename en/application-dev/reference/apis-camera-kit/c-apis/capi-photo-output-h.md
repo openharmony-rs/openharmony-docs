@@ -55,7 +55,7 @@ The file declares the photo output concepts.
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)](#oh_photooutput_unregisterphotoavailablecallback) | - | Unregisters the callback used to listen for photo availability events. |
 | [Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)](#oh_photooutput_registerphotoassetavailablecallback) | - | Registers a callback to listen for photo asset availability events. |
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)](#oh_photooutput_unregisterphotoassetavailablecallback) | - | Unregisters the callback used to listen for photo asset availability events. |
-| [Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)](#oh_photooutput_capture) | - | Captures a photo. This function must be called in prior to {@link OH_PreviewOutput_Release}. Otherwise, photo capture fails. |
+| [Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)](#oh_photooutput_capture) | - | Captures a photo. This function must be called in prior to [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release). Otherwise, photo capture fails. |
 | [Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* photoOutput, Camera_PhotoCaptureSetting setting)](#oh_photooutput_capture_withcapturesetting) | - | Captures a photo with photographing parameters. |
 | [Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)](#oh_photooutput_release) | - | Releases a PhotoOutput instance. |
 | [Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)](#oh_photooutput_ismirrorsupported) | - | Checks whether mirroring is supported. |
@@ -104,6 +104,8 @@ typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)
 
 Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output frame start events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -121,6 +123,8 @@ typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, C
 **Description**
 
 Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report frame shutter events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -141,6 +145,8 @@ typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32
 
 Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output frame end events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -160,6 +166,8 @@ typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_E
 
 Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output errors.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -171,7 +179,7 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 **Reference**:
 
-CAMERA_SERVICE_FATAL_ERROR
+[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
 
 ### OH_PhotoOutput_CaptureEnd()
@@ -183,6 +191,8 @@ typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32
 **Description**
 
 Defines the callback invoked when the capture ends.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -203,6 +213,8 @@ typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOut
 
 Defines the callback invoked when the capture starts.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -210,7 +222,7 @@ Defines the callback invoked when the capture starts.
 | Parameter | Description |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)\* photoOutput | Pointer to the PhotoOutput instance that transfers the callback. |
-| info | the {@link Camera_CaptureStartInfo} which is delivered by the callback. |
+| info | the [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) which is delivered by the callback. |
 
 ### OH_PhotoOutput_OnFrameShutterEnd()
 
@@ -222,6 +234,8 @@ typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput
 
 Defines the callback invoked when frame shutter ends.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -229,7 +243,7 @@ Defines the callback invoked when frame shutter ends.
 | Parameter | Description |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)\* photoOutput | Pointer to the PhotoOutput instance that transfers the callback. |
-| info | the {@link Camera_CaptureStartInfo} which is delivered by the callback. |
+| info | the [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) which is delivered by the callback. |
 
 ### OH_PhotoOutput_CaptureReady()
 
@@ -240,6 +254,8 @@ typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)
 **Description**
 
 Defines the callback invoked when the camera is ready to take photos. When the callback is received, the next capture can be performed.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -258,6 +274,8 @@ typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* phot
 **Description**
 
 Defines the callback for the estimated capture duration.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -278,6 +296,8 @@ typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, O
 
 Defines the callback invoked when a high-resolution photo is available.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -297,6 +317,8 @@ typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutp
 
 Defines the callback invoked when a photo asset is available.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -315,6 +337,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput
 **Description**
 
 Registers a callback to listen for photo output events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -341,6 +365,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutp
 
 Unregisters the callback used to listen for photo output events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -366,6 +392,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_Phot
 
 Registers a callback to listen for capture start events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -390,6 +418,8 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput
 **Description**
 
 Obtains the photo rotation angle.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -417,6 +447,8 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_Photo
 
 Obtains the photo rotation angle.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -441,6 +473,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_Ph
 **Description**
 
 Unregisters the callback used to listen for capture start events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -467,6 +501,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* p
 
 Registers a callback to listen for capture end events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -491,6 +527,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput*
 **Description**
 
 Unregisters the callback used to listen for capture end events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -517,6 +555,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutp
 
 Registers a callback to listen for frame shutter end events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -541,6 +581,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOu
 **Description**
 
 Unregisters the callback used to listen for frame shutter end events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -567,6 +609,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput*
 
 Registers a callback to listen for camera ready events. When the callback is received, the next capture can be performed.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -591,6 +635,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutpu
 **Description**
 
 Unregisters the callback used to listen for camera ready events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -617,6 +663,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_
 
 Registers a callback to listen for estimated capture duration events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -641,6 +689,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camer
 **Description**
 
 Unregisters the callback used to listen for estimated capture duration events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -667,6 +717,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutpu
 
 Registers a callback to listen for photo availability events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -691,6 +743,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOut
 **Description**
 
 Unregisters the callback used to listen for photo availability events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -717,6 +771,8 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_Photo
 
 Registers a callback to listen for photo asset availability events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -742,6 +798,8 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_Pho
 
 Unregisters the callback used to listen for photo asset availability events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -765,7 +823,9 @@ Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 
 **Description**
 
-Captures a photo. This function must be called in prior to {@link OH_PreviewOutput_Release}. Otherwise, photo capture fails.
+Captures a photo. This function must be called in prior to [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release). Otherwise, photo capture fails.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -791,6 +851,8 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* p
 
 Captures a photo with photographing parameters.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -798,7 +860,7 @@ Captures a photo with photographing parameters.
 | Parameter | Description |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance. |
-| Camera_PhotoCaptureSetting setting | Photographing parameters, which are defined in the {@link Camera_PhotoCaptureSetting} struct. |
+| Camera_PhotoCaptureSetting setting | Photographing parameters, which are defined in the [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) struct. |
 
 **Returns**:
 
@@ -815,6 +877,8 @@ Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 **Description**
 
 Releases a PhotoOutput instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -839,6 +903,8 @@ Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutpu
 **Description**
 
 Checks whether mirroring is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -865,6 +931,8 @@ Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bo
 
 Enables dynamic photo capture.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -889,6 +957,8 @@ Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput
 **Description**
 
 Obtains the profile of a PhotoOutput instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -915,6 +985,8 @@ Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 
 Deletes the profile of a PhotoOutput instance.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -938,6 +1010,8 @@ Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photo
 **Description**
 
 Checks whether moving photos are supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -964,6 +1038,8 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 
 Enables or disables moving photos.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -988,6 +1064,8 @@ Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_Pho
 **Description**
 
 Checks whether the specified photo quality prioritization strategy is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 21
 
@@ -1015,6 +1093,8 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 
 Sets the photo quality prioritization strategy.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -1039,6 +1119,8 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 **Description**
 
 Captures a photo with photo capture setting extension.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1065,6 +1147,8 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 Creates a **OH_Camera_PhotoCaptureSettingExt** instance. Release the photo capture setting ext memory by calling [OH_PhotoOutput_DestroyPhotoCaptureSettingExt](capi-photo-output-h.md#oh_photooutput_destroyphotocapturesettingext).
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1089,6 +1173,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 **Description**
 
 Sets the image compression quality for the photo capture extension configuration.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1115,6 +1201,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 
 Sets the image rotation for the photo capture extension configuration.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1139,6 +1227,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 **Description**
 
 Sets the image mirror for the photo capture extension configuration.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1165,6 +1255,8 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 Destroy the photo capture setting ext.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1188,6 +1280,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 **Description**
 
 Sets the image location for the photo capture extension configuration.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1214,6 +1308,8 @@ Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOu
 
 Enables auto extended gainmap delivery.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1238,6 +1334,8 @@ bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOut
 **Description**
 
 Checks whether the auto extended gainmap delivery is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 

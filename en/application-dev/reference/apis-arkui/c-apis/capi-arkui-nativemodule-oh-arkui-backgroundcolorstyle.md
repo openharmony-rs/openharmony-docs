@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_BackgroundColorStyle OH_ArkUI_BackgroundColorStyle
 
 ## Overview
 
-Defines a background color style.<br> [OH_ArkUI_BackgroundColorStyle_Create](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_create) can be used to create a background color style object.<br> [OH_ArkUI_BackgroundColorStyle_Destroy](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_destroy) can be used to destroy the background color style object.<br> After the object is created, [OH_ArkUI_BackgroundColorStyle_SetColor](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setcolor) and [OH_ArkUI_BackgroundColorStyle_SetRadius](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setradius) can be used to set the background color and rounded corners.
+Defines a background color style.<br> {@link OH_ArkUI_BackgroundColorStyle_Create} can be used to<br>create a background color style object.<br> {@link OH_ArkUI_BackgroundColorStyle_Destroy} can be used to<br>destroy the background color style object.<br> After the object is created,<br>{@link OH_ArkUI_BackgroundColorStyle_SetColor} and {@link OH_ArkUI_BackgroundColorStyle_SetRadius} can be used to set the background color and rounded corners.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

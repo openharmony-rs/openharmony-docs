@@ -4,6 +4,8 @@
 
 Provides the definition of the C interface for the scan module.<br> *
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 ## Files

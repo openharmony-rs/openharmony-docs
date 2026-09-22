@@ -8,6 +8,8 @@ typedef struct ArkUI_Rect {...} ArkUI_Rect
 
 定义遮罩屏蔽区域的范围结构体。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

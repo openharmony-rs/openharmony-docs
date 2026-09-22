@@ -8,6 +8,8 @@ typedef struct OH_Camera_MetadataObjectExt OH_Camera_MetadataObjectExt
 
 元数据对象扩展结构体。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

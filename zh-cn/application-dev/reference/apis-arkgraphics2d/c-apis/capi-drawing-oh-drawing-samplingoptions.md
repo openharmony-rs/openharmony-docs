@@ -8,6 +8,8 @@ typedef struct OH_Drawing_SamplingOptions OH_Drawing_SamplingOptions
 
 定义一个采样选项，用于描述图片、位图等图像的采样方法。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)

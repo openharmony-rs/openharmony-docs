@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1
 
 ArkUI提供的Native侧Node类型接口集合。<br> Node模块相关接口需要在主线程上调用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -27,14 +29,14 @@ ArkUI提供的Native侧Node类型接口集合。<br> Node模块相关接口需�
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle (\*createNode)(ArkUI_NodeType type)](#createnode) | 基于[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)生成对应的组件并返回组件对象指针。 |
+| [ArkUI_NodeHandle (\*createNode)(ArkUI_NodeType type)](#createnode) | 基于{@link ArkUI_NodeType}生成对应的组件并返回组件对象指针。 |
 | [void (\*disposeNode)(ArkUI_NodeHandle node)](#disposenode) | 销毁组件指针指向的组件对象。在非主线程调用时需要注意待销毁组件对象的生命周期，生命周期管理不当有可能导致应用崩溃，因此不建议在非主线程上调用本接口。 |
 | [int32_t (\*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#addchild) | 将组件挂载到某个父节点之下。本接口属于节点操作接口，不建议在非主线程上调用。 |
 | [int32_t (\*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)](#removechild) | 将组件从父节点中移除。本接口属于节点操作接口，不建议在非主线程上调用。 |
 | [int32_t (\*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildafter) | 将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之后。本接口属于节点操作接口，不建议在非主线程上调用。 |
 | [int32_t (\*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)](#insertchildbefore) | 将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之前。本接口属于节点操作接口，不建议在非主线程上调用。 |
 | [int32_t (\*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)](#insertchildat) | 将组件挂载到某个父节点之下，挂载位置由<b>position</b>指定。本接口属于节点操作接口，不建议在非主线程上调用。 |
-| [int32_t (\*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)](#setattribute) | 属性设置函数，不建议在非主线程上调用。<br> 在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。 |
+| [int32_t (\*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)](#setattribute) | 属性设置函数，不建议在非主线程上调用。<br> 在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：{@link ArkUI_NodeAttributeType}中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。 |
 | [const ArkUI_AttributeItem* (\*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#getattribute) | 属性获取函数。该接口返回的指针是ArkUI框架内部的缓冲区指针，不需要开发者主动调用delete释放内存，但是需要在该函数下一次被调用前使用，否则可能会被其他值所覆盖。 |
 | [int32_t (\*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)](#resetattribute) | 重置属性函数，不建议在非主线程上调用。 |
 | [int32_t (\*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType,int32_t targetId, void* userData)](#registernodeevent) | 注册节点事件函数。 |
@@ -50,10 +52,10 @@ ArkUI提供的Native侧Node类型接口集合。<br> Node模块相关接口需�
 | [ArkUI_NodeHandle (\*getNextSibling)(ArkUI_NodeHandle node)](#getnextsibling) | 获取下一个兄弟节点。 |
 | [int32_t (\*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)](#registernodecustomevent) | 注册自定义节点事件函数。事件触发时通过registerNodeCustomEventReceiver注册的自定义事件入口函数返回。 |
 | [void (\*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)](#unregisternodecustomevent) | 反注册自定义节点事件函数。 |
-| [void (\*registerNodeCustomEventReceiver)(void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#registernodecustomeventreceiver) | 注册自定义节点事件回调统一入口函数。<br> ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。 重复调用时会覆盖前一次注册的函数。 避免直接保存[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)对象指针，数据会在回调结束后销毁。 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。 |
+| [void (\*registerNodeCustomEventReceiver)(void (\*eventReceiver)(ArkUI_NodeCustomEvent* event))](#registernodecustomeventreceiver) | 注册自定义节点事件回调统一入口函数。<br> ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。 重复调用时会覆盖前一次注册的函数。 避免直接保存{@link ArkUI_NodeCustomEvent}对象指针，数据会在回调结束后销毁。 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。 |
 | [void (\*unregisterNodeCustomEventReceiver)()](#unregisternodecustomeventreceiver) | 反注册自定义节点事件回调统一入口函数。 |
 | [int32_t (\*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)](#setmeasuredsize) | 在测算回调函数中设置组件的测算完成后的宽和高。 |
-| [int32_t (\*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#setlayoutposition) | 在布局回调函数中设置组件的位置。该接口优先级低于[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_POSITION。 |
+| [int32_t (\*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)](#setlayoutposition) | 在布局回调函数中设置组件的位置。该接口优先级低于{@link ArkUI_NodeAttributeType}中的NODE_POSITION。 |
 | [ArkUI_IntSize (\*getMeasuredSize)(ArkUI_NodeHandle node)](#getmeasuredsize) | 获取组件测算完成后的宽高尺寸。 |
 | [ArkUI_IntOffset (\*getLayoutPosition)(ArkUI_NodeHandle node)](#getlayoutposition) | 获取组件布局完成后该节点相对于父节点的偏移，单位为px。该偏移是父容器对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该偏移值。 |
 | [int32_t (\*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)](#measurenode) | 对目标组件进行测算，可以通过getMeasuredSize接口获取测算后的大小。 |
@@ -78,7 +80,7 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 **描述：**
 
-基于[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)生成对应的组件并返回组件对象指针。
+基于{@link ArkUI_NodeType}生成对应的组件并返回组件对象指针。
 
 **起始版本：** 12
 
@@ -248,7 +250,7 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 **描述：**
 
-属性设置函数，不建议在非主线程上调用。<br> 在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。
+属性设置函数，不建议在非主线程上调用。<br> 在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：{@link ArkUI_NodeAttributeType}中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。
 
 **起始版本：** 12
 
@@ -574,8 +576,8 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 | -- | -- |
 | ArkUI_NodeHandle node | 需要注册事件的节点对象。 |
 |  [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) eventType | 需要注册的事件类型。 |
-|  int32_t targetId | 自定义事件ID，当事件触发时在回调参数[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) 中携带回来。 |
-|  void* userData | 自定义事件参数，当事件触发时在回调参数[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) 中携带回来。 |
+|  int32_t targetId | 自定义事件ID，当事件触发时在回调参数{@link ArkUI_NodeCustomEvent} 中携带回来。 |
+|  void* userData | 自定义事件参数，当事件触发时在回调参数{@link ArkUI_NodeCustomEvent} 中携带回来。 |
 
 **返回值：**
 
@@ -610,7 +612,7 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 **描述：**
 
-注册自定义节点事件回调统一入口函数。<br> ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。 重复调用时会覆盖前一次注册的函数。 避免直接保存[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)对象指针，数据会在回调结束后销毁。 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。
+注册自定义节点事件回调统一入口函数。<br> ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。 重复调用时会覆盖前一次注册的函数。 避免直接保存{@link ArkUI_NodeCustomEvent}对象指针，数据会在回调结束后销毁。 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。
 
 **起始版本：** 12
 
@@ -666,7 +668,7 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 **描述：**
 
-在布局回调函数中设置组件的位置。该接口优先级低于[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_POSITION。
+在布局回调函数中设置组件的位置。该接口优先级低于{@link ArkUI_NodeAttributeType}中的NODE_POSITION。
 
 **起始版本：** 12
 

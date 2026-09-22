@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontVariationInstance OH_Drawing_FontVariationInstance
 
 Describes a variable font instance and stores the preset variable font style information.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Related module**: [Drawing](capi-drawing.md)

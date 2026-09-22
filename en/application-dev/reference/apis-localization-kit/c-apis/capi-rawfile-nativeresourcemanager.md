@@ -6,7 +6,9 @@ typedef struct NativeResourceManager NativeResourceManager
 
 ## Overview
 
-Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).
+Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through {@link OH_ResourceManager_InitNativeResourceManager}.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 

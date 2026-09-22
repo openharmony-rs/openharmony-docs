@@ -56,6 +56,8 @@ typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userDat
 
 Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -77,6 +79,8 @@ typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData,
 
 Prototype for the volume change function that is passed to [OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback).
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -96,6 +100,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManage
 
 Fetch the audio volume manager handle, which is a singleton.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -108,7 +114,7 @@ Fetch the audio volume manager handle, which is a singleton.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr |
 
 ### OH_AudioVolumeManager_GetMaxVolumeByUsage()
 
@@ -119,6 +125,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeMa
 **Description**
 
 Obtains the maximum volume level for a specific stream usage type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -134,7 +142,7 @@ Obtains the maximum volume level for a specific stream usage type.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr or invalid<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetMinVolumeByUsage()
 
@@ -145,6 +153,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeMa
 **Description**
 
 Obtains the minimum volume level for a specific stream usage type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -160,7 +170,7 @@ Obtains the minimum volume level for a specific stream usage type.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr or invalid<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetVolumeByUsage()
 
@@ -171,6 +181,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManag
 **Description**
 
 Obtains the system volume level for a specific stream usage type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -186,7 +198,7 @@ Obtains the system volume level for a specific stream usage type.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr or invalid<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_IsMuteByUsage()
 
@@ -197,6 +209,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager 
 **Description**
 
 Checks whether a stream is muted for a specific stream usage type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -212,7 +226,7 @@ Checks whether a stream is muted for a specific stream usage type.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr or invalid<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback()
 
@@ -223,6 +237,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(O
 **Description**
 
 Register callback to receive stream volume changed events.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -239,7 +255,7 @@ Register callback to receive stream volume changed events.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr or invalid<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr or invalid      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback()
 
@@ -250,6 +266,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
 **Description**
 
 Unregister stream volume change callback.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -264,7 +282,7 @@ Unregister stream volume change callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_GetRingerMode()
 
@@ -275,6 +293,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager 
 **Description**
 
 Get current ringer mode.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -289,7 +309,7 @@ Get current ringer mode.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_RegisterRingerModeChangeCallback()
 
@@ -300,6 +320,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_
 **Description**
 
 Register callback to receive ringer mode changed events.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -315,7 +337,7 @@ Register callback to receive ringer mode changed events.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 ### OH_AudioVolumeManager_UnregisterRingerModeChangeCallback()
 
@@ -326,6 +348,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(O
 **Description**
 
 Unregister ringer mode change callback.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -340,6 +364,6 @@ Unregister ringer mode change callback.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return      {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>    {@link #AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM} if input param is nullptr<br>    {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} system process error occurs |
+| OH_AudioCommon_Result | @return      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) if input param is nullptr      [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) system process error occurs |
 
 

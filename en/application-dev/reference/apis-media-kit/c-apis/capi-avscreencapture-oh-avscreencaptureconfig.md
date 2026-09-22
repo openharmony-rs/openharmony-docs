@@ -8,6 +8,8 @@ typedef struct OH_AVScreenCaptureConfig {...} OH_AVScreenCaptureConfig
 
 The struct describes the screen capture configuration.
 
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)

@@ -26,7 +26,7 @@ This file declares the functions related to the path effect in the drawing modul
 | -- | -- |
 | [OH_Drawing_PathEffect* OH_Drawing_CreateComposePathEffect(OH_Drawing_PathEffect* outer, OH_Drawing_PathEffect* inner)](#oh_drawing_createcomposepatheffect) | Creates a path effect by sequentially applying the inner effect and then the outer effect. |
 | [OH_Drawing_PathEffect* OH_Drawing_CreateCornerPathEffect(float radius)](#oh_drawing_createcornerpatheffect) | Creates a path effect that transforms the sharp angle between line segments into a rounded corner with the specified radius. |
-| [OH_Drawing_PathEffect* OH_Drawing_CreateDashPathEffect(float* intervals, int count, float phase)](#oh_drawing_createdashpatheffect) | Creates a dashed path effect. The dashed line effect is determined by a group of "on" and "off" intervals. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **intervals** is NULL or **count** is less than or equal to 0, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [OH_Drawing_PathEffect* OH_Drawing_CreateDashPathEffect(float* intervals, int count, float phase)](#oh_drawing_createdashpatheffect) | Creates a dashed path effect. The dashed line effect is determined by a group of "on" and "off" intervals. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **intervals** is NULL or **count** is less than or equal to 0, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, float deviation)](#oh_drawing_creatediscretepatheffect) | Creates a path effect that segments the path and scatters the segments in an irregular pattern along the path. |
 | [OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* path, float advance, float phase, OH_Drawing_PathDashStyle type)](#oh_drawing_createpathdasheffect) | Creates a dashed path effect. |
 | [OH_Drawing_PathEffect* OH_Drawing_CreateSumPathEffect(OH_Drawing_PathEffect* firstPathEffect, OH_Drawing_PathEffect* secondPathEffect)](#oh_drawing_createsumpatheffect) | Creates an overlay path effect based on two distinct path effects that take effect separately. |
@@ -43,6 +43,8 @@ enum OH_Drawing_PathDashStyle
 **Description**
 
 Enumerates the drawing styles for path effects.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -65,20 +67,22 @@ OH_Drawing_PathEffect* OH_Drawing_CreateComposePathEffect(OH_Drawing_PathEffect*
 
 Creates a path effect by sequentially applying the inner effect and then the outer effect.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* outer | Pointer to an outer effect, which is an {@link OH_Drawing_PathEffect} object. |
-| OH_Drawing_PathEffect* inner | Pointer to an inner effect, which is an {@link OH_Drawing_PathEffect} object. |
+| OH_Drawing_PathEffect* outer | Pointer to an outer effect, which is an [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
+| OH_Drawing_PathEffect* inner | Pointer to an inner effect, which is an [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* | Returns a pointer to the created {@link OH_Drawing_PathEffect} object.  If a null pointer is returned, the creation fails. The possible failure cause is that inner or inner is a  null pointer. |
+| OH_Drawing_PathEffect* | Returns a pointer to the created [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object.  If a null pointer is returned, the creation fails. The possible failure cause is that inner or inner is a  null pointer. |
 
 ### OH_Drawing_CreateCornerPathEffect()
 
@@ -89,6 +93,8 @@ OH_Drawing_PathEffect* OH_Drawing_CreateCornerPathEffect(float radius)
 **Description**
 
 Creates a path effect that transforms the sharp angle between line segments into a rounded corner with the specified radius.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -102,7 +108,7 @@ Creates a path effect that transforms the sharp angle between line segments into
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* | Returns a pointer to the created {@link OH_Drawing_PathEffect} object.  If a null pointer is returned, the creation fails. The possible failure cause is that radius is less than or  equal to 0. |
+| OH_Drawing_PathEffect* | Returns a pointer to the created [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object.  If a null pointer is returned, the creation fails. The possible failure cause is that radius is less than or  equal to 0. |
 
 ### OH_Drawing_CreateDashPathEffect()
 
@@ -112,7 +118,9 @@ OH_Drawing_PathEffect* OH_Drawing_CreateDashPathEffect(float* intervals, int cou
 
 **Description**
 
-Creates a dashed path effect. The dashed line effect is determined by a group of "on" and "off" intervals. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **intervals** is NULL or **count** is less than or equal to 0, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Creates a dashed path effect. The dashed line effect is determined by a group of "on" and "off" intervals. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **intervals** is NULL or **count** is less than or equal to 0, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -128,7 +136,7 @@ Creates a dashed path effect. The dashed line effect is determined by a group of
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* | Returns a pointer to the created {@link OH_Drawing_PathEffect} object. |
+| OH_Drawing_PathEffect* | Returns a pointer to the created [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
 
 ### OH_Drawing_CreateDiscretePathEffect()
 
@@ -139,6 +147,8 @@ OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, floa
 **Description**
 
 Creates a path effect that segments the path and scatters the segments in an irregular pattern along the path.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -153,7 +163,7 @@ Creates a path effect that segments the path and scatters the segments in an irr
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* | Returns a pointer to the created {@link OH_Drawing_PathEffect} object. |
+| OH_Drawing_PathEffect* | Returns a pointer to the created [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
 
 ### OH_Drawing_CreatePathDashEffect()
 
@@ -165,13 +175,15 @@ OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* pa
 
 Creates a dashed path effect.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const OH_Drawing_Path* path | Pointer to an {@link OH_Drawing_Path} object. |
+| const OH_Drawing_Path* path | Pointer to an [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. |
 | float advance | Length of each dashed line segment. |
 | float phase | Offset of the pattern within the dash segment length. |
 | [OH_Drawing_PathDashStyle](capi-drawing-path-effect-h.md#oh_drawing_pathdashstyle) type | Style of the dashed path effect. |
@@ -180,7 +192,7 @@ Creates a dashed path effect.
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* | Returns a pointer to the created {@link OH_Drawing_PathEffect} object.  If a null pointer is returned, the creation fails. The possible failure cause is that path is a null pointer or   advance is less than or equal to 0. |
+| OH_Drawing_PathEffect* | Returns a pointer to the created [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object.  If a null pointer is returned, the creation fails. The possible failure cause is that path is a null pointer or   advance is less than or equal to 0. |
 
 ### OH_Drawing_CreateSumPathEffect()
 
@@ -192,20 +204,22 @@ OH_Drawing_PathEffect* OH_Drawing_CreateSumPathEffect(OH_Drawing_PathEffect* fir
 
 Creates an overlay path effect based on two distinct path effects that take effect separately.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* firstPathEffect | Pointer to an {@link OH_Drawing_PathEffect} object. |
-| OH_Drawing_PathEffect* secondPathEffect | Pointer to an {@link OH_Drawing_PathEffect} object. |
+| OH_Drawing_PathEffect* firstPathEffect | Pointer to an [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
+| OH_Drawing_PathEffect* secondPathEffect | Pointer to an [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* | Returns a pointer to the created {@link OH_Drawing_PathEffect} object.  If a null pointer is returned, the creation fails. The possible failure cause is that firstPathEffect or   secondPathEffect is a null pointer. |
+| OH_Drawing_PathEffect* | Returns a pointer to the created [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object.  If a null pointer is returned, the creation fails. The possible failure cause is that firstPathEffect or   secondPathEffect is a null pointer. |
 
 ### OH_Drawing_PathEffectDestroy()
 
@@ -217,12 +231,14 @@ void OH_Drawing_PathEffectDestroy(OH_Drawing_PathEffect* pathEffect)
 
 Destroys an **OH_Drawing_PathEffect** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_PathEffect* pathEffect | Pointer to an {@link OH_Drawing_PathEffect} object. |
+| OH_Drawing_PathEffect* pathEffect | Pointer to an [OH_Drawing_PathEffect](capi-drawing-oh-drawing-patheffect.md) object. |
 
 

@@ -8,6 +8,8 @@ typedef struct NN_Tensor NN_Tensor
 
 Defines the tensor handle.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 11
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

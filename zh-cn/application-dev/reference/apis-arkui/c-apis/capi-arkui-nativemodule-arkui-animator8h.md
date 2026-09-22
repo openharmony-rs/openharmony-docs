@@ -8,6 +8,8 @@ typedef struct ArkUI_Animator* ArkUI_AnimatorHandle
 
 定义animator动画对象指针，用于对ArkUI（方舟UI框架）动画对象进行操作和控制。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

@@ -8,6 +8,8 @@ typedef struct NetConn_TraceRouteOption {...} NetConn_TraceRouteOption
 
 Defines the network trace route options.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 20
 
 **Related module**: [NetConnection](capi-netconnection.md)

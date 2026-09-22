@@ -6,7 +6,9 @@ struct OhosImageSourceSupportedFormatList {...}
 
 ## Overview
 
-Defines the format string list supported by the image source. It is obtained by calling [OH_ImageSource_GetSupportedFormats](capi-image-source-mdk-h.md#oh_imagesource_getsupportedformats).
+Defines the format string list supported by the image source. It is obtained by calling {@link OH_ImageSource_GetSupportedFormats}.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 

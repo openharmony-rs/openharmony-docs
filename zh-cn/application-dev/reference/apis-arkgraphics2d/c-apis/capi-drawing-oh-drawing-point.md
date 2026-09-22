@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Point OH_Drawing_Point
 
 定义一个点，用于描述坐标点。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

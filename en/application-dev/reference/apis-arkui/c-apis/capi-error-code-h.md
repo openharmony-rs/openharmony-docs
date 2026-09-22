@@ -32,6 +32,8 @@ enum ArkUI_ErrorCode
 
 Enumerates the error codes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -62,6 +64,11 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  |
 | ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  |
+| ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | Can not get attribute because it is not set before.<br>**Since**: 26.0.1 |
+| ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | The parameters of sub animation are invalid.<br>**Since**: 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | The animation group is not found on the UIContext.<br>**Since**: 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | A re-entrant call to the animation group API is detected on the same thread.<br>**Since**: 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | The animation group is not in the state required by the operation.<br>**Since**: 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  |

@@ -8,6 +8,8 @@ typedef struct ArkUI_HostWindowInfo ArkUI_HostWindowInfo
 
 定义窗口属性的HostWindowInfo类信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

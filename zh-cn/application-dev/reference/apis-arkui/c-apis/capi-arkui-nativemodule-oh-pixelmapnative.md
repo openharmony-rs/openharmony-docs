@@ -8,6 +8,8 @@ struct OH_PixelmapNative
 
 使用Image Kit定义的Native侧的OH_PixelmapNative对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

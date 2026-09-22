@@ -8,6 +8,8 @@ typedef struct OH_MIDIPortDescriptor {...} OH_MIDIPortDescriptor
 
 端口描述符结构体，用于打开端口时指定端口索引和协议行为。
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)

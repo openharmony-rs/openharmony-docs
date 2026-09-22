@@ -64,14 +64,16 @@ typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice
 
 此函数指针将指向用于返回更改的音频设备描述符的回调函数，可能返回多个音频设备描述符。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioDevice_ChangeType type | 设备连接状态类型。 {@link OH_AudioDevice_ChangeType}已连接或断开。 |
-| OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | 音频设备描述符数组，指向{@link OH_AudioDeviceDescriptorArray}设置音频设备描述符值的指针变量， 不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 来释放DeviceDescriptor数组。 |
+| OH_AudioDevice_ChangeType type | 设备连接状态类型。 [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype)已连接或断开。 |
+| OH_AudioDeviceDescriptorArray \*audioDeviceDescriptorArray | 音频设备描述符数组，指向[OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)设置音频设备描述符值的指针变量， 不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 来释放DeviceDescriptor数组。 |
 
 ### OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback()
 
@@ -82,6 +84,8 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)
 **描述：**
 
 此函数指针指向用于返回优先级最高的输出设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -101,6 +105,8 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(
 
 此函数指针指向用于返回优先级最高的输入设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -118,6 +124,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingMana
 **描述：**
 
 查询音频路由管理器句柄，该句柄应设置为路由相关函数中的第一个参数。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -142,6 +150,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *
 **描述：**
 
 根据输入的deviceFlag查询可用的设备。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -169,6 +179,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRouting
 
 获取音频可选设备列表。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -176,7 +188,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRouting
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| OH_AudioDevice_Usage deviceUsage | 指向{@link OH_AudioDevice_Usage}用于设置要获取的设备种类。 |
+| OH_AudioDevice_Usage deviceUsage | 指向[OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage)用于设置要获取的设备种类。 |
 | OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
 
 **返回值：**
@@ -195,6 +207,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRo
 
 根据音频输出流的使用场景，获取优先级最高的输出设备。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -202,7 +216,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| OH_AudioStream_Usage streamUsage | 指向{@link OH_AudioStream_Usage}用于设置音频输出流的使用场景。 |
+| OH_AudioStream_Usage streamUsage | 指向[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)用于设置音频输出流的使用场景。 |
 | OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
 
 **返回值：**
@@ -221,6 +235,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRou
 
 根据音频输入流的使用场景，获取优先级最高的输入设备。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -228,7 +244,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRou
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| OH_AudioStream_SourceType sourceType | 指向{@link OH_AudioStream_SourceType}用于设置音频输入流的使用场景。 |
+| OH_AudioStream_SourceType sourceType | 指向[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)用于设置音频输入流的使用场景。 |
 | OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
 
 **返回值：**
@@ -246,6 +262,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_Aud
 **描述：**
 
 注册音频路由管理器的设备更改回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -273,6 +291,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_A
 
 取消注册音频路由管理器的设备更改回调。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -297,6 +317,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChang
 **描述：**
 
 注册音频路由管理器的最高优先级输出设备变更回调。当指定播放流类型的最高优先级输出设备发生变化时，已注册的客户端将收到回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback) 来释放回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -324,6 +346,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredOutputDevicesCha
 
 取消通过[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) 注册的音频路由管理器最高优先级输出设备变更回调。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -348,6 +372,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredInputDevicesChange
 **描述：**
 
 注册音频路由管理器的最高优先级输入设备变更回调。当指定播放流类型的最高优先级输入设备发生变化时，已注册的客户端将收到回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback) 来释放回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -375,6 +401,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredInputDevicesChan
 
 取消通过[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) 注册的音频路由管理器最高优先级输入设备变更回调。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -399,6 +427,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManag
 **描述：**
 
 释放音频设备描述符数组对象。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -425,6 +455,8 @@ typedef void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDevic
 
 此函数指针将指向用于返回音频设备堵塞状态的回调函数，可能返回多个音频设备描述符。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -444,6 +476,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_Aud
 **描述：**
 
 查询当前设备是否支持麦克风堵塞状态检测。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 13
 
@@ -469,6 +503,8 @@ OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioR
 **描述：**
 
 设置麦克风是否堵塞状态回调。 <br>在使用此功能之前，用户应查询当前设备是否支持检测，应用只有在使用麦克风录音时，并且所使用的麦克风的堵塞状态发生改变，才会收到回调，目前此检测功能仅支持麦克风位于本地设备上。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 13
 

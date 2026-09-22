@@ -4,6 +4,8 @@
 
 Describes the OpenHarmony Certificate Manager capabilities, including certificate and credential management operations, provided for applications.
 
+**System capability**: SystemCapability.Security.CertificateManager
+
 **Since**: 22
 
 ## Files

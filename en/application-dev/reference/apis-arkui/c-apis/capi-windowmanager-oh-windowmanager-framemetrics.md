@@ -8,6 +8,8 @@ typedef struct OH_WindowManager_FrameMetrics OH_WindowManager_FrameMetrics
 
 Defines a frame metric data object.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 26.0.0
 
 **Related module**: [WindowManager](capi-windowmanager.md)

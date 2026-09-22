@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RoundRect OH_Drawing_RoundRect
 
 Defines a struct for a rounded rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

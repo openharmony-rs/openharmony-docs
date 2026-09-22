@@ -4,6 +4,8 @@
 
 Distributed device management module, which provides APIs to obtain information about trusted devices and local devices.
 
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
 **Since**: 20
 
 ## Files

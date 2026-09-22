@@ -8,6 +8,8 @@ typedef struct Scan_ScannerOptions {...} Scan_ScannerOptions
 
 Defines all parameter options of a scanner.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [OH_Scan](capi-oh-scan.md)

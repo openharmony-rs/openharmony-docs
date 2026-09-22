@@ -56,6 +56,8 @@ enum OH_AudioConverter_Result
 
 Define the result of the function execution.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -80,6 +82,8 @@ enum OH_AudioConverter_InputStatus
 
 Define the status of input audio data provided by the callback [OH_AudioConverter_RequestDataCallback](capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback). The converter uses this status to determine how to handle subsequent conversion logic (e.g., continue pulling data, pause, or flush cached data). Note for callers: Even if the callback returns [AUDIOCONVERTER_INPUT_DATA_FINISHED](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus), [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) must be called repeatedly until it returns [AUDIOCONVERTER_SUCCESS](capi-native-audio-converter-h.md#oh_audioconverter_result) with outputSize being 0 (indicating all cached data has been flushed).
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -100,6 +104,8 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 **Description**
 
 Request to create the audio converter.<br> The converter instance created by this function must be explicitly destroyed via [OH_AudioConverter_Destroy](capi-native-audio-converter-h.md#oh_audioconverter_destroy). Supported audio format specifications (valid for Input/Output) The converter only supports PCM (Pulse Code Modulation) audio formats. Sample rate supports 8000 Hz, 11025 Hz, 12000 Hz, 16000 Hz, 22050 Hz, 24000 Hz, 32000 Hz, 44100 Hz, 48000 Hz, 64000 Hz, 88200 Hz, 96000 Hz, 176400 Hz and 192000 Hz. Channel layout supports {@link CH_LAYOUT_MONO}, {@link CH_LAYOUT_STEREO}, {@link CH_LAYOUT_STEREO_DOWNMIX},<br>{@link CH_LAYOUT_2POINT1}, {@link CH_LAYOUT_3POINT0}, {@link CH_LAYOUT_SURROUND}, {@link CH_LAYOUT_3POINT1},<br>{@link CH_LAYOUT_4POINT0}, {@link CH_LAYOUT_QUAD_SIDE}, {@link CH_LAYOUT_QUAD}, {@link CH_LAYOUT_2POINT0POINT2},<br>{@link CH_LAYOUT_4POINT1}, {@link CH_LAYOUT_5POINT0}, {@link CH_LAYOUT_5POINT0_BACK},<br>{@link CH_LAYOUT_2POINT1POINT2}, {@link CH_LAYOUT_3POINT0POINT2}, {@link CH_LAYOUT_5POINT1},<br>{@link CH_LAYOUT_5POINT1_BACK}, {@link CH_LAYOUT_6POINT0}, {@link CH_LAYOUT_3POINT1POINT2},<br>{@link CH_LAYOUT_6POINT0_FRONT}, {@link CH_LAYOUT_HEXAGONAL}, {@link CH_LAYOUT_6POINT1},<br>{@link CH_LAYOUT_6POINT1_BACK}, {@link CH_LAYOUT_6POINT1_FRONT}, {@link CH_LAYOUT_7POINT0},<br>{@link CH_LAYOUT_7POINT0_FRONT}, {@link CH_LAYOUT_7POINT1}, {@link CH_LAYOUT_OCTAGONAL},<br>{@link CH_LAYOUT_5POINT1POINT2}, {@link CH_LAYOUT_7POINT1_WIDE} and {@link CH_LAYOUT_7POINT1_WIDE_BACK}. Sample format (bit depth) supports SAMPLE_U8 (8-bit unsigned PCM), SAMPLE_S16LE (16-bit short little-endian PCM), SAMPLE_S24LE (24-bit short little-endian PCM), SAMPLE_S32LE (32-bit short little-endian PCM), and SAMPLE_F32LE (32-bit float little-endian PCM).
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -127,6 +133,8 @@ void OH_AudioConverter_Destroy(OH_AudioConverter* converter)
 
 Request to release the converter.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -144,6 +152,8 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 **Description**
 
 Callback function of request data.<br> The converter invokes this callback to actively request input audio data during [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process). The caller must populate the output parameters (outInputData, outStatus) and return the valid size of input data. The maximum data size returned by a single callback is 400KB. The memory pointed to by outInputData must remain valid until [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) returns.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -171,6 +181,8 @@ OH_AudioConverter_Result OH_AudioConverter_SetInputCallback(OH_AudioConverter* c
 
 Set converter request data callback.<br> This function binds the input data callback function for the audio converter. The callback is used by [OH_AudioConverter_Process](capi-native-audio-converter-h.md#oh_audioconverter_process) to pull input audio data dynamically.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -196,6 +208,8 @@ OH_AudioConverter_Result OH_AudioConverter_Process(OH_AudioConverter* converter,
 **Description**
 
 Executing the audio format conversion.<br> This function executes audio conversion to convert to the target format, and writes the result to the user-provided output buffer. This function must be called after [OH_AudioConverter_SetInputCallback](capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback). The output buffer must be allocated and managed by the caller.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 

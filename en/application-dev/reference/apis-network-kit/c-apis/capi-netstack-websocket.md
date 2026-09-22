@@ -8,6 +8,8 @@ struct WebSocket {...}
 
 Defines the parameters for the connection closure received by the WebSocket client.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)

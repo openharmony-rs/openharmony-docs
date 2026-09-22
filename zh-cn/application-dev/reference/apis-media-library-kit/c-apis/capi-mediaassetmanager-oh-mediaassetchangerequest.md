@@ -8,6 +8,8 @@ typedef struct OH_MediaAssetChangeRequest OH_MediaAssetChangeRequest
 
 定义媒体资产更改请求。<br>此结构体提供了处理媒体资产更改请求的能力。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)

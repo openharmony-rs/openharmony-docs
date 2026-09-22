@@ -8,6 +8,8 @@ typedef struct ArkWeb_ComponentAPI {...} ArkWeb_ComponentAPI
 
 ArkWeb_ComponentAPI is an API struct provided by ArkWeb on the native side for listening to Web component lifecycle events. It inherits from the base native API type {@link ArkWeb_AnyNativeAPI}. Developers obtain this<br>struct by calling {@link OH_ArkWeb_GetNativeAPI} with the `ARKWEB_NATIVE_COMPONENT` type, and then register event<br>callbacks for Web component Controller attached, page load begin, page load end, and component destruction. This<br>struct is suitable for scenarios where you need to perceive key state changes of the Web component in native code (C/<br>C++), such as initializing native resources, synchronizing page load status, collecting analytics data, or releasing<br>associated resources upon component destruction. The related APIs must be called in the UI thread. Before calling a<br>specific member function, it is recommended to use the {@link ARKWEB_MEMBER_MISSING} macro to check whether the function pointer exists.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Related module**: [Web](capi-web.md)

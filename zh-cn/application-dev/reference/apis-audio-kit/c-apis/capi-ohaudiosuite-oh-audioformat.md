@@ -8,6 +8,8 @@ typedef struct OH_AudioFormat {...} OH_AudioFormat
 
 定义音频编创的音频流信息，用于描述基本音频格式。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

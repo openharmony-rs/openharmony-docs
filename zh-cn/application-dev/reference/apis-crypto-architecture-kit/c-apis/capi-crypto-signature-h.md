@@ -69,6 +69,8 @@ enum CryptoSignature_ParamType
 
 定义签名参数类型。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -93,6 +95,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 根据给定的算法名称创建验签上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -106,7 +110,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} verify为NULL，algoName为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持该算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) verify为NULL，algoName为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持该算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -123,6 +127,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 
 使用给定的公钥初始化验签上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -136,7 +142,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或pubKey为NULL，或密钥类型与签名算法不匹配。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 验签初始化失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或pubKey为NULL，或密钥类型与签名算法不匹配。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 验签初始化失败。</li>          </ul> |
 
 **参考：**
 
@@ -155,6 +161,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 追加待验签的消息数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -168,7 +176,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或in为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 验签更新失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或in为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) 无效的函数调用。 [since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 验签更新失败。</li>          </ul> |
 
 **参考：**
 
@@ -184,6 +192,8 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 **描述：**
 
 验签消息数据。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -211,6 +221,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 
 恢复签名数据，仅支持RSA算法。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -225,7 +237,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx、signData或rawSignData为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 恢复失败。可能的原因：签名数据长度与RSA密钥模数大小不匹配。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx、signData或rawSignData为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) 无效的函数调用。 [since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 恢复失败。可能的原因：签名数据长度与RSA密钥模数大小不匹配。</li>          </ul> |
 
 ### OH_CryptoVerify_GetAlgoName()
 
@@ -236,6 +248,8 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 **描述：**
 
 获取验签上下文的算法名称。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -261,6 +275,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 设置验签上下文的指定参数。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -275,7 +291,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或value为NULL，value->data为NULL，<br>           value->len与type期望的大小不匹配，或type不是有效的CryptoSignature_ParamType。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 设置参数失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或value为NULL，value->data为NULL，             value->len与type期望的大小不匹配，或type不是有效的CryptoSignature_ParamType。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 设置参数失败。</li>          </ul> |
 
 ### OH_CryptoVerify_GetParam()
 
@@ -286,6 +302,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 **描述：**
 
 获取验签上下文的指定参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -301,7 +319,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或value为NULL，或type不是有效的CryptoSignature_ParamType。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 输出数据的内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 获取参数失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或value为NULL，或type不是有效的CryptoSignature_ParamType。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 输出数据的内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 获取参数失败。</li>          </ul> |
 
 ### OH_CryptoVerify_Destroy()
 
@@ -312,6 +330,8 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 **描述：**
 
 销毁验签上下文。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -331,6 +351,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 根据给定的算法名称创建签名上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -344,7 +366,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} sign或algoName为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持该算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) sign或algoName为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持该算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -361,6 +383,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 
 初始化签名上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -374,7 +398,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或privKey为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名初始化失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或privKey为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 签名初始化失败。</li>          </ul> |
 
 **参考：**
 
@@ -392,6 +416,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 更新待签名的数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -405,7 +431,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或in为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。 [since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名更新失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或in为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) 无效的函数调用。 [since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 签名更新失败。</li>          </ul> |
 
 **参考：**
 
@@ -422,6 +448,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 结束签名操作。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -436,7 +464,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或out为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 签名失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或out为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 签名失败。</li>          </ul> |
 
 ### OH_CryptoSign_GetAlgoName()
 
@@ -447,6 +475,8 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 **描述：**
 
 获取签名上下文的算法名称。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -472,6 +502,8 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 设置签名上下文的指定参数。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -486,7 +518,7 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或value为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或value为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSign_GetParam()
 
@@ -497,6 +529,8 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 **描述：**
 
 获取签名上下文的指定参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -512,7 +546,7 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} ctx或value为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) ctx或value为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSign_Destroy()
 
@@ -523,6 +557,8 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 **描述：**
 
 销毁签名上下文。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -542,6 +578,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 
 创建ECC签名规格，同时支持SM2签名。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -555,7 +593,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec为NULL或spec不为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 解析eccSignature失败，             或eccSignature包含无效的DER编码ECDSA-Sig-Value。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec为NULL或spec不为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 解析eccSignature失败，             或eccSignature包含无效的DER编码ECDSA-Sig-Value。</li>          </ul> |
 
 **参考：**
 
@@ -573,6 +611,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 获取ECC签名规格中的r和s值。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -587,7 +627,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec、r或s为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec、r或s为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoEccSignatureSpec_SetRAndS()
 
@@ -598,6 +638,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 **描述：**
 
 设置ECC签名规格中的r和s值。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -613,7 +655,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec、r或s为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec、r或s为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -630,6 +672,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 将ECC签名规格编码为DER格式的签名数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -643,7 +687,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_PARAMETER_CHECK_FAILED} spec或out为NULL，或尚未通过<br>           [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)设置r和s值。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 编码失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_PARAMETER_CHECK_FAILED](capi-crypto-common-h.md#oh_crypto_errcode) spec或out为NULL，或尚未通过             [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)设置r和s值。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 编码失败。</li>          </ul> |
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 
@@ -654,6 +698,8 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 **描述：**
 
 销毁ECC签名规格。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 

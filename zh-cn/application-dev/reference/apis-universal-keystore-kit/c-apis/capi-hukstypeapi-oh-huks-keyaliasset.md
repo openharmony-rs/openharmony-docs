@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyAliasSet {...} OH_Huks_KeyAliasSet
 
 定义密钥别名集的结构体类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 20
 
 **相关模块：** [HuksTypeApi](capi-hukstypeapi.md)

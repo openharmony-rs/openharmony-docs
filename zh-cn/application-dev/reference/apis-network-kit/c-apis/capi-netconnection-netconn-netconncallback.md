@@ -8,6 +8,8 @@ struct NetConn_NetConnCallback {...}
 
 网络状态监听回调集合，所有回调事件需全部注册，无需关注的回调可以设为空实现。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 12
 
 **相关模块：** [NetConnection](capi-netconnection.md)

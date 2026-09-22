@@ -48,7 +48,7 @@ Creates headers for a request or response.
 
 | Type | Description |
 | -- | -- |
-| Http_Headers * | Http_Headers Pointer to {@link Http_Headers}. |
+| Http_Headers * | Http_Headers Pointer to [Http_Headers](capi-netstack-http-headers.md). |
 
 ### OH_Http_DestroyHeaders()
 
@@ -68,7 +68,7 @@ Destroys the headers of a request or response.
 
 | Parameter | Description |
 | -- | -- |
-| Http_Headers **headers | Pointer to the {@link Http_Headers} to be destroyed, headers ends with null. |
+| Http_Headers **headers | Pointer to the [Http_Headers](capi-netstack-http-headers.md) to be destroyed, headers ends with null. |
 
 ### OH_Http_SetHeaderValue()
 
@@ -88,7 +88,7 @@ Sets the key-value pair of the request or response header.
 
 | Parameter | Description |
 | -- | -- |
-| struct Http_Headers *headers | Pointer to the {@link Http_Headers} to be set. |
+| struct Http_Headers *headers | Pointer to the [Http_Headers](capi-netstack-http-headers.md) to be set. |
 | const char *name | Key. |
 | const char *value | Value. |
 
@@ -116,14 +116,14 @@ Obtains the value of a request or response header by key.
 
 | Parameter | Description |
 | -- | -- |
-| Http_Headers *headers | Pointer to {@link Http_Headers}. |
+| Http_Headers *headers | Pointer to [Http_Headers](capi-netstack-http-headers.md). |
 | const char *name | Key. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Http_HeaderValue * | Http_HeaderValue Pointer to the obtained {@link Http_HeaderValue}. |
+| Http_HeaderValue * | Http_HeaderValue Pointer to the obtained [Http_HeaderValue](capi-netstack-http-headervalue.md). |
 
 ### OH_Http_GetHeaderEntries()
 
@@ -149,7 +149,7 @@ Obtains all the key-value pairs of a request or response header.
 
 | Type | Description |
 | -- | -- |
-| Http_HeaderEntry * | Http_HeaderEntry Pointers to all obtained key-value pairs {@link Http_HeaderEntry}. |
+| Http_HeaderEntry * | Http_HeaderEntry Pointers to all obtained key-value pairs [Http_HeaderEntry](capi-netstack-http-headerentry.md). |
 
 ### OH_Http_DestroyHeaderEntries()
 
@@ -169,7 +169,7 @@ Destroys all key-value pairs obtained in [OH_Http_GetHeaderEntries](capi-net-htt
 
 | Parameter | Description |
 | -- | -- |
-| Http_HeaderEntry **headerEntry | Pointer to the {@link Http_HeaderEntry} to be destroyed, headerEntry ends with null. |
+| Http_HeaderEntry **headerEntry | Pointer to the [Http_HeaderEntry](capi-netstack-http-headerentry.md) to be destroyed, headerEntry ends with null. |
 
 ### OH_Http_CreateRequest()
 
@@ -217,15 +217,15 @@ Initiates an HTTP request.
 
 | Parameter | Description |
 | -- | -- |
-| Http_Request *request | Pointer to {@link Http_Request}. |
-| Http_ResponseCallback callback | Http response info, pointer to {@link Http_ResponseCallback} |
-| Http_EventsHandler handler | Callbacks to watch different events, pointer to {@link Http_EventsHandler}. |
+| Http_Request *request | Pointer to [Http_Request](capi-netstack-http-request.md). |
+| Http_ResponseCallback callback | Http response info, pointer to [Http_ResponseCallback](capi-net-http-type-h.md#http_responsecallback) |
+| Http_EventsHandler handler | Callbacks to watch different events, pointer to [Http_EventsHandler](capi-netstack-http-eventshandler.md). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int | 0 if success; non-0 otherwise. For details about error codes, see {@link Http_ErrCode}. |
+| int | 0 if success; non-0 otherwise. For details about error codes, see [Http_ErrCode](capi-net-http-type-h.md#http_errcode). |
 
 ### OH_Http_Destroy()
 
@@ -245,6 +245,6 @@ Destroy the HTTP request.
 
 | Parameter | Description |
 | -- | -- |
-| struct Http_Request **request | Pointer to the http request {@link Http_Request}. |
+| struct Http_Request **request | Pointer to the http request [Http_Request](capi-netstack-http-request.md). |
 
 

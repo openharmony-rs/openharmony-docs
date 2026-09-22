@@ -8,6 +8,8 @@ typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
 
 系统内存信息结构类型定义。用于获取系统内存的总量、空闲量、可用量等关键信息，适用于系统性能分析、内存监控、故障诊断等场景，帮助开发者了解系统内存使用状况，优化内存管理策略。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **相关模块：** [HiDebug](capi-hidebug.md)

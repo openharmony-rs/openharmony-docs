@@ -8,6 +8,8 @@ typedef struct OH_AVRecorder_Metadata {...} OH_AVRecorder_Metadata
 
 定义录制的元数据结构，用于描述媒体资源的体裁分类、视频旋转角度、地理位置及自定义参数等元数据信息，适用于录制过程中需要携带或读取媒体元数据的场景。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
 **起始版本：** 18
 
 **相关模块：** [AVRecorder](capi-avrecorder.md)

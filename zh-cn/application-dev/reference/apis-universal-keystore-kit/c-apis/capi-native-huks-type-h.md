@@ -107,6 +107,8 @@ enum OH_Huks_KeyPurpose
 
 密钥用途类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -131,6 +133,8 @@ enum OH_Huks_KeyDigest
 
 摘要算法类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -153,6 +157,8 @@ enum OH_Huks_KeyPadding
 **描述：**
 
 填充算法类型。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -177,6 +183,8 @@ enum OH_Huks_CipherMode
 
 加密模式。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -198,6 +206,8 @@ enum OH_Huks_KeySize
 **描述：**
 
 算法密钥长度。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -236,6 +246,8 @@ enum OH_Huks_KeyAlg
 **描述：**
 
 密钥使用的算法。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -280,6 +292,8 @@ enum OH_Huks_AlgSuite
 \| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。
 \| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -298,6 +312,8 @@ enum OH_Huks_KeyGenerateType
 
 生成的密钥类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -315,6 +331,8 @@ enum OH_Huks_KeyFlag
 **描述：**
 
 密钥的产生方式。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -335,6 +353,8 @@ enum OH_Huks_KeyStorageType
 
 密钥的存储方式。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -354,6 +374,8 @@ enum OH_Huks_ImportKeyType
 
 导入密钥的类型，默认为导入公钥，导入对称密钥时不需要该字段。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -372,6 +394,8 @@ enum OH_Huks_RsaPssSaltLenType
 
 PSS填充模式下盐值长度类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -388,6 +412,8 @@ enum OH_Huks_ErrCode
 **描述：**
 
 错误码。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -433,6 +459,8 @@ enum OH_Huks_TagType
 
 参数集中参数的类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -459,6 +487,8 @@ enum OH_Huks_UserAuthType
 
 密钥访问控制中的用户认证类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -478,6 +508,8 @@ enum OH_Huks_AuthAccessType
 
 安全访问控制类型，表示密钥失效的原则。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -495,6 +527,8 @@ enum OH_Huks_AuthStorageLevel
 **描述：**
 
 表示生成或导入密钥时，指定该密钥的存储安全等级。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 11
 
@@ -514,6 +548,8 @@ enum OH_Huks_UserAuthMode
 
 密钥访问控制中的用户认证模式。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -530,6 +566,8 @@ enum OH_Huks_ChallengeType
 **描述：**
 
 密钥使用时生成challenge的类型。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -554,6 +592,8 @@ enum OH_Huks_ChallengePosition
 
 challenge类型为用户自定义类型时，生成的challenge有效长度仅为8字节连续的数据，且仅支持4种位置。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -573,6 +613,8 @@ enum OH_Huks_SecureSignType
 
 生成或导入密钥时，指定该密钥的安全签名类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -589,6 +631,8 @@ enum OH_Huks_KeyClassType
 
 密钥类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -604,6 +648,8 @@ enum OH_Huks_KeyWrapType
 
 **描述：**
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 | 枚举项 | 描述 |
 | -- | -- |
 | OH_HUKS_KEY_WRAP_TYPE_HUK_BASED = 2 |  |
@@ -617,6 +663,8 @@ enum OH_Huks_Tag
 **描述：**
 
 参数集所用的TAG值枚举。 <br>1-200：密钥参数标签值。 <br>301-500：密钥使用访问控制和使用认证相关的标签值。 <br>501-600：密钥认证相关的标签值。 <br>601-1000：其他类型的标签值预留值。 <br>1001-9999：扩展标签值。 <br>11000-12000：预留值。 <br>20001-N：其他标签预留值。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 

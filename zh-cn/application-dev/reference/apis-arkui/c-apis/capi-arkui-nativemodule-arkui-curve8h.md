@@ -8,6 +8,8 @@ typedef struct ArkUI_Curve* ArkUI_CurveHandle
 
 曲线插值对象的指针类型定义。曲线插值用于控制动画属性值随时间的变化规律，不同类型的插值曲线可实现不同的动画过渡效果。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

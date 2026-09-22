@@ -8,6 +8,8 @@ typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 
 相对坐标属性编码数组，用于存储HID设备支持的相对坐标属性信息。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)

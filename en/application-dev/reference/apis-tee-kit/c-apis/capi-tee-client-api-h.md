@@ -47,6 +47,8 @@ TEEC_Result TEEC_InitializeContext(const char *name, TEEC_Context *context)
 
 Initializes a TEE.<br> The TEE must be initialized before a session is open or commands are sent. After the initialization, a connection is set up between the CA and the TEE.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -72,6 +74,8 @@ void TEEC_FinalizeContext(TEEC_Context *context)
 
 Closes the TEE.<br> After the TEE is closed, the CA is disconnected from the TEE.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -90,6 +94,8 @@ TEEC_Result TEEC_OpenSession(TEEC_Context *context, TEEC_Session *session, const
 
 Opens a session.<br> This function is used to set up a connection between the CA and the TA of the specified UUID in the specified TEE context. The data to be transferred is contained in <b>operation</b>. If a session is opened successfully, <b>session</b> is returned providing a description of the connection. If the session fails to open, <b>returnOrigin</b> is returned indicating the cause of the failure.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -99,7 +105,7 @@ Opens a session.<br> This function is used to set up a connection between the CA
 | TEEC_Context *context | [IN/OUT] Indicates the pointer to the TEE that is successfully initialized. |
 | TEEC_Session *session | [OUT] Indicates the pointer to the session. The value cannot be null. |
 | const TEEC_UUID *destination | [IN] Indicates the pointer to the UUID of the target TA. Each TA has a unique UUID. |
-| uint32_t connectionMethod | [IN] Indicates the connection method. For details, see {@link TEEC_LoginMethod}. |
+| uint32_t connectionMethod | [IN] Indicates the connection method. For details, see [TEEC_LoginMethod](capi-tee-client-constants-h.md#teec_loginmethod). |
 | const void *connectionData | [IN] Indicates the pointer to the connection data, which varies with the connection mode. If the connection mode is {@code TEEC_LOGIN_PUBLIC}, {@code TEEC_LOGIN_USER},<br>{@code TEEC_LOGIN_USER_APPLICATION}, or {@code TEEC_LOGIN_GROUP_APPLICATION}, the connection data must be null.<br>If the connection mode is {@code TEEC_LOGIN_GROUP} or {@code TEEC_LOGIN_GROUP_APPLICATION}, the connection data must point to data of the uint32_t type, which indicates the target group user to be connected by the CA. |
 | TEEC_Operation *operation | [IN/OUT] Indicates the pointer to the data to be transmitted between the CA and TA. |
 | uint32_t *returnOrigin | [IN/OUT] Indicates the pointer to the error source. For details, see {@code TEEC_ReturnCodeOrigin}. |
@@ -120,6 +126,8 @@ void TEEC_CloseSession(TEEC_Session *session)
 
 Closes a session.<br> After the session is closed, the CA is disconnected from the TA.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -137,6 +145,8 @@ TEEC_Result TEEC_InvokeCommand(TEEC_Session *session, uint32_t commandID, TEEC_O
 **Description**
 
 Sends a command to a TA.<br> The CA sends the command ID to the TA through the specified session.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -165,6 +175,8 @@ TEEC_Result TEEC_RegisterSharedMemory(TEEC_Context *context, TEEC_SharedMemory *
 
 Registers shared memory in the specified TEE context.<br> The registered shared memory can implement zero-copy. The zero-copy function, however, also requires support by the operating system. At present, zero-copy cannot be implemented in this manner.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -189,6 +201,8 @@ TEEC_Result TEEC_AllocateSharedMemory(TEEC_Context *context, TEEC_SharedMemory *
 **Description**
 
 Requests shared memory in the specified TEE context.<br> The shared memory can be used to implement zero-copy during data transmission between the REE and TEE. The zero-copy function, however, also requires support by the operating system. At present, zero-copy cannot be implemented in this manner.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -215,6 +229,8 @@ void TEEC_ReleaseSharedMemory(TEEC_SharedMemory *sharedMem)
 
 Releases the shared memory registered or acquired.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -232,6 +248,8 @@ void TEEC_RequestCancellation(TEEC_Operation *operation)
 **Description**
 
 Cancels an operation.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

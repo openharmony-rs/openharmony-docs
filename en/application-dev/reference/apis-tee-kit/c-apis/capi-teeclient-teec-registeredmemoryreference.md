@@ -8,6 +8,8 @@ typedef struct TEEC_RegisteredMemoryReference {...} TEEC_RegisteredMemoryReferen
 
 Defines a pointer to the shared memory that is registered or allocated.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

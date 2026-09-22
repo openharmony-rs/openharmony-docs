@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
 
 Registers the surface lifecycle and touch event callbacks.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

@@ -4,6 +4,8 @@
 
 Through the `rawfile` module, you can access the `rawfile` directory or resource files in the directory at the native layer, including traversing, opening, reading, seeking, and closing. <br>Traversing the directory: Open the `rawfile` directory, obtain the list of files under it, and iterate through the file names. Multi‑level directory traversal is supported. <br> Reading a file: Open a file, read file content, adjust the offset position of the file, obtain the file size and current offset, and obtain the file descriptor. Files larger than 2 GB are supported.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 ## Files

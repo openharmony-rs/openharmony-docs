@@ -8,6 +8,8 @@ typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
 
 Defines snapshot options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

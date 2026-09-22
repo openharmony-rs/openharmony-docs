@@ -68,6 +68,8 @@ enum QoS_Level
 
 Enumerates the QoS levels.
 
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -88,6 +90,8 @@ enum OH_QoS_GewuErrorCode
 **Description**
 
 Enumerates the Gewu error codes.
+
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 20
 
@@ -114,6 +118,8 @@ int OH_QoS_SetThreadQoS(QoS_Level level)
 **Description**
 
 Sets the QoS level for the current thread. The system adjusts thread scheduling priority and resource allocation policies based on the QoS level. Tasks with higher QoS levels generally receive more timely scheduling. For example, for user-invisible tasks such as background downloads or data synchronization, you can use **<br>QOS_BACKGROUND** to reduce resource usage. For high-priority tasks such as user interaction or foreground rendering, you can use **QOS_USER_INTERACTIVE** to achieve faster response times.
+
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 12
 
@@ -144,6 +150,8 @@ int OH_QoS_ResetThreadQoS()
 
 Resets the QoS level of the current thread. The thread will revert to the default system scheduling policy. For example, after a high-priority task is complete, you can call this API to restore the default level to avoid unnecessary resource usage.
 
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
+
 **Since**: 12
 
 **Returns**:
@@ -166,6 +174,8 @@ int OH_QoS_GetThreadQoS(QoS_Level *level)
 **Description**
 
 Obtains the QoS level of the current thread. This API is used to read the QoS level of the current thread. If no QoS level is set for the current thread or an internal error occurs, **-1** is returned. For example, in scenarios where you need to make decisions based on the current priority of a thread, you can first call this API to obtain the QoS level and then determine the subsequent operations accordingly.
+
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 12
 
@@ -196,6 +206,8 @@ typedef void (*OH_QoS_GewuOnResponse)(void* context, const char* response)
 
 Callback for receiving responses from the Gewu service. The Gewu service calls this callback asynchronously upon completion of inference. For non-streaming inference, it is called once. For streaming inference, it is called multiple times during the generation process. For example, when using the Gewu service for conversational AI inference, you can receive the model-generated response content through this callback.
 
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -214,6 +226,8 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes)
 **Description**
 
 Creates a Gewu session. This function loads the specified AI model based on the session attributes and initializes the inference environment to prepare for subsequent inference requests. The lifecycle of the session object begins when the **OH_QoS_GewuCreateSession** function returns and ends when **OH_QoS_GewuDestroySession** is called. Within the lifecycle, multiple requests can be created. You are advised to wait for all requests to complete or abort them before destroying the session. Otherwise, they will be automatically aborted and no replies will be received. After the session is destroyed, the session handle can no longer be used. The session attributes are passed through a JSON string, which supports the following fields: <br>- **model**: string, indicating the path of the model used by the session. It is mandatory. <br>Example of the **attributes** JSON string <br>{<br><br>&nbsp;&nbsp;&nbsp;&nbsp;"model": "/data/storage/el2/base/files/qwen2/"<br><br>&nbsp;}
+
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 20
 
@@ -239,6 +253,8 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session)
 
 Destroys a Gewu session. This function releases session-related resources and cleans up the internal state. You are advised to call this API after all requests are completed or aborted. If there are ongoing requests when this API is called, the requests will be aborted, no response will be received, and the request handles cannot be used anymore. Note that after this API is called, the session object cannot be used.
 
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -262,6 +278,8 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 **Description**
 
 Stops a specified request. This function requests the Gewu service to abort the ongoing inference computation and cleans up the state associated with the request. Before calling this API, ensure that the passed session handle is valid (not destroyed via **OH_QoS_GewuDestroySession**) and that the request handle is valid (already submitted via **OH_QoS_GewuSubmitRequest**). Typical use cases include: a user actively cancels an ongoing inference request; the application needs to release resources and terminate unnecessary requests in advance. After this function is successfully called, the client will no longer receive any reply for the request, and the request handle can no longer be used.
+
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 20
 
@@ -287,6 +305,8 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 **Description**
 
 Submits a request. This function submits an inference request to a specified session, which is then scheduled and executed by the Gewu service. Before calling this API, ensure that the input session handle is valid (already created via **OH_QoS_GewuCreateSession** and not destroyed via **OH_QoS_GewuDestroySession**). The **request**<br>parameter is a JSON string that supports the following fields: <br>- **messages: array** (mandatory): Array of messages, where each element supports the following fields: <br>&nbsp;&nbsp;&nbsp;&nbsp;- **role: string**: role type of the message. The options are as follows: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **"developer"**: instruction provided by the developer or system. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **"user"**: user input. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **"assistant"**: model generation result. <br>&nbsp;&nbsp;&nbsp;&nbsp;- **content: string**: message content. <br>- **stream: boolean or null** (optional): whether to enable streaming inference. If **true** is passed, streaming inference is enabled. This is suitable for scenarios that require step-by-step reception of generated content and lower time-to-first-token latency. In this case, the callback function will be called multiple times. If **false** or **null** is passed, non-streaming inference is used. This is suitable for scenarios where you need to obtain the complete result in a single response, and the callback function will be called only once. If no value is passed, non-streaming inference is used by default. Example of the JSON string: <br>{<br><br>&nbsp;&nbsp;&nbsp;&nbsp;"messages": [<br><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "developer",<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "You are a helpful assistant."<br><br>&nbsp;&nbsp;&nbsp;&nbsp;},<br><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "user",<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "What is OpenHarmony"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;],<br><br>&nbsp;&nbsp;&nbsp;&nbsp;"stream": true<br><br>}
+
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 20
 

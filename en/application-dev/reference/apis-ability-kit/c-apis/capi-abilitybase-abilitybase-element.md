@@ -8,6 +8,8 @@ typedef struct AbilityBase_Element {...} AbilityBase_Element
 
 The struct describes the Element in {@link Want}.
 
+**System capability**: SystemCapability.Ability.AbilityBase
+
 **Since**: 15
 
 **Related module**: [AbilityBase](capi-abilitybase.md)

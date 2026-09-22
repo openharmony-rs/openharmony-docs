@@ -8,6 +8,8 @@ typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 
 请求策略模式配置项。<br>此结构体为媒体资源请求策略模式配置项。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)

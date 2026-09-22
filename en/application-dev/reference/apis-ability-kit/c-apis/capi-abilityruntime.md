@@ -4,6 +4,8 @@
 
 Provide the definition of the C interface for the native AbilityRuntime
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 ## Files

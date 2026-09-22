@@ -25,16 +25,16 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t color)](#oh_drawing_shadereffectcreatecolorshader) | 创建具有单一颜色的着色器。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Drawing_Point* startPt, const OH_Drawing_Point* endPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)](#oh_drawing_shadereffectcreatelineargradient) | 创建着色器，在两个指定点之间生成线性渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(const OH_Drawing_Point2D* startPt, const OH_Drawing_Point2D* endPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreatelineargradientwithlocalmatrix) | 创建着色器，在两个指定点之间结合矩阵变换生成线性渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Drawing_Point* centerPt, float radius, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)](#oh_drawing_shadereffectcreateradialgradient) | 创建着色器，在给定圆心和半径的情况下生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(const OH_Drawing_Point2D* centerPt, float radius, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreateradialgradientwithlocalmatrix) | 创建着色器，在给定圆心和半径的情况下结合矩阵变换生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Drawing_Point* startPt, const OH_Drawing_Point* endPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)](#oh_drawing_shadereffectcreatelineargradient) | 创建着色器，在两个指定点之间生成线性渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(const OH_Drawing_Point2D* startPt, const OH_Drawing_Point2D* endPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreatelineargradientwithlocalmatrix) | 创建着色器，在两个指定点之间结合矩阵变换生成线性渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Drawing_Point* centerPt, float radius, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)](#oh_drawing_shadereffectcreateradialgradient) | 创建着色器，在给定圆心和半径的情况下生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(const OH_Drawing_Point2D* centerPt, float radius, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreateradialgradientwithlocalmatrix) | 创建着色器，在给定圆心和半径的情况下结合矩阵变换生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(const OH_Drawing_Point* centerPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreatesweepgradientwithlocalmatrix) | 创建着色器，在给定圆心的情况下结合矩阵变换生成扇形渐变。 <br>颜色从0°到360°渐变被称为扇形渐变。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Drawing_Point* centerPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)](#oh_drawing_shadereffectcreatesweepgradient) | 创建着色器，在给定圆心的情况下生成扇形渐变。 <br>颜色从0°到360°渐变被称为扇形渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Image* image, OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreateimageshader) | 创建图像着色器。此接口不建议用于录制类型的画布，会影响性能。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>image、samplingOptions任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileX、tileY任意一个不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Drawing_Point* centerPt, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)](#oh_drawing_shadereffectcreatesweepgradient) | 创建着色器，在给定圆心的情况下生成扇形渐变。 <br>颜色从0°到360°渐变被称为扇形渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Image* image, OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreateimageshader) | 创建图像着色器。此接口不建议用于录制类型的画布，会影响性能。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>image、samplingOptions任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileX、tileY任意一个不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_PixelMap* pixelMap, OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreatepixelmapshader) | 创建像素图着色器。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(const OH_Drawing_Point2D* startPt, float startRadius, const OH_Drawing_Point2D* endPt, float endRadius, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreatetwopointconicalgradient) | 创建着色器，在给定两个圆之间生成锥形渐变。 <br>以两个圆为起止边界，颜色沿锥面方向进行渐变的效果被称为锥形渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
-| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderEffect* dst, OH_Drawing_ShaderEffect* src, OH_Drawing_BlendMode mode)](#oh_drawing_shadereffectcreatecompose) | 按照指定的混合模式对两个着色器进行叠加，生成一个新的着色器。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>dst、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>mode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(const OH_Drawing_Point2D* startPt, float startRadius, const OH_Drawing_Point2D* endPt, float endRadius, const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)](#oh_drawing_shadereffectcreatetwopointconicalgradient) | 创建着色器，在给定两个圆之间生成锥形渐变。 <br>以两个圆为起止边界，颜色沿锥面方向进行渐变的效果被称为锥形渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
+| [OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderEffect* dst, OH_Drawing_ShaderEffect* src, OH_Drawing_BlendMode mode)](#oh_drawing_shadereffectcreatecompose) | 按照指定的混合模式对两个着色器进行叠加，生成一个新的着色器。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>dst、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>mode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [void OH_Drawing_ShaderEffectDestroy(OH_Drawing_ShaderEffect* shaderEffect)](#oh_drawing_shadereffectdestroy) | 销毁着色器对象，并收回该对象占用的内存。 |
 
 ## 枚举类型说明
@@ -48,6 +48,8 @@ enum OH_Drawing_TileMode
 **描述：**
 
 着色器效果平铺模式的枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -71,6 +73,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t
 
 创建具有单一颜色的着色器。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -83,7 +87,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ShaderEffect* | 返回创建的着色器对象的指针{@link OH_Drawing_ShaderEffect}。如果返回NULL，表示创建失败；  可能的原因是可用内存不足。 |
+| OH_Drawing_ShaderEffect* | 返回创建的着色器对象的指针[OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)。如果返回NULL，表示创建失败；  可能的原因是可用内存不足。 |
 
 ### OH_Drawing_ShaderEffectCreateLinearGradient()
 
@@ -93,7 +97,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Dr
 
 **描述：**
 
-创建着色器，在两个指定点之间生成线性渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建着色器，在两个指定点之间生成线性渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -122,7 +128,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 
 **描述：**
 
-创建着色器，在两个指定点之间结合矩阵变换生成线性渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建着色器，在两个指定点之间结合矩阵变换生成线性渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -136,7 +144,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在起点和终点之间。 |
 | uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型。 |
-| const OH_Drawing_Matrix* matrix | 指向矩阵对象{@link OH_Drawing_Matrix}的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
+| const OH_Drawing_Matrix* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
 
 **返回值：**
 
@@ -152,7 +160,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Dr
 
 **描述：**
 
-创建着色器，在给定圆心和半径的情况下生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建着色器，在给定圆心和半径的情况下生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -181,7 +191,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 
 **描述：**
 
-创建着色器，在给定圆心和半径的情况下结合矩阵变换生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建着色器，在给定圆心和半径的情况下结合矩阵变换生成径向渐变。 <br>从起点到终点颜色从内到外进行圆形渐变（从圆心向边缘扩散）被称为径向渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -195,7 +207,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在径向上。 |
 | uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型。 |
-| const OH_Drawing_Matrix* matrix | 指向矩阵对象{@link OH_Drawing_Matrix}的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
+| const OH_Drawing_Matrix* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
 
 **返回值：**
 
@@ -212,6 +224,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatr
 **描述：**
 
 创建着色器，在给定圆心的情况下结合矩阵变换生成扇形渐变。 <br>颜色从0°到360°渐变被称为扇形渐变。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -240,7 +254,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Dra
 
 **描述：**
 
-创建着色器，在给定圆心的情况下生成扇形渐变。 <br>颜色从0°到360°渐变被称为扇形渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建着色器，在给定圆心的情况下生成扇形渐变。 <br>颜色从0°到360°渐变被称为扇形渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>centerPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -268,7 +284,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Ima
 
 **描述：**
 
-创建图像着色器。此接口不建议用于录制类型的画布，会影响性能。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>image、samplingOptions任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileX、tileY任意一个不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建图像着色器。此接口不建议用于录制类型的画布，会影响性能。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>image、samplingOptions任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileX、tileY任意一个不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -276,11 +294,11 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Ima
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_Image* image | 指向图片对象{@link OH_Drawing_Image}的指针。 |
+| OH_Drawing_Image* image | 指向图片对象[OH_Drawing_Image](capi-drawing-oh-drawing-image.md)的指针。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileX | 水平方向着色器效果平铺模式类型。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileY | 垂直方向着色器效果平铺模式类型。 |
-| const OH_Drawing_SamplingOptions* samplingOptions | 指向采样选项对象{@link OH_Drawing_SamplingOptions}的指针。 |
-| const OH_Drawing_Matrix* matrix | 指向矩阵对象{@link OH_Drawing_Matrix}的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
+| const OH_Drawing_SamplingOptions* samplingOptions | 指向采样选项对象[OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)的指针。 |
+| const OH_Drawing_Matrix* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
 
 **返回值：**
 
@@ -298,17 +316,19 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_
 
 创建像素图着色器。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 20
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_PixelMap* pixelMap | 指向像素图{@link OH_Drawing_PixelMap}的指针。 |
+| OH_Drawing_PixelMap* pixelMap | 指向像素图[OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)的指针。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileX | 水平方向着色器效果平铺模式类型。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileY | 垂直方向着色器效果平铺模式类型。 |
-| const OH_Drawing_SamplingOptions* samplingOptions | 指向采样选项对象{@link OH_Drawing_SamplingOptions}的指针。 |
-| const OH_Drawing_Matrix* matrix | 指向矩阵对象{@link OH_Drawing_Matrix}的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
+| const OH_Drawing_SamplingOptions* samplingOptions | 指向采样选项对象[OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)的指针。 |
+| const OH_Drawing_Matrix* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
 
 **返回值：**
 
@@ -324,7 +344,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(co
 
 **描述：**
 
-创建着色器，在给定两个圆之间生成锥形渐变。 <br>以两个圆为起止边界，颜色沿锥面方向进行渐变的效果被称为锥形渐变。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+创建着色器，在给定两个圆之间生成锥形渐变。 <br>以两个圆为起止边界，颜色沿锥面方向进行渐变的效果被称为锥形渐变。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>startPt、endPt、colors任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>tileMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -340,7 +362,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(co
 | const float* pos | 表示colors中每个对应颜色的相对位置，数组长度需和colors保持一致。如果pos为NULL，颜色均匀分布在两个圆之间。 |
 | uint32_t size | 表示颜色数组的长度（即元素个数），范围为[0, 256]，长度为0时，表示无渐变效果。 |
 | [OH_Drawing_TileMode](capi-drawing-shader-effect-h.md#oh_drawing_tilemode) tileMode | 着色器效果平铺模式类型。 |
-| const OH_Drawing_Matrix* matrix | 指向矩阵对象{@link OH_Drawing_Matrix}的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
+| const OH_Drawing_Matrix* matrix | 指向矩阵对象[OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)的指针。如果矩阵指针为NULL，默认传入单位矩阵。 |
 
 **返回值：**
 
@@ -356,7 +378,9 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderE
 
 **描述：**
 
-按照指定的混合模式对两个着色器进行叠加，生成一个新的着色器。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>dst、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>mode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+按照指定的混合模式对两个着色器进行叠加，生成一个新的着色器。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>dst、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>mode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -366,7 +390,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderE
 | -- | -- |
 | OH_Drawing_ShaderEffect* dst | 在混合模式中作为目标色的着色器。 |
 | OH_Drawing_ShaderEffect* src | 在混合模式中作为源色的着色器。 |
-| OH_Drawing_BlendMode mode | 混合模式{@link OH_Drawing_BlendMode}。 |
+| OH_Drawing_BlendMode mode | 混合模式[OH_Drawing_BlendMode](capi-drawing-types-h.md#oh_drawing_blendmode)。 |
 
 **返回值：**
 
@@ -383,6 +407,8 @@ void OH_Drawing_ShaderEffectDestroy(OH_Drawing_ShaderEffect* shaderEffect)
 **描述：**
 
 销毁着色器对象，并收回该对象占用的内存。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 

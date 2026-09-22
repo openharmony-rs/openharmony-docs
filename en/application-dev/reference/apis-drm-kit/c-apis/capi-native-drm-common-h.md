@@ -93,6 +93,8 @@ enum DRM_EventType
 
 Enumerates the types of events that can be subscribed to.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -113,6 +115,8 @@ enum DRM_ContentProtectionLevel
 **Description**
 
 Enumerates the content protection levels.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -220,6 +224,8 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 **Description**
 
 Defines the callback used to obtain DRM information from a media source.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 

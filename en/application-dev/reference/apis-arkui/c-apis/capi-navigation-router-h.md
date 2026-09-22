@@ -33,6 +33,8 @@ enum ArkUI_NavDestinationState
 
 Defines the state of the NavDestination component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -56,6 +58,8 @@ enum ArkUI_RouterPageState
 **Description**
 
 Define the state of Router Page.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

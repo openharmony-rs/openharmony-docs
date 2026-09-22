@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_DownloadStatusInfo {...} OH_AudioSuite_DownloadStat
 
 定义下载状态信息结构体。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。

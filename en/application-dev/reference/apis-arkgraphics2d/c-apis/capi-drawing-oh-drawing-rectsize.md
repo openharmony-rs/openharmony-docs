@@ -8,6 +8,8 @@ typedef struct OH_Drawing_RectSize {...} OH_Drawing_RectSize
 
 Defines a text rectangle structure.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Related module**: [Drawing](capi-drawing.md)

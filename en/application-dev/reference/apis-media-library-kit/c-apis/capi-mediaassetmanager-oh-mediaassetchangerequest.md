@@ -8,6 +8,8 @@ typedef struct OH_MediaAssetChangeRequest OH_MediaAssetChangeRequest
 
 The struct describes a media asset change request.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 12
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)

@@ -8,6 +8,8 @@ typedef struct VkNativeBufferFormatPropertiesOHOS {...} VkNativeBufferFormatProp
 
 Defines the format properties of a <b>OH_NativeBuffer</b>.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Related module**: [Vulkan](capi-vulkan.md)

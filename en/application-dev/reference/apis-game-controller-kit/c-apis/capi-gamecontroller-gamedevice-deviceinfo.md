@@ -8,6 +8,8 @@ typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo
 
 Defines the device information.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)

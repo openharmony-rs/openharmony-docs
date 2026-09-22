@@ -8,7 +8,9 @@ typedef struct ArkWeb_ErrorInfo_ ArkWeb_ErrorInfo
 
 OH_ArkWebResourceHandler_DidFailWithErrorInfo的错误信息；
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.1
 
 **相关模块：** [Web](capi-web.md)
 

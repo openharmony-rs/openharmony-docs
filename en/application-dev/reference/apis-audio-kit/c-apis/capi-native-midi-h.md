@@ -31,7 +31,7 @@ Declares MIDI related interfaces.<br> MIDI is a technical standard that enables 
 | [OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPortDescriptor descriptor)](#oh_mididevice_openoutputport) | Opens a MIDI output port (Send data). |
 | [OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t portIndex)](#oh_mididevice_closeinputport) | Closes the MIDI input port. |
 | [OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t portIndex)](#oh_mididevice_closeoutputport) | Closes the MIDI output port. |
-| [OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, const OH_MIDIEvent *events, uint32_t eventCount, uint32_t *eventsWritten)](#oh_mididevice_send) | Sends MIDI events (Batch, Non-blocking & Atomic).<br> Attempts to write an array of events to the shared memory buffer.<br> - Atomicity: Each event in the array is treated atomically. It is either fully written or not written at all. - Partial Success: If the buffer becomes full midway, the function returns {@link #OH_MIDI_STATUS_WOULD_BLOCK} and sets eventsWritten to the number of events successfully enqueued. |
+| [OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, const OH_MIDIEvent *events, uint32_t eventCount, uint32_t *eventsWritten)](#oh_mididevice_send) | Sends MIDI events (Batch, Non-blocking & Atomic).<br> Attempts to write an array of events to the shared memory buffer.<br> - Atomicity: Each event in the array is treated atomically. It is either fully written or not written at all. - Partial Success: If the buffer becomes full midway, the function returns [OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode) and sets eventsWritten to the number of events successfully enqueued. |
 | [OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIndex, const uint8_t *data, uint32_t byteSize)](#oh_mididevice_sendsysex) | Sends a large SysEx message (Byte-Stream to UMP Helper).<br> This is a utility function for applications that handle SysEx as raw byte streams(MIDI 1.0 style, F0...F7). This works for both OH_MIDI_PROTOCOL_1_0 and OH_MIDI_PROTOCOL_2_0 sessions. The underlying service handles the final conversion based on the device's actual capabilities.<br> How it works: 1. It automatically fragments the raw bytes into a sequence of UMP Type 3(64-bit Data Message) packets. 2. It sends these packets sequentially using OH_MIDIDevice_Send. |
 | [OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t portIndex)](#oh_mididevice_flushoutputport) | Flushes pending events in output buffer.<br> Immediately discards all MIDI events currently waiting in the output buffer for the specified port. This includes events scheduled for future timestamps that haven't been processed by the service yet. |
 
@@ -51,6 +51,8 @@ Creates a MIDI client instance.
 >
 > Resource Management & Best Practices**: MIDI is a delay-sensitive system service. To ensure real-time performance (QoS) and system stability, the service enforces the following limits: 1. **System-wide limit**: A global maximum number of active MIDI clients that are allowed. 2. **Per-Application limit**: A maximum number of MIDI clients that are allowed per app uid. Applications are **strongly recommended** to maintain a single `OH_MIDIClient` instance throughout their lifecycle and use it to manage multiple devices/ports. Use [OH_MIDIClient_Destroy](capi-native-midi-h.md#oh_midiclient_destroy) to release the client and all associated resources.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -65,7 +67,7 @@ Creates a MIDI client instance.
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds,<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if client is null.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails.<br>    or {@link #OH_MIDI_STATUS_TOO_MANY_CLIENTS} if creation failed due to resource limits.          This occurs if the calling application exceeded its per-uid quota or the system is busy. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds,      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is null.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails.      or [OH_MIDI_STATUS_TOO_MANY_CLIENTS](capi-native-midi-base-h.md#oh_midistatuscode) if creation failed due to resource limits.          This occurs if the calling application exceeded its per-uid quota or the system is busy. |
 
 ### OH_MIDIClient_Destroy()
 
@@ -81,6 +83,8 @@ Destroys the MIDI client and releases resources.
 >
 > Destroying the client will close all devices and ports (fail-safe mechanism) automatically. It is recommended to close resources in reverse order (ports->devices->client) for code clarity, but this is not a mandatory requirement.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -93,7 +97,7 @@ Destroys the MIDI client and releases resources.
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is null or invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is null or invalid.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIClient_GetDeviceCount()
 
@@ -104,6 +108,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 **Description**
 
 Gets the number of connected MIDI devices.<br> This function is used to determine the size of the array needed to get devices information.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -118,7 +124,7 @@ Gets the number of connected MIDI devices.<br> This function is used to determin
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} on success.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if count is null.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) on success.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if count is null.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIClient_GetDeviceInfos()
 
@@ -132,7 +138,9 @@ Gets the information of connected MIDI devices.<br> Fills the user-allocated arr
 
 > **Note**:
 >
-> The actual number of connected devices may be larger than the capacity of the input parameter 'infos' array. If this happens, the output 'infos' array will only contain partial devices information, the output 'actualDeviceCount' will be equal to 'capacity', and the function returns {@link #OH_MIDI_STATUS_OK}. If the actual number is less than or equal to 'capacity', all available devices information will be filled into 'infos', and the output 'actualDeviceCount' reflects the actual devices number.
+> The actual number of connected devices may be larger than the capacity of the input parameter 'infos' array. If this happens, the output 'infos' array will only contain partial devices information, the output 'actualDeviceCount' will be equal to 'capacity', and the function returns [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode). If the actual number is less than or equal to 'capacity', all available devices information will be filled into 'infos', and the output 'actualDeviceCount' reflects the actual devices number.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -149,7 +157,7 @@ Gets the information of connected MIDI devices.<br> Fills the user-allocated arr
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} on success.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if infos or actualDeviceCount is null.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) on success.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if infos or actualDeviceCount is null.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIClient_OpenDevice()
 
@@ -165,6 +173,8 @@ Opens a MIDI device.
 >
 > Use [OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice) to release the device resource.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -179,7 +189,7 @@ Opens a MIDI device.
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_DEVICE_ALREADY_OPEN} if device is already opened by this client.<br>    or {@link #OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES} if the client has reached the maximum number of open devices.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if device is null or the deviceId does not exist.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_DEVICE_ALREADY_OPEN](capi-native-midi-base-h.md#oh_midistatuscode) if device is already opened by this client.      or [OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES](capi-native-midi-base-h.md#oh_midistatuscode) if the client has reached the maximum number of open devices.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if device is null or the deviceId does not exist.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIClient_OpenBLEDevice()
 
@@ -194,6 +204,8 @@ Opens MIDI BLE device asynchronously.<br> Initiates the opening of a Bluetooth L
 > **Note**:
 >
 > This function triggers a BLE scan so the opening process may take time. Use [OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice) to release the device resource.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Required permission**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -212,7 +224,7 @@ Opens MIDI BLE device asynchronously.<br> Initiates the opening of a Bluetooth L
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if the open request was successfully dispatched.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_DEVICE_ALREADY_OPEN} if device is already opened by this client.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if deviceAddr or callback is null.<br>    or {@link #OH_MIDI_STATUS_PERMISSION_DENIED} if Bluetooth permission is missing.<br>    or {@link #OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES} if the client has reached the maximum number of open devices.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if the service is unreachable. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if the open request was successfully dispatched.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_DEVICE_ALREADY_OPEN](capi-native-midi-base-h.md#oh_midistatuscode) if device is already opened by this client.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if deviceAddr or callback is null.      or [OH_MIDI_STATUS_PERMISSION_DENIED](capi-native-midi-base-h.md#oh_midistatuscode) if Bluetooth permission is missing.      or [OH_MIDI_STATUS_TOO_MANY_OPEN_DEVICES](capi-native-midi-base-h.md#oh_midistatuscode) if the client has reached the maximum number of open devices.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if the service is unreachable. |
 
 ### OH_MIDIClient_CloseDevice()
 
@@ -228,6 +240,8 @@ Closes the MIDI device.
 >
 > Closing a device automatically closes all opened ports on that device. Paired with [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice) or [OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice).
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -241,7 +255,7 @@ Closes the MIDI device.
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid. |
 
 ### OH_MIDIClient_GetPortCount()
 
@@ -252,6 +266,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 **Description**
 
 Gets the number of ports for a specific MIDI device.<br> This function is used to determine the size of the array needed to get ports information.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -267,7 +283,7 @@ Gets the number of ports for a specific MIDI device.<br> This function is used t
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} on success.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if count is null.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if deviceId is invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) on success.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if count is null.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if deviceId is invalid.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIClient_GetPortInfos()
 
@@ -281,7 +297,9 @@ Get the port information of a specific MIDI device.<br> Fills the user-allocated
 
 > **Note**:
 >
-> The actual number of connected devices may be larger than the capacity of the input parameter 'infos' array. If this happens, the output 'infos' array will only contain partial devices information, the output 'actualPortCount' will be equal to 'capacity', and the function returns {@link #OH_MIDI_STATUS_OK}. If the actual number is less than or equal to 'capacity', all available ports information will be filled into 'infos', and the output 'actualPortCount' reflects the actual ports number.
+> The actual number of connected devices may be larger than the capacity of the input parameter 'infos' array. If this happens, the output 'infos' array will only contain partial devices information, the output 'actualPortCount' will be equal to 'capacity', and the function returns [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode). If the actual number is less than or equal to 'capacity', all available ports information will be filled into 'infos', and the output 'actualPortCount' reflects the actual ports number.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -299,7 +317,7 @@ Get the port information of a specific MIDI device.<br> Fills the user-allocated
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} on success.<br>    or {@link #OH_MIDI_STATUS_INVALID_CLIENT} if client is invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if infos or actualPortCount is null.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if deviceId is invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) on success.      or [OH_MIDI_STATUS_INVALID_CLIENT](capi-native-midi-base-h.md#oh_midistatuscode) if client is invalid.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if infos or actualPortCount is null.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if deviceId is invalid.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIDevice_OpenInputPort()
 
@@ -314,6 +332,8 @@ Opens a MIDI input port (Receive data).<br> Registers a callback to receive MIDI
 > **Note**:
 >
 > Use [OH_MIDIDevice_CloseInputPort](capi-native-midi-h.md#oh_mididevice_closeinputport) to close the input port.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -330,7 +350,7 @@ Opens a MIDI input port (Receive data).<br> Registers a callback to receive MIDI
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if the port is invalid or not an input port.<br>    or {@link #OH_MIDI_STATUS_PORT_ALREADY_OPEN} if the port is already opened by this client.<br>    or {@link #OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS} if the maximum number of open ports has been reached.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if callback is null.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if the port is invalid or not an input port.      or [OH_MIDI_STATUS_PORT_ALREADY_OPEN](capi-native-midi-base-h.md#oh_midistatuscode) if the port is already opened by this client.      or [OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS](capi-native-midi-base-h.md#oh_midistatuscode) if the maximum number of open ports has been reached.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if callback is null.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIDevice_OpenOutputPort()
 
@@ -346,6 +366,8 @@ Opens a MIDI output port (Send data).
 >
 > Use [OH_MIDIDevice_CloseOutputPort](capi-native-midi-h.md#oh_mididevice_closeoutputport) to close the output port.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -359,7 +381,7 @@ Opens a MIDI output port (Send data).
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if the port is invalid or not an output port.<br>    or {@link #OH_MIDI_STATUS_PORT_ALREADY_OPEN} if the port is already opened by this client.<br>    or {@link #OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS} if the maximum number of open ports has been reached.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if the port is invalid or not an output port.      or [OH_MIDI_STATUS_PORT_ALREADY_OPEN](capi-native-midi-base-h.md#oh_midistatuscode) if the port is already opened by this client.      or [OH_MIDI_STATUS_TOO_MANY_OPEN_PORTS](capi-native-midi-base-h.md#oh_midistatuscode) if the maximum number of open ports has been reached.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIDevice_CloseInputPort()
 
@@ -375,6 +397,8 @@ Closes the MIDI input port.
 >
 > Paired with [OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport).
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -388,7 +412,7 @@ Closes the MIDI input port.
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if portIndex is invalid or not an open input port.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if portIndex is invalid or not an open input port.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIDevice_CloseOutputPort()
 
@@ -404,6 +428,8 @@ Closes the MIDI output port.
 >
 > Paired with [OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport).
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -417,7 +443,7 @@ Closes the MIDI output port.
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if portIndex is invalid or not an open output port.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if portIndex is invalid or not an open output port.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIDevice_Send()
 
@@ -427,7 +453,9 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 
 **Description**
 
-Sends MIDI events (Batch, Non-blocking & Atomic).<br> Attempts to write an array of events to the shared memory buffer.<br> - Atomicity: Each event in the array is treated atomically. It is either fully written or not written at all. - Partial Success: If the buffer becomes full midway, the function returns {@link #OH_MIDI_STATUS_WOULD_BLOCK} and sets eventsWritten to the number of events successfully enqueued.
+Sends MIDI events (Batch, Non-blocking & Atomic).<br> Attempts to write an array of events to the shared memory buffer.<br> - Atomicity: Each event in the array is treated atomically. It is either fully written or not written at all. - Partial Success: If the buffer becomes full midway, the function returns [OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode) and sets eventsWritten to the number of events successfully enqueued.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -445,7 +473,7 @@ Sends MIDI events (Batch, Non-blocking & Atomic).<br> Attempts to write an array
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if all events were written.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if portIndex is invalid, or not open.<br>    or {@link #OH_MIDI_STATUS_WOULD_BLOCK} if buffer is full (check eventsWritten).<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if arguments are invalid.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if all events were written.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if portIndex is invalid, or not open.      or [OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode) if buffer is full (check eventsWritten).      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if arguments are invalid.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 ### OH_MIDIDevice_SendSysEx()
 
@@ -460,6 +488,8 @@ Sends a large SysEx message (Byte-Stream to UMP Helper).<br> This is a utility f
 > **Warning**:
 >
 > BLOCKING CALL**: This function executes a loop and may block if the buffer fills up.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -476,7 +506,7 @@ Sends a large SysEx message (Byte-Stream to UMP Helper).<br> This is a utility f
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if all events were written.<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if portIndex is invalid, or not open.<br>    or {@link #OH_MIDI_STATUS_TIMEOUT} if the operation could not be completed within a reasonable time,<br>                                    application may use OH_MIDIDevice_FlushOutputPort to reset.<br>    or {@link #OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT} if arguments are invalid. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if all events were written.      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if portIndex is invalid, or not open.      or [OH_MIDI_STATUS_TIMEOUT](capi-native-midi-base-h.md#oh_midistatuscode) if the operation could not be completed within a reasonable time,                                      application may use OH_MIDIDevice_FlushOutputPort to reset.      or [OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT](capi-native-midi-base-h.md#oh_midistatuscode) if arguments are invalid. |
 
 ### OH_MIDIDevice_FlushOutputPort()
 
@@ -492,6 +522,8 @@ Flushes pending events in output buffer.<br> Immediately discards all MIDI event
 >
 > This function does not send "All Notes Off" event. It simply clears the queue.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -505,6 +537,6 @@ Flushes pending events in output buffer.<br> Immediately discards all MIDI event
 
 | Type | Description |
 | -- | -- |
-| OH_MIDIStatusCode | {@link #OH_MIDI_STATUS_OK} if execution succeeds,<br>    or {@link #OH_MIDI_STATUS_INVALID_DEVICE_HANDLE} if device is invalid.<br>    or {@link #OH_MIDI_STATUS_INVALID_PORT} if portIndex is invalid or not an output port.<br>    or {@link #OH_MIDI_STATUS_GENERIC_IPC_FAILURE} if connection to system service fails. |
+| OH_MIDIStatusCode | [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode) if execution succeeds,      or [OH_MIDI_STATUS_INVALID_DEVICE_HANDLE](capi-native-midi-base-h.md#oh_midistatuscode) if device is invalid.      or [OH_MIDI_STATUS_INVALID_PORT](capi-native-midi-base-h.md#oh_midistatuscode) if portIndex is invalid or not an output port.      or [OH_MIDI_STATUS_GENERIC_IPC_FAILURE](capi-native-midi-base-h.md#oh_midistatuscode) if connection to system service fails. |
 
 

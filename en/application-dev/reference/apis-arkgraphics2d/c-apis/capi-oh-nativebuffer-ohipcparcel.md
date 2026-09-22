@@ -8,6 +8,8 @@ typedef struct OHIPCParcel OHIPCParcel
 
 Defines the ipc parcel.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 23
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)

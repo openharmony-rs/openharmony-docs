@@ -8,6 +8,8 @@ typedef struct Camera_CaptureStartInfo {...} Camera_CaptureStartInfo
 
 The struct describes the capture start information.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

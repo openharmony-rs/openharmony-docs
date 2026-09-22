@@ -4,6 +4,8 @@
 
 为应用提供国际化能力，依赖libohi18n.z.so。
 
+**系统能力：** SystemCapability.Global.I18n
+
 **起始版本：** 22
 
 ## 文件汇总

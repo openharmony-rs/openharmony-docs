@@ -8,6 +8,8 @@ typedef struct OH_PixelmapNative OH_PixelmapNative
 
 Forward declaration of OH_PixelmapNative.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 13
 
 **Related module**: [ImageProcessing](capi-imageprocessing.md)

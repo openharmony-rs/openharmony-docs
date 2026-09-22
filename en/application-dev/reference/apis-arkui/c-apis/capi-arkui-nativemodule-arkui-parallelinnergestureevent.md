@@ -8,6 +8,8 @@ typedef struct ArkUI_ParallelInnerGestureEvent ArkUI_ParallelInnerGestureEvent
 
 Defines a parallel internal gesture event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

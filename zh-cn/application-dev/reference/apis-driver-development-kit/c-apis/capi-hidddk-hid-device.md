@@ -8,6 +8,8 @@ typedef struct Hid_Device {...} Hid_Device
 
 设备基本信息，用于表示HID设备的名称、厂商ID、产品ID等基本属性，在创建和操作HID设备时作为设备标识使用。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)

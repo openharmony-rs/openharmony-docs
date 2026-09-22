@@ -8,6 +8,8 @@ struct NetConn_NetAddr {...}
 
 网络地址。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 11
 
 **相关模块：** [NetConnection](capi-netconnection.md)

@@ -8,6 +8,8 @@ typedef struct Input_CustomCursor Input_CustomCursor
 
 Defines the pixel map resource of the custom mouse pointer object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Related module**: [input](capi-input.md)

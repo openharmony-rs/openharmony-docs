@@ -8,6 +8,8 @@ typedef struct CameraManager_Callbacks {...} CameraManager_Callbacks
 
 The struct describes the callbacks used to listen for camera status changes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

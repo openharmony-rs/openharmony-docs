@@ -8,6 +8,8 @@ typedef struct OH_AVFormat OH_AVFormat
 
 为OH_AVFormat接口定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 13
 
 **相关模块：** [ImageProcessing](capi-imageprocessing.md)

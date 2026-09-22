@@ -8,6 +8,8 @@ typedef struct Rdb_KeyInfo {...} Rdb_KeyInfo
 
 描述发生变化的行的主键或者行号。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **相关模块：** [RDB](capi-rdb.md)

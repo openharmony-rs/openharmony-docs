@@ -8,6 +8,8 @@ typedef struct TEE_Date_Time {...} TEE_Date_Time
 
 Definitions the date time of TEE.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

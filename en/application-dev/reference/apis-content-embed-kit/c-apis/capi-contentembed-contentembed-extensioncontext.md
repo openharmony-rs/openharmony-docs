@@ -8,6 +8,8 @@ typedef struct ContentEmbed_ExtensionContext ContentEmbed_ExtensionContext
 
 Defines the structure type of the OE Extension context.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)

@@ -8,6 +8,8 @@ typedef struct OH_Pixelmap_HdrDynamicMetadata {...} OH_Pixelmap_HdrDynamicMetada
 
 Value for HDR_DYNAMIC_METADATA.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

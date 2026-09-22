@@ -8,6 +8,8 @@ typedef struct DisplaySoloist_ExpectedRateRange {...} DisplaySoloist_ExpectedRat
 
 期望帧率范围结构体，用于设置DisplaySoloist（可变帧率独立线程绘制）的期望帧率范围。设置的期望帧率范围将作为系统调度的参考，系统会尽量在此范围内调整绘制帧率。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.HyperGraphicManager
+
 **起始版本：** 12
 
 **相关模块：** [NativeDisplaySoloist](capi-nativedisplaysoloist.md)

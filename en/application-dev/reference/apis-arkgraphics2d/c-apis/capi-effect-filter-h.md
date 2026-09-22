@@ -40,6 +40,8 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 Creates an **OH_Filter** object to apply various filter effects (such as blur, brightening, or grayscale) to an image, applicable to scenarios such as image editing, album apps, and video processing.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -53,7 +55,7 @@ Creates an **OH_Filter** object to apply various filter effects (such as blur, b
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if pixelmap or filter is NULL.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if pixelmap or filter is NULL.</li>          </ul> |
 
 ### OH_Filter_Release()
 
@@ -64,6 +66,8 @@ EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 **Description**
 
 Releases an **OH_Filter** object.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -77,7 +81,7 @@ Releases an **OH_Filter** object.
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter is NULL.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter is NULL.</li>          </ul> |
 
 ### OH_Filter_Blur()
 
@@ -88,6 +92,8 @@ EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 **Description**
 
 Creates a frosted glass filter effect and adds it to a filter effect chain.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -102,7 +108,7 @@ Creates a frosted glass filter effect and adds it to a filter effect chain.
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter is a null pointer or radius is less than 0.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter is a null pointer or radius is less than 0.</li>          </ul> |
 
 ### OH_Filter_BlurWithTileMode()
 
@@ -114,6 +120,8 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 
 Creates a frosted glass filter effect and adds it to a filter effect chain. It supports selecting the shader effect tile mode.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 14
 
 **Parameters**:
@@ -122,13 +130,13 @@ Creates a frosted glass filter effect and adds it to a filter effect chain. It s
 | -- | -- |
 | OH_Filter* filter | [in] Filter pointer, which needs to be created through OH_Filter_CreateEffect. Cannot be NULL. |
 | float radius | [in] Blur radius of the frosted glass effect. Value range: [0, +∞), in pixels. No blur effect is produced when the parameter value is 0. The larger the value, the stronger the blur effect. |
-| EffectTileMode tileMode | [in] Shader effect tile mode. Different modes determine different processing methods for image edge areas. For details about the available options, see {@link EffectTileMode}. |
+| EffectTileMode tileMode | [in] Shader effect tile mode. Different modes determine different processing methods for image edge areas. For details about the available options, see [EffectTileMode](capi-effect-types-h.md#effecttilemode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter is a null pointer or radius is less than 0.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter is a null pointer or radius is less than 0.</li>          </ul> |
 
 ### OH_Filter_Brighten()
 
@@ -139,6 +147,8 @@ EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 **Description**
 
 Creates a brightening effect and adds it to a filter effect chain.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -153,7 +163,7 @@ Creates a brightening effect and adds it to a filter effect chain.
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter is a null pointer          or brightness is outside the value range [0, 1].</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter is a null pointer          or brightness is outside the value range [0, 1].</li>          </ul> |
 
 ### OH_Filter_GrayScale()
 
@@ -165,6 +175,8 @@ EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 
 Creates a grayscale effect and adds it to a filter effect chain.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -177,7 +189,7 @@ Creates a grayscale effect and adds it to a filter effect chain.
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter is NULL.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter is NULL.</li>          </ul> |
 
 ### OH_Filter_Invert()
 
@@ -189,6 +201,8 @@ EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 
 Creates an inverted color effect and adds it to a filter effect chain.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -201,7 +215,7 @@ Creates an inverted color effect and adds it to a filter effect chain.
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter is NULL.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter is NULL.</li>          </ul> |
 
 ### OH_Filter_SetColorMatrix()
 
@@ -213,6 +227,8 @@ EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatri
 
 Creates a custom effect through a matrix and adds it to a filter effect chain, applicable to scenarios that require specific color transformation effects (such as color correction, hue adjustment, or color temperature adjustment).
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -220,13 +236,13 @@ Creates a custom effect through a matrix and adds it to a filter effect chain, a
 | Parameter | Description |
 | -- | -- |
 | OH_Filter* filter | [in] Filter pointer, which needs to be created through OH_Filter_CreateEffect. Cannot be NULL. |
-| OH_Filter_ColorMatrix* matrix | [in] Custom {@link OH_Filter_ColorMatrix} used to create the filter. Cannot be NULL. |
+| OH_Filter_ColorMatrix* matrix | [in] Custom [OH_Filter_ColorMatrix](capi-effectkit-oh-filter-colormatrix.md) used to create the filter. Cannot be NULL. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter or matrix is NULL.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter or matrix is NULL.</li>          </ul> |
 
 ### OH_Filter_GetEffectPixelMap()
 
@@ -237,6 +253,8 @@ EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative
 **Description**
 
 Obtains the bitmap generated by the filter.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -251,6 +269,6 @@ Obtains the bitmap generated by the filter.
 
 | Type | Description |
 | -- | -- |
-| EffectErrorCode | <ul>          <li>{@link EffectErrorCode#EFFECT_SUCCESS} if the operation is successful.</li><br>        <li>{@link EffectErrorCode#EFFECT_BAD_PARAMETER} if filter or pixelmap is NULL.</li>          </ul> |
+| EffectErrorCode | <ul>          <li>[EFFECT_SUCCESS](capi-effect-types-h.md#effecterrorcode) if the operation is successful.</li>          <li>[EFFECT_BAD_PARAMETER](capi-effect-types-h.md#effecterrorcode) if filter or pixelmap is NULL.</li>          </ul> |
 
 

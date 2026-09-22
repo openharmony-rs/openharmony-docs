@@ -8,6 +8,8 @@ typedef struct NetConn_NetSpecifier {...} NetConn_NetSpecifier
 
 Defines network feature sets.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 12
 
 **Related module**: [NetConnection](capi-netconnection.md)

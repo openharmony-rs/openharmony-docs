@@ -63,6 +63,8 @@ enum OH_AVTranscoder_State
 
 转码状态。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -86,6 +88,8 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 
 转码过程的状态回调函数。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
 **起始版本：** 20
 
 **参数：**
@@ -105,6 +109,8 @@ typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t err
 **描述：**
 
 转码过程中错误事件的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **起始版本：** 20
 
@@ -126,6 +132,8 @@ typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, in
 **描述：**
 
 转码进度更新时的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **起始版本：** 20
 

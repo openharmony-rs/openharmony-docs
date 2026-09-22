@@ -8,6 +8,8 @@ typedef struct UsbInterfaceDescriptor {...} __attribute__((packed)) UsbInterface
 
 Defines standard interface descriptors, which correspond to **Standard Interface Descriptor** in the USB protocol.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

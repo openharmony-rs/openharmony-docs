@@ -32,6 +32,8 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 
 获取本地设备显示名。 设备显示名称涉及用户的隐私数据，需要应用提供相关隐私声明，声明设备显示名的用途。
 
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
 **需要权限：** ohos.permission.READ_LOCAL_DEVICE_NAME
 
 **起始版本：** 20

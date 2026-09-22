@@ -4,6 +4,8 @@
 
 Provide functions for querying the status of location switch, starting and stopping locating.
 
+**System capability**: SystemCapability.Location.Location.Core
+
 **Since**: 13
 
 ## Files

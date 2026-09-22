@@ -8,6 +8,8 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 Defines the callback type for when the animation playback is complete.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

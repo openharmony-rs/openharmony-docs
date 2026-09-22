@@ -4,6 +4,8 @@
 
 Describes the native capabilities supported by ArkUI Accessibility, such as querying accessibility nodes and reporting accessibility events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 ## Files

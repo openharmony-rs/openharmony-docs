@@ -8,6 +8,8 @@ typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
 
 KDF参数结构体，表示KDF参数。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoKdfApi](capi-cryptokdfapi.md)

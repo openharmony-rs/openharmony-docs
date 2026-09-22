@@ -8,6 +8,8 @@ typedef struct ArkUI_DrawableDescriptor_AnimationController ArkUI_DrawableDescri
 
 Defines the DrawableDescriptor animation controller object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

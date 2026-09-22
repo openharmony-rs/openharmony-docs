@@ -8,6 +8,8 @@ struct OH_Pixelmap_ImageInfo
 
 Defines the pixel map information.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

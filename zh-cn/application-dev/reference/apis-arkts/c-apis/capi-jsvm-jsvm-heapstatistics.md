@@ -8,6 +8,8 @@ typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics
 
 用于保存有关JavaScript堆内存使用情况的统计信息。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

@@ -8,6 +8,8 @@ typedef struct OH_NNCompilation OH_NNCompilation
 
 Defines the compilation handle.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

@@ -4,6 +4,8 @@
 
 Provides APIs for the client applications (CAs) in the Rich Execution Environment (normal mode) to access the trusted applications (TAs) in a Trusted Execution Environment (TEE).
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 ## Files

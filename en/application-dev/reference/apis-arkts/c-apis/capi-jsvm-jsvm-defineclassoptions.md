@@ -8,6 +8,8 @@ typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
 
 DefineClass options.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 18
 
 **Related module**: [JSVM](capi-jsvm.md)

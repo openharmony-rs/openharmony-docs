@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessoryManager OH_AudioAccessoryManager
 
 Declare the audio accessory manager.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)

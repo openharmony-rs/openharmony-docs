@@ -8,6 +8,8 @@ typedef struct ARKUI_TextPickerCascadeRangeContent {...} ARKUI_TextPickerCascade
 
 Defines a multi-column cascade picker.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

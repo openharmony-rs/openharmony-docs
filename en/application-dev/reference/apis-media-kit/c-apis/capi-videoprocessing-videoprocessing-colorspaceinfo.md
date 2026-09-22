@@ -8,6 +8,8 @@ typedef struct VideoProcessing_ColorSpaceInfo {...} VideoProcessing_ColorSpaceIn
 
 Video color space information structure of querying if video color space conversion is supported.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 12
 
 **Related module**: [VideoProcessing](capi-videoprocessing.md)

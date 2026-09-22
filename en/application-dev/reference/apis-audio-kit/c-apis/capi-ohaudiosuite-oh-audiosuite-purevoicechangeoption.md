@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_PureVoiceChangeOption {...} OH_AudioSuite_PureVoice
 
 Define change voice option.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 23
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

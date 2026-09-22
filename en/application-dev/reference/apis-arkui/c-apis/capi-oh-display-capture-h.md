@@ -32,6 +32,8 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 Takes a screenshot of the entire screen. This function can be used to capture a full-screen screenshot on the specified display.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Required permission**: ohos.permission.CUSTOM_SCREEN_CAPTURE [since 14]
 
 **Since**: 14
@@ -47,6 +49,6 @@ Takes a screenshot of the entire screen. This function can be used to capture a 
 
 | Type | Description |
 | -- | -- |
-| NativeDisplayManager_ErrorCode | <ul><li>{@link DISPLAY_MANAGER_OK} If the operation is successful.</li><br>    <li>{@link DISPLAY_MANAGER_ERROR_NO_PERMISSION} If no permission.</li><br>    <li>{@link DISPLAY_MANAGER_ERROR_INVALID_PARAM} If parameter error.</li><br>    <li>{@link DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED} If device not support.</li><br>    <li>{@link DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL} If display manager service works abnormally.</li></ul> |
+| NativeDisplayManager_ErrorCode | <ul><li>[DISPLAY_MANAGER_OK](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If the operation is successful.</li>      <li>[DISPLAY_MANAGER_ERROR_NO_PERMISSION](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If no permission.</li>      <li>[DISPLAY_MANAGER_ERROR_INVALID_PARAM](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If parameter error.</li>      <li>[DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If device not support.</li>      <li>[DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) If display manager service works abnormally.</li></ul> |
 
 

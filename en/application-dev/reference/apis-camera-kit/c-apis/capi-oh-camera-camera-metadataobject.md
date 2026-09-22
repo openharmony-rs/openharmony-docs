@@ -8,6 +8,8 @@ typedef struct Camera_MetadataObject {...} Camera_MetadataObject
 
 The struct describes the camera metadata.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

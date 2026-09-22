@@ -8,6 +8,8 @@ typedef struct CloudDisk_ChangesResult {...} CloudDisk_ChangesResult
 
 查询同步根路径中文件变更的结果。该结构体包含同步根路径中文件的变更数据，包括下一个更新序列号、结尾标志以及变更数据项数组。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **相关模块：** [CloudDisk](capi-clouddisk.md)

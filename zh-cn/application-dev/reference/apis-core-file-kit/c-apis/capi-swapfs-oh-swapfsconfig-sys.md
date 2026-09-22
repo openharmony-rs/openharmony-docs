@@ -8,6 +8,8 @@ typedef struct OH_SwapfsConfig {...} OH_SwapfsConfig
 
 用于配置swapfs管理器的初始化参数，包括数据存储路径、空间限制和IO方式等。
 
+**系统能力：** SystemCapability.FileManagement.File.Swapfs
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。

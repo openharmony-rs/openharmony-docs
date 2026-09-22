@@ -8,6 +8,8 @@ typedef struct OH_CryptoDigest OH_CryptoDigest
 
 Digest structure, representing a digest context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoDigestApi](capi-cryptodigestapi.md)

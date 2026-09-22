@@ -8,6 +8,8 @@ typedef struct WindowManager_WindowProperties {...} WindowManager_WindowProperti
 
 The struct describes the window properties.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 15
 
 **Related module**: [WindowManager](capi-windowmanager.md)

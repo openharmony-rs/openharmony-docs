@@ -8,6 +8,8 @@ typedef struct NetConn_HttpProxy {...} NetConn_HttpProxy
 
 Defines the proxy configuration.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 **Related module**: [NetConnection](capi-netconnection.md)

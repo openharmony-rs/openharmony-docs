@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_ShadowOptions OH_ArkUI_ShadowOptions
 
 定义阴影选项。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

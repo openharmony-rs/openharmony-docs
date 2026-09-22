@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeySystemDescription {...} DRM_MediaKeySystemDescription
 
 The struct describes the DRM solution name and UUID list.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 12
 
 **Related module**: [Drm](capi-drm.md)

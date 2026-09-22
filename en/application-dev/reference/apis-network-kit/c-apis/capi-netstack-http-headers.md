@@ -8,6 +8,8 @@ typedef struct Http_Headers Http_Headers
 
 Defines the header of an HTTP request or response.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)

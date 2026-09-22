@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Storage ContentEmbed_Storage
 
 声明OE文档Storage结构体类型。类似于文件系统中的目录，Storage对象的父对象必须是另一个Storage对象或根Storage对象。
 
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
+
 **起始版本：** 24
 
 **相关模块：** [ContentEmbed](capi-contentembed.md)

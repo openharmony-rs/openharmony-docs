@@ -8,6 +8,8 @@ typedef struct OH_CryptoPrivKeyEncodingParams OH_CryptoPrivKeyEncodingParams
 
 私钥编码参数结构体，表示私钥编码参数。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

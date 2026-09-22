@@ -4,6 +4,8 @@
 
 Provides logging functions.<br> For example, you can use these functions to output logs of the specified log type, service domain, log tag, and log level.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 8
 
 ## Files

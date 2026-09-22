@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Rect OH_Drawing_Rect
 
 用于描述矩形。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

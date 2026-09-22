@@ -8,6 +8,8 @@ typedef struct OH_CryptoSymCipher OH_CryptoSymCipher
 
 Symmetric cipher structure, representing a symmetric cipher context.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoSymCipherApi](capi-cryptosymcipherapi.md)

@@ -4,6 +4,8 @@
 
 Provides UI capabilities of ArkUI on the native side, such as UI component creation and destruction, tree node operations, attribute setting, and event listening.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 ## 文件汇总

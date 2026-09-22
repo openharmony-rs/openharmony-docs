@@ -6,7 +6,9 @@ typedef struct Rdb_TableDetails {...} Rdb_TableDetails
 
 ## Overview
 
-Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the table.
+Describes the {@link Rdb_Statistic} details of the table.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
@@ -21,7 +23,7 @@ Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the table.
 | Name | Description |
 | -- | -- |
 | const char *table | Indicates the name of changed table. |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the upload process. |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the download process. |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) upload | Describes the {@link Rdb_Statistic} details of the upload process. |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) download | Describes the {@link Rdb_Statistic} details of the download process. |
 
 

@@ -8,6 +8,8 @@ typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 
 Device memory map created by calling {@link OH_Usb_CreateDeviceMemMap}. A buffer using the device memory map can improve data transmission performance.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 **Related module**: [UsbDdk](capi-usbddk.md)

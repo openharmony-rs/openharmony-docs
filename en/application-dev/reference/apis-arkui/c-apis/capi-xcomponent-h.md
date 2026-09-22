@@ -38,6 +38,8 @@ enum ArkUI_XComponentType
 
 Enumerates the types of the **XComponent** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |

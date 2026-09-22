@@ -8,6 +8,8 @@ typedef struct ArkUI_LayoutConstraint ArkUI_LayoutConstraint
 
 Sets the size constraints of a component during component layout.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

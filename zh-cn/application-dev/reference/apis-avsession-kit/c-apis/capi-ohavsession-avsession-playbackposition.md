@@ -8,6 +8,8 @@ typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
 
 媒体播放位置的相关属性。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)

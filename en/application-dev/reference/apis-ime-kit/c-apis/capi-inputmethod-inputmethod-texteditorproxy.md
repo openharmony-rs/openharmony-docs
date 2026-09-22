@@ -8,6 +8,8 @@ typedef struct InputMethod_TextEditorProxy InputMethod_TextEditorProxy
 
 Define the InputMethod_TextEditorProxy structure type.<br> Provides methods for getting requests and notifications from input method. When input method sends request or notification to editor, the methods will be called.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)

@@ -8,6 +8,8 @@ typedef struct WindowManager_WindowSnapshotConfig {...} WindowManager_WindowSnap
 
 Describes the configuration of the main window screenshot.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 21
 
 **Related module**: [WindowManager](capi-windowmanager.md)

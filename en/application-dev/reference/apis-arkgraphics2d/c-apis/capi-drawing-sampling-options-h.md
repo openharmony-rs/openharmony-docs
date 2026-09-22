@@ -25,8 +25,8 @@ This file declares the functions related to sampling in the drawing module. It i
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode, OH_Drawing_MipmapMode mipmapMode)](#oh_drawing_samplingoptionscreate) | Creates an **OH_Drawing_SamplingOptions** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **mipmapMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned. |
-| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | Creates a copy of an {@link OH_Drawing_SamplingOptions} object. |
+| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode, OH_Drawing_MipmapMode mipmapMode)](#oh_drawing_samplingoptionscreate) | Creates an **OH_Drawing_SamplingOptions** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **mipmapMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned. |
+| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | Creates a copy of an [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. |
 | [void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionsdestroy) | Destroys an **OH_Drawing_SamplingOptions** object and reclaims the memory occupied by the object. |
 
 ## Enum type description
@@ -40,6 +40,8 @@ enum OH_Drawing_FilterMode
 **Description**
 
 Defines an enum for the filter modes.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -57,6 +59,8 @@ enum OH_Drawing_MipmapMode
 **Description**
 
 Defines an enum for the mipmap modes.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -77,7 +81,9 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMo
 
 **Description**
 
-Creates an **OH_Drawing_SamplingOptions** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **mipmapMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+Creates an **OH_Drawing_SamplingOptions** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **mipmapMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -92,7 +98,7 @@ Creates an **OH_Drawing_SamplingOptions** object. This API may return an error c
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_SamplingOptions* | Returns a pointer to the created {@link OH_Drawing_SamplingOptions} object. |
+| OH_Drawing_SamplingOptions* | Returns a pointer to the created [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. |
 
 ### OH_Drawing_SamplingOptionsCopy()
 
@@ -102,7 +108,9 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOp
 
 **Description**
 
-Creates a copy of an {@link OH_Drawing_SamplingOptions} object.
+Creates a copy of an [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -110,13 +118,13 @@ Creates a copy of an {@link OH_Drawing_SamplingOptions} object.
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_SamplingOptions* samplingOptions | Pointer to the {@link OH_Drawing_SamplingOptions} object. |
+| OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_SamplingOptions* | Returns a pointer to the created {@link OH_Drawing_SamplingOptions} object copy. If NULL is returned, the  creation fails. The possible failure cause is that no memory is available or samplingOptions is NULL. |
+| OH_Drawing_SamplingOptions* | Returns a pointer to the created [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object copy. If NULL is returned, the  creation fails. The possible failure cause is that no memory is available or samplingOptions is NULL. |
 
 ### OH_Drawing_SamplingOptionsDestroy()
 
@@ -128,12 +136,14 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 
 Destroys an **OH_Drawing_SamplingOptions** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_SamplingOptions* samplingOptions | Pointer to the {@link OH_Drawing_SamplingOptions} object. |
+| OH_Drawing_SamplingOptions* samplingOptions | Pointer to the [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md) object. |
 
 

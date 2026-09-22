@@ -8,6 +8,8 @@ typedef struct OH_AudioNodeStruct OH_AudioNode
 
 Declare the audio node. The handle of audio suite node is used for audio suite node related functions.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_CommandPath ArkUI_CommandPathOption
 
 Defines a custom path option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

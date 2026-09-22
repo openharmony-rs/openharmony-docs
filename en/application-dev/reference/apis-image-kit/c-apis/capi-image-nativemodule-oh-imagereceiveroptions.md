@@ -8,6 +8,8 @@ typedef struct OH_ImageReceiverOptions OH_ImageReceiverOptions
 
 The struct describes the data type name of the image receiver options.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

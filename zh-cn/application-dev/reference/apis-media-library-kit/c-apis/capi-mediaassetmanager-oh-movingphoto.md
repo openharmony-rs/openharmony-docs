@@ -8,6 +8,8 @@ typedef struct OH_MovingPhoto OH_MovingPhoto
 
 定义动态照片。<br>此结构体提供了获取关于动态照片的信息的能力。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 13
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)

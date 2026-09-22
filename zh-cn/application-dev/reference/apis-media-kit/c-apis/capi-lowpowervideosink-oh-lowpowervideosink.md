@@ -8,6 +8,8 @@ typedef struct OH_LowPowerVideoSink OH_LowPowerVideoSink
 
 LowPowerVideoSink声明。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **相关模块：** [LowPowerVideoSink](capi-lowpowervideosink.md)

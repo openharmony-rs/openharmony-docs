@@ -8,6 +8,8 @@ typedef struct AnnualTimeZoneRule {...} AnnualTimeZoneRule
 
 Defines the time zone rule that takes effect annually.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Related module**: [i18n](capi-i18n.md)

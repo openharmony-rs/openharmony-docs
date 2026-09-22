@@ -8,6 +8,8 @@ typedef struct PreviewOutput_Callbacks {...} PreviewOutput_Callbacks
 
 The struct describes the callbacks related to preview output.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

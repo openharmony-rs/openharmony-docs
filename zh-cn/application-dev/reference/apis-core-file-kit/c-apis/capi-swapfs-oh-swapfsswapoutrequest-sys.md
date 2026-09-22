@@ -8,6 +8,8 @@ typedef struct OH_SwapfsSwapOutRequest {...} OH_SwapfsSwapOutRequest
 
 换出操作的请求参数。用于在应用需要释放内存时，主动触发数据换出到交换分区的场景，例如内存紧张时将部分数据临时换出。
 
+**系统能力：** SystemCapability.FileManagement.File.Swapfs
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。

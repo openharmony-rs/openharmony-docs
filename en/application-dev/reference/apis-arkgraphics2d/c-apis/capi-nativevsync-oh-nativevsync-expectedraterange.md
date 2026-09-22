@@ -8,6 +8,8 @@ typedef struct OH_NativeVSync_ExpectedRateRange {...} OH_NativeVSync_ExpectedRat
 
 Defines the expected frame rate range struct.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeVsync
+
 **Since**: 20
 
 **Related module**: [NativeVsync](capi-nativevsync.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption
 
 定义animator动画参数对象，用于创建animator动画时配置动画属性参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

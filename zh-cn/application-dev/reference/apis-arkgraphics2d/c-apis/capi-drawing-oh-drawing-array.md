@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Array OH_Drawing_Array
 
 定义数组对象，用于存储多个同类型对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 14
 
 **相关模块：** [Drawing](capi-drawing.md)

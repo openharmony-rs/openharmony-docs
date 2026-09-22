@@ -8,6 +8,8 @@ typedef struct Print_PageSize {...} Print_PageSize
 
 Defines a struct for the page size.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

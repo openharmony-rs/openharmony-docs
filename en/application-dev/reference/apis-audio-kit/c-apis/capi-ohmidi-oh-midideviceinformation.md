@@ -8,6 +8,8 @@ typedef struct OH_MIDIDeviceInformation {...} OH_MIDIDeviceInformation
 
 Device Information. Used for enumeration and display.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)

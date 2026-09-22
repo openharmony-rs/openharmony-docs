@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
 
 为DRM_MediaKeySystemInfo接口定义native层对象。
 
+**系统能力：** SystemCapability.Multimedia.Media.Spliter
+
 **起始版本：** 11
 
 **相关模块：** [AVDemuxer](capi-avdemuxer.md)

@@ -8,6 +8,8 @@ typedef struct Ethernet_NetAddr {...} Ethernet_NetAddr
 
 Defines a network address.
 
+**System capability**: SystemCapability.Communication.NetManager.Ethernet
+
 **Since**: 26.0.0
 
 **Related module**: [netmanager_ext](capi-netmanager-ext.md)

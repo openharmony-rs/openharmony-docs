@@ -4,6 +4,8 @@
 
 描述OpenHarmony为应用提供的非对称加解密接口。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 ## 文件汇总

@@ -8,6 +8,8 @@ typedef struct ffrt_dependence_t {...} ffrt_dependence_t
 
 Defines the dependency data structure used to describe a single dependency between tasks.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)

@@ -8,6 +8,8 @@ typedef struct Ethernet_MacAddressInfo {...} Ethernet_MacAddressInfo
 
 Defines the MAC address of the Ethernet NIC.
 
+**System capability**: SystemCapability.Communication.NetManager.Ethernet
+
 **Since**: 26.0.0
 
 **Related module**: [netmanager_ext](capi-netmanager-ext.md)

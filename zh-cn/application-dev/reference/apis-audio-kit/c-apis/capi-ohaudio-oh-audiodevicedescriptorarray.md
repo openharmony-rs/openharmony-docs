@@ -8,6 +8,8 @@ typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
 
 声明音频设备描述符数组。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

@@ -32,6 +32,8 @@ enum ArkUI_NodeCustomEventType
 
 Defines the custom component event type.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |

@@ -8,6 +8,8 @@ struct OH_NativeBundle_AbilityResourceInfo
 
 表示组件资源信息。
 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 **起始版本：** 21
 
 **相关模块：** [Native_Bundle](capi-native-bundle.md)

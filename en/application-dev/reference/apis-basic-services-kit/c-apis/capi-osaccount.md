@@ -4,6 +4,8 @@
 
 Provide the definition of the C interface for the native OsAccount.
 
+**System capability**: SystemCapability.Account.OsAccount
+
 **Since**: 12
 
 ## Files

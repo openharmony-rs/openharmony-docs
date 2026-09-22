@@ -8,6 +8,8 @@ typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI
 
 ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供了创建和销毁消息、设置和获取消息类型、管理消息数据缓冲区等函数。此API是postMessage桥接的一部分， 支持Native代码与HTML页面之间的双向通信。<br>Web消息相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过{@link ARKWEB_MEMBER_MISSING} 校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)

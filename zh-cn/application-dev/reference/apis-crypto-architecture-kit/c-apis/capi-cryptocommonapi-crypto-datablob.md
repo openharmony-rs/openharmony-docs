@@ -8,6 +8,8 @@ typedef struct Crypto_DataBlob {...} Crypto_DataBlob
 
 加解密数据结构体。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **相关模块：** [CryptoCommonApi](capi-cryptocommonapi.md)

@@ -4,6 +4,8 @@
 
 The VideoDecoder module provides interfaces for video decoding.
 
+**System capability**: SystemCapability.Multimedia.Media.VideoDecoder
+
 **Since**: 9
 
 ## Files

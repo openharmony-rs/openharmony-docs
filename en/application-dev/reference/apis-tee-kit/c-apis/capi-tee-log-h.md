@@ -83,6 +83,8 @@ enum LOG_LEVEL
 
 Enumerates the levels of the log.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -107,6 +109,8 @@ void uart_cprintf(const char *fmt, ...)
 
 Provides to print UART logs.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -124,6 +128,8 @@ void uart_printf_func(const char *fmt, ...)
 **Description**
 
 Provides to print UART logs.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -143,6 +149,8 @@ void tee_print(LOG_LEVEL log_level, const char *fmt, ...)
 
 Provides to print TEE logs.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -161,6 +169,8 @@ void tee_print_driver(LOG_LEVEL log_level, const char *log_tag, const char *fmt,
 **Description**
 
 Provides to print TEE driver logs.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -183,6 +193,8 @@ extern const char *g_debug_prefix
 **Description**
 
 Defines the debug prefix string.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

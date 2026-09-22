@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities
 
 Defines the capabilities of an audio accessory.<br> <b>Version Control:</b> Callers MUST set structSize to sizeof(OH_AudioAccessoryCapabilities).
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)

@@ -8,6 +8,8 @@ typedef struct OH_IPC_MessageOption {...} OH_IPC_MessageOption
 
 Defines the IPC message options.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 **Since**: 12
 
 **Related module**: [OHIPCRemoteObject](capi-ohipcremoteobject.md)

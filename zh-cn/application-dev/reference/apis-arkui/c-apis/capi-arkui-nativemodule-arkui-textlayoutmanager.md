@@ -8,6 +8,8 @@ typedef struct ArkUI_TextLayoutManager ArkUI_TextLayoutManager
 
 定义文本布局管理器对象，用于对文本进行布局处理，适用于需要精细控制文本显示和排版效果的场景，可帮助开发者实现自定义的文本布局需求。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

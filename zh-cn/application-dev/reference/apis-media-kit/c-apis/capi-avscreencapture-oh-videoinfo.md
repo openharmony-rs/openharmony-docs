@@ -8,6 +8,8 @@ typedef struct OH_VideoInfo {...} OH_VideoInfo
 
 视频信息。<br> 用于配置屏幕录制时的视频采集参数和编码参数。该结构体包含视频采集参数（如分辨率、采集格式等）和视频编码参数， 适用于需要自定义屏幕录制视频输出参数的场景。开发者根据实际需求配置相关参数后，在调用屏幕录制相关接口时使用。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
 **起始版本：** 10
 
 **相关模块：** [AVScreenCapture](capi-avscreencapture.md)

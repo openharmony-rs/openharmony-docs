@@ -55,6 +55,8 @@ enum NativeDisplayManager_Rotation
 
 Enumerates the clockwise rotation angles of a display.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -73,6 +75,8 @@ enum NativeDisplayManager_Orientation
 **Description**
 
 Enumerates the orientations of a display.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -93,6 +97,8 @@ enum NativeDisplayManager_ErrorCode
 **Description**
 
 Enumerates the status codes returned by the display manager interface.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 12
 
@@ -118,6 +124,8 @@ enum NativeDisplayManager_FoldDisplayMode
 
 Enumerates the display modes of a foldable device.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -137,6 +145,8 @@ enum NativeDisplayManager_DisplayState
 **Description**
 
 Enumerates the states of a display.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 14
 
@@ -159,6 +169,8 @@ enum NativeDisplayManager_SourceMode
 **Description**
 
 Enumerates the source modes of a device.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Since**: 20
 

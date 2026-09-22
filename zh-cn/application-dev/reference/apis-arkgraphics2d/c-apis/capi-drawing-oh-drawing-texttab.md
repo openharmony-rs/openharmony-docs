@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextTab OH_Drawing_TextTab
 
 用于管理文本制表符。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **相关模块：** [Drawing](capi-drawing.md)

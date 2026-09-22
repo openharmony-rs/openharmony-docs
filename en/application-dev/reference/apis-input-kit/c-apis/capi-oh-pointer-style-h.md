@@ -38,6 +38,8 @@ enum Input_PointerStyle
 
 Enumerates the pointer styles.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 | Enum item | Description |

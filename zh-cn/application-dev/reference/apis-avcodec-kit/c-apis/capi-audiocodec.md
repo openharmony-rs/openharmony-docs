@@ -4,6 +4,8 @@
 
 AudioCodec模块提供用于音频编解码功能的函数。
 
+**系统能力：** SystemCapability.Multimedia.Media.AudioCodec
+
 **起始版本：** 11
 
 ## 文件汇总

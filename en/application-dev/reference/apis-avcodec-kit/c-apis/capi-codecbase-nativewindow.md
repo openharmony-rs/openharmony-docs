@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 Describes a native object for the graphics interface.
 
+**System capability**: SystemCapability.Multimedia.Media.CodecBase
+
 **Since**: 9
 
 **Related module**: [CodecBase](capi-codecbase.md)

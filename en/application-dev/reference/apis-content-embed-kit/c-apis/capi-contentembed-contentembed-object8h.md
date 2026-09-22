@@ -8,6 +8,8 @@ typedef struct ContentEmbed_Object* ContentEmbed_ObjectHandle
 
 Declares the pointer type of the ContentEmbed_Object object.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)

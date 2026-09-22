@@ -8,6 +8,8 @@ typedef struct ArkUI_Matrix4TranslationOptions ArkUI_Matrix4TranslationOptions
 
 Defines a matrix translation object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

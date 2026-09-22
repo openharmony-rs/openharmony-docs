@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 
 读/写操作的请求参数。该结构体定义了SCSI外设进行读/写操作时所需的请求参数，包括逻辑块起始地址、传输长度、控制信息等。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

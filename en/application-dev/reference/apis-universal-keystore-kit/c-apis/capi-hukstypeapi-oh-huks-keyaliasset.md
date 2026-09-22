@@ -8,6 +8,8 @@ typedef struct OH_Huks_KeyAliasSet {...} OH_Huks_KeyAliasSet
 
 Defines the struct of a key alias set.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 20
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

@@ -8,6 +8,8 @@ typedef struct MediaKeySession MediaKeySession
 
 MediaKeySession结构。
 
+**系统能力：** SystemCapability.Multimedia.Media.AudioCodec
+
 **起始版本：** 12
 
 **相关模块：** [AudioCodec](capi-audiocodec.md)

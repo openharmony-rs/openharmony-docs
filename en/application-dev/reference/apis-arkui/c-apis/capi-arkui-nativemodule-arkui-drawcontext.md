@@ -8,6 +8,8 @@ typedef struct ArkUI_DrawContext ArkUI_DrawContext
 
 Defines the structure of the component drawing context.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

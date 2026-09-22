@@ -8,6 +8,8 @@ typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
 
 Define the OH_Rdb_Transaction structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)

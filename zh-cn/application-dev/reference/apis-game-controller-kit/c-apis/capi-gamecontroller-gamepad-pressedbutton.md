@@ -8,6 +8,8 @@ typedef struct GamePad_PressedButton GamePad_PressedButton
 
 定义手柄按下的按键。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)

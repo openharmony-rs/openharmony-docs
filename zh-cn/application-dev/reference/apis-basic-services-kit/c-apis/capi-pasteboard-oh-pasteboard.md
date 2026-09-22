@@ -8,6 +8,8 @@ typedef struct OH_Pasteboard OH_Pasteboard
 
 定义剪贴板对象，用以操作系统剪贴板。
 
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
 **起始版本：** 13
 
 **相关模块：** [Pasteboard](capi-pasteboard.md)

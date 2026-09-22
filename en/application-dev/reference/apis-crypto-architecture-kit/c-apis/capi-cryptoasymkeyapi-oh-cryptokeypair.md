@@ -8,6 +8,8 @@ typedef struct OH_CryptoKeyPair OH_CryptoKeyPair
 
 Key pair structure, representing a key pair.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

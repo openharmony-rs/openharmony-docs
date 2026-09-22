@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_SurfaceCallback OH_ArkUI_SurfaceCallback
 
 Define the surface lifecycle callback.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

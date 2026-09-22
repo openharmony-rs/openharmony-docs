@@ -4,6 +4,8 @@
 
 This module provides the basic file operations.
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 12
 
 ## Files

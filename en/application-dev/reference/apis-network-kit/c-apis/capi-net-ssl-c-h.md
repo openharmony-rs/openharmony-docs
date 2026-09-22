@@ -141,6 +141,8 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 
 Boolean value indicating whether plaintext HTTP is allowed.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 18
@@ -166,6 +168,8 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 **Description**
 
 Boolean value indicating whether host name–based plaintext HTTP is allowed.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -193,6 +197,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **Description**
 
 Checks whether plaintext HTTP interception is enabled.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -223,6 +229,8 @@ Creates and verifies a sorted certificate chain.
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -251,6 +259,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **Description**
 
 Frees the certificate chain allocated by OH_NetStack_CreateAndVerifySortedCertChain.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 26.0.0
 

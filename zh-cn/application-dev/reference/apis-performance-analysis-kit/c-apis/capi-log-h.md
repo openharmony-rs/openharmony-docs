@@ -68,6 +68,8 @@ enum LogType
 
 枚举日志类型。<br> 目前可用的是<b>LOG_APP</b>。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -84,15 +86,17 @@ enum LogLevel
 
 日志级别枚举。<br> 建议根据各自的适用场景选择日志级别： <ul><li><b>DEBUG</b>：用于调试，商业发布版本中禁用</li> <li><b>INFO</b>：用于记录重要系统运行状态和关键进程中的步骤</li> <li><b>WARN</b>：用于记录对用户体验影响不大且可自动恢复的意外异常。通常在检测和捕获此类异常时输出此级别的日志。</li> <li><b>ERROR</b>：用于记录影响用户体验且无法自动恢复的故障</li> <li><b>FATAL</b>：用于记录严重影响了用户体验且不应发生的重大异常。</li></ul>
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOG_DEBUG = 3 | DEBUG日志级别，使用{@link OH_LOG_DEBUG}接口打印。 |
-| LOG_INFO = 4 | INFO日志级别，使用{@link OH_LOG_INFO}接口打印。 |
-| LOG_WARN = 5 | WARN日志级别，使用{@link OH_LOG_WARN}接口打印。 |
-| LOG_ERROR = 6 | ERROR日志级别，使用{@link OH_LOG_ERROR}接口打印。 |
-| LOG_FATAL = 7 | FATAL日志级别，使用{@link OH_LOG_FATAL}接口打印。 |
+| LOG_DEBUG = 3 | DEBUG日志级别，使用[OH_LOG_DEBUG](capi-log-h.md#宏定义)接口打印。 |
+| LOG_INFO = 4 | INFO日志级别，使用[OH_LOG_INFO](capi-log-h.md#宏定义)接口打印。 |
+| LOG_WARN = 5 | WARN日志级别，使用[OH_LOG_WARN](capi-log-h.md#宏定义)接口打印。 |
+| LOG_ERROR = 6 | ERROR日志级别，使用[OH_LOG_ERROR](capi-log-h.md#宏定义)接口打印。 |
+| LOG_FATAL = 7 | FATAL日志级别，使用[OH_LOG_FATAL](capi-log-h.md#宏定义)接口打印。 |
 
 ### PreferStrategy
 
@@ -103,6 +107,8 @@ enum PreferStrategy
 **描述：**
 
 枚举在 [OH_LOG_SetLogLevel](capi-log-h.md#oh_log_setloglevel) 中使用的偏好策略。<br> 建议根据各自的适用场景选择偏好策略。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 21
 
@@ -124,6 +130,8 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 **描述：**
 
 输出日志。<br> 使用此接口根据指定的日志类型、日志级别、业务领域、日志标签以及printf格式中格式说明符和隐私标识符确定的可变参数来输出日志。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 8
 
@@ -154,6 +162,8 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 输出日志。<br> 使用此接口根据指定的日志类型、日志级别、业务领域、日志标签以及printf格式中格式说明符和隐私标识符确定的va_list 而不是可变参数来输出日志。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 18
 
 **参数：**
@@ -181,6 +191,8 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 **描述：**
 
 输出日志。<br> 使用此接口根据指定的日志类型、日志级别、业务领域、日志标签、消息文本和消息长度输出日志。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 18
 
@@ -212,6 +224,8 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 
 输出日志。<br> 使用此接口根据指定的日志类型、日志级别、业务领域、日志标签以及printf格式中格式说明符和隐私标识符确定的va_list 而不是可变参数来输出日志。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 18
 
 **参数：**
@@ -241,6 +255,8 @@ bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)
 
 检查指定业务领域、TAG、级别的日志是否可以打印。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 8
 
 **参数：**
@@ -267,6 +283,8 @@ typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsi
 
 函数指针，开发者自定义回调函数内容，在回调函数中，可自行对hilog日志进行处理。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 11
 
 **参数：**
@@ -289,6 +307,8 @@ void OH_LOG_SetCallback(LogCallback callback)
 
 注册函数。<br> 调用此函数后，用户实现的回调函数可以接收当前进程的所有hilog日志。 请注意，无论是否调用该接口，它都不会更改当前进程的hilog日志的默认行为。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 11
 
 **参数：**
@@ -307,6 +327,8 @@ void OH_LOG_SetMinLogLevel(LogLevel level)
 
 设置应用日志打印的最低日志级别。
 
+**系统能力：** SystemCapability.HiviewDFX.HiLog
+
 **起始版本：** 15
 
 **参数：**
@@ -324,6 +346,8 @@ void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)
 **描述：**
 
 设置当前应用程序进程的最低日志级别。
+
+**系统能力：** SystemCapability.HiviewDFX.HiLog
 
 **起始版本：** 21
 

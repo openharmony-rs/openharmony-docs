@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_Request {...} ScsiPeripheral_Request
 
 Defines the request structure.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

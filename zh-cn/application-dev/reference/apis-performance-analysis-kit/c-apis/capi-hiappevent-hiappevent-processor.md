@@ -8,6 +8,8 @@ typedef struct HiAppEvent_Processor HiAppEvent_Processor
 
 应用事件上报的处理者。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。
 
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
 **起始版本：** 18
 
 **相关模块：** [HiAppEvent](capi-hiappevent.md)

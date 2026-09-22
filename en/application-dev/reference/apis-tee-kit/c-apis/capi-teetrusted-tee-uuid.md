@@ -8,6 +8,8 @@ typedef struct tee_uuid {...} TEE_UUID
 
 Defines an UUID of TA.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

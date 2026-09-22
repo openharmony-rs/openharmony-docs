@@ -8,6 +8,8 @@ typedef struct OH_AudioDeviceDescriptor OH_AudioDeviceDescriptor
 
 Declaring the audio device descriptor. The instance is used to get more audio device detail attributes.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)

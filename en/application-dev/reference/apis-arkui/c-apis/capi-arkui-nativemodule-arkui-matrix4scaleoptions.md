@@ -8,6 +8,8 @@ typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions
 
 Defines a matrix scaling object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

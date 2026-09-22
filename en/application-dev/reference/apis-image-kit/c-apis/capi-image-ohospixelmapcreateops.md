@@ -8,6 +8,8 @@ struct OhosPixelMapCreateOps {...}
 
 Defines the options used for creating a pixel map.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityElementInfo ArkUI_AccessibilityElementInfo
 
 无障碍元素信息，用于向无障碍服务、辅助应用（屏幕朗读等）传递元素的属性、操作、位置、文本等信息，适用于无障碍服务获取和操作界面元素的辅助场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 13
 
 **相关模块：** [ArkUI_Accessibility](capi-arkui-accessibility.md)

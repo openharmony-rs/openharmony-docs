@@ -8,6 +8,8 @@ typedef struct Http_Request {...} Http_Request
 
 HTTP请求结构体。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 20
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -22,6 +24,6 @@ HTTP请求结构体。
 | -- | -- |
 | uint32_t requestId | HTTP请求的ID。 |
 | char *url | HTTP请求的URL。 |
-| [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md). |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see {@link Http_RequestOptions}. |
 
 

@@ -8,6 +8,8 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 Defines a struct for the key code array.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 **Related module**: [HidDdk](capi-hidddk.md)

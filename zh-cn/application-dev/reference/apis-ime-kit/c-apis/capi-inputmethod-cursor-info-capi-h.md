@@ -49,6 +49,8 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 创建一个新的[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例，初始化光标的位置和尺寸信息。 <br> <br>配对调用：必须与[OH_CursorInfo_Destroy](#oh_cursorinfo_destroy)配对调用，Create创建的对象必须通过Destroy销毁，否 则会导致内存泄漏。 <br> <br>生命周期管理： <br>- 创建后可通过SetRect修改光标信息，通过GetRect读取光标信息。 <br>- CursorInfo实例可作为TextConfig的属性传递给输入法（在GetTextConfig回调中返回）。 <br>- CursorInfo实例也可作为NotifyCursorUpdate的参数主动通知输入法光标更新。 <br>- 在这两种场景中，CursorInfo的内存由调用者管理，输入法仅在回调执行期间或NotifyCursorUpdate调用期间读取数据，完成后不 再持有引用。 <br>- 不再需要时必须通过Destroy销毁。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -76,6 +78,8 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 
 销毁一个[InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)实例，释放由Create函数分配的内存资源。 <br> <br>配对调用：必须与OH_CursorInfo_Create配对调用。每个Create创建的实例必须且只能调用一次Destroy。 <br> <br>生命周期管理： <br>- Destroy后，cursorInfo指针不再有效，不可继续使用。 <br>- 不可对同一个cursorInfo指针调用两次Destroy，否则会导致重复释放（double-free）。 <br>- 若cursorInfo正在被输入法回调使用（如处于GetTextConfig回调执行期间），不可在此期间调用Destroy，应在回调返回后再销 毁。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -94,6 +98,8 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 设置光标信息内容，更新光标的位置和尺寸。适用于在已有的CursorInfo实例上修改光标信息，无需重新创建实例。 <br> <br>前置条件：cursorInfo必须是通过OH_CursorInfo_Create创建的有效实例。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -110,7 +116,7 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| InputMethod_ErrorCode | 返回一个特定的错误码。      <br>{@link IME_ERR_OK} - 表示成功。光标信息已更新。<br>    <br>{@link IME_ERR_NULL_POINTER} - 非预期的空指针。cursorInfo为NULL时返回，调用前需确保cursorInfo为有效指针。<br>    <br>错误处理建议： 若返回IME_ERR_NULL_POINTER，检查cursorInfo是否为有效指针。具体错误码可以参考<br>{@link InputMethod_ErrorCode}。 |
+| InputMethod_ErrorCode | 返回一个特定的错误码。      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。光标信息已更新。      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。cursorInfo为NULL时返回，调用前需确保cursorInfo为有效指针。      <br>错误处理建议： 若返回IME_ERR_NULL_POINTER，检查cursorInfo是否为有效指针。具体错误码可以参考  [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_CursorInfo_GetRect()
 
@@ -121,6 +127,8 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 **描述：**
 
 获取光标信息内容，读取光标的位置和尺寸。 <br> <br>前置条件：cursorInfo必须是通过OH_CursorInfo_Create创建的有效实例。left、top、width、height必须指向有效的double变 量。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 12
 
@@ -138,6 +146,6 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 
 | 类型 | 说明 |
 | -- | -- |
-| InputMethod_ErrorCode | 返回一个特定的错误码。      <br>{@link IME_ERR_OK} - 表示成功。left、top、width、height已被赋值为正确的光标信息。<br>    <br>{@link IME_ERR_NULL_POINTER} - 非预期的空指针。cursorInfo、left、top、width或height为NULL时返回，调用前需确保所有<br>参数均为有效指针。<br>    <br>错误处理建议： 若返回IME_ERR_NULL_POINTER，检查所有参数是否为有效指针；若返回IME_ERR_OK，四个输出参数即为正确的<br>光标信息值。具体错误码可以参考{@link InputMethod_ErrorCode}。 |
+| InputMethod_ErrorCode | 返回一个特定的错误码。      <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。left、top、width、height已被赋值为正确的光标信息。      <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。cursorInfo、left、top、width或height为NULL时返回，调用前需确保所有  参数均为有效指针。      <br>错误处理建议： 若返回IME_ERR_NULL_POINTER，检查所有参数是否为有效指针；若返回IME_ERR_OK，四个输出参数即为正确的  光标信息值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 

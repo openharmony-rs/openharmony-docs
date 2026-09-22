@@ -8,6 +8,8 @@ typedef struct HiAppEvent_Config HiAppEvent_Config
 
 Defines the configuration object used to set the conditions for triggering system events.
 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
 **Since**: 15
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)

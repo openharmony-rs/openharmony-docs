@@ -8,6 +8,8 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 
 A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task.
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 13
 
 **Related module**: [TransientTask](capi-transienttask.md)

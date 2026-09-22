@@ -8,6 +8,8 @@ typedef union Asset_Value {...} Asset_Value
 
 关键资产属性的值（内容）。
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 11
 
 **相关模块：** [AssetType](capi-assettype.md)

@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent
 
 提供了鼠标事件和悬停事件的回调注册能力，开发者可通过该回调结构体监听NativeXComponent上的鼠标和手写笔交互行为，适用于需要在Native侧处理指针输入交互的场景。 其中，DispatchMouseEvent侧重鼠标按键按下、释放、移动等组件内的操作行为，DispatchHoverEvent侧重鼠标或手写笔进入/离开组件的悬停状态变化，两者监听维度不同，可按需同时注册。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
@@ -41,7 +43,7 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向{@link OH_NativeXComponent}实例的指针。 |
 |  void* window | 表示触发鼠标事件时关联的NativeWindow句柄。 |
 
 ### DispatchHoverEvent()
@@ -60,7 +62,7 @@ void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向{@link OH_NativeXComponent}实例的指针。 |
 |  bool isHover | 表示鼠标或手写笔是否悬停在组件上，进入时为true，离开时为false。 |
 
 

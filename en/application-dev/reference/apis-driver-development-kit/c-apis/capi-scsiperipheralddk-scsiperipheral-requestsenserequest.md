@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSe
 
 Defines the request structure of the **Request Sense** command.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

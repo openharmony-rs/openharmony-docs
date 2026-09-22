@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
 
 Defines the request structure of the **verify** command.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

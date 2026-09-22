@@ -19,22 +19,22 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float bottom)](#oh_drawing_rectcreate) | 用于创建一个矩形对象，不会对设置的坐标排序，即允许矩形设置的左上角坐标大于对应的矩形右下角坐标。 |
-| [bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectintersect) | 用于判断两个矩形是否相交，若相交，将rect设置为两个矩形的交集。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectjoin) | 将rect设置为两个矩形的并集。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)](#oh_drawing_rectsetleft) | 用于设置矩形左上角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)](#oh_drawing_rectsettop) | 用于设置矩形左上角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)](#oh_drawing_rectsetright) | 用于设置矩形右下角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)](#oh_drawing_rectsetbottom) | 用于设置矩形右下角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)](#oh_drawing_rectgetleft) | 用于获取给矩形设置的左上角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)](#oh_drawing_rectgettop) | 用于获取给矩形设置的左上角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetright) | 用于获取给矩形设置的右下角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)](#oh_drawing_rectgetbottom) | 用于获取给矩形设置的右下角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetheight) | 用于获取矩形对象的高度，计算方式为设置的矩形的右下角纵坐标减去左上角纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)](#oh_drawing_rectgetwidth) | 用于获取矩形对象的宽度，计算方式为设置的矩形的右下角横坐标减去左上角横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_rectcopy) | 用于将源矩形对象复制到目标矩形对象。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectintersect) | 用于判断两个矩形是否相交，若相交，将rect设置为两个矩形的交集。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)](#oh_drawing_rectjoin) | 将rect设置为两个矩形的并集。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)](#oh_drawing_rectsetleft) | 用于设置矩形左上角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)](#oh_drawing_rectsettop) | 用于设置矩形左上角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)](#oh_drawing_rectsetright) | 用于设置矩形右下角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)](#oh_drawing_rectsetbottom) | 用于设置矩形右下角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)](#oh_drawing_rectgetleft) | 用于获取给矩形设置的左上角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)](#oh_drawing_rectgettop) | 用于获取给矩形设置的左上角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetright) | 用于获取给矩形设置的右下角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)](#oh_drawing_rectgetbottom) | 用于获取给矩形设置的右下角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)](#oh_drawing_rectgetheight) | 用于获取矩形对象的高度，计算方式为设置的矩形的右下角纵坐标减去左上角纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)](#oh_drawing_rectgetwidth) | 用于获取矩形对象的宽度，计算方式为设置的矩形的右下角横坐标减去左上角横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_rectcopy) | 用于将源矩形对象复制到目标矩形对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)](#oh_drawing_rectdestroy) | 用于销毁矩形对象并回收该对象占用的内存。 |
-| [OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)](#oh_drawing_rectcreatearray) | 用于创建一个矩形数组对象，以存储多个矩形对象。不再需要{@link OH_Drawing_Array}时， 请使用[OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray)接口释放该对象的指针。 |
-| [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | 用于获取矩形数组对象{@link OH_Drawing_Array}的大小。 |
+| [OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)](#oh_drawing_rectcreatearray) | 用于创建一个矩形数组对象，以存储多个矩形对象。不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时， 请使用[OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray)接口释放该对象的指针。 |
+| [OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, size_t* pSize)](#oh_drawing_rectgetarraysize) | 用于获取矩形数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的大小。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray, size_t index, OH_Drawing_Rect** rect)](#oh_drawing_rectgetarrayelement) | 用于获取矩形数组对象中指定索引的矩形对象。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)](#oh_drawing_rectdestroyarray) | 用于销毁矩形数组对象并回收该对象占用的内存。 |
 | [OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other, bool* isContains)](#oh_drawing_rectcontains) | 用于判断一个矩形是否完全包含另一个矩形。 |
@@ -57,6 +57,8 @@ OH_Drawing_Rect* OH_Drawing_RectCreate(float left, float top, float right, float
 **描述：**
 
 用于创建一个矩形对象，不会对设置的坐标排序，即允许矩形设置的左上角坐标大于对应的矩形右下角坐标。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -83,7 +85,9 @@ bool OH_Drawing_RectIntersect(OH_Drawing_Rect* rect, const OH_Drawing_Rect* othe
 
 **描述：**
 
-用于判断两个矩形是否相交，若相交，将rect设置为两个矩形的交集。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于判断两个矩形是否相交，若相交，将rect设置为两个矩形的交集。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -108,7 +112,9 @@ bool OH_Drawing_RectJoin(OH_Drawing_Rect* rect, const OH_Drawing_Rect* other)
 
 **描述：**
 
-将rect设置为两个矩形的并集。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+将rect设置为两个矩形的并集。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -133,7 +139,9 @@ void OH_Drawing_RectSetLeft(OH_Drawing_Rect* rect, float left)
 
 **描述：**
 
-用于设置矩形左上角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于设置矩形左上角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -152,7 +160,9 @@ void OH_Drawing_RectSetTop(OH_Drawing_Rect* rect, float top)
 
 **描述：**
 
-用于设置矩形左上角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于设置矩形左上角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -171,7 +181,9 @@ void OH_Drawing_RectSetRight(OH_Drawing_Rect* rect, float right)
 
 **描述：**
 
-用于设置矩形右下角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于设置矩形右下角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -190,7 +202,9 @@ void OH_Drawing_RectSetBottom(OH_Drawing_Rect* rect, float bottom)
 
 **描述：**
 
-用于设置矩形右下角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于设置矩形右下角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -209,7 +223,9 @@ float OH_Drawing_RectGetLeft(OH_Drawing_Rect* rect)
 
 **描述：**
 
-用于获取给矩形设置的左上角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于获取给矩形设置的左上角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -233,7 +249,9 @@ float OH_Drawing_RectGetTop(OH_Drawing_Rect* rect)
 
 **描述：**
 
-用于获取给矩形设置的左上角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于获取给矩形设置的左上角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -257,7 +275,9 @@ float OH_Drawing_RectGetRight(OH_Drawing_Rect* rect)
 
 **描述：**
 
-用于获取给矩形设置的右下角的横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于获取给矩形设置的右下角的横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -281,7 +301,9 @@ float OH_Drawing_RectGetBottom(OH_Drawing_Rect* rect)
 
 **描述：**
 
-用于获取给矩形设置的右下角的纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于获取给矩形设置的右下角的纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -305,7 +327,9 @@ float OH_Drawing_RectGetHeight(OH_Drawing_Rect* rect)
 
 **描述：**
 
-用于获取矩形对象的高度，计算方式为设置的矩形的右下角纵坐标减去左上角纵坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于获取矩形对象的高度，计算方式为设置的矩形的右下角纵坐标减去左上角纵坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -329,7 +353,9 @@ float OH_Drawing_RectGetWidth(OH_Drawing_Rect* rect)
 
 **描述：**
 
-用于获取矩形对象的宽度，计算方式为设置的矩形的右下角横坐标减去左上角横坐标。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于获取矩形对象的宽度，计算方式为设置的矩形的右下角横坐标减去左上角横坐标。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>rect为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -353,7 +379,9 @@ void OH_Drawing_RectCopy(OH_Drawing_Rect* src, OH_Drawing_Rect* dst)
 
 **描述：**
 
-用于将源矩形对象复制到目标矩形对象。 <br>本接口会产生错误码，可以通过{@link OH_Drawing_ErrorCodeGet}查看错误码的取值。 <br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+用于将源矩形对象复制到目标矩形对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -374,6 +402,8 @@ void OH_Drawing_RectDestroy(OH_Drawing_Rect* rect)
 
 用于销毁矩形对象并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -390,7 +420,9 @@ OH_Drawing_Array* OH_Drawing_RectCreateArray(size_t size)
 
 **描述：**
 
-用于创建一个矩形数组对象，以存储多个矩形对象。不再需要{@link OH_Drawing_Array}时， 请使用[OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray)接口释放该对象的指针。
+用于创建一个矩形数组对象，以存储多个矩形对象。不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时， 请使用[OH_Drawing_RectDestroyArray](capi-drawing-rect-h.md#oh_drawing_rectdestroyarray)接口释放该对象的指针。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -414,7 +446,9 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArraySize(OH_Drawing_Array* rectArray, si
 
 **描述：**
 
-用于获取矩形数组对象{@link OH_Drawing_Array}的大小。
+用于获取矩形数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的大小。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -440,6 +474,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectGetArrayElement(OH_Drawing_Array* rectArray,
 **描述：**
 
 用于获取矩形数组对象中指定索引的矩形对象。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -467,6 +503,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectDestroyArray(OH_Drawing_Array* rectArray)
 
 用于销毁矩形数组对象并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -490,6 +528,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectContains(OH_Drawing_Rect* rect, const OH_Dra
 **描述：**
 
 用于判断一个矩形是否完全包含另一个矩形。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 
@@ -516,6 +556,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectInset(OH_Drawing_Rect* rect, float left, flo
 **描述：**
 
 将指定的值分别添加到矩形的左、上、右、下边界坐标，调整矩形的大小和位置。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 22
 
@@ -545,6 +587,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectIsEmpty(const OH_Drawing_Rect* rect, bool* i
 
 用于判断矩形是否为空，即矩形的宽度或高度是否小于等于0。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
@@ -569,6 +613,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectOffset(OH_Drawing_Rect* rect, float dx, floa
 **描述：**
 
 将矩形分别沿x轴方向和y轴方向偏移由参数dx和dy指定的距离。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -596,6 +642,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectOffsetTo(OH_Drawing_Rect* rect, float newLef
 
 将矩形左上角偏移到由参数newLeft和newTop指定的坐标位置，并保持宽度和高度不变。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
@@ -622,6 +670,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectSetEmpty(OH_Drawing_Rect* rect)
 
 将矩形置空（矩形左上角和右下角的x轴、y轴坐标都置为0）。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
@@ -646,6 +696,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectSort(OH_Drawing_Rect* rect)
 
 将矩形坐标进行排序，确保左上角坐标不大于右下角坐标。 <br>若左上角x轴坐标大于右下角x轴坐标，则交换两者；若左上角y轴坐标大于右下角y轴坐标，则交换两者。如果坐标已经有序， 则不执行任何操作。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **参数：**
@@ -669,6 +721,8 @@ OH_Drawing_ErrorCode OH_Drawing_RectUnion(OH_Drawing_Rect* rect, const OH_Drawin
 **描述：**
 
 将当前矩形设置为本矩形与另一个矩形的并集。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 

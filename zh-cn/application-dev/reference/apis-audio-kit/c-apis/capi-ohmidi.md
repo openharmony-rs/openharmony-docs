@@ -4,6 +4,8 @@
 
 Provides the definition of the C interface for the MIDI module.
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 ## 文件汇总

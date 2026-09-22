@@ -8,6 +8,8 @@ struct OhosImageRect {...}
 
 Defines the information about an image rectangle.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

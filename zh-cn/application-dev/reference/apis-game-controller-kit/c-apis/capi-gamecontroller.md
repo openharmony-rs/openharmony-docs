@@ -4,6 +4,8 @@
 
 Provides APIs for game controller capability.
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 ## 文件汇总

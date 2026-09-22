@@ -8,6 +8,8 @@ typedef struct ArkUI_RoundRectShape ArkUI_RoundRectShapeOption
 
 Defines a rounded rectangle shape option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

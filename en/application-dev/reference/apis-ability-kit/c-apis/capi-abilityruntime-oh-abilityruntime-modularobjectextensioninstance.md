@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionInstance OH_AbilityRuntim
 
 Defines the struct for OH_AbilityRuntime_ModObjExtensionInstance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)

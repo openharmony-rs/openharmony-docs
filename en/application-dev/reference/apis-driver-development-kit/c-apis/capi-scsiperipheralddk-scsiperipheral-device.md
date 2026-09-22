@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
 
 Opaque SCSI device structure.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

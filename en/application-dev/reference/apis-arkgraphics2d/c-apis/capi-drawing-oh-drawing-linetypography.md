@@ -8,6 +8,8 @@ typedef struct OH_Drawing_LineTypography OH_Drawing_LineTypography
 
 Defines a struct used to extract a single line of data from a piece of text for typography.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)

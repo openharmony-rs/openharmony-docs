@@ -8,6 +8,8 @@ typedef struct OH_Data_VBuckets OH_Data_VBuckets
 
 Define the OH_Data_VBuckets structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)

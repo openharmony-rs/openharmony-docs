@@ -18,7 +18,7 @@ Provides functions related to `rawfile` directory operations, including director
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) | RawDir | `RawDir` represents an opened rawfile directory object, which can be used to traverse the directory and files within it. It is obtained through {@link OH_ResourceManager_OpenRawDir}, and must be closed and released through [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) after use. |
+| [RawDir](capi-rawfile-rawdir.md) | RawDir | `RawDir` represents an opened rawfile directory object, which can be used to traverse the directory and files within it. It is obtained through {@link OH_ResourceManager_OpenRawDir}, and must be closed and released through<br>{@link OH_ResourceManager_CloseRawDir} after use. |
 
 ### Macro
 
@@ -45,6 +45,8 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 **Description**
 
 Obtains the file name in the `rawfile` directory by index. When you need to traverse the `rawfile` directory, you can use this function together with [OH_ResourceManager_GetRawFileCount](capi-raw-dir-h.md#oh_resourcemanager_getrawfilecount) to iterate through the directory in a loop.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -76,6 +78,8 @@ int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 
 Obtains the number of subdirectories and files under `rawfile`. When traversal of the `rawfile` directory is needed, this function can be used with [OH_ResourceManager_GetRawFileName](capi-raw-dir-h.md#oh_resourcemanager_getrawfilename) to iterate through the directory in a loop.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -104,6 +108,8 @@ void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 **Description**
 
 Closes an opened `RawDir` object and releases all associated resources. After traversing the `rawfile` directory, this function must be called to close the directory and release resources.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 

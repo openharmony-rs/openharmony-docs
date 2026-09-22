@@ -20,21 +20,21 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_ImageSource_SVGResourceLimitLevel（系统接口）](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | SVG资源限制级别的枚举。 级别越高，解析和渲染SVG图片时允许使用的资源越少。 无论指定哪个级别，系统资源限制都会生效。**系统接口：** 此接口为系统接口。 |
+| [OH_ImageSource_SVGResourceLimitLevel（系统接口）](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | SVG资源限制级别的枚举。 级别越高，解析和渲染SVG图片时允许使用的资源越少。 无论指定哪个级别，系统资源限制都会生效。<br>**系统接口：** 此接口为系统接口。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)（系统接口）](#oh_imagesourcenative_setsvgresourcelimitlevel) | 设置图像源的SVG资源限制级别。 仅对SVG格式图片生效。对于非SVG图片，此函数无效果。 必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，以确保限制在DOM解析和渲染阶段均生效。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)（系统接口）](#oh_imagesourcenative_getsvgresourcelimitlevel) | 获取图像源的SVG资源限制级别。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool *needsDecodeDfxData)（系统接口）](#oh_decodingoptionsforpicture_getneedsdecodedfxdata) | 获取解码选项中的needsDecodeDfxData参数。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool needsDecodeDfxData)（系统接口）](#oh_decodingoptionsforpicture_setneedsdecodedfxdata) | 设置解码选项中的needsDecodeDfxData参数。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size *desiredSizeForMainPixelmap)（系统接口）](#oh_decodingoptionsforpicture_getdesiredsizeformainpixelmap) | 获取DecodingOptionsForPicture结构体中的主图期望尺寸。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size desiredSizeForMainPixelmap)（系统接口）](#oh_decodingoptionsforpicture_setdesiredsizeformainpixelmap) | 设置DecodingOptionsForPicture结构体中的主图期望尺寸。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT *desiredPixelFormat)（系统接口）](#oh_decodingoptionsforpicture_getdesiredpixelformat) | 获取DecodingOptionsForPicture结构体中的像素格式。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT desiredPixelFormat)（系统接口）](#oh_decodingoptionsforpicture_setdesiredpixelformat) | 设置DecodingOptionsForPicture结构体中的像素格式。**系统接口：** 此接口为系统接口。 |
-| [Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNative *source, uint32_t index, Image_MetadataType *metadataTypes, size_t typeCount, OH_PictureMetadata **outMetadataArray, size_t *metadataCount)（系统接口）](#oh_imagesourcenative_readimagemetadatabytype) | 读取图像源的元数据，使用metadataTypes参数指定要读取的元数据类型。如果未指定metadataTypes，将返回所有支持的元数据。**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)（系统接口）](#oh_imagesourcenative_setsvgresourcelimitlevel) | 设置图像源的SVG资源限制级别。 仅对SVG格式图片生效。对于非SVG图片，此函数无效果。 必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，以确保限制在DOM解析和渲染阶段均生效。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)（系统接口）](#oh_imagesourcenative_getsvgresourcelimitlevel) | 获取图像源的SVG资源限制级别。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool *needsDecodeDfxData)（系统接口）](#oh_decodingoptionsforpicture_getneedsdecodedfxdata) | 获取解码选项中的needsDecodeDfxData参数。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOptionsForPicture *options, bool needsDecodeDfxData)（系统接口）](#oh_decodingoptionsforpicture_setneedsdecodedfxdata) | 设置解码选项中的needsDecodeDfxData参数。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size *desiredSizeForMainPixelmap)（系统接口）](#oh_decodingoptionsforpicture_getdesiredsizeformainpixelmap) | 获取DecodingOptionsForPicture结构体中的主图期望尺寸。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_DecodingOptionsForPicture *options, Image_Size desiredSizeForMainPixelmap)（系统接口）](#oh_decodingoptionsforpicture_setdesiredsizeformainpixelmap) | 设置DecodingOptionsForPicture结构体中的主图期望尺寸。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT *desiredPixelFormat)（系统接口）](#oh_decodingoptionsforpicture_getdesiredpixelformat) | 获取DecodingOptionsForPicture结构体中的像素格式。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOptionsForPicture *options, PIXEL_FORMAT desiredPixelFormat)（系统接口）](#oh_decodingoptionsforpicture_setdesiredpixelformat) | 设置DecodingOptionsForPicture结构体中的像素格式。<br>**系统接口：** 此接口为系统接口。 |
+| [Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNative *source, uint32_t index, Image_MetadataType *metadataTypes, size_t typeCount, OH_PictureMetadata **outMetadataArray, size_t *metadataCount)（系统接口）](#oh_imagesourcenative_readimagemetadatabytype) | 读取图像源的元数据，使用metadataTypes参数指定要读取的元数据类型。如果未指定metadataTypes，将返回所有支持的元数据。<br>**系统接口：** 此接口为系统接口。 |
 
 ## 枚举类型说明
 
@@ -48,7 +48,9 @@ enum OH_ImageSource_SVGResourceLimitLevel
 
 SVG资源限制级别的枚举。 级别越高，解析和渲染SVG图片时允许使用的资源越少。 无论指定哪个级别，系统资源限制都会生效。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -72,7 +74,9 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 
 设置图像源的SVG资源限制级别。 仅对SVG格式图片生效。对于非SVG图片，此函数无效果。 必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，以确保限制在DOM解析和渲染阶段均生效。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -81,13 +85,13 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
-| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) level | SVG资源限制级别。详见[OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel)。 |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h-sys.md#oh_imagesource_svgresourcelimitlevel) level | SVG资源限制级别。详见[OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} 执行成功。</li><br>        <li>{@link OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION} 非系统应用调用此系统接口。</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} source为空指针。</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 执行成功。</li>          <li>[OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION](capi-image-common-h.md#image_errorcode) 非系统应用调用此系统接口。</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) source为空指针。</li>          </ul> |
 
 ### OH_ImageSourceNative_GetSvgResourceLimitLevel()
 
@@ -99,7 +103,9 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 
 获取图像源的SVG资源限制级别。
 
-**起始版本：** 26.1.0
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -108,13 +114,13 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
-| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) *level | 用于接收SVG资源限制级别的指针。 详见[OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel)。 |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h-sys.md#oh_imagesource_svgresourcelimitlevel) *level | 用于接收SVG资源限制级别的指针。 详见[OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} 执行成功。</li><br>        <li>{@link OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION} 非系统应用调用此系统接口。</li><br>        <li>{@link IMAGE_SOURCE_INVALID_PARAMETER} source或level为空指针。</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) 执行成功。</li>          <li>[OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION](capi-image-common-h.md#image_errorcode) 非系统应用调用此系统接口。</li>          <li>[IMAGE_SOURCE_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) source或level为空指针。</li>          </ul> |
 
 ### OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData()
 
@@ -125,6 +131,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOp
 **描述：**
 
 获取解码选项中的needsDecodeDfxData参数。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 26.0.0
 
@@ -153,6 +161,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOp
 
 设置解码选项中的needsDecodeDfxData参数。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -179,6 +189,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_De
 **描述：**
 
 获取DecodingOptionsForPicture结构体中的主图期望尺寸。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 26.0.0
 
@@ -207,6 +219,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_De
 
 设置DecodingOptionsForPicture结构体中的主图期望尺寸。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -233,6 +247,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOp
 **描述：**
 
 获取DecodingOptionsForPicture结构体中的像素格式。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 26.0.0
 
@@ -261,6 +277,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOp
 
 设置DecodingOptionsForPicture结构体中的像素格式。
 
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
@@ -287,6 +305,8 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 **描述：**
 
 读取图像源的元数据，使用metadataTypes参数指定要读取的元数据类型。如果未指定metadataTypes，将返回所有支持的元数据。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 26.0.0
 

@@ -8,6 +8,8 @@ typedef struct Http_HeaderEntry {...} Http_HeaderEntry
 
 请求或者响应的标头的所有键值对。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 20
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -21,7 +23,7 @@ typedef struct Http_HeaderEntry {...} Http_HeaderEntry
 | 名称 | 描述 |
 | -- | -- |
 | char *key | 请求或者响应的标头中的键。 |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md). |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see {@link Http_HeaderValue}. |
 | struct [Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | 链式存储。指向下一个Http_HeaderEntry。 |
 
 

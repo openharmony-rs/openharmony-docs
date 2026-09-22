@@ -8,6 +8,8 @@ typedef struct ArkUI_AccessibilityElementInfo ArkUI_AccessibilityElementInfo
 
 Defines a struct for accessibility element information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)

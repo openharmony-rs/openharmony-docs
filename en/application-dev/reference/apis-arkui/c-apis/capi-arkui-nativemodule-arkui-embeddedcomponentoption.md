@@ -8,6 +8,8 @@ typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
 
 Define the EmbeddedComponentOption for the EmbeddedComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

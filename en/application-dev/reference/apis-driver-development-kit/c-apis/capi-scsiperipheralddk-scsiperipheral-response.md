@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
 
 Defines the response structure.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

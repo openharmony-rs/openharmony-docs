@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Run OH_Drawing_Run
 
 Defines a struct used to manage runs.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)

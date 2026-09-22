@@ -6,7 +6,9 @@ typedef struct OH_Udmf_ProgressInfo OH_Udmf_ProgressInfo
 
 ## Overview
 
-Represents the udmf progress information.
+Defines a struct for progress information.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
 

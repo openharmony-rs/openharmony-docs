@@ -6,7 +6,9 @@ typedef struct OH_ArkUI_TextStyle OH_ArkUI_TextStyle
 
 ## Overview
 
-Defines a text font style. [OH_ArkUI_TextStyle_Create](capi-styled-string-h.md#oh_arkui_textstyle_create) can be used to create a text font style object. [OH_ArkUI_TextStyle_Destroy](capi-styled-string-h.md#oh_arkui_textstyle_destroy) can be used to destroy the text font style object.<br> After the object is created, the **OH_ArkUI_TextStyle_SetXXX** series APIs can be used to set the specific styles that take effect. For example, you can use [OH_ArkUI_TextStyle_SetFontColor](capi-styled-string-h.md#oh_arkui_textstyle_setfontcolor) to set text color.
+Defines a text font style. {@link OH_ArkUI_TextStyle_Create} can be used to create a text font style object.<br>{@link OH_ArkUI_TextStyle_Destroy} can be used to destroy the text font style object.<br><br>After the object is created, the **OH_ArkUI_TextStyle_SetXXX** series APIs can be used to set the specific<br>styles that take effect. For example, you can use {@link OH_ArkUI_TextStyle_SetFontColor} to set text color.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

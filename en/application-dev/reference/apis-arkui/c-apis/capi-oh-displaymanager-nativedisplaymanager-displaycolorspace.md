@@ -8,6 +8,8 @@ typedef struct NativeDisplayManager_DisplayColorSpace {...} NativeDisplayManager
 
 The struct describes all the color spaces supported by a display.
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 14
 
 **Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)

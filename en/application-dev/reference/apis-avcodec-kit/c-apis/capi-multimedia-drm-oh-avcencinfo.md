@@ -8,6 +8,8 @@ typedef struct OH_AVCencInfo OH_AVCencInfo
 
 The struct describes the audio/video Common Encryption Scheme (CENC) information.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Related module**: [Multimedia_Drm](capi-multimedia-drm.md)

@@ -18,7 +18,7 @@
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md) | ArkWeb_AnyNativeAPI | ArkWeb_AnyNativeAPI is the basic struct type of ArkWeb Native API, used to uniformly represent pointers to various Native API structs obtained through the [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) API. This struct contains a size member of the size_t type, which records the size of the current struct. |
+| [ArkWeb_AnyNativeAPI](capi-web-arkweb-anynativeapi.md) | ArkWeb_AnyNativeAPI | ArkWeb_AnyNativeAPI is the basic struct type of ArkWeb Native API, used to uniformly represent pointers to various Native API structs obtained through the {@link OH_ArkWeb_GetNativeAPI} API. This struct contains a size member of the size_t type, which records the size of the current struct. |
 
 ### Enum
 
@@ -45,6 +45,8 @@ enum ArkWeb_NativeAPIVariantKind
 
 Enumerates the native API types.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -69,6 +71,8 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 Obtains the corresponding Native API struct based on the API type passed in. It is used in scenarios such as obtaining a Controller in native code to control Web component behavior, obtaining a CookieManager to manage cookies, obtaining a WebMessagePort for message communication, and obtaining a JavaScriptValue to operate JavaScript objects.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -92,6 +96,8 @@ bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallbac
 **Description**
 
 Registers a callback for the component scroll event. It is used in scenarios such as monitoring user scroll behavior for lazy loading, detecting scroll position for back-to-top functionality, recording user browsing behavior for data analysis, and implementing visual effects during scrolling.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 

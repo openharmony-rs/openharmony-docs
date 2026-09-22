@@ -8,6 +8,8 @@ typedef struct VideoProcessing_ColorSpaceInfo {...} VideoProcessing_ColorSpaceIn
 
 视频颜色空间信息数据结构。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **相关模块：** [VideoProcessing](capi-videoprocessing.md)

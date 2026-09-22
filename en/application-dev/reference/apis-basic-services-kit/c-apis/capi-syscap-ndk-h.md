@@ -32,6 +32,8 @@ bool canIUse(const char *cap)
 
 Provides the API for querying whether a SystemCapability (SysCap) is supported. SysCap refers to a standalone feature in the operating system. Different devices support different SysCap sets. Each SysCap corresponds to one or more APIs. You can determine whether an API can be used by checking SysCap support.
 
+**System capability**: SystemCapability.Startup.SystemInfo
+
 **Since**: 8
 
 **Parameters**:

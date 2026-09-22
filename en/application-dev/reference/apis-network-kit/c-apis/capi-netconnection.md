@@ -4,6 +4,8 @@
 
 Provides the data structures for the C APIs of the network connection module for network management.
 
+**System capability**: SystemCapability.Communication.NetManager.Core
+
 **Since**: 11
 
 ## Files

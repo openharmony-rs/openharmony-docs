@@ -8,6 +8,8 @@ typedef struct OH_AudioDebuggingManager OH_AudioDebuggingManager
 
 Declare the audio debugging manager. Audio debugging manager provides many functions for developer to get the information about audio system runtime info.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)

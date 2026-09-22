@@ -11370,7 +11370,7 @@ ani_status (*ValueArray_GetLength)(ani_env *env, ani_valuearray array, ani_size 
 
 Retrieves the length of a ValueArray.<br> This function retrieves the length of the specified ValueArray.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**:
 

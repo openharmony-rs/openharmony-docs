@@ -8,6 +8,8 @@ typedef struct ffrt_function_header_t {...} ffrt_function_header_t
 
 Defines a task executor, used to define the task execution and destruction callbacks.<br> The exec callback is invoked when the task is scheduled, and the destroy callback is invoked after the task completes to release task-related resources. Together they manage the full lifecycle of an FFRT task.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Related module**: [FFRT](capi-ffrt.md)

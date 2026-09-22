@@ -39,6 +39,8 @@ enum OH_AudioSession_BehaviorFlags
 
 音频会话行为标志。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -56,6 +58,8 @@ enum OH_AudioSession_ConcurrencyMode
 **描述：**
 
 音频并发模式。 <br>从API version 24开始，此枚举由native_audio_session_manager.h移动至此头文件。 <br>在API version 24之前，使用该枚举请引用native_audio_session_manager.h头文件；从API version 24开始，引用native_audio_session_manager. h或native_audio_session_base.h均可正常使用该枚举。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 

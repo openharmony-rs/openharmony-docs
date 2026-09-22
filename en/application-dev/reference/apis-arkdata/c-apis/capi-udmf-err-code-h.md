@@ -2,7 +2,7 @@
 
 ## Overview
 
-Declaration error code information.
+Declares the error codes used in the UDMF.
 
 **Library**: libudmf.so
 
@@ -18,8 +18,8 @@ Declaration error code information.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Udmf_ErrCode](#udmf_errcode) | Udmf_ErrCode | Indicates the error code information. |
-| [Udmf_ListenerStatus](#udmf_listenerstatus) | Udmf_ListenerStatus | Indicates the error code information. |
+| [Udmf_ErrCode](#udmf_errcode) | Udmf_ErrCode | Enumerates the error codes. |
+| [Udmf_ListenerStatus](#udmf_listenerstatus) | Udmf_ListenerStatus | Enumerates the status codes returned when data is obtained asynchronously. |
 
 ## Enum type description
 
@@ -31,15 +31,17 @@ enum Udmf_ErrCode
 
 **Description**
 
-Indicates the error code information.
+Enumerates the error codes.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_E_OK = 0 | The error code in the correct case. |
-| UDMF_ERR = 20400000 | The error code for common exceptions. |
-| UDMF_E_INVALID_PARAM = (UDMF_ERR + 1) | The error code for common invalid args. |
+| UDMF_E_OK = 0 | Operation successful.<br>**Since**: 12 |
+| UDMF_ERR = 20400000 | Universal error codes.<br>**Since**: 12 |
+| UDMF_E_INVALID_PARAM = (UDMF_ERR + 1) | Invalid parameter.<br>**Since**: 12 |
 
 ### Udmf_ListenerStatus
 
@@ -49,19 +51,21 @@ enum Udmf_ListenerStatus
 
 **Description**
 
-Indicates the error code information.
+Enumerates the status codes returned when data is obtained asynchronously.
+
+**System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
 
 | Enum item | Description |
 | -- | -- |
-| UDMF_FINISHED = 0 | brief Indicates the finished status. |
-| UDMF_PROCESSING | Indicates that processing is still in progress. |
-| UDMF_CANCELED | Indicates that the process has been canceled. |
-| UDMF_INNER_ERROR = 200 | Indicates that an internal error has occurred. |
-| UDMF_INVALID_PARAMETERS | Indicates that the GetDataParams contains invalid parameters. |
-| UDMF_DATA_NOT_FOUND | Indicates that no data is obtained. |
-| UDMF_SYNC_FAILED | Indicates that an error occurred in the synchronization process. |
-| UDMF_COPY_FILE_FAILED | Indicates that an error occurred during file copying. |
+| UDMF_FINISHED = 0 | Data is obtained successfully.<br>**Since**: 15 |
+| UDMF_PROCESSING | This task is being processed.<br>**Since**: 15 |
+| UDMF_CANCELED | This task is canceled.<br>**Since**: 15 |
+| UDMF_INNER_ERROR = 200 | An internal error occurs.<br>**Since**: 15 |
+| UDMF_INVALID_PARAMETERS | Invalid parameters are contained.<br>**Since**: 15 |
+| UDMF_DATA_NOT_FOUND | No data is obtained.<br>**Since**: 15 |
+| UDMF_SYNC_FAILED | An error occurs during data synchronization.<br>**Since**: 15 |
+| UDMF_COPY_FILE_FAILED | Failed to copy the file.<br>**Since**: 15 |
 
 

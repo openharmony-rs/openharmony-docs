@@ -8,6 +8,8 @@ typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries
 
 Provides the declaration for the color primary structure, which is used to store the coordinates of the red, green, and blue primary colors and white point in the color space.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
 **Since**: 13
 
 **Related module**: [NativeColorSpaceManager](capi-nativecolorspacemanager.md)

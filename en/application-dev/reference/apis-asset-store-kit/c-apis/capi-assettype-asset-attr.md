@@ -8,6 +8,8 @@ typedef struct Asset_Attr {...} Asset_Attr
 
 Defines an asset attribute, which consists of a tag and a value in the form of a key-value (KV) pair.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Related module**: [AssetType](capi-assettype.md)

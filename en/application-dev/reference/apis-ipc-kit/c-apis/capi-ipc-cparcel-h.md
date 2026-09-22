@@ -299,7 +299,7 @@ Resets the position to read data in an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found. |
 
 ### OH_IPCParcel_RewindWritePosition()
 
@@ -326,7 +326,7 @@ Resets the position to write data in an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found. |
 
 ### OH_IPCParcel_WriteInt8()
 
@@ -353,7 +353,7 @@ Writes an int8_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadInt8()
 
@@ -380,7 +380,7 @@ Reads an int8_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_WriteInt16()
 
@@ -407,7 +407,7 @@ Writes an int16_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadInt16()
 
@@ -434,7 +434,7 @@ Reads an int16_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_WriteInt32()
 
@@ -461,7 +461,7 @@ Writes an int32_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadInt32()
 
@@ -488,7 +488,7 @@ Reads an int32_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_WriteInt64()
 
@@ -515,7 +515,7 @@ Writes an int64_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadInt64()
 
@@ -542,7 +542,7 @@ Reads an int64_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_WriteUint8()
 
@@ -553,6 +553,8 @@ int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
 **Description**
 
 Writes a uint8_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -567,7 +569,7 @@ Writes a uint8_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_ReadUint8()
 
@@ -578,6 +580,8 @@ int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
 **Description**
 
 Reads a uint8_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -592,7 +596,7 @@ Reads a uint8_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_WriteUint16()
 
@@ -603,6 +607,8 @@ int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
 **Description**
 
 Writes a uint16_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -617,7 +623,7 @@ Writes a uint16_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_ReadUint16()
 
@@ -628,6 +634,8 @@ int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
 **Description**
 
 Reads a uint16_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -642,7 +650,7 @@ Reads a uint16_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_WriteUint32()
 
@@ -653,6 +661,8 @@ int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
 **Description**
 
 Writes a uint32_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -667,7 +677,7 @@ Writes a uint32_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_ReadUint32()
 
@@ -678,6 +688,8 @@ int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
 **Description**
 
 Reads a uint32_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -692,7 +704,7 @@ Reads a uint32_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_WriteUint64()
 
@@ -703,6 +715,8 @@ int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
 **Description**
 
 Writes a uint64_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -717,7 +731,7 @@ Writes a uint64_t value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_ReadUint64()
 
@@ -728,6 +742,8 @@ int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
 **Description**
 
 Reads a uint64_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 26.0.0
 
@@ -742,7 +758,7 @@ Reads a uint64_t value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | <ul>          <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.</li><br>        <li>Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails.</li>          </ul> |
+| int | <ul>          <li>Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.</li>          <li>Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.</li>          <li>Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.</li>          </ul> |
 
 ### OH_IPCParcel_WriteFloat()
 
@@ -769,7 +785,7 @@ Writes a float value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadFloat()
 
@@ -796,7 +812,7 @@ Reads a float value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_WriteDouble()
 
@@ -823,7 +839,7 @@ Writes a double value to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadDouble()
 
@@ -850,7 +866,7 @@ Reads a double value from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_WriteString()
 
@@ -877,7 +893,7 @@ Writes a string including a string terminator to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadString()
 
@@ -931,7 +947,7 @@ Writes data of the specified length from the memory to an **OHIPCParcel** object
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadBuffer()
 
@@ -985,7 +1001,7 @@ Writes an **OHIPCRemoteStub** object to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadRemoteStub()
 
@@ -1038,7 +1054,7 @@ Writes an **OHIPCRemoteProxy** object to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadRemoteProxy()
 
@@ -1091,7 +1107,7 @@ Writes a file descriptor to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadFileDescriptor()
 
@@ -1118,7 +1134,7 @@ Reads a file descriptor from an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 ### OH_IPCParcel_Append()
 
@@ -1145,7 +1161,7 @@ Appends data to an **OHIPCParcel** object.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the concatenation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the concatenation fails. |
 
 ### OH_IPCParcel_WriteInterfaceToken()
 
@@ -1172,7 +1188,7 @@ Writes an interface token to an **OHIPCParcel** object for interface identity ve
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR} if the write operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.      Returns [OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails. |
 
 ### OH_IPCParcel_ReadInterfaceToken()
 
@@ -1201,6 +1217,6 @@ Reads an interface token from an **OHIPCParcel** object for interface identity v
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if invalid parameters are found. Returns<br>    {@link OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR} if the read operation fails. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found. Returns      [OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails. |
 
 

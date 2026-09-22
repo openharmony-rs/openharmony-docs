@@ -8,6 +8,8 @@ typedef struct ArkUI_SelectionOptions ArkUI_SelectionOptions
 
 Defines the options for selection operation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

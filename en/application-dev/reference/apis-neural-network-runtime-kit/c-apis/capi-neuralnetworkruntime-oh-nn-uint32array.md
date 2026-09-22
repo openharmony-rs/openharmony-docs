@@ -8,6 +8,8 @@ typedef struct OH_NN_UInt32Array {...} OH_NN_UInt32Array
 
 This structure is used to store a 32-bit unsigned integer array.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)

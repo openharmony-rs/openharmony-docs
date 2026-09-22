@@ -33,6 +33,8 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 
 将调用线程挂起指定的时长。<br> 若`usec`超过支持的最大值则按最大值截断。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -56,6 +58,8 @@ FFRT_C_API void ffrt_yield(void)
 **描述：**
 
 将控制权让出给其他任务，使其有机会被执行。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
 

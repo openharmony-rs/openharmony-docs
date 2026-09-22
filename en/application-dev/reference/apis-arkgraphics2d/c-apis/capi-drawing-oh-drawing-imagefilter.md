@@ -8,6 +8,8 @@ typedef struct OH_Drawing_ImageFilter OH_Drawing_ImageFilter
 
 Defines a struct for an image filter, which is used to operate all color bits that make up image pixels.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

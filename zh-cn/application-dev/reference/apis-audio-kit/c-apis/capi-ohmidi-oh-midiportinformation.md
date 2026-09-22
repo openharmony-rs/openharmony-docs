@@ -8,6 +8,8 @@ typedef struct OH_MIDIPortInformation {...} OH_MIDIPortInformation
 
 端口信息结构体。用于枚举端口，包含可显示的端口名称。
 
+**系统能力：** SystemCapability.Multimedia.Audio.MIDI
+
 **起始版本：** 24
 
 **相关模块：** [OHMIDI](capi-ohmidi.md)

@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_IPMulti {...} OH_TrafficFilter_IPMulti
 
 多IP匹配的IP匹配值。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **起始版本：** 26.0.0
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)

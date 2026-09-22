@@ -8,6 +8,8 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionContext* OH_AbilityRuntim
 
 表示ModularObjectExtensionAbility上下文的句柄。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)

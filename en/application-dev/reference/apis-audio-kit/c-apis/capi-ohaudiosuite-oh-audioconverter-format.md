@@ -8,6 +8,8 @@ typedef struct OH_AudioConverter_Format {...} OH_AudioConverter_Format
 
 Define the audio converter format info structure, used to describe basic audio format.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudioSuite](capi-ohaudiosuite.md)

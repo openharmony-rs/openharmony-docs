@@ -8,6 +8,8 @@ typedef struct OH_QoS_GewuCreateSessionResult {...} OH_QoS_GewuCreateSessionResu
 
 OH_QoS_GewuCreateSession()接口的返回结果，用于封装格物会话创建操作的执行状态。该结构体支持统一处理会话创建成功和失败两种场景：创建会话成功时，`session`字段包含创建的会话句柄；失败时，` error`字段保存错误码，便于开发者定位和处理异常。
 
+**系统能力：** SystemCapability.Resourceschedule.QoS.Core
+
 **起始版本：** 20
 
 **相关模块：** [QoS](capi-qos.md)

@@ -8,6 +8,8 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 Declares the Ability base want.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

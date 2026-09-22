@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_TextEditorTextStyle OH_ArkUI_TextEditorTextStyle
 
 Defines the text style of the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

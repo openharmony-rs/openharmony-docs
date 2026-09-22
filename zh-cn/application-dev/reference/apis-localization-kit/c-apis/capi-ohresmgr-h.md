@@ -77,6 +77,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 通过指定资源ID和屏幕密度，获取对应的media资源的Base64编码字符串。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -87,7 +89,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 | uint32_t resId | 输入参数。资源ID。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考{@link ScreenDensity}。默认值为0，表示使用当前系统屏幕密度。 |
+| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
@@ -105,6 +107,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 
 通过指定资源ID和屏幕密度，获取对应的media资源的Base64编码字符串。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -115,7 +119,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 | uint32_t resId | 输入参数。资源ID。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
-| uint32_t density | 输入参数。屏幕密度，取值范围请参考{@link ScreenDensity}。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
+| uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 
 **返回值：**
 
@@ -133,6 +137,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 通过指定资源名称和屏幕密度，获取对应的media资源的Base64编码字符串。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -143,7 +149,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 | const char *resName | 输入参数。资源名称。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考{@link ScreenDensity}。默认值为0，表示使用当前系统屏幕密度。 |
+| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
@@ -161,6 +167,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 
 通过指定资源名称和屏幕密度，获取对应的media资源的Base64编码字符串。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -171,7 +179,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 | const char *resName | 输入参数。资源名称。 |
 | char **resultValue | 输出参数。返回Base64编码字符串指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回Base64字符串长度，单位为Byte。 |
-| uint32_t density | 输入参数。屏幕密度，取值范围请参考{@link ScreenDensity}。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
+| uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 
 **返回值：**
 
@@ -189,6 +197,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 通过指定资源ID和屏幕密度，获取对应的media资源的二进制数据。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -199,7 +209,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 | uint32_t resId | 输入参数。资源ID。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考{@link ScreenDensity}。默认值为0，表示使用当前系统屏幕密度。 |
+| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
@@ -217,6 +227,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 
 通过指定资源ID和屏幕密度，获取对应的media资源的二进制数据。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -227,7 +239,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 | uint32_t resId | 输入参数。资源ID。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
-| uint32_t density | 输入参数。屏幕密度，取值范围请参考{@link ScreenDensity}。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
+| uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 
 **返回值：**
 
@@ -245,6 +257,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 通过指定资源名称和屏幕密度，获取对应的media资源的二进制数据。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -255,7 +269,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 | const char *resName | 输入参数。资源名称。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考{@link ScreenDensity}。默认值为0，表示使用当前系统屏幕密度。 |
+| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 
 **返回值：**
 
@@ -273,6 +287,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 
 通过指定资源名称和屏幕密度，获取对应的media资源的二进制数据。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -283,7 +299,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 | const char *resName | 输入参数。资源名称。 |
 | uint8_t **resultValue | 输出参数。返回媒体数据指针，由malloc()分配内存，使用完后须通过free()释放。 |
 | uint64_t *resultLen | 输出参数。返回数据长度，单位为Byte。 |
-| uint32_t density | 输入参数。屏幕密度，取值范围请参考{@link ScreenDensity}。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
+| uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 
 **返回值：**
 
@@ -301,6 +317,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 通过指定资源ID、屏幕密度、图标类型，获取图标资源对应的DrawableDescriptor对象。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -310,7 +328,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 | const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考{@link ScreenDensity}。默认值为0，表示使用当前系统屏幕密度。 |
+| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 | type | 输入参数，可选。图标类型，默认值为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 |
 
 **返回值：**
@@ -329,6 +347,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 
 通过指定资源ID、屏幕密度、图标类型，获取图标资源对应的DrawableDescriptor对象。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -338,7 +358,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 | const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
 | uint32_t resId | 输入参数。资源ID。 |
 | ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
-| uint32_t density | 输入参数。屏幕密度，取值范围请参考{@link ScreenDensity}。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
+| uint32_t density | 输入参数。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 | uint32_t type | 输入参数。图标类型，若不需要特定图标类型，请将该参数设置为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 |
 
 **返回值：**
@@ -357,6 +377,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 通过指定资源名称、屏幕密度、图标类型，获取图标资源对应的DrawableDescriptor对象。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -366,7 +388,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 | const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
-| density | 输入参数，可选。屏幕密度，取值范围请参考{@link ScreenDensity}。默认值为0，表示使用当前系统屏幕密度。 |
+| density | 输入参数，可选。屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。默认值为0，表示使用当前系统屏幕密度。 |
 | type | 输入参数，可选。图标类型，默认值为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 <br>2：表示应用动态图标。 |
 
 **返回值：**
@@ -385,6 +407,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 
 通过指定资源名称和屏幕密度，获取对应的图标资源的DrawableDescriptor对象。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -394,7 +418,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 | const NativeResourceManager *mgr | 输入参数。指向NativeResourceManager对象的指针，此指针通过{@link OH_ResourceManager_InitNativeResourceManager}函数获取。 |
 | const char *resName | 输入参数。资源名称。 |
 | ArkUI_DrawableDescriptor **drawableDescriptor | 输出参数。返回指向DrawableDescriptor对象的指针。 |
-| uint32_t density | 输入参数，屏幕密度，取值范围请参考{@link ScreenDensity}。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
+| uint32_t density | 输入参数，屏幕密度，取值范围请参考[ScreenDensity](capi-resmgr-common-h.md#screendensity)。值为0表示使用当前系统屏幕密度。若不需要特定密度，请将此参数设置为0。 |
 | uint32_t type | 输入参数。图标类型，若不需要特定图标类型，请将该参数设置为0。 <br>0：表示应用自身图标。 <br>1：表示应用主题图标。 <br>2：表示应用动态图标。 |
 
 **返回值：**
@@ -412,6 +436,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 **描述：**
 
 获取指定资源ID对应的Symbol图标的Unicode编码。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -439,6 +465,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 
 获取指定资源名称对应的Symbol图标的Unicode编码。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -464,6 +492,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 **描述：**
 
 获取应用支持的语言列表。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -492,6 +522,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 获取应用支持的语言列表。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -518,6 +550,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 **描述：**
 
 获取设备的屏幕方向、语言区域、设备类型、屏幕密度、颜色模式等配置信息。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -548,6 +582,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 获取设备的屏幕方向、语言区域、设备类型、屏幕密度、颜色模式等配置信息。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 20
 
 **参数：**
@@ -573,13 +609,15 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 释放[OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration)或[OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration)函数申请的内存。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| ResourceManager_Configuration *configuration | 输入参数。指向需要释放内存的{@link ResourceManager_Configuration}对象的指针。 |
+| ResourceManager_Configuration *configuration | 输入参数。指向需要释放内存的[ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md)对象的指针。 |
 
 **返回值：**
 
@@ -596,6 +634,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 **描述：**
 
 获取指定资源ID对应的普通字符串或格式化字符串。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -624,6 +664,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 获取指定资源名称对应的普通字符串或格式化字符串。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -650,6 +692,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 **描述：**
 
 获取指定资源ID对应的字符串数组。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -678,6 +722,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 获取指定资源名称对应的字符串数组。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -705,6 +751,8 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 
 释放字符串数组内存。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -729,6 +777,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 **描述：**
 
 获取指定资源ID对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -761,6 +811,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 获取指定资源名称对应的复数字符串。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **废弃版本：** 16
@@ -792,6 +844,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 通过指定资源ID、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 18
 
 **参数：**
@@ -819,6 +873,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 **描述：**
 
 通过指定资源名称、整数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 18
 
@@ -848,6 +904,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 通过指定资源ID、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 18
 
 **参数：**
@@ -875,6 +933,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 **描述：**
 
 通过指定资源名称、浮点数数量值和可变参数，获取对应的复数字符串并进行格式化。 <br>中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考{@link 语言单复数规则}。 <br>在英语、德语等语言中，单复数类型包括基数词（如1、2、3）和序数词（如1st、2nd、3rd），本函数仅支持在基数词类型下使用。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 18
 
@@ -904,6 +964,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 获取指定资源ID对应的颜色资源值。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -929,6 +991,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 **描述：**
 
 获取指定资源名称对应的颜色资源值。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -956,6 +1020,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 获取指定资源ID对应的整数资源值。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -981,6 +1047,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 **描述：**
 
 获取指定资源名称对应的整数资源值。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -1008,6 +1076,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 获取指定资源ID对应的浮点数资源值。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -1033,6 +1103,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 **描述：**
 
 获取指定资源名称对应的浮点数资源值。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -1060,6 +1132,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 获取指定资源ID对应的布尔资源值。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -1085,6 +1159,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 **描述：**
 
 获取指定资源名称对应的布尔资源值。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 
@@ -1112,6 +1188,8 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 在应用程序运行时，动态加载overlay资源，实现主题切换或资源覆盖。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 12
 
 **参数：**
@@ -1136,6 +1214,8 @@ ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResource
 **描述：**
 
 在应用程序运行时，移除指定的overlay资源，还原被覆盖前的资源。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 

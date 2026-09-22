@@ -8,6 +8,8 @@ typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 
 Defines the device ID list, which is used to store the device IDs and device quantity obtained using {@link OH_Usb_GetDevices}.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 18
 
 **Related module**: [UsbDdk](capi-usbddk.md)

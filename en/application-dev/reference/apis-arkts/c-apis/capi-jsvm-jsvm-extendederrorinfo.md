@@ -8,6 +8,8 @@ typedef struct JSVM_ExtendedErrorInfo {...} JSVM_ExtendedErrorInfo
 
 JSVM-API uses both return values and JavaScript exceptions for error handling
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

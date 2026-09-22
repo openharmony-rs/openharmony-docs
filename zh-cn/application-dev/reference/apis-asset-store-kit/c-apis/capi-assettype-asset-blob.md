@@ -8,6 +8,8 @@ typedef struct Asset_Blob {...} Asset_Blob
 
 二进制数组类型，即不定长的字节数组。
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 11
 
 **相关模块：** [AssetType](capi-assettype.md)

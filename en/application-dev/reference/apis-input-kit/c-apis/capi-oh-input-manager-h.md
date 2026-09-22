@@ -175,13 +175,13 @@
 | [Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)](#oh_input_addkeyeventmonitor) | - | Adds a listener for key events. Only the initial addition takes effect. Subsequent attempts will be ignored. |
 | [Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)](#oh_input_addmouseeventmonitor) | - | Adds a listener for mouse events, including mouse click and movement events, but not scroll wheel events. Scroll wheel events are axis events. <br>This API can be called only when the screen recording scenario is in use. Otherwise, the call does not take effect. |
 | [Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback)](#oh_input_addtoucheventmonitor) | - | Adds a listener for touch input events. |
-| [Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitorforall) | - | Adds a listener for all types of axis events, which are defined in {@link InputEvent_AxisEventType}. |
-| [Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitor) | - | Adds a listener for the specified type of axis events, which are defined in {@link InputEvent_AxisEventType}. |
+| [Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitorforall) | - | Adds a listener for all types of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
+| [Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitor) | - | Adds a listener for the specified type of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
 | [Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback)](#oh_input_removekeyeventmonitor) | - | Removes the listener for key events. |
 | [Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback)](#oh_input_removemouseeventmonitor) | - | Removes the listener for mouse events. |
 | [Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback)](#oh_input_removetoucheventmonitor) | - | Removes the listener for touch events. |
 | [Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitorforall) | - | Removes the listener for all types of axis events. |
-| [Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitor) | - | Removes the listener for the specified type of axis events, which are defined in {@link InputEvent_AxisEventType}. |
+| [Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitor) | - | Removes the listener for the specified type of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
 | [Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option)](#oh_input_addkeyeventinterceptor) | - | Adds a key event interceptor. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result). Key events are intercepted only when the application gains focus. |
 | [Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option)](#oh_input_addinputeventinterceptor) | - | Adds an interceptor for input events, including mouse, touch, and axis events. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](capi-oh-input-manager-h.md#input_result). Key events are intercepted only when the application window is hit. |
 | [Input_Result OH_Input_RemoveKeyEventInterceptor(void)](#oh_input_removekeyeventinterceptor) | - | Removes the interceptor for key events. |
@@ -198,7 +198,7 @@
 | [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | Obtains all configured hotkeys. |
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | Specifies whether to report repeated key events. |
 | [Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)](#oh_input_getrepeat) | - | Checks whether to report repeated key events. |
-| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | Subscribes to hotkey events. <br> > **NOTE**<br>> > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**: > 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys. > 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see {@link Input_KeyCode}. For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key. |
+| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | Subscribes to hotkey events. <br> > **NOTE**<br>> > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**: > 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys. > 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key. |
 | [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | Unsubscribes from hotkey events. |
 | [Input_Result OH_Input_GetDeviceIds(int32_t *deviceIds, int32_t inSize, int32_t *outSize)](#oh_input_getdeviceids) | - | Obtains the IDs of all input devices. |
 | [Input_Result OH_Input_GetDevice(int32_t deviceId, Input_DeviceInfo **deviceInfo)](#oh_input_getdevice) | - | Obtains information about the input device. |
@@ -225,7 +225,7 @@
 | [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | Obtains the pointer size level of the specified mouse pointer information object. |
 | [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | Gets the cursor color corresponding to a specified mouse cursor info object, represented as a 32-bit ARGB integer. |
 | [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color. |
-| [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is {@link DEVELOPER_DEFINED_ICON}, the **PixelMap** object of the pointer is returned. |
+| [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned. |
 | [Input_Result OH_Input_SetPointerVisible(bool visible)](#oh_input_setpointervisible) | - | Sets the visible status of the mouse pointer in the current window. |
 | [Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)](#oh_input_getpointerstyle) | - | Gets the mouse cursor style of a specified window. This API only supports getting the mouse cursor style of windows within the current application process. |
 | [Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)](#oh_input_setpointerstyle) | - | Sets the mouse cursor style for a specified window. This API only supports setting the mouse cursor style for windows within the current application process. |
@@ -264,6 +264,8 @@ enum Input_KeyStateAction
 
 Provides the enum values of the key status.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -284,6 +286,8 @@ enum Input_KeyEventAction
 
 Provides the enum values of the key event type.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -301,6 +305,8 @@ enum Input_MouseEventAction
 **Description**
 
 Provides the enum values of mouse actions.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
@@ -324,6 +330,8 @@ enum InputEvent_MouseAxis
 
 Provides the enum values of mouse axis event types.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -340,6 +348,8 @@ enum Input_MouseEventButton
 **Description**
 
 Provides the enum values of mouse buttons.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
@@ -362,6 +372,8 @@ enum Input_TouchEventAction
 
 Provides the enum values of touch actions.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -380,6 +392,8 @@ enum Input_KeyboardType
 **Description**
 
 Provides the enum values of keyboard types of the input device.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 13
 
@@ -402,6 +416,8 @@ enum Input_InjectionStatus
 
 Provides the enum values of injection permission states.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -420,6 +436,8 @@ enum InputEvent_SourceType
 
 Provides the enum values of event source types.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -437,6 +455,8 @@ enum Input_Result
 **Description**
 
 Provides return value enumerations.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
@@ -470,6 +490,8 @@ enum Input_TouchEventToolType
 
 Enumerates touch tool types of an input device.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 24
 
 | Enum item | Description |
@@ -496,6 +518,8 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 
 Defines the callback used to return hotkey events.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 14
 
 **Parameters**:
@@ -513,6 +537,8 @@ typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 **Description**
 
 Defines a lifecycle callback for **keyEvent**. If the callback is triggered, **keyEvent** will be destroyed.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
@@ -532,6 +558,8 @@ typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 
 Defines a lifecycle callback for **mouseEvent**. If the callback is triggered, **mouseEvent** will be destroyed.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -549,6 +577,8 @@ typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 **Description**
 
 Defines the lifecycle callback for **TouchEvent**. If the callback is triggered, **TouchEvent** will be destroyed.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
@@ -568,6 +598,8 @@ typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 
 Defines a lifecycle callback for **axisEvent**. If the callback is triggered, **axisEvent** will be destroyed.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -585,6 +617,8 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 **Description**
 
 Callback used to receive input device hot-plug events.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 13
 
@@ -604,6 +638,8 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 
 Callback used to receive input device hot-unplug events.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -621,6 +657,8 @@ typedef void (*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedSt
 **Description**
 
 Defines a callback used to receive the injection permission authorization status.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -715,7 +753,7 @@ Sets the key value of a key status enum object.
 | Parameter | Description |
 | -- | -- |
 | [struct Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction). |
-| int32_t keyCode | Key code. For details, see {@link Input_KeyCode}. |
+| int32_t keyCode | Key code. For details, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). |
 
 ### OH_Input_GetKeyCode()
 
@@ -971,7 +1009,7 @@ Sets the key code value for a key event.
 | Parameter | Description |
 | -- | -- |
 | [struct Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent). <br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent). |
-| int32_t keyCode | Key value. For details, see {@link Input_KeyCode}. |
+| int32_t keyCode | Key value. For details, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). |
 
 ### OH_Input_GetKeyEventKeyCode()
 
@@ -997,7 +1035,7 @@ Obtains the key code value of a key event.
 
 | Type | Description |
 | -- | -- |
-| int32_t | Key code of a key event. For details, see {@link Input_KeyCode}. |
+| int32_t | Key code of a key event. For details, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). |
 
 ### OH_Input_SetKeyEventActionTime()
 
@@ -1150,6 +1188,8 @@ Input_Result OH_Input_GetKeyEventId(const struct Input_KeyEvent* keyEvent, int32
 
 Obtains the ID of a key event.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -1174,6 +1214,8 @@ Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)
 **Description**
 
 Adds a hook function for key event interception. <br>You can call [OH_Input_RemoveKeyEventHook](capi-oh-input-manager-h.md#oh_input_removekeyeventhook) to remove a hook function that has been added. Multiple hook functions can be set for an application, but only one hook function can be set for a process. The most recently added hook function has a higher priority.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.HOOK_KEY_EVENT
 
@@ -1201,6 +1243,8 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 
 Removes the hook function for key event interception. <br>This API is usually used together with [OH_Input_AddKeyEventHook](capi-oh-input-manager-h.md#oh_input_addkeyeventhook).
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -1224,6 +1268,8 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 **Description**
 
 Redispatches key events. <br>Only key events intercepted by the hook function can be redispatched, and these events must maintain the original priority sequence. <br>After this API is called, key events will be redispatched within 3 seconds. If the redispatch is not completed within 3 seconds, [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) is reported. <br>Successful redispatch requires correct mapping of events. If one or more [KEY_ACTION_DOWN](capi-oh-input-manager-h.md#input_keyeventaction) events are redispatched, the [KEY_ACTION_UP](capi-oh-input-manager-h.md#input_keyeventaction) or [KEY_ACTION_CANCEL](capi-oh-input-manager-h.md#input_keyeventaction) event can be redispatched. <br>If only the [KEY_ACTION_UP](capi-oh-input-manager-h.md#input_keyeventaction) or [KEY_ACTION_CANCEL](capi-oh-input-manager-h.md#input_keyeventaction) key events are redispatched, the API call is successful, but the dispatch is not actually performed. <br>If the redispatched event is not intercepted by the hook function, the API call is successful, but the dispatch is not actually performed.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 21
 
@@ -1276,6 +1322,8 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 **Description**
 
 Injects a mouse event by using coordinates in the global coordinate system with the upper-left corner of the primary screen as the origin. <br>This API does not take effect if the user has not granted authorization and the caller does not have the ohos.permission.CONTROL_DEVICE permission. <br>Since API version 20, you are advised to use [OH_Input_RequestInjection](capi-oh-input-manager-h.md#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](capi-oh-input-manager-h.md#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API. <br>Since API version 26.0.0, callers that have the ohos.permission.CONTROL_DEVICE permission can use this API directly.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.CONTROL_DEVICE
 
@@ -1766,6 +1814,8 @@ void OH_Input_SetMouseEventGlobalX(struct Input_MouseEvent* mouseEvent, int32_t 
 
 Sets the X coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -1784,6 +1834,8 @@ int32_t OH_Input_GetMouseEventGlobalX(const struct Input_MouseEvent* mouseEvent)
 **Description**
 
 Obtains the X coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -1809,6 +1861,8 @@ void OH_Input_SetMouseEventGlobalY(struct Input_MouseEvent* mouseEvent, int32_t 
 
 Sets the Y coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -1827,6 +1881,8 @@ int32_t OH_Input_GetMouseEventGlobalY(const struct Input_MouseEvent* mouseEvent)
 **Description**
 
 Obtains the Y coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -1851,6 +1907,8 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 **Description**
 
 Injects a touch event by using coordinates in the relative coordinate system with the upper-left corner of the specified screen as the origin. <br>This API does not take effect if the user has not granted authorization and the caller does not have the ohos.permission.CONTROL_DEVICE permission. <br>Since API version 20, you are advised to use [OH_Input_RequestInjection](capi-oh-input-manager-h.md#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](capi-oh-input-manager-h.md#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API. <br>Since API version 26.0.0, callers that have the ohos.permission.CONTROL_DEVICE permission can use this API directly.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.CONTROL_DEVICE
 
@@ -1877,6 +1935,8 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 **Description**
 
 Injects a touch event by using coordinates in the global coordinate system with the upper-left corner of the primary screen as the origin. <br>This API does not take effect if the event injection authorization is not granted and the caller does not have the ohos.permission.CONTROL_DEVICE permission. <br>Since API version 20, you are advised to use [OH_Input_RequestInjection](capi-oh-input-manager-h.md#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus](capi-oh-input-manager-h.md#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API. <br>Since API version 26.0.0, callers that have the ohos.permission.CONTROL_DEVICE permission can use this API directly.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.CONTROL_DEVICE
 
@@ -2273,6 +2333,8 @@ void OH_Input_SetTouchEventGlobalX(struct Input_TouchEvent* touchEvent, int32_t 
 
 Sets the X coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -2291,6 +2353,8 @@ int32_t OH_Input_GetTouchEventGlobalX(const struct Input_TouchEvent* touchEvent)
 **Description**
 
 Obtains the X coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -2316,6 +2380,8 @@ void OH_Input_SetTouchEventGlobalY(struct Input_TouchEvent* touchEvent, int32_t 
 
 Sets the Y coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -2334,6 +2400,8 @@ int32_t OH_Input_GetTouchEventGlobalY(const struct Input_TouchEvent* touchEvent)
 **Description**
 
 Obtains the Y coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -2358,6 +2426,8 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 **Description**
 
 Sets the pressure for a touchscreen input event. If the pressure value is not set or is not within the valid range, the default value **0.0** is used.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 24
 
@@ -2384,6 +2454,8 @@ double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)
 
 Obtains the pressure of a touchscreen input event.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -2408,6 +2480,8 @@ void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t 
 
 Sets the X coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified window as the origin. If the X coordinate is not set, the default value **0** is used.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -2426,6 +2500,8 @@ int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)
 **Description**
 
 Obtains the X coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified window as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 24
 
@@ -2451,6 +2527,8 @@ void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t 
 
 Sets the Y coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified window as the origin. If the Y coordinate is not set, the default value **0** is used.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -2469,6 +2547,8 @@ int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)
 **Description**
 
 Obtains the Y coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified window as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 24
 
@@ -2494,6 +2574,8 @@ void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t
 
 Sets the time when the most recent down event occurred for the finger or other touchscreen devices associated with the current touchscreen event. If the time is not set, the default value **0** is used.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -2512,6 +2594,8 @@ int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent
 **Description**
 
 Obtains the time when the most recent down event occurred for the finger or other touchscreen devices associated with the current touchscreen event.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 24
 
@@ -2537,6 +2621,8 @@ Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent,
 
 Sets the tool type for a touchscreen input event. If **toolType** is not set, the default value **Input_TouchEventToolType.TOOL_TYPE_FINGER** is used.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -2561,6 +2647,8 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 **Description**
 
 Obtains the tool type of a touchscreen input event.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 24
 
@@ -2625,6 +2713,8 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 **Description**
 
 Queries the injection permission authorization status of the current application. <br>Since API version 26.0.0, this API returns only the dialog authorization status. It does not indicate whether the caller has injection capability due to holding the ohos.permission.CONTROL_DEVICE permission.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -2705,7 +2795,7 @@ Sets the action for an axis event.
 | Parameter | Description |
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) to create an axis event object. <br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent). |
-| InputEvent_AxisAction action | Axis event action. For details, see {@link InputEvent_AxisAction}. |
+| InputEvent_AxisAction action | Axis event action. For details, see [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction). |
 
 **Returns**:
 
@@ -2732,7 +2822,7 @@ Obtains the action of an axis event.
 | Parameter | Description |
 | -- | -- |
 | [const Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) to create an axis event object. <br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent). |
-| InputEvent_AxisAction *action | Axis event action. For details, see {@link InputEvent_AxisAction}. |
+| InputEvent_AxisAction *action | Axis event action. For details, see [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction). |
 
 **Returns**:
 
@@ -2867,7 +2957,7 @@ Sets the axis value of the axis type specified by the axis event.
 | Parameter | Description |
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) to create an axis event object. <br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent). |
-| InputEvent_AxisType axisType | Axis type. For details, see {@link InputEvent_AxisType}. |
+| InputEvent_AxisType axisType | Axis type. For details, see [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype). |
 | double axisValue | Value of the axis event. A positive value indicates scrolling forward (for example, 1.0 means scrolling forward by one unit), a negative value indicates scrolling backward (for example, -1.0 means scrolling backward by one unit), and zero indicates no scrolling. |
 
 **Returns**:
@@ -2895,7 +2985,7 @@ Obtains the axis value for the specified axis type of the axis event.
 | Parameter | Description |
 | -- | -- |
 | [const Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) to create an axis event object. <br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent). |
-| InputEvent_AxisType axisType | Axis type. For details, see {@link InputEvent_AxisType}. |
+| InputEvent_AxisType axisType | Axis type. For details, see [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype). |
 | double* axisValue | Axis event value. A positive number means scrolling forward (for example, 1.0 equals one unit forward), and a negative number means scrolling backward (for example, -1.0 equals one unit backward). |
 
 **Returns**:
@@ -2977,7 +3067,7 @@ Sets the axis event type.
 | Parameter | Description |
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) to create an axis event object. <br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent). |
-| InputEvent_AxisEventType axisEventType | Axis event type. For details, see {@link InputEvent_AxisEventType}. |
+| InputEvent_AxisEventType axisEventType | Axis event type. For details, see [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
 
 **Returns**:
 
@@ -3004,7 +3094,7 @@ Obtains the axis event type.
 | Parameter | Description |
 | -- | -- |
 | [const Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent](capi-oh-input-manager-h.md#oh_input_createaxisevent) to create an axis event object. <br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent](capi-oh-input-manager-h.md#oh_input_destroyaxisevent). |
-| InputEvent_AxisEventType* axisEventType | Axis event type. For details, see {@link InputEvent_AxisEventType}. |
+| InputEvent_AxisEventType* axisEventType | Axis event type. For details, see [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
 
 **Returns**:
 
@@ -3184,6 +3274,8 @@ Input_Result OH_Input_SetAxisEventGlobalX(struct Input_AxisEvent* axisEvent, int
 
 Sets the X coordinate of the axis event in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3208,6 +3300,8 @@ Input_Result OH_Input_GetAxisEventGlobalX(const Input_AxisEvent* axisEvent, int3
 **Description**
 
 Obtains the X coordinate of the axis event in the global coordinate system with the upper-left corner of the primary screen as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -3234,6 +3328,8 @@ Input_Result OH_Input_SetAxisEventGlobalY(struct Input_AxisEvent* axisEvent, int
 
 Sets the Y coordinate of the axis event in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3258,6 +3354,8 @@ Input_Result OH_Input_GetAxisEventGlobalY(const Input_AxisEvent* axisEvent, int3
 **Description**
 
 Obtains the Y coordinate of the axis event in the global coordinate system with the upper-left corner of the primary screen as the origin.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -3366,7 +3464,7 @@ Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback
 
 **Description**
 
-Adds a listener for all types of axis events, which are defined in {@link InputEvent_AxisEventType}.
+Adds a listener for all types of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype).
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3394,7 +3492,7 @@ Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType
 
 **Description**
 
-Adds a listener for the specified type of axis events, which are defined in {@link InputEvent_AxisEventType}.
+Adds a listener for the specified type of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype).
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3406,7 +3504,7 @@ Adds a listener for the specified type of axis events, which are defined in {@li
 
 | Parameter | Description |
 | -- | -- |
-| InputEvent_AxisEventType axisEventType | Axis event type, which is defined in {@link InputEvent_AxisEventType}. |
+| InputEvent_AxisEventType axisEventType | Axis event type, which is defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
 | [Input_AxisEventCallback](capi-oh-input-manager-h.md#input_axiseventcallback) callback | Callback used to receive axis events of a specified type. |
 
 **Returns**:
@@ -3535,7 +3633,7 @@ Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventT
 
 **Description**
 
-Removes the listener for the specified type of axis events, which are defined in {@link InputEvent_AxisEventType}.
+Removes the listener for the specified type of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype).
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3547,7 +3645,7 @@ Removes the listener for the specified type of axis events, which are defined in
 
 | Parameter | Description |
 | -- | -- |
-| InputEvent_AxisEventType axisEventType | Axis event type, which is defined in {@link InputEvent_AxisEventType}. |
+| InputEvent_AxisEventType axisEventType | Axis event type, which is defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype). |
 | [Input_AxisEventCallback](capi-oh-input-manager-h.md#input_axiseventcallback) callback | Callback for the specified type of axis events. |
 
 **Returns**:
@@ -3952,7 +4050,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 **Description**
 
-Subscribes to hotkey events. <br> > **NOTE**<br>> > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**: > 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys. > 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see {@link Input_KeyCode}. For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.
+Subscribes to hotkey events. <br> > **NOTE**<br>> > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**: > 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys. > 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -4418,6 +4516,8 @@ Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)
 
 Queries the maximum number of touch points supported by the device.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -4441,6 +4541,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 **Description**
 
 Obtains the coordinates of the mouse pointer on the current screen. <br>Since API version 26.0.0, non-focused applications that have the ohos.permission.INPUT_DEVICE_CONFIGURATOR permission can call this API.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 20
 
@@ -4468,6 +4570,8 @@ struct Input_CursorInfo* OH_Input_CursorInfo_Create()
 
 Creates a mouse pointer information object. You can call [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) to destroy a mouse pointer information object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Returns**:
@@ -4486,6 +4590,8 @@ void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)
 
 Destroys the mouse pointer information object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4503,6 +4609,8 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 **Description**
 
 Obtains the pointer visible status of the specified mouse pointer information object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4529,6 +4637,8 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 
 Obtains the pointer style of the specified mouse pointer information object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4554,6 +4664,8 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 
 Obtains the pointer size level of the specified mouse pointer information object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4561,7 +4673,7 @@ Obtains the pointer size level of the specified mouse pointer information object
 | Parameter | Description |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](capi-oh-input-manager-h.md#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](capi-oh-input-manager-h.md#oh_input_getcursorinfo) to query the current mouse pointer information. |
-| int32_t* sizeLevel | Pointer size level of the mouse pointer information object. The value is an integer ranging from 1 to 7. A larger value indicates a higher pointer size level. The size of the custom pointer {@link DEVELOPER_DEFINED_ICON} is subject to the actual bitmap size. |
+| int32_t* sizeLevel | Pointer size level of the mouse pointer information object. The value is an integer ranging from 1 to 7. A larger value indicates a higher pointer size level. The size of the custom pointer [DEVELOPER_DEFINED_ICON](capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual bitmap size. |
 
 **Returns**:
 
@@ -4579,6 +4691,8 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 Gets the cursor color corresponding to a specified mouse cursor info object, represented as a 32-bit ARGB integer.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4586,7 +4700,7 @@ Gets the cursor color corresponding to a specified mouse cursor info object, rep
 | Parameter | Description |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo](capi-oh-input-manager-h.md#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo](capi-oh-input-manager-h.md#oh_input_getcursorinfo) to query the current mouse pointer information. |
-| uint32_t* color | Cursor color of the mouse cursor info, represented by a 32-bit ARGB integer. For application-defined custom cursors {@link DEVELOPER_DEFINED_ICON}, the actual bitmap color shall prevail. |
+| uint32_t* color | Cursor color of the mouse cursor info, represented by a 32-bit ARGB integer. For application-defined custom cursors [DEVELOPER_DEFINED_ICON](capi-oh-pointer-style-h.md#input_pointerstyle), the actual bitmap color shall prevail. |
 
 **Returns**:
 
@@ -4603,6 +4717,8 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 **Description**
 
 Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4627,7 +4743,9 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 
 **Description**
 
-Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is {@link DEVELOPER_DEFINED_ICON}, the **PixelMap** object of the pointer is returned.
+Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4654,6 +4772,8 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 
 Sets the visible status of the mouse pointer in the current window.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4678,6 +4798,8 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 Gets the mouse cursor style of a specified window. This API only supports getting the mouse cursor style of windows within the current application process.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4685,7 +4807,7 @@ Gets the mouse cursor style of a specified window. This API only supports gettin
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The value is an integer greater than or equal to **-1**. The value **-1** indicates the global window. <br>Only the ID of the current window or global window can be specified. If any other ID is specified, the default pointer style of the global window is returned. You can obtain the ID of the current window through {@link oh_window.h#getWindowProperties}. |
-| int32_t *pointerStyle | Mouse cursor style, which is an enum value of {@link Input_PointerStyle}. |
+| int32_t *pointerStyle | Mouse cursor style, which is an enum value of [Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle). |
 
 **Returns**:
 
@@ -4703,6 +4825,8 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 Sets the mouse cursor style for a specified window. This API only supports setting the mouse cursor style for windows within the current application process.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4710,7 +4834,7 @@ Sets the mouse cursor style for a specified window. This API only supports setti
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The value is an integer greater than or equal to 0. <br>Only the ID of the current window can be specified. If any other ID is specified, the API call is successful, but the setting does not take effect. You can obtain the ID of the current window through {@link oh_window.h#getWindowProperties}. |
-| int32_t pointerStyle | Mouse pointer style. The value is an enumerated value of {@link Input_PointerStyle}. |
+| int32_t pointerStyle | Mouse pointer style. The value is an enumerated value of [Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle). |
 
 **Returns**:
 
@@ -4727,6 +4851,8 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 **Description**
 
 Creates a custom mouse pointer object. You can call [OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#oh_input_customcursor_destroy) to destroy a custom mouse pointer resource object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4754,6 +4880,8 @@ void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)
 
 Destroys a custom mouse pointer object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4771,6 +4899,8 @@ Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor,
 **Description**
 
 Obtains the pixel map of a custom mouse pointer object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4796,6 +4926,8 @@ Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, i
 **Description**
 
 Obtains the focus coordinates of a custom mouse pointer object.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4823,6 +4955,8 @@ Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)
 
 Creates a custom mouse pointer configuration object. You can call [OH_Input_CursorConfig_Destroy](capi-oh-input-manager-h.md#oh_input_cursorconfig_destroy) to destroy a custom mouse pointer configuration object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4847,6 +4981,8 @@ void OH_Input_CursorConfig_Destroy(Input_CursorConfig** cursorConfig)
 
 Destroys a custom mouse pointer configuration object.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -4864,6 +5000,8 @@ Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConf
 **Description**
 
 Queries whether the custom mouse pointer configuration follows the system setting to adjust the pointer size.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -4889,6 +5027,8 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 **Description**
 
 Sets the custom mouse pointer style. <br>The cursor may revert to the system style in the following scenarios: application window layout changes, hotspot switching, page navigation, the cursor leaving and re-entering the window, or the cursor moving between different areas of the window. In these cases, the developer needs to set the cursor style again. This API only supports setting the custom mouse cursor style for windows within the current application process.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 

@@ -8,6 +8,8 @@ typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
 
 手电筒状态信息。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)

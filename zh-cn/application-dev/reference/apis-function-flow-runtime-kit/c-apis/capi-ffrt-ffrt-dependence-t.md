@@ -8,6 +8,8 @@ typedef struct ffrt_dependence_t {...} ffrt_dependence_t
 
 依赖数据项结构，用于描述任务间的单个依赖关系。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 **相关模块：** [FFRT](capi-ffrt.md)

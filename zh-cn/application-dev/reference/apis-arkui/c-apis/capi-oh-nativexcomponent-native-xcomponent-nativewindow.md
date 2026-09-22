@@ -8,6 +8,8 @@ typedef struct NativeWindow OHNativeWindow
 
 提供封装的NativeWindow实例。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

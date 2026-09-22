@@ -8,6 +8,8 @@ typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callback
 
 声明输出音频流的回调函数指针。<br>为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都被自定义的回调函数或空指针初始化。<br>可参考 {@link 推荐使用OHAudio开发音频播放功能(C/C++)}。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 10
 
 **废弃版本：** 20

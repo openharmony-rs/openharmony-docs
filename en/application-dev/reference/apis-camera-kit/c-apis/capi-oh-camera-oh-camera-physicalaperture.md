@@ -8,6 +8,8 @@ typedef struct OH_Camera_PhysicalAperture {...} OH_Camera_PhysicalAperture
 
 Describes the physical aperture configuration.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

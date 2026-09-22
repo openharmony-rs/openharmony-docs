@@ -8,6 +8,8 @@ typedef struct OH_Drawing_TextBox OH_Drawing_TextBox
 
 Defines a struct for a text box, which is used to receive the rectangle size, direction, and quantity.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

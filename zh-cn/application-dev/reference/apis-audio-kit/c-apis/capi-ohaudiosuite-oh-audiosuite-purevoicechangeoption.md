@@ -8,6 +8,8 @@ typedef struct OH_AudioSuite_PureVoiceChangeOption {...} OH_AudioSuite_PureVoice
 
 定义音频编创传统变声选项。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 23
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

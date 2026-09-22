@@ -8,6 +8,8 @@ typedef struct OH_AVFormat OH_AVFormat
 
 Forward declaration of OH_AVFormat.
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 13
 
 **Related module**: [ImageProcessing](capi-imageprocessing.md)

@@ -8,6 +8,8 @@ typedef struct CloudDisk_SyncFolder {...} CloudDisk_SyncFolder
 
 A struct that encapsulates the sync root property information.
 
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
 **Since**: 21
 
 **Related module**: [CloudDisk](capi-clouddisk.md)

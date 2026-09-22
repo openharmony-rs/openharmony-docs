@@ -34,13 +34,15 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 
 Creates an sRGB color space.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorSpace* | Returns a pointer to the {@link OH_Drawing_ColorSpace} object created. |
+| OH_Drawing_ColorSpace* | Returns a pointer to the [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object created. |
 
 ### OH_Drawing_ColorSpaceCreateSrgbLinear()
 
@@ -52,13 +54,15 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 
 Creates an sRGB linear (Gamma 1.0) color space.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_ColorSpace* | Returns a pointer to the {@link OH_Drawing_ColorSpace} object created. |
+| OH_Drawing_ColorSpace* | Returns a pointer to the [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object created. |
 
 ### OH_Drawing_ColorSpaceDestroy()
 
@@ -70,12 +74,14 @@ void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 
 Destroys an **OH_Drawing_ColorSpace** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_ColorSpace* colorSpace | Pointer to an {@link OH_Drawing_ColorSpace} object. |
+| OH_Drawing_ColorSpace* colorSpace | Pointer to an [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md) object. |
 
 

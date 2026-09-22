@@ -4,6 +4,8 @@
 
 provides memory management capabilities<br> provides features include operations such as memory alloction, memory free, and so on
 
+**System capability**: SystemCapability.Kernel.Memory
+
 **Since**: 10
 
 ## Files

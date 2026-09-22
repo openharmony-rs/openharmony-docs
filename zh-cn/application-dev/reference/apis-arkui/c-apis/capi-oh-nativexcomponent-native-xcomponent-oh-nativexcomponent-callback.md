@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
 
 OH_NativeXComponent_Callback用于注册XComponent的Surface生命周期（创建、改变、销毁）和触摸事件回调。 适用于需要在Native侧感知Surface状态变化并处理用户触摸交互的场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

@@ -8,6 +8,8 @@ typedef struct OH_Pixelmap_HdrMetadataValue {...} OH_Pixelmap_HdrMetadataValue
 
 Value for HDR_METADATA_KEY. Corresponding relationship with HDR_METADATA_KEY.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)

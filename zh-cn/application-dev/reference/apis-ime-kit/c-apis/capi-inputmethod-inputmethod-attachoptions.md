@@ -15,6 +15,8 @@ typedef struct InputMethod_AttachOptions InputMethod_AttachOptions
 \| [OH_AttachOptions_IsShowKeyboard](capi-inputmethod-attach-options-capi-h. md#oh_attachoptions_isshowkeyboard) \| 获取showKeyboard值。 \|
 \| [OH_AttachOptions_GetRequestKeyboardReason](capi-inputmethod-attach-options-capi-h. md#oh_attachoptions_getrequestkeyboardreason) \| 获取requestKeyboardReason值。 \| <br> <br>与其他结构体的关系： <br>- InputMethod_AttachOptions是OH_InputMethodController_Attach和OH_InputMethodController_AttachWithUIContext的 必要参数之一。Attach函数同时需要InputMethod_TextEditorProxy和InputMethod_AttachOptions两个参数。 <br>- InputMethod_AttachOptions中的requestKeyboardReason使用InputMethod_RequestKeyboardReason枚举类型，该枚举定义在 [inputmethod_types_capi.h](capi-inputmethod-types-capi-h.md)中。 <br>- OH_InputMethodProxy_ShowTextInput函数也接受InputMethod_AttachOptions作为参数，用于在已绑定的状态下重新请求显示 键盘并指定请求原因。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **相关模块：** [InputMethod](capi-inputmethod.md)

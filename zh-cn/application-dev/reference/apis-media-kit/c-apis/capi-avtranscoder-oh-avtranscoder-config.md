@@ -8,6 +8,8 @@ typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config
 
 配置AVTranscoder参数的结构体。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
 **起始版本：** 20
 
 **相关模块：** [AVTranscoder](capi-avtranscoder.md)

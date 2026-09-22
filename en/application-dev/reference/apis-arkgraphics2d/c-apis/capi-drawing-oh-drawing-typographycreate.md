@@ -6,7 +6,9 @@ typedef struct OH_Drawing_TypographyCreate OH_Drawing_TypographyCreate
 
 ## Overview
 
-Creates an [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object.
+Creates an {@link OH_Drawing_Typography} object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 

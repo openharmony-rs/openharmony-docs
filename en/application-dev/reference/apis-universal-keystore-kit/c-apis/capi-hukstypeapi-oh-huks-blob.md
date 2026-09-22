@@ -8,6 +8,8 @@ typedef struct OH_Huks_Blob {...} OH_Huks_Blob
 
 Defines the struct of a binary large object (BLOB).
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)

@@ -33,6 +33,8 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 
 Suspends the calling thread for a given duration.<br> If `usec` exceeds the maximum supported value, it is clamped to that maximum.
 
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -56,6 +58,8 @@ FFRT_C_API void ffrt_yield(void)
 **Description**
 
 Passes control to other tasks so that they can be executed.
+
+**System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 

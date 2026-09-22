@@ -48,6 +48,8 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 根据给定的算法名称创建对称密钥生成器。例如AES256。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -61,7 +63,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx为NULL或algoName为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx为NULL或algoName为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 **参考：**
 
@@ -79,6 +81,8 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 随机生成对称密钥。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -92,7 +96,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ct
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx或keyCtx为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_CALL} 无效的函数调用。可能的原因：算法不支持随机生成密钥<br>          （如RC2、RC4、Blowfish、CAST），请使用OH_CryptoSymKeyGenerator_Convert接口。[since 26.0.0]</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx或keyCtx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_INVALID_CALL](capi-crypto-common-h.md#oh_crypto_errcode) 无效的函数调用。可能的原因：算法不支持随机生成密钥            （如RC2、RC4、Blowfish、CAST），请使用OH_CryptoSymKeyGenerator_Convert接口。[since 26.0.0]</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSymKeyGenerator_Convert()
 
@@ -103,6 +107,8 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 **描述：**
 
 将对称密钥数据转换为对称密钥。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -118,7 +124,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} ctx、keyData或keyCtx为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存分配失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) ctx、keyData或keyCtx为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存分配失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSymKeyGenerator_GetAlgoName()
 
@@ -129,6 +135,8 @@ const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 **描述：**
 
 获取对称密钥生成器的算法名称。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -154,6 +162,8 @@ void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)
 
 销毁对称密钥生成器。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -171,6 +181,8 @@ const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 **描述：**
 
 从对称密钥中获取对称密钥算法名称。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -196,6 +208,8 @@ OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_Dat
 
 从对称密钥中获取对称密钥数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -209,7 +223,7 @@ OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_Dat
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Crypto_ErrCode | <ul>          <li>{@link OH_Crypto_ErrCode#CRYPTO_SUCCESS} 操作成功。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_INVALID_PARAMS} keyCtx或out为NULL。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_NOT_SUPPORTED} 不支持的操作或算法。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_MEMORY_ERROR} 内存操作失败。</li><br>        <li>{@link OH_Crypto_ErrCode#CRYPTO_OPERTION_ERROR} 密码操作失败。</li>          </ul> |
+| OH_Crypto_ErrCode | <ul>          <li>[CRYPTO_SUCCESS](capi-crypto-common-h.md#oh_crypto_errcode) 操作成功。</li>          <li>[CRYPTO_INVALID_PARAMS](capi-crypto-common-h.md#oh_crypto_errcode) keyCtx或out为NULL。</li>          <li>[CRYPTO_NOT_SUPPORTED](capi-crypto-common-h.md#oh_crypto_errcode) 不支持的操作或算法。</li>          <li>[CRYPTO_MEMORY_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 内存操作失败。</li>          <li>[CRYPTO_OPERTION_ERROR](capi-crypto-common-h.md#oh_crypto_errcode) 密码操作失败。</li>          </ul> |
 
 ### OH_CryptoSymKey_Destroy()
 
@@ -220,6 +234,8 @@ void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 **描述：**
 
 销毁对称密钥。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 

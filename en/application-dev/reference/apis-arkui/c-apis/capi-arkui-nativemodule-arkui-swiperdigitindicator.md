@@ -8,6 +8,8 @@ typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator
 
 Defines the digital indicator style for the swiper.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

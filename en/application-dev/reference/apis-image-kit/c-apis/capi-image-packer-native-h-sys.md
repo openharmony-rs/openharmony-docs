@@ -20,10 +20,10 @@ The file declares the APIs for image encoding.
 
 | Name | Description |
 | -- | -- |
-| [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)(System API)](#oh_packingoptions_getneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.**System API:** This is a system API. |
-| [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)(System API)](#oh_packingoptions_setneedspackdfxdata) | Sets the **needsPackDfxData** parameter in the OH_PackingOptions struct.**System API:** This is a system API. |
-| [Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)(System API)](#oh_packingoptions_setc2padatasize) | Sets the C2PA data size in the OH_PackingOptions struct. The default value is 0, indicating no reserved space is added.**System API:** This is a system API. |
-| [Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)(System API)](#oh_packingoptions_getc2padatasize) | Obtains the C2PA data size in the OH_PackingOptions struct.**System API:** This is a system API. |
+| [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)(System API)](#oh_packingoptions_getneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)(System API)](#oh_packingoptions_setneedspackdfxdata) | Sets the **needsPackDfxData** parameter in the OH_PackingOptions struct.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)(System API)](#oh_packingoptions_setc2padatasize) | Sets the C2PA data size in the OH_PackingOptions struct. The default value is 0, indicating no reserved space is added.<br>**System API:** This is a system API. |
+| [Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)(System API)](#oh_packingoptions_getc2padatasize) | Obtains the C2PA data size in the OH_PackingOptions struct.<br>**System API:** This is a system API. |
 
 ## Function description
 
@@ -36,6 +36,8 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 **Description**
 
 Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 26.0.0
 
@@ -52,7 +54,7 @@ Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_PACKER_INVALID_PARAMETER} options or needsPackDfxData is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options or needsPackDfxData is nullptr.</li>          </ul> |
 
 ### OH_PackingOptions_SetNeedsPackDfxData()
 
@@ -63,6 +65,8 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 **Description**
 
 Sets the **needsPackDfxData** parameter in the OH_PackingOptions struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 26.0.0
 
@@ -79,7 +83,7 @@ Sets the **needsPackDfxData** parameter in the OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>          <li>{@link IMAGE_SUCCESS} if the execution is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_PACKER_INVALID_PARAMETER} options is nullptr.</li>          </ul> |
+| Image_ErrorCode | <ul>          <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the execution is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) options is nullptr.</li>          </ul> |
 
 ### OH_PackingOptions_SetC2paDataSize()
 
@@ -91,7 +95,9 @@ Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, ui
 
 Sets the C2PA data size in the OH_PackingOptions struct. The default value is 0, indicating no reserved space is added.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
+**Since**: 26.0.1
 
 **System API:** This is a system API.
 
@@ -106,7 +112,7 @@ Sets the C2PA data size in the OH_PackingOptions struct. The default value is 0,
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>           <li>{@link IMAGE_SUCCESS} if the operation is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_PACKER_INVALID_PARAMETER} if options is NULL.</li>          </ul> |
+| Image_ErrorCode | <ul>           <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the operation is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if options is NULL.</li>          </ul> |
 
 ### OH_PackingOptions_GetC2paDataSize()
 
@@ -118,7 +124,9 @@ Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *optio
 
 Obtains the C2PA data size in the OH_PackingOptions struct.
 
-**Since**: 26.1.0
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
+**Since**: 26.0.1
 
 **System API:** This is a system API.
 
@@ -133,6 +141,6 @@ Obtains the C2PA data size in the OH_PackingOptions struct.
 
 | Type | Description |
 | -- | -- |
-| Image_ErrorCode | <ul>           <li>{@link IMAGE_SUCCESS} if the operation is successful.</li><br>        <li>202 if a non-system application calls this system API.</li><br>        <li>{@link IMAGE_PACKER_INVALID_PARAMETER} if options or c2paDataSize is NULL.</li>          </ul> |
+| Image_ErrorCode | <ul>           <li>[IMAGE_SUCCESS](capi-image-common-h.md#image_errorcode) if the operation is successful.</li>          <li>202 if a non-system application calls this system API.</li>          <li>[IMAGE_PACKER_INVALID_PARAMETER](capi-image-common-h.md#image_errorcode) if options or c2paDataSize is NULL.</li>          </ul> |
 
 

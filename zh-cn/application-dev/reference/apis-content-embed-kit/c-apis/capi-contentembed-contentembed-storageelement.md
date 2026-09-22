@@ -6,7 +6,9 @@ typedef struct ContentEmbed_StorageElement ContentEmbed_StorageElement
 
 ## 概述
 
-声明OE文档存储元素的结构体类型。通过[OH_ContentEmbed_StorageElement_GetName](capi-content-embed-document-h.md#oh_contentembed_storageelement_getname)获取名称、 [OH_ContentEmbed_StorageElement_GetCTime](capi-content-embed-document-h.md#oh_contentembed_storageelement_getctime)获取创建时间和[OH_ContentEmbed_StorageElement_GetMTime](capi-content-embed-document-h.md#oh_contentembed_storageelement_getmtime)获取修改 时间。可以通过[OH_ContentEmbed_StorageElement_IsStorage](capi-content-embed-document-h.md#oh_contentembed_storageelement_isstorage)判断当前是否是[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)的封装对象， [OH_ContentEmbed_StorageElement_IsStream](capi-content-embed-document-h.md#oh_contentembed_storageelement_isstream)判断当前是否是[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)的封装对象。
+声明OE文档存储元素的结构体类型。通过{@link OH_ContentEmbed_StorageElement_GetName}获取名称、<br>{@link OH_ContentEmbed_StorageElement_GetCTime}获取创建时间和{@link OH_ContentEmbed_StorageElement_GetMTime}获取修改<br>时间。可以通过{@link OH_ContentEmbed_StorageElement_IsStorage}判断当前是否是{@link ContentEmbed_Storage}的封装对象，<br>{@link OH_ContentEmbed_StorageElement_IsStream}判断当前是否是{@link ContentEmbed_Stream}的封装对象。
+
+**系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
 

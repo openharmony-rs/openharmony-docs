@@ -8,6 +8,8 @@ typedef struct ArkUI_StyledString_Descriptor ArkUI_StyledString_Descriptor
 
 Define the data objects of styled string supported by text components.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

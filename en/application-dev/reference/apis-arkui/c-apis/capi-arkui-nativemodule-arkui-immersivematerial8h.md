@@ -8,6 +8,8 @@ typedef struct ArkUI_ImmersiveMaterial* ArkUI_ImmersiveMaterialHandle
 
 Defines the pointer to the immersive material object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

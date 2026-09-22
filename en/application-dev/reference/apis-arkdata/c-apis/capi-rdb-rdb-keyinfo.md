@@ -8,6 +8,8 @@ typedef struct Rdb_KeyInfo {...} Rdb_KeyInfo
 
 Describes the primary keys or row-ids of changed rows.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)

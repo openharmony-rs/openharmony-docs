@@ -8,6 +8,8 @@ struct AVSession_OutputDeviceInfo {...}
 
 Declaring the target Device Information.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)

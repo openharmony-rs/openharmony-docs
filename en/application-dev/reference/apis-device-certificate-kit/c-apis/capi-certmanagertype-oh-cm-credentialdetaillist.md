@@ -8,6 +8,8 @@ typedef struct OH_CM_CredentialDetailList {...} OH_CM_CredentialDetailList
 
 Defines a struct for the certificate credential detail list.
 
+**System capability**: SystemCapability.Security.CertificateManager
+
 **Since**: 22
 
 **Related module**: [CertManagerType](capi-certmanagertype.md)

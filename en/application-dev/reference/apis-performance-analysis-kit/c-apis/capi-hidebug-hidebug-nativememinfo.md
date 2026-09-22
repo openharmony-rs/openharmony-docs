@@ -8,6 +8,8 @@ typedef struct HiDebug_NativeMemInfo {...} HiDebug_NativeMemInfo
 
 Defines the struct for the local memory information of the application process.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 **Related module**: [HiDebug](capi-hidebug.md)

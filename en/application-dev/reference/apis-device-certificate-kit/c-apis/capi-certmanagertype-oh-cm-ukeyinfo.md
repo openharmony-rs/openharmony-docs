@@ -8,6 +8,8 @@ typedef struct OH_CM_UkeyInfo {...} OH_CM_UkeyInfo
 
 Defines a struct for the USB certificate credential information.
 
+**System capability**: SystemCapability.Security.CertificateManager
+
 **Since**: 22
 
 **Related module**: [CertManagerType](capi-certmanagertype.md)

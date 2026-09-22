@@ -61,6 +61,8 @@ enum Hid_DeviceProp
 
 Enumerates the properties of input devices.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 | Enum item | Description |
@@ -83,6 +85,8 @@ enum Hid_EventType
 
 Enumerates the event types.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 | Enum item | Description |
@@ -103,6 +107,8 @@ enum Hid_SynEvent
 
 Enumerates sync events.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 | Enum item | Description |
@@ -121,6 +127,8 @@ enum Hid_KeyCode
 **Description**
 
 Enumerates the key codes.
+
+**System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
@@ -247,6 +255,8 @@ enum Hid_AbsAxes
 
 Enumerates the absolute coordinates.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 | Enum item | Description |
@@ -288,6 +298,8 @@ enum Hid_RelAxes
 
 Enumerates the relative coordinates.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 | Enum item | Description |
@@ -316,6 +328,8 @@ enum Hid_MscEvent
 
 Enumerates miscellaneous input events.
 
+**System capability**: SystemCapability.Driver.HID.Extension
+
 **Since**: 11
 
 | Enum item | Description |
@@ -336,6 +350,8 @@ enum Hid_DdkErrCode
 **Description**
 
 Enumerates the HID DDK error codes.
+
+**System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
@@ -363,6 +379,8 @@ enum Hid_ReportType
 **Description**
 
 Defines the report (data packets exchanged between the HID device and the host) type.
+
+**System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 18
 

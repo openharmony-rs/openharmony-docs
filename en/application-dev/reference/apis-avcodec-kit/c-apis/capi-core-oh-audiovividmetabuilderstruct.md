@@ -8,6 +8,8 @@ typedef struct OH_AudioVividMetaBuilderStruct OH_AudioVividMetaBuilder
 
 Forward declaration of OH_AudioVividMetaBuilder.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 26.0.0
 
 **Related module**: [Core](capi-core.md)

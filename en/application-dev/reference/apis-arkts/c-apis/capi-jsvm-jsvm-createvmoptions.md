@@ -8,6 +8,8 @@ typedef struct JSVM_CreateVMOptions {...} JSVM_CreateVMOptions
 
 Create the JavaScript VM with init option.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

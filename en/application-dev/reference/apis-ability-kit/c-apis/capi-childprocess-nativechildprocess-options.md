@@ -8,6 +8,8 @@ typedef struct NativeChildProcess_Options {...} NativeChildProcess_Options
 
 The struct describes the options used for starting a child process.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Related module**: [ChildProcess](capi-childprocess.md)

@@ -4,6 +4,8 @@
 
 提供用于查询系统能力的API。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 8
 
 ## 文件汇总

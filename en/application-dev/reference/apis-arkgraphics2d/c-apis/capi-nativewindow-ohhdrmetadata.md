@@ -8,6 +8,8 @@ typedef struct OHHDRMetaData {...} OHHDRMetaData
 
 Defines the HDR metadata.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **Since**: 9
 
 **Deprecated**: 10

@@ -44,6 +44,8 @@ enum TimeService_ErrCode
 
 Enumerates the error codes.
 
+**System capability**: SystemCapability.MiscServices.Time
+
 **Since**: 12
 
 | Enum item | Description |

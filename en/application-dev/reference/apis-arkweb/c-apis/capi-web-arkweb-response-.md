@@ -8,6 +8,8 @@ typedef struct ArkWeb_Response_ ArkWeb_Response
 
 Defines an **ArkWeb_Response** for the intercepted request.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Related module**: [Web](capi-web.md)

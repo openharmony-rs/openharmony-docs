@@ -4,6 +4,8 @@
 
 提供用于视频处理的API函数。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 ## 文件汇总

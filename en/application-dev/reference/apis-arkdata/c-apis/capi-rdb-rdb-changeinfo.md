@@ -8,6 +8,8 @@ typedef struct Rdb_ChangeInfo {...} Rdb_ChangeInfo
 
 Describes the notify info of data change.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 11
 
 **Related module**: [RDB](capi-rdb.md)
@@ -22,9 +24,9 @@ Describes the notify info of data change.
 | -- | -- |
 | int version | The version used to uniquely identify the Rdb_ChangeInfo struct. |
 | const char *tableName | The name of changed table. |
-| int ChangeType | The [Rdb_ChangeType](capi-relational-store-h.md#rdb_changetype) of changed table. |
-| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) inserted | The [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) of inserted rows. |
-| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) updated | The [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) of updated rows. |
-| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) deleted | The [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) of deleted rows. |
+| int ChangeType | The {@link Rdb_ChangeType} of changed table. |
+| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) inserted | The {@link Rdb_KeyInfo} of inserted rows. |
+| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) updated | The {@link Rdb_KeyInfo} of updated rows. |
+| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) deleted | The {@link Rdb_KeyInfo} of deleted rows. |
 
 

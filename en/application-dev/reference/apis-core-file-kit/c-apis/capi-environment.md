@@ -4,6 +4,8 @@
 
 This module provides the ability to access the environment directory and obtain the native interface for public root directory.
 
+**System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
+
 **Since**: 12
 
 ## Files

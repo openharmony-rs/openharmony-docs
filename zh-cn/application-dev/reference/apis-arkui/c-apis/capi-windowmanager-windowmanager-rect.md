@@ -8,6 +8,8 @@ typedef struct WindowManager_Rect {...} WindowManager_Rect
 
 The struct describes the window rectangle, including the window position, width, and height.
 
+**系统能力：** SystemCapability.Window.SessionManager
+
 **起始版本：** 15
 
 **相关模块：** [WindowManager](capi-windowmanager.md)

@@ -49,6 +49,8 @@ enum Rdb_ConflictResolution
 
 Describe the security area of the database.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 | Enum item | Description |
@@ -73,6 +75,8 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 
 Creates an OH_RDB_ReturningContext instance object.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Returns**:
@@ -96,6 +100,8 @@ void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 
 Destroys an OH_RDB_ReturningContext instance object.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -114,6 +120,8 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 
 Set the returning fields.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -128,7 +136,7 @@ Set the returning fields.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RDB_SetMaxReturningCount()
 
@@ -139,6 +147,8 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 **Description**
 
 Set the maximum returning value.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 
@@ -153,7 +163,7 @@ Set the maximum returning value.
 
 | Type | Description |
 | -- | -- |
-| int | Returns the error code.          Returns {@link RDB_OK} if the execution is successful.<br>        Returns {@link RDB_E_INVALID_ARGS} if invalid input parameter. |
+| int | Returns the error code.          Returns [RDB_OK](capi-relational-store-error-code-h.md#oh_rdb_errcode) if the execution is successful.          Returns [RDB_E_INVALID_ARGS](capi-relational-store-error-code-h.md#oh_rdb_errcode) if invalid input parameter. |
 
 ### OH_RDB_GetReturningValues()
 
@@ -164,6 +174,8 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 **Description**
 
 Get the cursor of data changes, includes 1024 by default.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 
@@ -177,7 +189,7 @@ Get the cursor of data changes, includes 1024 by default.
 
 | Type | Description |
 | -- | -- |
-| OH_Cursor * | a pointer to the instance of the {@link OH_Cursor} structure is returned.      If Get Cursor failed, nullptr is returned. |
+| OH_Cursor * | a pointer to the instance of the [OH_Cursor](capi-rdb-oh-cursor.md) structure is returned.      If Get Cursor failed, nullptr is returned. |
 
 ### OH_RDB_GetChangedCount()
 
@@ -188,6 +200,8 @@ int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 **Description**
 
 Get the number of rows affected by this operation.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 

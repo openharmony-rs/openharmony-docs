@@ -32,6 +32,8 @@ enum AbilityBase_ErrorCode
 
 AbilityBase相关错误码枚举。
 
+**系统能力：** SystemCapability.Ability.AbilityBase
+
 **起始版本：** 15
 
 | 枚举项 | 描述 |

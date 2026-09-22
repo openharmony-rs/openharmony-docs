@@ -8,6 +8,8 @@ typedef struct OH_CryptoPrivKeyEncodingParams OH_CryptoPrivKeyEncodingParams
 
 Private key encoding parameters structure, representing private key encoding parameters.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

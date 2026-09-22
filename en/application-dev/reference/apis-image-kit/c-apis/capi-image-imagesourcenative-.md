@@ -8,6 +8,8 @@ typedef struct ImageSourceNative_ ImageSourceNative
 
 Defines a native image source object for the image source APIs.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

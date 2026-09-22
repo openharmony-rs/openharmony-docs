@@ -8,6 +8,8 @@ typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName
 
 elementName信息。
 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 **起始版本：** 13
 
 **相关模块：** [Native_Bundle](capi-native-bundle.md)

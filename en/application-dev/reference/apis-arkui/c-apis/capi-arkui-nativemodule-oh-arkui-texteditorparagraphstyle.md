@@ -8,6 +8,8 @@ typedef struct OH_ArkUI_TextEditorParagraphStyle OH_ArkUI_TextEditorParagraphSty
 
 Defines the paragraph style of the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

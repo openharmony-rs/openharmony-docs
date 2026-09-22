@@ -32,6 +32,8 @@ enum CloudDisk_ErrorCode
 
 定义云盘管理模块的错误码。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -54,15 +56,15 @@ enum CloudDisk_ErrorCode
 | CLOUD_DISK_INVALID_CHANGE_SEQUENCE = 34400013 | 无效的变更序列，建议进行全部查询。<br>**起始版本：** 21 |
 | CLOUD_DISK_TRY_AGAIN = 34400014 | 临时失败，建议重试（如：底层io负载过大、内存不足等）。<br>**起始版本：** 21 |
 | CLOUD_DISK_NOT_ALLOWED = 34400015 | 当前设备不允许执行此功能。<br>**起始版本：** 21 |
-| OH_CLOUD_DISK_FILE_ALREADY_EXISTS = 34400016 | 目标路径下已存在同名文件。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_NOT_A_PLACEHOLDER = 34400017 | 目标路径不是占位符文件。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_IS_A_PLACEHOLDER = 34400018 | 目标路径已经是占位符文件。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_HYDRATE_IN_PROGRESS = 34400019 | 水合进行中。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_NO_SPACE_LEFT = 34400020 | 磁盘剩余空间不足。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_CALLBACK_NOT_REGISTERED = 34400021 | 回调表没有注册。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_CALLBACK_ALREADY_REGISTERED = 34400022 | 回调表已经注册。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_NOT_A_DIRECTORY = 34400023 | 目标路径的父目录不是目录。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_FILE_NOT_EXIST = 34400024 | 目标路径不存在。<br>**起始版本：** 26.1.0 |
-| OH_CLOUD_DISK_NAME_TOO_LONG = 34400025 | 文件名或路径过长。<br>**起始版本：** 26.1.0 |
+| OH_CLOUD_DISK_FILE_ALREADY_EXISTS = 34400016 | 目标路径下已存在同名文件。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_NOT_A_PLACEHOLDER = 34400017 | 目标路径不是占位符文件。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_IS_A_PLACEHOLDER = 34400018 | 目标路径已经是占位符文件。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_HYDRATE_IN_PROGRESS = 34400019 | 水合进行中。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_NO_SPACE_LEFT = 34400020 | 磁盘剩余空间不足。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_CALLBACK_NOT_REGISTERED = 34400021 | 回调表没有注册。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_CALLBACK_ALREADY_REGISTERED = 34400022 | 回调表已经注册。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_NOT_A_DIRECTORY = 34400023 | 目标路径的父目录不是目录。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_FILE_NOT_EXIST = 34400024 | 目标路径不存在。<br>**起始版本：** 26.0.1 |
+| OH_CLOUD_DISK_NAME_TOO_LONG = 34400025 | 文件名或路径过长。<br>**起始版本：** 26.0.1 |
 
 

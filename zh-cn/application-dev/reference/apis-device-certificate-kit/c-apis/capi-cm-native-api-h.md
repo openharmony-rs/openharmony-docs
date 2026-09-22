@@ -36,6 +36,8 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 获取USB证书凭据的详情信息列表。调用完成后，需要调用OH_CertManager_FreeUkeyCertificate释放certificateList内存。
 
+**系统能力：** SystemCapability.Security.CertificateManager
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **起始版本：** 22
@@ -52,7 +54,7 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul>  <li>{@link OH_CM_ErrorCode} : </li>  <li>OH_CM_SUCCESS = 0: 操作成功。</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: 权限校验失败。</li>  <li>OH_CM_CAPABILITY_NOT_SUPPORTED = 801: 设备不支持。</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: 入参校验失败。可能原因：  1.参数格式错误。  2.参数范围无效。</li>  <li>OH_CM_INNER_FAILURE = 17500001: 内部错误。可能原因：  1.IPC通讯失败。  2.内存操作错误。  3.文件操作错误。</li>  <li>OH_CM_NOT_FOUND = 17500002: 证书不存在。</li>  <li>OH_CM_ACCESS_UKEY_SERVICE_FAILED = 17500010: USB证书凭据访问失败。</li>  </ul> |
+| int32_t | <ul>  <li>[OH_CM_ErrorCode](capi-cm-native-type-h.md#oh_cm_errorcode) : </li>  <li>OH_CM_SUCCESS = 0: 操作成功。</li>  <li>OH_CM_HAS_NO_PERMISSION = 201: 权限校验失败。</li>  <li>OH_CM_CAPABILITY_NOT_SUPPORTED = 801: 设备不支持。</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011: 入参校验失败。可能原因：  1.参数格式错误。  2.参数范围无效。</li>  <li>OH_CM_INNER_FAILURE = 17500001: 内部错误。可能原因：  1.IPC通讯失败。  2.内存操作错误。  3.文件操作错误。</li>  <li>OH_CM_NOT_FOUND = 17500002: 证书不存在。</li>  <li>OH_CM_ACCESS_UKEY_SERVICE_FAILED = 17500010: USB证书凭据访问失败。</li>  </ul> |
 
 ### OH_CertManager_GetPrivateCertificate()
 
@@ -63,6 +65,8 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 **描述：**
 
 获取特定应用私有证书凭据详细信息。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -79,7 +83,7 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul>  <li>{@link OH_CM_ErrorCode}：</li>  <li>OH_CM_SUCCESS = 0 ：操作成功。</li>  <li>OH_CM_HAS_NO_PERMISSION = 201 ：权限校验失败。</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011 ：入参校验失败。可能原因：</li>  1.参数格式错误。  2.参数范围无效。</li>  <li>OH_CM_INNER_FAILURE = 17500001 ：内部错误。可能原因：  1.IPC通讯失败。  2.内存操作错误。  3.文件操作错误。</li>  <li>OH_CM_NOT_FOUND = 17500002 ：证书不存在。</li>  </ul> |
+| int32_t | <ul>  <li>[OH_CM_ErrorCode](capi-cm-native-type-h.md#oh_cm_errorcode)：</li>  <li>OH_CM_SUCCESS = 0 ：操作成功。</li>  <li>OH_CM_HAS_NO_PERMISSION = 201 ：权限校验失败。</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011 ：入参校验失败。可能原因：</li>  1.参数格式错误。  2.参数范围无效。</li>  <li>OH_CM_INNER_FAILURE = 17500001 ：内部错误。可能原因：  1.IPC通讯失败。  2.内存操作错误。  3.文件操作错误。</li>  <li>OH_CM_NOT_FOUND = 17500002 ：证书不存在。</li>  </ul> |
 
 ### OH_CertManager_GetPublicCertificate()
 
@@ -90,6 +94,8 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 **描述：**
 
 获取特定用户公共证书凭据详细信息。调用完成后，需要调用OH_CertManager_FreeCredential释放certificate内存。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -106,7 +112,7 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | <ul>  <li>{@link OH_CM_ErrorCode} ： </li>  <li>OH_CM_SUCCESS = 0 ：操作成功。</li>  <li>OH_CM_HAS_NO_PERMISSION = 201 ：权限校验失败。</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011 ：入参校验失败。可能原因：  1.参数格式错误。  2.参数范围无效。</li>  <li>OH_CM_INNER_FAILURE = 17500001 ：内部错误。可能原因：  1.IPC通讯失败。  2.内存操作错误。  3.文件操作错误。</li>  <li>OH_CM_NOT_FOUND = 17500002 ：证书不存在。</li>  <li>OH_CM_NO_AUTHORIZATION =  17500005 ：应用未经用户授权。</li>  </ul> |
+| int32_t | <ul>  <li>[OH_CM_ErrorCode](capi-cm-native-type-h.md#oh_cm_errorcode) ： </li>  <li>OH_CM_SUCCESS = 0 ：操作成功。</li>  <li>OH_CM_HAS_NO_PERMISSION = 201 ：权限校验失败。</li>  <li>OH_CM_PARAMETER_VALIDATION_FAILED = 17500011 ：入参校验失败。可能原因：  1.参数格式错误。  2.参数范围无效。</li>  <li>OH_CM_INNER_FAILURE = 17500001 ：内部错误。可能原因：  1.IPC通讯失败。  2.内存操作错误。  3.文件操作错误。</li>  <li>OH_CM_NOT_FOUND = 17500002 ：证书不存在。</li>  <li>OH_CM_NO_AUTHORIZATION =  17500005 ：应用未经用户授权。</li>  </ul> |
 
 ### OH_CertManager_FreeUkeyCertificate()
 
@@ -117,6 +123,8 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 **描述：**
 
 销毁证书详情信息列表。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **起始版本：** 22
 
@@ -135,6 +143,8 @@ void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)
 **描述：**
 
 销毁证书详情。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **起始版本：** 22
 

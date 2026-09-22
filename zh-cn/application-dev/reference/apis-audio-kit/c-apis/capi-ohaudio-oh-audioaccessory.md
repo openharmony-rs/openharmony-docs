@@ -8,6 +8,8 @@ typedef struct OH_AudioAccessory OH_AudioAccessory
 
 声明音频配件。<br> 用于表示一个音频配件设备实例。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

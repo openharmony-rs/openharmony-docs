@@ -8,6 +8,8 @@ typedef struct ArkUI_TextSelectionMenuOptions ArkUI_TextSelectionMenuOptions
 
 定义自定义文本选择菜单的选项配置，支持菜单内容、样式和行为等自定义配置，适用于需要定制文本选择菜单交互的场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)

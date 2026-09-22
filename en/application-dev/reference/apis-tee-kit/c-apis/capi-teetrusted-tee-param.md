@@ -8,6 +8,8 @@ typedef union TEE_Param {...} TEE_Param
 
 Enumerates the TEE parameter.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

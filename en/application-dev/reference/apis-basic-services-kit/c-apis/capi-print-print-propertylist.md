@@ -8,6 +8,8 @@ typedef struct Print_PropertyList {...} Print_PropertyList
 
 Defines a struct for the printer property list.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

@@ -38,6 +38,8 @@ enum IRNdkErrCode
 
 被使用的接口返回值的枚举。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |

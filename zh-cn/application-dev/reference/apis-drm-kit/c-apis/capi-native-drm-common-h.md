@@ -227,6 +227,8 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 应用为从媒体源获取DRM信息而设置的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.Drm.Core
+
 **起始版本：** 11
 
 **参数：**

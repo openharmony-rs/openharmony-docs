@@ -49,6 +49,8 @@ enum Preferences_StorageType
 
 Enumerates the preferences storage types.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 18
 
 | Enum item | Description |
@@ -68,6 +70,8 @@ OH_PreferencesOption *OH_PreferencesOption_Create(void)
 **Description**
 
 Creates a [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance and a pointer to it. If this pointer is no longer required, use [OH_PreferencesOption_Destroy](capi-oh-preferences-option-h.md#oh_preferencesoption_destroy) to destroy it. Otherwise, memory leaks may occur.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -91,6 +95,8 @@ int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *f
 **Description**
 
 Sets the file name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -122,6 +128,8 @@ int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char 
 
 Sets the bundle name for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -151,6 +159,8 @@ int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char
 **Description**
 
 Sets the application group ID for an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance. After the application group ID is set, the **Preferences** instance will be created in the sandbox directory of the application group ID. The application group ID must be obtained from AppGallery. This parameter is not supported currently. If the application group ID is an empty string, the **Preferences** instance will be created in the sandbox directory of the current application.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 
@@ -182,6 +192,8 @@ int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preference
 
 Sets the storage type for a **Preferences** instance.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 18
 
 **Parameters**:
@@ -211,6 +223,8 @@ int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)
 **Description**
 
 Destroys an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.
+
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13
 

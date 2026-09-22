@@ -8,6 +8,8 @@ typedef struct Camera_Input Camera_Input
 
 The struct describes the camera input object.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

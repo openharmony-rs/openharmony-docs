@@ -8,6 +8,8 @@ typedef union Rdb_SubscribeCallback {...} Rdb_SubscribeCallback
 
 表示回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **相关模块：** [RDB](capi-rdb.md)

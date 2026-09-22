@@ -35,6 +35,8 @@ enum AVSession_ErrCode
 
 AVSession error code
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -103,6 +105,8 @@ enum AVSessionCallback_Result
 
 Defines enumeration of avsession callback result.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -119,6 +123,8 @@ enum AVMetadata_Result
 **Description**
 
 AVMetadata error code
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -137,6 +143,8 @@ enum AVQueueItem_Result
 **Description**
 
 AVQUEUEITEM error code
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

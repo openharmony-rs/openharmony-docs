@@ -8,6 +8,8 @@ typedef struct JSVM_Ref__* JSVM_Ref
 
 To represent a JavaScript value references.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 **Related module**: [JSVM](capi-jsvm.md)

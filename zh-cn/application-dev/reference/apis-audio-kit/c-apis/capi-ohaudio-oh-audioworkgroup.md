@@ -8,6 +8,8 @@ typedef struct OH_AudioWorkgroup OH_AudioWorkgroup
 
 声明音频工作组。用于对关键音频线程进行分组管理。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 20
 
 **相关模块：** [OHAudio](capi-ohaudio.md)

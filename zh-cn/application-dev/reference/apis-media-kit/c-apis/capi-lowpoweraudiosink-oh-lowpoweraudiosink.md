@@ -8,6 +8,8 @@ typedef struct OH_LowPowerAudioSink OH_LowPowerAudioSink
 
 LowPowerAudioSink的声明。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **相关模块：** [LowPowerAudioSink](capi-lowpoweraudiosink.md)

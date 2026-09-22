@@ -8,6 +8,8 @@ typedef struct ArkUI_AttributeItem {...} ArkUI_AttributeItem
 
 Defines the general input parameter structure of the node attribute functions.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

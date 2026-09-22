@@ -8,6 +8,8 @@ typedef struct TEEC_Context {...} TEEC_Context
 
 Defines the context, a logical connection between a CA and a TEE.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)

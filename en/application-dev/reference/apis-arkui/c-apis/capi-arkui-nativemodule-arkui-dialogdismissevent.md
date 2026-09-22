@@ -8,6 +8,8 @@ typedef struct ArkUI_DialogDismissEvent ArkUI_DialogDismissEvent
 
 Defines a struct for a dialog box dismiss event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

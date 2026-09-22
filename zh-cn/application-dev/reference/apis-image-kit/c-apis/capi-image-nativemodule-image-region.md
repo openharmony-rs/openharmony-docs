@@ -8,6 +8,8 @@ typedef struct Image_Region Image_Region
 
 待解码的图像源区域结构体。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)

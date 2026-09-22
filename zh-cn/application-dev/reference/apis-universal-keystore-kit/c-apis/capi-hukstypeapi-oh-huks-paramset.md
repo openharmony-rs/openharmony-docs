@@ -8,6 +8,8 @@ typedef struct OH_Huks_ParamSet {...} OH_Huks_ParamSet
 
 定义参数集的结构体类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **相关模块：** [HuksTypeApi](capi-hukstypeapi.md)

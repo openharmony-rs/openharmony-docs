@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_ExpectedRateRange {...} OH_NativeXComponent_E
 
 Defines the expected frame rate range struct.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 11
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

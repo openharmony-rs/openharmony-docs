@@ -8,6 +8,8 @@ typedef struct ArkUI_CommandPath ArkUI_CommandPathOption
 
 定义自定义绘制路径配置项，用于为渲染节点创建基于路径的遮罩或裁剪效果。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)

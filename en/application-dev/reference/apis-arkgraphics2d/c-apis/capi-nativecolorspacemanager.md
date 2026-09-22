@@ -4,6 +4,8 @@
 
 Provides the native colorSpaceManager capability.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
 **Since**: 13
 
 ## Files

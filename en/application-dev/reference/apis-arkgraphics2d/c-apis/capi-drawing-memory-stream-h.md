@@ -18,7 +18,7 @@ This file declares the functions related to the memory stream in the drawing mod
 
 | Name | Description |
 | -- | -- |
-| [OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t length, bool copyData)](#oh_drawing_memorystreamcreate) | Creates an **OH_Drawing_MemoryStream** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **data** is NULL or **length** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
+| [OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t length, bool copyData)](#oh_drawing_memorystreamcreate) | Creates an **OH_Drawing_MemoryStream** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **data** is NULL or **length** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. |
 | [void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)](#oh_drawing_memorystreamdestroy) | Destroys an **OH_Drawing_MemoryStream** object and reclaims the memory occupied by the object. |
 
 ## Function description
@@ -31,7 +31,9 @@ OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t 
 
 **Description**
 
-Creates an **OH_Drawing_MemoryStream** object. This API may return an error code. For details, call {@link OH_Drawing_ErrorCodeGet}. If **data** is NULL or **length** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+Creates an **OH_Drawing_MemoryStream** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **data** is NULL or **length** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -47,7 +49,7 @@ Creates an **OH_Drawing_MemoryStream** object. This API may return an error code
 
 | Type | Description |
 | -- | -- |
-| OH_Drawing_MemoryStream* | Returns the pointer to the {@link OH_Drawing_MemoryStream} object created. |
+| OH_Drawing_MemoryStream* | Returns the pointer to the [OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md) object created. |
 
 ### OH_Drawing_MemoryStreamDestroy()
 
@@ -59,12 +61,14 @@ void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)
 
 Destroys an **OH_Drawing_MemoryStream** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| OH_Drawing_MemoryStream* memoryStream | Pointer to an {@link OH_Drawing_MemoryStream} object. |
+| OH_Drawing_MemoryStream* memoryStream | Pointer to an [OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md) object. |
 
 

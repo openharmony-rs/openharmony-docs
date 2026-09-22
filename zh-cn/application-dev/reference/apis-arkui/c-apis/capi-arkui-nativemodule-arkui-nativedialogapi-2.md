@@ -8,6 +8,8 @@ typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2
 
 ArkUI提供的Native侧自定义弹窗接口集合，用于在Native层创建和管理自定义弹窗，支持设置弹窗避让键盘距离、显示层级、层级节点id和嵌入式弹窗蒙层显示区域等功能，适用于需要精细化控制弹窗行为的场景。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -20,7 +22,7 @@ ArkUI提供的Native侧自定义弹窗接口集合，用于在Native层创建和
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | ArkUI提供的Native侧自定义弹窗接口集合，范围是[ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)。<br>**起始版本：** 15 |
+| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) nativeDialogAPI1 | ArkUI提供的Native侧自定义弹窗接口集合，范围是{@link ArkUI_NativeDialogAPI_1}。<br>**起始版本：** 15 |
 
 
 ### 成员函数
@@ -85,7 +87,7 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
-|  [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode | 显示层级的枚举值， 类型为[ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode)。 |
+|  [ArkUI_LevelMode](capi-native-dialog-h.md#arkui_levelmode) levelMode | 显示层级的枚举值， 类型为{@link ArkUI_LevelMode}。 |
 
 **返回值：**
 
@@ -143,7 +145,7 @@ int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode
 | 参数项 | 描述 |
 | -- | -- |
 | ArkUI_NativeDialogHandle handle | 指向自定义弹窗控制器的指针。 |
-|  [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode | 显示区域类型的枚举值， 类型为[ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode)。 |
+|  [ArkUI_ImmersiveMode](capi-native-dialog-h.md#arkui_immersivemode) immersiveMode | 显示区域类型的枚举值， 类型为{@link ArkUI_ImmersiveMode}。 |
 
 **返回值：**
 

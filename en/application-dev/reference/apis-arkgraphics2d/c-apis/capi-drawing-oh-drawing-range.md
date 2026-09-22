@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Range OH_Drawing_Range
 
 Used to receive the start and end positions of text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)

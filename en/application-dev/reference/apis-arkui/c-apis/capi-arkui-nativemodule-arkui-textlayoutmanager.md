@@ -8,6 +8,8 @@ typedef struct ArkUI_TextLayoutManager ArkUI_TextLayoutManager
 
 Defines the layout manager of text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

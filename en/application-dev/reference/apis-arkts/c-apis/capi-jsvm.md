@@ -4,6 +4,8 @@
 
 Provides the standard JavaScript engine capabilities.<br> Provides API to Provide independent, standard, and complete JavaScript engine capabilities for developers, including managing the engine lifecycle, compiling and running JS code, implementing JS/C++ cross language calls, and taking snapshots.
 
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
 **Since**: 11
 
 ## Files

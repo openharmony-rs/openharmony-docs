@@ -34,6 +34,8 @@ enum OH_AVErrCode
 
 媒体框架错误码。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |

@@ -8,6 +8,8 @@ typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent
 
 Registers the mouse event callbacks.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 9
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)

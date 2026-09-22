@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Font_Metrics {...} OH_Drawing_Font_Metrics
 
 This struct describes the measurement information about a font.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

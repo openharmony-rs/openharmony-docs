@@ -8,6 +8,8 @@ typedef struct struct OH_PixelmapNative
 
 Describes the pixel image information.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 15
 
 **Related module**: [WindowManager](capi-windowmanager.md)

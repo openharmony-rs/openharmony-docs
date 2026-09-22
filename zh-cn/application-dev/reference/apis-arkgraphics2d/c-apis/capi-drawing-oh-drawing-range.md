@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Range OH_Drawing_Range
 
 用于接收文本的起始位置和结束位置。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)

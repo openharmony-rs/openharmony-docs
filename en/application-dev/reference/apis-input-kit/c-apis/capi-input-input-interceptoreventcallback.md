@@ -8,6 +8,8 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 Defines the interceptor callback event structure, which is used to define the callback function types required for input event interception. Mouse interception events, touch input events, key events, and axis events are supported.
 
+**System capability**: SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 12
 
 **Related module**: [input](capi-input.md)

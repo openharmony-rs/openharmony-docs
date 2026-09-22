@@ -8,6 +8,8 @@ typedef struct ArkUI_CustomSpanMeasureInfo ArkUI_CustomSpanMeasureInfo
 
 Defines a struct for the measurement information of a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

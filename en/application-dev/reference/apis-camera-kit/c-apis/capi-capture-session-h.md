@@ -34,7 +34,7 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_UnregisterCallback(Camera_CaptureSession* session, CaptureSession_Callbacks* callback)](#oh_capturesession_unregistercallback) | - | Unregisters the callback used to listen for capture session events. |
 | [Camera_ErrorCode OH_CaptureSession_RegisterSmoothZoomInfoCallback(Camera_CaptureSession* session, OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)](#oh_capturesession_registersmoothzoominfocallback) | - | Registers a callback to listen for smooth zoom events. |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterSmoothZoomInfoCallback(Camera_CaptureSession* session, OH_CaptureSession_OnSmoothZoomInfo smoothZoomInfoCallback)](#oh_capturesession_unregistersmoothzoominfocallback) | - | Unregisters the callback used to listen for smooth zoom events. |
-| [Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)](#oh_capturesession_setsessionmode) | - | Sets a session mode. This API cannot be called after [OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig). You are advised to call this function immediately after {@link OH_CameraManager_CreateCaptureSession}. |
+| [Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session, Camera_SceneMode sceneMode)](#oh_capturesession_setsessionmode) | - | Sets a session mode. This API cannot be called after [OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig). You are advised to call this function immediately after [OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession). |
 | [Camera_ErrorCode OH_CaptureSession_AddSecureOutput(Camera_CaptureSession* session, Camera_PreviewOutput* previewOutput)](#oh_capturesession_addsecureoutput) | - | Marks a preview output stream as secure output. |
 | [Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)](#oh_capturesession_beginconfig) | - | Starts the configuration for a capture session. |
 | [Camera_ErrorCode OH_CaptureSession_CommitConfig(Camera_CaptureSession* session)](#oh_capturesession_commitconfig) | - | Commits the configuration for a capture session. |
@@ -186,6 +186,8 @@ typedef void (*OH_CaptureSession_OnFocusStateChange)(Camera_CaptureSession* sess
 
 Defines the callback defined in the [CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md) struct and used to report focus status changes of a capture session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -205,6 +207,8 @@ typedef void (*OH_CaptureSession_OnError)(Camera_CaptureSession* session, Camera
 
 Defines the callback defined in the [CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md) struct and used to report capture session errors.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -216,7 +220,7 @@ Defines the callback defined in the [CaptureSession_Callbacks](capi-oh-camera-ca
 
 **Reference**:
 
-CAMERA_SERVICE_FATAL_ERROR
+[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
 
 ### OH_CaptureSession_OnSmoothZoomInfo()
@@ -228,6 +232,8 @@ typedef void (*OH_CaptureSession_OnSmoothZoomInfo)(Camera_CaptureSession* sessio
 **Description**
 
 Defines the callback invoked when smooth zoom is triggered for a capture session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -248,6 +254,8 @@ typedef void (*OH_CaptureSession_OnAutoDeviceSwitchStatusChange)(Camera_CaptureS
 
 Capture session device switch status callback.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -255,7 +263,7 @@ Capture session device switch status callback.
 | Parameter | Description |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)\* session | the [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) which deliver the callback. |
-| Camera_AutoDeviceSwitchStatusInfo\* autoDeviceSwitchStatusInfo | the {@link Camera_AutoDeviceSwitchStatusInfo} which delivered by the callback. |
+| Camera_AutoDeviceSwitchStatusInfo\* autoDeviceSwitchStatusInfo | the [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) which delivered by the callback. |
 
 ### OH_CaptureSession_OnSystemPressureLevelChange()
 
@@ -266,6 +274,8 @@ typedef void (*OH_CaptureSession_OnSystemPressureLevelChange)(Camera_CaptureSess
 **Description**
 
 Defines the callback used to listen for capture system pressure level changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -285,6 +295,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterCallback(Camera_CaptureSession* sessi
 **Description**
 
 Registers a callback to listen for capture session events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -311,6 +323,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterCallback(Camera_CaptureSession* ses
 
 Unregisters the callback used to listen for capture session events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -335,6 +349,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterSmoothZoomInfoCallback(Camera_Capture
 **Description**
 
 Registers a callback to listen for smooth zoom events.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -361,6 +377,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterSmoothZoomInfoCallback(Camera_Captu
 
 Unregisters the callback used to listen for smooth zoom events.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -384,7 +402,9 @@ Camera_ErrorCode OH_CaptureSession_SetSessionMode(Camera_CaptureSession* session
 
 **Description**
 
-Sets a session mode. This API cannot be called after [OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig). You are advised to call this function immediately after {@link OH_CameraManager_CreateCaptureSession}.
+Sets a session mode. This API cannot be called after [OH_CaptureSession_BeginConfig](capi-capture-session-h.md#oh_capturesession_beginconfig). You are advised to call this function immediately after [OH_CameraManager_CreateCaptureSession](capi-camera-manager-h.md#oh_cameramanager_createcapturesession).
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -411,6 +431,8 @@ Camera_ErrorCode OH_CaptureSession_AddSecureOutput(Camera_CaptureSession* sessio
 
 Marks a preview output stream as secure output.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -436,6 +458,8 @@ Camera_ErrorCode OH_CaptureSession_BeginConfig(Camera_CaptureSession* session)
 
 Starts the configuration for a capture session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -460,6 +484,8 @@ Camera_ErrorCode OH_CaptureSession_CommitConfig(Camera_CaptureSession* session)
 
 Commits the configuration for a capture session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -483,6 +509,8 @@ Camera_ErrorCode OH_CaptureSession_AddInput(Camera_CaptureSession* session, Came
 **Description**
 
 Adds a Camera_Input instance to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -509,6 +537,8 @@ Camera_ErrorCode OH_CaptureSession_RemoveInput(Camera_CaptureSession* session, C
 
 Removes a Camera_Input instance from a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -533,6 +563,8 @@ Camera_ErrorCode OH_CaptureSession_AddPreviewOutput(Camera_CaptureSession* sessi
 **Description**
 
 Adds a PreviewOutput instance to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -559,6 +591,8 @@ Camera_ErrorCode OH_CaptureSession_RemovePreviewOutput(Camera_CaptureSession* se
 
 Removes a PreviewOutput instance from a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -583,6 +617,8 @@ Camera_ErrorCode OH_CaptureSession_AddPhotoOutput(Camera_CaptureSession* session
 **Description**
 
 Adds a PhotoOutput instance to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -609,6 +645,8 @@ Camera_ErrorCode OH_CaptureSession_RemovePhotoOutput(Camera_CaptureSession* sess
 
 Removes a PhotoOutput instance from a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -633,6 +671,8 @@ Camera_ErrorCode OH_CaptureSession_AddVideoOutput(Camera_CaptureSession* session
 **Description**
 
 Adds a **VideoOutput** instance to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -659,6 +699,8 @@ Camera_ErrorCode OH_CaptureSession_RemoveVideoOutput(Camera_CaptureSession* sess
 
 Removes a VideoOutput instance from a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -683,6 +725,8 @@ Camera_ErrorCode OH_CaptureSession_AddMetadataOutput(Camera_CaptureSession* sess
 **Description**
 
 Adds a MetadataOutput instance to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -709,6 +753,8 @@ Camera_ErrorCode OH_CaptureSession_RemoveMetadataOutput(Camera_CaptureSession* s
 
 Removes a MetadataOutput instance from a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -734,6 +780,8 @@ Camera_ErrorCode OH_CaptureSession_Start(Camera_CaptureSession* session)
 
 Starts a capture session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -757,6 +805,8 @@ Camera_ErrorCode OH_CaptureSession_Stop(Camera_CaptureSession* session)
 **Description**
 
 Stops a capture session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -782,6 +832,8 @@ Camera_ErrorCode OH_CaptureSession_Release(Camera_CaptureSession* session)
 
 Releases a CaptureSession instance.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -805,6 +857,8 @@ Camera_ErrorCode OH_CaptureSession_HasFlash(Camera_CaptureSession* session, bool
 **Description**
 
 Checks whether the device has flash.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -830,6 +884,8 @@ Camera_ErrorCode OH_CaptureSession_IsFlashModeSupported(Camera_CaptureSession* s
 **Description**
 
 Checks whether a flash mode is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -857,6 +913,8 @@ Camera_ErrorCode OH_CaptureSession_GetFlashMode(Camera_CaptureSession* session, 
 
 Obtains the flash mode in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -881,6 +939,8 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 **Description**
 
 Sets a flash mode for the device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -907,6 +967,8 @@ typedef void (*OH_CaptureSession_OnFlashStateChange)(const Camera_CaptureSession
 
 Capture session flash state change callback.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -914,7 +976,7 @@ Capture session flash state change callback.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)\* session | Pointer to the [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) which deliver the callback. |
-| OH_Camera_FlashState flashState | The {@link OH_Camera_FlashState} which delivered by the callback. |
+| OH_Camera_FlashState flashState | The [OH_Camera_FlashState](capi-camera-h.md#oh_camera_flashstate) which delivered by the callback. |
 
 ### OH_CaptureSession_RegisterFlashStateChangeCallback()
 
@@ -925,6 +987,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterFlashStateChangeCallback(const Camera
 **Description**
 
 Register flash state change event callback.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -939,7 +1003,7 @@ Register flash state change event callback.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_UnregisterFlashStateChangeCallback()
 
@@ -950,6 +1014,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterFlashStateChangeCallback(const Came
 **Description**
 
 Unregister flash state change callback.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -964,7 +1030,7 @@ Unregister flash state change callback.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_OnExposureStateChange()
 
@@ -975,6 +1041,8 @@ typedef void (*OH_CaptureSession_OnExposureStateChange)(void* context, OH_Camera
 **Description**
 
 Defines a callback function that is invoked when the exposure state changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -995,6 +1063,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterExposureStateChangeCallback(const Cam
 
 Registers a callback for exposure state changes.<br> After this callback is registered, the callback is invoked when the exposure state changes in the capture session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1009,7 +1079,7 @@ Registers a callback for exposure state changes.<br> After this callback is regi
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_UnregisterExposureStateChangeCallback()
 
@@ -1020,6 +1090,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterExposureStateChangeCallback(const C
 **Description**
 
 Unregisters the callback for exposure state changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1035,7 +1107,7 @@ Unregisters the callback for exposure state changes.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_IsExposureModeSupported()
 
@@ -1046,6 +1118,8 @@ Camera_ErrorCode OH_CaptureSession_IsExposureModeSupported(Camera_CaptureSession
 **Description**
 
 Checks whether an exposure mode is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -1073,6 +1147,8 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* sessio
 
 Obtains the exposure mode in use. This API directly returns an invalid value if you have not set the exposure mode using [OH_CaptureSession_SetExposureMode](capi-capture-session-h.md#oh_capturesession_setexposuremode).
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -1097,6 +1173,8 @@ Camera_ErrorCode OH_CaptureSession_IsWhiteBalanceModeSupported(Camera_CaptureSes
 **Description**
 
 Checks whether the specified white balance mode is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -1124,6 +1202,8 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceMode(Camera_CaptureSession* se
 
 Obtains the white balance mode in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -1149,6 +1229,8 @@ Camera_ErrorCode OH_CaptureSession_SetWhiteBalanceMode(Camera_CaptureSession* se
 
 Sets a white balance mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -1173,6 +1255,8 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceRange(Camera_CaptureSession* s
 **Description**
 
 Obtains the supported white balance color temperature range.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -1200,6 +1284,8 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalance(Camera_CaptureSession* sessio
 
 Obtains the white balance color temperature.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -1224,6 +1310,8 @@ Camera_ErrorCode OH_CaptureSession_SetWhiteBalance(Camera_CaptureSession* sessio
 **Description**
 
 Sets the white balance color temperature. Before setting this parameter, you are advised to use [OH_CaptureSession_GetWhiteBalanceRange](capi-capture-session-h.md#oh_capturesession_getwhitebalancerange) to obtain the supported white balance color temperature range.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -1250,6 +1338,8 @@ Camera_ErrorCode OH_CaptureSession_GetColorTintRange(const Camera_CaptureSession
 
 Obtains the supported white balance color tint range.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1264,7 +1354,7 @@ Obtains the supported white balance color tint range.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | Result code.          {@link CAMERA_OK} is returned if the function is called successfully.<br>        {@link CAMERA_INVALID_ARGUMENT} is returned if an input parameter<br>                is missing or the parameter type is incorrect.<br>        {@link CAMERA_SESSION_NOT_CONFIG} is returned if the session is not configured when the function is called. |
+| Camera_ErrorCode | Result code.          [CAMERA_OK](capi-camera-h.md#camera_errorcode) is returned if the function is called successfully.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) is returned if an input parameter                is missing or the parameter type is incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) is returned if the session is not configured when the function is called. |
 
 ### OH_CaptureSession_GetColorTint()
 
@@ -1275,6 +1365,8 @@ Camera_ErrorCode OH_CaptureSession_GetColorTint(const Camera_CaptureSession* ses
 **Description**
 
 Obtains the white balance color tint.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1289,7 +1381,7 @@ Obtains the white balance color tint.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | Result code.          {@link CAMERA_OK} is returned if the function is called successfully.<br>        {@link CAMERA_INVALID_ARGUMENT} is returned if an input<br>                parameter is missing or the parameter type is incorrect.<br>        {@link CAMERA_SESSION_NOT_CONFIG} is returned if the session is not configured when the function is called. |
+| Camera_ErrorCode | Result code.          [CAMERA_OK](capi-camera-h.md#camera_errorcode) is returned if the function is called successfully.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) is returned if an input                parameter is missing or the parameter type is incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) is returned if the session is not configured when the function is called. |
 
 ### OH_CaptureSession_SetColorTint()
 
@@ -1300,6 +1392,8 @@ Camera_ErrorCode OH_CaptureSession_SetColorTint(Camera_CaptureSession* session, 
 **Description**
 
 Sets the white balance color tint.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -1314,7 +1408,7 @@ Sets the white balance color tint.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | <ul>          <li>{@link CAMERA_OK} The operation is successful.</li><br>        <li>{@link CAMERA_INVALID_ARGUMENT} A parameter is missing or the parameter type is incorrect.</li><br>        <li>{@link CAMERA_SESSION_NOT_CONFIG} The capture session is not configured.</li>          </ul> |
+| Camera_ErrorCode | <ul>          <li>[CAMERA_OK](capi-camera-h.md#camera_errorcode) The operation is successful.</li>          <li>[CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) A parameter is missing or the parameter type is incorrect.</li>          <li>[CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) The capture session is not configured.</li>          </ul> |
 
 ### OH_CaptureSession_SetExposureMode()
 
@@ -1325,6 +1419,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMode(Camera_CaptureSession* sessio
 **Description**
 
 Sets an exposure mode for the device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -1351,6 +1447,8 @@ Camera_ErrorCode OH_CaptureSession_GetMeteringPoint(Camera_CaptureSession* sessi
 
 Obtains the metering point in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -1375,6 +1473,8 @@ Camera_ErrorCode OH_CaptureSession_SetMeteringPoint(Camera_CaptureSession* sessi
 **Description**
 
 Sets the metering point, which is the center point of the metering rectangle.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -1401,6 +1501,8 @@ Camera_ErrorCode OH_CaptureSession_IsExposureMeteringModeSupported(const Camera_
 
 Check whether a specified exposure metering mode is supported.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -1408,14 +1510,14 @@ Check whether a specified exposure metering mode is supported.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) instance. |
-| OH_Camera_ExposureMeteringMode exposureMeteringMode | The {@link OH_Camera_ExposureMeteringMode} to be checked. |
+| OH_Camera_ExposureMeteringMode exposureMeteringMode | The [OH_Camera_ExposureMeteringMode](capi-camera-h.md#oh_camera_exposuremeteringmode) to be checked. |
 | bool* isSupported | Pointer to the result of whether exposure mode supported. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetExposureMeteringMode()
 
@@ -1427,6 +1529,8 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMeteringMode(const Camera_CaptureS
 
 Get current exposure metering mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -1434,13 +1538,13 @@ Get current exposure metering mode.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) instance. |
-| OH_Camera_ExposureMeteringMode* exposureMeteringMode | Pointer to the {@link OH_Camera_ExposureMeteringMode} instance. |
+| OH_Camera_ExposureMeteringMode* exposureMeteringMode | Pointer to the [OH_Camera_ExposureMeteringMode](capi-camera-h.md#oh_camera_exposuremeteringmode) instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetExposureMeteringMode()
 
@@ -1452,6 +1556,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMeteringMode(const Camera_CaptureS
 
 Set exposure metering mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -1459,13 +1565,13 @@ Set exposure metering mode.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to the [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) instance. |
-| OH_Camera_ExposureMeteringMode exposureMeteringMode | The target {@link OH_Camera_ExposureMeteringMode} to set. |
+| OH_Camera_ExposureMeteringMode exposureMeteringMode | The target [OH_Camera_ExposureMeteringMode](capi-camera-h.md#oh_camera_exposuremeteringmode) to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetSupportedISORange()
 
@@ -1476,6 +1582,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedISORange(const Camera_CaptureSess
 **Description**
 
 Query the iso range.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1491,7 +1599,7 @@ Query the iso range.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetIso()
 
@@ -1502,6 +1610,8 @@ Camera_ErrorCode OH_CaptureSession_GetIso(const Camera_CaptureSession* session, 
 **Description**
 
 Get current iso sensitivity value, as defined in ISO 12232:2006.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1516,7 +1626,7 @@ Get current iso sensitivity value, as defined in ISO 12232:2006.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetIso()
 
@@ -1527,6 +1637,8 @@ Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, 
 **Description**
 
 Sets ISO sensitivity value, within the range of getSupportedIsoRange. This control can not effective if ExposureMode is set to EXPOSURE_MODE_LOCKED.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1541,7 +1653,7 @@ Sets ISO sensitivity value, within the range of getSupportedIsoRange. This contr
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_OnIsoChange()
 
@@ -1552,6 +1664,8 @@ typedef void (*OH_CaptureSession_OnIsoChange)(Camera_CaptureSession* session, in
 **Description**
 
 Defines the callback used to listen for ISO changes in a camera session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -1571,6 +1685,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterIsoChangeCallback(Camera_CaptureSessi
 **Description**
 
 Registers a callback to listen for ISO changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 22
 
@@ -1597,6 +1713,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterIsoChangeCallback(Camera_CaptureSes
 
 Unregisters the callback used to listen for ISO changes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -1622,6 +1740,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_Ca
 
 Gets the supported physical apertures list. Release the physical apertures memory by calling [OH_CaptureSession_DeletePhysicalApertures](capi-capture-session-h.md#oh_capturesession_deletephysicalapertures).
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -1636,7 +1756,7 @@ Gets the supported physical apertures list. Release the physical apertures memor
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} success<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) success           [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetPhysicalAperture()
 
@@ -1647,6 +1767,8 @@ Camera_ErrorCode OH_CaptureSession_GetPhysicalAperture(const Camera_CaptureSessi
 **Description**
 
 Gets the current physical aperture value
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1661,7 +1783,7 @@ Gets the current physical aperture value
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} success<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) success           [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_DeletePhysicalApertures()
 
@@ -1672,6 +1794,8 @@ Camera_ErrorCode OH_CaptureSession_DeletePhysicalApertures(const Camera_CaptureS
 **Description**
 
 Delete the physical apertures.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1687,7 +1811,7 @@ Delete the physical apertures.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_SetPhysicalAperture()
 
@@ -1698,6 +1822,8 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 **Description**
 
 Set physical aperture value.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1712,7 +1838,7 @@ Set physical aperture value.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} success<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) success           [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetExposureBiasRange()
 
@@ -1723,6 +1849,8 @@ Camera_ErrorCode OH_CaptureSession_GetExposureBiasRange(Camera_CaptureSession* s
 **Description**
 
 Obtains the exposure compensation values of the device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -1751,6 +1879,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureBias(Camera_CaptureSession* sessio
 
 Sets an exposure compensation value for the device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -1775,6 +1905,8 @@ Camera_ErrorCode OH_CaptureSession_GetExposureBias(Camera_CaptureSession* sessio
 **Description**
 
 Obtains the exposure compensation value in use.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -1801,6 +1933,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedExposureDurationRange(const Camer
 
 Get the supported range of exposure durations. Units: Microseconds.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -1815,7 +1949,7 @@ Get the supported range of exposure durations. Units: Microseconds.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetExposureDuration()
 
@@ -1826,6 +1960,8 @@ Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSessi
 **Description**
 
 Set exposure duration. Units: Microseconds.This control is only effective if ExposureMode is set to EXPOSURE_MODE_MANUAL. If the sensor can't expose this duration exactly, it will shorten the duration to the nearest supported value, which is reporeted by Callback [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange).
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1840,7 +1976,7 @@ Set exposure duration. Units: Microseconds.This control is only effective if Exp
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetExposureDuration()
 
@@ -1851,6 +1987,8 @@ Camera_ErrorCode OH_CaptureSession_GetExposureDuration(const Camera_CaptureSessi
 **Description**
 
 Get current exposure duration. Units: Microseconds.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1865,7 +2003,7 @@ Get current exposure duration. Units: Microseconds.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_OnExposureDurationChange()
 
@@ -1876,6 +2014,8 @@ typedef void (*OH_CaptureSession_OnExposureDurationChange)(const Camera_CaptureS
 **Description**
 
 Capture session exposure duration change callback.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1896,6 +2036,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterExposureInfoChangeCallback(const Came
 
 Register exposure info change event callback. After exposure parameters are changed, the system will returns the updated exposure infos.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -1909,7 +2051,7 @@ Register exposure info change event callback. After exposure parameters are chan
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>{@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.  [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_UnregisterExposureInfoChangeCallback()
 
@@ -1920,6 +2062,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterExposureInfoChangeCallback(const Ca
 **Description**
 
 Unregister exposure info change callback.Invoke this method after finishing camera operations.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -1934,7 +2078,7 @@ Unregister exposure info change callback.Invoke this method after finishing came
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>{@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.  [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_IsFocusModeSupported()
 
@@ -1945,6 +2089,8 @@ Camera_ErrorCode OH_CaptureSession_IsFocusModeSupported(Camera_CaptureSession* s
 **Description**
 
 Checks whether a focus mode is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -1972,6 +2118,8 @@ Camera_ErrorCode OH_CaptureSession_GetFocusMode(Camera_CaptureSession* session, 
 
 Obtains the focus mode in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -1996,6 +2144,8 @@ Camera_ErrorCode OH_CaptureSession_SetFocusMode(Camera_CaptureSession* session, 
 **Description**
 
 Sets a focus mode for the device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -2022,6 +2172,8 @@ Camera_ErrorCode OH_CaptureSession_GetFocusPoint(Camera_CaptureSession* session,
 
 Obtains the focal point in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -2047,6 +2199,8 @@ Camera_ErrorCode OH_CaptureSession_SetFocusPoint(Camera_CaptureSession* session,
 
 Sets a focal point for the device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -2071,6 +2225,8 @@ Camera_ErrorCode OH_CaptureSession_GetZoomRatioRange(Camera_CaptureSession* sess
 **Description**
 
 Obtains the supported zoom ratio range.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -2098,6 +2254,8 @@ Camera_ErrorCode OH_CaptureSession_GetZoomRatio(Camera_CaptureSession* session, 
 
 Obtains the zoom ratio in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -2123,6 +2281,8 @@ Camera_ErrorCode OH_CaptureSession_SetZoomRatio(Camera_CaptureSession* session, 
 
 Sets a zoom ratio for the device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -2147,6 +2307,8 @@ Camera_ErrorCode OH_CaptureSession_IsVideoStabilizationModeSupported(Camera_Capt
 **Description**
 
 Checks whether a video stabilization mode is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -2174,6 +2336,8 @@ Camera_ErrorCode OH_CaptureSession_GetVideoStabilizationMode(Camera_CaptureSessi
 
 Obtains the video stabilization mode in use.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -2199,6 +2363,8 @@ Camera_ErrorCode OH_CaptureSession_SetVideoStabilizationMode(Camera_CaptureSessi
 
 Sets a video stabilization mode for the device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -2223,6 +2389,8 @@ Camera_ErrorCode OH_CaptureSession_CanAddInput(Camera_CaptureSession* session, C
 **Description**
 
 Checks whether a Camera_Input instance can be added to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2250,6 +2418,8 @@ Camera_ErrorCode OH_CaptureSession_CanAddPreviewOutput(Camera_CaptureSession* se
 
 Checks whether a PreviewOutput instance can be added to a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2275,6 +2445,8 @@ Camera_ErrorCode OH_CaptureSession_CanAddPhotoOutput(Camera_CaptureSession* sess
 **Description**
 
 Checks whether a PhotoOutput instance can be added to a session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2302,6 +2474,8 @@ Camera_ErrorCode OH_CaptureSession_CanAddVideoOutput(Camera_CaptureSession* sess
 
 Checks whether a **VideoOutput** instance can be added to a session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2328,6 +2502,8 @@ Camera_ErrorCode OH_CaptureSession_CanPreconfig(Camera_CaptureSession* session, 
 
 Checks whether a preconfigured resolution type is supported.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2353,6 +2529,8 @@ Camera_ErrorCode OH_CaptureSession_CanPreconfigWithRatio(Camera_CaptureSession* 
 **Description**
 
 Checks whether a preconfigured resolution type with an aspect ratio is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2381,6 +2559,8 @@ Camera_ErrorCode OH_CaptureSession_Preconfig(Camera_CaptureSession* session, Cam
 
 Sets a preconfigured resolution type.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2405,6 +2585,8 @@ Camera_ErrorCode OH_CaptureSession_PreconfigWithRatio(Camera_CaptureSession* ses
 **Description**
 
 Sets a preconfigured resolution type with an aspect ratio.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2432,6 +2614,8 @@ Camera_ErrorCode OH_CaptureSession_GetExposureValue(Camera_CaptureSession* sessi
 
 Obtains the exposure value.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2456,6 +2640,8 @@ Camera_ErrorCode OH_CaptureSession_GetFocalLength(Camera_CaptureSession* session
 **Description**
 
 Obtains the current focal length.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2482,6 +2668,8 @@ Camera_ErrorCode OH_CaptureSession_IsFocusDistanceSupported(const Camera_Capture
 
 Check whether focus distance is supported.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -2495,7 +2683,7 @@ Check whether focus distance is supported.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetFocusDistance()
 
@@ -2506,6 +2694,8 @@ Camera_ErrorCode OH_CaptureSession_GetFocusDistance(const Camera_CaptureSession*
 **Description**
 
 Get current focus distance, ranging from 0.0 to 1.0, with 0.0 being shortest distance at which the lens can focus and 1.0 the furthest. The default value is 1.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -2520,7 +2710,7 @@ Get current focus distance, ranging from 0.0 to 1.0, with 0.0 being shortest dis
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetFocusDistance()
 
@@ -2531,6 +2721,8 @@ Camera_ErrorCode OH_CaptureSession_SetFocusDistance(const Camera_CaptureSession*
 **Description**
 
 Sets focus distance. Possible distance values range from 0.0 to 1.0, with 0.0 being shortest distance at which the lens can focus and 1.0 the furthest. The default value is 1.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -2545,7 +2737,7 @@ Sets focus distance. Possible distance values range from 0.0 to 1.0, with 0.0 be
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetSmoothZoom()
 
@@ -2556,6 +2748,8 @@ Camera_ErrorCode OH_CaptureSession_SetSmoothZoom(Camera_CaptureSession* session,
 **Description**
 
 Sets smooth zoom.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2583,6 +2777,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedColorSpaces(Camera_CaptureSession
 
 Obtains the supported color spaces.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2609,6 +2805,8 @@ Camera_ErrorCode OH_CaptureSession_DeleteColorSpaces(Camera_CaptureSession* sess
 
 Deletes color spaces.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2633,6 +2831,8 @@ Camera_ErrorCode OH_CaptureSession_GetActiveColorSpace(Camera_CaptureSession* se
 **Description**
 
 Obtains the active color space.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -2659,6 +2859,8 @@ Camera_ErrorCode OH_CaptureSession_SetActiveColorSpace(Camera_CaptureSession* se
 
 Sets the active color space.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -2684,6 +2886,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterAutoDeviceSwitchStatusCallback(Camera
 
 Register device switch event callback.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -2697,7 +2901,7 @@ Register device switch event callback.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback()
 
@@ -2708,6 +2912,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterAutoDeviceSwitchStatusCallback(Came
 **Description**
 
 Unregister device switch event callback.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
@@ -2722,7 +2928,7 @@ Unregister device switch event callback.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_IsAutoDeviceSwitchSupported()
 
@@ -2733,6 +2939,8 @@ Camera_ErrorCode OH_CaptureSession_IsAutoDeviceSwitchSupported(Camera_CaptureSes
 **Description**
 
 Check whether auto device switch is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
@@ -2747,7 +2955,7 @@ Check whether auto device switch is supported.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link #CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_EnableAutoDeviceSwitch()
 
@@ -2758,6 +2966,8 @@ Camera_ErrorCode OH_CaptureSession_EnableAutoDeviceSwitch(Camera_CaptureSession*
 **Description**
 
 Enable auto switch or not for the camera device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
@@ -2772,7 +2982,7 @@ Enable auto switch or not for the camera device.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link #CAMERA_SESSION_NOT_CONFIG} if the capture session not config.<br>        {@link #CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config.          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error. |
 
 ### OH_CaptureSession_SetQualityPrioritization()
 
@@ -2784,6 +2994,8 @@ Camera_ErrorCode OH_CaptureSession_SetQualityPrioritization(Camera_CaptureSessio
 
 Set quality prioritization.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 14
 
 **Parameters**:
@@ -2791,13 +3003,13 @@ Set quality prioritization.
 | Parameter | Description |
 | -- | -- |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | the [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) instance. |
-| Camera_QualityPrioritization qualityPrioritization | the target {@link Camera_QualityPrioritization} to set. |
+| Camera_QualityPrioritization qualityPrioritization | the target [Camera_QualityPrioritization](capi-camera-h.md#camera_qualityprioritization) to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link #CAMERA_OK} if the method call succeeds.<br>        {@link #CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link #CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_IsMacroSupported()
 
@@ -2808,6 +3020,8 @@ Camera_ErrorCode OH_CaptureSession_IsMacroSupported(Camera_CaptureSession* sessi
 **Description**
 
 Checks whether macro photography is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 19
 
@@ -2834,6 +3048,8 @@ Camera_ErrorCode OH_CaptureSession_EnableMacro(Camera_CaptureSession* session, b
 
 Enables or disables macro photography for the camera device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 19
 
 **Parameters**:
@@ -2859,6 +3075,8 @@ typedef void (*OH_CaptureSession_OnMacroStatusChange)(Camera_CaptureSession* ses
 
 Defines the callback used to listen for macro status changes of a camera session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -2877,6 +3095,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterMacroStatusChangeCallback(Camera_Capt
 **Description**
 
 Registers a callback to listen for macro status changes of a camera session.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -2903,6 +3123,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterMacroStatusChangeCallback(Camera_Ca
 
 Unregisters the callback used to listen for macro status changes of a camera session.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -2927,6 +3149,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(Cam
 **Description**
 
 Registers a callback to listen for capture system pressure level changes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -2953,6 +3177,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterSystemPressureLevelChangeCallback(C
 
 Unregisters the callback used to listen for capture system pressure level changes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -2978,6 +3204,8 @@ Camera_ErrorCode OH_CaptureSession_IsControlCenterSupported(Camera_CaptureSessio
 
 Checks whether the camera controller is supported.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3002,6 +3230,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession
 **Description**
 
 Obtains the effect types supported by the camera controller.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -3029,6 +3259,8 @@ Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectTypes(Camera_CaptureSess
 
 Deletes the effect types supported by the camera controller.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3055,6 +3287,8 @@ Camera_ErrorCode OH_CaptureSession_EnableControlCenter(Camera_CaptureSession* se
 
 Enables or disables the camera controller.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3080,6 +3314,8 @@ typedef void (*OH_CaptureSession_OnControlCenterEffectStatusChange)(Camera_Captu
 
 Defines the callback used to listen for effect status changes of a camera controller.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3098,6 +3334,8 @@ Camera_ErrorCode OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallba
 **Description**
 
 Registers a callback to listen for effect status changes of a camera controller.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -3124,6 +3362,8 @@ Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCall
 
 Unregisters the callback used to listen for effect status changes of a camera controller.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -3149,6 +3389,8 @@ Camera_ErrorCode OH_CaptureSession_GetRAWCaptureZoomRatioRange(const Camera_Capt
 
 Query the raw zoom range.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -3163,7 +3405,7 @@ Query the raw zoom range.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link INVALID_ARGUMENT} if parameter missing or parameter type incorrect.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation not allowed, session or inputdevice maybe abnormal.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation not allowed, session or inputdevice maybe abnormal.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_IsOISModeSupported()
 
@@ -3175,6 +3417,8 @@ Camera_ErrorCode OH_CaptureSession_IsOISModeSupported(const Camera_CaptureSessio
 
 Checks if the specified OIS mode is supported.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -3182,14 +3426,14 @@ Checks if the specified OIS mode is supported.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to a session. |
-| OH_Camera_OISMode oisMode | The OIS mode {@link OH_Camera_OISMode} to check. |
+| OH_Camera_OISMode oisMode | The OIS mode [OH_Camera_OISMode](capi-camera-h.md#oh_camera_oismode) to check. |
 | bool* isSupported | Output parameter indicating support status. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetSupportedOISBiasRange()
 
@@ -3201,6 +3445,8 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedOISBiasRange(const Camera_Capture
 
 Gets the supported bias range for the specified OIS axis.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -3208,7 +3454,7 @@ Gets the supported bias range for the specified OIS axis.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to a session. |
-| OH_Camera_OISAxes oisAxis | The OIS axis {@link OH_Camera_OISAxes} |
+| OH_Camera_OISAxes oisAxis | The OIS axis [OH_Camera_OISAxes](capi-camera-h.md#oh_camera_oisaxes) |
 | float* minBias | Output parameter for minimum bias value. |
 | float* maxBias | Output parameter for maximum bias value. |
 | float* step | Output parameter for bias step value. |
@@ -3217,7 +3463,7 @@ Gets the supported bias range for the specified OIS axis.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetCurrentOISMode()
 
@@ -3229,6 +3475,8 @@ Camera_ErrorCode OH_CaptureSession_GetCurrentOISMode(const Camera_CaptureSession
 
 Gets the current OIS mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -3236,13 +3484,13 @@ Gets the current OIS mode.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to a session. |
-| OH_Camera_OISMode* oisMode | Output parameter for current OIS mode {@link OH_Camera_OISMode}. |
+| OH_Camera_OISMode* oisMode | Output parameter for current OIS mode [OH_Camera_OISMode](capi-camera-h.md#oh_camera_oismode). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetCurrentCustomOISBias()
 
@@ -3253,6 +3501,8 @@ Camera_ErrorCode OH_CaptureSession_GetCurrentCustomOISBias(const Camera_CaptureS
 **Description**
 
 Gets the current custom bias values for all OIS axes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -3268,7 +3518,7 @@ Gets the current custom bias values for all OIS axes.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetOISMode()
 
@@ -3280,6 +3530,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISMode(const Camera_CaptureSession* sessi
 
 Sets the OIS mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -3287,13 +3539,13 @@ Sets the OIS mode.
 | Parameter | Description |
 | -- | -- |
 | [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Pointer to a session. |
-| OH_Camera_OISMode oisMode | The OIS mode {@link OH_Camera_OISMode} to set. |
+| OH_Camera_OISMode oisMode | The OIS mode [OH_Camera_OISMode](capi-camera-h.md#oh_camera_oismode) to set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_SetOISModeCustom()
 
@@ -3304,6 +3556,8 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 **Description**
 
 Sets custom OIS bias values for all axes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -3319,7 +3573,7 @@ Sets custom OIS bias values for all axes.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_GetZoomPointInfos()
 
@@ -3330,6 +3584,8 @@ Camera_ErrorCode OH_CaptureSession_GetZoomPointInfos(const Camera_CaptureSession
 **Description**
 
 Gets the zoom point infos. Release the zoom point infos memory by calling [OH_CaptureSession_DeleteZoomPointInfos](capi-capture-session-h.md#oh_capturesession_deletezoompointinfos).
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -3345,7 +3601,7 @@ Gets the zoom point infos. Release the zoom point infos memory by calling [OH_Ca
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} is returned if the function is called successfully.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameters are invalid.<br>        {@link CAMERA_OPERATION_NOT_ALLOWED} if operation is not allowed.<br>        {@link CAMERA_SESSION_NOT_CONFIG} if the capture session not config. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) is returned if the function is called successfully.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameters are invalid.          [CAMERA_OPERATION_NOT_ALLOWED](capi-camera-h.md#camera_errorcode) if operation is not allowed.          [CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) if the capture session not config. |
 
 ### OH_CaptureSession_DeleteZoomPointInfos()
 
@@ -3356,6 +3612,8 @@ Camera_ErrorCode OH_CaptureSession_DeleteZoomPointInfos(const Camera_CaptureSess
 **Description**
 
 Delete the zoom point infos.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -3370,7 +3628,7 @@ Delete the zoom point infos.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CaptureSession_IsLockFocusTrackingSupported()
 
@@ -3381,6 +3639,8 @@ bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession*
 **Description**
 
 Checks whether the lock focus tracking is supported.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -3406,6 +3666,8 @@ Camera_ErrorCode OH_CaptureSession_LockFocusTracking(Camera_CaptureSession* sess
 
 Lock focus tracking, can be unlocked by [OH_CaptureSession_UnlockFocusTracking](capi-capture-session-h.md#oh_capturesession_unlockfocustracking).
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -3419,7 +3681,7 @@ Lock focus tracking, can be unlocked by [OH_CaptureSession_UnlockFocusTracking](
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | <ul>          <li>{@link CAMERA_OK} The operation is successful.</li><br>        <li>{@link CAMERA_INVALID_ARGUMENT} A parameter is missing or the parameter type is incorrect.</li><br>        <li>{@link CAMERA_SESSION_NOT_CONFIG} The capture session is not configured.</li><br>        <li>{@link CAMERA_SERVICE_FATAL_ERROR} The camera service is abnormal.</li>          </ul> |
+| Camera_ErrorCode | <ul>          <li>[CAMERA_OK](capi-camera-h.md#camera_errorcode) The operation is successful.</li>          <li>[CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) A parameter is missing or the parameter type is incorrect.</li>          <li>[CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) The capture session is not configured.</li>          <li>[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) The camera service is abnormal.</li>          </ul> |
 
 ### OH_CaptureSession_UnlockFocusTracking()
 
@@ -3430,6 +3692,8 @@ Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* se
 **Description**
 
 Unlock focus tracking.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -3443,6 +3707,6 @@ Unlock focus tracking.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | <ul>          <li>{@link CAMERA_OK} The operation is successful.</li><br>        <li>{@link CAMERA_INVALID_ARGUMENT} A parameter is missing or the parameter type is incorrect.</li><br>        <li>{@link CAMERA_SESSION_NOT_CONFIG} The capture session is not configured.</li><br>        <li>{@link CAMERA_SERVICE_FATAL_ERROR} The camera service is abnormal.</li>          </ul> |
+| Camera_ErrorCode | <ul>          <li>[CAMERA_OK](capi-camera-h.md#camera_errorcode) The operation is successful.</li>          <li>[CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) A parameter is missing or the parameter type is incorrect.</li>          <li>[CAMERA_SESSION_NOT_CONFIG](capi-camera-h.md#camera_errorcode) The capture session is not configured.</li>          <li>[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) The camera service is abnormal.</li>          </ul> |
 
 

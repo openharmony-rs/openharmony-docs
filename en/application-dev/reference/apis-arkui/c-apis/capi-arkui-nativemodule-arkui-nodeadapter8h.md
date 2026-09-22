@@ -8,6 +8,8 @@ typedef struct ArkUI_NodeAdapter* ArkUI_NodeAdapterHandle
 
 Defines the component adapter, which is used for lazy loading of elements of scrollable components.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

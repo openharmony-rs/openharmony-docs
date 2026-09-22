@@ -4,6 +4,8 @@
 
 提供Function Flow Runtime（FFRT）C接口。<br> FFRT是一种基于任务的并发运行时库，根据任务依赖关系自动调度任务， 开发者无需手动管理线程。
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 10
 
 ## 文件汇总

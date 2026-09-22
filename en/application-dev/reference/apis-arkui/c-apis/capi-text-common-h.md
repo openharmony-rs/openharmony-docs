@@ -46,6 +46,7 @@ Defines a set of text common enum and interface.
 | [ArkUI_KeyboardAppearance](#arkui_keyboardappearance) | ArkUI_KeyboardAppearance | Defines the keyboard style of input box |
 | [ArkUI_TextMenuItemId](#arkui_textmenuitemid) | ArkUI_TextMenuItemId | Enumerates the text menu item id. |
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | Enumerates line break policies. |
+| [OH_ArkUI_StrokeJoinStyle](#oh_arkui_strokejoinstyle) | OH_ArkUI_StrokeJoinStyle | Enumerates the join styles of a text stroke. |
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | Enumerates the text span type. |
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | Enumerates the text response type. |
 
@@ -87,6 +88,8 @@ enum ArkUI_TextAlignment
 
 Enumerates the text alignment mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -108,6 +111,8 @@ enum ArkUI_TextVerticalAlignment
 
 Enumerates text vertical alignment styles.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 | Enum item | Description |
@@ -127,6 +132,8 @@ enum ArkUI_TextContentAlign
 
 Enumerates text content align styles.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 21
 
 | Enum item | Description |
@@ -144,6 +151,8 @@ enum ArkUI_TextDirection
 **Description**
 
 Enumerates the text text direction.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -163,6 +172,8 @@ enum ArkUI_EnterKeyType
 **Description**
 
 Enumerates the types of the Enter key for a single-line text box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -186,6 +197,8 @@ enum ArkUI_TextDecorationType
 
 Enumerates the text decoration types.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -204,6 +217,8 @@ enum ArkUI_TextDecorationStyle
 **Description**
 
 Enumerates the text decoration styles.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -225,6 +240,8 @@ enum ArkUI_TextCase
 
 Enumerates the text cases.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -242,6 +259,8 @@ enum ArkUI_TextCopyOptions
 **Description**
 
 Defines whether copy and paste is allowed for text content.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -262,6 +281,8 @@ enum ArkUI_TextOverflow
 
 Enumerates the display modes when the text is too long.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -281,6 +302,8 @@ enum ArkUI_WordBreak
 
 Enumerates the word break rules.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -299,6 +322,8 @@ enum ArkUI_EllipsisMode
 **Description**
 
 Enumerates the ellipsis positions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -320,6 +345,8 @@ enum ArkUI_KeyboardAppearance
 
 Defines the keyboard style of input box
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 | Enum item | Description |
@@ -338,6 +365,8 @@ enum ArkUI_TextMenuItemId
 **Description**
 
 Enumerates the text menu item id.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -374,6 +403,8 @@ enum OH_ArkUI_LineBreakStrategy
 
 Enumerates line break policies.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 | Enum item | Description |
@@ -381,6 +412,26 @@ Enumerates line break policies.
 | OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 |  |
 | OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 |  |
 | OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 |  |
+
+### OH_ArkUI_StrokeJoinStyle
+
+```c
+enum OH_ArkUI_StrokeJoinStyle
+```
+
+**Description**
+
+Enumerates the join styles of a text stroke.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.2.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 |  |
+| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1 |  |
+| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2 |  |
 
 ### ArkUI_TextSpanType
 
@@ -391,6 +442,8 @@ enum ArkUI_TextSpanType
 **Description**
 
 Enumerates the text span type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -410,6 +463,8 @@ enum ArkUI_TextResponseType
 **Description**
 
 Enumerates the text response type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -431,6 +486,8 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 **Description**
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -448,6 +505,8 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, vo
 
 **Description**
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -464,6 +523,8 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, 
 ```
 
 **Description**
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -492,6 +553,8 @@ ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 
 Creates a configuration object for textField's counter.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Returns**:
@@ -510,6 +573,8 @@ void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 
 Disposes a configuration object for textField's counter.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -527,6 +592,8 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 **Description**
 
 Sets the color of counter when textField hasn't wanted to exceed the maximum character count.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -547,6 +614,8 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 
 Sets the color of counter when textField wants to exceed the maximum character count.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -565,6 +634,8 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 **Description**
 
 Gets the color of counter when textField hasn't wanted to exceed the maximum character count.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -590,6 +661,8 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 
 Gets the color of counter when textField wants to exceed the maximum character count.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -614,6 +687,8 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 Create an object of the text edit menu item.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Returns**:
@@ -631,6 +706,8 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 **Description**
 
 Dispose an object of the text edit menu options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -650,6 +727,8 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 
 Create an object of the text edit menu options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Returns**:
@@ -667,6 +746,8 @@ void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOpt
 **Description**
 
 Dispose an object of the text edit menu options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -686,6 +767,8 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()
 
 Create an object of the text selection menu options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Returns**:
@@ -703,6 +786,8 @@ void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* s
 **Description**
 
 Dispose an object of the text selection menu options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -722,6 +807,8 @@ ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()
 
 Create an object of the text content base controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Returns**:
@@ -739,6 +826,8 @@ void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController*
 **Description**
 
 Dispose an object of the text content base controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -758,6 +847,8 @@ void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseCont
 
 Delete the character before the caret of the input field component in editing state. Otherwise, delete the last character of the input field component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Parameters**:
@@ -775,6 +866,8 @@ void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseCon
 **Description**
 
 Scroll the input field component to make the specified content visible.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -796,6 +889,8 @@ OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
 
 Creates a decorative line style object. When the object is no longer used, call [OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy) to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -813,6 +908,8 @@ void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* op
 **Description**
 
 Destroys the decorative line style object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

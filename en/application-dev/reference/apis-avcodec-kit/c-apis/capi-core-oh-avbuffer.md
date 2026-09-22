@@ -8,6 +8,8 @@ typedef struct OH_AVBuffer OH_AVBuffer
 
 Describes a native object for the media memory interface.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 11
 
 **Related module**: [Core](capi-core.md)

@@ -8,6 +8,8 @@ typedef struct OH_Camera_ZoomRange {...} OH_Camera_ZoomRange
 
 Describes the zoom range configuration.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

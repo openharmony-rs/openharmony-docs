@@ -8,6 +8,8 @@ struct AbilityRuntime_ExtensionInstance
 
 定义AbilityRuntime_ExtensionInstance结构体类型。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 24
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)

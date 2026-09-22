@@ -8,6 +8,8 @@ typedef struct Print_StringList {...} Print_StringList
 
 Defines a struct for the string list.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

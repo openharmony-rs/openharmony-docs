@@ -29,7 +29,7 @@ The file declares the functions of the media struct AVBuffer.
 | [OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)](#oh_avbuffer_destroy) | Releases an OH_AVBuffer instance. A buffer cannot be destroyed repeatedly. |
 | [OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr *attr)](#oh_avbuffer_getbufferattr) | Obtains the basic attributes, including **pts**, **size**, **offset**, and **flags**, of a buffer. |
 | [OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBufferAttr *attr)](#oh_avbuffer_setbufferattr) | Sets the basic attributes, including **pts**, **size**, **offset**, and **flags**, of a buffer. |
-| [OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)](#oh_avbuffer_getparameter) | Obtains parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. You must call {@link OH_AVFormat_Destroy} to manually release the OH_AVFormat instance returned. |
+| [OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)](#oh_avbuffer_getparameter) | Obtains parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to manually release the OH_AVFormat instance returned. |
 | [OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *format)](#oh_avbuffer_setparameter) | Sets parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. |
 | [uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)](#oh_avbuffer_getaddr) | Obtains the virtual address of a data buffer. |
 | [int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)](#oh_avbuffer_getcapacity) | Obtains the capacity (in bytes) of a buffer. |
@@ -46,6 +46,8 @@ OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 **Description**
 
 Creates an OH_AVBuffer instance. You must call [OH_AVBuffer_Destroy](capi-native-avbuffer-h.md#oh_avbuffer_destroy) to manually release the OH_AVBuffer instance returned.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 
@@ -71,6 +73,8 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 Releases an OH_AVBuffer instance. A buffer cannot be destroyed repeatedly.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -83,7 +87,7 @@ Releases an OH_AVBuffer instance. A buffer cannot be destroyed repeatedly.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The value of buffer is nullptr or fails format verification.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The input buffer is not created by the user. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of buffer is nullptr or fails format verification.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The input buffer is not created by the user. |
 
 ### OH_AVBuffer_GetBufferAttr()
 
@@ -94,6 +98,8 @@ OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr
 **Description**
 
 Obtains the basic attributes, including **pts**, **size**, **offset**, and **flags**, of a buffer.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 
@@ -108,7 +114,7 @@ Obtains the basic attributes, including **pts**, **size**, **offset**, and **fla
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The possible causes are as follows:      <br>1. The value of buffer or attr is nullptr.      <br>2. The value of buffer fails parameter structure verification. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer or attr is nullptr.      <br>2. The value of buffer fails parameter structure verification. |
 
 ### OH_AVBuffer_SetBufferAttr()
 
@@ -119,6 +125,8 @@ OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBuff
 **Description**
 
 Sets the basic attributes, including **pts**, **size**, **offset**, and **flags**, of a buffer.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 
@@ -133,7 +141,7 @@ Sets the basic attributes, including **pts**, **size**, **offset**, and **flags*
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The possible causes are as follows:      <br>1. The value of buffer or attr is nullptr.      <br>2. The value of buffer fails parameter structure verification.      <br>3. The memory size or offset of the buffer is invalid. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer or attr is nullptr.      <br>2. The value of buffer fails parameter structure verification.      <br>3. The memory size or offset of the buffer is invalid. |
 
 ### OH_AVBuffer_GetParameter()
 
@@ -143,7 +151,9 @@ OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 
 **Description**
 
-Obtains parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. You must call {@link OH_AVFormat_Destroy} to manually release the OH_AVFormat instance returned.
+Obtains parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance. You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to manually release the OH_AVFormat instance returned.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 
@@ -157,7 +167,7 @@ Obtains parameters except basic attributes of a buffer. The information is carri
 
 | Type | Description |
 | -- | -- |
-| OH_AVFormat * | {@link AV_ERR_OK}: The operation is successful.<br>    {@link AV_ERR_INVALID_VAL}: The possible causes are as follows:      <br>1. The value of buffer is nullptr.      <br>2. The meta of the buffer is nullptr.      <br>3. The value of buffer fails parameter structure verification. |
+| OH_AVFormat * | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer is nullptr.      <br>2. The meta of the buffer is nullptr.      <br>3. The value of buffer fails parameter structure verification. |
 
 ### OH_AVBuffer_SetParameter()
 
@@ -168,6 +178,8 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 **Description**
 
 Sets parameters except basic attributes of a buffer. The information is carried in an OH_AVFormat instance.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 
@@ -182,7 +194,7 @@ Sets parameters except basic attributes of a buffer. The information is carried 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    {@link AV_ERR_INVALID_VAL}: The possible causes are as follows:      <br>1. The value of buffer or format is nullptr.      <br>2. The meta of the buffer is nullptr.      <br>3. The value of buffer fails parameter structure verification. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The possible causes are as follows:      <br>1. The value of buffer or format is nullptr.      <br>2. The meta of the buffer is nullptr.      <br>3. The value of buffer fails parameter structure verification. |
 
 ### OH_AVBuffer_GetAddr()
 
@@ -193,6 +205,8 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 **Description**
 
 Obtains the virtual address of a data buffer.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 
@@ -218,6 +232,8 @@ int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 
 Obtains the capacity (in bytes) of a buffer.
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -241,6 +257,8 @@ OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 **Description**
 
 Obtains the pointer to an OH_NativeBuffer instance. You must call {@link OH_NativeBuffer_Unreference} to manually release the OH_NativeBuffer instance returned.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
 

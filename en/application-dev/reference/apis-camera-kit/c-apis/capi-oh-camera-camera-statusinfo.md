@@ -8,6 +8,8 @@ typedef struct Camera_StatusInfo {...} Camera_StatusInfo
 
 The struct describes the camera status information.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

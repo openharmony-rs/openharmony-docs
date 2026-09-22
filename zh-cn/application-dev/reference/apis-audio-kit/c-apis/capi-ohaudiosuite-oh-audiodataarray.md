@@ -8,6 +8,8 @@ typedef struct OH_AudioDataArray {...} OH_AudioDataArray
 
 定义多路输出渲染接口的输出数据描述。当管线中存在多输出效果节点时，通过多输出渲染接口获取处理过后的音频数据。
 
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
 **起始版本：** 22
 
 **相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)

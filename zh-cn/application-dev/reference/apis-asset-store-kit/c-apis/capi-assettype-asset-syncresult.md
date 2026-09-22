@@ -8,6 +8,8 @@ typedef struct Asset_SyncResult {...} Asset_SyncResult
 
 关键资产同步结果。
 
+**系统能力：** SystemCapability.Security.Asset
+
 **起始版本：** 20
 
 **相关模块：** [AssetType](capi-assettype.md)

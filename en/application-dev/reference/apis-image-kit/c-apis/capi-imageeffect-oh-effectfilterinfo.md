@@ -8,6 +8,8 @@ typedef struct OH_EffectFilterInfo OH_EffectFilterInfo
 
 Define the new type name OH_EffectFilterInfo for struct OH_EffectFilterInfo
 
+**System capability**: SystemCapability.Multimedia.ImageEffect.Core
+
 **Since**: 12
 
 **Related module**: [ImageEffect](capi-imageeffect.md)

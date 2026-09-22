@@ -205,7 +205,7 @@ Sets the maximum number of worker threads.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if the parameters are incorrect.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR} in other cases. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect.      Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
 
 ### OH_IPCSkeleton_ResetCallingIdentity()
 
@@ -233,7 +233,7 @@ Resets the caller identity credential (including the token ID, UID, and PID) to 
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if the parameters are incorrect.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_MEM_ALLOCATOR_ERROR} if the memory allocation fails.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR} in other cases. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect.      Returns [OH_IPC_MEM_ALLOCATOR_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the memory allocation fails.      Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
 
 ### OH_IPCSkeleton_SetCallingIdentity()
 
@@ -259,7 +259,7 @@ Sets the caller credential information to the IPC context.
 
 | Type | Description |
 | -- | -- |
-| int | Returns {@link OH_IPC_ErrorCode#OH_IPC_SUCCESS} if the operation is successful.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR} if the parameters are incorrect.<br>    Returns {@link OH_IPC_ErrorCode#OH_IPC_INNER_ERROR} in other cases. |
+| int | Returns [OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.      Returns [OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the parameters are incorrect.      Returns [OH_IPC_INNER_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) in other cases. |
 
 ### OH_IPCSkeleton_IsHandlingTransaction()
 

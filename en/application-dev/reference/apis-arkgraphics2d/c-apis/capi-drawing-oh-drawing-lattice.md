@@ -8,6 +8,8 @@ typedef struct OH_Drawing_Lattice OH_Drawing_Lattice
 
 This struct defines a rectangle grid, which is used to divide an image by rectangle grid.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Related module**: [Drawing](capi-drawing.md)

@@ -8,6 +8,8 @@ typedef struct Print_PrinterInfo {...} Print_PrinterInfo
 
 Defines a struct for the printer information.
 
+**System capability**: SystemCapability.Print.PrintFramework
+
 **Since**: 12
 
 **Related module**: [Print](capi-print.md)

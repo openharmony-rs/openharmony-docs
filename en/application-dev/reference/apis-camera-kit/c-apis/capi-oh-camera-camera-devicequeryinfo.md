@@ -8,6 +8,8 @@ typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
 
 Camera device query information.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Related module**: [OH_Camera](capi-oh-camera.md)

@@ -8,6 +8,8 @@ typedef struct Print_DefaultValue {...} Print_DefaultValue
 
 表示当前属性。
 
+**系统能力：** SystemCapability.Print.PrintFramework
+
 **起始版本：** 12
 
 **相关模块：** [Print](capi-print.md)

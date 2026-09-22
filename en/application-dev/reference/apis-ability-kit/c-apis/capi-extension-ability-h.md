@@ -46,6 +46,8 @@ typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanc
 
 Define the function that must be in the native code to instantiate the native extension ability.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 

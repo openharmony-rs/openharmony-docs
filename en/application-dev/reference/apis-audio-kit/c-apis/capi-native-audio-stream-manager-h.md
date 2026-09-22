@@ -46,6 +46,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 
 Fetch the audio streammanager handle, which is a singleton.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 19
 
 **Parameters**:
@@ -58,7 +60,7 @@ Fetch the audio streammanager handle, which is a singleton.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | @return          {@link #AUDIOCOMMON_RESULT_SUCCESS} if execution succeeds<br>        {@link #AUDIOCOMMON_RESULT_ERROR_SYSTEM} if system state error |
+| OH_AudioCommon_Result | @return          [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) if execution succeeds          [AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) if system state error |
 
 ### OH_AudioStreamManager_GetDirectPlaybackSupport()
 
@@ -70,6 +72,8 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 
 Gets the mode of direct playback available for a given audio format with current active device.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 19
 
 **Parameters**:
@@ -77,15 +81,15 @@ Gets the mode of direct playback available for a given audio format with current
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *audioStreamManager | the [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) handle provided by [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
-| OH_AudioStreamInfo *streamInfo | the {@link OH_AudioStreamInfo}. |
-| OH_AudioStream_Usage usage | the {@link OH_AudioStream_Usage}. |
-| OH_AudioStream_DirectPlaybackMode *directPlaybackMode | the {@link OH_AudioStream_DirectPlaybackMode} pointer to a variable which receives the result. |
+| OH_AudioStreamInfo *streamInfo | the [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md). |
+| OH_AudioStream_Usage usage | the [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage). |
+| OH_AudioStream_DirectPlaybackMode *directPlaybackMode | the [OH_AudioStream_DirectPlaybackMode](capi-native-audiostream-base-h.md#oh_audiostream_directplaybackmode) pointer to a variable which receives the result. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | Function result code:          {@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.<br>        {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}:                                                         1.The param of audioStreamManager is nullptr;                                                         2.The param of streamInfo is nullptr;                                                         3.The param of usage invalid;                                                         4.The param of directPlaybackMode is nullptr. |
+| OH_AudioCommon_Result | Function result code:          [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.          [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result):                                                         1.The param of audioStreamManager is nullptr;                                                         2.The param of streamInfo is nullptr;                                                         3.The param of usage invalid;                                                         4.The param of directPlaybackMode is nullptr. |
 
 ### OH_AudioStreamManager_IsAcousticEchoCancelerSupported()
 
@@ -96,6 +100,8 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 **Description**
 
 Query whether acoustic echo canceler is supported by input source.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -111,7 +117,7 @@ Query whether acoustic echo canceler is supported by input source.
 
 | Type | Description |
 | -- | -- |
-| OH_AudioCommon_Result | Function result code:      {@link AUDIOCOMMON_RESULT_SUCCESS} If the execution is successful.<br>    {@link AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM}:                                                     1.The input param streamManager is nullptr;                                                     2.Source type is invalid.                                                     3.The input param supported is nullptr. |
+| OH_AudioCommon_Result | Function result code:      [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.      [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result):                                                     1.The input param streamManager is nullptr;                                                     2.Source type is invalid.                                                     3.The input param supported is nullptr. |
 
 ### OH_AudioStreamManager_IsFastPlaybackSupported()
 
@@ -122,6 +128,8 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 **Description**
 
 Return if fast playback is supported for the specific audio stream info and usage type in current device situation.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -149,6 +157,8 @@ bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *strea
 
 Return if fast recording is supported for the specific audio stream info and source type in current device situation.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -175,6 +185,8 @@ bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH
 
 Return if the system recording enables intelligent noise reduction for current device.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -199,6 +211,8 @@ bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager
 **Description**
 
 Returns if multichannel playback is supported for the specific audio stream info and usage type in current device situation.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -226,6 +240,8 @@ bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *stre
 
 Returns if direct playback is supported for the specific audio stream info and usage type in current device situation.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -251,6 +267,8 @@ bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *str
 **Description**
 
 Returns if offload playback is supported for the specific audio stream info and usage type in current device situation.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 

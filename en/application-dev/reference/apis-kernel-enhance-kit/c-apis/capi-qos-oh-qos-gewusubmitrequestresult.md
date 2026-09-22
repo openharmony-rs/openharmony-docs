@@ -8,6 +8,8 @@ typedef struct OH_QoS_GewuSubmitRequestResult {...} OH_QoS_GewuSubmitRequestResu
 
 Return result of the **OH_QoS_GewuSubmitRequest()** API, used to obtain the submission status and result of a Gewu inference request. (The Gewu service is an on-device AI inference acceleration service.) Upon successful submission, the `request` field contains the created request handle, which can be used to cancel the request later. Upon failure, the `error` field stores the error code, helping you take appropriate action based on the specific error cause. This struct is applicable in scenarios where you need to determine whether a submitted on-device AI inference request has been successfully admitted into the session and obtain the request handle.
 
+**System capability**: SystemCapability.Resourceschedule.QoS.Core
+
 **Since**: 20
 
 **Related module**: [QoS](capi-qos.md)

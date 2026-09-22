@@ -8,6 +8,8 @@ typedef struct OH_PreferencesValue OH_PreferencesValue
 
 Defines the struct for a **PreferencesValue** object.
 
+**System capability**: SystemCapability.DistributedDataManager.Preferences.Core
+
 **Since**: 13
 
 **Related module**: [Preferences](capi-preferences.md)

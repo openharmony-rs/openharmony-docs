@@ -4,6 +4,8 @@
 
 Provides C APIs for the Http client module.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 ## Files

@@ -8,6 +8,8 @@ typedef struct OH_Drawing_FontStyleStruct {...} OH_Drawing_FontStyleStruct
 
 This struct describes a font style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)

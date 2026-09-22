@@ -8,6 +8,8 @@ struct __TEE_ObjectEnumHandle
 
 Defines the handle for enumerating objects.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)

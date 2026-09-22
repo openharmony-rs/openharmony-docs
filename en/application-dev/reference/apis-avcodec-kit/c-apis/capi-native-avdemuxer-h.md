@@ -27,10 +27,10 @@ Declare the interface for parsing audio and video media data.
 | -- | -- | -- |
 | [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines a pointer to the callback function for DRM_MediaKeySystemInfo. No demuxer instance is returned. This callback function applies to the scenario where a single demuxer instance is used.<br> You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback) to set the callback function as a callback.(Deprecated in API14) |
 | [typedef void (\*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#demuxer_mediakeysysteminfocallback) | Demuxer_MediaKeySystemInfoCallback | Defines a pointer to the callback function for [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md). A demuxer instance is returned. This callback function applies to the scenario where multiple demuxer instances are used.<br> You need to call [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback) to set the callback function as a callback. This callback function is recommended. |
-| [OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)](#oh_avdemuxer_createwithsource) | - | Creates an OH_AVDemuxer instance based on a source instance.<br> For details about how to create, destroy, and use a source instance, see {@link OH_AVSource}. |
+| [OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)](#oh_avdemuxer_createwithsource) | - | Creates an OH_AVDemuxer instance based on a source instance.<br> For details about how to create, destroy, and use a source instance, see [OH_AVSource](capi-avsource-oh-avsource.md). |
 | [OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)](#oh_avdemuxer_destroy) | - | Destroys an OH_AVDemuxer instance and clears internal resources. An instance can be destroyed only once.<br> The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed. |
-| [OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)](#oh_avdemuxer_selecttrackbyid) | - | Selects a track from which the demuxer reads sample data.<br> You can select multiple tracks by calling this API multiple times, with a different track index passed in each time.<br> When [OH_AVDemuxer_ReadSample](capi-native-avdemuxer-h.md#oh_avdemuxer_readsample) is called, only the data in the selected track is read. If the same track is selected multiple times, {@link AV_ERR_OK} is returned and the API call takes effect only once. |
-| [OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)](#oh_avdemuxer_unselecttrackbyid) | - | Deselects a track. The demuxer no longer reads sample data from a track after it is deselected.<br> You can deselect multiple tracks by calling this API multiple times, with a different track index passed in each time. If the same track is deselected multiple times, {@link AV_ERR_OK} is returned and the API call takes effect only once. |
+| [OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)](#oh_avdemuxer_selecttrackbyid) | - | Selects a track from which the demuxer reads sample data.<br> You can select multiple tracks by calling this API multiple times, with a different track index passed in each time.<br> When [OH_AVDemuxer_ReadSample](capi-native-avdemuxer-h.md#oh_avdemuxer_readsample) is called, only the data in the selected track is read. If the same track is selected multiple times, [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) is returned and the API call takes effect only once. |
+| [OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)](#oh_avdemuxer_unselecttrackbyid) | - | Deselects a track. The demuxer no longer reads sample data from a track after it is deselected.<br> You can deselect multiple tracks by calling this API multiple times, with a different track index passed in each time. If the same track is deselected multiple times, [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) is returned and the API call takes effect only once. |
 | [OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)](#oh_avdemuxer_readsample) | - | Reads the sample and related information from the specified track.<br> You must select a track before reading the sample. After this API is called, the demuxer automatically proceeds to the next frame.(Deprecated in API11) |
 | [OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVBuffer *sample)](#oh_avdemuxer_readsamplebuffer) | - | Reads the sample and related information from the specified track.<br> You can use [OH_AVDemuxer_SelectTrackByID](capi-native-avdemuxer-h.md#oh_avdemuxer_selecttrackbyid) to select a track before reading the sample. After this API is called, the demuxer automatically proceeds to the next frame. |
 | [OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond, OH_AVSeekMode mode)](#oh_avdemuxer_seektotime) | - | Seeks to the specified time for all the selected tracks based on a seek mode. |
@@ -57,6 +57,8 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 Defines a pointer to the callback function for DRM_MediaKeySystemInfo. No demuxer instance is returned. This callback function applies to the scenario where a single demuxer instance is used.<br> You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback) to set the callback function as a callback.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 11
 
 **Deprecated**: 14
@@ -72,6 +74,8 @@ typedef void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_Me
 **Description**
 
 Defines a pointer to the callback function for [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md). A demuxer instance is returned. This callback function applies to the scenario where multiple demuxer instances are used.<br> You need to call [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback) to set the callback function as a callback. This callback function is recommended.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 
@@ -90,7 +94,9 @@ OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)
 
 **Description**
 
-Creates an OH_AVDemuxer instance based on a source instance.<br> For details about how to create, destroy, and use a source instance, see {@link OH_AVSource}.
+Creates an OH_AVDemuxer instance based on a source instance.<br> For details about how to create, destroy, and use a source instance, see [OH_AVSource](capi-avsource-oh-avsource.md).
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
 
@@ -116,6 +122,8 @@ OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)
 
 Destroys an OH_AVDemuxer instance and clears internal resources. An instance can be destroyed only once.<br> The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 10
 
 **Parameters**:
@@ -128,7 +136,7 @@ Destroys an OH_AVDemuxer instance and clears internal resources. An instance can
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The value of demuxer is nullptr or does not point to a demuxer instance. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of demuxer is nullptr or does not point to a demuxer instance. |
 
 ### OH_AVDemuxer_SelectTrackByID()
 
@@ -138,7 +146,9 @@ OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackI
 
 **Description**
 
-Selects a track from which the demuxer reads sample data.<br> You can select multiple tracks by calling this API multiple times, with a different track index passed in each time.<br> When [OH_AVDemuxer_ReadSample](capi-native-avdemuxer-h.md#oh_avdemuxer_readsample) is called, only the data in the selected track is read. If the same track is selected multiple times, {@link AV_ERR_OK} is returned and the API call takes effect only once.
+Selects a track from which the demuxer reads sample data.<br> You can select multiple tracks by calling this API multiple times, with a different track index passed in each time.<br> When [OH_AVDemuxer_ReadSample](capi-native-avdemuxer-h.md#oh_avdemuxer_readsample) is called, only the data in the selected track is read. If the same track is selected multiple times, [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) is returned and the API call takes effect only once.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
 
@@ -153,7 +163,7 @@ Selects a track from which the demuxer reads sample data.<br> You can select mul
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}:<br>    <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.<br>    <br>2. The track index is out of range.<br>    <br>3. Track reading is not supported.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The demuxer is not correctly initialized. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode):      <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.      <br>2. The track index is out of range.      <br>3. Track reading is not supported.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The demuxer is not correctly initialized. |
 
 ### OH_AVDemuxer_UnselectTrackByID()
 
@@ -163,7 +173,9 @@ OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trac
 
 **Description**
 
-Deselects a track. The demuxer no longer reads sample data from a track after it is deselected.<br> You can deselect multiple tracks by calling this API multiple times, with a different track index passed in each time. If the same track is deselected multiple times, {@link AV_ERR_OK} is returned and the API call takes effect only once.
+Deselects a track. The demuxer no longer reads sample data from a track after it is deselected.<br> You can deselect multiple tracks by calling this API multiple times, with a different track index passed in each time. If the same track is deselected multiple times, [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) is returned and the API call takes effect only once.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
 
@@ -178,7 +190,7 @@ Deselects a track. The demuxer no longer reads sample data from a track after it
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}: The value of demuxer is nullptr or does not point to a demuxer instance.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The demuxer is not correctly initialized. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of demuxer is nullptr or does not point to a demuxer instance.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The demuxer is not correctly initialized. |
 
 ### OH_AVDemuxer_ReadSample()
 
@@ -189,6 +201,8 @@ OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex,
 **Description**
 
 Reads the sample and related information from the specified track.<br> You must select a track before reading the sample. After this API is called, the demuxer automatically proceeds to the next frame.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
 
@@ -209,7 +223,7 @@ Reads the sample and related information from the specified track.<br> You must 
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}:<br>    <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.<br>    <br>2. The track index is out of range.<br>    <br>3. Track reading is not supported.<br>    <br>4. The value of sample is null.<br>    <br>5. The value of info is null.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}:<br>    <br>1. The track with the specified index is not selected.<br>    <br>2. The demuxer is not correctly initialized.<br>    <br>{@link AV_ERR_NO_MEMORY}: The sample capacity is insufficient to store all frame data.<br>    <br>{@link AV_ERR_UNKNOWN}: Failed to read or parse the frame from the file. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode):      <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.      <br>2. The track index is out of range.      <br>3. Track reading is not supported.      <br>4. The value of sample is null.      <br>5. The value of info is null.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode):      <br>1. The track with the specified index is not selected.      <br>2. The demuxer is not correctly initialized.      <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): The sample capacity is insufficient to store all frame data.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): Failed to read or parse the frame from the file. |
 
 ### OH_AVDemuxer_ReadSampleBuffer()
 
@@ -220,6 +234,8 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 **Description**
 
 Reads the sample and related information from the specified track.<br> You can use [OH_AVDemuxer_SelectTrackByID](capi-native-avdemuxer-h.md#oh_avdemuxer_selecttrackbyid) to select a track before reading the sample. After this API is called, the demuxer automatically proceeds to the next frame.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 11
 
@@ -235,7 +251,7 @@ Reads the sample and related information from the specified track.<br> You can u
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}:<br>    <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.<br>    <br>2. The value of sample is nullptr.<br>    <br>3. The track index is out of range.<br>    <br>4. The value of sample is null.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}:<br>    <br>1. The track with the specified index is not selected.<br>    <br>2. The demuxer is not correctly initialized.<br>    <br>{@link AV_ERR_NO_MEMORY}: The sample capacity is insufficient to store all frame data.<br>    <br>{@link AV_ERR_UNKNOWN}: Failed to read or parse the frame from the file. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode):      <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.      <br>2. The value of sample is nullptr.      <br>3. The track index is out of range.      <br>4. The value of sample is null.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode):      <br>1. The track with the specified index is not selected.      <br>2. The demuxer is not correctly initialized.      <br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode): The sample capacity is insufficient to store all frame data.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): Failed to read or parse the frame from the file. |
 
 ### OH_AVDemuxer_SeekToTime()
 
@@ -246,6 +262,8 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 **Description**
 
 Seeks to the specified time for all the selected tracks based on a seek mode.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
 
@@ -261,7 +279,7 @@ Seeks to the specified time for all the selected tracks based on a seek mode.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_INVALID_VAL}:<br>    <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.<br>    <br>2. The value of millisecond is out of range.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}:<br>    <br>1. The track with the specified index is not selected.<br>    <br>2. The demuxer is not correctly initialized.<br>    <br>3. The seek operation cannot be performed on the resource.<br>    <br>{@link AV_ERR_UNKNOWN}:      <br>1. The seek operation fails.      <br>2. OH_AVSeekMode is set to SEEK_MODE_NEXT_SYNC and there is no I-frame      following the specified position. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode):      <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.      <br>2. The value of millisecond is out of range.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode):      <br>1. The track with the specified index is not selected.      <br>2. The demuxer is not correctly initialized.      <br>3. The seek operation cannot be performed on the resource.      <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode):      <br>1. The seek operation fails.      <br>2. OH_AVSeekMode is set to SEEK_MODE_NEXT_SYNC and there is no I-frame      following the specified position. |
 
 ### OH_AVDemuxer_SetMediaKeySystemInfoCallback()
 
@@ -272,6 +290,8 @@ OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, D
 **Description**
 
 Sets a callback for obtaining the media key system information.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 11
 
@@ -290,7 +310,7 @@ Sets a callback for obtaining the media key system information.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The demuxer is not correctly initialized.<br>    <br>{@link AV_ERR_INVALID_VAL}: The value of demuxer is nullptr or does not point to a demuxer instance. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The demuxer is not correctly initialized.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of demuxer is nullptr or does not point to a demuxer instance. |
 
 ### OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback()
 
@@ -301,6 +321,8 @@ OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *dem
 **Description**
 
 Sets a callback for obtaining the media key system information.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 
@@ -315,7 +337,7 @@ Sets a callback for obtaining the media key system information.
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The demuxer is not correctly initialized.<br>    <br>{@link AV_ERR_INVALID_VAL}: The value of demuxer is nullptr or does not point to a demuxer instance. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The demuxer is not correctly initialized.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The value of demuxer is nullptr or does not point to a demuxer instance. |
 
 ### OH_AVDemuxer_GetMediaKeySystemInfo()
 
@@ -326,6 +348,8 @@ OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_Media
 **Description**
 
 Obtains the media key system information. The media key system information can be obtained only after [Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback) or [DRM_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#drm_mediakeysysteminfocallback) is successfully invoked.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 11
 
@@ -340,6 +364,6 @@ Obtains the media key system information. The media key system information can b
 
 | Type | Description |
 | -- | -- |
-| OH_AVErrCode | {@link AV_ERR_OK}: The operation is successful.<br>    <br>{@link AV_ERR_OPERATE_NOT_PERMIT}: The demuxer engine is not initialized or fails to be initialized.<br>    <br>{@link AV_ERR_INVALID_VAL}:      <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.      <br>2. The value of mediaKeySystemInfo is nullptr. |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful.      <br>[AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The demuxer engine is not initialized or fails to be initialized.      <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode):      <br>1. The value of demuxer is nullptr or does not point to a demuxer instance.      <br>2. The value of mediaKeySystemInfo is nullptr. |
 
 

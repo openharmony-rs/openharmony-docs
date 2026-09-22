@@ -40,6 +40,8 @@ enum OH_Archive_ErrCode
 
 压缩解压模块错误码。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |

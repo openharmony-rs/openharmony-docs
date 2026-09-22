@@ -34,6 +34,8 @@ enum OH_IPC_ErrorCode
 
 IPC错误码定义。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |

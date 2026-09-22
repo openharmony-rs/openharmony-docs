@@ -69,6 +69,8 @@ typedef void (*OH_PreviewOutput_OnFrameStart)(Camera_PreviewOutput* previewOutpu
 
 在[PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)中被调用的预览输出帧开始回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -86,6 +88,8 @@ typedef void (*OH_PreviewOutput_OnFrameEnd)(Camera_PreviewOutput* previewOutput,
 **描述：**
 
 在[PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)中被调用的预览输出帧结束回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -106,6 +110,8 @@ typedef void (*OH_PreviewOutput_OnError)(Camera_PreviewOutput* previewOutput, Ca
 
 在[PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md)中被调用的预览输出帧错误回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -117,7 +123,7 @@ typedef void (*OH_PreviewOutput_OnError)(Camera_PreviewOutput* previewOutput, Ca
 
 **参考：**
 
-CAMERA_SERVICE_FATAL_ERROR
+[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
 
 ### OH_PreviewOutput_RegisterCallback()
@@ -129,6 +135,8 @@ Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* preview
 **描述：**
 
 注册预览输出更改事件回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -155,6 +163,8 @@ Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previ
 
 注销预览输出更改事件回调。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -180,6 +190,8 @@ Camera_ErrorCode OH_PreviewOutput_Start(Camera_PreviewOutput* previewOutput)
 
 开始预览输出。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -203,6 +215,8 @@ Camera_ErrorCode OH_PreviewOutput_Stop(Camera_PreviewOutput* previewOutput)
 **描述：**
 
 停止预览输出。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
@@ -228,6 +242,8 @@ Camera_ErrorCode OH_PreviewOutput_Release(Camera_PreviewOutput* previewOutput)
 
 释放预览输出实例。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -251,6 +267,8 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveProfile(Camera_PreviewOutput* preview
 **描述：**
 
 获取当前预览输出配置文件。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -277,6 +295,8 @@ Camera_ErrorCode OH_PreviewOutput_DeleteProfile(Camera_Profile* profile)
 
 删除预览配置文件实例。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -300,6 +320,8 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previ
 **描述：**
 
 获取相机预览旋转角度。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -327,6 +349,8 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation(Camer
 
 获取相机预览旋转角度。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -351,6 +375,8 @@ Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previ
 **描述：**
 
 设置相机预览旋转角度。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -378,6 +404,8 @@ Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* p
 
 获取支持的预览输出帧率列表。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -404,6 +432,8 @@ Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* preview
 
 删除帧率列表。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -428,6 +458,8 @@ Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutp
 **描述：**
 
 设置预览输出帧率。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
@@ -455,6 +487,8 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previ
 
 获取当前预览输出帧率。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -462,7 +496,7 @@ Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previ
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 传递当前预览输出帧率的预览输出实例。 |
-| Camera_FrameRateRange* frameRateRange | 如果方法调用成功，则将记录当前的{@link Camera_FrameRateRange}。 |
+| Camera_FrameRateRange* frameRateRange | 如果方法调用成功，则将记录当前的[Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md)。 |
 
 **返回值：**
 
@@ -480,6 +514,8 @@ Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_Preview
 **描述：**
 
 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 23
 
@@ -506,6 +542,8 @@ Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutpu
 
 使能预览带宽压缩。 <br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之前调用，否则会影响预览流出流格式。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -531,6 +569,8 @@ bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previ
 
 检查是否支持辅助监看功能。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -554,6 +594,8 @@ Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* p
 **描述：**
 
 使能辅助监看功能。 <br>该接口只能在使用{@link OH_CaptureSession_CommitConfig()}接口之后调用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.0
 
@@ -579,6 +621,8 @@ Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput*
 **描述：**
 
 配置延迟预览的Surface。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 24
 

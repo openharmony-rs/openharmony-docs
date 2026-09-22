@@ -8,6 +8,8 @@ typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
 
 KDF parameters structure, representing KDF parameters.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoKdfApi](capi-cryptokdfapi.md)

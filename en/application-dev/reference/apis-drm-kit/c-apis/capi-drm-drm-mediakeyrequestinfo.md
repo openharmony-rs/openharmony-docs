@@ -8,6 +8,8 @@ typedef struct DRM_MediaKeyRequestInfo {...} DRM_MediaKeyRequestInfo
 
 The struct describes the information about a media key request.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)

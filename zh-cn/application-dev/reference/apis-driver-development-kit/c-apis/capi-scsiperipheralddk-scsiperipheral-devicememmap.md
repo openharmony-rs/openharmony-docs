@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_DeviceMemMap {...} ScsiPeripheral_DeviceMemMap
 
 通过调用{@link OH_ScsiPeripheral_CreateDeviceMemMap}创建的设备内存映射。使用该设备内存映射的缓冲区可以提供更好的性能。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

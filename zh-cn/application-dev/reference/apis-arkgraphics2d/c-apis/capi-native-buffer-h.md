@@ -606,7 +606,7 @@ int32_t OH_NativeBuffer_SetDmaBufferName(OH_NativeBuffer *buffer, const char *na
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 

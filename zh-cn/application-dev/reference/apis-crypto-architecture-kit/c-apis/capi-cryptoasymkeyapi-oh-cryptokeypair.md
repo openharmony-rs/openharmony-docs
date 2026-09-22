@@ -8,6 +8,8 @@ typedef struct OH_CryptoKeyPair OH_CryptoKeyPair
 
 密钥对结构体，表示密钥对。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **相关模块：** [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)

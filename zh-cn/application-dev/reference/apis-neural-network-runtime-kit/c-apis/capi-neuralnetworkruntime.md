@@ -4,6 +4,8 @@
 
 提供Neural Network Runtime加速模型推理的相关接口。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 ## 文件汇总

@@ -32,6 +32,8 @@ enum FileManagement_ErrCode
 
 error codes of file management
 
+**System capability**: SystemCapability.FileManagement.File.FileIO
+
 **Since**: 12
 
 | Enum item | Description |

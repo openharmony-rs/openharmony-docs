@@ -8,6 +8,8 @@ typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 
 Defines the read/write operation request.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)

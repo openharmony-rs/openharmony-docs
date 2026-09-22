@@ -50,6 +50,8 @@ enum UsbDdkErrCode
 
 USB DDK error code definitions.
 
+**System capability**: SystemCapability.Driver.USB.Extension
+
 **Since**: 10
 
 | Enum item | Description |

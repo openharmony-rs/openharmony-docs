@@ -4,6 +4,8 @@
 
 通用密钥库（HUKS）针对外部密钥管理扩展的能力，包括提供者管理、UKey PIN码管理及其它对应用提供的操作接口。
 
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
 **起始版本：** 22
 
 ## 文件汇总

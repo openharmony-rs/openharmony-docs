@@ -46,6 +46,8 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 
 Obtains the sensor direction of a camera device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -70,6 +72,8 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 **Description**
 
 Obtains the name of a remote device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 15
 
@@ -96,6 +100,8 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera
 
 Obtains the type of a remote device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 15
 
 **Parameters**:
@@ -121,6 +127,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 
 Gets the equivalent focal lengths of a camera device.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -135,7 +143,7 @@ Gets the equivalent focal lengths of a camera device.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if successful<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or type incorrect<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if successful          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or type incorrect          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error |
 
 ### OH_CameraDevice_IsLogicalCamera()
 
@@ -146,6 +154,8 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 **Description**
 
 Checks if a camera device is a logical camera.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -160,7 +170,7 @@ Checks if a camera device is a logical camera.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if successful<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or type incorrect<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if successful          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or type incorrect          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error |
 
 ### OH_CameraDevice_GetLogicalCameraConstituentCameraDevices()
 
@@ -171,6 +181,8 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 **Description**
 
 Gets the constituent camera devices of a logical camera. Release resources of the constituent cameras by calling [OH_CameraDevice_DeleteConstituentCameraDevices](capi-camera-device-h.md#oh_cameradevice_deleteconstituentcameradevices) .
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -186,7 +198,7 @@ Gets the constituent camera devices of a logical camera. Release resources of th
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if successful<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or type incorrect<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if successful          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or type incorrect          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error |
 
 ### OH_CameraDevice_DeleteConstituentCameraDevices()
 
@@ -197,6 +209,8 @@ Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Dev
 **Description**
 
 delete the constituent cameras of logicalCamera.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -212,7 +226,7 @@ delete the constituent cameras of logicalCamera.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the method call succeeds.<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or parameter type incorrect. |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the method call succeeds.          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or parameter type incorrect. |
 
 ### OH_CameraDevice_GetLensFocalLength()
 
@@ -223,6 +237,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 **Description**
 
 Gets the focal length of a camera lens.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -237,7 +253,7 @@ Gets the focal length of a camera lens.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if successful<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter missing or type incorrect<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fatal error |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if successful          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter missing or type incorrect          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fatal error |
 
 ### OH_CameraDevice_GetMinimumFocusDistance()
 
@@ -248,6 +264,8 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 **Description**
 
 Gets the minimum focus distance of a camera device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -262,7 +280,7 @@ Gets the minimum focus distance of a camera device.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 ### OH_CameraDevice_GetLensDistortion()
 
@@ -273,6 +291,8 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 **Description**
 
 Gets the lens distortion parameters of a camera device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -288,7 +308,7 @@ Gets the lens distortion parameters of a camera device.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 ### OH_CameraDevice_GetIntrinsicCalibration()
 
@@ -299,6 +319,8 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 **Description**
 
 Gets the intrinsic calibration parameters of a camera device.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -314,7 +336,7 @@ Gets the intrinsic calibration parameters of a camera device.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 ### OH_CameraDevice_GetSensorPhysicalSize()
 
@@ -325,6 +347,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 **Description**
 
 Gets the physical size of a camera sensor.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -340,7 +364,7 @@ Gets the physical size of a camera sensor.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 ### OH_CameraDevice_GetSensorPixelArraySize()
 
@@ -351,6 +375,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 **Description**
 
 Gets the pixel array size of a camera sensor.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -366,7 +392,7 @@ Gets the pixel array size of a camera sensor.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 ### OH_CameraDevice_GetSensorColorFilterArrangement()
 
@@ -377,6 +403,8 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 **Description**
 
 Gets the color filter arrangement of a camera sensor.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -391,7 +419,7 @@ Gets the color filter arrangement of a camera sensor.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 ### OH_CameraDevice_GetAutomotiveCameraPosition()
 
@@ -402,6 +430,8 @@ Camera_ErrorCode OH_CameraDevice_GetAutomotiveCameraPosition(const Camera_Device
 **Description**
 
 Gets the automotive position of a camera sensor.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -416,6 +446,6 @@ Gets the automotive position of a camera sensor.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode | {@link CAMERA_OK} if the operation succeeds<br>        {@link CAMERA_INVALID_ARGUMENT} if parameter is missing or invalid<br>        {@link CAMERA_SERVICE_FATAL_ERROR} if camera service fails |
+| Camera_ErrorCode | [CAMERA_OK](capi-camera-h.md#camera_errorcode) if the operation succeeds          [CAMERA_INVALID_ARGUMENT](capi-camera-h.md#camera_errorcode) if parameter is missing or invalid          [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode) if camera service fails |
 
 

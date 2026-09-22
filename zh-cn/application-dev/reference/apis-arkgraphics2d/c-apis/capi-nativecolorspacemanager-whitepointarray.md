@@ -8,6 +8,8 @@ typedef struct WhitePointArray {...} WhitePointArray
 
 提供白点数组结构体，白点是在当前色域中表示白色的坐标。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
+
 **起始版本：** 13
 
 **相关模块：** [NativeColorSpaceManager](capi-nativecolorspacemanager.md)

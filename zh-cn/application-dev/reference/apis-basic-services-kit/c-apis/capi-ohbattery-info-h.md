@@ -47,6 +47,8 @@ enum BatteryInfo_BatteryPluggedType
 
 定义连接的充电器类型。
 
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -70,6 +72,8 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 返回当前电池电量百分比。可用于电池监控应用显示电量信息、低电量提醒功能判断是否需要提示用户、省电模式触发判断等场景。
 
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
 **起始版本：** 13
 
 **返回值：**
@@ -87,6 +91,8 @@ BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 **描述：**
 
 返回连接的充电器类型。可用于充电状态检测应用判断当前充电方式、充电提醒功能展示充电类型图标、省电策略根据充电类型调整等场景。
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **起始版本：** 13
 

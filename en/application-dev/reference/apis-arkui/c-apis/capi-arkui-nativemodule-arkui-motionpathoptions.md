@@ -8,6 +8,8 @@ typedef struct ArkUI_MotionPathOptions ArkUI_MotionPathOptions
 
 Defines the motion path options for path animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)

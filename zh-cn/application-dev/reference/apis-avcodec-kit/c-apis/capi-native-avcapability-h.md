@@ -102,6 +102,8 @@ enum OH_AVCodecType
 
 编解码器类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
@@ -207,6 +209,8 @@ OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_
 >
 > 编解码器能力列表的内存由系统底层全局维护，调用者无需管理其生命周期，不得手动分配或释放此内存。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 24
 
 **参数：**
@@ -258,6 +262,8 @@ bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
 
 检查能力实例是否描述了一个安全解码器。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 24
 
 **参数：**
@@ -308,6 +314,8 @@ const char *OH_AVCapability_GetMimeType(OH_AVCapability *capability)
 
 获取编解码器的MIME类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 24
 
 **参数：**
@@ -331,6 +339,8 @@ bool OH_AVCapability_CheckMimeType(OH_AVCapability *capability, const char *mime
 **描述：**
 
 检查编解码器的MIME类型是否与指定的MIME类型匹配。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 24
 

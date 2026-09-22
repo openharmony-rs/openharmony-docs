@@ -8,6 +8,8 @@ typedef struct OH_Huks_PubKeyInfo {...} OH_Huks_PubKeyInfo
 
 定义公钥信息的结构体类型。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **相关模块：** [HuksTypeApi](capi-hukstypeapi.md)

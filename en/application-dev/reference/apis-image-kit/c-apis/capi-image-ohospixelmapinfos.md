@@ -8,6 +8,8 @@ typedef struct OhosPixelMapInfos {...} OhosPixelMapInfos
 
 Defines the pixel map information.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)

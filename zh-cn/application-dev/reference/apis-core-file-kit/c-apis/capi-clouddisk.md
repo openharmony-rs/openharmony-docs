@@ -4,6 +4,8 @@
 
 Provides APIs and error code for managing cloud disks.
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 ## 文件汇总

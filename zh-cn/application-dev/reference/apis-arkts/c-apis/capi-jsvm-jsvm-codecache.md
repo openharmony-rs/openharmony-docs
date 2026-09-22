@@ -8,6 +8,8 @@ typedef struct JSVM_CodeCache {...} JSVM_CodeCache
 
 对应JSVM代码缓存的地址与大小。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

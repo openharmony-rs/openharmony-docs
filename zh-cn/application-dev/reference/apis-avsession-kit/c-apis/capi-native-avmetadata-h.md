@@ -57,6 +57,8 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 创建一个元数据构造器。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -81,6 +83,8 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 销毁元数据构造器。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -104,6 +108,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 **描述：**
 
 设置当前媒体资源ID。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -130,6 +136,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 设置资源标题。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -154,6 +162,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, 
 **描述：**
 
 设置资源所属的艺术家信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -180,6 +190,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 设置资源的作者。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -204,6 +216,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 **描述：**
 
 设置资源专辑名称。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -230,6 +244,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 设置资源词作者。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -254,6 +270,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 **描述：**
 
 设置资源作曲者。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -280,6 +298,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 设置资源播放时长。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -304,6 +324,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 **描述：**
 
 设置媒体图片的URI地址。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -330,6 +352,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 设置副标题。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -354,6 +378,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 **描述：**
 
 设置媒体描述信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -380,6 +406,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 设置歌词。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -404,6 +432,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 **描述：**
 
 设置资源的跳转间隔时间。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -430,6 +460,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 设置媒体资源的金标类型。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -455,6 +487,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, 
 
 设置支持的协议。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -462,7 +496,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| uint32_t filter | 此会话支持的协议。如果没有设置，默认为{@link AVSession_ProtocolType}.TYPE_CAST_PLUS_STREAM。 |
+| uint32_t filter | 此会话支持的协议。如果没有设置，默认为[AVSession_ProtocolType](capi-native-avsession-base-h.md#avsession_protocoltype).TYPE_CAST_PLUS_STREAM。 |
 
 **返回值：**
 
@@ -479,6 +513,8 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 **描述：**
 
 生成媒体元数据对象。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -504,6 +540,8 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 **描述：**
 
 释放媒体元数据对象。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 

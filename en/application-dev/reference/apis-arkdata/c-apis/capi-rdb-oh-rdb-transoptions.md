@@ -8,6 +8,8 @@ typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
 
 Define the OH_RDB_TransOptions structure type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)

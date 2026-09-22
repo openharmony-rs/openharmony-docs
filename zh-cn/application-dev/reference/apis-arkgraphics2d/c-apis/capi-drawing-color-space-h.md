@@ -34,13 +34,15 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 
 创建一个标准sRGB颜色空间。适用于需要将颜色值按照sRGB标准进行解释和渲染的场景。 创建的颜色空间对象使用完毕后必须调用[OH_Drawing_ColorSpaceDestroy](capi-drawing-color-space-h.md#oh_drawing_colorspacedestroy)销毁并释放内存， 否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorSpace* | 返回一个指向创建的颜色空间对象{@link OH_Drawing_ColorSpace}的指针。 |
+| OH_Drawing_ColorSpace* | 返回一个指向创建的颜色空间对象[OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)的指针。 |
 
 ### OH_Drawing_ColorSpaceCreateSrgbLinear()
 
@@ -52,13 +54,15 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 
 创建一个Gamma值为1.0的线性颜色空间。与OH_Drawing_ColorSpaceCreateSrgb创建的标准sRGB颜色空间不同， 线性颜色空间适用于需要进行线性颜色计算（如混合、光照等）的场景。 创建的颜色空间对象使用完毕后必须调用[OH_Drawing_ColorSpaceDestroy](capi-drawing-color-space-h.md#oh_drawing_colorspacedestroy)销毁并释放内存，否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_ColorSpace* | 返回一个指向创建的颜色空间对象{@link OH_Drawing_ColorSpace}的指针。 |
+| OH_Drawing_ColorSpace* | 返回一个指向创建的颜色空间对象[OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)的指针。 |
 
 ### OH_Drawing_ColorSpaceDestroy()
 
@@ -70,12 +74,14 @@ void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 
 销毁颜色空间对象，并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_Drawing_ColorSpace* colorSpace | 指向待销毁的颜色空间对象{@link OH_Drawing_ColorSpace}的指针。 |
+| OH_Drawing_ColorSpace* colorSpace | 指向待销毁的颜色空间对象[OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)的指针。 |
 
 

@@ -8,6 +8,8 @@ typedef struct OH_TrafficFilter_PortMatch {...} OH_TrafficFilter_PortMatch
 
 端口匹配条件。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **起始版本：** 26.0.0
 
 **相关模块：** [TrafficFilter](capi-trafficfilter.md)

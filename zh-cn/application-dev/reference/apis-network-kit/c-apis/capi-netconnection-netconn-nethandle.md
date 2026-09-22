@@ -8,6 +8,8 @@ struct NetConn_NetHandle {...}
 
 存放网络ID。
 
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
 **起始版本：** 11
 
 **相关模块：** [NetConnection](capi-netconnection.md)
