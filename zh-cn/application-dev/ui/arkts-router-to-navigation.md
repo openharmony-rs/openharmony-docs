@@ -234,15 +234,15 @@ struct Index {
 ``` TypeScript
 this.pathStack.pop();
 // push page
-this.pathStack.pushPath({ name: 'pageOne' });
+this.pathStack.pushPath({ name: 'PageOne' });
 
 // pop page
 this.pathStack.pop();
 this.pathStack.popToIndex(1);
-this.pathStack.popToName('pageOne');
+this.pathStack.popToName('PageOne');
 
 // replace page
-this.pathStack.replacePath({ name: 'pageOne' });
+this.pathStack.replacePath({ name: 'PageOne' });
 
 // clear all page
 this.pathStack.clear();
@@ -250,8 +250,8 @@ this.pathStack.clear();
 // 获取路由栈大小
 let size: number = this.pathStack.size();
 
-// 删除栈中name为pageOne的所有页面
-this.pathStack.removeByName('pageOne');
+// 删除栈中name为PageOne的所有页面
+this.pathStack.removeByName('PageOne');
 
 // 删除指定索引的页面
 this.pathStack.removeByIndexes([1, 3, 5]);
@@ -262,11 +262,11 @@ this.pathStack.getAllPathName();
 // 获取索引为1的页面参数
 this.pathStack.getParamByIndex(1);
 
-// 获取pageOne页面的参数
-this.pathStack.getParamByName('pageOne');
+// 获取PageOne页面的参数
+this.pathStack.getParamByName('PageOne');
 
-// 获取pageOne页面的索引集合
-this.pathStack.getIndexByName('pageOne');
+// 获取PageOne页面的索引集合
+this.pathStack.getIndexByName('PageOne');
 // ...
 ```
 
