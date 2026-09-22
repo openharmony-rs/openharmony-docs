@@ -48,7 +48,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 
 **Example:**
 
@@ -106,7 +106,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 
 **Example:**
 
@@ -164,7 +164,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 
 **Example:**
 
@@ -235,7 +235,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The key is already pressed and is not the most recently pressed key.  |
 
 **Example:**
@@ -306,7 +306,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The key is not pressed.  |
 
 **Example:**
@@ -359,7 +359,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300002  | The display does not exist.  |
 
 **Example:**
@@ -426,7 +426,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The mouse button is already pressed.  |
 
 **Example:**
@@ -497,7 +497,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The mouse button is not pressed.  |
 
 **Example:**
@@ -540,7 +540,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The axis event is in progress.  |
 
 **Example:**
@@ -616,7 +616,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The axis event is not in progress.  |
 
 **Example:**
@@ -658,7 +658,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001  | Input service exception.  |
 | 4300001  | The axis event is not in progress.  |
 
 **Example:**
@@ -726,7 +726,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 4300002 | The display does not exist. |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001 | Input service exception. |
 
 **Example:**
 
@@ -817,7 +817,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001 | Input service exception. |
 
 **Example:**
 
@@ -859,7 +859,7 @@ For details about the error codes, see [Input Event Injection Error Codes](error
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
-| 3800001  | Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.  |
+| 3800001 | Input service exception. |
 
 **Example:**
 
