@@ -701,7 +701,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets",
 				"functions":[
 					{
-						"end_line":163,
+						"end_line":162,
 						"name":"arkts_complex_style_example1_text",
 						"start_line":17
 					}
@@ -721,7 +721,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets",
 				"functions":[
 					{
-						"end_line":180,
+						"end_line":177,
 						"name":"arkts_complex_style_example2_text",
 						"start_line":17
 					}
@@ -23738,7 +23738,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":24,
 						"name":"arkts_custom_font_include",
 						"start_line":18
 					},
