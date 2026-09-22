@@ -104,6 +104,6 @@ OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md) * | OH_LowPowerAVSink_Capability：支持LPP播放器。<br> nullptr：不支持LPP播放器或者获取失败。 |
+| [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md) * | 返回OH_LowPowerAVSink_Capability表示支持LPP播放器。<br> 返回nullptr表示不支持LPP播放器或者获取失败。 |
 
 

@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_LowPowerAVSink_Capability OH_LowPowerAVSink_Capability;
+typedef struct OH_LowPowerAVSink_Capability OH_LowPowerAVSink_Capability
 ```
 
 ## 概述
