@@ -238,7 +238,7 @@ try {
 | 名称                             | 值                                            | 说明                 |
 | -------------------------------- | --------------------------------------------- | -------------------- |
 | PRIVILEGE_OPERATE_RAW_NET_PACKETS | 'ohos.privilege.operate_raw_net_packets' | 操作原始网络包的特权。 |
-| PRIVILEGE_MONITOR_RAW_USB_PACKETS | 'ohos.privilege.monitor_raw_usb_packets' | 监听原始USB包的特权。 |
+| PRIVILEGE_MONITOR_RAW_USB_PACKETS | 'ohos.privilege.monitor_raw_usb_packets' | 监听USB数据包的特权。 |
 
 ## AuthorizationResultCode
 
