@@ -1,4 +1,4 @@
-# 废弃的Struct (AVPlayerCallback, deprecated)
+# AVPlayerCallback
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
