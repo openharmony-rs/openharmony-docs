@@ -5,7 +5,6 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:07.533Z pushedAt=2026-06-23T06:12:23.654Z -->
 
 AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
 
@@ -54,7 +53,7 @@ import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
-media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
@@ -64,7 +63,7 @@ media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AV
     };
     avMetadataExtractor.setUrlSource(url, headers);
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -81,7 +80,7 @@ Obtains a video thumbnail. This API uses a promise to return the result.
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | Yes  | Time of the video for which a thumbnail is to be obtained, in us.|
+| timeUs | number                   | Yes  | Time of the video for which a thumbnail is to be obtained, in μs.|
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the time passed in and the video frame.|
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
 
@@ -98,9 +97,9 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>Applicable versions: 23+|
 
 **Example**
 
@@ -124,13 +123,13 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
-      pixelMap = pixelMap;
+    avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((fetchedPixelMap: image.PixelMap) => {
+      pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code:${error.code} message:${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -170,7 +169,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400104  | Operation timeout. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. |
 
@@ -197,13 +196,13 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
   if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
-      pixelMap = pixelMap;
+    avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((fetchedPixelMap: image.PixelMap | undefined) => {
+      pixelMap = fetchedPixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code}, message: ${error.message}`);
   }
 });
 ```
@@ -264,13 +263,13 @@ async function fetchFramesByTimesDemo() {
   let avMetadataExtractor = await media.createAVMetadataExtractor();
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
-        console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        console.error(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        let pixelMap = frameInfo.image;
+        this.pixelMap = frameInfo.image;
       }});
   }
 }
@@ -337,13 +336,13 @@ async function fetchFramesByTimesDemo() {
   let avMetadataExtractor = await media.createAVMetadataExtractor();
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
         console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        let pixelMap = frameInfo.image;
+        this.pixelMap = frameInfo.image;
       }});
   }
 }
@@ -362,6 +361,7 @@ Cancels the ongoing task of obtaining thumbnails in batches. (The thumbnails tha
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
@@ -372,7 +372,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
   } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+    console.error(`Failed to create AVMetadataExtractor, code: ${error.code} message: ${error.message}`);
   }
 });
 ```
@@ -389,7 +389,7 @@ Obtains the media metadata. This API uses an asynchronous callback to return the
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | Yes  | Callback used to return the result, which is an AVMetadata instance.|
+| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | Yes  | Callback used to return the result, When the media metadata is successfully obtained, **err** is undefined and data is the obtained **AVMetadata** instance. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -399,7 +399,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | -------- | ------------------------------------------ |
 | 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>Applicable versions: 23+|
 
 **Example**
 
@@ -412,7 +412,7 @@ async function test() {
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   avMetadataExtractor.fetchMetadata((error: BusinessError, metadata: media.AVMetadata) => {
     if (error) {
-      console.error(`Failed to fetch Metadata, err = ${JSON.stringify(error)}`);
+      console.error(`Failed to fetch Metadata, code: ${error.code} message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
@@ -442,7 +442,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400106  | Unsupported format. Returned by promise.  |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>Applicable versions: 23+|
 
 **Example**
 
@@ -456,7 +456,7 @@ async function test() {
   avMetadataExtractor.fetchMetadata().then((metadata: media.AVMetadata) => {
     console.info(`Succeeded in fetching Metadata, genre: ${metadata.genre}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to fetch Metadata, error message:${error.message}`);
+    console.error(`Failed to fetch Metadata, code: ${error.code} message: ${error.message}`);
   });
 }
 ```
@@ -477,7 +477,7 @@ Obtains the media metadata. You can set the maximum timeout interval (**timeoutM
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | number | Yes| Timeout interval for obtaining media metadata. The value range is (0, 20000], in milliseconds.<br>If no metadata is returned within the specified timeout interval, error code 5400104 is returned.|
+| timeoutMs | number | Yes| Timeout interval for obtaining media metadata. The value range is (0, 20000], in milliseconds.<br>If the metadata fails to be obtained within the specified timeout interval, error code 5400104 is returned.|
 
 **Return value**
 
@@ -529,7 +529,7 @@ Obtains the cover of the audio album. This API uses an asynchronous callback to 
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | Yes  | Callback used to return the album cover.|
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | Yes  | Callback used to return the result. When the audio album cover is successfully obtained, **err** is **undefined** and **data** is the obtained **PixelMap** instance. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -554,7 +554,7 @@ async function test() {
 
   avMetadataExtractor.fetchAlbumCover((error: BusinessError, pixelMap: image.PixelMap) => {
     if (error) {
-      console.error(`Failed to fetch AlbumCover, error = ${JSON.stringify(error)}`);
+      console.error(`Failed to fetch AlbumCover, code: ${error.code} message: ${error.message}`);
       return;
     }
     pixel_map = pixelMap;
@@ -600,7 +600,7 @@ async function test() {
   avMetadataExtractor.fetchAlbumCover().then((pixelMap: image.PixelMap) => {
     pixel_map = pixelMap;
   }).catch((error: BusinessError) => {
-    console.error(`Failed to fetch AlbumCover, error message:${error.message}`);
+    console.error(`Failed to fetch AlbumCover, code:${error.code} message:${error.message}`);
   });
 }
 ```
@@ -638,7 +638,7 @@ async function test() {
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
   avMetadataExtractor.release((error: BusinessError) => {
     if (error) {
-      console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+      console.error(`Failed to release, code: ${error.code} message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in releasing.`);
@@ -677,10 +677,12 @@ import { media } from '@kit.MediaKit';
 async function test() {
   // Create an AVMetadataExtractor instance.
   let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-  avMetadataExtractor.release().then(() => {
-    console.info(`Succeeded in releasing.`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to release, error message:${error.message}`);
-  });
+  if (avMetadataExtractor) {
+    avMetadataExtractor.release().then(() => {
+      console.info(`Succeeded in releasing.`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to release, code: ${error.code} message: ${error.message}`);
+    });
+  }
 }
 ```

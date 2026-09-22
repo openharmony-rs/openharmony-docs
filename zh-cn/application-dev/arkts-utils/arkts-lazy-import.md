@@ -1,8 +1,8 @@
 # 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @DaiHuina1997-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -39,7 +39,7 @@ import { c } from "./mod2";         // "mod2" 执行
 // ...
 
 console.info("main executed");
-while (false) {
+function useModules(): void{
     let xx = a;
     let yy = c;
 }
@@ -75,7 +75,7 @@ import { b } from './mod1'; // 'mod1' 执行
 
 ``` TypeScript
 console.info('main executed');
-while (false) {
+function useModules(): void{
   let xx = a;
   let yy = c;
   let zz = b;
@@ -312,7 +312,7 @@ ReferenceError: module environment is undefined
     hdc shell param set persist.ark.importDuration 1000
     ```
 
-3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundlename}/files/）生成主/子线程对应文件。
+3. 清除应用后台进程后，重新启动应用进程，等待抓取时间结束，会在应用沙箱下（data/app/el2/100/base/${bundleName}/files/）生成主/子线程对应的文件。
 
     > **注意：**
     >

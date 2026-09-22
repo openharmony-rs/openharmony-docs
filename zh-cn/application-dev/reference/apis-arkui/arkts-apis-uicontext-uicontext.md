@@ -682,9 +682,9 @@ getDialogPresenter(): DialogPresenter
 
 获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3232,7 +3232,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -4158,7 +4158,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 ```ts
 // xxx.ets
-import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+import { CustomKeyboardContinueFeature } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -4243,7 +4243,7 @@ struct Index {
           placeholder: 'TextInput1 bind CustomKeyboardBuilder',
           controller: this.controller,
           text: this.inputValue
-        })// 绑定自定义键盘
+        }) // 绑定自定义键盘
           .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
           .margin(10)
           .border({ width: 1 })
@@ -4251,7 +4251,7 @@ struct Index {
           placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
           controller: this.controller2,
           text: this.inputValue2
-        })// 绑定自定义键盘
+        }) // 绑定自定义键盘
           .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
           .margin(10)
           .border({ width: 1 })

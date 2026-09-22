@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -38,8 +38,8 @@
 | [PASTEBOARD_MIMETYPE_TEXT_PLAIN](#pasteboard_mimetype_text_plain)  "text/plain" | 纯文本类型。 |
 | [PASTEBOARD_MIMETYPE_TEXT_URI](#pasteboard_mimetype_text_uri)  "text/uri" | URI类型。 |
 | [PASTEBOARD_MIMETYPE_TEXT_HTML](#pasteboard_mimetype_text_html)  "text/html" | HTML类型。 |
-| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | pixelMap类型。 |
-| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | want类型。 |
+| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | PixelMap类型。 |
+| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | Want类型。 |
 
 ### 枚举
 
@@ -130,7 +130,7 @@ HTML类型。
 
 **描述**
 
-pixelMap类型。
+PixelMap类型。
 
 **起始版本：** 22
 
@@ -142,7 +142,7 @@ pixelMap类型。
 
 **描述**
 
-want类型。
+Want类型。
 
 **起始版本：** 22
 
@@ -299,12 +299,7 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。 |
-
-**错误码说明:**
-
-- **ERR_OK**: 执行成功
-- **ERR_INVALID_PARAMETER**: 参数无效
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_PasteboardObserver_SetData()
 
@@ -460,7 +455,7 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 
 **描述：**
 
-获取剪贴板中数据的数据源。适用于需要识别数据来源或进行权限控制的场景。
+获取剪贴板中数据的数据源。适用于需要识别数据来源或进行权限控制的场景。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 **起始版本：** 13
 
@@ -486,8 +481,7 @@ bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)
 
 **描述：**
 
-判断剪贴板中是否有指定类型的数据。典型使用场景包括：粘贴前检查剪贴板数据类型是否支持、根据数据类型选择不同的处理方式、验证剪贴板数据格式等。
-
+判断剪贴板中是否有指定类型的数据。典型使用场景包括：粘贴前检查剪贴板数据类型是否支持、根据数据类型选择不同的处理方式、验证剪贴板数据格式等。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 **起始版本：** 13
 
 **参数：**
@@ -561,13 +555,15 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象[OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
 - 如果剪贴板为空或数据格式不支持，会返回nullptr。
 - 返回的OH_UdmfData对象需要开发者调用[OH_UdmfData_Destroy](../apis-arkdata/capi-udmf-h.md#oh_udmfdata_destroy)释放。
 - 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)接口以获取进度信息。
 
 **起始版本：** 13
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **参数：**
 
@@ -590,7 +586,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 **描述：**
 
-将统一数据对象数据写入剪贴板。写入成功后，其他应用可以使用系统剪贴板提供的数据读取接口访问该数据。统一数据对象的数据大小受系统剪贴板容量限制，在写入系统剪贴板后，数据的生命周期由系统剪贴板进行管理。调用此函数后，合法的数据内容会被写入系统剪贴板，覆盖之前的剪贴板数据内容。写入成功后，会触发所有订阅了剪贴板数据变更事件的观察者的回调函数。其他应用可以通过剪贴板API读取这些数据。
+将统一数据对象数据写入剪贴板。写入成功后，其他应用可以使用系统剪贴板提供的数据读取接口访问该数据。统一数据对象的数据大小受系统剪贴板容量限制，在写入系统剪贴板后，数据的生命周期由系统剪贴板进行管理。调用此函数后，合法的数据内容会被写入系统剪贴板，覆盖之前的剪贴板数据内容。写入成功后，会触发所有订阅了剪贴板数据变更事件的观察者的回调函数。其他应用可以通过剪贴板API读取这些数据。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 - 序列化后的数据大小不能超过系统容量限制（在不同设备上的容量存在差异，通常为128MB）。
 - 写入操作会清除之前剪贴板中的所有内容。
@@ -619,7 +615,7 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 **描述：**
 
-清空剪贴板中的数据。适用于需要清除剪贴板中的数据时使用，如退出应用时清除敏感数据。
+清空剪贴板中的数据。适用于需要清除剪贴板中的数据时使用，如退出应用时清除敏感数据。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 **起始版本：** 13
 
@@ -643,7 +639,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 **描述：**
 
-获取剪贴板中的MIME类型。典型使用场景包括：判断剪贴板数据类型以选择合适的处理方式、在粘贴前检查数据类型是否支持等。
+获取剪贴板中的MIME类型。典型使用场景包括：判断剪贴板数据类型以选择合适的处理方式、在粘贴前检查数据类型是否支持等。调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
 **起始版本：** 14
 
@@ -835,9 +831,11 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。调用此函数后，系统开始从系统剪贴板获取数据。如果剪贴板数据来自远端设备或包含大量文件，会通过[OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener)回调函数上报进度。数据传输完成后，返回统一数据对象指针。整个过程可能耗时较长，建议在非UI线程调用。
 
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
 **起始版本：** 15
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **参数：**
 
@@ -875,13 +873,7 @@ uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 执行成功时返回剪贴板内容的变化次数，否则返回0。 |
-
-**返回值说明:**
-
-- 当剪贴板内容过期（如设备重启、剪贴板服务重启或数据生命周期结束）或调用OH_Pasteboard_ClearData等接口导致剪贴板内容为空时，内容变化次数不会因此改变。
-- 系统重启或剪贴板服务异常重启时，剪贴板内容变化次数重新从0开始计数。
-- 对同一内容连续多次复制会被视作多次更改，每次复制均会导致内容变化次数增加。
+| uint32_t | 执行成功时返回剪贴板内容的变化次数，否则返回0。<br> 当剪贴板内容过期或调用OH_Pasteboard_ClearData等接口导致剪贴板内容为空时，内容变化次数不会因此改变。<br> 系统重启或剪贴板服务异常重启时，剪贴板内容变化次数重新从0开始计数。对同一内容连续多次复制会被视作多次更改，每次复制均会导致内容变化次数增加。 |
 
 ### OH_Pasteboard_SyncDelayedDataAsync()
 

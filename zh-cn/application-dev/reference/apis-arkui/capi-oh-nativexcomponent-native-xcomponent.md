@@ -17,4 +17,4 @@ OH_NativeXComponent提供ArkUI XComponent持有的Surface和触摸事件能力�
 | 名称 | 描述 |
 | -- | -- |
 | [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md) | 声明用于访问Native XComponent的API。 |
-| [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md) | 声明用于访问Native XComponent键盘事件的枚举类型。 |
+| [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md) | 声明用于访问Native XComponent按键事件所使用的枚举类型。 |

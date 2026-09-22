@@ -1,4 +1,4 @@
-# ArkUI_CircleShapeOption
+# ArkUI_CircleShape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

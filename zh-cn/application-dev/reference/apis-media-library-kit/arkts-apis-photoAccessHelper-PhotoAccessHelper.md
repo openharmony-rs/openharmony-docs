@@ -7,6 +7,8 @@
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+PhotoAccessHelper提供图片和视频资源的访问管理能力，支持获取、创建、删除媒体资产，管理相册，监听资产变化等操作。
+
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -27,7 +29,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
- 通过picker的方式调用该接口来查询指定URI对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[指定URI获取图片或视频资源](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
+ 通过picker的方式调用该接口查询指定URI的图片或视频资源时，无需申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[指定URI获取图片或视频资源](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
 
 **参数：**
 
@@ -66,6 +68,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      return;
+    }
     if (fetchResult !== undefined) {
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -414,7 +420,7 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 | 参数名   | 类型                     | 必填 | 说明                      |
 | -------- | ------------------------ | ---- | ------------------------- |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 创建的文件类型。例如：IMAGE或者VIDEO类型。              |
-| extension  | string        | 是   | 文件名后缀参数。例如：'jpg'。              |
+| extension  | string        | 是   | 文件名后缀参数。例如：'jpg'、'png'、'mp4'等。 |
 | title | string | 否   | 图片或视频资产的标题。     |
 
 **返回值：**
@@ -543,8 +549,6 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
-
-在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -683,6 +687,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('registerChangeDemo');
@@ -695,7 +700,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
     // file had changed, do something.
@@ -717,7 +725,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
-取消指定uri的监听，一个uri可以注册多个监听，存在多个callback监听时，可以取消指定注册的callback的监听；不指定callback时取消该uri的所有监听。
+取消对指定URI的监听。一个URI可注册多个监听。存在多个callback监听时，可取消指定callback监听。不指定callback时取消该URI的所有监听。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -758,7 +766,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   if (photoAsset !== undefined) {
     console.info('photoAsset.displayName : ' + photoAsset.displayName);
-  }
+    } else {
+      console.error('photoAsset is undefined');
+      return;
+    }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
     console.info('onCallback1 on');
   }
@@ -906,11 +917,13 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 调用接口显示保存确认弹窗。如果用户同意保存，将返回一个已创建并授予保存权限的URI列表（此列表永久生效），应用可使用这些URI写入图片或视频。如果用户拒绝保存，将返回一个空列表。
 
-弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 
 > **说明：**
 >
-> 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> - 与showAssetsCreationDialogEx的区别：showAssetsCreationDialog使用PhotoCreationConfig配置；showAssetsCreationDialogEx使用CreationSetting配置。
+> - 与showSingleAssetCreationDialogEx的区别：showAssetsCreationDialog支持批量保存图片（最多100张），showSingleAssetCreationDialogEx仅支持单个资产保存。批量保存时使用本接口，单个资产保存时如需控制图片显示方式可使用showSingleAssetCreationDialogEx。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -943,8 +956,6 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
@@ -964,7 +975,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('showAssetsCreationDialog success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialog failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialog failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -977,9 +988,10 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 > **说明：**
 >
+> - 与showAssetsCreationDialog的区别：showAssetsCreationDialogEx使用CreationSetting配置，showAssetsCreationDialog使用PhotoCreationConfig配置。
 > - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
-> - 弹框需显示应用名称，名称和图标需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
-> - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
+> - 弹框需显示应用名称，开发者需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
+> - 当传入URI为沙箱路径时，可正常保存图片或视频，但无界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1013,8 +1025,6 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts 
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
@@ -1023,17 +1033,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
-    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
+    let creationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
         title: 'test2', // 可选。
         fileNameExtension: 'jpg',
         photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, creationConfigs);
     console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
   } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showAssetsCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1046,8 +1056,9 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 > **说明：**
 >
+> - 与showAssetsCreationDialog的区别：showSingleAssetCreationDialogEx仅支持保存单个资产，showAssetsCreationDialog支持批量保存图片（最多100张）。如需保存单个资产且控制图片显示方式，可使用showSingleAssetCreationDialogEx。
 > - 如果用户同意保存，将返回一个已创建并授予保存权限的URI（此URI永久生效），应用可使用这个URI写入图片或视频。如果用户拒绝保存，将返回一个空字符串。
-> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，开发者需确保[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 > - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1068,7 +1079,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。正常情况下返回可用的媒体库URI字符串，URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1083,8 +1094,6 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowSingleAssetCreationDialogExDemo.');
 
@@ -1100,7 +1109,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
     console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
   } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`showSingleAssetCreationDialogEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1109,9 +1118,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频。
+应用调用该接口后，首次调用时弹出保存确认弹框。用户同意保存后，返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 
 在用户"同意"后的5分钟之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
+
+> **说明：**
+>
+> 与createAssetWithShortTermPermissionEx的区别：createAssetWithShortTermPermission使用PhotoCreationConfig配置；createAssetWithShortTermPermissionEx使用CreationSetting配置。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1121,13 +1134,13 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12); | 是 | 保存图片/视频到媒体库的配置，包括保存的文件名等。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
+| photoCreationConfig | [PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12) | 是 | 保存图片/视频到媒体库的配置，包括保存的文件名等。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件uri。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1175,7 +1188,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         fileIo.closeSync(srcFile);
         fileIo.closeSync(resultFile);
     } catch (err) {
-        console.error('createAssetWithShortTermPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+        console.error(`createAssetWithShortTermPermission failed. Code: ${err.code}, message: ${err.message}`);
     }
     
 }
@@ -1189,6 +1202,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 > **说明：**
 >
+> - 与createAssetWithShortTermPermission的区别：createAssetWithShortTermPermissionEx使用CreationSetting配置，createAssetWithShortTermPermission使用PhotoCreationConfig配置。
 > - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
@@ -1225,6 +1239,10 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 <!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
+> **说明：**
+>
+> 与requestPhotoUrisReadPermissionEx的区别：requestPhotoUrisReadPermission仅返回已授权的URI列表；requestPhotoUrisReadPermissionEx返回RequestReadPermissionResult，包含已授权URI列表和无效URI列表，便于开发者识别无效URI。从API版本23开始，优先使用requestPhotoUrisReadPermissionEx以获得更完整的授权结果。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1255,8 +1273,6 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('requestPhotoUrisReadPermissionDemo.');
 
@@ -1268,7 +1284,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1291,13 +1307,13 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频URI，且最大数量限制为100个。|
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
+| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的URI列表和无效的URI列表。 |
 
 **错误码：**
 
@@ -1305,14 +1321,13 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -1326,7 +1341,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
   } catch (err) {
-    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+    console.error(`requestPhotoUrisReadPermissionEx failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1434,6 +1449,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// 注册photoChange监听，用于监听媒体资产的变化，可以注册多个不同的callback。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoChangeDemo.');
 
@@ -1491,6 +1507,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // file had changed, do something.
 }
 
+// 注册photoChange监听后，取消指定callback监听，演示取消监听的使用方法。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('offPhotoChangeDemo.');
 
@@ -1551,6 +1568,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// 注册photoAlbumChange监听，用于监听相册的变化，可以注册多个不同的callback。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1608,6 +1626,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // file had changed, do something.
 }
 
+// 注册photoAlbumChange监听后，取消指定callback监听，演示取消监听的使用方法。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onPhotoAlbumChangeDemo.');
 
@@ -1629,7 +1648,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
-应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。跟随当前系统语言，支持返回当前语言的相册名。使用Promise异步回调。
+应用使用图片选择器组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。根据当前系统语言设置，返回对应语言的相册名。使用Promise异步回调。
 
 **原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1643,7 +1662,7 @@ getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1715,22 +1734,26 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
       return;
     }
     phAccessHelper.createDeleteRequest([asset.uri], (err) => {
-      if (err === undefined) {
-        console.info('createDeleteRequest successfully');
-      } else {
+      if (err) {
         console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+      } else {
+        console.info('createDeleteRequest successfully');
       }
     });
   } catch (err) {
     console.error(`fetch failed, error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源。
+    fetchResult?.close();
   }
 }
 ```
@@ -1759,7 +1782,7 @@ createDeleteRequest(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt;| Promise对象，返回void。 |
+| Promise&lt;void&gt;|  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1788,8 +1811,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | undefined = undefined;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (asset === undefined) {
       console.error('asset not exist');
@@ -1799,6 +1823,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createDeleteRequest successfully');
   } catch (err) {
     console.error(`createDeleteRequest failed with error: ${err.code}, ${err.message}`);
+  } finally {
+    // 使用完毕后需要释放资源。
+    fetchResult?.close();
   }
 }
 ```
@@ -1890,7 +1917,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('getAlbumIdByLpath');
 
   try {
-      let albumId: number = await phAccessHelper.getAlbumIdByLpath('testLpath');
+      let albumId: number = await phAccessHelper.getAlbumIdByLpath('/DCIM/Camera');
       console.info('requestFile:: albumId: ', albumId);
 
       console.info('getAlbumIdByLpath completed.');
@@ -1944,6 +1971,7 @@ let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // 触发回调时，具体的操作。
 }
 
+// 获取相册和资产后，注册单个资产变化监听，演示onSinglePhotoChange的使用方法。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2024,6 +2052,7 @@ let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
   // 触发回调时，具体的操作。
 }
 
+// 获取相册和资产后，注册单个资产变化监听，然后演示不同方式取消监听的使用方法。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2103,6 +2132,7 @@ let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // 触发回调时，具体的操作。
 }
 
+// 获取相册后，注册单个相册变化监听，演示onSinglePhotoAlbumChange的使用方法。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoAlbumChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2158,7 +2188,7 @@ offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes： 1. The same callback is unregistered repeatedly. 2. The uri of the album invalid.|
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the album invalid. |
 | 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -2181,6 +2211,7 @@ let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
   // 触发回调时，具体的操作。
 }
 
+// 获取相册后，注册单个相册变化监听，然后演示不同方式取消监听的使用方法。
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
   console.info('onSinglePhotoChangeDemo.');
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -2365,13 +2396,16 @@ class MediaLibraryExample {
 
   onMediaLibraryAvailability = async () => {
     try {
+      // 定义媒体库可用性变化的回调处理函数。
       this.handleMediaLibraryChange = (
         changeData: photoAccessHelper.MediaLibraryAvailability
       ) => {
+        // 获取媒体库的可用状态和不可用原因。
         const availabilityStatus = changeData.availabilityStatus;
         const unavailabilityReason = changeData.unavailabilityReason;
-        console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
+        console.info(`媒体库状态变化: 状态=${availabilityStatus}, 原因=${unavailabilityReason}`);
       };
+      // 注册媒体库可用性监听。
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
       console.info('媒体库监听注册成功');
     } catch (err) {
@@ -2425,6 +2459,7 @@ class MediaLibraryExample {
 
   offMediaLibraryAvailability = async () => {
     try {
+      // 先注册媒体库可用性监听，然后取消注册，演示取消监听的使用方法。
       this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
       this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
       console.info('媒体库监听解除成功');

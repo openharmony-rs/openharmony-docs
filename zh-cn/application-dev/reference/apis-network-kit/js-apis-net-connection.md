@@ -25,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
+创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：ms)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
 >**说明：**
 >
@@ -40,7 +40,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
-| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，单位为毫秒，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
+| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，单位为毫秒(ms)，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
@@ -53,7 +53,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-// 示例1：仅关注默认网络, 无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
+// 示例1：仅关注默认网络，无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
 let netConnection = connection.createNetConnection();
 
 // 示例2：仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
@@ -153,7 +153,7 @@ getDefaultNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回默认网络的网络句柄。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回默认网络的网络句柄。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 
 | 类型                             | 说明                                      |
 | -------------------------------- | ----------------------------------------- |
-| Promise<[HttpProxy](#httpproxy10)> | 以Promise形式返回网络默认的代理配置信息。 |
+| Promise<[HttpProxy](#httpproxy10)> | Promise对象，返回网络默认的代理配置信息。 |
 
 **错误码：**
 
@@ -418,7 +418,7 @@ getAppNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回App绑定的网络信息。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回App绑定的网络信息。 |
 
 **错误码：**
 
@@ -1681,6 +1681,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
 > 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
+>
+> **网络切换说明：** 当设备从Wi-Fi网络切换至蜂窝数据网络时，配置过自定义DNS规则的应用可能出现无法访问目标系统或服务的情况。此时可开启后关闭飞行模式，或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)清除当前应用程序的自定义DNS规则后重试。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1982,14 +1984,15 @@ setPacFileUrl(pacFileUrl: string): void
 
 设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
->**注意：**
+>**说明：** 
 >
-> 1、本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
-> 2、该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
+> 该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**设备行为差异**：本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
 
 **参数：**
 
@@ -2008,7 +2011,7 @@ setPacFileUrl(pacFileUrl: string): void
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = "http://example.com/proxy.pac";
@@ -2038,7 +2041,7 @@ getPacFileUrl(): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
@@ -2053,9 +2056,9 @@ findProxyForUrl(url: string): string
 
 > **说明：**
 >
-> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
-> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。<br>
-> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
+> 1. 可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2. 如果调用本接口前未设置PAC脚本，则返回空字符串。<br>
+> 3. 由于[setPacFileUrl](#connectionsetpacfileurl20)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2074,7 +2077,7 @@ findProxyForUrl(url: string): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let proxyInfo = connection.findProxyForUrl("http://example.com");
@@ -2451,8 +2454,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
-let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
-let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let local: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
   console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
@@ -2511,8 +2514,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
-let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
-let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let local: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
   console.info(`Succeeded to get uid: ${uid}`);
@@ -2562,7 +2565,7 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
@@ -2604,7 +2607,7 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
@@ -2689,7 +2692,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.INTERNET、ohos.permission.ACCESS_NET_TRACE_INFO、ohos.permission.LOCATION和ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：ohos.permission.INTERNET 和 ohos.permission.ACCESS_NET_TRACE_INFO 和 ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2750,7 +2753,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 
 **起始版本**：26.0.0
 
-**需要权限**：ohos.permission.INTERNET。
+**需要权限**：ohos.permission.INTERNET
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -2761,7 +2764,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
-| duration | number | 是 | 探测持续时间，单位为秒，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
+| duration | number | 是 | 探测持续时间，单位为秒(s)，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
 
 **返回值：**
 
@@ -2924,6 +2927,7 @@ unregister(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | ------- | --------------------------------- |
+| 201     | Permission denied.   </br> 适用版本：8-11            |
 | 401     | Parameter error.                  |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
@@ -4065,7 +4069,7 @@ UDP端口状态信息。
 | -------- | -------- | -------- | -------- | -------- |
 | jumpNo | number | 否 | 否 | 跳数序号。 |
 | address | string | 否 | 否 | 该跳的IP地址。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒(ms)。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
   
 
 ## ProbeResultInfo
@@ -4081,4 +4085,4 @@ UDP端口状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | lossRate | number | 否 | 否 | 丢包率，取值范围\[0, 100\]。例如，100表示100%丢包，50表示50%丢包。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒(ms)。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |

@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-08-04T12:09:20.709Z pushedAt=2026-08-07T03:25:47.999Z -->
+<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-21T02:24:23.263Z pushedAt=2026-08-21T08:34:50.234Z -->
 
 **IsolatedComponent** is designed to support the embedding and display of UIs provided by independent .abc files (Ark bytecode) within the current page, with the displayed content running in a restricted Worker thread.
 
@@ -34,7 +34,7 @@ This component is primarily designed for modular development scenarios that requ
 
 **Experience Constraints**
 
-1. When an **IsolatedComponent** component is created, there is a certain amount of time required for the restricted Worker thread to load and render the .abc file layout. During this period, the background color of the **IsolatedComponent** is displayed.
+1. When an **IsolatedComponent** component is created, there is a certain amount of time required for the restricted Worker thread to load and render the .abc file layout (the specific duration depends on the complexity of the .abc file). During this period, the background color of the **IsolatedComponent** is displayed.
 
 2. The main thread and the restricted Worker thread handle layout rendering asynchronously, which can lead to desynchronization in page changes caused by layout alterations or rotations.
 
@@ -80,8 +80,8 @@ Used to pass construction parameters during **IsolatedComponent** construction.
 
 | Name | Type      | Read-Only| Optional| Description|
 | ---- | ------------ | ---- | ---- | --------------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | No | No | The .abc file information to load. The parameters of the **Want** object must contain the following fields: **resourcePath** (resource path, which must be a .hap file path), **abcPath** (.abc file path verified by [verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11), which must start with '/abcs'), and **entryPoint** (.abc entry point, in the format of 'bundleName/page path'). |
-| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | No| No| Restricted Worker thread where the .abc file is running.|
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | No | No | The .abc file information to load. The .abc file runs in the restricted worker specified by the **worker** parameter. The parameters of the **Want** object must contain the following fields: **resourcePath** (resource path, which must be a .hap file path), **abcPath** (.abc file path verified by [verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11), which must start with '/abcs'), and **entryPoint** (.abc entry point, in the format of 'bundleName/page path'). |
+| worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | No | No | Restricted worker that runs the .abc file. Note that layout rendering and event delivery between the main thread and the restricted worker thread are asynchronous. |
 
 ## Attributes
 

@@ -6,11 +6,11 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:52:55.971Z pushedAt=2026-07-17T06:56:14.330Z -->
+<!-- md-trans-meta sourceCommit=3dd9574e5142ac71240b4c5e94aace0a54828acc translatedAt=2026-08-19T04:18:16.424Z pushedAt=2026-08-19T07:35:33.589Z -->
 
 ## Overview
 
-Enumerates error codes.
+Enumerates error codes of ArkUI native APIs, which are used to indicate the results or failure causes of API calls.
 
 **File to include:** <arkui/error_code.h>
 
@@ -28,7 +28,7 @@ Enumerates error codes.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ErrorCode](#arkui_errorcode) | ArkUI_ErrorCode | Enumerates error codes.|
+| [ArkUI_ErrorCode](#arkui_errorcode) | ArkUI_ErrorCode | Enumerates error codes of ArkUI native APIs, which are used to indicate the results or failure causes of API calls. |
 
 ## Enum Description
 
@@ -40,7 +40,7 @@ enum ArkUI_ErrorCode
 
 **Description**
 
-Enumerates error codes.
+Enumerates error codes of ArkUI native APIs, which are used to indicate the results or failure causes of API calls.
 
 **Since:** 12
 
@@ -49,7 +49,7 @@ Enumerates error codes.
 | ARKUI_ERROR_CODE_NO_ERROR = 0 | No error.<br>**Since:** 12|
 | ARKUI_ERROR_CODE_PARAM_INVALID = 401 | Parameter error.<br>**Since:** 12|
 | ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 | API initialization error.<br>**Since:** 18|
-| ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 | Internal error, such as failure due to internal environment issues or operation failure caused by internal execution errors.<br>**Since:** 15|
+| ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 | Internal error, such as API call failure due to abnormal running environment or operation failure caused by API internal execution errors.<br>**Since:** 15 |
 | ARKUI_ERROR_CODE_PARAM_ERROR = 100023 | Parameter error. For details about the error code, see [100023 Parameter Error](errorcode-node.md#100023-parameter-error).<br>**Since:** 21|
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 | The **XComponent** is in an invalid or unsupported state. For details about the error code, see [XComponent Error Codes](errorcode-xcomponent.md).<br>**Since:** 18|
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | The component does not support specific attributes or events. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 12|
@@ -57,13 +57,13 @@ Enumerates error codes.
 | ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | The adapter for lazy loading is not bound to the component. For details about the error code, see [106104 NodeAdapter Not Bound](errorcode-nodeadapter.md#106104-nodeadapter-not-bound).<br>**Since:** 12 |
 | ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | The adapter already exists. For details about the error code, see [106105 NodeAdapter Already Exists](errorcode-nodeadapter.md#106105-nodeadapter-already-exists).<br>**Since:** 12 |
 | ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | Failed to add the adapter because the corresponding node already has a child node. For details about the error code, see [106106 Child Node Exists](errorcode-nodeadapter.md#106106-child-node-exists).<br>**Since:** 12|
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The parameter length in the parameter event exceeds the limit. For details about the error code, see [106107 Index Out of Range](errorcode-nodeadapter.md#106107-index-out-of-range).<br>**Since:** 12|
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data does not exist in the component event. For details about the error code, see [106108 Data Not Found](errorcode-nodeadapter.md#106108-data-not-found).<br>**Since:** 12|
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The index parameter in the component event exceeds the array length limit. For details about the error code, see [106107 Parameter Index Out of Range in the Component Event](errorcode-nodeadapter.md#106107-parameter-index-out-of-range-in-the-component-event).<br>**Since:** 12 |
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data requested by the caller does not exist in the component event. For details about the error code, see [106108 Data Requested by the Caller Does Not Exist in the Component Event](errorcode-nodeadapter.md#106108-data-requested-by-the-caller-does-not-exist-in-the-component-event).<br>**Since:** 12 |
 | ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | The component event does not support return values. For details about the error code, see [106109 Return Value Not Supported](errorcode-nodeadapter.md#106109-return-value-not-supported).<br>**Since:** 12|
 | ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | This event type is not supported. For details about the error code, see [106110 Unsupported Event Type](errorcode-nodeadapter.md#106110-unsupported-event-type).<br>**Since:** 21|
 | ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | Invalid index.<br>For details about the error code, see [106200 Invalid Index Value](errorcode-router.md#106200-invalid-index-value).<br>**Since:** 12|
 | ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | Failed to obtain the route navigation information.<br>For details about the error code, see [106201 Failed to Obtain Route Navigation Information](errorcode-router.md#106201-failed-to-obtain-route-navigation-information).<br>**Since:** 12|
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | The passed buffer size is invalid (the data is too large).<br>For details about the error code, see [106202 Invalid Buffer Size](errorcode-router.md#106202-invalid-buffer-size).<br>**Since:** 12|
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | The buffer size passed is insufficient to accommodate the target data.<br/>For details about the error code, see [106202 Buffer Size Not Sufficient to Hold the Target Data](errorcode-router.md#106202-buffer-size-not-sufficient-to-hold-the-target-data).<br>**Since:** 12 |
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 | The passed node is not mounted to the component tree. For details about the error code, see [106203 Passed Node Not Mounted to Component Tree](errorcode-node.md#106203-passed-node-not-mounted-to-component-tree).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 | Operations on the provided node are not supported on non-UI threads. For details about the error code, see [106204 Operations on the Provided Node Not Supported on Non-UI Threads](errorcode-node.md#106204-operations-on-the-provided-node-not-supported-on-non-ui-threads).<br>**Since:** 22|
 | ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 | The input parameter for the color inversion capability is incorrect. For details about the error code, see [106205 Color Inversion Capability Configuration Error](errorcode-force-dark.md#106205-color-inversion-capability-configuration-error).<br>**Since:** 20|
@@ -84,16 +84,18 @@ Enumerates error codes.
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 | An ancestor of the current node is not focusable. For details about the error code, see [150002 Ancestor Component Not Focusable](errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 | The current node does not exist. For details about the error code, see [150003 Component Does Not Exist](errorcode-focus.md#150003-component-does-not-exist).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 | Snapshot timed out. For details, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 15|
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | The provided color space or dynamic range mode is not supported. For details, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23|
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | The **isAuto** setting of the color space or dynamic range mode is not supported for offscreen node snapshots. For details, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23|
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_MODE_NOT_SUPPORTED = 160003 | The color space or dynamic range mode set in the screenshot options is not supported. For details about the error code, see [Snapshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23 |
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_AUTO_NOT_SUPPORTED = 160004 | The **isAuto** parameter corresponding to the color space or dynamic range mode cannot be set to **true** for offscreen node screenshots. For details about the error code, see [Screenshot Error Codes](errorcode-snapshot.md).<br>**Since:** 23 |
 | ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | The component is not a scrollable container. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 12|
 | ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | The buffer is not large enough. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 12|
 | ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 | The event is not a cloned event. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 | The component status is abnormal. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 | No component hit to respond to the event. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 15|
-| ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 | Input event type not supported.<br>**Since:** 20|
+| ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 | The API does not support this input event type. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 20 |
 | ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 | Invalid styled string. For details, see [Styled String Error Codes](errorcode-styled-string.md).<br>**Since:** 14|
 | ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 | Invalid UIContext object. For details about the error code, see [UI Context Error Codes](errorcode-uicontext.md).<br>**Since:** 18|
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 | Invalid callback function. For details about the error code, see [UI Context Error Codes](errorcode-uicontext.md).<br>**Since:** 18|
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 | The gesture recognizer type is not supported. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 18|
-| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | The operation is not allowed in the current phase. For details about the error code, see [Drag Event Error Codes](errorcode-drag-event.md).<br>**Since:** 19|
+| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | The requested operation is not allowed in the current drag and drop event processing phase. For details about the error code, see [Drag Event Error Codes](errorcode-drag-event.md).<br>**Since:** 19 |
+| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 | The dialog box cannot be opened because the node fails to be mounted. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 | The dialog box cannot be opened because the subwindow fails to be created. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.1.0 |

@@ -5,12 +5,17 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-01T12:35:50.302Z -->
 
 You can apply foreground blur effects to a component.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - Supported since API version 10. If new content is added in later versions, the starting version of the new content is marked separately with a superscript.
+>
+> - The APIs of this module can be used only in the stage model.
+>
+> - The **foregroundBlurStyle** API is a real-time blurring API that performs rendering frame by frame, which incurs significant performance overhead. When neither the blur content nor the blur radius needs to change, use the static blurring API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur) instead. For best practices, see [Image Blurring Optimization - When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4652132214525).
 
 ## foregroundBlurStyle
 
@@ -31,13 +36,13 @@ Applies a foreground blur style to the component.
 | Name | Type                                                        | Mandatory| Description                    |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | value   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Settings of the foreground blur style.          |
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Defines the foreground blur options. For details about the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).|
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No | Content blur option. If not passed, the system default blur effect configuration is used. For the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions). |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## foregroundBlurStyle<sup>18+</sup>
 
@@ -53,24 +58,24 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Defines the foreground blur options. For details about the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).                                  |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes   | Content blur style.<br>When the value of style is undefined, the content is restored to the state without blur, and the options parameter does not take effect. |
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No   | Content blur option. When not passed, the system default blur effect configuration is used. For the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).                                   |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Returns the current component, used for chained calls. |
 
 ## foregroundBlurStyle<sup>19+</sup>
 
 foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 
-Applies a foreground blur style to the component. Compared to [foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
+Provides content blur capability for the current component. Compared to [foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18), this API adds the **sysOptions** parameter, which supports system adaptive adjustment parameters. The system can automatically adjust the rendering effect of the foreground blur based on conditions such as device performance or display policies.
 
 >  **NOTE**
 >
->  **foregroundBlurStyle** is a real-time blurring API that performs rendering frame by frame, which incurs significant performance overhead. When both the blur content and blur radius remain unchanged, it is recommended that you use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [Image Blurring Optimization – When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
+>  The **foregroundBlurStyle** API is a real-time blurring API that performs rendering frame by frame, which incurs higher performance overhead than the static blurring API. When neither the blur content nor the blur radius needs to change, use the static blurring API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur) instead. For best practices, see [Image Blurring Optimization - When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4652132214525).
 
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
@@ -81,19 +86,19 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Settings of the foreground blur style.<br>If **style** is set to **undefined**, no blur is applied.|
-| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No  | Foreground blur options.                                    |
-| sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   No  |  System adaptive adjustment options.<br>Default value: **{ disableSystemAdaptation: false }**   |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes   | Content blur style.<br>When the value of style is undefined, the content is restored to the state without blur. |
+| options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions) | No | Content blur options. If this parameter is not passed, the system default blur effect configuration is used. For the default value, see [ForegroundBlurStyleOptions](#foregroundblurstyleoptions).                                   |
+| sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   No   |  System adaptive adjustment parameters, used to control whether to enable the system's adaptive adjustment of the blur effect.<br>Default value: { disableSystemAdaptation: false }    |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Returns the current component, used for chained calls. |
 
 ## ForegroundBlurStyleOptions
 
-Inherits from [BlurStyleOptions](#blurstyleoptions) to define the foreground blur options.
+Inherits from [BlurStyleOptions](#blurstyleoptions). Content blur style options.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -101,16 +106,16 @@ Inherits from [BlurStyleOptions](#blurstyleoptions) to define the foreground blu
 
 ## BlurStyleOptions
 
-Defines the foreground blur options.
+Blur style options, used to configure the light/dark mode, color sampling mode, grayscale blur parameters, and blur degree of the blur effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                       | Type                                               | Read-Only| Optional| Description                                                        |
 | --------------------------- | ------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
-| colorMode     | [ThemeColorMode](#themecolormode) | No| Yes | Color mode used for the foreground blur.<br>Default value: **ThemeColorMode.SYSTEM**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| adaptiveColor | [AdaptiveColor](#adaptivecolor)   | No| Yes  | Adaptive color mode.<br>Default value: **AdaptiveColor.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| blurOptions<sup>11+</sup> | [BlurOptions](#bluroptions11)         | No| Yes   | Grayscale blur parameters.<br>Default value: **grayscale: [0,0]**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| scale<sup>12+</sup> | number   | No| Yes | Foreground blur scale.<br>Default value: **1.0**<br>Value range: [0.0, 1.0]<br>**1.0** indicates the highest blur degree.<br>**0.0** indicates the lowest blur degree.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| colorMode     | [ThemeColorMode](#themecolormode) | No | Yes  | Light/dark color mode used for the content blur effect.<br>Default value: ThemeColorMode.SYSTEM<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| adaptiveColor | [AdaptiveColor](#adaptivecolor)   | No | Yes   | Adaptive color sampling mode used for the content blur effect.<br>Default value: AdaptiveColor.DEFAULT<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| blurOptions<sup>11+</sup> | [BlurOptions](#bluroptions11)         | No | Yes    | Grayscale blur parameters, which take effect only on black and white in the image and have no effect on colors.<br>Default value: grayscale: [0,0] <br>**Atomic service API:** Since API version 12, this API is supported in atomic services.|
+| scale<sup>12+</sup> | number   | No | Yes  | Degree of the content blur effect.<br>Default value: 1.0 <br>Value range: [0.0, 1.0] <br>1.0 indicates the highest blur degree. <br>0.0 indicates the lowest blur degree.<br>If the value is out of range, it is automatically corrected to the boundary value.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.|
 
 ## ThemeColorMode
 
@@ -136,8 +141,8 @@ Enumerates the adaptive color modes used for the background blur effect.
 
 | Name     | Value| Description                       |
 | ------- | ---- | --------------------- |
-| DEFAULT | 0 | Adaptive color mode is not used. The default color is used as the mask color. Using a mode other than **DEFAULT** can be more time-consuming.   |
-| AVERAGE | 1 | Adaptive color mode is used. The average color value of the color picking area is used as the mask color.|
+| DEFAULT | 0 | Color sampling blur is not used. The system preset color is used as the mask color. The color sampling calculation using a non-DEFAULT mode takes longer than that using the DEFAULT mode.    |
+| AVERAGE | 1 | Color sampling blur is used. The average color of the color sampling area is used as the mask color. The AVERAGE mode takes longer than the DEFAULT mode. In performance-sensitive scenarios, the DEFAULT mode is recommended. |
 
 ## BlurOptions<sup>11+</sup>
 Grayscale blur parameters.
@@ -148,7 +153,7 @@ Grayscale blur parameters.
 
 | Name       |   Type  |   Read-Only| Optional| Description                       |
 | ----        |  ----   |   ---- | ------- | -------------------  |
-| grayscale   |  [number, number]   |   No| No  |  Grayscale blur, with two parameters in the value range of [0, 127]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the brightness of the black color, and the second parameter indicates the darkness of the white color. A larger value indicates a more obvious adjustment effect (the black and white colors become grayer). The valid value range is 0–127. For example, if the value specified is (20,20), the RGB value [0, 0, 0] (black) is converted to [20, 20, 20], RGB value [255, 255, 255] (white) is converted to [235, 235, 235] (255-20), and the color pixels remain unchanged.|
+| grayscale   |  [number, number]   |   No | No   |  Grayscale blur parameter. The value range of both parameters is [0, 127]. Adjusts the levels of black and white in the image to make them tend toward gray, resulting in a softer visual transition. It has no effect on the adjustment of colors in the image. The first parameter indicates the degree to which black is brightened, and the second parameter indicates the degree to which white is darkened. A larger parameter value produces a more obvious adjustment effect (black and white become grayer). For example, if the parameters are set to (20, 20), the RGB value of a black pixel in the image, [0, 0, 0], is adjusted to [20, 20, 20], and the RGB value of a white pixel, [255, 255, 255], is adjusted to [235, 235, 235] (255-20). Colored pixels in the image remain unchanged. |
 
 
 ## Example
@@ -176,4 +181,4 @@ struct ForegroundBlurStyleDemo {
 }
 ```
 
-![image-foreground-blur-style](figures/image-foreground-blur-style.png)
+![foreground_blur_style](figures/image-foreground-blur_style.png)

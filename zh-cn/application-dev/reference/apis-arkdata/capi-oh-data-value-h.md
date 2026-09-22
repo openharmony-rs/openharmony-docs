@@ -108,7 +108,7 @@ OH_Data_Value *OH_Value_Create(void)
 
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [OH_Data_Value](capi-rdb-oh-data-value.md) | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_Value_Destroy](#oh_value_destroy)接口释放内存。 |
+| [OH_Data_Value](capi-rdb-oh-data-value.md) * | 执行成功时返回指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_Value_Destroy](#oh_value_destroy)接口释放内存。 |
 
 ### OH_Value_Destroy()
 
@@ -495,7 +495,7 @@ int OH_Value_GetText(OH_Data_Value *value, const char **val)
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) *value | 表示指向[OH_Data_Value](capi-rdb-oh-data-value.md)实例的指针。   |
-| const char **val                              | 一个输出参数，表示指向字符串类型数据的指针。<br>无需申请内存和释放内存。<br>val的生命周期遵循value中index的值。 |
+| const char **val                              | 一个输出参数，表示指向字符串类型数据的指针。<br>无需申请内存和释放内存。<br>val的生命周期遵循value的生命周期。 |
 
 **返回：**
 

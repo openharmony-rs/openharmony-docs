@@ -1,13 +1,15 @@
 # WhitePointArray
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=f01e45cc0386b26a6c11761fb4ec5eb22e27e5df translatedAt=2026-08-24T09:15:16.451Z pushedAt=2026-08-25T07:18:26.701Z -->
 
 ```c
-typedef struct WhitePointArray {...} WhitePointArray
+typedef struct {...} WhitePointArray
 ```
 
 ## Overview

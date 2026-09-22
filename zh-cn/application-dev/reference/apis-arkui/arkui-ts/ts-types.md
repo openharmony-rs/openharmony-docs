@@ -76,6 +76,8 @@ type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -92,6 +94,8 @@ type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -107,6 +111,8 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,7 +139,7 @@ type ResourceStr = string | Resource
 
 ## Padding
 
-type Padding = { top: Length; right: Length; bottom: Length; left: Length; }
+type Padding = { top?: Length; right?: Length; bottom?: Length; left?: Length; }
 
 内边距类型，用于描述组件不同方向的内边距。
 
@@ -211,7 +217,7 @@ type LocalizedMargin = LocalizedPadding
 
 ## EdgeWidths<sup>9+</sup>
 
-type EdgeWidths = { top: Length; right: Length; bottom: Length; left: Length; }
+type EdgeWidths = { top?: Length; right?: Length; bottom?: Length; left?: Length; }
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
 
@@ -271,7 +277,7 @@ type EdgeWidth = EdgeWidths
 
 ## BorderRadiuses<sup>9+</sup>
 
-type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; bottomRight: Length; }
+type BorderRadiuses = { topLeft?: Length; topRight?: Length; bottomLeft?: Length; bottomRight?: Length; }
 
 圆角类型，用于描述组件边框圆角半径。
 
@@ -313,7 +319,7 @@ type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; b
 
 ## EdgeColors<sup>9+</sup>
 
-type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceColor; left: ResourceColor; }
+type EdgeColors = { top?: ResourceColor; right?: ResourceColor; bottom?: ResourceColor; left?: ResourceColor; }
 
 边框颜色，用于描述组件边框四条边的颜色。
 
@@ -355,7 +361,7 @@ type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceCo
 
 ## EdgeStyles<sup>9+</sup>
 
-type EdgeStyles = { top: BorderStyle; right: BorderStyle; bottom: BorderStyle; left: BorderStyle; }
+type EdgeStyles = { top?: BorderStyle; right?: BorderStyle; bottom?: BorderStyle; left?: BorderStyle; }
 
 边框样式，用于描述组件边框四条边的样式。
 
@@ -611,11 +617,20 @@ ColorFilter的构造函数，创建具有4\*5矩阵的颜色过滤器。
 
 ## CustomBuilder<sup>8+</sup>
 
+type CustomBuilder = (() => any) \| void
+
 组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
 
-| 名称            | 类型定义                   | 描述                                       |
-| ------------- | ---------------------- | ---------------------------------------- |
-| CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| ---  | --- |
+| (() => any) |  生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。  |
+| void |  不传入[@Builder](../../../ui/state-management/arkts-builder.md)函数。   |
 
 ## CustomBuilderT\<T><sup>23+</sup>
 
@@ -693,6 +708,8 @@ type CustomBuilderT\<T> = (t: T) => void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称     | 类型                         | 只读 | 可选   | 说明      |
 | ------ | ---------------------------- | -- | -- | ------- |
@@ -1002,7 +1019,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
+定义一个适用于WaterFlow、Grid、List、Swiper、LazyVWaterFlowLayout和LazyVGridLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

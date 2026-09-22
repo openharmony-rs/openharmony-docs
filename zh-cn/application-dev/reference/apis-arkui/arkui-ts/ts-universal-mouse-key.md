@@ -38,7 +38,7 @@ onMouse(event: (event: MouseEvent) => void): T
 
 ## MouseEvent对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 ### 属性
 
@@ -68,7 +68,7 @@ onMouse(event: (event: MouseEvent) => void): T
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取鼠标位置相对于当前组件实时位置的左上角坐标，适用于组件位置动态变化时实时获取鼠标相对组件坐标的场景。
+获取鼠标位置相对于当前组件实时位置的左上角坐标，适用于组件位置动态变化时实时获取鼠标相对组件坐标的场景。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 
@@ -146,7 +146,7 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
 
 ### 示例1（获取鼠标事件相关参数）
 
-该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
+该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的rawDeltaX、rawDeltaY、pressedButtons等参数。
 
 鼠标滚轮的处理请参考[轴事件示例](ts-universal-events-axis.md#示例)。
 
@@ -223,11 +223,10 @@ struct MouseEventExample {
                 this.action = 'LEAVE_WINDOW';
                 break;
             }
-            // 拼接鼠标事件全量信息并展示
+            // 拼接鼠标事件相关信息并展示
             this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
               '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
               '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
-              '\ntargetDisplayId = ' + event.targetDisplayId +
               '\nrawDeltaX = ' + event.rawDeltaX +
               '\nrawDeltaY = ' + event.rawDeltaY +
               '\nlength = ' + event.pressedButtons?.length;

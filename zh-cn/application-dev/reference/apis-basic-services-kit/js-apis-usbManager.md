@@ -35,15 +35,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
-```mermaid
-graph LR
-    A[开始] --> B[调用getDevices获取设备列表]
-    B --> C[调用requestRight获取权限]
-    C --> D[调用connectDevice获取USBDevicePipe]
-    D --> E[调用相关接口进行操作]
-    E --> F[调用closePipe关闭通道]
-    F --> G[结束]
-```
+![usbManager](../figures/usbManager.png)
 
 ## usbManager.getDevices
 
@@ -355,7 +347,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。如果接口已被其他程序占用，使用true可强制获取但可能导致该程序功能异常；如果接口未被占用，建议使用false以避免不必要的强制操作。用户按需选择。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取，如果无内核驱动占用该接口，则获取成功，否则获取失败；设置为true时，将强制释放内核驱动对该接口的控制权并交由用户空间程序控制。|
 
 **返回值：**
 
@@ -406,6 +398,36 @@ async function claimInterface() {
   usbManager.closePipe(devicePipe);
 }
 ```
+
+## usbManager.claimInterfaceExclusive
+
+claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback<[InterfaceConflictInfo](#interfaceconflictinfo)>): void
+
+独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
+
+**起始版本：** 26.0.1
+
+**系统能力：**  SystemCapability.USB.USBManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 总线地址和设备地址，通过调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 目标USB接口的索引。可以使用[getDevices](#usbmanagergetdevices)获取设备信息，并根据ID识别USB接口。|
+| force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。可以根据需要设置该值。|
+| onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14400001 | Permission denied. |
+| 14400004 | Service exception. |
+| 14400007 | Resource busy. Possible cause: The interface is claimed by another program or driver. |
+| 14400010 | USB driver error. Possible causes: 1. The device is not connected using [connectDevice](#usbmanagerconnectdevice). 2. The USB device state is abnormal. |
 
 ## usbManager.releaseInterface
 
@@ -733,7 +755,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -818,7 +840,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端点，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区，数组长度即为缓冲区大小。用于批量传输时写入或读取数据。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -864,28 +886,22 @@ async function bulkTransfer() {
     console.error(`connect device failed`);
     return;
   }
-  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+  for (let i = 0; i < device.configs?.[0]?.interfaces?.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicePipe, interfaces);
-      if (ret !== 0) {
-        console.error(`claim interface failed`);
-        continue;
-      }
+      if (ret !== 0) { continue; }
       let buffer = new Uint8Array(128);
-      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
-        console.info(`bulkTransfer = ${ret}`);
-        ret = usbManager.releaseInterface(devicePipe, interfaces);
-        console.info(`releaseInterface = ${ret}`);
-        if (i === device.configs?.[0]?.interfaces.length - 1) {
-          usbManager.closePipe(devicePipe);
-        }
+      await usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((size: number) => {
+        console.info(`bulkTransfer = ${size}`);
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
+      usbManager.releaseInterface(devicePipe, interfaces);
     }
   }
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -955,7 +971,8 @@ async function usbSubmitTransfer() {
     return value.direction === 0 && value.type === 2;
   });
   // 声明接口控制权，force参数为true表示强制获取
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);
@@ -1062,7 +1079,8 @@ async function usbCancelTransfer() {
     return;
   }
   // 声明接口控制权，force参数为true表示强制获取。
-  let ret: number = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: number = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     usbManager.closePipe(devicePipe);
@@ -1192,12 +1210,14 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   let flag = usbManager.hasAccessoryRight(accList?.[0]);
   console.info(`hasAccessoryRight success, ret:${flag}`);
 } catch (error) {
-  console.error(`hasAccessoryRight error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`hasAccessoryRight error ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1238,13 +1258,15 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function requestAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
     let flag = await usbManager.requestAccessoryRight(accList?.[0]);
     console.info(`requestAccessoryRight success, ret:${flag}`);
   } catch (error) {
-    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`requestAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1281,6 +1303,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function cancelAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1291,7 +1314,8 @@ async function cancelAccessoryRight() {
     usbManager.cancelAccessoryRight(accList?.[0]);
     console.info(`cancelAccessoryRight success`);
   } catch (error) {
-    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`cancelAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1322,11 +1346,13 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   console.info(`getAccessoryList success, accList: ${JSON.stringify(accList)}`);
 } catch (error) {
-  console.error(`getAccessoryList error ${error.code}, message is ${error.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`getAccessoryList error ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1371,6 +1397,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 <!--code_no_check-->
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 async function openAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1385,7 +1412,8 @@ async function openAccessory() {
     console.info('readSync ret: ' + readLength.toString(10));
     usbManager.closeAccessory(handle);
   } catch (error) {
-    console.error(`openAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`openAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1420,6 +1448,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 async function closeAccessory() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -1431,7 +1460,8 @@ async function closeAccessory() {
     usbManager.closeAccessory(handle);
     console.info(`closeAccessory success`);
   } catch (error) {
-    console.error(`closeAccessory error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`closeAccessory error ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1501,7 +1531,8 @@ async function resetUsbDevice() {
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicePipe);
     console.info(`resetUsbDevice  = ${ret}`);
-  } catch (err) {
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
     console.error(`Failed to reset USB device. Code: ${err.code}, message: ${err.message}`);
   }
   usbManager.closePipe(devicePipe);
@@ -1526,7 +1557,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -1548,8 +1579,8 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
-  reqType: 0x80,
-  target: 0,
+  reqType: usbManager.USBControlRequestType.USB_REQUEST_TYPE_STANDARD,
+  target: usbManager.USBRequestTargetType.USB_REQUEST_TARGET_DEVICE,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
@@ -1592,18 +1623,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
-```mermaid
-graph LR
-    A[端点类型] --> B[批量端点 bulk]
-    A --> C[中断端点 interrupt]
-    A --> D[实时端点 isochronous]
-    B --> B1[带宽共享调度]
-    B1 --> B2[适合大量数据非实时传输]
-    C --> C1[固定轮询调度]
-    C1 --> C2[适合小数据量实时传输]
-    D --> D1[带宽预留调度]
-    D1 --> D2[适合音视频等实时数据流]
-```
+![USBEndpoint](../figures/USBEndpoint.png)
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1633,6 +1653,24 @@ graph LR
 | alternateSetting | number                                   | 否 | 否 |接口的替代设置索引号，用于在同一个接口的多个可选描述符中进行切换选择。0表示默认设置，其他值表示特定的替代设置。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
+
+## InterfaceConflictInfo
+
+描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive)独占声明接口后使用。
+
+> **说明：**
+>
+> 此回调在其他进程调用非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时触发。独占持有方可通过此回调获知潜在的访问冲突。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.USB.USBManager
+
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                 |
+| ------------ | ------ | ---- | ---- | --------------------------------------------------------------------------- |
+| busNum       | number | 否 | 否 |USB设备的总线地址。取值限定为整数。              |
+| devAddr      | number | 否 | 否 |USB设备的设备地址。                                           |
+| interfaceId  | number | 否 | 否 |被其他进程声明的USB接口的ID。           |
 
 ## USBConfiguration
 
@@ -1770,7 +1808,7 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。 |
 | endpoint | number | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
-| timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
+| timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。设置为0时无限等待直到传输完成。传入负数时抛出参数错误异常。 |
 | length | number | 否 |否 | 数据缓冲区的长度，取值范围为[0, INT_MAX]的非负数（期望长度），（单位：字节）。 |
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调函数，签名：(err: Error, data: SubmitTransferCallback) => void。err为错误对象（成功时为null），data包含传输状态、实际长度等信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据，用于在回调函数中传递自定义的上下文信息。大小和格式由用户定义，在传输请求中指定，回调中原样返回。 |

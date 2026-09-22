@@ -4,7 +4,7 @@
 <!--Subsystem: AGC-->
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @lusq-->
+<!--Tester: @hid12719688-->
 <!--Adviser: @HelloCrease-->
 
 本章节介绍如何拉起邮件类应用扩展面板。
@@ -101,7 +101,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
     | --------------| ------------------------- |
     | ComposeMail   | 声明应用支持撰写邮件功能     |
 
-    ```json
+    ```json5
     {
       "abilities": [
           {

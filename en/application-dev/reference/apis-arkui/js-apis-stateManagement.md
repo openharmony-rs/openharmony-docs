@@ -1,14 +1,13 @@
 # @ohos.arkui.StateManagement (State Management)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926; @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=9bb36595a2813e8704f3d2210b29cb79f60cb17a translatedAt=2026-08-04T04:23:51.744Z pushedAt=2026-08-04T08:50:53.304Z -->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-01T03:30:07.808Z pushedAt=2026-09-02T06:55:20.847Z -->
 
-This module provides capabilities for application data storage, persistence data management, and UIAbility (application component that contains a UI) data storage. It also covers scenarios such as environment state, tool, and UI state synchronization, helping you simplify state management logic and improve application responsiveness and data consistency.
+This module provides capabilities for application data storage, data persistence management, and UIAbility (application component that contains a UI) data storage. It also covers scenarios such as environment state, tool, and UI state synchronization, helping you simplify state management logic and improve application responsiveness and data consistency.
 
 >**NOTE**
 >
@@ -16,12 +15,15 @@ This module provides capabilities for application data storage, persistence data
 >
 > - The APIs of this module can be used only in the stage model.
 
+
 T and S in this topic represent the types as described below.
+
 
 | Type  | Description                                    |
 | ---- | -------------------------------------- |
 | T    | Class, number, boolean, string, and arrays of these types. |
 | S    | number, boolean, string.                 |
+
 
 ## Modules to Import
 
@@ -113,10 +115,10 @@ Removes the specified key-value pair from [AppStorageV2](../../ui/state-manageme
 | -------- | ------ | ---- | ---------------------- |
 | keyOrType | string \| [TypeConstructorWithArgs](#typeconstructorwithargst)\<T\> | Yes  | Key to be removed. If a type is specified, the key to be removed is the name of that type.|
 
+
 **Example**
 
 <!--code_no_check-->
-
 ```ts
 // Assuming that there is a key named key_as2 in AppStorageV2, the following will remove the corresponding key-value pair from AppStorageV2.
 AppStorageV2.remove('key_as2');
@@ -138,6 +140,7 @@ Obtains all keys in [AppStorageV2](../../ui/state-management/arkts-new-appstorag
 >
 > The order of keys in the array is not sequential and unrelated to the order in which keys are inserted into AppStorageV2.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -154,6 +157,8 @@ Obtains all keys in [AppStorageV2](../../ui/state-management/arkts-new-appstorag
 // Assuming there are two keys (key_as1 and key_as2) in AppStorageV2, the following will return an array containing these keys and assign it to keys.
 const keys: Array<string> = AppStorageV2.keys();
 ```
+
+
 
 ## PersistenceV2
 
@@ -204,7 +209,6 @@ Stores key-value pair data on the application disk. If the given key already exi
 **Example**:<br>This example is provided for you to understand the usage of **globalConnect**. You need to write your own **@Entry** component for complete usage.
 
 <!--code_no_check-->
-
 ```ts
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
@@ -245,7 +249,6 @@ const persistedSample3: Sample = PersistenceV2.globalConnect({
 })!;
 
 ```
-
 ### globalConnect<sup>23+</sup>
 
 static globalConnect\<T extends CollectionType<S\>, S extends object\>( <br>
@@ -279,7 +282,6 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 When you use `defaultSubCreator` in `globalConnect`, you must provide `defaultCreator`. The return type of the `defaultSubCreator` function must be the same as the collection item type returned by `defaultCreator`.<br>When `globalConnect` persists data of the `Array<ClassA>` type, you need to use the `defaultSubCreator` option to instruct the state management framework to create an instance of `ClassA`. The following is an example of using `globalConnect` to persist data of the `Array<ClassA>` type:
 
 <!--code_no_check-->
-
 ```typescript
 class ClassA {
   propA: number;
@@ -309,7 +311,6 @@ struct Page1 {
 **Example**
 
 The following is the sample code for **globalConnect** to persist data of the Map type:
-
 ```typescript
 import { PersistenceV2 } from '@kit.ArkUI';
 
@@ -345,7 +346,6 @@ struct Page1 {
   }
 }
 ```
-
 ### save
 
 static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs\<T\>):&nbsp;void
@@ -441,14 +441,12 @@ Defines the parameter type for the [globalConnect](#globalconnect23) API. **Conn
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No   |Yes   | Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type `S` must be the same as the return type of `defaultSubCreator`. |
-|defaultSubCreator   | StorageDefaultCreator\<S\> |No   |Yes   | Default constructor function of the collection item, which is used to persist container data. When this parameter is used, `defaultCreator` must also be provided; otherwise, persistence will fail. If `defaultSubCreator` returns `undefined` or `null`, persistence will fail. When persisting a collection of user-defined classes (such as `Array<ClassA>`), the generic type `T` in `defaultCreator` is `Array<ClassA>`, and the generic type `S` in `defaultSubCreator` is `ClassA`. |
+|defaultSubCreator   | StorageDefaultCreator\<S\> |No   |Yes   | Default constructor function of the collection item, which is used to persist container data. When this parameter is used, `defaultCreator` must also be provided; otherwise, persistence will fail. When container data is persisted, if this parameter is not passed in, or if `defaultSubCreator` returns `undefined` or `null`, the persistence operation will fail. When a collection of user-defined classes (such as `Array<ClassA>`) is persisted, the generic type `T` in `defaultCreator` is `Array<ClassA>`, and the generic type `S` in `defaultSubCreator` is `ClassA`.|
 
 The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
 **Example**
-
 <!--code_no_check-->
-
 ```typescript
 class ClassA {
   propA: number;
@@ -908,6 +906,7 @@ Enables V1 state variables to be observable in @ComponentV2. This API is primari
 | ---- | ------------------------------------------------ |
 | T    | If the data source is V1 state data, returns data that can be observed in \@ComponentV2; otherwise, returns the data source itself.|
 
+
 **Example**
 
 ```ts
@@ -950,7 +949,6 @@ struct CompV2 {
 ```
 
 ### makeV1Observed<sup>19+</sup>
-
 static makeV1Observed\<T extends object\>(source: T): T
 
 Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @Observed and can be used to initialize @ObjectLink.
@@ -1021,7 +1019,6 @@ struct Child {
 ```
 
 ### makeBinding<sup>20+</sup>
-
 static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
 Creates a read-only one-way data binding instance, which is used to construct the arguments of the **Binding** type in the [\@Builder](../../ui/state-management/arkts-builder.md) function.
@@ -1086,7 +1083,6 @@ struct CompV2 {
 ```
 
 ### makeBinding<sup>20+</sup>
-
 static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>): MutableBinding\<T\>
 
 Creates a mutable two-way data binding instance, which is used to construct the argument of the **MutableBinding** type in the \@Builder function.
@@ -1156,7 +1152,6 @@ struct CompV2 {
 ```
 
 ### addMonitor<sup>20+</sup>
-
 static addMonitor(target: object, path: string | string[], monitorCallback: MonitorCallback, options?: MonitorOptions): void
 
 Dynamically adds a listener to the state variable of state management V2. For details, see [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
@@ -1174,9 +1169,9 @@ Dynamically adds a listener to the state variable of state management V2. For de
 | monitorCallback | [MonitorCallback](#monitorcallback20) | Yes | Callback registered for the corresponding state variable. When the state variable corresponding to the path changes, the callback is invoked.<br>For unsupported types, a runtime error is thrown. For details about the error codes, see the table below. |
 | options | [MonitorOptions](#monitoroptions20)   | No  | Configuration options of the listener. For details, see [MonitorOptions](#monitoroptions20). By default, the asynchronous callback is used.|
 
+
 **Error codes**
 For details about the error codes, see [State Management Error Codes](./errorcode-stateManagement.md).
-
 | ID| Error Message|
 | ------- | -------------------------------- |
 |130000|The target is not a custom component instance or V2 class instance.|
@@ -1185,13 +1180,9 @@ For details about the error codes, see [State Management Error Codes](./errorcod
 
 **Example**
 In the following example:
-
 1. In the constructor of **ObservedClass**, add the synchronous listener callback **onChange** to the **name** attribute.
-
 2. Click the **Text** component and change the value of **name** to **Jack** and **Jane**. The **onChange** callback is triggered twice. The following logs are printed:
-
 <!--code_no_check-->
-
 ```text
 ObservedClass property name change from Tom to Jack
 ObservedClass property name change from Jack to Jane
@@ -1235,7 +1226,6 @@ struct Index {
 ```
 
 ### clearMonitor<sup>20+</sup>
-
 static clearMonitor(target: object, path: string | string[], monitorCallback?: MonitorCallback): void
 
 Deletes the listener added to the state variable of the state management V2 by calling the [addMonitor](#addmonitor20) API. For details, see [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md).
@@ -1263,19 +1253,13 @@ For details about the error codes, see [State Management Error Codes](./errorcod
 
 **Example**
 In the following example:
-
 1. In the constructor of **ObservedClass**, add the synchronous listener callback **onChange** to the **age** attribute.
-
 2. Click the **Text** component to trigger the auto-increment of the value of **age**, which then triggers the **onChange** callback function. The following log is printed:
-
    <!--code_no_check-->
-
    ```text
    ObservedClass property age change from 10 to 11
    ```
-
 3. Click **clear monitor** to delete the **onChange** callback function used to listen for the **age** attribute.
-
 4. Click the **Text** component again to trigger the auto-increment of the value of **age**, which will not trigger the **onChange** callback function.
 
 ```ts
@@ -1640,7 +1624,6 @@ Defines the optional parameters for [addMonitor](#addmonitor20), which are used 
 |enableWildcard|boolean|No|Yes|Whether to enable the wildcard capability for the current **addMonitor**. The value **true** indicates to enable, and **false** indicates the opposite. The default value is **false**, which means to disable the capability. When the wildcard capability is disabled but the path contains a wildcard, the path is considered invalid.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
 
 ## MonitorCallback<sup>20+</sup>
-
 type MonitorCallback = (monitorValue: IMonitor) => void
 
 A listener callback function of the [IMonitor](./arkui-ts/ts-state-management-monitor.md#imonitor) type.
@@ -1938,9 +1921,7 @@ struct Index {
 ```
 
 When @Type is used to decorate attributes of a nested class, only the custom class type is supported. If other class types are transferred, the persistence will fail.
-
 <!--code_no_check-->
-
 ```ts
 @ObservedV2
 class SampleChild {
@@ -2070,7 +2051,6 @@ struct CompV2 {
 Represents the generic class for read-only data binding, which can bind data of any type.
 
 ### value<sup>20+</sup>
-
 get value(): T
 
 Obtains a bound value.
@@ -2126,7 +2106,6 @@ struct CompV2 {
 Represents a generic class for mutable data binding, which allows the read and write operations on the bound value and provides complete **get** and **set** accessors.
 
 ### value<sup>20+</sup>
-
 set value(newValue: T)
 
 Provides the **set** accessor to set a new value for the current bound value. The **set** accessor must be provided when the **MutableBinding** class instance is constructed. Otherwise, a runtime error will be thrown when the **set** accessor is triggered.
@@ -2142,7 +2121,6 @@ Provides the **set** accessor to set a new value for the current bound value. Th
 | newValue  | T | Yes   | New value to set. This parameter is passed in when the bound value is changed. The type is the same as the generic **T** defined by **MutableBinding\<T\>**.  |
 
 ### value<sup>20+</sup>
-
 get value(): T
 
 Provides a **get** accessor to obtain the current bound value.

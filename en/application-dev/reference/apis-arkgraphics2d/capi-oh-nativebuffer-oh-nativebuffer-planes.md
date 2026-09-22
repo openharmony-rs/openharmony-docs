@@ -1,14 +1,17 @@
 # OH_NativeBuffer_Planes
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=094ced2c1714888f81b48ee277d1e52615f35dc2 translatedAt=2026-08-24T09:18:32.344Z pushedAt=2026-08-25T07:20:57.344Z -->
 
-```
+```c
 typedef struct {...} OH_NativeBuffer_Planes
 ```
+
 ## Overview
 
 This struct describes the plane information of images in an **OH_NativeBuffer** instance.

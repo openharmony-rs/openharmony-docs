@@ -11,7 +11,7 @@
 
 资源泄漏是指句柄、线程或内存等资源在应用运行过程中未被正确释放，导致资源长期占用且无法被其他应用使用。如果某一类资源耗尽，系统可能出现卡死或重启等异常情况。
 
-本文面向开发者介绍资源泄漏事件各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统资源泄漏事件，请参考以下文档。目前提供ArkTs和C/C++两种接口。
+本文面向开发者介绍资源泄漏事件各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统资源泄漏事件，请参考以下文档。目前提供ArkTS和C/C++两种接口。
 
 - [订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)
 
@@ -68,7 +68,7 @@ hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
 
 从**API version 24**开始支持页面切换日志配置。当应用发生资源泄漏故障时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
 
-从**API version 26.0.0**开始支持设置资源泄漏事件的日志和回调事件规格。
+从**API版本26.0.0**开始支持设置资源泄漏事件的日志和回调事件规格。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -162,7 +162,6 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | .ttf | number | 字体文件占用内存大小，单位：KB。 |
 | anon_page_other | number | 其他匿名页占用内存大小，单位：KB。 |
 | ark ts heap | number | ArkTS堆占用内存大小，单位：KB。 |
-| arkts-static heap | number | ArkTS静态堆占用内存大小，单位：KB。 |
 | arkweb-js heap | number | ArkWeb JS堆占用内存大小，单位：KB。 |
 | arkweb-pa heap | number | ArkWeb PA堆占用内存大小，单位：KB。 |
 | dart heap | number | Dart堆占用内存大小，单位：KB。 |

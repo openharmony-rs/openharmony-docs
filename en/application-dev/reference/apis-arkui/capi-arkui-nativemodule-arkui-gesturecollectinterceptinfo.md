@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:23:54.481Z pushedAt=2026-07-17T10:40:17.136Z -->
+<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T04:18:00.407Z pushedAt=2026-08-19T07:41:00.830Z -->
 
 ```c
 typedef struct ArkUI_GestureCollectInterceptInfo ArkUI_GestureCollectInterceptInfo
@@ -14,7 +14,7 @@ typedef struct ArkUI_GestureCollectInterceptInfo ArkUI_GestureCollectInterceptIn
 
 ## Overview
 
-Defines gesture collection interception information, which describes interception-related data in gesture collection interception scenarios. It enables interception decision-making and flow control for gesture events, and is suitable for scenarios requiring fine-grained management of gesture collection and interception. For details about the related APIs for gesture collection interception, see [native_gesture.h](capi-native-gesture-h.md).
+Defines gesture collection interception information. During gesture collection in the touch test, this struct is used to provide the gesture and touch recognizers in the response chain to the interception callback, and carries the gesture collection intervention result set by the callback. For details about the related APIs for gesture collection interception, see [native_gesture.h](capi-native-gesture-h.md).
 
 **Since**: 26.0.0
 

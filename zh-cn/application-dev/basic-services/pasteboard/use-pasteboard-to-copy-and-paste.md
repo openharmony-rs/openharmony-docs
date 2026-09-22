@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -92,12 +92,10 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     }
   }
   export async function getPlainData(type: string): Promise<string> {
+    // 从系统剪贴板中读取数据
     try {
-      // 从系统剪贴板中读取数据
       let data = await systemPasteboard.getData();
-      // 从剪贴板数据中获取条目数量
       let recordCount = data.getRecordCount();
-      // 从剪贴板数据中获取对应条目信息
       let result = '';
       for (let i = 0; i < recordCount; i++) {
         let record = data.getRecord(i).toPlainText();
@@ -150,26 +148,28 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
     let data = new unifiedDataChannel.UnifiedData();
     data.addRecord(record);
     // 2.向系统剪贴板中存入一条PlainText数据
-    systemPasteboard.setUnifiedData(data).then((data: void) => {
+    try {
+      await systemPasteboard.setUnifiedData(data);
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // 存入成功，处理正常场景
-    }).catch((err: BusinessError) => {
+    } catch (err) {
       hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
-    });
+    };
     // 3.从系统剪贴板中读取这条text数据
-    systemPasteboard.getUnifiedData().then((data) => {
-      let records: unifiedDataChannel.UnifiedRecord[] = data.getRecords();
+    try {
+      let pasteData = await systemPasteboard.getUnifiedData();
+      let records: unifiedDataChannel.UnifiedRecord[] = pasteData.getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
           let text = records[j].getValue() as uniformDataStruct.PlainText;
           hilog.info(0xFF00, '[Sample_pasteboard]', `${j + 1}.${text.textContent}`);
         }
       }
-    }).catch((err: BusinessError) => {
+    } catch (err) {
       hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
-    });
+    };
   }
 ```
 

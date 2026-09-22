@@ -58,7 +58,6 @@ requestToolPermissions(permissionQuery: PermissionQuery): Promise&lt;PermissionQ
 | -------- | -------- |
 | 201 | Permission denial. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
 | 202 | The caller is not a system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 24010000 | Invalid parameter. OperationType and operationInfo do not match, specified callerTokenId does not exist, ticketExpireTime exceeds 24h, etc. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
 | 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
@@ -107,13 +106,13 @@ grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Promise&lt;TicketI
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userAuthResult | Array&lt;[UserAuthResult](#userauthresult)&gt; | 是 | 用户授权结果列表，包含权限信息和权限查询信息。 |
+| userAuthResult | [UserAuthResult](#userauthresult)[] | 是 | 用户授权结果列表，包含权限信息和权限查询信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[TicketInfo](#ticketinfo)&gt;&gt; | Promise对象。返回授权成功后生成的ticket信息列表。 |
+| Promise&lt;[TicketInfo](#ticketinfo)[]&gt; | Promise对象。返回授权成功后生成的ticket信息列表。 |
 
 **错误码：**
 
@@ -123,7 +122,6 @@ grantToolPermissionsByUser(userAuthResult: UserAuthResult[]): Promise&lt;TicketI
 | -------- | -------- |
 | 201 | Permission denial. The interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
 | 202 | The caller is not a system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 24010000 | Invalid parameter. OperationType and operationInfo do not match, specified callerTokenId does not exist, ticketExpireTime exceeds 24h, etc. |
 | 24010001 | Service is abnormal. Possible cause: IPC failed. |
 | 24010002 | Common internal error. Possible cause: dependent service unavailable, resource access failed, etc. |
@@ -164,7 +162,7 @@ generateControllerDevicePackage(remoteUserAuthResult: RemoteUserAuthResults[]): 
 
 在主控设备上，根据用户远程授权结果生成远程授权结果包。生成的包可以发送到被控设备上，完成完整性校验后，执行权限授权。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -232,7 +230,7 @@ generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise&lt;
 
 在被控设备上，根据权限查询列表生成远程授权请求包。生成的包可以发送到主控设备上，完成完整性校验后，发起用户授权确认。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -299,7 +297,7 @@ verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: Remot
 
 验证主控设备发送的远程授权结果包，检查消息凭据和远程设备信息以确保授权结果合法。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -362,7 +360,7 @@ verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): Promise&lt;boole
 
 验证被控设备发送的授权包，检查消息凭据以确保授权请求合法。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -419,7 +417,7 @@ getRemoteGrantStatus(): Promise&lt;RemoteGrantStatus&gt;
 
 查询远程授权开关的使能状态。启用时设备可以向远程设备发起远程授权，禁用时不允许远程授权。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -463,7 +461,7 @@ updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise&lt;void&g
 
 修改远程授权状态，开启或关闭远程授权使能开关。启用时设备可以向远程设备发起远程授权，禁用时不允许远程授权。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -512,7 +510,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 表示远程控制交互参数。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -553,10 +551,10 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| operationInfo | Array&lt;[OperationInfo](#operationinfo)&gt; | 否 | 否 | 操作信息列表，指定待查询的CLI命令或API接口。 |
+| operationInfo | [OperationInfo](#operationinfo)[] | 否 | 否 | 操作信息列表，指定待查询的CLI命令或API接口。 |
 | needTicket | boolean | 否 | 是 | 是否需要生成ticket用于本地或远程授权。true表示需要生成ticket，false表示不需要。当设置为true时，仅在本次查询结果通过的情况下才会返回ticket信息。<br>默认值：false |
-| ticketExpireTimeMs | number | 否 | 是 | ticket过期时间，单位为毫秒。取值范围：1~86400000（24小时），超过最大值将返回错误码24010000。需配合needTicket参数使用，仅当needTicket为true时本参数生效。默认值10000适用于常规授权场景，长时间远程授权场景可适当延长。<br>默认值：10000 |
-| remoteInfo | [RemoteInfo](#remoteinfo) | 否 | 是 | 远端设备信息。用于远程授权场景，包含设备角色、设备ID、华为账号ID等远程设备相关信息。<br>**起始版本：** 26.1.0 |
+| ticketExpireTimeMs | number | 否 | 是 | ticket过期时间，单位为毫秒。需配合needTicket参数使用，仅当needTicket为true时本参数生效。常规授权场景取值范围：1~60000（60秒），长时间远程授权场景取值范围：1~86400000（24小时），超过最大值将返回错误码24010000。<br>默认值：10000 |
+| remoteInfo | [RemoteInfo](#remoteinfo) | 否 | 是 | 远端设备信息。用于远程授权场景，包含设备角色、设备ID、华为账号ID等远程设备相关信息。<br>**起始版本：** 26.0.1 |
 | callerTokenId | number | 否 | 是 | 调用方进程的tokenId。当需要为其他进程查询或授权时，可指定目标进程的tokenId。<br>如果未传入该参数，默认获取调用方进程的tokenId。|
 | domainId | string | 否 | 是 | 域标识。<br>如果未传入该参数，则默认获取调用方当前的域标识。|
 
@@ -564,7 +562,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 表示远端设备信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -636,7 +634,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | needDialog | boolean | 否 | 否 | 是否需要弹窗。true表示需要弹窗请求用户授权，false表示不需要弹窗。 |
-| permissionResults | Array&lt;[PermissionInfo](#permissioninfo)&gt; | 否 | 否 | 权限状态结果列表。 |
+| permissionResults | [PermissionInfo](#permissioninfo)[] | 否 | 否 | 权限状态结果列表。 |
 | ticket | [TicketInfo](#ticketinfo) | 否 | 是 | ticket信息。<br>当入参传入的[permissionQuery.needTicket](#permissionquery)为true，且本次查询结果通过时，返回ticket信息。 |
 
 ## TicketInfo
@@ -659,7 +657,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 表示远程授权包。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -683,14 +681,14 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| permissionInfo | Array&lt;[PermissionInfo](#permissioninfo)&gt; | 否 | 否 | 权限信息列表，包含权限名称和授权状态。 |
+| permissionInfo | [PermissionInfo](#permissioninfo)[] | 否 | 否 | 权限信息列表，包含权限名称和授权状态。 |
 | permissionQuery | [PermissionQuery](#permissionquery) | 否 | 否 | 对应的权限查询信息。 |
 
 ## RemoteUserAuthResults
 
 表示远程用户授权结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -705,7 +703,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 表示远程用户授权项。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -739,7 +737,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 表示设备角色枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -770,7 +768,7 @@ abilityToolAccessCtrl.updateRemoteGrantStatus(abilityToolAccessCtrl.RemoteGrantS
 
 表示远程授权状态枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 

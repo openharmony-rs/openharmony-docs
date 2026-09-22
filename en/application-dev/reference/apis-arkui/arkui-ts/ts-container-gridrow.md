@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-08-04T12:11:10.500Z pushedAt=2026-08-07T02:59:08.814Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-21T02:24:01.415Z pushedAt=2026-08-21T08:33:55.781Z -->
 
 The responsive grid layout provides rules for layout design and resolves issues of dynamic layout across devices with different sizes, thereby ensuring layout consistency across layouts on different devices.
 
@@ -54,7 +54,7 @@ Defines layout options of the **GridRow** container.
 | -------- | -------- | -------- | -------- | -------- |
 |columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  No | Yes |Number of layout columns.<br>The value must be a positive integer.<br>- Before API version 20: The default value is **12**.<br>- Since API version 20: The default value is **{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }**.<br>Invalid value: The default value is used.|
 |gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|  No | Yes |Grid layout gutter.<br>Default value: **0vp**<br>Invalid value: The default value is used.<br>Unit: vp|
-|breakpoints|[BreakPoints](#breakpoints)|  No | Yes |Used to set the monotonically increasing array of breakpoint positions, and the reference object for breakpoint switching (based on the app window or container size).<br>Default value:<br>**{<br>value: ["320vp", "600vp", "840vp"],<br>reference: BreakpointsReference.WindowSize<br>}**<br>Invalid value: The default value is used.<br>Unit: vp|
+|breakpoints|[BreakPoints](#breakpoints)|  No | Yes |Used to set the monotonically increasing array of breakpoint positions, and the reference object for breakpoint switching (based on the app window or container size).<br>Default value:<br>{<br>value: ["320vp", "600vp", "840vp"],<br>reference: BreakpointsReference.WindowSize<br>}<br>Invalid value: The default value is used.<br>Unit: vp|
 |direction|[GridRowDirection](#gridrowdirection)|  No | Yes |Grid layout arrangement direction. Supports **Row** (row-wise arrangement, suitable for conventional LTR layouts) and **RowReverse** (reverse row-wise arrangement, suitable for RTL layouts or scenarios requiring reverse arrangement).<br>Default value: **GridRowDirection.Row**<br>Invalid value: The default value is used.|
 
 ## GutterOption

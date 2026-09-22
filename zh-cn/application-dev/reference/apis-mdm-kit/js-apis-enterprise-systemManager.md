@@ -1,4 +1,4 @@
-# @ohos.enterprise.systemManager（系统管理）
+# @ohos.enterprise.systemManager (系统管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -28,13 +28,15 @@ setNTPServer(admin: Want, server: string): void
 
 设置NTP(Network Time Protocol)时间服务器。设置成功后，系统将使用指定的NTP服务器进行时间同步，校准系统时间。适用于企业设备需要统一时间同步的场景，确保企业设备时间与标准时间保持一致，避免因时间不准确导致的业务问题，如日志时间戳不一致、证书验证失败等。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -122,8 +124,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getNTPServer(wantTemp);
-  console.info('Succeeded in getting NTP server.');
+  let result: string = systemManager.getNTPServer(wantTemp);
+  console.info(`Succeeded in getting NTP server. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get ntp server. Code is ${err.code}, message is ${err.message}`);
 }
@@ -133,15 +135,17 @@ try {
 
 setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
-设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。
+设置升级策略。设置成功后，系统将按照指定的策略类型进行OTA升级处理，不同策略类型对应不同的升级行为。内网升级场景下，需要先调用[systemManager.notifyUpdatePackages](#systemmanagernotifyupdatepackages)接口通知系统更新包，再调用该接口设置升级策略。当升级策略设置为禁止升级时，设备将禁止OTA升级，此时通过[systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain)接口设置的本机HOTA域名不生效。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 
@@ -175,7 +179,7 @@ let wantTemp: Want = {
 // 默认升级策略
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
-  "version": "version_1.0.0.0",
+  "version": "version_1.0.0.0"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy1);
@@ -186,7 +190,7 @@ try {
 // 禁止升级
 let otaUpdatePolicy2: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.PROHIBIT,
-  "version": "version_1.0.0.1",
+  "version": "version_1.0.0.1"
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy2);
@@ -198,7 +202,7 @@ try {
 let otaUpdatePolicy3: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.UPDATE_TO_SPECIFIC_VERSION,
   "version": "version_1.0.0.2",
-  "latestUpdateTime": 1716343200, // 时间戳
+  "latestUpdateTime": 1716343200 // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy3);
@@ -211,7 +215,7 @@ let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
   "installStartTime": 1716281049, // 时间戳
-  "installEndTime": 1716343200, // 时间戳
+  "installEndTime": 1716343200 // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -223,7 +227,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // 单位（小时）
+  "delayUpdateTime": 5 // 单位（小时）
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -235,7 +239,7 @@ try {
 let otaUpdatePolicy6: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.DEFAULT,
   "version": "version_1.0.0.5",
-  "disableSystemOtaUpdate": true,
+  "disableSystemOtaUpdate": true
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy6);
@@ -292,7 +296,7 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
+  let policy: systemManager.OtaUpdatePolicy = systemManager.getOtaUpdatePolicy(wantTemp);
   console.info(`Succeeded in getting update policy: ${JSON.stringify(policy)}`);
 } catch (err) {
   console.error(`Failed to get update policy. Code is ${err.code}, message is ${err.message}`);
@@ -345,7 +349,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -367,9 +371,9 @@ let fileDir = "/xxxx/xxxx/";
 let path1: string = "update_sd_base.zip";
 let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
 let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
-let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
-let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
-let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let fd1: number = fileIo.openSync(fileDir + path1, fileIo.OpenMode.READ_ONLY).fd;
+let fd2: number = fileIo.openSync(fileDir + "xxxxx/" + path2, fileIo.OpenMode.READ_ONLY).fd;
+let fd3: number = fileIo.openSync(fileDir + "xxxxx/" + path3, fileIo.OpenMode.READ_ONLY).fd;
 let package1: systemManager.Package = {
   // 需根据实际情况进行替换
   "type": systemManager.PackageType.FIRMWARE,
@@ -519,6 +523,8 @@ setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void
 > **说明：**
 > 
 > 为保障系统安全，若非内网升级等特殊业务需求，不建议禁用Nonce校验。
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -529,8 +535,6 @@ setOtaUpdateNonceEnable(admin: Want, isEnable: boolean): void
 **设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -580,13 +584,15 @@ isOtaUpdateNonceEnable(admin: Want): boolean
 
 **起始版本：** 26.0.0
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -630,11 +636,162 @@ try {
 }
 ```
 
+## systemManager.setLocalHotaDomain
+
+setLocalHotaDomain(admin: Want, domain: string): void
+
+设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。
+
+HOTA域名使用流程：
+1. 企业管理员通过MDM应用调用[systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain)接口设置设备本机HOTA域名，指定升级包下载服务器。
+2. 设备执行HOTA升级时，系统根据本机配置的HOTA域名查找并下载升级包，完成升级。
+3. 企业管理员可调用[systemManager.getLocalHotaDomain](#systemmanagergetlocalhotadomain)接口查询设备当前配置的本机HOTA域名，验证配置是否正确。
+4. 如需恢复系统默认升级服务器，可调用本接口并传入空字符串，将域名恢复为默认域名。
+
+适用场景：
+- 内网升级：企业内网环境无法访问公网升级服务器，管理员指定企业内网HOTA升级服务器域名，使设备能够从内网服务器获取升级包。
+- 升级服务器变更：企业升级服务器迁移或更换后，管理员重新设置本机HOTA域名，确保设备从新的服务器获取升级包。
+- 升级服务器故障切换：企业升级服务器发生故障时，管理员可切换至备用升级服务器域名，保障升级业务连续性。
+
+> **说明：**
+> 
+> 当通过[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)接口将升级策略设置为禁止升级时，设备将禁止OTA升级，此场景下设置的本机HOTA域名无法生效。
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
+传入的domain需符合域名命名规则，校验规则如下：
+1. 长度不能超过64个字符。
+2. 不支持IP地址和localhost。
+3. 域名必须以https\://开头。
+4. 域名必须匹配正则表达式：^(?:\[a-zA-Z0-9\](?:\[a-zA-Z0-9.-\]*\[a-zA-Z0-9\])?\\.)+\[a-zA-Z\]{2,}$。此正则表达式不参与校验https\://部分。
+5. 传入空字符串表示将域名恢复为默认域名，空字符串不受上述校验规则约束。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| domain | string | 是 | 本机HOTA域名，具体校验规则详见接口说明。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                      |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 9200018 | This device is not an enterprise device. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let domain: string = "https://www.hotaExample.com";
+try {
+  systemManager.setLocalHotaDomain(wantTemp, domain);
+  console.info('Succeeded in setting local HOTA domain.');
+} catch (err) {
+  console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getLocalHotaDomain
+
+getLocalHotaDomain(admin: Want): string
+
+获取设备本机HOTA（Huawei Over-the-Air）域名。适用于需要查询当前设备配置的本机HOTA域名的场景。
+
+适用场景：
+- 配置校验：升级前或升级异常后，通过查询本机HOTA域名确认设备当前升级服务器配置是否正确。
+- 批量管理：企业管理员可通过MDM平台批量查询各设备的本机HOTA域名配置，统一管控设备升级方向。
+
+**起始版本：** 26.0.1
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回空字符串。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| string | 返回本机HOTA域名。当设备不支持该接口时，返回空字符串作为默认值。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200018  | This device is not an enterprise device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let domain: string = systemManager.getLocalHotaDomain(wantTemp);
+  console.info(`Succeeded in getting local HOTA domain: ${domain}`);
+} catch (err) {
+  console.error(`Failed to get local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## systemManager.addDisallowedNearLinkProtocols<sup>20+</sup>
 
 addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol&gt;, accountId: number): void
 
 为指定用户添加禁用的星闪协议名单。NearLink Kit（星闪服务）提供一种低功耗、高速率的短距离通信服务，支持星闪设备之间的连接、数据交互。<!--RP3--><!--RP3End-->本接口对键盘、手写笔等系统服务和系统应用不生效。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -643,8 +800,6 @@ addDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProtocol
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -703,6 +858,10 @@ removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProto
 为指定用户移除禁用的星闪协议名单。移除成功后，指定用户可以重新使用移除列表中的星闪协议进行通信，恢复相应的协议连接能力。使用场景：在企业设备管理场景下，管理员可通过此接口移除之前设置的星闪协议禁用策略，允许用户恢复使用星闪协议进行设备间通信。适用于需要恢复特定用户星闪通信能力的场景，帮助企业管理员灵活调整用户设备的星闪协议访问权限，满足不同业务场景的通信需求。
 
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -710,8 +869,6 @@ removeDisallowedNearLinkProtocols(admin: Want, protocols: Array&lt;NearLinkProto
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -826,6 +983,10 @@ setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
 设置是否支持本地安装企业应用。设置为支持安装后，具备本地安装能力的PC/2in1企业设备可本地双击应用安装包，安装签名证书分发类型为enterprise_normal的企业应用。<!--RP8--><!--RP8End-->
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。任意一个MDM应用设置支持本地安装企业应用，则综合策略即为支持本地安装企业应用。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -833,8 +994,6 @@ setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 **设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。任意一个MDM应用设置支持本地安装企业应用，则综合策略即为支持本地安装企业应用。
 
 **参数：**
 
@@ -880,7 +1039,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
-查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。<!--RP8--><!--RP8End-->
+查询是否支持本地安装企业应用。适用于需要验证设备本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保设备能够正常安装企业应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -939,6 +1098,10 @@ setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 
 设置设备重启自动解锁，仅针对无锁屏密码设备生效。适用于企业无人值守设备或需要快速重启恢复服务的场景，避免因手动解锁导致的设备停机时间，提升设备运维效率和业务连续性。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则，任意一个MDM应用设置设备重启自动解锁，则综合策略即为设备重启自动解锁。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -946,8 +1109,6 @@ setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，任意一个MDM应用设置设备重启自动解锁，则综合策略即为设备重启自动解锁。
 
 **参数：**
 
@@ -1038,8 +1199,8 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  systemManager.getAutoUnlockAfterReboot(wantTemp);
-  console.info('Succeeded in getting auto unlock after reboot.');
+  let result: boolean = systemManager.getAutoUnlockAfterReboot(wantTemp);
+  console.info(`Succeeded in getting auto unlock after reboot. result: ${result}`);
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
 }
@@ -1209,7 +1370,7 @@ let wantTemp: Want = {
 };
 
 let keyCodes: Array<systemManager.KeyCode> = [
-  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP,
+  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP
 ];
 
 try {
@@ -1337,13 +1498,16 @@ try {
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
+开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。使用Promise异步回调。
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
-- 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
 - 任务执行完成后，通过[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调函数通知给MDM应用，系统将已收集的日志文件挂载到MDM应用沙箱路径，MDM应用可以在回调函数中读取已收集的日志。
 - 如果日志收集任务执行超过5分钟，[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调函数会返回日志收集任务失败。
 - 应用取走日志后，建议调用[systemManager.finishLogCollected](#systemmanagerfinishlogcollected23)删除已收集到的日志。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
 
 **需要权限：** ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1352,8 +1516,6 @@ startCollectLog(admin: Want): Promise&lt;void&gt;
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
 
 **参数：**
 
@@ -1409,7 +1571,7 @@ finishLogCollected(admin: Want): void
 > 
 > 在应用调用[startCollectLog](#systemmanagerstartcollectlog23)开始收集日志后，收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调时，建议立即拷贝或者处理日志，并调用此接口删除收集到的日志。
 > 
-> 若不调本接口，设备日志会占用系统存储空间，不影响下一次调用[startCollectLog](#systemmanagerstartcollectlog23)启动日志收集任务。
+> 若不调用本接口，设备日志会占用系统存储空间，不影响下一次调用[startCollectLog](#systemmanagerstartcollectlog23)启动日志收集任务。
 
 **需要权限：** ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1460,7 +1622,11 @@ try {
 
 setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
 
-禁用/启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
+禁用/启用设备激活锁。使用Promise异步回调。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1469,8 +1635,6 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1527,7 +1691,7 @@ systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then((
 
 isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
 
-获取设备激活锁禁用状态。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
+获取设备激活锁禁用状态。使用Promise异步回调。适用于需要验证设备激活锁功能状态的场景，帮助企业管理员确认设备的安全配置，特别是在设备转让或回收时需要了解激活锁状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1595,6 +1759,8 @@ setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, ac
 >
 > 1. 已通过[setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20)开启离线安装器；
 > 2. 已通过本接口设置当前用户支持本地安装企业应用。
+>
+> 3. 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。任意一个MDM应用设置支持本地安装企业应用，则综合策略即为支持本地安装企业应用。
 <!--RP7--><!--RP7End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
@@ -1604,8 +1770,6 @@ setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, ac
 **设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。任意一个MDM应用设置支持本地安装企业应用，则综合策略即为支持本地安装企业应用。
 
 **参数：**
 
@@ -1654,7 +1818,7 @@ try {
 
 getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
 
-查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。<!--RP8--><!--RP8End-->
+查询指定用户是否支持本地安装企业应用。适用于需要验证特定用户本地安装企业应用功能是否开启的场景，帮助企业管理员确认策略配置状态，确保用户能够正常安装企业应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -1710,11 +1874,346 @@ try {
 }
 ```
 
+## systemManager.addAllowedPrinterIPAddressesForDevice
+
+addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
+
+为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+- 已通过[addAllowedPrinterIPAddressesForAccount](#systemmanageraddallowedprinteripaddressesforaccount)设置白名单后再调用本接口，会报策略冲突（9200010）。
+- 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
+- 为设备添加白名单后，可通过[removeAllowedPrinterIPAddressesForDevice](#systemmanagerremoveallowedprinteripaddressesfordevice)移除白名单；白名单为空时，所有网络打印机均不受本策略管控。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。最多可设置100个IP地址 （白名单内已设置60条IP，最多再设置40条）。|
+
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.|
+| 9200012  | Parameter verification failed. |
+| 9200019  | The policy list has exceeded the limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.addAllowedPrinterIPAddressesForDevice(ipArray);
+  console.info('Succeeded in adding the allowed printer IP Addresses for the device.');
+} catch (err) {
+  console.error(`Failed to add the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.removeAllowedPrinterIPAddressesForDevice
+
+removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
+
+为当前设备移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.removeAllowedPrinterIPAddressesForDevice(ipArray);
+  console.info('Succeeded in removing the allowed printer IP Addresses for the device.');
+} catch (err) {
+  console.error(`Failed to remove the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getAllowedPrinterIPAddressesForDevice
+
+getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array&lt;string&gt;
+
+获取设备基于IP管控的网络打印机白名单。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常返回白名单数组，在其他设备中返回空数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF和ALL，不传时，等效于SELF。                                   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt;          | 基于IP管控的网络打印机白名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForDevice(common.QueryPolicy.ALL);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for the device.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```
+## systemManager.addAllowedPrinterIPAddressesForAccount
+
+addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
+
+为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机允许打印，不在白名单内的网络打印机无法打印。
+- 已通过[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)设置白名单后，再调用本接口，会报策略冲突（9200010）。
+- 已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口，策略可设置成功，但打印功能依然被禁用。
+- 为当前用户添加白名单后，可通过[removeAllowedPrinterIPAddressesForAccount](#systemmanagerremoveallowedprinteripaddressesforaccount)移除白名单；当白名单为空时，所有网络打印机均不受本策略管控。
+- 如果需要为当前设备添加基于IP的网络打印机白名单策略，请参考[addAllowedPrinterIPAddressesForDevice](#systemmanageraddallowedprinteripaddressesfordevice)接口。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。最多可设置100个IP地址 （白名单内已设置60条IP，最多再设置40条）。|
+
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.|
+| 9200012  | Parameter verification failed. |
+| 9200019  | The policy list has exceeded the limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+
+try {
+  systemManager.addAllowedPrinterIPAddressesForAccount(ipArray);
+  console.info('Succeeded in adding the allowed printer IP Addresses for current user.');
+} catch (err) {
+  console.error(`Failed to add the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.removeAllowedPrinterIPAddressesForAccount
+
+removeAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
+
+为当前用户移除基于IP管控的网络打印机白名单。移除成功后，当白名单为空时，所有网络打印机均不受本策略管控；当白名单不为空时，已从白名单中移除IP的网络打印机将无法打印。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                                    | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| ipAddresses  | Array&lt;string&gt;               | 是   | IP地址（IPv4和IPv6，只允许输入完整标准格式的地址）。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. | 
+| 9200012  | Parameter verification failed. |                
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+
+// 需要根据实际情况替换
+const ipArray: Array<string> = ['192.1.1.1', '2001:0db8:0000:0000:0000:0000:1428:57ab'];
+try {
+  systemManager.removeAllowedPrinterIPAddressesForAccount(ipArray);
+  console.info('Succeeded in removing the allowed printer IP Addresses for current user.');
+} catch (err) {
+  console.error(`Failed to remove the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getAllowedPrinterIPAddressesForAccount
+
+getAllowedPrinterIPAddressesForAccount(queryPolicy?: common.QueryPolicy): Array&lt;string&gt;
+
+获取当前用户基于IP管控的网络打印机白名单。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常返回白名单数组，在其他设备中返回空数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| queryPolicy   | [common.QueryPolicy](js-apis-enterprise-common.md#querypolicy) | 否   | 获取的策略。类型为SELF和ALL，不传时，等效于SELF。                                   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt;          | 当前用户基于IP管控的网络打印机白名单。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { common, systemManager } from '@kit.MDMKit';
+
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForAccount(common.QueryPolicy.SELF);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for current user.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for current user. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## SystemUpdateInfo
 
 待更新的系统版本信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- |------------- |
@@ -1727,6 +2226,8 @@ try {
 升级策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | -----| -------------------------- |
@@ -1744,12 +2245,14 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
-| DEFAULT | 0 | 默认升级策略。周期提示用户，用户确认后升级。 |
+| DEFAULT | 0 | 默认升级策略。周期弹框提醒用户升级。周期从24小时开始逐渐延长。 |
 | PROHIBIT  | 1 | 禁止升级策略。 |
-| UPDATE_TO_SPECIFIC_VERSION | 2 | 强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。 |
-| WINDOWS | 3 | 指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。 |
+| UPDATE_TO_SPECIFIC_VERSION | 2 | 强制升级策略。需指定最晚升级时间（latestUpdateTime）参数。1. 距离最晚升级时间大于48小时未升级，提醒弹框每24小时常规提醒一次。2. 距离最晚升级时间小于48小时未升级，每隔X小时周期提醒安装升级，消息处于通知中心，且不可移除。3. 超过最晚升级时间还未升级，弹出闲时强制升级提醒。  |
+| WINDOWS | 3 | 指定时间窗口升级策略。需指定时间窗口参数（installStartTime、installEndTime）。时间窗口必须大于5分钟。1. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后满足空闲条件，自动升级。2. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C大于半小时，在C和B之间重新刷新一个随机时间D，到达D时间后满足空闲条件，自动升级。3. 配置时间窗口[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C大于半小时，在C和B之间重新刷新一个随机时间D，到达D时间后不满足空闲条件，24小时后再检测，即窗口任务推迟到下一个[A，B]窗口。4. 配置时间[A，B]，获取到窗口中的随机升级时间C，到达时间后不满足空闲条件，B-C小于或等于半小时，24小时后再检测，即窗口任务推迟到下一个[A，B]窗口。 |
 | POSTPONE | 4 | 延迟升级策略。延迟指定时间（delayUpdateTime）后进入DEFAULT模式，周期提示用户升级。 |
 
 ## UpdatePackageInfo
@@ -1757,6 +2260,8 @@ try {
 系统更新包信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | ---- |------------- |
@@ -1771,6 +2276,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- | ------------- |
 | type       | [PackageType](#packagetype) | 否   | 否 |  系统更新包类型。   |
@@ -1783,6 +2290,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | --- | --- | ------------- |
 | notify       | [NotifyDescription](#notifydescription) | 否   | 是 | 企业自定义更新通知说明。   |
@@ -1792,6 +2301,8 @@ try {
 企业自定义更新通知说明。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型     | 只读  |  可选 | 说明            |
 | ----------------- | ------ | --- | ---- | ------------- |
@@ -1803,6 +2314,8 @@ try {
 系统更新结果信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 类型   | 只读  | 可选   | 说明            |
 | ----------------- | ------ | ------ | ------ | ------------- |
@@ -1816,6 +2329,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 类型     | 只读  | 可选 | 说明            |
 | ----------------- | ------ | ------ | ------ | ------------- |
 | code       | number | 否 | 否 | 错误码。   |
@@ -1827,6 +2342,8 @@ try {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
 | FIRMWARE | 1 | 固件。 |
@@ -1836,6 +2353,8 @@ try {
 系统更新状态。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称               | 值  | 说明    |
 | -----------------  | ---- | ----- |

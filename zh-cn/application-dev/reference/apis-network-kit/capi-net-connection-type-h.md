@@ -8,7 +8,7 @@
 
 ## 概述
 
-为网络管理数据网络连接模块提供C接口。
+定义网络管理数据网络连接模块的C接口数据结构。
 
 **引用文件：** <network/netmanager/net_connection_type.h>
 
@@ -115,7 +115,7 @@ enum NetConn_NetBearerType
 | 枚举项 | 描述 |
 | -- | -- |
 | NETCONN_BEARER_CELLULAR = 0 | 蜂窝网络 |
-| NETCONN_BEARER_WIFI = 1 | WIFI |
+| NETCONN_BEARER_WIFI = 1 | Wi-Fi |
 | NETCONN_BEARER_BLUETOOTH = 2 | 蓝牙<br>**起始版本：** 12 |
 | NETCONN_BEARER_ETHERNET = 3 | Ethernet |
 | NETCONN_BEARER_VPN = 4 | VPN<br>**起始版本：** 12 |
@@ -217,9 +217,9 @@ typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const 
 
 | 参数项 | 描述 |
 | -- | -- |
-| (int32_t result | 重新认证的结果。0表示成功，其他值表示失败。 |
-| [const NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) \*proxy | 当重新认证成功（result为0）时，表示刷新后的全局HTTP代理信息。如果重新认证失败（result非0）时，proxy为NULL。该proxy对象由系统持有，仅在该回调函数内部有效。调用者不得释放或修改它。如果调用者需要在回调返回后继续使用该代理信息，必须进行深拷贝。 |
-| void \*userContext | 用户自定义数据。系统不会访问、拷贝或释放该数据。 |
+| int32_t result | 重新认证的结果。0表示成功，其他值表示失败。 |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | 当重新认证成功（result为0）时，表示刷新后的全局HTTP代理信息。当重新认证失败（result非0）时，proxy为NULL。该proxy对象由系统持有，仅在该回调函数内部有效。调用者不得释放或修改它。如果调用者需要在回调返回后继续使用该代理信息，必须进行深拷贝。 |
+| void *userContext | 用户自定义数据。系统不会访问、拷贝或释放该数据。 |
 
 ### OH_NetConn_NetworkAvailable()
 

@@ -31,7 +31,7 @@ Inner error.
 3. 使用读连接进行写操作。读连接不可用于执行写库操作，仅可执行读库操作。
 4. 事务未提交时，调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或者[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)等接口依次执行删除触发器、删除表、重建表等DDL操作，后续再次执行类似操作时会出现失败。
 5. 并发查询和删除同一批数据。
-6. 根密钥生成失败。huks生成根密钥失败，无法进一步生成加密数据库的密钥，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等开库接口打开加密数据库会失败。
+6. 根密钥生成失败。HUKS生成根密钥失败，无法进一步生成加密数据库的密钥，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等开库接口打开加密数据库会失败。
 7. 远程查询时，没有查询到数据。在对端数据库中不存在要查询的数据的情况下，调用[remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery)接口进行远程查询，获取到结果集后，再调用[goToFirstRow](arkts-apis-data-relationalStore-ResultSet.md#gotofirstrow)等接口获取数据会失败。
 8. 数据管理服务启动失败。在数据管理服务启动失败的情况下，无法设置分布式表，因此调用[setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)等设置分布式表接口会失败。
 
@@ -138,7 +138,7 @@ The current operation failed because the database is corrupted.
    - 是：确保db文件和wal文件对应，并同步处理数据库文件异常。如果可以接受数据丢失，可删除原有数据库并重新创建；否则，请先完成数据库备份，再执行恢复操作。具体操作可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
    - 否：提供hilog系统日志，联系技术支撑人员定位。
 
-## 14800012 结果集为空或指定位置不合法
+## 14800012 结果集为空或指针索引越界
 
 **错误信息**
 
@@ -146,7 +146,7 @@ ResultSet is empty or pointer index is out of bounds.
 
 **错误描述**
 
-结果集为空或指定位置不合法。
+结果集为空或指针索引越界。
 
 **可能原因**
 
@@ -170,7 +170,7 @@ ResultSet is empty or pointer index is out of bounds.
    - 是：提供hilog系统日志，联系技术支撑人员定位。
    - 否：确保查询条件符合预期，可以查询到数据。
 
-## 14800013 列号越界或列类型与当前调用接口不兼容
+## 14800013 列索引越界
 
 **错误信息**
 
@@ -583,12 +583,32 @@ SQLite：由于违反约束而中止。
 
 **可能原因**
 
-1. 尝试写入SQLite数据库时违反了数据库的完整性约束条件。
-2. 参见SQLITE_CONSTRAINT的相关错误场景。
+调用[insert](arkts-apis-data-relationalStore-RdbStore.md#insert)、[update](arkts-apis-data-relationalStore-RdbStore.md#update)、[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)或[executeSql](arkts-apis-data-relationalStore-RdbStore.md#executesql)等接口写入或更新数据时，数据违反了数据库的完整性约束。常见场景包括：
+
+1. 非空约束（NOT NULL）冲突：向声明了NOT NULL的列插入NULL值或更新为NULL值。
+2. 唯一约束（UNIQUE）冲突：向声明了UNIQUE的列插入或更新为与已有数据重复的值。
+3. 主键约束（PRIMARY KEY）冲突：向主键列插入与已有数据重复的值。对于使用`INTEGER PRIMARY KEY AUTOINCREMENT`的自增主键列，若显式指定一个已存在的值进行插入，同样会触发此冲突。
+4. 检查约束（CHECK）冲突：插入或更新的值不满足列上定义的CHECK条件。例如，列上定义了`CHECK(age > 0)`，插入`age`为负数时会报此错误。
+5. 外键约束（FOREIGN KEY）冲突：插入或更新的数据引用了父表中不存在的外键值，或者删除、更新父表数据时存在子表的外键引用。
+6. 参见SQLITE_CONSTRAINT的相关错误场景。
 
 **处理步骤**
 
-检查试图插入或更新的数据是否违反了上述约束。
+1. 确认问题时间点附近，是否存在以`constraint failed`结尾的日志打印，该日志通常会指明具体的约束类型和涉及的表名、列名。
+   - 是：根据日志中提示的约束类型，转对应步骤。
+   - 否：转步骤2。
+2. 排查非空约束冲突：检查业务代码中[insert](arkts-apis-data-relationalStore-RdbStore.md#insert)或[update](arkts-apis-data-relationalStore-RdbStore.md#update)传入的数据，确认声明了NOT NULL的列是否被遗漏或赋值为NULL。
+   - 是：确保NOT NULL列有有效的非NULL值后再执行写入。
+   - 否：转下一步。
+3. 排查唯一约束和主键约束冲突：检查写入的数据中，UNIQUE列或主键列的值是否与表中已有数据重复。对于`INTEGER PRIMARY KEY AUTOINCREMENT`的自增主键列，确认是否显式指定了已存在的值。
+   - 是：使用不同的值，或先删除冲突的已有数据再写入。对于自增主键列，建议插入时不显式指定主键值，由数据库自动分配。
+   - 否：转下一步。
+4. 排查检查约束冲突：检查写入的值是否满足表定义中CHECK条件表达式。
+   - 是：调整为满足CHECK条件的值。
+   - 否：转下一步。
+5. 排查外键约束冲突：确认插入的外键值在父表中存在；删除或更新父表数据时，确认是否仍有子表数据引用该行。
+   - 是：先在父表中插入对应数据，或先处理子表中的引用数据（删除或更新子表引用），再操作父表。
+   - 否：检查SQL语句中触发器（Trigger）是否存在约束冲突，调整触发器逻辑或数据。
 
 ## 14800033 SQLite：数据类型不匹配
 

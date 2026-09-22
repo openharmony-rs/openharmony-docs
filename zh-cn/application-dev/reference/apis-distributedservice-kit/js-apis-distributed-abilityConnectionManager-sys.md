@@ -33,7 +33,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -41,7 +41,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，当协同状态发生变化时触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 是    | 回调函数，返回协同事件的信息。    |
+| callback | Callback&lt;[CollaborateEventInfo](./js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 回调函数，返回协同事件的信息。    |
 
 **错误码：**
 
@@ -49,7 +49,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -78,7 +78,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -94,7 +94,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -123,7 +123,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -131,7 +131,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'。    |
 | sessionId | number  | 是    | 表示创建的协同会话ID，需先创建协同会话后获取。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
+| callback | Callback&lt;[CollaborateEventInfo](./js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
 
 **错误码：**
 
@@ -139,7 +139,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -165,7 +165,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -181,7 +181,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -207,7 +207,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -229,7 +229,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -294,7 +294,7 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -315,7 +315,7 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system App.                                              |
+| 202      | Permission verification failed. A non-system application calls a system API.                                              |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 32300001 | Only one stream can be created for the current session.      |
 | 32300003 | Bitrate not supported.                                       |
@@ -359,7 +359,7 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -375,7 +375,7 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -410,7 +410,7 @@ getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -431,7 +431,7 @@ getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -464,7 +464,7 @@ updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -479,7 +479,7 @@ updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;v
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -513,7 +513,7 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -527,7 +527,7 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -553,7 +553,7 @@ startStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -567,7 +567,7 @@ startStream(streamId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300002      | The stream at the receive end is not started. |
 
@@ -594,7 +594,7 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -608,7 +608,7 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Not system App.|
+| 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -632,6 +632,8 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**系统接口**：此接口为系统接口。
+
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | name  | string   | 否    | 否 |   表示流传输的名称（接收端必须与发送端一致）。 |
@@ -648,6 +650,8 @@ Surface配置参数。
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统接口**：此接口为系统接口。
 
 | 名称       | 类型   | 只读 | 可选 | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
@@ -667,6 +671,8 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**系统接口**：此接口为系统接口。
+
 | 名称|  值 | 说明 |
 |-------|-------|-------|
 | HORIZONTAL | 0 | 表示水平翻转。 |
@@ -682,6 +688,8 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**系统接口**：此接口为系统接口。
+
 | 名称|  值 | 说明 |
 |-------|-------|-------|
 | SOURCE  | 0 | 表示流是发送流。 |
@@ -696,6 +704,8 @@ Surface配置参数。
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统接口**：此接口为系统接口。
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
@@ -731,32 +741,6 @@ Surface配置参数。
 | 名称       | 类型    | 只读  | 可选  | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | image  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   |   表示接收的图片。不传入该参数时表示未接收到图片或图片信息不可用。 |
-
-## CollaborateEventInfo
-
-协同事件信息。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称       | 类型   | 只读   | 可选   | 说明      |
-| -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型。 |
-| eventMsg | string | 否   | 是   | 表示协同事件的消息内容。 |
-
-## CollaborateEventType
-
-协同事件类型的枚举。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称|  值 | 说明 |
-|-------|-------|-------|
-| SEND_FAILURE | 0 |表示任务发送失败。|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
 
 ## StartOptionParams
 

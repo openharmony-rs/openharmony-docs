@@ -40,7 +40,7 @@ onTouch(event: (event: TouchEvent) => void): T
 
 ## TouchEvent对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。在非事件注入场景下，changedTouches是按屏幕刷新率重采样的点，而touches是按器件刷新率上报的点，因此changedTouches与touches的数据可能不同。
+继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。在非事件注入场景下，changedTouches是按屏幕刷新率重采样的点，而touches是按器件刷新率上报的点，因此changedTouches与touches的数据可能不同。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +89,7 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 | 名称    | 类型                              | 只读 | 可选          | 说明                                  |
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | 否 | 否 | 触摸事件的类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| id      | number                                      | 否 | 否 | 手指唯一标识符。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
+| id      | number                                      | 否 | 否 | 触摸点唯一标识符。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
 | x       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | y       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | windowX<sup>10+</sup>  | number                       | 否 | 否 | 触摸点在当前应用窗口坐标系中的X坐标。<br>单位：vp<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
@@ -110,7 +110,7 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 
 getCurrentLocalPosition?(): Coordinate2D
 
-获取触摸位置相对于当前组件实时位置左上角的坐标。
+获取触摸位置相对于当前组件实时位置左上角的坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
 **起始版本：** 26.0.0
 
@@ -179,6 +179,7 @@ struct TouchExample {
             if (event.touches.length > 0) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime
@@ -210,6 +211,7 @@ struct TouchExample {
             if (event.touches.length > 0) {
               this.text = 'TouchType:' + this.eventType
                 + '\nDistance between touch point and touch element:'
+                + '\n  id: ' + event.touches[0].id
                 + '\n  x: ' + event.touches[0].x + '\n  y: ' + event.touches[0].y
                 + '\n  width: ' + event.touches[0].width + '\n  height: ' + event.touches[0].height
                 + '\n  pressedTime: ' + event.touches[0].pressedTime

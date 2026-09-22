@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -39,9 +39,15 @@ let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 // 2. 获取键盘代理对象，监听物理键盘和编辑框变化事件
 let keyboardDelegate = inputMethodEngine.getKeyboardDelegate();
-keyboardDelegate.on('keyDown', (event) => { return true; });
-keyboardDelegate.on('cursorContextChange', (x, y, height) => {});
-keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {});
+keyboardDelegate.on('keyDown', (event) => {
+  return true;
+});
+keyboardDelegate.on('cursorContextChange', (x, y, height) => {
+  // do something
+});
+keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
+  // do something
+});
 
 // 3. 订阅输入法绑定事件，获取KeyboardController和InputClient
 inputMethodAbility.on('inputStart', (kbController, inputClient) => {
@@ -114,6 +120,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_NEW_PASSWORD<sup>20+</sup> | number | 11 | 新密码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_NUMBER_DECIMAL<sup>20+</sup> | number | 12 | 带小数点的数字编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | 验证码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| PATTERN_ONE_TIME_CODE_NUMBER | number | 15 | 数字验证码编辑框。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | OPTION_ASCII | number | 20 | 允许输入ASCII值。 |
 | OPTION_NONE | number | 0 | 不指定编辑框输入属性。 |
 | OPTION_AUTO_CAP_CHARACTERS | number | 2 | 允许输入字符。 |
@@ -149,7 +156,7 @@ getInputMethodAbility(): InputMethodAbility
 
 ```ts
 // 获取输入法应用客户端实例
-let InputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
 ```
 
 ## inputMethodEngine.getKeyboardDelegate<sup>9+</sup>
@@ -170,7 +177,7 @@ getKeyboardDelegate(): KeyboardDelegate
 
 ```ts
 // 获取客户端编辑事件监听代理实例
-let KeyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+let keyboardDelegate: inputMethodEngine.KeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
 ```
 
 ## inputMethodEngine.getInputMethodEngine<sup>(deprecated)</sup>
@@ -392,6 +399,8 @@ InputMethodAbility是输入法应用的核心能力对象，提供输入法生�
 5. 在InputMethodExtensionAbility的onDestroy生命周期中调用destroyPanel()销毁面板，取消所有事件订阅。
 
 下列API均需使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)获取到InputMethodAbility实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### on('inputStart')<sup>9+</sup>
 
@@ -806,7 +815,7 @@ on(type: 'callingDisplayDidChange', callback: Callback\<number>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -920,7 +929,7 @@ getSecurityMode(): SecurityMode
 
 ```ts
 let security: inputMethodEngine.SecurityMode = inputMethodEngine.getInputMethodAbility().getSecurityMode();
-console.error(`getSecurityMode, securityMode is : ${security}`);
+console.info(`getSecurityMode, securityMode is : ${security}`);
 ```
 
 ### createPanel<sup>10+</sup>
@@ -947,7 +956,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前输入法应用上下文信息。 |
 | info    | [PanelInfo](#panelinfo10)   | 是   | 输入法面板信息。 |
-| callback | AsyncCallback\<[Panel](#panel10)> | 是   | 回调函数。当输入法面板创建成功，返回当前创建的输入法面板对象。  |
+| callback | AsyncCallback\<[Panel](#panel10)> | 是   | 回调函数。当输入法面板创建成功，err为undefined，data为获取到的Panel对象；否则为错误对象。  |
 
 **错误码：**
 
@@ -1013,7 +1022,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise&lt;Panel&gt;
 **返回值：**
 | 类型   | 说明                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise&lt;[Panel](#panel10)&gt; | Promise对象。当输入法面板创建成功，返回当前创建的输入法面板对象。  |
+| Promise&lt;[Panel](#panel10)&gt; | Promise对象，返回Panel对象。  |
 
 **错误码：**
 
@@ -1193,6 +1202,8 @@ KeyboardDelegate是键盘事件监听代理对象，用于输入法应用监听�
 - 需要根据编辑框实时状态（光标、选区、文本、属性）调整输入法行为时，订阅对应的on事件。
 
 下列API均需使用[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)获取到KeyboardDelegate实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### on('keyDown'|'keyUp')
 
@@ -1539,6 +1550,8 @@ Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺�
 5. 使用完毕后调用[destroyPanel](#destroypanel10)销毁面板，释放资源。
 
 下列API均需使用[createPanel](#createpanel10)获取到Panel实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### setUiContent<sup>10+</sup>
 
@@ -1892,7 +1905,7 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. [since 18] |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：18+ |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -2735,7 +2748,7 @@ setPrivacyMode(isPrivacyMode: boolean): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
@@ -2823,7 +2836,7 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801  |capability not supported.                          |
+| 801  |Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                          |
 | 12800002   |input method engine error. Possible causes:1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013   |window manager service error.                          |
 | 12800020   |invalid immersive effect. 1.The gradient mode and the fluid light mode can only be used when the immersive mode is enabled. 2.The fluid light mode can only be used when the gradient mode is enabled. 3.When the gradient mode is not enabled, the gradient height can only be 0. |
@@ -2926,15 +2939,19 @@ let panelConfig: inputMethodEngine.PanelInfo = {
 }
 // 以下逻辑需要在输入法InputMethodExtensionAbility中执行，this.context是InputMethodExtensionAbility的上下文
 // 创建输入法面板
-inputMethodAbility.createPanel(this.context, panelConfig).then( (panel: inputMethodEngine.Panel) =>{
+inputMethodAbility.createPanel(this.context, panelConfig).then((panel: inputMethodEngine.Panel) => {
   panel.getDisplayId().then((displayId: number) => {
     panel.getSystemPanelCurrentInsets(displayId).then((insets: inputMethodEngine.SystemPanelInsets) => {
       console.info(`getSystemPanelCurrentInsets success, insets is { left: ${insets.left}, right: ${insets.right}, bottom: ${insets.bottom} }`);
     }).catch((error: BusinessError) => {
       console.error(`getSystemPanelCurrentInsets failed, code: ${error.code}, message: ${error.message}`);
-    })
+    });
+  }).catch((error: BusinessError) => {
+    console.error(`getDisplayId failed, code: ${error.code}, message: ${error.message}`);
   });
-})
+}).catch((error: BusinessError) => {
+  console.error(`createPanel failed, code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ### setSystemPanelButtonColor<sup>22+</sup>
@@ -2981,6 +2998,8 @@ try {
 ## KeyboardController
 
 下列API均需使用[on('inputStart')](#oninputstart9)获取到KeyboardController实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### hide<sup>9+</sup>
 
@@ -3118,7 +3137,7 @@ keyboardController.hideKeyboard().then(() => {
 
 exitCurrentInputType(callback: AsyncCallback&lt;void&gt;): void
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用callback异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3155,7 +3174,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 exitCurrentInputType(): Promise&lt;void&gt;
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用promise异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3256,6 +3275,8 @@ keyboardController.exitCurrentInputType().then(() => {
 >
 > 若取消注册全局已注册的对象时，会触发被取消对象中[onTerminated](#onterminated15)回调函数。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### onMessage<sup>15+</sup>
 
 onMessage(msgId: string, msgParam?: ArrayBuffer): void
@@ -3345,6 +3366,8 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 - 同名Sync后缀接口为同步接口，阻塞主线程，容易影响UI交互，需谨慎使用。
 
 下列API均需使用[on('inputStart')](#oninputstart9)获取到InputClient实例后，通过实例调用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 ### sendKeyFunction<sup>9+</sup>
 
@@ -4776,10 +4799,11 @@ inputMethodEngine.getInputMethodAbility().on('inputStart', (kbController, textIn
   let record: Record<string, inputMethodEngine.CommandDataType> = {
     "valueString1": "abcdefg",
     "valueString2": true,
-    "valueString3": 500,
+    "valueString3": 500
   }
-  textInputClient.sendPrivateCommand(record).then(() => {
-  }).catch((err: BusinessError) => {
+textInputClient.sendPrivateCommand(record).then(() => {
+  // do something
+}).catch((err: BusinessError) => {
     if (err) {
       console.error(`sendPrivateCommand catch error: ${err.code}, message: ${err.message}`);
     }
@@ -5102,7 +5126,7 @@ getAttachOptions(): AttachOptions
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19] |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>适用版本：19-19 |
 
 > **注意：**
 >
@@ -5136,7 +5160,7 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19]. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19-19。 |
 
 > **注意：**
 >
@@ -5398,6 +5422,8 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 >
 > 从 API version 8开始支持，从API version 9开始废弃。建议使用[InputClient](#inputclient9)替代。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ### getForward<sup>(deprecated)</sup>
 
 getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
@@ -5538,7 +5564,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: number = 1;
 textInputClient.getBackward(length).then((text: string) => {
-  console.info(`'Succeeded in getting backward: ${text}`);
+  console.info(`Succeeded in getting backward: ${text}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to getBackward. Code is ${err.code}, message is ${err.message}`);
 });

@@ -12,11 +12,11 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 ## 概述
 
-声明元能力want结构。
+声明元能力Want结构。
 
 **起始版本：** 20
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [embedded_component.h](capi-embedded-component-h.md)
 

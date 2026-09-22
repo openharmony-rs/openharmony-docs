@@ -6,7 +6,7 @@
 <!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:43:11.396Z pushedAt=2026-07-22T03:44:57.429Z -->
+<!-- md-trans-meta sourceCommit=e61ddbe3678f9bd8d5e66ddc8f211e90acef6e86 translatedAt=2026-08-24T11:34:14.657Z pushedAt=2026-08-25T06:14:05.310Z -->
 
 ## Overview
 
@@ -241,7 +241,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 3. Create a **Connection** object, subscribe to connection events, and connect to the server.
 
     ```ts
-    const TAG = "testDemo";
+    const TAG = "TEST";
     // Connect to the server.
     linkEnhanceConnect(peerDeviceId: string) {
       console.info(TAG + 'connection server deviceId = ' + peerDeviceId);

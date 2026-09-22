@@ -25,7 +25,7 @@ import { componentUtils } from '@kit.ArkUI';
 
 getRectangleById(id: string): ComponentInfo
 
-根据组件ID获取组件实例对象，通过组件实例对象将获取的坐标位置和大小同步返回给开发者。
+根据组件ID获取组件的大小、位置及变换信息，并将结果同步返回给开发者。
 
 > **说明：**
 >
@@ -83,9 +83,9 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | translate      | [TranslateResult](#translateresult)| 否       | 否     | 组件平移信息。                |
 | scale          | [ScaleResult](#scaleresult) | 否       | 否     | 组件缩放信息。                |
 | rotate         | [RotateResult](#rotateresult) | 否       | 否     | 组件旋转信息。                |
-| transform      | [Matrix4Result](#matrix4result) | 否       | 否     | 仿射矩阵信息，根据入参创建的四阶矩阵对象。  |
+| transform      | [Matrix4Result](#matrix4result) | 否       | 否     | 仿射矩阵信息，为长度为16的number数组。  |
 
-### Size
+## Size
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -96,7 +96,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | width    | number | 否       | 否     | 组件宽度。<br>单位：px                      |
 | height   | number | 否       | 否     | 组件高度。<br>单位：px                      |
 
-### Offset
+## Offset
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -107,7 +107,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | x       | number| 否       | 否     | x点坐标。<br>单位：px                           |
 | y       | number| 否       | 否     | y点坐标。<br>单位：px                           |
 
-### TranslateResult
+## TranslateResult
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -119,7 +119,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | y       | number | 否       | 否    | y轴平移距离。<br>单位：vp                       |
 | z       | number | 否       | 否     | z轴平移距离。<br>单位：vp                       |
 
-### ScaleResult
+## ScaleResult
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -133,7 +133,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | centerX | number | 否       | 否 | 变换中心点x轴坐标。<br>单位：vp                  |
 | centerY | number | 否       | 否  | 变换中心点y轴坐标。<br>单位：vp                |
 
-### RotateResult
+## RotateResult
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -148,7 +148,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | centerX | number | 否       | 否  | 变换中心点x轴坐标。<br>单位：vp                 |
 | centerY | number | 否       | 否  | 变换中心点y轴坐标。<br>单位：vp                 |
 
-### Matrix4Result
+## Matrix4Result
 
 type Matrix4Result = [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]
 
@@ -216,7 +216,7 @@ struct Utils {
         })
         .width(300)
         .height(100)
-        .key('image_01')
+        .id('image_01')
       Button('getRectangleById')
         .onClick(() => {
           this.value = JSON.stringify(this.getUIContext()

@@ -808,3 +808,59 @@ With this permission, the application can access device-side model runtime manag
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+Allows an application to manage application-level and session-level fonts.
+
+With this permission, the application can use font management APIs to install, uninstall, and query application-level and session-level fonts, and register font service status listener.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to obtain authorization from the local account.
+
+With this permission, an application can call APIs to request local account authorization. A system authorization dialog will then prompt the user to complete local identity authentication. Upon successful authentication, the specified privileges will be granted, enabling the application to perform corresponding sensitive operations (such as network packet capture).
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
+
+**Since**: 26.1.0
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+Allows an application to identify whether the current user is the device owner.
+
+With this permission, the application can use the user passive recognition capability to identify whether the current user is the device owner and obtain information such as the user ID and authentication trust level.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.GET_STORAGE_VOLUME_INFO
+
+Allows an application to query basic storage device properties.
+
+With this permission, an application can query physical disk information (such as disk ID, device type, vendor ID, and product ID) and volume information (such as volume ID, mount status, capacity, mount path, and file system type) of external storage devices. It also allows querying hardware information (such as physical path, model, brand, media type, operational status, and capacity) of local system and data disks.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs
+
+**Valid since**: 26.0.1

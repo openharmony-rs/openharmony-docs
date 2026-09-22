@@ -4,8 +4,8 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:05:18.711Z pushedAt=2026-06-23T06:12:23.688Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=7cb32cf558e3c75482fc3404f1f7c011a4ecb00a translatedAt=2026-09-15T16:44:41.954Z pushedAt=2026-09-18T10:07:39.216Z -->
 
 ```c
 typedef struct OH_NativeBuffer OH_NativeBuffer
@@ -13,10 +13,13 @@ typedef struct OH_NativeBuffer OH_NativeBuffer
 
 ## Overview
 
-The struct describes the native video stream class for screen capture.
+Describes the original data buffer for screen capture. **OH_NativeBuffer** provides the capability of processing the original video data generated during screen capture. It can encapsulate, transmit, and manage the original video data.
+
+It is used to carry the original video frame data obtained in the **AVScreenCapture** scenario. It can be used for secondary processing of screen capture data, such as pixel-level operations on screen capture frame data in video editing apps and encoding and pushing of original streams in live streaming scenarios.
 
 **Since**: 10
 
 **Related module**: [AVScreenCapture](capi-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
+

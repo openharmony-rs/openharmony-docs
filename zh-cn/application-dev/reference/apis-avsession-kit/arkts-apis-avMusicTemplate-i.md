@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -412,7 +412,7 @@
 | description   | string                                        | 否   | 是   | 对音频的描述。                                      |
 | playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。无默认值。|
 | playMode      | string                                        | 否   | 是   | 音频的播放模式。                                    |
-| extras        | string                                        | 否   | 是   | 音频的额外信息。<br>**起始版本：** 26.1.0                                    |
+| extras        | string                                        | 否   | 是   | 音频的额外信息。<br>**起始版本：** 26.0.1                                    |
 
 ## SearchPlayMusicItem
 

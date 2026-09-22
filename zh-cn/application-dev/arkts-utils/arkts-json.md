@@ -41,7 +41,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 ### stringify
 
-stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string
+stringify(value: Object, replacer?: Transformer, space?: string | number): string
 
 将对象转换为JSON字符串，支持BigInt模式。
 

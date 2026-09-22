@@ -20,7 +20,7 @@ FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新
 import { FormExtensionAbility } from '@kit.FormKit';
 ```
 
-## onShareForm
+## FormExtensionAbility.onShareForm
 
 onShareForm?(formId: string): Record\<string, Object>
 
@@ -59,7 +59,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 }
 ```
 
-## onAcquireFormData<sup>10+</sup>
+## FormExtensionAbility.onAcquireFormData<sup>10+</sup>
 
 onAcquireFormData?(formId: string): Record\<string, Object>
 

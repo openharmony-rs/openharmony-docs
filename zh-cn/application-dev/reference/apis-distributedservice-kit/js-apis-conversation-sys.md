@@ -8,7 +8,7 @@
 
 分布式软总线conversation模块为应用提供跨设备交互能力，包括获取可信设备列表、发送和接收会话数据。通过本模块，应用可以获取同一账号下的可信设备，注册监听器以接收跨设备数据，并通过会话通道向指定设备发送数据。适用于需要跨设备协作和多设备数据传递的场景，可降低跨设备交互的开发复杂度。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 > **说明：**
 >
@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-```js
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 ```
 
@@ -202,10 +202,6 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
-
-**ArkTS-Dyn起始版本：** 26.1.0
-
-**ArkTS-Sta起始版本：** 26.1.0
 
 **参数**：
 

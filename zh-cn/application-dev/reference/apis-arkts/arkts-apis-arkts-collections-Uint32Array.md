@@ -182,7 +182,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | ------- | ------ | ---- | ------------------------------------------ |
 | buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | 是 | 用于构造ArkTS Uint32Array的[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)对象。buffer所占的字节数需是4的整数倍。|
 | byteOffset | number | 否 | 指定buffer的字节偏移，需为非负整数且为4的整数倍。默认值为0。 |
-| length | number | 否 | 指定ArkTS Uint32Array的长度，需为非负整数。默认值为0，此时表示从byteOffset开始到buffer末尾的全部元素。 |
+| length | number | 否 | 指定ArkTS Uint32Array的长度，需为非负整数。默认值为0。 |
 
 **错误码：**
 
@@ -404,7 +404,7 @@ toLocaleString(): string
 // 当前应用所在系统为法国地区
 let array = new collections.Uint32Array([1000, 2000, 3000]);
 let stringArray = array.toLocaleString();
-console.info(stringArray); // 预期输出：1,000, 2,000, 3,000
+console.info(stringArray); // 预期输出：1,000,2,000,3,000
 ```
 
 ## copyWithin

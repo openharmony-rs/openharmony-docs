@@ -26,7 +26,7 @@ registerFont(options: font.FontOptions): void
 
 推荐使用字体引擎的[loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口注册自定义字体。
 
-该接口为异步接口，字体注册为异步过程，不支持并发调用。由于注册是异步完成的，建议在页面初始化阶段（如aboutToAppear）提前调用，以确保字体在使用前已注册完成。
+该接口的字体注册过程为异步，不支持并发调用。由于注册是异步完成的，建议在页面初始化阶段（如aboutToAppear）提前调用，以确保字体在使用前已注册完成。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -181,13 +181,13 @@ struct CompV2 {
 
 **\@Observed+\@Track装饰的class**
 
-class类被\@Observed修饰，从V1向V2传递使用enableV2Compatibility接口装饰的变量。该变量\@Track装饰的属性在V1和V2中均可观察，但非\@Track装饰的属性，在V1的UI中使用会导致运行时错误，而在V2中虽不会报错，但UI不会响应更新。
+class类被\@Observed修饰，从V1向V2传递时调用enableV2Compatibility接口处理的变量。该变量\@Track装饰的属性在V1和V2中均可观察，但非\@Track装饰的属性，在V1的UI中使用会导致运行时错误，而在V2中虽不会报错，但UI不会响应更新。
 
 下面的例子中：
 
 - name是\@Track装饰的属性，其在V1和V2均是可观察的。
 
-- count是非\@Track装饰的属性，其在V1和V2的UI中使用均是非法的。
+- count是非\@Track装饰的属性，其在V1的UI中使用是非法的，在V2的UI中使用不会响应更新。
   - 在V1中，如果将非\@Track装饰的属性使用在UI中，是非法行为，会有运行时报错。
   - 在V2中，非\@Track装饰的属性使用在UI不会有运行时报错，但不会响应更新。
 
@@ -668,7 +668,7 @@ struct CompV1 {
 
 ### 传递内置类型（V2->V1）
 
-如果在V2中定义\@Local arr: Array\<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]))，由于用了\@Local装饰器V2可以观察属性的变化。但是没有调用enableV2Compatibility和makeV1Observed，V1无法观察属性的变化。所以正确做法调用UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())，使V1中可以观察属性的变化。
+如果在V2中定义\@Local arr: Array\<number\> = [1, 2, 3]，由于用了[\@Local](./arkts-new-local.md)装饰器V2可以观察属性的变化。但是没有调用enableV2Compatibility和makeV1Observed，V1无法观察属性的变化。所以正确做法是调用UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())，使V1中可以观察属性的变化。
 
 <!-- @[state_mixed_scene_built_type_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets) --> 
 

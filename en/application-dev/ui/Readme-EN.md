@@ -93,7 +93,7 @@
         - [Migration for Component Reuse](state-management/arkts-v1-v2-migration-reusable.md)
         - [Migration for Repeated Content Rendering](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [Migration for Built-in Objects](state-management/arkts-v1-v2-migration-inner-object.md)
-        - [Widget State Variable Migration](state-management/arkts-v1-v2-migration-application.md)
+        - [Widget State Variable Migration](state-management/arkts-v1-v2-migration-card.md)
         - [Migration for AnimateTo Usage](state-management/arkts-v1-v2-migration-animateTo.md)
       - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
         - [Mixed Use of State Management V1 and V2 (Before API Version 19)](state-management/arkts-v1-v2-mixusage-before-api-version.md)
@@ -116,7 +116,7 @@
     - [\@CustomEnv: Custom Environment Variable](arkts-custom-env-property.md)
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Navigation) (Recommended)]<!--arkts-navigation-navigation-->
+    - Component Navigation (Navigation) (Recommended)<!--arkts-navigation-navigation-->
       - [Navigation Architecture](./arkts-navigation-architecture.md)
       - [Subpage](./arkts-navigation-navdestination.md)
       - [Page Routing](./arkts-navigation-jump.md)
@@ -241,7 +241,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)

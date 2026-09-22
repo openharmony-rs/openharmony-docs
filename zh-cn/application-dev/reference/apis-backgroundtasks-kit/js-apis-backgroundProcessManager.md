@@ -46,7 +46,7 @@ setProcessPriority(pid: number, priority: ProcessPriority): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 401      | Parameter error. Possible causes: priority is out of range. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -56,7 +56,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    await backgroundProcessManager.setProcessPriority(childProcessPid,
+    backgroundProcessManager.setProcessPriority(childProcessPid,
         backgroundProcessManager.ProcessPriority.PROCESS_INACTIVE);
 } catch (error) {
     console.error(`setProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -91,7 +91,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    await backgroundProcessManager.resetProcessPriority(childProcessPid); 
+    backgroundProcessManager.resetProcessPriority(childProcessPid); 
 } catch (error) {
     console.error(`resetProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -133,8 +133,8 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
 | 31800003      | Setup error, This setting is overridden by settings in Task Manager |
 | 31800004      | The setting failed due to system scheduling reasons. |
@@ -187,8 +187,8 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例**：
@@ -239,8 +239,8 @@ getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
 | 错误码ID    | 错误信息             |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **示例：**

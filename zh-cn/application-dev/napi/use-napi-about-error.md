@@ -1,7 +1,7 @@
 # 使用Node-API接口进行错误处理开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -41,7 +41,7 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 ### napi_get_last_error_info
 
-用于获取最后一次发生的错误信息，包括错误码、错误消息以及错误进栈信息，即使存在挂起的ArkTS异常，也可以调用此API。
+用于获取最后一次发生的错误信息，包括错误码、错误消息以及错误栈信息，即使存在挂起的ArkTS异常，也可以调用此API。
 
 cpp部分代码
 

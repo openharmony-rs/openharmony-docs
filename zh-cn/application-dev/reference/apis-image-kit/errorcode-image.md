@@ -11,23 +11,24 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 501 无法调用接口
+## 501 资源被其他线程占用，访问被拒绝
 
 **错误信息**
 
-Resource unavailable.
+The resource is unavailable as it is occupied by another thread.
 
 **错误描述**
 
-无法调用接口。
+资源已被其他线程占用锁定，本次访问请求被拒绝。
 
 **可能原因**
 
-图片被跨线程传递，原对象无法调用接口。
+1. 组件的服务资源正忙，无法使用。
+2. 当前资源正在被其他线程使用，无法完成操作。
 
 **处理步骤**
 
-请检查图片并按指示操作重新解码。
+确保同一组件/资源只在一个线程中使用。
 
 ## 62980096 操作失败
 
@@ -51,7 +52,7 @@ The operation failed. Possible cause: 1.Image upload exception. 2. Decoding proc
 
 请检查图片并按指示操作重新解码。
 
-## 62980097 pixelmap序列化传输失败
+## 62980097 PixelMap序列化传输失败
 
 **错误信息**
 
@@ -59,7 +60,7 @@ IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception
 
 **错误描述**
 
-pixelmap序列化传输失败。
+PixelMap序列化传输失败。
 
 **可能原因**
 
@@ -193,7 +194,7 @@ The image data is not supported.
 
 **错误信息**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty PixelMap.
 
 **错误描述**
 
@@ -492,7 +493,7 @@ Failed to encode the image.
 
 **错误信息**
 
-Add pixelmap out of range.
+Add PixelMap out of range.
 
 **错误描述**
 
@@ -949,7 +950,7 @@ PixelMap设置内存标识符失败。
 
 **处理步骤**
 
-检查是否已释放pixelmap实例。检查内存类型是否匹配。
+检查是否已释放PixelMap实例。检查内存类型是否匹配。
 
 ## 62980302 内存拷贝失败
 
@@ -1070,11 +1071,11 @@ PixelMap has been passed to another thread.
 
 **错误描述**
 
-PixelMap已被传递至另一个线程。
+PixelMap已被传递至另一个线程且被该线程占用，本次访问请求被拒绝。
 
 **可能原因**
 
-PixelMap对象已被传递至另一个线程，原线程的对象无法继续调用接口。
+PixelMap对象被传递至另一个线程后，其使用权转移至该线程，原线程无法继续对该对象进行操作。
 
 **处理步骤**
 
@@ -1092,11 +1093,16 @@ DMA内存不存在。
 
 **可能原因**
 
-没有使用DMA内存解码HDR图片。
+当前操作要求PixelMap使用DMA内存，但传入的PixelMap未使用DMA内存。例如，对共享内存的PixelMap读写HDR元数据，或获取其底层NativeBuffer。
 
 **处理步骤**
 
-使用正确的内存分配类型。
+重新创建使用DMA内存的PixelMap，并使用新对象调用原接口。根据输入数据选择创建方式：
+
+- 解码图片：从API版本15开始，可调用[createPixelMapUsingAllocator](arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA。
+- 从像素数据创建：从API版本20开始，可调用[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_PixelmapNative_CreatePixelmapUsingAllocator()](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_MODE_DMA。
+
+关于DMA内存的更多说明，请参见[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)和[图片解码内存优化(C/C++)](../../media/image/image-allocator-type-c.md)。
 
 ## 7600174 DMA操作失败
 

@@ -121,7 +121,8 @@ import { floatView } from '@kit.ArkUI';
 @Component
 struct Index {
   private floatViewController: floatView.FloatViewController | undefined = undefined;
-  aboutToAppear(): void {
+
+  createFloatView(): void {
     // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 创建闪控窗配置对象
@@ -139,6 +140,14 @@ struct Index {
       });
     } catch (e) {
       console.error(`Failed to create float view controller. Cause:${e.code}, message:${e.message}`);
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      Button('create fv').onClick(() => {
+        this.createFloatView();
+      })
     }
   }
 }
@@ -374,7 +383,11 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到闪控窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
 
 ### setUIContext
 

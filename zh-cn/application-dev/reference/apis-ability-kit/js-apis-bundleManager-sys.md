@@ -28,12 +28,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY<sup>12+</sup> | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
+| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效，并从API版本26.0.1开始在[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
 | GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_COMMON_CLONE  | 0x00080000 | 用于获取普通分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br/>**起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 | GET_BUNDLE_INFO_WITH_SANDBOX_CLONE | 0x00100000 | 用于获取沙箱分身应用和主应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)接口中生效。 <br/>**起始版本：** 26.0.0 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
+| GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE | 0x00200000 | 用于获取任一设备模式下已安装的应用的bundleInfo。它仅在[getAllAppCloneBundleInfo](#bundlemanagergetallappclonebundleinfo12)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)和[getAllBundleInfoInstances](#bundlemanagergetallbundleinfoinstances)接口中生效。<br/>**起始版本：** 26.0.1 <br/>**模型约束：** 该标记仅可在Stage模型下使用。<br/>**系统API：** 该标记仅支持在系统API中使用。|
 
 ## ApplicationFlag
 
@@ -49,25 +49,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | GET_APPLICATION_INFO_WITH_PERMISSION | 0x00000001 | 用于获取包含permission的applicationInfo。                    |
 | GET_APPLICATION_INFO_WITH_METADATA   | 0x00000002 | 用于获取包含metadata的applicationInfo。                      |
 | GET_APPLICATION_INFO_WITH_DISABLE    | 0x00000004 | 用于获取包含禁用应用程序的applicationInfo。                  |
-
-## AbilityFlag
-
-Ability组件信息标志，指示需要获取的Ability组件信息的内容。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**系统接口：** 此接口为系统接口。
-
-| 名称                              | 值         | 说明                                                         |
-| --------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。 |
-| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。                          |
-| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。                     |
-| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。                            |
-| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。                   |
-| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。                         |
-| GET_ABILITY_INFO_WITH_APP_LINKING<sup>12+</sup>  | 0x00000040 | 用于获取通过域名校验筛选的abilityInfo。                         |
-| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。                         |
 
 ## ExtensionAbilityFlag
 
@@ -129,6 +110,48 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | FLAG_OTHER_INSTALLED<sup>15+</sup>|  0x00000010 | 表示除指定用户外，其他用户的应用安装状态为已安装。|
 | FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。|
 | FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。|
+
+## AppClonePreferenceMode
+
+应用分身偏好设置的模式。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| ALWAYS_ASK        | 0   | 每次启动应用时都询问用户选择主应用或分身应用。 |
+| MAIN_APP          | 1   | 默认使用主应用。 |
+| CLONE_APP         | 2   | 默认使用分身应用。 |
+
+## DeviceModeDistributionPolicy
+
+设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| UNSPECIFIED | 0 | 未指定设备模式分发策略。 |
+| MAIN_ONLY | 1 | 应用程序仅在主模式下可用。 |
+| SUB_ONLY | 2 | 应用程序仅在副模式下可用。 |
+| UNIVERSAL_IDENTICAL_PACKAGE | 3 | 应用程序在两种模式下都可用，具有相同的包体。 |
+| UNIVERSAL_DIFFERENT_PACKAGE | 4 | 应用程序在两种模式下都可用，具有不同的包体。 |
+| PARTIAL_COMPATIBLE_IDENTICAL_PACKAGE | 5 | 应用程序在不同模式之间部分兼容，具有相同的包体。 |
+| PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
+| FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
+| FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -477,6 +500,74 @@ try {
 }
 ```
 
+## bundleManager.getAllBundleInfoInstances
+
+getAllBundleInfoInstances(bundleName: string, bundleFlags: number): Promise\<Array\<BundleInfo>>
+
+根据给定的bundleName和bundleFlags，获取系统中所有的BundleInfo。使用Promise异步回调。
+
+当bundleFlags中携带[GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE](#bundleflag)标记时，可获取应用在任一设备模式下的BundleInfo。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
+| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | Promise对象。返回应用的全部BundleInfo列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE;
+
+try {
+  bundleManager.getAllBundleInfoInstances(bundleName, bundleFlags).then((res: Array<bundleManager.BundleInfo>) => {
+    let index = 0;
+    for (let item of res) {
+      hilog.info(0x0000, 'testTag', 'getAllBundleInfoInstances res: BundleInfo[%{public}d] = %{public}s', index++,
+        JSON.stringify(item));
+    }
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInfoInstances failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInfoInstances failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.getAllApplicationInfo
 
 getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
@@ -660,7 +751,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: Asy
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。                       |
+| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](js-apis-bundleManager.md#abilityflag20)。                       |
 | userId       | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                               |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
@@ -727,7 +818,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | -------------------------------------------------------|
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。       |
+| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](js-apis-bundleManager.md#abilityflag20)。       |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -791,7 +882,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
+| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](js-apis-bundleManager.md#abilityflag20)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
@@ -885,7 +976,7 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
+| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](js-apis-bundleManager.md#abilityflag20)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
@@ -974,7 +1065,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | wants         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
-| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
+| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](js-apis-bundleManager.md#abilityflag20)。 |
 | userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
@@ -4249,7 +4340,7 @@ getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundleName is not found.       |
 | 17700002 | The specified moduleName is not found.       |
-| 17700004 | The specified user ID is not found.      |
+| 17700004 | The specified user ID is not found.<br>适用版本： 12+      |
 | 17700024 | Failed to get the profile because the specified profile is not found in the HAP. |
 | 17700026 | The specified bundle is disabled.            |
 
@@ -4325,7 +4416,7 @@ try {
 
 getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
-获取所有可恢复的预置应用信息。使用Promise异步回调。
+获取所有可恢复的预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4421,7 +4512,7 @@ try {
 
 getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo\>\>
 
-获取所有预置应用信息。使用Promise异步回调。
+获取所有预置应用信息。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4648,7 +4739,7 @@ try {
 
 getDeveloperIds(appDistributionType?: number): Array\<string>
 
-根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。
+根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4746,7 +4837,7 @@ try {
 
 getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
 
-根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
+根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4765,7 +4856,7 @@ getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<Plugin
 
 | 类型                                                         | 说明                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
-| Promise<Array\<[PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md)>> | Promise对象，返回Array\<PluginBundleInfo>。 |
+| Promise<Array\<[PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md)>> | Promise对象，返回Array\<PluginBundleInfo>。 |
 
 **错误码：**
 
@@ -4915,7 +5006,7 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 | 17700001 | The specified bundleName is not found. |
 | 17700002 | The specified moduleName is not found. |
 | 17700304 | Failed to enable the dynamic icon. |
-| 17700307 | Dynamic icons cannot take effect due to existing custom themes. |
+| 17700307 | Dynamic icons cannot take effect due to existing custom themes.<br>适用版本： 20+ |
 
 **示例：**
 
@@ -5471,7 +5562,7 @@ getAppClonePreference(bundleName: string): Promise\<AppClonePreference>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference)> | Promise对象，返回应用的分身偏好设置。 |
+| Promise\<[AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference)> | Promise对象，返回应用的分身偏好设置。 |
 
 **错误码：**
 
@@ -5527,7 +5618,7 @@ setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
 | bundleName | string |  是  | 表示目标应用的bundleName。   |
-| appClonePreference | [AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference) |  是  | 表示要设置的应用分身偏好设置。   |
+| appClonePreference | [AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference) |  是  | 表示要设置的应用分身偏好设置。   |
 
 **返回值：**
 
@@ -5600,7 +5691,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean, callback: Asyn
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br>适用版本： 12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700201 | Failed to verify the abc file. |
 
@@ -5726,7 +5817,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean): Promise\<void
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br>适用版本： 12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700201 | Failed to verify the abc file. |
 
@@ -5782,7 +5873,7 @@ deleteAbc(abcPath: string): Promise\<void>
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br>适用版本： 12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700202 | Failed to delete the abc file. |
 
@@ -6333,7 +6424,7 @@ getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Pro
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied. Non-system APP calling system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 801 | Capability not supported. |
 | 17700001 | The specified bundle is not found. |
 | 17700002 | The specified module is not found. |
@@ -6399,7 +6490,7 @@ getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, call
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied. Non-system APP calling system API. |
+| 202 | Permission denied, non-system app called system api. |
 | 801 | Capability not supported. |
 | 17700001 | The specified bundle is not found. |
 | 17700002 | The specified module is not found. |
@@ -6430,6 +6521,73 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', message);
+}
+```
+
+## bundleManager.filterBundleListByDeviceModeDistributionPolicies
+
+filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDistributionPolicy>): Promise\<void>
+
+支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回201错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| policies | Array\<[DeviceModeDistributionPolicy](#devicemodedistributionpolicy)> | 是 | DeviceModeDistributionPolicy值的数组。入参不能为空，所有值必须在DeviceModeDistributionPolicy的枚举值范围内，且必须包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700097 | The device does not support the dual mode. |
+| 17700098 | The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]. |
+| 17700099 | The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let policies: Array<bundleManager.DeviceModeDistributionPolicy> = [
+  bundleManager.DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE,
+  bundleManager.DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE,
+  bundleManager.DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE
+];
+
+try {
+  bundleManager.filterBundleListByDeviceModeDistributionPolicies(policies).then(() => {
+    hilog.info(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', message);
 }
 ```
 
@@ -6530,7 +6688,7 @@ type PluginBundleInfo = _PluginBundleInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md#pluginbundleinfo) |插件信息。 |
+| _[PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md#pluginbundleinfo-1) |插件信息。 |
 
 ## PluginModuleInfo<sup>19+</sup>
 
@@ -6544,7 +6702,7 @@ type PluginModuleInfo = _PluginModuleInfo
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PluginModuleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md#pluginmoduleinfo) |插件的模块信息。 |
+| _[PluginModuleInfo](js-apis-bundleManager-pluginBundleInfo.md#pluginmoduleinfo) |插件的模块信息。 |
 
 ## DynamicIconInfo<sup>20+</sup>
 
@@ -6574,22 +6732,6 @@ type BundleOptions = _BundleInfo.BundleOptions
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions) |应用包选项，用于设置或查询应用相关信息。 |
 
-## AppClonePreferenceMode
-
-type AppClonePreferenceMode = _AppClonePreferenceMode
-
-应用分身偏好设置的模式。
-
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-| 类型                                                         | 说明           |
-| ------------------------------------------------------------ | -------------- |
-| [_AppClonePreferenceMode](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreferencemode) |应用分身偏好设置的模式枚举，定义了应用启动时在主应用与分身应用之间的选择策略，包括每次询问、默认主应用、默认分身应用三种取值。 |
-
 ## AppClonePreference
 
 type AppClonePreference = _AppClonePreference
@@ -6602,6 +6744,8 @@ type AppClonePreference = _AppClonePreference
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_AppClonePreference](js-apis-bundleManager-AppClonePreference-sys.md#appclonepreference) |应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。通过[bundleManager.getAppClonePreference](#bundlemanagergetappclonepreference)查询当前偏好设置，通过[bundleManager.setAppClonePreference](#bundlemanagersetappclonepreference)设置新的偏好。其mode字段决定启动时的选择行为，appIndex字段在mode取值为CLONE_APP时用于指定具体的分身索引。|
+| [_AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference) |应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。通过[bundleManager.getAppClonePreference](#bundlemanagergetappclonepreference)查询当前偏好设置，通过[bundleManager.setAppClonePreference](#bundlemanagersetappclonepreference)设置新的偏好。其mode字段决定启动时的选择行为，appIndex字段在mode取值为CLONE_APP时用于指定具体的分身索引。|

@@ -104,7 +104,9 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br>默认值：false <br> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br>侧边弹窗样式下不支持浮动控制条。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。该属性仅在[preferType](#sheetoptions)设置为[SheetType.CONTENT_COVER](#sheettype11枚举说明)（全屏弹窗样式）时生效，其他弹窗样式设置该属性无效。<br>默认值：ModalTransition.DEFAULT<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br>默认值：RenderStrategy.FAST <br>**说明：** 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br>默认值：undefined，会清除由该接口设置的材质效果。 <br>**说明：** 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](#示例10半模态设置系统材质)。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br>默认值：undefined，会清除由该接口设置的材质效果。 <br>**说明：** <br> - 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](#示例10半模态设置系统材质)。<br> - 使用该接口设置材质会赋予关闭按钮一种系统内置的材质效果。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| titleBarHoverMode | [SheetTitleBarHoverMode](#sheettitlebarhovermode) | 否 | 是 |标题栏悬浮模式。仅当标题栏存在时生效。<br>默认值：SheetTitleBarHoverMode.STANDARD<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scrollBarState | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 |半模态内容区Scroll滚动条的显示状态。<br>默认值：BarState.Off<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -258,6 +260,8 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | effectEdge     | 不支持边缘回弹效果。  |
 | enableFloatingDragBar | 不支持悬浮控制条。  |
 | onWillSpringBackWhenDismiss | 无回弹效果。  |
+| titleBarHoverMode | 不支持标题栏悬浮模式。 |
+| scrollBarState | 不支持内置滚动条显示状态。 |
 
 ## SheetDismiss<sup>11+</sup>
 
@@ -353,6 +357,23 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 >
 > 设置POPUP_SHEET避让方式时，半模态只避让由面板内的文本框组件拉起的软键盘场景，其他场景半模态无需避让。
 >
+
+## SheetTitleBarHoverMode
+
+标题栏悬浮模式枚举。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 值 | 说明           |
+| ------- | ---- | -------- |
+| STANDARD | 0 | 标准模式，标题栏与内容区竖直排列不重叠。  |
+| STACK    | 1 | 堆叠模式，标题栏悬浮在内容区上方，设置为该样式时开发者需要在内容区顶部添加内边距以避免遮挡。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）
@@ -991,6 +1012,8 @@ struct ContentCoverExample {
 
 该示例通过半模态systemMaterial属性设置系统材质。
 
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
 从API版本26.0.0开始，[SheetOptions](#sheetoptions)新增systemMaterial属性。
 
 ```ts
@@ -1035,8 +1058,6 @@ struct SheetMaterialExample {
             // borderColor: Color.Red,
             // backgroundColor: Color.Green,
             // shadow: { radius: 30, type: ShadowType.COLOR, color: Color.Yellow },
-            // 某些材质效果不自带背景，会被backgroundColor设置的颜色覆盖，若要呈现此类材质效果，建议将背景色改为透明色
-            backgroundColor: Color.Transparent,
             systemMaterial: this.myMaterial // 从API版本26.0.0开始，新增systemMaterial属性
           })
       }
@@ -1050,3 +1071,159 @@ struct SheetMaterialExample {
 
 ![zh-cn_sheet](figures/sheetMaterial-new-s.jpg)
 
+
+### 示例11（半模态设置标题栏悬浮模式）
+
+该示例通过titleBarHoverMode属性设置半模态标题栏为STACK堆叠模式，标题栏悬浮在内容区上方。
+
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增titleBarHoverMode属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+    }
+    .width('100%')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('拉起半模态')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: '标题' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheet13-stack.jpg)
+
+
+### 示例12（半模态自定义滚动条状态）
+
+该示例通过scrollBarState属性设置半模态内容区滚动条的显示状态，点击按钮在[BarState](ts-appendix-enums.md#barstate)的Off、On、Auto和未设置之间切换。
+
+从API版本26.0.1开始，[SheetOptions](#sheetoptions)新增scrollBarState属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State myScrollBarMode: BarState | undefined = BarState.Off;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Row() {
+        Button('当前的ScrollBarMode：' + this.myScrollBarMode)
+          .onClick(() => {
+            if (this.myScrollBarMode == undefined) {
+              this.myScrollBarMode = BarState.Off
+            } else if (this.myScrollBarMode == BarState.Off) {
+              this.myScrollBarMode = BarState.On
+            } else if (this.myScrollBarMode == BarState.On) {
+              this.myScrollBarMode = BarState.Auto
+            } else if (this.myScrollBarMode == BarState.Auto) {
+              this.myScrollBarMode = undefined
+            }
+          })
+      }.width('100%').justifyContent(FlexAlign.Center).margin(25)
+
+      Column() {
+        Column()
+          .backgroundColor(Color.Pink)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Orange)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Pink)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Orange)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Pink)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Orange)
+          .height(200)
+          .width('100%')
+      }
+    }
+    .width('100%')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('拉起半模态')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            scrollBarState: this.myScrollBarMode,
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheet14-scroll.gif)

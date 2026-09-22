@@ -338,7 +338,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 
@@ -351,26 +351,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let deviceName: string = '1-1';
 // 定义tokenId变量
 let tokenId: string = '';
-  // 为指定应用添加USB设备访问权限
-try {
-  // 获取bundle信息标志
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
-  // 异步获取当前应用的bundle信息
-  bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
-    console.info('testTag', 'getBundleInfoForSelf successfully. Data:', JSON.stringify(bundleInfo));
-    // 获取应用的accessTokenId
-    let token = bundleInfo.appInfo.accessTokenId;
-    tokenId = token.toString();
-    // 添加设备访问权限
-    if (usbManager.addDeviceAccessRight(tokenId, deviceName)) {
-      console.info(`Succeed in adding right`);
-    }
-  }).catch((err : BusinessError) => {
-    console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
-  });
-} catch (err) {
-  console.error(`testTag failed. Code: ${err.code}, message: ${err.message}`);
-}
+// 获取bundle信息标志
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+// 异步获取当前应用的bundle信息
+bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
+  console.info('testTag', 'getBundleInfoForSelf successfully. Data:', JSON.stringify(bundleInfo));
+  // 获取应用的accessTokenId
+  let token = bundleInfo.appInfo.accessTokenId;
+  tokenId = token.toString();
+  // 添加设备访问权限
+  if (usbManager.addDeviceAccessRight(tokenId, deviceName)) {
+    console.info(`Succeed in adding right`);
+  }
+}).catch((err : BusinessError) => {
+  console.error(`testTag getBundleInfoForSelf failed. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getFunctionsFromString<sup>12+</sup>
@@ -408,7 +403,7 @@ getFunctionsFromString(funcs: string): number
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 
@@ -456,7 +451,7 @@ getStringFromFunctions(funcs: FunctionType): string
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 
@@ -504,7 +499,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400002 | Permission denied. The HDC is disabled by the system. |
@@ -552,7 +547,7 @@ getDeviceFunctions(): FunctionType
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：18+ |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  <br>适用版本：18+ |
 

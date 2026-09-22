@@ -3,16 +3,16 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:38:08.362Z pushedAt=2026-08-01T06:42:55.890Z -->
+<!-- md-trans-meta sourceCommit=502e92239007f618b3ae29831890f9b7e0bdd85e translatedAt=2026-08-21T02:21:29.005Z pushedAt=2026-08-21T07:07:36.436Z -->
 
 A container that lays out child components along the vertical direction. The **Column** component arranges child components vertically in sequence, and supports setting attributes such as alignment and spacing, simplifying the implementation of vertical layouts. It is suitable for various scenarios such as forms, list items, and vertical navigation.
 
 > **NOTE**
 >
-> - This component is supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest version.
+> - This component is supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest version.
 >
 > - The APIs of this module can be used only in the stage model.
 >
@@ -20,7 +20,7 @@ A container that lays out child components along the vertical direction. The **C
 
 ## Attributes
 
-### pointLight
+### pointLight<sup>11+</sup>
 
 pointLight(value: PointLightStyle)
 

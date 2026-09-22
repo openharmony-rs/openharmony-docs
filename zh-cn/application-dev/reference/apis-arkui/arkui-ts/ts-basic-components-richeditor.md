@@ -184,9 +184,9 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 
 当有两个实体A、B重叠时，按以下规则保留实体：
 
-1.&nbsp;若A&nbsp;⊂&nbsp;B，则保留B，反之则保留A。
+1. &nbsp;若A&nbsp;⊂&nbsp;B，则保留B，反之则保留A。
 
-2.&nbsp;当A&nbsp;⊄&nbsp;B且B&nbsp;⊄&nbsp;A时，若A.start&nbsp;<&nbsp;B.start，则保留A，反之则保留B。
+2. &nbsp;当A&nbsp;⊄&nbsp;B且B&nbsp;⊄&nbsp;A时，若A.start&nbsp;<&nbsp;B.start，则保留A，反之则保留B。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -220,7 +220,7 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable | boolean \| undefined | 是 | 是否启用选择文本识别，true表示启用，false表示不启用。<br>默认值：true。<br>设置为undefined或null时，取默认值。 |
+| enable | boolean \| undefined | 是 | 是否启用文本选择AI菜单功能，true表示启用，false表示不启用。<br>默认值：true。<br>设置为undefined或null时，取默认值。 |
 
 ### enablePreviewText<sup>12+</sup>
 
@@ -295,7 +295,7 @@ caretColor(value: ResourceColor)
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中的底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -305,7 +305,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中的底板颜色。<br/>默认为20%不透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。<br/>默认为20%不透明度。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -1023,7 +1023,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | --------------------- | ---------------------------------------- | ---- | -----|-------------- |
 | offset                | number                                   | 否 | 否    | 删除内容的偏移位置。          |
 | direction             | [RichEditorDeleteDirection](#richeditordeletedirection) | 否 | 否    | 删除操作的方向。            |
-| length                | number                                   | 否 | 否    | 删除内容长度。             |
+| length                | number                                   | 否 | 否    | 删除内容长度，删除范围为[offset, offset + length)，结束位置对应的内容不包含在内。             |
 | richEditorDeleteSpans | Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> | 否 | 否    | 删除的文本或图片Span的信息。 |
 
 
@@ -1053,7 +1053,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | spanPosition                  | [RichEditorSpanPosition](#richeditorspanposition) | 否 | 否    | Span位置。                <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | value                         | string                                    | 否 | 否    | 文本Span内容或Symbol的id。              <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textStyle                     | [RichEditorTextStyleResult](#richeditortextstyleresult)  | 否 | 否   | 文本Span样式信息。            <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| offsetInSpan                  | [number, number]                          | 否 | 否    | 文本Span内容里有效内容的起始和结束位置。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| offsetInSpan                  | [number, number]                          | 否 | 否    | 文本Span内容里有效内容的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | valueResource<sup>11+</sup>   | [Resource](ts-types.md#resource)          | 否 | 是    | SymbolSpan资源内容。<br>默认值：undefined。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
 | symbolSpanStyle<sup>11+</sup> | [RichEditorSymbolSpanStyle](#richeditorsymbolspanstyle11)  | 否 | 是    | 组件SymbolSpan样式信息。      <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | paragraphStyle<sup>12+</sup>  | [RichEditorParagraphStyle](#richeditorparagraphstyle11)   | 否 | 是   | 段落样式。<br>省略时，使用系统默认段落样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -1072,7 +1072,7 @@ Span位置信息。
 | 名称        | 类型           | 只读 | 可选   | 说明                          |
 | --------- | ---------------- |----| ---- | --------------------------- |
 | spanIndex | number           | 否 | 否    | Span索引值。                    |
-| spanRange | [number, number] | 否 | 否    | Span内容在RichEditor内的起始和结束位置。 |
+| spanRange | [number, number] | 否 | 否    | Span内容在RichEditor内的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的Span不包含在内。 |
 
 ## RichEditorSpanType
 
@@ -1085,8 +1085,8 @@ Span类型信息。
 | TEXT  | 0 | Span类型为文字。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | IMAGE | 1 | Span类型为图像。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | MIXED | 2 | Span类型为图文混合。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| BUILDER<sup>12+</sup> | 3 | Span类型为BuilderSpan。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| DEFAULT<sup>15+</sup> | 4 | 注册此类型的菜单，但未注册TEXT、IMAGE、MIXED、BUILDER菜单时，文字类型、图像类型、图文混合类型、BuilderSpan类型都会触发并显示此类型对应的菜单。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| BUILDER<sup>12+</sup> | 3 | Span类型为自定义布局。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| DEFAULT<sup>15+</sup> | 4 | 注册此类型的菜单，但未注册TEXT、IMAGE、MIXED、BUILDER菜单时，文字类型、图像类型、图文混合类型、自定义布局类型都会触发并显示此类型对应的菜单。 <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## RichEditorResponseType<sup>11+</sup>
 
@@ -1195,7 +1195,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。|
 | valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。|
 | imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。|
-| offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置。|
+| offsetInSpan     | [number, number] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。|
 
 ## RichEditorImageSpanStyleResult
 
@@ -1210,6 +1210,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否 | 否    | 图片垂直对齐方式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | 否 | 否    | 图片缩放类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | 否 | 是   | 图片布局样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -1396,7 +1397,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 | 参数名            | 类型   | 必填   | 说明    |
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | 是    | 选中开始位置。 |
-| selectionEnd   | number | 是    | 选中结束位置。 |
+| selectionEnd   | number | 是    | 选中结束位置，选中范围为[selectionStart, selectionEnd)，结束位置对应的内容不包含在内。 |
 | options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置，用于控制选中操作时的菜单弹出策略。<br>当需要自定义菜单弹出行为（如强制显示或隐藏菜单）时传入此参数；<br>省略时默认使用MenuPolicy.DEFAULT，遵循系统默认菜单弹出策略。<br>各MenuPolicy取值的适用场景请参考SelectionOptions对象说明。 |
 
 ### isEditing<sup>12+</sup>
@@ -1623,7 +1624,40 @@ addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanOptions): nu
 
 | 类型     | 说明                     |
 | ------ | ---------------------- |
-| number | 添加完成的builderSpan在所有Span中的索引位置。 |
+| number | 添加完成的BuilderSpan在所有Span中的索引位置。 |
+
+### addRichEditorBuilderSpan
+
+addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number
+
+在RichEditor中添加自定义布局（BuilderSpan），提供身份识别与生命周期感知能力。
+
+> **说明：**
+>
+> - BuilderSpan对象中的[onAttach](#richeditorbuilderspan)和[onDetach](#richeditorbuilderspan)回调接收一个[BuilderSpanInfo](#builderspaninfo)对象，包含id和offset。
+> - 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+> - 撤销/重做不会还原BuilderSpan对象。通过撤销还原时，被移除的BuilderSpan会降级为空格文本Span。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型                                     | 必填   | 说明       |
+| ------- | ---------------------------------------- | ---- | ---------- |
+| value   | [RichEditorBuilderSpan](#richeditorbuilderspan) | 是    | BuilderSpan对象，包含构造器、生命周期回调和无障碍配置。     |
+| info | [BuilderSpanInfo](#builderspaninfo) | 否    | BuilderSpan的身份与位置信息。info.id用于标识BuilderSpan，info.offset用于指定插入位置。默认值：undefined，此时BuilderSpan追加到末尾且id为undefined。 |
+
+**返回值：**
+
+| 类型     | 说明                     |
+| ------ | ---------------------- |
+| number | 添加完成的BuilderSpan在所有Span中的索引位置。取值范围：[0, 所有Span数量-1]。 |
 
 ### addSymbolSpan<sup>11+</sup>
 
@@ -1709,6 +1743,38 @@ getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorT
 | 类型                                       | 说明           |
 | ---------------------------------------- | ------------ |
 | Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | 指定范围内的文本和图片Span详细信息，包含各Span的位置、内容、样式等属性，可用于查询和操作组件内的文本与图片内容。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
+
+### getRichEditorBuilderSpans
+
+getRichEditorBuilderSpans(value?: RichEditorRange): Array\<BuilderSpanInfo\>
+
+获取指定范围内BuilderSpan的身份与位置信息。
+
+> **说明：**
+>
+> - 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+> - 通过接口[addBuilderSpan](#addbuilderspan11)创建的BuilderSpan，返回的[BuilderSpanInfo](#builderspaninfo)中id为**undefined**（匿名）。
+> - 返回的[BuilderSpanInfo](#builderspaninfo)中的**offset**字段反映当前实际偏移位置，随文本内容变化动态更新。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                | 必填   | 说明        |
+| ----- | ----------------------------------- | ---- | ----------- |
+| value | [RichEditorRange](#richeditorrange) | 否 | 目标BuilderSpan的范围。<br>省略时，返回所有BuilderSpan信息。 |
+
+**返回值：**
+
+| 类型                                       | 说明           |
+| ---------------------------------------- | ------------ |
+| Array\<[BuilderSpanInfo](#builderspaninfo)\> | BuilderSpan身份与位置信息数组。<br>当controller未绑定组件时，返回undefined，表示尚无BuilderSpan信息可获取。<br>当绑定的组件被释放时，返回空数组。 |
 
 ### deleteSpans
 
@@ -1914,7 +1980,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 | 名称        | 类型                                        | 只读 | 可选   | 说明      |
 | --------- | ---------------------------------------- | ---- | ---|---- |
-| selection | [number, number]                        | 否 | 否    | 选中范围。   |
+| selection | [number, number]                        | 否 | 否    | 选中范围，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。   |
 | spans     | Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> | 否 | 否    | span信息。 |
 
 ## RichEditorRange
@@ -1928,7 +1994,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 | 名称  | 类型      | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---------|--------------------------------------------------- |
 | start | number | 否 | 是   | 文本的起始位置，省略或者设置负值时表示从0开始。  |
-| end   | number | 否 | 是   | 文本的结束位置，省略或者超出文本范围时表示无穷大。 |
+| end   | number | 否 | 是   | 文本的结束位置，与start共同表示选中文本的范围[start, end)，结束位置对应的内容不包含在内，省略或者超出文本范围时表示无穷大。 |
 
 
 ## RichEditorSpanStyleOptions
@@ -2041,7 +2107,7 @@ SymbolSpan样式选项。
 | 名称    | 类型                                        | 只读 | 可选   | 说明      |
 | ----- | ---------------------------------------- | ---- | ---|---- |
 | style | [RichEditorParagraphStyle](#richeditorparagraphstyle11) |否| 否    | 段落样式。   |
-| range | \[number, number\]                      |否 | 否    | 段落起始和结束位置。 |
+| range | \[number, number\]                      |否 | 否    | 段落起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。 |
 
 ## RichEditorTextSpanOptions
 
@@ -2076,7 +2142,7 @@ SymbolSpan样式选项。
 | textShadow<sup>11+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 否 | 是    | 设置文字阴影效果。<br>默认值：undefined，不设置文字阴影效果。<br>该接口支持以数组形式入参，实现多重文字阴影。<br>**说明：**<br>仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | lineHeight<sup>12+</sup>    | number \| string \| [Resource](ts-types.md#resource) | 否 | 是    | 设置文本的文本行高。<br>默认值：不设置时自适应字体大小。<br>number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](#fallbacklinespacing23)属性将生效。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | letterSpacing<sup>12+</sup> | number \| string             | 否 | 是    | 设置文本字符间距，默认单位为fp。默认值：0。当取值为负值时，文字会发生压缩。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多Font Feature能力介绍可参考[font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType Features](https://sparanoid.com/lab/opentype-features/)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | strokeWidth<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br>默认值：0。<br>单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。<br>取值范围：(-∞, +∞)<br>与[shaderStyle](#richeditorparagraphstyle11)同时设置时，shaderStyle不生效。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -2123,6 +2189,7 @@ SymbolSpan样式选项。
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| 否| 是    | 图片垂直对齐方式。<br>默认值：ImageSpanAlignment.BOTTOM <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | 否| 是    | 图片缩放类型。<br> 默认值：ImageFit.Cover。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | 否| 是    | 图片布局样式。默认值：{"borderRadius":"","margin":""}<br>   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
@@ -2156,7 +2223,7 @@ SymbolSpan样式选项。
 
 ## RichEditorBuilderSpanOptions<sup>11+</sup>
 
-设置builder的偏移位置和样式。
+设置builder插入的偏移位置和样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2164,6 +2231,50 @@ SymbolSpan样式选项。
 | ------ | ------ | ---- | ----------|--------------------------- |
 | offset | number | 否 | 是    | 添加builder的位置。取值范围：[0, 所有内容长度]。省略或当值小于0或大于所有内容长度时，添加到所有内容最后面。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | accessibilitySpanOptions<sup>23+</sup> | [AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明) | 否 | 是    | 无障碍朗读功能属性。缺省时，取[AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明)的默认值。  <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+
+## BuilderSpanInfo
+
+定义RichEditor中BuilderSpan的身份与位置信息。
+
+> **说明：**
+>
+> 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型      | 只读 | 可选   | 说明                                    |
+| ------ | ------ | ---- | ----------|--------------------------- |
+| id | string | 否 | 是    | 开发者自定义的身份标识，用于标识BuilderSpan。框架不强制唯一性约束，由开发者自行保证唯一性。未传入时，值为undefined，表示该BuilderSpan为匿名BuilderSpan。|
+| offset | number | 否 | 是    | 当作为[addRichEditorBuilderSpan](#addricheditorbuilderspan)的参数传入时，表示BuilderSpan的插入位置。当通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)或回调获取时，表示BuilderSpan在文本内容中的当前偏移位置，该值由框架维护，随文本内容变化动态更新。|
+
+## RichEditorBuilderSpan
+
+定义RichEditor的BuilderSpan对象，提供身份识别与生命周期感知能力。
+
+> **说明：**
+>
+> 当RichEditor组件使用[RichEditorStyledStringOptions](#richeditorstyledstringoptions12)构造时，不支持此接口。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型      | 只读 | 可选   | 说明                                    |
+| ------ | ------ | ---- | ----------|--------------------------- |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 否    | 自定义组件构造器。|
+| onAttach | Callback\<[BuilderSpanInfo](#builderspaninfo)\> | 否 | 是    | BuilderSpan挂载到RichEditor时触发的回调。回调接收一个[BuilderSpanInfo](#builderspaninfo)对象，包含id和offset。|
+| onDetach | Callback\<[BuilderSpanInfo](#builderspaninfo)\> | 否 | 是    | BuilderSpan从RichEditor中被移除时触发的回调。包括通过[deleteSpans](#deletespans) API删除、输入法键盘删除、剪切操作以及普通撤销降级等删除场景。回调接收一个[BuilderSpanInfo](#builderspaninfo)对象，包含id和offset。<br>**说明：** 在拖拽撤销（[undoStyle](#undostyle20)参数取值为UndoStyle.KEEP_STYLE）场景中，onDetach回调不会被触发，因为BuilderSpan正在被恢复而非被删除。|
+| accessibilitySpanOptions | [AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明) | 否 | 是    | 无障碍朗读功能属性。缺省时，取[AccessibilitySpanOptions](ts-text-common.md#accessibilityspanoptions23对象说明)的默认值。|
 
 ## RichEditorSpan<sup>12+</sup>
 
@@ -2302,7 +2413,7 @@ type MenuOnAppearCallback = (start: number, end: number) => void
 | 参数名  | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | start | number | 是   | 选中内容的起始位置。 |
-| end    | number         | 是   | 选中内容的终止位置。         |
+| end    | number         | 是   | 选中内容的终止位置，选中范围为[start, end)，结束位置对应的内容不包含在内。         |
 
 ## MenuCallback<sup>15+</sup>
 
@@ -2319,7 +2430,7 @@ type MenuCallback = (start: number, end: number) => void
 | 参数名  | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | start | number | 是   | 选中内容的起始位置。 |
-| end    | number         | 是   | 选中内容的终止位置。         |
+| end    | number         | 是   | 选中内容的终止位置，选中范围为[start, end)，结束位置对应的内容不包含在内。         |
 
 ## PasteEventCallback<sup>12+</sup>
 
@@ -4647,8 +4758,8 @@ struct TextExample7 {
   }
 }
 ```
-### 示例12（设置光标、手柄和底板颜色）
-通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中底板颜色。
+### 示例12（设置光标、手柄和高亮颜色）
+通过[caretColor](#caretcolor12)属性设置输入框光标、手柄颜色，通过[selectedBackgroundColor](#selectedbackgroundcolor12)属性设置文本选中高亮颜色。
 
 ``` ts
 @Entry
@@ -4904,7 +5015,7 @@ struct RichEditorExample {
   CustomKeyboardBuilder() {
     Column() {
       Row() {
-        Button('增加特表情包').onClick(() => {
+        Button('增加表情包').onClick(() => {
           this.controller.addTextSpan("\uD83D\uDE0A",
             {
               style:
@@ -5588,7 +5699,7 @@ struct RichEditorExample {
 ![RichEditorEditMenuOptions](figures/richEditorEditMenuOptions.gif)
 
 ### 示例24（组件部分常用属性）
-从API version 18开始，该示例通过[barState](#barstate13)属性设置组件滚动条的显示模式。通过[enableKeyboardOnFocus](#enablekeyboardonfocus12)属性设置组件通过点击以外的方式获焦时，是否主动拉起软键盘。通过[enableHapticFeedback](#enablehapticfeedback13)属性设置组件是否支持触感反馈。通过[getPreviewText](#getpreviewtext12)接口获取组件预上屏信息。通过[stopBackPress](#stopbackpress18)属性设置是否阻止返回键向其它组件或应用侧传递。<br>
+从API version 18开始，该示例通过[barState](#barstate13)属性设置组件滚动条的显示模式。通过[enableKeyboardOnFocus](#enablekeyboardonfocus12)属性设置组件通过点击以外的方式获焦时，是否主动拉起软键盘。通过[enableHapticFeedback](#enablehapticfeedback13)属性设置组件是否支持触感反馈。通过[getPreviewText](#getpreviewtext12)接口获取组件预上屏信息。通过[stopBackPress](#stopbackpress18)属性设置是否阻止返回键向其他组件或应用侧传递。<br>
 从API version 21开始，该示例通过[scrollBarColor](#scrollbarcolor21)属性设置RichEditor组件滚动条颜色。
 
 ```ts
@@ -6993,3 +7104,188 @@ struct ScrollToVisibleDemo {
 
 ![RichEditorScrollToVisible](figures/richEditorScrollToVisible.gif)
 
+### 示例44（设置图片拉伸）
+
+该示例通过设置[RichEditorImageSpanStyle](#richeditorimagespanstyle)的resizable属性，对图片不同方向进行拉伸。
+
+从API版本26.0.1开始，RichEditorImageSpanStyle新增resizable属性。
+
+```ts
+@Entry
+@Component
+struct RichEditorResizablePage {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    Column({ space: 20 }) {
+      Text('RichEditor resizable Demo')
+        .fontSize(28)
+        .fontWeight(FontWeight.Bold)
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('原图\n', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 28
+            }
+          });
+          this.controller.addImageSpan($r('app.media.landscape'), {
+            imageStyle: {
+              size: [260, 260],
+            }
+          });
+          this.controller.addTextSpan('\nRichEditor 中 ImageSpan resizable 拉伸效果\n', {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 28
+            }
+          });
+          this.controller.addImageSpan($r('app.media.landscape'), {
+            imageStyle: {
+              size: [260, 260],
+              resizable: {
+                slice: {
+                  left: '200px',
+                  top: '200px',
+                  right: '20px',
+                  bottom: '20px'
+                }
+              }
+            }
+          });
+
+        })
+        .width('90%')
+        .borderWidth(1)
+        .borderColor('#cccccc')
+        .borderRadius(8)
+        .padding(10)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+```
+
+![richEditorResizable](figures/richeditor-resizable.png)
+
+### 示例45（添加带身份标识的BuilderSpan）
+
+该示例演示通过[addRichEditorBuilderSpan](#addricheditorbuilderspan)添加带身份标识的BuilderSpan，并通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)获取BuilderSpan信息，在日志中打印返回结果。
+
+从API版本26.2.0开始，新增addRichEditorBuilderSpan和getRichEditorBuilderSpans接口。
+
+```ts
+@Entry
+@Component
+struct RichEditorBuilderSpanPage {
+  @State logMessages: string[] = [];
+  private controller: RichEditorController = new RichEditorController();
+  private spanCount: number = 0;
+
+  addLog(msg: string, isCallback: boolean = false) {
+    let prefix = isCallback ? '<<<----- ' : '';
+    this.logMessages = [...this.logMessages, prefix + msg];
+  }
+
+  @Builder
+  myBuilder() {
+    Row() {
+      Text(`span${this.spanCount}`)
+        .fontSize(14)
+        .margin(5)
+        .fontColor(Color.White)
+    }
+    .borderRadius(12)
+    .backgroundColor(Color.Blue)
+  }
+
+  build() {
+    Column() {
+      Text('BuilderSpanInfo Demo')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 10 })
+
+      RichEditor({ controller: this.controller })
+        .id("rich_editor_inspector_demo")
+        .width('100%')
+        .height(50)
+        .borderWidth(1)
+        .borderColor(Color.Gray)
+        .margin({ bottom: 10 })
+
+      Divider()
+        .margin({ bottom: 5 })
+
+      Text('Log:')
+        .fontSize(14)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 5 })
+
+      List() {
+        ForEach(this.logMessages, (msg: string, index: number) => {
+          ListItem() {
+            Scroll() {
+              Text(msg).fontSize(11)
+            }
+            .scrollable(ScrollDirection.Horizontal)
+            .scrollBar(BarState.Off)
+            .fadingEdge(true)
+          }
+        }, (msg: string, index: number) => msg + index.toString())
+      }
+      .height(150)
+      .borderWidth(1)
+      .borderColor(Color.Gray)
+      .stackFromEnd(true)
+
+      Button('addRichEditorBuilderSpan')
+        .margin(5)
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
+        .onClick(() => {
+          this.spanCount++;
+          let idVal = 'testId';
+          let offVal = 1;
+          let span: RichEditorBuilderSpan = {
+            builder: this.myBuilder,
+            onAttach: (info: BuilderSpanInfo) => {
+              this.addLog('[onAttach] info=' + JSON.stringify(info), true);
+            },
+            onDetach: (info: BuilderSpanInfo) => {
+              this.addLog('[onDetach] info=' + JSON.stringify(info), true);
+            }
+          }
+          let info: BuilderSpanInfo = { id: idVal, offset: offVal };
+          let idx = this.controller.addRichEditorBuilderSpan(span, info);
+          this.addLog(`{builder,onAttach+onDetach},{id:${info.id}, offset: ${info.offset}} => idx: ${idx}`);
+        })
+
+      Button('getRichEditorBuilderSpans')
+        .margin(5)
+        .clickEffect({ level: ClickEffectLevel.HEAVY })
+        .onClick(() => {
+          let spans = this.controller.getRichEditorBuilderSpans();
+          if (spans) {
+            this.addLog('getRichEditorBuilderSpans() count: ' + spans.length);
+            for (let i = 0; i < spans.length; i++) {
+              this.addLog('  span[' + i + ']: id=' + (spans[i].id ?? 'undefined') + ', offset=' +
+                (spans[i].offset ?? 'undefined'), true);
+            }
+          } else {
+            this.addLog('getRichEditorBuilderSpans() => undefined');
+          }
+        })
+    }
+    .width('100%')
+    .padding(15)
+  }
+}
+```
+
+![builderSpanInfoDemo](figures/richeditor-builderspan-info.gif)

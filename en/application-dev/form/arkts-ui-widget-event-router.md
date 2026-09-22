@@ -5,8 +5,9 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=1198f004dfbfac08d188806a33a9d748975e73e3 translatedAt=2026-08-26T04:48:43.512Z pushedAt=2026-08-28T08:44:07.036Z -->
 
-The **router** capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API can be used in a dynamic widget to quickly start a specific UIAbility of the widget provider. By leveraging this capability, an application can provide in the widget multiple buttons, each of which targets a different target UIAbility. For example, a camera widget can provide the buttons that redirect the user to the UIAbility for taking a photo and the UIAbility for recording a video.
+The **router** capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API can be used in a dynamic widget to quickly start a specific UIAbility of the widget provider. By leveraging this capability, an application can provide different navigation buttons in the widget, each targeting a specific UIAbility. For example, a camera widget can provide buttons that redirect the user to different UIAbilities, such as one for taking a photo and another for recording a video.
 
 ![WidgetCameraCard](figures/WidgetCameraCard.png)
 
@@ -20,7 +21,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
 2. Build the code layout of the ArkTS widget page. Design two buttons on the widget page. When one of the buttons is tapped, **postCardAction** is called to send a router event to the specified UIAbility, with the content to be transferred defined in the event.
 
    <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) -->
-   
+
    ``` TypeScript
    // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets
    @Entry
@@ -88,9 +89,9 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
    ```
 
 3. Handle the router event. The UIAbility receives the router event and obtains parameters. It then starts the page specified by **params**.
-  
-   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) -->
-   
+
+   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) --> 
+
    ``` TypeScript
    // src/main/ets/entryability/EntryAbility.ts
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -106,7 +107,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
    
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
        // Obtain the targetPage parameter passed in the router event.
-       hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, ${JSON.stringify(want)}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, Want params: ${(want?.parameters?.params as string)}`);
        if (want?.parameters?.params) {
          // want.parameters.params corresponds to params in postCardAction().
          let params: Record<string, Object> = JSON.parse(want.parameters.params as string);
@@ -117,7 +118,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
    
      // If the UIAbility is running in the background, onNewWant is triggered after the router event is received.
      onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       hilog.info(DOMAIN_NUMBER, TAG, `onNewWant Want: ${JSON.stringify(want)}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `Ability onNewWant, Want params: ${(want?.parameters?.params as string)}`);
        if (want?.parameters?.params) {
          // want.parameters.params corresponds to params in postCardAction().
          let params: Record<string, Object> = JSON.parse(want.parameters.params as string);
@@ -146,21 +147,22 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
        if (this.currentWindowStage === null) {
          this.currentWindowStage = windowStage;
        }
-       windowStage.loadContent(targetPage, (err, data) => {
+       windowStage.loadContent(targetPage, (err) => {
          if (err.code) {
-           hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+           hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
            return;
          }
-         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
        });
      }
    }
    ```
 
+
 4. Create the UIAbility pages after redirection. Create **FunA.ets** and **FunB.ets** to build the page layout.
 
    <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) --> 
-   
+
    ``` TypeScript
    // src/main/ets/funpages/FunA.ets
    @Entry
@@ -211,7 +213,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
    ```
 
    <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunB.ets) --> 
-   
+
    ``` TypeScript
    // src/main/ets/funpages/FunB.ets
    @Entry
@@ -273,7 +275,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
    }
    ```
 6. The resource file is as follows. Replace the resources with the actual ones.
-   ```json
+   ```json5
    // src/main/resources/en_US/element/string.json
    {
      "string": [

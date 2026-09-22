@@ -186,7 +186,7 @@ LazyVWaterFlowLayout() {
 
 columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'repeat(auto-fit/auto-fill/auto-stretch, track-size)'`，其中repeat、auto-fit、auto-fill、auto-stretch为关键字，track-size为列宽，支持px、vp、%等单位，默认单位为vp，也支持无单位的有效数字。track-size至少包含一个有效列宽。
 
-与LazyVGridLayout组件不同的是，LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)类型的枚举值，此时会根据组件宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，组件宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
+LazyVWaterFlowLayout组件的columnsTemplate属性还支持设置为[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)类型的枚举值，此时会根据内容区宽度对应的[栅格容器断点](./arkts-layout-development-grid-layout.md#栅格容器断点)类型自动确定列数。例如，设置为ItemFillPolicy.BREAKPOINT_DEFAULT，内容区宽度属于sm及更小的断点区间时LazyVWaterFlowLayout显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。从API版本26.2.0开始，LazyVGridLayout组件的[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate-1)属性同样支持设置为ItemFillPolicy类型，断点与列数的对应关系与LazyVWaterFlowLayout一致。两个组件均使用内容区宽度判断断点，即组件宽度扣除左右内边距（padding）及占用布局的左右边框宽度后的可用宽度。
 
 | 模式 | 示例 | 说明 |
 |------|------|------|

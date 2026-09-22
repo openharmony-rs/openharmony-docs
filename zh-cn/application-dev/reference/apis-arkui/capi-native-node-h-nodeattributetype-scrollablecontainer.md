@@ -134,7 +134,7 @@ NODE_SCROLL_EDGE_EFFECT = 1002004
 | -- | -- |
 | .value[0].i32 | 边缘滑动效果，参数类型[ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect)，Grid、Scroll、WaterFlow组件默认值为[ARKUI_EDGE_EFFECT_NONE](capi-scroll-h.md#arkui_edgeeffect)，List组件默认值为[ARKUI_EDGE_EFFECT_SPRING](capi-scroll-h.md#arkui_edgeeffect)。 |
 | .value[1]?.i32 | 可选值，组件内容大小小于组件自身时，设置是否开启滑动效果，开启为1，关闭为0，List、Grid、WaterFlow组件默认值为0，Scroll组件默认值为1。 |
-| .value[2]?.i32 | 边缘效果生效的方向，参数类型[ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge)，默认值[ARKUI_EFFECT_EDGE_START](capi-scroll-h.md#arkui_effectedge)  \| [ARKUI_EFFECT_EDGE_END](capi-scroll-h.md#arkui_effectedge)。<br> 该参数从API version 18开始支持。 |
+| .value[2]?.i32 | 边缘效果生效的方向，参数类型[ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge)，默认值[ARKUI_EFFECT_EDGE_START](capi-scroll-h.md#arkui_effectedge)  \| [ARKUI_EFFECT_EDGE_END](capi-scroll-h.md#arkui_effectedge)。<br> 该参数从API version 16开始支持。 |
 
 **返回：**
 
@@ -142,7 +142,7 @@ NODE_SCROLL_EDGE_EFFECT = 1002004
 | -- | -- |
 | .value[0].i32 | 边缘滑动效果，参数类型[ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect)。 |
 | .value[1].i32 | 组件内容大小小于组件自身时，设置是否开启滑动效果，开启为1，关闭为0。 |
-| .value[2].i32 | 边缘效果生效的方向，参数类型[ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge)。该参数从API version 18开始支持。 |
+| .value[2].i32 | 边缘效果生效的方向，参数类型[ArkUI_EffectEdge](capi-scroll-h.md#arkui_effectedge)。该参数从API version 16开始支持。 |
 
 ## NODE_SCROLL_ENABLE_SCROLL_INTERACTION
 
@@ -1651,6 +1651,9 @@ NODE_WATER_FLOW_COLUMN_TEMPLATE = 1010001
 ```
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用[columnsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#columnstemplate)('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1675,6 +1678,9 @@ NODE_WATER_FLOW_ROW_TEMPLATE = 1010002
 ```
 
 设置当前瀑布流组件布局行的数量，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。可使用[rowsTemplate](../apis-arkui/arkui-ts/ts-container-waterflow.md#rowstemplate)('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1991,6 +1997,9 @@ NODE_GRID_COLUMN_TEMPLATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_GRID = 1013000
 ```
 
 设置当前Grid组件布局列的数量，不设置时默认1列，支持属性设置、重置和获取。例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。可使用[columnsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#columnstemplate)('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该列的列宽为0，该列中的组件不显示；设置为其他非法值时，按固定1列处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -2015,6 +2024,9 @@ NODE_GRID_ROW_TEMPLATE = 1013001
 ```
 
 设置当前Grid布局行的数量或最小行高值，不设置时默认1行，支持属性设置、重置和获取。例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。可使用[rowsTemplate](../apis-arkui/arkui-ts/ts-container-grid.md#rowstemplate)('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。<br>
+track-size的单位说明仅适用于repeat(auto-fill,track-size)形式。<br>
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。<br>
+设置为'0fr'时，该行的行高为0，该行中的组件不显示；设置为其他非法值时，按固定1行处理。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -2851,7 +2863,7 @@ NODE_ARC_LIST_ITEM_SWIPE_ACTION = 1020001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。<br>定义ArcListItem的划出组件信息的结构体。通过[OH_ArkUI_ListItemSwipeActionOption_Create](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_create)接口来创建，并且可以使用[OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-native-type-h.md#oh_arkui_listitemswipeactionoption_setstart)方法设置ListItemSwipeActionItem左侧（垂直布局）或上方（横向布局）内容。 |
+| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。<br>定义ArcListItem的划出组件信息的结构体。通过[OH_ArkUI_ListItemSwipeActionOption_Create](capi-list-item-h.md#oh_arkui_listitemswipeactionoption_create)接口来创建，并且可以使用[OH_ArkUI_ListItemSwipeActionOption_SetStart](capi-list-item-h.md#oh_arkui_listitemswipeactionoption_setstart)方法设置ListItemSwipeActionItem左侧（垂直布局）或上方（横向布局）内容。 |
 
 ## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
 
