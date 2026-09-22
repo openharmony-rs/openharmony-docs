@@ -467,7 +467,7 @@ int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t ind
 | 参数项 | 描述 |
 | -- | -- |
 | const [ImageSourceNative](capi-image-imagesourcenative-.md)* native | 表明native层ImageSourceNative值的指针。 |
-| int32_t index | 表明帧计数的指针。 |
+| int32_t index | 表明图片的帧序号。 |
 | struct [OhosImageSourceInfo](capi-image-ohosimagesourceinfo.md)* info | 表明图像源信息OhosImageSourceInfo的指针。 |
 
 **返回：**
