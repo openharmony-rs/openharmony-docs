@@ -395,8 +395,7 @@ let myParagraphStyle: text.ParagraphStyle = {
    <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) --> 
    
    ``` TypeScript
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    
    // 创建一个MyRenderNode类，并绘制文本。
