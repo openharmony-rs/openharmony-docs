@@ -47,18 +47,18 @@ MediaLibrary inner fail.
 3. 参数不是数组类型（Parameter is not an array type）。
 4. 数组无效或不是数组类型（Failed to get array length）。
 5. 服务端内部错误（Server returned an invalid argument error）。
-6. 回调处理失败，系统内部错误。可能原因：
-   - 数据库异常；
-   - 文件系统异常；
-   - IPC 通信超时，请重试（Callback processing failed, system internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs）。
+6. 回调处理失败，系统内部错误。可能原因（Callback processing failed, system internal error, possible causes）：
+    - 数据库异常（Database exception）；
+    - 文件系统异常（File system exception）；
+    - IPC 通信超时，请重试（IPC timeout. Please retry and check logs）。
 
-7. 数据服务初始化失败。可能原因：
-   - 数据库异常；
-   - IPC 通信超时，请检查 context 是否正确初始化并重试（Data service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is properly initialized and retry）。
-8. 系统内部错误。可能原因：
-   - 数据库异常；
-   - 文件系统异常；
-   - IPC 通信超时，请重试并检查日志（System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs）。
+7. 数据服务初始化失败。可能原因（Data service initialization failed, possible causes）：
+    - 数据库异常（Database exception）；
+    - IPC 通信超时，请检查 context 是否正确初始化并重试（IPC timeout. Please check if the context is properly initialized and retry）。
+8. 系统内部错误。可能原因（System internal error, possible causes）：
+    - 数据库异常（Database exception）；
+    - 文件系统异常（File system exception）；
+    - IPC 通信超时，请重试并检查日志（IPC timeout. Please retry and check logs）。
 
 **处理步骤**
 
@@ -126,10 +126,10 @@ Invalid parameter.
 29. supportedMimeType 属性必须是 string 数组类型（The supportedMimeType attribute must be an array of strings）。
 30. 数组包含不支持的 MIME 类型，仅支持 image/jpeg 和 image/png（The supportedMimeType array contains unsupported MIME types, only image/jpeg and image/png are supported）。
 31. supportedMimeTypes 数组大小超过限制（去重后最多 2 个）（The supportedMimeTypes array size exceeds the limit (max 2 after deduplication)）。
-32. 系统内部错误。可能原因：
-   - 数据库异常；
-   - 文件系统异常；
-   - IPC 通信超时，请重试并检查日志（System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs）。
+32. 系统内部错误。可能原因（System internal error, possible causes）：
+    - 数据库异常（Database exception）；
+    - 文件系统异常（File system exception）；
+    - IPC 通信超时，请重试并检查日志（IPC timeout. Please retry and check logs）。
 
 **处理步骤**
 
@@ -171,7 +171,7 @@ Invalid display name.
 
 请检查显示名称是否符合规格要求。
 
-## 23800103 资产uri无效
+## 23800103 资产URI无效
 
 **错误信息**
 
@@ -179,23 +179,23 @@ Invalid asset URI.
 
 **错误描述**
 
-资产uri无效。
+资产URI无效。
 
 **可能原因**
 
-1. 资产uri格式不正确。
-2. 资产uri指向的资产不存在。
-3. 资产uri已被删除或失效。
+1. 资产URI格式不正确。
+2. 资产URI指向的资产不存在。
+3. 资产URI已被删除或失效。
 
 **处理步骤**
 
-请检查资产uri是否有效，确保通过合法接口获取uri。
+请检查资产URI是否有效，确保通过合法接口获取URI。
 
 ## 23800104 传入参数校验不通过
 
 **错误信息**
 
-Invalid input parameter. Possible causes:<br>1. The provided member must be a property name of PhotoKey.
+Invalid input parameter. Possible causes:<br>The provided member must be a property name of PhotoKey.
 
 **错误描述**
 
