@@ -4851,7 +4851,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AppServiceExtensionAbility-sta/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":113,
 						"name":"ability_app_service_five",
 						"start_line":17
 					}
@@ -4861,7 +4861,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AppServiceExtensionAbility-sta/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":60,
 						"name":"ability_app_service_four",
 						"start_line":17
 					}
@@ -4901,7 +4901,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AppStartup-sta/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":77,
 						"name":"startup_entry",
 						"start_line":16
 					}
