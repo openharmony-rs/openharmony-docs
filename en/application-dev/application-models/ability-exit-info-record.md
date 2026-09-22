@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7738447060c2cc1f595c9bdcb430e65d6029dba4 translatedAt=2026-09-17T08:15:12.505Z pushedAt=2026-09-21T11:20:12.552Z -->
 
 If an application crashes and then restarts, you often need to know why it crashed and what the state was, such as the RSS and PSS values of the application memory and the time of the last exit. You can obtain the information from the **launchParam** parameter in the **OnCreate** lifecycle function of the UIAbility and UIExtensionAbility. You can use the information to analyze and improve the application experience, adjust service logic, and boost the application stability.
 
@@ -20,7 +21,7 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
 | **API** | **Description**|
 | -------- | -------- |
 | [LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)       | Parameters for starting an ability. The **lastExitReason**, **lastExitMessage**, and **lastExitDetailInfo** fields record the information about the last abnormal exit of the ability. |
-| [LastExitDetailInfo](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitdetailinfo18)       | Detailed information about the last exit of the application. This is supported since API version 18.|
+| [LastExitDetailInfo](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitdetailinfo18)       | Starting from API version 18, records the key running information of the process where the Ability resides at its last exit. |
 
 ## How to Develop
 
@@ -29,7 +30,7 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
     Read the last exit information of the ability from **launchParam** of the **onCreate** lifecycle function of the UIAbility class.
 
     <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
+
     ``` TypeScript
     import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -79,7 +80,7 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
     - You can add different processing logic for different exit reasons. The following provides an example.
 
     <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
+
     ``` TypeScript
     if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
       // The ability exited last time due to no response. Add processing logic here.
@@ -96,7 +97,7 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
     - Detect abnormal application memory usage based on process information. The following provides an example.
 
     <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
+
     ``` TypeScript
     if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
       // If the RSS or PSS value is too high, the memory usage is close to or has reached the upper limit. Print a warning or add processing logic.
@@ -106,9 +107,9 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
 
 
     - Use the timestamp of the abnormal exit to pinpoint when the issue occurred, facilitating problem locating.
-    
+
     <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
-    
+
     ``` TypeScript
     hilog.info(DOMAIN_NUMBER, TAG, `App ${uid} terminated at ${timestamp}.`);
     ```

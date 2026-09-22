@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=79e2b0709a488b07e5881d61578e00850aa4f234 translatedAt=2026-09-17T08:16:44.823Z pushedAt=2026-09-21T11:20:17.317Z -->
 
-Ability Kit provides an application model for application development and running. The application model is the abstraction of capabilities required by an application. It provides components and mechanisms required for running the application. You can develop applications based on a unified set of models, which makes your development simpler and more efficient.
+Ability Kit (application framework service) provides the application model for application development and running. Based on the application model, developers can implement different types of application components to more easily and efficiently complete business logic such as application lifecycle management, inter-component interaction, and process and thread management, without focusing on the underlying implementation details.
 
 ## Use Scenarios
 
@@ -62,13 +63,6 @@ Ability Kit provides an application model for application development and runnin
 
 ArkUI: The UIAbility component of Ability Kit can use the components, events, animations, and status management capabilities provided by ArkUI.
 
-ArkTS: provides language runtime capabilities for Ability Kit.
+ArkTS: ArkTS provides language runtime capabilities.
 
-## Emulator Support
-
-This kit supports development using the Emulator. However, there are some functional differences compared to real devices, as detailed below:
-
-- Launching vertical application panels is not supported.
-- Launching atomic services in installation-free mode is not supported.
-- Using App Linking for cross-application redirection is not supported.
-- Using Deep Linking to trigger the application selection dialog box is not supported. Since the Emulator lacks an application selection dialog box, when multiple applications match a Deep Link, the dialog box cannot be displayed.
+<!--RP3--><!--RP3End-->
